@@ -19,4 +19,9 @@ def test_research_baseline_passes_and_records_all_cycles() -> None:
     parameterization = result["cycles"][2]
     assert parameterization["hessian_relative_error_against_analytic_equilibrium"] < 1.0e-12
     assert parameterization["direction_sweep"]["minimum_quadratic_order"] > 2.9
+    tensor_train = result["cycles"][3]
+    assert tensor_train["tt_core_stored_scalar_count"] == 657
+    assert tensor_train["storage_baselines"]["fiber_sparse_stored_value_count"] == 567
+    assert tensor_train["storage_baselines"]["scalar_sparse_stored_value_count_excluding_indices"] == 468
+    assert "tt_parameter_count" not in tensor_train
     json.dumps(result)

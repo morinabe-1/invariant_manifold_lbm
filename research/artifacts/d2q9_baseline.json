@@ -404,7 +404,7 @@
         0.0002368036215273329,
         0.0009436892532124323
       ],
-      "next_change": "Repeat on a branch-tracked nonzero Fourier slow subspace, where R is not the identity and quadratic interactions generate harmonics.",
+      "next_change": "After Q004b/Q005, repeat on a fixed-conservation-leaf nonzero Fourier candidate subspace, where R is not the identity and interactions generate zero-wave-number kinetic and second-harmonic corrections.",
       "observed_linear_order": 1.9969022040033557,
       "observed_quadratic_order": 2.9969021991447016,
       "outcome": "accepted",
@@ -420,10 +420,10 @@
       "second_derivative_step": 0.01,
       "second_derivative_step_sweep": [
         {
-          "hessian_relative_error": 6.9787982675023e-15,
+          "hessian_relative_error": 6.981216444501506e-15,
           "homological_condition_number": 7.265295458001148,
-          "homological_equation_relative_residual": 5.886731732357673e-15,
-          "reduced_quadratic_dynamics_norm": 3.1950504736969764e-14,
+          "homological_equation_relative_residual": 5.573006928766373e-15,
+          "reduced_quadratic_dynamics_norm": 2.96602476703311e-14,
           "step": 0.1
         },
         {
@@ -457,7 +457,7 @@
       ]
     },
     {
-      "analysis": "This establishes representation equivalence only. The TT is smaller than a box-dense tensor but not than the natural sparse-fiber baseline. The requested TT-SVD tolerance controls discarded singular values; the reported reconstruction, evaluation, and invariance gates are independent end-to-end checks. It does not yet establish that TT-cross can discover the chart or that ranks stay bounded for spatially varying slow modes.",
+      "analysis": "This establishes representation equivalence only. TT core storage is smaller than a box-dense tensor but not than the thresholded fiber-sparse baseline. Stored scalar slots are not intrinsic degrees of freedom because TT cores have gauge freedom; index metadata, bytes, and evaluation cost are separate. The requested TT-SVD tolerance controls discarded singular values; the reported reconstruction, evaluation, and invariance gates are independent end-to-end checks. It does not yet establish that TT-cross can discover the chart or that ranks stay bounded for spatially varying slow modes.",
       "coefficient_shape": [
         81,
         3,
@@ -483,22 +483,23 @@
       },
       "hypothesis": "TT-SVD preserves the dense chart within the requested tolerance.",
       "maximum_post_tt_invariance_residual_change": 9.548805702305069e-16,
-      "next_change": "Use the dense homological solution as an oracle, then compare TT-SVD and held-out TT-cross approximations before attempting an all-TT solve.",
+      "next_change": "Keep the Fourier-selection-rule sparse chart as a required baseline; after Q005/Q006, compare it with dense, TT-SVD, and held-out TT-cross representations before attempting an all-TT solve.",
       "outcome": "accepted",
       "question": "Can the verified quadratic chart be represented as an output-block polynomial TT without changing its invariance calculation?",
       "relative_evaluation_error": 7.309606381611455e-16,
       "relative_reconstruction_error": 3.0056991855064756e-15,
       "requested_relative_tolerance": 1e-13,
       "storage_baselines": {
-        "box_dense_parameter_count": 2187,
-        "full_hessian_parameter_count": 1053,
-        "nonzero_fiber_count": 7,
-        "nonzero_fiber_parameter_count": 567,
-        "nonzero_scalar_count_excluding_indices": 468,
+        "box_dense_stored_scalar_count": 2187,
+        "fiber_sparse_multi_index_count": 7,
+        "fiber_sparse_stored_value_count": 567,
+        "full_hessian_stored_scalar_count": 1053,
+        "scalar_sparse_multi_index_count": 468,
+        "scalar_sparse_stored_value_count_excluding_indices": 468,
         "structural_zero_threshold": 6.666666666667185e-13,
-        "symmetric_quadratic_parameter_count": 810
+        "symmetric_quadratic_stored_scalar_count": 810
       },
-      "storage_ratios_over_tt": {
+      "storage_ratios_over_tt_core_stored_scalars": {
         "box_dense": 3.328767123287671,
         "full_hessian": 1.6027397260273972,
         "nonzero_fibers": 0.863013698630137,
@@ -506,7 +507,7 @@
         "symmetric_quadratic": 1.2328767123287672
       },
       "tolerance_semantics": "discarded singular-value budget, not a reconstruction guarantee",
-      "tt_parameter_count": 657,
+      "tt_core_stored_scalar_count": 657,
       "tt_ranks": [
         1,
         6,
@@ -516,8 +517,8 @@
       ]
     }
   ],
-  "generated_at_utc": "2026-07-31T10:03:03.530474+00:00",
-  "interpretation": "The strict homogeneous center is a valid coefficient-solver oracle, but spatial fluid reduction requires a deliberately selected slow hydrodynamic subspace rather than a raw unit-circle eigenspace.",
+  "generated_at_utc": "2026-07-31T12:38:25.681860+00:00",
+  "interpretation": "The strict homogeneous center is a valid coefficient-solver oracle, but spatial fluid reduction requires a deliberately selected candidate slow hydrodynamic subspace rather than a raw unit-circle eigenspace.",
   "model": {
     "boundary": "periodic",
     "collision": "BGK",
@@ -527,22 +528,25 @@
   },
   "parameterization_contract": {
     "chart_convention": "full state W(a)",
+    "conservation_treatment": "this uniform oracle crosses conserved leaves; future nonzero-mode charts are restricted to fixed global mass and momentum",
     "coordinates": [
       "delta_rho",
       "momentum_x",
       "momentum_y"
     ],
     "gauge": "L @ (W(a) - f_star) = a",
+    "grid_scope": "3x3 odd periodic square grid",
     "strict_center_reduced_map": "R(a) = a"
   },
   "runtime": {
     "numpy": "2.3.4",
     "platform": "Windows-11-10.0.26200-SP0",
-    "python": "3.13.5"
+    "python": "3.13.5",
+    "scipy": "1.16.3"
   },
-  "schema_version": 1,
+  "schema_version": 2,
   "source": {
-    "package_source_sha256": "79c75112c78a4c54ad57360dba353be4f9848379f8ac2063892df9fb365c14cb",
+    "package_source_sha256": "2fbe9925319609d6826589a1c224ff64ff61214429e53e122d969fdd0098e294",
     "package_version": "0.1.0"
   }
 }

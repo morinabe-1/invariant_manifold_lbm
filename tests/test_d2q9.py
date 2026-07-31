@@ -11,8 +11,11 @@ from ttim_lbm.d2q9 import (
     equilibrium,
     exact_uniform_hessian,
     fourier_symbol,
+    global_conserved_quantities,
     linearized_periodic_step,
     macroscopic,
+    project_perturbation_to_fixed_conservation_leaf,
+    quarter_turn_population_matrix,
     spectrum_audit,
     uniform_center_basis,
     uniform_equilibrium,
@@ -60,6 +63,20 @@ def test_periodic_bgk_step_conserves_global_mass_and_momentum() -> None:
         momentum_before.sum(axis=(0, 1)),
         atol=1.0e-14,
     )
+
+
+def test_fixed_conservation_leaf_projection_is_idempotent_and_invariant() -> None:
+    rng = np.random.default_rng(20260731)
+    perturbation = rng.normal(size=(5, 7, 9))
+    projected = project_perturbation_to_fixed_conservation_leaf(perturbation)
+    np.testing.assert_allclose(global_conserved_quantities(projected), 0.0, atol=2.0e-14)
+    np.testing.assert_allclose(
+        project_perturbation_to_fixed_conservation_leaf(projected),
+        projected,
+        atol=2.0e-15,
+    )
+    advanced = linearized_periodic_step(projected, 1.2)
+    np.testing.assert_allclose(global_conserved_quantities(advanced), 0.0, atol=2.0e-14)
 
 
 def test_uniform_center_basis_uses_conserved_coordinate_gauge() -> None:
@@ -118,6 +135,17 @@ def test_fourier_blocks_reproduce_dense_periodic_spectrum() -> None:
         assert distances[nearest] < 5.0e-14
         block_values.pop(nearest)
     assert not block_values
+
+
+def test_fourier_symbol_is_equivariant_under_quarter_turns() -> None:
+    kx, ky, omega = 0.37, -0.22, 1.2
+    rotation = quarter_turn_population_matrix()
+    np.testing.assert_allclose(rotation @ rotation.T, np.eye(9), atol=0.0)
+    np.testing.assert_allclose(
+        rotation @ fourier_symbol(kx, ky, omega) @ rotation.T,
+        fourier_symbol(-ky, kx, omega),
+        atol=2.0e-15,
+    )
 
 
 def test_grid_parity_exposes_nyquist_unit_modes() -> None:

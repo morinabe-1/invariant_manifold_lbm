@@ -1,0 +1,992 @@
+{
+  "cycles": [
+    {
+      "analysis": "The full-zone individual-label requirement is too strong. The accepted object is a low-k invariant cluster; individual labels are diagnostic only at simple eigenvalues. Each reported k_c is the last passing sampled wave number and therefore a lower bound; the adjacent transition bracket, not an exact maximum, is recorded. It is a threshold-dependent empirical boundary, not an existence theorem.",
+      "construction_scope": {
+        "continuous_path_maximum_wave_number": 1.8,
+        "continuous_path_sample_count": 145,
+        "even_grid_sizes_are_diagnostic_only": [
+          16,
+          32
+        ],
+        "odd_periodic_grid_sizes": [
+          17,
+          33
+        ],
+        "omega_values": [
+          1.0,
+          1.2,
+          1.5,
+          1.8
+        ],
+        "parity_and_direct_nyquist_audit_omega": 1.2,
+        "path_angles_radians": [
+          0.0,
+          0.39269908169872414,
+          0.7853981633974483
+        ]
+      },
+      "direct_nyquist_audit": {
+        "0_pi": {
+          "minimum_distance_to_minus_one": 3.5108334685767007e-16,
+          "minus_one_count": 1
+        },
+        "pi_0": {
+          "minimum_distance_to_minus_one": 2.482534153247273e-16,
+          "minus_one_count": 1
+        }
+      },
+      "gates": {
+        "all_paths_have_nontrivial_valid_prefix": {
+          "passed": true,
+          "threshold": 0.5,
+          "value": 0.763076388888889
+        },
+        "direct_nyquist_symbols_contain_minus_one": {
+          "passed": true,
+          "threshold": [
+            1,
+            1
+          ],
+          "value": [
+            1,
+            1
+          ]
+        },
+        "even_regression_grids_expose_five_unit_modes": {
+          "passed": true,
+          "threshold": [
+            5,
+            5
+          ],
+          "value": [
+            5,
+            5
+          ]
+        },
+        "odd_construction_grids_have_only_three_unit_modes": {
+          "passed": true,
+          "threshold": [
+            3,
+            3
+          ],
+          "value": [
+            3,
+            3
+          ]
+        },
+        "path_reversal_cluster_consistency": {
+          "passed": true,
+          "threshold": 1e-06,
+          "value": 4.4703483581542975e-08
+        },
+        "quarter_turn_cluster_consistency": {
+          "passed": true,
+          "threshold": 1e-06,
+          "value": 4.2146848510894035e-08
+        }
+      },
+      "grid_parity_audits": {
+        "16": {
+          "expected_strict_unit_count": 5,
+          "grid": [
+            16,
+            16
+          ],
+          "largest_nonunit_modulus": 0.9829145253989672,
+          "nonzero_wave_unit_count": 2,
+          "slow_count_modulus_gt_0_9": 85,
+          "state_dimension": 2304,
+          "strict_unit_count": 5,
+          "strict_unit_wavevectors": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              8,
+              0
+            ]
+          ],
+          "unit_eigenvalues": [
+            {
+              "imag": 0.0,
+              "real": 1.0,
+              "wave_index": [
+                0,
+                0
+              ]
+            },
+            {
+              "imag": 0.0,
+              "real": 0.9999999999999999,
+              "wave_index": [
+                0,
+                0
+              ]
+            },
+            {
+              "imag": 0.0,
+              "real": 1.0000000000000002,
+              "wave_index": [
+                0,
+                0
+              ]
+            },
+            {
+              "imag": 1.1102230246251562e-16,
+              "real": -0.9999999999999997,
+              "wave_index": [
+                0,
+                8
+              ]
+            },
+            {
+              "imag": 2.220446049250313e-16,
+              "real": -0.9999999999999999,
+              "wave_index": [
+                8,
+                0
+              ]
+            }
+          ],
+          "zero_wave_unit_count": 3
+        },
+        "17": {
+          "expected_strict_unit_count": 3,
+          "grid": [
+            17,
+            17
+          ],
+          "largest_nonunit_modulus": 0.9848604492415367,
+          "nonzero_wave_unit_count": 0,
+          "slow_count_modulus_gt_0_9": 83,
+          "state_dimension": 2601,
+          "strict_unit_count": 3,
+          "strict_unit_wavevectors": [
+            [
+              0,
+              0
+            ]
+          ],
+          "unit_eigenvalues": [
+            {
+              "imag": 0.0,
+              "real": 1.0,
+              "wave_index": [
+                0,
+                0
+              ]
+            },
+            {
+              "imag": 0.0,
+              "real": 0.9999999999999999,
+              "wave_index": [
+                0,
+                0
+              ]
+            },
+            {
+              "imag": 0.0,
+              "real": 1.0000000000000002,
+              "wave_index": [
+                0,
+                0
+              ]
+            }
+          ],
+          "zero_wave_unit_count": 3
+        },
+        "32": {
+          "expected_strict_unit_count": 5,
+          "grid": [
+            32,
+            32
+          ],
+          "largest_nonunit_modulus": 0.995719380634106,
+          "nonzero_wave_unit_count": 2,
+          "slow_count_modulus_gt_0_9": 281,
+          "state_dimension": 9216,
+          "strict_unit_count": 5,
+          "strict_unit_wavevectors": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              16
+            ],
+            [
+              16,
+              0
+            ]
+          ],
+          "unit_eigenvalues": [
+            {
+              "imag": 0.0,
+              "real": 1.0,
+              "wave_index": [
+                0,
+                0
+              ]
+            },
+            {
+              "imag": 0.0,
+              "real": 0.9999999999999999,
+              "wave_index": [
+                0,
+                0
+              ]
+            },
+            {
+              "imag": 0.0,
+              "real": 1.0000000000000002,
+              "wave_index": [
+                0,
+                0
+              ]
+            },
+            {
+              "imag": 1.1102230246251562e-16,
+              "real": -0.9999999999999997,
+              "wave_index": [
+                0,
+                16
+              ]
+            },
+            {
+              "imag": 2.220446049250313e-16,
+              "real": -0.9999999999999999,
+              "wave_index": [
+                16,
+                0
+              ]
+            }
+          ],
+          "zero_wave_unit_count": 3
+        },
+        "33": {
+          "expected_strict_unit_count": 3,
+          "grid": [
+            33,
+            33
+          ],
+          "largest_nonunit_modulus": 0.9959747091576644,
+          "nonzero_wave_unit_count": 0,
+          "slow_count_modulus_gt_0_9": 291,
+          "state_dimension": 9801,
+          "strict_unit_count": 3,
+          "strict_unit_wavevectors": [
+            [
+              0,
+              0
+            ]
+          ],
+          "unit_eigenvalues": [
+            {
+              "imag": 0.0,
+              "real": 1.0,
+              "wave_index": [
+                0,
+                0
+              ]
+            },
+            {
+              "imag": 0.0,
+              "real": 0.9999999999999999,
+              "wave_index": [
+                0,
+                0
+              ]
+            },
+            {
+              "imag": 0.0,
+              "real": 1.0000000000000002,
+              "wave_index": [
+                0,
+                0
+              ]
+            }
+          ],
+          "zero_wave_unit_count": 3
+        }
+      },
+      "hypothesis": "A three-dimensional ordered-Schur cluster has a nontrivial, path- and quarter-turn-consistent validated prefix for every registered omega and direction.",
+      "known_limitations": [
+        "The current cluster candidate is seeded from a diagonalizable eigendecomposition before ordered-Schur reordering. A defective or non-semisimple collision requires Schur-native continuation.",
+        "The simple-label condition uses the full eigenvector-matrix condition number and is therefore conservative when only an excluded kinetic cluster is ill-conditioned."
+      ],
+      "next_change": "Use each accepted k_c as input to the sector-aware quadratic nonresonance and nonnormality audit in Q005.",
+      "outcome": "accepted",
+      "paths": [
+        {
+          "accepted_point_count": 62,
+          "angle_radians": 0.0,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": -0.38818222318112316,
+              "real": 0.8151421292149952
+            },
+            {
+              "imag": 0.3881822231811233,
+              "real": 0.8151421292149952
+            },
+            {
+              "imag": -7.968885967768458e-18,
+              "real": 0.9075710646074969
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 0.7755694444444444,
+            "last_passing_wave_number": 0.763076388888889
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 142.87837060817515,
+          "maximum_schur_invariance_residual": 7.950189680203727e-16,
+          "maximum_spectral_projector_commutator_residual": 1.2385887988990836e-15,
+          "maximum_spectral_projector_idempotency_residual": 3.7787907128294814e-15,
+          "maximum_spectral_projector_norm": 1.8401698872373853,
+          "minimum_equilibrium_subspace_alignment": 0.7535228389533268,
+          "minimum_external_eigenvalue_gap": 0.9028522189234488,
+          "minimum_schur_separation": 0.6881230604349898,
+          "next_rejected_wave_number": 0.7755694444444444,
+          "omega": 1.0,
+          "path_reversal_maximum_principal_angle": 3.942476676500724e-08,
+          "quarter_turn_maximum_principal_angle": 3.332000937312528e-08,
+          "simple_branch_point_count": 62,
+          "validated_k_c": 0.763076388888889,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 66,
+          "angle_radians": 0.39269908169872414,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": 0.4071709838865363,
+              "real": 0.7936359431815483
+            },
+            {
+              "imag": -0.40717098388653644,
+              "real": 0.7936359431815485
+            },
+            {
+              "imag": -1.0072299874842041e-16,
+              "real": 0.8942501753476332
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 0.8255416666666667,
+            "last_passing_wave_number": 0.8130486111111112
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 28.22069189607785,
+          "maximum_schur_invariance_residual": 9.302837874292697e-16,
+          "maximum_spectral_projector_commutator_residual": 1.819581200456277e-15,
+          "maximum_spectral_projector_idempotency_residual": 3.548944570178571e-15,
+          "maximum_spectral_projector_norm": 1.888956406328285,
+          "minimum_equilibrium_subspace_alignment": 0.7561488016202895,
+          "minimum_external_eigenvalue_gap": 0.891990033816968,
+          "minimum_schur_separation": 0.6669416242832075,
+          "next_rejected_wave_number": 0.8255416666666667,
+          "omega": 1.0,
+          "path_reversal_maximum_principal_angle": 3.6500241499888574e-08,
+          "quarter_turn_maximum_principal_angle": 3.6500241499888574e-08,
+          "simple_branch_point_count": 66,
+          "validated_k_c": 0.8130486111111112,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 80,
+          "angle_radians": 0.7853981633974483,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": 0.46315104029735643,
+              "real": 0.7090080577112658
+            },
+            {
+              "imag": -0.4631510402973563,
+              "real": 0.7090080577112658
+            },
+            {
+              "imag": -5.442694905877232e-17,
+              "real": 0.8438344144296513
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 1.0004444444444445,
+            "last_passing_wave_number": 0.9879513888888889
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 164.83573902388835,
+          "maximum_schur_invariance_residual": 1.008428875782401e-15,
+          "maximum_spectral_projector_commutator_residual": 1.4624349311490965e-15,
+          "maximum_spectral_projector_idempotency_residual": 3.1200905992832537e-15,
+          "maximum_spectral_projector_norm": 2.104468290727598,
+          "minimum_equilibrium_subspace_alignment": 0.7511598831053824,
+          "minimum_external_eigenvalue_gap": 0.8438344144296513,
+          "minimum_schur_separation": 0.5898541313731543,
+          "next_rejected_wave_number": 1.0004444444444445,
+          "omega": 1.0,
+          "path_reversal_maximum_principal_angle": 3.332000937312528e-08,
+          "quarter_turn_maximum_principal_angle": 3.6500241499888574e-08,
+          "simple_branch_point_count": 80,
+          "validated_k_c": 0.9879513888888889,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 75,
+          "angle_radians": 0.0,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": -0.45733126294694554,
+              "real": 0.7825832300829343
+            },
+            {
+              "imag": 0.4573312629469456,
+              "real": 0.7825832300829343
+            },
+            {
+              "imag": -1.38777878086053e-16,
+              "real": 0.9055056010517193
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 0.9379791666666667,
+            "last_passing_wave_number": 0.9254861111111111
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 3.744518856512396,
+          "maximum_schur_invariance_residual": 1.4200061572630397e-15,
+          "maximum_spectral_projector_commutator_residual": 2.2769596344897954e-15,
+          "maximum_spectral_projector_idempotency_residual": 5.076862112923693e-15,
+          "maximum_spectral_projector_norm": 1.6860141178233095,
+          "minimum_equilibrium_subspace_alignment": 0.7550503097911963,
+          "minimum_external_eigenvalue_gap": 0.9506386874883446,
+          "minimum_schur_separation": 0.738415368930233,
+          "next_rejected_wave_number": 0.9379791666666667,
+          "omega": 1.2,
+          "path_reversal_maximum_principal_angle": 3.6500241499888574e-08,
+          "quarter_turn_maximum_principal_angle": 4.2146848510894035e-08,
+          "simple_branch_point_count": 75,
+          "validated_k_c": 0.9254861111111111,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 81,
+          "angle_radians": 0.39269908169872414,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": 0.4807043193942431,
+              "real": 0.7469874087291072
+            },
+            {
+              "imag": -0.48070431939424346,
+              "real": 0.746987408729107
+            },
+            {
+              "imag": -1.357372578576506e-16,
+              "real": 0.891315602525064
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 1.0129374999999998,
+            "last_passing_wave_number": 1.0004444444444445
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 4.106823638424405,
+          "maximum_schur_invariance_residual": 2.3291410537375153e-15,
+          "maximum_spectral_projector_commutator_residual": 3.03285951915929e-15,
+          "maximum_spectral_projector_idempotency_residual": 7.894204755820374e-15,
+          "maximum_spectral_projector_norm": 1.7655934107700908,
+          "minimum_equilibrium_subspace_alignment": 0.7505292418301361,
+          "minimum_external_eigenvalue_gap": 0.8816159785841813,
+          "minimum_schur_separation": 0.6751064830889738,
+          "next_rejected_wave_number": 1.0129374999999998,
+          "omega": 1.2,
+          "path_reversal_maximum_principal_angle": 3.6500241499888574e-08,
+          "quarter_turn_maximum_principal_angle": 3.6500241499888574e-08,
+          "simple_branch_point_count": 81,
+          "validated_k_c": 1.0004444444444445,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 96,
+          "angle_radians": 0.7853981633974483,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": -0.5265926400556914,
+              "real": 0.6503420124464723
+            },
+            {
+              "imag": 0.5265926400556913,
+              "real": 0.6503420124464724
+            },
+            {
+              "imag": 1.110222887174947e-16,
+              "real": 0.8513318294399101
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 1.2003333333333333,
+            "last_passing_wave_number": 1.1878402777777777
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 4.864626543135154,
+          "maximum_schur_invariance_residual": 1.7112719541655675e-15,
+          "maximum_spectral_projector_commutator_residual": 2.579370812011261e-15,
+          "maximum_spectral_projector_idempotency_residual": 5.543328447446408e-15,
+          "maximum_spectral_projector_norm": 2.018604195640325,
+          "minimum_equilibrium_subspace_alignment": 0.7511290422107493,
+          "minimum_external_eigenvalue_gap": 0.7417460909953345,
+          "minimum_schur_separation": 0.5196249326481989,
+          "next_rejected_wave_number": 1.2003333333333333,
+          "omega": 1.2,
+          "path_reversal_maximum_principal_angle": 4.4703483581542975e-08,
+          "quarter_turn_maximum_principal_angle": 3.942476676500724e-08,
+          "simple_branch_point_count": 96,
+          "validated_k_c": 1.1878402777777777,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 94,
+          "angle_radians": 0.0,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": 0.5598196546462763,
+              "real": 0.7391472835095624
+            },
+            {
+              "imag": -0.5598196546462746,
+              "real": 0.7391472835095604
+            },
+            {
+              "imag": -2.220446049251682e-16,
+              "real": 0.9202117255229283
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 1.175347222222222,
+            "last_passing_wave_number": 1.1628541666666665
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 3.3458596789687207,
+          "maximum_schur_invariance_residual": 1.6260180746731563e-15,
+          "maximum_spectral_projector_commutator_residual": 2.0899522942858655e-15,
+          "maximum_spectral_projector_idempotency_residual": 5.254208987846037e-15,
+          "maximum_spectral_projector_norm": 1.5348078289433555,
+          "minimum_equilibrium_subspace_alignment": 0.7543122327833747,
+          "minimum_external_eigenvalue_gap": 0.9429166280367085,
+          "minimum_schur_separation": 0.7382100178211458,
+          "next_rejected_wave_number": 1.175347222222222,
+          "omega": 1.5,
+          "path_reversal_maximum_principal_angle": 4.2146848510894035e-08,
+          "quarter_turn_maximum_principal_angle": 3.332000937312528e-08,
+          "simple_branch_point_count": 94,
+          "validated_k_c": 1.1628541666666665,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 101,
+          "angle_radians": 0.39269908169872414,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": 0.57587216623433,
+              "real": 0.6989347810771123
+            },
+            {
+              "imag": -0.5758721662343292,
+              "real": 0.6989347810771113
+            },
+            {
+              "imag": 9.376088406565993e-17,
+              "real": 0.9104000952931931
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 1.2627986111111111,
+            "last_passing_wave_number": 1.2503055555555558
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 3.769190954911907,
+          "maximum_schur_invariance_residual": 2.104944781528897e-15,
+          "maximum_spectral_projector_commutator_residual": 2.561955287024602e-15,
+          "maximum_spectral_projector_idempotency_residual": 6.153806252532702e-15,
+          "maximum_spectral_projector_norm": 1.5989058915515104,
+          "minimum_equilibrium_subspace_alignment": 0.7504317974519417,
+          "minimum_external_eigenvalue_gap": 0.7831153536880818,
+          "minimum_schur_separation": 0.5920198474772876,
+          "next_rejected_wave_number": 1.2627986111111111,
+          "omega": 1.5,
+          "path_reversal_maximum_principal_angle": 3.942476676500724e-08,
+          "quarter_turn_maximum_principal_angle": 3.6500241499888574e-08,
+          "simple_branch_point_count": 101,
+          "validated_k_c": 1.2503055555555558,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 112,
+          "angle_radians": 0.7853981633974483,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": -0.5813920014653844,
+              "real": 0.626596718561246
+            },
+            {
+              "imag": 0.581392001465384,
+              "real": 0.6265967185612454
+            },
+            {
+              "imag": 5.551115123898375e-17,
+              "real": 0.897988127192593
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 1.4002222222222223,
+            "last_passing_wave_number": 1.387729166666667
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 4.853796119295342,
+          "maximum_schur_invariance_residual": 1.6285990744451608e-15,
+          "maximum_spectral_projector_commutator_residual": 2.305873662934476e-15,
+          "maximum_spectral_projector_idempotency_residual": 6.682504807904603e-15,
+          "maximum_spectral_projector_norm": 1.7712286487285938,
+          "minimum_equilibrium_subspace_alignment": 0.7524547437495142,
+          "minimum_external_eigenvalue_gap": 0.5842268968940016,
+          "minimum_schur_separation": 0.37907487503486725,
+          "next_rejected_wave_number": 1.4002222222222223,
+          "omega": 1.5,
+          "path_reversal_maximum_principal_angle": 3.942476676500724e-08,
+          "quarter_turn_maximum_principal_angle": 3.942476676500724e-08,
+          "simple_branch_point_count": 112,
+          "validated_k_c": 1.387729166666667,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 111,
+          "angle_radians": 0.0,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": 0.6590416197307013,
+              "real": 0.7063370863237379
+            },
+            {
+              "imag": -0.6590416197307015,
+              "real": 0.7063370863237375
+            },
+            {
+              "imag": 2.2204460492505325e-16,
+              "real": 0.9600652791905134
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 1.3877291666666667,
+            "last_passing_wave_number": 1.375236111111111
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 3.130466172425847,
+          "maximum_schur_invariance_residual": 1.2830817242020189e-15,
+          "maximum_spectral_projector_commutator_residual": 1.7064295794330513e-15,
+          "maximum_spectral_projector_idempotency_residual": 6.195496249327589e-15,
+          "maximum_spectral_projector_norm": 1.4999999855967046,
+          "minimum_equilibrium_subspace_alignment": 0.7529552503696159,
+          "minimum_external_eigenvalue_gap": 0.8709103520945368,
+          "minimum_schur_separation": 0.6756376422338746,
+          "next_rejected_wave_number": 1.3877291666666667,
+          "omega": 1.8,
+          "path_reversal_maximum_principal_angle": 4.2146848510894035e-08,
+          "quarter_turn_maximum_principal_angle": 3.6500241499888574e-08,
+          "simple_branch_point_count": 111,
+          "validated_k_c": 1.375236111111111,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 116,
+          "angle_radians": 0.39269908169872414,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": 0.6565681372335609,
+              "real": 0.6903799266475746
+            },
+            {
+              "imag": -0.6565681372335606,
+              "real": 0.6903799266475746
+            },
+            {
+              "imag": -4.672870919419238e-16,
+              "real": 0.9575717593475127
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 1.4501944444444443,
+            "last_passing_wave_number": 1.4377013888888888
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 3.617813878091782,
+          "maximum_schur_invariance_residual": 1.4691897962571137e-15,
+          "maximum_spectral_projector_commutator_residual": 2.3116111039159047e-15,
+          "maximum_spectral_projector_idempotency_residual": 6.0377807664995724e-15,
+          "maximum_spectral_projector_norm": 1.4999999855966997,
+          "minimum_equilibrium_subspace_alignment": 0.7520445108318266,
+          "minimum_external_eigenvalue_gap": 0.6901933136922901,
+          "minimum_schur_separation": 0.490680385603811,
+          "next_rejected_wave_number": 1.4501944444444443,
+          "omega": 1.8,
+          "path_reversal_maximum_principal_angle": 3.332000937312528e-08,
+          "quarter_turn_maximum_principal_angle": 3.6500241499888574e-08,
+          "simple_branch_point_count": 116,
+          "validated_k_c": 1.4377013888888888,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        },
+        {
+          "accepted_point_count": 117,
+          "angle_radians": 0.7853981633974483,
+          "cutoff_cluster_eigenvalues": [
+            {
+              "imag": 0.6268816573782114,
+              "real": 0.6946309472016217
+            },
+            {
+              "imag": -0.626881657378213,
+              "real": 0.6946309472016234
+            },
+            {
+              "imag": 2.220446049942985e-16,
+              "real": 0.961938540757924
+            }
+          ],
+          "cutoff_transition_bracket": {
+            "first_failing_wave_number": 1.4626875,
+            "last_passing_wave_number": 1.4501944444444443
+          },
+          "first_rejected_gates": [
+            "equilibrium_subspace_alignment"
+          ],
+          "invariant_cluster_point_count": 0,
+          "maximum_eigenvector_condition_number": 4.121516298787019,
+          "maximum_schur_invariance_residual": 1.837239916399261e-15,
+          "maximum_spectral_projector_commutator_residual": 2.1293750902594386e-15,
+          "maximum_spectral_projector_idempotency_residual": 5.414387376189878e-15,
+          "maximum_spectral_projector_norm": 1.4999999855966937,
+          "minimum_equilibrium_subspace_alignment": 0.7554448817120052,
+          "minimum_external_eigenvalue_gap": 0.644936438900149,
+          "minimum_schur_separation": 0.3993087262722237,
+          "next_rejected_wave_number": 1.4626875,
+          "omega": 1.8,
+          "path_reversal_maximum_principal_angle": 4.4703483581542975e-08,
+          "quarter_turn_maximum_principal_angle": 3.332000937312528e-08,
+          "simple_branch_point_count": 117,
+          "validated_k_c": 1.4501944444444443,
+          "validated_k_c_semantics": "last passing sampled wave number; a lower bound"
+        }
+      ],
+      "question": "What is the largest low-wave-number prefix on which the D2Q9 hydrodynamic invariant cluster remains physically identifiable and separated from the kinetic complement?",
+      "superseded_question": "Can individual shear/acoustic/kinetic labels be made unique over the entire Brillouin zone?",
+      "superseded_question_outcome": {
+        "cluster_subspace_reversal_angle": null,
+        "failure": "ordered Schur decomposition did not preserve a three-dimensional cluster",
+        "individual_label_reversal_error": null,
+        "outcome": "rejected"
+      },
+      "validity_thresholds": {
+        "maximum_reversal_angle": 1e-06,
+        "maximum_rotation_angle": 1e-06,
+        "maximum_schur_invariance_residual": 1e-12,
+        "maximum_spectral_projector_norm": 100.0,
+        "maximum_spectral_projector_residual": 1e-12,
+        "maximum_step_angle": 0.2,
+        "minimum_equilibrium_alignment": 0.75,
+        "minimum_external_eigenvalue_gap": 0.05,
+        "minimum_schur_separation": 0.02
+      }
+    },
+    {
+      "analysis": "This separates homological-solver failures from LBM branch classification. It is an algebraic oracle, not evidence that the nonzero-wave D2Q9 candidate manifold exists.",
+      "chart_hessian_relative_error": 1.3989864411553096e-15,
+      "exact_resonance_rejected": true,
+      "exact_resonance_rejection_message": "quadratic homological operator is rank deficient; the selected spectral subspace is resonant or unresolved",
+      "gates": {
+        "exact_manifold_invariance": {
+          "passed": true,
+          "threshold": 1e-13,
+          "value": 1.5449405423331524e-17
+        },
+        "exact_resonance_rejected": {
+          "passed": true,
+          "threshold": true,
+          "value": true
+        },
+        "homological_equation_and_gauge": {
+          "passed": true,
+          "threshold": 1e-12,
+          "value": 1.7798240005244196e-15
+        },
+        "known_chart_hessian_recovered": {
+          "passed": true,
+          "threshold": 1e-12,
+          "value": 1.3989864411553096e-15
+        },
+        "manufactured_model_duality_and_graph_gauge": {
+          "passed": true,
+          "threshold": 1e-12,
+          "value": 2.2357393936612885e-16
+        },
+        "near_resonance_condition_growth": {
+          "passed": true,
+          "threshold": 1000.0,
+          "value": 3406.2513612090656
+        },
+        "nontrivial_reduced_hessian_recovered": {
+          "passed": true,
+          "threshold": 1e-12,
+          "value": 1.8068790009039826e-15
+        },
+        "real_complex_pair_conversion_and_normalization": {
+          "passed": true,
+          "threshold": 1e-12,
+          "value": 1.2834091681440622e-15
+        }
+      },
+      "homological_diagnostics": {
+        "augmented_dimension": 28,
+        "augmented_rank": 28,
+        "condition_number": 5.095904957471197,
+        "global_equation_relative_residual": 1.7798240005244196e-15,
+        "left_invariance_relative_residual": 1.8241355670474687e-16,
+        "maximum_equation_residual": 4.0155757319943717e-16,
+        "maximum_gauge_residual": 2.3673546367391905e-16,
+        "raw_symmetry_relative_residual": 6.648817286985251e-16,
+        "smallest_singular_value": 0.31500315384099226,
+        "tangent_relative_residual": 4.918124637671544e-17
+      },
+      "hypothesis": "The solver recovers known H and nonzero G, preserves the real biorthogonal conjugate block under a nonorthogonal similarity transform, and its conditioning diverges near mu=rho^2.",
+      "invariance_residual": 1.5449405423331524e-17,
+      "model": {
+        "full_dimension": 5,
+        "mean_quadratic_resonance": 0.6723999999999999,
+        "model_left_right_duality_residual": 2.2357393936612885e-16,
+        "reduced_dimension": 2,
+        "reduced_linear_block": [
+          [
+            0.7645084233969494,
+            -0.2965246542112692
+          ],
+          [
+            0.2965246542112692,
+            0.7645084233969494
+          ]
+        ],
+        "sectors": [
+          "master_complex_pair",
+          "mean_complement",
+          "second_harmonic_pair"
+        ],
+        "state_transform_condition_number": 1.7378678637694185
+      },
+      "near_resonance_sweep": [
+        {
+          "chart_hessian_relative_error": 1.3989864411553096e-15,
+          "condition_number": 5.095904957471197,
+          "distance_to_quadratic_resonance": 0.4223999999999999,
+          "mean_multiplier": 0.25,
+          "smallest_singular_value": 0.31500315384099226
+        },
+        {
+          "chart_hessian_relative_error": 1.0931885148360717e-15,
+          "condition_number": 23.946771678027407,
+          "distance_to_quadratic_resonance": 0.07239999999999991,
+          "mean_multiplier": 0.6,
+          "smallest_singular_value": 0.06622727173705051
+        },
+        {
+          "chart_hessian_relative_error": 6.715188417631974e-15,
+          "condition_number": 139.92768047179166,
+          "distance_to_quadratic_resonance": 0.012399999999999856,
+          "mean_multiplier": 0.66,
+          "smallest_singular_value": 0.011318445872929715
+        },
+        {
+          "chart_hessian_relative_error": 3.833605221002846e-14,
+          "condition_number": 1239.7952997132456,
+          "distance_to_quadratic_resonance": 0.0013999999999998458,
+          "mean_multiplier": 0.671,
+          "smallest_singular_value": 0.0012771437746759938
+        },
+        {
+          "chart_hessian_relative_error": 2.1595475740985837e-13,
+          "condition_number": 17357.93319797829,
+          "distance_to_quadratic_resonance": 9.999999999987796e-05,
+          "mean_multiplier": 0.6723,
+          "smallest_singular_value": 9.121789186532549e-05
+        }
+      ],
+      "next_change": "Proceed to Q005 before constructing the fixed-conservation-leaf nonzero-mode D2Q9 quadratic chart.",
+      "outcome": "accepted",
+      "question": "Can the general real-block quadratic homological solver recover a known nonidentity stable manifold and expose a controlled resonance?",
+      "real_block_conversion": {
+        "conjugacy_error": 0.0,
+        "duality_residual": 3.1924617326551586e-16,
+        "left_invariance_residual": 1.2834091681440622e-15,
+        "right_invariance_residual": 1.1150275031864425e-15
+      },
+      "reduced_hessian_relative_error": 1.8068790009039826e-15
+    }
+  ],
+  "generated_at_utc": "2026-07-31T12:38:46.612098+00:00",
+  "mathematical_scope": {
+    "conservation_treatment": "fixed global mass and momentum leaf for future nonzero-mode charts",
+    "construction_grid_parity": "odd periodic square grids only",
+    "even_grids": "diagnostic parity and obstruction analysis only",
+    "manifold_claim": "candidate until Q005 nonresonance and normal-attraction gates pass"
+  },
+  "next_question": "Q005: do the accepted k_c values retain quadratic sector-aware nonresonance and acceptable nonnormality under grid refinement?",
+  "runtime": {
+    "numpy": "2.3.4",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.5",
+    "scipy": "1.16.3"
+  },
+  "schema_version": 1,
+  "source": {
+    "package_source_sha256": "2fbe9925319609d6826589a1c224ff64ff61214429e53e122d969fdd0098e294",
+    "package_version": "0.1.0"
+  },
+  "study_gate": "passed"
+}

@@ -1,6 +1,6 @@
 # 詳細設計: TT パラメータ化不変多様体による LBM 縮約
 
-Status: design baseline v1
+Status: design baseline v2
 
 対象順序: D2Q9 → D3Q27
 
@@ -57,6 +57,11 @@ R:\mathcal A\to\mathbb{R}^{m}
 D2Q9 の奇数幅周期格子では、一様平衡まわりの物理的 strict center は通常
 \(k=0\) の \((\rho,j_x,j_y)\) である。
 
+この3次元族は任意の周期格子で不変だが、偶数 extent では Nyquist の
+\(\lambda=-1\) 方向も full center に含まれる。従って「3次元 full strict center」
+という呼称は本監査では奇数×奇数の周期正方格子に限定し、偶数格子では
+3次元 invariant submanifold と呼ぶ。
+
 これは次に有用である。
 
 - 解析的な一様 equilibrium family がある。
@@ -75,6 +80,11 @@ submanifold は同一の対象ではない。後者がこの full LBM map に存
 現時点で未証明であり、存在・滑らかさ・一意性に必要な spectral gap、非共鳴、
 normal attraction を数値・理論の両面で確認する。
 
+用語上、Q005 の非共鳴・spectral split と、有限領域での invariance、normal
+attraction、domain gate を通るまでは candidate slow spectral subspace または
+candidate chart と呼ぶ。これらを通過する前に slow manifold の存在を既成事実として
+記述しない。
+
 ### 2.3 Hydrodynamic field manifold
 
 全格子の \(\rho,\boldsymbol j\) を座標とすれば
@@ -86,7 +96,7 @@ m=(d+1)N_xN_y
 となる。これは population 数を \(Q\) から \(d+1\) へ減らすが、空間次元は
 減らさない。TT はこの高次元 field chart を圧縮し得る。
 
-### 2.4 Reduced spatial-mode manifold
+### 2.4 Reduced spatial-mode candidate manifold
 
 低波数 Fourier modes、POD modes などを選び
 
@@ -94,8 +104,8 @@ m=(d+1)N_xN_y
 m\ll (d+1)N_xN_y
 \]
 
-とする。本設計はまず周期格子の低波数 Fourier hydrodynamic branches でこれを
-実装する。境界付き問題では Arnoldi/POD へ一般化する。
+とする。本設計はまず周期格子の低波数 Fourier hydrodynamic cluster で candidate
+chart を実装する。境界付き問題では Arnoldi/POD へ一般化する。
 
 ## 3. Full map \(\Phi\) の契約
 
@@ -184,8 +194,11 @@ p_j=\lVert M_jv\rVert,\quad
 p_\Pi=\lVert M_\Pi v\rVert
 \]
 
-branch label は modulus ではなく、前 wave vector の固有ベクトルとの biorthogonal
-overlap と moment participation の組合せで決める。
+analytic/spectral branch identity と、moment participation が表す physical
+hydrodynamic character は別に保存する。単純固有値域の spectral identity は前 wave
+vector との symmetric biorthogonal overlap で継続し、moment participation は
+physical label の診断に使う。両者を一つの重み付き cost に混ぜて同一概念にしない。
+curve veering では physical character が analytic eigencurve 間で交換し得る。
 
 \(k=0\) は conserved eigenspace が縮退しているため、個別 shear/acoustic vector を
 overlap だけで初期化できない。各 path direction \(\hat k\) について
@@ -194,17 +207,28 @@ overlap だけで初期化できない。各 path direction \(\hat k\) につい
 2. 十分小さい \(k=\varepsilon\hat k\) で longitudinal/transverse moment
    polarization により acoustic/shear を初期化する
 
-必要がある。その後にだけ隣接 \(k\) 間の overlap tracking を使う。縮退点では個別
-vector でなく spectral projector/cluster を比較する。
+必要がある。その後にだけ隣接 \(k\) 間の overlap tracking を使う。個別 branch と
+呼ぶのは、固定した1次元 path 上で対象固有値が代数的に単純で、補スペクトルから
+分離し、左右固有ベクトルの条件数が gate 内にある区間だけとする。
 
-```text
-cost(branch_i(k-dk), candidate_j(k))
-  = 1 - normalized biorthogonal overlap
-    + alpha * moment_signature_distance
-```
+固有値衝突・縮退点では個別 vector を強制せず、次を正本にする。
 
-assignment は Hungarian matching または小規模全探索で行う。固有値衝突点では
-個別ベクトルでなく invariant cluster を追跡する。
+- complex ordered-Schur subspace
+- subspace間の principal angles
+- basis rotation に不変な cluster moment singular values
+- cluster内固有値の多重集合
+- selected/excluded Schur blocks の Sylvester separation
+
+path reversal は cluster の張る部分空間と complement との非交換を判定し、cluster
+内部の permutation は失敗に数えない。単一 \(k\) の symbol は複素行列なので complex
+Schur を使い、実 \(2\times2\) block 化は \(k,-k\) を組にした full real coordinates
+で行う。
+
+現 Q004b 実装は対角化可能な D2Q9 path に対し、個別固有ベクトルから候補 cluster を
+seed してから ordered Schur へ移る。非半単純・defective collision ではこの seed 自体が
+不十分なので、Q005 でその兆候が出た場合は Schur-native reordering/projector
+continuation へ置き換える。simple-label の condition も将来は全固有基底の条件数でなく、
+選択固有対ごとの \(\|l_i\|\|r_i\|/|l_i^*r_i|\) を使う。
 
 ### 4.3 Physical admissibility
 
@@ -212,10 +236,17 @@ master mode selector は次を全て満たすこと。
 
 1. \(k=0\) の conserved branch から連続に追跡できる。
 2. \(\lVert k\rVert\le k_c\)。
-3. kinetic cluster との separation が下限以上。
+3. kinetic cluster との eigenvalue gap と Schur separation が下限以上。
 4. 複素共役を必ず対で含む。
 5. 実状態用には共役対を実 \(2\times2\) block に変換する。
 6. Nyquist checkerboard を low-\(k\) rule で除外する。
+7. path reversal と格子90度回転で cluster principal angle が閾値以下。
+8. spectral projector の norm、idempotency residual、\(AP-PA\) residual が gate 内。
+
+主目的は全 Brillouin zone の一意分類ではなく、上の条件を同時に満たす最大の
+\(|k|\le k_c\) を求めることである。全域追跡の破綻位置も棄却結果として保存する。
+有限 path sampling では最後の合格点と最初の不合格点を bracket として報告し、前者を
+\(k_c\) の経験的下限とする。単一 sample を厳密な最大値とは呼ばない。
 
 候補 \(k_c\) ごとに
 
@@ -228,7 +259,15 @@ master mode selector は次を全て満たすこと。
 \left|\mu-\lambda^\alpha\right|
 \]
 
-と homological operator の最小特異値・条件数を記録する。非線形 Fourier interaction
+と homological operator の最小特異値・条件数を記録する。さらに ordered Schur
+blocks \(T_{11},T_{22}\) について
+
+\[
+\operatorname{sep}(T_{11},T_{22})
+=\min_{\|X\|_F=1}\|T_{11}X-XT_{22}\|_F
+\]
+
+を測る。非線形 Fourier interaction
 は wave vector を格子上の modulo 和で保存するため、出力波数と無関係な excluded
 eigenvalue を全 spectrum から比較してはならない。
 
@@ -263,7 +302,10 @@ N = 9, 17, 33, 65   # 奇数 periodic grid、strict-center alias を避ける
 omega = 1.0, 1.2, 1.5, 1.8
 ```
 
-とする。偶数格子も実用上必要なので別途監査し、Nyquist modes を明示する。
+とする。candidate manifold の構築は当面奇数格子に限定する。偶数格子
+\(N=16,32\) は parity regression と障害解析に使い、\(A(\pi,0)\),
+\(A(0,\pi)\) も直接評価する。checkerboard-free 部分空間の非線形不変性を証明するか、
+Nyquist modeを減衰させるまでは偶数格子上の low-k candidate manifold を主張しない。
 
 ## 5. 座標と gauge
 
@@ -316,14 +358,47 @@ Q\left[
 
 となる。
 
-### 5.1 Conditioning
+### 5.1 非零波数 chart の固定保存量葉
+
+最初の非零波数 candidate chart は、全質量と全運動量を固定する案Aを採用する。
+保存量写像を
+
+\[
+\mathcal C(f)=\left(\sum_x \rho(x),\sum_x j_x(x),\sum_x j_y(x)\right)
+\]
+
+とし、基準値 \(c=\mathcal C(f_\*)\) に対する不変葉を
+
+\[
+\mathcal X_c=\{f:\mathcal C(f)=c\}
+\]
+
+とする。構成する写像は \(W_c:\mathcal A\to\mathcal X_c\) と
+\(R_c:\mathcal A\to\mathcal A\) である。一次・二次係数および多様体外摂動には
+
+\[
+\mathcal C V=0,\qquad \mathcal C H=0,\qquad
+\mathcal C\delta_\perp=0
+\]
+
+を hard constraint として課す。\(k+(-k)=0\) の相互作用で生成される zero-wave-number
+補正は、保存モーメントを持たない kinetic/complement 成分だけを許す。shadowing と
+normal-attraction の比較も同じ \(\mathcal X_c\) 内で行う。
+
+Phase 0 の一様 equilibrium oracle は \((\delta\rho,j_x,j_y)\) を座標とするため、保存量葉を
+横切る別問題である。将来、保存量3座標も含む center-slow 構成へ移る場合は
+\(a=(\delta\rho_0,j_{x,0},j_{y,0},a_{\rm slow})\) とし、保存量方向の恒等力学を明示する。
+この案Bを固定葉構成へ暗黙に混ぜない。
+
+### 5.2 Conditioning
 
 \(V,L\) は列・行 scaling を固定し、artifact に次を保存する。
 
 - \(\lVert LV-I\rVert\)
 - \(\kappa(V)\)
 - \(\lVert P^2-P\rVert\)
-- selected/excluded cluster separation
+- \(\lVert AP-PA\rVert\) と \(\lVert P\rVert\)
+- selected/excluded cluster の eigenvalue gap と ordered-Schur separation
 - real-block conversion error
 
 \(DW(a)\) の最小特異値が領域内で下限を割れば chart fold または座標劣化と判定し、
@@ -480,7 +555,7 @@ dense coefficients -> TT-SVD -> exact dense reconstruction check
 
 ### 7.1.1 Reduced map \(R\)
 
-非自明な slow manifold では \(R\) も online state であり、\(W\) の付属物として
+非自明な candidate chart では \(R\) も online state であり、\(W\) の付属物として
 省略しない。同じ基底 \(\psi_\alpha\) を使い、
 
 \[
@@ -493,7 +568,7 @@ polynomial、dense coefficient の3表現を同じ interface で比較する。
 
 初期段階では \(m\) が小さいので \(R\) は sparse polynomial を正本とする。TT化は
 
-- parameter count
+- core stored scalar count、index metadata、serialized bytes
 - standalone \(R(a)\) evaluation cost
 - composition \(W(R(a))\) cost
 - conserved \(k=0\) coordinates の exact update
@@ -501,6 +576,26 @@ polynomial、dense coefficient の3表現を同じ interface で比較する。
 
 を sparse baseline より悪化させない場合だけ採用する。\(R\) の rounding 後も
 graph identity \(R=L(\Phi(W)-f_\*)\) を独立点で再検証する。
+
+### 7.1.2 格納量の比較規約
+
+Phase 0 の \(81\times3\times3\times3\) coefficient tensor では、現在の閾値に基づく
+格納値数は次の通りである。
+
+| 表現 | stored scalar/value count | 別に必要な metadata |
+|---|---:|---|
+| box-dense | 2187 | shape |
+| full Hessian | 1053 | degree/axis convention |
+| symmetric quadratic | 810 | packed-index convention |
+| fiber-sparse | 567 | 7 multi-indices |
+| scalar-sparse | 468 | 468 multi-indices |
+| TT cores | 657 | ranks、shapes、ordering |
+
+657 は **TT core stored scalars** であり、TT gauge 自由度を除いた数学的自由度数では
+ない。sparse の値数も structural-zero threshold に依存する。従って圧縮評価では、
+値の格納数、index/rank metadata、serialized bytes、評価時間、rounding時間、実効自由度、
+不変性残差を別々に報告する。この oracle では TT は box-dense より小さいが、自然な
+fiber-sparse baseline より大きいため、TT 優位性は認めない。
 
 ### 7.2 Spatial/velocity tensorization
 
@@ -699,7 +794,8 @@ center/slow direction では 1-step error が収縮で消えない。次を報�
 
 ### 9.5 Normal attraction
 
-chart tangent projectorを \(P_a\) とし、多様体外 perturbation \(\delta_\perp\) に対して
+chart tangent projectorを \(P_a\) とする。固定保存量葉の接空間内、すなわち
+\(\mathcal C\delta_\perp=0\) を満たす多様体外 perturbation \(\delta_\perp\) に対して
 
 \[
 \frac{
@@ -709,8 +805,9 @@ chart tangent projectorを \(P_a\) とし、多様体外 perturbation \(\delta_\
 }
 \]
 
-を測る。1未満の一様 bound が失われた地点は slow manifold の validity limit
-候補である。
+を測る。full/reduced の両軌道も同じ保存量 \(c\) を持たせる。1未満の一様 bound が
+失われた地点は candidate manifold の validity limit 候補である。偶数格子では
+Nyquist の厳密な単位円方向がこの bound を壊し得るため、主構築は奇数格子に限定する。
 
 ### 9.6 Cost gates
 
@@ -719,7 +816,8 @@ chart tangent projectorを \(P_a\) とし、多様体外 perturbation \(\delta_\
 1. dense full LBM
 2. direct TT/MPS LBM
 3. dense reduced \(R\)
-4. TT \(W,R\)
+4. Fourier-selection-rule sparse \(W,R\)
+5. TT \(W,R\)
 
 記録:
 
@@ -733,6 +831,8 @@ chart tangent projectorを \(P_a\) とし、多様体外 perturbation \(\delta_\
 - break-even number of time steps
 - TT ranks per core and over continuation
 
+Fourier-sparse を Q008–Q010 の必須 baseline とし、TT が値数・実メモリ・online cost
+のいずれでも勝たない regime は「この tensorization では TT 不適切」と記録する。
 圧縮率だけで速度向上を主張しない。
 
 ## 10. 研究フェーズ
@@ -752,36 +852,55 @@ exit evidence:
 - reproducible JSON artifact
 - observed residual order 2 → 3
 
-### Phase 1: Hydrodynamic branch tracking
+### Phase 1: Hydrodynamic branch/cluster tracking — Q004b 完了、Q005 未完
 
 実装:
 
 - moment signatures
 - left/right eigensystems
-- branch continuation
+- simple-branch continuation と ordered-Schur cluster continuation
 - real block basis
-- \(k_c\) candidates
+- threshold-dependent \(k_c\) candidates
 - separation/condition report
 
 exit gate:
 
 - known small-\(k\) shear/acoustic asymptoticsと一致
-- grid rotationで branch identity が保たれる
-- even-grid Nyquist ghosts を除外
+- path reversal と格子90度回転で cluster subspace が保たれる
+- odd \(17^2,33^2\) と even \(16^2,32^2\) の parity を分離
+- Q005 で sector-aware nonresonance、nonnormality、grid refinement を評価
+
+全 Brillouin zone での個別ラベル一意性は棄却済みであり、失敗ではない。Q004b の
+\(k_c\) は経験的 cutoff で、candidate manifold の存在を意味しない。
+
+### Phase 1.5: Manufactured general-homological oracle — 完了
+
+- 安定な複素共役対の実 \(2\times2\) block 化
+- 非零 \(R_2\) と既知の二次 chart の回収
+- 一般 Kronecker homological operator
+- near-resonance condition number の増大
+- 厳密な二次共鳴の明示的拒否
+
+これは solver と branch classification の誤差を分離する algebraic oracle であり、
+LBM の非零波数 candidate manifold の存在証拠ではない。
 
 ### Phase 2: Nonzero-mode dense quadratic manifold
 
 最初の master set:
 
-- \(k=0\) conserved modes
 - 最小非零 wave shell の shear/acoustic conjugate pairs
+
+構成は \(\delta M=\delta P_x=\delta P_y=0\) の固定保存量葉上で行い、\(k=0\) の
+保存方向を reduced coordinates に含めない。
 
 実装:
 
 - general real \(\Lambda\)
 - Kronecker/Sylvester homological solve
-- generated mean and second harmonics
+- 保存モーメントを持たない generated zero-wave-number kinetic correction
+- generated second harmonics
 - graph gauge
+- \(\mathcal C H=0\) の fixed-leaf constraint
 
 exit gate:
 
@@ -946,8 +1065,9 @@ research/
   reports/
 ```
 
-現行の小さいモジュールは Phase 0 oracle であり、Phase 1 で上記へ機械的に分割する。
-過早に抽象階層を増やさない。
+現行の小さいモジュールは Phase 0 oracle に加え、Q004b の branch/cluster tracker と
+manufactured general-homological oracle を含む。Q005 と Phase 2 へ進む時点で上記へ
+機械的に分割し、過早に抽象階層を増やさない。
 
 Phase 1 以降の campaign artifact 共通 schema:
 
@@ -974,17 +1094,18 @@ next_question
 
 random seed、platform、NumPy/solver version も保存する。
 
-Phase 0 の `d2q9_baseline.json` は cycle ごとの問い・仮説・結果を優先した schema v1
-であり、`source_fingerprint` と runtime version は持つが、上記 campaign field を
-完全には平坦化していない。schema v2 へ移行するときは変換器と schema test を
-同時に追加し、v1 artifact の意味を後から変更しない。
+Phase 0 の `d2q9_baseline.json` は cycle ごとの問い・仮説・結果を優先した schema v2
+であり、`source_fingerprint` と runtime version を持つ。Q004b/人工オラクルは独立の
+artifact に保存し、上記 campaign field を完全には平坦化していない。将来 schema を
+変更するときは変換器と schema test を同時に追加し、既存 artifact の意味を後から
+変更しない。
 
 ## 13. 失敗モードと対応
 
 | 失敗 | 観測 | 最初の対応 |
 |---|---|---|
 | center/slow 混同 | \(m=3\) で空間流れを再現不能 | branch-tracked slow setへ変更 |
-| Nyquist ghost | 偶数格子で \(\lambda=-1\) | low-\(k\)+moment selector |
+| Nyquist ghost | 偶数格子で \(\lambda=-1\) | 主構築を奇数格子に限定し、偶数格子は障害解析 |
 | spectral gap collapse | homological condition急増 | mode追加、\(k_c\)低下、MRT |
 | internal resonance | \(R\)を線形にすると不整合 | resonant termを \(R\) に残す |
 | chart fold | \(\sigma_{\min}(DW)\to0\) | domain縮小、multiple charts |

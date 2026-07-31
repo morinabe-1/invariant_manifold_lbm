@@ -103,7 +103,7 @@ def second_derivative_tensor(
     result = np.empty((fixed.size, reduced, reduced), dtype=np.float64)
     mapped_fixed = full_map(fixed)
     for j in range(reduced):
-        for k in range(reduced):
+        for k in range(j, reduced):
             v = steps[j] * basis[:, j]
             if j == k:
                 mixed = (
@@ -120,6 +120,7 @@ def second_derivative_tensor(
                     + full_map(fixed - v - w)
                 ) / (4.0 * steps[j] * steps[k])
             result[:, j, k] = mixed
+            result[:, k, j] = mixed
     return result
 
 
@@ -244,6 +245,174 @@ def solve_identity_center_quadratic(
         global_equation_relative_residual=global_equation_residual,
         maximum_equation_residual=maximum_equation_residual,
         maximum_gauge_residual=maximum_gauge_residual,
+    )
+    return hessian, reduced_hessian, diagnostics
+
+
+def solve_general_quadratic_parameterization(
+    jacobian: npt.ArrayLike,
+    tangent: npt.ArrayLike,
+    extractor: npt.ArrayLike,
+    reduced_linear: npt.ArrayLike,
+    second_derivative: npt.ArrayLike,
+) -> tuple[Array, Array, HomologicalDiagnostics]:
+    """Solve the dense quadratic homological equation for a general real block.
+
+    This explicit Kronecker oracle materializes the coefficient operator and is
+    intended for small manufactured problems.  Large LBM systems require a
+    sector-aware sparse or matrix-free implementation.
+    """
+
+    raw_inputs = {
+        "jacobian": np.asarray(jacobian),
+        "tangent": np.asarray(tangent),
+        "extractor": np.asarray(extractor),
+        "reduced_linear": np.asarray(reduced_linear),
+        "second_derivative": np.asarray(second_derivative),
+    }
+    if any(np.iscomplexobj(array) for array in raw_inputs.values()):
+        raise ValueError(
+            "general quadratic solver requires an explicit real-block representation"
+        )
+    linear = np.asarray(raw_inputs["jacobian"], dtype=np.float64)
+    basis = np.asarray(raw_inputs["tangent"], dtype=np.float64)
+    left = np.asarray(raw_inputs["extractor"], dtype=np.float64)
+    reduced_map = np.asarray(raw_inputs["reduced_linear"], dtype=np.float64)
+    bilinear = np.asarray(raw_inputs["second_derivative"], dtype=np.float64)
+    if basis.ndim != 2:
+        raise ValueError("tangent must be a matrix")
+    output, reduced = basis.shape
+    if linear.shape != (output, output):
+        raise ValueError("jacobian shape is inconsistent with tangent")
+    if left.shape != (reduced, output):
+        raise ValueError("extractor shape is inconsistent with tangent")
+    if reduced_map.shape != (reduced, reduced):
+        raise ValueError("reduced linear map must be square on reduced coordinates")
+    if bilinear.shape != (output, reduced, reduced):
+        raise ValueError("second derivative shape is inconsistent with tangent")
+    if not all(
+        np.all(np.isfinite(array))
+        for array in (linear, basis, left, reduced_map, bilinear)
+    ):
+        raise ValueError("homological inputs must be finite")
+    if not np.allclose(
+        left @ basis,
+        np.eye(reduced),
+        atol=1.0e-11,
+        rtol=0.0,
+    ):
+        raise ValueError("extractor and tangent must satisfy L @ V = I")
+
+    hessian_size = output * reduced * reduced
+    reduced_hessian_size = reduced * reduced * reduced
+    unknown_size = hessian_size + reduced_hessian_size
+
+    def apply_operator(hessian: Array, reduced_hessian: Array) -> Array:
+        equation = (
+            np.einsum("il,ljk->ijk", linear, hessian)
+            - np.einsum(
+                "ipq,pj,qk->ijk",
+                hessian,
+                reduced_map,
+                reduced_map,
+            )
+            - np.einsum("ir,rjk->ijk", basis, reduced_hessian)
+        )
+        gauge = np.einsum("ri,ijk->rjk", left, hessian)
+        return np.concatenate([equation.ravel(), gauge.ravel()])
+
+    operator = np.empty((unknown_size, unknown_size), dtype=np.float64)
+    for column in range(unknown_size):
+        hessian = np.zeros((output, reduced, reduced), dtype=np.float64)
+        reduced_hessian = np.zeros((reduced, reduced, reduced), dtype=np.float64)
+        if column < hessian_size:
+            hessian.ravel()[column] = 1.0
+        else:
+            reduced_hessian.ravel()[column - hessian_size] = 1.0
+        operator[:, column] = apply_operator(hessian, reduced_hessian)
+
+    singular_values = np.linalg.svd(operator, compute_uv=False)
+    augmented_rank = int(np.linalg.matrix_rank(operator))
+    if augmented_rank < unknown_size:
+        raise np.linalg.LinAlgError(
+            "quadratic homological operator is rank deficient; "
+            "the selected spectral subspace is resonant or unresolved"
+        )
+    right_hand_side = np.concatenate(
+        [-bilinear.ravel(), np.zeros(reduced_hessian_size)]
+    )
+    solution, *_ = np.linalg.lstsq(operator, right_hand_side, rcond=None)
+    hessian = solution[:hessian_size].reshape(output, reduced, reduced)
+    reduced_hessian = solution[hessian_size:].reshape(
+        reduced,
+        reduced,
+        reduced,
+    )
+    raw_symmetry_denominator = max(
+        float(np.linalg.norm(hessian)),
+        float(np.linalg.norm(reduced_hessian)),
+        np.finfo(float).eps,
+    )
+    raw_symmetry_residual = max(
+        float(np.linalg.norm(hessian - hessian.swapaxes(1, 2))),
+        float(
+            np.linalg.norm(
+                reduced_hessian - reduced_hessian.swapaxes(1, 2)
+            )
+        ),
+    ) / raw_symmetry_denominator
+    hessian = 0.5 * (hessian + hessian.swapaxes(1, 2))
+    reduced_hessian = 0.5 * (
+        reduced_hessian + reduced_hessian.swapaxes(1, 2)
+    )
+
+    residual = apply_operator(hessian, reduced_hessian) - right_hand_side
+    equation_residual = residual[:hessian_size].reshape(
+        output,
+        reduced,
+        reduced,
+    )
+    gauge_residual = residual[hessian_size:].reshape(
+        reduced,
+        reduced,
+        reduced,
+    )
+    global_equation_residual = float(
+        np.linalg.norm(equation_residual)
+        / max(float(np.linalg.norm(bilinear)), np.finfo(float).eps)
+    )
+    maximum_equation_residual = float(
+        max(
+            np.linalg.norm(equation_residual[:, j, k])
+            for j in range(reduced)
+            for k in range(reduced)
+        )
+    )
+    tangent_relative_residual = float(
+        np.linalg.norm(linear @ basis - basis @ reduced_map)
+        / max(float(np.linalg.norm(basis)), np.finfo(float).eps)
+    )
+    left_invariance_relative_residual = float(
+        np.linalg.norm(left @ linear - reduced_map @ left)
+        / max(float(np.linalg.norm(left)), np.finfo(float).eps)
+    )
+    diagnostics = HomologicalDiagnostics(
+        augmented_rank=augmented_rank,
+        augmented_dimension=unknown_size,
+        smallest_singular_value=float(singular_values[-1]),
+        condition_number=float(singular_values[0] / singular_values[-1]),
+        tangent_relative_residual=tangent_relative_residual,
+        left_invariance_relative_residual=left_invariance_relative_residual,
+        raw_symmetry_relative_residual=raw_symmetry_residual,
+        global_equation_relative_residual=global_equation_residual,
+        maximum_equation_residual=maximum_equation_residual,
+        maximum_gauge_residual=float(
+            max(
+                np.linalg.norm(gauge_residual[:, j, k])
+                for j in range(reduced)
+                for k in range(reduced)
+            )
+        ),
     )
     return hessian, reduced_hessian, diagnostics
 

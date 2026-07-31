@@ -2,16 +2,12 @@
 
 from __future__ import annotations
 
-import platform
 from dataclasses import asdict
 from datetime import UTC, datetime
-from hashlib import sha256
-from pathlib import Path
 from typing import Any
 
 import numpy as np
 
-from ._version import __version__
 from .d2q9 import (
     bgk_periodic_step,
     dense_linearized_map,
@@ -27,6 +23,7 @@ from .manifold import (
     second_derivative_tensor,
     solve_identity_center_quadratic,
 )
+from .provenance import runtime_metadata, source_metadata
 from .spectra import classify_low_wave_hydrodynamic_modes
 from .tensor_train import (
     evaluate_polynomial,
@@ -40,17 +37,6 @@ from .tensor_train import (
 def _relative_error(actual: np.ndarray, expected: np.ndarray) -> float:
     denominator = max(float(np.linalg.norm(expected)), np.finfo(float).eps)
     return float(np.linalg.norm(actual - expected) / denominator)
-
-
-def _package_source_fingerprint() -> str:
-    digest = sha256()
-    package_root = Path(__file__).resolve().parent
-    for source in sorted(package_root.glob("*.py")):
-        digest.update(source.name.encode("utf-8"))
-        digest.update(b"\0")
-        digest.update(source.read_bytes())
-        digest.update(b"\0")
-    return digest.hexdigest()
 
 
 def _spectral_cycle(omega: float) -> dict[str, Any]:
@@ -284,8 +270,9 @@ def _parameterization_cycle(omega: float) -> tuple[dict[str, Any], QuadraticChar
             "by the coefficient-level homological solve."
         ),
         "next_change": (
-            "Repeat on a branch-tracked nonzero Fourier slow subspace, where R is "
-            "not the identity and quadratic interactions generate harmonics."
+            "After Q004b/Q005, repeat on a fixed-conservation-leaf nonzero Fourier "
+            "candidate subspace, where R is not the identity and interactions "
+            "generate zero-wave-number kinetic and second-harmonic corrections."
         ),
     }
     return result, quadratic_chart
@@ -460,7 +447,7 @@ def _tt_cycle(chart: QuadraticChart, omega: float) -> dict[str, Any]:
     nonzero_scalar_count = int(np.count_nonzero(nonzero_mask))
     nonzero_fiber_count = int(np.count_nonzero(np.any(nonzero_mask, axis=0)))
     nonzero_fiber_parameters = int(nonzero_fiber_count * output)
-    tt_parameters = int(sum(core.size for core in cores))
+    tt_core_stored_scalars = int(sum(core.size for core in cores))
     gates = {
         "coefficient_reconstruction": {
             "value": reconstruction_error,
@@ -490,21 +477,24 @@ def _tt_cycle(chart: QuadraticChart, omega: float) -> dict[str, Any]:
         "tolerance_semantics": "discarded singular-value budget, not a reconstruction guarantee",
         "tt_ranks": tt_ranks(cores),
         "storage_baselines": {
-            "box_dense_parameter_count": box_dense_parameters,
-            "full_hessian_parameter_count": full_hessian_parameters,
-            "symmetric_quadratic_parameter_count": symmetric_quadratic_parameters,
-            "nonzero_fiber_count": nonzero_fiber_count,
-            "nonzero_fiber_parameter_count": nonzero_fiber_parameters,
-            "nonzero_scalar_count_excluding_indices": nonzero_scalar_count,
+            "box_dense_stored_scalar_count": box_dense_parameters,
+            "full_hessian_stored_scalar_count": full_hessian_parameters,
+            "symmetric_quadratic_stored_scalar_count": symmetric_quadratic_parameters,
+            "fiber_sparse_stored_value_count": nonzero_fiber_parameters,
+            "fiber_sparse_multi_index_count": nonzero_fiber_count,
+            "scalar_sparse_stored_value_count_excluding_indices": nonzero_scalar_count,
+            "scalar_sparse_multi_index_count": nonzero_scalar_count,
             "structural_zero_threshold": structural_threshold,
         },
-        "tt_parameter_count": tt_parameters,
-        "storage_ratios_over_tt": {
-            "box_dense": box_dense_parameters / tt_parameters,
-            "full_hessian": full_hessian_parameters / tt_parameters,
-            "symmetric_quadratic": symmetric_quadratic_parameters / tt_parameters,
-            "nonzero_fibers": nonzero_fiber_parameters / tt_parameters,
-            "nonzero_scalars_excluding_indices": nonzero_scalar_count / tt_parameters,
+        "tt_core_stored_scalar_count": tt_core_stored_scalars,
+        "storage_ratios_over_tt_core_stored_scalars": {
+            "box_dense": box_dense_parameters / tt_core_stored_scalars,
+            "full_hessian": full_hessian_parameters / tt_core_stored_scalars,
+            "symmetric_quadratic": symmetric_quadratic_parameters / tt_core_stored_scalars,
+            "nonzero_fibers": nonzero_fiber_parameters / tt_core_stored_scalars,
+            "nonzero_scalars_excluding_indices": (
+                nonzero_scalar_count / tt_core_stored_scalars
+            ),
         },
         "relative_reconstruction_error": reconstruction_error,
         "relative_evaluation_error": evaluation_error,
@@ -514,8 +504,10 @@ def _tt_cycle(chart: QuadraticChart, omega: float) -> dict[str, Any]:
         "gates": gates,
         "outcome": "accepted" if accepted else "rejected",
         "analysis": (
-            "This establishes representation equivalence only. The TT is smaller "
-            "than a box-dense tensor but not than the natural sparse-fiber baseline. "
+            "This establishes representation equivalence only. TT core storage is smaller "
+            "than a box-dense tensor but not than the thresholded fiber-sparse baseline. "
+            "Stored scalar slots are not intrinsic degrees of freedom because TT cores "
+            "have gauge freedom; index metadata, bytes, and evaluation cost are separate. "
             "The requested TT-SVD tolerance controls discarded singular values; "
             "the reported reconstruction, evaluation, and invariance gates are "
             "independent end-to-end checks. It does not yet establish that TT-cross "
@@ -523,8 +515,9 @@ def _tt_cycle(chart: QuadraticChart, omega: float) -> dict[str, Any]:
             "bounded for spatially varying slow modes."
         ),
         "next_change": (
-            "Use the dense homological solution as an oracle, then compare TT-SVD "
-            "and held-out TT-cross approximations before attempting an all-TT solve."
+            "Keep the Fourier-selection-rule sparse chart as a required baseline; "
+            "after Q005/Q006, compare it with dense, TT-SVD, and held-out TT-cross "
+            "representations before attempting an all-TT solve."
         ),
     }
 
@@ -543,17 +536,10 @@ def run_d2q9_baseline(omega: float = 1.2) -> dict[str, Any]:
         and tensor_train["outcome"] == "accepted"
     )
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "generated_at_utc": datetime.now(UTC).isoformat(),
-        "source": {
-            "package_version": __version__,
-            "package_source_sha256": _package_source_fingerprint(),
-        },
-        "runtime": {
-            "python": platform.python_version(),
-            "numpy": np.__version__,
-            "platform": platform.platform(),
-        },
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
         "model": {
             "lattice": "D2Q9",
             "collision": "BGK",
@@ -566,12 +552,17 @@ def run_d2q9_baseline(omega: float = 1.2) -> dict[str, Any]:
             "coordinates": ["delta_rho", "momentum_x", "momentum_y"],
             "gauge": "L @ (W(a) - f_star) = a",
             "strict_center_reduced_map": "R(a) = a",
+            "grid_scope": "3x3 odd periodic square grid",
+            "conservation_treatment": (
+                "this uniform oracle crosses conserved leaves; future nonzero-mode "
+                "charts are restricted to fixed global mass and momentum"
+            ),
         },
         "cycles": [spectral, low_wave, parameterization, tensor_train],
         "baseline_gate": "passed" if all_accepted_or_informative else "failed",
         "interpretation": (
             "The strict homogeneous center is a valid coefficient-solver oracle, "
-            "but spatial fluid reduction requires a deliberately selected slow "
-            "hydrodynamic subspace rather than a raw unit-circle eigenspace."
+            "but spatial fluid reduction requires a deliberately selected candidate "
+            "slow hydrodynamic subspace rather than a raw unit-circle eigenspace."
         ),
     }

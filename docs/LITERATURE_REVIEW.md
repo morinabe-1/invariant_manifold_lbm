@@ -234,12 +234,41 @@ A(k)=S(k)C
   [DOI 10.1098/rsta.2019.0397](https://doi.org/10.1098/rsta.2019.0397).
 
 固有値の絶対値順だけでは、固有値衝突で流体枝と kinetic 枝を取り違える。
-密度、運動量、応力への固有ベクトル射影を使って \(k=0\) から枝を追跡する必要が
-ある。
+密度、運動量、応力への射影を使って \(k=0\) から物理的 character を継続する必要が
+ある。ただし、個別固有ベクトルを追跡対象にできるのは対象固有値が単純で補スペクトル
+から分離している区間だけである。Greenbaum–Li–Overton の一次摂動論も simple
+eigenvalue を仮定し、multiple eigenvalue では個別 eigenvector の一意性を与えない。
+
+- A. Greenbaum, R.-C. Li, M. L. Overton,
+  *First-Order Perturbation Theory for Eigenvalues and Eigenvectors*,
+  SIAM Review 62 (2020), 463–482,
+  [DOI 10.1137/19M124784X](https://doi.org/10.1137/19M124784X),
+  [arXiv:1903.00785](https://arxiv.org/abs/1903.00785).
+
+衝突・縮退近傍では、個別ラベルではなく invariant cluster を ordered Schur
+subspace、spectral projector、principal angles、cluster 内 eigenvalue multiset で
+比較する。continuation 後の path reversal も cluster の張る部分空間を判定し、内部の
+permutation を失敗に数えない。selected/excluded Schur blocks の Sylvester separation
+は、cluster 外との交換や projector sensitivity の診断になる。
+
+- L. Dieci, M. J. Friedman,
+  *Continuation of invariant subspaces*,
+  Numerical Linear Algebra with Applications 8 (2001), 317–327,
+  [DOI 10.1002/nla.245](https://doi.org/10.1002/nla.245).
+- D. Bindel, J. Demmel, M. J. Friedman,
+  *Continuation of invariant subspaces for large bifurcation problems*,
+  SIAM Journal on Scientific Computing 30 (2008), 637–656,
+  [DOI 10.1137/060654219](https://doi.org/10.1137/060654219).
+- LAPACK `xTRSEN`,
+  selected invariant subspace の reordering と reciprocal condition estimates,
+  [Netlib documentation](https://www.netlib.org/lapack/explore-html/d3/d09/group__trsen_ga93466d794deff11a59df63c9d9b41fda.html).
 
 さらに本研究の最初の実験では、偶数幅の D2Q9 周期格子に
 \((k_x,k_y)=(0,\pi),(\pi,0)\) の \(\lambda=-1\) checkerboard modes が見つかった。
 これらは unit circle selector には入るが、本研究が残したい低波数流体枝ではない。
+しかも除外側の厳密な単位円方向なので normal attraction を壊し得る。checkerboard-free
+部分空間の非線形不変性を示すか mode を減衰させるまでは、candidate chart の主構築を
+奇数格子に限定し、偶数格子を parity regression と障害解析に使う。
 
 ## 8. D2Q9 と D3Q27 の格子構造
 
@@ -285,6 +314,13 @@ TT-cross は全要素を作らず、選択した entry oracle から tensor を�
 重要なのは、TT-cross が不変性、保存則、positivity、最大誤差を自動的に保証しない
 ことである。cross nodes 上の誤差を validation に再利用してはならない。
 
+また、TT core の格納 scalar 数は数学的な独立自由度数ではない。隣接 core 間の
+gauge 変換が同じ tensor を表すためである。既知の Fourier selection rule や
+sparse-fiber 構造を持つ係数では、専用 sparse 表現が TT より小さいこともある。
+従って core stored scalars、sparse index metadata、serialized bytes、評価・rounding
+時間、実効自由度、不変性残差を別々に報告し、Fourier-sparse 表現を必須 baseline に
+する。
+
 2026年の direct tensor-network LBM 研究は、streaming の low-rank operator 化が
 可能である一方、collision の Hadamard product、小スケール生成、geometry mask が
 rank と計算量を増やすことを実測している。elementwise \(1/\rho\) には閉形式がない
@@ -307,10 +343,18 @@ rank と計算量を増やすことを実測している。elementwise \(1/\rho\
 
 1. 名称を `invariant-manifold` とし、中心は最初の特殊ケースとする。
 2. D2Q9 の厳密中心は coefficient solver の解析解付き oracle に使う。
-3. 空間流体モデルは moment-based branch tracking で選んだ slow subspace に作る。
+3. 空間流体モデルは Q005 通過前には candidate slow spectral subspace/chart と呼ぶ。
 4. graph gauge \(L(W-f_\*)=a\) を hard constraint にする。
 5. \(R\) の共鳴項を許し、最初から線形に固定しない。
-6. dense coefficient solve → TT-SVD → 独立検証 → TT-cross の順に進む。
-7. 1-step 平均残差だけでなく、最大残差、保存、positivity、multi-step shadowing、
+6. Q004b は全域個別ラベルでなく、simple branch / invariant cluster を分けて最大
+   有効域 \(|k|\le k_c\) を決める。
+7. 主構築は奇数格子、偶数格子は Nyquist parity/obstruction regression とする。
+8. 最初の非零波数 chart は全質量・全運動量を固定した葉上で構築し、zero-wave-number
+   correction は保存モーメントを持たない成分に限る。
+9. Q006 前に複素共役実基底、非零 \(R_2\)、一般 homological operator、near resonance
+   を持つ manufactured map を通す。
+10. dense coefficient solve → TT-SVD → 独立検証 → TT-cross の順に進む。
+11. 1-step 平均残差だけでなく、最大残差、保存、positivity、multi-step shadowing、
    normal contraction、条件数を gate にする。
-8. D3Q27 は D1Q3 tensor product を保持し、D2Q9 の rank cap を流用しない。
+12. TT には Fourier-selection-rule sparse baseline を必須とし、負ければ不適切と判定する。
+13. D3Q27 は D1Q3 tensor product を保持し、D2Q9 の rank cap を流用しない。

@@ -71,6 +71,32 @@ def macroscopic(state: npt.ArrayLike) -> tuple[Array, Array]:
     return density, momentum
 
 
+def global_conserved_quantities(state: npt.ArrayLike) -> Array:
+    """Return total mass and two total momentum components."""
+
+    density, momentum = macroscopic(state)
+    return np.array(
+        [
+            density.sum(),
+            momentum[..., 0].sum(),
+            momentum[..., 1].sum(),
+        ],
+        dtype=np.float64,
+    )
+
+
+def project_perturbation_to_fixed_conservation_leaf(
+    perturbation: npt.ArrayLike,
+) -> Array:
+    """Remove uniform conserved components from a D2Q9 perturbation."""
+
+    delta = _require_state(perturbation)
+    ny, nx, _ = delta.shape
+    mean_conserved = global_conserved_quantities(delta) / float(ny * nx)
+    local_correction = equilibrium_tangent_matrix() @ mean_conserved
+    return delta - local_correction
+
+
 def equilibrium(density: npt.ArrayLike, momentum: npt.ArrayLike) -> Array:
     """Second-order isothermal D2Q9 equilibrium in conserved coordinates."""
 
@@ -226,6 +252,20 @@ def equilibrium_tangent_matrix() -> Array:
             3.0 * D2Q9_WEIGHTS * D2Q9_VELOCITIES[:, 1],
         ]
     )
+
+
+def quarter_turn_population_matrix() -> Array:
+    """Permutation implementing a counter-clockwise quarter turn in velocity space."""
+
+    rotation = np.array([[0, -1], [1, 0]], dtype=np.int64)
+    permutation = np.zeros((9, 9), dtype=np.float64)
+    for source, velocity in enumerate(D2Q9_VELOCITIES):
+        rotated = rotation @ velocity
+        matches = np.flatnonzero(np.all(D2Q9_VELOCITIES == rotated, axis=1))
+        if matches.size != 1:
+            raise RuntimeError("D2Q9 velocity set is not closed under quarter turns")
+        permutation[int(matches[0]), source] = 1.0
+    return permutation
 
 
 def collision_symbol(omega: float) -> Array:

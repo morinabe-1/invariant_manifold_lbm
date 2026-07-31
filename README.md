@@ -16,77 +16,130 @@ LBM 1-step 写像
 から同時に構成し、多変数係数を tensor train (TT) で圧縮することを目的とする。
 最初の対象は周期境界・無外力・BGK の D2Q9、最終的な拡張先は D3Q27 である。
 
-## 現時点の結論
+## 現時点の判定
 
-「中心多様体」と「空間的な流体の遅い多様体」は同一ではない。
+研究方向は Go である。ただし、Q005 の sector-aware nonresonance、nonnormality、
+grid-refinement gate と、有限領域での invariance/normal-attraction gate を通るまでは、
+非零波数の対象を **candidate slow spectral subspace / candidate chart** と呼ぶ。
+その存在・一意性を既成事実とはしない。
 
-- 奇数幅の有限周期 D2Q9 で厳密に \(|\lambda|=1\) となる物理モードは、通常
-  \(k=0\) の質量と二成分運動量の3個である。
-- 偶数幅の格子には、さらに \(\lambda=-1\) の Nyquist checkerboard mode が現れる。
-  したがって固有値の絶対値だけで中心・遅いモードを選んではならない。
-- 非零低波数の shear/acoustic modes は正粘性により \(|\lambda|<1\) であり、
-  本命の空間的縮約は slow/spectral invariant manifold として構成する。
-- 厳密な3次元中心多様体は、homological equation、gauge、残差次数、TT表現を
-  検証するための解析解付きオラクルとして使う。
+- 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
+  質量と二成分運動量の3モードである。
+- 偶数幅では \((\pi,0),(0,\pi)\) に \(\lambda=-1\) の Nyquist checkerboard mode が
+  加わる。このため主構築は奇数格子に限定し、偶数格子は parity regression と障害解析に
+  使う。
+- 非零低波数の shear/acoustic modes は正粘性により \(|\lambda|<1\) である。
+  Q004b は個別ラベルの全域一意性ではなく、\(k=0\) から連続化した3次元 invariant
+  cluster が有効な最大低波数域 \(|k|\le k_c\) を求める。
+- 非零波数 chart は最初に全質量・全運動量を固定した葉
+  \(\delta M=\delta P_x=\delta P_y=0\) 上で構築する。\(k+(-k)=0\) が作る
+  zero-wave-number 補正は、保存モーメントを持たない kinetic 成分だけを許す。
+- strict-center の一様 equilibrium family は、保存量葉を横切る別の解析解付き
+  オラクルである。homological equation、gauge、残差次数、TT 表現の検証に使う。
 
-unit-mode の parity は、保存・Nyquist 構造に加えて、幅3–10、
-\(\omega=0.5,1.2,1.8\) の Fourier-block 回帰テストでも確認している。保存 artifact
-自体の代表ケースは \(\omega=1.2\) の \(8^2,9^2\) である。
+## 完了した数値ゲート
 
-最初の再現可能な D2Q9 実験では、線形チャートの不変性残差
-\(O(\lVert a\rVert^2)\) が、二次 homological equation を解くことで
-\(O(\lVert a\rVert^3)\) に改善した。観測次数はそれぞれ
-`1.9969` と `2.9969` である。同じ二次チャートの polynomial TT は、
-相対再構成誤差 `3.01e-15` で box-dense 表現と一致した。ただし、TT の657係数は
-box-dense の2187係数より少ない一方、自然な sparse-fiber 表現の567係数より多い。
-従って、この一様3変数 oracle は TT の同値性検証には使えるが、自然な疎表現に対する
-圧縮優位性は示していない。
+### Strict-center dense oracle
 
-さらに低波数の moment-based classifier は、\(k\to0\) 外挿で shear viscosity を
-相対誤差 `4.9e-8`、音速を `2.0e-8` で回収した。これは低波数での物理モード同定を
-支持するが、固有値衝突を越える branch continuation の検証はまだ残っている。
+\(3^2\) 奇数周期格子の一様 equilibrium family では、線形チャートの不変性残差
+\(O(\lVert a\rVert^2)\) が二次補正により \(O(\lVert a\rVert^3)\) へ改善した。
+観測次数は `1.9969` と `2.9969` である。64方向、解析 Hessian、
+finite-difference step sweep、homological residual を別々に検証している。
 
-これは非一様流れの縮約完成を意味しない。次の研究ゲートは、D2Q9 Fourier
-ブロック上で物理モーメントを使って低波数の流体枝を追跡し、その実基底に対する
-一般の二次 homological equation を解くことである。
+### Q004b branch/cluster tracking
+
+\(\omega=1.0,1.2,1.5,1.8\) と path angle \(0,\pi/8,\pi/4\) の連続 \(k\)-path で、
+simple eigenvalue 域は左右固有ベクトル、衝突・縮退域は ordered-Schur subspace を
+追跡する。次表は事前登録した閾値を通る最後の sampled \(k\)、すなわち \(k_c\) の
+経験的下限である。各 path では隣の最初の不合格点も transition bracket として保存する。
+
+| \(\omega\) | validated \(k_c\) range |
+|---:|---:|
+| 1.0 | 0.763–0.988 |
+| 1.2 | 0.925–1.188 |
+| 1.5 | 1.163–1.388 |
+| 1.8 | 1.375–1.450 |
+
+path reversal と90度回転の最大 principal angle はともに `4.5e-8` 未満である。
+\(\omega=1.2\) の \(17^2,33^2\) では strict unit mode が3個、診断用
+\(16^2,32^2\) では5個であり、
+直接評価した \(A(\pi,0),A(0,\pi)\) にも \(-1\) mode が各1個現れた。全波数域で
+個別ラベルを一意にする旧仮説は棄却した。ここで得た \(k_c\) は閾値依存の経験的境界で、
+多様体の存在定理ではない。
+
+### Manufactured nonidentity oracle
+
+安定な複素共役対、非零 \(R_2\)、mean-like/second-harmonic complement、可制御な
+二次共鳴を持つ5状態写像を追加した。非直交 similarity transform により左右基底の
+正規化と左右不変性も独立に検証する。一般 real-block homological solver は既知の
+\(H\) と \(R_2\) を相対誤差 \(2\times10^{-15}\) 未満で回収し、共鳴へ近づくと
+condition number が約 `5.10` から `1.74e4` へ増大し、厳密共鳴を
+rank deficiency として拒否した。これは solver と LBM branch-classification error を
+切り分ける algebraic oracle であり、D2Q9 candidate manifold の存在証拠ではない。
+
+## TT 格納量の解釈
+
+Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
+
+| 表現 | stored scalar/value count |
+|---|---:|
+| box-dense | 2187 |
+| full Hessian | 1053 |
+| symmetric quadratic | 810 |
+| natural fiber-sparse | 567 + 7 multi-indices |
+| scalar-sparse | 468 + 468 multi-indices |
+| TT cores | 657 + ranks/shapes |
+
+657 は **TT core stored scalars** であり、TT gauge 自由度を除いた独立自由度数ではない。
+TT の相対再構成誤差は `3.01e-15` だが、自然な fiber-sparse 表現より大きいため、
+現段階で TT の圧縮優位性はない。今後も Fourier selection rule に基づく sparse
+表現を必須 baseline とし、値数、index metadata、serialized bytes、評価時間、
+rounding時間、不変性残差を分けて比較する。TT がこの baseline に勝たない場合は、
+その tensorization を不適切と判定する。
 
 ## 再現
 
-Python 3.11 以上を使う。
+Python 3.11 以上を使う。`q004b` study は事前登録した4個の \(\omega\) をまとめて
+実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
 python -m pip install -e ".[dev]"
 python -m pytest
 python -m ruff check .
-python -m ttim_lbm --output research/artifacts/d2q9_baseline.json
+python -m ttim_lbm --study baseline --omega 1.2 --output research/artifacts/d2q9_baseline.json
+python -m ttim_lbm --study q004b --output research/artifacts/q004b_and_manufactured.json
 ```
 
-実験結果は
-[`research/artifacts/d2q9_baseline.json`](research/artifacts/d2q9_baseline.json)
-に保存される。
+保存済み結果:
+
+- [`research/artifacts/d2q9_baseline.json`](research/artifacts/d2q9_baseline.json)
+- [`research/artifacts/q004b_and_manufactured.json`](research/artifacts/q004b_and_manufactured.json)
 
 ## 文書
 
-- [`docs/LITERATURE_REVIEW.md`](docs/LITERATURE_REVIEW.md):
-  中心多様体、不変多様体、パラメータ化法、LBM slow manifold、TT/TT-cross の
-  一次文献調査
-- [`docs/DESIGN.md`](docs/DESIGN.md):
-  D2Q9 から D3Q27 までの数理・ソフトウェア・検証設計
-- [`research/RESEARCH_LOG.md`](research/RESEARCH_LOG.md):
-  問い、仮説、実験、失敗分析、改善を一組にした研究記録
-- [`research/NEXT_QUESTIONS.md`](research/NEXT_QUESTIONS.md):
-  次に反証する問いと進行ゲート
+- [`docs/LITERATURE_REVIEW.md`](docs/LITERATURE_REVIEW.md): 一次文献と主張範囲
+- [`docs/DESIGN.md`](docs/DESIGN.md): 数理・ソフトウェア・検証設計
+- [`research/RESEARCH_LOG.md`](research/RESEARCH_LOG.md): 問い、仮説、棄却、改善の記録
+- [`research/NEXT_QUESTIONS.md`](research/NEXT_QUESTIONS.md): 次の反証ゲート
 
 ## 実装の境界
 
-現在のコードは意図的に小さい dense oracle である。
+現在実装済み:
 
-- D2Q9 の equilibrium、BGK collision、periodic streaming
-- 一様平衡まわりの厳密な線形化と Fourier symbol
-- 低波数 shear/acoustic modes の moment-based classification
-- 恒等中心力学に対する二次 homological equation
-- 二次多項式チャートの output-block TT-SVD と評価
-- 独立したテストと再現可能な研究 artifact
+- D2Q9 equilibrium、BGK collision、periodic streaming、厳密な線形化
+- Fourier symbol、odd/even spectrum audit、Nyquist direct audit
+- moment-based low-\(k\) classification
+- simple-branch / ordered-Schur cluster continuation、path reversal、90度回転
+- 固定保存量葉への線形射影
+- identity-center と general real-block の dense quadratic homological solver
+- manufactured nonidentity/resonance oracle
+- 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
-TT-cross、非零波数 slow subspace、境界条件、外力、D3Q27 は設計済みだが、
-現段階では未実装である。dense oracle で検証できない機能を先に TT 化しない。
+未実装・未通過:
+
+- Q005 の sector-aware quadratic nonresonance、reduced resolvent、nonnormality、
+  grid-refinement gate
+- 非零波数 fixed-leaf D2Q9 quadratic chart とその normal attraction
+- TT-cross、境界条件、外力、D3Q27
+
+従って次のゲートは Q005 であり、Q006 の非零波数 chart や TT-cross へはまだ進まない。

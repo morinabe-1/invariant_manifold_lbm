@@ -4,18 +4,43 @@ import json
 from pathlib import Path
 
 from ttim_lbm.experiments import run_d2q9_baseline
+from ttim_lbm.provenance import source_metadata
+
+ARTIFACT_DIRECTORY = (
+    Path(__file__).resolve().parents[1] / "research" / "artifacts"
+)
 
 
 def test_committed_artifact_matches_current_package_source() -> None:
-    artifact_path = (
-        Path(__file__).resolve().parents[1]
-        / "research"
-        / "artifacts"
-        / "d2q9_baseline.json"
-    )
+    artifact_path = ARTIFACT_DIRECTORY / "d2q9_baseline.json"
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     fresh = run_d2q9_baseline()
 
     assert artifact["schema_version"] == fresh["schema_version"]
     assert artifact["source"] == fresh["source"]
     assert artifact["baseline_gate"] == "passed"
+
+
+def test_q004b_artifact_preserves_registered_scope_and_passed_gates() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q004b_and_manufactured.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["mathematical_scope"] == {
+        "construction_grid_parity": "odd periodic square grids only",
+        "even_grids": "diagnostic parity and obstruction analysis only",
+        "conservation_treatment": (
+            "fixed global mass and momentum leaf for future nonzero-mode charts"
+        ),
+        "manifold_claim": (
+            "candidate until Q005 nonresonance and normal-attraction gates pass"
+        ),
+    }
+    branch_tracking, manufactured = artifact["cycles"]
+    assert branch_tracking["outcome"] == "accepted"
+    assert branch_tracking["superseded_question_outcome"]["outcome"] == "rejected"
+    assert manufactured["outcome"] == "accepted"
+    assert all(gate["passed"] for gate in branch_tracking["gates"].values())
+    assert all(gate["passed"] for gate in manufactured["gates"].values())

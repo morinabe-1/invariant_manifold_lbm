@@ -1,0 +1,21 @@
+from __future__ import annotations
+
+import sys
+
+import pytest
+
+from ttim_lbm.__main__ import main
+
+
+def test_q004b_rejects_an_omega_override(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["ttim_lbm", "--study", "q004b", "--omega", "1.2"],
+    )
+    with pytest.raises(SystemExit, match="2"):
+        main()
+    assert "--omega is only valid with --study baseline" in capsys.readouterr().err
