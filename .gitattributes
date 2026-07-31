@@ -1,0 +1,10 @@
+* text=auto
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+research/artifacts/q012f2_d3q27_refined_cubic_n17.npz filter=lfs diff=lfs merge=lfs -text
+research/artifacts/q012f2_d3q27_refined_cubic_n33.npz filter=lfs diff=lfs merge=lfs -text
+research/artifacts/q012f2_d3q27_refined_cubic_n65.npz filter=lfs diff=lfs merge=lfs -text
