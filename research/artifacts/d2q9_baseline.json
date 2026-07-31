@@ -1,0 +1,548 @@
+{
+  "baseline_gate": "passed",
+  "cycles": [
+    {
+      "analysis": "Even grids contain Nyquist checkerboard modes on the unit circle. A physical selector must track hydrodynamic branches from k=0 and apply a low-wave-number admissibility rule; modulus alone is unsafe.",
+      "even_grid": {
+        "expected_strict_unit_count": 5,
+        "grid": [
+          8,
+          8
+        ],
+        "largest_nonunit_modulus": 0.9322692847650246,
+        "nonzero_wave_unit_count": 2,
+        "slow_count_modulus_gt_0_9": 21,
+        "state_dimension": 576,
+        "strict_unit_count": 5,
+        "strict_unit_wavevectors": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "unit_eigenvalues": [
+          {
+            "imag": 0.0,
+            "real": 1.0,
+            "wave_index": [
+              0,
+              0
+            ]
+          },
+          {
+            "imag": 0.0,
+            "real": 0.9999999999999999,
+            "wave_index": [
+              0,
+              0
+            ]
+          },
+          {
+            "imag": 0.0,
+            "real": 1.0000000000000002,
+            "wave_index": [
+              0,
+              0
+            ]
+          },
+          {
+            "imag": 1.1102230246251562e-16,
+            "real": -0.9999999999999997,
+            "wave_index": [
+              0,
+              4
+            ]
+          },
+          {
+            "imag": 2.220446049250313e-16,
+            "real": -0.9999999999999999,
+            "wave_index": [
+              4,
+              0
+            ]
+          }
+        ],
+        "zero_wave_unit_count": 3
+      },
+      "gates": {
+        "even_grid_alias_detected": {
+          "passed": true,
+          "threshold": 1,
+          "value": 2
+        },
+        "odd_grid_only_conserved_unit_modes": {
+          "passed": true,
+          "threshold": 3,
+          "value": 3
+        }
+      },
+      "hypothesis": "It does, independently of grid parity.",
+      "next_change": "Use odd grids for the strict-center oracle and use branch identity plus a k cutoff for the future slow-manifold model.",
+      "odd_grid": {
+        "expected_strict_unit_count": 3,
+        "grid": [
+          9,
+          9
+        ],
+        "largest_nonunit_modulus": 0.9463463558999758,
+        "nonzero_wave_unit_count": 0,
+        "slow_count_modulus_gt_0_9": 19,
+        "state_dimension": 729,
+        "strict_unit_count": 3,
+        "strict_unit_wavevectors": [
+          [
+            0,
+            0
+          ]
+        ],
+        "unit_eigenvalues": [
+          {
+            "imag": 0.0,
+            "real": 1.0,
+            "wave_index": [
+              0,
+              0
+            ]
+          },
+          {
+            "imag": 0.0,
+            "real": 0.9999999999999999,
+            "wave_index": [
+              0,
+              0
+            ]
+          },
+          {
+            "imag": 0.0,
+            "real": 1.0000000000000002,
+            "wave_index": [
+              0,
+              0
+            ]
+          }
+        ],
+        "zero_wave_unit_count": 3
+      },
+      "outcome": "rejected",
+      "question": "Does a strict |lambda|=1 selector isolate only the three conserved D2Q9 modes on a finite periodic grid?",
+      "unit_tolerance": 1e-10
+    },
+    {
+      "analysis": "Moment content identifies the physical cluster near k=0 and its small-k limits. This local result does not establish mode identity through eigenvalue collisions at larger wave number.",
+      "angles_radians": [
+        0.0,
+        0.39269908169872414,
+        0.7853981633974483
+      ],
+      "expected_shear_viscosity": 0.11111111111111112,
+      "expected_sound_speed": 0.5773502691896258,
+      "extrapolated_shear_viscosity": 0.11111110566970456,
+      "extrapolated_sound_speed": 0.5773502805906178,
+      "gates": {
+        "acoustic_conjugacy_error": {
+          "passed": true,
+          "threshold": 1e-12,
+          "value": 3.7238012298709097e-16
+        },
+        "minimum_hydrodynamic_score": {
+          "passed": true,
+          "threshold": 0.99,
+          "value": 0.998223170226896
+        },
+        "shear_viscosity_relative_error": {
+          "passed": true,
+          "threshold": 1e-05,
+          "value": 4.897265905301484e-08
+        },
+        "sound_speed_relative_error": {
+          "passed": true,
+          "threshold": 1e-05,
+          "value": 1.9747097276519066e-08
+        }
+      },
+      "hypothesis": "The three modes with largest equilibrium-tangent participation are one transverse shear mode and one acoustic conjugate pair.",
+      "next_change": "Add biorthogonal-overlap continuation and cluster tracking before choosing the slow-subspace cutoff.",
+      "observations": [
+        {
+          "acoustic_conjugacy_error": 3.2487068343022356e-16,
+          "angle_radians": 0.0,
+          "effective_shear_viscosity": 0.11111316879973746,
+          "minimum_hydrodynamic_score": 0.9999537040895147,
+          "negative_acoustic_speed": 0.577348130601044,
+          "positive_acoustic_speed": 0.5773481306010592,
+          "shear_transverse_fraction": 1.0,
+          "wave_magnitude": 0.02
+        },
+        {
+          "acoustic_conjugacy_error": 3.510833468576701e-16,
+          "angle_radians": 0.39269908169872414,
+          "effective_shear_viscosity": 0.1111125514733112,
+          "minimum_hydrodynamic_score": 0.9999548611345408,
+          "negative_acoustic_speed": 0.5773481307757116,
+          "positive_acoustic_speed": 0.5773481307757063,
+          "shear_transverse_fraction": 0.9999999999999973,
+          "wave_magnitude": 0.02
+        },
+        {
+          "acoustic_conjugacy_error": 3.3422138886441676e-16,
+          "angle_radians": 0.7853981633974483,
+          "effective_shear_viscosity": 0.11111193416409432,
+          "minimum_hydrodynamic_score": 0.9999506180155433,
+          "negative_acoustic_speed": 0.5773481309503623,
+          "positive_acoustic_speed": 0.5773481309503746,
+          "shear_transverse_fraction": 0.9999999999999999,
+          "wave_magnitude": 0.02
+        },
+        {
+          "acoustic_conjugacy_error": 1.7772239894833365e-16,
+          "angle_radians": 0.0,
+          "effective_shear_viscosity": 0.11111934274461843,
+          "minimum_hydrodynamic_score": 0.9998148209882017,
+          "negative_acoustic_speed": 0.5773417117837291,
+          "positive_acoustic_speed": 0.5773417117837255,
+          "shear_transverse_fraction": 1.0,
+          "wave_magnitude": 0.04
+        },
+        {
+          "acoustic_conjugacy_error": 1.6653345369377348e-16,
+          "angle_radians": 0.39269908169872414,
+          "effective_shear_viscosity": 0.111116872968532,
+          "minimum_hydrodynamic_score": 0.9998194448186731,
+          "negative_acoustic_speed": 0.5773417145788963,
+          "positive_acoustic_speed": 0.5773417145789004,
+          "shear_transverse_fraction": 0.9999999999998244,
+          "wave_magnitude": 0.04
+        },
+        {
+          "acoustic_conjugacy_error": 2.237726045655905e-16,
+          "angle_radians": 0.7853981633974483,
+          "effective_shear_viscosity": 0.11111440338601547,
+          "minimum_hydrodynamic_score": 0.9998024808411382,
+          "negative_acoustic_speed": 0.5773417173747193,
+          "positive_acoustic_speed": 0.5773417173747145,
+          "shear_transverse_fraction": 0.9999999999999999,
+          "wave_magnitude": 0.04
+        },
+        {
+          "acoustic_conjugacy_error": 1.3877787807814457e-16,
+          "angle_radians": 0.0,
+          "effective_shear_viscosity": 0.11114405181963656,
+          "minimum_hydrodynamic_score": 0.9992593580598151,
+          "negative_acoustic_speed": 0.5773159906957822,
+          "positive_acoustic_speed": 0.5773159906957832,
+          "shear_transverse_fraction": 1.0,
+          "wave_magnitude": 0.08
+        },
+        {
+          "acoustic_conjugacy_error": 2.482534153247273e-16,
+          "angle_radians": 0.39269908169872414,
+          "effective_shear_viscosity": 0.11113416504201895,
+          "minimum_hydrodynamic_score": 0.9992777837242725,
+          "negative_acoustic_speed": 0.5773160354705886,
+          "positive_acoustic_speed": 0.5773160354705871,
+          "shear_transverse_fraction": 0.9999999999887328,
+          "wave_magnitude": 0.08
+        },
+        {
+          "acoustic_conjugacy_error": 5.551115123125783e-17,
+          "angle_radians": 0.7853981633974483,
+          "effective_shear_viscosity": 0.11112428133650888,
+          "minimum_hydrodynamic_score": 0.9992100638191297,
+          "negative_acoustic_speed": 0.5773160802868877,
+          "positive_acoustic_speed": 0.5773160802868871,
+          "shear_transverse_fraction": 0.9999999999999999,
+          "wave_magnitude": 0.08
+        },
+        {
+          "acoustic_conjugacy_error": 2.7755575615628914e-16,
+          "angle_radians": 0.0,
+          "effective_shear_viscosity": 0.11118528093534337,
+          "minimum_hydrodynamic_score": 0.998333833734454,
+          "negative_acoustic_speed": 0.577272958959069,
+          "positive_acoustic_speed": 0.5772729589590668,
+          "shear_transverse_fraction": 1.0,
+          "wave_magnitude": 0.12
+        },
+        {
+          "acoustic_conjugacy_error": 2.237726045655905e-16,
+          "angle_radians": 0.39269908169872414,
+          "effective_shear_viscosity": 0.1111630068602749,
+          "minimum_hydrodynamic_score": 0.9983750297565476,
+          "negative_acoustic_speed": 0.5772731860716268,
+          "positive_acoustic_speed": 0.5772731860716265,
+          "shear_transverse_fraction": 0.9999999998712268,
+          "wave_magnitude": 0.12
+        },
+        {
+          "acoustic_conjugacy_error": 3.7238012298709097e-16,
+          "angle_radians": 0.7853981633974483,
+          "effective_shear_viscosity": 0.11114074833388142,
+          "minimum_hydrodynamic_score": 0.998223170226896,
+          "negative_acoustic_speed": 0.5772734136583015,
+          "positive_acoustic_speed": 0.5772734136583031,
+          "shear_transverse_fraction": 0.9999999999999999,
+          "wave_magnitude": 0.12
+        }
+      ],
+      "outcome": "accepted",
+      "question": "Does moment-based low-k mode classification recover the physical D2Q9 shear viscosity and acoustic speed?",
+      "shear_viscosity_relative_error": 4.897265905301484e-08,
+      "sound_speed_relative_error": 1.9747097276519066e-08,
+      "wave_magnitudes": [
+        0.02,
+        0.04,
+        0.08,
+        0.12
+      ]
+    },
+    {
+      "amplitudes": [
+        0.0025,
+        0.005,
+        0.01,
+        0.02
+      ],
+      "analysis": "The exact homogeneous equilibrium family has identity reduced dynamics. Its curvature is kinetic, satisfies the gauge L H = 0, and is recovered by the coefficient-level homological solve.",
+      "direction_sweep": {
+        "count": 64,
+        "maximum_linear_order": 2.00793730189089,
+        "maximum_quadratic_order": 3.0079373112997274,
+        "minimum_linear_order": 1.9918417903591623,
+        "minimum_quadratic_order": 2.991841864602782,
+        "seed": 20260731
+      },
+      "exact_equilibrium_residuals": [
+        9.65229822683347e-17,
+        4.7697009830883764e-17,
+        4.881944598394378e-17,
+        0.0
+      ],
+      "gates": {
+        "direction_sweep_linear_order": {
+          "passed": true,
+          "value": 0.008158209640837688
+        },
+        "direction_sweep_quadratic_minimum": {
+          "passed": true,
+          "value": 2.991841864602782
+        },
+        "exact_fixed_family_residual": {
+          "passed": true,
+          "value": 9.65229822683347e-17
+        },
+        "gauge_residual": {
+          "passed": true,
+          "value": 3.4216966560478236e-15
+        },
+        "hessian_relative_error": {
+          "passed": true,
+          "value": 7.097523145736338e-14
+        },
+        "homological_condition_number": {
+          "passed": true,
+          "value": 7.265295458001148
+        },
+        "homological_equation_relative_residual": {
+          "passed": true,
+          "value": 5.568704742640723e-15
+        },
+        "largest_amplitude_improvement": {
+          "passed": true,
+          "value": 0.0074991869946815885
+        },
+        "left_invariance_residual": {
+          "passed": true,
+          "value": 8.999312810288049e-17
+        },
+        "reduced_quadratic_dynamics_norm": {
+          "passed": true,
+          "value": 3.3633205368675386e-12
+        },
+        "single_direction_linear_order": {
+          "passed": true,
+          "value": 1.9969022040033557
+        },
+        "single_direction_quadratic_order": {
+          "passed": true,
+          "value": 2.9969021991447016
+        },
+        "tangent_residual": {
+          "passed": true,
+          "value": 6.992501801477856e-17
+        }
+      },
+      "grid": [
+        3,
+        3
+      ],
+      "hessian_relative_error_against_analytic_equilibrium": 7.097523145736338e-14,
+      "homological_diagnostics": {
+        "augmented_dimension": 84,
+        "augmented_rank": 84,
+        "condition_number": 7.265295458001148,
+        "global_equation_relative_residual": 5.568704742640723e-15,
+        "left_invariance_relative_residual": 8.999312810288049e-17,
+        "maximum_equation_residual": 3.695358616892476e-14,
+        "maximum_gauge_residual": 3.4216966560478236e-15,
+        "raw_symmetry_relative_residual": 0.0,
+        "smallest_singular_value": 0.3142854953774131,
+        "tangent_relative_residual": 6.992501801477856e-17
+      },
+      "homological_equation_relative_residual": 5.568704742640723e-15,
+      "hypothesis": "The linear chart is O(|a|^2) and the quadratic chart is O(|a|^3).",
+      "linear_residuals": [
+        1.484180849097043e-05,
+        5.93116873532683e-05,
+        0.0002368036215273329,
+        0.0009436892532124323
+      ],
+      "next_change": "Repeat on a branch-tracked nonzero Fourier slow subspace, where R is not the identity and quadratic interactions generate harmonics.",
+      "observed_linear_order": 1.9969022040033557,
+      "observed_quadratic_order": 2.9969021991447016,
+      "outcome": "accepted",
+      "quadratic_residuals": [
+        1.3912687319237607e-08,
+        1.1119735832195098e-07,
+        8.879173193285749e-07,
+        7.076902174711453e-06
+      ],
+      "question": "Does solving the quadratic homological equation improve the local invariance defect from second to third order?",
+      "reduced_dimension": 3,
+      "reduced_quadratic_dynamics_norm": 3.3633205368675386e-12,
+      "second_derivative_step": 0.01,
+      "second_derivative_step_sweep": [
+        {
+          "hessian_relative_error": 6.9787982675023e-15,
+          "homological_condition_number": 7.265295458001148,
+          "homological_equation_relative_residual": 5.886731732357673e-15,
+          "reduced_quadratic_dynamics_norm": 3.1950504736969764e-14,
+          "step": 0.1
+        },
+        {
+          "hessian_relative_error": 7.097523145736338e-14,
+          "homological_condition_number": 7.265295458001148,
+          "homological_equation_relative_residual": 5.568704742640723e-15,
+          "reduced_quadratic_dynamics_norm": 3.3633205368675386e-12,
+          "step": 0.01
+        },
+        {
+          "hessian_relative_error": 7.105868324785213e-11,
+          "homological_condition_number": 7.265295458001148,
+          "homological_equation_relative_residual": 5.477643123830012e-15,
+          "reduced_quadratic_dynamics_norm": 4.49231470735093e-09,
+          "step": 0.0002
+        },
+        {
+          "hessian_relative_error": 1.0600950402873797e-05,
+          "homological_condition_number": 7.265295458001148,
+          "homological_equation_relative_residual": 5.5291242020767815e-15,
+          "reduced_quadratic_dynamics_norm": 0.0005354875298192886,
+          "step": 1e-06
+        },
+        {
+          "hessian_relative_error": 0.2967055767161954,
+          "homological_condition_number": 7.265295458001148,
+          "homological_equation_relative_residual": 3.862897227635281e-15,
+          "reduced_quadratic_dynamics_norm": 3.071881324919605,
+          "step": 1e-08
+        }
+      ]
+    },
+    {
+      "analysis": "This establishes representation equivalence only. The TT is smaller than a box-dense tensor but not than the natural sparse-fiber baseline. The requested TT-SVD tolerance controls discarded singular values; the reported reconstruction, evaluation, and invariance gates are independent end-to-end checks. It does not yet establish that TT-cross can discover the chart or that ranks stay bounded for spatially varying slow modes.",
+      "coefficient_shape": [
+        81,
+        3,
+        3,
+        3
+      ],
+      "gates": {
+        "chart_evaluation": {
+          "passed": true,
+          "threshold": 1e-11,
+          "value": 7.309606381611455e-16
+        },
+        "coefficient_reconstruction": {
+          "passed": true,
+          "threshold": 1e-11,
+          "value": 3.0056991855064756e-15
+        },
+        "post_tt_invariance_change": {
+          "passed": true,
+          "threshold": 1e-11,
+          "value": 9.548805702305069e-16
+        }
+      },
+      "hypothesis": "TT-SVD preserves the dense chart within the requested tolerance.",
+      "maximum_post_tt_invariance_residual_change": 9.548805702305069e-16,
+      "next_change": "Use the dense homological solution as an oracle, then compare TT-SVD and held-out TT-cross approximations before attempting an all-TT solve.",
+      "outcome": "accepted",
+      "question": "Can the verified quadratic chart be represented as an output-block polynomial TT without changing its invariance calculation?",
+      "relative_evaluation_error": 7.309606381611455e-16,
+      "relative_reconstruction_error": 3.0056991855064756e-15,
+      "requested_relative_tolerance": 1e-13,
+      "storage_baselines": {
+        "box_dense_parameter_count": 2187,
+        "full_hessian_parameter_count": 1053,
+        "nonzero_fiber_count": 7,
+        "nonzero_fiber_parameter_count": 567,
+        "nonzero_scalar_count_excluding_indices": 468,
+        "structural_zero_threshold": 6.666666666667185e-13,
+        "symmetric_quadratic_parameter_count": 810
+      },
+      "storage_ratios_over_tt": {
+        "box_dense": 3.328767123287671,
+        "full_hessian": 1.6027397260273972,
+        "nonzero_fibers": 0.863013698630137,
+        "nonzero_scalars_excluding_indices": 0.7123287671232876,
+        "symmetric_quadratic": 1.2328767123287672
+      },
+      "tolerance_semantics": "discarded singular-value budget, not a reconstruction guarantee",
+      "tt_parameter_count": 657,
+      "tt_ranks": [
+        1,
+        6,
+        6,
+        3,
+        1
+      ]
+    }
+  ],
+  "generated_at_utc": "2026-07-31T10:03:03.530474+00:00",
+  "interpretation": "The strict homogeneous center is a valid coefficient-solver oracle, but spatial fluid reduction requires a deliberately selected slow hydrodynamic subspace rather than a raw unit-circle eigenspace.",
+  "model": {
+    "boundary": "periodic",
+    "collision": "BGK",
+    "lattice": "D2Q9",
+    "omega": 1.2,
+    "reference_state": "rho=1, momentum=(0,0)"
+  },
+  "parameterization_contract": {
+    "chart_convention": "full state W(a)",
+    "coordinates": [
+      "delta_rho",
+      "momentum_x",
+      "momentum_y"
+    ],
+    "gauge": "L @ (W(a) - f_star) = a",
+    "strict_center_reduced_map": "R(a) = a"
+  },
+  "runtime": {
+    "numpy": "2.3.4",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.5"
+  },
+  "schema_version": 1,
+  "source": {
+    "package_source_sha256": "79c75112c78a4c54ad57360dba353be4f9848379f8ac2063892df9fb365c14cb",
+    "package_version": "0.1.0"
+  }
+}
