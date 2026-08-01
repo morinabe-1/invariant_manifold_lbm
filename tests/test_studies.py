@@ -6,6 +6,7 @@ from ttim_lbm.studies import (
     run_manufactured_quadratic_study,
     run_q004b_branch_tracking_study,
     run_q005_nonresonance_study,
+    run_q006s_stripe_study,
 )
 
 
@@ -48,4 +49,53 @@ def test_q005_validly_rejects_isotropic_candidate_and_qualifies_stripe() -> None
     assert result["summary"]["radial_normal_attraction_failure_count"] > 0
     assert result["summary"]["maximum_stripe_condition_number"] < 1.0e8
     assert all(gate["passed"] for gate in result["gates"].values())
+    json.dumps(result, allow_nan=False)
+
+
+def test_q006s_accepts_only_the_registered_finite_grid_stripe_oracle() -> None:
+    result = run_q006s_stripe_study()
+
+    assert result["study_validity"] == "passed"
+    assert result["hypothesis_outcome"] == "accepted"
+    assert result["registered_scope"]["grid"] == [1, 17]
+    assert result["registered_scope"]["pilot_seed_not_used_for_gates"] == 20260801
+    assert result["registered_scope"]["residual_seed"] == 20260802
+    assert result["registered_scope"]["shadow_seed"] == 20260803
+    assert all(gate["passed"] for gate in result["gates"].values())
+    assert result["residual_order_campaign"]["amplitudes"] == [
+        0.000625,
+        0.00125,
+        0.0025,
+        0.005,
+        0.01,
+    ]
+    assert len(result["residual_order_campaign"]["direction_records"]) == 64
+    assert result["shadowing_campaign"]["quadratic"]["steps"] == 100
+    assert (
+        len(result["shadowing_campaign"]["quadratic"]["direction_records"])
+        == 32
+    )
+    assert (
+        result["residual_order_campaign"]["summary"][
+            "maximum_directional_residual_ratio"
+        ]
+        < 0.1
+    )
+    assert (
+        result["shadowing_campaign"]["quadratic"]["summary"][
+            "maximum_absolute_error"
+        ]
+        < 1.0e-5
+    )
+    assert (
+        result["shadowing_campaign"]["quadratic"]["summary"][
+            "maximum_perturbation_relative_error"
+        ]
+        < 1.0e-2
+    )
+    assert (
+        result["shadowing_campaign"]["maximum_absolute_error_improvement_ratio"]
+        < 0.1
+    )
+    assert result["quotient_lift_check"]["maximum_absolute_difference"] < 1.0e-12
     json.dumps(result, allow_nan=False)

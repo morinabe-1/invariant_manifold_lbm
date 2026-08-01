@@ -9,11 +9,17 @@ from typing import Any
 import numpy as np
 
 from .d2q9 import (
+    bgk_periodic_step,
     fourier_symbol,
+    global_conserved_quantities,
     quarter_turn_population_matrix,
     spectrum_audit,
 )
-from .manifold import solve_general_quadratic_parameterization
+from .manifold import (
+    log_log_slope,
+    second_derivative_tensor,
+    solve_general_quadratic_parameterization,
+)
 from .manufactured import (
     make_manufactured_quadratic_map,
     real_basis_from_dominant_complex_pair,
@@ -33,6 +39,7 @@ from .spectra import (
     path_reversal_subspace_error,
     track_hydrodynamic_cluster_path,
 )
+from .stripe import StripeQuadraticModel, build_stripe_quadratic_model
 
 
 def _complex_record(value: complex) -> dict[str, float]:
@@ -1019,5 +1026,506 @@ def run_q005_study() -> dict[str, Any]:
         "next_question": (
             "Q006s: does the N=17, omega=1.2 fixed-leaf stripe quadratic chart "
             "raise the invariance-residual order from two to three?"
+        ),
+    }
+
+
+def _normalized_directions(seed: int, count: int, dimension: int) -> np.ndarray:
+    rng = np.random.default_rng(seed)
+    directions = rng.normal(size=(count, dimension))
+    return directions / np.linalg.norm(directions, axis=1)[:, None]
+
+
+def _stripe_residual_campaign(
+    model: StripeQuadraticModel,
+    directions: np.ndarray,
+    amplitudes: np.ndarray,
+) -> dict[str, Any]:
+    records = []
+    for direction in directions:
+        linear_residuals = []
+        quadratic_residuals = []
+        minimum_population = np.inf
+        for amplitude in amplitudes:
+            coordinates = amplitude * direction
+            linear_residuals.append(
+                float(
+                    np.linalg.norm(
+                        model.invariance_defect(coordinates, quadratic=False)
+                    )
+                )
+            )
+            quadratic_residuals.append(
+                float(
+                    np.linalg.norm(
+                        model.invariance_defect(coordinates, quadratic=True)
+                    )
+                )
+            )
+            lifted = model.chart.evaluate(coordinates)
+            minimum_population = min(
+                minimum_population,
+                float(np.min(lifted)),
+                float(np.min(model.full_map(lifted))),
+            )
+        records.append(
+            {
+                "direction": direction.tolist(),
+                "linear_residuals": linear_residuals,
+                "quadratic_residuals": quadratic_residuals,
+                "linear_slope": log_log_slope(amplitudes, linear_residuals),
+                "quadratic_slope": log_log_slope(
+                    amplitudes,
+                    quadratic_residuals,
+                ),
+                "maximum_amplitude_residual_ratio": (
+                    quadratic_residuals[-1] / linear_residuals[-1]
+                ),
+                "minimum_population": minimum_population,
+            }
+        )
+    linear_slopes = [record["linear_slope"] for record in records]
+    quadratic_slopes = [record["quadratic_slope"] for record in records]
+    maximum_amplitude_linear = [
+        record["linear_residuals"][-1] for record in records
+    ]
+    maximum_amplitude_quadratic = [
+        record["quadratic_residuals"][-1] for record in records
+    ]
+    return {
+        "amplitudes": amplitudes.tolist(),
+        "direction_records": records,
+        "summary": {
+            "minimum_linear_slope": min(linear_slopes),
+            "maximum_linear_slope": max(linear_slopes),
+            "minimum_quadratic_slope": min(quadratic_slopes),
+            "maximum_quadratic_slope": max(quadratic_slopes),
+            "maximum_directional_residual_ratio": max(
+                record["maximum_amplitude_residual_ratio"] for record in records
+            ),
+            "maximum_residual_ratio": (
+                max(maximum_amplitude_quadratic) / max(maximum_amplitude_linear)
+            ),
+            "minimum_population": min(
+                record["minimum_population"] for record in records
+            ),
+        },
+    }
+
+
+def _stripe_shadow_campaign(
+    model: StripeQuadraticModel,
+    directions: np.ndarray,
+    amplitude: float,
+    steps: int,
+    *,
+    quadratic: bool,
+) -> dict[str, Any]:
+    chart = model.chart if quadratic else model.linear_chart
+    records = []
+    for direction in directions:
+        coordinates = amplitude * direction
+        state = chart.evaluate(coordinates)
+        initial_conserved = global_conserved_quantities(
+            state.reshape(1, model.size, 9)
+        )
+        maximum_absolute_error = 0.0
+        maximum_relative_error = 0.0
+        maximum_coordinate_drift = 0.0
+        maximum_conservation_drift = 0.0
+        minimum_population = np.inf
+        maximum_absolute_error_step = 0
+        maximum_relative_error_step = 0
+        final_absolute_error = 0.0
+        final_relative_error = 0.0
+        for step in range(steps + 1):
+            predicted = chart.evaluate(coordinates)
+            absolute_error = float(np.linalg.norm(state - predicted))
+            perturbation_scale = max(
+                float(np.linalg.norm(state - chart.base)),
+                float(np.linalg.norm(predicted - chart.base)),
+                np.finfo(float).eps,
+            )
+            relative_error = absolute_error / perturbation_scale
+            coordinate_drift = float(
+                np.linalg.norm(
+                    model.extractor @ (state - chart.base) - coordinates
+                )
+            )
+            conservation_drift = float(
+                np.linalg.norm(
+                    global_conserved_quantities(
+                        state.reshape(1, model.size, 9)
+                    )
+                    - initial_conserved
+                )
+            )
+            if absolute_error > maximum_absolute_error:
+                maximum_absolute_error = absolute_error
+                maximum_absolute_error_step = step
+            if relative_error > maximum_relative_error:
+                maximum_relative_error = relative_error
+                maximum_relative_error_step = step
+            maximum_coordinate_drift = max(
+                maximum_coordinate_drift,
+                coordinate_drift,
+            )
+            maximum_conservation_drift = max(
+                maximum_conservation_drift,
+                conservation_drift,
+            )
+            minimum_population = min(
+                minimum_population,
+                float(np.min(state)),
+                float(np.min(predicted)),
+            )
+            if step == steps:
+                final_absolute_error = absolute_error
+                final_relative_error = relative_error
+            else:
+                state = model.full_map(state)
+                coordinates = model.reduced_map(coordinates)
+        records.append(
+            {
+                "direction": direction.tolist(),
+                "maximum_absolute_error": maximum_absolute_error,
+                "maximum_absolute_error_step": maximum_absolute_error_step,
+                "maximum_perturbation_relative_error": maximum_relative_error,
+                "maximum_relative_error_step": maximum_relative_error_step,
+                "final_absolute_error": final_absolute_error,
+                "final_perturbation_relative_error": final_relative_error,
+                "maximum_projected_coordinate_drift": maximum_coordinate_drift,
+                "maximum_conservation_drift": maximum_conservation_drift,
+                "minimum_population": minimum_population,
+            }
+        )
+    return {
+        "chart": "quadratic" if quadratic else "linear",
+        "amplitude": amplitude,
+        "steps": steps,
+        "direction_records": records,
+        "summary": {
+            "maximum_absolute_error": max(
+                record["maximum_absolute_error"] for record in records
+            ),
+            "maximum_perturbation_relative_error": max(
+                record["maximum_perturbation_relative_error"] for record in records
+            ),
+            "maximum_final_absolute_error": max(
+                record["final_absolute_error"] for record in records
+            ),
+            "maximum_final_perturbation_relative_error": max(
+                record["final_perturbation_relative_error"] for record in records
+            ),
+            "maximum_projected_coordinate_drift": max(
+                record["maximum_projected_coordinate_drift"] for record in records
+            ),
+            "maximum_conservation_drift": max(
+                record["maximum_conservation_drift"] for record in records
+            ),
+            "minimum_population": min(
+                record["minimum_population"] for record in records
+            ),
+        },
+    }
+
+
+def _stripe_quotient_lift_check(model: StripeQuadraticModel) -> dict[str, float | int]:
+    direction = np.arange(1.0, 7.0)
+    direction /= np.linalg.norm(direction)
+    stripe = model.chart.evaluate(0.01 * direction).reshape(1, model.size, 9)
+    lifted = np.repeat(stripe, model.size, axis=0)
+    quotient_step = model.full_map(stripe.ravel()).reshape(1, model.size, 9)
+    lifted_step = bgk_periodic_step(lifted, model.omega)
+    expected = np.repeat(quotient_step, model.size, axis=0)
+    difference = lifted_step - expected
+    return {
+        "quotient_shape_y": 1,
+        "lifted_shape_y": model.size,
+        "maximum_absolute_difference": float(np.max(np.abs(difference))),
+        "relative_difference": float(
+            np.linalg.norm(difference)
+            / max(float(np.linalg.norm(expected)), np.finfo(float).eps)
+        ),
+    }
+
+
+def run_q006s_stripe_study() -> dict[str, Any]:
+    """Validate the preregistered finite-grid stripe quadratic solver oracle."""
+
+    model = build_stripe_quadratic_model(size=17, omega=1.2)
+    diagnostics = asdict(model.diagnostics)
+
+    coarse_difference = second_derivative_tensor(
+        model.full_map,
+        model.chart.base,
+        model.chart.tangent,
+        0.006,
+    )
+    fine_difference = second_derivative_tensor(
+        model.full_map,
+        model.chart.base,
+        model.chart.tangent,
+        0.003,
+    )
+    richardson_difference = (4.0 * fine_difference - coarse_difference) / 3.0
+    finite_difference_discrepancy = float(
+        np.linalg.norm(richardson_difference - model.second_derivative)
+        / np.linalg.norm(model.second_derivative)
+    )
+
+    residual_seed = 20260802
+    residual_directions = _normalized_directions(residual_seed, 64, 6)
+    amplitudes = np.array(
+        [0.000625, 0.00125, 0.0025, 0.005, 0.01],
+        dtype=np.float64,
+    )
+    residual_campaign = _stripe_residual_campaign(
+        model,
+        residual_directions,
+        amplitudes,
+    )
+    residual_summary = residual_campaign["summary"]
+
+    shadow_seed = 20260803
+    shadow_directions = _normalized_directions(shadow_seed, 32, 6)
+    linear_shadow = _stripe_shadow_campaign(
+        model,
+        shadow_directions,
+        0.01,
+        100,
+        quadratic=False,
+    )
+    quadratic_shadow = _stripe_shadow_campaign(
+        model,
+        shadow_directions,
+        0.01,
+        100,
+        quadratic=True,
+    )
+    linear_shadow_summary = linear_shadow["summary"]
+    quadratic_shadow_summary = quadratic_shadow["summary"]
+    shadow_improvement_ratio = (
+        quadratic_shadow_summary["maximum_absolute_error"]
+        / linear_shadow_summary["maximum_absolute_error"]
+    )
+
+    quotient_lift = _stripe_quotient_lift_check(model)
+    stress_residual = _stripe_residual_campaign(
+        model,
+        residual_directions,
+        np.array([0.025, 0.05, 0.1], dtype=np.float64),
+    )
+    stress_summary = stress_residual["summary"]
+
+    construction_residual = max(
+        diagnostics["tangent_relative_residual"],
+        diagnostics["left_invariance_relative_residual"],
+        diagnostics["duality_residual"],
+        diagnostics["raw_symmetry_relative_residual"],
+        diagnostics["homological_relative_residual"],
+        diagnostics["maximum_homological_residual"],
+        diagnostics["graph_gauge_relative_residual"],
+        diagnostics["tangent_conservation_relative_residual"],
+        diagnostics["hessian_conservation_relative_residual"],
+        diagnostics["zero_wave_conserved_moment_relative_residual"],
+        diagnostics["predicted_reduced_hessian_relative_norm"],
+        diagnostics["output_sector_invariance_relative_residual"],
+        diagnostics["forcing_sector_leakage_relative_norm"],
+        diagnostics["hessian_fourier_leakage_relative_norm"],
+    )
+    gates = {
+        "registered_sector_operator_regression": {
+            "value": {
+                "smallest_singular_value": diagnostics["smallest_singular_value"],
+                "condition_number": diagnostics["condition_number"],
+            },
+            "threshold": {
+                "minimum_smallest_singular_value": 0.0193,
+                "maximum_condition_number": 96.1,
+            },
+            "passed": diagnostics["smallest_singular_value"] >= 0.0193
+            and diagnostics["condition_number"] <= 96.1,
+        },
+        "algebraic_chart_consistency": {
+            "value": construction_residual,
+            "threshold": 1.0e-10,
+            "passed": construction_residual <= 1.0e-10,
+        },
+        "independent_analytic_hessian_check": {
+            "value": finite_difference_discrepancy,
+            "threshold": 1.0e-8,
+            "passed": finite_difference_discrepancy <= 1.0e-8,
+        },
+        "linear_residual_order": {
+            "value": {
+                "minimum": residual_summary["minimum_linear_slope"],
+                "maximum": residual_summary["maximum_linear_slope"],
+            },
+            "threshold": {"minimum": 1.9, "maximum": 2.1},
+            "passed": residual_summary["minimum_linear_slope"] >= 1.9
+            and residual_summary["maximum_linear_slope"] <= 2.1,
+        },
+        "quadratic_residual_order": {
+            "value": {
+                "minimum": residual_summary["minimum_quadratic_slope"],
+                "maximum": residual_summary["maximum_quadratic_slope"],
+            },
+            "threshold": {"minimum": 2.9, "maximum": 3.1},
+            "passed": residual_summary["minimum_quadratic_slope"] >= 2.9
+            and residual_summary["maximum_quadratic_slope"] <= 3.1,
+        },
+        "maximum_amplitude_directional_improvement": {
+            "value": residual_summary["maximum_directional_residual_ratio"],
+            "threshold": 0.1,
+            "passed": residual_summary["maximum_directional_residual_ratio"] < 0.1,
+        },
+        "quadratic_shadowing_absolute_error": {
+            "value": quadratic_shadow_summary["maximum_absolute_error"],
+            "threshold": 1.0e-5,
+            "passed": quadratic_shadow_summary["maximum_absolute_error"] < 1.0e-5,
+        },
+        "quadratic_shadowing_perturbation_relative_error": {
+            "value": quadratic_shadow_summary[
+                "maximum_perturbation_relative_error"
+            ],
+            "threshold": 1.0e-2,
+            "passed": quadratic_shadow_summary[
+                "maximum_perturbation_relative_error"
+            ]
+            < 1.0e-2,
+        },
+        "quadratic_shadowing_improvement": {
+            "value": shadow_improvement_ratio,
+            "threshold": 0.1,
+            "passed": shadow_improvement_ratio < 0.1,
+        },
+        "quotient_to_square_lift": {
+            "value": quotient_lift["maximum_absolute_difference"],
+            "threshold": 1.0e-12,
+            "passed": quotient_lift["maximum_absolute_difference"] <= 1.0e-12,
+        },
+    }
+    passed = all(gate["passed"] for gate in gates.values())
+    return {
+        "question": (
+            "Does the N=17, omega=1.2 fixed-leaf y-independent stripe chart "
+            "solve the quadratic homological equation and raise the local "
+            "invariance-residual order from two to three?"
+        ),
+        "hypothesis": (
+            "The registered sector-restricted solve yields R2=0, satisfies "
+            "the fixed-leaf algebraic gates, and passes residual-order and "
+            "100-step local shadowing gates on held-out directions."
+        ),
+        "registered_scope": {
+            "grid": [1, 17],
+            "omega": 1.2,
+            "master_wave_indices": [[1, 0], [-1, 0]],
+            "mode_order": list(model.mode_order),
+            "real_coordinate_order": "interleaved real/imaginary part per mode",
+            "complex_lift_scale": float(1.0 / np.sqrt(2.0 * model.size)),
+            "conservation_treatment": "fixed global mass and momentum leaf",
+            "quadratic_output_wave_indices": [[0, 0], [2, 0], [-2, 0]],
+            "reduced_quadratic_hessian": "zero by the Fourier selection rule",
+            "pilot_seed_not_used_for_gates": 20260801,
+            "residual_seed": residual_seed,
+            "shadow_seed": shadow_seed,
+        },
+        "construction": {
+            "state_dimension": int(model.chart.base.size),
+            "reduced_dimension": model.reduced_dimension,
+            "hessian_shape": list(model.chart.hessian.shape),
+            "solver_condition_space": (
+                "ordered 6-by-6 tensor-product coefficient space (36 columns)"
+            ),
+            "diagnostics": diagnostics,
+        },
+        "finite_difference_hessian": {
+            "coarse_step": 0.006,
+            "fine_step": 0.003,
+            "method": "centered finite difference with Richardson extrapolation",
+            "analytic_relative_discrepancy": finite_difference_discrepancy,
+            "coarse_to_fine_relative_change": float(
+                np.linalg.norm(fine_difference - coarse_difference)
+                / np.linalg.norm(richardson_difference)
+            ),
+        },
+        "residual_order_campaign": residual_campaign,
+        "shadowing_campaign": {
+            "linear": linear_shadow,
+            "quadratic": quadratic_shadow,
+            "maximum_absolute_error_improvement_ratio": shadow_improvement_ratio,
+        },
+        "quotient_lift_check": quotient_lift,
+        "non_gating_domain_stress": {
+            "amplitudes": stress_residual["amplitudes"],
+            "maximum_directional_residual_ratio_at_0p1": stress_summary[
+                "maximum_directional_residual_ratio"
+            ],
+            "maximum_residual_ratio_at_0p1": stress_summary[
+                "maximum_residual_ratio"
+            ],
+            "minimum_population": stress_summary["minimum_population"],
+            "interpretation": (
+                "Amplitude 0.1 is outside the registered local gate and is "
+                "retained only to expose finite-domain degradation."
+            ),
+        },
+        "gates": gates,
+        "study_validity": "passed" if passed else "failed",
+        "hypothesis_outcome": "accepted" if passed else "rejected",
+        "decision": (
+            "Accept the N=17 stripe construction as a finite-grid dense "
+            "quadratic solver oracle on the y-independent invariant subspace."
+            if passed
+            else "Do not use the stripe construction as the Q006 solver oracle."
+        ),
+        "limitations": [
+            (
+                "This is a one-direction stripe oracle, not a full two-dimensional "
+                "slow spectral subspace or SSM existence result."
+            ),
+            (
+                "The Q005 isotropic candidate remains rejected, and the stripe "
+                "conditioning is not claimed to be uniform under grid refinement."
+            ),
+            (
+                "The accepted residual and shadowing domain is the registered "
+                "Euclidean coordinate ball at amplitude at most 0.01."
+            ),
+        ],
+        "next_change": (
+            "Before a full 2D Q006 chart, audit whether capped resonant and "
+            "near-resonant mode addition leaves every external quadratic "
+            "Schur block resolved and recovers acceptable normal attraction."
+        ),
+    }
+
+
+def run_q006s_study() -> dict[str, Any]:
+    """Run and package the registered Q006s stripe oracle campaign."""
+
+    cycle = run_q006s_stripe_study()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "construction": "finite-grid y-independent stripe solver oracle",
+            "construction_grid": [1, 17],
+            "square_grid_lift": [17, 17],
+            "conservation_treatment": "fixed global mass and momentum leaf",
+            "manifold_claim": (
+                "local quadratic candidate chart only; no full 2D or "
+                "grid-uniform SSM existence claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "next_question": (
+            "Q006r: does capped resonant and near-resonant mode addition resolve "
+            "every external quadratic Schur block and recover normal attraction?"
         ),
     }

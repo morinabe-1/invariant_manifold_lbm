@@ -68,3 +68,34 @@ def test_q005_artifact_records_a_valid_falsification() -> None:
         ]
         == 16
     )
+
+
+def test_q006s_artifact_records_only_the_finite_grid_stripe_claim() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006s_stripe.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["mathematical_scope"] == {
+        "construction": "finite-grid y-independent stripe solver oracle",
+        "construction_grid": [1, 17],
+        "square_grid_lift": [17, 17],
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "manifold_claim": (
+            "local quadratic candidate chart only; no full 2D or "
+            "grid-uniform SSM existence claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["gates"].values())
+    assert cycle["registered_scope"]["residual_seed"] == 20260802
+    assert cycle["registered_scope"]["shadow_seed"] == 20260803
+    assert (
+        cycle["non_gating_domain_stress"][
+            "maximum_directional_residual_ratio_at_0p1"
+        ]
+        > 0.1
+    )
