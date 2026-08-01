@@ -18,6 +18,14 @@ from .manufactured import (
     make_manufactured_quadratic_map,
     real_basis_from_dominant_complex_pair,
 )
+from .nonresonance import (
+    NULL_FORCING_TOLERANCE,
+    PRACTICAL_CONDITION_CEILING,
+    orthogonal_acoustic_resonance_witness,
+    radial_band_normal_dominance,
+    stripe_quadratic_audit,
+    wave_vector_from_index,
+)
 from .provenance import runtime_metadata, source_metadata
 from .spectra import (
     TrackedHydrodynamicCluster,
@@ -623,5 +631,393 @@ def run_q004b_and_manufactured_study() -> dict[str, Any]:
         "next_question": (
             "Q005: do the accepted k_c values retain quadratic sector-aware "
             "nonresonance and acceptable nonnormality under grid refinement?"
+        ),
+    }
+
+
+def run_q005_nonresonance_study() -> dict[str, Any]:
+    """Falsify or qualify the registered isotropic quadratic slow-set candidate."""
+
+    cutoffs = {
+        1.0: 0.763076388888889,
+        1.2: 0.925486111111111,
+        1.5: 1.1628541666666665,
+        1.8: 1.375236111111111,
+    }
+    grid_sizes = (9, 17, 33, 65)
+    campaign = []
+    for size in grid_sizes:
+        fundamental = 2.0 * np.pi / size
+        for omega, cutoff in cutoffs.items():
+            minimal_shell = orthogonal_acoustic_resonance_witness(
+                size,
+                omega,
+            )
+            boundary_index = max(1, int(np.floor(cutoff / fundamental + 1.0e-12)))
+            boundary = orthogonal_acoustic_resonance_witness(
+                size,
+                omega,
+                radial_index=boundary_index,
+            )
+            boundary_output = wave_vector_from_index(
+                tuple(boundary["output_wave_index"]),
+                size,
+            )
+            boundary["input_radial_index"] = boundary_index
+            boundary["output_wave_magnitude"] = float(np.hypot(*boundary_output))
+            boundary["output_is_external_to_registered_radial_band"] = bool(
+                np.hypot(*boundary_output) > cutoff + 1.0e-12
+            )
+            campaign.append(
+                {
+                    "grid_size": size,
+                    "omega": omega,
+                    "registered_cutoff": cutoff,
+                    "minimum_shell_resonance_witness": minimal_shell,
+                    "registered_boundary_resonance_witness": boundary,
+                    "radial_band_normal_dominance": radial_band_normal_dominance(
+                        size,
+                        omega,
+                        cutoff,
+                    ),
+                    "stripe_finite_grid_audit": stripe_quadratic_audit(size, omega),
+                }
+            )
+
+    minimal_homological = [
+        record["minimum_shell_resonance_witness"]["homological"]
+        for record in campaign
+    ]
+    external_boundary = [
+        record["registered_boundary_resonance_witness"]
+        for record in campaign
+        if record["registered_boundary_resonance_witness"][
+            "output_is_external_to_registered_radial_band"
+        ]
+    ]
+    normal_records = [
+        record["radial_band_normal_dominance"] for record in campaign
+    ]
+    stripe_records = [record["stripe_finite_grid_audit"] for record in campaign]
+    maximum_null_forcing = max(
+        record["null_forcing_ratio"] or 0.0
+        for record in minimal_homological
+        + [record["homological"] for record in external_boundary]
+    )
+    maximum_realification_error = max(
+        record["complex_realification_singular_value_relative_error"]
+        for record in stripe_records
+    )
+    maximum_conservation_residual = max(
+        record["maximum_zero_wave_conservation_residual"]
+        for record in stripe_records
+    )
+    maximum_kinetic_invariance_residual = max(
+        record["fixed_leaf_kinetic_invariance_residual"]
+        for record in stripe_records
+    )
+    maximum_stripe_condition = max(
+        max(
+            record["second_harmonic_maximum_condition_number"],
+            record["zero_wave_maximum_condition_number"],
+        )
+        for record in stripe_records
+    )
+    minimum_schur_separation = min(
+        record["minimum_ordered_schur_separation"] for record in normal_records
+    )
+    maximum_split_residual = max(
+        max(
+            record["maximum_master_projector_residual"],
+            record["maximum_schur_invariance_residual"],
+        )
+        for record in normal_records
+    )
+    maximum_projector_norm = max(
+        record["maximum_master_spectral_projector_norm"]
+        for record in normal_records
+    )
+    candidate_falsification_flags = [
+        (
+            record["registered_boundary_resonance_witness"][
+                "output_is_external_to_registered_radial_band"
+            ]
+            and record["registered_boundary_resonance_witness"]["homological"][
+                "status"
+            ]
+            == "compatible_nonunique"
+        )
+        or not record["radial_band_normal_dominance"][
+            "finite_grid_normal_attraction"
+        ]
+        for record in campaign
+    ]
+    gates = {
+        "registered_radial_spectral_splits_are_resolved": {
+            "value": {
+                "minimum_schur_separation": minimum_schur_separation,
+                "maximum_projector_norm": maximum_projector_norm,
+                "maximum_invariance_or_projector_residual": maximum_split_residual,
+            },
+            "threshold": {
+                "minimum_schur_separation": 0.02,
+                "maximum_projector_norm": 100.0,
+                "maximum_invariance_or_projector_residual": 1.0e-12,
+            },
+            "passed": minimum_schur_separation >= 0.02
+            and maximum_projector_norm <= 100.0
+            and maximum_split_residual <= 1.0e-12,
+        },
+        "every_registered_isotropic_candidate_is_falsified": {
+            "value": sum(candidate_falsification_flags),
+            "threshold": len(campaign),
+            "passed": all(candidate_falsification_flags),
+        },
+        "minimum_nonempty_isotropic_shell_resonance_detected": {
+            "value": sum(
+                record["status"] == "compatible_nonunique"
+                for record in minimal_homological
+            ),
+            "threshold": len(campaign),
+            "passed": all(
+                record["status"] == "compatible_nonunique"
+                for record in minimal_homological
+            ),
+        },
+        "registered_radial_boundary_external_resonance_detected": {
+            "value": sum(
+                record["homological"]["status"] == "compatible_nonunique"
+                for record in external_boundary
+            ),
+            "threshold": len(external_boundary),
+            "passed": bool(external_boundary)
+            and all(
+                record["homological"]["status"] == "compatible_nonunique"
+                for record in external_boundary
+            ),
+        },
+        "resonant_forcing_compatibility_resolved": {
+            "value": maximum_null_forcing,
+            "threshold": NULL_FORCING_TOLERANCE,
+            "passed": maximum_null_forcing <= NULL_FORCING_TOLERANCE,
+        },
+        "registered_radial_normal_attraction_is_falsified": {
+            "value": sum(
+                not record["finite_grid_normal_attraction"]
+                for record in normal_records
+            ),
+            "threshold": 1,
+            "passed": any(
+                not record["finite_grid_normal_attraction"]
+                for record in normal_records
+            ),
+        },
+        "stripe_complex_realification_consistency": {
+            "value": maximum_realification_error,
+            "threshold": 1.0e-10,
+            "passed": maximum_realification_error <= 1.0e-10,
+        },
+        "stripe_fixed_leaf_conservation_and_invariance": {
+            "value": max(
+                maximum_conservation_residual,
+                maximum_kinetic_invariance_residual,
+            ),
+            "threshold": 1.0e-12,
+            "passed": max(
+                maximum_conservation_residual,
+                maximum_kinetic_invariance_residual,
+            )
+            <= 1.0e-12,
+        },
+        "stripe_finite_grid_practical_conditioning": {
+            "value": maximum_stripe_condition,
+            "threshold": PRACTICAL_CONDITION_CEILING,
+            "passed": maximum_stripe_condition <= PRACTICAL_CONDITION_CEILING
+            and all(
+                record["all_sector_statuses"] == ["nonsingular_practical"]
+                for record in stripe_records
+            ),
+        },
+    }
+    study_valid = all(gate["passed"] for gate in gates.values())
+    reference_stripe = next(
+        record
+        for record in stripe_records
+        if record["grid_size"] == 17 and record["omega"] == 1.2
+    )
+    stripe_refinement = {}
+    for omega in cutoffs:
+        omega_records = sorted(
+            (
+                record
+                for record in stripe_records
+                if record["omega"] == omega
+            ),
+            key=lambda record: record["grid_size"],
+        )
+        log_sizes = np.log(
+            np.array(
+                [record["grid_size"] for record in omega_records],
+                dtype=np.float64,
+            )
+        )
+        log_singular_values = np.log(
+            np.array(
+                [
+                    record["second_harmonic_minimum_smallest_singular_value"]
+                    for record in omega_records
+                ],
+                dtype=np.float64,
+            )
+        )
+        log_condition_numbers = np.log(
+            np.array(
+                [
+                    record["second_harmonic_maximum_condition_number"]
+                    for record in omega_records
+                ],
+                dtype=np.float64,
+            )
+        )
+        stripe_refinement[str(omega)] = {
+            "log_smallest_singular_value_vs_log_N_slope": float(
+                np.polyfit(log_sizes, log_singular_values, 1)[0]
+            ),
+            "log_condition_number_vs_log_N_slope": float(
+                np.polyfit(log_sizes, log_condition_numbers, 1)[0]
+            ),
+        }
+    return {
+        "question": (
+            "Do the Q004b radial low-wave-number candidates satisfy quadratic "
+            "external nonresonance and finite-grid normal attraction?"
+        ),
+        "hypothesis": (
+            "At least one registered radial candidate remains strictly "
+            "quadratically nonresonant, normally attracting, and practically "
+            "conditioned under the registered odd-grid refinement."
+        ),
+        "registered_scope": {
+            "polynomial_degree": 2,
+            "grid_sizes": list(grid_sizes),
+            "omega_to_cutoff": {
+                str(omega): cutoff for omega, cutoff in cutoffs.items()
+            },
+            "conservation_treatment": (
+                "fixed global mass and momentum leaf; zero-wave output is "
+                "restricted to the six-dimensional kinetic sector"
+            ),
+            "refinement_semantics": (
+                "sampling-density/domain-size diagnostic, not fixed-domain "
+                "continuum convergence"
+            ),
+        },
+        "campaign": campaign,
+        "summary": {
+            "campaign_count": len(campaign),
+            "minimum_shell_compatible_nonunique_count": sum(
+                record["status"] == "compatible_nonunique"
+                for record in minimal_homological
+            ),
+            "external_registered_boundary_witness_count": len(external_boundary),
+            "radial_normal_attraction_failure_count": sum(
+                not record["finite_grid_normal_attraction"]
+                for record in normal_records
+            ),
+            "falsified_registered_isotropic_candidate_count": sum(
+                candidate_falsification_flags
+            ),
+            "maximum_resonant_null_forcing_ratio": maximum_null_forcing,
+            "maximum_stripe_condition_number": maximum_stripe_condition,
+            "maximum_stripe_realification_error": maximum_realification_error,
+            "stripe_refinement_slopes": stripe_refinement,
+            "reference_stripe_N17_omega1p2": {
+                "second_harmonic_smallest_singular_value": (
+                    reference_stripe[
+                        "second_harmonic_minimum_smallest_singular_value"
+                    ]
+                ),
+                "second_harmonic_condition_number": (
+                    reference_stripe["second_harmonic_maximum_condition_number"]
+                ),
+                "zero_wave_smallest_singular_value": (
+                    reference_stripe["zero_wave_minimum_smallest_singular_value"]
+                ),
+            },
+        },
+        "gates": gates,
+        "study_validity": "passed" if study_valid else "failed",
+        "hypothesis_outcome": "rejected" if study_valid else "unresolved",
+        "decision": (
+            "Reject the registered two-dimensional isotropic candidate as a "
+            "standard nonresonant, normally attracting SSM. The detected "
+            "rank-deficient sectors are forcing-compatible at quadratic order, "
+            "so this does not prove that no resonant invariant chart exists; it "
+            "does remove the standard uniqueness claim."
+        ),
+        "repair_comparison": {
+            "cutoff_shrink": (
+                "rejected: the minimum nonempty C4-complete shell already has "
+                "the compatible external resonance"
+            ),
+            "mode_addition": (
+                "a diagonal shear orbit internalizes the first witness, but "
+                "requires a new additive-closure and conditioning audit before "
+                "it can be accepted"
+            ),
+            "stripe_solver_oracle": (
+                "accepted only as a finite-grid algebraic oracle on the "
+                "nonlinearly invariant y-independent subspace"
+            ),
+        },
+        "limitations": [
+            (
+                "The resonance identity is established to the registered "
+                "floating-point rank threshold across the campaign; a symbolic "
+                "or high-precision proof remains open."
+            ),
+            (
+                "The full quadratic pair table was not enumerated after a "
+                "decisive external witness falsified strict nonresonance."
+            ),
+            (
+                "Pointwise simple-mode diagnostics are used for the witness. "
+                "Future mode-added clusters require Schur-block operators."
+            ),
+            (
+                "The stripe condition numbers grow under refinement, so no "
+                "grid-uniform bound is claimed."
+            ),
+        ],
+        "next_change": (
+            "Use N=17, omega=1.2 and the y-independent first-shell conjugate "
+            "pair for a fixed-leaf dense quadratic solver oracle before any "
+            "full two-dimensional mode-added construction."
+        ),
+    }
+
+
+def run_q005_study() -> dict[str, Any]:
+    """Run the registered Q005 falsification campaign."""
+
+    cycle = run_q005_nonresonance_study()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "construction_grid_parity": "odd periodic square grids only",
+            "conservation_treatment": "fixed global mass and momentum leaf",
+            "manifold_claim": (
+                "registered isotropic nonresonant SSM candidate rejected; "
+                "stripe retained only as a finite-grid solver oracle"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "next_question": (
+            "Q006s: does the N=17, omega=1.2 fixed-leaf stripe quadratic chart "
+            "raise the invariance-residual order from two to three?"
         ),
     }

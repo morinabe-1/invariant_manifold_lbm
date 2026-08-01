@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 from .experiments import run_d2q9_baseline
-from .studies import run_q004b_and_manufactured_study
+from .studies import run_q004b_and_manufactured_study, run_q005_study
 
 
 def main() -> None:
@@ -15,24 +15,28 @@ def main() -> None:
     parser.add_argument(
         "--omega",
         type=float,
-        help="BGK relaxation for the baseline study; q004b uses its registered sweep",
+        help=(
+            "BGK relaxation for the baseline study; q004b and q005 use "
+            "their registered sweeps"
+        ),
     )
     parser.add_argument(
         "--study",
-        choices=("baseline", "q004b"),
+        choices=("baseline", "q004b", "q005"),
         default="baseline",
     )
     parser.add_argument("--output", type=Path)
     arguments = parser.parse_args()
-    if arguments.study == "q004b" and arguments.omega is not None:
+    if arguments.study != "baseline" and arguments.omega is not None:
         parser.error("--omega is only valid with --study baseline")
-    result = (
-        run_d2q9_baseline(
+    if arguments.study == "baseline":
+        result = run_d2q9_baseline(
             omega=1.2 if arguments.omega is None else arguments.omega
         )
-        if arguments.study == "baseline"
-        else run_q004b_and_manufactured_study()
-    )
+    elif arguments.study == "q004b":
+        result = run_q004b_and_manufactured_study()
+    else:
+        result = run_q005_study()
     rendered = json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\n"
     if arguments.output is None:
         print(rendered, end="")

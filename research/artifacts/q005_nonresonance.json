@@ -1,0 +1,3251 @@
+{
+  "cycle": {
+    "campaign": [
+      {
+        "grid_size": 9,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -2.0903417885520525e-16,
+            "real": 0.8440296287459851
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.42201481437299276,
+          "grid_size": 9,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.5427111272847163,
+            "minimum_eigenvalue_distance": 2.26075470176578e-16,
+            "multiplier_product": {
+              "imag": -1.6653345369377348e-16,
+              "real": 0.8440296287459853
+            },
+            "null_forcing_ratio": 1.8577855076459256e-16,
+            "numerical_rank_threshold": 3.0829561449424607e-13,
+            "relative_smallest_singular_value": 2.033595980625782e-16,
+            "smallest_singular_value": 3.137251147712868e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.670011197679258,
+          "input_maximum_reduced_resolvent_norm": 3.659791301086429,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.0,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.0,
+        "radial_band_normal_dominance": {
+          "cutoff": 0.763076388888889,
+          "finite_grid_normal_attraction": true,
+          "grid_size": 9,
+          "master_real_dimension": 12,
+          "master_wave_count": 4,
+          "maximum_external_multiplier_modulus": 0.9088009573962488,
+          "maximum_master_projector_residual": 1.2322481491364085e-15,
+          "maximum_master_spectral_projector_norm": 1.7771887963561424,
+          "maximum_schur_invariance_residual": 6.955839824782326e-16,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.9187108515446984,
+          "minimum_master_multiplier_modulus": 0.9187108515446986,
+          "minimum_ordered_schur_separation": 0.7185697700466283,
+          "normal_dominance_ratio": 0.9892132610257215,
+          "omega": 1.0,
+          "worst_external_eigenvalue": {
+            "imag": -5.97917058014164e-17,
+            "real": -0.9088009573962488
+          },
+          "worst_external_eigenvalue_condition_number": 1.440005205102721,
+          "worst_external_symbol_departure_from_normality": 0.7408920201169742,
+          "worst_external_wave_index": [
+            -4,
+            0
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -2.0903417885520525e-16,
+            "real": 0.8440296287459851
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.42201481437299276,
+          "grid_size": 9,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.5427111272847163,
+            "minimum_eigenvalue_distance": 2.26075470176578e-16,
+            "multiplier_product": {
+              "imag": -1.6653345369377348e-16,
+              "real": 0.8440296287459853
+            },
+            "null_forcing_ratio": 1.8577855076459256e-16,
+            "numerical_rank_threshold": 3.0829561449424607e-13,
+            "relative_smallest_singular_value": 2.033595980625782e-16,
+            "smallest_singular_value": 3.137251147712868e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.670011197679258,
+          "input_maximum_reduced_resolvent_norm": 3.659791301086429,
+          "input_radial_index": 1,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.0,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            1,
+            1
+          ],
+          "output_wave_magnitude": 0.987307319590748
+        },
+        "registered_cutoff": 0.763076388888889,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 2.4250915143052606e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.4938738351583566e-16,
+          "grid_size": 9,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.670011197679258,
+          "maximum_zero_wave_conservation_residual": 2.2783118280345204e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 0.9187108515446984,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.0,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 21.463273530426193,
+          "second_harmonic_minimum_smallest_singular_value": 0.07744265503085604,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 21.463273530426193,
+            "largest_singular_value": 1.6621728878496993,
+            "minimum_eigenvalue_distance": 0.11948023619034231,
+            "multiplier_product": {
+              "imag": -2.7755575615628914e-16,
+              "real": 0.8440296287459854
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 3.3216886997971636e-13,
+            "relative_smallest_singular_value": 0.046591215388575594,
+            "smallest_singular_value": 0.07744265503085604,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000004,
+          "zero_wave_minimum_smallest_singular_value": 0.844029628745985,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000004,
+            "largest_singular_value": 0.8440296287459854,
+            "minimum_eigenvalue_distance": 0.8440296287459851,
+            "multiplier_product": {
+              "imag": 0.0,
+              "real": 0.8440296287459852
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.124473352759539e-13,
+            "relative_smallest_singular_value": 0.9999999999999994,
+            "smallest_singular_value": 0.844029628745985,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ]
+        }
+      },
+      {
+        "grid_size": 9,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 1.2489997752733388e-16,
+            "real": 0.8955714253251612
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5155360332471111,
+          "grid_size": 9,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.818875407502997,
+            "minimum_eigenvalue_distance": 3.747003835539866e-16,
+            "multiplier_product": {
+              "imag": 4.996003610813204e-16,
+              "real": 0.8955714253251612
+            },
+            "null_forcing_ratio": 4.027464631528992e-16,
+            "numerical_rank_threshold": 3.6348432414017247e-13,
+            "relative_smallest_singular_value": 3.3937843656595816e-16,
+            "smallest_singular_value": 6.172870921066371e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5732578620372675,
+          "input_maximum_reduced_resolvent_norm": 3.45232843814798,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.2,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.2,
+        "radial_band_normal_dominance": {
+          "cutoff": 0.925486111111111,
+          "finite_grid_normal_attraction": true,
+          "grid_size": 9,
+          "master_real_dimension": 12,
+          "master_wave_count": 4,
+          "maximum_external_multiplier_modulus": 0.9406435405508814,
+          "maximum_master_projector_residual": 5.817926047523245e-15,
+          "maximum_master_spectral_projector_norm": 1.6047979418838172,
+          "maximum_schur_invariance_residual": 7.766862285137882e-16,
+          "minimum_local_selected_excluded_eigenvalue_gap": 1.0524163586710098,
+          "minimum_master_multiplier_modulus": 0.94607594421579,
+          "minimum_ordered_schur_separation": 0.8665230111940518,
+          "normal_dominance_ratio": 0.9942579623780503,
+          "omega": 1.2,
+          "worst_external_eigenvalue": {
+            "imag": -4.440892098500626e-16,
+            "real": -0.9406435405508814
+          },
+          "worst_external_eigenvalue_condition_number": 1.3213329145672708,
+          "worst_external_symbol_departure_from_normality": 0.7457555558600503,
+          "worst_external_wave_index": [
+            -4,
+            0
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 1.2489997752733388e-16,
+            "real": 0.8955714253251612
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5155360332471111,
+          "grid_size": 9,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.818875407502997,
+            "minimum_eigenvalue_distance": 3.747003835539866e-16,
+            "multiplier_product": {
+              "imag": 4.996003610813204e-16,
+              "real": 0.8955714253251612
+            },
+            "null_forcing_ratio": 4.027464631528992e-16,
+            "numerical_rank_threshold": 3.6348432414017247e-13,
+            "relative_smallest_singular_value": 3.3937843656595816e-16,
+            "smallest_singular_value": 6.172870921066371e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5732578620372675,
+          "input_maximum_reduced_resolvent_norm": 3.45232843814798,
+          "input_radial_index": 1,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.2,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            1,
+            1
+          ],
+          "output_wave_magnitude": 0.987307319590748
+        },
+        "registered_cutoff": 0.925486111111111,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 1.411263097878684e-15,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.6001860229047493e-16,
+          "grid_size": 9,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.5732578620372675,
+          "maximum_zero_wave_conservation_residual": 9.325064410492093e-17,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.0524163586710098,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.2,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 32.10833458659772,
+          "second_harmonic_minimum_smallest_singular_value": 0.06163387539352821,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 32.10833458659772,
+            "largest_singular_value": 1.978961093004076,
+            "minimum_eigenvalue_distance": 0.10460916765581128,
+            "multiplier_product": {
+              "imag": 0.6436448402435531,
+              "real": 0.6227114078662676
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 3.9547587065228835e-13,
+            "relative_smallest_singular_value": 0.031144561462786303,
+            "smallest_singular_value": 0.06163387539352821,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000009,
+          "zero_wave_minimum_smallest_singular_value": 1.0445729945798161,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000007,
+            "largest_singular_value": 1.0445729945798168,
+            "minimum_eigenvalue_distance": 1.0445729945798163,
+            "multiplier_product": {
+              "imag": 0.6436448402435528,
+              "real": 0.6227114078662679
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.3916507873809938e-13,
+            "relative_smallest_singular_value": 0.9999999999999993,
+            "smallest_singular_value": 1.0445729945798161,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 9,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 5.551115118735482e-17,
+            "real": 0.9470942427980644
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.6586021193475365,
+          "grid_size": 9,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.2546071949763378,
+            "minimum_eigenvalue_distance": 2.8887141193013138e-15,
+            "multiplier_product": {
+              "imag": 1.6653345369377348e-16,
+              "real": 0.9470942427980673
+            },
+            "null_forcing_ratio": 1.4826189391665108e-16,
+            "numerical_rank_threshold": 4.5056102748268854e-13,
+            "relative_smallest_singular_value": 3.755742635094557e-16,
+            "smallest_singular_value": 8.467724367563578e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5212702988643754,
+          "input_maximum_reduced_resolvent_norm": 3.285306738189869,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.5,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.5,
+        "radial_band_normal_dominance": {
+          "cutoff": 1.1628541666666665,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 9,
+          "master_real_dimension": 24,
+          "master_wave_count": 8,
+          "maximum_external_multiplier_modulus": 0.9705245007369216,
+          "maximum_master_projector_residual": 3.605621574846942e-15,
+          "maximum_master_spectral_projector_norm": 1.564793019414075,
+          "maximum_schur_invariance_residual": 1.2777440682692484e-15,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.989186331090674,
+          "minimum_master_multiplier_modulus": 0.9395426292301224,
+          "minimum_ordered_schur_separation": 0.7901000530953305,
+          "normal_dominance_ratio": 1.0329754824772415,
+          "omega": 1.5,
+          "worst_external_eigenvalue": {
+            "imag": 7.806949118834382e-17,
+            "real": -0.9705245007369216
+          },
+          "worst_external_eigenvalue_condition_number": 1.2626546595913022,
+          "worst_external_symbol_departure_from_normality": 0.6991856528108615,
+          "worst_external_wave_index": [
+            -4,
+            0
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 5.551115118735482e-17,
+            "real": 0.9470942427980644
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.6586021193475365,
+          "grid_size": 9,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.2546071949763378,
+            "minimum_eigenvalue_distance": 2.8887141193013138e-15,
+            "multiplier_product": {
+              "imag": 1.6653345369377348e-16,
+              "real": 0.9470942427980673
+            },
+            "null_forcing_ratio": 1.4826189391665108e-16,
+            "numerical_rank_threshold": 4.5056102748268854e-13,
+            "relative_smallest_singular_value": 3.755742635094557e-16,
+            "smallest_singular_value": 8.467724367563578e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5212702988643754,
+          "input_maximum_reduced_resolvent_norm": 3.285306738189869,
+          "input_radial_index": 1,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.5,
+          "output_is_external_to_registered_radial_band": false,
+          "output_wave_index": [
+            1,
+            1
+          ],
+          "output_wave_magnitude": 0.987307319590748
+        },
+        "registered_cutoff": 1.1628541666666665,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 4.0341222711124227e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.227779058661652e-16,
+          "grid_size": 9,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.5212702988643754,
+          "maximum_zero_wave_conservation_residual": 1.6547117688038552e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.2812388590720412,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.5,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 61.085485191118295,
+          "second_harmonic_minimum_smallest_singular_value": 0.037751240021857535,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 61.085485191118295,
+            "largest_singular_value": 2.306052813301531,
+            "minimum_eigenvalue_distance": 0.05826432288263728,
+            "multiplier_product": {
+              "imag": 0.6772289143561688,
+              "real": 0.6620789245257748
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 4.608419272792159e-13,
+            "relative_smallest_singular_value": 0.01637050105882433,
+            "smallest_singular_value": 0.037751240021857535,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000007,
+          "zero_wave_minimum_smallest_singular_value": 1.3450154011263273,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000007,
+            "largest_singular_value": 1.3450154011263282,
+            "minimum_eigenvalue_distance": 1.3450154011263278,
+            "multiplier_product": {
+              "imag": 0.6772289143561687,
+              "real": 0.662078924525775
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.7919204801670684e-13,
+            "relative_smallest_singular_value": 0.9999999999999993,
+            "smallest_singular_value": 1.3450154011263273,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 9,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -2.775557755612282e-17,
+            "real": 0.9821191229425217
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.8034139589973156,
+          "grid_size": 9,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.699213133797204,
+            "minimum_eigenvalue_distance": 1.4647477458650866e-15,
+            "multiplier_product": {
+              "imag": 2.220446049250313e-16,
+              "real": 0.9821191229425231
+            },
+            "null_forcing_ratio": 1.8764588660990532e-16,
+            "numerical_rank_threshold": 5.394111425122102e-13,
+            "relative_smallest_singular_value": 1.3103825190144555e-16,
+            "smallest_singular_value": 3.537001705622083e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.506660089371163,
+          "input_maximum_reduced_resolvent_norm": 3.2000202324880123,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.8,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.8,
+        "radial_band_normal_dominance": {
+          "cutoff": 1.375236111111111,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 9,
+          "master_real_dimension": 24,
+          "master_wave_count": 8,
+          "maximum_external_multiplier_modulus": 0.9901392160099716,
+          "maximum_master_projector_residual": 4.315042600017076e-15,
+          "maximum_master_spectral_projector_norm": 1.4919803390540638,
+          "maximum_schur_invariance_residual": 6.342933564690056e-16,
+          "minimum_local_selected_excluded_eigenvalue_gap": 1.1616820940132706,
+          "minimum_master_multiplier_modulus": 0.9790092628195123,
+          "minimum_ordered_schur_separation": 0.9456014118596817,
+          "normal_dominance_ratio": 1.0113685882382824,
+          "omega": 1.8,
+          "worst_external_eigenvalue": {
+            "imag": -5.4478599475030446e-17,
+            "real": -0.9901392160099716
+          },
+          "worst_external_eigenvalue_condition_number": 1.2466957850423226,
+          "worst_external_symbol_departure_from_normality": 0.6488087941661157,
+          "worst_external_wave_index": [
+            0,
+            -4
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -2.775557755612282e-17,
+            "real": 0.9821191229425217
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.8034139589973156,
+          "grid_size": 9,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.699213133797204,
+            "minimum_eigenvalue_distance": 1.4647477458650866e-15,
+            "multiplier_product": {
+              "imag": 2.220446049250313e-16,
+              "real": 0.9821191229425231
+            },
+            "null_forcing_ratio": 1.8764588660990532e-16,
+            "numerical_rank_threshold": 5.394111425122102e-13,
+            "relative_smallest_singular_value": 1.3103825190144555e-16,
+            "smallest_singular_value": 3.537001705622083e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.506660089371163,
+          "input_maximum_reduced_resolvent_norm": 3.2000202324880123,
+          "input_radial_index": 1,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.8,
+          "output_is_external_to_registered_radial_band": false,
+          "output_wave_index": [
+            1,
+            1
+          ],
+          "output_wave_magnitude": 0.987307319590748
+        },
+        "registered_cutoff": 1.375236111111111,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 5.243127884305536e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.3358026844634502e-16,
+          "grid_size": 9,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.506660089371163,
+          "maximum_zero_wave_conservation_residual": 2.792404142750261e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.5321013741862233,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.8,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 148.06772527806444,
+          "second_harmonic_minimum_smallest_singular_value": 0.01817522032036118,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 148.06772527806444,
+            "largest_singular_value": 2.691163529263534,
+            "minimum_eigenvalue_distance": 0.022707108163252165,
+            "multiplier_product": {
+              "imag": 1.551847364179936e-25,
+              "real": 0.9813880200913764
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 5.378025083795769e-13,
+            "relative_smallest_singular_value": 0.006753666257261976,
+            "smallest_singular_value": 0.01817522032036118,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "shear",
+            "shear"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000009,
+          "zero_wave_minimum_smallest_singular_value": 1.644591745973924,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000009,
+            "largest_singular_value": 1.6445917459739254,
+            "minimum_eigenvalue_distance": 1.6445917459739237,
+            "multiplier_product": {
+              "imag": 0.7012810559157969,
+              "real": 0.6875775245476072
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 2.1910363469864862e-13,
+            "relative_smallest_singular_value": 0.9999999999999992,
+            "smallest_singular_value": 1.644591745973924,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 17,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -9.974659986866641e-18,
+            "real": 0.9549814862695701
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.4774907431347857,
+          "grid_size": 17,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.5136610644852806,
+            "minimum_eigenvalue_distance": 3.6477511205876887e-16,
+            "multiplier_product": {
+              "imag": 1.3877787807814457e-16,
+              "real": 0.9549814862695705
+            },
+            "null_forcing_ratio": 3.146736990056541e-17,
+            "numerical_rank_threshold": 3.0249024574863284e-13,
+            "relative_smallest_singular_value": 8.450169819336638e-17,
+            "smallest_singular_value": 1.2790693043818487e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5439667372877688,
+          "input_maximum_reduced_resolvent_norm": 6.040253803180368,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.0,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.0,
+        "radial_band_normal_dominance": {
+          "cutoff": 0.763076388888889,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 17,
+          "master_real_dimension": 36,
+          "master_wave_count": 12,
+          "maximum_external_multiplier_modulus": 0.9744041059174848,
+          "maximum_master_projector_residual": 2.1437278376958243e-15,
+          "maximum_master_spectral_projector_norm": 1.8159675598196603,
+          "maximum_schur_invariance_residual": 7.515076220080822e-16,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.9088486919249938,
+          "minimum_master_multiplier_modulus": 0.908848691924994,
+          "minimum_ordered_schur_separation": 0.699387072035981,
+          "normal_dominance_ratio": 1.072130173674609,
+          "omega": 1.0,
+          "worst_external_eigenvalue": {
+            "imag": 1.4302177376879208e-17,
+            "real": -0.9744041059174848
+          },
+          "worst_external_eigenvalue_condition_number": 1.279574375558379,
+          "worst_external_symbol_departure_from_normality": 0.7437397677360073,
+          "worst_external_wave_index": [
+            -8,
+            0
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -1.1167282376600696e-16,
+            "real": 0.8260059448137725
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.41300297240688677,
+          "grid_size": 17,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.5461171540514282,
+            "minimum_eigenvalue_distance": 1.5746990573424485e-16,
+            "multiplier_product": {
+              "imag": 0.0,
+              "real": 0.8260059448137727
+            },
+            "null_forcing_ratio": 5.939117655229898e-16,
+            "numerical_rank_threshold": 3.0897627537524685e-13,
+            "relative_smallest_singular_value": 6.993042290292801e-17,
+            "smallest_singular_value": 1.0812062644028786e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.6933393190310266,
+          "input_maximum_reduced_resolvent_norm": 3.537506102216898,
+          "input_radial_index": 2,
+          "input_wave_indices": [
+            [
+              2,
+              0
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "omega": 1.0,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            2,
+            2
+          ],
+          "output_wave_magnitude": 1.045384220743145
+        },
+        "registered_cutoff": 0.763076388888889,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 2.004062712641667e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.4938738351583566e-16,
+          "grid_size": 17,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.5439667372877688,
+          "maximum_zero_wave_conservation_residual": 1.8376809136531968e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 0.9772315417901579,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.0,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 56.75276050522431,
+          "second_harmonic_minimum_smallest_singular_value": 0.028220944389332904,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 56.75276050522431,
+            "largest_singular_value": 1.601616498159064,
+            "minimum_eigenvalue_distance": 0.04620026636231916,
+            "multiplier_product": {
+              "imag": -0.39602080333786266,
+              "real": 0.8689977919657043
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 3.200672723176273e-13,
+            "relative_smallest_singular_value": 0.017620288266117844,
+            "smallest_singular_value": 0.028220944389332904,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_negative",
+            "acoustic_negative"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000007,
+          "zero_wave_minimum_smallest_singular_value": 0.954981486269569,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000004,
+            "largest_singular_value": 0.9549814862695694,
+            "minimum_eigenvalue_distance": 0.9549814862695691,
+            "multiplier_product": {
+              "imag": 0.0,
+              "real": 0.9549814862695692
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.2722909209766743e-13,
+            "relative_smallest_singular_value": 0.9999999999999997,
+            "smallest_singular_value": 0.954981486269569,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_negative",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 17,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -3.458383415354763e-17,
+            "real": 0.9699501044802414
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5756145127991976,
+          "grid_size": 17,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.8072532978908864,
+            "minimum_eigenvalue_distance": 1.0003859791157281e-15,
+            "multiplier_product": {
+              "imag": -8.326672684688674e-17,
+              "real": 0.9699501044802404
+            },
+            "null_forcing_ratio": 5.408106414205636e-16,
+            "numerical_rank_threshold": 3.611617600766776e-13,
+            "relative_smallest_singular_value": 2.823050717249381e-16,
+            "smallest_singular_value": 5.101967718862176e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5199775976519767,
+          "input_maximum_reduced_resolvent_norm": 5.94128539318862,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.2,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.2,
+        "radial_band_normal_dominance": {
+          "cutoff": 0.925486111111111,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 17,
+          "master_real_dimension": 60,
+          "master_wave_count": 20,
+          "maximum_external_multiplier_modulus": 0.9830465079046414,
+          "maximum_master_projector_residual": 1.4033091394181427e-14,
+          "maximum_master_spectral_projector_norm": 1.674013183416636,
+          "maximum_schur_invariance_residual": 1.2882852695054534e-15,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.9717542219908176,
+          "minimum_master_multiplier_modulus": 0.9235846219451801,
+          "minimum_ordered_schur_separation": 0.780424958074366,
+          "normal_dominance_ratio": 1.0643816327671496,
+          "omega": 1.2,
+          "worst_external_eigenvalue": {
+            "imag": 6.15858620129142e-17,
+            "real": -0.9830465079046414
+          },
+          "worst_external_eigenvalue_condition_number": 1.2516331899216573,
+          "worst_external_symbol_departure_from_normality": 0.7486453219031015,
+          "worst_external_wave_index": [
+            0,
+            -8
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 1.3877865291905984e-17,
+            "real": 0.8834471628029772
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5057840977045859,
+          "grid_size": 17,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.8199848121948203,
+            "minimum_eigenvalue_distance": 3.0436359517162795e-16,
+            "multiplier_product": {
+              "imag": 2.220446049250313e-16,
+              "real": 0.8834471628029774
+            },
+            "null_forcing_ratio": 4.572639079027443e-16,
+            "numerical_rank_threshold": 3.6370602773402054e-13,
+            "relative_smallest_singular_value": 4.761610192716262e-16,
+            "smallest_singular_value": 8.666058232335649e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.582503840575764,
+          "input_maximum_reduced_resolvent_norm": 3.3141291523703575,
+          "input_radial_index": 2,
+          "input_wave_indices": [
+            [
+              2,
+              0
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "omega": 1.2,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            2,
+            2
+          ],
+          "output_wave_magnitude": 1.045384220743145
+        },
+        "registered_cutoff": 0.925486111111111,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 2.0515741289714634e-15,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.6001860229047493e-16,
+          "grid_size": 17,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.519977597651977,
+          "maximum_zero_wave_conservation_residual": 2.0456295008877469e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.1571016577514182,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.2,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 96.02046557475715,
+          "second_harmonic_minimum_smallest_singular_value": 0.019335067599083888,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 96.02046557475715,
+            "largest_singular_value": 1.8565621927834368,
+            "minimum_eigenvalue_distance": 0.03009076085151171,
+            "multiplier_product": {
+              "imag": 0.4010031768635531,
+              "real": 0.883175892632133
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 3.7101565675381326e-13,
+            "relative_smallest_singular_value": 0.010414446482989042,
+            "smallest_singular_value": 0.019335067599083888,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000007,
+          "zero_wave_minimum_smallest_singular_value": 1.155021022420839,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000007,
+            "largest_singular_value": 1.1550210224208397,
+            "minimum_eigenvalue_distance": 1.1550210224208395,
+            "multiplier_product": {
+              "imag": 0.40100317686355313,
+              "real": 0.8831758926321334
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.5387971196212465e-13,
+            "relative_smallest_singular_value": 0.9999999999999994,
+            "smallest_singular_value": 1.155021022420839,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 17,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 3.534845622832933e-23,
+            "real": 0.9849183975018585
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.7237024472832462,
+          "grid_size": 17,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.252283736011201,
+            "minimum_eigenvalue_distance": 6.775999345267451e-16,
+            "multiplier_product": {
+              "imag": 3.885780586188048e-16,
+              "real": 0.984918397501859
+            },
+            "null_forcing_ratio": 2.1919131860331e-16,
+            "numerical_rank_threshold": 4.500967071075126e-13,
+            "relative_smallest_singular_value": 5.375808868370489e-16,
+            "smallest_singular_value": 1.2107846882135632e-15,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.505998347433828,
+          "input_maximum_reduced_resolvent_norm": 5.861814795245796,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.5,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.5,
+        "radial_band_normal_dominance": {
+          "cutoff": 1.1628541666666665,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 17,
+          "master_real_dimension": 84,
+          "master_wave_count": 28,
+          "maximum_external_multiplier_modulus": 0.9915408297961639,
+          "maximum_master_projector_residual": 8.847484671416605e-15,
+          "maximum_master_spectral_projector_norm": 1.579136707421373,
+          "maximum_schur_invariance_residual": 1.144096509771124e-15,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.9346477498570157,
+          "minimum_master_multiplier_modulus": 0.9278361318467364,
+          "minimum_ordered_schur_separation": 0.7322051262397772,
+          "normal_dominance_ratio": 1.0686594278481392,
+          "omega": 1.5,
+          "worst_external_eigenvalue": {
+            "imag": 7.689085740380366e-17,
+            "real": -0.9915408297961639
+          },
+          "worst_external_eigenvalue_condition_number": 1.2357186270867602,
+          "worst_external_symbol_departure_from_normality": 0.7017531786010608,
+          "worst_external_wave_index": [
+            -8,
+            0
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 1.6653345369462614e-16,
+            "real": 0.8716055197232726
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5324855853402815,
+          "grid_size": 17,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.2510152094200175,
+            "minimum_eigenvalue_distance": 6.753223014465661e-16,
+            "multiplier_product": {
+              "imag": 5.551115123125783e-17,
+              "real": 0.8716055197232733
+            },
+            "null_forcing_ratio": 1.7965281332160534e-16,
+            "numerical_rank_threshold": 4.4984320457031395e-13,
+            "relative_smallest_singular_value": 2.980612306138722e-16,
+            "smallest_singular_value": 6.709403634502737e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.55239587570874,
+          "input_maximum_reduced_resolvent_norm": 2.374203518228598,
+          "input_radial_index": 3,
+          "input_wave_indices": [
+            [
+              3,
+              0
+            ],
+            [
+              0,
+              3
+            ]
+          ],
+          "omega": 1.5,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            3,
+            3
+          ],
+          "output_wave_magnitude": 1.5680763311147174
+        },
+        "registered_cutoff": 1.1628541666666665,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 3.547903634004352e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.227779058661652e-16,
+          "grid_size": 17,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.505998347433828,
+          "maximum_zero_wave_conservation_residual": 3.321397304932255e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.4365908344220448,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.5,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 221.33782441492303,
+          "second_harmonic_minimum_smallest_singular_value": 0.010244493625399803,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 221.33782441492303,
+            "largest_singular_value": 2.26749393127854,
+            "minimum_eigenvalue_distance": 0.015506589787757917,
+            "multiplier_product": {
+              "imag": -0.40647312146826475,
+              "real": 0.8971308997361944
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 4.531363147265846e-13,
+            "relative_smallest_singular_value": 0.004517980614670658,
+            "smallest_singular_value": 0.010244493625399803,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_negative",
+            "acoustic_negative"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000007,
+          "zero_wave_minimum_smallest_singular_value": 1.455058469434759,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000007,
+            "largest_singular_value": 1.45505846943476,
+            "minimum_eigenvalue_distance": 1.4550584694347592,
+            "multiplier_product": {
+              "imag": 0.40647312146826514,
+              "real": 0.8971308997361949
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.938527297930772e-13,
+            "relative_smallest_singular_value": 0.9999999999999994,
+            "smallest_singular_value": 1.455058469434759,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 17,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 1.2490013971350768e-16,
+            "real": 0.9949530631560072
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.8723829604282156,
+          "grid_size": 17,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.6994608692284103,
+            "minimum_eigenvalue_distance": 5.928593376727866e-16,
+            "multiplier_product": {
+              "imag": 3.3306690738754696e-16,
+              "real": 0.9949530631560066
+            },
+            "null_forcing_ratio": 1.2744344246732097e-16,
+            "numerical_rank_threshold": 5.394606499965636e-13,
+            "relative_smallest_singular_value": 9.318897061824245e-17,
+            "smallest_singular_value": 2.5155997962762156e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5019146033143034,
+          "input_maximum_reduced_resolvent_norm": 5.820079393403749,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.8,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.8,
+        "radial_band_normal_dominance": {
+          "cutoff": 1.375236111111111,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 17,
+          "master_real_dimension": 132,
+          "master_wave_count": 44,
+          "maximum_external_multiplier_modulus": 0.9971775461562579,
+          "maximum_master_projector_residual": 1.1778148623650462e-14,
+          "maximum_master_spectral_projector_norm": 1.4979544760909027,
+          "maximum_schur_invariance_residual": 1.288218356828739e-15,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.7746891899647343,
+          "minimum_master_multiplier_modulus": 0.9551524571655485,
+          "minimum_ordered_schur_separation": 0.5469097741964478,
+          "normal_dominance_ratio": 1.0439983048522121,
+          "omega": 1.8,
+          "worst_external_eigenvalue": {
+            "imag": 2.0793001046779635e-16,
+            "real": -0.9971775461562579
+          },
+          "worst_external_eigenvalue_condition_number": 1.2311180717971628,
+          "worst_external_symbol_departure_from_normality": 0.650979075330664,
+          "worst_external_wave_index": [
+            -8,
+            0
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 1.1102230245951633e-16,
+            "real": 0.9557131795789834
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.6670570725075834,
+          "grid_size": 17,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.7025517485285953,
+            "minimum_eigenvalue_distance": 3.7238012298843233e-16,
+            "multiplier_product": {
+              "imag": 2.7755575615628914e-16,
+              "real": 0.9557131795789837
+            },
+            "null_forcing_ratio": 2.1619895077504093e-16,
+            "numerical_rank_threshold": 5.40078331762336e-13,
+            "relative_smallest_singular_value": 3.1680917273915552e-16,
+            "smallest_singular_value": 8.561931837361026e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5158001637034968,
+          "input_maximum_reduced_resolvent_norm": 2.2121049764483462,
+          "input_radial_index": 3,
+          "input_wave_indices": [
+            [
+              3,
+              0
+            ],
+            [
+              0,
+              3
+            ]
+          ],
+          "omega": 1.8,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            3,
+            3
+          ],
+          "output_wave_magnitude": 1.5680763311147174
+        },
+        "registered_cutoff": 1.375236111111111,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 9.534894006713364e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.3358026844634502e-16,
+          "grid_size": 17,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.5019146033143034,
+          "maximum_zero_wave_conservation_residual": 2.7553304764224026e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.7227866235200258,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.8,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 614.3588879958733,
+          "second_harmonic_minimum_smallest_singular_value": 0.0043957946188620456,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 614.3588879958733,
+            "largest_singular_value": 2.70059549390233,
+            "minimum_eigenvalue_distance": 0.005422866088256484,
+            "multiplier_product": {
+              "imag": -6.64431816389242e-16,
+              "real": 0.9948965246825836
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 5.396873935552764e-13,
+            "relative_smallest_singular_value": 0.0016277130835726057,
+            "smallest_singular_value": 0.0043957946188620456,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "shear",
+            "shear"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000007,
+          "zero_wave_minimum_smallest_singular_value": 1.7550266198423607,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000004,
+            "largest_singular_value": 1.7550266198423616,
+            "minimum_eigenvalue_distance": 1.7550266198423603,
+            "multiplier_product": {
+              "imag": 0.4104033001707289,
+              "real": 0.9063667740448647
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 2.338165154614862e-13,
+            "relative_smallest_singular_value": 0.9999999999999994,
+            "smallest_singular_value": 1.7550266198423607,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 33,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 4.8707782598911287e-17,
+            "real": 0.9879524648418043
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.49397623242090294,
+          "grid_size": 33,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.5036106379886622,
+            "minimum_eigenvalue_distance": 1.0421893383016911e-16,
+            "multiplier_product": {
+              "imag": -5.551115123125783e-17,
+              "real": 0.9879524648418043
+            },
+            "null_forcing_ratio": 1.7084587598738863e-16,
+            "numerical_rank_threshold": 3.004817670659401e-13,
+            "relative_smallest_singular_value": 5.477372849825515e-17,
+            "smallest_singular_value": 8.23583608522792e-17,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5114167300536325,
+          "input_maximum_reduced_resolvent_norm": 11.292406308651996,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.0,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.0,
+        "radial_band_normal_dominance": {
+          "cutoff": 0.763076388888889,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 33,
+          "master_real_dimension": 144,
+          "master_wave_count": 48,
+          "maximum_external_multiplier_modulus": 0.9932040175613213,
+          "maximum_master_projector_residual": 5.561434711352868e-15,
+          "maximum_master_spectral_projector_norm": 1.838634809475501,
+          "maximum_schur_invariance_residual": 7.523976223244469e-16,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.9032290363302359,
+          "minimum_master_multiplier_modulus": 0.9032290363302359,
+          "minimum_ordered_schur_separation": 0.6888226635770242,
+          "normal_dominance_ratio": 1.0996148015752993,
+          "omega": 1.0,
+          "worst_external_eigenvalue": {
+            "imag": 1.1504595675408227e-16,
+            "real": -0.9932040175613213
+          },
+          "worst_external_eigenvalue_condition_number": 1.2389232393509138,
+          "worst_external_symbol_departure_from_normality": 0.7445544701752131,
+          "worst_external_wave_index": [
+            0,
+            -16
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -3.312237636943216e-17,
+            "real": 0.815822692070047
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.40791134603502344,
+          "grid_size": 33,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.5478432462024567,
+            "minimum_eigenvalue_distance": 1.4414467883194781e-16,
+            "multiplier_product": {
+              "imag": 1.1102230246251565e-16,
+              "real": 0.815822692070047
+            },
+            "null_forcing_ratio": 4.291192441090081e-16,
+            "numerical_rank_threshold": 3.093212178800122e-13,
+            "relative_smallest_singular_value": 1.0066795909835621e-16,
+            "smallest_singular_value": 1.558182205993758e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.7069295976441703,
+          "input_maximum_reduced_resolvent_norm": 3.479270194631653,
+          "input_radial_index": 4,
+          "input_wave_indices": [
+            [
+              4,
+              0
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "omega": 1.0,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            4,
+            4
+          ],
+          "output_wave_magnitude": 1.0770625304626342
+        },
+        "registered_cutoff": 0.763076388888889,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 6.614549629322242e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.4938738351583566e-16,
+          "grid_size": 33,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.5114167300536332,
+          "maximum_zero_wave_conservation_residual": 1.96700078977143e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 0.9939579794145245,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.0,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 193.0768908206709,
+          "second_harmonic_minimum_smallest_singular_value": 0.007899511376498837,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 193.0768908206709,
+            "largest_singular_value": 1.5252130955769136,
+            "minimum_eigenvalue_distance": 0.012126512624166379,
+            "multiplier_product": {
+              "imag": -0.21556744310247164,
+              "real": 0.9641476807321893
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 3.047988053104738e-13,
+            "relative_smallest_singular_value": 0.005179283733799072,
+            "smallest_singular_value": 0.007899511376498837,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_negative",
+            "acoustic_negative"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000007,
+          "zero_wave_minimum_smallest_singular_value": 0.9879524648418041,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000007,
+            "largest_singular_value": 0.9879524648418047,
+            "minimum_eigenvalue_distance": 0.9879524648418043,
+            "multiplier_product": {
+              "imag": 0.0,
+              "real": 0.9879524648418044
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.3162170884430563e-13,
+            "relative_smallest_singular_value": 0.9999999999999994,
+            "smallest_singular_value": 0.9879524648418041,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ]
+        }
+      },
+      {
+        "grid_size": 33,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -3.430217260219495e-17,
+            "real": 0.9919656212816932
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5934741809514342,
+          "grid_size": 33,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.802106129287981,
+            "minimum_eigenvalue_distance": 2.294796296706359e-16,
+            "multiplier_product": {
+              "imag": 1.6653345369377348e-16,
+              "real": 0.9919656212816933
+            },
+            "null_forcing_ratio": 5.492239935708224e-16,
+            "numerical_rank_threshold": 3.601331491596544e-13,
+            "relative_smallest_singular_value": 1.1485613014782505e-16,
+            "smallest_singular_value": 2.0698293612569357e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5052598471261855,
+          "input_maximum_reduced_resolvent_norm": 11.24300905394211,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.2,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.2,
+        "radial_band_normal_dominance": {
+          "cutoff": 0.925486111111111,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 33,
+          "master_real_dimension": 204,
+          "master_wave_count": 68,
+          "maximum_external_multiplier_modulus": 0.9954770658716865,
+          "maximum_master_projector_residual": 1.1590018271903033e-14,
+          "maximum_master_spectral_projector_norm": 1.6868579612248136,
+          "maximum_schur_invariance_residual": 1.7486362326333051e-15,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.9587001606191279,
+          "minimum_master_multiplier_modulus": 0.9188418457392273,
+          "minimum_ordered_schur_separation": 0.7646264475301708,
+          "normal_dominance_ratio": 1.0834041467395343,
+          "omega": 1.2,
+          "worst_external_eigenvalue": {
+            "imag": 1.9102251712591559e-16,
+            "real": -0.9954770658716865
+          },
+          "worst_external_eigenvalue_condition_number": 1.2318626063562106,
+          "worst_external_symbol_departure_from_normality": 0.7494854302502132,
+          "worst_external_wave_index": [
+            -16,
+            0
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -1.526556555620112e-16,
+            "real": 0.8765920644078
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5002758263536774,
+          "grid_size": 33,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.8205163510351208,
+            "minimum_eigenvalue_distance": 2.708445043774637e-15,
+            "multiplier_product": {
+              "imag": 3.3306690738754696e-16,
+              "real": 0.8765920644077974
+            },
+            "null_forcing_ratio": 2.9885647509506635e-16,
+            "numerical_rank_threshold": 3.638122505326377e-13,
+            "relative_smallest_singular_value": 7.626004222379936e-16,
+            "smallest_singular_value": 1.3883265379905544e-15,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5878056887973162,
+          "input_maximum_reduced_resolvent_norm": 3.2469358273610958,
+          "input_radial_index": 4,
+          "input_wave_indices": [
+            [
+              4,
+              0
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "omega": 1.2,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            4,
+            4
+          ],
+          "output_wave_magnitude": 1.0770625304626342
+        },
+        "registered_cutoff": 0.925486111111111,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 4.338152444089858e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.6001860229047493e-16,
+          "grid_size": 33,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.5052598471261855,
+          "maximum_zero_wave_conservation_residual": 1.8998460485637342e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.1884981765868672,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.2,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 342.0404269154999,
+          "second_harmonic_minimum_smallest_singular_value": 0.0053054594002403515,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 342.0404269154999,
+            "largest_singular_value": 1.8146815982410618,
+            "minimum_eigenvalue_distance": 0.008037398277953875,
+            "multiplier_product": {
+              "imag": -0.2162631810849746,
+              "real": 0.968104348875565
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 3.6264623269154485e-13,
+            "relative_smallest_singular_value": 0.002923631013497265,
+            "smallest_singular_value": 0.0053054594002403515,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_negative",
+            "acoustic_negative"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000007,
+          "zero_wave_minimum_smallest_singular_value": 1.1879551899608838,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000007,
+            "largest_singular_value": 1.1879551899608845,
+            "minimum_eigenvalue_distance": 1.1879551899608842,
+            "multiplier_product": {
+              "imag": 0.21626318108497472,
+              "real": 0.9681043488755651
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.5826742449410307e-13,
+            "relative_smallest_singular_value": 0.9999999999999994,
+            "smallest_singular_value": 1.1879551899608838,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 33,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -7.069673891029755e-18,
+            "real": 0.9959787721101203
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.742969597850049,
+          "grid_size": 33,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.250724320512427,
+            "minimum_eigenvalue_distance": 4.0619785880798415e-16,
+            "multiplier_product": {
+              "imag": 3.3306690738754696e-16,
+              "real": 0.9959787721101205
+            },
+            "null_forcing_ratio": 3.015079155890777e-16,
+            "numerical_rank_threshold": 4.497850732890073e-13,
+            "relative_smallest_singular_value": 4.0762798973361557e-16,
+            "smallest_singular_value": 9.174582302150386e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.501593799318171,
+          "input_maximum_reduced_resolvent_norm": 11.203304080666038,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.5,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.5,
+        "radial_band_normal_dominance": {
+          "cutoff": 1.1628541666666665,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 33,
+          "master_real_dimension": 360,
+          "master_wave_count": 120,
+          "maximum_external_multiplier_modulus": 0.9977398042291205,
+          "maximum_master_projector_residual": 1.0894810627160249e-14,
+          "maximum_master_spectral_projector_norm": 1.5882897300902672,
+          "maximum_schur_invariance_residual": 1.58850002474315e-15,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.8891138042472131,
+          "minimum_master_multiplier_modulus": 0.9213360743334092,
+          "minimum_ordered_schur_separation": 0.6897182759160961,
+          "normal_dominance_ratio": 1.0829271012219832,
+          "omega": 1.5,
+          "worst_external_eigenvalue": {
+            "imag": -5.445364630053819e-17,
+            "real": -0.9977398042291205
+          },
+          "worst_external_eigenvalue_condition_number": 1.2276836663242832,
+          "worst_external_symbol_departure_from_normality": 0.702512231367462,
+          "worst_external_wave_index": [
+            0,
+            -16
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -2.7755575615567845e-17,
+            "real": 0.864273068608592
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5205173444201628,
+          "grid_size": 33,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.250174815971441,
+            "minimum_eigenvalue_distance": 4.652682298944795e-16,
+            "multiplier_product": {
+              "imag": -1.6653345369377348e-16,
+              "real": 0.8642730686085915
+            },
+            "null_forcing_ratio": 1.9038722029874594e-16,
+            "numerical_rank_threshold": 4.4967526022217027e-13,
+            "relative_smallest_singular_value": 6.381961914810173e-17,
+            "smallest_singular_value": 1.4360529977194725e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5554351109129647,
+          "input_maximum_reduced_resolvent_norm": 2.340871344203534,
+          "input_radial_index": 6,
+          "input_wave_indices": [
+            [
+              6,
+              0
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "omega": 1.5,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            6,
+            6
+          ],
+          "output_wave_magnitude": 1.6155937956939515
+        },
+        "registered_cutoff": 1.1628541666666665,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 4.513397448229105e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.227779058661652e-16,
+          "grid_size": 33,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.501593799318168,
+          "maximum_zero_wave_conservation_residual": 1.5015529455495881e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.4830115937254442,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.5,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 836.92765914886,
+          "second_harmonic_minimum_smallest_singular_value": 0.002694102130087205,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 836.92765914886,
+            "largest_singular_value": 2.2547685892418423,
+            "minimum_eigenvalue_distance": 0.004051153000024859,
+            "multiplier_product": {
+              "imag": 0.21703080817526646,
+              "real": 0.9720449283838563
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 4.5059328053601755e-13,
+            "relative_smallest_singular_value": 0.0011948463992897324,
+            "smallest_singular_value": 0.002694102130087205,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000007,
+          "zero_wave_minimum_smallest_singular_value": 1.4879578767148756,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000002,
+            "largest_singular_value": 1.487957876714876,
+            "minimum_eigenvalue_distance": 1.4879578767148756,
+            "multiplier_product": {
+              "imag": 0.21703080817526646,
+              "real": 0.9720449283838563
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.9823581132814584e-13,
+            "relative_smallest_singular_value": 0.9999999999999997,
+            "smallest_singular_value": 1.4879578767148756,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 33,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -2.85650452694596e-17,
+            "real": 0.9986581918026827
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.892630049959727,
+          "grid_size": 33,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.6998427359972634,
+            "minimum_eigenvalue_distance": 1.376497958991572e-15,
+            "multiplier_product": {
+              "imag": -3.7470027081099033e-16,
+              "real": 0.9986581918026813
+            },
+            "null_forcing_ratio": 4.736113515953464e-17,
+            "numerical_rank_threshold": 5.395369623068052e-13,
+            "relative_smallest_singular_value": 2.6946858745592647e-16,
+            "smallest_singular_value": 7.275228084223263e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5005115829864357,
+          "input_maximum_reduced_resolvent_norm": 11.182270306371626,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.8,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.8,
+        "radial_band_normal_dominance": {
+          "cutoff": 1.375236111111111,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 33,
+          "master_real_dimension": 504,
+          "master_wave_count": 168,
+          "maximum_external_multiplier_modulus": 0.9992464106837946,
+          "maximum_master_projector_residual": 1.0226110266049974e-14,
+          "maximum_master_spectral_projector_norm": 1.4994723729378674,
+          "maximum_schur_invariance_residual": 1.5554769660141002e-15,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.7301815224138963,
+          "minimum_master_multiplier_modulus": 0.9505217348358483,
+          "minimum_ordered_schur_separation": 0.5008666831225971,
+          "normal_dominance_ratio": 1.0512609802198378,
+          "omega": 1.8,
+          "worst_external_eigenvalue": {
+            "imag": -3.0239919694508223e-17,
+            "real": -0.9992464106837946
+          },
+          "worst_external_eigenvalue_condition_number": 1.2264535970272208,
+          "worst_external_symbol_departure_from_normality": 0.6516265865199967,
+          "worst_external_wave_index": [
+            0,
+            -16
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -3.885780586186835e-16,
+            "real": 0.9370639289234255
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5751134714908278,
+          "grid_size": 33,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.705737247465747,
+            "minimum_eigenvalue_distance": 7.108895957932399e-16,
+            "multiplier_product": {
+              "imag": 1.6653345369377348e-16,
+              "real": 0.9370639289234259
+            },
+            "null_forcing_ratio": 1.9192334735636809e-16,
+            "numerical_rank_threshold": 5.407149223300261e-13,
+            "relative_smallest_singular_value": 1.3096900962975902e-16,
+            "smallest_singular_value": 3.543677276189391e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.521670941124131,
+          "input_maximum_reduced_resolvent_norm": 2.0073579162610073,
+          "input_radial_index": 7,
+          "input_wave_indices": [
+            [
+              7,
+              0
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "omega": 1.8,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            7,
+            7
+          ],
+          "output_wave_magnitude": 1.8848594283096098
+        },
+        "registered_cutoff": 1.375236111111111,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 3.17586233314977e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.3358026844634502e-16,
+          "grid_size": 33,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.5005115829864357,
+          "maximum_zero_wave_conservation_residual": 7.180887111707415e-17,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.7793447310091572,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.8,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 2716.162876375945,
+          "second_harmonic_minimum_smallest_singular_value": 0.0009934577535342431,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 2716.162876375945,
+            "largest_singular_value": 2.6983930693975546,
+            "minimum_eigenvalue_distance": 0.0014912127050418485,
+            "multiplier_product": {
+              "imag": 0.21758295026819735,
+              "real": 0.9746670425366752
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 5.392472607241403e-13,
+            "relative_smallest_singular_value": 0.00036816643386800696,
+            "smallest_singular_value": 0.0009934577535342431,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000009,
+          "zero_wave_minimum_smallest_singular_value": 1.7879556627929234,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000004,
+            "largest_singular_value": 1.7879556627929243,
+            "minimum_eigenvalue_distance": 1.7879556627929223,
+            "multiplier_product": {
+              "imag": 0.21758295026819743,
+              "real": 0.9746670425366752
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 2.382035452609964e-13,
+            "relative_smallest_singular_value": 0.9999999999999996,
+            "smallest_singular_value": 1.7879556627929234,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 65,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 7.391685953773855e-17,
+            "real": 0.9968877564784331
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.4984438782392193,
+          "grid_size": 65,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.5009252341085215,
+            "minimum_eigenvalue_distance": 2.720486838877303e-16,
+            "multiplier_product": {
+              "imag": -8.326672684688674e-17,
+              "real": 0.9968877564784329
+            },
+            "null_forcing_ratio": 1.5836625934292021e-16,
+            "numerical_rank_threshold": 2.999451155666731e-13,
+            "relative_smallest_singular_value": 1.8054885958308354e-16,
+            "smallest_singular_value": 2.7099033933776624e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5029258113683168,
+          "input_maximum_reduced_resolvent_norm": 22.021339577836134,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.0,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.0,
+        "radial_band_normal_dominance": {
+          "cutoff": 0.763076388888889,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 65,
+          "master_real_dimension": 576,
+          "master_wave_count": 192,
+          "maximum_external_multiplier_modulus": 0.9982480841819991,
+          "maximum_master_projector_residual": 1.786688876235502e-14,
+          "maximum_master_spectral_projector_norm": 1.8241276552150918,
+          "maximum_schur_invariance_residual": 9.183211126232924e-16,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.9073051777472033,
+          "minimum_master_multiplier_modulus": 0.9073051777472034,
+          "minimum_ordered_schur_separation": 0.69574366560466,
+          "normal_dominance_ratio": 1.1002340873449026,
+          "omega": 1.0,
+          "worst_external_eigenvalue": {
+            "imag": 4.583013854536572e-18,
+            "real": -0.9982480841819991
+          },
+          "worst_external_eigenvalue_condition_number": 1.2283744191611805,
+          "worst_external_symbol_departure_from_normality": 0.7447729179631809,
+          "worst_external_wave_index": [
+            0,
+            -32
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -7.979727989493313e-17,
+            "real": 0.8531162360421483
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.42655811802107374,
+          "grid_size": 65,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.54082909810184,
+            "minimum_eigenvalue_distance": 4.494909211857047e-16,
+            "multiplier_product": {
+              "imag": 2.220446049250313e-16,
+              "real": 0.8531162360421479
+            },
+            "null_forcing_ratio": 3.9631223374931814e-16,
+            "numerical_rank_threshold": 3.079195095105138e-13,
+            "relative_smallest_singular_value": 1.8451714623476856e-16,
+            "smallest_singular_value": 2.8430938801724376e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.6585872593997948,
+          "input_maximum_reduced_resolvent_norm": 3.7326230278411416,
+          "input_radial_index": 7,
+          "input_wave_indices": [
+            [
+              7,
+              0
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "omega": 1.0,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            7,
+            7
+          ],
+          "output_wave_magnitude": 0.9569286328341094
+        },
+        "registered_cutoff": 0.763076388888889,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 3.8385133583568027e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.4938738351583566e-16,
+          "grid_size": 65,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.5029258113683168,
+          "maximum_zero_wave_conservation_residual": 1.1158607950078567e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 0.9984426655939901,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.0,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 729.1153172240388,
+          "second_harmonic_minimum_smallest_singular_value": 0.002065932296428,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 729.1153172240388,
+            "largest_singular_value": 1.5063028816734882,
+            "minimum_eigenvalue_distance": 0.0031174208731933437,
+            "multiplier_product": {
+              "imag": 0.11105450345961147,
+              "real": 0.9906826415547723
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 3.010197854327633e-13,
+            "relative_smallest_singular_value": 0.0013715251571003893,
+            "smallest_singular_value": 0.002065932296428,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000007,
+          "zero_wave_minimum_smallest_singular_value": 0.9968877564784322,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000004,
+            "largest_singular_value": 0.9968877564784325,
+            "minimum_eigenvalue_distance": 0.9968877564784323,
+            "multiplier_product": {
+              "imag": 0.0,
+              "real": 0.9968877564784324
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.3281212882511262e-13,
+            "relative_smallest_singular_value": 0.9999999999999997,
+            "smallest_singular_value": 0.9968877564784322,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ]
+        }
+      },
+      {
+        "grid_size": 65,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -5.922671227316638e-17,
+            "real": 0.997924991599175
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5983141960449164,
+          "grid_size": 65,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.8005565244389738,
+            "minimum_eigenvalue_distance": 2.497115771585594e-16,
+            "multiplier_product": {
+              "imag": -1.734723475976807e-16,
+              "real": 0.9979249915991748
+            },
+            "null_forcing_ratio": 9.454823691027674e-17,
+            "numerical_rank_threshold": 3.598234759028155e-13,
+            "relative_smallest_singular_value": 1.416771602184065e-16,
+            "smallest_singular_value": 2.5509773519523766e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5013528519981245,
+          "input_maximum_reduced_resolvent_norm": 21.996476577825117,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.2,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.2,
+        "radial_band_normal_dominance": {
+          "cutoff": 0.925486111111111,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 65,
+          "master_real_dimension": 876,
+          "master_wave_count": 292,
+          "maximum_external_multiplier_modulus": 0.9988325680545479,
+          "maximum_master_projector_residual": 2.16108560549875e-14,
+          "maximum_master_spectral_projector_norm": 1.7309694278091947,
+          "maximum_schur_invariance_residual": 1.9927014141801084e-15,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.920769898134076,
+          "minimum_master_multiplier_modulus": 0.9061979423554255,
+          "minimum_ordered_schur_separation": 0.7193708823175147,
+          "normal_dominance_ratio": 1.102223390022651,
+          "omega": 1.2,
+          "worst_external_eigenvalue": {
+            "imag": -8.169939684163071e-18,
+            "real": -0.9988325680545479
+          },
+          "worst_external_eigenvalue_condition_number": 1.2265781658146016,
+          "worst_external_symbol_departure_from_normality": 0.7497117175639213,
+          "worst_external_wave_index": [
+            0,
+            -32
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 8.56718230992884e-30,
+            "real": 0.8411315466440474
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.4718486133907992,
+          "grid_size": 65,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 1.8221626940934248,
+            "minimum_eigenvalue_distance": 1.0190492755571764e-15,
+            "multiplier_product": {
+              "imag": -4.996003610813204e-16,
+              "real": 0.8411315466440483
+            },
+            "null_forcing_ratio": 8.055577926993907e-17,
+            "numerical_rank_threshold": 3.6414125596719467e-13,
+            "relative_smallest_singular_value": 4.071505968091102e-16,
+            "smallest_singular_value": 7.418946283834341e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.6161186505793168,
+          "input_maximum_reduced_resolvent_norm": 2.9890757689496805,
+          "input_radial_index": 9,
+          "input_wave_indices": [
+            [
+              9,
+              0
+            ],
+            [
+              0,
+              9
+            ]
+          ],
+          "omega": 1.2,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            9,
+            9
+          ],
+          "output_wave_magnitude": 1.2303368136438553
+        },
+        "registered_cutoff": 0.925486111111111,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 2.526704381417827e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.6001860229047493e-16,
+          "grid_size": 65,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.5013528519981245,
+          "maximum_zero_wave_conservation_residual": 2.0087997529914787e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.1970272539416236,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.2,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 1307.1273878837521,
+          "second_harmonic_minimum_smallest_singular_value": 0.0013799344405672394,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 1307.1273878837521,
+            "largest_singular_value": 1.8037501007494823,
+            "minimum_eigenvalue_distance": 0.002075210207306437,
+            "multiplier_product": {
+              "imag": 0.11114606495511443,
+              "real": 0.9917161091276091
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 3.604616806539638e-13,
+            "relative_smallest_singular_value": 0.0007650363761553544,
+            "smallest_singular_value": 0.0013799344405672394,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000007,
+          "zero_wave_minimum_smallest_singular_value": 1.196887936487478,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000004,
+            "largest_singular_value": 1.1968879364874785,
+            "minimum_eigenvalue_distance": 1.196887936487478,
+            "multiplier_product": {
+              "imag": 0.11114606495511475,
+              "real": 0.9917161091276091
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.5945750539813888e-13,
+            "relative_smallest_singular_value": 0.9999999999999997,
+            "smallest_singular_value": 1.196887936487478,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 65,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 6.0034402174044846e-18,
+            "real": 0.9989622266259323
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.7481843454896444,
+          "grid_size": 65,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.2501963981232067,
+            "minimum_eigenvalue_distance": 1.3606821188234057e-15,
+            "multiplier_product": {
+              "imag": -2.706168622523819e-16,
+              "real": 0.9989622266259309
+            },
+            "null_forcing_ratio": 6.327741487960067e-16,
+            "numerical_rank_threshold": 4.496795732024963e-13,
+            "relative_smallest_singular_value": 2.4942438673567663e-16,
+            "smallest_singular_value": 5.612538566367093e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.500410923297875,
+          "input_maximum_reduced_resolvent_norm": 21.976483596517575,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.5,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.5,
+        "radial_band_normal_dominance": {
+          "cutoff": 1.1628541666666665,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 65,
+          "master_real_dimension": 1320,
+          "master_wave_count": 440,
+          "maximum_external_multiplier_modulus": 0.9994163690838926,
+          "maximum_master_projector_residual": 2.8262969607033404e-14,
+          "maximum_master_spectral_projector_norm": 1.5935073236958066,
+          "maximum_schur_invariance_residual": 1.909837137054361e-15,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.8727691220491198,
+          "minimum_master_multiplier_modulus": 0.9206291873403452,
+          "minimum_ordered_schur_separation": 0.672883791034726,
+          "normal_dominance_ratio": 1.0855797131211535,
+          "omega": 1.5,
+          "worst_external_eigenvalue": {
+            "imag": -1.2067506194418092e-17,
+            "real": -0.9994163690838926
+          },
+          "worst_external_eigenvalue_condition_number": 1.225504187697789,
+          "worst_external_symbol_departure_from_normality": 0.7027176398655669,
+          "worst_external_wave_index": [
+            -32,
+            0
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": 2.702100776302142e-29,
+            "real": 0.8603789461759341
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5141821488494369,
+          "grid_size": 65,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.2496944058923933,
+            "minimum_eigenvalue_distance": 8.881784197000982e-16,
+            "multiplier_product": {
+              "imag": 8.881784197001252e-16,
+              "real": 0.8603789461759341
+            },
+            "null_forcing_ratio": 2.4077571179941364e-16,
+            "numerical_rank_threshold": 4.4957925500258656e-13,
+            "relative_smallest_singular_value": 3.7545032827918627e-16,
+            "smallest_singular_value": 8.44648503220148e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5570483267721906,
+          "input_maximum_reduced_resolvent_norm": 2.325213715435293,
+          "input_radial_index": 12,
+          "input_wave_indices": [
+            [
+              12,
+              0
+            ],
+            [
+              0,
+              12
+            ]
+          ],
+          "omega": 1.5,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            12,
+            12
+          ],
+          "output_wave_magnitude": 1.6404490848584736
+        },
+        "registered_cutoff": 1.1628541666666665,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 2.6150062550508865e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.227779058661652e-16,
+          "grid_size": 65,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.500410923297875,
+          "maximum_zero_wave_conservation_residual": 1.2850861542185202e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.495610063973633,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.5,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 3249.812548458936,
+          "second_harmonic_minimum_smallest_singular_value": 0.0006927295317661467,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 3249.812548458936,
+            "largest_singular_value": 2.2512411250217066,
+            "minimum_eigenvalue_distance": 0.0010397609751002339,
+            "multiplier_product": {
+              "imag": 0.1112472190145872,
+              "real": 0.9927485011255166
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 4.4988835157678504e-13,
+            "relative_smallest_singular_value": 0.00030771005560742296,
+            "smallest_singular_value": 0.0006927295317661467,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000004,
+          "zero_wave_minimum_smallest_singular_value": 1.496888115842649,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000002,
+            "largest_singular_value": 1.4968881158426492,
+            "minimum_eigenvalue_distance": 1.4968881158426488,
+            "multiplier_product": {
+              "imag": 0.1112472190145872,
+              "real": 0.9927485011255167
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 1.9942555817955332e-13,
+            "relative_smallest_singular_value": 0.9999999999999999,
+            "smallest_singular_value": 1.496888115842649,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      },
+      {
+        "grid_size": 65,
+        "minimum_shell_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -1.1769273822975488e-17,
+            "real": 0.9996539824450899
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.8980975684765357,
+          "grid_size": 65,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.699959051534166,
+            "minimum_eigenvalue_distance": 9.020325713877049e-16,
+            "multiplier_product": {
+              "imag": 1.457167719820518e-16,
+              "real": 0.999653982445089
+            },
+            "null_forcing_ratio": 2.2636728498133024e-16,
+            "numerical_rank_threshold": 5.395602068204996e-13,
+            "relative_smallest_singular_value": 7.82684359963098e-17,
+            "smallest_singular_value": 2.1132157221765918e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5001320989149372,
+          "input_maximum_reduced_resolvent_norm": 21.96586709235527,
+          "input_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "omega": 1.8,
+          "output_wave_index": [
+            1,
+            1
+          ]
+        },
+        "omega": 1.8,
+        "radial_band_normal_dominance": {
+          "cutoff": 1.375236111111111,
+          "finite_grid_normal_attraction": false,
+          "grid_size": 65,
+          "master_real_dimension": 1920,
+          "master_wave_count": 640,
+          "maximum_external_multiplier_modulus": 0.9998054437193648,
+          "maximum_master_projector_residual": 3.0871708192216354e-14,
+          "maximum_master_spectral_projector_norm": 1.4998650518159895,
+          "maximum_schur_invariance_residual": 1.5450259595484141e-15,
+          "minimum_local_selected_excluded_eigenvalue_gap": 0.7222299248694705,
+          "minimum_master_multiplier_modulus": 0.9479109330405124,
+          "minimum_ordered_schur_separation": 0.4845591877544429,
+          "normal_dominance_ratio": 1.05474618856056,
+          "omega": 1.8,
+          "worst_external_eigenvalue": {
+            "imag": 1.0461085065357195e-17,
+            "real": -0.9998054437193648
+          },
+          "worst_external_eigenvalue_condition_number": 1.225186513176082,
+          "worst_external_symbol_departure_from_normality": 0.6518022494161014,
+          "worst_external_wave_index": [
+            -32,
+            0
+          ]
+        },
+        "registered_boundary_resonance_witness": {
+          "closest_output_eigenvalue": {
+            "imag": -1.998134831748094e-16,
+            "real": 0.935230427076574
+          },
+          "closest_output_hydrodynamic_label": "shear",
+          "forcing_norm": 0.5662639492389429,
+          "grid_size": 65,
+          "homological": {
+            "condition_number": null,
+            "largest_singular_value": 2.7060386424613334,
+            "minimum_eigenvalue_distance": 1.0168746963676965e-15,
+            "multiplier_product": {
+              "imag": -3.885780586188048e-16,
+              "real": 0.935230427076573
+            },
+            "null_forcing_ratio": 9.964565232832666e-16,
+            "numerical_rank_threshold": 5.407751531494753e-13,
+            "relative_smallest_singular_value": 2.436638099301117e-16,
+            "smallest_singular_value": 6.593636854402358e-16,
+            "status": "compatible_nonunique"
+          },
+          "input_labels": [
+            "acoustic_positive",
+            "acoustic_negative"
+          ],
+          "input_maximum_eigenvalue_condition_number": 1.5222189091943885,
+          "input_maximum_reduced_resolvent_norm": 1.9966754269312137,
+          "input_radial_index": 14,
+          "input_wave_indices": [
+            [
+              14,
+              0
+            ],
+            [
+              0,
+              14
+            ]
+          ],
+          "omega": 1.8,
+          "output_is_external_to_registered_radial_band": true,
+          "output_wave_index": [
+            14,
+            14
+          ],
+          "output_wave_magnitude": 1.913857265668219
+        },
+        "registered_cutoff": 1.375236111111111,
+        "stripe_finite_grid_audit": {
+          "all_sector_statuses": [
+            "nonsingular_practical"
+          ],
+          "complex_realification_singular_value_relative_error": 7.374849911416077e-16,
+          "fixed_leaf_kinetic_dimension": 6,
+          "fixed_leaf_kinetic_invariance_residual": 1.3358026844634502e-16,
+          "grid_size": 65,
+          "master_real_dimension": 6,
+          "master_wave_indices": [
+            [
+              1,
+              0
+            ],
+            [
+              -1,
+              0
+            ]
+          ],
+          "maximum_master_eigenvalue_condition_number": 1.5001320989149378,
+          "maximum_zero_wave_conservation_residual": 2.4704040392627757e-16,
+          "minimum_master_selected_excluded_eigenvalue_gap": 1.7946646640392567,
+          "nonlinear_invariant_subspace": "y-independent periodic populations",
+          "omega": 1.8,
+          "second_harmonic_interaction_count": 6,
+          "second_harmonic_maximum_condition_number": 11367.272452858333,
+          "second_harmonic_minimum_smallest_singular_value": 0.00023748746619577414,
+          "second_harmonic_wave_index": [
+            2,
+            0
+          ],
+          "second_harmonic_worst_diagnostic": {
+            "condition_number": 11367.272452858333,
+            "largest_singular_value": 2.6995847323863478,
+            "minimum_eigenvalue_distance": 0.00035629518932646403,
+            "multiplier_product": {
+              "imag": -0.11131999944341577,
+              "real": 0.9934364309517951
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 5.394854028279357e-13,
+            "relative_smallest_singular_value": 8.797185113202307e-05,
+            "smallest_singular_value": 0.00023748746619577414,
+            "status": "nonsingular_practical"
+          },
+          "second_harmonic_worst_input_labels": [
+            "acoustic_negative",
+            "acoustic_negative"
+          ],
+          "symbol_conjugacy_residual": 0.0,
+          "zero_wave_interaction_count": 9,
+          "zero_wave_maximum_condition_number": 1.0000000000000004,
+          "zero_wave_minimum_smallest_singular_value": 1.7968879692794413,
+          "zero_wave_worst_diagnostic": {
+            "condition_number": 1.0000000000000004,
+            "largest_singular_value": 1.7968879692794422,
+            "minimum_eigenvalue_distance": 1.7968879692794406,
+            "multiplier_product": {
+              "imag": 0.11131999944341588,
+              "real": 0.993436430951795
+            },
+            "null_forcing_ratio": null,
+            "numerical_rank_threshold": 2.393935675399173e-13,
+            "relative_smallest_singular_value": 0.9999999999999996,
+            "smallest_singular_value": 1.7968879692794413,
+            "status": "nonsingular_practical"
+          },
+          "zero_wave_worst_input_labels": [
+            "acoustic_positive",
+            "acoustic_positive"
+          ]
+        }
+      }
+    ],
+    "decision": "Reject the registered two-dimensional isotropic candidate as a standard nonresonant, normally attracting SSM. The detected rank-deficient sectors are forcing-compatible at quadratic order, so this does not prove that no resonant invariant chart exists; it does remove the standard uniqueness claim.",
+    "gates": {
+      "every_registered_isotropic_candidate_is_falsified": {
+        "passed": true,
+        "threshold": 16,
+        "value": 16
+      },
+      "minimum_nonempty_isotropic_shell_resonance_detected": {
+        "passed": true,
+        "threshold": 16,
+        "value": 16
+      },
+      "registered_radial_boundary_external_resonance_detected": {
+        "passed": true,
+        "threshold": 14,
+        "value": 14
+      },
+      "registered_radial_normal_attraction_is_falsified": {
+        "passed": true,
+        "threshold": 1,
+        "value": 14
+      },
+      "registered_radial_spectral_splits_are_resolved": {
+        "passed": true,
+        "threshold": {
+          "maximum_invariance_or_projector_residual": 1e-12,
+          "maximum_projector_norm": 100.0,
+          "minimum_schur_separation": 0.02
+        },
+        "value": {
+          "maximum_invariance_or_projector_residual": 3.0871708192216354e-14,
+          "maximum_projector_norm": 1.838634809475501,
+          "minimum_schur_separation": 0.4845591877544429
+        }
+      },
+      "resonant_forcing_compatibility_resolved": {
+        "passed": true,
+        "threshold": 1e-10,
+        "value": 9.964565232832666e-16
+      },
+      "stripe_complex_realification_consistency": {
+        "passed": true,
+        "threshold": 1e-10,
+        "value": 2.0515741289714634e-15
+      },
+      "stripe_finite_grid_practical_conditioning": {
+        "passed": true,
+        "threshold": 100000000.0,
+        "value": 11367.272452858333
+      },
+      "stripe_fixed_leaf_conservation_and_invariance": {
+        "passed": true,
+        "threshold": 1e-12,
+        "value": 3.321397304932255e-16
+      }
+    },
+    "hypothesis": "At least one registered radial candidate remains strictly quadratically nonresonant, normally attracting, and practically conditioned under the registered odd-grid refinement.",
+    "hypothesis_outcome": "rejected",
+    "limitations": [
+      "The resonance identity is established to the registered floating-point rank threshold across the campaign; a symbolic or high-precision proof remains open.",
+      "The full quadratic pair table was not enumerated after a decisive external witness falsified strict nonresonance.",
+      "Pointwise simple-mode diagnostics are used for the witness. Future mode-added clusters require Schur-block operators.",
+      "The stripe condition numbers grow under refinement, so no grid-uniform bound is claimed."
+    ],
+    "next_change": "Use N=17, omega=1.2 and the y-independent first-shell conjugate pair for a fixed-leaf dense quadratic solver oracle before any full two-dimensional mode-added construction.",
+    "question": "Do the Q004b radial low-wave-number candidates satisfy quadratic external nonresonance and finite-grid normal attraction?",
+    "registered_scope": {
+      "conservation_treatment": "fixed global mass and momentum leaf; zero-wave output is restricted to the six-dimensional kinetic sector",
+      "grid_sizes": [
+        9,
+        17,
+        33,
+        65
+      ],
+      "omega_to_cutoff": {
+        "1.0": 0.763076388888889,
+        "1.2": 0.925486111111111,
+        "1.5": 1.1628541666666665,
+        "1.8": 1.375236111111111
+      },
+      "polynomial_degree": 2,
+      "refinement_semantics": "sampling-density/domain-size diagnostic, not fixed-domain continuum convergence"
+    },
+    "repair_comparison": {
+      "cutoff_shrink": "rejected: the minimum nonempty C4-complete shell already has the compatible external resonance",
+      "mode_addition": "a diagonal shear orbit internalizes the first witness, but requires a new additive-closure and conditioning audit before it can be accepted",
+      "stripe_solver_oracle": "accepted only as a finite-grid algebraic oracle on the nonlinearly invariant y-independent subspace"
+    },
+    "study_validity": "passed",
+    "summary": {
+      "campaign_count": 16,
+      "external_registered_boundary_witness_count": 14,
+      "falsified_registered_isotropic_candidate_count": 16,
+      "maximum_resonant_null_forcing_ratio": 9.964565232832666e-16,
+      "maximum_stripe_condition_number": 11367.272452858333,
+      "maximum_stripe_realification_error": 2.0515741289714634e-15,
+      "minimum_shell_compatible_nonunique_count": 16,
+      "radial_normal_attraction_failure_count": 14,
+      "reference_stripe_N17_omega1p2": {
+        "second_harmonic_condition_number": 96.02046557475715,
+        "second_harmonic_smallest_singular_value": 0.019335067599083888,
+        "zero_wave_smallest_singular_value": 1.155021022420839
+      },
+      "stripe_refinement_slopes": {
+        "1.0": {
+          "log_condition_number_vs_log_N_slope": 1.7908138230984045,
+          "log_smallest_singular_value_vs_log_N_slope": -1.8429037341435697
+        },
+        "1.2": {
+          "log_condition_number_vs_log_N_slope": 1.879550337386034,
+          "log_smallest_singular_value_vs_log_N_slope": -1.9248868969347868
+        },
+        "1.5": {
+          "log_condition_number_vs_log_N_slope": 2.009435310330411,
+          "log_smallest_singular_value_vs_log_N_slope": -2.021153557696057
+        },
+        "1.8": {
+          "log_condition_number_vs_log_N_slope": 2.1996767058668762,
+          "log_smallest_singular_value_vs_log_N_slope": -2.198395766953637
+        }
+      }
+    }
+  },
+  "generated_at_utc": "2026-08-01T01:15:05.713765+00:00",
+  "mathematical_scope": {
+    "conservation_treatment": "fixed global mass and momentum leaf",
+    "construction_grid_parity": "odd periodic square grids only",
+    "manifold_claim": "registered isotropic nonresonant SSM candidate rejected; stripe retained only as a finite-grid solver oracle"
+  },
+  "next_question": "Q006s: does the N=17, omega=1.2 fixed-leaf stripe quadratic chart raise the invariance-residual order from two to three?",
+  "runtime": {
+    "numpy": "2.3.4",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.5",
+    "scipy": "1.16.3"
+  },
+  "schema_version": 1,
+  "source": {
+    "package_source_sha256": "37163126402651eafacb29066c18b7d77ee33b010d429badf1d1bb12ad432173",
+    "package_version": "0.1.0"
+  },
+  "study_gate": "passed"
+}

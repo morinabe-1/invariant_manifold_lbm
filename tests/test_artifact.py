@@ -44,3 +44,27 @@ def test_q004b_artifact_preserves_registered_scope_and_passed_gates() -> None:
     assert manufactured["outcome"] == "accepted"
     assert all(gate["passed"] for gate in branch_tracking["gates"].values())
     assert all(gate["passed"] for gate in manufactured["gates"].values())
+
+
+def test_q005_artifact_records_a_valid_falsification() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q005_nonresonance.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["cycle"]["study_validity"] == "passed"
+    assert artifact["cycle"]["hypothesis_outcome"] == "rejected"
+    assert all(
+        gate["passed"] for gate in artifact["cycle"]["gates"].values()
+    )
+    assert (
+        artifact["cycle"]["summary"]["minimum_shell_compatible_nonunique_count"]
+        == 16
+    )
+    assert (
+        artifact["cycle"]["summary"][
+            "falsified_registered_isotropic_candidate_count"
+        ]
+        == 16
+    )

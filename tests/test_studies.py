@@ -5,6 +5,7 @@ import json
 from ttim_lbm.studies import (
     run_manufactured_quadratic_study,
     run_q004b_branch_tracking_study,
+    run_q005_nonresonance_study,
 )
 
 
@@ -32,3 +33,19 @@ def test_manufactured_study_passes_nontrivial_and_resonance_gates() -> None:
     assert result["exact_resonance_rejected"] is True
     assert result["near_resonance_sweep"][-1]["condition_number"] > 1.0e4
     json.dumps(result)
+
+
+def test_q005_validly_rejects_isotropic_candidate_and_qualifies_stripe() -> None:
+    result = run_q005_nonresonance_study()
+    assert result["study_validity"] == "passed"
+    assert result["hypothesis_outcome"] == "rejected"
+    assert result["summary"]["campaign_count"] == 16
+    assert result["summary"]["minimum_shell_compatible_nonunique_count"] == 16
+    assert (
+        result["summary"]["falsified_registered_isotropic_candidate_count"]
+        == 16
+    )
+    assert result["summary"]["radial_normal_attraction_failure_count"] > 0
+    assert result["summary"]["maximum_stripe_condition_number"] < 1.0e8
+    assert all(gate["passed"] for gate in result["gates"].values())
+    json.dumps(result, allow_nan=False)

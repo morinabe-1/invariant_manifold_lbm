@@ -969,7 +969,7 @@
       "reduced_hessian_relative_error": 1.8068790009039826e-15
     }
   ],
-  "generated_at_utc": "2026-07-31T12:38:46.612098+00:00",
+  "generated_at_utc": "2026-08-01T01:15:01.772977+00:00",
   "mathematical_scope": {
     "conservation_treatment": "fixed global mass and momentum leaf for future nonzero-mode charts",
     "construction_grid_parity": "odd periodic square grids only",
@@ -985,7 +985,7 @@
   },
   "schema_version": 1,
   "source": {
-    "package_source_sha256": "2fbe9925319609d6826589a1c224ff64ff61214429e53e122d969fdd0098e294",
+    "package_source_sha256": "37163126402651eafacb29066c18b7d77ee33b010d429badf1d1bb12ad432173",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"
