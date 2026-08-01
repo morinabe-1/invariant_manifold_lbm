@@ -116,7 +116,7 @@
       "The Q005 isotropic candidate remains rejected, and the stripe conditioning is not claimed to be uniform under grid refinement.",
       "The evidence is limited to the registered sampled directions and amplitudes no larger than 0.01; it is not a uniform guarantee over the Euclidean coordinate ball."
     ],
-    "next_change": "Before a full 2D Q006 chart, audit whether capped resonant and near-resonant mode addition leaves every external quadratic Schur block resolved and recovers acceptable normal attraction.",
+    "next_change": "Before a full 2D Q006 chart, audit whether capped resonant and near-resonant mode addition leaves every external quadratic Schur block resolved and passes a finite-grid linear normal-dominance prequalification.",
     "non_gating_domain_stress": {
       "amplitudes": [
         0.025,
@@ -3243,7 +3243,7 @@
     },
     "study_validity": "passed"
   },
-  "generated_at_utc": "2026-08-01T01:53:52.826784+00:00",
+  "generated_at_utc": "2026-08-01T02:01:14.043112+00:00",
   "mathematical_scope": {
     "conservation_treatment": "fixed global mass and momentum leaf",
     "construction": "finite-grid y-independent stripe solver oracle",
@@ -3257,7 +3257,7 @@
       17
     ]
   },
-  "next_question": "Q006r: does capped resonant and near-resonant mode addition resolve every external quadratic Schur block and recover normal attraction?",
+  "next_question": "Q006r: does capped resonant and near-resonant mode addition resolve every external quadratic Schur block and pass finite-grid linear normal-dominance prequalification?",
   "runtime": {
     "numpy": "2.3.4",
     "platform": "Windows-11-10.0.26200-SP0",
@@ -3266,7 +3266,7 @@
   },
   "schema_version": 1,
   "source": {
-    "package_source_sha256": "3ebaeda2bcda66f95efc619e2e154a67bc1975857dd6ccc306f28e550cee76cc",
+    "package_source_sha256": "04517d0e02da54530c3a3db31b1ff6c5962831f58ab82fdb6d94cdf7af604c4b",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

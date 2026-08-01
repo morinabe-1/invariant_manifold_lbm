@@ -89,7 +89,9 @@ Q005 の結果、Q004b cutoff を radial に埋めた2次元 isotropic set は�
 resonance と near-Nyquist excluded mode により、標準的な nonresonant・normally
 attracting SSM 候補として棄却された。二次 forcing は共鳴左 nullspace と直交するため
 compatible だが、このことは一意性を回復しない。従って次の stripe 構築も
-candidate chart / solver oracle と呼び、full 2D manifold claim と分ける。
+candidate chart / solver oracle と呼び、full 2D manifold claim と分ける。Q006s は
+この有限格子 solver oracle として受理したが、存在・一意性や normal attraction の
+不足を埋める結果ではない。
 
 ### 2.3 Hydrodynamic field manifold
 
@@ -893,7 +895,7 @@ exit gate:
 これは solver と branch classification の誤差を分離する algebraic oracle であり、
 LBM の非零波数 candidate manifold の存在証拠ではない。
 
-### Phase 2: Nonzero-mode dense quadratic solver oracle
+### Phase 2: Nonzero-mode dense quadratic solver oracle — Q006s 完了
 
 最初の master set:
 
@@ -904,7 +906,9 @@ LBM の非零波数 candidate manifold の存在証拠ではない。
 構成は \(\delta M=\delta P_x=\delta P_y=0\) の固定保存量葉上で行い、\(k=0\) の
 保存方向を reduced coordinates に含めない。
 
-この stripe は full nonlinear map で不変だが、full 2D candidate の代替受理ではない。
+ambient な \(y\)-independent stripe 部分空間は full nonlinear map で厳密に不変だが、
+その内部に構築した二次 chart は局所的な有限次近似であり、full 2D candidate の
+代替受理ではない。
 二次 Fourier sum は \(0,\pm2k\) にだけ出るため、二次 \(R_2=0\) を予測する。
 Q005 では second-harmonic block の
 \(\sigma_{\min}=1.9335\times10^{-2}\)、\(\kappa_2=96.02\) を得ている。
@@ -918,15 +922,60 @@ Q005 では second-harmonic block の
 - graph gauge
 - \(\mathcal C H=0\) の fixed-leaf constraint
 
-exit gate:
+観測結果:
 
-- linear chart \(O(\varepsilon^2)\)
-- quadratic chart \(O(\varepsilon^3)\)
-- independent directionsで同じ order
-- rollout dispersion/decay が full LBM と一致
+- 36列の ordered tensor-product solver assembly は
+  \(\sigma_{\min}=1.9335\times10^{-2}\)、\(\kappa_2=96.0205\)
+- homological residual \(4.57\times10^{-15}\)、graph gauge
+  \(1.47\times10^{-16}\)、fixed-leaf Hessian residual \(9.03\times10^{-16}\)
+- \(\lVert\widehat H_0\rVert_F=0.6630\)、
+  \(\lVert\widehat H_{\pm2}\rVert_F=2.0938\) で、zero-wave kinetic 補正と
+  second harmonics の双方が非零
+- Richardson extrapolation と解析 Hessian の相対差 \(4.29\times10^{-11}\)
+- 未使用64方向で linear order `2.000000–2.000020`、quadratic order
+  `3.000000–3.000219`
+- \(\lVert a\rVert=0.01\) の最大方向別 quadratic/linear residual ratio `0.05672`
+- 32方向・100 step の quadratic 最大 absolute error \(1.873\times10^{-6}\)、
+  perturbation-relative error \(3.927\times10^{-4}\)、linearとの最大誤差比 `0.01691`
+- \(1\times17\) quotient と \(17^2\) の \(y\)-independent lift は1 stepで完全一致
 
-full 2D 構築は、diagonal shear orbit を加えた mode set の additive closure と
-Schur-block conditioning を再監査するまで保留する。
+従って、最大振幅0.01までの登録サンプル campaign で有限格子 solver-oracle gate は
+通過した。半径0.01の ball 全体に対する一様保証ではない。
+ただし振幅0.1の非ゲート stress では最大方向別残差比が `0.6009` へ悪化した。
+projected-coordinate drift も quadratic \(1.283\times10^{-6}\) に対して linear
+\(5.006\times10^{-7}\) であり改善しなかった。残差次数と shadow error の受理を、
+任意振幅の chart や最適な reduced coordinates の主張へ拡張しない。
+
+### Phase 2.5: Q006r resonant mode-added closure audit — 次のゲート
+
+literal な wave-index 加法閉包は要求しない。\(\mathbb Z_{17}^2\) では first-shell
+generator が反復加算により全格子を生成し、非共鳴な external output は reduced
+coordinate ではなく \(H\) の係数 sector として保持できるためである。
+
+固定条件は \(N=17,\omega=1.2\) と固定保存量葉である。axial first-shell の
+hydrodynamic modes に、Q005 の最初の witness を internalize する diagonal shear の
+C4・共役 orbit を加える。全 unordered input Schur-block pair を wave sector ごとに
+列挙し、external output projector と input product blockから full homological operatorを
+作る。その SVD の left singular subspaceで forcing sensitivity、right singular
+subspaceの output response energyで追加する generalized ordered-Schur clusterを決める。
+数値 singular cluster は forcing によらず追加し、near-resonant cluster は forcing が
+非無視な場合だけ C4・共役 orbit ごと追加する。cluster tolerance、SVD threshold、
+energy threshold、最大4 nonempty addition、64実座標 cap は
+`research/NEXT_QUESTIONS.md` の事前登録値に固定する。
+
+判定は二軸に分ける。
+
+1. coefficient solvability: cap 内で resonant/near-resonant closure が停止し、残る
+   external Schur block、\(k=0\) fixed-leaf block、C4・共役整合性が全て解像される。
+2. finite-grid linear normal-dominance prequalification: fixed-leaf spectrum の blockwise
+   selected/excluded separation、projector norm、linear normal-dominance 必要条件も通る。
+
+1だけを通り2を落とした場合は「coefficient-solvable finite-grid candidate」と記録し、
+full Q006 着手可とは扱わない。両方を通っても有限格子の二次 screening であり、
+存在・一意性や非線形 normal attraction の証明とは呼ばない。
+
+full 2D 構築は、diagonal shear orbit を加えた mode set の resonant/near-resonant
+closure と Schur-block conditioning を再監査するまで保留する。
 
 ### Phase 3: Degree/domain continuation
 
@@ -1086,8 +1135,9 @@ research/
 
 現行の小さいモジュールは Phase 0 oracle、Q004b の branch/cluster tracker、
 manufactured general-homological oracle、Q005 の Fourier-sector SVD/normal-gap
-campaign を含む。Q006s の coefficient solver が安定してから上記へ機械的に分割し、
-過早に抽象階層を増やさない。
+campaign、Q006s の stripe coefficient solver を含む。Q006r の sector grouping に
+必要な再利用境界が明確になった時点で上記へ機械的に分割し、過早に抽象階層を
+増やさない。
 
 Phase 1 以降の campaign artifact 共通 schema:
 

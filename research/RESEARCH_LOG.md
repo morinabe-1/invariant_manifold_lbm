@@ -493,7 +493,8 @@ stripe にも grid-uniform claim は置かない。
 - full 2D Q006 を保留する。
 - \(N=17,\omega=1.2\) の stripe を Q006s dense coefficient-solver oracle にする。
 - stripe では Fourier selection rule により二次 \(R_2=0\) を予測する。
-- diagonal shear を加える full 2D 案は additive-closure audit を別 gate にする。
+- diagonal shear を加える full 2D 案は resonant/near-resonant closure audit を
+  別 gate にする。
 - floating-point で観測した resonance identity は、後に symbolic/high-precision
   証明を試みる。
 
@@ -502,11 +503,108 @@ stripe にも grid-uniform claim は置かない。
 Q006s: 固定葉 stripe の dense quadratic chart は、独立方向で invariance residual
 order を2から3へ上げるか。
 
+## Cycle 008: Q006s fixed-leaf stripe quadratic solver oracle
+
+### 問い
+
+\(N_x=17,\omega=1.2\) の \(y\)-independent invariant stripe で、first-shell の
+shear/acoustic conjugate modes を実6座標へ変換し、固定保存量葉上の二次 chart が
+invariance residual order を2から3へ上げるか。
+
+### 仮説
+
+- Fourier selection rule により二次 \(R_2=0\) となる。
+- \(k=0\) kinetic block と \(\pm2k\) population blockだけで homological equation が解ける。
+- analytic Hessian、graph gauge、fixed-leaf constraint が独立検証を通る。
+- pilot と異なる seed の64方向で linear order \(2\pm0.1\)、quadratic order
+  \(3\pm0.1\) を得る。
+- 振幅0.01、32方向、100 step の quadratic shadowing が登録閾値を通る。
+
+### 実験
+
+- mode順序: shear、acoustic-positive、acoustic-negative
+- 実座標順序: 各 mode の real/imag を interleave
+- lift scale: \(s=(2N_x)^{-1/2}\)
+- output basis: zero-wave kinetic 6次元 + \(\pm2k\) full-population 18次元
+- solver: ordered \(6\times6\) tensor-product 36列上の real Sylvester equation
+- analytic Hessian: local moment → equilibrium Hessian → output-wave streaming
+- finite difference: step 0.006、0.003 の centered difference と Richardson extrapolation
+- 非ゲート pilot: seed 20260801
+- residual本試験: 未使用 seed 20260802、64方向、振幅
+  `0.000625, 0.00125, 0.0025, 0.005, 0.01`
+- shadow本試験: seed 20260803、32方向、振幅0.01、100 step
+- domain stress: 同じ64方向、最大振幅0.1、判定には不使用
+- quotient検証: \(1\times17\) state を \(y\) 方向へ複製した \(17^2\) state と比較
+
+### 結果
+
+全10個の登録 gate は通過し、仮説は登録範囲で支持された。
+
+- solver assembly \(\sigma_{\min}=1.9335068\times10^{-2}\)
+- solver assembly condition number: `96.0205`
+- homological relative residual: \(4.5736\times10^{-15}\)
+- graph gauge relative residual: \(1.4664\times10^{-16}\)
+- global fixed-leaf Hessian residual: \(9.0339\times10^{-16}\)
+- zero-wave conserved-moment residual: \(6.6589\times10^{-16}\)
+- predicted reduced Hessian norm ratio: \(3.7075\times10^{-17}\)
+- Richardson Hessian discrepancy: \(4.2948\times10^{-11}\)
+- \(\lVert\widehat H_0\rVert_F=0.662983\)
+- \(\lVert\widehat H_{+2}\rVert_F=\lVert\widehat H_{-2}\rVert_F=2.093771\)
+- linear residual order range: `2.0000001–2.0000204`
+- quadratic residual order range: `3.0000003–3.0002188`
+- 振幅0.01の最大方向別 quadratic/linear residual ratio: `0.056721`
+- local campaign minimum population: `0.027057`
+- quadratic 100-step maximum absolute error: `1.8726e-6`
+- quadratic maximum perturbation-relative error: `3.9270e-4`
+- quadratic/linear maximum shadow error ratio: `0.016912`
+- maximum conservation drift: `1.2791e-13`
+- quotient-to-square 1-step maximum difference: `0.0`
+
+保存した非ゲート診断には改善しなかった量もある。
+
+- projected-coordinate drift: quadratic `1.2826e-6`、linear `5.0056e-7`
+- 振幅0.1 stress の最大方向別 residual ratio: `0.600863`
+- 振幅0.1 stress の aggregate maximum residual ratio: `0.101770`
+
+### 分析
+
+sector-restricted solve は、全格子の巨大な Kronecker operator を作らずに、解析的
+二次 forcing、zero-wave kinetic correction、second harmonics を一貫して回収した。
+残差次数2→3と独立 finite difference の一致により、homological solve が小さいだけでなく、
+右辺 Hessian と座標正規化も整合している。
+
+固定保存量葉とは global mass と global momentum を固定することである。
+\(k=0\) correction の保存モーメントはゼロだが、非零の kinetic mean correction は許す。
+各格子点の density/momentum perturbation がゼロという意味ではない。
+
+厳密に不変なのは ambient な \(y\)-independent stripe 部分空間である。二次 chart は
+その内部で defect が三次となる局所近似で、exact invariant manifold の証明ではない。
+振幅0.1での劣化は、最大振幅0.01までの登録サンプルで支持された局所スケールを
+外挿できないことを示す。半径0.01の ball 全体に対する一様保証は得ていない。
+座標 drift が改善しなかったため、shadow error の改善だけから reduced coordinates が
+最適だとは結論しない。
+
+### 改善
+
+- Q006s は \(N=17,\omega=1.2\) の finite-grid dense solver oracle としてのみ受理する。
+- full 2D、grid-uniform conditioning、存在・一意性、normal attraction を主張しない。
+- full 2D chart の前に、diagonal shear orbit を含む resonant/near-resonant mode-added
+  closure を独立の Q006r gate にする。
+- Q006r では literal な全 wave-index 加法閉包でなく、external Schur resonance と
+  forcing を基準に追加 mode を選ぶ。
+
+### 次の問い
+
+Q006r: capped resonant/near-resonant mode addition は、全 quadratic external Schur
+block を解像し、finite-grid linear normal-dominance prequalification を通過できるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
 
 [artifacts/q005_nonresonance.json](artifacts/q005_nonresonance.json)
+
+[artifacts/q006s_stripe.json](artifacts/q006s_stripe.json)
 
 [`artifacts/d2q9_baseline.json`](artifacts/d2q9_baseline.json)
 

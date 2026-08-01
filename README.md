@@ -21,8 +21,10 @@ LBM 1-step 写像
 研究方向は Go である。ただし Q005 により、Q004b cutoff をそのまま使う2次元
 isotropic low-wave set は、標準的な nonresonant・normally-attracting SSM 候補として
 棄却された。これは研究計画全体の棄却ではなく、最初の reduced set の反証である。
-次は非線形に不変な \(y\)-independent stripe で coefficient solver を検証する。
-stripe を含め、存在・一意性 gate を通るまでは非零波数の対象を
+Q006s では非線形に不変な \(y\)-independent stripe 上の coefficient solver を
+有限格子オラクルとして受理した。次は full 2D chart を作る前に、Q006r で
+resonant/near-resonant mode-added closure を監査する。stripe を含め、存在・一意性
+gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
@@ -94,11 +96,46 @@ near-Nyquist excluded mode が finite-grid normal-attraction 必要条件を破�
 branch-classification error とは扱わない。
 
 修正案のうち cutoff 縮小は、最小 shell 自体が共鳴するため棄却した。mode追加は
-additive closure の再監査待ちである。\(y\)-independent stripe は有限格子 solver
-oracle として全16条件で nonsingular だった。代表 \(N=17,\omega=1.2\) の
+resonant/near-resonant closure の再監査待ちである。\(y\)-independent stripe は
+有限格子 solver oracle として全16条件で nonsingular だった。代表
+\(N=17,\omega=1.2\) の
 second-harmonic block は \(\sigma_{\min}=1.9335\times10^{-2}\)、
 condition number 96.02 である。ただし conditioning は概ね \(N^2\) で悪化するため、
 grid-uniform な manifold claim は置かない。
+
+### Q006s fixed-leaf stripe quadratic oracle
+
+\(N_x=17,\omega=1.2\) の \(1\times17\) stripe で、正波数側の shear と2本の
+acoustic mode を共役制約付き実6座標へ変換した。全質量・全運動量を固定し、
+二次出力を \(k=0,\pm2k\) に制限する sector-aware Sylvester solve を実装した。
+Fourier selection rule の予測どおり \(R_2=0\) で、非零の zero-wave kinetic 補正
+\(\lVert\widehat H_0\rVert_F=0.6630\) と second harmonics
+\(\lVert\widehat H_{\pm2}\rVert_F=2.0938\) を得た。
+
+- 36列の solver assembly:
+  \(\sigma_{\min}=1.9335\times10^{-2}\)、\(\kappa_2=96.0205\)
+- homological relative residual: \(4.57\times10^{-15}\)
+- graph gauge / fixed-leaf Hessian residual:
+  \(1.47\times10^{-16}\) / \(9.03\times10^{-16}\)
+- Richardson finite-difference Hessian discrepancy: \(4.29\times10^{-11}\)
+- 未使用 seed の64方向での residual order:
+  linear `2.000000–2.000020`、quadratic `3.000000–3.000219`
+- \(\lVert a\rVert=0.01\) での最大方向別 quadratic/linear residual ratio: `0.05672`
+- 32方向・100 step の quadratic 最大 absolute / perturbation-relative error:
+  `1.873e-6` / `3.927e-4`
+- quadratic/linear の最大 shadow error 比: `0.01691`
+- \(1\times17\) と \(y\) 方向へ複製した \(17^2\) の1 step 差: `0.0`
+
+最大振幅0.01までの登録サンプル campaign は全 gate を通過し、最小 population も
+`0.02706` だった。一方、非ゲート stress の \(\lVert a\rVert=0.1\) では最大方向別
+残差比が `0.6009` まで悪化した。また projected-coordinate drift は quadratic
+`1.283e-6`、linear `5.006e-7` で改善していない。これは登録判定を変えないが、
+支持された局所スケールと座標力学には追加検証・改善が必要である。半径0.01の
+Euclidean ball 全体に対する一様保証ではない。
+
+厳密に不変なのは ambient な \(y\)-independent stripe 部分空間であり、受理した
+quadratic chart はその中の局所的な有限次近似である。full 2D、grid-uniform、
+存在・一意性、normal attraction の主張には拡張しない。
 
 ## TT 格納量の解釈
 
@@ -122,8 +159,8 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 ## 再現
 
-Python 3.11 以上を使う。`q004b` study は事前登録した4個の \(\omega\) をまとめて
-実行するため、CLI の `--omega` は baseline study にだけ適用される。
+Python 3.11 以上を使う。`q004b`、`q005`、`q006s` は事前登録した条件を実行するため、
+CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
 python -m pip install -e ".[dev]"
@@ -132,14 +169,15 @@ python -m ruff check .
 python -m ttim_lbm --study baseline --omega 1.2 --output research/artifacts/d2q9_baseline.json
 python -m ttim_lbm --study q004b --output research/artifacts/q004b_and_manufactured.json
 python -m ttim_lbm --study q005 --output research/artifacts/q005_nonresonance.json
+python -m ttim_lbm --study q006s --output research/artifacts/q006s_stripe.json
 ```
 
 保存済み結果:
 
-- [research/artifacts/q005_nonresonance.json](research/artifacts/q005_nonresonance.json)
-
 - [`research/artifacts/d2q9_baseline.json`](research/artifacts/d2q9_baseline.json)
 - [`research/artifacts/q004b_and_manufactured.json`](research/artifacts/q004b_and_manufactured.json)
+- [`research/artifacts/q005_nonresonance.json`](research/artifacts/q005_nonresonance.json)
+- [`research/artifacts/q006s_stripe.json`](research/artifacts/q006s_stripe.json)
 
 ## 文書
 
@@ -161,12 +199,15 @@ python -m ttim_lbm --study q005 --output research/artifacts/q005_nonresonance.js
 - manufactured nonidentity/resonance oracle
 - Fourier-index arithmetic、sector SVD、fixed-leaf zero-mode restriction
 - Q005 radial-band normal-dominance/resonance campaign と stripe finite-grid audit
+- Q006s fixed-leaf stripe quadratic chart、sector Sylvester solve、residual/shadow campaign
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006s の fixed-leaf stripe dense quadratic chart と residual-order gate
-- mode-added full 2D candidate の additive closure、nonresonance、normal attraction
+- Q006r の resonant/near-resonant mode-added closure、Schur-block solve、
+  linear normal-dominance prequalification
+- mode-added full 2D candidate chart
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートは Q006s であり、full 2D Q006 や TT-cross へはまだ進まない。
+従って次のゲートは Q006r の代数・スペクトル監査であり、full 2D Q006 や
+TT-cross へはまだ進まない。

@@ -1499,7 +1499,8 @@ def run_q006s_stripe_study() -> dict[str, Any]:
         "next_change": (
             "Before a full 2D Q006 chart, audit whether capped resonant and "
             "near-resonant mode addition leaves every external quadratic "
-            "Schur block resolved and recovers acceptable normal attraction."
+            "Schur block resolved and passes a finite-grid linear "
+            "normal-dominance prequalification."
         ),
     }
 
@@ -1527,6 +1528,7 @@ def run_q006s_study() -> dict[str, Any]:
         "study_gate": cycle["study_validity"],
         "next_question": (
             "Q006r: does capped resonant and near-resonant mode addition resolve "
-            "every external quadratic Schur block and recover normal attraction?"
+            "every external quadratic Schur block and pass finite-grid linear "
+            "normal-dominance prequalification?"
         ),
     }

@@ -135,7 +135,8 @@ near-Nyquist excluded mode が finite-grid normal-attraction 必要条件を破�
 従って標準的な nonresonant・normally-attracting 2D isotropic SSM 候補は棄却した。
 
 cutoff を最小 shell まで縮小しても共鳴は残る。diagonal shear orbit の追加は最初の
-witness を internalize するが、additive closure を再監査するまで採用しない。
+witness を internalize するが、resonant/near-resonant closure を再監査するまで
+採用しない。
 一方、\(y\)-independent stripe は非線形写像で不変であり、有限格子 solver oracle
 として次へ進める。これは full 2D candidate の代替受理ではない。
 
@@ -147,7 +148,7 @@ Kronecker homological solverを検証する。係数回収、real/complex変換�
 非直交 similarity transform 下の左右基底 \(LV=I\) と左右不変性、条件数増大、
 厳密共鳴の明示的拒否を全て gate にする。
 
-## Q006s: fixed-leaf stripe quadratic solver oracle
+## Q006s: fixed-leaf stripe quadratic solver oracle — 完了
 
 ### 問い
 
@@ -198,13 +199,187 @@ master set \(K=\{\pm(2\pi/17,0)\}\) の3 hydrodynamic modes を実6座標へ変�
 - \(1\times17\) quotient の1 step と、\(y\) 方向へ複製した \(17\times17\) state の
   1 step が \(10^{-12}\) 以内で一致することを要求する。
 
+### 結果と判定
+
+全10個の登録 gate は通過し、有限格子 stripe solver oracle として受理した。
+
+- solver assembly: \(\sigma_{\min}=1.9335068\times10^{-2}\)、
+  \(\kappa_2=96.0205\)
+- 最大 algebraic consistency residual: \(1.2680\times10^{-14}\)
+- Richardson Hessian discrepancy: \(4.2948\times10^{-11}\)
+- linear residual order: `2.0000001–2.0000204`
+- quadratic residual order: `3.0000003–3.0002188`
+- 振幅0.01の最大方向別 quadratic/linear residual ratio: `0.056721`
+- 100-step quadratic 最大 absolute / perturbation-relative error:
+  `1.8726e-6` / `3.9270e-4`
+- quadratic/linear 最大 shadow error ratio: `0.016912`
+- \(1\times17\to17^2\) lift の1-step差: `0.0`
+
+zero-wave kinetic と second-harmonic Hessian sector はともに非零で、保存モーメント
+残差は \(6.66\times10^{-16}\) だった。保存量を固定するとは global mass/momentumを
+固定する意味であり、局所 density/momentum perturbation を全てゼロにする意味ではない。
+
+非ゲート診断では、振幅0.1の最大方向別残差比が `0.600863` へ悪化した。また
+projected-coordinate drift は quadratic `1.2826e-6`、linear `5.0056e-7` で改善しなかった。
+従って証拠範囲は \(N=17,\omega=1.2\)、固定保存量葉、\(y\)-independent、
+最大振幅0.01までの登録サンプルに限定する。半径0.01の ball 全体、full 2D、
+grid-uniform、存在・一意性、normal attraction は示していない。
+
+## Q006r: resonant/near-resonant mode-added closure audit — 事前登録
+
+### 問い
+
+Q005 の最初の compatible external resonance を diagonal shear orbit として
+internalize したとき、有限回の resonant/near-resonant mode addition で、full 2D
+candidate の全 quadratic external Schur block を解像できるか。さらに、その候補は
+excluded modes に対する finite-grid linear normal-dominance prequalification を
+通過するか。
+
+### 固定条件
+
+- \(N=17,\omega=1.2\)、全質量・全運動量を固定した葉だけを扱う。
+- 初期 reduced set は axial first shell
+  \((\pm1,0),(0,\pm1)\) の3 hydrodynamic modes と、diagonal
+  \((\pm1,\pm1)\) の shear mode の C4・複素共役 orbit とする。
+- 初期実座標次元は16とし、mode 順序、C4写像、共役 pairing を artifact に保存する。
+- 全 unordered input Schur-block pair と
+  \(k_{\rm out}=k_i+k_j\pmod {17}\) を漏れなく列挙する。異なる block の組は
+  Kronecker basis、同一 block の組は
+  \(e_p\odot e_q=(e_p\otimes e_q+e_q\otimes e_p)/\sqrt{2(1+\delta_{pq})}\)
+  の orthonormal symmetric basis を使い、forcing にも同じ正規化を使う。
+- \(k_{\rm out}=0\) は \(\ker(\rho,j_x,j_y)\) の6次元 fixed-leaf block に制限する。
+
+### block operator と cluster rule
+
+active output space は \(k\ne0\) で \(\mathbb C^9\)、\(k=0\) で
+\(\ker(\rho,j_x,j_y)\) の6次元 kinetic space とする。その埋込み直交基底を \(E_k\)、
+active linear block と forcing を
+
+\[
+A_{\rm act}(k)=E_k^*A(k)E_k,\qquad
+B_{\rm act}=E_k^*B_{ij,k}
+\]
+
+とする。現在 selected な active ordered-Schur invariant block への Riesz projector を
+\(P_k\)、external projector を \(\Pi_k=I-P_k\) とする。\(Q_k\) は
+\(\operatorname{ran}\Pi_k\) の直交基底とし、
+
+\[
+A_{\rm ext}(k)=Q_k^*A_{\rm act}(k)Q_k
+\]
+
+を external block とする。固定した \(k=0\) の3保存方向は常に active space の外に置く。
+\(P_k\) は一般に斜交なので、forcing は \(Q_k^*B_{\rm act}\) ではなく、必ず
+\(Q_k^*\Pi_kB_{\rm act}\) で external 成分へ射影する。
+
+unordered input block pair \((T_i,T_j)\) の正規化済み product block を \(K_{ij}\)、
+その次元を \(d_{ij}\)、external output 次元を \(d_{\rm ext}\) とする。column-major
+vectorization で homological operator と forcing を
+
+\[
+\mathcal L_{ij,k}
+=I_{d_{ij}}\otimes A_{\rm ext}(k)
+-K_{ij}^{\mathsf T}\otimes I_{d_{\rm ext}},
+\qquad
+b_{ij,k}=\operatorname{vec}(Q_k^*\Pi_kB_{\rm act})
+\]
+
+と固定する。全 condition number、rank、forcing sensitivity はこの full block operator
+の SVD から計算する。
+
+external eigenvalues は
+
+\[
+|\lambda_p-\lambda_q|\le
+10^{-8}\max(1,\lVert A_{\rm ext}(k)\rVert_2)
+\]
+
+を辺とする graph の connected components に分け、各 component を generalized
+ordered-Schur invariant cluster とする。各 cluster の Riesz range の直交基底を
+\(Z_c\) とする。
+
+\(\mathcal L=U\Sigma V^*\) の flagged right singular vector \(v_s\) を
+\(d_{\rm ext}\times d_{ij}\) 行列 \(X_s\) へ戻し、
+
+\[
+G_R=\sum_s X_sX_s^*,\qquad
+e_c=\frac{\operatorname{tr}(Z_c^*G_RZ_c)}
+{\max(\operatorname{tr}G_R,\epsilon_{\rm mach})}
+\]
+
+を response energy とする。\(e_c\ge10^{-8}\) の全 cluster を追加対象にする。
+丸めにより該当 cluster がない場合は最大 \(e_c\) の cluster を選び、最大値との差が
+\(10^{-12}\) 以下の tie は全て含める。これにより singular vector から追加する output
+cluster への写像を固定する。選択した external cluster は \(E_kQ_kZ_c\) で population
+space へ埋め戻してから、C4・複素共役 orbit を追加する。
+
+### closure rule
+
+literal な wave-index 加法閉包は要求しない。非共鳴 external output は \(H\) の
+coefficient sector として残せるためである。
+
+1. 数値 rank threshold は Q005 と同じ
+   \(100\epsilon_{\rm mach}\max(m,n)\sigma_{\max}\) とする。
+2. \(\sigma_s\) が rank threshold 以下の left/right singular subspace を numerically
+   singular とする。対応する right-response cluster は forcing compatibility に
+   かかわらず C4・共役 orbit ごと reduced set に追加する。left singular subspaceへの
+   null-forcing ratio は保存するが、追加により internal \(R_2\) sector へ移せるため
+   単独では棄却しない。
+3. rank threshold より大きく、\(\sigma_s/\sigma_{\max}<10^{-4}\) の singular subspaceを
+   near-resonant とする。その left singular basisを \(U_{\rm near}\) とし、
+   \(\lVert U_{\rm near}^*b\rVert_2/
+   \max(\lVert b\rVert_2,\epsilon_{\rm mach})\ge10^{-10}\) の場合だけ、対応する
+   right-response cluster を C4・共役 orbit ごと追加する。
+4. round 0 は初期 set の audit とする。最大4回の nonempty addition を許し、その後に
+   mandatory terminal re-audit を行う。terminal audit がさらに追加を要求した場合、または
+   次の追加で64実 reduced coordinates を超える場合は cap failure とする。
+5. 各 nonempty addition 後に、input block、pair table、output cluster、projectorを
+   最初から再構築する。
+6. normal-gap violation は terminal coefficient closure 後に別判定し、Q006r 内では
+   その違反 mode を追加しない。
+
+### 成功条件
+
+結果は二軸で判定する。
+
+**coefficient-solvability gate**
+
+- cap 内で追加が停止する。
+- numerically singular external block がゼロ。
+- 停止後、登録した near forcing sensitivity が \(\ge10^{-10}\) の全 external block の condition
+  number が \(10^4\) 以下で、残る全 external block も \(10^8\) 以下。
+- Schur/projector invariance residual、C4/conjugacy error、fixed-leaf conservation
+  residual が各 \(10^{-10}\) 以下。
+- pair table の列挙件数、各 round の追加 orbit、全 singular values、response energy、
+  forcing sensitivity、最悪 block、condition 分位値を保存する。
+
+**finite-grid linear normal-dominance prequalification gate**
+
+- coefficient-solvability gate を通る。
+- 停止後に numerically singular external resonance が残らない。
+- fixed-leaf spectrum 上で、全 selected eigenvalue の最小 modulus と全 excluded
+  eigenvalue の最大 modulus の差
+  \(\min|\lambda_{\rm selected}|-\max|\lambda_{\rm excluded}|\ge10^{-6}\) を満たす。
+  固定した \(k=0\) の3保存方向はこの比較の selected/excluded の双方から除く。
+- selected と external の双方がある各 Fourier sector で local Sylvester separation を
+  計算し、その全 sector 最小値が \(10^{-6}\) 以上である。selected local Riesz
+  projector norm の全 sector 最大値は100以下とする。異なる Fourier sector は線形写像で
+  block diagonal なので、cross-sector projector は作らない。
+
+coefficient-solvability だけを通り finite-grid linear normal-dominance
+prequalification を落とした場合は、
+「coefficient-solvable finite-grid candidate」と記録するが、full Q006 着手可とは
+扱わない。両 gate を通っても「quadratic finite-grid SSM screening passed」とだけ記録し、
+存在・一意性や非線形 normal attraction の証明とは呼ばない。
+
 ## Q006: full 2D fixed-leaf nonzero-mode quadratic parameterization — 保留
 
 ### 問い
 
 全質量・全運動量を固定した不変葉上で、mode-added 2D hydrodynamic set を含む dense
-candidate chart が residual order 2 → 3 を再現できるか。Q006s と、diagonal shear
-orbit を加えた additive-closure/conditioning 再監査が通るまで着手しない。
+candidate chart が residual order 2 → 3 を再現できるか。Q006r の
+coefficient-solvability と finite-grid linear normal-dominance prequalification の双方が
+通るまで着手しない。
 
 ### 必須観測
 
