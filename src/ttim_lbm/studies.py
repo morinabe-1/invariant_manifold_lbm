@@ -1491,8 +1491,9 @@ def run_q006s_stripe_study() -> dict[str, Any]:
                 "conditioning is not claimed to be uniform under grid refinement."
             ),
             (
-                "The accepted residual and shadowing domain is the registered "
-                "Euclidean coordinate ball at amplitude at most 0.01."
+                "The evidence is limited to the registered sampled directions "
+                "and amplitudes no larger than 0.01; it is not a uniform "
+                "guarantee over the Euclidean coordinate ball."
             ),
         ],
         "next_change": (

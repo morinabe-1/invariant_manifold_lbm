@@ -114,7 +114,7 @@
     "limitations": [
       "This is a one-direction stripe oracle, not a full two-dimensional slow spectral subspace or SSM existence result.",
       "The Q005 isotropic candidate remains rejected, and the stripe conditioning is not claimed to be uniform under grid refinement.",
-      "The accepted residual and shadowing domain is the registered Euclidean coordinate ball at amplitude at most 0.01."
+      "The evidence is limited to the registered sampled directions and amplitudes no larger than 0.01; it is not a uniform guarantee over the Euclidean coordinate ball."
     ],
     "next_change": "Before a full 2D Q006 chart, audit whether capped resonant and near-resonant mode addition leaves every external quadratic Schur block resolved and recovers acceptable normal attraction.",
     "non_gating_domain_stress": {
@@ -3243,7 +3243,7 @@
     },
     "study_validity": "passed"
   },
-  "generated_at_utc": "2026-08-01T01:40:31.324862+00:00",
+  "generated_at_utc": "2026-08-01T01:53:52.826784+00:00",
   "mathematical_scope": {
     "conservation_treatment": "fixed global mass and momentum leaf",
     "construction": "finite-grid y-independent stripe solver oracle",
@@ -3266,7 +3266,7 @@
   },
   "schema_version": 1,
   "source": {
-    "package_source_sha256": "f1bec461cf8d5620509f5476c710decc94068dfe66f84868ccdb10d4709801ff",
+    "package_source_sha256": "3ebaeda2bcda66f95efc619e2e154a67bc1975857dd6ccc306f28e550cee76cc",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"
