@@ -1,7 +1,7 @@
 # 次に検証する問い
 
 上から順に gate を通す。前段が失敗した場合は、失敗分析と設計修正を記録してから
-同じ gate を再実行する。Q004b と Q005m は実装済みだが、定義と再現条件を残す。
+同じ gate を再実行する。Q004b、Q005m、Q005 は実装済みだが、定義と再現条件を残す。
 
 ## Q004b: validated hydrodynamic-cluster cutoff
 
@@ -70,8 +70,13 @@ Q004bで得たどの \(k_c,\omega,P\) なら、次数 \(P\) までの homologica
 
 - まず \(P=2\) を判定し、これを通過した候補だけ高次へ進める。
 - upstream cutoff は Q004b の方向別最小合格値
-  \(\{1.0:0.7630763889,\ 1.2:0.9254861111,\)
-  \(\ 1.5:1.1628541667,\ 1.8:1.3752361111\}\) とする。
+
+  \[
+  \{1.0:0.7630763889,\ 1.2:0.9254861111,
+    1.5:1.1628541667,\ 1.8:1.3752361111\}
+  \]
+
+  とする。
 - 奇数格子 \(N=9,17,33,65\) を用いる。\(17,33\) は Q004b の構築格子、
   \(9,65\) は波数集合の疎密に対する refinement 診断であり、固定物理領域の
   continuum convergence とは呼ばない。
@@ -120,6 +125,20 @@ strict nonresonance が失敗した場合は、forcing compatibility があっ�
 標準 SSM の存在・一意性 gate を合格扱いしない。mode追加、cutoff縮小に加えて、
 非線形に不変な一方向 stripe 部分空間を solver oracle として切り分ける案を比較する。
 
+### 判定（実装済み）
+
+登録した16条件の最小非空 isotropic shell は全て、直交 acoustic 対から対角 shear
+への数値的 rank-deficient external resonance を持った。forcing の左 nullspace
+射影は最大 \(9.97\times10^{-16}\) で compatible だが、解の一意性は失われる。
+登録 radial band の境界でも14条件に外部 resonance witness があり、14条件で
+near-Nyquist excluded mode が finite-grid normal-attraction 必要条件を破った。
+従って標準的な nonresonant・normally-attracting 2D isotropic SSM 候補は棄却した。
+
+cutoff を最小 shell まで縮小しても共鳴は残る。diagonal shear orbit の追加は最初の
+witness を internalize するが、additive closure を再監査するまで採用しない。
+一方、\(y\)-independent stripe は非線形写像で不変であり、有限格子 solver oracle
+として次へ進める。これは full 2D candidate の代替受理ではない。
+
 ## Q005m: manufactured nonidentity oracle
 
 Q006より前に、既知の安定実共役 block、非零 \(R_2\)、mean-like complement、
@@ -128,19 +147,46 @@ Kronecker homological solverを検証する。係数回収、real/complex変換�
 非直交 similarity transform 下の左右基底 \(LV=I\) と左右不変性、条件数増大、
 厳密共鳴の明示的拒否を全て gate にする。
 
-## Q006: fixed-leaf nonzero-mode quadratic parameterization
+## Q006s: fixed-leaf stripe quadratic solver oracle
 
 ### 問い
 
-全質量・全運動量を固定した不変葉上で、最小 hydrodynamic shell を含む dense
-candidate chart が residual order 2 → 3 を再現できるか。
+\(N_x=17,\omega=1.2\) の \(y\)-independent 不変部分空間で、
+master set \(K=\{\pm(2\pi/17,0)\}\) の3 hydrodynamic modes を実6座標へ変換し、
+固定保存量葉上の dense quadratic chart が residual order 2 → 3 を再現できるか。
+
+### 事前登録
+
+- 実装対象は1方向 stripe oracle だけで、full 2D SSM の存在を主張しない。
+- \(a_{-k}=\overline{a_k}\) を課し、正波数側の複素3 mode を実6座標へ realify する。
+- Fourier selection rule により二次出力は \(k=0,\pm2k\) だけである。
+- \(k=0\) correction は \(\ker(\rho,j_x,j_y)\) の6次元 kinetic block に制限する。
+- \(K+K\) は \(K\) に戻らないため、二次 \(R_2\) はゼロを予測する。
+- Q005 の代表値
+  \(\sigma_{\min}=1.9335\times10^{-2}\)、\(\kappa_2=96.1\) 以下を
+  solver assembly の回帰値とする。
+- analytic equilibrium Hessian と独立 finite difference を比較し、
+  homological residual、graph gauge、fixed-leaf residual を各 \(10^{-10}\) 以下にする。
+- seed を固定した32以上の非退化方向と amplitude continuation で、linear chart は
+  \(2\pm0.1\)、quadratic chart は \(3\pm0.1\) の residual order を要求する。
+- 最大試験振幅で quadratic residual が linear residual の1/10未満になることを要求する。
+- 100-step full/reduced shadowing を保存するが、local chart domain を越えた軌道の
+  failure は residual gate と分ける。
+
+## Q006: full 2D fixed-leaf nonzero-mode quadratic parameterization — 保留
+
+### 問い
+
+全質量・全運動量を固定した不変葉上で、mode-added 2D hydrodynamic set を含む dense
+candidate chart が residual order 2 → 3 を再現できるか。Q006s と、diagonal shear
+orbit を加えた additive-closure/conditioning 再監査が通るまで着手しない。
 
 ### 必須観測
 
 - \(k+(-k)=0\) が作る zero-wave-number kinetic/complement correction
 - 上記 correction の保存密度・保存運動量成分が厳密にゼロ
 - second harmonic generation
-- internal \(R_2\)
+- Fourier selection rule が許す internal \(R_2\)（最小 shell だけならゼロ）
 - gauge residual
 - homological condition
 - 20以上の独立方向

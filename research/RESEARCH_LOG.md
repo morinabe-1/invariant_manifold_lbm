@@ -410,9 +410,103 @@ manifold の存在証拠ではない。
 Q005: Q004b の accepted sector に quadratic external resonance、強い nonnormality、
 grid refinement に伴う gap collapse がないか。
 
+## Cycle 007: Q005 の isotropic slow set は二次非共鳴か
+
+### 問い
+
+Q004b の cutoff 内にある2次元 isotropic hydrodynamic set は、固定保存量葉上で
+quadratic external nonresonance と finite-grid normal attraction を持つか。
+
+### 仮説
+
+登録した \(N=9,17,33,65\)、\(\omega=1.0,1.2,1.5,1.8\) の少なくとも1条件は、
+strict quadratic nonresonance、normal attraction、実用的 condition number を
+同時に満たす。
+
+### 実験
+
+- Q004b の方向別最小 cutoff を isotropic radial cutoff として使用
+- 全 radial master wave で3次元 hydrodynamic cluster と kinetic complement を分離
+- ordered-Schur separation、Riesz projector norm/residual を全 master wave で再監査
+- Fourier sum \(k_{\rm out}=k_1+k_2\pmod{2\pi}\) ごとの最大 \(9\times9\) block を使用
+- 数値 rank threshold:
+  \(100\epsilon_{\rm mach}\max(m,n)\sigma_{\max}\)
+- singular block は SVD 左 nullspace への解析的 equilibrium-Hessian forcing 射影で
+  compatible/noncompatible を分類
+- \(k_{\rm out}=0\) は固定葉の6次元 kinetic block だけを使用
+- 全 excluded wave の最大 modulus と master の最小 modulus を比較
+- 修正案として cutoff 縮小、mode追加、\(y\)-independent stripe を比較
+
+### 結果
+
+仮説は棄却された。実験の判定自体に必要な全 gate は通過した。
+
+- 最小非空 C4-complete shell の external resonance: 16/16条件
+- Q004b radial band 境界の external resonance witness: 14/16条件
+- 最大 resonant null-forcing ratio: \(9.97\times10^{-16}\)
+- radial band の normal-attraction 必要条件失敗: 14/16条件
+- master 内最小 ordered-Schur separation: 0.4846
+- 最大 spectral-projector norm: 1.8387
+- 最大 Schur/projector residual: \(3.09\times10^{-14}\)
+
+最小 shell の代表的な積は
+
+\[
+\lambda_{a+}(q,0)\lambda_{a-}(0,q)
+\simeq\lambda_s(q,q)
+\]
+
+であり、homological block は登録した数値 rank threshold で singular になった。
+共鳴 shear への二次 forcing 射影はゼロと整合したため、分類は
+compatible_nonunique である。
+
+radial cutoff の normal gap を壊した最悪 excluded mode は主に odd grid の
+near-Nyquist axis sector だった。奇数格子は厳密な \(\lambda=-1\) を避けるが、
+格子細分化に一様な normal gap を与えない。
+
+### 分析
+
+forcing compatibility は「二次方程式が不整合ではない」ことを示すが、標準 SSM
+非共鳴条件と係数の一意性を回復しない。従って、登録した2次元 isotropic set を
+nonresonant・normally-attracting SSM と呼ぶ仮説は棄却する。一方で、これは resonant
+invariant chart が存在しないことの証明でもない。
+
+cutoff を最小非空 shell まで縮小しても同じ障害が残る。diagonal shear orbit を
+追加すれば最初の witness は internal になるが、二次和による closure cascade と
+conditioning を新たに監査する必要がある。
+
+独立な solver oracle として \(y\)-independent stripe
+\(K=\{\pm(q,0)\}\) を監査した。この部分空間は full nonlinear collide-stream map で
+不変で、二次出力は \(0,\pm2q\) だけである。全16条件は nonsingular かつ
+\(\kappa_2<1.14\times10^4\) だった。代表 \(N=17,\omega=1.2\) では
+
+- second-harmonic \(\sigma_{\min}=1.9335\times10^{-2}\)
+- worst condition number: 96.02
+- zero-wave fixed-leaf \(\sigma_{\min}=1.1550\)
+- realification singular-value error: \(2.1\times10^{-15}\) 以下
+
+だった。ただし second-harmonic \(\sigma_{\min}\) は概ね \(N^{-2}\) で閉じるため、
+stripe にも grid-uniform claim は置かない。
+
+### 改善
+
+- full 2D Q006 を保留する。
+- \(N=17,\omega=1.2\) の stripe を Q006s dense coefficient-solver oracle にする。
+- stripe では Fourier selection rule により二次 \(R_2=0\) を予測する。
+- diagonal shear を加える full 2D 案は additive-closure audit を別 gate にする。
+- floating-point で観測した resonance identity は、後に symbolic/high-precision
+  証明を試みる。
+
+### 次の問い
+
+Q006s: 固定葉 stripe の dense quadratic chart は、独立方向で invariance residual
+order を2から3へ上げるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
+
+[artifacts/q005_nonresonance.json](artifacts/q005_nonresonance.json)
 
 [`artifacts/d2q9_baseline.json`](artifacts/d2q9_baseline.json)
 

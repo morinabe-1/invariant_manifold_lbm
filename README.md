@@ -18,10 +18,12 @@ LBM 1-step 写像
 
 ## 現時点の判定
 
-研究方向は Go である。ただし、Q005 の sector-aware nonresonance、nonnormality、
-grid-refinement gate と、有限領域での invariance/normal-attraction gate を通るまでは、
-非零波数の対象を **candidate slow spectral subspace / candidate chart** と呼ぶ。
-その存在・一意性を既成事実とはしない。
+研究方向は Go である。ただし Q005 により、Q004b cutoff をそのまま使う2次元
+isotropic low-wave set は、標準的な nonresonant・normally-attracting SSM 候補として
+棄却された。これは研究計画全体の棄却ではなく、最初の reduced set の反証である。
+次は非線形に不変な \(y\)-independent stripe で coefficient solver を検証する。
+stripe を含め、存在・一意性 gate を通るまでは非零波数の対象を
+**candidate spectral subspace / candidate chart** と呼ぶ。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -77,6 +79,27 @@ condition number が約 `5.10` から `1.74e4` へ増大し、厳密共鳴を
 rank deficiency として拒否した。これは solver と LBM branch-classification error を
 切り分ける algebraic oracle であり、D2Q9 candidate manifold の存在証拠ではない。
 
+### Q005 sector-aware nonresonance
+
+Q004b の方向別最小 cutoff、奇数格子 \(N=9,17,33,65\)、
+\(\omega=1.0,1.2,1.5,1.8\) の16条件を監査した。最小非空 isotropic shell は全条件で、
+直交 acoustic 対の積が対角 shear と数値 rank threshold 内で一致した。
+二次 forcing の左 nullspace 射影は最大 \(9.97\times10^{-16}\) なので方程式は
+compatible だが、係数は非一意で strict nonresonance は失敗する。
+
+登録 radial band の境界でも14条件に external resonance witness があり、14条件で
+near-Nyquist excluded mode が finite-grid normal-attraction 必要条件を破った。
+一方、spectral split 自体は最小 Schur separation 0.4846、最大 projector norm 1.8387、
+最大 residual \(3.09\times10^{-14}\) で解像されている。従ってこの失敗を
+branch-classification error とは扱わない。
+
+修正案のうち cutoff 縮小は、最小 shell 自体が共鳴するため棄却した。mode追加は
+additive closure の再監査待ちである。\(y\)-independent stripe は有限格子 solver
+oracle として全16条件で nonsingular だった。代表 \(N=17,\omega=1.2\) の
+second-harmonic block は \(\sigma_{\min}=1.9335\times10^{-2}\)、
+condition number 96.02 である。ただし conditioning は概ね \(N^2\) で悪化するため、
+grid-uniform な manifold claim は置かない。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -108,9 +131,12 @@ python -m pytest
 python -m ruff check .
 python -m ttim_lbm --study baseline --omega 1.2 --output research/artifacts/d2q9_baseline.json
 python -m ttim_lbm --study q004b --output research/artifacts/q004b_and_manufactured.json
+python -m ttim_lbm --study q005 --output research/artifacts/q005_nonresonance.json
 ```
 
 保存済み結果:
+
+- [research/artifacts/q005_nonresonance.json](research/artifacts/q005_nonresonance.json)
 
 - [`research/artifacts/d2q9_baseline.json`](research/artifacts/d2q9_baseline.json)
 - [`research/artifacts/q004b_and_manufactured.json`](research/artifacts/q004b_and_manufactured.json)
@@ -133,13 +159,14 @@ python -m ttim_lbm --study q004b --output research/artifacts/q004b_and_manufactu
 - 固定保存量葉への線形射影
 - identity-center と general real-block の dense quadratic homological solver
 - manufactured nonidentity/resonance oracle
+- Fourier-index arithmetic、sector SVD、fixed-leaf zero-mode restriction
+- Q005 radial-band normal-dominance/resonance campaign と stripe finite-grid audit
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q005 の sector-aware quadratic nonresonance、reduced resolvent、nonnormality、
-  grid-refinement gate
-- 非零波数 fixed-leaf D2Q9 quadratic chart とその normal attraction
+- Q006s の fixed-leaf stripe dense quadratic chart と residual-order gate
+- mode-added full 2D candidate の additive closure、nonresonance、normal attraction
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートは Q005 であり、Q006 の非零波数 chart や TT-cross へはまだ進まない。
+従って次のゲートは Q006s であり、full 2D Q006 や TT-cross へはまだ進まない。

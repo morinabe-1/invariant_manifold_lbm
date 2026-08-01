@@ -85,6 +85,12 @@ attraction、domain gate を通るまでは candidate slow spectral subspace ま
 candidate chart と呼ぶ。これらを通過する前に slow manifold の存在を既成事実として
 記述しない。
 
+Q005 の結果、Q004b cutoff を radial に埋めた2次元 isotropic set は、二次 external
+resonance と near-Nyquist excluded mode により、標準的な nonresonant・normally
+attracting SSM 候補として棄却された。二次 forcing は共鳴左 nullspace と直交するため
+compatible だが、このことは一意性を回復しない。従って次の stripe 構築も
+candidate chart / solver oracle と呼び、full 2D manifold claim と分ける。
+
 ### 2.3 Hydrodynamic field manifold
 
 全格子の \(\rho,\boldsymbol j\) を座標とすれば
@@ -852,7 +858,7 @@ exit evidence:
 - reproducible JSON artifact
 - observed residual order 2 → 3
 
-### Phase 1: Hydrodynamic branch/cluster tracking — Q004b 完了、Q005 未完
+### Phase 1: Hydrodynamic spectrum と Q005 falsification — 完了
 
 実装:
 
@@ -869,6 +875,9 @@ exit gate:
 - path reversal と格子90度回転で cluster subspace が保たれる
 - odd \(17^2,33^2\) と even \(16^2,32^2\) の parity を分離
 - Q005 で sector-aware nonresonance、nonnormality、grid refinement を評価
+- 最小 isotropic shell の compatible external resonance を16/16条件で検出
+- registered radial band の normal-attraction 必要条件を14/16条件で棄却
+- fixed-leaf stripe の有限格子 conditioning を solver oracle として分離
 
 全 Brillouin zone での個別ラベル一意性は棄却済みであり、失敗ではない。Q004b の
 \(k_c\) は経験的 cutoff で、candidate manifold の存在を意味しない。
@@ -884,14 +893,21 @@ exit gate:
 これは solver と branch classification の誤差を分離する algebraic oracle であり、
 LBM の非零波数 candidate manifold の存在証拠ではない。
 
-### Phase 2: Nonzero-mode dense quadratic manifold
+### Phase 2: Nonzero-mode dense quadratic solver oracle
 
 最初の master set:
 
-- 最小非零 wave shell の shear/acoustic conjugate pairs
+- \(N=17,\omega=1.2\) の \(y\)-independent stripe
+- \(K=\{\pm(2\pi/17,0)\}\) の shear/acoustic conjugate modes
+- 正波数側の複素3座標を共役制約により実6座標へ変換
 
 構成は \(\delta M=\delta P_x=\delta P_y=0\) の固定保存量葉上で行い、\(k=0\) の
 保存方向を reduced coordinates に含めない。
+
+この stripe は full nonlinear map で不変だが、full 2D candidate の代替受理ではない。
+二次 Fourier sum は \(0,\pm2k\) にだけ出るため、二次 \(R_2=0\) を予測する。
+Q005 では second-harmonic block の
+\(\sigma_{\min}=1.9335\times10^{-2}\)、\(\kappa_2=96.02\) を得ている。
 
 実装:
 
@@ -908,6 +924,9 @@ exit gate:
 - quadratic chart \(O(\varepsilon^3)\)
 - independent directionsで同じ order
 - rollout dispersion/decay が full LBM と一致
+
+full 2D 構築は、diagonal shear orbit を加えた mode set の additive closure と
+Schur-block conditioning を再監査するまで保留する。
 
 ### Phase 3: Degree/domain continuation
 
@@ -1065,9 +1084,10 @@ research/
   reports/
 ```
 
-現行の小さいモジュールは Phase 0 oracle に加え、Q004b の branch/cluster tracker と
-manufactured general-homological oracle を含む。Q005 と Phase 2 へ進む時点で上記へ
-機械的に分割し、過早に抽象階層を増やさない。
+現行の小さいモジュールは Phase 0 oracle、Q004b の branch/cluster tracker、
+manufactured general-homological oracle、Q005 の Fourier-sector SVD/normal-gap
+campaign を含む。Q006s の coefficient solver が安定してから上記へ機械的に分割し、
+過早に抽象階層を増やさない。
 
 Phase 1 以降の campaign artifact 共通 schema:
 
@@ -1107,6 +1127,7 @@ artifact に保存し、上記 campaign field を完全には平坦化してい�
 | center/slow 混同 | \(m=3\) で空間流れを再現不能 | branch-tracked slow setへ変更 |
 | Nyquist ghost | 偶数格子で \(\lambda=-1\) | 主構築を奇数格子に限定し、偶数格子は障害解析 |
 | spectral gap collapse | homological condition急増 | mode追加、\(k_c\)低下、MRT |
+| compatible external resonance | null forcing だが homological block が singular | 一意性を主張せず、mode追加または不変 stripe oracleへ分離 |
 | internal resonance | \(R\)を線形にすると不整合 | resonant termを \(R\) に残す |
 | chart fold | \(\sigma_{\min}(DW)\to0\) | domain縮小、multiple charts |
 | TT rank explosion | collision後 rank急増 | ordering/rank適応、domain縮小 |
