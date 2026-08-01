@@ -159,6 +159,16 @@ master set \(K=\{\pm(2\pi/17,0)\}\) の3 hydrodynamic modes を実6座標へ変�
 
 - 実装対象は1方向 stripe oracle だけで、full 2D SSM の存在を主張しない。
 - \(a_{-k}=\overline{a_k}\) を課し、正波数側の複素3 mode を実6座標へ realify する。
+  mode 順序は shear、acoustic-positive、acoustic-negative、各 mode 内は
+  real/imag の interleaved 順とする。
+- 複素 Fourier mode の線形 lift には
+
+  \[
+  s=(2N_x)^{-1/2},\qquad
+  \delta f_x=s e^{ikx}V_cz+\overline{s e^{ikx}V_cz}
+  \]
+
+  を使う。座標振幅はこの正規化後の実6座標の Euclidean norm とする。
 - Fourier selection rule により二次出力は \(k=0,\pm2k\) だけである。
 - \(k=0\) correction は \(\ker(\rho,j_x,j_y)\) の6次元 kinetic block に制限する。
 - \(K+K\) は \(K\) に戻らないため、二次 \(R_2\) はゼロを予測する。
@@ -167,11 +177,26 @@ master set \(K=\{\pm(2\pi/17,0)\}\) の3 hydrodynamic modes を実6座標へ変�
   solver assembly の回帰値とする。
 - analytic equilibrium Hessian と独立 finite difference を比較し、
   homological residual、graph gauge、fixed-leaf residual を各 \(10^{-10}\) 以下にする。
-- seed を固定した32以上の非退化方向と amplitude continuation で、linear chart は
+- analytic Hessian の独立検証には full nonlinear map の step \(0.006,0.003\) を用いた
+  centered difference と Richardson extrapolation を使い、相対差 \(10^{-8}\) 以下を
+  要求する。
+- 非ゲート pilot は seed 20260801 で domain calibration だけに使用した。本試験は
+  未使用 seed 20260802 の64方向と、振幅
+
+  \[
+  0.000625,\ 0.00125,\ 0.0025,\ 0.005,\ 0.01
+  \]
+
+  を固定する。linear chart は
   \(2\pm0.1\)、quadratic chart は \(3\pm0.1\) の residual order を要求する。
 - 最大試験振幅で quadratic residual が linear residual の1/10未満になることを要求する。
-- 100-step full/reduced shadowing を保存するが、local chart domain を越えた軌道の
-  failure は residual gate と分ける。
+- seed 20260803 の32方向、振幅0.01で100-step full/reduced shadowing を行う。
+  quadratic chart の最大 absolute error は \(10^{-5}\) 以下、perturbation-relative
+  error は \(10^{-2}\) 以下、linear chart の最大 error の1/10未満を要求する。
+  projected-coordinate drift、保存量 drift、最小 population も別に保存する。
+- 振幅0.1は domain-stress 診断として保存するが、local chart gate には含めない。
+- \(1\times17\) quotient の1 step と、\(y\) 方向へ複製した \(17\times17\) state の
+  1 step が \(10^{-12}\) 以内で一致することを要求する。
 
 ## Q006: full 2D fixed-leaf nonzero-mode quadratic parameterization — 保留
 
