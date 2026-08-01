@@ -66,10 +66,59 @@ Q004bで得たどの \(k_c,\omega,P\) なら、次数 \(P\) までの homologica
 - nonnormality / eigenvector condition
 - grid refinement dependence
 
+### 二次 gate の事前登録
+
+- まず \(P=2\) を判定し、これを通過した候補だけ高次へ進める。
+- upstream cutoff は Q004b の方向別最小合格値
+  \(\{1.0:0.7630763889,\ 1.2:0.9254861111,\)
+  \(\ 1.5:1.1628541667,\ 1.8:1.3752361111\}\) とする。
+- 奇数格子 \(N=9,17,33,65\) を用いる。\(17,33\) は Q004b の構築格子、
+  \(9,65\) は波数集合の疎密に対する refinement 診断であり、固定物理領域の
+  continuum convergence とは呼ばない。
+- isotropic master set は、離散波数 \(0<|k|\le k_c\) ごとの3次元
+  hydrodynamic cluster とする。二次入力ごとに
+  \(k_{\mathrm{out}}=k_1+k_2\pmod{2\pi}\) を厳密に加算する。
+- \(k_{\mathrm{out}}=0\) では固定保存量葉を採り、3保存方向を外部空間から除いて
+  6次元 kinetic sector だけを監査する。master内出力では hydrodynamic block を
+  internal \(R_2\) 側へ分け、外部6次元だけを監査する。それ以外は9次元全体を
+  外部出力とする。
+- sector homological operator は global dense 行列を作らず、Fourier block ごとの
+
+  \[
+  I\otimes A_\perp(k_{\mathrm{out}})
+  -K_{12}^{\mathsf T}\otimes I
+  \]
+
+  として組む。simple mode の積では \(K_{12}=\lambda_1\lambda_2\) とする。
+- 数値的 singular の閾値は
+
+  \[
+  \sigma_{\min}\le
+  100\,\epsilon_{\mathrm{mach}}\max(m,n)\sigma_{\max}
+  \]
+
+  とする。singular sector は解析的二次 forcing \(B\) の左 nullspace 射影を測り、
+  \(\|U_0^*B\|/\max(\|B\|,\epsilon)\le10^{-10}\) なら
+  compatible_nonunique、それを超えれば incompatible と分類する。
+- nonsingular sector の初期 practical ceiling は
+  \(\kappa_2\le10^8\) とする。これは有限格子で係数を解けるための上限であり、
+  grid-uniform bound ではない。
+- complex operator と標準 realification の特異値一致は相対 \(10^{-10}\)、
+  共役 sector の整合性は \(10^{-12}\) を gate とする。
+- normal-attraction 診断では、master multiplier の最小 modulus と、固定葉上の
+  全 excluded 離散波数・mode の最大 modulus を比較する。
+  \(\rho_\perp/\rho_\parallel<1\) を有限格子の必要条件とし、最悪波数と
+  nonnormality 指標も保存する。
+- 全 pair の実体を artifact に列挙せず、件数、最悪 sector、分位値、
+  resonance witness と gate 値を保存する。
+
 ### 判断
 
 near resonance が選択境界に現れたら、mode追加と \(k_c\)縮小の両案を比較する。
 \(\omega\to2\) で gap が閉じる場合は MRT の kinetic relaxation を対照実験にする。
+strict nonresonance が失敗した場合は、forcing compatibility があっても
+標準 SSM の存在・一意性 gate を合格扱いしない。mode追加、cutoff縮小に加えて、
+非線形に不変な一方向 stripe 部分空間を solver oracle として切り分ける案を比較する。
 
 ## Q005m: manufactured nonidentity oracle
 
