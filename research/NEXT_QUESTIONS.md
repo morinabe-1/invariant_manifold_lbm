@@ -1988,12 +1988,163 @@ acceptedはoperator-only finite-grid prequalificationに限る。quartic forcing
 radius延長、shadowing、TT圧縮、grid-uniform family、真の不変多様体の存在・一意性・normal attractionを
 主張しない。acceptedの場合だけQ007c1のforcing／coefficient gateを詳細に事前登録する。
 
-## Q007c1: quartic coefficient continuation — 未登録
+### 結果
+
+全6 validity gateと全2 hypothesis gateを通過し、
+`order-four homological family prequalified on registered grid`として`accepted`とした。
+
+- order-2 control: sector `36 / 108 / 156`、singular `0`、minimum singular
+  `0.00015502435597333105`、maximum condition `14513.930547954875`
+- order-3 control: sector `108 / 1044 / 1448`、singular／near `0 / 24`、minimum singular
+  `0.00020787972673242753`、maximum condition `10821.814847751179`
+- order-4 record／unique／duplicate: `17550 / 17550 / 0`
+- order-4 sector: `846 / 4536 / 12168`
+- order-4 singular／near-resonant: `0 / 8`
+- minimum singular / maximum condition / minimum rank margin:
+  `6.485706497181907e-05 / 34673.915552593266 / 144315965.0768939`
+- multiplicity sum／values: `331776 / 1, 4, 6, 12, 24`
+- maximum fixed-leaf invariance residual: `1.227779058661652e-16`
+- conjugate missing／output-wave／output-kind failure: `0 / 0 / 0`
+- maximum conjugate multiplier／singular-value relative error:
+  `3.571246854667297e-16 / 3.019068596546352e-15`
+- output wave count／rotation／conjugacy failure: `81 / 0 / 0`
+
+従って次のforcing／coefficient gateへ進む。ただしoperator-onlyという主張境界は変更しない。
+
+## Q007c1: quartic coefficient continuation — 事前登録
 
 ### 問い
 
-Q007c通過後、symmetric Fourier-fiberの4次forcing／coefficientは残差次数`4 → 5`を示し、
-Q007bが失敗した半径`0.01`のeffect sizeを改善できるか。
+Q007cを通過したsymmetric Fourier-fiberの4次forcing／coefficientは独立検証を通り、残差次数を
+`4 → 5`へ改善して、Q007bが失敗した半径`0.01`の有限sample性能を回復できるか。
+
+### 固定設定と係数規約
+
+- grid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、24実座標、unmodified standard mapを維持する。
+- Q006iの \(V,H,G\) とQ007bの \(T,K\) をartifactから読み込まず再構築し、再fit・round・truncateしない。
+- Q007bの固定hashは次の通りとする。
+  - triple indices: `e646d2de7212c823cbca5804fbf20e9543918ecca80452dd508c278dfc5f130c`
+  - output waves: `d431bfabad714d9d7ee9d8bfaf779eb2362ab27c916740494a379610c1389a6f`
+  - chart coefficients: `ed182069713bff0558b806ce7a70e77299ea9fbc6671de38c4fa58019da5615b`
+  - reduced coefficients: `4ca5a953833d5913f160e9fc36061e31697c7531865c4ef06d7517898f7c597e`
+  - forcing coefficients: `6e2559a194d2b1e6a96f01653c1bccbe1852db00233700e16b3b980ae96df8eb`
+- 全17,550 tupleを`i <= j <= k <= l`で再列挙し、Q007cと同じoperator／rank規則を再計算する。
+- chartとreduced mapは
+
+\[
+W_4(a)=Va+\frac12H[a,a]+\frac16T[a,a,a]+\frac1{24}U[a,a,a,a],
+\]
+
+\[
+R_4(a)=\Lambda a+\frac12G[a,a]+\frac16K[a,a,a]+\frac1{24}L[a,a,a,a]
+\]
+
+とする。物理空間のfull dense quartic tensorはmaterializeせず、unordered complex Fourier-fiber、
+permutation multiplicity、output-wave groupで保持する。
+
+### quartic forcingの固定式
+
+\(A,B,C,D\)をfull mapの1階から4階微分とする。各4-tupleの既知項は、全distinct set partitionを
+一度ずつ加えた
+
+\[
+\begin{aligned}
+F_4={}&D(V,V,V,V)
++\sum_{4}B(T,V)+\sum_{3}B(H,H)+\sum_{6}C(H,V,V)\\
+&-\sum_{4}H(\Lambda,K)-\sum_{3}H(G,G)-\sum_{6}T(G,\Lambda,\Lambda)
+\end{aligned}
+\]
+
+と固定する。添字が重複するtupleでも、上式の4／3／6個のlabelled partitionを省略・重複しない。
+各sectorでQ007cのhomological operatorを使い、\(U,L\)を解く。
+
+### 独立方向と差分登録
+
+正規化Gaussian方向を次に固定する。
+
+- map fourth derivative: seed `20260821`、16方向
+- assembled forcing: seed `20260822`、16方向
+- residual order／radius: seed `20260823`、32方向
+- C4 field: seed `20260824`、16方向
+- 100-step shadowing: seed `20260825`、32方向
+
+全方向hashとnormを保存し、Q006i、Q007b、Q007b1および上記campaign間のexact duplicateを0とする。
+4階中心差分のstep sweepは全て
+
+`0.02, 0.015, 0.01, 0.0075, 0.005`
+
+とし、
+
+\[
+\frac{f(2h)-4f(h)+6f(0)-4f(-h)+f(-2h)}{h^4}
+\]
+
+を使う。各方向でstepを事後追加せず、登録sweep中のminimum relative errorだけをgateに使う。
+
+### derivative／forcing validity gate
+
+1. 線形tangent \(Vd\) に対する解析的 \(D^4\Phi[Vd]^4\) のnormが`1e-12`より大きく、独立5点差分との
+   maximum best relative errorが`5e-3`以下
+2. cubic defect \(\Phi(W_3(a))-W_3(R_3(a))\) の4階差分と、全quartic forcing fiberを方向収縮した
+   物理fieldのmaximum best relative errorが`2e-2`以下
+3. 全差分state／map／defectがfiniteかつpositive
+
+map derivative gateは \(D\) の式を、forcing gateは \(B,C,D,H,T,G,K\) の組合せと符号を独立に検証する。
+homological solve residualが小さいことを、これらの代用にはしない。
+
+### coefficient validity gate
+
+1. Q007cのpair／triple controlとquartic count・sector・singular 0・maximum conditionをrelative
+   tolerance `1e-10`で再現
+2. 全17,550 recordがfiniteで、solve relative residualとhomological relative residualが各`1e-10`以下
+3. internal sectorのgraph-gauge residualが`1e-10`以下
+4. zero-wave forcing／coefficientの保存moment relative residualが各`1e-10`以下
+5. forcing／chart／reduced coefficientのconjugacy relative residualが各`1e-10`以下
+6. seed `20260824`の16方向、amplitude `0.01`でquartic chart／reduced／forcing fieldのC4 relative
+   errorが各`1e-10`以下
+7. realificationのimaginary leakageとquartic chart termのglobal conserved-moment relative residualが
+   各`1e-10`以下
+8. tuple completeness、multiplicity sum `24^4`、strict JSON serializationが通る
+
+全tupleについてforcing norm、chart／reduced coefficient、solve／homological／gauge／保存残差をartifactへ
+保存する。full dense physical quartic tensorは保存しない。
+
+### residual-order／radius hypothesis gate
+
+seed `20260823`の32方向とamplitude
+
+`0.00125, 0.0025, 0.005, 0.0075, 0.01`
+
+を使い、最後の4点でcubic／quartic residual slopeをfitする。各方向で次を全て要求する。
+
+1. cubic slope `4 ± 0.15`
+2. quartic slope `5 ± 0.30`
+3. amplitude `0.01`のquartic/cubic residual ratio `<=0.8`
+4. amplitude `0.01`のquartic/quadratic residual ratio `<=0.10`
+5. 全lifted／mapped／predicted stateがpositiveかつfinite
+
+Q007bの方向やQ007b1のradius方向はcalibrationにも再利用せず、既存判定を変更しない。
+
+### 100-step shadowing／forward-error hypothesis gate
+
+seed `20260825`の32方向をamplitude `0.01`から100 step進め、full LBM rolloutに対するquartic chartと
+cubic chartを比較する。各方向で次を要求する。
+
+1. maximum absolute、final absolute、maximum perturbation-relative errorのquartic/cubic ratioが全て`<=0.8`
+2. Q006oのcomponentwise forward-error budgetを使い、9,600 component-stepの違反0、maximum
+   utilization `<=1`、final budget `<=1.2e-11`
+3. 全stateがpositiveかつfinite
+
+### 判定規則
+
+direction、upstream reproduction、derivative、forcing、coefficient、symmetry、finite、serializationの
+いずれかが失敗すれば`inconclusive`とする。validityが全て通り、residual-order／radiusとshadowingの全gateが
+通れば`quartic chart restores registered sampled radius-0.01 improvement`として`accepted`、性能gateの
+いずれかだけが失敗すれば`quartic continuation does not restore registered radius`として有効な`rejected`
+とする。
+
+acceptedでも、32方向の有限sample、有限grid、100 stepに限る。半径`0.01`のball全体、global injectivity、
+grid-uniform family、真の不変多様体の存在・一意性・normal attraction、TT圧縮優位性を主張しない。
 
 ## Q008: TT rank は bounded か
 

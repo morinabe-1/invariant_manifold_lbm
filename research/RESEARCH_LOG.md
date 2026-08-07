@@ -1818,6 +1818,76 @@ injectivity、Q007bの半径`0.01`再判定、真の不変多様体を主張し�
 Q007c: Q006iの24座標clusterは、登録grid上で全17,550 order-4 homological blockが一意に解ける
 非共鳴familyか。
 
+## Cycle Q007c: quartic homological-family prequalification
+
+### 問い
+
+Q006iの24 complex modeに対する全order-4 homological blockは、登録grid上で一意に解ける
+非共鳴operator familyか。
+
+### 仮説
+
+- 全17,550 unordered 4-tupleのnumerically singular blockは0
+- zero-wave kinetic／internal selected／externalを含む全blockのcondition numberは`1e9`以下
+- order-2／order-3 control、tuple completeness、共役、C4、strict serializationが全て通る
+
+### 実験
+
+- grid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、Q006iと同じ24 complex modeを再構築
+- pair 300件、triple 2,600件を同じrunner内で再計算し、Q007aのsector countとspectral extremaを照合
+- `i <= j <= k <= l`の全17,550 tupleを列挙し、zero／internal／external operatorをSVD
+- permutation multiplicity、conjugate tuple、output wave、output kind、C4／conjugate wave countを監査
+- forcingや係数は構築せず、全operator singular valuesとconditionをartifactへ保存
+
+### 結果
+
+全6 validity gateと全2 hypothesis gateを通過し、
+`order-four homological family prequalified on registered grid`として`accepted`とした。
+
+- pair control sector count / singular: `36 / 108 / 156 / 0`
+- pair minimum singular / maximum condition:
+  `0.00015502435597333105 / 14513.930547954875`
+- triple control sector count / singular / near-resonant:
+  `108 / 1044 / 1448 / 0 / 24`
+- triple minimum singular / maximum condition:
+  `0.00020787972673242753 / 10821.814847751179`
+- quartic record / unique / duplicate count: `17550 / 17550 / 0`
+- quartic sector count: `846 / 4536 / 12168`
+- quartic singular / near-resonant block count: `0 / 8`
+- quartic minimum singular / maximum condition:
+  `6.485706497181907e-05 / 34673.915552593266`
+- minimum rank margin: `144315965.0768939`
+- worst block: `q17061`、`m015,m015,m015,m021`、output `(-2,2)`、external
+- multiplicity sum / values: `331776 / 1, 4, 6, 12, 24`
+- maximum fixed-leaf invariance residual: `1.227779058661652e-16`
+- conjugate missing／wave／kind failure: `0 / 0 / 0`
+- maximum conjugate multiplier / singular-value relative error:
+  `3.571246854667297e-16 / 3.019068596546352e-15`
+- output wave count / rotation／conjugacy failure: `81 / 0 / 0`
+
+### 分析
+
+最悪conditionはQ007aの3次familyより約3.2倍大きいが、登録ceiling `1e9`より4桁以上小さく、rank
+thresholdに対する最小marginも`1.44e8`ある。従ってこの有限grid上ではorder-4 operator自体に数値的・
+代数的な障害は見つからない。near-resonant blockは8件だけだが、これはforcingの大きさや係数応答を
+まだ評価していないため、性能上無害とは結論しない。
+
+このacceptedはoperator-only prequalificationである。quartic forcing／coefficient、残差次数`4 → 5`、
+半径`0.01`の回復、shadowing、grid-uniform family、真の不変多様体の存在・一意性・normal attractionを
+主張しない。
+
+### 改善
+
+- 写像の解析的4階微分を、線形tangent方向の独立5点差分で照合する。
+- Faà di Brunoで組み立てた全quartic forcingを、cubic invariance defectの独立4階差分でも照合する。
+- solve residualとforcing validationを分離し、全係数のgraph gauge／fixed leaf／共役／C4を監査する。
+- 半径`0.01`ではresidualと100-step shadowingをcubic chartに対して比較する。
+
+### 次の問い
+
+Q007c1: 全quartic forcing／coefficientは独立検証を通り、残差次数を`4 → 5`へ改善して、Q007bで
+失敗した半径`0.01`の有限sample性能を回復できるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -1855,3 +1925,5 @@ Q007c: Q006iの24座標clusterは、登録grid上で全17,550 order-4 homologica
 [`artifacts/q007b_cubic_continuation.json`](artifacts/q007b_cubic_continuation.json)
 
 [`artifacts/q007b1_cubic_radius.json`](artifacts/q007b1_cubic_radius.json)
+
+[`artifacts/q007c_quartic_prequalification.json`](artifacts/q007c_quartic_prequalification.json)

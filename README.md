@@ -65,8 +65,10 @@ amplitude `0.01`のcubic/quadratic残差比が32方向中9方向で登録上限`
 なった。このためQ007bは有効な性能棄却として固定し、quarticへ進まず、独立holdoutで有効半径を局在化する。
 Q007b1では別seedの64方向で半径`0.004`の最大残差比`0.0780063`、失敗0を得て、別32方向の
 100-step shadowingも全gateを通過した。chart Jacobianの正規化最小特異値は半径`0.01`まで`1.0`以上で、
-fold signatureは見つからなかった。従って半径`0.004`の有限sampleだけを`accepted`とし、次は
-order-4 homological operatorをoperator-onlyでprequalificationする。
+fold signatureは見つからなかった。従って半径`0.004`の有限sampleだけを`accepted`とした。Q007cでは
+全17,550 order-4 homological blockを列挙し、singular block 0、最大condition `34673.9`でoperator-only
+prequalificationを通過した。これは四次forcingや係数の正しさをまだ示さないため、次はQ007c1で
+解析的4階微分、forcing assembly、全係数、残差次数`4 → 5`、半径`0.01`の改善を独立に判定する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -573,6 +575,30 @@ near-resonant 24 tripleのchart寄与率は残差比と負相関`-0.57894`で、
 従って登録sampleではnear-resonant subsetやfoldより有限次数の全体的な曲率が主要indicatorである。これは
 半径`0.004`のball全体やinjectivityを保証せず、Q007bの半径`0.01`棄却も変更しない。
 
+### Q007c quartic homological-family prequalification
+
+Q006iと同じ24 complex modeについて、order-2／order-3 controlをartifact入力なしで再現した上で、
+全17,550 unordered order-4 tupleを同じsector SVD規則で監査した。
+
+- classification: `order-four homological family prequalified on registered grid`
+- validity / hypothesis gates: `6 / 6`, `2 / 2` passed
+- order-2 control sector / singular: `36 / 108 / 156`, `0`
+- order-3 control sector / singular / near-resonant: `108 / 1044 / 1448`, `0 / 24`
+- order-4 sector count: `846 / 4536 / 12168`
+- order-4 singular / near-resonant block: `0 / 8`
+- order-4 minimum singular / maximum condition:
+  `6.4857065e-5 / 34673.9156`（ceiling `1e9`）
+- minimum rank margin: `1.4431597e8`
+- permutation multiplicity sum / values: `331776 / 1, 4, 6, 12, 24`
+- conjugate multiplier / singular-value relative error:
+  `3.57125e-16 / 3.01907e-15`
+- fixed-leaf invariance maximum / C4・conjugacy count failure:
+  `1.22778e-16 / 0 / 0`
+
+従って登録有限gridでは四次homological familyに代数的障害は見つからなかった。ただしこれはoperator-only
+判定であり、四次forcing／coefficient、5次残差、半径延長、shadowing、grid-uniformな存在・一意性を
+主張しない。Q007c1では解析的な四次Faà di Bruno forcingを独立有限差分と照合してから全係数を解く。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -597,7 +623,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
 `q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
-`q006q`、`q007a`、`q007b`、`q007b1` は
+`q006q`、`q007a`、`q007b`、`q007b1`、`q007c` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -625,6 +651,7 @@ python -m ttim_lbm --study q006q --output research/artifacts/q006q_forward_error
 python -m ttim_lbm --study q007a --output research/artifacts/q007a_cubic_prequalification.json
 python -m ttim_lbm --study q007b --output research/artifacts/q007b_cubic_continuation.json
 python -m ttim_lbm --study q007b1 --output research/artifacts/q007b1_cubic_radius.json
+python -m ttim_lbm --study q007c --output research/artifacts/q007c_quartic_prequalification.json
 ```
 
 保存済み結果:
@@ -650,6 +677,7 @@ python -m ttim_lbm --study q007b1 --output research/artifacts/q007b1_cubic_radiu
 - [`research/artifacts/q007a_cubic_prequalification.json`](research/artifacts/q007a_cubic_prequalification.json)
 - [`research/artifacts/q007b_cubic_continuation.json`](research/artifacts/q007b_cubic_continuation.json)
 - [`research/artifacts/q007b1_cubic_radius.json`](research/artifacts/q007b1_cubic_radius.json)
+- [`research/artifacts/q007c_quartic_prequalification.json`](research/artifacts/q007c_quartic_prequalification.json)
 
 ## 文書
 
@@ -689,14 +717,15 @@ python -m ttim_lbm --study q007b1 --output research/artifacts/q007b1_cubic_radiu
 - Q007a 全2,600 cubic homological block、order-2 reproduction、共役／C4 count closure
 - Q007b 全2,600 cubic forcing／coefficient、独立3次微分、残差次数、100-step shadowing
 - Q007b1 独立finite-radius／analytic Jacobian／immersion／near-resonance診断
+- Q007c 全17,550 quartic homological block、order-2／3 control、共役／C4 count closure
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007c の全order-4 homological operator prequalification
-- quartic forcing／coefficient／residual continuation
+- Q007c1 quartic forcing／coefficient／residual・shadow continuation
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007cである。24 complex modeの全17,550 unordered order-4 tupleをzero／internal／
-external sectorに分け、operatorのrank・condition・共役・C4 count closureだけを判定する。これを通過するまで
-quartic forcing／coefficientを作らず、TT圧縮へも進まない。
+従って次のゲートはQ007c1である。Q007cが通過した全17,550 operatorに対して四次forcingと係数を
+symmetric Fourier-fiberで構築し、独立4階微分、完全forcing差分、homological equation、共役・C4、
+残差次数`4 → 5`、半径`0.01`の残差改善と100-step shadowingを判定する。これを通過するまでTT圧縮へ
+進まない。
