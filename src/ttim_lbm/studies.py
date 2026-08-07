@@ -16,6 +16,7 @@ from .conservation_drift import run_conservation_drift_audit
 from .covariant_correction import run_covariant_correction_audit
 from .cubic_continuation import run_cubic_continuation_audit
 from .cubic_prequalification import run_cubic_prequalification_audit
+from .cubic_radius import run_cubic_radius_audit
 from .d2q9 import (
     bgk_periodic_step,
     fourier_symbol,
@@ -2036,6 +2037,39 @@ def run_q007b_study() -> dict[str, Any]:
                 "registered finite-grid, direction, amplitude, and 100-step "
                 "comparison only; no quartic, TT, all-radius, grid-uniform, "
                 "existence, uniqueness, or normal-attraction claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007b1_study() -> dict[str, Any]:
+    """Run and package the sealed Q007b1 cubic-radius audit."""
+
+    cycle = run_cubic_radius_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "independent cubic-radius and immersion audit",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "real_reduced_dimension": 24,
+            "acceptance_radius": 0.004,
+            "residual_direction_count": 64,
+            "immersion_direction_count": 64,
+            "shadowing_direction_count": 32,
+            "shadowing_steps": 100,
+            "claim": (
+                "registered finite-direction radius and radial-immersion "
+                "prequalification only; no full-ball, injectivity, quartic, TT, "
+                "grid-uniform, existence, uniqueness, or normal-attraction claim"
             ),
         },
         "cycle": cycle,

@@ -699,3 +699,52 @@ def test_q007b_artifact_records_the_valid_finite_amplitude_rejection() -> None:
     )
     assert not cycle["preserved_prior_outcome"]["revised"]
     assert "not a quartic" in cycle["claim_boundary"]
+
+
+def test_q007b1_artifact_records_only_the_sampled_radius_acceptance() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007b1_cubic_radius.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "independent cubic-radius and immersion audit",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "real_reduced_dimension": 24,
+        "acceptance_radius": 0.004,
+        "residual_direction_count": 64,
+        "immersion_direction_count": 64,
+        "shadowing_direction_count": 32,
+        "shadowing_steps": 100,
+        "claim": (
+            "registered finite-direction radius and radial-immersion "
+            "prequalification only; no full-ball, injectivity, quartic, TT, "
+            "grid-uniform, existence, uniqueness, or normal-attraction claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "registered cubic improvement radius localized without fold signature"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert (
+        cycle["radius_campaign"]["summary"][
+            "maximum_acceptance_radius_ratio"
+        ]
+        <= 0.10
+    )
+    assert (
+        cycle["immersion_campaign"]["summary"][
+            "minimum_normalized_singular_value"
+        ]
+        >= 0.8
+    )
+    assert not cycle["preserved_prior_outcomes"]["revised"]
+    assert "does not cover the full" in cycle["claim_boundary"]

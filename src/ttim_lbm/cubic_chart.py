@@ -415,14 +415,39 @@ class Full2DCubicModel:
         )
         return np.asarray(self.multiplicities * products, dtype=np.complex128)
 
-    def complex_cubic_field(self, coordinates: npt.ArrayLike) -> ComplexArray:
+    def _triple_mask(self, triple_mask: npt.ArrayLike | None) -> npt.NDArray[np.bool_]:
+        if triple_mask is None:
+            return np.ones(len(self.triple_indices), dtype=bool)
+        mask = np.asarray(triple_mask)
+        if mask.dtype == bool:
+            if mask.shape != (len(self.triple_indices),):
+                raise ValueError("boolean cubic triple mask has the wrong shape")
+            return np.asarray(mask, dtype=bool)
+        if mask.ndim != 1 or not np.issubdtype(mask.dtype, np.integer):
+            raise ValueError("cubic triple selection must be a boolean mask or indices")
+        if np.any(mask < 0) or np.any(mask >= len(self.triple_indices)):
+            raise ValueError("cubic triple index is out of range")
+        result = np.zeros(len(self.triple_indices), dtype=bool)
+        result[np.asarray(mask, dtype=np.int64)] = True
+        return result
+
+    def complex_cubic_field(
+        self,
+        coordinates: npt.ArrayLike,
+        *,
+        triple_mask: npt.ArrayLike | None = None,
+    ) -> ComplexArray:
         products = self._complex_coordinate_products(coordinates)
+        selected = self._triple_mask(triple_mask)
         field = np.zeros((self.size, self.size, 9), dtype=np.complex128)
         for wave, group in self.wave_groups.items():
+            active = group[selected[group]]
+            if len(active) == 0:
+                continue
             coefficient = np.einsum(
                 "t,tq->q",
-                products[group],
-                self.cubic_coefficients[group],
+                products[active],
+                self.cubic_coefficients[active],
             )
             field += np.einsum(
                 "xy,q->xyq",
@@ -431,28 +456,47 @@ class Full2DCubicModel:
             )
         return field
 
-    def cubic_chart_term(self, coordinates: npt.ArrayLike) -> Array:
+    def cubic_chart_term(
+        self,
+        coordinates: npt.ArrayLike,
+        *,
+        triple_mask: npt.ArrayLike | None = None,
+    ) -> Array:
         return np.asarray(
-            self.complex_cubic_field(coordinates).real,
+            self.complex_cubic_field(
+                coordinates,
+                triple_mask=triple_mask,
+            ).real,
             dtype=np.float64,
         ).ravel()
 
     def complex_reduced_cubic_term(
         self,
         coordinates: npt.ArrayLike,
+        *,
+        triple_mask: npt.ArrayLike | None = None,
     ) -> ComplexArray:
         products = self._complex_coordinate_products(coordinates)
+        selected = self._triple_mask(triple_mask)
         return np.asarray(
             np.einsum(
                 "t,tr->r",
-                products,
-                self.reduced_cubic_coefficients,
+                products[selected],
+                self.reduced_cubic_coefficients[selected],
             ),
             dtype=np.complex128,
         )
 
-    def reduced_cubic_term(self, coordinates: npt.ArrayLike) -> Array:
-        complex_term = self.complex_reduced_cubic_term(coordinates)
+    def reduced_cubic_term(
+        self,
+        coordinates: npt.ArrayLike,
+        *,
+        triple_mask: npt.ArrayLike | None = None,
+    ) -> Array:
+        complex_term = self.complex_reduced_cubic_term(
+            coordinates,
+            triple_mask=triple_mask,
+        )
         result = np.empty(self.reduced_dimension, dtype=np.float64)
         for coordinate, mode_index in enumerate(self.positive_mode_indices):
             if coordinate % 2 == 0:
@@ -460,6 +504,85 @@ class Full2DCubicModel:
             else:
                 result[coordinate] = complex_term[mode_index].imag / self.coordinate_scale
         return result
+
+    def complex_cubic_jacobian_field(
+        self,
+        coordinates: npt.ArrayLike,
+        *,
+        triple_mask: npt.ArrayLike | None = None,
+    ) -> ComplexArray:
+        """Differentiate ``T[a,a,a]`` with respect to all real coordinates."""
+
+        value = np.asarray(coordinates, dtype=np.float64)
+        if value.shape != (self.reduced_dimension,):
+            raise ValueError("coordinate dimension does not match cubic chart")
+        complex_coordinates = self.coordinate_map @ value
+        first = self.triple_indices[:, 0]
+        second = self.triple_indices[:, 1]
+        third = self.triple_indices[:, 2]
+        derivative_products = self.multiplicities[:, None] * (
+            self.coordinate_map[first]
+            * complex_coordinates[second, None]
+            * complex_coordinates[third, None]
+            + complex_coordinates[first, None]
+            * self.coordinate_map[second]
+            * complex_coordinates[third, None]
+            + complex_coordinates[first, None]
+            * complex_coordinates[second, None]
+            * self.coordinate_map[third]
+        )
+        selected = self._triple_mask(triple_mask)
+        field = np.zeros(
+            (self.size, self.size, 9, self.reduced_dimension),
+            dtype=np.complex128,
+        )
+        for wave, group in self.wave_groups.items():
+            active = group[selected[group]]
+            if len(active) == 0:
+                continue
+            coefficient = np.einsum(
+                "tr,tq->qr",
+                derivative_products[active],
+                self.cubic_coefficients[active],
+            )
+            field += np.einsum(
+                "xy,qr->xyqr",
+                self.phase_fields[wave],
+                coefficient,
+            )
+        return field
+
+    def chart_jacobian(self, coordinates: npt.ArrayLike) -> Array:
+        """Evaluate the analytic physical-by-reduced Jacobian of ``W3``."""
+
+        value = np.asarray(coordinates, dtype=np.float64)
+        if value.shape != (self.reduced_dimension,):
+            raise ValueError("coordinate dimension does not match cubic chart")
+        quadratic = np.einsum(
+            "ijk,j->ik",
+            self.quadratic.chart.hessian,
+            value,
+        )
+        cubic = self.complex_cubic_jacobian_field(value).real.reshape(
+            self.quadratic.chart.base.size,
+            self.reduced_dimension,
+        )
+        return np.asarray(
+            self.quadratic.chart.tangent + quadratic + cubic / 6.0,
+            dtype=np.float64,
+        )
+
+    def chart_jacobian_action(
+        self,
+        coordinates: npt.ArrayLike,
+        direction: npt.ArrayLike,
+    ) -> Array:
+        """Apply the analytic cubic-chart Jacobian to one real direction."""
+
+        value = np.asarray(direction, dtype=np.float64)
+        if value.shape != (self.reduced_dimension,):
+            raise ValueError("direction dimension does not match cubic chart")
+        return np.asarray(self.chart_jacobian(coordinates) @ value, dtype=np.float64)
 
     def chart_evaluate(
         self,

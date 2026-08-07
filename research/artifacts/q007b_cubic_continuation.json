@@ -506216,7 +506216,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-08-07T20:42:45.876449+00:00",
+  "generated_at_utc": "2026-08-07T21:09:07.339440+00:00",
   "mathematical_scope": {
     "claim": "registered finite-grid, direction, amplitude, and 100-step comparison only; no quartic, TT, all-radius, grid-uniform, existence, uniqueness, or normal-attraction claim",
     "construction_grid": [
@@ -506242,7 +506242,7 @@
   "schema_version": 1,
   "scientific_outcome": "rejected",
   "source": {
-    "package_source_sha256": "712ace616b2bd20b98402542002eb0f403386c779f25e65ba623119d67677c11",
+    "package_source_sha256": "aedb9613186ecb6a17b4e71ffeddd9b52927e72b63ff292766bd29f94dc9882a",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"
