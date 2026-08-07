@@ -517,7 +517,7 @@
       ]
     }
   ],
-  "generated_at_utc": "2026-08-07T18:11:24.804117+00:00",
+  "generated_at_utc": "2026-08-07T18:31:12.895783+00:00",
   "interpretation": "The strict homogeneous center is a valid coefficient-solver oracle, but spatial fluid reduction requires a deliberately selected candidate slow hydrodynamic subspace rather than a raw unit-circle eigenspace.",
   "model": {
     "boundary": "periodic",
@@ -546,7 +546,7 @@
   },
   "schema_version": 2,
   "source": {
-    "package_source_sha256": "cdc525d8c16f1ef22a0c835411cf1ce5dfd12dac819c2884b372985764c11148",
+    "package_source_sha256": "0554a275d68e2e427c452f99a1cfbafb19be4f700195034caa058edeb462bf98",
     "package_version": "0.1.0"
   }
 }

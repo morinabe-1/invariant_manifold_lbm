@@ -52197,7 +52197,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-08-07T18:11:50.677742+00:00",
+  "generated_at_utc": "2026-08-07T18:31:39.918142+00:00",
   "mathematical_scope": {
     "construction": "diagonal low-wave symbol-level tangency audit",
     "etas": [
@@ -52259,7 +52259,7 @@
   "schema_version": 1,
   "scientific_outcome": "accepted",
   "source": {
-    "package_source_sha256": "cdc525d8c16f1ef22a0c835411cf1ce5dfd12dac819c2884b372985764c11148",
+    "package_source_sha256": "0554a275d68e2e427c452f99a1cfbafb19be4f700195034caa058edeb462bf98",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

@@ -12,6 +12,7 @@ from .checkerboard_filter import run_checkerboard_filter_audit
 from .cluster_complete import run_cluster_complete_audit
 from .coefficient_scaling import run_coefficient_scaling_audit
 from .conservation_drift import run_conservation_drift_audit
+from .covariant_correction import run_covariant_correction_audit
 from .d2q9 import (
     bgk_periodic_step,
     fourier_symbol,
@@ -1799,6 +1800,41 @@ def run_q006k_study() -> dict[str, Any]:
                 "finite registered-trajectory arithmetic diagnosis only; the "
                 "fixed-site control is symmetry breaking and is not adopted as "
                 "the production map or used to revise Q006i or Q006j"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006l_study() -> dict[str, Any]:
+    """Run and package the sealed Q006l covariant-arithmetic audit."""
+
+    cycle = run_covariant_correction_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "stagewise state-covariant conservative arithmetic",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "trajectory_count": 64,
+            "steps": 100,
+            "corrected_stages": ["collision", "filter"],
+            "symmetry_generators": [
+                "translation_y",
+                "translation_x",
+                "quarter_turn",
+            ],
+            "claim": (
+                "finite unique-anchor trajectory audit only; the nonsmooth "
+                "global-residual control is not adopted as the production map "
+                "and does not revise Q006i-Q006k"
             ),
         },
         "cycle": cycle,

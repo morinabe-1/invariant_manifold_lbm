@@ -415717,7 +415717,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-08-07T18:11:47.621733+00:00",
+  "generated_at_utc": "2026-08-07T18:31:36.441243+00:00",
   "mathematical_scope": {
     "conservation_treatment": "fixed global mass and momentum leaf",
     "construction": "finite registered small-wave coefficient scaling audit",
@@ -415756,7 +415756,7 @@
   "schema_version": 1,
   "scientific_outcome": "accepted",
   "source": {
-    "package_source_sha256": "cdc525d8c16f1ef22a0c835411cf1ce5dfd12dac819c2884b372985764c11148",
+    "package_source_sha256": "0554a275d68e2e427c452f99a1cfbafb19be4f700195034caa058edeb462bf98",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

@@ -17,6 +17,7 @@ from .studies import (
     run_q006i_study,
     run_q006j_study,
     run_q006k_study,
+    run_q006l_study,
     run_q006n_study,
     run_q006r_study,
     run_q006s_study,
@@ -49,6 +50,7 @@ def main() -> None:
             "q006i",
             "q006j",
             "q006k",
+            "q006l",
         ),
         default="baseline",
     )
@@ -82,8 +84,10 @@ def main() -> None:
         result = run_q006i_study()
     elif arguments.study == "q006j":
         result = run_q006j_study()
-    else:
+    elif arguments.study == "q006k":
         result = run_q006k_study()
+    else:
+        result = run_q006l_study()
     rendered = json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\n"
     if arguments.output is None:
         print(rendered, end="")

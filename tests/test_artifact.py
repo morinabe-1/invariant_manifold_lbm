@@ -418,3 +418,43 @@ def test_q006k_artifact_records_only_the_symmetry_breaking_diagnostic() -> None:
     assert "symmetry-breaking diagnostic only" in cycle["claim_boundary"]
     assert cycle["summary"]["trajectory_count"] == 64
     assert cycle["summary"]["total_control_step_count"] == 19200
+
+
+def test_q006l_artifact_records_only_the_unique_anchor_arithmetic_audit() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006l_covariant_correction.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "stagewise state-covariant conservative arithmetic",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "trajectory_count": 64,
+        "steps": 100,
+        "corrected_stages": ["collision", "filter"],
+        "symmetry_generators": [
+            "translation_y",
+            "translation_x",
+            "quarter_turn",
+        ],
+        "claim": (
+            "finite unique-anchor trajectory audit only; the nonsmooth "
+            "global-residual control is not adopted as the production map "
+            "and does not revise Q006i-Q006k"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "covariant anchor correction controls registered drift"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert "nonsmooth at anchor switches" in cycle["claim_boundary"]
+    assert cycle["summary"]["trajectory_count"] == 64
+    assert cycle["summary"]["total_control_step_count"] == 19200
