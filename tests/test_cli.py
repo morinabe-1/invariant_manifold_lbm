@@ -250,3 +250,30 @@ def test_q006i_dispatches_the_registered_study(
     main()
 
     assert json.loads(capsys.readouterr().out) == expected
+
+
+def test_q006j_rejects_an_omega_override(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["ttim_lbm", "--study", "q006j", "--omega", "1.5"],
+    )
+    with pytest.raises(SystemExit, match="2"):
+        main()
+    assert "--omega is only valid with --study baseline" in capsys.readouterr().err
+
+
+def test_q006j_dispatches_the_registered_study(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    expected = {"study_gate": "passed", "cycle": {"question": "q006j"}}
+    monkeypatch.setattr("ttim_lbm.__main__.run_q006j_study", lambda: expected)
+    monkeypatch.setattr(sys, "argv", ["ttim_lbm", "--study", "q006j"])
+
+    main()
+
+    assert json.loads(capsys.readouterr().out) == expected

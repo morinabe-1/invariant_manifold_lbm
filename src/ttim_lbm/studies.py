@@ -11,6 +11,7 @@ import numpy as np
 from .checkerboard_filter import run_checkerboard_filter_audit
 from .cluster_complete import run_cluster_complete_audit
 from .coefficient_scaling import run_coefficient_scaling_audit
+from .conservation_drift import run_conservation_drift_audit
 from .d2q9 import (
     bgk_periodic_step,
     fourier_symbol,
@@ -1737,6 +1738,36 @@ def run_q006i_study() -> dict[str, Any]:
                 "registered finite-direction N=17 candidate-chart verification "
                 "only; no all-grid theorem, coordinate-ball guarantee, or "
                 "invariant-manifold existence or uniqueness claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006j_study() -> dict[str, Any]:
+    """Run and package the sealed Q006j conservation-drift audit."""
+
+    cycle = run_conservation_drift_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "Q006i float64 global-conservation drift source audit",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "trajectory_count": 64,
+            "steps": 100,
+            "conservation_treatment": "fixed global mass and momentum leaf",
+            "claim": (
+                "finite registered-trajectory arithmetic diagnosis only; the "
+                "Q006i rejection and threshold remain unchanged, with no exact "
+                "all-state or all-time conservation claim"
             ),
         },
         "cycle": cycle,
