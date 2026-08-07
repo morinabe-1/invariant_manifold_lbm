@@ -530,3 +530,39 @@ def test_q006o_artifact_records_only_the_anchor_free_policy_audit() -> None:
     assert cycle["summary"]["component_budget_check_count"] == 19200
     assert cycle["summary"]["budget_violation_count"] == 0
     assert "not an all-state" in cycle["claim_boundary"]
+
+
+def test_q006p_artifact_preserves_original_and_policy_columns() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006p_dual_reporting.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "Q006i/Q006o dual-reporting integration",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "trajectory_count": 64,
+        "steps": 100,
+        "original_threshold": 1.0e-12,
+        "claim": (
+            "same-trajectory integration audit only; the sealed Q006i "
+            "rejection remains unchanged and an independent holdout is "
+            "required before degree continuation"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "dual reporting supports unmodified-map chart continuation"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["dual_decision_gates"].values())
+    assert cycle["summary"]["original_failed_gate_count"] == 1
+    assert cycle["summary"]["policy_failed_gate_count"] == 0
+    assert cycle["original_column"]["sealed_hypothesis_outcome"] == "rejected"
+    assert "independent holdout" in cycle["claim_boundary"]

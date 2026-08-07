@@ -184169,7 +184169,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-08-07T19:15:45.318844+00:00",
+  "generated_at_utc": "2026-08-07T19:34:50.413747+00:00",
   "mathematical_scope": {
     "claim": "finite registered-trajectory operational ULP envelope and uniform-control selection only; no all-state roundoff theorem and no revision of the sealed Q006i-Q006j outcomes",
     "construction_grid": [
@@ -184196,7 +184196,7 @@
   "schema_version": 1,
   "scientific_outcome": "accepted",
   "source": {
-    "package_source_sha256": "2f7f80a3861d8bae47e23a78a95a1750b5ac1118f99856f3ae81fb74904748dc",
+    "package_source_sha256": "9323476865d21a63e9f7e3dde53746cd888e52bc049f0b5e8e78d380536cf76b",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

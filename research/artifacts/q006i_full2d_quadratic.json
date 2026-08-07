@@ -18029,7 +18029,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-08-07T19:15:59.015429+00:00",
+  "generated_at_utc": "2026-08-07T19:35:03.429215+00:00",
   "mathematical_scope": {
     "conservation_treatment": "fixed global mass and momentum leaf",
     "construction": "filtered full-2D dense quadratic candidate chart",
@@ -18052,7 +18052,7 @@
   "schema_version": 1,
   "scientific_outcome": "rejected",
   "source": {
-    "package_source_sha256": "2f7f80a3861d8bae47e23a78a95a1750b5ac1118f99856f3ae81fb74904748dc",
+    "package_source_sha256": "9323476865d21a63e9f7e3dde53746cd888e52bc049f0b5e8e78d380536cf76b",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

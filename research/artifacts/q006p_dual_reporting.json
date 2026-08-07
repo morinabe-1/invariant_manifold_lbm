@@ -1,0 +1,689 @@
+{
+  "cycle": {
+    "claim_boundary": "This integration result is limited to the same 64 registered trajectories. It preserves the sealed Q006i rejection, is not an all-state conservation or SSM-existence theorem, and requires an independent holdout before degree continuation.",
+    "decision": "The original Q006i column retains its sole conservation failure, while the aligned policy column replaces only that gate and passes all eight checks under the selected Q006o standard-map policy.",
+    "direction_alignment_records": [
+      {
+        "chart": "linear",
+        "direction_index": 0,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 1,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 2,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 3,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 4,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 5,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 6,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 7,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 8,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 9,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 10,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 11,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 12,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 13,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 14,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 15,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 16,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 17,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 18,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 19,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 20,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 21,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 22,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 23,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 24,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 25,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 26,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 27,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 28,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 29,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 30,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "linear",
+        "direction_index": 31,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 0,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 1,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 2,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 3,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 4,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 5,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 6,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 7,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 8,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 9,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 10,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 11,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 12,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 13,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 14,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 15,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 16,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 17,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 18,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 19,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 20,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 21,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 22,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 23,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 24,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 25,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 26,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 27,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 28,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 29,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 30,
+        "maximum_absolute_difference": 0.0
+      },
+      {
+        "chart": "quadratic",
+        "direction_index": 31,
+        "maximum_absolute_difference": 0.0
+      }
+    ],
+    "dual_decision_gates": {
+      "original_single_failure": {
+        "passed": true,
+        "threshold": {
+          "failed_gate_count": 1,
+          "failed_gate_names": [
+            "global_conservation"
+          ]
+        },
+        "value": {
+          "failed_gate_count": 1,
+          "failed_gate_names": [
+            "global_conservation"
+          ]
+        }
+      },
+      "policy_column_all_passed": {
+        "passed": true,
+        "threshold": {
+          "failed_gate_count": 0,
+          "global_gate_replacement_only": true
+        },
+        "value": {
+          "failed_gate_count": 0,
+          "global_gate_replacement_only": true
+        }
+      },
+      "q006o_policy_selection": {
+        "passed": true,
+        "threshold": {
+          "standard": "passed",
+          "uniform": "failed"
+        },
+        "value": {
+          "standard": "passed",
+          "uniform": "failed"
+        }
+      }
+    },
+    "hypothesis": "The original column keeps exactly the global-conservation failure, whereas replacing only that gate with the aligned Q006o standard-map budget yields a fully passed policy column.",
+    "hypothesis_outcome": "accepted",
+    "next_change": "Preregister an independent-seed, amplitude, and horizon holdout audit for the operational forward-error budget.",
+    "original_column": {
+      "failed_gate_count": 1,
+      "failed_gate_names": [
+        "global_conservation"
+      ],
+      "gates": {
+        "global_conservation": {
+          "passed": false,
+          "threshold": 1e-12,
+          "value": 2.728496323152741e-12
+        },
+        "linear_residual_order": {
+          "passed": true,
+          "threshold": {
+            "maximum": 2.1,
+            "minimum": 1.9
+          },
+          "value": {
+            "maximum": 2.0002631214413045,
+            "minimum": 1.9998167429607863
+          }
+        },
+        "maximum_amplitude_directional_improvement": {
+          "passed": true,
+          "threshold": 0.1,
+          "value": 0.006589347911343612
+        },
+        "positive_populations": {
+          "passed": true,
+          "threshold": 0.0,
+          "value": 0.02752631548168908
+        },
+        "quadratic_residual_order": {
+          "passed": true,
+          "threshold": {
+            "maximum": 3.1,
+            "minimum": 2.9
+          },
+          "value": {
+            "maximum": 3.000276101483694,
+            "minimum": 2.9997300492350725
+          }
+        },
+        "quadratic_shadowing_absolute_error": {
+          "passed": true,
+          "threshold": 1e-05,
+          "value": 1.5115144600874747e-07
+        },
+        "quadratic_shadowing_improvement": {
+          "passed": true,
+          "threshold": 0.1,
+          "value": 0.00512138311283885
+        },
+        "quadratic_shadowing_perturbation_relative_error": {
+          "passed": true,
+          "threshold": 0.01,
+          "value": 2.217308217796986e-05
+        }
+      },
+      "sealed_hypothesis_outcome": "rejected",
+      "sealed_scientific_classification": "Q006i local chart hypothesis rejected",
+      "sealed_study_validity": "passed"
+    },
+    "policy_column": {
+      "failed_gate_count": 0,
+      "failed_gate_names": [],
+      "gates": {
+        "global_conservation": {
+          "measurement": "Q006o registered componentwise forward-error policy",
+          "original_gate_preserved_separately": true,
+          "passed": true,
+          "threshold": {
+            "budget_violation_count": 0,
+            "maximum_final_component_budget": 1.2e-11,
+            "maximum_utilization": 1.0
+          },
+          "value": {
+            "budget_violation_count": 0,
+            "maximum_final_component_budget": 1.1368683772161603e-11,
+            "maximum_utilization": 0.5
+          }
+        },
+        "linear_residual_order": {
+          "passed": true,
+          "threshold": {
+            "maximum": 2.1,
+            "minimum": 1.9
+          },
+          "value": {
+            "maximum": 2.0002631214413045,
+            "minimum": 1.9998167429607863
+          }
+        },
+        "maximum_amplitude_directional_improvement": {
+          "passed": true,
+          "threshold": 0.1,
+          "value": 0.006589347911343612
+        },
+        "positive_populations": {
+          "passed": true,
+          "threshold": 0.0,
+          "value": 0.02752631548168908
+        },
+        "quadratic_residual_order": {
+          "passed": true,
+          "threshold": {
+            "maximum": 3.1,
+            "minimum": 2.9
+          },
+          "value": {
+            "maximum": 3.000276101483694,
+            "minimum": 2.9997300492350725
+          }
+        },
+        "quadratic_shadowing_absolute_error": {
+          "passed": true,
+          "threshold": 1e-05,
+          "value": 1.5115144600874747e-07
+        },
+        "quadratic_shadowing_improvement": {
+          "passed": true,
+          "threshold": 0.1,
+          "value": 0.00512138311283885
+        },
+        "quadratic_shadowing_perturbation_relative_error": {
+          "passed": true,
+          "threshold": 0.01,
+          "value": 2.217308217796986e-05
+        }
+      },
+      "global_gate_replacement_only": true
+    },
+    "question": "Can Q006i retain its original conservation rejection while an aligned Q006o policy column supports conditional chart continuation?",
+    "registered_setup": {
+      "amplitude": 0.01,
+      "chart_types": [
+        "linear",
+        "quadratic"
+      ],
+      "direction_count_per_chart": 32,
+      "eta": 0.01,
+      "grid": [
+        17,
+        17
+      ],
+      "map_modification": "none",
+      "omega": 1.5,
+      "original_conservation_threshold": 1e-12,
+      "policy_component_budget": "2 * step * spacing(component_scale)",
+      "quadratic_pair_count": 300,
+      "reduced_dimension": 24,
+      "shadow_seed": 20260810,
+      "state_dimension": 2601,
+      "steps": 100
+    },
+    "scientific_classification": "dual reporting supports unmodified-map chart continuation",
+    "setup_alignment": {
+      "passed": true,
+      "value": {
+        "q006i_eta": 0.01,
+        "q006i_grid": [
+          17,
+          17
+        ],
+        "q006i_linear_amplitude": 0.01,
+        "q006i_linear_shadow_seed": 20260810,
+        "q006i_linear_steps": 100,
+        "q006i_omega": 1.5,
+        "q006i_quadratic_amplitude": 0.01,
+        "q006i_quadratic_shadow_seed": 20260810,
+        "q006i_quadratic_steps": 100,
+        "q006i_scope_shadow_seed": 20260810,
+        "q006o_amplitude": 0.01,
+        "q006o_chart_types": [
+          "linear",
+          "quadratic"
+        ],
+        "q006o_eta": 0.01,
+        "q006o_grid": [
+          17,
+          17
+        ],
+        "q006o_omega": 1.5,
+        "q006o_runner_direction_seed": 20260810,
+        "q006o_steps": 100
+      }
+    },
+    "study_validity": "passed",
+    "summary": {
+      "budget_violation_count": 0,
+      "direction_alignment_record_count": 64,
+      "maximum_budget_utilization": 0.5,
+      "maximum_direction_alignment_error": 0.0,
+      "maximum_final_component_budget": 1.1368683772161603e-11,
+      "original_failed_gate_count": 1,
+      "original_failed_gate_names": [
+        "global_conservation"
+      ],
+      "policy_failed_gate_count": 0,
+      "policy_failed_gate_names": [],
+      "q006i_original_maximum_drift": 2.728496323152741e-12,
+      "q006i_q006o_drift_difference": 7.82756826945652e-18,
+      "q006o_fsum_maximum_drift": 2.7285041507210106e-12,
+      "q006o_standard_policy_outcome": "passed",
+      "q006o_uniform_policy_outcome": "failed"
+    },
+    "validity_gates": {
+      "original_global_gate_preserved": {
+        "passed": true,
+        "threshold": {
+          "passed": false,
+          "q006i_hypothesis_outcome": "rejected",
+          "threshold": 1e-12
+        },
+        "value": {
+          "passed": false,
+          "q006i_hypothesis_outcome": "rejected",
+          "threshold": 1e-12
+        }
+      },
+      "registered_direction_alignment": {
+        "passed": true,
+        "threshold": {
+          "maximum_absolute_difference": 0.0,
+          "record_count": 64
+        },
+        "value": {
+          "maximum_absolute_difference": 0.0,
+          "record_count": 64
+        }
+      },
+      "registered_drift_reproduction": {
+        "passed": true,
+        "threshold": 5e-15,
+        "value": {
+          "cross_measurement_difference": 7.82756826945652e-18,
+          "q006i_absolute_error": 0.0,
+          "q006o_absolute_error": 0.0
+        }
+      },
+      "registered_setup_alignment": {
+        "passed": true,
+        "threshold": "all registered Q006i/Q006o setup fields agree",
+        "value": {
+          "q006i_eta": 0.01,
+          "q006i_grid": [
+            17,
+            17
+          ],
+          "q006i_linear_amplitude": 0.01,
+          "q006i_linear_shadow_seed": 20260810,
+          "q006i_linear_steps": 100,
+          "q006i_omega": 1.5,
+          "q006i_quadratic_amplitude": 0.01,
+          "q006i_quadratic_shadow_seed": 20260810,
+          "q006i_quadratic_steps": 100,
+          "q006i_scope_shadow_seed": 20260810,
+          "q006o_amplitude": 0.01,
+          "q006o_chart_types": [
+            "linear",
+            "quadratic"
+          ],
+          "q006o_eta": 0.01,
+          "q006o_grid": [
+            17,
+            17
+          ],
+          "q006o_omega": 1.5,
+          "q006o_runner_direction_seed": 20260810,
+          "q006o_steps": 100
+        }
+      },
+      "sealed_study_validity": {
+        "passed": true,
+        "threshold": {
+          "all_validity_gates_passed": true,
+          "study_validity": "passed"
+        },
+        "value": {
+          "q006i_all_validity_gates_passed": true,
+          "q006i_study_validity": "passed",
+          "q006o_all_validity_gates_passed": true,
+          "q006o_study_validity": "passed"
+        }
+      },
+      "strict_json_finite_values": {
+        "passed": true,
+        "threshold": true,
+        "value": true
+      }
+    }
+  },
+  "generated_at_utc": "2026-08-07T19:34:20.320330+00:00",
+  "mathematical_scope": {
+    "claim": "same-trajectory integration audit only; the sealed Q006i rejection remains unchanged and an independent holdout is required before degree continuation",
+    "construction_grid": [
+      17,
+      17
+    ],
+    "diagnostic": "Q006i/Q006o dual-reporting integration",
+    "eta": 0.01,
+    "omega": 1.5,
+    "original_threshold": 1e-12,
+    "steps": 100,
+    "trajectory_count": 64
+  },
+  "next_question": "Preregister an independent-seed, amplitude, and horizon holdout audit for the operational forward-error budget.",
+  "runtime": {
+    "numpy": "2.3.4",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.5",
+    "scipy": "1.16.3"
+  },
+  "schema_version": 1,
+  "scientific_outcome": "accepted",
+  "source": {
+    "package_source_sha256": "9323476865d21a63e9f7e3dde53746cd888e52bc049f0b5e8e78d380536cf76b",
+    "package_version": "0.1.0"
+  },
+  "study_gate": "passed"
+}
