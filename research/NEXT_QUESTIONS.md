@@ -892,7 +892,7 @@ chartを新たに事前登録する。
 事前登録どおり全件を分類・保存し、class出現自体を失敗とはしなかった。normal gapは高解像度
 側で低下し、conditionも増大するため、有限5-grid prequalificationを越える主張はしない。
 
-## Q006i: filtered full 2D dense quadratic chart — 事前登録
+## Q006i: filtered full 2D dense quadratic chart — 完了
 
 ### 問い
 
@@ -970,6 +970,89 @@ acceptedでも、これは固定した変更写像、\(17^2\)、登録有限方�
 5. coordinate normalization
 6. local candidate-chart domain超過
 7. fixed-conservation-leaf constraint 違反
+
+### 結果
+
+全validity gate、残差次数、positivity、shadowingは通過したが、global conservationだけが
+登録上限 \(10^{-12}\) を超えたため`Q006i local chart hypothesis rejected`と判定した。
+
+- maximum global conservation drift: `2.7284963e-12`
+- linear / quadratic drift: `2.7284963e-12 / 2.7284953e-12`
+- residual slope: linear `1.99982 ... 2.00026`、quadratic `2.99973 ... 3.00028`
+- maximum quadratic/linear residual ratio: `0.00658935`
+- quadratic shadow maximum absolute error: `1.51151e-7`
+- quadratic/linear shadow-error ratio: `0.00512138`
+
+失敗は単一gateだが、閾値を変更せず、Q006iを遡及的にacceptedへしない。次に保存量の集約と
+full-map各stageを分解する。
+
+## Q006j: float64 global-conservation drift source audit — 事前登録
+
+### 問い
+
+Q006iの100-step conservation drift \(2.7285\times10^{-12}\) は、通常のNumPy reductionだけで
+生じた測定誤差か。それともcollision／filterのfloat64演算が実状態へ蓄積したroundoffか。
+
+### 固定trajectory
+
+- Q006iの \((N,\eta,\omega)=(17,0.01,1.5)\)、24実座標chartを変更しない。
+- seed `20260810` の32方向、振幅 `0.01` を使う。
+- linear chartとquadratic chartの両方、合計64 trajectoryを100 step追跡する。
+- checkpointは `0, 1, 2, 5, 10, 20, 50, 100` とする。
+- Q006iの通常写像を再実行し、Q006i artifactの保存driftを再現する。parameter、方向、step、
+  thresholdを結果後に変更しない。
+
+### 保存量の独立集約
+
+各stateと各stageでmass、\(P_x\)、\(P_y\) を次の3方法で計算する。
+
+1. Q006iと同じNumPy reduction
+2. population寄与を `math.fsum` で集約するfaithful-rounded sum
+3. 独立なNeumaier compensated sum
+
+`math.fsum` とNeumaierの各component差を \(5\times10^{-14}\) 以下とする。通常和と補償和の差、
+初期値からのsigned drift、drift normを全checkpointで保存する。
+
+### stage分解
+
+各stepをBGK collision、periodic streaming、five-point filterへ分ける。各stage前後の補償保存量
+差を記録し、64 trajectory全体で次を監査する。
+
+- streamingはpopulationのpermutationであり、`math.fsum` moment driftを \(5\times10^{-14}\) 以下
+- collisionとfilterの1-step drift、符号、最大値、RMS、累積signed contribution
+- collision + streaming + filterの累積contributionが100-step total driftを
+  \(1\times10^{-13}\) 以下で再構成すること
+- linear／quadratic双方で、最大driftを与えるtrajectory、component、stepを保存すること
+
+### roundoff-projection control
+
+診断対照として、各通常full step後に、直前stateとの差として補償和で測ったglobal moment errorを
+uniform equilibrium tangentにより固定保存量葉へ射影し戻す。これはexact arithmeticではゼロの
+補正であり、Q006i写像の置換やQ006i再判定には使わない。
+
+- projected controlの100-step compensated driftを \(10^{-12}\) 以下
+- 各projection correction norm、累積norm、standard trajectoryとの差を保存
+- maximum single correction normを \(10^{-11}\) 以下
+- positivityを全stateで維持
+
+### validityと判定
+
+64 trajectory、8 checkpoint、100 stage recordに欠落がなく、全値finite、独立補償和が一致し、
+stage累積がtotal driftを再構成すればvalidとする。validity失敗は`inconclusive`とする。
+
+validな場合、次の順で分類する。
+
+1. 通常和は \(10^{-12}\) を超えるが `math.fsum` driftが \(10^{-12}\) 以下なら
+   `reduction-only conservation measurement failure`。
+2. `math.fsum` driftも \(10^{-12}\) を超え、stage累積で再構成され、projection controlが通れば
+   `float64 map roundoff accumulation localized`。
+3. projection controlまたは登録stage boundを落とせば
+   `structural or unresolved conservation defect`。
+
+どの分類でもQ006iの`rejected`、\(10^{-12}\) threshold、保存済みartifactを変更しない。
+Q006jは有限64 trajectoryの算術診断であり、数学的な厳密保存や全状態・全stepへの誤差定理を
+主張しない。分類後に初めて、保存的算術実装を新しい写像実装として採用するか、元のfloat64写像を
+明示したまま次へ進むかを別gateとして事前登録する。
 
 ## Q007: degree continuation は有効か
 

@@ -1110,6 +1110,77 @@ all-grid theorem、grid-uniform chart、非線形normal attraction、full chart�
 Q006i: \((N,\eta,\omega)=(17,0.01,1.5)\) の固定保存量葉上で、24実座標のfull 2D
 dense quadratic candidate chartは不変性残差次数を2から3へ改善できるか。
 
+## Cycle Q006i: filtered full-2D dense quadratic chart
+
+### 問い
+
+Q006hが固定した変更写像と24実座標familyについて、非自明な \(R_2\) を含むdense quadratic
+candidate chartは、独立微分検証を通り、残差次数を2から3へ改善し、100-step shadowingと
+保存量の全登録gateを満たすか。
+
+### 仮説
+
+構成validity、局所不変性、positivity、global conservation、100-step shadowingの全gateが
+通過し、`N17 filtered full-2D quadratic candidate chart verified` と判定される。
+
+### 実験
+
+- \((N,\eta,\omega)=(17,0.01,1.5)\)、固定質量・運動量葉
+- 第一Chebyshev shellの8 wave × 3 hydrodynamic mode、24実座標
+- 300 unordered pairをzero-wave kinetic、internal selected、external full blockに分解
+- internal outputではgraph gaugeを課し、tangential componentを \(R_2\) として同時に解く
+- seed `20260808`、32方向、2 stepとRichardson extrapolationによる独立Hessian検証
+- seed `20260809`、64方向、5振幅によるlinear／quadratic残差次数
+- seed `20260810`、32方向、振幅0.01、100 stepのlinear／quadratic shadowing
+
+### 結果
+
+全validity gateは通過したが、hypothesis gateはglobal conservationだけが失敗した。従って
+封印規則どおり`rejected`とした。
+
+- classification: `Q006i local chart hypothesis rejected`
+- pair count: `300` = zero `36` + internal `108` + external `156`
+- numerical singular block: `0`
+- minimum operator singular value: `1.5502436e-4`
+- maximum operator condition: `1.4513931e4`
+- maximum solve relative residual: `1.0863772e-14`
+- homological relative residual: `2.3530055e-15`
+- graph-gauge residual: `3.1780609e-16`
+- coefficient conservation residual: `3.6863996e-15`
+- conjugacy / C4 Hessian residual: `1.0915747e-14 / 5.6073056e-14`
+- \(\lVert R_2\rVert_F\): `0.6040702`
+- independent Hessian maximum discrepancy: `9.0693268e-10`（上限 `1e-8`）
+- linear residual slope: `1.9998167 ... 2.0002631`
+- quadratic residual slope: `2.9997300 ... 3.0002761`
+- maximum quadratic/linear residual ratio: `0.00658935`
+- quadratic shadow maximum absolute / relative error: `1.5115145e-7 / 2.2173082e-5`
+- quadratic/linear shadow-error ratio: `0.00512138`
+- linear / quadratic conservation drift: `2.7284963e-12 / 2.7284953e-12`
+- minimum population: `0.0275263`
+
+### 分析
+
+homological solve、graph gauge、conjugacy、C4、Fourier support、独立Hessianが整合し、登録64方向で
+残差次数が2から3へ改善した。100-step state errorも全shadowing閾値を大幅に通過した。従って
+二次chart係数の誤りを示す証拠は得られなかった。
+
+一方、global conservation上限 \(10^{-12}\) に対する最大値は約 \(2.73\times10^{-12}\) である。
+linear／quadratic trajectoryで値がほぼ一致するため、chart Hessian固有の違反よりも、保存量の
+通常和またはfull-map float64反復に共通する丸め誤差が候補になる。ただし、この解釈を理由に
+Q006iを遡及的にacceptedへ変更したり、閾値を緩和したりしない。
+
+### 改善
+
+- Q006iの同じ64 trajectoryを、通常和と二つの補償和で再測定する。
+- 各full stepをcollision、streaming、filterへ分解し、signed moment incrementを保存する。
+- exact-arithmeticでは恒等なfixed-leaf roundoff projectionを対照としてのみ追加する。
+- Q006i artifactと判定は不変に保ち、診断は別artifact Q006jへ保存する。
+
+### 次の問い
+
+Q006j: Q006iの単一失敗gateは保存量の通常和だけで生じたのか、それともfloat64 full mapの
+どのstageで蓄積した実状態の丸めdriftなのか。
+
 ## 再現 artifact
 
 数値の完全な記録:

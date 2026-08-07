@@ -34,8 +34,12 @@ gateを通したが、登録20 family全てがnormal-gap gateを落とし、viab
 Q006gは、フィルタ後の律速となった対角第一shell内のshear/acoustic gapが符号付きで
 \(N^{-4}\)となり、scalar filterでは順序も指数も変えられないことを確認した。Q006hは
 diagonal acousticも含む24実座標cluster-complete familyを100条件で監査し、6 familyを
-viableと判定した。事前登録した規則で \((\eta,\omega)=(0.01,1.5)\) を選択したため、次は
-\(17^2\) 上でこの変更写像に固定したfull 2D dense quadratic chartをQ006iで構築する。
+viableと判定した。事前登録した規則で \((\eta,\omega)=(0.01,1.5)\) を選択し、Q006iで
+\(17^2\) 上のfull 2D dense quadratic chartを構築した。構成・独立Hessian・残差次数・
+shadowingのgateは通過したが、100-step global conservation driftが登録上限 \(10^{-12}\) に
+対して \(2.72850\times10^{-12}\) となったため、Q006iは単一gateで`rejected`と固定する。
+linear／quadratic chartでほぼ同じdriftであることから、次は閾値を変更せず、Q006jで
+保存量の集約とfloat64写像の各stageに分解して発生源を診断する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -293,6 +297,33 @@ gateが通り、20 family中6 familyが全spectral/coefficient/scaling gateを�
 増大している。従ってこれは変更写像・有限5-gridのprequalificationであり、all-grid theorem、
 grid-uniform chart、非線形normal attraction、存在・一意性の証明ではない。
 
+### Q006i filtered full-2D dense quadratic chart
+
+Q006hが選んだ \((N,\eta,\omega)=(17,0.01,1.5)\) を固定し、第一Chebyshev shellの
+24実座標、300 unordered pairについて、selected-output graph gaugeと非自明な \(R_2\) を
+含むdense quadratic chartを構築した。全validity gateは通過したが、登録した仮説gateのうち
+global conservationだけが失敗したため、結果は`rejected`である。
+
+- classification: `Q006i local chart hypothesis rejected`
+- sector count: zero/internal/external = `36 / 108 / 156`
+- numerical singular block: `0`
+- maximum operator condition: `1.45139e4`
+- maximum solve residual: `1.08638e-14`
+- homological relative residual: `2.35301e-15`
+- independent Hessian maximum relative discrepancy: `9.06933e-10`
+- linear residual slope range: `1.99982 ... 2.00026`
+- quadratic residual slope range: `2.99973 ... 3.00028`
+- maximum quadratic/linear residual ratio: `0.00658935`
+- quadratic 100-step maximum state error: `1.51151e-7`
+- quadratic/linear shadow-error ratio: `0.00512138`
+- maximum global conservation drift: `2.72850e-12`（上限 `1e-12`）
+
+二次補正は登録方向で残差を2次から3次へ改善し、shadowingも大幅に改善した。一方、失敗した
+保存gateを結果後に緩めてacceptedへ変更しない。linear／quadraticの保存driftがほぼ同じため、
+Q006jではchart係数ではなく、通常和による測定、collision、streaming、filterのfloat64演算を
+分離して監査する。Q006iは固定変更写像・単一grid・有限方向の数値結果であり、真の不変多様体の
+存在・一意性やall-grid主張ではない。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -316,7 +347,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
-`q006g`、`q006h` は
+`q006g`、`q006h`、`q006i` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -333,6 +364,7 @@ python -m ttim_lbm --study q006c --output research/artifacts/q006c_coefficient_s
 python -m ttim_lbm --study q006f --output research/artifacts/q006f_checkerboard_filter.json
 python -m ttim_lbm --study q006g --output research/artifacts/q006g_low_wave_tangency.json
 python -m ttim_lbm --study q006h --output research/artifacts/q006h_cluster_complete.json
+python -m ttim_lbm --study q006i --output research/artifacts/q006i_full2d_quadratic.json
 ```
 
 保存済み結果:
@@ -347,6 +379,7 @@ python -m ttim_lbm --study q006h --output research/artifacts/q006h_cluster_compl
 - [`research/artifacts/q006f_checkerboard_filter.json`](research/artifacts/q006f_checkerboard_filter.json)
 - [`research/artifacts/q006g_low_wave_tangency.json`](research/artifacts/q006g_low_wave_tangency.json)
 - [`research/artifacts/q006h_cluster_complete.json`](research/artifacts/q006h_cluster_complete.json)
+- [`research/artifacts/q006i_full2d_quadratic.json`](research/artifacts/q006i_full2d_quadratic.json)
 
 ## 文書
 
@@ -375,12 +408,13 @@ python -m ttim_lbm --study q006h --output research/artifacts/q006h_cluster_compl
 - Q006f conservative filter algebra、100条件のspectral/coefficient/scaling audit
 - Q006g 140条件のdiagonal shear/acoustic \(N^{-4}\) tangency audit
 - Q006h 24実座標cluster-complete family、100条件・300 pairのfiltered prequalification
+- Q006i 24実座標full-2D dense quadratic chart、非自明な \(R_2\)、独立Hessian・残差・shadow audit
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006i の \(17^2\)・24実座標filtered full 2D dense quadratic candidate chart
+- Q006j のQ006i global-conservation drift発生源監査
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートは、Q006hが選んだ変更写像に対するQ006i dense quadratic chartである。
-このoracleを通過するまでTT圧縮へは進まない。
+従って次のゲートはQ006jである。Q006iの閾値と棄却を維持したまま、保存誤差が集約だけか、
+float64写像のどのstageで蓄積するかを確定する。この診断を終えるまでTT圧縮へは進まない。
