@@ -1064,7 +1064,7 @@ Q006jは有限64 trajectoryの算術診断であり、数学的な厳密保存�
 最大drift `2.1600519e-12` で保存上限を落とした。従って
 `structural or unresolved conservation defect`として`rejected`とする。Q006i判定は変更しない。
 
-## Q006k: fixed-leaf projection representability audit — 事前登録
+## Q006k: fixed-leaf projection representability audit — 完了
 
 ### 問い
 
@@ -1140,6 +1140,90 @@ rejected、validity失敗ならinconclusiveとする。acceptedでも、固定si
 symmetryを破る診断対照にすぎず、本番写像、Q006i再判定、将来chartへ採用しない。Q006jの
 `rejected`と全thresholdも変更しない。成功した場合だけ、local collisionとfilterを対称な
 conservative arithmeticで実装する別gateを事前登録する。
+
+### 結果
+
+全validity／hypothesis gateを通過し、
+`uniform projection representability failure localized`としてacceptedとした。
+
+- uniform realization error: `6400 / 6400` step、maximum `5.7125343e-14`
+- changed entries: minimum `0`、maximum `2601`、mean `1563.0384`
+- ULP ratio: minimum `4.8020027e-20`、median-of-medians `1.5747789`、maximum `1.8158401`
+- localized maximum drift: `1.5115007e-16`
+- maximum localized correction / standard difference: `5.9292511e-14 / 1.0385189e-13`
+
+acceptedでもfixed-site controlはtranslation／C4を壊す診断対照であり、production mapへ採用しない。
+また、全uniform correctionがsub-ULPだったとは主張しない。Q006i／Q006jの判定は維持する。
+
+## Q006l: stagewise state-covariant conservative arithmetic — 事前登録
+
+### 問い
+
+Q006kの固定site／fixed-population依存を除き、collisionとfilterの各stageでstateから共変に選ぶ
+anchorとC4共変なpopulation right inverseを使う一回補正は、保存上限とtranslation／C4
+equivarianceを同時に満たすか。
+
+### 固定trajectoryとcontrols
+
+- \((N,\eta,\omega)=(17,0.01,1.5)\)、seed `20260810`、振幅0.01、100 stepを維持する。
+- linear／quadratic各32、合計64 trajectoryを使う。
+- standardとQ006k fixed-site localized controlを変更せず再実行し、最大drift
+  `2.7285041507210106e-12` と `1.5115007100657805e-16` を各 \(5\times10^{-15}\) 以内で再現する。
+- 第3 controlだけをstagewise state-covariant arithmeticとし、結果後にstage、anchor rule、
+  right inverse、反復回数を変更しない。streamingは変更しない。
+
+### anchorとpopulation correction
+
+raw collision後とraw filter後の各stateでrest population \(f_0(y,x)\) が最大のsiteをanchorにする。
+各stageで最大値と第2最大値のgapを保存し、全stepでgap \(\ge10^{-12}\) を要求する。実装上のtieは
+row-major最初を返すが、tieまたはgap不足はvalidity failureとし、科学判定には使わない。
+
+site-local conserved-moment matrixを \(C\in\mathbb R^{3\times9}\) とし、固定right inverse
+
+\[
+G=C^T(CC^T)^{-1},\qquad CG=I_3
+\]
+
+を使う。collision前／raw collision後、streaming後／raw filter後の補償global moment errorを
+それぞれ \(e_{\rm coll},e_{\rm filt}\) とし、各stageのanchor 9 populationsへ
+\(\delta f=-Ge\) を一回だけ加える。その後に次stageへ進む。refinement、別anchor、別right inverseは
+使わない。
+
+### symmetry audit
+
+各64×100 stepのcollision／filter correction operatorを次のgeneratorへ適用する。
+
+- periodic translation: \((\Delta y,\Delta x)=(1,0),(0,1)\)
+- C4 quarter-turn: spatial quarter rotationと対応するD2Q9 population permutation
+
+変換前に各stageを補正してからstateを変換した結果と、stage前／raw stage後stateを変換してから
+anchor選択・補正した結果のglobal-\(\ell_2\) 差を保存する。anchor indexもgeneratorどおり移ることを
+確認する。
+
+### validity gate
+
+1. 64 trajectory × 100 step × 3 controlを欠落なく実行する。
+2. standard／fixed-site driftを登録値から \(5\times10^{-15}\) 以内で再現する。
+3. `math.fsum`とNeumaierのcomponent差を \(5\times10^{-14}\) 以下とする。
+4. collision／filter双方の全anchor gapを \(10^{-12}\) 以上、anchor covariance failureを0とする。
+5. \(G\) のconditionを10以下、\(\lVert CG-I\rVert_2\le10^{-14}\) とする。
+6. 全値finiteかつstrict JSONとして保存する。失敗時は`inconclusive`とする。
+
+### 仮説gateと判定
+
+次を全て満たす場合だけ
+`covariant anchor correction controls registered drift`としてacceptedとする。
+
+- stagewise covariant controlの100-step maximum compensated drift \(\le10^{-12}\)
+- collision／filterを通じたmaximum single correction norm \(\le10^{-11}\)
+- covariant／standard maximum state difference \(\le10^{-10}\)
+- translationおよびC4 correction equivariance error \(\le10^{-13}\)
+- 全covariant stateのpopulationが正
+
+validだが仮説gateを落とせば`covariant correction fails conservation or symmetry gate`としてrejected、
+validity失敗ならinconclusiveとする。acceptedでも、各stageのglobal residual、unique argmax、登録有限
+軌道に依存する非滑らかな算術controlである。production mapやQ006i再判定へ直ちに採用せず、full
+chartの残差・shadowingをこの変更写像で再監査する前に、map定義と微分可能領域を別途事前登録する。
 
 ## Q007: degree continuation は有効か
 

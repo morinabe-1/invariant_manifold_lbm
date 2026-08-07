@@ -1244,6 +1244,68 @@ collisionの累積が主寄与、filterが副寄与だった。全stage増分は
 Q006k: Q006jの一様projection失敗はsub-ULP分散補正の表現不能で説明でき、同じintended global
 moment correctionを固定3-populationへ局在化すれば登録100-step保存上限を通るか。
 
+## Cycle Q006k: fixed-leaf projection representability audit
+
+### 問い
+
+Q006jの一様projection失敗は、intended global moment correctionをfloat64 populationへ分散加算した
+際の実現誤差で説明できるか。同じcorrectionを固定3 populationへ局在化すれば保存上限を通るか。
+
+### 仮説
+
+一様補正に非零のrealization errorを観測し、固定 \((0,0)\) siteの \((q_0,q_1,q_2)\) 一回補正が
+positivityと微小state差を保ったまま、100-step driftを \(10^{-12}\) 以下へ抑える。
+
+### 実験
+
+- Q006jと同じlinear／quadratic各32、合計64 trajectory、100 step
+- standard／uniform／localizedの合計19,200 control-step
+- 一様補正のchanged-entry count、ULP ratio、intended／realized moment correction
+- 固定site \((0,0)\)、population \((q_0,q_1,q_2)\) の解析的3×3 solve、一回補正
+- `math.fsum`とNeumaierによる独立保存量集約
+
+### 結果
+
+全validity gateとhypothesis gateを通過し、
+`uniform projection representability failure localized`としてacceptedとした。
+
+- Q006j standard / uniform reproduction error: `0 / 0`
+- standard / uniform maximum drift: `2.7285042e-12 / 2.1600519e-12`
+- nonzero uniform correction-error step: `6400 / 6400`
+- maximum uniform global correction error: `5.7125343e-14`
+- changed population count: `0 ... 2601`、mean `1563.0384`
+- ULP ratio: `4.8020027e-20 ... 1.8158401`、median-of-medians `1.5747789`
+- localized maximum drift: `1.5115007e-16`
+- localized maximum correction norm: `5.9292511e-14`
+- localized / standard maximum state difference: `1.0385189e-13`
+- minimum population: `0.0275271`
+- moment matrix rank / condition / maximum solve residual: `3 / 3.7320508 / 0`
+
+### 分析
+
+一様補正は全stepでintended global moment correctionを正確に実現しなかった。stepによっては
+2,601 entries全てが変化せず、平均changed fractionは約0.601だった。一方でULP ratioの
+median-of-mediansは1.57であり、全entryがsub-ULPだったわけではない。従って支持された説明は、
+分散加算全体のfloat64 realization errorであり、単純な「全項丸め落ち」ではない。
+
+固定3-population controlはdriftを機械精度近くまで抑え、standardとの差も \(1.04\times10^{-13}\)
+だった。これは数学的保存構造が失われた証拠ではなく、補正の算術的実現方法が律速だったことを
+支持する。ただし固定site／populationはtranslation／C4を壊すため、production mapとして無効である。
+Q006iとQ006jの封印判定は変更しない。
+
+### 改善
+
+- 固定座標でなく、stateのrest population \(q_0\) が最大の一意なsiteをanchorにする。
+- population correctionは保存moment matrixのC4共変なminimum-norm right inverseを使う。
+- collision／filter各stageで、2つのtranslation generatorとquarter-turnに対するcorrection
+  operator equivarianceを全stepで測る。
+- anchor uniquenessをvalidity gateにし、tie時のrow-major fallbackを受理範囲から除外する。
+
+### 次の問い
+
+Q006l: collision／filter各stageのstate-covariant anchorとC4共変right inverseによる一回補正は、
+登録64 trajectoryで保存上限、positivity、translation／C4 equivarianceを同時に満たすか。
+
 ## 再現 artifact
 
 数値の完全な記録:

@@ -42,7 +42,11 @@ linear／quadratic chartでほぼ同じdriftであることから、次は閾値
 保存量の集約とfloat64写像の各stageに分解して発生源を診断した。補償和でもdriftを再現し、
 collisionとfilterへ分解できたが、一様fixed-leaf projectionが登録上限を通らなかったため、
 Q006jは`structural or unresolved conservation defect`として`rejected`である。次はQ006kで
-この投影失敗がsub-ULPの分散補正に由来するかを限定的に監査する。
+この投影失敗がfloat64分散補正の不完全な実現に由来するかを監査した。全6,400 stepで
+intended／realized moment correctionが不一致となり、固定3-population controlは保存上限を
+通過したため、Q006kは診断範囲で`accepted`である。ただし固定site依存は採用せず、次のQ006lで
+collision／filter各stageの状態共変anchor correctionがtranslation／C4と保存を同時に満たすかを
+監査する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -350,6 +354,29 @@ driftである。streamingは原因から除外でき、collisionが主寄与、
 分散した補正が各populationのULPに対して小さすぎた可能性はQ006jだけでは未証明であり、Q006kで
 実現補正量と診断用localized correctionを比較する。Q006iの棄却と \(10^{-12}\) 上限は維持する。
 
+### Q006k fixed-leaf projection representability audit
+
+Q006jと同じ64 trajectoryを100 step追跡し、standard、一様分散、固定site \((0,0)\) の
+\((q_0,q_1,q_2)\) localized controlを比較した。Q006jのstandard／uniform driftを誤差0で再現し、
+全validity・hypothesis gateを通過した。
+
+- classification: `uniform projection representability failure localized`
+- standard / uniform maximum drift: `2.7285042e-12 / 2.1600519e-12`
+- nonzero uniform realization-error step: `6400 / 6400`
+- maximum uniform global correction error: `5.71253e-14`
+- changed population count: `0 ... 2601`、mean `1563.04 / 2601`
+- ULP ratio: minimum `4.80200e-20`、median-of-medians `1.57478`、maximum `1.81584`
+- localized maximum drift: `1.51150e-16`
+- localized maximum correction norm: `5.92925e-14`
+- localized / standard maximum state difference: `1.03852e-13`
+- 3-population moment matrix condition / solve residual: `3.73205 / 0`
+
+一様補正はstepによって全entryが丸め落ちする一方、平均では約60%のentryが変化し、ULP比の中央値は
+1を超えた。従って「全補正がsub-ULP」とは結論せず、**分散したfloat64加算がintended global
+moment correctionを正確に実現しない**と限定する。同じmoment correctionを3 populationへ
+局在化すると登録保存上限を大幅に通過したが、固定siteと固定populationはtranslation／C4 symmetryを
+壊す。このcontrolは原因診断だけに使い、Q006i／Q006jの判定、本番写像、chartへ採用しない。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -373,7 +400,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
-`q006g`、`q006h`、`q006i`、`q006j` は
+`q006g`、`q006h`、`q006i`、`q006j`、`q006k` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -392,6 +419,7 @@ python -m ttim_lbm --study q006g --output research/artifacts/q006g_low_wave_tang
 python -m ttim_lbm --study q006h --output research/artifacts/q006h_cluster_complete.json
 python -m ttim_lbm --study q006i --output research/artifacts/q006i_full2d_quadratic.json
 python -m ttim_lbm --study q006j --output research/artifacts/q006j_conservation_drift.json
+python -m ttim_lbm --study q006k --output research/artifacts/q006k_projection_representability.json
 ```
 
 保存済み結果:
@@ -408,6 +436,7 @@ python -m ttim_lbm --study q006j --output research/artifacts/q006j_conservation_
 - [`research/artifacts/q006h_cluster_complete.json`](research/artifacts/q006h_cluster_complete.json)
 - [`research/artifacts/q006i_full2d_quadratic.json`](research/artifacts/q006i_full2d_quadratic.json)
 - [`research/artifacts/q006j_conservation_drift.json`](research/artifacts/q006j_conservation_drift.json)
+- [`research/artifacts/q006k_projection_representability.json`](research/artifacts/q006k_projection_representability.json)
 
 ## 文書
 
@@ -438,13 +467,14 @@ python -m ttim_lbm --study q006j --output research/artifacts/q006j_conservation_
 - Q006h 24実座標cluster-complete family、100条件・300 pairのfiltered prequalification
 - Q006i 24実座標full-2D dense quadratic chart、非自明な \(R_2\)、独立Hessian・残差・shadow audit
 - Q006j 3種の保存量集約、collision/streaming/filter分解、一様fixed-leaf projection control
+- Q006k 一様projectionのULP／実現誤差、固定3-population localized diagnostic
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006k の一様projection representabilityと診断用localized correction監査
+- Q006l のstagewise state-covariant anchor correctionとtranslation／C4監査
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ006kである。一様分散補正がfloat64 populationへ実際に反映された割合を測り、
-固定3-populationのlocalized controlと比較する。これは原因診断であり、対称性を壊すlocalized
-controlを本番写像として採用しない。この診断を終えるまでTT圧縮へは進まない。
+従って次のゲートはQ006lである。固定site diagnosticを採用せず、collisionとfilterの各stageで
+state-covariant anchorとC4共変right inverseを用いる一回補正が、保存、translation／C4、positivityを
+同時に満たすかを検証する。この診断を終えるまでTT圧縮へは進まない。
