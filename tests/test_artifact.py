@@ -383,3 +383,38 @@ def test_q006j_artifact_records_the_valid_unresolved_projection_failure() -> Non
     assert failed_projection_gates == ["projected_conservation"]
     assert cycle["summary"]["trajectory_count"] == 64
     assert cycle["summary"]["stage_record_count"] == 6400
+
+
+def test_q006k_artifact_records_only_the_symmetry_breaking_diagnostic() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006k_projection_representability.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "Q006j fixed-leaf projection representability audit",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "trajectory_count": 64,
+        "steps": 100,
+        "controls": ["standard", "uniform", "localized"],
+        "claim": (
+            "finite registered-trajectory arithmetic diagnosis only; the "
+            "fixed-site control is symmetry breaking and is not adopted as "
+            "the production map or used to revise Q006i or Q006j"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "uniform projection representability failure localized"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert "symmetry-breaking diagnostic only" in cycle["claim_boundary"]
+    assert cycle["summary"]["trajectory_count"] == 64
+    assert cycle["summary"]["total_control_step_count"] == 19200

@@ -628778,7 +628778,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-08-07T17:55:16.011573+00:00",
+  "generated_at_utc": "2026-08-07T18:11:54.076363+00:00",
   "mathematical_scope": {
     "claim": "finite registered-trajectory arithmetic diagnosis only; the Q006i rejection and threshold remain unchanged, with no exact all-state or all-time conservation claim",
     "conservation_treatment": "fixed global mass and momentum leaf",
@@ -628802,7 +628802,7 @@
   "schema_version": 1,
   "scientific_outcome": "rejected",
   "source": {
-    "package_source_sha256": "e3ca2b650de5d1b67631eb32c85d45c24ce023bc09cd47c868d8e3a0c3506890",
+    "package_source_sha256": "cdc525d8c16f1ef22a0c835411cf1ce5dfd12dac819c2884b372985764c11148",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

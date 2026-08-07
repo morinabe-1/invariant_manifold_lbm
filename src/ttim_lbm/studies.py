@@ -40,6 +40,7 @@ from .nonresonance import (
     wave_vector_from_index,
 )
 from .normal_refinement import run_normal_gap_refinement_audit
+from .projection_representability import run_projection_representability_audit
 from .provenance import runtime_metadata, source_metadata
 from .spectra import (
     TrackedHydrodynamicCluster,
@@ -1768,6 +1769,36 @@ def run_q006j_study() -> dict[str, Any]:
                 "finite registered-trajectory arithmetic diagnosis only; the "
                 "Q006i rejection and threshold remain unchanged, with no exact "
                 "all-state or all-time conservation claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006k_study() -> dict[str, Any]:
+    """Run and package the sealed Q006k projection-representability audit."""
+
+    cycle = run_projection_representability_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "Q006j fixed-leaf projection representability audit",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "trajectory_count": 64,
+            "steps": 100,
+            "controls": ["standard", "uniform", "localized"],
+            "claim": (
+                "finite registered-trajectory arithmetic diagnosis only; the "
+                "fixed-site control is symmetry breaking and is not adopted as "
+                "the production map or used to revise Q006i or Q006j"
             ),
         },
         "cycle": cycle,
