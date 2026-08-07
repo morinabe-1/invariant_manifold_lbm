@@ -831,3 +831,46 @@ def test_q007c1_artifact_records_valid_quartic_performance_rejection() -> None:
     assert cycle["coefficient_construction"]["summary"]["quartet_count"] == 17550
     assert not cycle["preserved_prior_outcomes"]["revised"]
     assert "32 residual directions" in cycle["claim_boundary"]
+
+
+def test_q007c2_artifact_records_only_localized_shadow_domain() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007c2_quartic_shadow_radius.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "quartic shadow amplitude-horizon localization",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "real_reduced_dimension": 24,
+        "direction_count": 64,
+        "amplitudes": [0.004, 0.007, 0.01],
+        "prefix_horizons": [10, 25, 50, 100],
+        "maximum_steps": 100,
+        "claim": (
+            "registered finite-direction amplitude-horizon localization "
+            "only; no all-ball, other-horizon, injectivity, grid-uniform, "
+            "existence, uniqueness, normal-attraction, or TT claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "quartic shadowing domain localized on independent directions"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["shadow_domain_campaign"]["trajectory_count"] == 384
+    assert cycle["shadow_domain_campaign"]["chart_step_count"] == 38400
+    assert cycle["shadow_domain_campaign"]["summary"][
+        "quartic_budget_component_check_count"
+    ] == 57600
+    assert not cycle["preserved_prior_outcomes"][
+        "q007c1_radius_0p01_horizon_100_revised"
+    ]
+    assert "two preregistered" in cycle["claim_boundary"]

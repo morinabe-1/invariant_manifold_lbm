@@ -52,6 +52,7 @@ from .projection_representability import run_projection_representability_audit
 from .provenance import runtime_metadata, source_metadata
 from .quartic_continuation import run_quartic_continuation_audit
 from .quartic_prequalification import run_quartic_prequalification_audit
+from .quartic_shadow_radius import run_quartic_shadow_radius_audit
 from .spectra import (
     TrackedHydrodynamicCluster,
     maximum_principal_angle,
@@ -2136,6 +2137,38 @@ def run_q007c1_study() -> dict[str, Any]:
                 "registered finite-grid, direction, amplitude, and 100-step "
                 "comparison only; no all-ball, injectivity, TT, grid-uniform, "
                 "existence, uniqueness, or normal-attraction claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007c2_study() -> dict[str, Any]:
+    """Run and package the sealed Q007c2 quartic shadow-domain audit."""
+
+    cycle = run_quartic_shadow_radius_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "quartic shadow amplitude-horizon localization",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "real_reduced_dimension": 24,
+            "direction_count": 64,
+            "amplitudes": [0.004, 0.007, 0.01],
+            "prefix_horizons": [10, 25, 50, 100],
+            "maximum_steps": 100,
+            "claim": (
+                "registered finite-direction amplitude-horizon localization "
+                "only; no all-ball, other-horizon, injectivity, grid-uniform, "
+                "existence, uniqueness, normal-attraction, or TT claim"
             ),
         },
         "cycle": cycle,

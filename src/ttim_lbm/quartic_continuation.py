@@ -974,8 +974,10 @@ def _shadow_rollout(
     direction_index: int,
     *,
     quartic: bool,
+    amplitude: float = SHADOW_AMPLITUDE,
+    steps: int = SHADOW_STEPS,
 ) -> dict[str, Any]:
-    coordinates = SHADOW_AMPLITUDE * direction
+    coordinates = float(amplitude) * direction
     state = model.chart_evaluate(coordinates, quartic=quartic)
     base = model.cubic.quadratic.chart.base
     minimum_population = np.inf
@@ -1009,7 +1011,7 @@ def _shadow_rollout(
         if np.any(component_ulps <= 0.0):
             raise ValueError("Q007c1 component scales must have positive ULPs")
 
-    for step in range(SHADOW_STEPS + 1):
+    for step in range(int(steps) + 1):
         predicted = model.chart_evaluate(coordinates, quartic=quartic)
         absolute_error = float(np.linalg.norm(state - predicted))
         perturbation_scale = max(
@@ -1075,9 +1077,9 @@ def _shadow_rollout(
                     ],
                 }
             )
-            if step == SHADOW_STEPS:
+            if step == steps:
                 final_component_budgets = budgets
-        if step == SHADOW_STEPS:
+        if step == steps:
             final_absolute_error = absolute_error
             final_relative_error = relative_error
         else:
