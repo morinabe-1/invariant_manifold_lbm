@@ -463732,7 +463732,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-08-07T19:49:59.200684+00:00",
+  "generated_at_utc": "2026-08-07T20:11:28.878999+00:00",
   "mathematical_scope": {
     "claim": "two finite-trajectory holdout scenarios only; no all-state or all-horizon theorem and no invariance claim at amplitude 0.02",
     "component_check_count": 48000,
@@ -463770,7 +463770,7 @@
   "schema_version": 1,
   "scientific_outcome": "accepted",
   "source": {
-    "package_source_sha256": "aadbf69c1a98ab2d4d64388be67fba1919c3053dc3ba12285a8bba324d568327",
+    "package_source_sha256": "0848621aa22132443b269ee8295a9a878c2f4f58f1ab0d40175786b49aecafcb",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

@@ -14,6 +14,7 @@ from .cluster_complete import run_cluster_complete_audit
 from .coefficient_scaling import run_coefficient_scaling_audit
 from .conservation_drift import run_conservation_drift_audit
 from .covariant_correction import run_covariant_correction_audit
+from .cubic_prequalification import run_cubic_prequalification_audit
 from .d2q9 import (
     bgk_periodic_step,
     fourier_symbol,
@@ -1973,6 +1974,35 @@ def run_q006q_study() -> dict[str, Any]:
             "claim": (
                 "two finite-trajectory holdout scenarios only; no all-state or "
                 "all-horizon theorem and no invariance claim at amplitude 0.02"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007a_study() -> dict[str, Any]:
+    """Run and package the sealed Q007a cubic prequalification."""
+
+    cycle = run_cubic_prequalification_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "order-three homological-family prequalification",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "complex_mode_count": 24,
+            "unordered_pair_control_count": 300,
+            "unordered_triple_count": 2600,
+            "claim": (
+                "operator-only finite-grid prequalification; no cubic forcing, "
+                "coefficient, residual-order, shadowing, or SSM claim"
             ),
         },
         "cycle": cycle,

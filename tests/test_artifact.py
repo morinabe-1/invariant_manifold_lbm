@@ -616,3 +616,37 @@ def test_q006q_artifact_records_the_independent_holdout() -> None:
     assert cycle["summary"]["component_budget_check_count"] == 48000
     assert cycle["summary"]["budget_violation_count"] == 0
     assert "not an all-state" in cycle["claim_boundary"]
+
+
+def test_q007a_artifact_records_only_operator_prequalification() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007a_cubic_prequalification.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "order-three homological-family prequalification",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "complex_mode_count": 24,
+        "unordered_pair_control_count": 300,
+        "unordered_triple_count": 2600,
+        "claim": (
+            "operator-only finite-grid prequalification; no cubic forcing, "
+            "coefficient, residual-order, shadowing, or SSM claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "order-three homological family prequalified on registered grid"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["triple_summary"]["record_count"] == 2600
+    assert cycle["triple_summary"]["numerically_singular_block_count"] == 0
+    assert "operator-only" in cycle["claim_boundary"]
