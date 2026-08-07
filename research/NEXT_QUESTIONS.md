@@ -225,7 +225,7 @@ projected-coordinate drift は quadratic `1.2826e-6`、linear `5.0056e-7` で改
 最大振幅0.01までの登録サンプルに限定する。半径0.01の ball 全体、full 2D、
 grid-uniform、存在・一意性、normal attraction は示していない。
 
-## Q006r: resonant/near-resonant mode-added closure audit — 事前登録
+## Q006r: resonant/near-resonant mode-added closure audit — 完了
 
 ### 問い
 
@@ -372,14 +372,99 @@ prequalification を落とした場合は、
 扱わない。両 gate を通っても「quadratic finite-grid SSM screening passed」とだけ記録し、
 存在・一意性や非線形 normal attraction の証明とは呼ばない。
 
+### 結果と判定
+
+study validity gate と coefficient-solvability gate は全て通過したが、finite-grid
+linear normal-dominance prequalification は棄却された。
+
+- initial/final real dimension: `16 / 16`
+- enumerated unordered block pair: `136 / 136`
+- nonempty mode addition: `0`
+- terminal numerical singular / near-singular external block: `0 / 0`
+- maximum external condition number: `1894.2921`
+- maximum homological solve residual: \(1.59\times10^{-15}\)
+- maximum Schur/projector/C4/conjugacy/fixed-leaf residual:
+  \(4.07\times10^{-15}\)
+
+Q005 の unprojected diagonal witness は
+\(\sigma_{\min}=5.10\times10^{-16}\) の `compatible_nonunique` だったが、diagonal
+shear を selected に含めた後の8次元 external block は
+\(\sigma_{\min}=0.1305687\)、condition number `13.8414` の nonsingular block になった。
+従って resonance の internalization は意図どおり機能し、追加 cascade は生じなかった。
+
+一方、selected の最小 modulus は diagonal shear の `0.9699501`、excluded の最大
+modulus は \((0,-8)\) near-Nyquist mode の `0.9830465` で、gap は
+`-0.0130964` だった。local Sylvester separation `0.1305687` と selected Riesz
+projector norm `1.52896` は通過している。従って失敗を branch/projector ambiguity や
+coefficient singularityへ転嫁せず、**coefficient-solvable finite-grid candidate** とだけ
+記録する。full Q006 は保留する。
+
+## Q006n: near-Nyquist normal-gap refinement audit — 事前登録
+
+### 問い
+
+Q006r の negative normal gap は \(N=17,\omega=1.2\) だけの有限格子現象か。それとも
+同じ16実座標 mode family と標準 periodic BGK に対し、登録した odd-grid refinement
+ladder で一貫して現れる near-Nyquist obstruction か。
+
+### 固定条件
+
+- odd grid: \(N\in\{9,17,33,65,129\}\)
+- relaxation: \(\omega\in\{1.0,1.2,1.5,1.8\}\)
+- 全20条件で全質量・全運動量を固定した葉を使う。
+- selected family は各条件の axial first shell
+  \((\pm1,0),(0,\pm1)\) の3 hydrodynamic modesと、diagonal
+  \((\pm1,\pm1)\) shear の C4・複素共役 orbit、合計16実座標に固定する。
+- Q006r と同じ136 unordered input block pair、symmetric-product normalization、
+  Riesz external projection、SVD rank/near thresholdを使う。
+- Q006n では mode addition を行わない。numerically singular または登録閾値を超える
+  materially forced near-singular block は coefficient failure として記録し、
+  normal-gap mode も selected に追加しない。
+- \(N=9\) は coarse-grid diagnostic、\(N\ge17\) の16条件を refinement gate とする。
+- 各 \(\omega\) で \(N^2g_N\)、
+  \(g_N=\min|\lambda_{\rm selected}|-\max|\lambda_{\rm excluded}|\) を保存するが、
+  有限5点から漸近定理を主張しない。
+- parity anchor として全4 \(\omega\) で \(A(\pi,0)\)、\(A(0,\pi)\) を直接評価する。
+
+### 各条件の gate
+
+1. pair count が136で、Schur/projector/C4/conjugacy/fixed-leaf と solve residual が
+   各 \(10^{-10}\) 以下。
+2. numerically singular external block がゼロ。
+3. forcing sensitivity \(\ge10^{-10}\) の near block condition が \(10^4\) 以下、
+   その他の全 external condition が \(10^8\) 以下。
+4. local selected/external Sylvester separation が \(10^{-6}\) 以上、selected Riesz
+   projector norm が100以下。
+5. normal gap は符号と最悪 wave/modeを保存する。gap \(\ge10^{-6}\) だけを
+   normally-dominant finite-grid pass とする。
+
+### refinement 判定
+
+次を全て満たす場合、「registered near-Nyquist refinement obstruction supported」とする。
+
+- \(N\ge17\) の16条件が coefficient と blockwise projector gate を全て通る。
+- 同16条件の normal gap が全て \(-10^{-6}\) 未満。
+- 各条件の最大 excluded modulus が axial near-Nyquist index
+  \((\pm(N-1)/2,0)\) または \((0,\pm(N-1)/2)\) にある。
+- direct Nyquist anchor に \(|\lambda+1|\le10^{-12}\) の mode がある。
+
+\(N=9\) だけが通っても `coarse-grid exception` とし、grid-refinable repair とは扱わない。
+逆に、ある \(\omega\) が \(N\ge17\) の全 grid で coefficient gate と
+\(g_N\ge10^{-6}\) を通る場合だけ viable family とする。複数なら
+\(\min_{N\ge17}g_N\) が最大の \(\omega\)、同値なら小さい \(\omega\) を選ぶ。
+
+obstruction が支持された場合、標準 periodic BGK の full Q006 へは進まず、
+checkerboard-damping filter または collision-model modification を新しい事前登録課題にする。
+この判定は登録した有限 ladder の反証であり、全 odd \(N\) に対する解析的不可能性証明ではない。
+
 ## Q006: full 2D fixed-leaf nonzero-mode quadratic parameterization — 保留
 
 ### 問い
 
 全質量・全運動量を固定した不変葉上で、mode-added 2D hydrodynamic set を含む dense
 candidate chart が residual order 2 → 3 を再現できるか。Q006r の
-coefficient-solvability と finite-grid linear normal-dominance prequalification の双方が
-通るまで着手しない。
+coefficient-solvability は通過したが、normal-dominance は落ちた。Q006n で viable family
+を得るか、後続の model-modification gate が通るまで着手しない。
 
 ### 必須観測
 

@@ -598,6 +598,94 @@ sector-restricted solve は、全格子の巨大な Kronecker operator を作ら
 Q006r: capped resonant/near-resonant mode addition は、全 quadratic external Schur
 block を解像し、finite-grid linear normal-dominance prequalification を通過できるか。
 
+## Cycle 009: Q006r mode-added Schur-block closure audit
+
+### 問い
+
+Q005 の compatible diagonal-shear resonance を selected dynamics に internalize した
+16実座標 family は、有限回の mode addition で全 quadratic external block を解像し、
+有限格子 linear normal-dominance prequalification も通過できるか。
+
+### 仮説
+
+- diagonal shear orbit の追加により既知の exact external resonance は internal になる。
+- 全 unordered input Schur-block pair の external homological operator は、最大4回・
+  64実座標 cap 内で singular/forced-near cluster を解消する。
+- coefficient-solvability と selected/excluded normal gap の双方が通る。
+
+### 実験
+
+- fixed condition: \(N=17,\omega=1.2\)、固定保存量葉
+- initial set: axial first-shell hydrodynamic 12実座標 + diagonal shear 4実座標
+- input: 16 complex spectral blocks の unordered pair 136個
+- self pair: orthonormal symmetric tensor-product basis
+- output: \(k\ne0\) は \(\mathbb C^9\)、\(k=0\) は6次元 kinetic block
+- selected projector: ordered-Schur Riesz projector \(P_k\)
+- external forcing: \(Q_k^*(I-P_k)B_{ij,k}\)
+- operator: full column-major Kronecker Sylvester matrix
+- numerical singular threshold:
+  \(100\epsilon_{\rm mach}\max(m,n)\sigma_{\max}\)
+- near threshold: \(\sigma/\sigma_{\max}<10^{-4}\)、forcing sensitivity
+  \(\ge10^{-10}\)
+- response cluster: right singular-vector covariance と generalized Schur range の energy
+- closure cap: 最大4 nonempty additions、64実座標
+- terminal normal screen: global modulus gap、sector Sylvester separation、Riesz norm
+
+### 結果
+
+study validity は通過した。仮説は coefficient axis では支持されたが、normal-dominance
+axis で棄却された。
+
+- initial/final real dimension: `16 / 16`
+- pair enumeration: `136 / 136`
+- nonempty additions: `0`
+- numerical singular / near-singular external blocks: `0 / 0`
+- maximum condition number: `1894.2921`
+- condition median / q90 / q99: `13.8416 / 78.8023 / 1894.2921`
+- maximum solve residual: \(1.5915\times10^{-15}\)
+- maximum structural residual: \(4.0689\times10^{-15}\)
+- maximum fixed-leaf forcing residual: \(5.4584\times10^{-16}\)
+
+既知の acoustic-product witness は unprojected block で
+`compatible_nonunique`、\(\sigma_{\min}=5.1020\times10^{-16}\) だった。diagonal shearを
+selected に入れた後の external block は \(\sigma_{\min}=0.1305687\)、condition
+`13.8414` となった。従って resonance internalization は成功し、closure cascade は
+発生しなかった。
+
+normal screen は次の一項だけを落とした。
+
+- minimum selected modulus: `0.9699501` at diagonal shear \((-1,-1)\)
+- maximum excluded modulus: `0.9830465` at near-Nyquist \((0,-8)\)
+- normal-dominance gap: `-0.0130964`
+- minimum local Sylvester separation: `0.1305687` — pass
+- maximum selected Riesz projector norm: `1.52896` — pass
+
+### 分析
+
+Q005 の共鳴は mode addition によって外部方程式から除けた。しかも追加後に別の
+singular/near-singular cascade は現れなかったため、Q006r の coefficient closureは
+16実座標で停止した。この結果により、full 2D candidate の障害を「homological
+coefficient が解けないこと」と一括りにはできなくなった。
+
+一方、near-Nyquist excluded mode は selected diagonal shear より遅く減衰する。
+projector conditioning と local spectral separation は十分なので、失敗は branch
+classification や nonnormal projector の数値崩壊ではなく、global decay orderingにある。
+従って `coefficient-solvable finite-grid candidate` と記録するが、slow/attracting
+manifold として full Q006 を開始しない。
+
+### 改善
+
+- Q006r 内では登録どおり normal-gap mode を追加しない。
+- 同じ16実座標 family を odd-grid refinement と4個の \(\omega\) で再監査する。
+- coarse grid だけの positive gap と grid-refinable gap を分ける。
+- obstruction が持続する場合は、標準 BGK のまま chart 構築を強行せず、filterまたは
+  collision-model modification を独立 gate にする。
+
+### 次の問い
+
+Q006n: near-Nyquist normal-gap failure は、登録した odd-grid refinement ladder と
+relaxation sweep で一貫した obstruction か。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -605,6 +693,8 @@ block を解像し、finite-grid linear normal-dominance prequalification を通
 [artifacts/q005_nonresonance.json](artifacts/q005_nonresonance.json)
 
 [artifacts/q006s_stripe.json](artifacts/q006s_stripe.json)
+
+[artifacts/q006r_mode_closure.json](artifacts/q006r_mode_closure.json)
 
 [`artifacts/d2q9_baseline.json`](artifacts/d2q9_baseline.json)
 

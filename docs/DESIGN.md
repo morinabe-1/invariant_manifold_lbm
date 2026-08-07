@@ -946,7 +946,7 @@ projected-coordinate drift も quadratic \(1.283\times10^{-6}\) に対して lin
 \(5.006\times10^{-7}\) であり改善しなかった。残差次数と shadow error の受理を、
 任意振幅の chart や最適な reduced coordinates の主張へ拡張しない。
 
-### Phase 2.5: Q006r resonant mode-added closure audit — 次のゲート
+### Phase 2.5: Q006r resonant mode-added closure audit — 完了
 
 literal な wave-index 加法閉包は要求しない。\(\mathbb Z_{17}^2\) では first-shell
 generator が反復加算により全格子を生成し、非共鳴な external output は reduced
@@ -974,8 +974,31 @@ energy threshold、最大4 nonempty addition、64実座標 cap は
 full Q006 着手可とは扱わない。両方を通っても有限格子の二次 screening であり、
 存在・一意性や非線形 normal attraction の証明とは呼ばない。
 
-full 2D 構築は、diagonal shear orbit を加えた mode set の resonant/near-resonant
-closure と Schur-block conditioning を再監査するまで保留する。
+観測では、元の diagonal shear resonance を selected block へ移すと external
+\(\sigma_{\min}\) は \(5.10\times10^{-16}\) から `0.130569` へ開いた。全136 pairに
+numerically singular または near-singular external block はなく、最大 condition number
+は `1894.292`、最大構造残差は \(4.07\times10^{-15}\) だった。追加 orbit は0で、
+16実座標のまま coefficient-solvability gate を通過した。
+
+しかし、selected 最小 modulus `0.9699501` に対して \((0,-8)\) の excluded
+near-Nyquist mode は `0.9830465` であり、linear normal-dominance gap は
+`-0.0130964` だった。blockwise separation と projector norm は通過したため、失敗は
+global modulus ordering に局在する。従って「coefficient-solvable finite-grid
+candidate」と記録し、full Q006 は保留する。
+
+### Phase 2.6: Q006n near-Nyquist refinement obstruction audit — 次のゲート
+
+Q006r と同じ axial first-shell hydrodynamic + diagonal shear の16実座標 familyを、
+odd grid \(N\in\{9,17,33,65,129\}\) と
+\(\omega\in\{1.0,1.2,1.5,1.8\}\) で再監査する。各条件で全136 pair の coefficient
+screen と selected/excluded modulus gap を分離して保存する。normal-gap mode は追加せず、
+\(N\ge17\) の全登録条件で gap が負か、最悪 excluded mode が axial near-Nyquistか、
+even-grid anchor \(A(\pi,0)\) が \(-1\) を持つかを判定する。
+
+\(N=9\) だけの通過は coarse-grid exception とし、grid-refinable repair とは扱わない。
+登録 refinement ladder で obstruction が支持された場合、標準 periodic BGK のまま
+full Q006 を作らず、checkerboard-damping filter または collision-model modificationを
+独立に事前登録する。これは全 odd \(N\) に対する解析的な不可能性証明ではない。
 
 ### Phase 3: Degree/domain continuation
 
@@ -1135,9 +1158,9 @@ research/
 
 現行の小さいモジュールは Phase 0 oracle、Q004b の branch/cluster tracker、
 manufactured general-homological oracle、Q005 の Fourier-sector SVD/normal-gap
-campaign、Q006s の stripe coefficient solver を含む。Q006r の sector grouping に
-必要な再利用境界が明確になった時点で上記へ機械的に分割し、過早に抽象階層を
-増やさない。
+campaign、Q006s の stripe coefficient solver、Q006r の mode-closure engine を含む。
+Q006n の refinement sweep 後に再利用境界を確定して上記へ機械的に分割し、過早に
+抽象階層を増やさない。
 
 Phase 1 以降の campaign artifact 共通 schema:
 

@@ -22,9 +22,10 @@ LBM 1-step 写像
 isotropic low-wave set は、標準的な nonresonant・normally-attracting SSM 候補として
 棄却された。これは研究計画全体の棄却ではなく、最初の reduced set の反証である。
 Q006s では非線形に不変な \(y\)-independent stripe 上の coefficient solver を
-有限格子オラクルとして受理した。次は full 2D chart を作る前に、Q006r で
-resonant/near-resonant mode-added closure を監査する。stripe を含め、存在・一意性
-gate を通るまでは非零波数の対象を
+有限格子オラクルとして受理した。Q006r では diagonal shear orbit を加えた16実座標
+候補の coefficient closure は通過したが、near-Nyquist 外部モードにより有限格子の
+linear normal-dominance は棄却された。次は Q006n でこの障害の grid-refinement
+依存性を監査する。stripe を含め、存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
@@ -137,6 +138,30 @@ Euclidean ball 全体に対する一様保証ではない。
 quadratic chart はその中の局所的な有限次近似である。full 2D、grid-uniform、
 存在・一意性、normal attraction の主張には拡張しない。
 
+### Q006r mode-added closure audit
+
+\(N=17,\omega=1.2\) の固定保存量葉で、axial first-shell hydrodynamic modes に
+diagonal shear の C4・複素共役 orbit を加えた16実座標候補を監査した。全136個の
+unordered input Schur-block pair について、斜交 Riesz projector で external forcing を
+抽出し、正規化済み Kronecker／symmetric-product homological operator を SVD した。
+
+- 元の diagonal resonance:
+  `compatible_nonunique`、\(\sigma_{\min}=5.10\times10^{-16}\)
+- diagonal shear を internalize した external block:
+  \(\sigma_{\min}=0.130569\)、condition number `13.8414`
+- terminal numerical singular / near-singular block: `0 / 0`
+- terminal maximum condition number: `1894.292`
+- maximum Schur/projector/C4/conjugacy/fixed-leaf residual:
+  \(4.07\times10^{-15}\)
+- mode addition: `0`、terminal real dimension: `16`
+
+従って coefficient-solvability gate は通過した。一方、selected の最小 modulus
+`0.9699501` に対して、\((0,-8)\) の near-Nyquist excluded mode は `0.9830465` で、
+normal-dominance gap は `-0.0130964` だった。local Sylvester separation `0.130569` と
+selected Riesz projector norm `1.52896` は通過しており、棄却理由は normal gap に
+局在する。この結果は **coefficient-solvable finite-grid candidate** の受理に留め、
+full 2D Q006 には進めない。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -159,7 +184,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 ## 再現
 
-Python 3.11 以上を使う。`q004b`、`q005`、`q006s` は事前登録した条件を実行するため、
+Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r` は登録条件を実行するため、
 CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -170,6 +195,7 @@ python -m ttim_lbm --study baseline --omega 1.2 --output research/artifacts/d2q9
 python -m ttim_lbm --study q004b --output research/artifacts/q004b_and_manufactured.json
 python -m ttim_lbm --study q005 --output research/artifacts/q005_nonresonance.json
 python -m ttim_lbm --study q006s --output research/artifacts/q006s_stripe.json
+python -m ttim_lbm --study q006r --output research/artifacts/q006r_mode_closure.json
 ```
 
 保存済み結果:
@@ -178,6 +204,7 @@ python -m ttim_lbm --study q006s --output research/artifacts/q006s_stripe.json
 - [`research/artifacts/q004b_and_manufactured.json`](research/artifacts/q004b_and_manufactured.json)
 - [`research/artifacts/q005_nonresonance.json`](research/artifacts/q005_nonresonance.json)
 - [`research/artifacts/q006s_stripe.json`](research/artifacts/q006s_stripe.json)
+- [`research/artifacts/q006r_mode_closure.json`](research/artifacts/q006r_mode_closure.json)
 
 ## 文書
 
@@ -200,14 +227,14 @@ python -m ttim_lbm --study q006s --output research/artifacts/q006s_stripe.json
 - Fourier-index arithmetic、sector SVD、fixed-leaf zero-mode restriction
 - Q005 radial-band normal-dominance/resonance campaign と stripe finite-grid audit
 - Q006s fixed-leaf stripe quadratic chart、sector Sylvester solve、residual/shadow campaign
+- Q006r full Schur-block pair audit、Riesz external projection、response-cluster closure
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006r の resonant/near-resonant mode-added closure、Schur-block solve、
-  linear normal-dominance prequalification
+- Q006n の near-Nyquist normal-gap grid-refinement audit
 - mode-added full 2D candidate chart
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートは Q006r の代数・スペクトル監査であり、full 2D Q006 や
+従って次のゲートは Q006n の refinement obstruction 監査であり、full 2D Q006 や
 TT-cross へはまだ進まない。
