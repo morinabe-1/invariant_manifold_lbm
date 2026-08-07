@@ -494,3 +494,39 @@ def test_q006m_artifact_records_only_the_unique_anchor_obstruction() -> None:
     assert cycle["summary"]["direction_amplitude_record_count"] == 384
     assert cycle["summary"]["failed_gap_ladder_count"] == 0
     assert "only unique-site selectors" in cycle["claim_boundary"]
+
+
+def test_q006o_artifact_records_only_the_anchor_free_policy_audit() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006o_forward_error_budget.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "anchor-free arithmetic-policy comparison",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "trajectory_count": 64,
+        "steps": 100,
+        "controls": ["unmodified_standard", "uniform_projection"],
+        "claim": (
+            "finite registered-trajectory operational ULP envelope and "
+            "uniform-control selection only; no all-state roundoff theorem "
+            "and no revision of the sealed Q006i-Q006j outcomes"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "unmodified equivariant map with registered forward-error budget preferred"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["standard_policy_gates"].values())
+    assert not any(gate["passed"] for gate in cycle["uniform_policy_gates"].values())
+    assert cycle["summary"]["component_budget_check_count"] == 19200
+    assert cycle["summary"]["budget_violation_count"] == 0
+    assert "not an all-state" in cycle["claim_boundary"]

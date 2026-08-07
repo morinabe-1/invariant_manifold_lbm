@@ -34471,7 +34471,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-08-07T18:53:22.858107+00:00",
+  "generated_at_utc": "2026-08-07T19:16:01.442010+00:00",
   "mathematical_scope": {
     "amplitudes": [
       0.01,
@@ -34502,7 +34502,7 @@
   "schema_version": 1,
   "scientific_outcome": "accepted",
   "source": {
-    "package_source_sha256": "c359bf109f9992093ea44f065c5b31599a7393cb9155267120334b75148a0914",
+    "package_source_sha256": "2f7f80a3861d8bae47e23a78a95a1750b5ac1118f99856f3ae81fb74904748dc",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

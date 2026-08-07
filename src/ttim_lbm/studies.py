@@ -21,6 +21,7 @@ from .d2q9 import (
     quarter_turn_population_matrix,
     spectrum_audit,
 )
+from .forward_error_budget import run_forward_error_budget_audit
 from .full2d_chart import run_full2d_quadratic_audit
 from .low_wave_tangency import run_low_wave_tangency_audit
 from .manifold import (
@@ -1867,6 +1868,36 @@ def run_q006m_study() -> dict[str, Any]:
                 "selectors plus a finite shrinking-gap diagnostic only; no "
                 "exclusion of anchor-free equivariant arithmetic and no revision "
                 "of Q006i-Q006l"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006o_study() -> dict[str, Any]:
+    """Run and package the sealed Q006o arithmetic-policy audit."""
+
+    cycle = run_forward_error_budget_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "anchor-free arithmetic-policy comparison",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "trajectory_count": 64,
+            "steps": 100,
+            "controls": ["unmodified_standard", "uniform_projection"],
+            "claim": (
+                "finite registered-trajectory operational ULP envelope and "
+                "uniform-control selection only; no all-state roundoff theorem "
+                "and no revision of the sealed Q006i-Q006j outcomes"
             ),
         },
         "cycle": cycle,
