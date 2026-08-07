@@ -99,3 +99,41 @@ def test_q006s_artifact_records_only_the_finite_grid_stripe_claim() -> None:
         ]
         > 0.1
     )
+
+
+def test_q006r_artifact_separates_coefficient_and_normal_dominance_outcomes() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006r_mode_closure.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "rejected"
+    assert artifact["mathematical_scope"] == {
+        "construction": "finite-grid quadratic spectral closure audit",
+        "construction_grid": [17, 17],
+        "omega": 1.2,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "manifold_claim": (
+            "coefficient and linear spectral prequalification only; no "
+            "existence, uniqueness, or nonlinear normal-attraction claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "rejected"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert cycle["coefficient_solvability"]["passed"]
+    assert all(
+        gate["passed"]
+        for gate in cycle["coefficient_solvability"]["gates"].values()
+    )
+    assert not cycle["linear_normal_dominance_prequalification"]["passed"]
+    assert (
+        cycle["linear_normal_dominance_prequalification"][
+            "normal_dominance_gap"
+        ]
+        < 0.0
+    )
+    assert cycle["terminal_summary"]["nonempty_additions"] == 0
+    assert cycle["terminal_summary"]["terminal_pair_count"] == 136

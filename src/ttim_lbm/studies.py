@@ -24,6 +24,7 @@ from .manufactured import (
     make_manufactured_quadratic_map,
     real_basis_from_dominant_complex_pair,
 )
+from .mode_closure import run_mode_added_closure_audit
 from .nonresonance import (
     NULL_FORCING_TOLERANCE,
     PRACTICAL_CONDITION_CEILING,
@@ -1531,4 +1532,30 @@ def run_q006s_study() -> dict[str, Any]:
             "every external quadratic Schur block and pass finite-grid linear "
             "normal-dominance prequalification?"
         ),
+    }
+
+
+def run_q006r_study() -> dict[str, Any]:
+    """Run and package the sealed Q006r mode-closure audit."""
+
+    cycle = run_mode_added_closure_audit(size=17, omega=1.2)
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "construction": "finite-grid quadratic spectral closure audit",
+            "construction_grid": [17, 17],
+            "omega": 1.2,
+            "conservation_treatment": "fixed global mass and momentum leaf",
+            "manifold_claim": (
+                "coefficient and linear spectral prequalification only; no "
+                "existence, uniqueness, or nonlinear normal-attraction claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
     }

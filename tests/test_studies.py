@@ -6,6 +6,7 @@ from ttim_lbm.studies import (
     run_manufactured_quadratic_study,
     run_q004b_branch_tracking_study,
     run_q005_nonresonance_study,
+    run_q006r_study,
     run_q006s_stripe_study,
 )
 
@@ -98,4 +99,17 @@ def test_q006s_accepts_only_the_registered_finite_grid_stripe_oracle() -> None:
         < 0.1
     )
     assert result["quotient_lift_check"]["maximum_absolute_difference"] < 1.0e-12
+    json.dumps(result, allow_nan=False)
+
+
+def test_q006r_validly_rejects_only_the_normal_dominance_axis() -> None:
+    result = run_q006r_study()
+    cycle = result["cycle"]
+
+    assert result["study_gate"] == "passed"
+    assert result["scientific_outcome"] == "rejected"
+    assert cycle["coefficient_solvability"]["passed"]
+    assert not cycle["linear_normal_dominance_prequalification"]["passed"]
+    assert cycle["terminal_summary"]["nonempty_additions"] == 0
+    assert cycle["terminal_summary"]["final_real_dimension"] == 16
     json.dumps(result, allow_nan=False)
