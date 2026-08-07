@@ -1181,6 +1181,69 @@ Q006iを遡及的にacceptedへ変更したり、閾値を緩和したりしな�
 Q006j: Q006iの単一失敗gateは保存量の通常和だけで生じたのか、それともfloat64 full mapの
 どのstageで蓄積した実状態の丸めdriftなのか。
 
+## Cycle Q006j: float64 global-conservation drift source audit
+
+### 問い
+
+Q006iの単一失敗gateはNumPy reductionだけの測定誤差か。それともfloat64 full mapが実状態に
+蓄積したdriftか。後者ならcollision、streaming、filterのどこに局在するか。
+
+### 仮説
+
+補償和でQ006i超過が消えるか、補償和でも残る場合はstage増分で全driftを再構成でき、登録した
+一様fixed-leaf projectionで \(10^{-12}\) 以下へ制御できる。
+
+### 実験
+
+- Q006iのseed `20260810`、linear／quadratic各32、合計64 trajectory
+- 振幅0.01、100 step、8 checkpoint、6,400 stage record
+- NumPy reduction、`math.fsum`、独立Neumaier補償和
+- collision、periodic streaming、five-point filterのsigned moment increment
+- 各step後のuniform equilibrium-tangent fixed-leaf projection control
+
+### 結果
+
+全validity gateは通過したが、projection controlの保存gateだけが失敗したため、登録規則どおり
+`structural or unresolved conservation defect`として`rejected`とした。
+
+- Q006i NumPy drift reproduction error: `0`
+- maximum NumPy drift: `2.7284963e-12`
+- maximum `math.fsum` / Neumaier drift: `2.7285042e-12 / 2.7285042e-12`
+- maximum `math.fsum`–Neumaier component difference: `0`
+- maximum NumPy–`math.fsum` measurement difference: `1.1368684e-13`
+- stage-map identity / streaming drift / reconstruction error: `0 / 0 / 0`
+- collision maximum one-step / cumulative norm: `5.6869073e-14 / 2.6716420e-12`
+- filter maximum one-step / cumulative norm: `5.6845056e-14 / 5.1159450e-13`
+- projection-control maximum drift: `2.1600519e-12`
+- maximum single / cumulative projection norm: `1.6729733e-15 / 1.1419158e-13`
+- projected / standard maximum state difference: `1.4274532e-13`
+- projected minimum population: `0.0275271`
+
+### 分析
+
+NumPyと補償和の測定差は最大 \(1.14\times10^{-13}\) に留まり、補償和でも
+\(2.73\times10^{-12}\) のdriftが残る。従ってQ006iの失敗はreduction-onlyではなく、実際の
+float64 stateに蓄積している。streamingはpopulation permutationとして補償和driftが厳密に0、
+collisionの累積が主寄与、filterが副寄与だった。全stage増分はtotal driftを誤差0で再構成した。
+
+一方、exact arithmeticでは恒等な一様fixed-leaf projectionは、補正normが十分小さいにもかかわらず
+100-step driftを \(10^{-12}\) 以下へ戻せなかった。分散した各population補正がlocal ULPに吸収された
+可能性があるが、Q006jでは変更されたpopulation数や実現moment correctionを保存していないため、
+まだ結論にしない。またこの失敗を数学的なBGK/filterの非保存性の証明とは解釈しない。
+
+### 改善
+
+- Q006jの同じ64 trajectoryと各step errorを固定する。
+- 一様補正について、intended correction、実際のstate delta、changed-entry fraction、ULP ratio、
+  realized moment correctionを保存する。
+- 診断対照として固定siteの \(q_0,q_1,q_2\) だけを使う3×3 moment solveを一回適用する。
+- localized controlはtranslation/C4 symmetryを壊すため、成功しても本番写像へ採用しない。
+
+### 次の問い
+
+Q006k: Q006jの一様projection失敗はsub-ULP分散補正の表現不能で説明でき、同じintended global
+moment correctionを固定3-populationへ局在化すれば登録100-step保存上限を通るか。
+
 ## 再現 artifact
 
 数値の完全な記録:

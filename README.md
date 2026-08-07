@@ -39,7 +39,10 @@ viableと判定した。事前登録した規則で \((\eta,\omega)=(0.01,1.5)\)
 shadowingのgateは通過したが、100-step global conservation driftが登録上限 \(10^{-12}\) に
 対して \(2.72850\times10^{-12}\) となったため、Q006iは単一gateで`rejected`と固定する。
 linear／quadratic chartでほぼ同じdriftであることから、次は閾値を変更せず、Q006jで
-保存量の集約とfloat64写像の各stageに分解して発生源を診断する。
+保存量の集約とfloat64写像の各stageに分解して発生源を診断した。補償和でもdriftを再現し、
+collisionとfilterへ分解できたが、一様fixed-leaf projectionが登録上限を通らなかったため、
+Q006jは`structural or unresolved conservation defect`として`rejected`である。次はQ006kで
+この投影失敗がsub-ULPの分散補正に由来するかを限定的に監査する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -324,6 +327,29 @@ Q006jではchart係数ではなく、通常和による測定、collision、stre
 分離して監査する。Q006iは固定変更写像・単一grid・有限方向の数値結果であり、真の不変多様体の
 存在・一意性やall-grid主張ではない。
 
+### Q006j float64 global-conservation drift source audit
+
+Q006iと同じlinear／quadratic各32、合計64 trajectoryを100 step追跡し、NumPy通常和、
+`math.fsum`、Neumaier補償和を比較した。全validity gateは通り、Q006iの最大driftを厳密に
+再現したが、登録した一様fixed-leaf projection controlが保存上限を落とした。
+
+- classification: `structural or unresolved conservation defect`
+- NumPy maximum drift: `2.7284963e-12`
+- `math.fsum` / Neumaier maximum drift: `2.7285042e-12 / 2.7285042e-12`
+- maximum `math.fsum`–Neumaier component difference: `0`
+- maximum NumPy–`math.fsum` measurement difference: `1.13687e-13`
+- streaming drift / stage reconstruction error: `0 / 0`
+- collision maximum one-step / cumulative norm: `5.68691e-14 / 2.67164e-12`
+- filter maximum one-step / cumulative norm: `5.68451e-14 / 5.11595e-13`
+- projected-control maximum drift: `2.16005e-12`（上限 `1e-12`）
+- maximum single projection norm: `1.67297e-15`
+
+従ってQ006iの超過は通常和だけの測定artifactではなく、float64 stateへ蓄積したmass-dominated
+driftである。streamingは原因から除外でき、collisionが主寄与、filterが副寄与である。ただし、
+一様投影が失敗したため、登録範囲ではbounded roundoffとして制御できたとは判定しない。
+分散した補正が各populationのULPに対して小さすぎた可能性はQ006jだけでは未証明であり、Q006kで
+実現補正量と診断用localized correctionを比較する。Q006iの棄却と \(10^{-12}\) 上限は維持する。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -347,7 +373,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
-`q006g`、`q006h`、`q006i` は
+`q006g`、`q006h`、`q006i`、`q006j` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -365,6 +391,7 @@ python -m ttim_lbm --study q006f --output research/artifacts/q006f_checkerboard_
 python -m ttim_lbm --study q006g --output research/artifacts/q006g_low_wave_tangency.json
 python -m ttim_lbm --study q006h --output research/artifacts/q006h_cluster_complete.json
 python -m ttim_lbm --study q006i --output research/artifacts/q006i_full2d_quadratic.json
+python -m ttim_lbm --study q006j --output research/artifacts/q006j_conservation_drift.json
 ```
 
 保存済み結果:
@@ -380,6 +407,7 @@ python -m ttim_lbm --study q006i --output research/artifacts/q006i_full2d_quadra
 - [`research/artifacts/q006g_low_wave_tangency.json`](research/artifacts/q006g_low_wave_tangency.json)
 - [`research/artifacts/q006h_cluster_complete.json`](research/artifacts/q006h_cluster_complete.json)
 - [`research/artifacts/q006i_full2d_quadratic.json`](research/artifacts/q006i_full2d_quadratic.json)
+- [`research/artifacts/q006j_conservation_drift.json`](research/artifacts/q006j_conservation_drift.json)
 
 ## 文書
 
@@ -409,12 +437,14 @@ python -m ttim_lbm --study q006i --output research/artifacts/q006i_full2d_quadra
 - Q006g 140条件のdiagonal shear/acoustic \(N^{-4}\) tangency audit
 - Q006h 24実座標cluster-complete family、100条件・300 pairのfiltered prequalification
 - Q006i 24実座標full-2D dense quadratic chart、非自明な \(R_2\)、独立Hessian・残差・shadow audit
+- Q006j 3種の保存量集約、collision/streaming/filter分解、一様fixed-leaf projection control
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006j のQ006i global-conservation drift発生源監査
+- Q006k の一様projection representabilityと診断用localized correction監査
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ006jである。Q006iの閾値と棄却を維持したまま、保存誤差が集約だけか、
-float64写像のどのstageで蓄積するかを確定する。この診断を終えるまでTT圧縮へは進まない。
+従って次のゲートはQ006kである。一様分散補正がfloat64 populationへ実際に反映された割合を測り、
+固定3-populationのlocalized controlと比較する。これは原因診断であり、対称性を壊すlocalized
+controlを本番写像として採用しない。この診断を終えるまでTT圧縮へは進まない。

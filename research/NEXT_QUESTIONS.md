@@ -986,7 +986,7 @@ acceptedでも、これは固定した変更写像、\(17^2\)、登録有限方�
 失敗は単一gateだが、閾値を変更せず、Q006iを遡及的にacceptedへしない。次に保存量の集約と
 full-map各stageを分解する。
 
-## Q006j: float64 global-conservation drift source audit — 事前登録
+## Q006j: float64 global-conservation drift source audit — 完了
 
 ### 問い
 
@@ -1053,6 +1053,93 @@ validな場合、次の順で分類する。
 Q006jは有限64 trajectoryの算術診断であり、数学的な厳密保存や全状態・全stepへの誤差定理を
 主張しない。分類後に初めて、保存的算術実装を新しい写像実装として採用するか、元のfloat64写像を
 明示したまま次へ進むかを別gateとして事前登録する。
+
+### 結果
+
+全validity gateは通過した。NumPy最大drift `2.7284963e-12` を再現し、`math.fsum`とNeumaierでも
+`2.7285042e-12` が残った。streaming driftとstage reconstruction errorは0、collisionの最大累積
+寄与は`2.6716420e-12`、filterは`5.1159450e-13`だった。
+
+一様projection controlはmaximum single correction `1.6729733e-15`、positivity維持にもかかわらず、
+最大drift `2.1600519e-12` で保存上限を落とした。従って
+`structural or unresolved conservation defect`として`rejected`とする。Q006i判定は変更しない。
+
+## Q006k: fixed-leaf projection representability audit — 事前登録
+
+### 問い
+
+Q006jの一様fixed-leaf projectionは、intended correctionを289 siteへ分散したため各populationで
+丸め落ちしたのか。同じglobal moment correctionを固定した3 populationへ局在化すれば、診断対照
+として100-step保存driftを \(10^{-12}\) 以下へ制御できるか。
+
+### 固定trajectoryとbaseline
+
+- Q006jと同じ \((N,\eta,\omega)=(17,0.01,1.5)\)、seed `20260810`、振幅0.01を使う。
+- linear／quadratic各32、合計64 trajectoryを100 step追跡する。
+- 保存量は `math.fsum` とNeumaierで測り、両者のcomponent差を \(5\times10^{-14}\) 以下とする。
+- standard mapとQ006jの一様projectionを変更せず再実行し、それぞれの最大driftを
+  Q006j artifact値から \(5\times10^{-15}\) 以内で再現する。
+- direction、step、projection error、閾値は結果後に変更しない。
+
+### 一様projectionのrepresentability記録
+
+各stepでQ006jと同じintended uniform correction
+
+\[
+\delta f(x)=-\frac{1}{N^2}E\,\Delta C
+\]
+
+を計算し、次を保存する。ここで \(E\) はuniform equilibrium tangent、\(\Delta C\) はfull step前後の
+補償global moment差である。
+
+- intended global moment correctionとそのnorm
+- 実際の `corrected - mapped`、changed population count / fraction
+- 各entryの \(|\delta f_q|/\operatorname{spacing}(f_q)\) の最小、median、最大
+- realized global moment correctionとintended correctionとの差
+- 一回補正後に残るlocal moment error
+
+0 correction entryはULP ratio集計から除き、changed countの分母には全 `2601` populationを使う。
+
+### localized 3-population control
+
+固定site \((y,x)=(0,0)\) のpopulation \((q_0,q_1,q_2)\) だけへ一回補正を加える。D2Q9の
+\(q_0=(0,0),q_1=(1,0),q_2=(0,1)\) より、full step error
+\(e=(e_M,e_x,e_y)\) に対して
+
+\[
+\delta f_1=-e_x,\qquad
+\delta f_2=-e_y,\qquad
+\delta f_0=-e_M+e_x+e_y
+\]
+
+と固定する。追加site、反復refinement、別population選択は行わない。各stepでintended／realized
+moment correction、残差、correction normを保存する。
+
+### validity gate
+
+1. 64 trajectory × 100 stepをstandard、uniform、localizedの3 controlで欠落なく実行する。
+2. Q006jのstandard/uniform最大driftを登録再現誤差内で得る。
+3. `math.fsum`とNeumaierの差を \(5\times10^{-14}\) 以下とする。
+4. 3-population moment matrixのrankを3、conditionを \(10\) 以下、solve residualを
+   \(10^{-15}\) 以下とする。
+5. 全値finiteかつstrict JSONとして保存する。失敗時は`inconclusive`とする。
+
+### 仮説gateと判定
+
+次を全て満たす場合だけ
+`uniform projection representability failure localized`としてacceptedとする。
+
+- uniform projectionの実現global correction errorが0でないstepを1件以上観測する
+- localized controlの100-step最大補償drift \(\le10^{-12}\)
+- localized maximum single correction norm \(\le10^{-11}\)
+- localized／standard maximum state difference \(\le10^{-10}\)
+- 全localized stateのpopulationが正
+
+validだが仮説gateを落とせば`localized correction does not resolve projection failure`として
+rejected、validity失敗ならinconclusiveとする。acceptedでも、固定site補正はtranslation／C4
+symmetryを破る診断対照にすぎず、本番写像、Q006i再判定、将来chartへ採用しない。Q006jの
+`rejected`と全thresholdも変更しない。成功した場合だけ、local collisionとfilterを対称な
+conservative arithmeticで実装する別gateを事前登録する。
 
 ## Q007: degree continuation は有効か
 
