@@ -2359,6 +2359,105 @@ acceptedでもlocal coefficient storageの有限degree結果に限り、online�
 他shell、他grid、漸近rank boundを主張しない。rejectedなら、この4 tensorizationに対するQ008b／Q009を
 開始しない。別のQTT factorizationを試す場合は、新しい候補と判定を観測前に登録する。
 
+### 実行結果（2026-08-08）
+
+全4 validity gateは通過したが、degree-4 storage gateを通る候補は0だった。従って
+`registered TT tensorizations do not beat natural quartic sparse-fiber storage`として有効な`rejected`となった。
+
+- maximum dense-vs-sparse action error: `2.4453226833464242e-14`
+- maximum TT reconstruction / action error:
+  `1.0601074033942119e-13 / 2.0799628811140123e-13`
+- degree-4 natural sparse stored real scalars / NPZ bytes:
+  `315900 / 2615734`
+- degree-4 best TT stored real scalars / NPZ bytes:
+  `3550626 / 28406852`
+- minimum TT/sparse scalar / byte ratio:
+  `11.2397150997151 / 10.859992644512019`
+- flat-q-last ranks by degree:
+  `[1,24,9,1] / [1,24,216,9,1] / [1,24,300,216,9,1]`
+- diagnostic sparse / fastest-TT median action time:
+  `603107.8125 / 2783184.375 ns per sample`
+
+全候補が忠実度を通過しているため、これは表現サイズの有効な棄却である。Q008bとQ009はこの4候補に
+対して開始しない。
+
+## Q008c: wave-branch / wave-QTT storage prequalification — 事前登録
+
+### 問い
+
+Q008aで未検証のmode構造 \(24=8\text{ waves}\times3\text{ branches}\) と、wave index 8の3-bit
+factorizationを明示すれば、固定四次係数を忠実に保ちながらnatural sparse-fiberよりstored real scalarsと
+serialized bytesの両方で小さいTTが得られるか。
+
+### upstream controlと固定入力
+
+- Q008aと同じgrid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、degree `2 / 3 / 4`、
+  local D2Q9 output 9を使う。
+- Q008aの6入力hashとfiber count `300 / 2600 / 17550`を完全一致で再現する。
+- Q008a `flat-q-last` controlを再構築し、次を完全一致で要求する。
+  - ranks: `[1,24,9,1] / [1,24,216,9,1] / [1,24,300,216,9,1]`
+  - core stored real scalars: `11682 / 343458 / 3550626`
+  - uncompressed NPZ bytes: `94772 / 2749244 / 28406852`
+- controlの各tensor reconstruction errorは`<=2e-13`、action errorは`<=1e-11`とする。Q008aの
+  wall timeは再現条件にしない。
+- complex mode indexを \(i=3w+b\) と固定する。\(w=0,\ldots,7\) は`WAVE_ORDER`の位置、
+  \(b=0,1,2\) は`shear / acoustic_positive / acoustic_negative`の位置である。
+- outputはQ008aで同じ格納量かつ速かったflat-q-lastだけを使い、D1Q3 outputを再試行しない。
+
+### 固定tensorization
+
+各degree \(d=2,3,4\)で次の4候補だけを比較する。
+
+1. `wave-branch-tuple-major`:
+   \((w_1,b_1,w_2,b_2,\ldots,w_d,b_d,q)\)、mode shape \((8,3)^d\times9\)
+2. `wave-branch-factor-major`:
+   \((w_1,\ldots,w_d,b_1,\ldots,b_d,q)\)、mode shape \(8^d\times3^d\times9\)
+3. `wave-qtt-tuple-major`:
+   \((s_{1,2},s_{1,1},s_{1,0},b_1,\ldots,s_{d,2},s_{d,1},s_{d,0},b_d,q)\)
+4. `wave-qtt-scale-interleaved`:
+   \((s_{1,2},\ldots,s_{d,2},s_{1,1},\ldots,s_{d,1},s_{1,0},\ldots,s_{d,0},b_1,\ldots,b_d,q)\)
+
+wave bitは \(w=4s_2+2s_1+s_0\)、各 \(s_j\in\{0,1\}\) とし、NumPy C-order reshapeで一意に
+対応させる。4候補以外のbit encoding、Gray code、mode reorder、D1Q3 output、basis変換、rank capは
+観測後に追加しない。
+
+### 独立忠実度campaign
+
+- complex128 TT-SVD、relative discarded-Frobenius budget `1e-13`、`max_rank=None`を維持する。
+- seed `20260829`の64 normalized real方向を固定し、Q008aのaction seed `20260827`およびtiming seed
+  `20260828`とのexact duplicateを0とする。
+- 各tensorizationのdense reshape／transpose actionとcanonical ordered dense actionのmaximum relative
+  error `<=5e-14`を要求する。
+- 各TTのrelative tensor reconstruction error `<=2e-13`、maximum sparse-action error `<=1e-11`を
+  要求する。
+- 全core／singular value／actionをfinite、uncompressed NPZ roundtripをbitwise equal、summaryをstrict
+  JSON serializableとする。一つでも失敗すればstorage仮説は`inconclusive`とする。
+
+### 格納量とtiming
+
+natural sparse-fiberとscalar-sparse診断のdtype、stored-real-scalar数、metadata、raw bytes、uncompressed
+NPZ bytesはQ008aと同じ定義を使う。TTもcomplex core entryをreal scalar 2個として数え、rank／shape
+metadataとnominal gauge-adjusted real dimensionを別報告する。
+
+seed `20260830`の128 normalized real方向で2 warm-up／7 measured blockのlocal 9-vector action timingを
+固定rotation順で測る。median／MADを保存するが、wall timeはacceptanceに使わない。
+
+### hypothesis gateと判定規則
+
+validity通過後、degree 4で少なくとも1候補が次を同時に満たすことを要求する。
+
+1. TT core stored real scalar count `<315900`
+2. TT uncompressed NPZ bytes `<2615734`
+
+複数候補が通れば`(serialized bytes, core stored real scalars, candidate id)`のlexicographic minimumを
+唯一の後続候補に固定する。通れば
+`registered wave-factorized TT beats natural quartic sparse-fiber storage`として`accepted`、一つも通らなければ
+`registered wave-factorized TTs do not beat natural quartic sparse-fiber storage`として有効な`rejected`とする。
+
+acceptedでも固定degree・grid・coefficientのlocal storage claimに限る。full-chart residual／rollout、online
+benefit、TT-cross、他shell／grid、漸近rank boundは未検証である。rejectedなら固定Q007c1係数に対する
+TT-SVD圧縮経路を終了し、Q009 TT-crossへ進まない。
+
 ## Q009: TT-cross は residual peak を見つけられるか
 
 ### 問い

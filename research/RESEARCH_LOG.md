@@ -2040,6 +2040,74 @@ ball全体、他horizon、global injectivity、grid-uniform family、真の不�
 Q008a: 固定したdegree `2 / 3 / 4` Fourier chart係数に対し、事前登録した4つのTT出力軸配置のいずれかが、
 忠実度を保ったまま四次natural sparse-fiberよりstored real scalarsとserialized bytesの両方で小さくなるか。
 
+## Cycle Q008a: local Fourier coefficient TT storage prequalification
+
+### 問い
+
+固定したdegree `2 / 3 / 4` local complex Fourier chart係数に対し、flat D2Q9出力またはD1Q3出力分解を
+先頭／末尾に置く4つのTTのいずれかが、忠実度を保ったまま四次natural sparse-fiberより
+stored real scalarsとserialized bytesの両方で小さくなるか。
+
+### 仮説
+
+- 全入力hash、fiber count `300 / 2600 / 17550`を再現する。
+- ordered dense actionはunordered sparse actionとmaximum relative error `<=5e-14`で一致する。
+- 12 TTのtensor reconstruction errorは`<=2e-13`、action errorは`<=1e-11`である。
+- degree 4で少なくとも1候補が`<315900` core stored real scalarsかつnatural sparseより小さい
+  uncompressed NPZ bytesを持つ。
+
+### 実験
+
+- complex128 TT-SVD、relative discarded-Frobenius budget `1e-13`、rank capなしを使った。
+- `flat-q-first / flat-q-last / d1q3-q-first / d1q3-q-last`をdegree `2 / 3 / 4`で比較した。
+- D1Q3候補は、同じbudgetで検証したlexicographic flat TTの出力coreだけをfull-rank SVDで3×3へ分け、
+  巨大tensor全体を重複分解する丸め誤差を避けた。
+- natural sparseは`uint8` unordered index／multiplicityと`complex128` 9-vectorを保持し、TTとともに
+  uncompressed NPZ roundtripをbitwise検証した。
+- seed `20260827`の64方向で作用誤差、seed `20260828`の128方向で2 warm-up／7 blockのtimingを測った。
+
+### 結果
+
+全4 validity gateは通過したが、唯一のstorage hypothesis gateは4候補すべて失敗した。従って
+`registered TT tensorizations do not beat natural quartic sparse-fiber storage`として有効な`rejected`とした。
+
+- maximum dense-vs-sparse action error: `2.4453226833464242e-14`
+- maximum TT reconstruction error: `1.0601074033942119e-13`
+- maximum TT action error: `2.0799628811140123e-13`
+- degree-4 natural sparse stored real scalars / NPZ bytes:
+  `315900 / 2615734`
+- degree-4 flat-q-first／last stored real scalars / NPZ bytes:
+  `3550626 / 28406852`
+- degree-4 D1Q3-first／last stored real scalars / NPZ bytes:
+  `3550644 / 28407260`
+- minimum TT/sparse real-scalar / byte ratio:
+  `11.2397150997151 / 10.859992644512019`
+- degree-4 flat-q-last ranks: `[1, 24, 300, 216, 9, 1]`
+- median local-action timing sparse / flat-q-last:
+  `603107.8125 / 2783184.375 ns per sample`
+
+### 分析
+
+係数再構成と作用は全候補で十分正確なので、棄却はTT実装の忠実度失敗ではない。degree 2でもTTは
+sparseの約2.16倍、degree 3で約7.34倍、degree 4で約11.24倍のstored real scalarsを使い、degreeとともに
+相対格納量が悪化した。D1Q3出力分解はcoreを2個増やすだけで、rankや格納量を改善しなかった。
+
+timingは診断に限るが、最速TTもsparse-fiberの約4.61倍だった。従ってこの4 tensorizationに対する
+Q008b full-chart／rolloutとQ009 TT-crossは開始しない。これはTT一般の否定ではなく、固定したflat入力modeと
+flat／D1Q3出力配置の否定である。
+
+### 改善
+
+- Q008aで未検証の入力mode構造`24=8 wave×3 branch`を次の候補へ明示的に使う。
+- wave index 8を3 bitへ分け、tuple-majorとscale-interleaved QTTを区別する。
+- Q008aで格納量が同一かつ評価が速かったflat-q-lastだけをupstream reproduction controlに残す。
+- 同じnatural sparse baselineと二重storage gateを維持し、結果を見て候補を追加しない。
+
+### 次の問い
+
+Q008c: wave／branch factorizationまたは3-bit wave QTTは、固定四次係数の忠実度を保ったまま、
+natural sparse-fiberよりstored real scalarsとserialized bytesの両方で小さくなるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2083,3 +2151,5 @@ Q008a: 固定したdegree `2 / 3 / 4` Fourier chart係数に対し、事前登�
 [`artifacts/q007c1_quartic_continuation.json`](artifacts/q007c1_quartic_continuation.json)
 
 [`artifacts/q007c2_quartic_shadow_radius.json`](artifacts/q007c2_quartic_shadow_radius.json)
+
+[`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)

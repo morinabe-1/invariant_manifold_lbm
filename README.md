@@ -74,8 +74,10 @@ maximum relative比`0.891419`が上限`0.8`を超えたため、Q007c1は有効�
 Q007c2では係数を変えず、別seedの64方向で振幅・horizon依存を監査した。半径`0.01`・10 stepと
 半径`0.004`・100 stepは全3 shadow比が`0.8`以下となり、有限sampleの有効shadow領域を局在化した。
 一方、半径`0.01`・100 stepではfinal absolute比が`0.850582`となったため、Q007c1の長時間・大振幅
-棄却は変更しない。次はQ008aで、固定した四次Fourier coefficientを自然なsparse-fiber baselineと
-TT-SVDへ同じ格納・忠実度規則で比較する。
+棄却は変更しない。Q008aでは固定した四次Fourier coefficientを自然なsparse-fiber baselineと
+4つのflat／D1Q3 TT-SVDへ同じ格納・忠実度規則で比較した。全忠実度gateは通過したが、最良TTでも
+格納実スカラー数は`11.2397`倍、serialized bytesは`10.8600`倍となったため、この4 tensorizationの
+圧縮仮説を棄却した。次は、未検証のwave／branch factorizationと3-bit wave QTTだけをQ008cで判定する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -677,11 +679,32 @@ TT の相対再構成誤差は `3.01e-15` だが、自然な fiber-sparse 表現
 rounding時間、不変性残差を分けて比較する。TT がこの baseline に勝たない場合は、
 その tensorization を不適切と判定する。
 
+### Q008a local Fourier coefficient TT storage prequalification
+
+Q007c1のdegree `2 / 3 / 4` local complex Fourier chart係数をordered dense oracleへ展開し、
+`flat-q-first / flat-q-last / d1q3-q-first / d1q3-q-last`をrelative discarded-Frobenius budget
+`1e-13`で比較した。物理空間の \(2601\times24^d\) tensorはmaterializeしていない。
+
+- classification: `registered TT tensorizations do not beat natural quartic sparse-fiber storage`
+- validity / hypothesis gates: `4 / 4`, `0 / 1` passed
+- maximum dense-vs-sparse action error: `2.44532e-14`
+- maximum TT reconstruction / action error: `1.06011e-13 / 2.07996e-13`
+- degree-4 natural sparse-fiber: `315,900` stored real scalars / `2,615,734` NPZ bytes
+- degree-4 best TT: `3,550,626` stored real scalars / `28,406,852` NPZ bytes
+- TT/sparse scalar / byte ratio: `11.2397 / 10.8600`
+- degree-4 flat-q-last ranks: `[1, 24, 300, 216, 9, 1]`
+- diagnostic median action time sparse / fastest TT: `0.603 / 2.783` ms per sample
+
+従って4候補は係数を高精度に再現するが、自然なFourier sparse-fiberより格納量が約1桁大きく、
+評価もこの環境では約4.6倍遅かった。timingはacceptanceに使っていない。Q008bのfull-chart／rolloutと
+Q009 TT-crossはこの4候補について開始しない。Q008cでは、Q008aで未計算の`24=8 wave×3 branch`分解と
+wave indexの3-bit QTTだけを新しい事前登録候補として試す。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
 `q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
-`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1`、`q007c2` は
+`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1`、`q007c2`、`q008a` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -712,6 +735,7 @@ python -m ttim_lbm --study q007b1 --output research/artifacts/q007b1_cubic_radiu
 python -m ttim_lbm --study q007c --output research/artifacts/q007c_quartic_prequalification.json
 python -m ttim_lbm --study q007c1 --output research/artifacts/q007c1_quartic_continuation.json
 python -m ttim_lbm --study q007c2 --output research/artifacts/q007c2_quartic_shadow_radius.json
+python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 ```
 
 保存済み結果:
@@ -740,6 +764,7 @@ python -m ttim_lbm --study q007c2 --output research/artifacts/q007c2_quartic_sha
 - [`research/artifacts/q007c_quartic_prequalification.json`](research/artifacts/q007c_quartic_prequalification.json)
 - [`research/artifacts/q007c1_quartic_continuation.json`](research/artifacts/q007c1_quartic_continuation.json)
 - [`research/artifacts/q007c2_quartic_shadow_radius.json`](research/artifacts/q007c2_quartic_shadow_radius.json)
+- [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 
 ## 文書
 
@@ -782,15 +807,16 @@ python -m ttim_lbm --study q007c2 --output research/artifacts/q007c2_quartic_sha
 - Q007c 全17,550 quartic homological block、order-2／3 control、共役／C4 count closure
 - Q007c1 全17,550 quartic forcing／coefficient、独立4階微分・forcing、残差・shadow audit
 - Q007c2 独立64方向のquartic shadow amplitude／horizon localization、forward-error budget
+- Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q008a cubic／quartic Fourier coefficientのsparse-fiber対TT-SVD格納prequalification
+- Q008c wave／branch factorizationと3-bit wave QTTの格納prequalification
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ008aである。Q007c1のquadratic／cubic／quartic complex Fourier chart係数を固定し、
-degree `2 / 3 / 4`のordered local coefficient tensorを4つの事前登録した出力軸配置でTT-SVDする。
-四次ではTT core stored real scalarsとuncompressed serialized bytesの両方が自然なunordered
-sparse-fiber baselineを下回る候補があるかを判定する。物理空間のfull dense quartic tensorは作らず、
-wall time、rank、gauge-adjusted dimension、再構成・作用誤差は別指標として保存する。
+従って次のゲートはQ008cである。Q008aのflat-q-lastをupstream controlとして固定し、入力mode
+`i=3w+b`のtuple-major／factor-majorと、wave index \(w\in\{0,\ldots,7\}\) を3 bitへ分けた
+tuple-major／scale-interleaved QTTの4候補を比較する。degree 4でcore stored real scalarsと
+uncompressed serialized bytesの両方が自然なunordered sparse-fiberを下回らなければ、固定Q007c1
+係数に対するTT-SVD圧縮経路を終了し、TT-crossへ進まない。
