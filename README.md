@@ -26,9 +26,11 @@ Q006s では非線形に不変な \(y\)-independent stripe 上の coefficient so
 候補の coefficient closure は通過したが、near-Nyquist 外部モードにより有限格子の
 linear normal-dominance は棄却された。Q006n では登録した全20条件でこの負の gap を
 再現した一方、3個の高解像度条件が別の small-wave coefficient condition gate を落とした。
-従って封印した clean-obstruction 仮説の判定は `inconclusive` であり、次は Q006c で
-second-harmonic coefficient の grid scaling と座標正規化を切り分ける。stripe を含め、
-存在・一意性 gate を通るまでは非零波数の対象を
+従って封印した clean-obstruction 仮説の判定は `inconclusive` である。Q006c は
+second-harmonic near resonance が真の \(N^{-2}\) spectral separationを持ち、
+local-amplitude response は \(O(N)\)、global-\(\ell_2\) response は \(O(1)\) となる
+二重の scaling を支持した。次は Q006f で保存的 checkerboard filterを独立の変更モデル
+として監査する。stripe を含め、存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
@@ -191,6 +193,34 @@ second harmonic と、axial shear × diagonal shear から \((\pm2,\pm1)\) 型�
 である。従って Q006n を事後的に成功へ変更せず、**normal gap と coefficient scaling の
 混合障害**として記録する。
 
+### Q006c small-wave coefficient-scaling audit
+
+odd grid \(N=17,33,65,129,257\)、全4 \(\omega\)、全136 pairのcompleteness screenを
+維持し、acoustic self second-harmonic 8 pairと axial-shear × diagonal-shear 8 pairを
+詳細監査した。固定fit window \(N=33,65,129,257\) に対する8本の
+（2 orbit × 4 \(\omega\)）fitは、全て登録窓を通過した。
+
+| metric | observed slope range |
+|---|---:|
+| \(\sigma_{\min}\) | `-2.04791 … -1.98123` |
+| eigenvalue detuning | `-2.04823 … -1.99309` |
+| condition number | `1.97607 … 2.04818` |
+| forcing norm | `0.00257 … 0.00833` |
+| weakest-direction forcing \(\beta\) | `-0.99574 … -0.98548` |
+| local-amplitude response | `0.95557 … 1.05216` |
+| global-\(\ell_2\) response | `-0.04443 … 0.05216` |
+
+study validityと全scaling gateは通過し、判定は
+`genuine weakly-forced small-k resonance supported` である。\(N=257\) で
+materially forced near witnessは56件に増えたが、全て登録2 orbit内で、新規classは0だった。
+最大target conditionは `1.826e5`、全pair最大は `3.807e8` である。後者は旧 \(10^8\)
+ceilingを超えるため、Q006cの受理はQ006nのcoefficient gateを遡及的に通すものではない。
+
+global-\(\ell_2\) coefficient \(\lVert x\rVert/N\) が有限ladder上boundedでも、固定した
+local Fourier amplitudeに対する \(\lVert x\rVert\) は \(O(N)\) に増える。従って
+near resonanceを座標artifactとして消去せず、normal-gap障害とともに変更モデルの
+baselineへ残す。これは有限4点fitであり、漸近定理ではない。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -213,8 +243,8 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 ## 再現
 
-Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n` は登録条件を
-実行するため、CLI の `--omega` は baseline study にだけ適用される。
+Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c` は
+登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
 python -m pip install -e ".[dev]"
@@ -226,6 +256,7 @@ python -m ttim_lbm --study q005 --output research/artifacts/q005_nonresonance.js
 python -m ttim_lbm --study q006s --output research/artifacts/q006s_stripe.json
 python -m ttim_lbm --study q006r --output research/artifacts/q006r_mode_closure.json
 python -m ttim_lbm --study q006n --output research/artifacts/q006n_normal_refinement.json
+python -m ttim_lbm --study q006c --output research/artifacts/q006c_coefficient_scaling.json
 ```
 
 保存済み結果:
@@ -236,6 +267,7 @@ python -m ttim_lbm --study q006n --output research/artifacts/q006n_normal_refine
 - [`research/artifacts/q006s_stripe.json`](research/artifacts/q006s_stripe.json)
 - [`research/artifacts/q006r_mode_closure.json`](research/artifacts/q006r_mode_closure.json)
 - [`research/artifacts/q006n_normal_refinement.json`](research/artifacts/q006n_normal_refinement.json)
+- [`research/artifacts/q006c_coefficient_scaling.json`](research/artifacts/q006c_coefficient_scaling.json)
 
 ## 文書
 
@@ -260,13 +292,14 @@ python -m ttim_lbm --study q006n --output research/artifacts/q006n_normal_refine
 - Q006s fixed-leaf stripe quadratic chart、sector Sylvester solve、residual/shadow campaign
 - Q006r full Schur-block pair audit、Riesz external projection、response-cluster closure
 - Q006n odd-grid/relaxation refinement、normal-gap/Nyquist anchor、全 pair coefficient audit
+- Q006c full pair completeness、target operator/SVD/forcing/response、固定window scaling fit
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006c の small-wave coefficient-scaling / coordinate-normalization audit
+- Q006f の保存的 checkerboard-filter model-modification audit
 - mode-added full 2D candidate chart
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートは Q006c の coefficient-scaling 監査であり、full 2D Q006 や
+従って次のゲートは Q006f の変更モデル監査であり、full 2D Q006 や
 TT-cross へはまだ進まない。

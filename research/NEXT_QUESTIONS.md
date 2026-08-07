@@ -486,7 +486,7 @@ self-product が second harmonic \((\pm2,0),(0,\pm2)\) を作る8 pair と、axi
 diagonal shear が \((\pm2,\pm1),(\pm1,\pm2)\) を作る8 pair だった。従って次は、
 condition number だけでなく forcing と座標正規化を固定してこの scaling を監査する。
 
-## Q006c: small-wave second-harmonic coefficient scaling — 事前登録
+## Q006c: small-wave second-harmonic coefficient scaling — 完了
 
 ### 問い
 
@@ -566,6 +566,147 @@ spectral scaling の最初の3項だけを通り forcing/response scalingを落�
 validity/completenessを落とす場合は inconclusive とする。Q006n の封印判定はどの結果でも
 遡及変更しない。Q006c が通っても negative normal gap は未解消なので full Q006 は保留する。
 
+### 結果と判定
+
+全validity gateと全56個のscaling window gate
+（8 fit × 7 metrics）が通過し、仮説は登録範囲で支持された。
+
+- study classification:
+  `genuine weakly-forced small-k resonance supported`
+- registered conditions / fits: `20 / 8`
+- pair / target count per condition: `136 / 16`
+- maximum orbit relative spread: `1.6046e-10`
+- \(N=257\) materially forced near witness: `56`
+- 同gridのregistered target外 witness: `0`
+- maximum target condition: `1.8260e5`
+- maximum all-pair condition: `3.8074e8`
+- maximum structural / solve residual: `6.6025e-14 / 1.7609e-13`
+
+固定4点windowで得た8 fitのslope rangeは次のとおりである。
+
+| metric | slope range | registered window |
+|---|---:|---:|
+| \(\sigma_{\min}\) | `-2.04791 … -1.98123` | `[-2.25,-1.75]` |
+| eigenvalue detuning | `-2.04823 … -1.99309` | `[-2.25,-1.75]` |
+| condition | `1.97607 … 2.04818` | `[1.75,2.25]` |
+| \(\lVert b\rVert\) | `0.00257 … 0.00833` | `[-0.25,0.25]` |
+| \(\beta\) | `-0.99574 … -0.98548` | `[-1.25,-0.75]` |
+| \(\lVert x\rVert\) | `0.95557 … 1.05216` | `[0.75,1.25]` |
+| \(\lVert x\rVert/N\) | `-0.04443 … 0.05216` | `[-0.25,0.25]` |
+
+従って、small-wave near resonanceはbasisやroundoffだけのartifactではない。
+weakest singular directionへのforcingは \(O(N^{-1})\) まで弱くなるが、separationが
+\(O(N^{-2})\) なので、local-amplitude responseは \(O(N)\) に増える。unit
+global-\(\ell_2\) Fourier coordinateでは入力basis自体が \(1/N\) scaleを持つため、
+responseは \(O(1)\) となる。
+
+これは「condition ceilingを無視してよい」という結論ではない。全pair最大conditionは
+\(N=257\) で旧 \(10^8\) ceilingを超え、local-amplitude chartもgrid-uniformではない。
+Q006nの `inconclusive` 判定はそのまま維持する。また4点fitを全odd gridの漸近定理とは
+呼ばない。negative near-Nyquist normal gapも未解消である。
+
+## Q006f: conservative checkerboard-filter model modification — 事前登録
+
+### 問い
+
+global conservation、uniform equilibrium、positivity、low-wave mode geometryを保つ
+5点convex filterをBGK step後へ加えることで、near-Nyquist modeを減衰させ、登録した
+odd-grid ladder上でnormal dominanceを回復できるか。同時にQ006cで同定した
+small-wave coefficient scalingを新しい悪化へ変えずに保てるか。
+
+### 変更する写像
+
+各population \(q\) へ
+
+\[
+(\mathcal F_\eta f)_q(x,y)
+=(1-\eta)f_q(x,y)
++\frac{\eta}{4}\left[
+f_q(x+1,y)+f_q(x-1,y)+f_q(x,y+1)+f_q(x,y-1)
+\right]
+\]
+
+を周期的に作用させ、
+
+\[
+\Phi_{\eta,\omega}=\mathcal F_\eta\circ\Phi_{\mathrm{BGK},\omega}
+\]
+
+とする。これは標準BGKとは別の変更モデルである。Fourier multiplierは
+
+\[
+\chi_\eta(k)
+=1-\eta+\frac{\eta}{2}(\cos k_x+\cos k_y)
+=1-\eta\left(\sin^2\frac{k_x}{2}+\sin^2\frac{k_y}{2}\right)
+\]
+
+なので、\(A_{\eta,\omega}(k)=\chi_\eta(k)A_\omega(k)\)、二次forcingは
+\(\chi_\eta(k_{\rm out})B_{ij,k_{\rm out}}\) とする。
+
+### 固定sweep
+
+- \(\eta\in\{0,0.01,0.02,0.03,0.05\}\)
+- \(\omega\in\{1.0,1.2,1.5,1.8\}\)
+- odd grid \(N\in\{17,33,65,129,257\}\)
+- 合計100条件。\(\eta=0\) はunfiltered baselineで、変更モデル候補には数えない。
+- selected familyはQ006n/Q006cと同じ固定16実座標、全質量・全運動量固定葉とする。
+- 各条件で全136 unordered pairを再監査し、mode additionは行わない。
+- Q006cの登録16 target classとfit windowを変更しない。
+- 結果を見て \(\eta\)、\(\omega\)、normal threshold、condition ceilingを追加・調整しない。
+
+### filter algebra gate
+
+1. 全候補でphysical-space weightが非負かつ総和1である。
+2. seed `20260809` の64個の正値random statesとuniform equilibriaで、filter単独の
+   global mass/momentum residual、constant-state residualを各 \(10^{-13}\) 以下とする。
+3. 同試験で出力minimum populationが入力global minimumを下回らない。
+4. 32個の登録random wave vectorでphysical filterのFourier actionと
+   \(\chi_\eta(k)\) のrelative discrepancyを \(10^{-13}\) 以下とする。
+5. \((\pi,0),(0,\pi)\) のcheckerboard anchorは、base \(-1\) modeを
+   \(-(1-\eta)\) へ移し、その誤差を \(10^{-12}\) 以下とする。
+
+### 各 \((\eta,\omega)\) family のgate
+
+5 grid全てで次を満たす場合だけ、そのparameter pairをviableとする。
+
+**spectral / low-wave gate**
+
+- normal gap \(\ge10^{-6}\)
+- local selected/external Sylvester separation \(\ge10^{-6}\)
+- selected Riesz projector norm \(\le100\)
+- Schur/projector/C4/conjugacy/fixed-leaf residual \(\le10^{-10}\)
+- scalar filter前後のselected invariant subspace principal angle \(\le10^{-10}\)
+- selected eigenvalueのphase change \(\le10^{-12}\)
+- selected 16 modeのrelative modulus change \(\le5\times10^{-3}\)
+
+**coefficient / scaling gate**
+
+- pair count 136、numerically singular external block 0
+- structural、fixed-leaf、solve residual \(\le10^{-10}\)
+- 全external condition \(\le10^9\)
+- \(N=257\) のmaterially forced near witnessにQ006c登録外classがない
+- 各targetのglobal-\(\ell_2\) responseが同じ \((N,\omega)\) のunfiltered Q006c値の
+  `1.10` 倍以下
+- \(N=33,65,129,257\) の2 orbit fitがQ006cと同じ7個のslope windowを全て通る
+
+### parameter選択と判定
+
+viableな \((\eta,\omega)\) が1個以上あれば、次のlexicographic ruleで一意に選ぶ。
+
+1. 最小の \(\eta>0\)
+2. 同じ \(\eta\) では、5 gridのminimum normal gapが最大
+3. さらに同値なら小さい \(\omega\)
+
+filter algebra gateと全100条件のstudy validityが通り、選択されたpairが全family gateを
+通れば仮説をacceptedとする。計算自体はvalidだがviable pairがなければrejected、
+algebra・enumeration・residual gateを落とせばinconclusiveとする。
+
+acceptedでも主張は `filtered finite-ladder prequalification passed` に限る。標準BGKの
+Q006n判定は変更せず、全gridに対する定理、非線形normal attraction、manifoldの存在・
+一意性、元の物理輸送係数の保存を主張しない。filterはsmall-\(k\) で追加減衰
+\(\eta|k|^2/4+O(|k|^4)\) を導入するため、その変更を明記する。acceptedの場合だけ、
+選択したfiltered mapでfull 2D dense Q006を新しく事前登録する。
+
 ## Q006: full 2D fixed-leaf nonzero-mode quadratic parameterization — 保留
 
 ### 問い
@@ -573,8 +714,8 @@ validity/completenessを落とす場合は inconclusive とする。Q006n の封
 全質量・全運動量を固定した不変葉上で、mode-added 2D hydrodynamic set を含む dense
 candidate chart が residual order 2 → 3 を再現できるか。Q006r の
 coefficient-solvability は通過したが、normal-dominance は落ちた。Q006n では viable
-family がなく、Q006c の coefficient-scaling 切分けと後続の model-modification gate が
-通るまで着手しない。
+family がなく、Q006c はnear-resonance scalingを確認しただけでnormal gapを直していない。
+Q006f の変更モデルgateが通り、そのfiltered mapを固定するまで着手しない。
 
 ### 必須観測
 

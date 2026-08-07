@@ -788,6 +788,102 @@ coordinateで response normがどう変わるかを判定できない。
 Q006c: small-wave second-harmonic block の \(\sigma_{\min}\)、forcing projection、
 quadratic response は、固定した refinement windowと二つの座標正規化でどの scalingを持つか。
 
+## Cycle 011: Q006c small-wave second-harmonic coefficient scaling
+
+### 問い
+
+Q006nの3個のcoefficient failureは、真のsmall-wave second-harmonic near resonanceと
+local-amplitude quadratic curvatureの増大を表すか。それともforcingの消失と座標正規化に
+より、condition-only gateがboundedな係数を過剰棄却しただけか。
+
+### 仮説
+
+固定window \(N=33,65,129,257\) で、acoustic-self second harmonicと
+axial-shear × diagonal-shearの両orbitが、全4 \(\omega\) について
+
+\[
+\sigma_{\min}\sim N^{-2},\quad
+\kappa\sim N^2,\quad
+\lVert b\rVert\sim N^0,\quad
+|u_{\min}^*b|\sim N^{-1},\quad
+\lVert x\rVert\sim N,\quad
+\frac{\lVert x\rVert}{N}\sim N^0
+\]
+
+を同時に示す。\(N=257\) で新しいmaterially forced witness classが現れればclean
+classificationを出さない。
+
+### 実験
+
+- odd grid: \(N=17,33,65,129,257\)
+- relaxation: \(\omega=1.0,1.2,1.5,1.8\)
+- fixed fit window: \(N=33,65,129,257\)
+- 全条件でfixed-leaf 16実座標、全136 pairを列挙
+- target 1: axial acoustic self-product 8 pair
+- target 2: axial shear × diagonal shear 8 pair
+- 各targetでfull operator、forcing、full SVD、minimum-norm responseを保存
+- global-\(\ell_2\) normalization: symbol response normをside length \(N\) で割る
+- orbit relative-spread gate: \(10^{-8}\)
+- structural / solve gate: \(10^{-10}\)
+- mode addition、threshold tuningなし
+
+### 結果
+
+全validity gateと8本のfitに含まれる全scaling windowが通過し、仮説は登録範囲で
+支持された。
+
+- study outcome: `accepted`
+- classification: `genuine weakly-forced small-k resonance supported`
+- conditions / fits: `20 / 8`
+- pair / target count: 全条件 `136 / 16`
+- maximum orbit relative spread: `1.6046e-10`
+- \(N=257\) materially forced witness / target外 witness: `56 / 0`
+- maximum target condition: `182598.06`
+- maximum all-pair condition: `3.8074e8`
+- maximum structural residual: `6.6025e-14`
+- maximum solve relative residual: `1.7609e-13`
+
+| metric | 8 fitのslope range | registered window |
+|---|---:|---:|
+| \(\sigma_{\min}\) | `-2.04791 … -1.98123` | `[-2.25,-1.75]` |
+| detuning | `-2.04823 … -1.99309` | `[-2.25,-1.75]` |
+| condition | `1.97607 … 2.04818` | `[1.75,2.25]` |
+| forcing norm | `0.00257 … 0.00833` | `[-0.25,0.25]` |
+| weakest forcing \(\beta\) | `-0.99574 … -0.98548` | `[-1.25,-0.75]` |
+| local response | `0.95557 … 1.05216` | `[0.75,1.25]` |
+| global-\(\ell_2\) response | `-0.04443 … 0.05216` | `[-0.25,0.25]` |
+
+代表として \(N=257,\omega=1.2\) のacoustic-self orbit medianは、
+\(\sigma_{\min}=8.8532\times10^{-5}\)、condition `20334.25`、
+\(\beta=0.0325874\)、local response `368.089`、global-\(\ell_2\) response
+`1.43225` だった。\(\omega=1.8\) ではlocal response `2204.23` に対して
+global-\(\ell_2\) response `8.57676` である。
+
+### 分析
+
+operator separationとeigenvalue detuningが同じ \(N^{-2}\) exponentを持ち、orbit symmetry、
+solve residual、full SVD reconstructionも通るため、near resonanceをbasis selectionや
+roundoffへ転嫁できない。forcingの最弱方向成分は \(N^{-1}\) まで小さくなるが、逆operator
+が \(N^2\) で増幅するため、固定local amplitudeのquadratic responseは \(N\) で増える。
+
+global-\(\ell_2\) coordinateでboundedになるのは、unit-norm Fourier basisがlocal basisを
+\(1/N\) 倍するためである。これはlocal-amplitude chartのgrid-uniform性を回復しない。
+また全pair最大conditionは旧 \(10^8\) ceilingを超えた。従ってQ006nを遡及的に成功扱いせず、
+Q006cの受理範囲を有限ladder上のscaling classificationに限定する。
+
+### 改善
+
+- unfiltered標準BGKのfull Q006は保留する。
+- near-Nyquist normal gapを直接減衰させる保存的5点filterを、別の変更モデルとして監査する。
+- filter後も全136 pair、Q006c target class、二つのcoordinate normalizationをbaselineに残す。
+- low-wave eigenvector/phase、relative modulus、global conservation、positivityを独立gateにする。
+- viable parameterは結果後に選ばず、登録sweepからlexicographic ruleで一意に決める。
+
+### 次の問い
+
+Q006f: 保存的checkerboard filterは、低波数geometryとQ006c scalingを壊さず、登録odd-grid
+ladderでnormal dominanceを回復するviable \((\eta,\omega)\) を与えるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -799,6 +895,8 @@ quadratic response は、固定した refinement windowと二つの座標正規�
 [artifacts/q006r_mode_closure.json](artifacts/q006r_mode_closure.json)
 
 [artifacts/q006n_normal_refinement.json](artifacts/q006n_normal_refinement.json)
+
+[artifacts/q006c_coefficient_scaling.json](artifacts/q006c_coefficient_scaling.json)
 
 [`artifacts/d2q9_baseline.json`](artifacts/d2q9_baseline.json)
 

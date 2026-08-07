@@ -1022,7 +1022,7 @@ solve residual も通る。主 witness は axial acoustic self-product の secon
 small-wave coefficient conditioning の第二の障害を分け、後者の scaling を次 gate で
 監査する。
 
-### Phase 2.7: Q006c small-wave coefficient-scaling audit — 次のゲート
+### Phase 2.7: Q006c small-wave coefficient-scaling audit — 完了
 
 Q006n の condition-only gate が、実際の forcing と座標正規化を考慮した quadratic
 curvature の発散を表すかを切り分ける。同じ固定保存量葉と16実座標 familyに対して、
@@ -1038,6 +1038,40 @@ symbol-local amplitude と global-\(\ell_2\)-isometric Fourier coordinate は区
 \(\sim N^{-1}\)、local-amplitude response \(\sim N\)、global-\(\ell_2\) response
 \(\sim N^0\) を同時に反証する。詳細な slope window と failure branch は
 `research/NEXT_QUESTIONS.md` に封印する。
+
+全20条件・全136 pairのcompletenessと登録16 targetのfull operator/SVD/forcing/responseを
+保存した。8本の固定window fitは全て登録rangeを通過した。slope rangeは
+\(\sigma_{\min}\) `-2.04791 … -1.98123`、detuning
+`-2.04823 … -1.99309`、condition `1.97607 … 2.04818`、weakest-direction forcing
+`-0.99574 … -0.98548`、local response `0.95557 … 1.05216`、global-\(\ell_2\)
+response `-0.04443 … 0.05216` だった。
+
+従って登録範囲で `genuine weakly-forced small-k resonance supported` と判定する。
+near resonanceは数値・basis artifactではない。local Fourier amplitudeを固定すれば
+quadratic responseは \(O(N)\) に増える一方、unit global-\(\ell_2\) Fourier coordinateでは
+\(O(1)\) になる。\(N=257\) の56 materially forced witnessは全て登録2 orbit内だったが、
+全pair最大condition `3.807e8` は旧 \(10^8\) ceilingを超える。Q006cはscaling診断の
+受理であり、Q006nの失敗判定やgrid-uniform local chartを回復しない。
+
+### Phase 2.8: Q006f conservative checkerboard-filter audit — 次のゲート
+
+標準BGKの判定を変更せず、別の完全離散写像として
+\(\Phi_{\eta,\omega}=\mathcal F_\eta\circ\Phi_{\mathrm{BGK},\omega}\) を導入する。
+\(\mathcal F_\eta\) は各populationへ同じ5点convex filterを作用させ、global massと
+momentum、uniform equilibrium、positivityを保つ。そのFourier multiplierは
+
+\[
+\chi_\eta(k_x,k_y)
+=1-\eta+\frac{\eta}{2}(\cos k_x+\cos k_y)
+=1-\eta\left(\sin^2\frac{k_x}{2}+\sin^2\frac{k_y}{2}\right)
+\]
+
+である。従って \(A_\eta(k)=\chi_\eta(k)A(k)\)、quadratic forcingはoutput sectorで
+\(\chi_\eta(k_{\rm out})\) 倍される。登録 \(\eta=0,0.01,0.02,0.03,0.05\)、全4
+\(\omega\)、5 odd gridsの100条件で、normal gap、low-wave distortion、全136 coefficient
+pair、Q006c target scalingを同時監査する。viableな \((\eta,\omega)\) があれば最小
+\(\eta\)、次に最悪normal gap最大、最後に小さい \(\omega\) の順で一意に選ぶ。
+詳細gateは `research/NEXT_QUESTIONS.md` に封印する。
 
 ### Phase 3: Degree/domain continuation
 
@@ -1198,8 +1232,9 @@ research/
 現行の小さいモジュールは Phase 0 oracle、Q004b の branch/cluster tracker、
 manufactured general-homological oracle、Q005 の Fourier-sector SVD/normal-gap
 campaign、Q006s の stripe coefficient solver、Q006r の mode-closure engine、
-Q006n の normal-refinement campaignを含む。Q006c の focused scaling audit 後に
-再利用境界を確定して上記へ機械的に分割し、過早に抽象階層を増やさない。
+Q006n の normal-refinement campaign、Q006c の focused scaling auditを含む。
+Q006f のfiltered-map audit後に再利用境界を確定して上記へ機械的に分割し、過早に
+抽象階層を増やさない。
 
 Phase 1 以降の campaign artifact 共通 schema:
 
