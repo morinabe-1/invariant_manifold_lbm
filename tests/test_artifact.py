@@ -784,3 +784,50 @@ def test_q007c_artifact_records_only_quartic_operator_prequalification() -> None
     assert cycle["quartic_summary"]["record_count"] == 17550
     assert cycle["quartic_summary"]["numerically_singular_block_count"] == 0
     assert "operator-only" in cycle["claim_boundary"]
+
+
+def test_q007c1_artifact_records_valid_quartic_performance_rejection() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007c1_quartic_continuation.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "rejected"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "quartic coefficient and sampled-radius continuation",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "real_reduced_dimension": 24,
+        "unordered_quartic_tuple_count": 17550,
+        "residual_direction_count": 32,
+        "shadowing_direction_count": 32,
+        "shadowing_steps": 100,
+        "acceptance_radius": 0.01,
+        "claim": (
+            "registered finite-grid, direction, amplitude, and 100-step "
+            "comparison only; no all-ball, injectivity, TT, grid-uniform, "
+            "existence, uniqueness, or normal-attraction claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "rejected"
+    assert cycle["scientific_classification"] == (
+        "quartic continuation does not restore registered radius"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert cycle["hypothesis_gates"]["held_out_residual_orders"]["passed"]
+    assert cycle["hypothesis_gates"][
+        "held_out_radius_residual_ratios"
+    ]["passed"]
+    assert not cycle["hypothesis_gates"][
+        "held_out_directional_shadowing_ratios"
+    ]["passed"]
+    assert cycle["hypothesis_gates"][
+        "quartic_shadowing_forward_error_budget"
+    ]["passed"]
+    assert cycle["coefficient_construction"]["summary"]["quartet_count"] == 17550
+    assert not cycle["preserved_prior_outcomes"]["revised"]
+    assert "32 residual directions" in cycle["claim_boundary"]

@@ -50,6 +50,7 @@ from .nonresonance import (
 from .normal_refinement import run_normal_gap_refinement_audit
 from .projection_representability import run_projection_representability_audit
 from .provenance import runtime_metadata, source_metadata
+from .quartic_continuation import run_quartic_continuation_audit
 from .quartic_prequalification import run_quartic_prequalification_audit
 from .spectra import (
     TrackedHydrodynamicCluster,
@@ -2102,6 +2103,39 @@ def run_q007c_study() -> dict[str, Any]:
                 "operator-only finite-grid prequalification; no quartic forcing, "
                 "coefficient, residual-order, radius, shadowing, or invariant-"
                 "manifold existence claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007c1_study() -> dict[str, Any]:
+    """Run and package the sealed Q007c1 quartic continuation audit."""
+
+    cycle = run_quartic_continuation_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "quartic coefficient and sampled-radius continuation",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "real_reduced_dimension": 24,
+            "unordered_quartic_tuple_count": 17550,
+            "residual_direction_count": 32,
+            "shadowing_direction_count": 32,
+            "shadowing_steps": 100,
+            "acceptance_radius": 0.01,
+            "claim": (
+                "registered finite-grid, direction, amplitude, and 100-step "
+                "comparison only; no all-ball, injectivity, TT, grid-uniform, "
+                "existence, uniqueness, or normal-attraction claim"
             ),
         },
         "cycle": cycle,
