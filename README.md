@@ -63,6 +63,10 @@ policy columnは全8 gateを通過した。従ってQ006pは条件付きchart co
 fixed-leaf、共役、C4を全て通過した。held-out残差は次数`3 → 4`、100-step shadowingも全方向で改善したが、
 amplitude `0.01`のcubic/quadratic残差比が32方向中9方向で登録上限`0.10`を超え、最大`0.228691`と
 なった。このためQ007bは有効な性能棄却として固定し、quarticへ進まず、独立holdoutで有効半径を局在化する。
+Q007b1では別seedの64方向で半径`0.004`の最大残差比`0.0780063`、失敗0を得て、別32方向の
+100-step shadowingも全gateを通過した。chart Jacobianの正規化最小特異値は半径`0.01`まで`1.0`以上で、
+fold signatureは見つからなかった。従って半径`0.004`の有限sampleだけを`accepted`とし、次は
+order-4 homological operatorをoperator-onlyでprequalificationする。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -546,6 +550,29 @@ Q006iのquadratic chartから全2,600 cubic forcingを解析的に構成し、sy
 `0.02859 / 0.05717 / 0.11435 / 0.17152 / 0.22869`とほぼ線形に増えた。次はこの観測をcalibrationに
 限定し、新seedで半径`0.004`を検証する。Q006iの旧rejectionは変更せず、quartic continuationも保留する。
 
+### Q007b1 independent cubic-radius and immersion audit
+
+Q007bの方向をcalibrationに限定し、seed `20260818 / 20260819 / 20260820`でradius、shadowing、解析
+chart Jacobianを独立に検証した。
+
+- classification: `registered cubic improvement radius localized without fold signature`
+- validity / hypothesis gates: `5 / 5`, `6 / 6` passed
+- quadratic / cubic / residual-ratio slope range:
+  `2.999754–3.000373 / 3.999374–4.000278 / 0.999438–1.000311`
+- radius `0.004` maximum residual ratio / failed directions: `0.0780063 / 0 of 64`
+- radius `0.01` maximum residual ratio / failed directions: `0.1950024 / 16 of 64`
+- analytic Jacobian maximum best relative error: `1.46388e-10`
+- radial minimum normalized singular value / maximum condition: `1.0 / 1.76763`
+- shadow maximum-absolute / final-absolute / maximum-relative ratio:
+  `0.0440221 / 0.0300889 / 0.0362175`
+- cubic budget component checks / violations / maximum utilization:
+  `9,600 / 0 / 0.5`
+
+near-resonant 24 tripleのchart寄与率は残差比と負相関`-0.57894`で、上位残差quartileへのenrichmentも
+`0.47235`だった。これに対し全cubic／quadratic chart補正比は残差比と`0.96076`のSpearman相関を示した。
+従って登録sampleではnear-resonant subsetやfoldより有限次数の全体的な曲率が主要indicatorである。これは
+半径`0.004`のball全体やinjectivityを保証せず、Q007bの半径`0.01`棄却も変更しない。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -570,7 +597,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
 `q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
-`q006q`、`q007a`、`q007b` は
+`q006q`、`q007a`、`q007b`、`q007b1` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -597,6 +624,7 @@ python -m ttim_lbm --study q006p --output research/artifacts/q006p_dual_reportin
 python -m ttim_lbm --study q006q --output research/artifacts/q006q_forward_error_holdout.json
 python -m ttim_lbm --study q007a --output research/artifacts/q007a_cubic_prequalification.json
 python -m ttim_lbm --study q007b --output research/artifacts/q007b_cubic_continuation.json
+python -m ttim_lbm --study q007b1 --output research/artifacts/q007b1_cubic_radius.json
 ```
 
 保存済み結果:
@@ -621,6 +649,7 @@ python -m ttim_lbm --study q007b --output research/artifacts/q007b_cubic_continu
 - [`research/artifacts/q006q_forward_error_holdout.json`](research/artifacts/q006q_forward_error_holdout.json)
 - [`research/artifacts/q007a_cubic_prequalification.json`](research/artifacts/q007a_cubic_prequalification.json)
 - [`research/artifacts/q007b_cubic_continuation.json`](research/artifacts/q007b_cubic_continuation.json)
+- [`research/artifacts/q007b1_cubic_radius.json`](research/artifacts/q007b1_cubic_radius.json)
 
 ## 文書
 
@@ -659,14 +688,15 @@ python -m ttim_lbm --study q007b --output research/artifacts/q007b_cubic_continu
 - Q006q 2 independent scenario、128 trajectory・48,000 component forward-error holdout
 - Q007a 全2,600 cubic homological block、order-2 reproduction、共役／C4 count closure
 - Q007b 全2,600 cubic forcing／coefficient、独立3次微分、残差次数、100-step shadowing
+- Q007b1 独立finite-radius／analytic Jacobian／immersion／near-resonance診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007b1 の独立finite-radius／immersion holdout
-- Q007c quartic continuation（Q007bのamplitude `0.01` gate棄却により保留）
+- Q007c の全order-4 homological operator prequalification
+- quartic forcing／coefficient／residual continuation
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007b1である。Q007bで観測した振幅依存を同じ方向へ再fitせず、別seedで半径`0.004`の
-残差比、100-step shadowing、chart Jacobianのimmersionを検証する。これを通過してもQ007bの半径`0.01`
-棄却は変更せず、quartic continuationやTT圧縮へはまだ進まない。
+従って次のゲートはQ007cである。24 complex modeの全17,550 unordered order-4 tupleをzero／internal／
+external sectorに分け、operatorのrank・condition・共役・C4 count closureだけを判定する。これを通過するまで
+quartic forcing／coefficientを作らず、TT圧縮へも進まない。

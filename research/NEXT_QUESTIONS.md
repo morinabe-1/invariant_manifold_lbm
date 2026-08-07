@@ -1907,15 +1907,93 @@ acceptedでも、64／32方向の有限sampleに限り、半径`0.004`のball全
 `0.01` rejectionを変更せず、quartic continuation、TT圧縮、grid-uniform family、真の不変多様体の
 存在・一意性・normal attractionを主張しない。
 
-## Q007c: quartic continuation — 保留・未登録
+### 結果
+
+全5 validity gateと全6 hypothesis gateを通過し、
+`registered cubic improvement radius localized without fold signature`として`accepted`とした。
+
+- quadratic / cubic / ratio slope range:
+  `2.9997535988860777–3.0003725714946294 / 3.999374269224645–4.00027779049691 /`
+  `0.9994377578283731–1.000310528367947`
+- radius `0.004` maximum ratio / failure count: `0.07800626791012572 / 0 of 64`
+- amplitude ladder maximum ratios:
+  `0.024376 / 0.039004 / 0.058505 / 0.078006 / 0.117007 / 0.156005 / 0.195002`
+- analytic Jacobian maximum best relative error: `1.463877022273861e-10`
+- minimum normalized singular value / maximum condition: `1.0 / 1.7676346838545076`
+- shadow maximum-absolute / final-absolute / maximum-relative ratio:
+  `0.044022136608928585 / 0.030088934796968496 / 0.03621745864325118`
+- cubic budget component checks / violations / maximum utilization: `9600 / 0 / 0.5`
+
+near-resonant 24 tripleのchart fractionは残差比と負相関`-0.5789377`、上位quartile enrichment
+`0.4723544`だった。reduced寄与は全方向0で相関未定義と記録した。一方、全cubic／quadratic chart
+correction ratioは残差比と`0.9607601`のSpearman相関を持った。従って登録sampleではnear resonanceや
+foldより有限次数の全cubic curvatureが主要indicatorである。Q007bの半径`0.01` rejectionは変更しない。
+
+## Q007c: quartic homological-family prequalification — 事前登録
 
 ### 問い
 
-Q007b1のradius／immersion診断後、symmetric/Fourier-sparseな4次係数で残差次数`4 → 5`とrolloutを
-さらに改善すべきか。
+Q006iの24 complex modeに対する全order-4 homological blockは、登録grid上で一意に解ける
+非共鳴operator familyか。
 
-改善しなければ、多項式次数不足ではなく near resonance、有限半径、chart fold を
-先に疑う。
+### 固定設定
+
+- grid $17^2$、$\omega=1.5$、$\eta=0.01$、Q006i/Q007bと同じ24 complex mode
+- input indexは`i <= j <= k <= l`のunordered 4-tupleとし、`C(27,4)=17,550`件を全列挙
+- multiplierは`lambda_i lambda_j lambda_k lambda_l`、output waveは4入力waveのmod-17和
+- zero-wave kinetic、internal selected、externalのoperator assemblyとrank thresholdはQ007aと同一
+- numerical rank thresholdは
+  `100 * eps * max(operator_shape) * largest_singular_value`
+- near-resonant diagnosticは`smallest/largest <= 1e-4`
+- quartic forcing、coefficient、residual、shadowingは計算しない
+
+### order-2／order-3 control reproduction
+
+同一runnerでQ007aのpair 300件とtriple 2,600件をartifact入力なしで再構築し、次を要求する。
+
+1. order-2 sector count `36 / 108 / 156`、singular 0
+2. order-2 minimum singular `0.00015502435597333105`、maximum condition
+   `14513.930547954875`をrelative error `1e-10`以下で再現
+3. order-3 sector count `108 / 1044 / 1448`、singular 0、near-resonant 24
+4. order-3 minimum singular `0.00020787972673242753`、maximum condition
+   `10821.814847751179`をrelative error `1e-10`以下で再現
+
+このcontrolが失敗した場合、order-4結果は判定に使わない。
+
+### order-4 completeness／symmetry validity
+
+1. record countとunique tuple countが17,550、duplicate 0
+2. permutation multiplicityの総和が`24^4 = 331,776`、出現値が`1 / 4 / 6 / 12 / 24`
+3. zero-wave kinetic、internal selected、externalの各sector countが正
+4. conjugate tupleが全て存在し、output wave／output kind failureが0
+5. conjugate multiplierとoperator singular valuesのmaximum relative errorが各`1e-10`以下
+6. C4およびconjugate output-wave count closureのfailureが0
+7. 全record finite、strict JSON
+
+全17,550 blockについてinput modes、wave、multiplier、operator dimension/rank、全singular values、rank
+threshold、condition、near-resonant flag、permutation multiplicityをartifactへ保存する。
+
+### 仮説gate
+
+validity通過後、次を両方要求する。
+
+1. numerically singular order-4 blockが0
+2. zero／internal／externalを含む全nonsingular blockのmaximum conditionが`1e9`以下
+
+両方通過すれば`order-four homological family prequalified on registered grid`としてacceptedとする。
+validだが一方でも失敗すれば`order-four homological obstruction on registered grid`としてrejected、control、
+enumeration、symmetry、finite、serializationが失敗すればinconclusiveとする。
+
+acceptedはoperator-only finite-grid prequalificationに限る。quartic forcing／coefficient、残差次数`4 → 5`、
+radius延長、shadowing、TT圧縮、grid-uniform family、真の不変多様体の存在・一意性・normal attractionを
+主張しない。acceptedの場合だけQ007c1のforcing／coefficient gateを詳細に事前登録する。
+
+## Q007c1: quartic coefficient continuation — 未登録
+
+### 問い
+
+Q007c通過後、symmetric Fourier-fiberの4次forcing／coefficientは残差次数`4 → 5`を示し、
+Q007bが失敗した半径`0.01`のeffect sizeを改善できるか。
 
 ## Q008: TT rank は bounded か
 

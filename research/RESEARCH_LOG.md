@@ -1744,6 +1744,80 @@ Q006iの旧`rejected`判定とQ007bのamplitude `0.01`棄却は変更しない�
 Q007b1: 独立方向で半径`0.004`の10倍残差改善を再現でき、元の半径`0.01`でchart immersionは
 保たれているか。
 
+## Cycle Q007b1: independent cubic-radius and immersion audit
+
+### 問い
+
+Q007bと独立な方向で、cubic chartは半径`0.004`まで全方向10倍の残差改善を示し、元の失敗半径
+`0.01`までradial immersionを保つか。
+
+### 仮説
+
+- seed `20260818`の64方向で半径`0.004`のcubic/quadratic residual ratioは全て`0.10`以下
+- quadratic／cubic／ratio slopeはそれぞれ`3 ± 0.1 / 4 ± 0.15 / 1 ± 0.1`
+- seed `20260820`のanalytic chart Jacobianは独立中心差分と`1e-7`以下で一致
+- 半径`0.01`まで正規化minimum singular valueは`0.8`以上
+- seed `20260819`の32方向で3種類の100-step shadow ratioは`0.8`以下、budget違反0
+
+### 実験
+
+- Q007bの5 coefficient hashを固定し、係数を再fit・truncateしない
+- Q006i／Q007bの全登録方向とのexact duplicateを監査
+- 7 amplitudeで残差比を測り、最初の4点で残差次数、全7点でratio次数をfit
+- $DW_3(a)d=Vd+H[a,d]+T[a,a,d]/2$をFourier-fiberから解析評価
+- 64 radial direction × 5 nonzero amplitudeとbaseでfull $2601\times24$ JacobianをSVD
+- condition `>=1e4`の24 near-resonant tripleを部分評価し、残差比との相関を診断
+- 独立32方向を半径`0.004`から100 step rollout
+
+### 結果
+
+全5 validity gateと全6 hypothesis gateを通過し、
+`registered cubic improvement radius localized without fold signature`として`accepted`とした。
+
+- quadratic slope range: `2.9997535988860777 – 3.0003725714946294`
+- cubic slope range: `3.999374269224645 – 4.00027779049691`
+- ratio slope range: `0.9994377578283731 – 1.000310528367947`
+- radius `0.004` maximum ratio / failure count:
+  `0.07800626791012572 / 0 of 64`
+- amplitude ladder maximum ratios:
+  `0.024376 / 0.039004 / 0.058505 / 0.078006 / 0.117007 / 0.156005 / 0.195002`
+- corresponding `0.10` failure counts: `0 / 0 / 0 / 0 / 2 / 12 / 16`
+- analytic Jacobian minimum action norm / maximum best relative error:
+  `0.921079697651058 / 1.463877022273861e-10`
+- minimum normalized singular value / maximum condition:
+  `1.0 / 1.7676346838545076`
+- shadow maximum-absolute / final-absolute / maximum-relative ratio:
+  `0.044022136608928585 / 0.030088934796968496 / 0.03621745864325118`
+- budget component check / violation / maximum utilization / final budget:
+  `9600 / 0 / 0.5 / 1.1368683772161603e-11`
+
+### 分析
+
+独立sampleでも残差比はほぼ厳密に振幅一次で増え、半径`0.004`では10倍改善を保ったが、半径`0.01`では
+64方向中16方向が同じeffect-size gateを落とした。従ってQ007bの棄却を再現しつつ、より小さい有限sample
+radiusを局在化できた。Jacobianの最悪値は非線形点ではなくbaseの`1.0`であり、登録radial lineにfoldへ
+近づくsignatureはなかった。
+
+near-resonant chart fractionと残差比のSpearman相関は`-0.5789377`、上位quartile enrichmentは`0.4723544`
+だった。24 tripleは全てreduced coefficientが0のsectorにあり、reduced near fractionは全方向0なので相関を
+未定義と記録した。一方、全cubic／quadratic chart correction ratioと残差比の相関は`0.9607601`だった。
+従ってnear-resonant subsetの集中より、全cubic curvatureと有限次数truncationが主要なindicatorである。
+
+このacceptedは64 residual／immersion方向と32 shadow方向だけに限る。半径`0.004` ball全体、global
+injectivity、Q007bの半径`0.01`再判定、真の不変多様体を主張しない。
+
+### 改善
+
+- quartic forcingを作る前に全order-4 operatorを列挙する。
+- order-2／order-3結果をcontrolとして同一runner内で再現する。
+- order-4の共役operator、C4／共役output count、conditionを先に固定する。
+- order-4 operatorが通過した場合だけforcingとquartic residual gateを事前登録する。
+
+### 次の問い
+
+Q007c: Q006iの24座標clusterは、登録grid上で全17,550 order-4 homological blockが一意に解ける
+非共鳴familyか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -1779,3 +1853,5 @@ Q007b1: 独立方向で半径`0.004`の10倍残差改善を再現でき、元の
 [`artifacts/q007a_cubic_prequalification.json`](artifacts/q007a_cubic_prequalification.json)
 
 [`artifacts/q007b_cubic_continuation.json`](artifacts/q007b_cubic_continuation.json)
+
+[`artifacts/q007b1_cubic_radius.json`](artifacts/q007b1_cubic_radius.json)
