@@ -50,6 +50,7 @@ from .nonresonance import (
 from .normal_refinement import run_normal_gap_refinement_audit
 from .projection_representability import run_projection_representability_audit
 from .provenance import runtime_metadata, source_metadata
+from .quartic_prequalification import run_quartic_prequalification_audit
 from .spectra import (
     TrackedHydrodynamicCluster,
     maximum_principal_angle,
@@ -2070,6 +2071,37 @@ def run_q007b1_study() -> dict[str, Any]:
                 "registered finite-direction radius and radial-immersion "
                 "prequalification only; no full-ball, injectivity, quartic, TT, "
                 "grid-uniform, existence, uniqueness, or normal-attraction claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007c_study() -> dict[str, Any]:
+    """Run and package the sealed Q007c quartic prequalification."""
+
+    cycle = run_quartic_prequalification_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "order-four homological-family prequalification",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "complex_mode_count": 24,
+            "unordered_pair_control_count": 300,
+            "unordered_triple_control_count": 2600,
+            "unordered_quartic_tuple_count": 17550,
+            "claim": (
+                "operator-only finite-grid prequalification; no quartic forcing, "
+                "coefficient, residual-order, radius, shadowing, or invariant-"
+                "manifold existence claim"
             ),
         },
         "cycle": cycle,

@@ -160,7 +160,7 @@ def _operator_record(
     relative_smallest = float(smallest / largest)
     condition_number = None if numerically_singular else float(largest / smallest)
     order = len(indices)
-    prefix = "p" if order == 2 else "t"
+    prefix = {2: "p", 3: "t", 4: "q"}.get(order, f"o{order}_")
     return {
         "record_identifier": f"{prefix}{record_index:05d}",
         "order": order,
