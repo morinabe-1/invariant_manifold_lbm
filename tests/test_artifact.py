@@ -458,3 +458,39 @@ def test_q006l_artifact_records_only_the_unique_anchor_arithmetic_audit() -> Non
     assert "nonsmooth at anchor switches" in cycle["claim_boundary"]
     assert cycle["summary"]["trajectory_count"] == 64
     assert cycle["summary"]["total_control_step_count"] == 19200
+
+
+def test_q006m_artifact_records_only_the_unique_anchor_obstruction() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006m_anchor_obstruction.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "equivariant unique-site anchor obstruction",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "translation_group": "Z_17 x Z_17",
+        "direction_count": 32,
+        "amplitudes": [1.0e-2, 1.0e-3, 1.0e-4, 1.0e-5, 1.0e-6, 1.0e-7],
+        "claim": (
+            "exact uniform-state fixed-point obstruction for unique-site "
+            "selectors plus a finite shrinking-gap diagnostic only; no "
+            "exclusion of anchor-free equivariant arithmetic and no revision "
+            "of Q006i-Q006l"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "equivariant unique-anchor obstruction confirmed"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["summary"]["direction_amplitude_record_count"] == 384
+    assert cycle["summary"]["failed_gap_ladder_count"] == 0
+    assert "only unique-site selectors" in cycle["claim_boundary"]

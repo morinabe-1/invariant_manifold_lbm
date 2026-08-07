@@ -8,6 +8,7 @@ from typing import Any
 
 import numpy as np
 
+from .anchor_obstruction import run_anchor_obstruction_audit
 from .checkerboard_filter import run_checkerboard_filter_audit
 from .cluster_complete import run_cluster_complete_audit
 from .coefficient_scaling import run_coefficient_scaling_audit
@@ -1835,6 +1836,37 @@ def run_q006l_study() -> dict[str, Any]:
                 "finite unique-anchor trajectory audit only; the nonsmooth "
                 "global-residual control is not adopted as the production map "
                 "and does not revise Q006i-Q006k"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006m_study() -> dict[str, Any]:
+    """Run and package the sealed Q006m unique-anchor obstruction audit."""
+
+    cycle = run_anchor_obstruction_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "equivariant unique-site anchor obstruction",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "translation_group": "Z_17 x Z_17",
+            "direction_count": 32,
+            "amplitudes": [1.0e-2, 1.0e-3, 1.0e-4, 1.0e-5, 1.0e-6, 1.0e-7],
+            "claim": (
+                "exact uniform-state fixed-point obstruction for unique-site "
+                "selectors plus a finite shrinking-gap diagnostic only; no "
+                "exclusion of anchor-free equivariant arithmetic and no revision "
+                "of Q006i-Q006l"
             ),
         },
         "cycle": cycle,
