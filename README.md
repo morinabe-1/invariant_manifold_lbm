@@ -68,7 +68,10 @@ Q007b1では別seedの64方向で半径`0.004`の最大残差比`0.0780063`、�
 fold signatureは見つからなかった。従って半径`0.004`の有限sampleだけを`accepted`とした。Q007cでは
 全17,550 order-4 homological blockを列挙し、singular block 0、最大condition `34673.9`でoperator-only
 prequalificationを通過した。これは四次forcingや係数の正しさをまだ示さないため、次はQ007c1で
-解析的4階微分、forcing assembly、全係数、残差次数`4 → 5`、半径`0.01`の改善を独立に判定する。
+解析的4階微分、forcing assembly、全係数、残差次数`4 → 5`、半径`0.01`の改善を独立に判定した。
+全validityと1-step残差gateは通過したが、100-step shadowingの1方向でfinal absolute比`1.37153`、
+maximum relative比`0.891419`が上限`0.8`を超えたため、Q007c1は有効な性能棄却として固定する。
+次は係数を変えず、独立方向で振幅・horizonごとの有効shadow領域を局在化する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -599,6 +602,33 @@ Q006iと同じ24 complex modeについて、order-2／order-3 controlをartifact
 判定であり、四次forcing／coefficient、5次残差、半径延長、shadowing、grid-uniformな存在・一意性を
 主張しない。Q007c1では解析的な四次Faà di Bruno forcingを独立有限差分と照合してから全係数を解く。
 
+### Q007c1 quartic coefficient and sampled-radius continuation
+
+全17,550 quartic forcing／coefficientをsymmetric complex Fourier-fiberで構築し、写像の4階微分と
+cubic defectの4階差分を独立に照合した。物理空間のfull dense quartic tensorはmaterializeしていない。
+
+- classification: `quartic continuation does not restore registered radius`
+- validity / hypothesis gates: `8 / 8`, `3 / 4` passed
+- map fourth-derivative maximum best relative error: `3.09632e-5`
+- assembled-forcing maximum best relative error: `3.95799e-4`
+- maximum solve / homological residual: `1.00060e-12 / 9.53058e-13`
+- maximum coefficient conjugacy / C4 error:
+  `1.67664e-13 / 4.65140e-12`
+- cubic / quartic residual slope range:
+  `3.999714–4.000289 / 4.999739–5.000472`
+- amplitude `0.01` maximum quartic/cubic residual ratio: `0.439147`
+- amplitude `0.01` maximum quartic/quadratic residual ratio: `0.0927052`
+- 100-step maximum-absolute / final-absolute / maximum-relative shadow ratio:
+  `0.746449 / 1.371531 / 0.891419`
+- shadow ratio failure counts: `0 / 1 / 1` of 32
+- quartic budget component checks / violations / maximum utilization:
+  `9,600 / 0 / 0.5`
+
+従って四次係数と残差次数`4 → 5`は検証され、半径`0.01`の1-step残差も全32方向で登録上限を通った。
+一方、shadow方向14ではmaximum absolute error自体は改善したが、step 15以降にinstantaneous error比が
+`0.8`を超え、step 100の絶対誤差が`5.21953e-9 → 7.15874e-9`となった。このためQ007c1の100-step
+性能仮説は棄却する。次はこの方向をcalibrationだけに使い、別seedで短時間・小振幅の有効領域を検証する。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -623,7 +653,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
 `q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
-`q006q`、`q007a`、`q007b`、`q007b1`、`q007c` は
+`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -652,6 +682,7 @@ python -m ttim_lbm --study q007a --output research/artifacts/q007a_cubic_prequal
 python -m ttim_lbm --study q007b --output research/artifacts/q007b_cubic_continuation.json
 python -m ttim_lbm --study q007b1 --output research/artifacts/q007b1_cubic_radius.json
 python -m ttim_lbm --study q007c --output research/artifacts/q007c_quartic_prequalification.json
+python -m ttim_lbm --study q007c1 --output research/artifacts/q007c1_quartic_continuation.json
 ```
 
 保存済み結果:
@@ -678,6 +709,7 @@ python -m ttim_lbm --study q007c --output research/artifacts/q007c_quartic_prequ
 - [`research/artifacts/q007b_cubic_continuation.json`](research/artifacts/q007b_cubic_continuation.json)
 - [`research/artifacts/q007b1_cubic_radius.json`](research/artifacts/q007b1_cubic_radius.json)
 - [`research/artifacts/q007c_quartic_prequalification.json`](research/artifacts/q007c_quartic_prequalification.json)
+- [`research/artifacts/q007c1_quartic_continuation.json`](research/artifacts/q007c1_quartic_continuation.json)
 
 ## 文書
 
@@ -718,14 +750,15 @@ python -m ttim_lbm --study q007c --output research/artifacts/q007c_quartic_prequ
 - Q007b 全2,600 cubic forcing／coefficient、独立3次微分、残差次数、100-step shadowing
 - Q007b1 独立finite-radius／analytic Jacobian／immersion／near-resonance診断
 - Q007c 全17,550 quartic homological block、order-2／3 control、共役／C4 count closure
+- Q007c1 全17,550 quartic forcing／coefficient、独立4階微分・forcing、残差・shadow audit
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007c1 quartic forcing／coefficient／residual・shadow continuation
+- Q007c2 quartic shadow amplitude／horizon localization
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007c1である。Q007cが通過した全17,550 operatorに対して四次forcingと係数を
-symmetric Fourier-fiberで構築し、独立4階微分、完全forcing差分、homological equation、共役・C4、
-残差次数`4 → 5`、半径`0.01`の残差改善と100-step shadowingを判定する。これを通過するまでTT圧縮へ
-進まない。
+従って次のゲートはQ007c2である。Q007c1の係数hashを固定し、独立64方向、amplitude
+`0.004 / 0.007 / 0.01`、100 stepの共通rolloutからhorizon `10 / 25 / 50 / 100`のprefix指標を作る。
+半径`0.01`・10 stepと半径`0.004`・100 stepの両方でquartic/cubic shadow比が全方向`0.8`以下かを
+判定し、長時間・大振幅の失敗は診断として保存する。Q007c1の棄却は変更しない。

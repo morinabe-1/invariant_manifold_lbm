@@ -2146,6 +2146,103 @@ direction、upstream reproduction、derivative、forcing、coefficient、symmetr
 acceptedでも、32方向の有限sample、有限grid、100 stepに限る。半径`0.01`のball全体、global injectivity、
 grid-uniform family、真の不変多様体の存在・一意性・normal attraction、TT圧縮優位性を主張しない。
 
+### 結果
+
+全8 validity gateは通過した。残差次数、半径`0.01`の1-step残差比、forward-error budgetは通過したが、
+100-step shadowing比が失敗したため、`quartic continuation does not restore registered radius`として
+有効な`rejected`とした。
+
+- map fourth-derivative maximum best relative error: `3.096316945580041e-05`
+- assembled-forcing maximum best relative error: `0.0003957993866089215`
+- maximum solve／homological residual:
+  `1.0006036636030973e-12 / 9.530583825936524e-13`
+- maximum conjugacy／C4 relative error:
+  `1.6766439496313294e-13 / 4.651395234795445e-12`
+- cubic／quartic slope range:
+  `3.9997142511488586–4.000288731411633 / 4.999739294776105–5.000472391642802`
+- maximum quartic/cubic／quartic/quadratic residual ratio:
+  `0.4391470445743498 / 0.09270518013931812`、failure `0 / 0 of 32`
+- maximum absolute／final absolute／maximum relative shadow ratio:
+  `0.7464493651463932 / 1.3715310087581642 / 0.8914189366016195`
+- shadow failure count: `0 / 1 / 1 of 32`
+- budget component check／violation／maximum utilization:
+  `9600 / 0 / 0.5`
+
+失敗方向14でもmaximum absolute errorは改善したが、instantaneous ratioはstep 15以降`0.8`を超えた。
+step 100のabsolute errorは`5.219526416836927e-09 → 7.158742331724237e-09`であり、machine floorではない。
+この方向は次のcalibration／reproduction controlだけに使い、Q007c1の棄却は変更しない。
+
+## Q007c2: quartic shadow amplitude-horizon localization — 事前登録
+
+### 問い
+
+Q007c1のquartic chartは、独立方向で半径`0.01`・10 stepの短時間改善と、半径`0.004`・100 stepの
+長時間改善をともに再現し、振幅・horizon依存の有効shadow領域を局在化できるか。
+
+### 固定設定とupstream control
+
+- grid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、24実座標、unmodified standard mapを維持する。
+- Q007c1のquartic modelをartifactから読み込まず再構築し、係数を再fit・round・truncateしない。
+- quartic coefficient hashを次に固定する。
+  - quartet indices: `968b35d36cbd28c1f30e6cacb906649a42b36ba4e7bf4122394c2722cd809c16`
+  - output waves: `9f9720e1114cc489ef7bbca81562e7d4cf211999e8d4a4958c06c02ee0df1fe8`
+  - chart coefficients: `9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b`
+  - reduced coefficients: `061cd66caf83850a45eeec05ed0f62fafb748a3076d7a6eb591bc69be2e008f7`
+  - forcing coefficients: `6ab2337ea60b87dbe404e1aeb6b9c090fa8f950d43815966e0933879901b8eef`
+- Q007c1 seed `20260825`の方向14をamplitude `0.01`、100 stepで再実行し、次の3比をrelative tolerance
+  `1e-10`で再現する。
+  - maximum absolute: `0.7464493651463932`
+  - final absolute: `1.3715310087581642`
+  - maximum perturbation-relative: `0.8914189366016195`
+- このcontrolが失敗すれば新しいcampaignは判定に使わず`inconclusive`とする。
+
+### 独立方向とcampaign grid
+
+- seed `20260826`の64 normalized Gaussian方向を固定する。
+- Q006i、Q007b、Q007b1、Q007c1の全登録方向とのexact duplicateを0とする。
+- amplitudeは`0.004 / 0.007 / 0.01`、最大horizonは100 stepとする。
+- 各amplitude・方向についてcubic／quarticを各chart上の初期状態から100 stepずつ一度だけ進める。
+- 保存するprefix horizonは`10 / 25 / 50 / 100`とする。各prefixで
+  - prefix maximum absolute error
+  - horizon final absolute error
+  - prefix maximum perturbation-relative error
+  のquartic/cubic比を計算する。
+- 64 × 3 × 2本のtrajectory、38,400 chart-step、quartic側57,600 conservation component-stepを
+  全てartifactへ保存する。
+
+### validity gate
+
+1. 係数hashとQ007c1方向14 controlを再現
+2. direction norm error `<=5e-15`、duplicate 0
+3. 全state／coordinate／error／ratioがfinite、全populationがpositive
+4. 各cellのdirection countが64、prefix horizonが`10 / 25 / 50 / 100`と一致
+5. strict JSON serializationが通る
+
+validityのいずれかが失敗すれば性能仮説を判定せず`inconclusive`とする。
+
+### hypothesis gate
+
+次を全て要求する。
+
+1. amplitude `0.01`、horizon 10で3種類のquartic/cubic shadow比が全64方向`<=0.8`
+2. amplitude `0.004`、horizon 100で3種類のquartic/cubic shadow比が全64方向`<=0.8`
+3. quartic側57,600 component-stepでQ006o budget違反0、maximum utilization `<=1`、各trajectoryの
+   final budget `<=1.2e-11`
+
+amplitude `0.007`と、上記2 cell以外のhorizonは有効領域の境界を診断するため保存するが、acceptance gateへ
+使わない。failure count、最初にratio `0.8`を超えるstep、方向別のcrossoverを報告する。観測後にhorizonや
+amplitudeを追加・削除しない。
+
+### 判定規則
+
+validity通過後、3 hypothesis gateが全て通れば
+`quartic shadowing domain localized on independent directions`として`accepted`、一つでも失敗すれば
+`registered quartic shadowing domain not reproduced`として有効な`rejected`とする。
+
+acceptedでも、独立64方向と登録した2 operating pointだけの有限sample claimである。半径`0.004`または
+`0.01`のball全体、他のhorizon、global injectivity、grid-uniform family、真の不変多様体、TT優位性を
+主張しない。Q007c1の100-step半径`0.01`棄却はどの結果でも変更しない。
+
 ## Q008: TT rank は bounded か
 
 ### 問い

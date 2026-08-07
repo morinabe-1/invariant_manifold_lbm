@@ -1888,6 +1888,87 @@ thresholdに対する最小marginも`1.44e8`ある。従ってこの有限grid�
 Q007c1: 全quartic forcing／coefficientは独立検証を通り、残差次数を`4 → 5`へ改善して、Q007bで
 失敗した半径`0.01`の有限sample性能を回復できるか。
 
+## Cycle Q007c1: quartic coefficient and sampled-radius continuation
+
+### 問い
+
+Q007cを通過したsymmetric Fourier-fiberの4次forcing／coefficientは独立検証を通り、残差次数を
+`4 → 5`へ改善して、半径`0.01`の1-step残差と100-step shadowingをともに回復できるか。
+
+### 仮説
+
+- 解析的4階微分と独立5点差分のmaximum best relative errorは`5e-3`以下
+- 全quartic forcingとcubic defectの4階差分は`2e-2`以下で一致
+- 全17,550係数のsolve／homological／gauge／保存／共役／C4 gateが`1e-10`以下
+- cubic／quartic residual slopeは`4 ± 0.15 / 5 ± 0.30`
+- 半径`0.01`でquartic/cubic残差比`<=0.8`、quartic/quadratic残差比`<=0.10`
+- 100-stepの3 shadow比は全32方向`<=0.8`、forward-error budget違反0
+
+### 実験
+
+- Q007bのcubic係数hashとQ007cの全operator統計をartifact入力なしで再現
+- Faà di Brunoの4／3／6 labelled partitionから全17,550 forcingを構築
+- seed `20260821 / 20260822`で写像4階微分と全forcingを別々に有限差分検証
+- 全quartic coefficientをsolveし、zero／internal／external、fixed leaf、共役、C4を監査
+- seed `20260823`の32方向、5 amplitudeでquadratic／cubic／quartic残差を比較
+- seed `20260825`の32方向、amplitude `0.01`から100-step shadow rolloutを比較
+
+### 結果
+
+全8 validity gateは通過した。4 hypothesis gateのうち残差次数、残差比、forward-error budgetの3件は
+通過したが、shadowing比が失敗したため、`quartic continuation does not restore registered radius`として
+有効な`rejected`とした。
+
+- map fourth-derivative maximum best relative error: `3.096316945580041e-05`
+- assembled-forcing maximum best relative error: `0.0003957993866089215`
+- minimum analytic derivative / forcing norm:
+  `0.012125858957928786 / 1.5109132913737002`
+- maximum solve / homological residual:
+  `1.0006036636030973e-12 / 9.530583825936524e-13`
+- maximum graph gauge / conjugacy residual:
+  `1.010360766298989e-14 / 1.6766439496313294e-13`
+- maximum C4 field error / global conservation residual:
+  `4.651395234795445e-12 / 3.778236108733814e-15`
+- cubic slope range: `3.9997142511488586 – 4.000288731411633`
+- quartic slope range: `4.999739294776105 – 5.000472391642802`
+- maximum quartic/cubic residual ratio / failure count:
+  `0.4391470445743498 / 0 of 32`
+- maximum quartic/quadratic residual ratio / failure count:
+  `0.09270518013931812 / 0 of 32`
+- maximum absolute / final absolute / maximum relative shadow ratio:
+  `0.7464493651463932 / 1.3715310087581642 / 0.8914189366016195`
+- corresponding shadow failure counts: `0 / 1 / 1 of 32`
+- budget component check / violation / maximum utilization / final budget:
+  `9600 / 0 / 0.5 / 1.1368683772161603e-11`
+
+### 分析
+
+係数構築の妥当性と5次残差は強く支持され、半径`0.01`の1-step effect sizeも全方向で通過した。
+従って棄却原因はquartic forcingの符号やhomological solveではなく、登録100-step性能に限定される。
+
+失敗は方向14に集中した。この方向でもmaximum absolute errorは
+`2.908886069449626e-08 → 2.1713361598238602e-08`へ改善したが、instantaneous absolute／relative比は
+step 15から`0.8`を超え、step 100のabsolute errorは
+`5.219526416836927e-09 → 7.158742331724237e-09`となった。誤差はmachine floorではなく、遅い時間での
+位相・累積誤差のcrossoverとして扱う。これは同じ方向から得たpost-hoc診断なので、次のacceptance dataへ
+再利用しない。
+
+Q007c1の棄却、Q007bの半径`0.01`棄却、Q007b1の半径`0.004` acceptanceは変更しない。有限32方向、
+有限grid、100 stepを超える主張も行わない。
+
+### 改善
+
+- quartic coefficientを変更せず、全5 hashを固定する。
+- Q007c1方向14はrunner reproduction controlとcalibrationだけに使う。
+- 別seedの64方向でamplitude `0.004 / 0.007 / 0.01`を100 stepまで同時に評価する。
+- 同じrolloutのprefixからhorizon `10 / 25 / 50 / 100`を事前登録し、post-hoc horizon選択を避ける。
+- 短時間・大振幅と長時間・小振幅を別gateにして、有効領域を局在化する。
+
+### 次の問い
+
+Q007c2: 独立方向で、quartic chartは半径`0.01`・10 step、および半径`0.004`・100 stepの
+shadowing改善をともに再現し、振幅・horizon依存の有効領域を局在化できるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -1927,3 +2008,5 @@ Q007c1: 全quartic forcing／coefficientは独立検証を通り、残差次数�
 [`artifacts/q007b1_cubic_radius.json`](artifacts/q007b1_cubic_radius.json)
 
 [`artifacts/q007c_quartic_prequalification.json`](artifacts/q007c_quartic_prequalification.json)
+
+[`artifacts/q007c1_quartic_continuation.json`](artifacts/q007c1_quartic_continuation.json)
