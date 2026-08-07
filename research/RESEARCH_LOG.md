@@ -1549,6 +1549,65 @@ auditであり、独立な一般化証拠ではない。all-state conservation�
 
 Q006q: Q006oのforward-error budgetは、別seed・amplitude・horizonの独立holdoutを係数変更なしで通るか。
 
+## Cycle Q006q: independent forward-error holdout
+
+### 問い
+
+Q006oで固定したcomponentwise ULP budgetは、Q006pまでに使っていないseed・amplitude・horizonでも、
+unmodified standard mapの保存driftを係数変更なしで覆えるか。
+
+### 仮説
+
+seed `20260811`・amplitude `0.005`・200 stepのlong-horizon scenarioと、seed `20260812`・
+amplitude `0.02`・50 stepのlarge-amplitude scenarioは、ともに
+\(B_c(t)=2t\operatorname{spacing}(S_c(f_0))\) 内に収まる。
+
+### 実験
+
+- linear／quadratic各32方向を各scenarioで共有し、合計128 trajectory
+- 16,000 trajectory-step × 3 component = 48,000 budget check
+- Q006o seed `20260810`と2 holdout seedのexact duplicateを監査
+- collision → streaming → filterと`full_map`を各stepで照合
+- `math.fsum`とNeumaier、positivity、全step record、strict JSONを保存
+- budget係数2、final ceiling `2.4e-11`を結果を見る前に固定
+
+### 結果
+
+全validity／scenario／aggregate policy gateを通過し、
+`independent holdout supports registered forward-error policy`としてacceptedとした。
+
+- trajectory / step / component check: `128 / 16000 / 48000`
+- budget violation: `0`
+- aggregate maximum utilization: `0.5`
+- maximum final component budget: `2.2737367544323206e-11`
+- long-horizon maximum absolute drift: `5.4569682106375694e-12`
+- large-amplitude maximum absolute drift: `1.3642420526593924e-12`
+- minimum population: `0.027322438516769965`
+- stage-map identity / streaming / independent-sum error: `0 / 0 / 0`
+- direction duplicate: `0`
+
+### 分析
+
+worst utilizationはlong-horizon・linear direction 0・step 1のmassで、drift
+`5.6843418860808015e-14`、budget `1.1368683772161603e-13`、utilization `0.5`だった。200 step側の
+最大final budgetも登録上限を通過し、50 stepの大振幅側でも違反はなかった。Q006oと同じ式を別軌道へ
+適用して通ったため、登録有限trajectoryに限るoperational policyの独立holdoutは完了した。
+
+ただしこれはall-state／all-horizon roundoff theoremではない。amplitude `0.02`は算術stress testにだけ
+使っており、その振幅でのchart invarianceやshadowingを支持しない。
+
+### 改善
+
+- cubic coefficientを作る前に全order-three homological operatorを列挙する。
+- 24 complex modeの2,600 unordered tripleをzero/internal/external sectorに分ける。
+- Q006iの300 pair assemblyを独立に再現してoperator実装を検証する。
+- numerical singularity、condition、共役、C4 output-count closureを先に判定する。
+
+### 次の問い
+
+Q007a: Q006iの24座標clusterは、登録grid上で全2,600 order-three homological blockが一意に解ける
+非共鳴familyか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -1578,3 +1637,5 @@ Q006q: Q006oのforward-error budgetは、別seed・amplitude・horizonの独立h
 [`artifacts/q006o_forward_error_budget.json`](artifacts/q006o_forward_error_budget.json)
 
 [`artifacts/q006p_dual_reporting.json`](artifacts/q006p_dual_reporting.json)
+
+[`artifacts/q006q_forward_error_holdout.json`](artifacts/q006q_forward_error_holdout.json)

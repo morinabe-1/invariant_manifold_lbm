@@ -1488,7 +1488,7 @@ Q006iのoriginal columnと`rejected`判定は変更していない。policy colu
 Q006o policyへ置換し、他7 gateを値・threshold・判定まで保持した。同じ64 trajectoryを使うintegration
 結果なので、独立holdoutを通過するまではdegree continuationへ進まない。
 
-## Q006q: independent forward-error holdout — 事前登録
+## Q006q: independent forward-error holdout — 完了
 
 ### 問い
 
@@ -1561,12 +1561,114 @@ budget上限を調整せず、最初のviolation witnessとscenarioを固定し�
 chartの存在・一意性、amplitude `0.02`でのinvarianceを主張しない。acceptedの場合だけQ007 degree
 continuationを事前登録する。
 
-## Q007: degree continuation は有効か
+### 結果
+
+全validity gateとholdout policy gateを通過し、
+`independent holdout supports registered forward-error policy`としてacceptedとした。
+
+- trajectory / step / component check: `128 / 16000 / 48000`
+- budget violation: `0`
+- aggregate maximum utilization: `0.5`
+- maximum final component budget: `2.2737367544323206e-11`
+- long-horizon maximum absolute drift: `5.4569682106375694e-12`
+- large-amplitude maximum absolute drift: `1.3642420526593924e-12`
+- minimum population: `0.027322438516769965`
+- stage-map identity / streaming / independent-sum error: `0 / 0 / 0`
+- direction duplicate: `0`
+
+Q006oの式・係数・上限を変更せず、2 scenarioの両方とaggregateが通過した。これで登録有限trajectoryの
+算術policyに対する独立holdoutを完了する。all-state／all-horizon theoremやamplitude `0.02`でのchart
+invarianceは引き続き主張しない。
+
+## Q007a: cubic homological-family prequalification — 事前登録
 
 ### 問い
 
-quadratic → cubic → quartic で held-out maximum residual と rollout horizon が
-単調に改善するか。
+Q006iの24実座標clusterについて、3次係数を構築する前に必要な全order-three homological blockは、
+登録grid上で一意に解ける非共鳴operator familyになっているか。
+
+### 固定設定と列挙
+
+- grid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)
+- Q006iと同じ8 wave × 3 hydrodynamic mode、合計24 complex conjugate-constrained mode
+- unordered input tripleは
+  \(\binom{24+3-1}{3}=2600\) 個を`combinations_with_replacement`順に完全列挙
+- input triple \((i,j,k)\) のmultiplierは
+  \(\mu_{ijk}=\lambda_i\lambda_j\lambda_k\)
+- output waveは3入力waveの周期和とし、permutation multiplicity `1 / 3 / 6`を保存
+- artifactを入力せず、mode、filtered Fourier symbol、fixed-leaf basisをsealed runnerから再構築
+
+output sectorごとのoperatorを次に固定する。
+
+\[
+\begin{cases}
+E_k^*\bigl(A(0)-\mu_{ijk}I\bigr)E_k,
+& k_{\rm out}=0,\\
+\begin{bmatrix}
+A(k_{\rm out})-\mu_{ijk}I & -V_{\rm sel}\\
+L_{\rm sel} & 0
+\end{bmatrix},
+& k_{\rm out}\in K_{\rm selected},\\
+A(k_{\rm out})-\mu_{ijk}I,
+& \text{otherwise}.
+\end{cases}
+\]
+
+zero-wave blockはQ006iと同じ6次元fixed-leaf kinetic basis、internal blockは3 selected modeとgraph gaugeを
+持つ12次元block、external blockは9次元とする。
+
+### SVD、rank、near-resonance
+
+全blockでfull singular-value listを保存する。数値rank thresholdは既存gateと同じ
+
+\[
+\tau=100\epsilon_{\rm mach}\max(m,n)\sigma_{\max}
+\]
+
+とし、\(\sigma_{\min}\le\tau\) をnumerically singularとする。nonsingular blockでは
+\(\kappa_2=\sigma_{\max}/\sigma_{\min}\) を保存し、
+\(\sigma_{\min}/\sigma_{\max}<10^{-4}\) をnear-resonant diagnosticとして数える。near-resonant count自体は
+棄却条件にせず、condition ceilingで判定する。
+
+### validity gate
+
+1. 同じassemblyでorder-two 300 pairを独立再列挙し、Q006iの
+   zero/internal/external count `36 / 108 / 156`、numerically singular `0`を再現する。
+2. order-two minimum singular value `0.00015502435597333105` とmaximum condition
+   `14513.930547954875`のrelative errorを各 `1e-10` 以下にする。
+3. order-three triple countを2600、欠落・重複を0とし、3 output sectorを全て1件以上含める。
+4. 各tripleの共役tripleが存在し、output wave、multiplier、singular valuesのconjugacy relative errorを
+   `1e-10` 以下にする。
+5. output-wave count tableが90度回転と共役でexactに閉じる。
+6. 全値finite、全conditionがpositiveまたはsingular時だけ`null`、strict JSON。
+
+validity failureは`inconclusive`とし、order-three resonanceの証拠には使わない。
+
+### hypothesis gate
+
+validity通過後、次を両方満たす場合だけ
+`order-three homological family prequalified on registered grid`としてacceptedとする。
+
+1. numerically singular blockが0。
+2. zero-wave、internal、externalを含む全nonsingular blockのmaximum conditionが `1e9` 以下。
+
+validだが一方でも失敗すれば
+`order-three homological obstruction on registered grid`としてrejectedとする。acceptedはoperatorの
+有限grid非共鳴性だけを意味し、cubic forcing、係数、独立微分、残差4次化、shadowing改善、SSM存在を
+まだ主張しない。acceptedの場合だけQ007bを詳細に事前登録する。
+
+## Q007b: cubic coefficient and residual continuation — 未登録
+
+### 問い
+
+全3次forcingとcubic chart／reduced mapを構築し、独立微分、homological residual、held-out残差次数
+`3 → 4`、100-step shadowingを改善できるか。閾値とseedはQ007a判定後、実装前に固定する。
+
+## Q007c: quartic continuation — 未登録
+
+### 問い
+
+cubic gate通過後、symmetric/Fourier-sparseな4次係数で残差次数`4 → 5`とrolloutをさらに改善できるか。
 
 改善しなければ、多項式次数不足ではなく near resonance、有限半径、chart fold を
 先に疑う。

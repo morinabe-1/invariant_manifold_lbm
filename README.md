@@ -56,7 +56,9 @@ Q006oでは、anchor-freeな一様smooth correctionと、写像を変更しな�
 realizationをともに落としたため、Q006oはunmodified map policyを`accepted`とした。Q006pでは、
 旧 \(10^{-12}\) 判定を保持したoriginal columnがglobal conservationだけを失敗し、同じ64 trajectoryの
 policy columnは全8 gateを通過した。従ってQ006pは条件付きchart continuationを`accepted`としたが、
-同一データの再利用に限る。次のQ006qで別seed・振幅・horizonの独立holdoutを行う。
+同一データの再利用に限る。Q006qでは別seed・振幅・horizonの128 trajectory、16,000 step、
+48,000 component checkを行い、違反0、最大utilization `0.5`で独立holdoutを通過した。次のQ007aで
+3次homological operatorの全2,600 unordered tripleをprequalificationする。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -474,6 +476,26 @@ unmodified mapを使う次段階を支持する。独立性のないintegration�
 amplitude `0.005`・200 stepと、seed `20260812`・amplitude `0.02`・50 stepをholdoutとして使い、
 予算式を変更せずに再判定する。
 
+### Q006q independent forward-error holdout
+
+Q006oの係数2、component scale、`numpy.spacing`、`math.fsum`／Neumaier測定を変更せず、Q006pまでに
+使っていない2 scenarioを全列挙した。
+
+- classification: `independent holdout supports registered forward-error policy`
+- trajectory / step / component check: `128 / 16000 / 48000`
+- budget violation: `0`
+- aggregate maximum utilization: `0.5`
+- maximum final component budget: `2.2737368e-11`（上限 `2.4e-11`）
+- long-horizon maximum drift / minimum population:
+  `5.4569682e-12 / 0.0276566`
+- large-amplitude maximum drift / minimum population:
+  `1.3642421e-12 / 0.0273224`
+- stage-map / streaming / independent-sum error: `0 / 0 / 0`
+
+この結果で、登録した有限軌道についてQ006oの算術policyを独立に支持した。ただし任意state・任意horizonの
+roundoff定理ではなく、amplitude `0.02`でのchart invarianceも主張しない。次数継続はまずQ007aで3次の
+全homological blockが一意に解ける条件を満たすか調べ、通過した場合だけcubic coefficientを構築する。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -497,7 +519,8 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
-`q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p` は
+`q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
+`q006q` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -521,6 +544,7 @@ python -m ttim_lbm --study q006l --output research/artifacts/q006l_covariant_cor
 python -m ttim_lbm --study q006m --output research/artifacts/q006m_anchor_obstruction.json
 python -m ttim_lbm --study q006o --output research/artifacts/q006o_forward_error_budget.json
 python -m ttim_lbm --study q006p --output research/artifacts/q006p_dual_reporting.json
+python -m ttim_lbm --study q006q --output research/artifacts/q006q_forward_error_holdout.json
 ```
 
 保存済み結果:
@@ -542,6 +566,7 @@ python -m ttim_lbm --study q006p --output research/artifacts/q006p_dual_reportin
 - [`research/artifacts/q006m_anchor_obstruction.json`](research/artifacts/q006m_anchor_obstruction.json)
 - [`research/artifacts/q006o_forward_error_budget.json`](research/artifacts/q006o_forward_error_budget.json)
 - [`research/artifacts/q006p_dual_reporting.json`](research/artifacts/q006p_dual_reporting.json)
+- [`research/artifacts/q006q_forward_error_holdout.json`](research/artifacts/q006q_forward_error_holdout.json)
 
 ## 文書
 
@@ -577,13 +602,14 @@ python -m ttim_lbm --study q006p --output research/artifacts/q006p_dual_reportin
 - Q006m uniform-equilibrium tie、translation固定点矛盾、8本のanchor-gap ladder
 - Q006o standard-map componentwise ULP budget、uniform projection policy比較
 - Q006p Q006i original-threshold／forward-error-policy dual-reporting、64方向の完全照合
+- Q006q 2 independent scenario、128 trajectory・48,000 component forward-error holdout
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006q の独立seed／amplitude／horizon forward-error holdout
+- Q007a の全2,600 cubic homological block prequalification
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ006qである。Q006oの式と係数を凍結し、Q006pで使った64 trajectoryを再利用せず、
-128 holdout trajectory・16,000 step・48,000 component checkを行う。これを通過するまでdegree
-continuationやTT圧縮へ進まない。
+従って次のゲートはQ007aである。3次係数を計算する前に、24複素モードの全2,600 unordered tripleについて
+zero-wave kinetic、internal selected、external operatorのrankとconditionを監査する。これを通過するまで
+cubic coefficient構築やTT圧縮へ進まない。
