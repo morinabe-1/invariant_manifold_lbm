@@ -71,7 +71,11 @@ prequalificationを通過した。これは四次forcingや係数の正しさを
 解析的4階微分、forcing assembly、全係数、残差次数`4 → 5`、半径`0.01`の改善を独立に判定した。
 全validityと1-step残差gateは通過したが、100-step shadowingの1方向でfinal absolute比`1.37153`、
 maximum relative比`0.891419`が上限`0.8`を超えたため、Q007c1は有効な性能棄却として固定する。
-次は係数を変えず、独立方向で振幅・horizonごとの有効shadow領域を局在化する。
+Q007c2では係数を変えず、別seedの64方向で振幅・horizon依存を監査した。半径`0.01`・10 stepと
+半径`0.004`・100 stepは全3 shadow比が`0.8`以下となり、有限sampleの有効shadow領域を局在化した。
+一方、半径`0.01`・100 stepではfinal absolute比が`0.850582`となったため、Q007c1の長時間・大振幅
+棄却は変更しない。次はQ008aで、固定した四次Fourier coefficientを自然なsparse-fiber baselineと
+TT-SVDへ同じ格納・忠実度規則で比較する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -629,6 +633,30 @@ cubic defectの4階差分を独立に照合した。物理空間のfull dense qu
 `0.8`を超え、step 100の絶対誤差が`5.21953e-9 → 7.15874e-9`となった。このためQ007c1の100-step
 性能仮説は棄却する。次はこの方向をcalibrationだけに使い、別seedで短時間・小振幅の有効領域を検証する。
 
+### Q007c2 quartic shadow amplitude-horizon localization
+
+Q007c1の全5係数hashを固定したまま、別seed `20260826`の64方向、amplitude
+`0.004 / 0.007 / 0.01`、100 stepを一度ずつ実行し、horizon `10 / 25 / 50 / 100`のprefixを比較した。
+
+- classification: `quartic shadowing domain localized on independent directions`
+- validity / hypothesis gates: `4 / 4`, `3 / 3` passed
+- Q007c1方向14 control maximum relative error: `0`
+- direction norm error / prior exact duplicate count: `2.22045e-16 / 0`
+- trajectory / chart-step / quartic budget-component count: `384 / 38,400 / 57,600`
+- budget violations / maximum utilization / maximum final budget:
+  `0 / 0.5 / 1.13687e-11`
+
+| amplitude | horizon | max-absolute比 | final-absolute比 | max-relative比 | failure count |
+|---:|---:|---:|---:|---:|---:|
+| 0.004 | 100 | 0.220812 | 0.339679 | 0.270315 | 0 / 0 / 0 |
+| 0.007 | 100 | 0.386433 | 0.594921 | 0.473050 | 0 / 0 / 0 |
+| 0.010 | 10 | 0.466920 | 0.483935 | 0.461063 | 0 / 0 / 0 |
+| 0.010 | 100 | 0.552063 | 0.850582 | 0.675784 | 0 / 2 / 0 |
+
+従って、事前登録した短時間・大振幅と長時間・小振幅の2 operating pointは独立方向で通過した。
+ただしこれは64方向上の有限sample claimであり、ball全体、他horizon、grid-uniform family、存在・一意性、
+TT優位性を示さない。半径`0.01`・100 stepの境界失敗もそのまま保存する。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -653,7 +681,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
 `q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
-`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1` は
+`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1`、`q007c2` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -683,6 +711,7 @@ python -m ttim_lbm --study q007b --output research/artifacts/q007b_cubic_continu
 python -m ttim_lbm --study q007b1 --output research/artifacts/q007b1_cubic_radius.json
 python -m ttim_lbm --study q007c --output research/artifacts/q007c_quartic_prequalification.json
 python -m ttim_lbm --study q007c1 --output research/artifacts/q007c1_quartic_continuation.json
+python -m ttim_lbm --study q007c2 --output research/artifacts/q007c2_quartic_shadow_radius.json
 ```
 
 保存済み結果:
@@ -710,6 +739,7 @@ python -m ttim_lbm --study q007c1 --output research/artifacts/q007c1_quartic_con
 - [`research/artifacts/q007b1_cubic_radius.json`](research/artifacts/q007b1_cubic_radius.json)
 - [`research/artifacts/q007c_quartic_prequalification.json`](research/artifacts/q007c_quartic_prequalification.json)
 - [`research/artifacts/q007c1_quartic_continuation.json`](research/artifacts/q007c1_quartic_continuation.json)
+- [`research/artifacts/q007c2_quartic_shadow_radius.json`](research/artifacts/q007c2_quartic_shadow_radius.json)
 
 ## 文書
 
@@ -751,14 +781,16 @@ python -m ttim_lbm --study q007c1 --output research/artifacts/q007c1_quartic_con
 - Q007b1 独立finite-radius／analytic Jacobian／immersion／near-resonance診断
 - Q007c 全17,550 quartic homological block、order-2／3 control、共役／C4 count closure
 - Q007c1 全17,550 quartic forcing／coefficient、独立4階微分・forcing、残差・shadow audit
+- Q007c2 独立64方向のquartic shadow amplitude／horizon localization、forward-error budget
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007c2 quartic shadow amplitude／horizon localization
+- Q008a cubic／quartic Fourier coefficientのsparse-fiber対TT-SVD格納prequalification
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007c2である。Q007c1の係数hashを固定し、独立64方向、amplitude
-`0.004 / 0.007 / 0.01`、100 stepの共通rolloutからhorizon `10 / 25 / 50 / 100`のprefix指標を作る。
-半径`0.01`・10 stepと半径`0.004`・100 stepの両方でquartic/cubic shadow比が全方向`0.8`以下かを
-判定し、長時間・大振幅の失敗は診断として保存する。Q007c1の棄却は変更しない。
+従って次のゲートはQ008aである。Q007c1のquadratic／cubic／quartic complex Fourier chart係数を固定し、
+degree `2 / 3 / 4`のordered local coefficient tensorを4つの事前登録した出力軸配置でTT-SVDする。
+四次ではTT core stored real scalarsとuncompressed serialized bytesの両方が自然なunordered
+sparse-fiber baselineを下回る候補があるかを判定する。物理空間のfull dense quartic tensorは作らず、
+wall time、rank、gauge-adjusted dimension、再構成・作用誤差は別指標として保存する。

@@ -2243,25 +2243,121 @@ acceptedでも、独立64方向と登録した2 operating pointだけの有限sa
 `0.01`のball全体、他のhorizon、global injectivity、grid-uniform family、真の不変多様体、TT優位性を
 主張しない。Q007c1の100-step半径`0.01`棄却はどの結果でも変更しない。
 
-## Q008: TT rank は bounded か
+### 実行結果（2026-08-08）
+
+全4 validity gateと全3 hypothesis gateが通過し、
+`quartic shadowing domain localized on independent directions`として`accepted`となった。
+
+- coefficient hash match / Q007c1 control maximum relative error: `true / 0`
+- direction maximum norm error / exact duplicate count: `2.220446049250313e-16 / 0`
+- trajectory / chart-step / budget-component count: `384 / 38400 / 57600`
+- budget violation / maximum utilization / maximum final budget:
+  `0 / 0.5 / 1.1368683772161603e-11`
+- amplitude `0.01`、horizon 10のmaximum 3 ratio:
+  `0.46692017829349514 / 0.48393482249773484 / 0.4610632459952544`
+- amplitude `0.004`、horizon 100のmaximum 3 ratio:
+  `0.22081209266153715 / 0.339679128695444 / 0.2703146187976154`
+- amplitude `0.01`、horizon 100の診断比:
+  `0.5520626734869788 / 0.8505821724417485 / 0.675783734038649`
+  （final absoluteのみ2方向失敗）
+
+従って登録2点の有限sample局在化だけを採択し、Q007c1の長時間・大振幅棄却は変更しない。
+
+## Q008a: quartic Fourier coefficient TT storage prequalification — 事前登録
 
 ### 問い
 
-同じ dense chart に対して、どの tensorization/order が最小 rank と最小 operator
-cost を与えるか。
+固定したQ007c1 complex Fourier chart係数に対し、4つの登録TT出力軸配置のいずれかが、
+degree 4の自然なunordered sparse-fiberより、忠実度を保ったままcore stored real scalarsと
+実serialized bytesの両方で小さくなるか。degree `2 / 3 / 4`のrank推移も測るが、3点から
+漸近bounded rankを主張しない。
 
-比較:
+### 固定入力
 
-- flat velocity vs D1Q3 factors
-- axis-major vs scale-interleaved QTT
-- coefficient output core first vs last
-- monomial vs Chebyshev
-- shell countとdegreeの sweep
-- Fourier-selection-rule sparse coefficients
+- grid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、24 complex conjugate-constrained mode、
+  D2Q9 local output 9を使う。
+- mode順は`WAVE_ORDER`の8 waveを外側、`shear / acoustic_positive / acoustic_negative`を内側とし、
+  mode table hashを
+  `6e08a2706a44965143944b692615c6a8525799d3e01ca06a636d852d6610d4d9`に固定する。
+- quadratic ordered coefficient \(T^{(2)}\in\mathbb{C}^{9\times24\times24}\) はQ006iと同じ
+  complex Fourier solveから再構築し、chart coefficient hashを
+  `4d0ddc917c3b722496b918f38f8e810e0f200c5fd2ffa138025a93aa2571f8db`に固定する。
+- cubic unordered indices / chart coefficient hashを
+  `e646d2de7212c823cbca5804fbf20e9543918ecca80452dd508c278dfc5f130c` /
+  `ed182069713bff0558b806ce7a70e77299ea9fbc6671de38c4fa58019da5615b`に固定する。
+- quartic unordered indices / chart coefficient hashを
+  `968b35d36cbd28c1f30e6cacb906649a42b36ba4e7bf4122394c2722cd809c16` /
+  `9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b`に固定する。
+- cubic／quarticはunordered fiberを全ordered permutationへ同じ係数で展開する。multiplicityを
+  係数へ重ねて掛けず、ordered contractionが既存の`multiplicity × unordered product`と一致する形にする。
+- 対象はlocal coefficient tensor \(T^{(d)}_{q,i_1,\ldots,i_d}\)だけである。Fourier phaseは入力modeへ
+  因数分解できるため、物理空間の \(2601\times24^d\) tensorはmaterializeしない。
 
-格納比較は、box-dense、full Hessian、symmetric packed、fiber-sparse、scalar-sparse、
-TT core stored scalars を分ける。値数、index metadata、serialized bytes、評価時間、
-rounding時間、不変性残差を別指標とし、TT gaugeを除いた intrinsic DoF と混同しない。
+### 固定tensorization
+
+各degree \(d=2,3,4\)で次の4候補だけを比較する。
+
+1. `flat-q-first`: \((9,24,\ldots,24)\)
+2. `flat-q-last`: \((24,\ldots,24,9)\)
+3. `d1q3-q-first`: \((3,3,24,\ldots,24)\)
+4. `d1q3-q-last`: \((24,\ldots,24,3,3)\)
+
+D1Q3 factorは`D2Q9_VELOCITIES`を\((c_y,c_x)\in\{-1,0,1\}^2\)のlexicographic順へ一意に
+並べ替えてからreshapeする。入力mode 24のQTT factorization、axis-major／scale-interleaved順、
+monomial／Chebyshev変換、shell-count sweepはこの結果を見て追加せず、必要なら別ゲートとして事前登録する。
+
+### TT-SVDと忠実度
+
+- complex128のTT-SVD、relative discarded-Frobenius budget `1e-13`、`max_rank=None`を固定する。
+- seed `20260827`の64 normalized real方向をcomplex coordinate mapで変換し、unordered sparse action、
+  ordered dense action、TT actionを比較する。
+- dense expansionのmaximum relative action error `<=5e-14`を要求する。
+- 各TT候補のrelative tensor reconstruction error `<=2e-13`、maximum relative action error
+  `<=1e-11`を要求する。
+- 全core、singular value、reconstruction、actionをfiniteとし、uncompressed NPZのsave/load後に
+  core dtype／shape／値がbitwise一致することを要求する。
+- validityが一つでも失敗すればstorage仮説を判定せず`inconclusive`とする。
+
+### 格納量の固定定義
+
+natural sparse-fiberは各degreeのunordered multi-indexを`uint8`、multiplicityを`uint8`、
+9成分係数を`complex128`で保持する。degree 4は17,550 fiber、係数値は315,900 real scalarsである。
+
+各表現について次を別々に保存する。
+
+- coefficient stored real scalar count
+- index／multiplicity／rank／shape metadata bytes
+- raw array payload bytes
+- `numpy.savez`によるuncompressed serialized bytes
+- TT ranksと、複素TT gaugeを差し引いたnominal real dimension
+- dense expansion bytes、TT-SVD wall time
+
+scalar-sparseはbitwise nonzeroだけを格納するlossless診断として報告するが、acceptance baselineを
+post-hocに切り替えない。TT core stored scalarsは複素core entry 1個をreal scalar 2個として数え、
+gauge-adjusted dimensionと混同しない。
+
+### 評価時間の診断
+
+seed `20260828`の128 normalized real方向についてlocal 9-vector homogeneous actionを評価する。
+2 warm-up後に7 blockを実行し、sparse／各TTのns/sample medianとMADを保存する。実行順はblockごとに
+固定rotationする。wall timeは環境依存なのでQ008aのacceptance gateには使わない。full physical chart、
+invariance residual、100-step rolloutはstorage候補が通った場合のQ008b holdoutへ残す。
+
+### hypothesis gateと判定規則
+
+validity通過後、degree 4で少なくとも1候補が次を同時に満たすことを要求する。
+
+1. TT core stored real scalar count `<315900`
+2. TTのuncompressed serialized bytes `<` natural sparse-fiberのuncompressed serialized bytes
+
+通過候補が複数なら`(serialized bytes, core stored real scalars, candidate id)`のlexicographic minimumを
+唯一のQ008b候補として固定する。通れば
+`registered TT tensorization beats natural quartic sparse-fiber storage`として`accepted`、一つも通らなければ
+`registered TT tensorizations do not beat natural quartic sparse-fiber storage`として有効な`rejected`とする。
+
+acceptedでもlocal coefficient storageの有限degree結果に限り、online高速化、不変性残差保存、TT-cross、
+他shell、他grid、漸近rank boundを主張しない。rejectedなら、この4 tensorizationに対するQ008b／Q009を
+開始しない。別のQTT factorizationを試す場合は、新しい候補と判定を観測前に登録する。
 
 ## Q009: TT-cross は residual peak を見つけられるか
 

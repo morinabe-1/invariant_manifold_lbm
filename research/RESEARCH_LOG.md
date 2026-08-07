@@ -1969,6 +1969,77 @@ Q007c1の棄却、Q007bの半径`0.01`棄却、Q007b1の半径`0.004` acceptance
 Q007c2: 独立方向で、quartic chartは半径`0.01`・10 step、および半径`0.004`・100 stepの
 shadowing改善をともに再現し、振幅・horizon依存の有効領域を局在化できるか。
 
+## Cycle Q007c2: quartic shadow amplitude-horizon localization
+
+### 問い
+
+Q007c1の係数を変更せず、独立方向で半径`0.01`・10 stepの短時間改善と、半径`0.004`・100 stepの
+長時間改善をともに再現し、有限sampleの有効shadow領域を局在化できるか。
+
+### 仮説
+
+- Q007c1の全5 coefficient hashと方向14 controlを再現する。
+- seed `20260826`の64方向はunit normで、全既登録方向とのexact duplicateが0である。
+- 半径`0.01`・10 stepと半径`0.004`・100 stepの3 shadow比は全方向`<=0.8`である。
+- quartic側57,600 component-stepでforward-error budget違反0、maximum utilization `<=1`、
+  final budget `<=1.2e-11`である。
+
+### 実験
+
+- amplitude `0.004 / 0.007 / 0.01`ごとにcubic／quartic各64本を100 stepまで一度だけ進めた。
+- 同じtrajectoryからhorizon `10 / 25 / 50 / 100`のprefix maximum absolute、final absolute、
+  prefix maximum perturbation-relative errorを計算した。
+- Q007c1方向14はupstream reproduction controlだけに使い、新campaignのacceptance dataから除外した。
+- 全state、coordinate、error、ratio、population、strict JSON serializationをvalidityとして監査した。
+
+### 結果
+
+全4 validity gateと全3 hypothesis gateが通過し、
+`quartic shadowing domain localized on independent directions`として`accepted`とした。
+
+- coefficient hash match / Q007c1 control maximum relative error: `true / 0`
+- direction maximum norm error / exact duplicate count: `2.220446049250313e-16 / 0`
+- trajectory / chart-step count: `384 / 38400`
+- budget component check / violation / maximum utilization / maximum final budget:
+  `57600 / 0 / 0.5 / 1.1368683772161603e-11`
+- minimum population: `0.02751468992141129`
+
+登録した2 operating pointのmaximum directional ratioは次の通りである。
+
+| amplitude | horizon | maximum absolute | final absolute | maximum relative |
+|---:|---:|---:|---:|---:|
+| 0.01 | 10 | 0.46692017829349514 | 0.48393482249773484 | 0.4610632459952544 |
+| 0.004 | 100 | 0.22081209266153715 | 0.339679128695444 | 0.2703146187976154 |
+
+診断用のamplitude `0.007`・100 stepも
+`0.38643325358644326 / 0.5949214762401986 / 0.4730500614608752`で全方向通過した。一方、
+amplitude `0.01`・100 stepは
+`0.5520626734869788 / 0.8505821724417485 / 0.675783734038649`で、final absolute比だけが2方向で
+`0.8`を超えた。
+
+### 分析
+
+短時間・大振幅と長時間・小振幅という事前登録した2点では、四次chartの改善を独立64方向で再現した。
+同時に、長時間・大振幅では改善が一様でない境界も再現された。従ってQ007c1の半径`0.01`・100 step
+棄却は変更せず、Q007c2のacceptedは2 operating pointの有限sample局在化だけを意味する。
+
+ball全体、他horizon、global injectivity、grid-uniform family、真の不変多様体、TT圧縮優位性は
+主張しない。
+
+### 改善
+
+- Q007c1のvalidated coefficient hashを以後の表現比較でも固定する。
+- 物理空間のfull dense quartic tensorはmaterializeせず、local Fourier coefficient tensorだけを
+  dense oracleに使う。
+- 自然なunordered sparse-fiberを必須baselineとし、TT core stored scalars、index metadata、
+  serialized bytes、rank、rounding時間、評価時間、忠実度を分離する。
+- TT gaugeを除いた次元をcore stored scalar countと混同しない。
+
+### 次の問い
+
+Q008a: 固定したdegree `2 / 3 / 4` Fourier chart係数に対し、事前登録した4つのTT出力軸配置のいずれかが、
+忠実度を保ったまま四次natural sparse-fiberよりstored real scalarsとserialized bytesの両方で小さくなるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2010,3 +2081,5 @@ shadowing改善をともに再現し、振幅・horizon依存の有効領域を�
 [`artifacts/q007c_quartic_prequalification.json`](artifacts/q007c_quartic_prequalification.json)
 
 [`artifacts/q007c1_quartic_continuation.json`](artifacts/q007c1_quartic_continuation.json)
+
+[`artifacts/q007c2_quartic_shadow_radius.json`](artifacts/q007c2_quartic_shadow_radius.json)
