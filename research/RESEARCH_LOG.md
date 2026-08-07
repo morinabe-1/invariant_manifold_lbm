@@ -1037,6 +1037,79 @@ cluster-complete familyを独立に監査する。
 Q006h: diagonal acousticをselectedへ昇格した24実座標familyは、登録filter sweepで
 coefficient solvabilityと有限ladder normal dominanceを同時に満たすか。
 
+## Cycle Q006h: first-shell cluster-complete filtered family
+
+### 問い
+
+第一shellの全8 waveでshearとacoustic pairをselectedへ含めた24実座標familyは、
+登録checkerboard-filter sweepでcoefficient solvabilityと有限ladder normal dominanceを
+同時に満たすか。
+
+### 仮説
+
+登録した正の \(\eta\) familyのうち1個以上が、5 grid全てでspectral、low-wave、
+coefficient、response、scaling gateを通る。
+
+### 実験
+
+- odd grid: \(N=17,33,65,129,257\)
+- filter: \(\eta=0,0.01,0.02,0.03,0.05\)
+- relaxation: \(\omega=1.0,1.2,1.5,1.8\)
+- 100条件、各24 one-dimensional block、300 unordered pair
+- Q006cの16 targetと7 scaling windowを維持
+- mode additionなし
+- 全pair table、condition quantile、最悪pair、material witness classを保存
+
+### 結果
+
+全validity gateが通過し、登録仮説を有限ladderの範囲で受理した。
+
+- outcome: `accepted`
+- classification: `cluster-complete filtered finite-ladder prequalification passed`
+- viable family: `6 / 20`
+- deterministic selection: \((\eta,\omega)=(0.01,1.5)\)
+- selected minimum normal gap: `6.9386924e-5`
+- selected minimum local Sylvester separation: `1.1600649`
+- selected maximum Riesz projector norm: `1.5115930`
+- selected maximum external condition: `5.9581662e8`
+- selected maximum target response ratio: `0.9647730`
+- selected maximum structural/fixed-leaf/solve residual: `8.3841e-14`
+- numerical singular block: `0`
+
+選択familyのnormal gapはgrid順に
+`0.0020611, 0.0041556, 0.0010814, 0.00027523, 0.000069387`、最大conditionは
+`1.4514e4, 1.7105e5, 2.4697e6, 3.7920e7, 5.9582e8` だった。従って全登録gridでは
+閾値を通るが、grid-uniformな下界は示していない。
+
+materially forced near witnessは選択familyで40件だった。内訳はQ006cの
+axial acoustic self second harmonic 16件、axial shear–diagonal shear mixed harmonic
+16件、新しいdiagonal acoustic self second harmonic 8件である。新classは \(N=257\) の
+\((\pm1,\pm1)+(\pm1,\pm1)\to(\pm2,\pm2)\) に現れ、conditionは約 `2.4298e4`、
+weak-direction forcing sensitivityは約 `0.02049` だった。全件を分類・保存し、事前登録どおり
+class出現自体ではなくcondition ceilingと残差で判定した。
+
+### 分析
+
+Q006gで特定したsame-sector \(N^{-4}\) bottleneckは、対角acoustic pairをselectedへ含める
+ことで外部normal-gap判定から除かれた。その結果、最小の正filterである \(\eta=0.01\) に
+viable familyが現れた。一方、高解像度側ではnormal gap低下とhomological condition増大が
+続くため、受理範囲は変更写像・有限5-grid・24座標familyのprequalificationに限る。
+all-grid theorem、grid-uniform chart、非線形normal attraction、full chartの存在・一意性は
+主張しない。
+
+### 改善
+
+- 選択parameterを \((\eta,\omega)=(0.01,1.5)\) に固定し、parameter探索を終了する。
+- 最初のfull 2D chartは計算可能な \(N=17\) dense oracleに限定する。
+- internal tangential outputには非自明な \(R_2\) を許し、graph gaugeを明示する。
+- zero-wave correction、second harmonic、C4/conjugacy、独立Hessian差分、残差次数、
+  100-step shadowingを別々に検証する。
+
+### 次の問い
+
+Q006i: \((N,\eta,\omega)=(17,0.01,1.5)\) の固定保存量葉上で、24実座標のfull 2D
+dense quadratic candidate chartは不変性残差次数を2から3へ改善できるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -1054,6 +1127,8 @@ coefficient solvabilityと有限ladder normal dominanceを同時に満たすか�
 [artifacts/q006f_checkerboard_filter.json](artifacts/q006f_checkerboard_filter.json)
 
 [artifacts/q006g_low_wave_tangency.json](artifacts/q006g_low_wave_tangency.json)
+
+[artifacts/q006h_cluster_complete.json](artifacts/q006h_cluster_complete.json)
 
 [`artifacts/d2q9_baseline.json`](artifacts/d2q9_baseline.json)
 

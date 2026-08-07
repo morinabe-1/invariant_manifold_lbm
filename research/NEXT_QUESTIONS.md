@@ -795,7 +795,7 @@ absolute-gap slopeは `-4.00088 … -3.99980`、relative-gap slopeは
 全\(\eta\)で\(\omega=1.0\)のgapは負、他の3 \(\omega\) は正であり、最大scalar identity
 errorは `5.0034e-15` だった。Q006fの棄却とthresholdは変更しない。
 
-## Q006h: first-shell cluster-complete filtered family — 事前登録
+## Q006h: first-shell cluster-complete filtered family — 完了
 
 ### 問い
 
@@ -874,28 +874,92 @@ acceptedでも、これは変更モデル・有限5-grid・24座標familyのpreq
 一意性は主張しない。Q006hがacceptedの場合だけ、選択pairを固定してfull 2D dense quadratic
 chartを新たに事前登録する。
 
-## Q006: full 2D fixed-leaf nonzero-mode quadratic parameterization — 保留
+### 結果
+
+全validity gateが通過し、20 family中6 familyがviableとなったため、登録範囲でacceptedと
+判定した。事前登録した選択規則により \((\eta,\omega)=(0.01,1.5)\) を固定する。
+
+- classification: `cluster-complete filtered finite-ladder prequalification passed`
+- selected five-grid minimum normal gap: `6.9386924e-5`
+- selected maximum external condition: `5.9581662e8`
+- selected maximum target response ratio: `0.96477295`
+- selected maximum structural/fixed-leaf/solve residual: `8.3841e-14`
+- selected material witness: `40`
+- witness class count: axial acoustic self `16`、axial shear–diagonal shear `16`、
+  diagonal acoustic self `8`
+
+新しい8件は \(N=257\) の対角acoustic self-productから \((\pm2,\pm2)\) を作るblockである。
+事前登録どおり全件を分類・保存し、class出現自体を失敗とはしなかった。normal gapは高解像度
+側で低下し、conditionも増大するため、有限5-grid prequalificationを越える主張はしない。
+
+## Q006i: filtered full 2D dense quadratic chart — 事前登録
 
 ### 問い
 
-全質量・全運動量を固定した不変葉上で、mode-added 2D hydrodynamic set を含む dense
-candidate chart が residual order 2 → 3 を再現できるか。Q006r の
-coefficient-solvability は通過したが、normal-dominance は落ちた。Q006n では viable
-family がなく、Q006c はnear-resonance scalingを確認しただけでnormal gapを直していない。
-Q006f はviable family 0で棄却され、Q006gはそのsame-sector tangencyを確認した。
-Q006hの24-mode cluster-complete familyがprequalificationを通るまで着手しない。
+Q006hが選んだ \((N,\eta,\omega)=(17,0.01,1.5)\) の変更D2Q9写像について、全質量・
+全運動量を固定した不変葉上の24実座標dense quadratic candidate chartは、linear chartの
+二次不変性残差を三次へ改善できるか。
 
-### 必須観測
+### 固定構成
 
-- \(k+(-k)=0\) が作る zero-wave-number kinetic/complement correction
-- 上記 correction の保存密度・保存運動量成分が厳密にゼロ
-- second harmonic generation
-- Fourier selection rule が許す internal \(R_2\)（最小 shell だけならゼロ）
-- gauge residual
-- homological condition
-- 20以上の独立方向
-- amplitude continuation
-- 100-step shadowing
+- gridはodd periodic \(17^2\)、BGK後のpopulation-wise five-point filterは
+  \(\eta=0.01\)、relaxationは \(\omega=1.5\) に固定し、再探索しない。
+- selected waveは \(\max(|n_x|,|n_y|)=1\) の8点、各waveでshear、acoustic-positive、
+  acoustic-negativeを選ぶ。24 complex Fourier blockを共役制約で24実座標へrealifyする。
+- 各right modeをunit population normとし、Fourier liftに \(1/(\sqrt2N)\) を使う。
+  実座標は各共役pairのmode順 `shear, acoustic_positive, acoustic_negative`、各mode内
+  `real, imag` のinterleaved順に固定する。
+- 300 unordered coordinate pairをsymmetric-product normalizationで解く。出力waveは
+  Fourier selection ruleで一意に定める。
+- selected outputへ戻るpairではgraph gauge \(L_sW_2=0\) を課し、tangential forcingを
+  \(R_2\) に置く。external成分だけをSylvester solveする。selected外outputでは
+  \(R_2=0\) とする。
+- zero-wave outputは \(\ker(\rho,j_x,j_y)\) のkinetic 6-spaceだけを許し、保存momentを
+  持つmean correctionを禁止する。
+- complex coefficientを先に解き、C4/conjugacyを検証してから実physical-spaceの
+  symmetric packed dense tensorを構成する。
+
+### 独立微分・algebra validity gate
+
+1. selected block / real dimensionを `24 / 24`、unordered pairを `300` とし、欠落・重複を
+   許さない。internal、zero-wave、external second-harmonic pair countを保存する。
+2. 全homological blockでoperator rank、\(\sigma_{\min}\)、condition、solve residualを保存し、
+   numerical singular blockを0、最大solve relative residualを \(10^{-10}\) 以下とする。
+3. homological residual、graph gauge、zero-wave conserved-moment residual、C4 residual、
+   conjugacy residual、realification imaginary leakageを各 \(10^{-10}\) 以下とする。
+4. analytic filtered-map Hessianを、seed `20260808` の32 conjugacy-compatible direction pair、
+   step `0.006, 0.003` のcentered mixed differenceとRichardson extrapolationで独立検証し、
+   最大相対差を \(10^{-8}\) 以下とする。homological residualだけで微分を正当化しない。
+5. \(R_2\)、zero-wave kinetic correction、axialおよびdiagonal second harmonicのnormとsupportを
+   別々に保存する。予測外Fourier support leakageを \(10^{-12}\) 以下とする。
+6. 全値をfiniteかつstrict JSONとして保存する。上記validity gate失敗時は、残差campaignの
+   数値にかかわらず`inconclusive`とする。
+
+### 局所不変性 gate
+
+- seed `20260809` の未使用64方向をglobal-\(\ell_2\) coordinate normで正規化する。
+- 振幅を `0.000625, 0.00125, 0.0025, 0.005, 0.01` に固定する。
+- 各方向でfull filtered mapの不変性残差を測り、log-log slopeを保存する。linear chartは
+  \(2\pm0.1\)、quadratic chartは \(3\pm0.1\) を全方向で満たす。
+- 振幅 `0.01` でquadratic residualをlinear residualの `0.10` 未満とする。
+- 全sampleでpopulationを正、global mass/momentum driftを \(10^{-12}\) 以下とする。
+
+### 100-step shadowing gate
+
+seed `20260810` の未使用32方向、初期振幅 `0.01` でfull mapとquadratic reduced mapを100 step
+比較する。quadratic chartの最大absolute state errorを \(10^{-5}\) 以下、初期摂動に対する
+relative errorを \(10^{-2}\) 以下、linear reduced modelの最大errorの `0.10` 未満とする。
+projected-coordinate drift、保存量drift、最小populationは独立に保存する。
+
+### 判定と主張範囲
+
+validity gateが通り、局所不変性とshadowing gateを全て通れば
+`N17 filtered full-2D quadratic candidate chart verified` としてacceptedとする。validityは
+通るが仮説gateを落とせばrejected、validity失敗ならinconclusiveとする。
+
+acceptedでも、これは固定した変更写像、\(17^2\)、登録有限方向・振幅・100 stepに対する
+二次candidate chartの数値検証である。all-grid theorem、grid-uniform family、真の不変多様体の
+存在・一意性、半径0.01のball全体、標準BGK写像への主張には拡張しない。
 
 ### 失敗時の切分け
 

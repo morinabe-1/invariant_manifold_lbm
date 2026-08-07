@@ -32,8 +32,11 @@ local-amplitude response は \(O(N)\)、global-\(\ell_2\) response は \(O(1)\) 
 二重の scaling を支持した。Q006f の保存的checkerboard filterは全algebra・coefficient
 gateを通したが、登録20 family全てがnormal-gap gateを落とし、viable pairは0だった。
 Q006gは、フィルタ後の律速となった対角第一shell内のshear/acoustic gapが符号付きで
-\(N^{-4}\)となり、scalar filterでは順序も指数も変えられないことを確認した。次は
-Q006hでdiagonal acousticも含むcluster-complete familyを監査する。stripe を含め、
+\(N^{-4}\)となり、scalar filterでは順序も指数も変えられないことを確認した。Q006hは
+diagonal acousticも含む24実座標cluster-complete familyを100条件で監査し、6 familyを
+viableと判定した。事前登録した規則で \((\eta,\omega)=(0.01,1.5)\) を選択したため、次は
+\(17^2\) 上でこの変更写像に固定したfull 2D dense quadratic chartをQ006iで構築する。
+stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
 
@@ -268,6 +271,28 @@ post-hoc診断である。Q006fは標準BGKのQ006nを変更せず、filtered fu
 数値誤分類やNyquist残留へ転嫁できない。ただしこれは対角sectorの有限ladder診断であり、
 Q006fの棄却、\(10^{-6}\) threshold、full-chart保留を変更しない。
 
+### Q006h first-shell cluster-complete filtered-family audit
+
+第一Chebyshev shellの8 waveそれぞれでshearと2 acoustic modeを全て選んだ24実座標familyを、
+5 \(\eta\)・4 \(\omega\)・5 odd gridの100条件、各300 unordered pairで監査した。全validity
+gateが通り、20 family中6 familyが全spectral/coefficient/scaling gateを通過した。
+事前登録したlexicographic ruleにより \((\eta,\omega)=(0.01,1.5)\) を選択した。
+
+- study outcome: `accepted`
+- classification: `cluster-complete filtered finite-ladder prequalification passed`
+- selected five-grid minimum normal gap: `6.93869e-5`（閾値 `1e-6`）
+- selected maximum external condition: `5.95817e8`（上限 `1e9`）
+- selected maximum target response ratio: `0.964773`（上限 `1.10`）
+- selected maximum structural/fixed-leaf/solve residual: `8.3841e-14`
+- selected material witness: `40`（旧2 class各16、diagonal acoustic self 8）
+
+新しい8 witnessは \(N=257\) で対角acousticの自己相互作用から
+\((\pm2,\pm2)\) second harmonicを作るnear-singular blockであり、全件を独立classとして
+保存した。登録外class自体を失敗にしない事前規則に従い、condition ceilingと残差で判定した。
+一方、選択familyのnormal gapは \(N=257\) で最小となり、最大conditionも解像度とともに
+増大している。従ってこれは変更写像・有限5-gridのprequalificationであり、all-grid theorem、
+grid-uniform chart、非線形normal attraction、存在・一意性の証明ではない。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -291,7 +316,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
-`q006g` は
+`q006g`、`q006h` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -307,6 +332,7 @@ python -m ttim_lbm --study q006n --output research/artifacts/q006n_normal_refine
 python -m ttim_lbm --study q006c --output research/artifacts/q006c_coefficient_scaling.json
 python -m ttim_lbm --study q006f --output research/artifacts/q006f_checkerboard_filter.json
 python -m ttim_lbm --study q006g --output research/artifacts/q006g_low_wave_tangency.json
+python -m ttim_lbm --study q006h --output research/artifacts/q006h_cluster_complete.json
 ```
 
 保存済み結果:
@@ -320,6 +346,7 @@ python -m ttim_lbm --study q006g --output research/artifacts/q006g_low_wave_tang
 - [`research/artifacts/q006c_coefficient_scaling.json`](research/artifacts/q006c_coefficient_scaling.json)
 - [`research/artifacts/q006f_checkerboard_filter.json`](research/artifacts/q006f_checkerboard_filter.json)
 - [`research/artifacts/q006g_low_wave_tangency.json`](research/artifacts/q006g_low_wave_tangency.json)
+- [`research/artifacts/q006h_cluster_complete.json`](research/artifacts/q006h_cluster_complete.json)
 
 ## 文書
 
@@ -347,14 +374,13 @@ python -m ttim_lbm --study q006g --output research/artifacts/q006g_low_wave_tang
 - Q006c full pair completeness、target operator/SVD/forcing/response、固定window scaling fit
 - Q006f conservative filter algebra、100条件のspectral/coefficient/scaling audit
 - Q006g 140条件のdiagonal shear/acoustic \(N^{-4}\) tangency audit
+- Q006h 24実座標cluster-complete family、100条件・300 pairのfiltered prequalification
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006h の24実座標cluster-complete filtered-family audit
-- viableな変更モデルfamily
-- mode-complete full 2D candidate chart
+- Q006i の \(17^2\)・24実座標filtered full 2D dense quadratic candidate chart
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートは Q006h のmode-complete family診断であり、full 2D Q006 や
-TT-cross へはまだ進まない。
+従って次のゲートは、Q006hが選んだ変更写像に対するQ006i dense quadratic chartである。
+このoracleを通過するまでTT圧縮へは進まない。
