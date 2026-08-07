@@ -242,8 +242,9 @@ def _base_spectral_grid(
                 )
                 excluded_eigenvalues.extend(complex(value) for value in eigenvalues)
                 excluded_indices.extend([wave_index] * eigenvalues.size)
-    if len(selected_eigenvalues) != 16:
-        raise RuntimeError("Q006f spectral grid lost the registered 16 modes")
+    expected_selected_dimension = sum(block.dimension for block in base_blocks)
+    if len(selected_eigenvalues) != expected_selected_dimension:
+        raise RuntimeError("filtered spectral grid lost a registered selected mode")
     maximum_projector = max(projector_records, key=lambda record: record[0])
     return _BaseSpectralGrid(
         selected_eigenvalues=np.asarray(selected_eigenvalues, dtype=np.complex128),
@@ -632,7 +633,7 @@ def _audit_condition(
         "grid_size": size,
         "omega": omega,
         "eta": eta,
-        "selected_real_dimension": 16,
+        "selected_real_dimension": sum(block.dimension for block in base_blocks),
         "spectral": spectral,
         **pairs,
     }

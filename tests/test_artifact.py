@@ -267,3 +267,43 @@ def test_q006g_artifact_records_only_the_symbol_level_tangency_claim() -> None:
     assert cycle["summary"]["fit_pass_count"] == 20
     assert all(gate["passed"] for gate in cycle["validity_gates"].values())
     assert all(fit["passed"] for fit in cycle["fits"])
+
+
+def test_q006h_artifact_records_only_the_finite_ladder_prequalification() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006h_cluster_complete.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "construction": (
+            "first-shell 24-mode cluster-complete filtered-family audit"
+        ),
+        "grid_sizes": [17, 33, 65, 129, 257],
+        "etas": [0.0, 0.01, 0.02, 0.03, 0.05],
+        "omegas": [1.0, 1.2, 1.5, 1.8],
+        "selected_real_dimension": 24,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "manifold_claim": (
+            "cluster-complete filtered finite-ladder prequalification only; "
+            "no all-grid theorem, nonlinear normal-attraction proof, or "
+            "invariant-manifold existence or uniqueness claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["conditions"]) == 100
+    assert len(cycle["fits"]) == 40
+    assert len(cycle["families"]) == 20
+    assert len(cycle["viable_families"]) == 6
+    assert cycle["selected_family"]["eta"] == 0.01
+    assert cycle["selected_family"]["omega"] == 1.5
+    assert cycle["summary"]["selected_material_witness_class_counts"] == {
+        "axial_acoustic_self_second_harmonic": 16,
+        "axial_shear_diagonal_mixed_harmonic": 16,
+        "diagonal_acoustic_self_second_harmonic": 8,
+    }

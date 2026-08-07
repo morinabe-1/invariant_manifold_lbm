@@ -23254,7 +23254,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-08-07T16:56:25.110304+00:00",
+  "generated_at_utc": "2026-08-07T17:13:13.424775+00:00",
   "mathematical_scope": {
     "conservation_treatment": "fixed global mass and momentum leaf",
     "construction": "finite-grid quadratic spectral closure audit",
@@ -23275,7 +23275,7 @@
   "schema_version": 1,
   "scientific_outcome": "rejected",
   "source": {
-    "package_source_sha256": "a7a7b987bb00442b9089908bd386c92fcd8ebd32d6cd0d427e2df290513c1bb6",
+    "package_source_sha256": "a0be3aea509b58165d7784e1f2f20d14966cc20ccd633939c17a2a4daefe6948",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"
