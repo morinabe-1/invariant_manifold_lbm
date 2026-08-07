@@ -884,6 +884,86 @@ Q006cの受理範囲を有限ladder上のscaling classificationに限定する�
 Q006f: 保存的checkerboard filterは、低波数geometryとQ006c scalingを壊さず、登録odd-grid
 ladderでnormal dominanceを回復するviable \((\eta,\omega)\) を与えるか。
 
+## Cycle 012: Q006f conservative checkerboard-filter audit
+
+### 問い
+
+global conservation、uniform equilibrium、positivity、low-wave geometryを保つ5点convex
+filterをBGK step後へ加え、登録odd-grid ladderでnormal dominanceを回復できるか。
+
+### 仮説
+
+事前登録した \(\eta\in\{0,0.01,0.02,0.03,0.05\}\)、
+\(\omega\in\{1.0,1.2,1.5,1.8\}\)、\(N\in\{17,33,65,129,257\}\) の中に、
+全spectral・coefficient・scaling gateを通る正の\(\eta\) familyが1個以上ある。
+
+### 実験
+
+- 100条件を重複・欠落なく実行し、各条件で固定16実座標の全136 unordered pairと
+  Q006c登録16 targetを再監査した。
+- filter単独のconvexity、conservation、constant state、minimum principle、Fourier
+  multiplier、Nyquist anchorをseed `20260809` で独立に検証した。
+- selected subspace、phase、relative modulus、Riesz projector、local separation、normal
+  gapを全5 gridで評価した。
+- full external condition ceilingは \(10^9\)、normal-gap thresholdは \(10^{-6}\) のまま
+  固定し、mode additionや結果後のparameter追加は行わなかった。
+
+### 結果
+
+study validityは通過したが、viable familyは0で、仮説は有効に棄却された。
+
+- outcome / classification: `rejected / no viable registered filtered family`
+- registered / unique conditions: `100 / 100`
+- pair / target count: 全条件 `136 / 16`
+- filter algebra gate: 全5項通過
+- coefficient gate: `20 / 20` family通過
+- normal-gap gate: `0 / 20` family通過
+- raw gapが正のfamily: `11 / 20`
+- maximum five-grid minimum gap: `9.5571481e-9`
+- maximum all-pair condition: `7.4420686e8`
+- maximum target response ratio to unfiltered: `1.0`
+- maximum structural / solve residual: `6.6025e-14 / 1.7609e-13`
+- maximum conservation/constant residual: `7.7965e-16`
+- maximum Fourier multiplier discrepancy: `1.7356e-16`
+- maximum checkerboard-anchor error: `2.0053e-15`
+
+全40 fit（20 family × 2 target orbit）はQ006cと同じ7 slope windowを通過し、filtered
+target responseは対応するunfiltered responseを一度も1.10倍以上へ悪化させなかった。
+従って棄却理由はnormal gap一項に局在する。
+
+### 分析
+
+filterはnear-Nyquist obstructionを減衰させたが、十分に減衰したfamilyのglobal
+bottleneckは同じ対角第一shell \((\pm1,\pm1)\) にあるselected shearとexcluded
+acousticのmodulus差へ移った。例えば \((\eta,\omega)=(0.02,1.2)\) ではgapが
+
+\[
+5.0817\times10^{-4},\ 3.5322\times10^{-5},\ 2.3383\times10^{-6},\
+1.5059\times10^{-7},\ 9.5571\times10^{-9}
+\]
+
+と減少した。正のgapを持つ11 familyの5点log-log slopeは
+`-4.0284 … -4.0052` だった。これは事後診断であり、Q006fの登録thresholdを緩めたり
+結果をacceptedへ変更したりしない。
+
+同一wave sectorではscalar filterが全固有値を同じ正の\(\chi_\eta(k)\) で掛けるため、
+shear/acousticの符号付きgap、相対順序、leading exponentを独立には変更できない。
+Q006fだけではこのlow-wave tangencyを拡張grid上で確定していないため、次に専用の
+symbol-level auditを置く。
+
+### 改善
+
+- Q006fとQ006nの棄却判定を維持し、filtered full Q006へ進まない。
+- absolute normal-gap thresholdを事後に緩和しない。
+- scalar-filter classの限界と対角hydrodynamic clusterの接触次数をQ006gで分離する。
+- Q006gを通過した場合だけ、diagonal acousticを含むcluster-complete familyか、
+  grid依存physical bandのどちらを次に監査するかを新しく事前登録する。
+
+### 次の問い
+
+Q006g: Q006fの唯一の失敗gateは、scalar population filterでは変えられない対角第一shellの
+shear/acoustic \(N^{-4}\) tangencyで説明できるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -897,6 +977,8 @@ ladderでnormal dominanceを回復するviable \((\eta,\omega)\) を与えるか
 [artifacts/q006n_normal_refinement.json](artifacts/q006n_normal_refinement.json)
 
 [artifacts/q006c_coefficient_scaling.json](artifacts/q006c_coefficient_scaling.json)
+
+[artifacts/q006f_checkerboard_filter.json](artifacts/q006f_checkerboard_filter.json)
 
 [`artifacts/d2q9_baseline.json`](artifacts/d2q9_baseline.json)
 

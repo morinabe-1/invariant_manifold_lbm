@@ -605,7 +605,7 @@ responseは \(O(1)\) となる。
 Q006nの `inconclusive` 判定はそのまま維持する。また4点fitを全odd gridの漸近定理とは
 呼ばない。negative near-Nyquist normal gapも未解消である。
 
-## Q006f: conservative checkerboard-filter model modification — 事前登録
+## Q006f: conservative checkerboard-filter model modification — 完了
 
 ### 問い
 
@@ -707,6 +707,85 @@ Q006n判定は変更せず、全gridに対する定理、非線形normal attract
 \(\eta|k|^2/4+O(|k|^4)\) を導入するため、その変更を明記する。acceptedの場合だけ、
 選択したfiltered mapでfull 2D dense Q006を新しく事前登録する。
 
+### 結果と判定
+
+100条件のstudy validity、filter algebra、全pair completeness、残差は通過したが、
+viable familyは0で、仮説を`rejected`と判定した。全20 familyのcoefficient/scaling gateは
+通過し、唯一の失敗はnormal gap \(\ge10^{-6}\) だった。raw gapが正となるfamilyは11個
+あったが、最大の5-grid minimum gapも `9.5571481e-9` に留まった。
+
+filterはNyquist modeを減衰させた。一方、十分に減衰したfamilyでは律速が同じ
+\((\pm1,\pm1)\) sectorのselected shearとexcluded acousticへ移り、正の11 familyの
+5-grid gap slopeは `-4.0284 … -4.0052` だった。このslopeはpost-hoc診断なので、
+Q006fの判定やthresholdを変更しない。full Q006は引き続き保留する。
+
+## Q006g: diagonal low-wave shear/acoustic tangency — 事前登録
+
+### 問い
+
+Q006fの唯一の失敗gateは、対角第一shell内でselected shearとexcluded acousticの
+減衰率が低波数で4次接触し、scalar population filterが同一sector内の相対順序と
+separation exponentを変えられないことに由来するか。
+
+### 固定scope
+
+- odd grid
+  \(N\in\{33,65,129,257,513,1025,2049\}\)
+- fit grid
+  \(N\in\{129,257,513,1025,2049\}\)
+- \(\eta\in\{0,0.01,0.02,0.03,0.05\}\)、
+  \(\omega\in\{1.0,1.2,1.5,1.8\}\)
+- C4対角orbit \((1,1),(-1,1),(-1,-1),(1,-1)\) を全て評価する。
+- 合計140 parameter/grid条件、560 wave recordとする。
+- full Brillouin-zone sweep、quadratic coefficient solve、mode addition、threshold tuningは
+  行わない。Q006f artifactの100条件は変更せず、比較anchorとしてのみ使う。
+
+各waveでunfiltered symbolのmoment participationからshearとacoustic pairを同定し、
+filtered symbolの直接固有分解と
+
+\[
+\lambda_{\eta,j}(k)=\chi_\eta(k)\lambda_{0,j}(k)
+\]
+
+を独立に比較する。符号付きsame-sector gapを
+
+\[
+g_{\eta,N}=|\lambda_{\eta,\mathrm{shear}}|
+-\max_{\pm}|\lambda_{\eta,\mathrm{acoustic}\pm}|
+\]
+
+と定義し、\(|g_{\eta,N}|\)、\(|g_{\eta,N}|/|\lambda_{\eta,\mathrm{shear}}|\)、
+\(N^4g_{\eta,N}\) を保存する。
+
+### validity gate
+
+1. 140条件・560 wave recordに重複や欠落がない。
+2. direct eigensystem residualとfiltered/unfiltered eigenvalue matching residualを
+   各 \(10^{-11}\) 以下とする。
+3. C4 orbit内のgap absolute spreadを \(5\times10^{-13}\) 以下とする。
+4. scalar identity
+   \(|g_{\eta,N}-\chi_\eta g_{0,N}|\le5\times10^{-13}\) を全recordで満たす。
+5. 全記録がfiniteで、各filter multiplierが正である。
+
+### 仮説gate
+
+固定5点fitについて、全20 \((\eta,\omega)\) familyで
+
+- \(\log |g|\) vs \(\log N\) slopeが `[-4.25,-3.75]`
+- relative gapのslopeも `[-4.25,-3.75]`
+- 最後の4 gridで \(N^4|g|\) のrelative spreadが `0.10` 以下
+
+を要求する。さらに全fit grid・全\(\eta\)で、\(\omega=1.0\) のsigned gapは負、
+\(\omega=1.2,1.5,1.8\) は正であることを要求する。
+
+validityと全仮説gateが通れば
+`same-sector hydrodynamic fourth-order tangency confirmed` としてaccepted、計算はvalidだが
+符号または4次scalingが揃わなければrejected、validity失敗ならinconclusiveとする。
+
+acceptedでも、Q006fを成功へ変更せず、\(10^{-6}\) thresholdを緩和せず、full chartの
+存在・一意性やgrid-uniform normal attractionを主張しない。次のfamily変更はQ006g結果後に
+別途事前登録する。
+
 ## Q006: full 2D fixed-leaf nonzero-mode quadratic parameterization — 保留
 
 ### 問い
@@ -715,7 +794,8 @@ Q006n判定は変更せず、全gridに対する定理、非線形normal attract
 candidate chart が residual order 2 → 3 を再現できるか。Q006r の
 coefficient-solvability は通過したが、normal-dominance は落ちた。Q006n では viable
 family がなく、Q006c はnear-resonance scalingを確認しただけでnormal gapを直していない。
-Q006f の変更モデルgateが通り、そのfiltered mapを固定するまで着手しない。
+Q006f はviable family 0で棄却された。Q006gのtangency診断と、その後に新しく
+事前登録するmode-complete familyがprequalificationを通るまで着手しない。
 
 ### 必須観測
 

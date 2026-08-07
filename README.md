@@ -29,8 +29,10 @@ linear normal-dominance は棄却された。Q006n では登録した全20条件
 従って封印した clean-obstruction 仮説の判定は `inconclusive` である。Q006c は
 second-harmonic near resonance が真の \(N^{-2}\) spectral separationを持ち、
 local-amplitude response は \(O(N)\)、global-\(\ell_2\) response は \(O(1)\) となる
-二重の scaling を支持した。次は Q006f で保存的 checkerboard filterを独立の変更モデル
-として監査する。stripe を含め、存在・一意性 gate を通るまでは非零波数の対象を
+二重の scaling を支持した。Q006f の保存的checkerboard filterは全algebra・coefficient
+gateを通したが、登録20 family全てがnormal-gap gateを落とし、viable pairは0だった。
+次はQ006gで、フィルタ後の律速となった対角第一shell内のshear/acoustic tangencyを
+独立に診断する。stripe を含め、存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
@@ -221,6 +223,28 @@ local Fourier amplitudeに対する \(\lVert x\rVert\) は \(O(N)\) に増える
 near resonanceを座標artifactとして消去せず、normal-gap障害とともに変更モデルの
 baselineへ残す。これは有限4点fitであり、漸近定理ではない。
 
+### Q006f conservative checkerboard-filter audit
+
+BGK step後に5点convex filterを加える変更モデルを、\(5\)個の\(\eta\)、全4 \(\omega\)、
+odd grid \(N=17,33,65,129,257\) の100条件で封印監査した。filter algebra、全136 pair、
+16 target、残差、condition、Q006c scaling、low-wave distortionの各gateは有効に評価できた。
+
+- study validity: `passed`
+- scientific outcome: `rejected`
+- viable family: `0 / 20`
+- coefficient gate通過: `20 / 20`
+- 正のraw normal gapを持つfamily: `11 / 20`
+- 最大の5-grid minimum normal gap: `9.5571e-9`（閾値 `1e-6`）
+- maximum all-pair condition: `7.4421e8`（閾値 `1e9`）
+- maximum structural / solve residual: `6.6025e-14 / 1.7609e-13`
+
+filterはNyquist checkerboard anchorを厳密に \(-(1-\eta)\) へ移し、Q006cのresponseを
+悪化させなかった。しかしNyquistを十分に減衰したfamilyでは、global bottleneckが同じ
+\((\pm1,\pm1)\) sectorのselected shearとexcluded acousticへ移った。正の11 familyで
+観測した5-grid gap slopeは `-4.0284 … -4.0052` であり、絶対gapは\(N^{-4}\)程度に
+閉じる。これはQ006fの事前登録判定を変更する根拠ではなく、Q006gで独立に検証する
+post-hoc診断である。Q006fは標準BGKのQ006nを変更せず、filtered full Q006も開始しない。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -243,7 +267,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 ## 再現
 
-Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c` は
+Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -257,6 +281,7 @@ python -m ttim_lbm --study q006s --output research/artifacts/q006s_stripe.json
 python -m ttim_lbm --study q006r --output research/artifacts/q006r_mode_closure.json
 python -m ttim_lbm --study q006n --output research/artifacts/q006n_normal_refinement.json
 python -m ttim_lbm --study q006c --output research/artifacts/q006c_coefficient_scaling.json
+python -m ttim_lbm --study q006f --output research/artifacts/q006f_checkerboard_filter.json
 ```
 
 保存済み結果:
@@ -268,6 +293,7 @@ python -m ttim_lbm --study q006c --output research/artifacts/q006c_coefficient_s
 - [`research/artifacts/q006r_mode_closure.json`](research/artifacts/q006r_mode_closure.json)
 - [`research/artifacts/q006n_normal_refinement.json`](research/artifacts/q006n_normal_refinement.json)
 - [`research/artifacts/q006c_coefficient_scaling.json`](research/artifacts/q006c_coefficient_scaling.json)
+- [`research/artifacts/q006f_checkerboard_filter.json`](research/artifacts/q006f_checkerboard_filter.json)
 
 ## 文書
 
@@ -293,13 +319,15 @@ python -m ttim_lbm --study q006c --output research/artifacts/q006c_coefficient_s
 - Q006r full Schur-block pair audit、Riesz external projection、response-cluster closure
 - Q006n odd-grid/relaxation refinement、normal-gap/Nyquist anchor、全 pair coefficient audit
 - Q006c full pair completeness、target operator/SVD/forcing/response、固定window scaling fit
+- Q006f conservative filter algebra、100条件のspectral/coefficient/scaling audit
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006f の保存的 checkerboard-filter model-modification audit
-- mode-added full 2D candidate chart
+- Q006g の対角low-wave shear/acoustic tangency audit
+- viableな変更モデルfamily
+- mode-complete full 2D candidate chart
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートは Q006f の変更モデル監査であり、full 2D Q006 や
+従って次のゲートは Q006g のlow-wave tangency診断であり、full 2D Q006 や
 TT-cross へはまだ進まない。
