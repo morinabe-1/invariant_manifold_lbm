@@ -18,6 +18,7 @@ from .d2q9 import (
     quarter_turn_population_matrix,
     spectrum_audit,
 )
+from .full2d_chart import run_full2d_quadratic_audit
 from .low_wave_tangency import run_low_wave_tangency_audit
 from .manifold import (
     log_log_slope,
@@ -1706,6 +1707,35 @@ def run_q006h_study() -> dict[str, Any]:
             "manifold_claim": (
                 "cluster-complete filtered finite-ladder prequalification only; "
                 "no all-grid theorem, nonlinear normal-attraction proof, or "
+                "invariant-manifold existence or uniqueness claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006i_study() -> dict[str, Any]:
+    """Run and package the sealed Q006i full-2D quadratic chart."""
+
+    cycle = run_full2d_quadratic_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "construction": "filtered full-2D dense quadratic candidate chart",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "selected_real_dimension": 24,
+            "conservation_treatment": "fixed global mass and momentum leaf",
+            "manifold_claim": (
+                "registered finite-direction N=17 candidate-chart verification "
+                "only; no all-grid theorem, coordinate-ball guarantee, or "
                 "invariant-manifold existence or uniqueness claim"
             ),
         },

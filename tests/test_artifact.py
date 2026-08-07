@@ -307,3 +307,40 @@ def test_q006h_artifact_records_only_the_finite_ladder_prequalification() -> Non
         "axial_shear_diagonal_mixed_harmonic": 16,
         "diagonal_acoustic_self_second_harmonic": 8,
     }
+
+
+def test_q006i_artifact_records_the_valid_single_gate_rejection() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006i_full2d_quadratic.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "rejected"
+    assert artifact["mathematical_scope"] == {
+        "construction": "filtered full-2D dense quadratic candidate chart",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "selected_real_dimension": 24,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "manifold_claim": (
+            "registered finite-direction N=17 candidate-chart verification "
+            "only; no all-grid theorem, coordinate-ball guarantee, or "
+            "invariant-manifold existence or uniqueness claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "rejected"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    failed = [
+        name
+        for name, gate in cycle["hypothesis_gates"].items()
+        if not gate["passed"]
+    ]
+    assert failed == ["global_conservation"]
+    assert cycle["construction"]["diagnostics"]["pair_count"] == 300
+    assert cycle["construction"]["diagnostics"][
+        "numerical_singular_block_count"
+    ] == 0
