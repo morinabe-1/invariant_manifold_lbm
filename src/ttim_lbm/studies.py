@@ -14,6 +14,7 @@ from .cluster_complete import run_cluster_complete_audit
 from .coefficient_scaling import run_coefficient_scaling_audit
 from .conservation_drift import run_conservation_drift_audit
 from .covariant_correction import run_covariant_correction_audit
+from .cubic_continuation import run_cubic_continuation_audit
 from .cubic_prequalification import run_cubic_prequalification_audit
 from .d2q9 import (
     bgk_periodic_step,
@@ -2003,6 +2004,38 @@ def run_q007a_study() -> dict[str, Any]:
             "claim": (
                 "operator-only finite-grid prequalification; no cubic forcing, "
                 "coefficient, residual-order, shadowing, or SSM claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007b_study() -> dict[str, Any]:
+    """Run and package the sealed Q007b cubic continuation audit."""
+
+    cycle = run_cubic_continuation_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "cubic coefficient and residual continuation",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "real_reduced_dimension": 24,
+            "unordered_triple_count": 2600,
+            "residual_direction_count": 32,
+            "shadowing_direction_count": 32,
+            "shadowing_steps": 100,
+            "claim": (
+                "registered finite-grid, direction, amplitude, and 100-step "
+                "comparison only; no quartic, TT, all-radius, grid-uniform, "
+                "existence, uniqueness, or normal-attraction claim"
             ),
         },
         "cycle": cycle,

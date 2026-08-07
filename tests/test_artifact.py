@@ -650,3 +650,52 @@ def test_q007a_artifact_records_only_operator_prequalification() -> None:
     assert cycle["triple_summary"]["record_count"] == 2600
     assert cycle["triple_summary"]["numerically_singular_block_count"] == 0
     assert "operator-only" in cycle["claim_boundary"]
+
+
+def test_q007b_artifact_records_the_valid_finite_amplitude_rejection() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007b_cubic_continuation.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "rejected"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "cubic coefficient and residual continuation",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "real_reduced_dimension": 24,
+        "unordered_triple_count": 2600,
+        "residual_direction_count": 32,
+        "shadowing_direction_count": 32,
+        "shadowing_steps": 100,
+        "claim": (
+            "registered finite-grid, direction, amplitude, and 100-step "
+            "comparison only; no quartic, TT, all-radius, grid-uniform, "
+            "existence, uniqueness, or normal-attraction claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "rejected"
+    assert cycle["scientific_classification"] == (
+        "cubic continuation does not improve the registered chart"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert cycle["hypothesis_gates"]["held_out_residual_orders"]["passed"]
+    assert not cycle["hypothesis_gates"]["held_out_residual_ratio"]["passed"]
+    assert cycle["hypothesis_gates"][
+        "held_out_directional_shadowing_ratios"
+    ]["passed"]
+    assert cycle["hypothesis_gates"][
+        "cubic_shadowing_forward_error_budget"
+    ]["passed"]
+    assert (
+        cycle["residual_order_campaign"]["summary"][
+            "residual_ratio_failure_count"
+        ]
+        == 9
+    )
+    assert not cycle["preserved_prior_outcome"]["revised"]
+    assert "not a quartic" in cycle["claim_boundary"]
