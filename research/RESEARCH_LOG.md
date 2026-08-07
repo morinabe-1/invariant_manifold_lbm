@@ -686,6 +686,108 @@ manifold として full Q006 を開始しない。
 Q006n: near-Nyquist normal-gap failure は、登録した odd-grid refinement ladder と
 relaxation sweep で一貫した obstruction か。
 
+## Cycle 010: Q006n near-Nyquist normal-gap refinement audit
+
+### 問い
+
+Q006r の negative normal gap は \(N=17,\omega=1.2\) だけの有限格子現象か。それとも、
+同じ16実座標 family と標準 periodic BGK に対し、登録した odd-grid refinement ladder
+で一貫した near-Nyquist obstruction か。
+
+### 仮説
+
+- \(N\ge17\) の16条件が coefficient と blockwise projector gate を全て通る。
+- 同16条件の normal gap は全て \(-10^{-6}\) 未満となる。
+- 最大 excluded modulus は全条件で axial near-Nyquist sectorにある。
+- direct \((\pi,0),(0,\pi)\) symbol は \(-1\) modeを持つ。
+
+この4項を全て満たす場合だけ clean registered obstruction を支持する。ある \(\omega\) が
+全 refinement gridで coefficient gateと正の gapを通る場合は viable familyとする。
+
+### 実験
+
+- odd grid: \(N=9,17,33,65,129\)
+- relaxation: \(\omega=1.0,1.2,1.5,1.8\)
+- \(N=9\) は coarse diagnostic、\(N\ge17\) は refinement gate
+- fixed selected family: axial hydrodynamic + diagonal shear、16実座標
+- 全質量・全運動量を固定した葉
+- 全条件で unordered Schur-block pair 136個
+- mode additionなし
+- structural / solve tolerance: \(10^{-10}\)
+- materially forced near condition ceiling: \(10^4\)
+- remaining external condition ceiling: \(10^8\)
+- normal gap pass: \(g_N\ge10^{-6}\)
+- parity anchor: 全 \(\omega\) の \(A(\pi,0),A(0,\pi)\)
+
+### 結果
+
+study validity は通過したが、仮説判定は `inconclusive` だった。
+
+- registered conditions: `20 / 20`
+- pair enumeration: 全条件 `136 / 136`
+- refinement coefficient + blockwise pass: `13 / 16`
+- refinement negative gap: `16 / 16`
+- refinement axial near-Nyquist worst mode: `16 / 16`
+- coarse-grid pass: `0`
+- direct Nyquist anchor: pass
+- viable \(\omega\): なし
+- numerical singular external block: 全条件 `0`
+- maximum condition number: `2.4167863e7`
+- maximum structural residual: `2.6541e-14`
+- maximum solve relative residual: `1.1353e-13`
+
+normal gap の \(N^2\) scaling は次のとおりだった。列は
+\(N=9,17,33,65,129\) の順である。
+
+| \(\omega\) | \(N^2g_N\) |
+|---:|---|
+| 1.0 | `-5.24648, -5.61314, -5.71894, -5.74738, -5.75476` |
+| 1.2 | `-3.65084, -3.78486, -3.82396, -3.83451, -3.83725` |
+| 1.5 | `-1.89785, -1.91388, -1.91776, -1.91875, -1.91900` |
+| 1.8 | `-0.649628, -0.642876, -0.640570, -0.639924, -0.639754` |
+
+clean classification を止めた coefficient failure は次の3条件だった。
+
+| \(N\) | \(\omega\) | maximum materially forced near condition |
+|---:|---:|---:|
+| 65 | 1.8 | `11367.27` |
+| 129 | 1.5 | `12802.79` |
+| 129 | 1.8 | `45747.27` |
+
+主 witness は acoustic-positive / acoustic-negative self-product の second harmonic
+\((\pm2,0),(0,\pm2)\) だった。\(N=129,\omega=1.8\) では
+\(\sigma_{\min}=5.9018\times10^{-5}\)、forcing sensitivity `0.02083`、condition
+`45747.27` である。axial shear × diagonal shear の
+\((\pm2,\pm1),(\pm1,\pm2)\) orbit も同条件で condition `37612.95` となった。
+
+### 分析
+
+near-Nyquist normal-gap failure は全登録条件で同じ位置に現れ、\(N^2g_N\) も安定した
+負値へ近づいた。しかし事前登録は「16 refinement条件が coefficient gateも全通過」を
+clean obstruction の必要条件にしていたため、その仮説を accepted へ変更しない。
+有限5点から全 odd grid の漸近定理も主張しない。
+
+coefficient failure は numerical singularity、branch ambiguity、solve residual failure
+ではない。small waveの input productと second-harmonic outputの homological separationが
+細分化で閉じる別の conditioning obstruction である。ただし condition numberだけでは、
+実際の forcingが最弱方向へどの速さで近づくか、local-amplitude と global-\(\ell_2\)
+coordinateで response normがどう変わるかを判定できない。
+
+### 改善
+
+- Q006n は `mixed coefficient/normal-gap obstruction; inconclusive` と固定する。
+- Q006n の gateや thresholdを結果後に緩めない。
+- Q006c では全136 pairの completenessを残しつつ、登録した16 witness pairについて
+  singular separation、forcing projection、response normの scalingを分離する。
+- symbol-local amplitude と global-\(\ell_2\)-isometric normalizationを併記する。
+- Q006c の結果にかかわらず、negative normal gapを解消する model modification 前に
+  full Q006へ進まない。
+
+### 次の問い
+
+Q006c: small-wave second-harmonic block の \(\sigma_{\min}\)、forcing projection、
+quadratic response は、固定した refinement windowと二つの座標正規化でどの scalingを持つか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -695,6 +797,8 @@ relaxation sweep で一貫した obstruction か。
 [artifacts/q006s_stripe.json](artifacts/q006s_stripe.json)
 
 [artifacts/q006r_mode_closure.json](artifacts/q006r_mode_closure.json)
+
+[artifacts/q006n_normal_refinement.json](artifacts/q006n_normal_refinement.json)
 
 [`artifacts/d2q9_baseline.json`](artifacts/d2q9_baseline.json)
 

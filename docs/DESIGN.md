@@ -986,7 +986,7 @@ near-Nyquist mode は `0.9830465` であり、linear normal-dominance gap は
 global modulus ordering に局在する。従って「coefficient-solvable finite-grid
 candidate」と記録し、full Q006 は保留する。
 
-### Phase 2.6: Q006n near-Nyquist refinement obstruction audit — 次のゲート
+### Phase 2.6: Q006n near-Nyquist refinement obstruction audit — 完了
 
 Q006r と同じ axial first-shell hydrodynamic + diagonal shear の16実座標 familyを、
 odd grid \(N\in\{9,17,33,65,129\}\) と
@@ -999,6 +999,45 @@ even-grid anchor \(A(\pi,0)\) が \(-1\) を持つかを判定する。
 登録 refinement ladder で obstruction が支持された場合、標準 periodic BGK のまま
 full Q006 を作らず、checkerboard-damping filter または collision-model modificationを
 独立に事前登録する。これは全 odd \(N\) に対する解析的な不可能性証明ではない。
+
+実験は登録した20条件と全136 pairを完走し、study validity を通過した。しかし結果は、
+事前登録した clean obstruction / viable family のどちらにも入らず `inconclusive` だった。
+
+- \(N\ge17\) の negative normal gap: `16 / 16`
+- axial near-Nyquist が最大 excluded modulus: `16 / 16`
+- coefficient + blockwise projector gate: `13 / 16`
+- direct \((\pi,0),(0,\pi)\) の \(-1\) anchor: 全4 \(\omega\) で通過
+- viable \(\omega\): なし
+- 最大構造残差 / solve residual:
+  \(2.65\times10^{-14}\) / \(1.14\times10^{-13}\)
+
+全 \(\omega\) で \(N^2g_N\) は負の有限値へ収束する形を示した。一方、
+\((N,\omega)=(65,1.8),(129,1.5),(129,1.8)\) は materially forced near block の
+condition number \(10^4\) gate を落とした。numerically singular block はゼロで、
+solve residual も通る。主 witness は axial acoustic self-product の second harmonic
+\((\pm2,0),(0,\pm2)\) と、axial shear × diagonal shear の
+\((\pm2,\pm1),(\pm1,\pm2)\) orbit である。
+
+従って Q006n の判定を事後変更しない。near-Nyquist normal gap の有限 ladder evidence と、
+small-wave coefficient conditioning の第二の障害を分け、後者の scaling を次 gate で
+監査する。
+
+### Phase 2.7: Q006c small-wave coefficient-scaling audit — 次のゲート
+
+Q006n の condition-only gate が、実際の forcing と座標正規化を考慮した quadratic
+curvature の発散を表すかを切り分ける。同じ固定保存量葉と16実座標 familyに対して、
+odd grid \(N\in\{17,33,65,129,257\}\)、全4 \(\omega\) を使う。全136 pair の
+completeness screen は維持しつつ、登録した acoustic-self 8 pair と
+axial-shear × diagonal-shear 8 pair の SVD、forcing projection、minimum-norm responseを
+詳しく保存する。
+
+symbol-local amplitude と global-\(\ell_2\)-isometric Fourier coordinate は区別する。
+後者の bilinear coefficient norm は、side length \(N\) の二次元格子では前者を \(N\) で
+割った量である。\(N=33,65,129,257\) の固定 fit window で、
+\(\sigma_{\min}\sim N^{-2}\)、condition \(\sim N^2\)、最弱左特異方向の forcing
+\(\sim N^{-1}\)、local-amplitude response \(\sim N\)、global-\(\ell_2\) response
+\(\sim N^0\) を同時に反証する。詳細な slope window と failure branch は
+`research/NEXT_QUESTIONS.md` に封印する。
 
 ### Phase 3: Degree/domain continuation
 
@@ -1158,9 +1197,9 @@ research/
 
 現行の小さいモジュールは Phase 0 oracle、Q004b の branch/cluster tracker、
 manufactured general-homological oracle、Q005 の Fourier-sector SVD/normal-gap
-campaign、Q006s の stripe coefficient solver、Q006r の mode-closure engine を含む。
-Q006n の refinement sweep 後に再利用境界を確定して上記へ機械的に分割し、過早に
-抽象階層を増やさない。
+campaign、Q006s の stripe coefficient solver、Q006r の mode-closure engine、
+Q006n の normal-refinement campaignを含む。Q006c の focused scaling audit 後に
+再利用境界を確定して上記へ機械的に分割し、過早に抽象階層を増やさない。
 
 Phase 1 以降の campaign artifact 共通 schema:
 

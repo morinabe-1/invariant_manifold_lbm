@@ -24,8 +24,11 @@ isotropic low-wave set は、標準的な nonresonant・normally-attracting SSM 
 Q006s では非線形に不変な \(y\)-independent stripe 上の coefficient solver を
 有限格子オラクルとして受理した。Q006r では diagonal shear orbit を加えた16実座標
 候補の coefficient closure は通過したが、near-Nyquist 外部モードにより有限格子の
-linear normal-dominance は棄却された。次は Q006n でこの障害の grid-refinement
-依存性を監査する。stripe を含め、存在・一意性 gate を通るまでは非零波数の対象を
+linear normal-dominance は棄却された。Q006n では登録した全20条件でこの負の gap を
+再現した一方、3個の高解像度条件が別の small-wave coefficient condition gate を落とした。
+従って封印した clean-obstruction 仮説の判定は `inconclusive` であり、次は Q006c で
+second-harmonic coefficient の grid scaling と座標正規化を切り分ける。stripe を含め、
+存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
@@ -162,6 +165,32 @@ selected Riesz projector norm `1.52896` は通過しており、棄却理由は 
 局在する。この結果は **coefficient-solvable finite-grid candidate** の受理に留め、
 full 2D Q006 には進めない。
 
+### Q006n near-Nyquist refinement audit
+
+同じ16実座標 family を odd grid \(N=9,17,33,65,129\) と
+\(\omega=1.0,1.2,1.5,1.8\) の全20条件で再監査した。各条件で136個の unordered
+input block pair を固定し、mode addition は行っていない。study validity、全 pair
+列挙、構造残差、solve residual、direct Nyquist anchor は通過した。
+
+- \(N\ge17\) の normal gap が負: `16 / 16`
+- 同条件の最悪 excluded mode が axial near-Nyquist: `16 / 16`
+- coefficient + blockwise projector gate 通過: `13 / 16`
+- viable \(\omega\): `0`
+- maximum structural / solve residual:
+  \(2.65\times10^{-14}\) / \(1.14\times10^{-13}\)
+- maximum external condition number: \(2.42\times10^7\)（登録上限 \(10^8\) 未満）
+
+全 \(\omega\) で \(N^2g_N\) は負の有限値へ近づき、例えば \(N=129\) では
+\(-5.7548,-3.8373,-1.9190,-0.63975\) だった。これは登録した有限 ladder 上での
+near-Nyquist scaling evidence であり、全 odd grid に対する定理ではない。
+
+clean obstruction 判定を止めたのは \((65,1.8),(129,1.5),(129,1.8)\) の3条件である。
+numerically singular block はなく、materially forced near condition が \(10^4\) を
+超えた。代表 witness は axial acoustic self-product から \((\pm2,0),(0,\pm2)\) を作る
+second harmonic と、axial shear × diagonal shear から \((\pm2,\pm1)\) 型を作る block
+である。従って Q006n を事後的に成功へ変更せず、**normal gap と coefficient scaling の
+混合障害**として記録する。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -184,8 +213,8 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 ## 再現
 
-Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r` は登録条件を実行するため、
-CLI の `--omega` は baseline study にだけ適用される。
+Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n` は登録条件を
+実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
 python -m pip install -e ".[dev]"
@@ -196,6 +225,7 @@ python -m ttim_lbm --study q004b --output research/artifacts/q004b_and_manufactu
 python -m ttim_lbm --study q005 --output research/artifacts/q005_nonresonance.json
 python -m ttim_lbm --study q006s --output research/artifacts/q006s_stripe.json
 python -m ttim_lbm --study q006r --output research/artifacts/q006r_mode_closure.json
+python -m ttim_lbm --study q006n --output research/artifacts/q006n_normal_refinement.json
 ```
 
 保存済み結果:
@@ -205,6 +235,7 @@ python -m ttim_lbm --study q006r --output research/artifacts/q006r_mode_closure.
 - [`research/artifacts/q005_nonresonance.json`](research/artifacts/q005_nonresonance.json)
 - [`research/artifacts/q006s_stripe.json`](research/artifacts/q006s_stripe.json)
 - [`research/artifacts/q006r_mode_closure.json`](research/artifacts/q006r_mode_closure.json)
+- [`research/artifacts/q006n_normal_refinement.json`](research/artifacts/q006n_normal_refinement.json)
 
 ## 文書
 
@@ -228,13 +259,14 @@ python -m ttim_lbm --study q006r --output research/artifacts/q006r_mode_closure.
 - Q005 radial-band normal-dominance/resonance campaign と stripe finite-grid audit
 - Q006s fixed-leaf stripe quadratic chart、sector Sylvester solve、residual/shadow campaign
 - Q006r full Schur-block pair audit、Riesz external projection、response-cluster closure
+- Q006n odd-grid/relaxation refinement、normal-gap/Nyquist anchor、全 pair coefficient audit
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006n の near-Nyquist normal-gap grid-refinement audit
+- Q006c の small-wave coefficient-scaling / coordinate-normalization audit
 - mode-added full 2D candidate chart
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートは Q006n の refinement obstruction 監査であり、full 2D Q006 や
+従って次のゲートは Q006c の coefficient-scaling 監査であり、full 2D Q006 や
 TT-cross へはまだ進まない。

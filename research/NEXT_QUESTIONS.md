@@ -399,7 +399,7 @@ projector norm `1.52896` は通過している。従って失敗を branch/proje
 coefficient singularityへ転嫁せず、**coefficient-solvable finite-grid candidate** とだけ
 記録する。full Q006 は保留する。
 
-## Q006n: near-Nyquist normal-gap refinement audit — 事前登録
+## Q006n: near-Nyquist normal-gap refinement audit — 完了
 
 ### 問い
 
@@ -457,14 +457,124 @@ obstruction が支持された場合、標準 periodic BGK の full Q006 へは�
 checkerboard-damping filter または collision-model modification を新しい事前登録課題にする。
 この判定は登録した有限 ladder の反証であり、全 odd \(N\) に対する解析的不可能性証明ではない。
 
+### 結果と判定
+
+study validity は通過したが、封印した clean-obstruction 仮説の判定は
+`inconclusive` だった。
+
+- 全20条件で pair count `136`、numerically singular external block `0`
+- \(N\ge17\) の negative normal gap: `16 / 16`
+- 同16条件で最大 excluded modulus が axial near-Nyquist: `16 / 16`
+- coefficient + blockwise projector gate: `13 / 16`
+- coefficient failure:
+  \((65,1.8),(129,1.5),(129,1.8)\)
+- direct Nyquist anchor: 全4 \(\omega\) の \((\pi,0),(0,\pi)\) で通過
+- viable \(\omega\): なし
+- maximum condition number: `2.4167863e7`（remaining-block ceiling \(10^8\) 未満）
+- maximum structural / solve residual:
+  `2.6541e-14 / 1.1353e-13`
+
+全 \(\omega\) で \(N^2g_N\) は負の値へ近づいた。\(N=129\) の値は \(\omega\) 順に
+`-5.75476, -3.83725, -1.91900, -0.639754` である。この有限 ladder では
+near-Nyquist gap failure は一貫しているが、clean obstruction の第一条件である
+「16条件が coefficient gate を全通過」を満たさなかったため、事後的に accepted へ
+変更しない。
+
+3個の coefficient failure は数値 singularity や solve failure ではない。
+materially forced near condition \(10^4\) を超えた主 orbit は、axial acoustic
+self-product が second harmonic \((\pm2,0),(0,\pm2)\) を作る8 pair と、axial shear ×
+diagonal shear が \((\pm2,\pm1),(\pm1,\pm2)\) を作る8 pair だった。従って次は、
+condition number だけでなく forcing と座標正規化を固定してこの scaling を監査する。
+
+## Q006c: small-wave second-harmonic coefficient scaling — 事前登録
+
+### 問い
+
+Q006n の3個の coefficient failure は、small-wave homological operator の真の
+second-harmonic near resonance と local-amplitude quadratic curvature の増大を表すか。
+それとも、forcing が十分速く消えるため、物理的に固定した座標では bounded な係数を
+condition-only gate が過剰に棄却しただけか。
+
+### 固定条件
+
+- odd grid: \(N\in\{17,33,65,129,257\}\)
+- relaxation: \(\omega\in\{1.0,1.2,1.5,1.8\}\)
+- Q006n と同じ固定保存量葉、16実座標 selected family、Riesz external projection、
+  symmetric-product normalization、SVD rank thresholdを使う。
+- 各20条件で全136 unordered pairを再列挙する。ただし詳細 scaling の対象は次の
+  登録16 pairに固定する。
+  1. axial first-shell の acoustic-positive / acoustic-negative の self-product:
+     C4・共役 orbit 8 pair、output は \((\pm2,0),(0,\pm2)\)。
+  2. axial first-shell shear と diagonal shear の積のうち、output の絶対 index が
+     \(\{1,2\}\) となる C4・共役 orbit 8 pair。
+- mode addition、filter、collision変更、threshold tuningは行わない。
+- fit window は事前に \(N=33,65,129,257\) の4点へ固定し、\(N=17\) は coarse
+  diagnostic とする。
+- 各 pair で full operator \(L\)、forcing \(b\)、SVD
+  \(L=U\Sigma V^*\)、minimum-norm response \(x=L^{-1}b\) を保存する。
+
+### 必須指標
+
+各登録 pair について次を保存する。
+
+- \(\sigma_{\min}(L)\)、\(\sigma_{\max}(L)\)、condition number
+- input product eigenvalue と external eigenvalue set の最小複素 detuning
+- \(\lVert b\rVert_2\) と最弱左特異方向の forcing
+  \(\beta=|u_{\min}^*b|\)
+- \(\lVert x\rVert_2\)、solve backward/relative residual
+- symbol-local amplitude coefficient \(\lVert x\rVert_2\)
+- global-\(\ell_2\)-isometric Fourier coefficient \(\lVert x\rVert_2/N\)
+- C4・共役 orbit 内の各指標の relative spread
+- 全136 pairの materially forced near witness class と最大 condition
+
+global-\(\ell_2\) normalization は、二次元 \(N\times N\) 格子の unit-norm complex
+Fourier basis が local population eigenvectorを \(1/N\) 倍することから固定する。
+任意の後付け diagonal balancing を「物理正規化」とは扱わない。
+
+### validity gate
+
+1. 全20条件で pair count が136、登録 target が16 pairである。
+2. Schur/projector/C4/conjugacy/fixed-leaf、product invariance、solve residual が
+   各 \(10^{-10}\) 以下である。
+3. numerically singular external block がゼロで、全登録 target の
+   \(\sigma_{\min}\)、detuning、\(\beta\)、response norm が有限かつ正である。
+4. orbit 内 relative spread は各指標で \(10^{-8}\) 以下である。
+5. \(N=257\) で materially forced near かつ condition \(>10^4\) の pair が新しい
+   witness classに現れた場合、completeness gate を失敗とし、登録16 pairだけの clean
+   scaling conclusionを出さない。
+
+### scaling 仮説と判定
+
+各 \(\omega\)・各2 orbitについて、orbit medianを使い、固定4点 windowで
+\(\log y=c+p\log N\) を最小二乗 fit する。次を全て満たす場合、
+`genuine weakly-forced small-k resonance supported` とする。
+
+- \(p_{\sigma_{\min}},p_{\mathrm{detuning}}\in[-2.25,-1.75]\)
+- \(p_{\mathrm{condition}}\in[1.75,2.25]\)
+- \(p_{\lVert b\rVert}\in[-0.25,0.25]\)
+- \(p_{\beta}\in[-1.25,-0.75]\)
+- \(p_{\lVert x\rVert}\in[0.75,1.25]\)
+- \(p_{\lVert x\rVert/N}\in[-0.25,0.25]\)
+
+この判定なら、near resonance は basis/numerical artifact ではなく、local-amplitude
+coordinates では curvature が \(O(N)\) に増える一方、global-\(\ell_2\) coordinatesでは
+bounded だと記録する。従って bare condition ceiling は global-\(\ell_2\) 係数の有界性と
+同値ではないが、grid-uniform local-amplitude chart の根拠も得られない。
+
+spectral scaling の最初の3項だけを通り forcing/response scalingを落とす場合は
+`spectral-only near resonance`、spectral scaling自体を落とす場合は仮説を rejected、
+validity/completenessを落とす場合は inconclusive とする。Q006n の封印判定はどの結果でも
+遡及変更しない。Q006c が通っても negative normal gap は未解消なので full Q006 は保留する。
+
 ## Q006: full 2D fixed-leaf nonzero-mode quadratic parameterization — 保留
 
 ### 問い
 
 全質量・全運動量を固定した不変葉上で、mode-added 2D hydrodynamic set を含む dense
 candidate chart が residual order 2 → 3 を再現できるか。Q006r の
-coefficient-solvability は通過したが、normal-dominance は落ちた。Q006n で viable family
-を得るか、後続の model-modification gate が通るまで着手しない。
+coefficient-solvability は通過したが、normal-dominance は落ちた。Q006n では viable
+family がなく、Q006c の coefficient-scaling 切分けと後続の model-modification gate が
+通るまで着手しない。
 
 ### 必須観測
 
