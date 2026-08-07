@@ -1668,6 +1668,82 @@ order-3のworst blockは`t00238`、input `m000,m013,m017`、external wave `(1,2)
 Q007b: 全cubic forcingと係数は独立微分・homological equationを通り、held-out残差次数と100-step
 shadowingをquadratic chartから改善するか。
 
+## Cycle Q007b: cubic coefficient and residual continuation
+
+### 問い
+
+全2,600 cubic forcingとcubic chart／reduced mapを構築し、独立3次微分、係数方程式、held-out残差次数、
+100-step shadowingを全て通過できるか。
+
+### 仮説
+
+- quadratic residual slopeは全方向で`3 ± 0.1`
+- cubic residual slopeは全方向で`4 ± 0.15`
+- amplitude `0.01`のcubic/quadratic residual ratioは全32方向で`0.10`以下
+- 3種類の100-step shadow ratioは全32方向で`0.8`以下
+- cubic trajectoryの9,600 component checkでQ006o budget違反は0
+
+### 実験
+
+- Q007aと同じ2,600 unordered tripleについて解析的3次forcingを構成
+- symmetric complex Fourier-fiberで \(T\) と \(K\) を解き、full physical dense tensorは作らない
+- seed `20260814`の16方向で解析的 \(D^3\Phi\) を5点中心差分と独立照合
+- 全solve、homological equation、fixed-leaf conservation、graph gauge、係数共役を監査
+- seed `20260817`の16方向でchart／reduced mapのC4 equivarianceを監査
+- seed `20260815`の32方向・5 amplitudeで残差次数とratioを監査
+- seed `20260816`の32方向でquadratic／cubicを自己整合的に100 step rollout
+
+### 結果
+
+全7 validity gateは通過したが、4 hypothesis gateのうちheld-out residual-ratio gateだけが失敗した。
+事前登録どおり`cubic continuation does not improve the registered chart`として`rejected`と固定した。
+
+- independent derivative minimum norm / maximum best relative error:
+  `0.04310510283888515 / 3.3657127711273197e-6`
+- triple / sector / singular count: `2600 / 108 / 1044 / 1448 / 0`
+- maximum condition / reproduction relative error: `10821.814847751179 / 0`
+- maximum solve / homological residual:
+  `7.507193302943194e-13 / 7.507420157100771e-13`
+- maximum graph-gauge / zero-wave forcing / zero-wave coefficient residual:
+  `9.544008185850808e-15 / 1.1964700984616753e-14 / 5.592366378684957e-16`
+- coefficient conjugacy / C4 chart / C4 reduced error:
+  `1.9424559059939878e-13 / 2.037693065234071e-14 / 1.1934586964246845e-15`
+- quadratic slope range: `2.999458101008406 – 3.00050163830818`
+- cubic slope range: `3.999307108046794 – 4.000367209086971`
+- amplitude `0.01` residual-ratio maximum / failure count:
+  `0.2286914274494018 / 9 of 32`
+- shadow maximum-absolute / final-absolute / maximum-relative ratio:
+  `0.15091634126760786 / 0.10970020315090677 / 0.13108685317368804`
+- cubic budget component checks / violation / maximum utilization / final budget:
+  `9600 / 0 / 0.5 / 1.1368683772161603e-11`
+
+### 分析
+
+係数構築の妥当性、残差次数`3 → 4`、100-step shadowing改善は独立に支持された。棄却理由は
+「3次化が改善しない」こと一般ではなく、登録振幅`0.01`で全方向の残差を10分の1以下にするという
+有限振幅の効果量gateである。最大ratioはamplitude
+`0.00125 / 0.0025 / 0.005 / 0.0075 / 0.01`に対して
+`0.028587 / 0.057175 / 0.114348 / 0.171520 / 0.228691`となり、4次／3次のtruncation ratioに
+整合するほぼ一次の振幅依存を示した。
+
+一方、この半径依存はQ007bの同じ32方向から得たpost-hoc観測なので、そのまま小さい半径でacceptedへ
+読み替えない。半径`0.004`は最大ratioの線形calibration cutoff約`0.00437`より保守的に固定し、別seedの
+holdoutで検証する。また大きなcubic coefficientがchart foldを作っていないかを解析Jacobianで別に監査する。
+Q006iの旧`rejected`判定とQ007bのamplitude `0.01`棄却は変更しない。
+
+### 改善
+
+- calibration方向とradius holdout方向を分離する。
+- \(DW_3(a)=V+H[a,\cdot]+T[a,a,\cdot]/2\) を実装し、有限差分で独立検証する。
+- 半径`0.01`までのradial lineでminimum singular valueを測り、chart fold候補を監査する。
+- Q007aの24 near-resonant tripleがcubic correctionへ占める割合を記録する。
+- quartic coefficientはQ007b1の診断前に構築しない。
+
+### 次の問い
+
+Q007b1: 独立方向で半径`0.004`の10倍残差改善を再現でき、元の半径`0.01`でchart immersionは
+保たれているか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -1701,3 +1777,5 @@ shadowingをquadratic chartから改善するか。
 [`artifacts/q006q_forward_error_holdout.json`](artifacts/q006q_forward_error_holdout.json)
 
 [`artifacts/q007a_cubic_prequalification.json`](artifacts/q007a_cubic_prequalification.json)
+
+[`artifacts/q007b_cubic_continuation.json`](artifacts/q007b_cubic_continuation.json)

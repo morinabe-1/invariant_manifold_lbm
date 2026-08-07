@@ -1791,11 +1791,128 @@ acceptedでも、登録finite grid・direction・amplitude・100-step horizonに
 all-radius chart、grid-uniform family、真の不変多様体の存在・一意性・normal attractionを主張しない。
 acceptedの場合だけQ007cを詳細に事前登録する。
 
-## Q007c: quartic continuation — 未登録
+### 結果
+
+全7 validity gateを通過したが、held-out residual-ratio gateだけが失敗したため、事前登録どおり
+`cubic continuation does not improve the registered chart`として`rejected`とした。
+
+- independent derivative maximum best relative error: `3.3657127711273197e-6`
+- maximum solve / homological residual:
+  `7.507193302943194e-13 / 7.507420157100771e-13`
+- coefficient conjugacy / C4 chart / C4 reduced error:
+  `1.9424559059939878e-13 / 2.037693065234071e-14 / 1.1934586964246845e-15`
+- quadratic / cubic slope range:
+  `2.999458101008406–3.00050163830818 / 3.999307108046794–4.000367209086971`
+- amplitude `0.01` residual-ratio maximum / failure count:
+  `0.2286914274494018 / 9 of 32`
+- shadow maximum-absolute / final-absolute / maximum-relative ratio:
+  `0.15091634126760786 / 0.10970020315090677 / 0.13108685317368804`
+- cubic budget component checks / violations / maximum utilization:
+  `9600 / 0 / 0.5`
+
+棄却は係数assemblyや次数改善の失敗ではなく、登録振幅`0.01`で要求した効果量の不足である。同じ方向の
+maximum ratioはamplitude `0.00125 / 0.0025 / 0.005 / 0.0075 / 0.01`に対し
+`0.028587 / 0.057175 / 0.114348 / 0.171520 / 0.228691`だった。このpost-hoc列は次のradiusを
+calibrateするためだけに使い、次の判定データには再利用しない。Q006iとQ007bの既存判定は変更しない。
+
+## Q007b1: independent cubic-radius and immersion audit — 事前登録
 
 ### 問い
 
-cubic gate通過後、symmetric/Fourier-sparseな4次係数で残差次数`4 → 5`とrolloutをさらに改善できるか。
+Q007bとは独立な方向で、cubic chartは半径`0.004`まで全方向10倍の残差改善を示し、元の失敗半径
+`0.01`まで局所immersionを保つか。
+
+### calibrationと固定構成
+
+- Q007bのworst ratioを一次外挿したcutoffは約`0.00437`なので、検証半径を`0.004`に固定する。
+- Q007bの方向はcalibration専用とし、Q007b1のhypothesis gateへ再利用しない。
+- grid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、24実座標、unmodified standard mapを維持する。
+- Q007bの \(W_2,R_2,T,K\) を再構築し、係数を再fit・round・truncateしない。
+- Q007bで得た係数hashを次に固定する。
+  - triple indices: `e646d2de7212c823cbca5804fbf20e9543918ecca80452dd508c278dfc5f130c`
+  - output waves: `d431bfabad714d9d7ee9d8bfaf779eb2362ab27c916740494a379610c1389a6f`
+  - chart coefficients: `ed182069713bff0558b806ce7a70e77299ea9fbc6671de38c4fa58019da5615b`
+  - reduced coefficients: `4ca5a953833d5913f160e9fc36061e31697c7531865c4ef06d7517898f7c597e`
+  - forcing coefficients: `6e2559a194d2b1e6a96f01653c1bccbe1852db00233700e16b3b980ae96df8eb`
+
+### 独立radius gate
+
+seed `20260818`の64正規化方向を使う。amplitude ladderは
+
+`0.00125, 0.002, 0.003, 0.004, 0.006, 0.008, 0.01`
+
+に固定する。最初の4点でquadratic／cubic残差slopeをfitし、全7点で
+
+
+\[
+q(a)=\frac{\lVert\Phi(W_3(a))-W_3(R_3(a))\rVert}
+{\lVert\Phi(W_2(a))-W_2(R_2(a))\rVert}
+\]
+
+のlog-log slopeをfitする。各方向で次を全て要求する。
+
+1. quadratic slope `3 ± 0.1`
+2. cubic slope `4 ± 0.15`
+3. ratio slope `1 ± 0.1`
+4. amplitude `0.004`のratio `<=0.10`
+5. 全lifted／mapped／predicted stateがpositiveかつfinite
+
+amplitude `0.006 / 0.008 / 0.01`は元の失敗領域を診断するため保存するが、そのratio自体をradius
+acceptance gateには使わない。
+
+### analytic chart-Jacobian validityとimmersion gate
+
+
+\[
+DW_3(a)d=Vd+H[a,d]+\frac12T[a,a,d]
+\]
+
+をFourier-fiberから直接評価する。seed `20260820`で16組のpoint/action方向を作り、point amplitude
+`0.004`と`0.01`の両方で、centered finite difference step
+`1e-5, 5e-6, 2.5e-6`と比較する。各組の最良relative errorの最大を`1e-7`以下、analytic action normを
+`1e-12`より大きくする。
+
+radius campaignの64方向について、amplitude `0, 0.002, 0.004, 0.006, 0.008, 0.01`でfull
+\(2601\times24\) Jacobianを組み、
+
+\[
+\frac{\sigma_{\min}(DW_3(a))}{\sigma_{\min}(V)}\ge0.8
+\]
+
+を全点で要求する。これは登録radial samples上のimmersion prequalificationであり、ball全体のinjectivityや
+chart fold不在の証明ではない。
+
+### near-resonant contribution diagnostic
+
+Q007aと同じrelative singular threshold `1e-4`、すなわちcondition `>=1e4`の24 tripleを固定する。
+64方向のamplitude `0.004`と`0.01`で、near-resonant subsetによるchart／reduced cubic correction norm、
+全cubic correctionに対する比、residual ratioとのSpearman correlation、上位quartile enrichmentを保存する。
+これは原因候補の診断であり、Q007b1のaccept／reject gateには使わない。
+
+### 独立shadowing gate
+
+seed `20260819`の32正規化方向、amplitude `0.004`、100 stepを使い、quadraticとcubicを自己整合的に
+rolloutする。各方向でmaximum absolute、final absolute、maximum perturbation-relative errorの
+cubic/quadratic ratioを全て`<=0.8`とする。cubic trajectoryの全9,600 component checkでQ006o budget
+違反0、maximum final component budget `<=1.2e-11`、全state positiveを要求する。
+
+### 判定
+
+係数hash、方向独立性、analytic Jacobian、finite／positive／strict JSONをvalidity gateとする。validityを通り、
+radius、ratio-scaling、immersion、shadowing、forward-error gateを全て通過した場合だけ
+`registered cubic improvement radius localized without fold signature`としてacceptedとする。validだがいずれかの
+performance gateを落とせば`registered cubic radius not supported`としてrejected、validity失敗はinconclusiveとする。
+
+acceptedでも、64／32方向の有限sampleに限り、半径`0.004`のball全体を保証しない。Q007bのamplitude
+`0.01` rejectionを変更せず、quartic continuation、TT圧縮、grid-uniform family、真の不変多様体の
+存在・一意性・normal attractionを主張しない。
+
+## Q007c: quartic continuation — 保留・未登録
+
+### 問い
+
+Q007b1のradius／immersion診断後、symmetric/Fourier-sparseな4次係数で残差次数`4 → 5`とrolloutを
+さらに改善すべきか。
 
 改善しなければ、多項式次数不足ではなく near resonance、有限半径、chart fold を
 先に疑う。

@@ -59,7 +59,10 @@ policy columnは全8 gateを通過した。従ってQ006pは条件付きchart co
 同一データの再利用に限る。Q006qでは別seed・振幅・horizonの128 trajectory、16,000 step、
 48,000 component checkを行い、違反0、最大utilization `0.5`で独立holdoutを通過した。次のQ007aで
 3次homological operatorの全2,600 unordered tripleをprequalificationし、singular block 0、最大condition
-`10821.8`で通過した。次のQ007bでcubic forcing・係数・残差次数・shadowingを検証する。
+`10821.8`で通過した。Q007bでは全cubic forcing・係数を構築し、独立3次微分、homological equation、
+fixed-leaf、共役、C4を全て通過した。held-out残差は次数`3 → 4`、100-step shadowingも全方向で改善したが、
+amplitude `0.01`のcubic/quadratic残差比が32方向中9方向で登録上限`0.10`を超え、最大`0.228691`と
+なった。このためQ007bは有効な性能棄却として固定し、quarticへ進まず、独立holdoutで有効半径を局在化する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -519,6 +522,30 @@ artifact入力なしで組み立てた。zero-wave kinetic、internal selected�
 解析的3次微分を独立有限差分で照合し、全係数solve、fixed-leaf／共役／C4、held-out残差次数`3 → 4`、
 100-step shadowing改善を別gateとして判定する。
 
+### Q007b cubic coefficient and residual continuation
+
+Q006iのquadratic chartから全2,600 cubic forcingを解析的に構成し、symmetric complex Fourier-fiberで
+\(T\) と \(K\) を保存した。物理空間の \(2601\times24^3\) dense tensorはmaterializeしていない。
+
+- classification: `cubic continuation does not improve the registered chart`
+- validity gates: `7 / 7` passed
+- independent third-derivative maximum best relative error: `3.36571e-6`
+- maximum solve / homological residual: `7.50719e-13 / 7.50742e-13`
+- coefficient conjugacy / C4 chart / C4 reduced error:
+  `1.94246e-13 / 2.03769e-14 / 1.19346e-15`
+- quadratic residual slope range: `2.9994581 – 3.0005016`
+- cubic residual slope range: `3.9993071 – 4.0003672`
+- amplitude `0.01` residual-ratio maximum / failed directions: `0.2286914 / 9 of 32`
+- 100-step maximum-absolute / final-absolute / relative shadow-ratio maximum:
+  `0.1509163 / 0.1097002 / 0.1310869`
+- cubic forward-error component checks / violations / maximum utilization:
+  `9,600 / 0 / 0.5`
+
+従って3次係数や次数改善は検証されたが、登録振幅`0.01`で要求した全方向10倍改善は支持されない。
+同じ32方向では残差比の最大値がamplitude `0.00125 / 0.0025 / 0.005 / 0.0075 / 0.01`に対して
+`0.02859 / 0.05717 / 0.11435 / 0.17152 / 0.22869`とほぼ線形に増えた。次はこの観測をcalibrationに
+限定し、新seedで半径`0.004`を検証する。Q006iの旧rejectionは変更せず、quartic continuationも保留する。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -543,7 +570,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
 `q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
-`q006q`、`q007a` は
+`q006q`、`q007a`、`q007b` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -569,6 +596,7 @@ python -m ttim_lbm --study q006o --output research/artifacts/q006o_forward_error
 python -m ttim_lbm --study q006p --output research/artifacts/q006p_dual_reporting.json
 python -m ttim_lbm --study q006q --output research/artifacts/q006q_forward_error_holdout.json
 python -m ttim_lbm --study q007a --output research/artifacts/q007a_cubic_prequalification.json
+python -m ttim_lbm --study q007b --output research/artifacts/q007b_cubic_continuation.json
 ```
 
 保存済み結果:
@@ -592,6 +620,7 @@ python -m ttim_lbm --study q007a --output research/artifacts/q007a_cubic_prequal
 - [`research/artifacts/q006p_dual_reporting.json`](research/artifacts/q006p_dual_reporting.json)
 - [`research/artifacts/q006q_forward_error_holdout.json`](research/artifacts/q006q_forward_error_holdout.json)
 - [`research/artifacts/q007a_cubic_prequalification.json`](research/artifacts/q007a_cubic_prequalification.json)
+- [`research/artifacts/q007b_cubic_continuation.json`](research/artifacts/q007b_cubic_continuation.json)
 
 ## 文書
 
@@ -629,13 +658,15 @@ python -m ttim_lbm --study q007a --output research/artifacts/q007a_cubic_prequal
 - Q006p Q006i original-threshold／forward-error-policy dual-reporting、64方向の完全照合
 - Q006q 2 independent scenario、128 trajectory・48,000 component forward-error holdout
 - Q007a 全2,600 cubic homological block、order-2 reproduction、共役／C4 count closure
+- Q007b 全2,600 cubic forcing／coefficient、独立3次微分、残差次数、100-step shadowing
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007b のcubic forcing／coefficient、残差4次化、100-step shadowing
+- Q007b1 の独立finite-radius／immersion holdout
+- Q007c quartic continuation（Q007bのamplitude `0.01` gate棄却により保留）
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007bである。解析的3次forcingを独立有限差分で検証した後、全2,600 tripleを解き、
-held-out residual orderとshadowingがquadratic chartより改善するかを判定する。これを通過するまでquartic
-continuationやTT圧縮へ進まない。
+従って次のゲートはQ007b1である。Q007bで観測した振幅依存を同じ方向へ再fitせず、別seedで半径`0.004`の
+残差比、100-step shadowing、chart Jacobianのimmersionを検証する。これを通過してもQ007bの半径`0.01`
+棄却は変更せず、quartic continuationやTT圧縮へはまだ進まない。
