@@ -52,7 +52,9 @@ unique-anchor classのequivariant differentiability obstructionを監査した�
 不変だが周期site作用には固定点がなく、全8本のgap ladderも縮退へ向かったため、Q006mは
 `accepted`である。従ってQ006lのunique-anchor correctionは局所production mapへ採用しない。次の
 Q006oでは、anchor-freeな一様smooth correctionと、写像を変更しない明示的forward-error budgetを
-比較する。
+比較した。標準写像は全19,200 component-stepで登録budgetを通過し、一様projectionは改善率とexact
+realizationをともに落としたため、Q006oはunmodified map policyを`accepted`とした。次のQ006pで、
+旧 \(10^{-12}\) 判定を保持したままQ006i chartをこのpolicyでdual-reportingする。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -426,6 +428,29 @@ siteはないので、unique-site selector \(s\) のequivarianceは
 排除するが、anchor-freeなequivariant arithmetic全体を排除しない。Q006lの有限軌道acceptedと
 Q006i／Q006jのrejected判定も変更しない。
 
+### Q006o anchor-free arithmetic policy
+
+Q006jのunmodified standard mapとuniform minimum-norm projectionを同じ64 trajectory × 100 stepで
+再実行した。初期stateのcomponent scale \(S_c=\sum_{x,q}|C_{cq}f_{0,x,q}|\) から、観測driftへfitせず
+\(B_c(t)=2t\,\operatorname{spacing}(S_c)\) を登録した。係数2はcollisionとfilterの2 conservation-sensitive
+stageに対応する。
+
+- classification: `unmodified equivariant map with registered forward-error budget preferred`
+- component-budget check / violation: `19200 / 0`
+- maximum utilization: `0.5`
+- maximum final component budget: `1.1368684e-11`（上限 `1.2e-11`）
+- streaming / independent-sum error: `0 / 0`
+- standard / uniform maximum drift: `2.7285042e-12 / 2.1600519e-12`
+- uniform improvement factor: `1.2631660`（選択下限 `2`）
+- uniform exact remaining-drift step: `0 / 6400`
+- maximum uniform remaining local drift: `5.7125343e-14`
+- minimum population: `0.0275271`
+
+従ってuniform projectionは採用せず、smooth・translation／C4-equivariantな標準写像を変更しない。
+ただしこのbudgetは登録有限trajectoryのoperational policyであり、任意state・任意horizonのroundoff
+定理ではない。Q006i／Q006jの旧 \(10^{-12}\) gateとrejected判定は変更せず、Q006pで旧判定と新policyを
+並記してchart continuationの可否を判定する。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -449,7 +474,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
-`q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m` は
+`q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -471,6 +496,7 @@ python -m ttim_lbm --study q006j --output research/artifacts/q006j_conservation_
 python -m ttim_lbm --study q006k --output research/artifacts/q006k_projection_representability.json
 python -m ttim_lbm --study q006l --output research/artifacts/q006l_covariant_correction.json
 python -m ttim_lbm --study q006m --output research/artifacts/q006m_anchor_obstruction.json
+python -m ttim_lbm --study q006o --output research/artifacts/q006o_forward_error_budget.json
 ```
 
 保存済み結果:
@@ -490,6 +516,7 @@ python -m ttim_lbm --study q006m --output research/artifacts/q006m_anchor_obstru
 - [`research/artifacts/q006k_projection_representability.json`](research/artifacts/q006k_projection_representability.json)
 - [`research/artifacts/q006l_covariant_correction.json`](research/artifacts/q006l_covariant_correction.json)
 - [`research/artifacts/q006m_anchor_obstruction.json`](research/artifacts/q006m_anchor_obstruction.json)
+- [`research/artifacts/q006o_forward_error_budget.json`](research/artifacts/q006o_forward_error_budget.json)
 
 ## 文書
 
@@ -523,13 +550,14 @@ python -m ttim_lbm --study q006m --output research/artifacts/q006m_anchor_obstru
 - Q006k 一様projectionのULP／実現誤差、固定3-population localized diagnostic
 - Q006l collision/filter stagewise covariant correction、translation／C4・unique-anchor audit
 - Q006m uniform-equilibrium tie、translation固定点矛盾、8本のanchor-gap ladder
+- Q006o standard-map componentwise ULP budget、uniform projection policy比較
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006o のanchor-free smooth correction／forward-error budget policy比較
+- Q006p のQ006i original-threshold／forward-error-policy dual-reporting監査
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ006oである。非滑らかな補正を採らず、anchor-freeな一様projectionと、標準写像を
-変更せずcollision／filter各stageへ明示的ULP budgetを割り当てる方針を比較する。この診断を終えるまで
-Q006iを再判定せず、TT圧縮へも進まない。
+従って次のゲートはQ006pである。Q006iの全構成・残差・shadowing gateと旧conservation failureを
+誤差0で再現し、同じtrajectoryがQ006o budgetを通ることを別欄で判定する。旧Q006iを遡及的に
+acceptedへ変更せず、dual-reporting gateを終えるまでdegree continuationやTT圧縮へ進まない。

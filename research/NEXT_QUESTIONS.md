@@ -1319,7 +1319,7 @@ translationで固定されたuniform stateにequivariant selectorの値を置く
 定義すらできず、連続・微分可能な延長も不可能である。有限振幅ladderはこの厳密な固定点矛盾の証明
 ではなく、Q006lで使った \(q_0\) gapが平衡へ向かって縮小する補助診断である。
 
-## Q006o: anchor-free correction versus forward-error budget — 事前登録
+## Q006o: anchor-free correction versus forward-error budget — 完了
 
 ### 問い
 
@@ -1399,6 +1399,75 @@ inconclusiveとする。
 acceptedでもQ006i／Q006jの封印判定や \(10^{-12}\) thresholdを遡及変更しない。結果は今後の写像定義を
 選ぶ有限軌道policy gateである。standard budget方針が選ばれた場合だけ、次の別gateでQ006iのchart
 residual／shadowingと保存判定をdual-reporting（旧thresholdと登録ULP budget）により再監査する。
+
+### 結果
+
+全validity gateとstandard policy gateを通過し、uniform policy gateは2個とも落ちた。従って
+`unmodified equivariant map with registered forward-error budget preferred`としてacceptedとした。
+
+- trajectory / step / component check: `64 / 6400 / 19200`
+- standard budget violation: `0`
+- maximum utilization: `0.5`
+- maximum final component budget: `1.1368684e-11`
+- standard / uniform maximum drift: `2.7285042e-12 / 2.1600519e-12`
+- uniform improvement factor: `1.2631660`
+- uniform exact-zero remaining drift: `0 / 6400`
+- maximum remaining local drift: `5.7125343e-14`
+- minimum population: `0.0275271`
+
+standard mapを変更せず有限trajectory上のroundoffを明示的に管理する方針を選ぶ。ただしこの結果は
+arithmetic policyの選択であり、Q006i／Q006jの旧 \(10^{-12}\) thresholdとrejected判定を変更しない。
+
+## Q006p: Q006i dual-reporting integration audit — 事前登録
+
+### 問い
+
+Q006iのfull-2D quadratic chartについて、旧 \(10^{-12}\) conservation gateを失敗のまま保持しつつ、
+Q006oのregistered forward-error policyを独立欄で通過させられるか。その場合、過去の判定を改変せずに
+candidate chartの次段階へ進む根拠を作れるか。
+
+### 固定設定
+
+Q006iとQ006oをそれぞれsealed runnerから再実行し、artifactを入力データとして使わない。
+
+- grid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)
+- reduced dimension 24、state dimension 2601、quadratic pair 300
+- shadow seed `20260810`、linear／quadratic各32方向、amplitude `0.01`、100 step
+- original conservation threshold `1e-12`
+- Q006o component budget \(B_c(t)=2t\,\operatorname{spacing}(S_c)\)
+- Q006l unique-anchor、Q006k fixed-site、Q006j uniform correctionはchart mapへ適用しない
+
+### alignmentと再現
+
+次をvalidity gateとする。
+
+1. Q006i／Q006o両studyのvalidityが`passed`。
+2. grid、\(\omega\)、\(\eta\)、seed、amplitude、step、chart種別が一致。
+3. Q006i linear／quadratic各32方向とQ006oの対応方向のmaximum absolute differenceが0。
+4. Q006i original drift `2.728496323152741e-12`、Q006o `math.fsum` drift
+   `2.7285041507210106e-12`を各 `5e-15` 以内で再現。
+5. 両driftの差が `5e-15` 以下。
+6. Q006i original global-conservation gateはthreshold `1e-12`、`passed=false`のまま。
+7. 全値finite、strict JSON。
+
+### dual decision
+
+Q006iの8 hypothesis gateを次の2欄に固定して報告する。
+
+- original column: 既存8 gateをそのまま保存し、global conservationだけがfailed、他7 gateがpassed。
+- policy column: global conservationだけをQ006o standard policyの
+  `budget_violation_count=0`、maximum utilization `<=1`、maximum final budget `<=1.2e-11`で評価する。
+  他7 gateはQ006iの値・threshold・判定を変更せず再利用する。
+
+original failed gate数が1、policy failed gate数が0であり、Q006o uniform policyがfailed、standard policyが
+passedなら、`dual reporting supports unmodified-map chart continuation`としてacceptedとする。original
+gateも通ったと書き換えたり、Q006iをacceptedへ変更したりしてはならない。policy columnが1個でも
+失敗すれば`forward-error policy does not clear Q006i continuation`としてrejected、validity failureは
+inconclusiveとする。
+
+acceptedは同一の登録64 trajectoryに対するintegration判定に限る。all-state conservation theoremや
+SSM existenceを主張しない。acceptedなら次に、別seed・amplitude・horizonでQ006o budgetをholdout検証する
+gateを事前登録し、それを通るまでdegree continuationへ進まない。
 
 ## Q007: degree continuation は有効か
 

@@ -1431,6 +1431,67 @@ Q006o: anchor-free uniform projectionは標準写像を置き換えるだけの�
 示さない場合、unmodified mapの登録driftは2 conservation-sensitive stageから定めた明示的ULP budget内に
 収まるか。
 
+## Cycle Q006o: anchor-free correction versus forward-error budget
+
+### 問い
+
+Q006lの非滑らかなanchor correctionを採用せず、Q006jのuniform projectionを使うべきか。それとも
+標準写像を変更せず、明示的なcomponentwise ULP budgetでroundoffを管理すべきか。
+
+### 仮説
+
+unmodified mapの全登録driftは、collision／filter各stageへglobal component scaleの1 ULPを割り当てた
+\(B_c(t)=2t\,\operatorname{spacing}(S_c)\) に収まる。一方、uniform projectionはworst driftを2倍以上
+改善せず、remaining local driftもexact zeroにできない。
+
+### 実験
+
+- Q006jと同じlinear／quadratic各32、合計64 trajectory、100 stepを独立再実行
+- 6,400 trajectory-step × 3 component = 19,200 budget check
+- 初期stateの \(S_c=\sum_{x,q}|C_{cq}f_{0,x,q}|\) だけからbudgetを計算
+- Q006j standard／uniform drift、streaming、補償和、positivityを再現
+- uniform selectionに改善率2以上とremaining drift 6,400 / 6,400 exact zeroを要求
+
+### 結果
+
+全validity／standard-policy gateを通過し、uniform-policy gateは2個とも失敗した。
+`unmodified equivariant map with registered forward-error budget preferred`としてacceptedとした。
+
+- standard budget violation: `0 / 19200`
+- maximum utilization: `0.5`
+- maximum final component budget: `1.1368684e-11`（上限 `1.2e-11`）
+- maximum streaming increment / independent-sum difference: `0 / 0`
+- standard / uniform maximum drift: `2.7285042e-12 / 2.1600519e-12`
+- uniform improvement factor: `1.2631660`（下限 `2`を失敗）
+- uniform exact-zero remaining drift: `0 / 6400`
+- maximum uniform remaining local drift: `5.7125343e-14`
+- minimum population: `0.0275271`
+
+### 分析
+
+standard mapのworst witnessはlinear direction 0のstep 1 massで、absolute drift
+`5.6843419e-14`に対するbudgetは`1.1368684e-13`、utilizationはexactly `0.5`だった。全trajectory・
+componentでviolationはなく、100-step最大budgetも登録上限内だった。
+
+uniform projectionはworst driftを約20.8%減らしただけで、必要な2倍改善に届かなかった。また全stepで
+remaining local driftが非零であり、anchor-free smooth correctionとして標準写像を置き換える根拠を
+満たさない。従ってmapは変更せず、roundoffを明示的に別報告する。
+
+ただし \(2t\,\operatorname{spacing}(S_c)\) は登録trajectory用のoperational envelopeであり、一般の
+forward-error theoremではない。Q006i／Q006jの旧 \(10^{-12}\) failureを遡及的に消さない。
+
+### 改善
+
+- Q006iの旧8 gateをoriginal columnとしてそのまま再現する。
+- global conservationだけをQ006o policyで別columnに置換し、他7 gateは変更しない。
+- Q006iとQ006oの方向・seed・amplitude・horizon alignmentを誤差0で照合する。
+- integration後も別seed／amplitude／horizonのholdoutを要求する。
+
+### 次の問い
+
+Q006p: Q006iのoriginal conservation failureを保持したdual reportで、unmodified-map chart continuationを
+条件付きで支持できるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -1456,3 +1517,5 @@ Q006o: anchor-free uniform projectionは標準写像を置き換えるだけの�
 [`artifacts/q004b_and_manufactured.json`](artifacts/q004b_and_manufactured.json)
 
 [`artifacts/q006m_anchor_obstruction.json`](artifacts/q006m_anchor_obstruction.json)
+
+[`artifacts/q006o_forward_error_budget.json`](artifacts/q006o_forward_error_budget.json)
