@@ -10,11 +10,13 @@ from ttim_lbm.d2q9 import (
 )
 from ttim_lbm.manifold import QuadraticChart
 from ttim_lbm.tensor_train import (
+    contract_tt,
     evaluate_polynomial,
     polynomial_coefficient_tensor,
     reconstruct,
     tt_ranks,
     tt_svd,
+    tt_svd_with_diagnostics,
 )
 
 
@@ -23,6 +25,38 @@ def test_tt_svd_reconstructs_general_tensor() -> None:
     tensor = rng.normal(size=(4, 3, 2, 5))
     cores = tt_svd(tensor)
     np.testing.assert_allclose(reconstruct(cores), tensor, atol=2.0e-14)
+
+
+def test_tt_svd_preserves_complex_tensor_and_reports_finite_splits() -> None:
+    rng = np.random.default_rng(20260827)
+    tensor = rng.normal(size=(3, 4, 5)) + 1j * rng.normal(size=(3, 4, 5))
+
+    cores, diagnostics = tt_svd_with_diagnostics(
+        tensor,
+        relative_tolerance=1.0e-13,
+    )
+
+    assert all(core.dtype == np.complex128 for core in cores)
+    assert diagnostics["input_dtype"] == "complex128"
+    assert diagnostics["all_singular_values_finite"]
+    assert all(
+        record["all_singular_values_finite"]
+        for record in diagnostics["split_records"]
+    )
+    np.testing.assert_allclose(reconstruct(cores), tensor, rtol=2.0e-13)
+
+
+def test_contract_tt_retains_uncontracted_output_modes() -> None:
+    rng = np.random.default_rng(20260828)
+    tensor = rng.normal(size=(3, 2, 4, 5)) + 1j * rng.normal(size=(3, 2, 4, 5))
+    first = rng.normal(size=4) + 1j * rng.normal(size=4)
+    second = rng.normal(size=5) + 1j * rng.normal(size=5)
+    cores = tt_svd(tensor)
+
+    observed = contract_tt(cores, [None, None, first, second])
+    expected = np.einsum("abij,i,j->ab", tensor, first, second)
+
+    np.testing.assert_allclose(observed, expected, atol=5.0e-14)
 
 
 def test_polynomial_tt_matches_dense_quadratic_chart() -> None:

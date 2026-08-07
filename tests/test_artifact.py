@@ -874,3 +874,50 @@ def test_q007c2_artifact_records_only_localized_shadow_domain() -> None:
         "q007c1_radius_0p01_horizon_100_revised"
     ]
     assert "two preregistered" in cycle["claim_boundary"]
+
+
+def test_q008a_artifact_records_valid_sparse_storage_rejection() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q008a_tt_storage_prequalification.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "rejected"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "local Fourier coefficient TT storage prequalification",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "complex_mode_count": 24,
+        "local_output_count": 9,
+        "degrees": [2, 3, 4],
+        "tensorization_count": 4,
+        "physical_full_dense_tensor_materialized": False,
+        "claim": (
+            "registered local coefficient storage and fidelity only; no "
+            "asymptotic-rank, online-speed, full-chart, rollout, TT-cross, "
+            "other-shell, other-grid, existence, or uniqueness claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "rejected"
+    assert cycle["selected_candidate"] is None
+    assert cycle["scientific_classification"] == (
+        "registered TT tensorizations do not beat natural quartic sparse-fiber storage"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    quartic = next(record for record in cycle["degree_records"] if record["degree"] == 4)
+    sparse = quartic["natural_sparse_fiber_storage"]
+    assert sparse["coefficient_stored_real_scalar_count"] == 315900
+    assert all(
+        candidate["storage"]["core_stored_real_scalar_count"] > 10 * 315900
+        and candidate["storage"]["uncompressed_npz_serialized_bytes"]
+        > 10 * sparse["uncompressed_npz_serialized_bytes"]
+        and not candidate["storage_hypothesis_passed"]
+        for candidate in quartic["candidate_records"]
+    )
+    assert "four registered local coefficient tensorizations" in cycle[
+        "claim_boundary"
+    ]

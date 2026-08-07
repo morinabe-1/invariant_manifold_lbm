@@ -10,10 +10,13 @@ import numpy as np
 import numpy.typing as npt
 
 Array = npt.NDArray[np.float64]
+NumericArray = npt.NDArray[np.float64] | npt.NDArray[np.complex128]
 
 
 def _stable_frobenius_norm(array: npt.ArrayLike) -> float:
-    values = np.asarray(array, dtype=np.float64)
+    raw = np.asarray(array)
+    dtype = np.complex128 if np.iscomplexobj(raw) else np.float64
+    values = np.asarray(raw, dtype=dtype)
     scale = float(np.max(np.abs(values), initial=0.0))
     if scale == 0.0:
         return 0.0
@@ -35,20 +38,14 @@ def _truncation_rank(singular_values: Array, threshold: float, max_rank: int | N
     return max(1, rank)
 
 
-def tt_svd(
+def _tt_svd_impl(
     tensor: npt.ArrayLike,
     relative_tolerance: float = 0.0,
     max_rank: int | None = None,
-) -> list[Array]:
-    """Decompose a dense tensor with a relative discarded-singular-value budget.
-
-    The tolerance controls the accumulated Frobenius norm of singular values
-    discarded by the sequential SVDs.  It is not an end-to-end floating-point
-    reconstruction guarantee; callers that need one must reconstruct or use an
-    independent held-out validation gate.
-    """
-
-    dense = np.asarray(tensor, dtype=np.float64)
+) -> tuple[list[NumericArray], dict[str, object]]:
+    raw = np.asarray(tensor)
+    dtype = np.complex128 if np.iscomplexobj(raw) else np.float64
+    dense = np.asarray(raw, dtype=dtype)
     if dense.ndim == 0:
         raise ValueError("tensor must have at least one mode")
     if not np.all(np.isfinite(dense)):
@@ -69,30 +66,66 @@ def tt_svd(
         raise ValueError(
             "tensor Frobenius norm is not representable in float64; rescale it"
         )
+    diagnostics: dict[str, object] = {
+        "input_dtype": str(dense.dtype),
+        "mode_shape": list(dense.shape),
+        "tensor_frobenius_norm": norm,
+        "requested_relative_tolerance": float(relative_tolerance),
+        "maximum_rank": max_rank,
+        "split_records": [],
+        "all_singular_values_finite": True,
+    }
     if norm == 0.0:
         cores = [
-            np.ones((1, mode_size, 1), dtype=np.float64)
+            np.ones((1, mode_size, 1), dtype=dense.dtype)
             for mode_size in dense.shape
         ]
         cores[0].fill(0.0)
-        return cores
+        diagnostics.update(
+            {
+                "discarded_frobenius_norm": 0.0,
+                "relative_discarded_frobenius_norm": 0.0,
+                "tt_ranks": tt_ranks(cores),
+            }
+        )
+        return cores, diagnostics
     if dense.ndim == 1:
-        return [dense.reshape(1, dense.shape[0], 1)]
+        cores = [dense.reshape(1, dense.shape[0], 1)]
+        diagnostics.update(
+            {
+                "discarded_frobenius_norm": 0.0,
+                "relative_discarded_frobenius_norm": 0.0,
+                "tt_ranks": tt_ranks(cores),
+            }
+        )
+        return cores, diagnostics
 
     local_threshold = relative_tolerance * norm / np.sqrt(dense.ndim - 1)
-    cores: list[Array] = []
+    cores: list[NumericArray] = []
     unfolding = dense
     left_rank = 1
     discarded_norm = 0.0
-    for mode_size in dense.shape[:-1]:
+    split_records = []
+    for mode_index, mode_size in enumerate(dense.shape[:-1]):
         matrix = unfolding.reshape(left_rank * mode_size, -1)
         u, singular_values, vh = np.linalg.svd(matrix, full_matrices=False)
+        singular_values_finite = bool(np.all(np.isfinite(singular_values)))
+        if not singular_values_finite:
+            raise ValueError("TT-SVD produced non-finite singular values")
         rank = _truncation_rank(singular_values, local_threshold, max_rank)
-        discarded_norm = float(
-            np.hypot(
-                discarded_norm,
-                _stable_frobenius_norm(singular_values[rank:]),
-            )
+        local_discarded_norm = _stable_frobenius_norm(singular_values[rank:])
+        discarded_norm = float(np.hypot(discarded_norm, local_discarded_norm))
+        split_records.append(
+            {
+                "mode_index": mode_index,
+                "matrix_shape": list(matrix.shape),
+                "singular_value_count": int(singular_values.size),
+                "maximum_singular_value": float(singular_values[0]),
+                "minimum_singular_value": float(singular_values[-1]),
+                "retained_rank": rank,
+                "discarded_frobenius_norm": local_discarded_norm,
+                "all_singular_values_finite": singular_values_finite,
+            }
         )
         cores.append(u[:, :rank].reshape(left_rank, mode_size, rank))
         unfolding = singular_values[:rank, None] * vh[:rank, :]
@@ -106,15 +139,51 @@ def tt_svd(
             "max_rank prevents TT-SVD from meeting relative_tolerance; "
             "increase max_rank or set relative_tolerance=0 for best-effort truncation"
         )
+    diagnostics.update(
+        {
+            "split_records": split_records,
+            "discarded_frobenius_norm": discarded_norm,
+            "relative_discarded_frobenius_norm": discarded_norm / norm,
+            "tt_ranks": tt_ranks(cores),
+        }
+    )
+    return cores, diagnostics
+
+
+def tt_svd(
+    tensor: npt.ArrayLike,
+    relative_tolerance: float = 0.0,
+    max_rank: int | None = None,
+) -> list[NumericArray]:
+    """Decompose a real or complex tensor with a discarded-value budget.
+
+    The tolerance controls the accumulated Frobenius norm of singular values
+    discarded by the sequential SVDs.  It is not an end-to-end floating-point
+    reconstruction guarantee; callers that need one must reconstruct or use an
+    independent held-out validation gate.
+    """
+
+    cores, _ = _tt_svd_impl(tensor, relative_tolerance, max_rank)
     return cores
 
 
-def reconstruct(cores: Sequence[npt.ArrayLike]) -> Array:
+def tt_svd_with_diagnostics(
+    tensor: npt.ArrayLike,
+    relative_tolerance: float = 0.0,
+    max_rank: int | None = None,
+) -> tuple[list[NumericArray], dict[str, object]]:
+    """Return TT-SVD cores together with split-level numerical diagnostics."""
+
+    return _tt_svd_impl(tensor, relative_tolerance, max_rank)
+
+
+def reconstruct(cores: Sequence[npt.ArrayLike]) -> NumericArray:
     """Reconstruct a dense tensor from TT cores."""
 
     if not cores:
         raise ValueError("at least one TT core is required")
-    converted = [np.asarray(core, dtype=np.float64) for core in cores]
+    dtype = np.complex128 if any(np.iscomplexobj(core) for core in cores) else np.float64
+    converted = [np.asarray(core, dtype=dtype) for core in cores]
     if any(core.ndim != 3 for core in converted):
         raise ValueError("each TT core must have shape (left_rank, mode, right_rank)")
     if converted[0].shape[0] != 1 or converted[-1].shape[2] != 1:
@@ -183,6 +252,42 @@ def evaluate_polynomial(cores: Sequence[npt.ArrayLike], coordinates: npt.ArrayLi
     if value.shape[1] != 1:
         raise ValueError("final TT rank must equal one")
     return value[:, 0]
+
+
+def contract_tt(
+    cores: Sequence[npt.ArrayLike],
+    mode_vectors: Sequence[npt.ArrayLike | None],
+) -> NumericArray:
+    """Contract selected TT modes and retain modes whose vector is ``None``."""
+
+    if not cores:
+        raise ValueError("at least one TT core is required")
+    if len(cores) != len(mode_vectors):
+        raise ValueError("expected one mode vector or None per TT core")
+    values = [value for value in (*cores, *mode_vectors) if value is not None]
+    dtype = np.complex128 if any(np.iscomplexobj(value) for value in values) else np.float64
+    converted = [np.asarray(core, dtype=dtype) for core in cores]
+    if any(core.ndim != 3 for core in converted):
+        raise ValueError("each TT core must have shape (left_rank, mode, right_rank)")
+    if converted[0].shape[0] != 1 or converted[-1].shape[2] != 1:
+        raise ValueError("boundary TT ranks must equal one")
+    for left, right in pairwise(converted):
+        if left.shape[2] != right.shape[0]:
+            raise ValueError("adjacent TT ranks do not match")
+
+    result = np.ones(1, dtype=dtype)
+    for core, vector in zip(converted, mode_vectors, strict=True):
+        if vector is None:
+            result = np.tensordot(result, core, axes=([-1], [0]))
+            continue
+        feature = np.asarray(vector, dtype=dtype)
+        if feature.shape != (core.shape[1],):
+            raise ValueError("mode vector length does not match its TT core")
+        transfer = np.einsum("lnr,n->lr", core, feature)
+        result = np.tensordot(result, transfer, axes=([-1], [0]))
+    if result.shape[-1] != 1:
+        raise ValueError("final TT rank must equal one")
+    return np.asarray(result[..., 0], dtype=dtype)
 
 
 def tt_ranks(cores: Sequence[npt.ArrayLike]) -> list[int]:
