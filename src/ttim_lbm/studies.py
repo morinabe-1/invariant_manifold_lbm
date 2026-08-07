@@ -17,6 +17,7 @@ from .d2q9 import (
     quarter_turn_population_matrix,
     spectrum_audit,
 )
+from .low_wave_tangency import run_low_wave_tangency_audit
 from .manifold import (
     log_log_slope,
     second_derivative_tensor,
@@ -1645,6 +1646,35 @@ def run_q006f_study() -> dict[str, Any]:
                 "filtered finite-ladder prequalification only; no all-grid "
                 "theorem, nonlinear normal-attraction proof, or invariant-"
                 "manifold existence or uniqueness claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006g_study() -> dict[str, Any]:
+    """Run and package the sealed Q006g low-wave tangency campaign."""
+
+    cycle = run_low_wave_tangency_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "construction": "diagonal low-wave symbol-level tangency audit",
+            "grid_sizes": [33, 65, 129, 257, 513, 1025, 2049],
+            "fit_grid_sizes": [129, 257, 513, 1025, 2049],
+            "etas": [0.0, 0.01, 0.02, 0.03, 0.05],
+            "omegas": [1.0, 1.2, 1.5, 1.8],
+            "wave_orbit": [[1, 1], [-1, 1], [-1, -1], [1, -1]],
+            "manifold_claim": (
+                "same-sector finite-ladder scaling diagnosis only; no full-zone "
+                "prequalification, threshold relaxation, or invariant-manifold "
+                "existence or uniqueness claim"
             ),
         },
         "cycle": cycle,

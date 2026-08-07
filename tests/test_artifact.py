@@ -236,3 +236,34 @@ def test_q006f_artifact_records_the_valid_filtered_family_rejection() -> None:
         not family["spectral_gates"]["normal_dominance_gap"]["passed"]
         for family in cycle["families"]
     )
+
+
+def test_q006g_artifact_records_only_the_symbol_level_tangency_claim() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006g_low_wave_tangency.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "construction": "diagonal low-wave symbol-level tangency audit",
+        "grid_sizes": [33, 65, 129, 257, 513, 1025, 2049],
+        "fit_grid_sizes": [129, 257, 513, 1025, 2049],
+        "etas": [0.0, 0.01, 0.02, 0.03, 0.05],
+        "omegas": [1.0, 1.2, 1.5, 1.8],
+        "wave_orbit": [[1, 1], [-1, 1], [-1, -1], [1, -1]],
+        "manifold_claim": (
+            "same-sector finite-ladder scaling diagnosis only; no full-zone "
+            "prequalification, threshold relaxation, or invariant-manifold "
+            "existence or uniqueness claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert len(cycle["conditions"]) == 140
+    assert len(cycle["fits"]) == 20
+    assert cycle["summary"]["fit_pass_count"] == 20
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(fit["passed"] for fit in cycle["fits"])
