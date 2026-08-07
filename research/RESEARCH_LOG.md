@@ -964,6 +964,79 @@ symbol-level auditを置く。
 Q006g: Q006fの唯一の失敗gateは、scalar population filterでは変えられない対角第一shellの
 shear/acoustic \(N^{-4}\) tangencyで説明できるか。
 
+## Cycle 013: Q006g diagonal low-wave shear/acoustic tangency
+
+### 問い
+
+Q006fで唯一落ちたnormal-gap gateは、同じ対角第一shell sectorのselected shearと
+excluded acousticが4次で接し、scalar population filterでは相対順序もseparation exponentも
+変えられないことに由来するか。
+
+### 仮説
+
+7 odd grids、全5 \(\eta\)、全4 \(\omega\)、対角C4 orbitの140条件・560 waveで、
+符号付きgapが登録sign patternを持ち、absolute/relative gapがともに \(N^{-4}\) となる。
+
+### 実験
+
+- grid: \(N=33,65,129,257,513,1025,2049\)
+- fixed fit: \(N=129,257,513,1025,2049\)
+- C4 orbit: \((1,1),(-1,1),(-1,-1),(1,-1)\)
+- direct filtered eigensystemと、unfiltered moment classificationへscalar multiplierを掛ける
+  経路を独立に計算した。
+- gap、relative gap、\(N^4g\)、C4 spread、eigensystem residual、scalar identity errorを保存した。
+- full-zone sweep、quadratic solve、mode addition、threshold変更は行わなかった。
+
+### 結果
+
+全validity gateと20 familyの全hypothesis gateが通過し、仮説を登録範囲で受理した。
+
+- outcome: `accepted`
+- classification: `same-sector hydrodynamic fourth-order tangency confirmed`
+- registered / unique conditions: `140 / 140`
+- registered / unique wave records: `560 / 560`
+- family fit pass: `20 / 20`
+- absolute-gap slope: `-4.0008778 … -3.9997961`
+- relative-gap slope: `-4.0009176 … -4.0000699`
+- maximum scaled-gap relative spread: `0.00180356`
+- maximum C4 gap spread: `4.2188e-15`
+- maximum eigensystem residual: `1.3344e-15`
+- maximum eigenvalue matching residual: `4.3673e-15`
+- maximum scalar-gap identity error: `5.0034e-15`
+
+全fit grid・全\(\eta\)で、\(\omega=1.0\) のsigned gapは負、
+\(\omega=1.2,1.5,1.8\) は正だった。\((\eta,\omega)=(0.02,1.2)\) では
+\(N^4g\) がfit grid上で `41.7026, 41.6928, 41.6903, 41.6898, 41.7005` となった。
+
+### 分析
+
+同じwave vectorにある全population eigenmodeは、filterにより同一の正scalar
+\(\chi_\eta(k)\) を受ける。従って
+
+\[
+g_{\eta,N}=\chi_\eta(k)g_{0,N}
+\]
+
+であり、scalar filterは符号、相対順序、leading exponentを変えられない。Q006fで
+Nyquist obstructionを除いた後に現れた \(N^{-4}\) gapは、枝分類やroundoffのartifactでは
+なく、16実座標familyが対角acousticを外部へ残したことに対応する構造的bottleneckである。
+
+これはQ006fをacceptedへ変える結果ではない。また有限7点fitは全grid theoremではない。
+次は同じnormal thresholdを保ち、対角第一shellのacoustic pairもselectedへ含めた
+cluster-complete familyを独立に監査する。
+
+### 改善
+
+- axial/diagonal第一shellの各waveでshearとacoustic pairを全て含める。
+- 選択次元を16から24へ増やし、C4・共役閉包を構成時に固定する。
+- Q006fと同じfilter sweep、normal threshold、condition ceiling、Q006c target baselineを使う。
+- mode additionなしのminimal cluster-complete familyを先に反証する。
+
+### 次の問い
+
+Q006h: diagonal acousticをselectedへ昇格した24実座標familyは、登録filter sweepで
+coefficient solvabilityと有限ladder normal dominanceを同時に満たすか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -979,6 +1052,8 @@ shear/acoustic \(N^{-4}\) tangencyで説明できるか。
 [artifacts/q006c_coefficient_scaling.json](artifacts/q006c_coefficient_scaling.json)
 
 [artifacts/q006f_checkerboard_filter.json](artifacts/q006f_checkerboard_filter.json)
+
+[artifacts/q006g_low_wave_tangency.json](artifacts/q006g_low_wave_tangency.json)
 
 [`artifacts/d2q9_baseline.json`](artifacts/d2q9_baseline.json)
 

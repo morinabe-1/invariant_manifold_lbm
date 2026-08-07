@@ -719,7 +719,7 @@ filterはNyquist modeを減衰させた。一方、十分に減衰したfamily�
 5-grid gap slopeは `-4.0284 … -4.0052` だった。このslopeはpost-hoc診断なので、
 Q006fの判定やthresholdを変更しない。full Q006は引き続き保留する。
 
-## Q006g: diagonal low-wave shear/acoustic tangency — 事前登録
+## Q006g: diagonal low-wave shear/acoustic tangency — 完了
 
 ### 問い
 
@@ -786,6 +786,94 @@ acceptedでも、Q006fを成功へ変更せず、\(10^{-6}\) thresholdを緩和�
 存在・一意性やgrid-uniform normal attractionを主張しない。次のfamily変更はQ006g結果後に
 別途事前登録する。
 
+### 結果と判定
+
+140条件・560 waveの全validity gateと20 familyの全仮説gateが通過し、
+`same-sector hydrodynamic fourth-order tangency confirmed` と判定した。
+absolute-gap slopeは `-4.00088 … -3.99980`、relative-gap slopeは
+`-4.00092 … -4.00007`、最大\(N^4|g|\) relative spreadは `0.001804` だった。
+全\(\eta\)で\(\omega=1.0\)のgapは負、他の3 \(\omega\) は正であり、最大scalar identity
+errorは `5.0034e-15` だった。Q006fの棄却とthresholdは変更しない。
+
+## Q006h: first-shell cluster-complete filtered family — 事前登録
+
+### 問い
+
+Q006gで4次接触したdiagonal acoustic pairをselected側へ昇格し、第一shellの全waveで
+3個のhydrodynamic modeを含む24実座標familyを作ると、Q006fと同じfilter sweepで
+coefficient solvabilityと有限ladder normal dominanceを同時に満たせるか。
+
+### 固定selected family
+
+\[
+\mathcal K_1=\{(n_x,n_y):\max(|n_x|,|n_y|)=1\}
+\]
+
+の8 wave indexそれぞれで、`shear`、`acoustic_positive`、`acoustic_negative`を選ぶ。
+従ってselected block / real-coordinate countは `24 / 24` である。C4 orbitと共役pairを
+構成時に閉じ、全質量・全運動量固定葉を維持する。\(k=0\) conserved modeは含めない。
+
+### 固定sweep
+
+- \(\eta\in\{0,0.01,0.02,0.03,0.05\}\)
+- \(\omega\in\{1.0,1.2,1.5,1.8\}\)
+- odd grid \(N\in\{17,33,65,129,257\}\)
+- 合計100条件。\(\eta=0\) はunfiltered baselineで候補選択から除く。
+- 各条件で全 `300` unordered pairを列挙する。
+- mode additionは行わず、結果後にblock、parameter、thresholdを追加しない。
+- Q006cの16 target pair、7 slope window、global-\(\ell_2\) normalizationを維持する。
+
+### study validity
+
+1. 100条件を重複・欠落なく実行し、全条件でpair count 300、target count 16とする。
+2. selected dimension 24、C4/conjugacy closure、fixed-leaf制約を全条件で確認する。
+3. Schur/projector/product/fixed-leaf/solve residualを全て \(10^{-10}\) 以下とする。
+4. SVD rank threshold、singular/near-singular分類、conditionがfinite ruleで再現できることを
+   確認する。numerically singular blockはvalidity失敗ではなくfamily gate失敗とする。
+5. 全artifact値をstrict JSONで保存する。全pairを計算し、各条件でpair table、condition
+   quantile、最悪pair、materially forced near witnessを保存する。
+
+### 各 \((\eta,\omega)\) family gate
+
+5 grid全てで次を満たす正の\(\eta\) familyだけをviableとする。
+
+**spectral / low-wave**
+
+- normal gap \(\ge10^{-6}\)
+- local selected/external Sylvester separation \(\ge10^{-6}\)
+- selected Riesz projector norm \(\le100\)
+- structural/fixed-leaf residual \(\le10^{-10}\)
+- filter前後のselected subspace angle \(\le10^{-10}\)
+- selected eigenvalue phase change \(\le10^{-12}\)
+- selected relative modulus change \(\le5\times10^{-3}\)
+
+**coefficient / scaling**
+
+- numerical singular block 0、全solve residual \(\le10^{-10}\)
+- 全external homological condition \(\le10^9\)
+- materially forced near witnessを全件分類・保存する。登録外classの出現自体は失敗にせず、
+  condition ceilingと残差で判定する。
+- Q006c 16 targetのglobal-\(\ell_2\) responseが、同じ24-mode
+  \((N,\omega,\eta=0)\) baselineの `1.10` 倍以下
+- \(N=33,65,129,257\) の2 target orbitがQ006cと同じ7 slope windowを全て通る
+
+### parameter選択と判定
+
+viable familyがあれば、Q006fと同じlexicographic ruleを使う。
+
+1. 最小の正の\(\eta\)
+2. 同じ\(\eta\)では5-grid minimum normal gapが最大
+3. 同値なら小さい\(\omega\)
+
+study validityが通り、viable familyが1個以上なら
+`cluster-complete filtered finite-ladder prequalification passed` としてaccepted、validだが
+viable family 0ならrejected、validity失敗ならinconclusiveとする。
+
+acceptedでも、これは変更モデル・有限5-grid・24座標familyのprequalificationに限る。
+全grid theorem、grid-uniform有限次元family、非線形normal attraction、full chartの存在・
+一意性は主張しない。Q006hがacceptedの場合だけ、選択pairを固定してfull 2D dense quadratic
+chartを新たに事前登録する。
+
 ## Q006: full 2D fixed-leaf nonzero-mode quadratic parameterization — 保留
 
 ### 問い
@@ -794,8 +882,8 @@ acceptedでも、Q006fを成功へ変更せず、\(10^{-6}\) thresholdを緩和�
 candidate chart が residual order 2 → 3 を再現できるか。Q006r の
 coefficient-solvability は通過したが、normal-dominance は落ちた。Q006n では viable
 family がなく、Q006c はnear-resonance scalingを確認しただけでnormal gapを直していない。
-Q006f はviable family 0で棄却された。Q006gのtangency診断と、その後に新しく
-事前登録するmode-complete familyがprequalificationを通るまで着手しない。
+Q006f はviable family 0で棄却され、Q006gはそのsame-sector tangencyを確認した。
+Q006hの24-mode cluster-complete familyがprequalificationを通るまで着手しない。
 
 ### 必須観測
 

@@ -31,8 +31,10 @@ second-harmonic near resonance が真の \(N^{-2}\) spectral separationを持ち
 local-amplitude response は \(O(N)\)、global-\(\ell_2\) response は \(O(1)\) となる
 二重の scaling を支持した。Q006f の保存的checkerboard filterは全algebra・coefficient
 gateを通したが、登録20 family全てがnormal-gap gateを落とし、viable pairは0だった。
-次はQ006gで、フィルタ後の律速となった対角第一shell内のshear/acoustic tangencyを
-独立に診断する。stripe を含め、存在・一意性 gate を通るまでは非零波数の対象を
+Q006gは、フィルタ後の律速となった対角第一shell内のshear/acoustic gapが符号付きで
+\(N^{-4}\)となり、scalar filterでは順序も指数も変えられないことを確認した。次は
+Q006hでdiagonal acousticも含むcluster-complete familyを監査する。stripe を含め、
+存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
@@ -245,6 +247,27 @@ filterはNyquist checkerboard anchorを厳密に \(-(1-\eta)\) へ移し、Q006c
 閉じる。これはQ006fの事前登録判定を変更する根拠ではなく、Q006gで独立に検証する
 post-hoc診断である。Q006fは標準BGKのQ006nを変更せず、filtered full Q006も開始しない。
 
+### Q006g diagonal low-wave tangency audit
+
+対角C4 orbit、7 odd grids \(N=33,\ldots,2049\)、全5 \(\eta\)、全4 \(\omega\) の
+140条件・560 waveをsymbol levelで独立監査した。direct eigensystemと
+\(\lambda_{\eta,j}=\chi_\eta\lambda_{0,j}\) の二経路が一致し、全20 familyが固定した
+符号、2種の4次slope、\(N^4|g|\) plateau gateを通過した。
+
+- outcome: `same-sector hydrodynamic fourth-order tangency confirmed`
+- family fit: `20 / 20`
+- absolute-gap slope: `-4.00088 … -3.99980`
+- relative-gap slope: `-4.00092 … -4.00007`
+- maximum \(N^4|g|\) relative spread: `0.001804`
+- maximum eigensystem / matching residual: `1.3344e-15 / 4.3673e-15`
+- maximum scalar-gap identity error: `5.0034e-15`
+
+符号は全fit gridと全\(\eta\)で、\(\omega=1.0\) が負、\(1.2,1.5,1.8\) が正だった。
+代表 \((\eta,\omega)=(0.02,1.2)\) では \(N=2049\) で
+\(g=2.3658\times10^{-12}\)、\(N^4g=41.7005\) である。従ってQ006fの唯一の失敗を
+数値誤分類やNyquist残留へ転嫁できない。ただしこれは対角sectorの有限ladder診断であり、
+Q006fの棄却、\(10^{-6}\) threshold、full-chart保留を変更しない。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -267,7 +290,8 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 ## 再現
 
-Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f` は
+Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
+`q006g` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -282,6 +306,7 @@ python -m ttim_lbm --study q006r --output research/artifacts/q006r_mode_closure.
 python -m ttim_lbm --study q006n --output research/artifacts/q006n_normal_refinement.json
 python -m ttim_lbm --study q006c --output research/artifacts/q006c_coefficient_scaling.json
 python -m ttim_lbm --study q006f --output research/artifacts/q006f_checkerboard_filter.json
+python -m ttim_lbm --study q006g --output research/artifacts/q006g_low_wave_tangency.json
 ```
 
 保存済み結果:
@@ -294,6 +319,7 @@ python -m ttim_lbm --study q006f --output research/artifacts/q006f_checkerboard_
 - [`research/artifacts/q006n_normal_refinement.json`](research/artifacts/q006n_normal_refinement.json)
 - [`research/artifacts/q006c_coefficient_scaling.json`](research/artifacts/q006c_coefficient_scaling.json)
 - [`research/artifacts/q006f_checkerboard_filter.json`](research/artifacts/q006f_checkerboard_filter.json)
+- [`research/artifacts/q006g_low_wave_tangency.json`](research/artifacts/q006g_low_wave_tangency.json)
 
 ## 文書
 
@@ -320,14 +346,15 @@ python -m ttim_lbm --study q006f --output research/artifacts/q006f_checkerboard_
 - Q006n odd-grid/relaxation refinement、normal-gap/Nyquist anchor、全 pair coefficient audit
 - Q006c full pair completeness、target operator/SVD/forcing/response、固定window scaling fit
 - Q006f conservative filter algebra、100条件のspectral/coefficient/scaling audit
+- Q006g 140条件のdiagonal shear/acoustic \(N^{-4}\) tangency audit
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006g の対角low-wave shear/acoustic tangency audit
+- Q006h の24実座標cluster-complete filtered-family audit
 - viableな変更モデルfamily
 - mode-complete full 2D candidate chart
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートは Q006g のlow-wave tangency診断であり、full 2D Q006 や
+従って次のゲートは Q006h のmode-complete family診断であり、full 2D Q006 や
 TT-cross へはまだ進まない。
