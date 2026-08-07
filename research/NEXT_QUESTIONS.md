@@ -1155,7 +1155,7 @@ conservative arithmeticで実装する別gateを事前登録する。
 acceptedでもfixed-site controlはtranslation／C4を壊す診断対照であり、production mapへ採用しない。
 また、全uniform correctionがsub-ULPだったとは主張しない。Q006i／Q006jの判定は維持する。
 
-## Q006l: stagewise state-covariant conservative arithmetic — 事前登録
+## Q006l: stagewise state-covariant conservative arithmetic — 完了
 
 ### 問い
 
@@ -1224,6 +1224,81 @@ validだが仮説gateを落とせば`covariant correction fails conservation or 
 validity失敗ならinconclusiveとする。acceptedでも、各stageのglobal residual、unique argmax、登録有限
 軌道に依存する非滑らかな算術controlである。production mapやQ006i再判定へ直ちに採用せず、full
 chartの残差・shadowingをこの変更写像で再監査する前に、map定義と微分可能領域を別途事前登録する。
+
+### 結果
+
+全validity／hypothesis gateを通過し、
+`covariant anchor correction controls registered drift`としてacceptedとした。
+
+- covariant maximum drift: `1.1368684e-13`
+- minimum collision / filter anchor gap: `1.6348855e-9 / 1.2466926e-9`
+- anchor covariance failure: `0`
+- translation / C4 equivariance error: `0 / 0`
+- maximum correction / standard difference: `1.8963156e-14 / 1.1557707e-13`
+
+acceptedはunique-anchorを保った登録有限trajectoryに限る。uniform equilibriumでは289-way tieとなる
+ため、production map、Taylor微分、Q006i再判定へは進めない。
+
+## Q006m: equivariant unique-anchor differentiability obstruction — 事前登録
+
+### 問い
+
+Q006lのunique-site anchor selectorは、周期translationに不変な一様平衡へequivariantかつ連続・
+微分可能に延長できるか。それとも有限群作用だけで不可能と判定できるか。
+
+### 解析設定
+
+site集合を \(X=\mathbb Z_{17}\times\mathbb Z_{17}\)、translation群を \(G=X\) とする。population
+stateへの作用を \(T_g\)、siteへの作用を \(g\cdot x=x+g\) とする。unique-site selector
+\(s(f)\in X\) がequivariantなら
+
+\[
+s(T_gf)=g\cdot s(f)
+\]
+
+を満たす。一様平衡 \(f_*\) は全 \(g\) で \(T_gf_*=f_*\) なので、equivarianceは
+\(s(f_*)=g\cdot s(f_*)\) を全 \(g\) に要求する。
+
+### 固定監査
+
+1. \(17^2\) uniform equilibriumで \(q_0\) maximum multiplicityを289、gapを0として直接計算する。
+2. translation generator \((1,0),(0,1)\) それぞれについて、固定site数を全289 site列挙して0とする。
+3. uniform stateが両generatorでbitwise invariantであることを確認する。
+4. row-major tie breakが選ぶ \((0,0)\) は両generatorでcovarianceを破ることを直接記録する。
+5. C4は補助診断として記録するが、translation contradictionだけでobstructionを判定する。
+
+### 振幅縮小診断
+
+- Q006lと同じseed `20260810` の32方向をlinear／quadratic chartで使う。
+- amplitudeを `1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7` に固定する。
+- 各初期stateのraw collision後とraw filter後について、最大 \(q_0\) multiplicity、top-two gap、anchorを
+  保存する。filter入力はuncorrected collision後のperiodic streamingとする。
+- 各directionで \(+a\) と \(-a\) を別々に測り、anchor一致率とgapを記録する。
+- 各stage・符号についてamplitudeごとのmaximum gapが有限で、最小amplitudeのmaximum gapが
+  最大amplitude値の \(10^{-4}\) 以下であることを要求する。これはgap→0の有限ladder診断であり、
+  漸近fitや微分不可能性の証明には使わない。
+
+### validityと判定
+
+全384 direction-amplitude record（32 direction × 2 chart × 6 amplitude、各recordに \(\pm\) 2 state、
+合計768 signed state）と2 stageを欠落なく実行し、全stateをpositive、全値finite、strict JSONとする。
+uniform equilibrium、群作用、
+enumerationのいずれかが不整合なら`inconclusive`とする。
+
+次を全て満たす場合、
+`equivariant unique-anchor obstruction confirmed`としてacceptedとする。
+
+- base multiplicity 289、gap 0
+- 2 translation generatorのcommon fixed siteが0
+- uniform stateのgenerator invariance error 0
+- row-major selectorのanchor covariance failureが2 / 2
+- 振幅縮小gap gateが全chart／stage／signで通る
+
+validだがいずれかを落とせば`unique-anchor obstruction not established`としてrejected、validity失敗は
+inconclusiveとする。acceptedはunique-site selector classだけを排除し、全てのtranslation-equivariant
+conservative arithmeticを排除しない。Q006lの有限軌道accepted、Q006i／Q006jの判定も変更しない。
+acceptedなら次に、anchorを持たないsmooth correctionか、明示的なfloating-point forward-error budgetを
+比較するgateを事前登録する。
 
 ## Q007: degree continuation は有効か
 

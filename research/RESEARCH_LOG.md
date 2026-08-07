@@ -1306,6 +1306,65 @@ Q006iとQ006jの封印判定は変更しない。
 Q006l: collision／filter各stageのstate-covariant anchorとC4共変right inverseによる一回補正は、
 登録64 trajectoryで保存上限、positivity、translation／C4 equivarianceを同時に満たすか。
 
+## Cycle Q006l: stagewise state-covariant conservative arithmetic
+
+### 問い
+
+Q006kの固定site依存を除き、collision／filter各stageの \(q_0\) 最大siteとC4共変right inverseを使う
+一回補正は、保存上限、positivity、translation／C4 equivarianceを同時に満たすか。
+
+### 仮説
+
+全registered trajectoryでanchorが一意に分離し、stagewise controlがstandardとの差を微小に保ったまま
+100-step保存driftを \(10^{-12}\) 以下にし、2 translation generatorとquarter-turnに共変となる。
+
+### 実験
+
+- Q006kと同じlinear／quadratic各32、合計64 trajectory、100 step
+- standard／fixed／stagewise-covariantの合計19,200 control-step
+- collision後とfilter後に各一回、global residualをminimum-norm right inverseで補正
+- 各12,800 stageでunique-anchor gapを保存
+- 各stageでtranslation-y、translation-x、quarter-turnの補正operatorを直接比較
+
+### 結果
+
+全validity／hypothesis gateを通過し、
+`covariant anchor correction controls registered drift`としてacceptedとした。
+
+- Q006k standard / fixed reproduction error: `0 / 0`
+- covariant maximum drift: `1.1368684e-13`
+- minimum collision / filter anchor gap: `1.6348855e-9 / 1.2466926e-9`
+- anchor covariance failure: `0`
+- maximum translation / quarter-turn error: `0 / 0`
+- right-inverse condition / residual: `1.2247449 / 2.2204460e-16`
+- maximum single-stage correction norm: `1.8963156e-14`
+- covariant / standard maximum state difference: `1.1557707e-13`
+- minimum population: `0.0275271`
+- `math.fsum` / Neumaier maximum component difference: `0`
+
+### 分析
+
+登録した非零振幅trajectory上では、state-derived anchorはtranslation／C4のgeneratorに厳密に共変で、
+補正は100-step driftを上限の約0.114倍へ抑えた。固定site controlよりdriftは大きいが、対称性を
+失わず、state差とcorrection normは十分小さい。
+
+ただし、これは平衡近傍の滑らかなmapをまだ定義しない。一様平衡では \(q_0\) が全289 siteで等しく、
+unique anchor gapは0である。周期translationに不変なstateからtranslation-equivariantに一つのsiteを
+選ぶことは、どのsiteもtranslation generatorの固定点でないため不可能である。従ってQ006lの受理は
+unique-anchor有限軌道に限定し、production map、Taylor微分、Q006i再判定へ拡張しない。
+
+### 改善
+
+- uniform equilibriumのtie multiplicityとtranslation stabilizerを明示的に監査する。
+- equivariant unique-site selectorの固定点条件を有限群作用として検証する。
+- Q006i方向を振幅縮小し、collision／filter anchor gapが0へ近づくことを記録する。
+- このobstructionを通過するまでQ006l mapでHessian、chart、shadowingを再計算しない。
+
+### 次の問い
+
+Q006m: periodic translation-equivariantなunique-site anchor selectorは、一様平衡へ連続・微分可能に
+延長できず、Q006l correctionをlocal parameterization mapに採用できないか。
+
 ## 再現 artifact
 
 数値の完全な記録:

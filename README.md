@@ -46,7 +46,9 @@ Q006jは`structural or unresolved conservation defect`として`rejected`であ�
 intended／realized moment correctionが不一致となり、固定3-population controlは保存上限を
 通過したため、Q006kは診断範囲で`accepted`である。ただし固定site依存は採用せず、次のQ006lで
 collision／filter各stageの状態共変anchor correctionがtranslation／C4と保存を同時に満たすかを
-監査する。
+監査した。登録64 trajectoryでは保存・generator equivariance・anchor uniquenessを全て通過し、
+Q006lは有限軌道上で`accepted`となった。ただし一様平衡ではanchorが289重に縮退するため、次の
+Q006mでunique-anchor classのequivariant differentiability obstructionを先に判定する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -377,6 +379,27 @@ moment correctionを正確に実現しない**と限定する。同じmoment cor
 局在化すると登録保存上限を大幅に通過したが、固定siteと固定populationはtranslation／C4 symmetryを
 壊す。このcontrolは原因診断だけに使い、Q006i／Q006jの判定、本番写像、chartへ採用しない。
 
+### Q006l stagewise state-covariant conservative arithmetic
+
+collision後とfilter後のraw stateごとに \(q_0\) 最大siteを選び、minimum-norm conserved-moment
+right inverseでglobal residualを一回補正した。standard／Q006k fixed controlを誤差0で再現し、
+64 trajectory × 100 step × 2 stageの全anchorとtranslation／C4 generatorを監査した。
+
+- classification: `covariant anchor correction controls registered drift`
+- covariant maximum drift: `1.1368684e-13`（上限 `1e-12`）
+- minimum anchor gap: collision `1.63489e-9`、filter `1.24669e-9`
+- anchor covariance failure: `0`
+- translation / C4 equivariance error: `0 / 0`
+- right-inverse condition / residual: `1.2247449 / 2.22045e-16`
+- maximum single-stage correction norm: `1.89632e-14`
+- covariant / standard maximum state difference: `1.15577e-13`
+- minimum population: `0.0275271`
+
+これは登録軌道が全stepでunique-anchor gapを持つ範囲の算術結果である。補正はglobal residualと
+`argmax`に依存し、anchor switchで非滑らかになる。特に基準一様平衡では全siteがtieとなるため、
+このままparameterization mapの近傍写像として採用したり、Q006iを再判定したりしない。Q006mで
+translation-equivariant unique-site selectorが一様平衡へ連続・微分可能に延長できるかを判定する。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -400,7 +423,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
-`q006g`、`q006h`、`q006i`、`q006j`、`q006k` は
+`q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -420,6 +443,7 @@ python -m ttim_lbm --study q006h --output research/artifacts/q006h_cluster_compl
 python -m ttim_lbm --study q006i --output research/artifacts/q006i_full2d_quadratic.json
 python -m ttim_lbm --study q006j --output research/artifacts/q006j_conservation_drift.json
 python -m ttim_lbm --study q006k --output research/artifacts/q006k_projection_representability.json
+python -m ttim_lbm --study q006l --output research/artifacts/q006l_covariant_correction.json
 ```
 
 保存済み結果:
@@ -437,6 +461,7 @@ python -m ttim_lbm --study q006k --output research/artifacts/q006k_projection_re
 - [`research/artifacts/q006i_full2d_quadratic.json`](research/artifacts/q006i_full2d_quadratic.json)
 - [`research/artifacts/q006j_conservation_drift.json`](research/artifacts/q006j_conservation_drift.json)
 - [`research/artifacts/q006k_projection_representability.json`](research/artifacts/q006k_projection_representability.json)
+- [`research/artifacts/q006l_covariant_correction.json`](research/artifacts/q006l_covariant_correction.json)
 
 ## 文書
 
@@ -468,13 +493,14 @@ python -m ttim_lbm --study q006k --output research/artifacts/q006k_projection_re
 - Q006i 24実座標full-2D dense quadratic chart、非自明な \(R_2\)、独立Hessian・残差・shadow audit
 - Q006j 3種の保存量集約、collision/streaming/filter分解、一様fixed-leaf projection control
 - Q006k 一様projectionのULP／実現誤差、固定3-population localized diagnostic
+- Q006l collision/filter stagewise covariant correction、translation／C4・unique-anchor audit
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006l のstagewise state-covariant anchor correctionとtranslation／C4監査
+- Q006m のuniform-equilibrium unique-anchor differentiability obstruction監査
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ006lである。固定site diagnosticを採用せず、collisionとfilterの各stageで
-state-covariant anchorとC4共変right inverseを用いる一回補正が、保存、translation／C4、positivityを
-同時に満たすかを検証する。この診断を終えるまでTT圧縮へは進まない。
+従って次のゲートはQ006mである。一様平衡の289-way tieと周期translation作用を用いて、
+unique-site anchor correctionが平衡近傍のequivariant mapとして成立できるかを判定する。この診断を
+終えるまでQ006lをproduction mapへ昇格せず、TT圧縮へも進まない。
