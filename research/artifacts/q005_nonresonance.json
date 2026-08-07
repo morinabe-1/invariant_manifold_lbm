@@ -3229,7 +3229,7 @@
       }
     }
   },
-  "generated_at_utc": "2026-08-07T15:54:53.723087+00:00",
+  "generated_at_utc": "2026-08-07T16:19:20.593489+00:00",
   "mathematical_scope": {
     "conservation_treatment": "fixed global mass and momentum leaf",
     "construction_grid_parity": "odd periodic square grids only",
@@ -3244,7 +3244,7 @@
   },
   "schema_version": 1,
   "source": {
-    "package_source_sha256": "b3eb980064629caf6eb3ae108ae2199434f264ee76565d576ac41ce7b27b2ba6",
+    "package_source_sha256": "25e37184291bd2b1221a158b2847b8a6259d6531874f5b58cd50a5f651b321b0",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

@@ -167,3 +167,37 @@ def test_q006n_artifact_records_the_preregistered_mixed_refinement_outcome() -> 
     assert cycle["summary"]["refinement_coefficient_and_blockwise_pass_count"] == 13
     assert not cycle["summary"]["registered_obstruction_supported"]
     assert cycle["summary"]["viable_omegas"] == []
+
+
+def test_q006c_artifact_records_only_the_finite_ladder_scaling_claim() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006c_coefficient_scaling.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "construction": "finite registered small-wave coefficient scaling audit",
+        "grid_sizes": [17, 33, 65, 129, 257],
+        "fit_grid_sizes": [33, 65, 129, 257],
+        "omegas": [1.0, 1.2, 1.5, 1.8],
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "coordinate_normalizations": [
+            "symbol-local Fourier amplitude",
+            "global-L2-isometric Fourier coefficient",
+        ],
+        "manifold_claim": (
+            "finite-ladder coefficient scaling diagnosis only; no asymptotic "
+            "theorem, normal-attraction repair, or manifold existence claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["conditions"]) == 20
+    assert len(cycle["fits"]) == 8
+    assert cycle["summary"]["all_registered_scaling_windows_passed"]
+    assert cycle["summary"]["n257_materially_forced_near_witness_count"] == 56
+    assert cycle["summary"]["n257_outside_target_witness_count"] == 0

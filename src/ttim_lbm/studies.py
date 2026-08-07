@@ -8,6 +8,7 @@ from typing import Any
 
 import numpy as np
 
+from .coefficient_scaling import run_coefficient_scaling_audit
 from .d2q9 import (
     bgk_periodic_step,
     fourier_symbol,
@@ -1579,6 +1580,37 @@ def run_q006n_study() -> dict[str, Any]:
             "manifold_claim": (
                 "finite-ladder obstruction classification only; no theorem for "
                 "all odd grids and no invariant-manifold existence claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006c_study() -> dict[str, Any]:
+    """Run and package the sealed Q006c coefficient-scaling campaign."""
+
+    cycle = run_coefficient_scaling_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "construction": "finite registered small-wave coefficient scaling audit",
+            "grid_sizes": [17, 33, 65, 129, 257],
+            "fit_grid_sizes": [33, 65, 129, 257],
+            "omegas": [1.0, 1.2, 1.5, 1.8],
+            "conservation_treatment": "fixed global mass and momentum leaf",
+            "coordinate_normalizations": [
+                "symbol-local Fourier amplitude",
+                "global-L2-isometric Fourier coefficient",
+            ],
+            "manifold_claim": (
+                "finite-ladder coefficient scaling diagnosis only; no asymptotic "
+                "theorem, normal-attraction repair, or manifold existence claim"
             ),
         },
         "cycle": cycle,
