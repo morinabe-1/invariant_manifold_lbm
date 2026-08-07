@@ -566,3 +566,53 @@ def test_q006p_artifact_preserves_original_and_policy_columns() -> None:
     assert cycle["summary"]["policy_failed_gate_count"] == 0
     assert cycle["original_column"]["sealed_hypothesis_outcome"] == "rejected"
     assert "independent holdout" in cycle["claim_boundary"]
+
+
+def test_q006q_artifact_records_the_independent_holdout() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006q_forward_error_holdout.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "independent forward-error-policy holdout",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "trajectory_count": 128,
+        "trajectory_step_count": 16000,
+        "component_check_count": 48000,
+        "scenarios": [
+            {
+                "name": "long_horizon",
+                "direction_seed": 20260811,
+                "amplitude": 0.005,
+                "steps": 200,
+            },
+            {
+                "name": "large_amplitude",
+                "direction_seed": 20260812,
+                "amplitude": 0.02,
+                "steps": 50,
+            },
+        ],
+        "claim": (
+            "two finite-trajectory holdout scenarios only; no all-state or "
+            "all-horizon theorem and no invariance claim at amplitude 0.02"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "independent holdout supports registered forward-error policy"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["scenario_policy_gates"].values())
+    assert all(gate["passed"] for gate in cycle["holdout_policy_gates"].values())
+    assert cycle["summary"]["trajectory_count"] == 128
+    assert cycle["summary"]["component_budget_check_count"] == 48000
+    assert cycle["summary"]["budget_violation_count"] == 0
+    assert "not an all-state" in cycle["claim_boundary"]

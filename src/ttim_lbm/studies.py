@@ -23,6 +23,7 @@ from .d2q9 import (
 )
 from .dual_reporting import run_dual_reporting_audit
 from .forward_error_budget import run_forward_error_budget_audit
+from .forward_error_holdout import run_forward_error_holdout_audit
 from .full2d_chart import run_full2d_quadratic_audit
 from .low_wave_tangency import run_low_wave_tangency_audit
 from .manifold import (
@@ -1929,6 +1930,49 @@ def run_q006p_study() -> dict[str, Any]:
                 "same-trajectory integration audit only; the sealed Q006i "
                 "rejection remains unchanged and an independent holdout is "
                 "required before degree continuation"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006q_study() -> dict[str, Any]:
+    """Run and package the sealed Q006q independent holdout."""
+
+    cycle = run_forward_error_holdout_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "independent forward-error-policy holdout",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "trajectory_count": 128,
+            "trajectory_step_count": 16000,
+            "component_check_count": 48000,
+            "scenarios": [
+                {
+                    "name": "long_horizon",
+                    "direction_seed": 20260811,
+                    "amplitude": 0.005,
+                    "steps": 200,
+                },
+                {
+                    "name": "large_amplitude",
+                    "direction_seed": 20260812,
+                    "amplitude": 0.02,
+                    "steps": 50,
+                },
+            ],
+            "claim": (
+                "two finite-trajectory holdout scenarios only; no all-state or "
+                "all-horizon theorem and no invariance claim at amplitude 0.02"
             ),
         },
         "cycle": cycle,

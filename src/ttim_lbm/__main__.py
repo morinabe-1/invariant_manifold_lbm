@@ -22,6 +22,7 @@ from .studies import (
     run_q006n_study,
     run_q006o_study,
     run_q006p_study,
+    run_q006q_study,
     run_q006r_study,
     run_q006s_study,
 )
@@ -57,6 +58,7 @@ def main() -> None:
             "q006m",
             "q006o",
             "q006p",
+            "q006q",
         ),
         default="baseline",
     )
@@ -98,8 +100,10 @@ def main() -> None:
         result = run_q006m_study()
     elif arguments.study == "q006o":
         result = run_q006o_study()
-    else:
+    elif arguments.study == "q006p":
         result = run_q006p_study()
+    else:
+        result = run_q006q_study()
     rendered = json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\n"
     if arguments.output is None:
         print(rendered, end="")
