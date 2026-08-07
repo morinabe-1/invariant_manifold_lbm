@@ -1608,6 +1608,66 @@ worst utilizationはlong-horizon・linear direction 0・step 1のmassで、drift
 Q007a: Q006iの24座標clusterは、登録grid上で全2,600 order-three homological blockが一意に解ける
 非共鳴familyか。
 
+## Cycle Q007a: cubic homological-family prequalification
+
+### 問い
+
+Q006iの24座標clusterに対する全order-three homological blockは、登録grid上で一意に解ける
+非共鳴operator familyか。
+
+### 仮説
+
+24 complex modeの全2,600 unordered tripleでnumerically singular blockは0となり、全conditionは
+登録ceiling `1e9` 以下に収まる。
+
+### 実験
+
+- artifactを入力せず8 wave × 3 modeを再構築
+- 同じassemblyでorder-2の300 pairを再列挙しQ006iをcontrol再現
+- order-3の2,600 tripleをzero-wave kinetic／internal selected／externalへ分類
+- 全singular values、rank threshold、condition、near-resonance、multiplicityを保存
+- triple共役operatorのmultiplier／singular valuesとC4／共役output-wave count closureを監査
+
+### 結果
+
+全validity／hypothesis gateを通過し、
+`order-three homological family prequalified on registered grid`としてacceptedとした。
+
+- order-2 pair / sector count: `300 / 36 / 108 / 156`
+- order-2 minimum singular / maximum condition:
+  `0.00015502435597333105 / 14513.930547954875`
+- order-3 triple / sector count: `2600 / 108 / 1044 / 1448`
+- order-3 singular / near-resonant block: `0 / 24`
+- order-3 minimum singular / maximum condition:
+  `0.00020787972673242753 / 10821.814847751179`
+- minimum rank margin: `4.6239929774875706e8`
+- conjugate multiplier / singular-value relative error:
+  `2.9151992739486325e-16 / 2.8470292165304574e-15`
+- output wave count / rotation / conjugacy failure: `49 / 0 / 0`
+
+### 分析
+
+order-2 controlはQ006iのsector count、minimum singular value、maximum conditionを数値誤差0で再現した。
+order-3のworst blockは`t00238`、input `m000,m013,m017`、external wave `(1,2)`で、conditionは
+`10821.8148`だった。これはceilingより約5桁小さく、numerical rank thresholdに対するminimum marginも
+`4.62e8`ある。従って登録grid上で3次係数の一意solveを妨げるspectral obstructionは見つからなかった。
+
+ただしforcingを計算しておらず、係数の正しさや残差4次化は未検証である。near-resonant diagnostic 24件も
+存在するため、Q007bでは全forcing・solve residual・係数normを保存し、実際の改善で判定する。
+
+### 改善
+
+- rest equilibriumの解析的3次微分を独立5点有限差分で照合する。
+- 2次係数と3次map derivativeから全2,600 forcingを構成する。
+- complex Fourier-fiber表現でcubic chartを評価し、dense \(2601\times24^3\) tensorを避ける。
+- held-out seedで残差次数`3 → 4`と100-step shadowingを比較する。
+- fixed-leaf、共役、C4、Q006o arithmetic budgetを別gateで監査する。
+
+### 次の問い
+
+Q007b: 全cubic forcingと係数は独立微分・homological equationを通り、held-out残差次数と100-step
+shadowingをquadratic chartから改善するか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -1639,3 +1699,5 @@ Q007a: Q006iの24座標clusterは、登録grid上で全2,600 order-three homolog
 [`artifacts/q006p_dual_reporting.json`](artifacts/q006p_dual_reporting.json)
 
 [`artifacts/q006q_forward_error_holdout.json`](artifacts/q006q_forward_error_holdout.json)
+
+[`artifacts/q007a_cubic_prequalification.json`](artifacts/q007a_cubic_prequalification.json)

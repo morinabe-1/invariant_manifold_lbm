@@ -1580,7 +1580,7 @@ Q006oの式・係数・上限を変更せず、2 scenarioの両方とaggregate�
 算術policyに対する独立holdoutを完了する。all-state／all-horizon theoremやamplitude `0.02`でのchart
 invarianceは引き続き主張しない。
 
-## Q007a: cubic homological-family prequalification — 事前登録
+## Q007a: cubic homological-family prequalification — 完了
 
 ### 問い
 
@@ -1657,12 +1657,139 @@ validだが一方でも失敗すれば
 有限grid非共鳴性だけを意味し、cubic forcing、係数、独立微分、残差4次化、shadowing改善、SSM存在を
 まだ主張しない。acceptedの場合だけQ007bを詳細に事前登録する。
 
-## Q007b: cubic coefficient and residual continuation — 未登録
+### 結果
+
+全validity／hypothesis gateを通過し、
+`order-three homological family prequalified on registered grid`としてacceptedとした。
+
+- order-2 pair / sector count: `300 / 36 / 108 / 156`
+- order-2 minimum singular / maximum condition:
+  `0.00015502435597333105 / 14513.930547954875`
+- order-3 triple / sector count: `2600 / 108 / 1044 / 1448`
+- order-3 numerical singular / near-resonant block: `0 / 24`
+- order-3 minimum singular / maximum condition:
+  `0.00020787972673242753 / 10821.814847751179`
+- minimum rank margin: `4.6239929774875706e8`
+- conjugate multiplier / singular-value relative error:
+  `2.9151992739486325e-16 / 2.8470292165304574e-15`
+- output wave count / rotation / conjugacy failure: `49 / 0 / 0`
+
+Q007aはoperator-only finite-grid prequalificationである。3次forcing、係数、残差4次化、shadowing改善は
+未検証なので、次のQ007bを独立gateとして扱う。
+
+## Q007b: cubic coefficient and residual continuation — 事前登録
 
 ### 問い
 
 全3次forcingとcubic chart／reduced mapを構築し、独立微分、homological residual、held-out残差次数
-`3 → 4`、100-step shadowingを改善できるか。閾値とseedはQ007a判定後、実装前に固定する。
+`3 → 4`、100-step shadowingをquadratic chartから改善できるか。
+
+### 固定設定と表現
+
+- grid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、24実reduced coordinates
+- Q006iのquadratic chart、\(\Lambda\)、\(G=R_2\) をsealed runnerから再構築
+- Q007aと同じ2,600 unordered complex-mode tripleを全て解く
+- Q006oで選んだunmodified standard mapを使い、uniform／fixed-site／unique-anchor correctionは使わない
+- 3次係数はsymmetric complex Fourier-fiberとして保存し、permutation multiplicity `1 / 3 / 6`を使う
+- 物理空間の \(2601\times24^3\) full dense tensorはmaterializeせず、unique triple係数、output wave、
+  coefficient hash、実評価結果をartifactへ保存する
+
+chartとreduced mapの規約を
+
+\[
+W_3(a)=W_2(a)+\frac16T[a,a,a],\qquad
+R_3(a)=R_2(a)+\frac16K[a,a,a]
+\]
+
+に固定する。
+
+### 解析的3次forcing
+
+各triple \((i,j,k)\) で、3次homological forcingを
+
+\[
+\begin{aligned}
+F_{ijk}^{(3)}={}&D^3\Phi[V_i,V_j,V_k]\\
+&+D^2\Phi[H_{ij},V_k]+D^2\Phi[H_{ik},V_j]+D^2\Phi[H_{jk},V_i]\\
+&-H[G_{ij},\Lambda e_k]-H[G_{ik},\Lambda e_j]-H[G_{jk},\Lambda e_i]
+\end{aligned}
+\]
+
+とし、Q007aと同じoperatorで \((T_{ijk},K_{ijk})\) を解く。D2Q9 equilibriumのrest stateでは、
+保存moment \(m_r=(\delta\rho_r,\delta j_r)\) に対し
+
+\[
+D^3 f^{\rm eq}[m_1,m_2,m_3]
+=-\delta\rho_1 H(\delta j_2,\delta j_3)
+-\delta\rho_2 H(\delta j_1,\delta j_3)
+-\delta\rho_3 H(\delta j_1,\delta j_2)
+\]
+
+を使い、collision、streaming phase、filter multiplierを順に適用する。観測残差からforcingをfitしない。
+
+### 独立3次微分 gate
+
+seed `20260814` の16正規化方向を使い、\(v=Vd\) に対する解析的
+\(D^3\Phi(f_*)[v,v,v]\) を5点中心差分
+
+\[
+\frac{\Phi(f_*+2hv)-2\Phi(f_*+hv)+2\Phi(f_*-hv)-\Phi(f_*-2hv)}{2h^3}
+\]
+
+と比較する。step sweepは `0.02, 0.01, 0.005, 0.0025, 0.00125` に固定する。各方向で最良stepを
+選ぶが方向や結果ごとにstep集合を変えない。解析的derivative normを `1e-12` より大きくし、16方向の
+minimum relative errorの最大値を `5e-4` 以下とする。homological residualだけで3次微分を正当化しない。
+
+### coefficient validity gate
+
+1. Q007aのtriple count、sector count `108 / 1044 / 1448`、singular block `0`、maximum condition
+   `10821.814847751179`をrelative error `1e-10` 以下で再現する。
+2. 全2,600 solveのrelative residualを `1e-10` 以下にする。
+3. 全tripleのhomological equation relative residual、coefficient conjugacy residual、graph-gauge residual、
+   zero-wave conserved-moment residualを各 `1e-10` 以下にする。
+4. seed `20260817` の16方向、amplitude `0.01`でchartとreduced mapのC4 equivariance relative errorを
+   各 `1e-10` 以下にする。
+5. coefficient、chart evaluation、reduced-map evaluationがfinite、全試験stateがpositive、strict JSON。
+
+### held-out residual-order gate
+
+Q006iのresidual seed `20260809`を再利用せず、seed `20260815` の32方向を使う。amplitudeは
+`0.00125, 0.0025, 0.005, 0.0075, 0.01` とし、roundoff floorを避けるためslopeは後ろ4点だけでfitする。
+
+- quadratic residual slopeを全方向で `3 ± 0.1`
+- cubic residual slopeを全方向で `4 ± 0.15`
+- amplitude `0.01`の各方向でcubic/quadratic residual ratioを `0.10` 以下
+- 全lifted／mapped stateをpositive
+
+とする。最大ratio、最悪方向、全residual列を保存する。
+
+### held-out 100-step shadowing gate
+
+Q006i shadow seed `20260810`を再利用せず、seed `20260816` の32方向、amplitude `0.01`、100 stepを使う。
+同じ方向についてquadraticとcubic chartをそれぞれ自己整合的な初期state／reduced mapでrolloutし、
+方向ごとのmaximum absolute error、final absolute error、maximum perturbation-relative errorを比較する。
+
+各方向で次を全て要求する。
+
+1. cubic/quadratic maximum absolute-error ratio `<=0.8`
+2. cubic/quadratic final absolute-error ratio `<=0.8`
+3. cubic/quadratic maximum perturbation-relative-error ratio `<=0.8`
+
+さらにcubic trajectoryの全3,200 step × 3 componentでQ006oの
+\(2t\operatorname{spacing}(S_c(f_0))\) budget違反を0、maximum final component budgetを `1.2e-11` 以下、
+全stateをpositiveとする。旧Q006iの \(10^{-12}\) gateや`rejected`判定は変更しない。
+
+### 判定
+
+全独立微分・coefficient validity・residual-order・shadowing gateを通過した場合だけ
+`cubic chart improves registered finite-grid invariance and shadowing`としてacceptedとする。validityを
+通るが残差またはshadowing改善を落とせば
+`cubic continuation does not improve the registered chart`としてrejected、独立微分・assembly・finite値・
+serializationが失敗すればinconclusiveとする。
+
+acceptedでも、登録finite grid・direction・amplitude・100-step horizonに限る。quartic改善、TT圧縮、
+all-radius chart、grid-uniform family、真の不変多様体の存在・一意性・normal attractionを主張しない。
+acceptedの場合だけQ007cを詳細に事前登録する。
 
 ## Q007c: quartic continuation — 未登録
 

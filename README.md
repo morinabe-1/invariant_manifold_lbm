@@ -58,7 +58,8 @@ realizationをともに落としたため、Q006oはunmodified map policyを`acc
 policy columnは全8 gateを通過した。従ってQ006pは条件付きchart continuationを`accepted`としたが、
 同一データの再利用に限る。Q006qでは別seed・振幅・horizonの128 trajectory、16,000 step、
 48,000 component checkを行い、違反0、最大utilization `0.5`で独立holdoutを通過した。次のQ007aで
-3次homological operatorの全2,600 unordered tripleをprequalificationする。
+3次homological operatorの全2,600 unordered tripleをprequalificationし、singular block 0、最大condition
+`10821.8`で通過した。次のQ007bでcubic forcing・係数・残差次数・shadowingを検証する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -496,6 +497,28 @@ Q006oの係数2、component scale、`numpy.spacing`、`math.fsum`／Neumaier測�
 roundoff定理ではなく、amplitude `0.02`でのchart invarianceも主張しない。次数継続はまずQ007aで3次の
 全homological blockが一意に解ける条件を満たすか調べ、通過した場合だけcubic coefficientを構築する。
 
+### Q007a cubic homological-family prequalification
+
+Q006iと同じ24 complex modeについて、order-2 control 300 pairとorder-3全2,600 unordered tripleを
+artifact入力なしで組み立てた。zero-wave kinetic、internal selected、external blockを同一SVD規則で
+判定した。
+
+- classification: `order-three homological family prequalified on registered grid`
+- order-2 sector count: `36 / 108 / 156`
+- order-2 minimum singular / maximum condition:
+  `1.5502436e-4 / 14513.9305`（Q006iを誤差0で再現）
+- order-3 sector count: `108 / 1044 / 1448`
+- order-3 singular / near-resonant block: `0 / 24`
+- order-3 minimum singular / maximum condition:
+  `2.0787973e-4 / 10821.8148`（ceiling `1e9`）
+- conjugate multiplier / singular-value relative error:
+  `2.91520e-16 / 2.84703e-15`
+- output wave count / C4・conjugacy count failure: `49 / 0 / 0`
+
+これは登録有限grid上のoperator-only判定であり、cubic forcingや係数をまだ計算していない。Q007bでは
+解析的3次微分を独立有限差分で照合し、全係数solve、fixed-leaf／共役／C4、held-out残差次数`3 → 4`、
+100-step shadowing改善を別gateとして判定する。
+
 ## TT 格納量の解釈
 
 Phase 0 の \(81\times3\times3\times3\) 二次 coefficient tensor の比較は次の通りである。
@@ -520,7 +543,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
 `q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
-`q006q` は
+`q006q`、`q007a` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -545,6 +568,7 @@ python -m ttim_lbm --study q006m --output research/artifacts/q006m_anchor_obstru
 python -m ttim_lbm --study q006o --output research/artifacts/q006o_forward_error_budget.json
 python -m ttim_lbm --study q006p --output research/artifacts/q006p_dual_reporting.json
 python -m ttim_lbm --study q006q --output research/artifacts/q006q_forward_error_holdout.json
+python -m ttim_lbm --study q007a --output research/artifacts/q007a_cubic_prequalification.json
 ```
 
 保存済み結果:
@@ -567,6 +591,7 @@ python -m ttim_lbm --study q006q --output research/artifacts/q006q_forward_error
 - [`research/artifacts/q006o_forward_error_budget.json`](research/artifacts/q006o_forward_error_budget.json)
 - [`research/artifacts/q006p_dual_reporting.json`](research/artifacts/q006p_dual_reporting.json)
 - [`research/artifacts/q006q_forward_error_holdout.json`](research/artifacts/q006q_forward_error_holdout.json)
+- [`research/artifacts/q007a_cubic_prequalification.json`](research/artifacts/q007a_cubic_prequalification.json)
 
 ## 文書
 
@@ -603,13 +628,14 @@ python -m ttim_lbm --study q006q --output research/artifacts/q006q_forward_error
 - Q006o standard-map componentwise ULP budget、uniform projection policy比較
 - Q006p Q006i original-threshold／forward-error-policy dual-reporting、64方向の完全照合
 - Q006q 2 independent scenario、128 trajectory・48,000 component forward-error holdout
+- Q007a 全2,600 cubic homological block、order-2 reproduction、共役／C4 count closure
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007a の全2,600 cubic homological block prequalification
+- Q007b のcubic forcing／coefficient、残差4次化、100-step shadowing
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007aである。3次係数を計算する前に、24複素モードの全2,600 unordered tripleについて
-zero-wave kinetic、internal selected、external operatorのrankとconditionを監査する。これを通過するまで
-cubic coefficient構築やTT圧縮へ進まない。
+従って次のゲートはQ007bである。解析的3次forcingを独立有限差分で検証した後、全2,600 tripleを解き、
+held-out residual orderとshadowingがquadratic chartより改善するかを判定する。これを通過するまでquartic
+continuationやTT圧縮へ進まない。
