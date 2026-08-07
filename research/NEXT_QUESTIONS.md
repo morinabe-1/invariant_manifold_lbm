@@ -1239,7 +1239,7 @@ chartの残差・shadowingをこの変更写像で再監査する前に、map定
 acceptedはunique-anchorを保った登録有限trajectoryに限る。uniform equilibriumでは289-way tieとなる
 ため、production map、Taylor微分、Q006i再判定へは進めない。
 
-## Q006m: equivariant unique-anchor differentiability obstruction — 事前登録
+## Q006m: equivariant unique-anchor differentiability obstruction — 完了
 
 ### 問い
 
@@ -1299,6 +1299,106 @@ inconclusiveとする。acceptedはunique-site selector classだけを排除し�
 conservative arithmeticを排除しない。Q006lの有限軌道accepted、Q006i／Q006jの判定も変更しない。
 acceptedなら次に、anchorを持たないsmooth correctionか、明示的なfloating-point forward-error budgetを
 比較するgateを事前登録する。
+
+### 結果
+
+全validity／hypothesis gateを通過し、
+`equivariant unique-anchor obstruction confirmed`としてacceptedとした。
+
+- uniform \(q_0\) maximum multiplicity / gap: `289 / 0`
+- 2 generatorのfixed-site count: `0 / 0`
+- uniform translation invariance error: `0`
+- row-major covariance failure: `2 / 2`
+- direction-amplitude / signed-state / stage record: `384 / 768 / 1536`
+- failed gap ladder: `0 / 8`
+- maximum gap ratio: `1.0052062e-5`
+- minimum population: `0.0275189`
+
+translationで固定されたuniform stateにequivariant selectorの値を置くには、site側にも同じtranslationの
+固定点が必要だが、そのようなsiteは存在しない。従ってunique-site selectorはuniform equilibriumで
+定義すらできず、連続・微分可能な延長も不可能である。有限振幅ladderはこの厳密な固定点矛盾の証明
+ではなく、Q006lで使った \(q_0\) gapが平衡へ向かって縮小する補助診断である。
+
+## Q006o: anchor-free correction versus forward-error budget — 事前登録
+
+### 問い
+
+Q006lの非滑らかなunique-anchor correctionを採用せず、Q006jのanchor-free uniform projectionを使う
+べきか。それとも、標準のsmooth・equivariant写像を変更せず、登録trajectoryの保存driftを明示的な
+float64 ULP budgetで管理する方が妥当か。
+
+### 固定設定
+
+- grid、model: \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)
+- chart: linear／quadratic各32方向、seed `20260810`、amplitude `0.01`
+- horizon: 100 step
+- controls: unmodified standard map、Q006jのuniform minimum-norm fixed-leaf projection
+- 保存量測定: `math.fsum`を主測定、Neumaier和を独立照合
+- collisionとfilterをconservation-sensitive stage、streamingをexact permutationとして扱う
+- Q006lのanchor correctionとQ006kのfixed-site controlは比較対象へ入れない
+
+Q006jのstandard／uniform maximum driftをそれぞれ
+`2.7285041507210106e-12`／`2.1600518690316044e-12`、trajectory数64、step数6400として
+許容誤差 `5e-15` 以内で再現する。再現できなければvalidity failureとする。
+
+### 登録forward-error budget
+
+保存moment matrixを \(C\in\mathbb R^{3\times9}\) とし、各初期stateについてcomponent scaleを
+
+\[
+S_c(f_0)=\sum_{x,q}|C_{cq}f_{0,x,q}|
+\]
+
+とする。`numpy.spacing`でこのscaleの1 ULPを \(u_c=\operatorname{spacing}(S_c)\) と定義し、step \(t\) の
+componentwise operational budgetを
+
+\[
+B_c(t)=2t u_c
+\]
+
+に固定する。係数2は、1 stepにcollisionとfilterの2 conservation-sensitive stageがあることだけから
+決め、観測driftからfitしない。全64 trajectory × 100 step × 3 component、合計19,200 checkで
+
+\[
+|Q_c(f_t)-Q_c(f_0)|\le B_c(t)
+\]
+
+を要求し、最大utilization、witness、component別final budgetを保存する。budgetの非自明性を保つため、
+全trajectory・componentで最大final budgetを `1.2e-11` 以下とする。このbudgetは登録float64実装の
+operational envelopeであり、任意state・任意horizonに対する丸め誤差定理とは呼ばない。
+
+### uniform projectionの選択条件
+
+uniform projectionを標準写像より選ぶには、次を両方要求する。
+
+1. worst drift improvement factor
+   \(D_{\rm standard}/D_{\rm uniform}\ge2\)
+2. 全6,400 stepでprojection後のremaining local `fsum` driftがexactly zero
+
+一方でも落とせば、uniform projectionは選ばない。これは既存 \(10^{-12}\) thresholdを変更して
+projectionを成功扱いするためのgateではない。
+
+### validityと判定
+
+次をvalidity gateとする。
+
+- 64 trajectory、6,400 trajectory-step、19,200 component-budget checkの完全列挙
+- Q006j standard／uniform driftの登録値再現
+- streaming `fsum` incrementが0
+- `math.fsum`／Neumaier差が `5e-14` 以下
+- 全state positive、全値finite、strict JSON
+
+validity通過後、全standard budget checkが通り、最大final budgetが `1.2e-11` 以下で、uniform selection
+条件を満たさない場合は、
+`unmodified equivariant map with registered forward-error budget preferred`としてacceptedとする。
+standard budgetも通りuniform selection条件も満たす場合は
+`smooth uniform correction preferred`としてacceptedとする。standard budgetが破れ、uniformも選択条件を
+満たさなければ`neither anchor-free arithmetic policy passes`としてrejected、validity failureは
+inconclusiveとする。
+
+acceptedでもQ006i／Q006jの封印判定や \(10^{-12}\) thresholdを遡及変更しない。結果は今後の写像定義を
+選ぶ有限軌道policy gateである。standard budget方針が選ばれた場合だけ、次の別gateでQ006iのchart
+residual／shadowingと保存判定をdual-reporting（旧thresholdと登録ULP budget）により再監査する。
 
 ## Q007: degree continuation は有効か
 

@@ -1365,6 +1365,72 @@ unique-anchor有限軌道に限定し、production map、Taylor微分、Q006i再
 Q006m: periodic translation-equivariantなunique-site anchor selectorは、一様平衡へ連続・微分可能に
 延長できず、Q006l correctionをlocal parameterization mapに採用できないか。
 
+## Cycle Q006m: equivariant unique-anchor differentiability obstruction
+
+### 問い
+
+Q006lのunique-site anchor selectorは、周期translationに不変なuniform equilibriumへequivariantかつ
+連続・微分可能に延長できるか。
+
+### 仮説
+
+uniform stateは全translationで固定される一方、周期site作用の非自明なgeneratorには固定siteがない。
+従ってequivariant unique-site selectorは平衡で値を持てず、登録振幅を縮小すると \(q_0\) top-two gapも
+0へ向かう。
+
+### 実験
+
+- \(X=\mathbb Z_{17}\times\mathbb Z_{17}\) の全289 siteを2 translation generatorについて列挙
+- uniform stateのbitwise invariance、row-major tie break、C4補助診断
+- linear／quadratic各32方向、6 amplitude、正負、collision／filterの1,536 stage observation
+- chart／stage／signごとの8本のmaximum-gap ladder
+
+### 結果
+
+全validity／hypothesis gateを通過し、
+`equivariant unique-anchor obstruction confirmed`としてacceptedとした。
+
+- uniform maximum multiplicity / gap: `289 / 0`
+- translation-y / translation-x fixed-site count: `0 / 0`
+- common fixed-site count: `0`
+- maximum uniform translation error: `0`、bitwise invariant: `true`
+- row-major translation covariance failure: `2 / 2`
+- direction-amplitude / signed-state / stage record: `384 / 768 / 1536`
+- failed gap ladder: `0 / 8`
+- maximum smallest/largest-amplitude gap ratio: `1.0052062e-5`
+- minimum population: `0.0275189`
+
+### 分析
+
+equivarianceを満たすselector \(s\) がuniform state \(f_*\) で定義できれば、任意のgenerator \(g\) に対し
+
+\[
+s(f_*)=s(T_gf_*)=g\cdot s(f_*)
+\]
+
+が必要である。しかし2 generatorはいずれも固定siteを持たないため矛盾する。これは連続性の問題より
+強く、equivariant unique-site selectorは平衡で定義自体ができない。8本のgap ladderの最大比は全て
+登録上限 \(10^{-4}\) を通り、最大でも `1.0052062e-5` だったが、これは有限振幅診断であって固定点矛盾の
+証明には用いない。
+
+従ってQ006lの有限unique-anchor trajectory上のacceptedは維持するが、そのcorrectionを平衡近傍の
+production map、Taylor derivative、Q006i再判定へ使わない。排除したのはunique-site selector classだけで、
+anchor-freeなsmooth correctionや、写像を変更しないroundoff budgetは未判定である。
+
+### 改善
+
+- Q006jのuniform minimum-norm projectionをanchor-free smooth controlとして再利用する。
+- 標準写像には観測driftからfitしないcomponentwise ULP budgetを事前登録する。
+- uniform correctionを選ぶには、worst driftを2倍以上改善し、全stepでremaining driftを0にすることを
+  要求する。
+- どちらを選んでもQ006i／Q006jの封印判定は遡及変更せず、必要なら別gateでdual-reportingする。
+
+### 次の問い
+
+Q006o: anchor-free uniform projectionは標準写像を置き換えるだけの改善とexact realizationを示すか。
+示さない場合、unmodified mapの登録driftは2 conservation-sensitive stageから定めた明示的ULP budget内に
+収まるか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -1388,3 +1454,5 @@ Q006m: periodic translation-equivariantなunique-site anchor selectorは、一�
 [`artifacts/d2q9_baseline.json`](artifacts/d2q9_baseline.json)
 
 [`artifacts/q004b_and_manufactured.json`](artifacts/q004b_and_manufactured.json)
+
+[`artifacts/q006m_anchor_obstruction.json`](artifacts/q006m_anchor_obstruction.json)

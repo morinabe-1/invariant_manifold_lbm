@@ -47,8 +47,12 @@ intended／realized moment correctionが不一致となり、固定3-population 
 通過したため、Q006kは診断範囲で`accepted`である。ただし固定site依存は採用せず、次のQ006lで
 collision／filter各stageの状態共変anchor correctionがtranslation／C4と保存を同時に満たすかを
 監査した。登録64 trajectoryでは保存・generator equivariance・anchor uniquenessを全て通過し、
-Q006lは有限軌道上で`accepted`となった。ただし一様平衡ではanchorが289重に縮退するため、次の
-Q006mでunique-anchor classのequivariant differentiability obstructionを先に判定する。
+Q006lは有限軌道上で`accepted`となった。ただし一様平衡ではanchorが289重に縮退するため、Q006mで
+unique-anchor classのequivariant differentiability obstructionを監査した。一様状態はtranslationで
+不変だが周期site作用には固定点がなく、全8本のgap ladderも縮退へ向かったため、Q006mは
+`accepted`である。従ってQ006lのunique-anchor correctionは局所production mapへ採用しない。次の
+Q006oでは、anchor-freeな一様smooth correctionと、写像を変更しない明示的forward-error budgetを
+比較する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -398,7 +402,29 @@ right inverseでglobal residualを一回補正した。standard／Q006k fixed co
 これは登録軌道が全stepでunique-anchor gapを持つ範囲の算術結果である。補正はglobal residualと
 `argmax`に依存し、anchor switchで非滑らかになる。特に基準一様平衡では全siteがtieとなるため、
 このままparameterization mapの近傍写像として採用したり、Q006iを再判定したりしない。Q006mで
-translation-equivariant unique-site selectorが一様平衡へ連続・微分可能に延長できるかを判定する。
+translation-equivariant unique-site selectorが一様平衡へ連続・微分可能に延長できるかを判定した。
+
+### Q006m equivariant unique-anchor obstruction
+
+\(17^2\) のuniform equilibriumと周期translation群を直接列挙し、Q006lのunique-site selectorが
+平衡へequivariantに延長できるかを監査した。固定点矛盾は有限群作用だけから得られ、振幅縮小は
+その近傍で \(q_0\) top-two gapがtieへ向かうことを確認する補助診断である。
+
+- classification: `equivariant unique-anchor obstruction confirmed`
+- uniform \(q_0\) maximum multiplicity / gap: `289 / 0`
+- translation generator fixed-site count: `0 / 0`
+- uniform translation invariance error: `0`
+- row-major anchor covariance failure: `2 / 2`
+- registered records: `384` direction-amplitude、`768` signed state、`1536` stage observation
+- failed gap ladder: `0 / 8`
+- maximum smallest/largest-amplitude gap ratio: `1.0052062e-5`（上限 `1e-4`）
+- minimum population: `0.0275189`
+
+一様状態 \(f_*\) は全translation \(T_g\) で固定される。一方、非自明なgenerator \(g\) が固定する
+siteはないので、unique-site selector \(s\) のequivarianceは
+\(s(f_*)=s(T_gf_*)=g\cdot s(f_*)\) という不可能な条件を要求する。これはunique-site selector classを
+排除するが、anchor-freeなequivariant arithmetic全体を排除しない。Q006lの有限軌道acceptedと
+Q006i／Q006jのrejected判定も変更しない。
 
 ## TT 格納量の解釈
 
@@ -423,7 +449,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
-`q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l` は
+`q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -444,6 +470,7 @@ python -m ttim_lbm --study q006i --output research/artifacts/q006i_full2d_quadra
 python -m ttim_lbm --study q006j --output research/artifacts/q006j_conservation_drift.json
 python -m ttim_lbm --study q006k --output research/artifacts/q006k_projection_representability.json
 python -m ttim_lbm --study q006l --output research/artifacts/q006l_covariant_correction.json
+python -m ttim_lbm --study q006m --output research/artifacts/q006m_anchor_obstruction.json
 ```
 
 保存済み結果:
@@ -462,6 +489,7 @@ python -m ttim_lbm --study q006l --output research/artifacts/q006l_covariant_cor
 - [`research/artifacts/q006j_conservation_drift.json`](research/artifacts/q006j_conservation_drift.json)
 - [`research/artifacts/q006k_projection_representability.json`](research/artifacts/q006k_projection_representability.json)
 - [`research/artifacts/q006l_covariant_correction.json`](research/artifacts/q006l_covariant_correction.json)
+- [`research/artifacts/q006m_anchor_obstruction.json`](research/artifacts/q006m_anchor_obstruction.json)
 
 ## 文書
 
@@ -494,13 +522,14 @@ python -m ttim_lbm --study q006l --output research/artifacts/q006l_covariant_cor
 - Q006j 3種の保存量集約、collision/streaming/filter分解、一様fixed-leaf projection control
 - Q006k 一様projectionのULP／実現誤差、固定3-population localized diagnostic
 - Q006l collision/filter stagewise covariant correction、translation／C4・unique-anchor audit
+- Q006m uniform-equilibrium tie、translation固定点矛盾、8本のanchor-gap ladder
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006m のuniform-equilibrium unique-anchor differentiability obstruction監査
+- Q006o のanchor-free smooth correction／forward-error budget policy比較
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ006mである。一様平衡の289-way tieと周期translation作用を用いて、
-unique-site anchor correctionが平衡近傍のequivariant mapとして成立できるかを判定する。この診断を
-終えるまでQ006lをproduction mapへ昇格せず、TT圧縮へも進まない。
+従って次のゲートはQ006oである。非滑らかな補正を採らず、anchor-freeな一様projectionと、標準写像を
+変更せずcollision／filter各stageへ明示的ULP budgetを割り当てる方針を比較する。この診断を終えるまで
+Q006iを再判定せず、TT圧縮へも進まない。
