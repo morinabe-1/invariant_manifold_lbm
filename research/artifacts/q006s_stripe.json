@@ -3243,7 +3243,7 @@
     },
     "study_validity": "passed"
   },
-  "generated_at_utc": "2026-08-07T16:19:17.911833+00:00",
+  "generated_at_utc": "2026-08-07T16:45:15.537082+00:00",
   "mathematical_scope": {
     "conservation_treatment": "fixed global mass and momentum leaf",
     "construction": "finite-grid y-independent stripe solver oracle",
@@ -3266,7 +3266,7 @@
   },
   "schema_version": 1,
   "source": {
-    "package_source_sha256": "25e37184291bd2b1221a158b2847b8a6259d6531874f5b58cd50a5f651b321b0",
+    "package_source_sha256": "c09f8b4b095445528d5115ce1d2808a2bff315391018eed7630263e47bd5919b",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

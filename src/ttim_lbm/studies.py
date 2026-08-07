@@ -8,6 +8,7 @@ from typing import Any
 
 import numpy as np
 
+from .checkerboard_filter import run_checkerboard_filter_audit
 from .coefficient_scaling import run_coefficient_scaling_audit
 from .d2q9 import (
     bgk_periodic_step,
@@ -1611,6 +1612,39 @@ def run_q006c_study() -> dict[str, Any]:
             "manifold_claim": (
                 "finite-ladder coefficient scaling diagnosis only; no asymptotic "
                 "theorem, normal-attraction repair, or manifold existence claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006f_study() -> dict[str, Any]:
+    """Run and package the sealed Q006f checkerboard-filter campaign."""
+
+    cycle = run_checkerboard_filter_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "construction": (
+                "finite registered conservative checkerboard-filter audit"
+            ),
+            "grid_sizes": [17, 33, 65, 129, 257],
+            "etas": [0.0, 0.01, 0.02, 0.03, 0.05],
+            "omegas": [1.0, 1.2, 1.5, 1.8],
+            "filter_order": (
+                "post-BGK-step population-wise five-point convolution"
+            ),
+            "conservation_treatment": "fixed global mass and momentum leaf",
+            "manifold_claim": (
+                "filtered finite-ladder prequalification only; no all-grid "
+                "theorem, nonlinear normal-attraction proof, or invariant-"
+                "manifold existence or uniqueness claim"
             ),
         },
         "cycle": cycle,

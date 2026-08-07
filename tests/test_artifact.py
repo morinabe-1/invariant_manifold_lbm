@@ -201,3 +201,38 @@ def test_q006c_artifact_records_only_the_finite_ladder_scaling_claim() -> None:
     assert cycle["summary"]["all_registered_scaling_windows_passed"]
     assert cycle["summary"]["n257_materially_forced_near_witness_count"] == 56
     assert cycle["summary"]["n257_outside_target_witness_count"] == 0
+
+
+def test_q006f_artifact_records_the_valid_filtered_family_rejection() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006f_checkerboard_filter.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "rejected"
+    assert artifact["mathematical_scope"] == {
+        "construction": "finite registered conservative checkerboard-filter audit",
+        "grid_sizes": [17, 33, 65, 129, 257],
+        "etas": [0.0, 0.01, 0.02, 0.03, 0.05],
+        "omegas": [1.0, 1.2, 1.5, 1.8],
+        "filter_order": "post-BGK-step population-wise five-point convolution",
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "manifold_claim": (
+            "filtered finite-ladder prequalification only; no all-grid "
+            "theorem, nonlinear normal-attraction proof, or invariant-"
+            "manifold existence or uniqueness claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "rejected"
+    assert cycle["selected_family"] is None
+    assert cycle["summary"]["viable_family_count"] == 0
+    assert len(cycle["conditions"]) == 100
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(family["coefficient_passed"] for family in cycle["families"])
+    assert all(
+        not family["spectral_gates"]["normal_dominance_gap"]["passed"]
+        for family in cycle["families"]
+    )
