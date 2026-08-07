@@ -1492,6 +1492,63 @@ forward-error theoremではない。Q006i／Q006jの旧 \(10^{-12}\) failureを�
 Q006p: Q006iのoriginal conservation failureを保持したdual reportで、unmodified-map chart continuationを
 条件付きで支持できるか。
 
+## Cycle Q006p: Q006i dual-reporting integration audit
+
+### 問い
+
+Q006iの旧 \(10^{-12}\) conservation failureを保持したまま、同じtrajectoryをQ006oのforward-error policyで
+別欄評価し、candidate chartの条件付き継続を支持できるか。
+
+### 仮説
+
+original columnではglobal conservationだけが失敗し続ける。一方、global conservationだけをQ006o standard
+policyへ置換したpolicy columnでは、他7 gateを一切変えずに全8 gateが通る。
+
+### 実験
+
+- Q006iとQ006oをartifact入力なしでsealed runnerから再実行
+- grid、\(\omega\)、\(\eta\)、seed、amplitude、horizon、chart種別を照合
+- linear／quadratic各32方向、合計64方向を成分ごとに完全照合
+- Q006iの8 gateをoriginal columnへdeep-copy
+- policy columnではglobal conservationだけをQ006o standard budgetへ置換
+
+### 結果
+
+全validity／dual decision gateを通過し、
+`dual reporting supports unmodified-map chart continuation`としてacceptedとした。
+
+- direction alignment record / maximum error: `64 / 0`
+- Q006i original maximum drift: `2.728496323152741e-12`
+- Q006o `math.fsum` maximum drift: `2.7285041507210106e-12`
+- cross-measurement difference: `7.82756826945652e-18`
+- original failed gate count / names: `1 / [global_conservation]`
+- policy failed gate count: `0`
+- Q006o standard / uniform policy: `passed / failed`
+- budget violation / maximum utilization: `0 / 0.5`
+- maximum final component budget: `1.1368683772161603e-11`
+
+### 分析
+
+Q006iのoriginal global-conservation threshold `1e-12`、failed判定、study outcome `rejected`はそのまま
+保存された。policy columnではその1 gateだけを有限trajectory用ULP budgetへ置き換え、他7 gateは値・
+threshold・判定がoriginalと一致する。従って過去の失敗を遡及的に消さず、unmodified mapを用いた次の
+検証へ条件付きで進める。
+
+ただしQ006pはQ006oと同じseed `20260810`、amplitude `0.01`、100 step、64 trajectoryを使うintegration
+auditであり、独立な一般化証拠ではない。all-state conservationやSSM existenceも主張しない。
+
+### 改善
+
+- Q006oのbudget式、係数2、component scale、測定法を凍結する。
+- seed `20260811`・amplitude `0.005`・200 stepで長時間holdoutを行う。
+- seed `20260812`・amplitude `0.02`・50 stepで大振幅holdoutを行う。
+- 128 trajectory、16,000 step、48,000 component checkを全列挙する。
+- holdout失敗後にbudgetをretuneせず、最初のviolation witnessを保存する。
+
+### 次の問い
+
+Q006q: Q006oのforward-error budgetは、別seed・amplitude・horizonの独立holdoutを係数変更なしで通るか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -1519,3 +1576,5 @@ Q006p: Q006iのoriginal conservation failureを保持したdual reportで、unmo
 [`artifacts/q006m_anchor_obstruction.json`](artifacts/q006m_anchor_obstruction.json)
 
 [`artifacts/q006o_forward_error_budget.json`](artifacts/q006o_forward_error_budget.json)
+
+[`artifacts/q006p_dual_reporting.json`](artifacts/q006p_dual_reporting.json)

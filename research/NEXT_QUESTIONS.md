@@ -1418,7 +1418,7 @@ residual／shadowingと保存判定をdual-reporting（旧thresholdと登録ULP 
 standard mapを変更せず有限trajectory上のroundoffを明示的に管理する方針を選ぶ。ただしこの結果は
 arithmetic policyの選択であり、Q006i／Q006jの旧 \(10^{-12}\) thresholdとrejected判定を変更しない。
 
-## Q006p: Q006i dual-reporting integration audit — 事前登録
+## Q006p: Q006i dual-reporting integration audit — 完了
 
 ### 問い
 
@@ -1468,6 +1468,98 @@ inconclusiveとする。
 acceptedは同一の登録64 trajectoryに対するintegration判定に限る。all-state conservation theoremや
 SSM existenceを主張しない。acceptedなら次に、別seed・amplitude・horizonでQ006o budgetをholdout検証する
 gateを事前登録し、それを通るまでdegree continuationへ進まない。
+
+### 結果
+
+全validity gateとdual decision gateを通過し、
+`dual reporting supports unmodified-map chart continuation`としてacceptedとした。
+
+- direction alignment record / maximum error: `64 / 0`
+- Q006i original / Q006o `math.fsum` drift:
+  `2.728496323152741e-12 / 2.7285041507210106e-12`
+- drift difference: `7.82756826945652e-18`
+- original failed gate: `1`（`global_conservation`）
+- policy failed gate: `0`
+- standard / uniform policy: `passed / failed`
+- budget violation / maximum utilization: `0 / 0.5`
+- maximum final component budget: `1.1368683772161603e-11`
+
+Q006iのoriginal columnと`rejected`判定は変更していない。policy columnはglobal conservationだけを
+Q006o policyへ置換し、他7 gateを値・threshold・判定まで保持した。同じ64 trajectoryを使うintegration
+結果なので、独立holdoutを通過するまではdegree continuationへ進まない。
+
+## Q006q: independent forward-error holdout — 事前登録
+
+### 問い
+
+Q006oで固定した
+
+\[
+B_c(t)=2t\,\operatorname{spacing}(S_c(f_0))
+\]
+
+を変更せず、Q006pまでに使っていないseed・amplitude・horizonでもunmodified standard mapの保存driftを
+覆えるか。
+
+### 固定設定
+
+Q006iと同じfull-2D model、すなわちgrid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\) と24実座標の
+linear／quadratic chartをsealed runnerから新規構築する。artifactを入力せず、uniform projection、
+Q006k fixed-site control、Q006l unique-anchor controlは適用しない。
+
+| scenario | direction seed | amplitude | horizon | directions per chart | trajectories |
+|---|---:|---:|---:|---:|---:|
+| long-horizon | `20260811` | `0.005` | 200 | 32 | 64 |
+| large-amplitude | `20260812` | `0.02` | 50 | 32 | 64 |
+
+各scenarioでは同じ32方向をlinear／quadratic chartで共有するが、2 scenario間およびQ006o seed
+`20260810`とは方向を共有しない。合計128 trajectory、16,000 trajectory-step、48,000 component checkを
+全列挙する。amplitude `0.02`はarithmetic policyのstress testにだけ使い、その振幅でchart invarianceや
+shadowingの有効性を主張しない。
+
+### 凍結するbudgetと記録
+
+各trajectoryの初期stateだけから
+
+\[
+S_c(f_0)=\sum_{x,q}|C_{cq}f_{0,x,q}|,
+\qquad
+B_c(t)=2t\,\operatorname{spacing}(S_c(f_0))
+\]
+
+を計算する。係数2、`numpy.spacing`、component scale、`math.fsum`主測定、Neumaier独立測定をQ006oから
+変更しない。各step・各componentのsigned drift、absolute drift、budget、utilization、pass/failを保存し、
+scenario／chart／direction／componentごとの最大witnessを報告する。観測値から係数・thresholdをfitしない。
+
+### validity gate
+
+次を全て要求する。
+
+1. grid、\(\omega\)、\(\eta\)、chart種別、2 seed、2 amplitude、2 horizonが登録値と一致。
+2. 128 trajectory、16,000 trajectory-step、48,000 component checkを完全列挙。
+3. 各方向のnorm errorが `5e-15` 以下で、Q006oおよび他scenarioとexact duplicateがない。
+4. stagewise collision → streaming → filterと`full_map`のmaximum absolute differenceが0。
+5. streamingのmaximum `math.fsum` incrementが0、`math.fsum`／Neumaierのmaximum component differenceが
+   `5e-14` 以下。
+6. 全初期・rollout stateのpopulationが正、全数値finite、strict JSON。
+
+validity failureは`inconclusive`とし、policyの反証に数えない。
+
+### holdout decision
+
+各scenarioを別々に、かつaggregateでも判定する。次を全て満たす場合だけ
+`independent holdout supports registered forward-error policy`としてacceptedとする。
+
+1. 全48,000 component checkでbudget violationが0。
+2. 各scenarioおよびaggregateのmaximum utilizationが1以下。
+3. 全trajectoryのmaximum final component budgetが `2.4e-11` 以下。
+
+validだが1項目でも失敗すれば
+`registered forward-error policy rejected by independent holdout`としてrejectedとする。失敗後に係数2や
+budget上限を調整せず、最初のviolation witnessとscenarioを固定して原因を分解する。acceptedでも、これは
+登録した2 scenarioのfinite-trajectory operational envelopeであり、all-state／all-horizon roundoff theorem、
+chartの存在・一意性、amplitude `0.02`でのinvarianceを主張しない。acceptedの場合だけQ007 degree
+continuationを事前登録する。
 
 ## Q007: degree continuation は有効か
 

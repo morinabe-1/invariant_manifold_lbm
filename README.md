@@ -53,8 +53,10 @@ unique-anchor classのequivariant differentiability obstructionを監査した�
 `accepted`である。従ってQ006lのunique-anchor correctionは局所production mapへ採用しない。次の
 Q006oでは、anchor-freeな一様smooth correctionと、写像を変更しない明示的forward-error budgetを
 比較した。標準写像は全19,200 component-stepで登録budgetを通過し、一様projectionは改善率とexact
-realizationをともに落としたため、Q006oはunmodified map policyを`accepted`とした。次のQ006pで、
-旧 \(10^{-12}\) 判定を保持したままQ006i chartをこのpolicyでdual-reportingする。
+realizationをともに落としたため、Q006oはunmodified map policyを`accepted`とした。Q006pでは、
+旧 \(10^{-12}\) 判定を保持したoriginal columnがglobal conservationだけを失敗し、同じ64 trajectoryの
+policy columnは全8 gateを通過した。従ってQ006pは条件付きchart continuationを`accepted`としたが、
+同一データの再利用に限る。次のQ006qで別seed・振幅・horizonの独立holdoutを行う。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -448,8 +450,29 @@ stageに対応する。
 
 従ってuniform projectionは採用せず、smooth・translation／C4-equivariantな標準写像を変更しない。
 ただしこのbudgetは登録有限trajectoryのoperational policyであり、任意state・任意horizonのroundoff
-定理ではない。Q006i／Q006jの旧 \(10^{-12}\) gateとrejected判定は変更せず、Q006pで旧判定と新policyを
-並記してchart continuationの可否を判定する。
+定理ではない。Q006i／Q006jの旧 \(10^{-12}\) gateとrejected判定は変更せず、Q006pでは旧判定と新policyを
+並記してchart continuationの可否を判定した。
+
+### Q006p dual-reporting integration
+
+Q006iとQ006oをsealed runnerから再実行し、grid、model、seed、amplitude、horizonと64方向を照合した。
+Q006iの既存8 gateをoriginal columnとして変更せず保存し、別のpolicy columnではglobal conservationだけを
+Q006oのcomponentwise ULP budgetへ置き換えた。
+
+- classification: `dual reporting supports unmodified-map chart continuation`
+- direction alignment record / maximum error: `64 / 0`
+- Q006i original / Q006o `math.fsum` drift:
+  `2.7284963e-12 / 2.7285042e-12`
+- cross-measurement drift difference: `7.8275683e-18`
+- original failed gate: `1`（`global_conservation`）
+- policy failed gate: `0`
+- Q006o budget violation / maximum utilization: `0 / 0.5`
+- maximum final component budget: `1.1368684e-11`
+
+original columnのQ006i `rejected`は変更していない。policy columnだけが、同じ64 trajectoryについて
+unmodified mapを使う次段階を支持する。独立性のないintegration結果なので、Q006qではseed `20260811`・
+amplitude `0.005`・200 stepと、seed `20260812`・amplitude `0.02`・50 stepをholdoutとして使い、
+予算式を変更せずに再判定する。
 
 ## TT 格納量の解釈
 
@@ -474,7 +497,7 @@ rounding時間、不変性残差を分けて比較する。TT がこの baseline
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
-`q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o` は
+`q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -497,6 +520,7 @@ python -m ttim_lbm --study q006k --output research/artifacts/q006k_projection_re
 python -m ttim_lbm --study q006l --output research/artifacts/q006l_covariant_correction.json
 python -m ttim_lbm --study q006m --output research/artifacts/q006m_anchor_obstruction.json
 python -m ttim_lbm --study q006o --output research/artifacts/q006o_forward_error_budget.json
+python -m ttim_lbm --study q006p --output research/artifacts/q006p_dual_reporting.json
 ```
 
 保存済み結果:
@@ -517,6 +541,7 @@ python -m ttim_lbm --study q006o --output research/artifacts/q006o_forward_error
 - [`research/artifacts/q006l_covariant_correction.json`](research/artifacts/q006l_covariant_correction.json)
 - [`research/artifacts/q006m_anchor_obstruction.json`](research/artifacts/q006m_anchor_obstruction.json)
 - [`research/artifacts/q006o_forward_error_budget.json`](research/artifacts/q006o_forward_error_budget.json)
+- [`research/artifacts/q006p_dual_reporting.json`](research/artifacts/q006p_dual_reporting.json)
 
 ## 文書
 
@@ -551,13 +576,14 @@ python -m ttim_lbm --study q006o --output research/artifacts/q006o_forward_error
 - Q006l collision/filter stagewise covariant correction、translation／C4・unique-anchor audit
 - Q006m uniform-equilibrium tie、translation固定点矛盾、8本のanchor-gap ladder
 - Q006o standard-map componentwise ULP budget、uniform projection policy比較
+- Q006p Q006i original-threshold／forward-error-policy dual-reporting、64方向の完全照合
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q006p のQ006i original-threshold／forward-error-policy dual-reporting監査
+- Q006q の独立seed／amplitude／horizon forward-error holdout
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ006pである。Q006iの全構成・残差・shadowing gateと旧conservation failureを
-誤差0で再現し、同じtrajectoryがQ006o budgetを通ることを別欄で判定する。旧Q006iを遡及的に
-acceptedへ変更せず、dual-reporting gateを終えるまでdegree continuationやTT圧縮へ進まない。
+従って次のゲートはQ006qである。Q006oの式と係数を凍結し、Q006pで使った64 trajectoryを再利用せず、
+128 holdout trajectory・16,000 step・48,000 component checkを行う。これを通過するまでdegree
+continuationやTT圧縮へ進まない。
