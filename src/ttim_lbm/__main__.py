@@ -10,6 +10,7 @@ from .experiments import run_d2q9_baseline
 from .studies import (
     run_q004b_and_manufactured_study,
     run_q005_study,
+    run_q006n_study,
     run_q006r_study,
     run_q006s_study,
 )
@@ -27,7 +28,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--study",
-        choices=("baseline", "q004b", "q005", "q006s", "q006r"),
+        choices=("baseline", "q004b", "q005", "q006s", "q006r", "q006n"),
         default="baseline",
     )
     parser.add_argument("--output", type=Path)
@@ -44,8 +45,10 @@ def main() -> None:
         result = run_q005_study()
     elif arguments.study == "q006s":
         result = run_q006s_study()
-    else:
+    elif arguments.study == "q006r":
         result = run_q006r_study()
+    else:
+        result = run_q006n_study()
     rendered = json.dumps(result, indent=2, sort_keys=True, allow_nan=False) + "\n"
     if arguments.output is None:
         print(rendered, end="")

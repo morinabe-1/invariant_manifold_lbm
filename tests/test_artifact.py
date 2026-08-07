@@ -137,3 +137,33 @@ def test_q006r_artifact_separates_coefficient_and_normal_dominance_outcomes() ->
     )
     assert cycle["terminal_summary"]["nonempty_additions"] == 0
     assert cycle["terminal_summary"]["terminal_pair_count"] == 136
+
+
+def test_q006n_artifact_records_the_preregistered_mixed_refinement_outcome() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q006n_normal_refinement.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "inconclusive"
+    assert artifact["mathematical_scope"] == {
+        "construction": "finite registered odd-grid refinement audit",
+        "grid_sizes": [9, 17, 33, 65, 129],
+        "omegas": [1.0, 1.2, 1.5, 1.8],
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "manifold_claim": (
+            "finite-ladder obstruction classification only; no theorem for "
+            "all odd grids and no invariant-manifold existence claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "inconclusive"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["conditions"]) == 20
+    assert cycle["summary"]["refinement_negative_gap_count"] == 16
+    assert cycle["summary"]["refinement_axial_near_nyquist_worst_count"] == 16
+    assert cycle["summary"]["refinement_coefficient_and_blockwise_pass_count"] == 13
+    assert not cycle["summary"]["registered_obstruction_supported"]
+    assert cycle["summary"]["viable_omegas"] == []

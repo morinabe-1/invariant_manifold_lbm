@@ -33,6 +33,7 @@ from .nonresonance import (
     stripe_quadratic_audit,
     wave_vector_from_index,
 )
+from .normal_refinement import run_normal_gap_refinement_audit
 from .provenance import runtime_metadata, source_metadata
 from .spectra import (
     TrackedHydrodynamicCluster,
@@ -1552,6 +1553,32 @@ def run_q006r_study() -> dict[str, Any]:
             "manifold_claim": (
                 "coefficient and linear spectral prequalification only; no "
                 "existence, uniqueness, or nonlinear normal-attraction claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q006n_study() -> dict[str, Any]:
+    """Run and package the sealed Q006n normal-gap refinement campaign."""
+
+    cycle = run_normal_gap_refinement_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "construction": "finite registered odd-grid refinement audit",
+            "grid_sizes": [9, 17, 33, 65, 129],
+            "omegas": [1.0, 1.2, 1.5, 1.8],
+            "conservation_treatment": "fixed global mass and momentum leaf",
+            "manifold_claim": (
+                "finite-ladder obstruction classification only; no theorem for "
+                "all odd grids and no invariant-manifold existence claim"
             ),
         },
         "cycle": cycle,

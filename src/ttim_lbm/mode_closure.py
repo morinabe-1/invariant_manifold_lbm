@@ -462,15 +462,20 @@ def _build_sector(
     selected_matrix = selected_basis.conj().T @ active_matrix @ selected_basis
     external_projector = np.eye(active_matrix.shape[0]) - ordered.projector
     external_dimension = active_matrix.shape[0] - selected_dimension
-    external_basis = _orthonormal_basis(
-        external_projector,
-        external_dimension,
-    )
-    external_matrix = external_basis.conj().T @ active_matrix @ external_basis
-    external_invariance = _relative_residual(
-        active_matrix @ external_basis - external_basis @ external_matrix,
-        active_matrix,
-    )
+    if selected_dimension == 0:
+        external_basis = np.eye(active_matrix.shape[0], dtype=np.complex128)
+        external_matrix = active_matrix.copy()
+        external_invariance = 0.0
+    else:
+        external_basis = _orthonormal_basis(
+            external_projector,
+            external_dimension,
+        )
+        external_matrix = external_basis.conj().T @ active_matrix @ external_basis
+        external_invariance = _relative_residual(
+            active_matrix @ external_basis - external_basis @ external_matrix,
+            active_matrix,
+        )
     selected_invariance = _relative_residual(
         active_matrix @ selected_basis - selected_basis @ selected_matrix,
         active_matrix,
