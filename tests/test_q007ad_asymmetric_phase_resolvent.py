@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import json
 from fractions import Fraction
+from pathlib import Path
 
 import pytest
 
 import research.q007ad_asymmetric_phase_resolvent as q007ad
+from ttim_lbm.provenance import source_metadata
+from ttim_lbm.rational_spectrum import _file_sha256
 
 
 def _fraction(record: dict) -> Fraction:
@@ -17,6 +21,16 @@ def _fraction(record: dict) -> Fraction:
 @pytest.fixture(scope="module")
 def q007ad_cycle() -> dict:
     return q007ad.run_asymmetric_phase_resolvent_audit()
+
+
+@pytest.fixture(scope="module")
+def q007ad_artifact() -> dict:
+    path = (
+        Path(q007ad.__file__).resolve().parent
+        / "artifacts"
+        / "q007ad_asymmetric_phase_resolvent.json"
+    )
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def test_q007ad_registered_target_is_above_exact_critical_gap() -> None:
@@ -142,3 +156,33 @@ def test_q007ad_accepts_registered_radius_boundary(
     assert not consequence[
         "q007p_through_q007ab_tube_constants_enlarged"
     ]
+
+
+def test_q007ad_artifact_reproduces_the_accepted_certificate(
+    q007ad_cycle: dict,
+    q007ad_artifact: dict,
+) -> None:
+    runner_path = Path(q007ad.__file__).resolve()
+    phase = q007ad_cycle["phase_aware_separation_audit"]["phase"]
+
+    assert q007ad_artifact["schema_version"] == 1
+    assert q007ad_artifact["source"] == source_metadata()
+    assert q007ad_artifact["runner_source"] == {
+        "filename": "q007ad_asymmetric_phase_resolvent.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert q007ad_artifact["cycle"] == q007ad_cycle
+    assert q007ad_artifact["study_gate"] == "passed"
+    assert q007ad_artifact["scientific_outcome"] == "accepted"
+    assert q007ad_cycle["input_digest_sha256"] == (
+        "b1b1b2750e871c6ee3b243f7df590ec19dd6d604d9699f183af007b89d0f7935"
+    )
+    assert q007ad_cycle["result_digest_sha256"] == (
+        "f5df89c55a86978c85542eeec82e6419884b69b919c0385ca77e9677b1c1d17f"
+    )
+    assert phase["comparison_digest_sha256"] == (
+        "086516b273f30d7c94c276399c16f8a6433bd90e3dc03fb740d2ab45754e4a37"
+    )

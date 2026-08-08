@@ -2353,3 +2353,47 @@ def test_q007ac_artifact_records_the_preregistered_invalid_stop() -> None:
     assert not cycle["theorem_consequence"][
         "larger_registered_explicit_modal_l1_radius_certified"
     ]
+
+
+def test_q007ad_artifact_records_the_accepted_asymmetric_certificate() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY / "q007ad_asymmetric_phase_resolvent.json"
+    )
+    runner_path = artifact_path.parents[1] / (
+        "q007ad_asymmetric_phase_resolvent.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ad_asymmetric_phase_resolvent.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "original asymmetric discs certify the critical "
+        "external-output phase gap"
+    )
+    assert len(cycle["validity_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 5
+    assert all(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    )
+    assert cycle["phase_aware_separation_audit"]["phase"][
+        "failed_comparison_count"
+    ] == 0
+    assert cycle["theorem_consequence"][
+        "registered_modal_l1_radius_1e_minus_16_certified"
+    ]
+    assert not cycle["theorem_consequence"][
+        "q007p_through_q007ab_tube_constants_enlarged"
+    ]
