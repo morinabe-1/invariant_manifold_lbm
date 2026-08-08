@@ -3235,6 +3235,33 @@ degree-90 tail、Q007iの次数2--89 direct nonresonanceが全て認証された
 explicit neighborhood radius、Q007c1 quartic係数との厳密同定、finite-ball normal attraction、grid refinement、
 continuum／infinite-lattice limitは結論しない。これらは次の定量・数値同定gateへ残す。
 
+### Q007i 封印結果
+
+全7 validity gateと全4 hypothesis gateが通過した。
+
+- Q007h1 representative proof再構築: `72`、digest mismatch `0`
+- selected representative／disk／modulus type: `2 / 6 / 4`
+- external representative disk／merged log interval: `643 / 253`
+- acoustic／shear分類margin lower: `0.20943761223015187`
+- 96項log enclosure maximum tail: `1.5377133803221814e-92`
+- degree／aggregate／expanded product count: `88 / 2,919,730 / 869,107,778`
+- external overlap count: `0`
+- global minimum rational log-gap lower: `6.912230841407495e-10`
+- minimum witness: degree `51`、count `(1,19,27,4)`
+
+従って`registered direct external nonresonance through degree 89 certified`として`accepted`とした。
+Q007gの解析性・local diffeomorphism・固定保存量葉、Q007h1のstable split・excluded invertibility・degree-90
+tailと合わせ、[Cabré--Fontich--de la Llave, Theorem 1.2](https://upcommons.upc.edu/bitstream/handle/2117/876/0202cabre.pdf)
+を固定17² filtered mapへ直接適用できる。rest equilibrium近傍の固定保存量葉上に、selected 24実次元spectral
+subspaceへ接する局所解析的不変多様体と解析的\(K,R\)が存在し、同じ接空間を持つ\(C^{90}\) locally invariant
+manifoldのクラスで局所一意である。
+
+これは定性的・局所的な存在結果である。explicit neighborhood radius、登録quartic係数との厳密同定、
+finite-ball normal attraction、grid-uniform／continuum resultは得ていない。Q007hの独立preconditioner版
+`inconclusive`、Q007dのEuclidean rejection、Q007fの有限sample acceptance、Q008cのTT rejectionも変更しない。
+次の最小の未認証層は、Q006i以降の数値固有ベクトルが定理の厳密selected spectral subspaceを表すことの
+区間固有対によるtangent bridgeである。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

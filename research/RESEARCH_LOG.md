@@ -2459,6 +2459,47 @@ Q007hの`inconclusive`は置換せず、独立preconditioner版の失敗とし�
 この時点ではTheorem 1.2から多様体存在を結論しない。Q007iはselected 6中心を4 modulus型へ包含し、96項の
 有理atanh-log区間で全2,919,730 aggregateを外部disk unionから分離する。
 
+## 2026-08-08: Q007i rational-log direct external nonresonance
+
+### 実装
+
+- Q007gとQ007h1 artifactをsource／scope／SHA付きで固定し、Q007h1の72 C4代表証明を全て再構築した。
+- axis／diagonalのselected 6 diskをacoustic／shearの4 modulus型へ包含し、external spectrumをzero-wave
+  kineticを含む643 representative diskへ包含した。
+- \(z=(x-1)/(x+1)\) の96項atanh級数を110桁有理gridで逐次外向き丸めし、60桁有理log endpointを作った。
+- 次数2--89の4型countを全列挙し、2,919,730 aggregate区間を253個のmerged external log区間へexact integer
+  binary searchで照合した。acoustic pair内部まで展開した869,107,778 product countも組合せ恒等式で照合した。
+
+### validityと結果
+
+全7 validity gateと全4 hypothesis gateが通過した。
+
+- representative proof digest mismatch: `0 / 72`
+- selected representative／disk／modulus type: `2 / 6 / 4`
+- external representative disk／merged interval: `643 / 253`
+- minimum acoustic／shear classification margin: `0.20943761223015187`
+- maximum rational-log tail bound: `1.5377133803221814e-92`
+- aggregate／expanded product count: `2,919,730 / 869,107,778`
+- overlap count: `0`
+- minimum rational log-gap lower: `6.912230841407495e-10`
+- witness: degree `51`、count `(1,19,27,4)`、external wave `(-2,-2)`
+
+従って`registered direct external nonresonance through degree 89 certified`として`accepted`とした。complex phaseや
+translation selection ruleへ弱めず、Cabré--Fontich--de la Llave Theorem 1.2が要求する
+\(\operatorname{Spec}(A_1)^i\cap\operatorname{Spec}(A_2)=\varnothing\)、\(2\le i\le89\)をdirectに認証した。
+
+### 定理帰結と主張境界
+
+Q007gの解析性・local diffeomorphism・固定保存量葉、Q007h1のstable selected split・excluded invertibility・
+degree-90 tailと合わせ、固定17² filtered mapのrest equilibrium近傍に、selected 24実次元spectral subspaceへ
+接する局所解析的不変多様体と解析的parameterization \(K\)、reduced map \(R\)が存在する。同じ接空間を持つ
+\(C^{90}\) locally invariant manifoldのクラスで局所一意である。
+
+この結論は定性的・局所的で、explicit neighborhood radiusを与えない。またQ006i／Q007b／Q007c1の数値
+Taylor係数がこの一意な多様体の厳密jetであること、finite-ball normal attraction、grid-uniform性、continuum
+limitも示していない。次は係数へ進む前に、登録数値固有ベクトルと定理の厳密selected subspaceのtangent bridgeを
+区間固有対で認証する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2514,6 +2555,8 @@ Q007hの`inconclusive`は置換せず、独立preconditioner版の失敗とし�
 [`artifacts/q007h_rational_spectrum.json`](artifacts/q007h_rational_spectrum.json)
 
 [`artifacts/q007h1_equivariant_spectrum.json`](artifacts/q007h1_equivariant_spectrum.json)
+
+[`artifacts/q007i_direct_nonresonance.json`](artifacts/q007i_direct_nonresonance.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

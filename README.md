@@ -104,10 +104,16 @@ C4-related modulus endpoint差`2.32993e-11`が登録validity閾値`1e-12`を超�
 有理数としてexact 0差となり、10 validity gateと5 hypothesis gateを全通過した。selected radius upper、
 normal-gap lower、degree-90 tail upperは`0.9920954673554099 / 0.0020611211596580 / 0.9989422022620159`で、
 `registered symmetry-equivariant linear spectral split and degree-90 tail certified`として`accepted`とした。
-次はQ007iで次数2--89のdirect external nonresonanceを有理log-modulus区間で認証する。
-stripe を含め、
-存在・一意性 gate を通るまでは非零波数の対象を
-**candidate spectral subspace / candidate chart** と呼ぶ。
+Q007iでは72代表のproof digestを全て再現し、selected 6 diskを4 modulus型へ、external spectrumを643
+representative diskへ包含した。96項の有理log enclosureで次数2--89の全2,919,730 aggregate、展開時
+869,107,778 productを検査し、overlap 0、最小log-gap lower `6.912230841407495e-10`を得た。従って
+`registered direct external nonresonance through degree 89 certified`として`accepted`とした。
+Q007gのmap structureとQ007h1の線形・tail認証を合わせ、Cabré--Fontich--de la Llave Theorem 1.2から、
+固定17²・固定保存量葉上でselected 24実次元spectral subspaceへ接する局所解析的不変多様体の存在と、
+同じ接空間を持つ\(C^{90}\) locally invariant manifoldとしての局所一意性を結論する。ただしこれは定性的な
+局所定理で、explicit radius、登録した数値quartic chartとの厳密同定、finite-ball normal attraction、
+grid-uniform性を与えない。従ってspectral manifoldの存在は認証済みだが、保存済みの数値chartは引き続き
+**candidate numerical chart** と呼ぶ。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -788,6 +794,9 @@ python -m ttim_lbm --study q007d --output research/artifacts/q007d_normal_cocycl
 python -m ttim_lbm --study q007e --output research/artifacts/q007e_adapted_metric.json
 python -m ttim_lbm --study q007f --output research/artifacts/q007f_adapted_finite_cocycle.json
 python -m ttim_lbm --study q007g --output research/artifacts/q007g_theorem_readiness.json
+python -m ttim_lbm --study q007h --output research/artifacts/q007h_rational_spectrum.json
+python -m ttim_lbm --study q007h1 --output research/artifacts/q007h1_equivariant_spectrum.json
+python -m ttim_lbm --study q007i --output research/artifacts/q007i_direct_nonresonance.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -822,6 +831,9 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007e_adapted_metric.json`](research/artifacts/q007e_adapted_metric.json)
 - [`research/artifacts/q007f_adapted_finite_cocycle.json`](research/artifacts/q007f_adapted_finite_cocycle.json)
 - [`research/artifacts/q007g_theorem_readiness.json`](research/artifacts/q007g_theorem_readiness.json)
+- [`research/artifacts/q007h_rational_spectrum.json`](research/artifacts/q007h_rational_spectrum.json)
+- [`research/artifacts/q007h1_equivariant_spectrum.json`](research/artifacts/q007h1_equivariant_spectrum.json)
+- [`research/artifacts/q007i_direct_nonresonance.json`](research/artifacts/q007i_direct_nonresonance.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -872,16 +884,17 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007g 固定定理の構造仮定、\(L=89\) spectral quotient、sector／full-spectrum証拠差分、proof-object inventory
 - Q007h 288非零blockの有理区間Neumann／Bauer--Fike audit、全5線形仮説通過、C4 validity棄却
 - Q007h1 72 C4代表からのexact preconditioner輸送、線形split／可逆性／normal gap／degree-90 tail認証
+- Q007i 4 selected modulus型と643 external diskの有理log区間、次数2--89のdirect nonresonance認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007i degree 2--89 direct external nonresonance certification
+- 認証済みspectral manifoldと登録数値chartのtangent／Taylor-jet同定、explicit local radius
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007iである。Q007h1により固定17² mapの線形split・補空間可逆性・normal gap・
-degree-90 tailは認証された。残るTheorem 1.2の線形仮定は次数2--89のdirect external nonresonanceである。
-これを通過すれば、固定保存量葉上の局所解析的不変多様体の存在とC90一意性を定性的に結論できるが、
-explicit radius、quartic chart係数の厳密同定、finite-ball normal attraction、grid-uniform性は別問題として残す。
+Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性は
+認証された。次に残る最小の橋は、Q006i以降で使った数値固有ベクトルが、その定理で選ばれた厳密spectral
+subspaceを表すことを区間固有対で認証することである。Taylor係数やexplicit radiusは、そのtangent bridgeを
+通過した後の独立gateとする。
