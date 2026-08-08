@@ -7710,6 +7710,162 @@ minimum selected-center distanceが登録gapより大幅に大きいことは診
 gapを結果後に拡大しない。external gapのsharp化、連続radius最適化、または`1e-16`での
 Q007p--Q007ab tube再監査は別gateにする。
 
+## Q007af: external phase-disc certificateのradius-step obstruction — 事前登録
+
+### 問いと固定scope
+
+Q007ae後のtotal inverseを支配するQ007ad nonselected-output external upperを、同じoriginal
+asymmetric disc比較族の中でsharp化すれば、次の10進候補
+\(r_*=10^{-15}\)を通せる余地が残っているかを先に判定する。本gateは新しいgapを探索して
+Q007adを更新するものではない。Q007nのscalar majorantから\(r_*\)に許されるinverse上限を逆算し、
+Q007adで既に封印された一つのexact comparisonがその必要gapを妨げるかを調べる。
+
+固定scopeは \(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)、
+\(\delta M=\delta P_x=\delta P_y=0\)、Q007n pair max normおよびmodal／Wiener
+\(\ell^1\)とする。次を封印入力とする。
+
+- Q007n artifact／runner SHA-256:
+  `7fe09089744e41229e71666540e4885d560a4c27a2e8bc95a94d5959af0fbc36` /
+  `6eefae3386e5c49f151b1cd4537eb84fbb92858578fe4fce7768e50ad43c5dc9`
+- Q007ad artifact／runner SHA-256:
+  `6a6f642cb681409ca160773180e025c1ffbc1929d6ec84423c384c57007571e4` /
+  `3ca5e39c3ddb79c886ef7bf4d6e6ad923deb66e53da3663251f183abbab7b0ae`
+- Q007ae artifact／runner SHA-256:
+  `c6d28bba13fcf831dfccaf03854072256f7e8ff1a241b54aaf84552dd06a2a55` /
+  `f2e0d90ae6bb5f9694c799d2ea850a014f66f2ab9681d94dc1c850cc753db600`
+- 使用するQ007ac／Q007o implementation SHA-256:
+  `8c2757c4c3771007dc15135bc407551bbef74906294ab897b1a4f251d5abe2ae` /
+  `d34afda382784610ea2b8997e6c44376188b02c42668ade8e2d53ff9bc9afea7`
+
+Q007nのworking coefficient、selected spectral radius、\(\beta_*\)、非線形majorant、
+Q007adのoriginal selected／target discs、Q007aeのinternal／zero／external inverse、
+80桁外向き丸め、および119個のradius候補を変更しない。Q007ad／Q007aeのaccepted outcomeと
+input／result／phase digestもexactに再現する。
+
+### \(10^{-15}\) candidateのinverse threshold
+
+Q007nの`_candidate_record`をそのまま用い、pair inverse \(C>0\)だけを変える。
+予備的なexact algebraから得た整数幅1のbracketを、実装前に
+
+\[
+C_- = 173791195571,\qquad C_+ = 173791195572
+\]
+
+へ固定する。`Fraction` arithmeticで \(C_-\)がpass、\(C_+\)がfailすることを再現する。
+独立な整数二分探索は初期区間 \([1,10^{13}]\)から開始し、結果後に端点を変更しない。
+
+残差tailを \(T>0\)、quartic center stateを \(s\)、zero-inverse時のreduced-range
+bufferを \(b_0>0\)とすると、
+
+\[
+\begin{aligned}
+x(C)&=s+2CT,\\
+b(C)&=b_0-\frac{2CT}{c_V},\\
+D(C)&=\frac{21}{2}\{(1-x(C))^{-2}-1\}
+ +\frac{g(r_*)+2CT/c_V}{b(C)}
+ +\frac{h(r_*)+2CT}{c_Vb(C)},\\
+Z(C)&=C D(C).
+\end{aligned}
+\]
+
+positive domainでは各項が非減少で、\(Z(C)\)はstrictに増加する。domainを外れればcandidateは
+定義通りfailである。従って \(C_+\)で \(Z>1/2\)なら全 \(C\ge C_+\)がfailする。
+またcorrection radiusを\(\tau=2CT\)とするQ007n radii marginは
+\(CT(1-2Z)\)なので、\(T,C>0\)では同じthresholdになる。この単調性を係数の符号と
+両端のexact recordから監査する。
+
+### radius stepに必要なexternal gap
+
+Q007ad norm formulaを固定すると
+
+\[
+C_{\rm ext}^{\rm raw}(\delta)=\frac{81\beta_*}{\delta},\qquad
+C_{\rm ext}^{\rm work}\ge C_{\rm ext}^{\rm raw}.
+\]
+
+従って \(10^{-15}\) candidateがpassするためには \(C_{\rm total}<C_+\)が必要で、
+
+\[
+\delta>\delta_{\rm req}:=\frac{81\beta_*}{C_+}
+ \simeq 2.546402442702229\times10^{-8}
+\]
+
+が必要である。ここではroot自体をfloat最適化せず、fail側のexact整数端点から必要条件だけを使う。
+
+### 固定obstruction witness
+
+Q007adのminimum-margin witnessを変更せず使用する。
+
+- degree: `71`
+- counts: `(24,38,2,7)`
+- acoustic split: `(12,12,1,1)`
+- target: `wave=(-7,-7);eigenvalue_index=6`
+
+artifactに保存されたproduct centerとtarget centerからexact squared center distanceを再計算し、
+product uncertaintyとexternal radiusもexactに再現する。100桁integer-`isqrt` enclosureの
+上端を用いて、このcomparisonが許せるgapの楽観的上限を
+
+\[
+\delta_{\rm witness}^+
+=\sqrt{d^2}^{\, +}-\epsilon_{\rm product}-r_{\rm external}
+\]
+
+とする。Q007adに保存されたlower側
+`2.4028364427409988e-8`だけで不可能性を推論せず、必ずsqrt upper側を使う。
+判定は
+
+\[
+\delta_{\rm witness}^+<\delta_{\rm req},\qquad
+\frac{\delta_{\rm witness}^+}{\delta_{\rm req}}<0.95
+\]
+
+とする。この一対がfailすれば、同じQ007ad disc比較族では必要gapを一様に認証できないため、
+全287,929 comparisonの再探索は行わない。
+
+### validity gate
+
+1. 3 artifact SHA、5 implementation／runner SHA、source、scope、Q007ad／Q007ae accepted
+   outcomeと封印digestが一致する。
+2. Q007n coefficient、selected radius、\(\beta_*\)、Q007ae inverse orderingをexact再現し、
+   Q007aeの119 candidate recordsがbitwiseに一致する。
+3. \([1,10^{13}]\)のinteger bisectionが完全に終了し、唯一の幅1 bracket
+   \((C_-,C_+)\)を再現する。
+4. \(T>0\)、全必要係数の非負性、両端のpositive domain、\(Z(C_-)<1/2<Z(C_+)\)、
+   radii-margin符号をexactに確認する。
+5. Q007ad witness identifier、counts、center distance、uncertainty、radiusを再現し、
+   sqrt enclosure幅が \(10^{-100}\)以下である。
+6. 全数値がfinite strict JSONで、input／result digestを再現する。
+
+一つでも落ちれば`inconclusive`とし、obstructionを主張しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. \(C_-\)がpassし \(C_+\)がfailし、fail理由がpositive domain内の
+   \(Z>1/2\)およびnegative radii marginである。
+2. exact単調性監査により、全 \(C\ge C_+\)がfailする。
+3. \(\delta_{\rm witness}^+<\delta_{\rm req}\)で、ratioが`0.95`未満、
+   absolute shortfallが`1.4e-9`より大きい。
+4. \(\,81\beta_*/\delta_{\rm witness}^+>C_+\)で、そのratioが`1.05`を超える。
+5. Q007aeの`1e-16 pass / 1e-15 fail`を維持し、Q007p--Q007abのtube／MPFR
+   constantsを変更しない。
+
+全て通れば
+`sealed external phase-disc family cannot certify the 1e-15 radius step`
+というnegative obstructionを`accepted`とする。validity通過後に一つでも落ちれば
+`sealed witness does not obstruct the 1e-15 radius step`という有効な
+`not_certified`とする。bracket、witness、sqrt precision、ratio thresholdを結果後に変更しない。
+
+### 主張境界
+
+acceptedでも、真のspectral separationや真の解析半径が \(10^{-15}\)未満だとは主張しない。
+証明するのは、Q007n scalar majorant、Q007ad original asymmetric discs、Q007ad norm formulaを
+同時に固定したcertificate familyでは次の10進radiusへ届かないことだけである。別のwave-sum
+selection rule、別norm、blockwise majorant、より高次chart、別spectral enclosureなら結論は変わり得る。
+continuous optimal radius、Q007p--Q007ab tube enlargement、Euclidean／grid-uniform attraction、
+global basin、境界、外力、D3Q27は認証しない。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
