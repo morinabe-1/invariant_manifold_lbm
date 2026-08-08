@@ -1961,3 +1961,58 @@ def test_q007w_artifact_records_the_ideal_precision_threshold() -> None:
     assert all(cycle["theorem_consequence"].values())
     assert cycle["selection"]["selected_precision_bits"] == 85
     assert cycle["selection"]["selection_boundary_reproduced"]
+
+
+def test_q007x_artifact_records_the_mpfr_fixed_leaf_boundary() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007x_mpfr_fixed_leaf.json"
+    runner_path = artifact_path.parents[1] / "q007x_mpfr_fixed_leaf.py"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007x_mpfr_fixed_leaf.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "not_certified"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "concrete MPFR-85 operation bridge and fixed-leaf closure audit"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": (
+            "exact global mass and momentum equality on the fixed leaf"
+        ),
+        "input_encoding": (
+            "Fraction to exact mpq to 85-bit MPFR componentwise rounding"
+        ),
+        "rounding_model": (
+            "gmpy2 2.3.1 with MPFR 4.2.2 round-to-nearest ties-to-even"
+        ),
+        "claim": (
+            "separate operation-semantic, one-step-bound, and exact "
+            "fixed-leaf closure decisions for the registered backend"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "not_certified"
+    assert len(cycle["validity_gates"]) == 8
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 6
+    assert sum(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    ) == 2
+    assert cycle["backend_campaign"]["summary"][
+        "all_streaming_conserves"
+    ]
+    assert not cycle["backend_campaign"]["summary"][
+        "all_encodings_conserve"
+    ]
+    assert not cycle["backend_campaign"]["summary"][
+        "all_filters_conserve"
+    ]
