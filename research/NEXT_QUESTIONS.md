@@ -5397,6 +5397,51 @@ one-step positivityが通れば、Q007s exact tube内のreal stateを正しくbi
 nonstandard rounding、FTZ／DAZ、GPU kernel、BLAS変更、compiler fast-math、entropy、monotonicity、
 maximum principle、連続最適tube、grid-uniform性、continuum limitは扱わない。
 
+### Q007v 封印結果
+
+全7 validity gateが通過した。6 hypothesis gateのうちone-step positivityに関する5 gateは通過し、
+roundoff-robust Q007s tube re-entryだけが失敗した。
+
+- Q007u／Q007s artifact・runner SHA、source／scope、全sealed gate／theorem flag、
+  selected-tube reuse: pass
+- D2Q9／filter source SHA、required operation snippets、stage order: pass
+- binary64 \(u/h\): `2^-53 / 2^-1075`
+- registered operation count:
+  input rounding `9`、exact sign/zero product `36`、add/subtract/multiply/divide
+  `36 / 18 / 83 / 2`、reduction `22 calls / 61 additions`
+- equilibrium lower／maximum component error:
+  `0.027777777759726004 / 7.154770604839416e-16`
+- post-collision lower／maximum component error:
+  `0.02777777771459676 / 1.2459169501537343e-15`
+- post-streaming lower:
+  `0.02777777771459676`
+- post-filter lower／maximum component error:
+  `0.027777777714596753 / 1.3501237168549712e-15`
+- registered Wiener roundoff upper:
+  `1.1666869562204168e-12`
+- selected/base coordinate error upper／strict margin／utilization:
+  `1.7624955618306674e-12 / 4.978918133501365e-22 / 3.539916734062091e9`
+- external/normal coordinate error upper／strict margin／utilization:
+  `3.490393265176959e-11 / 9.145068981224883e-14 / 381.6694299783683`
+- one-step／robust-reentry outcome:
+  `accepted / not_certified`
+- runner SHA-256:
+  `a0d3cea0fcae8a627f4a96db56d46727589411b2557e2aa91433569576a0575c`
+- artifact newline-normalized SHA-256:
+  `c4c1c45941a6f6ac302691efd8e795e431f6acc1fa4f4629cb0c7a0afac3c0a5`
+
+従って
+`binary64 one-step stages remain positive, but the registered Q007s tube is not certified roundoff-invariant`
+として有効な`not_certified`とした。Q007s exact tube内のreal stateを正しくbinary64へ丸めた
+入力に対し、現行source・round-to-nearest modelの一段内部stageは全てstrict positiveである。一方、
+post-filter roundoffをQ007s analysis normで座標へ戻したworst-case upperはbase／normal両marginを超える。
+従って、この一段positivityを同じtube上で全iterateへ帰納しない。
+
+これは実際のtrajectoryがtubeを脱出する反例ではない。登録したcomponent-box、normalized-DFT
+triangle bound、analysis normからなるworst-case enclosureではroundoff-robust re-entryを示せないという
+判定である。次に進める場合は、同じgateを後付けで緩めず、roundoff-robust tube enlargementまたは
+higher-precision mapを別途事前登録する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

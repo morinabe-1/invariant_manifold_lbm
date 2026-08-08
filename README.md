@@ -166,7 +166,9 @@ entropy、maximum principleは示さない。Q007sではQ007pと同じmajorant�
 適用し、\(r=9\times10^{-19}\)、\(\zeta=5\times10^{-12}\)のregistered tubeを認証した。ただし
 Q007s単独ではQ007q／Q007rのpositivityを新tubeへ拡張しない。Q007tでfull-map入力／出力時刻の
 population／density positivityを別途認証し、Q007uで同じ拡大tubeのexact equilibrium／collision／
-streaming／filter各段階にもstrict positivityを拡張した。
+streaming／filter各段階にもstrict positivityを拡張した。Q007vでは現行binary64実装のone-step
+stage positivityも認証したが、roundoff error upperはQ007sのstrict re-entry marginに収まらず、
+全iterateへのroundoff-robust帰納は`not_certified`である。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1056,6 +1058,42 @@ outputで全9 populationがstrict positiveであり、同じboundを全iterate�
 NumPy／IEEE-754中間演算のroundoff enclosure、entropy、monotonicity、maximum principle、連続最適tube、
 global basin、grid-uniform性、continuum limitを認証しない。
 
+### Q007v binary64 stage-roundoff enclosure
+
+Q007u／Q007sと現行`d2q9.py`／`checkerboard_filter.py`のsource SHAを固定し、
+\(u=2^{-53}\)、subnormal fallback \(h=2^{-1075}\)のpaired exact-target／forward-error intervalを
+全input rounding、reduction、乗除算、実装定数へ伝播した。一段のstage positivityと、Q007s tubeへの
+roundoff-robust re-entryは別判定である。
+
+- classification:
+  `binary64 one-step stages remain positive, but the registered Q007s tube is not certified roundoff-invariant`
+- validity gates: `7 / 7` passed
+- hypothesis gates: `5 / 6` passed
+- one-step／robust-reentry outcome: `accepted / not_certified`
+- equilibrium lower／maximum component error:
+  `0.027777777759726004 / 7.154770604839416e-16`
+- post-collision lower／maximum component error:
+  `0.02777777771459676 / 1.2459169501537343e-15`
+- post-filter lower／maximum component error:
+  `0.027777777714596753 / 1.3501237168549712e-15`
+- registered Wiener roundoff upper:
+  `1.1666869562204168e-12`
+- base／normal coordinate error upper:
+  `1.7624955618306674e-12 / 3.490393265176959e-11`
+- base／normal strict margin:
+  `4.978918133501365e-22 / 9.145068981224883e-14`
+- base／normal margin utilization:
+  `3.539916734062091e9 / 381.6694299783683`
+- runner SHA-256:
+  `a0d3cea0fcae8a627f4a96db56d46727589411b2557e2aa91433569576a0575c`
+- artifact newline-normalized SHA-256:
+  `c4c1c45941a6f6ac302691efd8e795e431f6acc1fa4f4629cb0c7a0afac3c0a5`
+
+従って、Q007s exact tube内のreal stateを正しくbinary64へ丸めた入力に対する一段のequilibrium／
+collision／streaming／filter outputはstrict positiveである。しかし登録worst-case errorはbaseとnormalの
+両re-entry marginを超えるため、この一段結論を同じtube上で全iterateへ帰納しない。これは実際のtube
+escapeの反例ではなく、現certificateがroundoff-robust invarianceを示さないという否定的判定である。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -1110,6 +1148,7 @@ python -m research.q007r_stagewise_positivity --output research/artifacts/q007r_
 python -m research.q007s_finite_tube_enlargement --output research/artifacts/q007s_finite_tube_enlargement.json
 python -m research.q007t_larger_tube_population_positivity --output research/artifacts/q007t_larger_tube_population_positivity.json
 python -m research.q007u_larger_tube_stagewise_positivity --output research/artifacts/q007u_larger_tube_stagewise_positivity.json
+python -m research.q007v_binary64_stage_enclosure --output research/artifacts/q007v_binary64_stage_enclosure.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -1159,6 +1198,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007s_finite_tube_enlargement.json`](research/artifacts/q007s_finite_tube_enlargement.json)
 - [`research/artifacts/q007t_larger_tube_population_positivity.json`](research/artifacts/q007t_larger_tube_population_positivity.json)
 - [`research/artifacts/q007u_larger_tube_stagewise_positivity.json`](research/artifacts/q007u_larger_tube_stagewise_positivity.json)
+- [`research/artifacts/q007v_binary64_stage_enclosure.json`](research/artifacts/q007v_binary64_stage_enclosure.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1222,14 +1262,15 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007s 9×99 exact rational候補の全評価、base／normal両半径を拡大したregistered tubeの認証
 - Q007t Q007s tubeのexact Wiener bound、full-map時刻でのpopulation／density strict positivity認証
 - Q007u Q007s tubeのexact equilibrium／BGK／streaming／convex-filter stageでの全iterate strict positivity認証
+- Q007v 現行binary64演算のpaired roundoff enclosure、一段stage positivity認証、robust re-entry棄却
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007s tubeの連続最適化、Euclidean／grid-uniform normal attraction、IEEE-754 stage-roundoff
-  enclosure、global basin
+- Q007s tubeのroundoff-robust all-iterate re-entry、連続最適化、Euclidean／grid-uniform normal
+  attraction、global basin
 - external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
 
@@ -1245,5 +1286,7 @@ Q007rではexact mapのequilibrium／collision／streaming／filter stageへ正�
 Q007sでは同じ解析的majorantを9×99有限格子へ適用し、\(r=9\times10^{-19}\)、
 \(\zeta=5\times10^{-12}\)のregistered tubeへ拡大した。Q007tではそのtubeをfull-map時刻でstrict
 positive population cone内に含むことを認証し、Q007uではexact equilibrium／collision／streaming／
-filter各段階へ同じ結論を拡張した。Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却を変更せず、
-IEEE-754 stage-roundoff enclosure、連続最適性、grid-uniform性へは主張を広げない。
+filter各段階へ同じ結論を拡張した。Q007vでは現行binary64実装の一段stage positivityまで認証したが、
+roundoff error upperがQ007sのbase／normal strict marginを超えるため、同じtube上の全iterateへは
+帰納しない。Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却を変更せず、roundoff-robust invariance、
+連続最適性、grid-uniform性へは主張を広げない。

@@ -2939,6 +2939,65 @@ strict positiveである。Q007sのforward invarianceにより同じstage bound�
 intervalで囲っていない。entropy、monotonicity、maximum principle、連続最適tube、global basin、
 grid-uniform性、continuum limitを扱わず、Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却も変更しない。
 
+## 2026-08-08: Q007v binary64 stage-roundoff enclosure
+
+### 実装
+
+- Q007u／Q007s artifact・runner SHA、全sealed gate／theorem flag、selected tubeと、現行D2Q9／filter
+  source SHAを固定した。
+- binary64 unit roundoff \(u=2^{-53}\)とsubnormal absolute fallback \(h=2^{-1075}\)を固定し、
+  exact target intervalとabsolute forward-error upperのpairを`Fraction`だけで伝播した。
+- D2Q9 weight、\(\eta\)、filter center／neighbour係数は実際のbinary64 dyadic valueを
+  `Fraction.from_float`で復元し、exact rationalとの差を含めた。
+- density／momentum reduction、velocity division、equilibrium polynomial、BGK update、streaming、
+  filterについてsource scheduleとoperation countを固定し、arbitrary reduction orderを
+  \(\gamma_n\) boundで囲った。
+- post-filter component errorをnormalized 17² DFT triangle boundでWiener errorへ変換し、Q007sの
+  selected／external analysis normからbase／normal coordinate re-entry errorを評価した。
+
+### 結果
+
+全7 validity gateが通過した。6 hypothesis gateのうちone-step positivityの5件は通過し、
+roundoff-robust tube re-entryだけが失敗した。
+
+- input／source／binary64 model／paired arithmetic／operation replay: pass
+- registered operation count:
+  input rounding `9`、sign/zero product `36`、add/subtract/multiply/divide
+  `36 / 18 / 83 / 2`、reduction `22 calls / 61 additions`
+- equilibrium lower／maximum component error:
+  `0.027777777759726004 / 7.154770604839416e-16`
+- post-collision lower／maximum component error:
+  `0.02777777771459676 / 1.2459169501537343e-15`
+- post-streaming lower:
+  `0.02777777771459676`
+- post-filter lower／maximum component error:
+  `0.027777777714596753 / 1.3501237168549712e-15`
+- Wiener roundoff upper:
+  `1.1666869562204168e-12`
+- base error／margin／utilization:
+  `1.7624955618306674e-12 / 4.978918133501365e-22 / 3.539916734062091e9`
+- normal error／margin／utilization:
+  `3.490393265176959e-11 / 9.145068981224883e-14 / 381.6694299783683`
+- one-step／robust-reentry outcome:
+  `accepted / not_certified`
+- runner SHA-256:
+  `a0d3cea0fcae8a627f4a96db56d46727589411b2557e2aa91433569576a0575c`
+- artifact newline-normalized SHA-256:
+  `c4c1c45941a6f6ac302691efd8e795e431f6acc1fa4f4629cb0c7a0afac3c0a5`
+
+従って
+`binary64 one-step stages remain positive, but the registered Q007s tube is not certified roundoff-invariant`
+として有効な`not_certified`とした。Q007s exact tube内のreal stateを正しくbinary64へ丸めた
+入力では、一段の全内部stage populationがstrict positiveである。しかしroundoff errorをQ007s座標へ
+戻したworst-case upperはbase／normal両re-entry marginを超えるため、この結論を全iterateへ帰納しない。
+
+### 主張境界
+
+re-entry失敗は実際のtrajectoryがtubeを脱出する反例ではない。固定component box、DFT triangle bound、
+analysis normによる登録enclosureがstrict marginへ収まらないという`not certified`判定である。
+nonstandard rounding、FTZ／DAZ、GPU／fast-math、entropy、monotonicity、maximum principle、連続最適tube、
+global basin、grid-uniform性、continuum limitを扱わない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3020,6 +3079,8 @@ grid-uniform性、continuum limitを扱わず、Q007c1の有限振幅性能棄�
 [`artifacts/q007t_larger_tube_population_positivity.json`](artifacts/q007t_larger_tube_population_positivity.json)
 
 [`artifacts/q007u_larger_tube_stagewise_positivity.json`](artifacts/q007u_larger_tube_stagewise_positivity.json)
+
+[`artifacts/q007v_binary64_stage_enclosure.json`](artifacts/q007v_binary64_stage_enclosure.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
