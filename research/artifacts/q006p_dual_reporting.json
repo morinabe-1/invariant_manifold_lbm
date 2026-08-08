@@ -682,7 +682,7 @@
   "schema_version": 1,
   "scientific_outcome": "accepted",
   "source": {
-    "package_source_sha256": "7f970813069a8e22fc33d84d0b0a01e18ddf146b96124dfc357ffe0a5dab18b2",
+    "package_source_sha256": "8d46eff253f585535243ef309233c22f02456ed25af5e55563235edffc28611c",
     "package_version": "0.1.0"
   },
   "study_gate": "passed"

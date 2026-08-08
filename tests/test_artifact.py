@@ -1152,3 +1152,43 @@ def test_q007g_artifact_records_the_valid_theorem_readiness_gap() -> None:
     assert "not an invariant-manifold nonexistence result" in cycle[
         "claim_boundary"
     ]
+
+
+def test_q007h_artifact_records_the_sealed_symmetry_inconclusive_result() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007h_rational_spectrum.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "failed"
+    assert artifact["scientific_outcome"] == "inconclusive"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "rational-interval linear spectral certification",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "fixed_leaf_complex_dimension": 2598,
+        "selected_complex_dimension": 24,
+        "excluded_complex_dimension": 2574,
+        "nonzero_fourier_block_count": 288,
+        "tail_degree": 90,
+        "claim": (
+            "linear fixed-grid certification attempt only; no degrees 2--89 "
+            "nonresonance, Riesz projector norm, nonlinear proof radius, "
+            "manifold existence, uniqueness, or grid-uniform claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "failed"
+    assert cycle["hypothesis_outcome"] == "inconclusive"
+    assert not cycle["validity_gates"]["conjugate_and_c4_symmetry"]["passed"]
+    assert all(
+        gate["passed"]
+        for name, gate in cycle["validity_gates"].items()
+        if name != "conjugate_and_c4_symmetry"
+    )
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["eigencertification"]["selected_count"] == 24
+    assert cycle["eigencertification"]["excluded_count"] == 2574
+    assert cycle["global_bounds"]["tail_ratio"]["float"] < 1.0
+    assert "does not certify degrees 2--89" in cycle["claim_boundary"]
