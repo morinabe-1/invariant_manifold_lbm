@@ -27,6 +27,7 @@ from .d2q9 import (
     spectrum_audit,
 )
 from .dual_reporting import run_dual_reporting_audit
+from .equivariant_spectrum import run_equivariant_rational_spectral_audit
 from .forward_error_budget import run_forward_error_budget_audit
 from .forward_error_holdout import run_forward_error_holdout_audit
 from .full2d_chart import run_full2d_quadratic_audit
@@ -2340,6 +2341,40 @@ def run_q007h_study() -> dict[str, Any]:
                 "linear fixed-grid certification attempt only; no degrees "
                 "2--89 nonresonance, Riesz projector norm, nonlinear proof "
                 "radius, manifold existence, uniqueness, or grid-uniform claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007h1_study() -> dict[str, Any]:
+    """Run and package the sealed Q007h1 equivariant spectral audit."""
+
+    cycle = run_equivariant_rational_spectral_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "C4-transported rational-interval linear certification",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "fixed_leaf_complex_dimension": 2598,
+            "selected_complex_dimension": 24,
+            "excluded_complex_dimension": 2574,
+            "nonzero_fourier_block_count": 288,
+            "nonzero_c4_representative_count": 72,
+            "tail_degree": 90,
+            "claim": (
+                "symmetry-equivariant linear fixed-grid certification only; "
+                "no degrees 2--89 nonresonance, Riesz projector norm, "
+                "nonlinear proof radius, manifold existence, uniqueness, or "
+                "grid-uniform claim"
             ),
         },
         "cycle": cycle,
