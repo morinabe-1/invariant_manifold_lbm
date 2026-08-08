@@ -5107,6 +5107,118 @@ entropy、monotonicity、maximum principle、IEEE-754 roundoff enclosure、連�
 grid-uniform性、continuum limit、Q007c1／Q007dの既存判定も変更しない。次は拡大tubeのexact stagewise
 positivityを別gateとして事前登録する。
 
+## Q007u: enlarged registered tube の exact stagewise positivity — 事前登録
+
+### 問い
+
+Q007tでfull-map sampling時刻のstrict positivityを認証したQ007s selected tubeについて、exact mathematical
+mapのequilibrium evaluation、BGK collision output、periodic streaming output、five-point filter outputでも、
+全populationがstrict positiveであることを認証できるか。
+
+### 固定入力
+
+- `q007t_larger_tube_population_positivity.json` newline-normalized SHA-256:
+  `2089d97aa19248cc17689f3e7a01e113540e5afc329ffa5cb3a4c511a43a8529`
+- Q007t runner SHA-256:
+  `1e00281c71b5ea5d06fedcebd9bd483a73e6ec111388df20e8255ae3aefed877`
+- map／葉／tube: Q007s／Q007tと同じ固定17² filtered periodic D2Q9、\(\omega=3/2\)、
+  \(\eta=1/100\)、固定保存量葉、
+  \(\|a\|_1\le9\times10^{-19}\)、\(\|z\|_*\le5\times10^{-12}\)。
+- input state upperはQ007tのexact \(x_*\)を変更せず再利用する。追加のradius、sample、rounding
+  parameterは導入しない。
+
+### exact stage bounds
+
+D2Q9 moment map \(M\)、rest-equilibrium tangent \(E\)、BGK collision linearization
+
+\[
+C=(1-\omega)I+\omega EM
+\]
+
+をexact `Fraction`で再構成し、population-summed Fourier--Wiener \(\ell^1\) induced normを
+
+\[
+\|EM\|_1=\frac{13}{6},\qquad
+\|C\|_1=\frac{19}{6}
+\]
+
+と固定する。Q007rと同じD2Q9 convolution majorantを再構成し、
+
+\[
+\|N_{\mathrm{eq}}\|_{\mathrm W}
+\le 7\frac{x_*^2}{1-x_*},
+\qquad
+\|N_{\mathrm{coll}}\|_{\mathrm W}
+\le \frac{21}{2}\frac{x_*^2}{1-x_*}
+\]
+
+を使う。従って
+
+\[
+e_*=\frac{13}{6}x_*+7\frac{x_*^2}{1-x_*},
+\qquad
+c_*=\frac{19}{6}x_*+\frac{21}{2}\frac{x_*^2}{1-x_*}
+\]
+
+とし、equilibrium／post-collision population lowerを
+
+\[
+p_{\mathrm{eq}}=\frac1{36}-e_*,
+\qquad
+p_{\mathrm{coll}}=\frac1{36}-c_*
+\]
+
+と固定する。periodic streamingはpopulation-wise permutationなので
+\(p_{\mathrm{stream}}=p_{\mathrm{coll}}\)とする。登録filterは
+
+\[
+(1-\eta)f(x)+\frac{\eta}{4}
+\left[f(x+e_x)+f(x-e_x)+f(x+e_y)+f(x-e_y)\right]
+\]
+
+というexact 5点凸結合なので、\(p_{\mathrm{filter}}=p_{\mathrm{coll}}\)とする。
+
+### validity gate
+
+1. Q007t artifact／runner SHA、source、scope、全5 validity gate、全3 hypothesis gate、
+   3 theorem-consequence flag、transitive Q007s inputが一致する。
+2. exact \(M,E,EM,C\)が登録mapと一致し、全column sumからinduced norm \(13/6,19/6\)を再現する。
+3. D2Q9 weight sum、velocity quadratic、cyclic convolutionからnonlinear constant \(7,21/2\)を再現し、
+   \(1-x_*>0\)である。
+4. 17² periodic streamingが全9 populationでbijectionとなり、filter coefficientが
+   \(99/100\)と4個の\(1/400\)からなるnonnegative sum-one convex combinationで、実装compositionを再現する。
+5. Q007tの\(x_*,p_*\)、base／normal radiusと、transitive Q007s forward-invariance flagをexactに再利用する。
+6. 全boundがfinite rationalで、strict JSONを生成する。
+
+一つでも落ちれば`inconclusive`とし、stage lowerを解釈しない。
+
+### hypothesis gate
+
+validity通過時だけ次を判定する。
+
+1. equilibrium positivity: \(p_{\mathrm{eq}}>0\)。
+2. collision positivity: \(p_{\mathrm{coll}}>0\)。
+3. streaming positivity: 9 population-wise permutationが\(p_{\mathrm{coll}}\)を保持する。
+4. filter positivity: nonnegative sum-one 5点filterが\(p_{\mathrm{coll}}\)を保持する。
+5. all-iterate stagewise positivity: Q007sのtube forward invarianceにより同じ4 stage boundを
+   全one-step iterateへ再適用できる。
+
+全て通れば
+`registered Q007s larger tube is population-positive at every exact BGK, streaming, and filter stage`
+として`accepted`とする。一つでも落ちれば
+`registered Q007s larger tube did not certify exact stagewise population positivity`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedなら、固定17²・固定保存量葉・登録Q007s selected tubeの全real stateについて、exact mathematical
+mapのequilibrium evaluation、BGK collision output、periodic streaming output、five-point filter outputで
+全9 populationがstrict positiveであり、Q007s forward invarianceにより全iterateへ適用できると主張する。
+
+これはNumPy／IEEE-754の全中間加算・除算を外向きroundoff intervalで囲った結果ではない。entropy、
+monotonicity、maximum principle、連続最適tube、global basin、grid-uniform性、continuum limit、
+Q007c1の有限振幅性能、Q007dのEuclidean判定も変更・認証しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
