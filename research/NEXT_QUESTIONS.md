@@ -3382,6 +3382,115 @@ Q007h1の相異なるselected discへ一対一に入り、exact C4／共役輸�
 quadratic／cubic／quartic係数、explicit neighborhood radius、finite-ball normal attraction、grid-uniform性は
 まだ認証しない。次は300 quadratic pairだけをQ007kで扱う。
 
+## Q007k: rational quadratic-jet bridge — 事前登録
+
+### 問い
+
+Q006iで保存した300 unordered pairの数値\(H_2,R_2\)は、Q007jが認証したexact eigencoordinatesを使う
+graph-gauge quadratic homological equationの一意な厳密解を、登録誤差内で表しているか。
+
+Q007iの定理多様体は解析的で、Q007jによりlinear coordinateは固定された。従ってこのgateが通れば、固定した
+graph gaugeにおけるその多様体の二次Taylor jetとQ006i係数を結び付ける。cubic／quartic coefficient、explicit
+neighborhood radius、finite-ball attractionは扱わない。
+
+### 固定入力
+
+- `q006i_full2d_quadratic.json`のnewline-normalized SHA-256を
+  `347d5349af349618333df17733ba372c8ca6f5ee02784a9e788898acefb5db89`へ固定する。Q006iの全validity pass、
+  `rejected`、失敗hypothesis `global_conservation`だけ、dense／reduced Hessian hashをQ007jと同じ値で再現する。
+- `q007j_eigencoordinate_bridge.json` SHA-256を
+  `feae846b81dc0991aa2c9babbd38ee72eb9ae493526655435cf0bf5951c7ec44`、runner source SHA-256を
+  `7ef97e55ffff46244fee98d8017db1637a0e6c73ba3f1caf5c7dad77b7a26b57`へ固定する。`passed / accepted`、
+  全5 validity／全4 hypothesis passを要求する。
+- Q007jの12 representative Krawczyk proofをartifactからroot boxとして読まず再計算し、全
+  `proof_digest_sha256`を一致させる。exact C4／共役輸送とbiorthogonal normalizationで全24 mode boxを再構築する。
+- grid `17²`、`omega=1.5`、`eta=0.01`、固定保存量葉、mode／pair順序、Q006i係数を変更しない。
+
+### exact quadratic forcing
+
+各mode pair \((i,j)\)、output wave \(q=k_i+k_j\)について、Q007jのright-root rectangleから保存momentを作り、
+D2Q9 equilibrium Hessian
+
+\[
+E_{s,11}=w_s(9c_{sx}^2-3),\quad
+E_{s,22}=w_s(9c_{sy}^2-3),\quad
+E_{s,12}=E_{s,21}=9w_sc_{sx}c_{sy}
+\]
+
+をexact rationalで適用する。streaming phaseとcheckerboard filter multiplierはQ007h1と同じMachin／Taylor
+rational trigonometric tableから作る。従ってforcingの全entryは`Fraction` complex rectangleである。
+
+保存moment行列 \(M\) について \(ME=0\) をentrywise exactに検証する。zero-wave pairではさらに
+\(MA(0)=M\) と \(1-\lambda_i\lambda_j\ne0\) を有理区間で示し、厳密解の\(MH_{ij}=0\)を構造的に保証する。
+
+### 300 homological system
+
+- external output 156 pairとzero-wave kinetic 36 pairには
+
+\[
+B_{ij}=A(q)-\lambda_i\lambda_j I\in\mathbb C^{9\times9},
+\qquad B_{ij}H_{ij}=-F_{ij}
+\]
+
+  を使う。zero-waveでもfull 9×9 systemを使い、上の保存恒等式からfixed-leaf解を同定する。
+- selected internal output 108 pairには、output modeのexact right matrix \(V_q\) とbiorthogonal left matrix
+  \(L_q^*\) を使うaugmented graph-gauge system
+
+\[
+\begin{bmatrix}
+A(q)-\lambda_i\lambda_jI&-V_q\\
+L_q^*&0
+\end{bmatrix}
+\begin{bmatrix}H_{ij}\\R_{ij}\end{bmatrix}
+=
+\begin{bmatrix}-F_{ij}\\0\end{bmatrix}
+\]
+
+  を使う。
+
+pair countを`300 = 36 + 108 + 156`、output-wave supportを25、complex unknown countを
+`36*9 + 156*9 + 108*12 = 3,024`へ固定する。Q006iのcomplex \(H_2,R_2\)をcenter \(z_0\)とし、各実部・
+虚部の探索半径を\(r_2=10^{-6}\)に固定する。float64 inverseをexact dyadic preconditioner \(C\)へ変換し、
+
+\[
+K_2(z_0,X)=z_0-C(Bz_0-b)+(I-CB)(X-z_0)
+\]
+
+を全300 systemで有理矩形評価する。
+
+### design-only探索の開示
+
+Q006iのfloat64 operatorだけを再構築した設計計算では、pair countは`36 / 108 / 156`で一致し、maximum Newton
+correction `1.1299557396374577e-12`、maximum inverse infinity norm `10453.339928940415`、maximum raw residual
+`2.7817751139622836e-14`だった。これは半径と計算量の設定だけに使い、Q007kのforcing、operator、Krawczyk
+image、witnessへ流用しない。
+
+### validity gate
+
+1. Q006i／Q007jのSHA、source、scope、sealed outcome、coefficient／runner／12 proof digestを全て再現する。
+2. pair `300`、zero／internal／external `36 / 108 / 156`、support `25`、unknown `3,024`を一致させる。
+3. rational equilibrium Hessian、\(ME=0\)、zero-wave \(MA(0)=M\)をentrywise exactに再現する。
+4. pi／trigonometric width `<=1e-120`、symbol entry width `<=1e-110`、300 point inverse defect `<1`を要求する。
+5. 全summaryをfinite・strict JSONとし、pair identifier、output wave／kindをQ006i artifactと全件一致させる。
+
+validityが一つでも落ちた場合は`inconclusive`とし、同じgateで半径、basis、operator、精度を変更しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次を全て要求する。
+
+1. 300 system全てで\(K_2(z_0,X)\subset\operatorname{int}X\)、maximum utilization `<=1e-2`
+2. maximum interval contraction `<1`、singular／unassigned system `0`
+3. exact rootから登録complex \(H_2,R_2\) centerへのmaximum componentwise correction upper `<=1e-8`
+4. 36 zero-wave pair全てでproduct separation from 1が正、108 internal system全てでgraph-gauge rowを含む
+   Krawczyk inclusionが通過
+
+全て通れば`registered Q006i quadratic coefficients identify the theorem-manifold graph-gauge quadratic jet`として
+`accepted`とする。一つでも落ちれば`registered quadratic-jet bridge not certified`という有効な`not_certified`とする。
+Q006iのfloat64 global-conservation rejection、Q007i／Q007jの定理・線形認証、他の性能判定は変更しない。
+
+acceptedの場合だけQ007lで2,600 cubic systemへ進む。quarticとexplicit radiusはさらに分離する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
