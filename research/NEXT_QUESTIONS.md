@@ -3656,6 +3656,38 @@ Q007bの有限振幅性能棄却、Q007i／Q007j／Q007kの定理・jet認証、
 
 acceptedの場合だけQ007mで17,550 quartic systemへ進む。explicit radiusはさらに分離する。
 
+### Q007l 封印結果
+
+全5 validity gateと全4 hypothesis gateが通過した。
+
+- Q007b／Q007k input SHA、Q007k runner SHA、5 coefficient hash、12 eigenpair＋300 quadratic proof digest
+  reproduction: pass
+- triple count zero／internal／external／total: `108 / 1,044 / 1,448 / 2,600`
+- output-wave support／complex unknown: `49 / 26,532`
+- exact moment identities \(ME=0\)、\(M D^3\Phi=0\)、zero-wave selection chain: pass
+- maximum point inverse defect: `2.9425645556416906e-12`
+- strict Krawczyk inclusion: `2,600 / 2,600`
+- maximum Krawczyk utilization: `2.2077918755524963e-5`（登録上限`1e-2`）
+- maximum interval contraction: `1.4873927720660498e-11`
+- maximum registered-center correction upper, \(H_3 / R_3\):
+  `2.2540660753247895e-8 / 3.740068323953154e-12`
+- maximum registered-forcing center difference upper: `2.811079918623627e-11`
+- maximum correction witness: `t01623`
+- zero-wave product separation count／minimum lower: `108 / 0.031245322922837878`
+- structural fixed-leaf／internal graph-gauge inclusion count: `108 / 1,044`
+- triple identifier／wave／kind mismatch、singular／unassigned system: `0 / 0 / 0`
+
+従って
+`registered Q007b cubic coefficients identify the theorem-manifold graph-gauge cubic jet`として
+`accepted`とした。artifactのnewline-normalized SHA-256は
+`aa0e572b43ed4f5544e2b8ead9d01c13bc08c47f40ec8963bcd37a1b51fc1bbd`、standalone runner source SHA-256は
+`bb2be852c5413ceb2d27abd4f48db36ed2045ed79f2330e45ae89818067d33a4`である。
+
+これは固定17²・固定保存量葉上の定理多様体について、固定graph gaugeの三次Taylor jetだけをQ007bの
+登録complex係数へ同定する。Q007bの有限振幅residual-ratio棄却、Q007i／Q007j／Q007kの既存認証、
+Q007c1の有限振幅quartic性能判定は変更しない。quartic jet、explicit neighborhood radius、finite-ball
+normal attraction、grid-uniform性はまだ認証しない。次はQ007mを事前登録し、17,550 quartic systemだけを扱う。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
