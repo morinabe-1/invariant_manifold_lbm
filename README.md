@@ -134,8 +134,16 @@ registered-center correction upperは
 zero-wave productの1からのminimum separation lowerは`0.031245322922837878`で、108 fixed-leaf解と
 1,044 graph-gauge inclusionも構造的に確認した。従って
 `registered Q007b cubic coefficients identify the theorem-manifold graph-gauge cubic jet`として
-`accepted`とした。これでlinear coordinate、quadratic jet、cubic jetの同定は済んだが、Q007bの
-有限振幅性能棄却は変更せず、quartic jetとexplicit radiusはまだ認証していない。
+`accepted`とした。Q007mではQ007c1の17,550 quartic quartetを同じ証明鎖へ接続し、zero-wave 846、
+internal graph-gauge 4,536、external 12,168の全system（171,558 complex unknown）を140桁外向き
+有理区間で認証した。17,550/17,550でstrict Krawczyk inclusionが通り、maximum utilization／interval
+contraction／registered-center correction upperは
+`9.230907576183161e-5 / 5.4768769188623044e-11 / 9.431388896713633e-5`だった。zero-wave productの
+1からのminimum separation lowerは`0.031245212410182764`で、846 fixed-leaf解と4,536 graph-gauge
+inclusionも構造的に確認した。従って
+`registered Q007c1 quartic coefficients identify the theorem-manifold graph-gauge quartic jet`として
+`accepted`とした。これでlinear coordinateからquartic jetまでの同定は済んだが、Q007c1の有限振幅
+directional-shadowing棄却は変更せず、explicit local radiusはまだ認証していない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -822,6 +830,7 @@ python -m ttim_lbm --study q007i --output research/artifacts/q007i_direct_nonres
 python -m research.q007j_eigencoordinate_bridge --output research/artifacts/q007j_eigencoordinate_bridge.json
 python -m research.q007k_quadratic_jet_bridge --output research/artifacts/q007k_quadratic_jet_bridge.json
 python -m research.q007l_cubic_jet_bridge --output research/artifacts/q007l_cubic_jet_bridge.json
+python -m research.q007m_quartic_jet_bridge --output research/artifacts/q007m_quartic_jet_bridge.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -862,6 +871,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007j_eigencoordinate_bridge.json`](research/artifacts/q007j_eigencoordinate_bridge.json)
 - [`research/artifacts/q007k_quadratic_jet_bridge.json`](research/artifacts/q007k_quadratic_jet_bridge.json)
 - [`research/artifacts/q007l_cubic_jet_bridge.json`](research/artifacts/q007l_cubic_jet_bridge.json)
+- [`research/artifacts/q007m_quartic_jet_bridge.json`](research/artifacts/q007m_quartic_jet_bridge.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -916,17 +926,19 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007j 12有理Krawczyk固有対、6 selected-disc対応、全24 modeのright／biorthogonal-left輸送認証
 - Q007k exact quadratic forcing／保存恒等式、全300 graph-gauge homological systemの有理Krawczyk認証
 - Q007l exact cubic forcing／保存選択則、全2,600 graph-gauge homological systemの有理Krawczyk認証
+- Q007m exact quartic forcing／保存選択則、全17,550 graph-gauge homological systemの有理Krawczyk認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- 認証済みspectral manifoldと登録数値chartのquartic jet同定、explicit local radius
+- 認証済みspectral manifoldに対するexplicit local radius
 - TT-cross、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
 Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を、Q007kにより登録Q006i二次係数と
 定理多様体のgraph-gauge quadratic jetの対応を、Q007lにより登録Q007b三次係数とgraph-gauge cubic jetの
-対応を認証した。次のゲートはQ007mであり、17,550 quartic systemだけを区間化してQ007c1の数値四次jetを
-同定する。explicit radiusは後続の独立gateとする。
+対応を、Q007mにより登録Q007c1四次係数とgraph-gauge quartic jetの対応を認証した。次のゲートはQ007nで
+explicit local radiusだけを独立に扱う。Q007c1の有限振幅性能棄却やfinite-ball normal attraction、
+grid-uniform性へは主張を広げない。

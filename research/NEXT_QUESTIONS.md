@@ -3851,6 +3851,39 @@ validity通過後、次を全て要求する。
 acceptedの場合だけ、別のQ007nでexplicit local radiusを扱う。Q007m内でradiusやfinite-ball attractionへ
 主張を拡張しない。
 
+### Q007m 封印結果
+
+全5 validity gateと全4 hypothesis gateが通過した。
+
+- Q007c1／Q007l input SHA、Q007l runner SHA、5 coefficient hash、12 eigenpair＋300 quadratic＋2,600 cubic
+  proof digest reproduction: pass
+- quartet count zero／internal／external／total: `846 / 4,536 / 12,168 / 17,550`
+- permutation multiplicity sum／output-wave support／complex unknown: `331,776 / 81 / 171,558`
+- exact moment identities \(ME=0\)、\(M D^3\Phi=0\)、\(M D^4\Phi=0\)、zero-wave selection chain: pass
+- zero-wave reduced-composition term count: `23,922`
+- maximum point inverse defect: `7.49148423385146e-12`
+- strict Krawczyk inclusion: `17,550 / 17,550`
+- maximum Krawczyk utilization: `9.230907576183161e-5`（登録上限`1e-2`）
+- maximum interval contraction: `5.4768769188623044e-11`
+- maximum registered-center correction upper, \(H_4 / R_4\):
+  `9.431388896713633e-5 / 5.8254184922091534e-8`
+- maximum registered-forcing center difference upper: `7.961141571801268e-7`
+- maximum correction witness: `q06996`
+- zero-wave product separation count／minimum lower: `846 / 0.031245212410182764`
+- structural fixed-leaf／internal graph-gauge inclusion count: `846 / 4,536`
+- quartet identifier／wave／kind mismatch、singular／unassigned system: `0 / 0 / 0`
+
+従って
+`registered Q007c1 quartic coefficients identify the theorem-manifold graph-gauge quartic jet`として
+`accepted`とした。artifactのnewline-normalized SHA-256は
+`19090371bb7f8be1f59e47502f303f1c3eea18d3ccb365972363d377a214364b`、standalone runner source SHA-256は
+`d086f2cc27684521c13daf7d2594cd21e5c0ad92f3953cca884c57d06986a918`である。
+
+これは固定17²・固定保存量葉上の定理多様体について、固定graph gaugeの四次Taylor jetだけをQ007c1の
+登録complex係数へ同定する。Q007c1の有限振幅directional-shadowing棄却、Q007i／Q007j／Q007k／Q007lの
+既存認証、他の性能判定は変更しない。explicit neighborhood radius、finite-ball normal attraction、
+grid-uniform性、continuum limitはまだ認証しない。次はQ007nを事前登録し、explicit local radiusだけを扱う。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
