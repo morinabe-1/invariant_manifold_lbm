@@ -1711,3 +1711,43 @@ def test_q007r_artifact_records_exact_stagewise_population_positivity() -> None:
     assert all(cycle["theorem_consequence"].values())
     assert cycle["stage_structure_audit"]["passed"]
     assert "IEEE-754" in cycle["claim_boundary"]
+
+
+def test_q007s_artifact_records_the_finite_grid_tube_enlargement() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007s_finite_tube_enlargement.json"
+    runner_path = artifact_path.parents[1] / "q007s_finite_tube_enlargement.py"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007s_finite_tube_enlargement.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "rational finite-tube enlargement certificate",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "manifold": "Q007o exact graph-gauge manifold",
+        "norm": "Q007p Fourier external-coordinate block-sum l1",
+        "candidate_grid": "9 base radii by 99 normal radii",
+        "selection": "lexicographically maximize base then normal radius",
+        "claim": (
+            "forward invariance, one-step normal contraction, and strict "
+            "normal domination for one selected registered tube only"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["selection"]["passing_candidate_count"] == 676
+    assert cycle["selection"]["selection_boundary_reproduced"]
+    assert all(cycle["theorem_consequence"].values())
+    assert "Q007q/Q007r positivity remains sealed" in cycle["claim_boundary"]
