@@ -4826,6 +4826,128 @@ Q007pのforward invarianceにより、この結論は初回だけでなく全one
 囲ってはいない。entropy、monotonicity、maximum principle、より大きいtube、global basin、
 grid-uniform性、continuum limitも認証せず、Q007c1とQ007dの既存棄却も変更しない。
 
+## Q007s: exact-manifold finite tube の登録格子拡大 — 事前登録
+
+### 問い
+
+Q007pで認証した\(r=10^{-19}\)、\(\zeta=10^{-20}\)のtubeを、同じ固定17² map、固定保存量葉、
+exact theorem manifold、external-coordinate norm、analytic majorantのまま、有限事前登録格子上で
+base／normal両方向にstrictに拡大できるか。
+
+### 固定入力
+
+- `q007p_finite_tube_attraction.json` newline-normalized SHA-256:
+  `a5e766938cfee0174deba9c529be9aec2cce4bff9225a3a4a1da83f7d255a751`
+- Q007p runner SHA-256:
+  `23ff283acb3f872fd2ff489f17d94b8e022e3f45a5c65b5523bf976c534a9f2a`
+- map／葉／norm: Q007pと同じ固定17² filtered periodic D2Q9、\(\omega=3/2\)、
+  \(\eta=1/100\)、固定保存量葉、固定Fourier external-coordinate block-sum \(\ell^1\) norm。
+- Q007o analytic radius \(\rho=10^{-18}\)、correction radius \(\tau\)、Q007nの
+  \(c_V,h_2,h_3,h_4,g_2,g_3,g_4\)、Q007pの
+  \(q_0,K_s,K_a,K_L\)、selected spectral radius／minimum modulus、
+  nonlinear derivative constant \(21/2\)を変更せずexactに再利用する。
+- Q007pのcontrol candidate \((r,\zeta)=(10^{-19},10^{-20})\)を候補格子に含める。
+
+### 事前登録候補格子
+
+base radiusは
+
+\[
+\mathcal R=\{m\,10^{-19}:m=1,\ldots,9\}
+\]
+
+の9点とする。normal radiusは
+
+\[
+\mathcal Z
+=\{m\,10^{-e}:e=10,\ldots,20,\ m=1,\ldots,9\}
+\]
+
+の99点とする。全\(9\times99=891\) candidateを`Fraction`で評価し、途中で単調性を仮定して
+枝刈りしない。
+
+passing candidateの選択は結果を見る前に次の辞書式規則へ固定する。
+
+1. passing candidateのうちbase radius \(r\)を最大化する。
+2. そのbase radiusでnormal radius \(\zeta\)を最大化する。
+
+これはvolume最大化でもEuclidean radius最大化でもない。base analytic domainを優先してから、
+同じbase slice内でnormal thicknessを最大化する有限登録規則である。
+
+### exact candidate majorant
+
+Q007pと同じ式を各candidateへ適用する。
+
+\[
+\begin{aligned}
+w(r)&=c_Vr+\tau+\sum_{n=2}^4h_nr^n,\\
+r_R(r)&=\lambda_sr+\tau/c_V+\sum_{n=2}^4g_nr^n,\\
+x(r,\zeta)&=w(r)+K_s\zeta,\\
+dN(x)&=\frac{21}{2}\frac{x(2-x)}{(1-x)^2},\\
+a_*(r,\zeta)&=r_R(r)+K_LdN(x)K_s\zeta,\\
+dH(a_*)&=\frac{\tau}{\rho-a_*}+\sum_{n=2}^4nh_na_*^{n-1},\\
+dG(r)&=\frac{\tau}{c_V(\rho-r)}+\sum_{n=2}^4ng_nr^{n-1},\\
+q_*(r,\zeta)&=q_0+K_aK_sdN(x)\left(1+K_LdH(a_*)\right),\\
+m_T(r)&=\lambda_{\min}-dG(r),\\
+\Gamma_*(r,\zeta)&=q_*(r,\zeta)/m_T(r).
+\end{aligned}
+\]
+
+分母がnonpositiveなcandidateは対応するdomain gateをfailとし、その先の商を評価しない。
+
+### validity gate
+
+1. Q007p artifact／runner SHA、source、scope、全6 validity gate、全4 hypothesis gate、
+   4 theorem-consequence flagが一致する。
+2. Q007pから抽出した\(\rho,\tau,c_V,h_n,g_n,q_0,K_s,K_a,K_L,\lambda_s,\lambda_{\min}\)、
+   nonlinear constantが保存recordとexactに一致する。
+3. control candidate \((10^{-19},10^{-20})\)の\(w,r_R,x,a_*,dN,dH,dG,q_*,m_T,\Gamma_*\)と
+   全strict marginをQ007p artifactからexactに再現する。
+4. \(\mathcal R,\mathcal Z\)が重複なく`9 / 99`点、Cartesian productが`891`点で、
+   全candidateを欠落なく評価する。
+5. candidateのpass/fail、最大選択、slice boundaryをfloat比較なしのexact rational signで決め、
+   canonical digestを保存する。
+6. 全保存値がfiniteでstrict JSONを生成する。
+
+一つでも落ちれば`inconclusive`とし、larger-tube結果を解釈しない。
+
+### candidate gate
+
+validity通過時、各candidateは次を全て満たす場合だけpassとする。
+
+1. analytic base domain: \(0<r<\rho\)。
+2. population-Wiener domain: \(x(r,\zeta)<1\)。
+3. base forward invariance: \(a_*(r,\zeta)<r\)。
+4. normal contraction: \(q_*(r,\zeta)<0.99\)かつ\(q_*\zeta<\zeta\)。
+5. tangent invertibility: \(m_T(r)>0\)。
+6. strict normal domination: \(\Gamma_*(r,\zeta)<0.999\)。
+
+### hypothesis gate
+
+1. Q007p control candidateがpassする。
+2. passing candidateが少なくとも一つ存在する。
+3. 辞書式selected candidateがQ007pより
+   \(r>10^{-19}\)、\(\zeta>10^{-20}\)を同時に満たす。
+4. selected base sliceでselectedより大きい全登録\(\zeta\)がfailし、selectedより大きい全登録base sliceに
+   passing candidateがない、またはselectedが対応する登録上端にある。
+5. selected candidateの6 candidate gateが全てstrictに通る。
+
+全て通れば
+`registered exact-manifold tube enlarged on the fixed rational candidate grid`
+として`accepted`とする。3または5が落ちれば
+`registered rational grid did not enlarge both finite-tube radii`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedなら、辞書式selected \((r_*,\zeta_*)\)について、固定17²・固定保存量葉・同じexact manifold・
+同じexternal-coordinate normで、tubeのforward invariance、uniform one-step normal contraction、
+strict normal dominationを主張する。
+
+これは連続最適化、最大可能tube、Euclidean／grid-uniform attraction、global basin、continuum limitを
+意味しない。Q007q／Q007rのpositivity certificateは旧tubeだけに封印されたままで、新tubeへは自動拡張しない。
+Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却も変更しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
