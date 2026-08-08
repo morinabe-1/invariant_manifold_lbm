@@ -3531,6 +3531,62 @@ MPFR cost、GPU、thread scaling、compressed rounding、TT-cross、別tensoriza
 扱わない。固定Q007c1係数に対するQ009／TT-SVD online pathを閉じる。新しい表現は別candidate familyを
 事前登録しない限り再開しない。次は非TTの未解決数学gateまたはQ011 boundary／forcingへ戻る。
 
+## 2026-08-09: Q007ac phase-aware external-output resolvent refinement
+
+### 問いと事前登録
+
+Q007oのtotal inverseを支配するQ007n external-output upperを、complex phaseを保ったdisc separationで
+selected-output internal upperより小さくできるかを問うた。target gapを`1e-7`、modulus screenを
+log-gap`1e-6`へ固定し、Q007n／Q007oのinternal／zero inverse、majorant、119候補は変更しなかった。
+Fourier wave-sumは使わず、全selected productと全630 nonselected-output target discを比較する
+保守的なsuperset certificateとした。
+
+### 実装
+
+- Q007h1の72 C4 representative proofを再構成し、2 selected representativeからaxis／diagonalの
+  acoustic共役対とreal shear nominal discを作った。
+- 残る70 representativeの9 eigenvalueを全てtargetとし、630 complex Bauer--Fike discを構成した。
+- Q007iと同じ96項rational log、110／60桁外向き格子で次数2--89の全2,919,730 modulus aggregateを
+  列挙した。screen外は\(m_*10^{-6}>10^{-7}\)で直接覆った。
+- screen内826 aggregateだけをacoustic positive／negativeへ108,273通り完全展開し、nearby discとの
+  287,929比較をexact dyadic integer不等式で実行した。thresholdは256 binary bit格子へ上向きに丸め、
+  exact targetより強い比較にした。
+- Q007o旧119 candidate recordをexact再現し、診断用にexternal inverseだけを差し替えたscanも保存した。
+
+### 結果
+
+validity 5/6、hypothesis 4/5で、研究判定は`inconclusive`となった。
+
+1. 対称化したnominal discは元のselected discを全て含んだが、axis acoustic discがQ007n working
+   \(\sigma\)を`1.6653345369377348e-16`超えた。事前登録したvalidity条件を満たさない。
+2. exact phase comparison 287,929件中4件がtarget gap`1e-7`を満たさなかった。
+3. 最小witnessはdegree 71、counts`(24,38,2,7)`、acoustic split`(12,12,1,1)`、
+   external `wave=(-7,-7);eigenvalue_index=6`で、certified distance lowerは
+   `2.4028360293239852e-8`だった。
+
+- safe／dangerous aggregate: `2,918,904 / 826`
+- dangerous expanded product／comparison: `108,273 / 287,929`
+- failed comparison: `4`
+- phase digest:
+  `5039563c60ab57b85b683b324506049535372847b1a5adef3362da2b16a954ab`
+- input／result digest:
+  `15166f90e39b132c0d6956b7a14f821095cc1b31da9d9e83b9b3f5b9cf3314b9` /
+  `369809e953652c9e99ade3553e2754a06c1b0add52549e2f53dbcdb0ab15f018`
+- runner／artifact SHA-256:
+  `8c2757c4c3771007dc15135bc407551bbef74906294ab897b1a4f251d5abe2ae` /
+  `b3c9d99088492bf157cbb651d958597573a9c7b5386a189b6b9e4ee5d88dbcf5`
+
+### 分析と停止
+
+gapが通ったというcounterfactualでは、external inverseは`4.425423249246816e10`へ下がり、
+new totalはQ007o internal inverse`2.1920952274236575e11`、改善率は`125.28856057411295`、
+最大pass候補は`1e-16`となる。しかしvalidityとphase hypothesisが落ちたため、これらを認証結果へ
+採用しない。登録thresholdを事後に緩めず、Q007oの`1e-18`と全下流結果を維持する。
+
+次はoriginal asymmetric discsまたは明示的にinflated product-factor upperを使う別gateとする。
+external bottleneckを外すcritical gapをQ007o internal inverseから先に導き、その閾値を固定してから
+再評価する。Fourier wave-sum restrictionを追加する場合も別の事前登録事項とする。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3626,6 +3682,8 @@ MPFR cost、GPU、thread scaling、compressed rounding、TT-cross、別tensoriza
 [`artifacts/q007aa_initialization_interior.json`](artifacts/q007aa_initialization_interior.json)
 
 [`artifacts/q007ab_forward_shadowing.json`](artifacts/q007ab_forward_shadowing.json)
+
+[`artifacts/q007ac_phase_aware_resolvent.json`](artifacts/q007ac_phase_aware_resolvent.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

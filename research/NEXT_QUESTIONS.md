@@ -7163,6 +7163,51 @@ inverseの追加改善、zero-wave phase改善、連続最適化、Euclidean／g
 global basin、Q007c1の有限振幅性能、既存Q007p--Q007abのtube／MPFR定数の拡大、境界、外力、
 D3Q27は認証しない。既存の小さいtubeとforward-shadowing結論はそのまま有効であり、再解釈しない。
 
+### Q007ac 封印結果
+
+validity 6件中5件、hypothesis 5件中4件が通過した。事前登録したvalidityとphase gapの双方に
+反例があるため、
+`registered Q007ac phase-aware audit invalid`
+として`inconclusive`で停止した。
+
+- 72 Q007h1 representative proof digest mismatch: `0`
+- nonselected representative／target disc: `70 / 630`
+- modulus aggregate／expanded product: `2,919,730 / 869,107,778`
+- safe／dangerous aggregate: `2,918,904 / 826`
+- dangerous expanded product／exact comparison: `108,273 / 287,929`
+- target phase gap: `1e-7`
+- nominal selected discs contain all original selected discs: pass
+- nominal selected discs remain inside Q007n working \(\sigma\): fail
+- required factor-modulus inflation: `1.6653345369377348e-16`
+- failed exact phase comparison: `4`
+- minimum witness:
+  degree `71`、modulus counts `(24,38,2,7)`、acoustic positive／negative
+  split `(12,12,1,1)`、external
+  `wave=(-7,-7);eigenvalue_index=6`
+- certified complex distance lower: `2.4028360293239852e-8`
+- phase comparison digest:
+  `5039563c60ab57b85b683b324506049535372847b1a5adef3362da2b16a954ab`
+- input／result digest:
+  `15166f90e39b132c0d6956b7a14f821095cc1b31da9d9e83b9b3f5b9cf3314b9` /
+  `369809e953652c9e99ade3553e2754a06c1b0add52549e2f53dbcdb0ab15f018`
+- runner SHA-256:
+  `8c2757c4c3771007dc15135bc407551bbef74906294ab897b1a4f251d5abe2ae`
+- artifact newline-normalized SHA-256:
+  `b3c9d99088492bf157cbb651d958597573a9c7b5386a189b6b9e4ee5d88dbcf5`
+
+診断上は、登録gapを仮定したexternal inverse
+`4.425423249246816e10`がQ007o internal inverse
+`2.1920952274236575e11`を下回り、total改善率`125.28856057411295`、
+最大pass候補`1e-16`となった。しかし停止規則により、このcounterfactual scanを定理半径へ採用しない。
+Q007oの`1e-18`、Q007p--Q007abのtube／positivity／MPFR／forward-shadowing結論、Q007c1とQ008c／
+Q010のnegative outcomeは全て据え置く。
+
+次は別gateで、original asymmetric selected discsを直接使うか、必要な
+`1.6653345369377348e-16` inflationを明示したproduct-factor upperを固定する。そのうえで
+\(81\beta_*/C_{\rm int}^{\rm Q007o}\)からexternal bottleneckを外すためのcritical gapを先に計算し、
+Q007acの失敗witnessから十分離した新しいtarget gapを事前登録する。Fourier wave-sumを使う場合も
+追加改善として明示し、Q007acの`1e-7`を事後に書き換えない。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。

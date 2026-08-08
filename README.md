@@ -155,6 +155,9 @@ explicit local existence radiusを`accepted`とした。ただしこの極小値
 finite-ball normal attraction、grid-uniform性を示さない。Q007oではQ007nのgap、majorant、119候補を
 固定したまま、selected projectorのexact external complementでinternal inverseを再評価した。旧119レコードは
 完全一致し、total inverse upperは`2.746444556852928e13`、最大pass modal radiusは`1e-18`へ改善した。
+Q007acではnonselected-output 630 discに対する位相付きgap \(10^{-7}\)を監査したが、登録した
+対称nominal discがQ007nの\(\sigma\)を`1.6653345369377348e-16`超え、さらに4個の位相比較がfailしたため
+`inconclusive`で停止した。診断上の半径`1e-16`は定理主張へ採用していない。
 Q007pではこの半径を固定し、全289 Fourier blockをexternal coordinate normで厳密に覆った。
 登録tube \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)に対し、base forward invariance、
 one-step normal contraction、tangentに対するstrict normal dominationを全て認証した。ただしこれは固定17²・
@@ -940,6 +943,38 @@ external eigenvalueの個別一意性は使わず、C4で全8 selected waveへ�
 維持した保守値である。Q007c1の有限振幅性能棄却、forward invariance、positivity、
 finite-ball normal attraction、grid-uniform性、continuum limitは変更・認証しない。
 
+### Q007ac phase-aware external-output resolvent refinement
+
+Q007oのexternal-output upperを支配するmodulus-only gapの代わりに、Q007h1のcomplex eigenvalue
+discと全selected productを比較した。Q007iと同じ291万9730 modulus aggregateを先にscreenし、
+log-gapが`1e-6`未満のaggregateだけをacoustic signごとに完全展開した。Fourier wave-sum restrictionは
+使わず、全productを70 nonselected C4 representativeの630 target discと比較した。
+
+- classification: `registered Q007ac phase-aware audit invalid`
+- validity／hypothesis gates: `5 / 6`, `4 / 5` passed
+- target phase gap: `1e-7`
+- safe／dangerous aggregate: `2,918,904 / 826`
+- dangerous expanded product／exact disc comparison: `108,273 / 287,929`
+- selected nominal-disc containment: pass
+- nominal disc within Q007n working \(\sigma\): fail
+- required product-factor inflation over Q007n \(\sigma\):
+  `1.6653345369377348e-16`
+- failed phase comparison: `4`
+- minimum-distance witness:
+  degree `71`、counts `(24,38,2,7)`、acoustic split `(12,12,1,1)`、
+  external `wave=(-7,-7); eigenvalue_index=6`
+- witness certified complex distance lower: `2.4028360293239852e-8`
+- phase-comparison digest:
+  `5039563c60ab57b85b683b324506049535372847b1a5adef3362da2b16a954ab`
+
+従って事前登録した停止規則どおり`inconclusive`とし、external inverseもexistence radiusも更新しない。
+診断としてgapが通ったと仮定すれば、external inverseは`4.425423249246816e10`、total inverseは
+Q007o internal upper `2.1920952274236575e11`に支配され、改善率`125.28856057411295`、
+最大pass候補`1e-16`となる。しかしvalidityとphase hypothesisが落ちたため、これらはcounterfactualであり
+認証値ではない。次のgateでは、selected discを再中心化せずに扱うかproduct-factor upperの微小inflationを
+明示し、critical external gapから独立に閾値を固定する。既存Q007oの`1e-18`とQ007p--Q007abの
+tube／MPFR結論は変更しない。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -1528,6 +1563,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007z_selected_wave_repair.json`](research/artifacts/q007z_selected_wave_repair.json)
 - [`research/artifacts/q007aa_initialization_interior.json`](research/artifacts/q007aa_initialization_interior.json)
 - [`research/artifacts/q007ab_forward_shadowing.json`](research/artifacts/q007ab_forward_shadowing.json)
+- [`research/artifacts/q007ac_phase_aware_resolvent.json`](research/artifacts/q007ac_phase_aware_resolvent.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -1599,6 +1635,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q007z balanced repairのselected-wave Fourier認証、条件付きMPFR-85 all-iterate tube帰納
 - Q007aa exact-state coordinate interiorからMPFR-85 encoding／repair後のQ007s tube membership認証
 - Q007ab fixed eigencoordinate contractionによるsame-initial MPFR-85 all-iterate forward-error認証
+- Q007ac 全291万9730 modulus aggregate／287,929位相比較、登録nominal-disc条件とgap反例によるinvalid stop
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -1607,7 +1644,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 未実装・未通過:
 
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
-- external-output／phase-aware resolventの追加改善
+- Q007acで未通過のexternal-output phase-aware resolvent（nominal-disc設定とtarget gapの再登録が必要）
 - TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
