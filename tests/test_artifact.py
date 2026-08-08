@@ -5,6 +5,7 @@ from pathlib import Path
 
 from ttim_lbm.experiments import run_d2q9_baseline
 from ttim_lbm.provenance import source_metadata
+from ttim_lbm.rational_spectrum import _file_sha256
 
 ARTIFACT_DIRECTORY = (
     Path(__file__).resolve().parents[1] / "research" / "artifacts"
@@ -1283,3 +1284,48 @@ def test_q007i_artifact_records_direct_nonresonance_and_theorem_use() -> None:
         "explicit_neighborhood_radius_available"
     ]
     assert "no explicit neighborhood radius" in cycle["claim_boundary"]
+
+
+def test_q007j_artifact_records_the_rational_eigencoordinate_bridge() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007j_eigencoordinate_bridge.json"
+    runner_path = artifact_path.parents[1] / "q007j_eigencoordinate_bridge.py"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007j_eigencoordinate_bridge.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "rational Krawczyk selected-eigencoordinate bridge",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "selected_real_dimension": 24,
+        "representative_eigenpair_count": 6,
+        "right_left_system_count": 12,
+        "claim": (
+            "linear eigencoordinate identification only; no Taylor-jet, "
+            "explicit-radius, finite-ball, grid-uniform, or continuum claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["krawczyk_certification"]["system_count"] == 12
+    assert cycle["disc_association"]["unique_membership_count"] == 6
+    assert cycle["disc_association"]["assignment_collision_count"] == 0
+    assert cycle["transport_and_normalization"][
+        "transported_mode_count"
+    ] == 24
+    assert cycle["transport_and_normalization"][
+        "conjugate_label_mismatch_count"
+    ] == 0
+    assert "does not certify any quadratic" in cycle["claim_boundary"]

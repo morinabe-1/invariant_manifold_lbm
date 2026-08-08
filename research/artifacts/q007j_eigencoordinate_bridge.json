@@ -1,0 +1,2151 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-08T06:58:01.821033+00:00",
+  "source": {
+    "package_version": "0.1.0",
+    "package_source_sha256": "114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2"
+  },
+  "runner_source": {
+    "filename": "q007j_eigencoordinate_bridge.py",
+    "sha256": "7ef97e55ffff46244fee98d8017db1637a0e6c73ba3f1caf5c7dad77b7a26b57",
+    "sha256_newline_normalization": "UTF-8 text with universal newlines"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.4",
+    "scipy": "1.16.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "mathematical_scope": {
+    "diagnostic": "rational Krawczyk selected-eigencoordinate bridge",
+    "construction_grid": [
+      17,
+      17
+    ],
+    "omega": 1.5,
+    "eta": 0.01,
+    "conservation_treatment": "fixed global mass and momentum leaf",
+    "selected_real_dimension": 24,
+    "representative_eigenpair_count": 6,
+    "right_left_system_count": 12,
+    "claim": "linear eigencoordinate identification only; no Taylor-jet, explicit-radius, finite-ball, grid-uniform, or continuum claim"
+  },
+  "cycle": {
+    "question": "Do the registered Q006i right/left eigencoordinates rigorously represent the selected theorem spectral subspace?",
+    "registered_parameters": {
+      "size": 17,
+      "omega": 1.5,
+      "eta": 0.01,
+      "representative_waves": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "branch_order": [
+        "shear",
+        "acoustic_positive",
+        "acoustic_negative"
+      ],
+      "right_pivots": [
+        2,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "left_pivots": [
+        5,
+        7,
+        8,
+        8,
+        7,
+        5
+      ],
+      "search_box_component_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x2540be400",
+        "float": 1e-10
+      }
+    },
+    "input_artifacts": {
+      "q006i": {
+        "filename": "q006i_full2d_quadratic.json",
+        "sha256": "347d5349af349618333df17733ba372c8ca6f5ee02784a9e788898acefb5db89",
+        "registered_sha256": "347d5349af349618333df17733ba372c8ca6f5ee02784a9e788898acefb5db89",
+        "sha256_matches": true,
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+        "source_match": true,
+        "study_gate": "passed",
+        "scientific_outcome": "rejected",
+        "scope_match": true,
+        "all_validity_gates_passed": true,
+        "failed_hypothesis_gates": [
+          "global_conservation"
+        ],
+        "passed": true
+      },
+      "q007h1": {
+        "filename": "q007h1_equivariant_spectrum.json",
+        "sha256": "caee8fe382c0282e11e8139b8f434a944013f630288adf2e99223d0123c91af4",
+        "registered_sha256": "caee8fe382c0282e11e8139b8f434a944013f630288adf2e99223d0123c91af4",
+        "sha256_matches": true,
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+        "source_match": true,
+        "study_gate": "passed",
+        "scientific_outcome": "accepted",
+        "scope_match": true,
+        "all_validity_gates_passed": true,
+        "all_hypothesis_gates_passed": true,
+        "passed": true
+      },
+      "q007i": {
+        "filename": "q007i_direct_nonresonance.json",
+        "sha256": "c256b30ac5bfe0a6bc5e5f8e293016d3e0aa37c4bfa82ba81a0a2679d89e082f",
+        "registered_sha256": "c256b30ac5bfe0a6bc5e5f8e293016d3e0aa37c4bfa82ba81a0a2679d89e082f",
+        "sha256_matches": true,
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+        "source_match": true,
+        "study_gate": "passed",
+        "scientific_outcome": "accepted",
+        "scope_match": true,
+        "theorem_applies": true,
+        "passed": true
+      }
+    },
+    "coefficient_reproduction": {
+      "registered": {
+        "dense_hessian_sha256": "3f26eadcc6d25514671d9b741c53df5cf87c0dc598d0ff1cf9b9fd19f47d412f",
+        "reduced_hessian_sha256": "61f5f3a9663a29022e1b41f56df0a6408d93d770a2821d012ba1974954645da5"
+      },
+      "artifact": {
+        "dense_hessian_sha256": "3f26eadcc6d25514671d9b741c53df5cf87c0dc598d0ff1cf9b9fd19f47d412f",
+        "reduced_hessian_sha256": "61f5f3a9663a29022e1b41f56df0a6408d93d770a2821d012ba1974954645da5"
+      },
+      "observed": {
+        "dense_hessian_sha256": "3f26eadcc6d25514671d9b741c53df5cf87c0dc598d0ff1cf9b9fd19f47d412f",
+        "reduced_hessian_sha256": "61f5f3a9663a29022e1b41f56df0a6408d93d770a2821d012ba1974954645da5"
+      },
+      "matches": true
+    },
+    "interval_construction": {
+      "pi_width": {
+        "numerator_base16": "0x515",
+        "denominator_base16": "0x432dc3492dcde2e105c511c95d22d4d92e332c6a04fdc5fba685608a1c43830f654d2dc9ec2b63d0a20000000000000000000000000000000000",
+        "float": 1.0408e-136
+      },
+      "maximum_trigonometric_width": {
+        "numerator_base16": "0x17149",
+        "denominator_base16": "0x2196e1a496e6f17082e288e4ae916a6c97199635027ee2fdd342b0450e21c187b2a696e4f615b1e85100000000000000000000000000000000000",
+        "float": 9.4537e-136
+      },
+      "maximum_symbol_entry_width": {
+        "numerator_base16": "0x11a4c5103a82b610f4c5eccacc15697856b63ee0566539f57b38d04e1b4de8183cdbe25f795f5c568d5fe8aba801f2e4423a643eb14c7ccd78524d10f",
+        "denominator_base16": "0xa5453e415410987998b138f0995a0cbc749048ad5f1cd2f7cb1a846902e591050d0e4bdd03effda2ae32e7b0a228d0ad18856667825b6a92048b59ab99156429eefceb5a3a02446b6d55f85fd25f993039158000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 9.179830409716068e-138
+      },
+      "maximum_point_inverse_defect": {
+        "numerator_base16": "0x28d1b7e67d448359066273d5385913ba77ee3490acee8fbc5a1436d97449a04bcccaf989",
+        "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+        "float": 7.929821403096009e-15
+      },
+      "maximum_interval_contraction_bound": {
+        "numerator_base16": "0x247b24d8ba4d25cb774416cf2bdaccaa37a96b60fc65fca169d5f93a9edf2eff5d4e1c7e0cf6f",
+        "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+        "float": 7.431317256896775e-09
+      }
+    },
+    "disc_reconstruction": {
+      "representative_count": 2,
+      "proof_digest_mismatch_count": 0,
+      "records": [
+        {
+          "wave_index": [
+            -1,
+            0
+          ],
+          "selected_indices": [
+            1,
+            0,
+            4
+          ],
+          "bauer_fike_radius": {
+            "numerator_base16": "0xe246bdca1a6cc01a2ba62e020039edd28c82bdabe7bcdb3ca1b7a2d88fd2d343e0d8b64fb7e499d7ddac5c47551144d93cef5f74f1224d812a3f60a71ce23a451a514392d6d219086bbda2d23154be0d353d7dc50bd22438dcebfdd4b00bb2d0e8dcbb3bbe1646f7e4f73206a18346b568dddfe145cdea8d5dbfadf32f8cc25109e11c423a0245331e59791ba224a028dbf2f6df9ed4b0670bd49889e88fbc7",
+            "denominator_base16": "0x291f4b40e714fe8dc94f22a5e59f2d575c19d6f0c6348a0ce1e5410287b6423efc188a8cc7bcda4e2a6eba44c34675ca2c617de4f5681a7b37fca158ca4e3d9a1ee0d082d418accd009860bed30004dbe15b484a4d5a27c62f0496129d31cc411ea5a090c7b970325e50dee1528afe9f94d3e7ad0d3e78951ff765eb186153bb1a83a1be5d44182e887905eea0000000000000000000000000000000000000000000000000",
+            "float": 3.127825664843467e-13
+          },
+          "proof_digest_sha256": "35becf23046473716ad08960ba598c93f616d3f80762c6a1230d791db7609d03",
+          "artifact_digest_sha256": "35becf23046473716ad08960ba598c93f616d3f80762c6a1230d791db7609d03",
+          "digest_matches": true
+        },
+        {
+          "wave_index": [
+            -1,
+            -1
+          ],
+          "selected_indices": [
+            6,
+            1,
+            0
+          ],
+          "bauer_fike_radius": {
+            "numerator_base16": "0x625abebcc820108ff137cef285663eb48a06abd24d8f3ccb57d225f215c128768197e7c318a9f7da9ed33984c802b61e245a0ce1e5fb71374f3f902487dc0a8f858e32a197faf6e6a20ad3ce649fdb55932e9097e69396e44f5a1e959b7971d13814b5b4b4347ad7fd1242d26d8a4cb6637883bdd8b4fb37413b548a8b9ca8a00f02787c7d548eeec4ff0f8d2feb601efca58f41608d856cc09514be17ce11efd3",
+            "denominator_base16": "0xda763fc8cb9f4632fe1f1390976adc538a65c32cbe32a526cd0eb02d4fd74075f6cfabe35a4ca29be4b8a61429143120e6e1cc513b0af2a05c5e57a1984b783c4ab38f8d307b466b23fb7213865acd1e99fb0a034bb72fd4c42bd6eb71ef171345ea547cd01a1087f0413010e03c1a20751aeb76e86ed10cfbd012c68ec64e36d138a46779e221f3fad239163c80000000000000000000000000000000000000000000000000",
+            "float": 4.094666740864465e-13
+          },
+          "proof_digest_sha256": "66f43cc65e85ec79142eb89f9f944527dc8769dd50d1943fc750bbc8052b1d11",
+          "artifact_digest_sha256": "66f43cc65e85ec79142eb89f9f944527dc8769dd50d1943fc750bbc8052b1d11",
+          "digest_matches": true
+        }
+      ]
+    },
+    "krawczyk_certification": {
+      "representative_wave_count": 2,
+      "branch_count": 6,
+      "system_count": 12,
+      "registered_right_pivots": [
+        2,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "observed_right_pivots": [
+        2,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "registered_left_pivots": [
+        5,
+        7,
+        8,
+        8,
+        7,
+        5
+      ],
+      "observed_left_pivots": [
+        5,
+        7,
+        8,
+        8,
+        7,
+        5
+      ],
+      "all_krawczyk_images_interior": true,
+      "maximum_krawczyk_utilization": {
+        "numerator_base16": "0x959fd4e697349e921a81424eb4a4603d3da0986b31f28823246535f6cf326de05f668946e94361cef33a7ef0be3994055a2bd7ca16c4623c904e168999fd9941e4e0c6fd4aff21ede73187a43003792308661a30e730ac50290e7dd5c8045f5e57f6feea28c606ce01576360f6f920afda5e38c1974dbd20ee470d013343a12e78de2cc4696eb",
+        "denominator_base16": "0x421bb2808806a363d6ad49f9d6f0d1e4fb6ce9def2d854631e0a9b5d345bd39b9ed284bece5fff0ddf478fe040dd20453d0228f63424910735048a44a3a22810c5fec48a7d9a81c49222635987597079b06f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 3.453560282251993e-05
+      },
+      "records": [
+        {
+          "wave_index": [
+            1,
+            0
+          ],
+          "branch": "shear",
+          "role": "right",
+          "pivot": 2,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0x1e177a3b81caeb23be63dfded4811bf96cabb51c547df9b0b4f62df806081e5945d97f97646cee3f8d55da7d09716429f2a78a338ff6d5bd20a955051b02295cd7fbe26143ab8380396644ad5cda554dd4fe9c5f7294aa77b91aa20643964b917b288955812e50e6db6b2876d89e0ff6738ca96cb47406a27d4c1b6e70cd60f286bb13d592e63",
+            "denominator_base16": "0x52a29f20aa084c3ccc589c784cad065e3a482456af8e697be58d42348172c882868725ee81f7fed1571973d8511468568c42b333c12db5490245acd5cc8ab214f77e75ad1d012235b6aafc2fe92fcc981c8ac000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 5.556503918447948e-06
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0x28d1b7e67d448359066273d5385913ba77ee3490acee8fbc5a1436d97449a04bcccaf989",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 7.929821403096009e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0x247b24d8ba4d25cb774416cf2bdaccaa37a96b60fc65fca169d5f93a9edf2eff5d4e1c7e0cf6f",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 7.431317256896775e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x2c3a057ea1111c2789a609e79c5617c162ef888773696370bea0ebfe4687587abc8e76b",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 5.369858128459815e-16
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0x2fb771cf04be33ddb617fa9e26dde8997aa3aca0e148b4c87c1170258480ba3717d50a1831a8ce9a40bc1f85ce583e41d87b2710596fd9ad4affd25053fc5117d985c5b96011245438c586ffda3e30e9985d4468692d9290134b2fd360960a373269e3a9feffd962bbcefee3c08f9f4dd33e5bb64f33fceea15fa08a0eadfffd696aa57e1c9c7d010fb959ef811cf25a1d3ea75",
+                "denominator_base16": "0x30199c436dfeedd20d904e856dc250a32fda1866e8339343742c84e97925e3822e58aafb916757aa0c2e1c57908ee9c009cc193f662473c45e3895598ed446ae7f6cee34adb14421a20330ca2a633e439fccee9874c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9920278589647407
+              },
+              "upper": {
+                "numerator_base16": "0x3f9f42695ba845284a93d3a94b5b8b0f30780219bea7c85357fc0dcad44d2a816f1bd39e4178e3db0e102e34586244ffe4b4ddde016275226a698f75508774a92c877d1503a33b525da927cf73719677dcab9605c9c1ae07d39c7d1ad21cb3b52d795889400afd1077cdc0c537140bce9670a839a997c9520634fc6511de09510d51109e836abbe099aee2fa67f01cc53650321",
+                "denominator_base16": "0x402225af3d53e7c2bcc068b1e7adc0d99522cb33e044c459f03b5be1f6dd2f583dcb8ea4c1df1f8d6592d074c0be8d000d1021a9dd85efb07da0c72213c5b39354913d9b9241b02cd804410d8dd9a85a2a669375f100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9920278589647407
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "-0x40eb721068d464730945147e19217d23de7ad205daec2d3da1c4e9255e898a9cac72e7fb487ece5b9a44f94874351ea6e50549b604809eaaeaf58659f674032e9943ee4730811c2ff7c298476f961ad9e7ca4821f09936552fe14a76d2f0dc8ff878c58b0e8506bcc4db5801d15424a516dd4453a0dbd313dd47e7d50be3363220e76985aa66d34332214d9",
+                "denominator_base16": "0x30199c436dfeedd20d904e856dc250a32fda1866e8339343742c84e97925e3822e58aafb916757aa0c2e1c57908ee9c009cc193f662473c45e3895598ed446ae7f6cee34adb14421a20330ca2a633e439fccee9874c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -7.316635167817613e-20
+              },
+              "upper": {
+                "numerator_base16": "0x40eb721068d25b3ee07140745493a4522770c82cbfccf86c59baeb7920e851ad5d5d1b262b72a72278c7860db364df859fe83b02d8505ee6e926becfc07db158f4d3bf44808dc00472139990a35d029b1081d15f49e691fcc5d2835aec8210e058a51b3c95c90b6b7beb43e54758aa47861075820ae43f01b42e1e4daa2a674ed54b5893b2bf37eabe5cfdb",
+                "denominator_base16": "0x30199c436dfeedd20d904e856dc250a32fda1866e8339343742c84e97925e3822e58aafb916757aa0c2e1c57908ee9c009cc193f662473c45e3895598ed446ae7f6cee34adb14421a20330ca2a633e439fccee9874c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 7.316635167817404e-20
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x489169d9f59317dc6a1a2eea4c76fa2cabcadd53985b01064883c91ff608649950548bf174319a52ea1",
+                "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+                "float": 0.9920278589647407
+              },
+              "upper": {
+                "numerator_base16": "0x12245a767d64c5f74be415b0c846ef2939a986f1bd6ddadde7528c56fe55dfcbc54ada7c5a74243ac285",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.9920278589647407
+              }
+            }
+          },
+          "proof_digest_sha256": "5b3f53705ececca3a61c9a2a5cb850dd0ade775eff4b0e85bdaa55010621ad3b"
+        },
+        {
+          "wave_index": [
+            1,
+            0
+          ],
+          "branch": "shear",
+          "role": "left",
+          "pivot": 5,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0x444a2750a4048d6aec98a47d227fa39347174cf44902aa235aa114cfbc9bbd2a86f8f0f2d1806cb13d1650f66ae6153b787d20fb3ca3190d0f52a00b04513694f30dbb0919892d81b6cf412e84b01003e83560bfd66e88a232a24b1429ffdf8c835c69b96aab55b4f20f193df8dfda1ddbbbf07b27f16b11bc862e62abde02d12bb666894e637",
+            "denominator_base16": "0x52a29f20aa084c3ccc589c784cad065e3a482456af8e697be58d42348172c882868725ee81f7fed1571973d8511468568c42b333c12db5490245acd5cc8ab214f77e75ad1d012235b6aafc2fe92fcc981c8ac000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 1.2609844737009237e-05
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0xc63cf71e487b32c6c675d60f37baad3a0bc8e924a9bbc6fb241e2e989cca9aa5271693d",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 4.813888486928041e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0x1a278d9f750d02d3f4a53e85236f8157de582185e2d7ec75965076a294af3f361d895d5aaf4b5",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 5.32776671060247e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x5ff07315604c7b812ed607fa2e6bc5bb0a6b33cef095550e0d0e894f086b2b6e80208fd",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.1648638015137754e-15
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0x5f6ee39e097c67bba270230795c0df8f5645e83c1a06c2a8b7775cd3e03fcdd581b3599d76c28fb5d2ce3bc474bb04b1ab1c5fcd066470d2c4f54e2ca80af1f0bcb05d6db4f41d0cff890234d3442855e917ecdc26ec14ce148d039926021d7957bb6097e660c8cc17a1008ac3327affa751b3d565e8220952a22ffb83c563fdf96680bd7e92eec5faa98cf4e2b9957f0df731",
+                "denominator_base16": "0x60333886dbfddba41b209d0adb84a1465fb430cdd0672686e85909d2f24bc7045cb155f722ceaf54185c38af211dd3801398327ecc48e788bc712ab31da88d5cfed9dc695b6288434406619454c67c873f99dd30e98000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9920278589647407
+              },
+              "upper": {
+                "numerator_base16": "0xfe7d09a56ea114a099a429dc69cff52b17faadefc6062925873dd2efb56f21201954c4f4e61053880a1c3ec4e7c1ebe16237ea0659113c9aece6e7871ed1fad29d44dc68065a33a913115eb507f86a0bc5183463da0ef535819bc1dabf4995bf4f131641ce42ba77928eb3f4f194951f840ec5c5471c2bbbac8629471bd8564ef63e9236422461b9ab65f456944dd41fd79e5d",
+                "denominator_base16": "0x1008896bcf54f9f0af301a2c79eb70366548b2ccf81131167c0ed6f87db74bd60f72e3a93077c7e35964b41d302fa3400344086a77617bec1f6831c884f16ce4d5244f66e4906c0b3601104363766a168a99a4dd7c40000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9920278589647407
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "-0x3264798e5b860a9f00d1a7a17f1cab3b7641846bf46e65283975d8a45b8f1699765dfa9c069643409ab3ea255434a0e725b5515db890ca14a46591a9ee3bb5ab707068b9e6026c085d41b31d83871d89486a85c909d8e95cc687032c8660b15c0f88e360845463f53b57d1b8a6a74a79540e1dd261a2b967975488e50e9653b6aac20a2d02c4ac2ff9185c9",
+                "denominator_base16": "0x402225af3d53e7c2bcc068b1e7adc0d99522cb33e044c459f03b5be1f6dd2f583dcb8ea4c1df1f8d6592d074c0be8d000d1021a9dd85efb07da0c72213c5b39354913d9b9241b02cd804410d8dd9a85a2a669375f100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -4.259531438078235e-20
+              },
+              "upper": {
+                "numerator_base16": "0x25cb5b2ac452063928becec5c8c845f614eec5d20a92236d18cdd5a3eb1676db7fb7b1edac262770f8d55c5eae598a464dc3b111754a71adab6a4b161b19bc46069192b0f4ede5306e0637461ffe8f8b509e4882238b364cd15fbcf8037e8feb8d6c5de17516171216bf3409fc53d7f9dfe987bdcc6764e5820162059a7e865d0911d283af78eace5aed77f",
+                "denominator_base16": "0x30199c436dfeedd20d904e856dc250a32fda1866e8339343742c84e97925e3822e58aafb916757aa0c2e1c57908ee9c009cc193f662473c45e3895598ed446ae7f6cee34adb14421a20330ca2a633e439fccee9874c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 4.259531438069778e-20
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x9122d3b3eb262fb926b5b26ef49a1b29cd836d14a1de3f3330f37022195d35dd43a281e4174a8f17a37",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+                "float": 0.9920278589647407
+              },
+              "upper": {
+                "numerator_base16": "0x2448b4ecfac98bee8327d63af920b253b050bff5dd334eccf4543a1c17089559c36b8cc927ca754f5e5",
+                "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+                "float": 0.9920278589647407
+              }
+            }
+          },
+          "proof_digest_sha256": "b1ee7d7821778c7fff187149d81d78d3e78d9518aef7bdc8d203efcd3183975d"
+        },
+        {
+          "wave_index": [
+            1,
+            0
+          ],
+          "branch": "acoustic_positive",
+          "role": "right",
+          "pivot": 0,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0x2757aaaa2415a95f6368febea78c801ab039cfd36790a4956e069eadd20f34c925fe2a0f6beebdab61dd279f1d07133733aaf55eaf43737d0fbc634a57002ed7475599436be30832a86f6e053630b46da3fb2bcfa0d9d94f0f417f1db9ad465b48a60284a78f764c597283512cc215f6ae02723ee5431bc5fdedffffd8b4b12b5dac6d1d5ee7b",
+            "denominator_base16": "0x29514f905504261e662c4e3c2656832f1d24122b57c734bdf2c6a11a40b96441434392f740fbff68ab8cb9ec288a342b46215999e096daa48122d66ae645590a7bbf3ad68e80911adb557e17f497e64c0e456000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 1.4529348717727872e-05
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0x4d9a59e0b507ca11cbb2e1aeb41f6d13553757a5308538cbfbc39dcc4ec0bea01b239c7",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd0000000000000000000000000",
+            "float": 4.711150177597882e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0x1006cb2b520ce70fd86a8d9b8c39a9c8859bd83e47d1378d047f03515c8a18f16e319a9a0c2cb",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 3.264663370044694e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x997695d8a1ed88592dbf807095235566c7fef26e0604e0017d162907a7962c9b3559869",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.8633014456927002e-15
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0xba93d7300a8e246c039c5f5f01ff13537ddc3566a50eb30c1af17e8dabf167d6dd038126af90bac10d7860a08c407db9b2cd7fcd478c532f476af6c1b3f0ed44fa19c05bf6e330d9df64ea5b47f7752423d66857d727bd996fb98e18c09f0d0d6d7f8ed5220f74d892a8184a1c52c77510b8c7590c96377268cfc6295fb9a557858ced37d36f2add077a6e3d7",
+                "denominator_base16": "0xc066710db7fbb74836413a15b709428cbf68619ba0ce4d0dd0b213a5e4978e08b962abee459d5ea830b8715e423ba700273064fd9891cf1178e255663b511ab9fdb3b8d2b6c51086880cc328a98cf90e7f33ba61d3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9697367183570308
+              },
+              "upper": {
+                "numerator_base16": "0xba93d7300a8e246f92ce80d797cf83cf9d4837f7caafe8bfde65e5350208bca78b0b7a6b519135318776984986f21143c230ec5b25f0388bbeec8f444afbff32937843b3b0fc73f36b250c1848b5a19126bd49599863111c596dfac54a5a9b9b069efca27493a8386c8ad5f8e583e43f349c50d8f1703c5f47eca41bab995d19637da4a061c24e663374d3f2b",
+                "denominator_base16": "0xc066710db7fbb74836413a15b709428cbf68619ba0ce4d0dd0b213a5e4978e08b962abee459d5ea830b8715e423ba700273064fd9891cf1178e255663b511ab9fdb3b8d2b6c51086880cc328a98cf90e7f33ba61d3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9697367183570308
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "0xa12eee3a263270c24b51b760d506849d423c1f0c752725c69e2c08802f615b41a605831c93926a1c3c9f6518d4c693b24faf5f96b60e5a39381ab7bd07306bcf4ca3518bf2b0570821d886b4e432197415fb98cf52510eb545ed79a94620a2c95d230c2917b39085e69c610eb1ed77d979e7dc6bb3e6178c7045ca6576a796c69984325019ec6e5f2eb90949",
+                "denominator_base16": "0x30199c436dfeedd20d904e856dc250a32fda1866e8339343742c84e97925e3822e58aafb916757aa0c2e1c57908ee9c009cc193f662473c45e3895598ed446ae7f6cee34adb14421a20330ca2a633e439fccee9874c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.20943761223015217
+              },
+              "upper": {
+                "numerator_base16": "0x1425ddc744c64e1a110347a8658908d1b7fd852a21757f92b57fb463b0f7d5d08bc4ad05e3728a7bc493087797f19c3b51a7a239c5f3bdf56323e1a69e3d3896f2443deecccb34bbd2458e4c6592d371518009f5c793fc50a746c0f4b444c8787ba4237817ad1576aa99f180bed1bf0dca1e1ba94c2ca3743d9f29e7e51478d67c63ff9efa64adfee25bb200f",
+                "denominator_base16": "0x60333886dbfddba41b209d0adb84a1465fb430cdd0672686e85909d2f24bc7045cb155f722ceaf54185c38af211dd3801398327ecc48e788bc712ab31da88d5cfed9dc695b6288434406619454c67c873f99dd30e9800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.20943761223015217
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x91255befdf48b7e60b6ebf2311b326aa28cdfe2a2544144a4c99093c461200455280f0b04034c66299b",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+                "float": 0.9920954673550982
+              },
+              "upper": {
+                "numerator_base16": "0x91255befdf48b7e942f7cbd7bbfdc8a21007ca6403cc857393f2e8c82d43042784959fe2b1b83cc5f9d",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+                "float": 0.9920954673550982
+              }
+            }
+          },
+          "proof_digest_sha256": "39e6b3e6380388cae5fa3385095cae46f36089605c08535047e9be96800d08ca"
+        },
+        {
+          "wave_index": [
+            1,
+            0
+          ],
+          "branch": "acoustic_positive",
+          "role": "left",
+          "pivot": 7,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0x959fd4e697349e921a81424eb4a4603d3da0986b31f28823246535f6cf326de05f668946e94361cef33a7ef0be3994055a2bd7ca16c4623c904e168999fd9941e4e0c6fd4aff21ede73187a43003792308661a30e730ac50290e7dd5c8045f5e57f6feea28c606ce01576360f6f920afda5e38c1974dbd20ee470d013343a12e78de2cc4696eb",
+            "denominator_base16": "0x421bb2808806a363d6ad49f9d6f0d1e4fb6ce9def2d854631e0a9b5d345bd39b9ed284bece5fff0ddf478fe040dd20453d0228f63424910735048a44a3a22810c5fec48a7d9a81c49222635987597079b06f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 3.453560282251993e-05
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0x6227070f0e6ba744d32207093686b37c4bcb523b2e3253a95f1951a147d43daa0e81ebf",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd0000000000000000000000000",
+            "float": 5.958678567031228e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0x108f869e38db672e905890d7f2e49958381fe9cfacbaef95fa1e448fc391e1026235e2f6a7bb9",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 3.373463547918402e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x3f2660b73b37144c6d2ed3e9a86aa9d888dff4d4963b38ca1ec6c133f7986007067c0fd",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 1.5334921505878986e-15
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0x5d49eb980547123662639425b994969213564a5d9aa4f9968d590aebc503012efcc5c737f9f817d3451eeb82ba11206d8ced8a10159c343a581e9d75e8bddef3fd86fc6834fc48cb7e685ac07c6974f40502516a25caa4eeeab0020c5af80387eb031e9e3d74be7a308ec677b3bd19a5a3ee8d4db91834b4ba69778375a5feed73795293f5ccb3c039ea3eac3ad",
+                "denominator_base16": "0x60333886dbfddba41b209d0adb84a1465fb430cdd0672686e85909d2f24bc7045cb155f722ceaf54185c38af211dd3801398327ecc48e788bc712ab31da88d5cfed9dc695b6288434406619454c67c873f99dd30e980000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9697367183570308
+              },
+              "upper": {
+                "numerator_base16": "0x1f18a3dd5717b0bd22f09ea7392b00c4558fed10fcfc9043b3ee7414e78278f9581c905e6b5fb655c8e5c693541f61833eaeb3fe42ab738edad53639ac18ccd28b252390e163dbc0a7aba1b440ae991f9abb0f86009457d476145142d577fc9fda0cf3ba53851eac28a5e9e6fe097ec7a30a32eba7ff05a9166b21336749310495a2f8320492c7c055462c650db",
+                "denominator_base16": "0x201112d79ea9f3e15e603458f3d6e06cca916599f022622cf81dadf0fb6e97ac1ee5c75260ef8fc6b2c9683a605f4680068810d4eec2f7d83ed0639109e2d9c9aa489ecdc920d8166c022086c6ecd42d153349baf880000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9697367183570308
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "-0x5097771d13193866c1b78cc8bf901cec61b3303eddd2f503a1b3ca1a6da97ffe2f31e20086eeb54f7e49501df64d15407cc8df7d6e89490400076fd325c8a67e3f17d649e6f343d8de724235adf15463705218bf62a65504dd7c0c290750c836eeb67ad4a15c75d00417231b82315d6b7102ccbbe1c6b031fad39d4e33a9ccd86a70ad4082db1b7344d4d82493",
+                "denominator_base16": "0x180cce21b6ff76e906c82742b6e1285197ed0c337419c9a1ba164274bc92f1c1172c557dc8b3abd506170e2bc84774e004e60c9fb31239e22f1c4aacc76a23573fb6771a56d8a210d101986515319f21cfe6774c3a60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -0.20943761223015217
+              },
+              "upper": {
+                "numerator_base16": "-0x5097771d13193862a7fe6d88f7de6e00ac4d3ce96c90183167ea84cea797d90a00f23a736652889727ffaf40ed1904cfc04e97d2a4f0af3b1cc2977993fd7f84cb4bfa704fa39b11b56981837e0b40b7bec5a4d12909aa99fa7aa7d54d04a5fff64864fc602834f2b56dd742f4736f678a84c00f6a836d61270fb54bbbf7d82cb5f1131c1940d86d050cf408cb",
+                "denominator_base16": "0x180cce21b6ff76e906c82742b6e1285197ed0c337419c9a1ba164274bc92f1c1172c557dc8b3abd506170e2bc84774e004e60c9fb31239e22f1c4aacc76a23573fb6771a56d8a210d101986515319f21cfe6774c3a60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -0.20943761223015217
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x1224ab7dfbe916fcd74085bf090623a8dc785ece126608a2e78c5a6ef63be113913499d8abfffbf2a37",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f1000000000000000000000000",
+                "float": 0.9920954673550982
+              },
+              "upper": {
+                "numerator_base16": "0x3a0ef193261d165d0827586774a0919c74cc29d000f174f03fe4036505a847791b0a2ddeff220d6b2ef",
+                "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd0000000000000000000000000",
+                "float": 0.9920954673550982
+              }
+            }
+          },
+          "proof_digest_sha256": "6d7057428637c53ede43c239ca6141e99c916c9192a20fa6f5fcf2261c127eb7"
+        },
+        {
+          "wave_index": [
+            1,
+            0
+          ],
+          "branch": "acoustic_negative",
+          "role": "right",
+          "pivot": 0,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0xe20e1d342afea17201c007ab3699621602fb4687bcc1d9e8e1cab6733b094b18a2c480f201ac0bf6284441d5231b254345ab3fb1cb166d180fc95651b7308bf1c82844b0c009a73e53307053bd261e1d904f4851eac25e58347b096ae00b574c62a453d613ab34b636d45be84a7889a64ba19ecfd763ae2570205e685e2ad82f2a37c112a009",
+            "denominator_base16": "0x14a8a7c82a82130f3316271e132b41978e920915abe39a5ef963508d205cb220a1a1c97ba07dffb455c65cf614451a15a310acccf04b6d5240916b357322ac853ddf9d6b4740488d6daabf0bfa4bf3260722b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 1.0435401312671971e-05
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0x122fc99f2d72cc3c332024ab9c8393bf1c738a41675f2cce07c3ce44db3041575ccdbd59",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 3.5330678556238084e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0x200d9599b4ff7ae342941f6f1967960f18addeb33c676e9b08460f8b006c890762888a8b09ab",
+            "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+            "float": 3.2646622230565826e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x1db5ea535fedb98632d4d3283bc1257d705871ad2f5add47f6d8a7a3663977acc704be7",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd0000000000000000000000000",
+            "float": 1.8036834860374826e-15
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0xba93d7300a8e246c039c72282eaa1d612069202fb68966d13b74449de7cc0b93a3e468901f73a2d344885f3c725c0086207344225828b5320c03c73d50e8158cec00eb5e1c31ef7de4a0550482addb6d36f752e4345d40d59aa9812d7a0be55c9b6544640c4aef8fb59cbd4d75b3a4fbac10f22a6ee614ac6529e017acfde06a0d82b7581dda65163c4bd8aa7",
+                "denominator_base16": "0xc066710db7fbb74836413a15b709428cbf68619ba0ce4d0dd0b213a5e4978e08b962abee459d5ea830b8715e423ba700273064fd9891cf1178e255663b511ab9fdb3b8d2b6c51086880cc328a98cf90e7f33ba61d3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9697367183570308
+              },
+              "upper": {
+                "numerator_base16": "0x7c628f755c5ec2f50c899eb45c6b97e60115271769f493c1dd243d836192aef227733e7a3f209de44f343300e480ce9628f8d82ec3ad89a1440bf19d69916e916183fede469d2bbeb8e2692a54186a072f67f7c01d6fb973d9652afee11809a4540610d98dfb997c591d3d328c611ccfdef91e79ef48324e2a640d7790bdd20902e53eabc6009f41bbbf64a6b",
+                "denominator_base16": "0x80444b5e7aa7cf857980d163cf5b81b32a459667c08988b3e076b7c3edba5eb07b971d4983be3f1acb25a0e9817d1a001a204353bb0bdf60fb418e44278b6726a9227b3724836059b008821b1bb350b454cd26ebe2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9697367183570308
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "-0x1425ddc744c64e1a11033e43d2aa306cd73812f2e52191add5017d4794336e131064b0abab65f2db8cf18d6be23d7a5c6d92317accc3f47938c8e1dbae6152525730a54276feced0f466259bff5c3ab80f769d3d3d1aeabd19b3a0bafdb668882b78a1cc2e3e8f122d54cf963ead9ac1043d28d5021ee26c42e6620a348adaa785e8b128878296b4900d13f21",
+                "denominator_base16": "0x60333886dbfddba41b209d0adb84a1465fb430cdd0672686e85909d2f24bc7045cb155f722ceaf54185c38af211dd3801398327ecc48e788bc712ab31da88d5cfed9dc695b6288434406619454c67c873f99dd30e9800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -0.20943761223015217
+              },
+              "upper": {
+                "numerator_base16": "-0xa12eee3a263270c24b5202852574698734e62dc98776b22867038b9ff75b853a2603b0c05e3a6ecf9e74b64b8056fd76f8898b4730b13eca5b108eb4aeb53de63c463d4a3a5b97204f3cc32eb76faa44f4f510817c1c954800caacc34273124ef7631717969333091f68177cd439ca830d2c977f59a2dbae584407ce902a4784e1e167a05507e398fa535b0f",
+                "denominator_base16": "0x30199c436dfeedd20d904e856dc250a32fda1866e8339343742c84e97925e3822e58aafb916757aa0c2e1c57908ee9c009cc193f662473c45e3895598ed446ae7f6cee34adb14421a20330ca2a633e439fccee9874c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -0.20943761223015217
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x1224ab7dfbe916fcc16dda03b22909275a4a5eb0d35822b073a852148e0c6a57b1a820437fd7a5a3b565",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.9920954673550982
+              },
+              "upper": {
+                "numerator_base16": "0x1224ab7dfbe916fd285ef75baa1f6db8ff73b40e228fda57968d27c2ecdd2458f0c96eee49b6756d5b83",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.9920954673550982
+              }
+            }
+          },
+          "proof_digest_sha256": "2d812865c28a3901e472990702a19f175ac7ed500a6d31bcafc5bea7dc9cb2ad"
+        },
+        {
+          "wave_index": [
+            1,
+            0
+          ],
+          "branch": "acoustic_negative",
+          "role": "left",
+          "pivot": 8,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0x10e52d8ff6071b62b4e4f33ddfac465b72e67b2ba0ab7edc5cdb62655315383302f03903542098d967a6fdbd3e6a0edfc6da2a669820e946cfce5288afae07a2483b6b9b4c84c3474c1c1872b7d89dfed8c97d07cfce970fc09332df287fc06f66fddffdfc713ce038529c9026ba59703ce216fc2e4c2ee27f2b6589d19561ad7a979afcbf46d3",
+            "denominator_base16": "0xa5453e415410987998b138f0995a0cbc749048ad5f1cd2f7cb1a846902e591050d0e4bdd03effda2ae32e7b0a228d0ad18856667825b6a92048b59ab99156429eefceb5a3a02446b6d55f85fd25f993039158000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 2.4957942409070756e-05
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0xba2fefa6f8c9be5424c99f907910b85abe70500592de8db0b8156384716934509238c8f",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 4.52125224722653e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0x34fe787f108dd65a32974428123f3b85527aff79d6884068c88bd303021455c0f480ebaa4b3",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd000000000000000000000000",
+            "float": 3.3734605548194183e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x1713374fa82d657904f9da4ce041a27a3d31e3fc518bbd8dd135261c16e31723fbcec11",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 1.1206801638574232e-15
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0x2ea4f5cc02a3891b3131cc6f76cc0e6afd0d3f556bece85617901d3e4482b6543479b3fedf1290c0d2877fbb609e16d43e07fe0170f3fa2e18b797b0501f213bd9e6843472be3725030c5e1716679cb1a9d109070d05008c433a268b62dc873e05679943a0f4b4df6e9546a18f401aa94abcefc41dcf256c1f342ab792700b33a022d369b19831f803ea93cd14b",
+                "denominator_base16": "0x30199c436dfeedd20d904e856dc250a32fda1866e8339343742c84e97925e3822e58aafb916757aa0c2e1c57908ee9c009cc193f662473c45e3895598ed446ae7f6cee34adb14421a20330ca2a633e439fccee9874c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9697367183570308
+              },
+              "upper": {
+                "numerator_base16": "0x5d49eb980547123768d1d73c7129538f060f22a92173d9d33fee20e499c49a5d4ef5e94f820eceeaba558fd36a074fe33ad2c47362299f1942cae6765b7aab175cc88f576a7b0d55ccd0c2b454f4c72145534f8a75e56a68b639bd06a409030b1a6e3df3c210a059887bafe7894fe95b3a8bd3e8ba91e68f5242301ecf5609bf119d548a81a6049542061bac3f",
+                "denominator_base16": "0x60333886dbfddba41b209d0adb84a1465fb430cdd0672686e85909d2f24bc7045cb155f722ceaf54185c38af211dd3801398327ecc48e788bc712ab31da88d5cfed9dc695b6288434406619454c67c873f99dd30e98000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9697367183570308
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "0x284bbb8e898c9c3153ff4036ec975b7c9f2648a7b12e1c32a381d562eca415ef67fb5dc08510ac5edd8d6c2564097a590c10e72ad9ff28de3eae3e02b39dbb03bac5e03361642b3ef008c5c725dc61a06360dcc54c9bcc8ebe312e7073fe0e2537988da6bdb6161426506df30716fa5cd82fd0fbec461cf1ca02be40bbe21b487f4e3fd448f4d87f28238761a7",
+                "denominator_base16": "0xc066710db7fbb74836413a15b709428cbf68619ba0ce4d0dd0b213a5e4978e08b962abee459d5ea830b8715e423ba700273064fd9891cf1178e255663b511ab9fdb3b8d2b6c51086880cc328a98cf90e7f33ba61d30000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.20943761223015217
+              },
+              "upper": {
+                "numerator_base16": "0xa12eee3a263270cd836ef3c7cee723badc3e42911188ba03147688cc3889c564d001819033901cc4206a337ad67efb3a2659e02f6a09f961891837b2ef8c43900b24648968cef79692e47f51a1c21f06bf9ff18dabf3eccb83de0c23d8e3941e661798a11c240d6b85119798e4dad5d7cb67edb08dea9b85f90537b07e979d35617f0f5f716220db74de3e557",
+                "denominator_base16": "0x30199c436dfeedd20d904e856dc250a32fda1866e8339343742c84e97925e3822e58aafb916757aa0c2e1c57908ee9c009cc193f662473c45e3895598ed446ae7f6cee34adb14421a20330ca2a633e439fccee9874c000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.20943761223015217
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x1224ab7dfbe916fcd74086d0411632f0a0d73d59c4e65e0ed0e430e11990a7ec28bb52df00d743b25489",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.9920954673550982
+              },
+              "upper": {
+                "numerator_base16": "0x1224ab7dfbe916fd128c4a8f1b4cb310499dc07d6648cadb8c589dbff4ab28172e1edf792bce2f89625",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f1000000000000000000000000",
+                "float": 0.9920954673550982
+              }
+            }
+          },
+          "proof_digest_sha256": "0ef72cc0655e422deab515278a98c4fe2c67e0d453c800a23e7d477085df782f"
+        },
+        {
+          "wave_index": [
+            1,
+            1
+          ],
+          "branch": "shear",
+          "role": "right",
+          "pivot": 1,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0x121ebbabb000a2c8b95b0d7b75a9fe318e47b020651302af9d30e002825d312219aacd9949b50758823f7823f8bc5fa6e2ad1a11bb97eb0ef9ab78fd804210a8b314b54f5ddf6e0c3f23b2749123374097fa783548b86e8aa88aec47b951b87e2dde56190fc01aa42d4caa4ceaaca28f6acd03d219c97d36b7d64f598970cc544f43210b31fb",
+            "denominator_base16": "0x1b8b8a6038ad6ebeeec83428198f021f68c2b6c78fda23294c846b66d5d0ed80d78261fa2b52aa45c7b3269d705c22c784163bbbeb0f3c6dab6c8ef1eed8e606fd2a2739b455b611e78e540ff8654432b42e400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 1.003772855111339e-05
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0x1dccc1740e147da372046aaa6fa97ff596c8549e0f1330c486e9fd4829b1cd54fbddaeed",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 5.789119664183449e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0x2fd359cac0529feb512c644557c7d293981b20bac2edc56c44300f636d2d1457ecf0b79c1bf9",
+            "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+            "float": 4.871122255587663e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x6b4678e775e5beb904ca4527539ea4cdeb1e00e239d84acb4537e875606acd7275d2457",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.302502212047822e-15
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0x17abdb19ce23da99482632a873f5d2c327478a61236fa675040a30f5c6719c7b5bcc6122e3f57ccc97e97a7da73263c8f63aa7febe32efda051069bb4299b8fc1296f4f3a0ef7d408cc016c85783d7bd7656a0cd225b6252d16bd51334278212f9d3398c399385ef573037c737bf92be18c97cd88846081e53b0c548947ec44dd0cc776ea916dd9f10df9d9989e6111dc6afdb",
+                "denominator_base16": "0x180cce21b6ff76e906c82742b6e1285197ed0c337419c9a1ba164274bc92f1c1172c557dc8b3abd506170e2bc84774e004e60c9fb31239e22f1c4aacc76a23573fb6771a56d8a210d101986515319f21cfe6774c3a6000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9842533040658383
+              },
+              "upper": {
+                "numerator_base16": "0x17abdb19ce23da997b148702c6371a2a9c7598149ef62c9f7b04ce0a56779d71c91769eb5b9d6c2c2256af750a71b38400fa3a9b44f2c753b31cc4dd7a9d553c16495c4e90687570931ad7e81e4c708edeb5c810f9d01a9f2a6c77412e16b16a08b0a6ca8e1c8c000a547d4b0ef70af479007b3a4bf86686c36271c194781b90b19a85ecf8fd01eeb6dd42df91e08d2c374e3",
+                "denominator_base16": "0x180cce21b6ff76e906c82742b6e1285197ed0c337419c9a1ba164274bc92f1c1172c557dc8b3abd506170e2bc84774e004e60c9fb31239e22f1c4aacc76a23573fb6771a56d8a210d101986515319f21cfe6774c3a600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9842533040658383
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "-0x10fa1c1e1b63f03e91a0c74802f17e4c57c262ee245f3fc876d2d054e843264c8bd6e41c4eb334a29d426215d340b1377972d1ee8417f84064e859e84f6054df9a807fb42a8e4215f71bd44dcf3dfa6021a6d08e3527b8da110f9481f4aa02e6a9ea2d15568cac428da8dc5c0885af7209c9613366c7a66f03d23e81f12591d65c6ba95c834819b3789149",
+                "denominator_base16": "0x1008896bcf54f9f0af301a2c79eb70366548b2ccf81131167c0ed6f87db74bd60f72e3a93077c7e35964b41d302fa3400344086a77617bec1f6831c884f16ce4d5244f66e4906c0b3601104363766a168a99a4dd7c4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -5.740065143066197e-20
+              },
+              "upper": {
+                "numerator_base16": "0x65dca8b4a4ad7c266af38b1ddc7122dfcd5c22bd65dc8526ec3b41246d0cd7b2e2ab7b33b4ca031c7b6ffdef277b3699dfc552f27ab5a8dae5b31a3e97d928da2a2d76709ab510eb25230c33662b618f381609bc46073e35872e32763ce1663ab91356222d34a5a9e9f537192bb48921efed7c42a65b1d4aab4cb500e4bf9781aa22cec1633fa6f46396d",
+                "denominator_base16": "0x60333886dbfddba41b209d0adb84a1465fb430cdd0672686e85909d2f24bc7045cb155f722ceaf54185c38af211dd3801398327ecc48e788bc712ab31da88d5cfed9dc695b6288434406619454c67c873f99dd30e9800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 5.740065143070598e-20
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x11fff49672ff31af9b093d03ba8530c3a15da8838cd676de77f5fca06f03e5b9c82ccff5f43de652ad2b",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.9842533040658383
+              },
+              "upper": {
+                "numerator_base16": "0x11fff49672ff31afc1c3ac1f9184bd4b53c7d334c2d8f55b3939ef8797a9dd708d385e64c00cb6d20d0f",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.9842533040658383
+              }
+            }
+          },
+          "proof_digest_sha256": "f6795844ecb6f1244215f8b5a8d6ae608248214a82c3cd29edb15c0a84cd0367"
+        },
+        {
+          "wave_index": [
+            1,
+            1
+          ],
+          "branch": "shear",
+          "role": "left",
+          "pivot": 8,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0xa757b36bd6c3cfbd18b6029093a473cd13632c3d91172780cb74fa18268201442dba8767375bc309e0a7349a3504d04ce645394b4f8fe99369ad0e54abc00a030d7001f1bd1a3505ab73dd2491bc3362d750ba526d2e0ff18b6e69e32e50e7a48d9a94d43a5ba7a792595649a1dd8e640a8d542ce5216710b7083235a4445fd25ede371ff3bfb9171704428c15",
+            "denominator_base16": "0x14a8a7c82a82130f3316271e132b41978e920915abe39a5ef963508d205cb220a1a1c97ba07dffb455c65cf614451a15a310acccf04b6d5240916b357322ac853ddf9d6b4740488d6daabf0bfa4bf3260722b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 7.725049064812056e-06
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0x289d3153d66ee101bdf4d99cf418cefdb43a34385fa6599f1576f8457fcc2475831d525",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd0000000000000000000000000",
+            "float": 2.4656131343528478e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0x1cb99014921cb68d45a892f35c257f44e0e98c45bb4ceef90c4c01fb5bd70ad402aecdc84267",
+            "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+            "float": 2.925678126195055e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x6a176d77891e30a8614dbdd3d4859757bef5413e368e8a6567ba3b0d610952baccc8f05",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.2881292758621881e-15
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0x2f57b6339c47b5328400ad6621f96b8d4fdcac6b01ba29d19f454512f765b4662da0814dbd23e52bf269be95a212c8dca5f2065f5338d07e1b6937e6f59ef3a1bb2aa7c005f59c0c8e46b2c6421a2c1b11e4d4bb780b8bf725d5b2831f00e7491961cd1af185b72656b2bc5a458586da6a9b65e22719bf572abd31ade98ef48f7cdca5bbba02da121c8e00c4046e8e8fbbd73eb",
+                "denominator_base16": "0x30199c436dfeedd20d904e856dc250a32fda1866e8339343742c84e97925e3822e58aafb916757aa0c2e1c57908ee9c009cc193f662473c45e3895598ed446ae7f6cee34adb14421a20330ca2a633e439fccee9874c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9842533040658383
+              },
+              "upper": {
+                "numerator_base16": "0x7e3f3b344b69e332b137652b88257da331ede814b215fc1ba0d6d6912eebe554305ecae0cbe04e752cc17a0359462b042ede890aa398271de2e00adbc816a6004afed63dbb6352676851738a5c01bc5fc160823c5f38bad8bb97670589d004a4c3dd6bebdbf0f7d1b9ec52b84d1ff7d89bd2b3f7f0f2c8d7c16bf35a5b164eb26acb62af82233f78ef97fbe5b758d3d42cd201",
+                "denominator_base16": "0x80444b5e7aa7cf857980d163cf5b81b32a459667c08988b3e076b7c3edba5eb07b971d4983be3f1acb25a0e9817d1a001a204353bb0bdf60fb418e44278b6726a9227b3724836059b008821b1bb350b454cd26ebe20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9842533040658383
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "-0x2a26b2d8ba498a140f5dd2eef2dd1a5d6885cebea211f1695cd9100f7c45c857a3e4468750bd81d92b27638d06b19e8bc2377c6c8f0b136704ddd1dcb1e6c4f6eebf91bec85a13493faf32756745c9866eb432dbb36ac95fc201d8991b26cf3329c9b759f06ba3fb226987274e2d6ea46c49e6e8d47b554286ac5ea3130d89aecf79a83212d9ffe6f5271eb",
+                "denominator_base16": "0x201112d79ea9f3e15e603458f3d6e06cca916599f022622cf81dadf0fb6e97ac1ee5c75260ef8fc6b2c9683a605f4680068810d4eec2f7d83ed0639109e2d9c9aa489ecdc920d8166c022086c6ecd42d153349baf880000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -7.125833834770115e-20
+              },
+              "upper": {
+                "numerator_base16": "0x3f3a0c4519a65471cbcfce3654c26d2ca04295458717d77b593d72af54e78bbc88886560a64b447f2ae657b12015d05b76883de31ad8881e032ba827dfeadcf51e82c02ac1a56b25ecfe37c18ffef9fd397e2da4a252eed7c5333bb34c67159fcc49a10a4d34e8f1e6ce87ee17bbc34e3311fd585f0350e5ef71da4db0c2462d78d6333f210fa37798c3769",
+                "denominator_base16": "0x30199c436dfeedd20d904e856dc250a32fda1866e8339343742c84e97925e3822e58aafb916757aa0c2e1c57908ee9c009cc193f662473c45e3895598ed446ae7f6cee34adb14421a20330ca2a633e439fccee9874c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 7.125833834828338e-20
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x11fff49672ff31af965c77134af825673f76325ba05f8df3a06451c1b2a2989a000fe575f03f75a38a31",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.9842533040658383
+              },
+              "upper": {
+                "numerator_base16": "0x47ffd259cbfcc6bf19c1c840054f30f8799cbd1e8804a132f65ad71b0dcd974414a7333dbf705c8e0bb",
+                "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+                "float": 0.9842533040658383
+              }
+            }
+          },
+          "proof_digest_sha256": "26324f52059292ed254002f6f5ad13b268fa0f1e0e420d50c9d86225cf7f7114"
+        },
+        {
+          "wave_index": [
+            1,
+            1
+          ],
+          "branch": "acoustic_positive",
+          "role": "right",
+          "pivot": 0,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0xbd2c806174c09f367b431f5e6586d95a1b5c493050ef33d506ec45b1c8daa7cab8c013b4dc1a341998e69ae178e9cdcfb0f3836a693be9357bf6e947b43d260f4255033bf0679b87950487d195ad7da4b330d2c0960ba39c5869e5970b7badfc0b023cb70e009b9cff369150635368d6f036d8987ab29666c2ade77c8522b4a427694403c2395",
+            "denominator_base16": "0xdc5c5301c56b75f77641a140cc7810fb4615b63c7ed1194a64235b36ae876c06bc130fd15a95522e3d9934eb82e1163c20b1dddf5879e36d5b64778f76c73037e95139cda2adb08f3c72a07fc32a2195a1720000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 1.3099270393195538e-05
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0x12b3ba5d71d3fff7fd32bdef7e9a8e9343fde1d54e482d54457f6b56eda2ed04eb36101",
+            "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+            "float": 1.8165957475410215e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0xb039c9e1ac555bfd10d25fc11809754294cfd55e35550a7c6bdd5b7253308e324fb892eafb93",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 2.2436135353134316e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x12b6a129ab8cd6466bc3ab63b4b2ffb5baec679b5acdc438cfa93ac577f17926e032ff9",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 9.088483384362462e-16
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0x1e23b53815af522a35413b4b44c787dadff69d12cf133ff1cb1a8a966144165002aeb7db6f18d727ce4cec1a0179cffbbe1b62a0c98dc19ef2fd84a3f0f20fedd25abd39257171c4ae7b6a16e870edfb87237a5120ca2be00ec306c745c63a7961a68f4845203f4fdc348f1ff646300c96eaf9cac97290fc92767854d69993d5218837add4b5bd896bbfc3dc6b",
+                "denominator_base16": "0x201112d79ea9f3e15e603458f3d6e06cca916599f022622cf81dadf0fb6e97ac1ee5c75260ef8fc6b2c9683a605f4680068810d4eec2f7d83ed0639109e2d9c9aa489ecdc920d8166c022086c6ecd42d153349baf88000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9398999522423599
+              },
+              "upper": {
+                "numerator_base16": "0x1e23b53815af522ad01b77608606e8973130ac1e0522efca04f15b8c38c8de1b8b9763e0126b3429dd6a6fd9f5d8863fffdeb5f318813a57f3c27a5ea433d60e7b7829f486335095acb97e4d21f45341174df139ef4c5784ed408ed1ccb95bb98bf5ec05abd1f8efff4f38df951274de40aa9f70e5d687fe1b5ed7c0a937527918edf8e23702db09a2308d0fb",
+                "denominator_base16": "0x201112d79ea9f3e15e603458f3d6e06cca916599f022622cf81dadf0fb6e97ac1ee5c75260ef8fc6b2c9683a605f4680068810d4eec2f7d83ed0639109e2d9c9aa489ecdc920d8166c022086c6ecd42d153349baf8800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9398999522423599
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "0x6fc95c4b13241c60d1280c00571ce643029c3a0cd465fc431e740f5d9feab9da540451bff4a4dc6d29bdbfc37c1557277abad653e24d577f927d170a8e2e357be2a95b841108de8fa16ddb3e12ddfe12829e8ea60bc0af542f3adc10817b0453ed96b1550fb96a46b303a8a92f8bb30b93a42fe29075290f78697da3967293a2c03e52d5a316c5869cd890c59",
+                "denominator_base16": "0x180cce21b6ff76e906c82742b6e1285197ed0c337419c9a1ba164274bc92f1c1172c557dc8b3abd506170e2bc84774e004e60c9fb31239e22f1c4aacc76a23573fb6771a56d8a210d101986515319f21cfe6774c3a6000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.2905053796356269
+              },
+              "upper": {
+                "numerator_base16": "0x6fc95c4b13241c681362dcff66156f16d154ee935d223a65d485dae3ba241764beec61f79c813885df1fecc2f085e25a8fe2be2f95b7002b9d04e3ee13dcaac96d85e63c0f6f1211201421f6675664001d4b7ea399ca3c8f39dc4534396b5f54367215f5f86dd672d392518641bfdf3fd789031c8b53c6341eab528964bb9734c326d26ac58fefafb4880635",
+                "denominator_base16": "0x180cce21b6ff76e906c82742b6e1285197ed0c337419c9a1ba164274bc92f1c1172c557dc8b3abd506170e2bc84774e004e60c9fb31239e22f1c4aacc76a23573fb6771a56d8a210d101986515319f21cfe6774c3a600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.2905053796356269
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x8fed93ec29516be7b5fce146453e082de8eb57e7d314aacc5ef74ff0a78eb40c1baebb034564fa78bd9",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+                "float": 0.9837709569927495
+              },
+              "upper": {
+                "numerator_base16": "0x11fdb27d852a2d7d6533b6d6e0e417a156c31b377361492a621c196cce84f84ae615a876b2a912240595",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.9837709569927495
+              }
+            }
+          },
+          "proof_digest_sha256": "fd6e4e44dadf312af3c40d81af7b0c674719ffe5d581073476f3beed3a0d5b7c"
+        },
+        {
+          "wave_index": [
+            1,
+            1
+          ],
+          "branch": "acoustic_positive",
+          "role": "left",
+          "pivot": 7,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0x46f0227b186607949657bc7716036f19e650b5c6ae557b0184e22dd972b828f215bfbb313c24efd58a3cfc9c6d920021799dfdc65f391754ea4fe783c0ef1f1fb104fe94c9739f85cd43b0d1ead125ac21de895083bc306632fd321bec93d1eba6817b0e74b3a754598de05e639b5cb211717fa7b33bd363b17eb719f86e86a27",
+            "denominator_base16": "0x52a29f20aa084c3ccc589c784cad065e3a482456af8e697be58d42348172c882868725ee81f7fed1571973d8511468568c42b333c12db5490245acd5cc8ab214f77e75ad1d012235b6aafc2fe92fcc981c8ac000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 1.3098871250710475e-05
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0x9529eb918c0fb0770bb4782c8f3461dc358c98d0e6ed22caad9627ad7903bdb584bebb",
+            "denominator_base16": "0xea1575143cf97226f52d09d71a3293bd833a4e74863bbc1cf3a20253f4000000000000000000000000",
+            "float": 2.263873268841384e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0xbb84f965f6dee802b125f756a88cd4f67257335881a3107cfa134c486b46f85551122db69f0d",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 2.3873989138931083e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x950e5cfd2e3dd7b307280d7d3739dcd359d3305594fe23e9c48649bd0d1a8dd60a07b09",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.8097916318642324e-15
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0xb4d63f50821becfdcd30d725d0cd0702af13fe7ffcdb639ca84aaf8a8006e3967c6187be708efa7722001f00ec8eeefff21c6f8a665ef2770572a41505cb83bf9e1791feafceb276f9862d3cad729e832cf18b36ae2ea8941e49dd33cf99cd02cde4136c2e14597e84f18b4c58aba6721fa19c64a34dee8e80584cc42c9c4e8148e60791795d9",
+                "denominator_base16": "0xc066710db7fbb74836413a15b709428cbf68619ba0ce4d0dd0b213a5e4978e08b962abee459d5ea830b8715e423ba700273064fd9891cf1178e255663b511ab9fdb3b8d2b6c51086880cc328a98cf90e7f33ba61d3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9398999522423599
+              },
+              "upper": {
+                "numerator_base16": "0xb4d63f50821bed0052fb58e1015d6ce92817f05cf33afe71c314c4d06a10729219124c3cc0668ada1e5e3d1402d3843228acfa6d0a59d8390ea3302ef0727960ca2b2c28340cd1696b7ae5ca3cf2f2ca64e5dc4214fb68f3bebf24bba60ce29e4960dc6c9df2b256ac16b295d5eec26cdc47d99ff28a261f420b4f996bc30bda2ef04b5fca4b3",
+                "denominator_base16": "0xc066710db7fbb74836413a15b709428cbf68619ba0ce4d0dd0b213a5e4978e08b962abee459d5ea830b8715e423ba700273064fd9891cf1178e255663b511ab9fdb3b8d2b6c51086880cc328a98cf90e7f33ba61d3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9398999522423599
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "-0x6fc95c4b13241c66f80ff63b2aee78341efa61e922a9637ea2c7697f67ce196c9fd9ff9168fe87c0258089d6ff27c707fb5ca77b9294e445857290c1e7bd6b8c38b4191b3a8fe439acab0c324f9c21efb32c89a2286dc47e44df3c72ebb317238819fbf34fb9b866bca0d4705cdc5f1ef9a6d1f51790467d48d12506bf92e76e729d8bdb04c77",
+                "denominator_base16": "0x180cce21b6ff76e906c82742b6e1285197ed0c337419c9a1ba164274bc92f1c1172c557dc8b3abd506170e2bc84774e004e60c9fb31239e22f1c4aacc76a23573fb6771a56d8a210d101986515319f21cfe6774c3a6000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -0.2905053796356269
+              },
+              "upper": {
+                "numerator_base16": "-0x25431ec3b10c0975f97e50ec43448ecd0efb7f6511f8b9f179bbbfa68693a92722282786edc5225364416f3af0df898bda13db3cc38a5d95d07e7427e17b63cdd619890659d2c26ffacb4c9d26fa057f015b06ec1aab6454d407ff29a332d7ec850695df7f5240c86ce710ec1c396a648ce9839019e91c143261aa5874f4088da78811299ccb5",
+                "denominator_base16": "0x80444b5e7aa7cf857980d163cf5b81b32a459667c08988b3e076b7c3edba5eb07b971d4983be3f1acb25a0e9817d1a001a204353bb0bdf60fb418e44278b6726a9227b3724836059b008821b1bb350b454cd26ebe2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -0.2905053796356269
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x8fed93ec29516be83cb6e2a26be5dda2f3e0adae1552b01665a90d863bf4a1879978889d9e922fca2b",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e555921845417478800000000000000000000000",
+                "float": 0.9837709569927495
+              },
+              "upper": {
+                "numerator_base16": "0x126c3be4e2790392c4fa54a74a265f8670883a9a791e88ec8b5c782d8999d6c594e87666a4c86fc855",
+                "denominator_base16": "0x12ba095dc7701d9cb7743e3a2b0e49425c6b108433b2dbd95b2bae4428000000000000000000000000",
+                "float": 0.9837709569927495
+              }
+            }
+          },
+          "proof_digest_sha256": "a3c448caeac1ce158f6d023b484d6a62515292189824570ca0cfeba7b03ee737"
+        },
+        {
+          "wave_index": [
+            1,
+            1
+          ],
+          "branch": "acoustic_negative",
+          "role": "right",
+          "pivot": 0,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0x28e0ae7a633e347bbd088878593e245467b9b949740a7aea7ef09ab2c9c273ab463abb9972916069b35a1c0d397e400054afc2cd11f7ddac27f45a627f28f35e4b2fa173103d233de9b1d98edcf248c7348cae159e3cfdb996e660af6e6cc5f907108f200ed701fe289ff0feec453c227d5d91c63c785621c29c448f2536e96869e029c7e9173",
+            "denominator_base16": "0x52a29f20aa084c3ccc589c784cad065e3a482456af8e697be58d42348172c882868725ee81f7fed1571973d8511468568c42b333c12db5490245acd5cc8ab214f77e75ad1d012235b6aafc2fe92fcc981c8ac000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 7.548155269906736e-06
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0xd62b83c8e825191d2972e2003508a1e54ef26e1a97dac4bab9ba0ee75b1f5330c27d9bb",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 2.6003834816795105e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0x1607391a6f9c86fa165c111e8fa05404c324a7b1b8ba341f7472edf51480c67aa1b45282fd35",
+            "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+            "float": 2.2436133302819404e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x1a8c3f2e97b23226d515bc46b4f369ce6bcbe7b941fa724d09fd5173433e8180ac46f",
+            "denominator_base16": "0xbb445da9ca61281f2a8a6e45ae8edc979c2ea52a04fc967d8fb4cea99000000000000000000000000",
+            "float": 5.036490345524445e-16
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0xb4d63f50821becfd3f87678e4f4297d7b1ff56abd53ae44b558798b54413c0ec3c7644fc77a46d04b6baadb3e5307e4600f4e944d4681145b0a4517f77198b37cde0da802f6308a841c6f9e45f257cd305b63e9784295205e46579bb024669199f5091933a06f8ef70dff128fe01d7600f0113bac3dd82a26e39c387a9de3d63bb70dac91697961fd63816e8d",
+                "denominator_base16": "0xc066710db7fbb74836413a15b709428cbf68619ba0ce4d0dd0b213a5e4978e08b962abee459d5ea830b8715e423ba700273064fd9891cf1178e255663b511ab9fdb3b8d2b6c51086880cc328a98cf90e7f33ba61d3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9398999522423599
+              },
+              "upper": {
+                "numerator_base16": "0x5a6b1fa8410df6807052643c3b35d371782a298b9e1849c4a4517ee58aba283e3a494438be272b9f75ecf24558dc6356472e2ce15953ee528204a2b0a01c692afb7a12407251e48bd19f2405851c2554af1a87afb521d8501ae39eb243ee60415520404cca6e450d91f8c58b3e5fc7a75ee90ceeb8309c51801814233ab489fc7985e61ec5bc4a049a21cbec7f",
+                "denominator_base16": "0x60333886dbfddba41b209d0adb84a1465fb430cdd0672686e85909d2f24bc7045cb155f722ceaf54185c38af211dd3801398327ecc48e788bc712ab31da88d5cfed9dc695b6288434406619454c67c873f99dd30e98000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9398999522423599
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "-0x37e4ae2589920e3409b16ab50a0f68acffd2c4b7d46f4114909a5a2679f9fc346852c38fdf49987f562b35e8bf6b83dce2bb790d5aa39b9a56cb5a63fe391beb6f05498430f15bad24ab6ced3c5d8fc832e7f614ddf0f5fb03dcae6c4a6d6d21de752962737e64ecfc3f8e13ba51444e90d98c8334666f7894af12ef6c7ffad4a530014c263c5acc6fc21b7f3",
+                "denominator_base16": "0xc066710db7fbb74836413a15b709428cbf68619ba0ce4d0dd0b213a5e4978e08b962abee459d5ea830b8715e423ba700273064fd9891cf1178e255663b511ab9fdb3b8d2b6c51086880cc328a98cf90e7f33ba61d3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -0.2905053796356269
+              },
+              "upper": {
+                "numerator_base16": "-0x12a18f61d88604bacd86adee4ba21de095d4981979d3309cdf2a51b038332436babcd55e48dfe4c1b5aeaa5b50f6692771c6ad8529769abe564016258c99bf8085473cf55e9c2b109e70832319982c7782995fb82b1e7b798b49cc2fa00d9f4919b3de5a4c9d7c704591744ed0e281d96bff1b3a5565a9247ac092d9fde7229311732e13a3aea794911cf72bf",
+                "denominator_base16": "0x402225af3d53e7c2bcc068b1e7adc0d99522cb33e044c459f03b5be1f6dd2f583dcb8ea4c1df1f8d6592d074c0be8d000d1021a9dd85efb07da0c72213c5b39354913d9b9241b02cd804410d8dd9a85a2a669375f1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": -0.2905053796356269
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x11fdb27d852a2d7cf6bf9c9c2e6548699db34b88512e9925255394591631d80940893d02507e9f5f9025",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.9837709569927495
+              },
+              "upper": {
+                "numerator_base16": "0x11fdb27d852a2d7d6533b6637bfe54a6ef56a2b84673790af0503056ea8457c7994e5a286acb6ca47dff",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.9837709569927495
+              }
+            }
+          },
+          "proof_digest_sha256": "fb2c785d39265dca691e689a03611974ec673d419c0fbab29f5ba81b5c3ff72f"
+        },
+        {
+          "wave_index": [
+            1,
+            1
+          ],
+          "branch": "acoustic_negative",
+          "role": "left",
+          "pivot": 5,
+          "search_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "included": true,
+          "utilization": {
+            "numerator_base16": "0x1557534eef592d296f595eb231a46c01fd14d815a6fcb49879caae28fe43137ed2676570208563fad6d59c645f7f29f2c50eb185f0fe5974dd4d3eb577541dae69f7649c97a4ae4e4dbe4b25ca041224106a2ba6f49e7c1568da50810ea9f7d671e43792191294fe86ffc17da1277fa199dcbd92a63d5341bdd1bb4db332b0f39",
+            "denominator_base16": "0x29514f905504261e662c4e3c2656832f1d24122b57c734bdf2c6a11a40b96441434392f740fbff68ab8cb9ec288a342b46215999e096daa48122d66ae645590a7bbf3ad68e80911adb557e17f497e64c0e456000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 7.881372857390326e-06
+          },
+          "point_inverse_defect": {
+            "numerator_base16": "0xd978eb63ed5d011ac8a737a08e5dde2864d1f72da440f317c8ab1dd448cfbe6ef152585",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 2.6404797079942615e-15
+          },
+          "contraction_bound": {
+            "numerator_base16": "0xbb84f7fcb43dbf9df129b35cc3cdea80c821e80576082ec4eebfa466508d17dc3b6b88e27ef1",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 2.3873986397489316e-09
+          },
+          "center_residual_bound": {
+            "numerator_base16": "0x4e09856a51c65021974a057224a43fc3e8425ca55401d07c84876b99c4d2d5122d1480f",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 9.475026584178294e-16
+          },
+          "root_eigenvalue": {
+            "real": {
+              "lower": {
+                "numerator_base16": "0x169ac7ea10437d9fb9a61b29f775da5fb09c0cbfa2b8f25cb70e669c6de0ee731a8b336957b3b8e1422ded4d20119ed07703ceeceb02188c80543fe300076f9e68f3eb615299971f6ccbfbaa4d498fa42654c81831a54992cf8a4bb9c8c2164187f6916cb9bb3002ffa26d7ee17f3a81b7732eed9bf5fd101f1ae4fb88ba30c4d009635b1573ff",
+                "denominator_base16": "0x180cce21b6ff76e906c82742b6e1285197ed0c337419c9a1ba164274bc92f1c1172c557dc8b3abd506170e2bc84774e004e60c9fb31239e22f1c4aacc76a23573fb6771a56d8a210d101986515319f21cfe6774c3a6000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9398999522423599
+              },
+              "upper": {
+                "numerator_base16": "0x5a6b1fa8410df680297dab5b915426b1702ed9ecbad59ec77ac01dd221eb6e59e145fcfc981203c29c65d62f561178e1f654ccf9cee006669bbdc2ed486f4c39023908e0fcb30ece425e7ffb6096f116f3cebe41cffc932c6ca6485357277c6ce3cb90ec40d24ba56f2b4ae102d882f14eb36c84e56daa2b0e5c5657694e04fcbddb45534636d5",
+                "denominator_base16": "0x60333886dbfddba41b209d0adb84a1465fb430cdd0672686e85909d2f24bc7045cb155f722ceaf54185c38af211dd3801398327ecc48e788bc712ab31da88d5cfed9dc695b6288434406619454c67c873f99dd30e98000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.9398999522423599
+              }
+            },
+            "imag": {
+              "lower": {
+                "numerator_base16": "0x4a863d87621812ebf2fca4bb02c4b92548347c24d3cf38fd2f10c4cf6b4de71580dc9babab8218d2c337373ce6a1f46a0ffaad49d2e1fd59686a2ef2074471b18f9e8855cac5c0e0046aec8683e1bd38e017f96d3f38af049aec5bc5efdc2797b46845e2b407c2270a0f358d76c8673abfbbd54ac29356236e977d80deb7ff8bea6b4dde38f4d",
+                "denominator_base16": "0x1008896bcf54f9f0af301a2c79eb70366548b2ccf81131167c0ed6f87db74bd60f72e3a93077c7e35964b41d302fa3400344086a77617bec1f6831c884f16ce4d5244f66e4906c0b3601104363766a168a99a4dd7c4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.2905053796356269
+              },
+              "upper": {
+                "numerator_base16": "0x12a18f61d88604bbd402a8513859ac6b1b36e3a7ff950722601dde1ecc6df223af9d467a66629bb31341e3cbc82fd0da95826181369d97796bfc12abc45c5e7cd2a5d8e59547214c06aad68474c8dae9b98f383c4267166c9c02e6eb12e01585819a48c63821c8624de3bdf1c8cd61584fed35a76de29deb01472604f089f0eea98cb590d894b",
+                "denominator_base16": "0x402225af3d53e7c2bcc068b1e7adc0d99522cb33e044c459f03b5be1f6dd2f583dcb8ea4c1df1f8d6592d074c0be8d000d1021a9dd85efb07da0c72213c5b39354913d9b9241b02cd804410d8dd9a85a2a669375f1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                "float": 0.2905053796356269
+              }
+            },
+            "modulus": {
+              "lower": {
+                "numerator_base16": "0x8fed93ec29516be83cb6e4b1357797424c758fd28ac3812d7ed5ff3d3ea8780c569257bed82c4d34317",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+                "float": 0.9837709569927495
+              },
+              "upper": {
+                "numerator_base16": "0x11fdb27d852a2d7d545c766985e4c7f13f2b3c20c72b1c83e52bb5f49fd769efd743486fb9e0e4068f3",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f1000000000000000000000000",
+                "float": 0.9837709569927495
+              }
+            }
+          },
+          "proof_digest_sha256": "f6e6d2d746e23fe5550268dde43194f9f6fbc7a16ed610b4ecf697292cbc8bd5"
+        }
+      ]
+    },
+    "disc_association": {
+      "root_count": 6,
+      "unique_membership_count": 6,
+      "assignment_collision_count": 0,
+      "all_roots_uniquely_assigned": true,
+      "records": [
+        {
+          "source_wave": [
+            1,
+            0
+          ],
+          "negative_proof_wave": [
+            -1,
+            0
+          ],
+          "branch": "shear",
+          "membership_count": 1,
+          "assigned_eigenvalue_index": 4,
+          "distances": [
+            {
+              "eigenvalue_index": 1,
+              "distance_upper": {
+                "numerator_base16": "0x1ed07511decb2333a968f750b3fb0495dd08f01f9c20427bd5415a20c03ef77a58372fc10796f979e03",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+                "float": 0.21062053168259792
+              },
+              "contained": false
+            },
+            {
+              "eigenvalue_index": 0,
+              "distance_upper": {
+                "numerator_base16": "0x3da0ea23bd96540adc3dd13d40ac5434c16201f1629b57b18e4c7ac4b9d90e1a9a43d5fe72212963437",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.2106205316825981
+              },
+              "contained": false
+            },
+            {
+              "eigenvalue_index": 4,
+              "distance_upper": {
+                "numerator_base16": "0xf40c5629e113aeb978966e8de7a435547da3ddad33afa4669b8aa328fef5b6e816017",
+                "denominator_base16": "0x2ed1176a72984a07caa29b916ba3b725e70ba94a813f259f63ed33aa64000000000000000000000000",
+                "float": 1.1574824864143516e-15
+              },
+              "contained": true
+            }
+          ]
+        },
+        {
+          "source_wave": [
+            1,
+            0
+          ],
+          "negative_proof_wave": [
+            -1,
+            0
+          ],
+          "branch": "acoustic_positive",
+          "membership_count": 1,
+          "assigned_eigenvalue_index": 1,
+          "distances": [
+            {
+              "eigenvalue_index": 1,
+              "distance_upper": {
+                "numerator_base16": "0x317315a9c09a6c338d970f2ab8b71d780793c7c4510c732500057e0b97d1dbb98fe168b",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+                "float": 1.2008012645592747e-15
+              },
+              "contained": true
+            },
+            {
+              "eigenvalue_index": 0,
+              "distance_upper": {
+                "numerator_base16": "0x3d484e4d962b5ba8be77dee91c0f1a3b031d53f2e43fb7471cd426610178afe984eb8d2ece40d2257f",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e555921845417478800000000000000000000000",
+                "float": 0.4188752244603043
+              },
+              "contained": false
+            },
+            {
+              "eigenvalue_index": 4,
+              "distance_upper": {
+                "numerator_base16": "0xf683a88ef65949e7042f754895fc55a27c9151ac24724bfed977f753ec354eb3b4de877c157f844695",
+                "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+                "float": 0.21062053168259806
+              },
+              "contained": false
+            }
+          ]
+        },
+        {
+          "source_wave": [
+            1,
+            0
+          ],
+          "negative_proof_wave": [
+            -1,
+            0
+          ],
+          "branch": "acoustic_negative",
+          "membership_count": 1,
+          "assigned_eigenvalue_index": 0,
+          "distances": [
+            {
+              "eigenvalue_index": 1,
+              "distance_upper": {
+                "numerator_base16": "0x3d484e4d962b54cd1d89b8d6e4b3549dff3520d3556d686ee7e0657104784cc2b7c8fbc915bb353ac09",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+                "float": 0.4188752244603041
+              },
+              "contained": false
+            },
+            {
+              "eigenvalue_index": 0,
+              "distance_upper": {
+                "numerator_base16": "0x615488920ba613ecb6fb29b53356bed4c6102ad5d30e818de1589776fdb82b00ba40a6b",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 1.181752306902813e-15
+              },
+              "contained": true
+            },
+            {
+              "eigenvalue_index": 4,
+              "distance_upper": {
+                "numerator_base16": "0x18a6c40e4bd5bf22f281792661289a33bd2271fcf8852615ecd3c71a009ffee4702eea66f7d627c31d",
+                "denominator_base16": "0x750aba8a1e7cb9137a9684eb8d1949dec19d273a431dde0e79d10129fa000000000000000000000000",
+                "float": 0.2106205316825982
+              },
+              "contained": false
+            }
+          ]
+        },
+        {
+          "source_wave": [
+            1,
+            1
+          ],
+          "negative_proof_wave": [
+            -1,
+            -1
+          ],
+          "branch": "shear",
+          "membership_count": 1,
+          "assigned_eigenvalue_index": 6,
+          "distances": [
+            {
+              "eigenvalue_index": 6,
+              "distance_upper": {
+                "numerator_base16": "0x17dcdd998eed01e17da9a348f2786640cb63e6f0da9a4a67e9070d268a726a742a8272d",
+                "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd0000000000000000000000000",
+                "float": 1.4486698260789305e-15
+              },
+              "contained": true
+            },
+            {
+              "eigenvalue_index": 1,
+              "distance_upper": {
+                "numerator_base16": "0x55fcff5bc3085a3ff92254a5d42bc10da2d69bdb302537644c6a09b3d0a3026201f9cd0afa9981e39d",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f1000000000000000000000000",
+                "float": 0.29387173292989094
+              },
+              "contained": false
+            },
+            {
+              "eigenvalue_index": 0,
+              "distance_upper": {
+                "numerator_base16": "0x55fcff5bc308587d8e39eda61991dc0245ff93b90d88208dd736f5faa4b0ba9c34ce7ff46711ee75903",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.2938717329298909
+              },
+              "contained": false
+            }
+          ]
+        },
+        {
+          "source_wave": [
+            1,
+            1
+          ],
+          "negative_proof_wave": [
+            -1,
+            -1
+          ],
+          "branch": "acoustic_positive",
+          "membership_count": 1,
+          "assigned_eigenvalue_index": 1,
+          "distances": [
+            {
+              "eigenvalue_index": 6,
+              "distance_upper": {
+                "numerator_base16": "0x2afe7fade1841a2d714faa85a24b453fd1ecbaad3d2695ed8367da7e366b3d556c7fa0aa141569ed699",
+                "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+                "float": 0.29387173292989044
+              },
+              "contained": false
+            },
+            {
+              "eigenvalue_index": 1,
+              "distance_upper": {
+                "numerator_base16": "0x2a51b23365deecd43d643af04a8e302f12c4d0c2add69799427a824061e1fbd7b90761f",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 5.138253026128613e-16
+              },
+              "contained": true
+            },
+            {
+              "eigenvalue_index": 0,
+              "distance_upper": {
+                "numerator_base16": "0xaa01ab599b2ed43280d992430de264be83aa3b3b007567430697b43c246acef9a2138ab44bd72ca9a4b",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.581010759271254
+              },
+              "contained": false
+            }
+          ]
+        },
+        {
+          "source_wave": [
+            1,
+            1
+          ],
+          "negative_proof_wave": [
+            -1,
+            -1
+          ],
+          "branch": "acoustic_negative",
+          "membership_count": 1,
+          "assigned_eigenvalue_index": 0,
+          "distances": [
+            {
+              "eigenvalue_index": 6,
+              "distance_upper": {
+                "numerator_base16": "0x55fcff5bc3082d935ed5490f33f592a0af2f156bbe00b1213e2d6dbe143155f95eba358857f111d0195",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.2938717329298904
+              },
+              "contained": false
+            },
+            {
+              "eigenvalue_index": 1,
+              "distance_upper": {
+                "numerator_base16": "0xaa01ab599b2ed8c4ec22f1afb6967e540fe32bd657f50d46b7fc6c99162077004bd6cbacf9d8c92023b",
+                "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+                "float": 0.581010759271254
+              },
+              "contained": false
+            },
+            {
+              "eigenvalue_index": 0,
+              "distance_upper": {
+                "numerator_base16": "0xe8e6faf8d524a68bb2095dbeaf7253e00cec56ab24401713c93ec4af909dd63e9891d",
+                "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c400000000000000000000000",
+                "float": 7.069562329465389e-16
+              },
+              "contained": true
+            }
+          ]
+        }
+      ]
+    },
+    "transport_and_normalization": {
+      "transported_mode_count": 24,
+      "unique_mode_label_count": 24,
+      "conjugate_label_mismatch_count": 0,
+      "minimum_overlap_modulus_lower": {
+        "numerator_base16": "0x121576ffb066324814b41bb6f09b3d2a48c20e505e66c49d05083a3882b64ec817edfe98cfc16f8549f1",
+        "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+        "float": 0.9888476879367266
+      },
+      "maximum_right_correction_upper": {
+        "numerator_base16": "0x5efec66cdfc57d9d2410ef3f3157f5714761440b283a479169a8912079e0f5c8f9164dd",
+        "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+        "float": 1.153401559605646e-15
+      },
+      "maximum_biorthogonal_left_correction_upper": {
+        "numerator_base16": "0x79f71c8a836d310cdea4b3efe5de8232c93ae2dd18caf6f4376c58c494e83062ad8422d",
+        "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+        "float": 2.9617269241843315e-15
+      },
+      "records": [
+        {
+          "identifier": "wave=1,0;branch=shear",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 0,
+          "right_pivot": 2,
+          "left_pivot": 5,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x73f5aed4f7bf3d3981fea94d10eff073a96cc516e60c5abacedcc3d582cddb78f2cc66a7269f868885",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd000000000000000000000000",
+            "float": 1.981507309567768
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x10813fcbbfef78ee81d7d07f3cba7d4bc5c35f99ec1b97bbfdcb4e8e985719989d6b083",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 4.0079395449386234e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x9187a1c43477822596e9f9b91094ca1fb0d972c724d4f89f857d13868d6a03875e467b",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 4.4174412324546296e-16
+          }
+        },
+        {
+          "identifier": "wave=1,0;branch=acoustic_positive",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 0,
+          "right_pivot": 0,
+          "left_pivot": 7,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x5c95f8ab873ba385ce4c2d5f205aea6a94270c67b42c1ef0619075bdf75c90ce207271452df156de7b1",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 1.265677589158753
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x12d10fd6fd8de1dda9bbf89f93ad55a3233025ce69315eb6c673e19df92ecd1acbd979b",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd0000000000000000000000000",
+            "float": 1.1423286444116372e-15
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x853ed1cca7df6d88a5e44d91d045cf8e22d9627f9fa33f97ad4744727408be6ffb8417",
+            "denominator_base16": "0xbb445da9ca61281f2a8a6e45ae8edc979c2ea52a04fc967d8fb4cea990000000000000000000000000",
+            "float": 2.5278483576740004e-15
+          }
+        },
+        {
+          "identifier": "wave=1,0;branch=acoustic_negative",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 0,
+          "right_pivot": 0,
+          "left_pivot": 8,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x4a1193bc6c2fb604a509ea4666515f2d016cedf1c9dc83a1ec6df8a1a8e3baa2abd087f489c7df360f",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd000000000000000000000000",
+            "float": 1.265677589158753
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x279c54ea5af419756b813e9e346f8bd3e627e650ffe37c5b21e80b29afb0fd5ffb163ad",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 9.618802222822347e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x50b240744778c2259e81bcee10f35c2b94ac77724d8e21867b7f85b9961e48fba1b7819",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 1.9595772992998002e-15
+          }
+        },
+        {
+          "identifier": "wave=0,1;branch=shear",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 1,
+          "right_pivot": 1,
+          "left_pivot": 5,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x73f5aed4f7bf47f9b62074114fbffd57341bbcaf2baf139e68e12a4d76dd42efe30b2057dafd14d5feb",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd0000000000000000000000000",
+            "float": 1.9815073095677687
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x39ecac26b2272626216f3224330786250158c1049bff6e3fc2170732b90d4307f60a2f3",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 7.033007986240044e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x2a481c114ed491880c46d2352aba34dd39b8d552133bb6ee18923db84b288a9f6d6c69",
+            "denominator_base16": "0xea1575143cf97226f52d09d71a3293bd833a4e74863bbc1cf3a20253f4000000000000000000000000",
+            "float": 6.417132898534083e-16
+          }
+        },
+        {
+          "identifier": "wave=0,1;branch=acoustic_positive",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 1,
+          "right_pivot": 0,
+          "left_pivot": 4,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0xb92bf1570e7746ffc80f5fdf43960850e7c293f8f013eb19c3105073b0191a2a4230889f072e4960807",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 1.265677589158753
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x3bae2809b2d2c8dc50657ccb59f985811ceffcd2a66346648ed1caa4f8565e2eba09711",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 7.246191202375587e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0xd02c609861bdde4cc1b5c2b36b83b0b40449e6a0f7efe0ea5856652f4223bacb59b1f1d",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 2.5275743071862213e-15
+          }
+        },
+        {
+          "identifier": "wave=0,1;branch=acoustic_negative",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 1,
+          "right_pivot": 0,
+          "left_pivot": 2,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x17257e2ae1ceeabfda19d411aa9c1e7024b38a27d407d0d80f9dd9a5252f882164a044e13c7f85b2ed9f",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.2656775891587533
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x5efec66cd972c369d968274a4f64de789ade622c7e28e66282012711d9aad0a00846eb5",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.1534015595877706e-15
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x3cfad91d121684c617f7a9daebee8320f339bc4a58e09196c031bf4a2ed4dbf2536117b",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 2.961592674297531e-15
+          }
+        },
+        {
+          "identifier": "wave=-1,0;branch=shear",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 2,
+          "right_pivot": 2,
+          "left_pivot": 5,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x39fad76a7bdf9e9021f352490b9f8a54a202f3b40576601addf480014fa3986cd026dd997d39f5294af",
+            "denominator_base16": "0x1d42aea2879f2e44dea5a13ae3465277b06749ce90c777839e74404a7e8000000000000000000000000",
+            "float": 1.981507309567768
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x210f1571c03ac0b2be9fff25112f11b83d91dd8388b27abc6eb285dee3f64d50a5eae15",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 4.0139085855361633e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x932815f5170384f20916c4bbdb0fcedf415e8d2ec7b54c112d576ea4a0f673e1b2c07f",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 4.466820625770866e-16
+          }
+        },
+        {
+          "identifier": "wave=-1,0;branch=acoustic_positive",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 2,
+          "right_pivot": 0,
+          "left_pivot": 8,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x17257e2ae1cee8deba0ec96a9dc554823b26893fa015796cef1caab685a1d9b3f6337f8f1cd8e9b38fc1",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.265677589158753
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x13ce2a752f11af3b494ea53334e17c03b17173fb503f8785048d171737fa062794d596f",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 9.618802223002404e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x285eb9200a62240e229d763c0c93fdd763cd52d1161673d93e7547eda865df67fc24785",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 1.960639176157074e-15
+          }
+        },
+        {
+          "identifier": "wave=-1,0;branch=acoustic_negative",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 2,
+          "right_pivot": 0,
+          "left_pivot": 7,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x17257e2ae1cee8deba0f009623603b1b4bc87d3d1be2fb06790549d5d218eaba7c72f1b2c226231fea5b",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.265677589158753
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x2f0aa7995e00419a480d63626185f314b96951ff0b690e0473154ef64f8623b7b3826b9",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 1.1423286442539802e-15
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0xd04509a41d120f838213ca4b6f16dccc9cb344d723463fdf514b80e6028700d228b706b",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 2.5287439084114663e-15
+          }
+        },
+        {
+          "identifier": "wave=0,-1;branch=shear",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 3,
+          "right_pivot": 1,
+          "left_pivot": 5,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x48798d451ad78d0263d7debc02f3078763d66e257acc02eecbeae8c74873ba1919ca141a495daa662a3",
+            "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+            "float": 1.9815073095677687
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x12849597d3513e266dcb102d1e8c7360bfe776ea9c39db364486e877d1a71ffe59f2cb",
+            "denominator_base16": "0x5da22ed4e530940f95453722d7476e4bce175295027e4b3ec7da6754c8000000000000000000000000",
+            "float": 7.026203722901545e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x1a607cb3a67e6189c9b8ea5e9f7b0754c55488a3f2ad39ed609bfdccc481dea4e804c7d",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 6.405198567328195e-16
+          }
+        },
+        {
+          "identifier": "wave=0,-1;branch=acoustic_positive",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 3,
+          "right_pivot": 0,
+          "left_pivot": 2,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x17257e2ae1ceeabfda19ca5ae5cf62e50a0f83891e0bc9c3e6bd5537ac877481834339e8728f8e9c090f",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.2656775891587533
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x5efec66cdfc57d9d2410ef3f3157f5714761440b283a479169a8912079e0f5c8f9164dd",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.153401559605646e-15
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x79f71c8a836d310cdea4b3efe5de8232c93ae2dd18caf6f4376c58c494e83062ad8422d",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 2.9617269241843315e-15
+          }
+        },
+        {
+          "identifier": "wave=0,-1;branch=acoustic_negative",
+          "source_wave": [
+            1,
+            0
+          ],
+          "rotation_power": 3,
+          "right_pivot": 0,
+          "left_pivot": 4,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0xb92bf1570e7746ffc80fad9569fbe4a9b697a573f77562d640320ff500f707cb9dc281a02d4e6d8fd45",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 1.265677589158753
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x26320524e966f850ea65d200c344d46eaf18b5945e9b1b95d2bfa919a6cf8a311dae95",
+            "denominator_base16": "0xbb445da9ca61281f2a8a6e45ae8edc979c2ea52a04fc967d8fb4cea990000000000000000000000000",
+            "float": 7.246191202202227e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0xd02f0ab2dde84f4e2e19a43c7b8ad1fa3e2dcd1a1467b458a2b88741339634633e4445d",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 2.527700678681223e-15
+          }
+        },
+        {
+          "identifier": "wave=1,1;branch=shear",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 0,
+          "right_pivot": 1,
+          "left_pivot": 8,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x67a53c7c8ed8722acbf855885657ee74a96a9fab407554845589128d73b3216d4b3a2cb0db5b013f4bb",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 1.4168662176429192
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x19c9a50926936f49745717eb6faef917fa285f7c30af79422175b9881c828f2066d4f99",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 6.262114130685176e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x795d58db873fc6da411898a43dc2df85c98343fafa54e21f7a8b2ad91d3fb0dbd9d1af",
+            "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+            "float": 7.367853285207684e-16
+          }
+        },
+        {
+          "identifier": "wave=1,1;branch=acoustic_positive",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 0,
+          "right_pivot": 0,
+          "left_pivot": 7,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x121576ffb066324814b41dff1bc0a93d351a060e335f1cc8b0b8aa64ff43b7dae2b33c152dee7fcd737f",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 0.9888476879367266
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x72da45993edcf9c3a5f2ebca9be39a644fbd7d26c7d89b386711c8835d6f5c2fc676f9",
+            "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+            "float": 6.972519399636152e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x51c19cd695c09251a3eff9c6d6d84af63235440f4f1b3bd8fe72b3ba93d7d7a0e6288af",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 9.92658872562071e-16
+          }
+        },
+        {
+          "identifier": "wave=1,1;branch=acoustic_negative",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 0,
+          "right_pivot": 0,
+          "left_pivot": 5,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x90abb7fd83319814bf33a2443097981de5363cfdc3ca25ee482b6d0e3ac976a0dc6109c10c105610bb3",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 0.9888476879367267
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0xf5f50f5b671c2711b25eb4a2d097f4404c13e6c0170f157de92c20552f8f71a3501157",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 3.732918192647713e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x1ecc00b1fd0037e06b9c2940ffe7d05f884a1f976fc7bea51e5f14f20fbec21a105dd11",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 7.478518956237448e-16
+          }
+        },
+        {
+          "identifier": "wave=-1,1;branch=shear",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 1,
+          "right_pivot": 1,
+          "left_pivot": 5,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x19e94f1f23b61f19b7b555df431ea7bf08c9cae077d7554f4f05cccdcb6c59be466b7cd9eecc18cfbc4b",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.4168662176429196
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x3ac5df81349be247277770c84e19b1dddc22661eb116d4fab79d43888a29c5a91f01",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000",
+            "float": 7.136022841864278e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x687caeb7e7d3b8ac65917d7327aff8b9732c10ac3992703622754b6a512a6b34363a5f",
+            "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+            "float": 6.343241380430666e-16
+          }
+        },
+        {
+          "identifier": "wave=-1,1;branch=acoustic_positive",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 1,
+          "right_pivot": 0,
+          "left_pivot": 8,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x121576ffb066324814b41dff1bc0a93d351a060e335f1cc8b0b8aa64ff43b7dae2b33c152dee7fcd737f",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 0.9888476879367266
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x23e285b4c53440758da9963dad1c105f36c75926d900027423970998fbabbaa827b1613",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 4.357024189384182e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x12386f2cb5f12b1c62c2b5610358417621755911bb7a14dd6a3d032abde5ada4a4fcc19",
+            "denominator_base16": "0x24935a4b2986f9d6164f09899c17e7159c811c4234f955648611505d1e2000000000000000000000000",
+            "float": 1.7698147202695964e-15
+          }
+        },
+        {
+          "identifier": "wave=-1,1;branch=acoustic_negative",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 1,
+          "right_pivot": 0,
+          "left_pivot": 6,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x121576ffb066324814b41bb6f09b3d2a48c20e505e66c49d05083a3882b64ec817edfe98cfc16f8549f1",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 0.9888476879367266
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x25ec7825c584e17c60b77778d7a94584291f975b455f3d9d3a7d120cc483b1795cd933b",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 9.209151050500208e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x2a1389d2bf6f166168b73df807b330a1d108062f52f3bb146473748a0159713a57344b",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd000000000000000000000000",
+            "float": 2.5543862935439375e-15
+          }
+        },
+        {
+          "identifier": "wave=-1,-1;branch=shear",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 2,
+          "right_pivot": 1,
+          "left_pivot": 8,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x67a53c7c8ed87216a2847dfc66e111120ea7ca994b50a2f5c1569a78ceeaafedc7bc40186dc7b819b4f",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 1.4168662176429192
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0xd34eaee75b5aa389aa830b81157a1ed6bb6d9c75de943f0bb65468e6cb350fc597f1",
+            "denominator_base16": "0x4ae825771dc07672ddd0f8e8ac39250971ac4210cecb6f656caeb910a000000000000000000000000",
+            "float": 6.26373638641121e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x3d393497aa809161f6e030e43e429e9fa9b1dfaec39a444d21fa97e16926300ac188fdb",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 7.433556798895116e-16
+          }
+        },
+        {
+          "identifier": "wave=-1,-1;branch=acoustic_positive",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 2,
+          "right_pivot": 0,
+          "left_pivot": 5,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x4855dbfec198cc0a5f99da42c4e17c5aa459215ca977e42678f3ae87c2a7ca85f6124dd3d4a3c2f85bd",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 0.9888476879367267
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x313103125998c9af60fcaa82db5b3c0ed85f1450217751244b206bb7a59cf264a689d7",
+            "denominator_base16": "0x1d42aea2879f2e44dea5a13ae3465277b06749ce90c777839e74404a7e8000000000000000000000000",
+            "float": 3.7329181929617674e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x3d98016388dfcecfd88ddb9078cce2eacc7138f838f8a9f995204072432eed97d733e73",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 7.478518953039385e-16
+          }
+        },
+        {
+          "identifier": "wave=-1,-1;branch=acoustic_negative",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 2,
+          "right_pivot": 0,
+          "left_pivot": 7,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x121576ffb066324814b41bb6f09b3d2a48c20e505e66c49d05083a3882b64ec817edfe98cfc16f8549f1",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 0.9888476879367266
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x5be1d14754a9f662d6862fb8e8aac59dadcf2349e60c9623c2fd1c8b3e934d76e517e9",
+            "denominator_base16": "0x1d42aea2879f2e44dea5a13ae3465277b06749ce90c777839e74404a7e8000000000000000000000000",
+            "float": 6.972519399338851e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x51c19cd700d769f79ec5f4a4ee4d1305257412588e0c7315c6045afcd09709f6ca319b5",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 9.926588728648074e-16
+          }
+        },
+        {
+          "identifier": "wave=1,-1;branch=shear",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 3,
+          "right_pivot": 1,
+          "left_pivot": 5,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x52ea96ca0be0638264ae5b608de63d62f4943bdad7f684c2ec0ef11c2d01b89c995f2c55579acbde263",
+            "denominator_base16": "0x3a855d450f3e5c89bd4b4275c68ca4ef60ce939d218eef073ce88094fd0000000000000000000000000",
+            "float": 1.4168662176429196
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0xeb0fa272e4c6ae922a79ec5a682b8b83a8b76a1b55cbc50094fcb78209c10fb6a869ab",
+            "denominator_base16": "0x4926b496530df3ac2c9e1313382fce2b3902388469f2aac90c22a0ba3c4000000000000000000000000",
+            "float": 7.135091146277368e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x1a337a7684e2129c0ab484b51f7bddbf57adc8f04212a878887c58196335ef906bf5c3b",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 6.362504676043046e-16
+          }
+        },
+        {
+          "identifier": "wave=1,-1;branch=acoustic_positive",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 3,
+          "right_pivot": 0,
+          "left_pivot": 6,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x121576ffb066324814b41dff1bc0a93d351a060e335f1cc8b0b8aa64ff43b7dae2b33c152dee7fcd737f",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 0.9888476879367266
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x25ec7825c8f913ec997cb3b05ba00c98b1b70fa7621d661dfecf56d56f605640bb3d02b",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 9.209151050695486e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x6930d88ebefb7864b346e837d3381487afc9e2f5285899a501f56eda7e08d6046bbc49",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e555921845417478800000000000000000000000",
+            "float": 2.5543862933652597e-15
+          }
+        },
+        {
+          "identifier": "wave=1,-1;branch=acoustic_negative",
+          "source_wave": [
+            1,
+            1
+          ],
+          "rotation_power": 3,
+          "right_pivot": 0,
+          "left_pivot": 8,
+          "overlap_modulus_lower": {
+            "numerator_base16": "0x121576ffb066324814b41bb6f09b3d2a48c20e505e66c49d05083a3882b64ec817edfe98cfc16f8549f1",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 0.9888476879367266
+          },
+          "right_correction_upper": {
+            "numerator_base16": "0x11f142da5e9500d854280277a27125ebf2cec4a28884dc4e4c0ed850ef5bf9bc27d93bd",
+            "denominator_base16": "0x924d692ca61be758593c2626705f9c5672047108d3e5559218454174788000000000000000000000000",
+            "float": 4.357024189156894e-16
+          },
+          "biorthogonal_left_correction_upper": {
+            "numerator_base16": "0x91c37965ecf805b71becfc91a24a827267a08193b8e07af096017046dd63f90f8f5e223",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 1.769814720443263e-15
+          }
+        }
+      ]
+    },
+    "validity_gates": {
+      "registered_inputs_and_q006i_reproduction": {
+        "passed": true,
+        "threshold": "three fixed artifact SHAs/scopes/outcomes and Q006i coefficient hashes match",
+        "value": {
+          "inputs": {
+            "q006i": true,
+            "q007h1": true,
+            "q007i": true
+          },
+          "coefficient_hashes_match": true
+        }
+      },
+      "registered_enumeration_and_pivots": {
+        "passed": true,
+        "threshold": "2 representatives, 6 branches, 12 systems, 24 modes, registered pivots",
+        "value": {
+          "representatives": 2,
+          "branches": 6,
+          "systems": 12,
+          "transported_modes": 24,
+          "right_pivots": [
+            2,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "left_pivots": [
+            5,
+            7,
+            8,
+            8,
+            7,
+            5
+          ]
+        }
+      },
+      "rational_interval_construction": {
+        "passed": true,
+        "threshold": "pi/trig <=1e-120, symbol <=1e-110, all point inverse defects <1",
+        "value": {
+          "pi_width": {
+            "numerator_base16": "0x515",
+            "denominator_base16": "0x432dc3492dcde2e105c511c95d22d4d92e332c6a04fdc5fba685608a1c43830f654d2dc9ec2b63d0a20000000000000000000000000000000000",
+            "float": 1.0408e-136
+          },
+          "maximum_trigonometric_width": {
+            "numerator_base16": "0x17149",
+            "denominator_base16": "0x2196e1a496e6f17082e288e4ae916a6c97199635027ee2fdd342b0450e21c187b2a696e4f615b1e85100000000000000000000000000000000000",
+            "float": 9.4537e-136
+          },
+          "maximum_symbol_entry_width": {
+            "numerator_base16": "0x11a4c5103a82b610f4c5eccacc15697856b63ee0566539f57b38d04e1b4de8183cdbe25f795f5c568d5fe8aba801f2e4423a643eb14c7ccd78524d10f",
+            "denominator_base16": "0xa5453e415410987998b138f0995a0cbc749048ad5f1cd2f7cb1a846902e591050d0e4bdd03effda2ae32e7b0a228d0ad18856667825b6a92048b59ab99156429eefceb5a3a02446b6d55f85fd25f993039158000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 9.179830409716068e-138
+          },
+          "maximum_point_inverse_defect": {
+            "numerator_base16": "0x28d1b7e67d448359066273d5385913ba77ee3490acee8fbc5a1436d97449a04bcccaf989",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 7.929821403096009e-15
+          },
+          "maximum_interval_contraction_bound": {
+            "numerator_base16": "0x247b24d8ba4d25cb774416cf2bdaccaa37a96b60fc65fca169d5f93a9edf2eff5d4e1c7e0cf6f",
+            "denominator_base16": "0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f10000000000000000000000000",
+            "float": 7.431317256896775e-09
+          }
+        }
+      },
+      "finite_strict_json": {
+        "passed": true,
+        "threshold": "all summaries finite and strict JSON serializable",
+        "value": true
+      },
+      "registered_disc_and_symmetry_correspondence": {
+        "passed": true,
+        "threshold": "zero proof-digest, disc-collision, C4/conjugate-label mismatches",
+        "value": {
+          "proof_digest_mismatches": 0,
+          "disc_assignment_collisions": 0,
+          "conjugate_label_mismatches": 0,
+          "unique_mode_labels": 24
+        }
+      }
+    },
+    "hypothesis_gates": {
+      "all_twelve_krawczyk_inclusions": {
+        "passed": true,
+        "threshold": "12 strict inclusions, maximum utilization <=1e-3, contraction <1",
+        "value": {
+          "included_count": 12,
+          "maximum_utilization": 3.453560282251993e-05,
+          "maximum_contraction": 7.431317256896775e-09
+        }
+      },
+      "six_unique_selected_disc_assignments": {
+        "passed": true,
+        "threshold": "six right roots map one-to-one into distinct Q007h1 selected discs",
+        "value": 6
+      },
+      "biorthogonal_overlap": {
+        "passed": true,
+        "threshold": "minimum overlap modulus lower >=0.5",
+        "value": 0.9888476879367266
+      },
+      "all_twenty_four_mode_corrections": {
+        "passed": true,
+        "threshold": "maximum right/biorthogonal-left component correction <=1e-9",
+        "value": 2.9617269241843315e-15
+      }
+    },
+    "study_validity": "passed",
+    "hypothesis_outcome": "accepted",
+    "scientific_classification": "registered selected eigencoordinates rigorously bridge to the theorem spectral subspace",
+    "claim_boundary": "This identifies the registered linear eigencoordinates with the exact selected spectral subspace for the fixed 17x17 conservation leaf. It does not certify any quadratic, cubic, or quartic coefficient, an explicit neighborhood radius, finite-ball normal attraction, grid uniformity, or a continuum limit.",
+    "preserved_prior_outcomes": {
+      "q007i_theorem_acceptance_changed": false,
+      "q007h1_linear_acceptance_changed": false,
+      "q007h_independent_preconditioner_inconclusive_changed": false,
+      "q007f_finite_sample_acceptance_changed": false,
+      "q007d_euclidean_rejection_changed": false,
+      "q008c_tt_rejection_changed": false
+    },
+    "next_change": "If accepted, certify the 300 quadratic forcing and homological systems before considering cubic or quartic jets."
+  },
+  "study_gate": "passed",
+  "scientific_outcome": "accepted",
+  "next_question": "If accepted, certify the 300 quadratic forcing and homological systems before considering cubic or quartic jets."
+}
