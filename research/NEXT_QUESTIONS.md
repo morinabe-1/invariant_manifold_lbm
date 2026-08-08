@@ -4986,6 +4986,97 @@ strict normal dominationが成立する。
 global basin、continuum limitを意味しない。Q007q／Q007rのpopulation／stagewise positivity certificateは旧Q007p
 tubeだけに封印されたままで、新tubeへは自動拡張しない。次は新tubeのpositivityを別gateとして事前登録する。
 
+## Q007t: enlarged registered tube の full-map population positivity — 事前登録
+
+### 問い
+
+Q007sで認証した拡大tube全体が、rest equilibriumを中心とするphysical D2Q9 populationのstrict positive
+coneに含まれ、full one-step mapの入力／出力時刻で全iterateにわたり正値性を保つことを、
+Fourier--Wiener normから厳密に認証できるか。
+
+### 固定入力
+
+- `q007s_finite_tube_enlargement.json` newline-normalized SHA-256:
+  `7b70fd20df8fb7db5e5460a08d3f86fe8b81a55b56864c860a2c24e9cab63292`
+- Q007s runner SHA-256:
+  `6c8633f7e99874ac3be7dd14d3caa253b0dc8c499bb2f6edbb392fa695975b1e`
+- map／葉／tube: Q007sと同じ固定17² filtered periodic D2Q9、\(\omega=3/2\)、
+  \(\eta=1/100\)、固定保存量葉、
+  \(\|a\|_1\le9\times10^{-19}\)、\(\|z\|_*\le5\times10^{-12}\)。
+- Q007s selected candidateのexact tube-state Wiener upper \(x_*\)を変更せず再利用する。追加のradius、
+  rounding、sampling parameterは導入しない。
+
+### exact positivity bound
+
+rest equilibrium \(f_i^*=w_i\)とD2Q9 weights
+
+\[
+w_0=\frac49,\qquad
+w_{1,\ldots,4}=\frac19,\qquad
+w_{5,\ldots,8}=\frac1{36}
+\]
+
+をexact `Fraction`で再構成する。Q007sのFourier-population Wiener normでは、real state
+\(\delta f=f-f^*\)に対し、
+
+\[
+\max_{x,i}|\delta f_i(x)|
+\le \max_i\sum_k|\widehat{\delta f}_{k,i}|
+\le\|\delta f\|_{\mathrm W}
+\le x_*.
+\]
+
+従って全populationとdensityに対する登録lowerを
+
+\[
+p_*=\frac1{36}-x_*,
+\qquad
+d_*=1-x_*
+\]
+
+と固定する。Q007sのselected-tube forward invarianceと組み合わせ、full-map sampling時刻
+\(n=0,1,2,\ldots\)の全iteratesへ同じlowerを適用する。
+
+### validity gate
+
+1. Q007s artifact／runner SHA、source、scope、全6 validity gate、全5 hypothesis gate、
+   4 theorem-consequence flag、canonical candidate digestが一致する。
+2. exact D2Q9 weight tableが`1 + 4 + 4` population、sum `1`、minimum `1/36`を再現し、
+   全weightがstrict positiveである。
+3. 17² Fourier index count `289`、phase modulus `1`、Q007sのWiener block-sum norm definitionから、
+   \(\|\delta f\|_{\infty,\mathrm{population}}\le\|\delta f\|_{\mathrm W}\)のtriangle-inequality
+   auditを通す。
+4. Q007s selected candidateの\(x_*\)、base／normal radius、全6 candidate gate、
+   forward-invariance theorem flagをexactに再利用する。
+5. 全boundがfinite rationalで、strict JSONを生成する。
+
+一つでも落ちれば`inconclusive`とし、positivity値を解釈しない。
+
+### hypothesis gate
+
+validity通過時だけ次を判定する。
+
+1. density positivity: \(d_*=1-x_*>0\)。
+2. population positivity: \(p_*=1/36-x_*>0\)。
+3. forward positivity: Q007sのselected tubeがforward invariantで、同じ\(p_*\)が全full-map iterateへ
+   適用される。
+
+全て通れば
+`registered Q007s larger tube lies in the strictly positive population cone at every full-map iterate`
+として`accepted`とする。一つでも落ちれば
+`registered Q007s larger tube did not certify strict population positivity`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedなら、固定17²・固定保存量葉・登録Q007s selected tubeのreal stateについて、full one-step mapの
+入力／出力時刻で全9 populationとdensityがstrict positiveであると主張する。
+
+これはequilibrium evaluation、BGK collision直後、streaming直後、filter直後などのstagewise positivityを
+認証しない。Q007rのstagewise certificateは旧Q007p tubeだけに封印されたままである。entropy、
+monotonicity、maximum principle、IEEE-754 roundoff enclosure、連続最適tube、global basin、
+grid-uniform性、continuum limit、Q007c1の有限振幅性能、Q007dのEuclidean判定も変更・認証しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
