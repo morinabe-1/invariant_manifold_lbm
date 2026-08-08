@@ -3688,6 +3688,169 @@ acceptedの場合だけQ007mで17,550 quartic systemへ進む。explicit radius�
 Q007c1の有限振幅quartic性能判定は変更しない。quartic jet、explicit neighborhood radius、finite-ball
 normal attraction、grid-uniform性はまだ認証しない。次はQ007mを事前登録し、17,550 quartic systemだけを扱う。
 
+## Q007m: rational quartic-jet bridge — 事前登録
+
+### 問い
+
+Q007c1で保存した17,550 unordered quartetの数値\(H_4,R_4\)は、Q007jのexact eigencoordinates、
+Q007kのexact quadratic jet、Q007lのexact cubic jetを使うgraph-gauge quartic homological equationの
+一意な厳密解を、登録誤差内で表しているか。
+
+Q007iの定理多様体は解析的で、Q007j／Q007k／Q007lにより一次から三次までのjetは固定された。従って
+このgateが通れば、固定graph gaugeにおけるその多様体の四次Taylor jetとQ007c1係数を結び付ける。
+Q007c1の有限振幅directional-shadowing棄却は性能判定として維持し、explicit neighborhood radius、
+finite-ball attraction、grid-uniform性は扱わない。
+
+### 固定入力
+
+- `q007c1_quartic_continuation.json`のnewline-normalized SHA-256を
+  `680dddad3d84a8ea6fa030fb6e2ed7001e3bd0b4c55c79464a76daccef5ecdbc`へ固定する。`passed / rejected`、
+  全8 validity pass、失敗hypothesis `held_out_directional_shadowing_ratios`だけを要求する。
+- Q007c1のcoefficient hashを次へ固定し、`build_full2d_quartic_model()`から再現する。
+  - quartet indices: `968b35d36cbd28c1f30e6cacb906649a42b36ba4e7bf4122394c2722cd809c16`
+  - output waves: `9f9720e1114cc489ef7bbca81562e7d4cf211999e8d4a4958c06c02ee0df1fe8`
+  - chart coefficients: `9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b`
+  - reduced coefficients: `061cd66caf83850a45eeec05ed0f62fafb748a3076d7a6eb591bc69be2e008f7`
+  - forcing coefficients: `6ab2337ea60b87dbe404e1aeb6b9c090fa8f950d43815966e0933879901b8eef`
+- `q007l_cubic_jet_bridge.json`のnewline-normalized SHA-256を
+  `aa0e572b43ed4f5544e2b8ead9d01c13bc08c47f40ec8963bcd37a1b51fc1bbd`、runner source SHA-256を
+  `bb2be852c5413ceb2d27abd4f48db36ed2045ed79f2330e45ae89818067d33a4`へ固定する。`passed / accepted`、
+  全5 validity／全4 hypothesis passを要求する。
+- Q007lをroot-box readerとして使わない。Q007jの12 eigenpair proof、Q007kの300 quadratic proof、Q007lの
+  2,600 cubic proofを再計算し、全`proof_digest_sha256`をartifactと一致させてから、対称なexact
+  \(H_2,R_2,H_3,R_3\) boxを再構築する。
+- grid `17²`、`omega=1.5`、`eta=0.01`、固定保存量葉、mode／quartet順序、Q007c1係数を変更しない。
+
+### exact quartic forcing
+
+unordered quartet \(I=(i_1,i_2,i_3,i_4)\)について、重複を含む4入力のpositionを保持し、output wave
+\(q=k_{i_1}+k_{i_2}+k_{i_3}+k_{i_4}\)に対するQ007c1と同じ四次forcingを
+
+\[
+\begin{aligned}
+F_I={}&D^4\Phi[V_{i_1},V_{i_2},V_{i_3},V_{i_4}]
++\sum_{a=1}^4D^2\Phi[H_{I_{\widehat a}},V_{i_a}]
++\sum_{\{a,b\}\mid\{c,d\}}D^2\Phi[H_{i_ai_b},H_{i_ci_d}]\\
+&+\sum_{\{a,b\}\subset\{1,2,3,4\}}D^3\Phi[H_{i_ai_b},V_{i_c},V_{i_d}]-C_I,
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+C_I={}&\sum_{a=1}^4\lambda_{i_a}\sum_p H_{p i_a}R^p_{I_{\widehat a}}
++\sum_{\{a,b\}\mid\{c,d\}}\sum_{p,r}H_{pr}R^p_{i_ai_b}R^r_{i_ci_d}\\
+&+\sum_{\{a,b\}\subset\{1,2,3,4\}}\lambda_{i_c}\lambda_{i_d}
+\sum_p H_{p i_c i_d}R^p_{i_ai_b},
+\end{aligned}
+\]
+
+としてexact complex rectangleで評価する。pair-partitionは3個、pair subsetは6個で、最終二式の\(c,d\)は
+選んだ\(a,b\)の補集合とする。\(D^2\Phi,D^3\Phi\)はQ007k／Q007lと同じexact actionを使う。
+\(D^4\Phi\)は、保存moment \(m(x)=Mx\)、密度成分\(\rho(x)=m_0(x)\)、equilibrium Hessian \(E_s\) により
+
+\[
+D^4\Phi_q[x_1,x_2,x_3,x_4]_s=
+2\omega g(q)e^{-ic_s\cdot q}
+\sum_{\{a,b\}\subset\{1,2,3,4\}}
+\rho(x_a)\rho(x_b)E_s\!\left(m(x_c),m(x_d)\right)
+\]
+
+とする。\(c,d\)は\(a,b\)の補集合である。streaming／filterはQ007lと同じMachin／Taylor tableを使い、
+全基本演算後に`INTERVAL_DECIMAL_DIGITS=140`の有理格子へ外向き丸めする。
+
+zero-waveでは\(M D^2\Phi=M D^3\Phi=M D^4\Phi=0\)をexactに示す。reduced-composition項は、
+nonzero \(R_2,R_3\) のwave-selection ruleと、Q007kの36 zero-wave \(H_2\) certificate、Q007lの108
+zero-wave \(H_3\) certificateを列挙し、保存momentが0であることを構造的に示す。float64 cancellationを
+保存証明に使わない。
+
+### 17,550 homological system
+
+- external 12,168 quartetとzero-wave 846 quartetにはfull 9×9 system
+
+\[
+\left(A(q)-\lambda_i\lambda_j\lambda_k\lambda_l I\right)H_I=-F_I
+\]
+
+  を使う。Q007c1のzero-wave 6×6 numerical restrictionはcenter生成だけの既存表現として再現し、Q007mの
+  certificateはfull 9×9と積の1からの分離でfixed-leaf解を同定する。
+- selected internal 4,536 quartetにはQ007lと同じexact \(V_q,L_q^*\) による12×12 augmented
+  graph-gauge system
+
+\[
+\begin{bmatrix}
+A(q)-\lambda_i\lambda_j\lambda_k\lambda_lI&-V_q\\
+L_q^*&0
+\end{bmatrix}
+\begin{bmatrix}H_I\\R_I\end{bmatrix}
+=
+\begin{bmatrix}-F_I\\0\end{bmatrix}
+\]
+
+  を使う。
+
+quartet countを`17,550 = 846 + 4,536 + 12,168`、permutation multiplicity sumを`24^4 = 331,776`、
+output-wave supportを81、full-9 zeroを含むcomplex unknown countを
+`846*9 + 12,168*9 + 4,536*12 = 171,558`へ固定する。Q007c1のcomplex \(H_4,R_4\)をcenter \(z_0\)とし、
+各実部・虚部の探索半径を\(r_4=1\)に固定する。float64 inverseをexact dyadic preconditioner \(C\)へ変換し、
+
+\[
+K_4(z_0,X)=z_0-C(Bz_0-b)+(I-CB)(X-z_0)
+\]
+
+を全17,550 systemで評価する。exact lower-jet actionはindex keyでmemoizeしてよいが、orbit reductionは行わず、
+各quartet固有のoperator、forcing、Krawczyk image、proof digest、登録center比較を保存する。
+
+### design-only探索の開示
+
+Q007c1 artifactのfloat64 center／forcingからfull-9 zeroを含むoperatorを再構築した設計計算では、maximum
+componentwise Newton correction `2.0390889938243303e-5`、maximum inverse infinity norm
+`17069.89178200791`、maximum raw residual component `2.7055222062699613e-8`だった。maximum registered
+component absolute value \(H_4/R_4\) は`37387748.021647185 / 51181.918535894125`だった。
+
+四次forcingを作らず下位proofだけを再計算した設計計算では、maximum component width \(H_2/R_2\) は
+`5.787647966686327e-14 / 1.3739078996001612e-16`、\(H_3/R_3\) は
+`1.6758088396497935e-9 / 3.469449184104534e-12`、maximum component absolute upper \(H_2/R_2\) は
+`34.04272577331188 / 1.0496353375362775`、\(H_3/R_3\) は
+`11999.636051813919 / 30.28138575539409`だった。
+
+これらは探索半径、補正上限、計算量の設定だけに使う。Q007mのexact quartic forcing、Krawczyk image、
+correction、witnessへ流用しない。探索半径1は設計Newton補正の約49,000倍、登録補正上限`1e-2`は約490倍で、
+最大登録\(H_4\)成分に対して探索半径は約`2.7e-8`の相対幅である。
+
+### validity gate
+
+1. Q007c1／Q007lのSHA、source、scope、sealed outcome、5 quartic coefficient hash、Q007l runner、
+   12＋300＋2,600 proof digestを再現する。
+2. quartet `17,550`、zero／internal／external `846 / 4,536 / 12,168`、multiplicity sum `331,776`、
+   support `81`、unknown `171,558`を一致させる。
+3. rational \(D^2\Phi,D^3\Phi,D^4\Phi\)、zero-wave保存恒等式、全reduced-composition selection chainを
+   exactに再現する。
+4. 140桁外向き丸め、pi／trigonometric width `<=1e-120`、symbol entry width `<=1e-110`、17,550 point
+   inverse defect `<1`を要求する。
+5. 全summaryをfinite・strict JSONとし、quartet identifier、input modes、output wave／kind、multiplicityを
+   Q007c1と全件一致させる。memoizeした値は同じexact index keyの直接式と同一でなければならない。
+
+validityが一つでも落ちた場合は`inconclusive`とし、同じgateで半径、basis、operator、精度、cache意味論を
+変更しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次を全て要求する。
+
+1. 17,550 system全てで\(K_4(z_0,X)\subset\operatorname{int}X\)、maximum utilization `<=1e-2`
+2. maximum interval contraction `<1`、singular／unassigned system `0`
+3. exact rootから登録complex \(H_4,R_4\) centerへのmaximum componentwise correction upper `<=1e-2`
+4. 846 zero-wave quartet全てでproduct separation from 1が正、4,536 internal system全てでgraph-gauge rowを
+   含むKrawczyk inclusionが通過
+
+全て通れば`registered Q007c1 quartic coefficients identify the theorem-manifold graph-gauge quartic jet`として
+`accepted`とする。一つでも落ちれば`registered quartic-jet bridge not certified`という有効な
+`not_certified`とする。Q007c1の有限振幅性能棄却、Q007i／Q007j／Q007k／Q007lの定理・jet認証、
+他の性能判定は変更しない。
+
+acceptedの場合だけ、別のQ007nでexplicit local radiusを扱う。Q007m内でradiusやfinite-ball attractionへ
+主張を拡張しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
