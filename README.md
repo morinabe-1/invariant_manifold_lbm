@@ -185,6 +185,10 @@ exact state側へ接続し、\(r_0=8.9998\times10^{-19}\)、
 \(\zeta_0=4.999999999\times10^{-12}\)のcoordinate interiorを事前登録した。encoding、repair、
 graph \(W(a)\) のbase移動を含む増分は両inward marginの`0.56524 / 0.59604`だけを使用し、
 repair直後のQ007s tube membershipからQ007zの全iterate帰納へ接続できる。
+Q007abではさらに、平衡点で固定したselected／external eigencoordinate直和normでexact mapの
+tube-wide Lipschitz upperを\(0.9920954948836456<1\)と認証した。Q007aaの初期誤差とQ007zの
+一段local defectを幾何級数で合成し、同じexact initial stateから始めるrepaired MPFR-85軌道との
+sampling-time Wiener誤差を全非負iterateで\(8.529800645544777\times10^{-18}\)以下に抑えた。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1306,6 +1310,58 @@ Q007s tubeへstrictに入り、その後はQ007zによりexact fixed leaf、tube
 positivityを全iterateへ帰納できる。任意のQ007s boundary stateやexact軌道とのshadowing精度は
 まだ主張しない。
 
+### Q007ab fixed-coordinate all-iterate forward shadowing
+
+Q007aaのexact initial stateから始めるexact軌道と、その同じ状態をMPFR-85へencodingしてQ007y repairを
+適用した軌道を比較する。graph-relative normal coordinateではなく、平衡点で固定した線形座標
+
+\[
+\mathcal Cx=(Lx,JQx),\qquad
+\|\mathcal Cx\|_\oplus=\|Lx\|_1+\|JQx\|_*
+\]
+
+を用いた。Q007sのlinear／nonlinear majorantから
+
+\[
+L_\oplus
+=\max(q_s,q_0)+(K_L+K_a)d_N(R_T)\max(c_V,K_s)
+\]
+
+をexact rationalで構成し、Q007aaのinitial defect \(d_0\)とQ007zのone-step local defect
+\(\epsilon_{\rm step}\)に対して
+
+\[
+d_{n+1}\le L_\oplus d_n+\epsilon_{\rm step}
+\]
+
+を閉じた。
+
+- classification:
+  `fixed-coordinate contraction certifies all-iterate MPFR-85 forward shadowing`
+- validity / hypothesis gates: `6 / 6` passed、`6 / 6` passed
+- linear contraction／nonlinear Lipschitz increment／full Lipschitz upper:
+  `0.9920954673554099 / 2.7528235726518938e-8 / 0.9920954948836456`
+- contraction gap:
+  `0.007904505116354432`
+- initial／one-step coordinate error upper:
+  `6.073403211214871e-22 / 2.3344049524038155e-20`
+- uniform all-iterate coordinate／physical Wiener error upper:
+  `2.9532588290365307e-18 / 8.529800645544777e-18`
+- physical error／Q007s tube-state-radius ratio:
+  `5.90651663221288e-7`（登録閾値 `1e-6` を通過）
+- input／result digest:
+  `83c98750b8a18aa98cae710fad0a4d2fa139428d791a085bdd086e39e435225f` /
+  `268a5e2098011561c3bc521c845e6eb804692713502fbbd54c3b3106b8f9c014`
+- runner SHA-256:
+  `4958e1aa5140bdbd1a32ce074c77ce2739636a34f7da2531c792ec165401c01a`
+- artifact newline-normalized SHA-256:
+  `3770e53e5fd169ea8ba16a568a1a1a3052afdd95d2779ba630c7ba7113bdc7ae`
+
+従って、Q007aaの登録interiorに属するexact stateごとに、同じ状態から初期化したsealed repaired
+MPFR-85軌道のsampling-time forward errorは上の一様Wiener bound内に全iterateで留まる。これは
+bi-infinite shadowing lemma、backward error、intermediate-stage距離、componentwise相対誤差、
+任意のQ007s boundary initialization、他grid／MPFR buildの結果ではない。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -1366,6 +1422,7 @@ python -m research.q007x_mpfr_fixed_leaf --output research/artifacts/q007x_mpfr_
 python -m research.q007y_distributed_conservation_repair --output research/artifacts/q007y_distributed_conservation_repair.json
 python -m research.q007z_selected_wave_repair --output research/artifacts/q007z_selected_wave_repair.json
 python -m research.q007aa_initialization_interior --output research/artifacts/q007aa_initialization_interior.json
+python -m research.q007ab_forward_shadowing --output research/artifacts/q007ab_forward_shadowing.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -1421,6 +1478,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007y_distributed_conservation_repair.json`](research/artifacts/q007y_distributed_conservation_repair.json)
 - [`research/artifacts/q007z_selected_wave_repair.json`](research/artifacts/q007z_selected_wave_repair.json)
 - [`research/artifacts/q007aa_initialization_interior.json`](research/artifacts/q007aa_initialization_interior.json)
+- [`research/artifacts/q007ab_forward_shadowing.json`](research/artifacts/q007ab_forward_shadowing.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1490,14 +1548,14 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007y 対角dyadic保存補正のfinite／tube-wide定義認証、normal budget認証、base budget棄却
 - Q007z balanced repairのselected-wave Fourier認証、条件付きMPFR-85 all-iterate tube帰納
 - Q007aa exact-state coordinate interiorからMPFR-85 encoding／repair後のQ007s tube membership認証
+- Q007ab fixed eigencoordinate contractionによるsame-initial MPFR-85 all-iterate forward-error認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- repaired MPFR mapのmulti-step shadowing、連続最適化、Euclidean／grid-uniform normal attraction、
-  global basin
+- 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
 
@@ -1525,6 +1583,8 @@ Q007zではbalanced repairのuniform quotientが8 selected非零波数でexact�
 base utilizationを0.821307へ戻した。従って、repair済みMPFR-85 stateが登録tube内にあるという
 初期条件のもとでall-iterate invarianceとstage positivityを認証する。Q007aaでは事前登録した
 exact coordinate interiorからのinitial encoding／repairがその初期条件を満たすことを、
-graph shiftを含むexact rational boundで認証した。Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却を
-変更せず、任意Q007s boundary state、trajectory shadowing、連続最適性、grid-uniform性へは
-主張を広げない。
+graph shiftを含むexact rational boundで認証した。Q007abでは固定線形eigencoordinate normで
+exact mapのQ007s tube-wide contractionを認証し、initial／local MPFR defectからsame-initial
+sampling-time forward errorを全iterateで一様に抑えた。Q007c1の有限振幅性能棄却とQ007dの
+Euclidean棄却を変更せず、任意Q007s boundary state、bi-infinite shadowing、連続最適性、
+grid-uniform性へは主張を広げない。

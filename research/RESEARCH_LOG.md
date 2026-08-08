@@ -3342,6 +3342,99 @@ exact \(M=289,P_x=P_y=0\)を満たし、base／normal座標はQ007s tube内に�
 性能、parallel reduction、他grid／MPFR build、center-slow構成、D3Q27は未評価である。次は同じ
 初期化interiorとbackendを固定し、multi-step shadowingの誤差再帰とhorizonを別gateで評価する。
 
+## 2026-08-09: Q007ab fixed-coordinate all-iterate forward shadowing
+
+### 問い
+
+Q007aaの同じexact initial stateから出発するexact軌道とrepaired MPFR-85軌道について、Q007s
+tube-wideの固定線形coordinate contractionとQ007z one-step local defectを使い、sampling-time
+forward errorを全非負iterateで一様に抑えられるか。
+
+### 仮説
+
+- Q007s／Q007z／Q007aaの封印入力とQ007aa fresh replayが一致する。
+- 固定selected／external coordinateにおけるexact-map Lipschitz upperは1未満である。
+- initial defectとone-step defectの幾何級数boundが全iterateで不変な誤差区間を作る。
+- derived physical Wiener errorは事前登録した\(10^{-6}R_T\)未満である。
+
+### 実装
+
+- 平衡点で固定した線形coordinate
+
+  \[
+  \mathcal Cx=(Lx,JQx),\qquad
+  \|\mathcal Cx\|_\oplus=\|Lx\|_1+\|JQx\|_*
+  \]
+
+  を使った。Q007sのgraph-relative normal coordinateやnormal contraction \(q_*\)は
+  full-state Lipschitz定数の代用にしなかった。
+- Q007sの封印constantから
+
+  \[
+  L_\oplus
+  =\max(q_s,q_0)+(K_L+K_a)d_N(R_T)\max(c_V,K_s)
+  \]
+
+  をexact rationalで構成した。
+- Q007aaのselected incrementとdirect external coordinate incrementから\(d_0\)を構成した。
+  graph-shiftはgraph-relative tube membershipには必要だが、\(\mathcal C\)がlinearなので重複課金しない。
+- Q007zのrepaired selected errorとexternal local errorから\(\epsilon_{\rm step}\)を構成し、
+
+  \[
+  d_{n+1}\le L_\oplus d_n+\epsilon_{\rm step},\qquad
+  D_\oplus=\max\left(d_0,\frac{\epsilon_{\rm step}}{1-L_\oplus}\right)
+  \]
+
+  のexact fixed-point identityと区間不変性を検査した。
+- \(D_W=\max(c_V,K_s)D_\oplus\)をQ007s tube-state Wiener radius \(R_T\)と比較した。
+
+### 結果
+
+全6 validity gate、全6 hypothesis gateが通過した。
+
+- selected／external linear contraction upper:
+  `0.9920954673554099 / 0.981709835832552`
+- synthesis upper:
+  `2.888267212368763`
+- nonlinear derivative／coordinate Lipschitz increment:
+  `3.0326810997772634e-10 / 2.7528235726518938e-8`
+- full Lipschitz upper／contraction gap:
+  `0.9920954948836456 / 0.007904505116354432`
+- initial／one-step coordinate error upper:
+  `6.073403211214871e-22 / 2.3344049524038155e-20`
+- uniform coordinate／physical Wiener error upper:
+  `2.9532588290365307e-18 / 8.529800645544777e-18`
+- tube-state radius／relative error:
+  `1.4441338570055092e-11 / 5.90651663221288e-7`
+- registered absolute accuracy threshold:
+  `1.4441338570055092e-17`
+- input／result digest:
+  `83c98750b8a18aa98cae710fad0a4d2fa139428d791a085bdd086e39e435225f` /
+  `268a5e2098011561c3bc521c845e6eb804692713502fbbd54c3b3106b8f9c014`
+- runner SHA-256:
+  `4958e1aa5140bdbd1a32ce074c77ce2739636a34f7da2531c792ec165401c01a`
+- artifact newline-normalized SHA-256:
+  `3770e53e5fd169ea8ba16a568a1a1a3052afdd95d2779ba630c7ba7113bdc7ae`
+
+従って
+`fixed-coordinate contraction certifies all-iterate MPFR-85 forward shadowing`
+として`accepted`とした。uniform physical boundは登録thresholdの約0.59065倍である。
+
+### 定理的帰結
+
+Q007aa coordinate interiorに属するexact fixed-leaf stateを一つ取る。そのexact軌道と、同じ状態を
+componentwise MPFR-85 encodingしてQ007y repairを適用した軌道は、Q007s／Q007zの帰納により同じ
+physical Wiener tube内に全iterateで留まる。各sampling timeのfixed-coordinate誤差は
+\(D_\oplus\)、physical Wiener誤差は\(D_W\)以下で全\(n\ge0\)に一様である。
+
+### 主張境界と次の改善
+
+これはsame-initial-state forward estimateであり、古典的なbi-infinite shadowing lemma、backward
+error、intermediate-stage trajectory distance、componentwise relative errorではない。任意のQ007s
+boundary initialization、性能、parallel reduction、他grid／MPFR build、center-slow構成、D3Q27も
+扱わない。Q009 TT-crossはQ008c rejectionにより開始せず、次はFourier sparse-fiberを必須baselineに
+残したQ010 cost／break-even gateを事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3435,6 +3528,8 @@ exact \(M=289,P_x=P_y=0\)を満たし、base／normal座標はQ007s tube内に�
 [`artifacts/q007z_selected_wave_repair.json`](artifacts/q007z_selected_wave_repair.json)
 
 [`artifacts/q007aa_initialization_interior.json`](artifacts/q007aa_initialization_interior.json)
+
+[`artifacts/q007ab_forward_shadowing.json`](artifacts/q007ab_forward_shadowing.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

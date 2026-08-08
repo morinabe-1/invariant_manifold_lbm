@@ -6657,6 +6657,47 @@ bi-infinite shadowing lemma、backward error、各intermediate stageのtrajector
 relative error、任意のQ007s boundary initialization、性能、他grid／MPFR build、center-slow構成、
 D3Q27を主張しない。Q007s／Q007z／Q007aaのinvariance定理は変更しない。
 
+### Q007ab 封印結果
+
+全6 validity gateと全6 hypothesis gateが通過し、
+`fixed-coordinate contraction certifies all-iterate MPFR-85 forward shadowing`
+として`accepted`とした。
+
+- selected／external linear contraction upper:
+  `0.9920954673554099 / 0.981709835832552`
+- direct-sum synthesis upper:
+  `2.888267212368763`
+- nonlinear derivative／coordinate Lipschitz increment:
+  `3.0326810997772634e-10 / 2.7528235726518938e-8`
+- \(L_\oplus\)／contraction gap:
+  `0.9920954948836456 / 0.007904505116354432`
+- \(d_0\)／\(\epsilon_{\rm step}\):
+  `6.073403211214871e-22 / 2.3344049524038155e-20`
+- \(D_\oplus\)／\(D_W\):
+  `2.9532588290365307e-18 / 8.529800645544777e-18`
+- \(R_T\)／\(D_W/R_T\):
+  `1.4441338570055092e-11 / 5.90651663221288e-7`
+- registered absolute Wiener accuracy threshold:
+  `1.4441338570055092e-17`
+- input／result digest:
+  `83c98750b8a18aa98cae710fad0a4d2fa139428d791a085bdd086e39e435225f` /
+  `268a5e2098011561c3bc521c845e6eb804692713502fbbd54c3b3106b8f9c014`
+- runner SHA-256:
+  `4958e1aa5140bdbd1a32ce074c77ce2739636a34f7da2531c792ec165401c01a`
+- artifact newline-normalized SHA-256:
+  `3770e53e5fd169ea8ba16a568a1a1a3052afdd95d2779ba630c7ba7113bdc7ae`
+
+固定線形座標を用いるため、Q007aaのgraph-relative membershipで必要だったgraph-shiftを\(d_0\)へ
+重複加算しない。Q007s exact tube invarianceとQ007aa／Q007z repaired tube invarianceにより二軌道を
+同じphysical Wiener ballへ閉じ込め、\(L_\oplus<1\)の幾何級数で全\(n\ge0\)を覆った。
+derived physical boundは事前登録した\(10^{-6}R_T\)の約0.59065倍である。
+
+本結果はQ007aa exact interiorから同じ初期状態をencoding／repairして得る軌道とのsampling-time
+forward errorに限る。bi-infinite shadowing、backward error、intermediate-stage距離、componentwise
+relative error、任意のQ007s boundary state、性能、他grid／MPFR build、center-slow構成、D3Q27は
+認証しない。Q009はQ008cの有効なTT-SVD棄却により保留を維持し、次はsparse baselineを外さずQ010の
+cost／break-even判定を独立に事前登録する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
@@ -6691,7 +6732,7 @@ D2Q9 で次を全て満たして初めて進む。
 - branch/cluster tracking
 - Q005 sector-aware nonresonance
 - fixed-leaf nonzero-mode quadratic residual order
-- multi-step shadowing
+- same-initial repaired-MPFR all-iterate forward shadowing（Q007ab通過）
 - TT-SVD preservation
 - TT-cross independent validation
 - positivity/conservation
