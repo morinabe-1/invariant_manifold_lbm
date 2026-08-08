@@ -2772,10 +2772,12 @@ gateには使わない。
   `gamma_1 / gamma_10`を完全一致またはrelative error `<=1e-10`で再現する。
 - Q007eのmetric／whitening hash、全8 validity gate、adapted equilibrium `gamma_1 / gamma_10`を
   完全一致またはrelative error `<=1e-10`で再現する。
-- \(S^{-1}S\)の実fixed-leaf roundtrip、imaginary leakageを`<=1e-10`とする。共役map action
-  \(\widetilde Jv\)をcentral differenceで検証し、best relative errorを`<=2e-8`とする。
-- seed `20260909`の登録pairで \(\widetilde J\) と実装adjointのinner-product relative errorを
-  `<=5e-12`とする。
+- \(S^{-1}S\)の実fixed-leaf roundtrip、imaginary leakageを`<=1e-10`とする。平衡点と各amplitudeの
+  先頭4方向の合計9点で、seed `20260909`から作る8個のreal fixed-leaf adapted単位方向を使う。
+  central-difference step `2e-5 / 1e-5 / 5e-6`で共役map action \(\widetilde Jv\)を検証し、
+  best relative errorを`<=2e-8`とする。
+- 同じseedから作る4個のnormalized complex adapted left／right pairで \(\widetilde J\) と実装adjointの
+  inner-product relative errorを`<=5e-12`とする。方向は全9点で固定し、全hashを保存する。
 - 全trajectory点でadapted tangent rankを24、minimum singular valueを`>=1e-8`、
   \(\widetilde Q^*\widetilde Q-I\)とprojector idempotency／Hermitian residualを`<=1e-11`とする。
 - maximum adapted tangent leakageを`<=1e-3`、minimum \(\sigma_{\min}(\widetilde T_{10})\)を
