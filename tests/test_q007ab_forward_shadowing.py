@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import json
 from fractions import Fraction
+from pathlib import Path
 
 import pytest
 
@@ -17,6 +19,16 @@ def _fraction(record: dict) -> Fraction:
 @pytest.fixture(scope="module")
 def q007ab_cycle() -> dict:
     return q007ab.run_forward_shadowing_audit()
+
+
+@pytest.fixture(scope="module")
+def q007ab_artifact() -> dict:
+    artifact_path = (
+        Path(q007ab.__file__).resolve().parent
+        / "artifacts"
+        / "q007ab_forward_shadowing.json"
+    )
+    return json.loads(artifact_path.read_text(encoding="utf-8"))
 
 
 def test_q007ab_fixed_coordinate_lipschitz_formula_is_exact(
@@ -129,3 +141,21 @@ def test_q007ab_certifies_same_initial_all_iterate_forward_shadowing(
     assert "not a bi-infinite shadowing lemma" in q007ab_cycle[
         "claim_boundary"
     ]
+
+
+def test_q007ab_artifact_seals_the_accepted_forward_shadowing_result(
+    q007ab_cycle: dict,
+    q007ab_artifact: dict,
+) -> None:
+    assert q007ab_artifact["cycle"] == q007ab_cycle
+    assert q007ab_artifact["study_gate"] == "passed"
+    assert q007ab_artifact["scientific_outcome"] == "accepted"
+    assert q007ab_artifact["runner_source"]["sha256"] == (
+        "4958e1aa5140bdbd1a32ce074c77ce2739636a34f7da2531c792ec165401c01a"
+    )
+    assert q007ab_cycle["input_digest_sha256"] == (
+        "83c98750b8a18aa98cae710fad0a4d2fa139428d791a085bdd086e39e435225f"
+    )
+    assert q007ab_cycle["result_digest_sha256"] == (
+        "268a5e2098011561c3bc521c845e6eb804692713502fbbd54c3b3106b8f9c014"
+    )

@@ -2189,3 +2189,61 @@ def test_q007aa_artifact_records_the_initialization_interior() -> None:
     assert bound["normal_inward_margin_passed"]
     assert bound["encoded_repaired_membership_passed"]
     assert all(cycle["theorem_consequence"].values())
+
+
+def test_q007ab_artifact_records_the_forward_shadowing_certificate() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007ab_forward_shadowing.json"
+    runner_path = artifact_path.parents[1] / "q007ab_forward_shadowing.py"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ab_forward_shadowing.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "fixed-linear-coordinate all-iterate repaired-MPFR forward-"
+            "shadowing certificate"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": (
+            "fixed global mass and momentum leaf with exact diagonal "
+            "post-stage repair"
+        ),
+        "manifold": "Q007s exact graph-gauge manifold and registered tube",
+        "norm": (
+            "fixed selected/external eigencoordinate direct-sum l1 with "
+            "derived Fourier-population Wiener bound"
+        ),
+        "claim": (
+            "same-initial-state sampling-time all-iterate forward error "
+            "for the sealed repaired MPFR-85 backend"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "fixed-coordinate contraction certifies all-iterate MPFR-85 "
+        "forward shadowing"
+    )
+    assert len(cycle["validity_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 6
+    assert all(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    )
+    shadow = cycle["shadow_recurrence_audit"]
+    assert shadow["fixed_coordinate_map_is_contractive"]
+    assert shadow["recurrence_interval_invariant"]
+    assert shadow["registered_accuracy_threshold_passed"]
+    assert all(cycle["theorem_consequence"].values())
