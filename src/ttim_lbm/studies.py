@@ -63,6 +63,7 @@ from .spectra import (
     track_hydrodynamic_cluster_path,
 )
 from .stripe import StripeQuadraticModel, build_stripe_quadratic_model
+from .theorem_readiness import run_theorem_readiness_audit
 from .tt_storage_prequalification import run_tt_storage_prequalification_audit
 from .wave_qtt_prequalification import run_wave_qtt_prequalification_audit
 
@@ -2274,6 +2275,38 @@ def run_q007f_study() -> dict[str, Any]:
                 "diagnostic only; no independent holdout, full-ball, true "
                 "invariant-normal-bundle, grid-uniform attraction, existence, "
                 "or uniqueness theorem"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007g_study() -> dict[str, Any]:
+    """Run and package the sealed Q007g theorem-readiness audit."""
+
+    cycle = run_theorem_readiness_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "nonresonant-manifold theorem-readiness audit",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "fixed_leaf_real_dimension": 2598,
+            "selected_real_dimension": 24,
+            "complexified_selected_dimension": 24,
+            "registered_theorem": "Cabré--Fontich--de la Llave Theorem 1.2",
+            "new_direction_or_defect_campaign": False,
+            "claim": (
+                "theorem-applicability inventory only; no existence, "
+                "uniqueness, nonexistence, proof radius, full-ball normal "
+                "attraction, or independent finite-sample claim"
             ),
         },
         "cycle": cycle,

@@ -1109,3 +1109,46 @@ def test_q007f_artifact_records_valid_fixed_metric_finite_sample_acceptance() ->
     assert campaign["summary"]["maximum_tangent_leakage"] <= 1.0e-3
     assert not any(cycle["preserved_prior_outcomes"].values())
     assert "not an independent holdout" in cycle["claim_boundary"]
+
+
+def test_q007g_artifact_records_the_valid_theorem_readiness_gap() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007g_theorem_readiness.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "not_ready"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "nonresonant-manifold theorem-readiness audit",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "fixed_leaf_real_dimension": 2598,
+        "selected_real_dimension": 24,
+        "complexified_selected_dimension": 24,
+        "registered_theorem": "Cabré--Fontich--de la Llave Theorem 1.2",
+        "new_direction_or_defect_campaign": False,
+        "claim": (
+            "theorem-applicability inventory only; no existence, uniqueness, "
+            "nonexistence, proof radius, full-ball normal attraction, or "
+            "independent finite-sample claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "not_ready"
+    assert cycle["scientific_classification"] == (
+        "current evidence is not theorem-ready"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert cycle["spectral_quotient"]["observed_L"] == 89
+    assert cycle["order_evidence"]["sector_aware_float64_orders"] == [2, 3, 4]
+    assert cycle["order_evidence"]["certified_direct_theorem_orders"] == []
+    assert cycle["order_evidence"]["uncertified_direct_theorem_order_count"] == 88
+    assert not cycle["readiness"]["qualitative_theorem_ready"]
+    assert not cycle["readiness"]["quantitative_chart_ready"]
+    assert not any(cycle["preserved_prior_outcomes"].values())
+    assert "not an invariant-manifold nonexistence result" in cycle[
+        "claim_boundary"
+    ]
