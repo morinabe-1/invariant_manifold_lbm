@@ -4138,6 +4138,141 @@ parameterization \(W\) とreduced map \(R\)の存在を、\(\|b\|_1<10^{-75}\)�
 Q007c1の有限振幅性能棄却、forward invariance、positivity、finite-ball normal attraction、grid-uniform性、
 continuum limitは変更・認証しない。次はこの結論を維持したまま、内部resolvent boundだけを別gateで鋭くする。
 
+## Q007o: exact external complement による internal resolvent 改善 — 事前登録
+
+### 問い
+
+Q007nで用いたselected-outputの12次bordered adjugate bound
+
+\[
+C_{\mathrm{adj}}=12!\,2^{11}\delta^{-6}
+\]
+
+を、graph-gauge右辺に固有のexact external complementへ制限したresolvent boundへ置き換えると、
+Q007nの全次数gap、非線形majorant、候補半径格子を一切変更せずに、pair homological inverseと
+explicit local radiusを厳密に改善できるか。
+
+### 固定入力とscope
+
+- `q007h1_equivariant_spectrum.json` SHA-256:
+  `caee8fe382c0282e11e8139b8f434a944013f630288adf2e99223d0123c91af4`
+- `q007j_eigencoordinate_bridge.json` SHA-256:
+  `feae846b81dc0991aa2c9babbd38ee72eb9ae493526655435cf0bf5951c7ec44`
+- `q007n_explicit_local_radius.json` newline-normalized SHA-256:
+  `7fe09089744e41229e71666540e4885d560a4c27a2e8bc95a94d5959af0fbc36`
+- Q007n standalone runner SHA-256:
+  `6eefae3386e5c49f151b1cd4537eb84fbb92858578fe4fce7768e50ad43c5dc9`
+- 固定map／葉／norm: \(17^2\), \(\omega=3/2\), \(\eta=1/100\),
+  \(\delta M=\delta P_x=\delta P_y=0\), modal \(\ell^1\)／Fourier-population Wiener \(\ell^1\)／
+  Q007nのpair max norm。
+- Q007nのworking all-degree absolute gap lower、80桁外向き丸め、degree-2--4 jet majorant、
+  D2Q9非線形majorant、`1e-2,...,1e-120`の119候補、収縮閾値`1/2`を固定する。
+- 変更を許すのはselected-output internal blockのinverse upperだけである。external-output blockと
+  zero-wave fixed-leaf blockのupperはQ007nからそのまま引き継ぐ。
+
+### 固定したexternal-complement構成
+
+selected output wave \(k\)で、Q007jが囲んだexact selected right／left matrixを
+\(V_k,L_k\in\mathbb C^{9\times3}\)とする。simple eigenpairの異なる枝の直交性から
+\(L_k^*V_k=I_3\)であり、
+
+\[
+P_k=V_kL_k^*,\qquad Q_k=I-P_k
+\]
+
+はexact selected／external spectral projectorで、\(A_kQ_k=Q_kA_k\)である。Q007jに保存された
+maximum right／biorthogonal-left correctionを各実部・虚部へ外向きに加えたrectangleを
+\(V_k,L_k\)の入力boxとする。
+
+C4で全8 selected waveへ運ばれる2代表だけを直接評価する。
+
+- axial representative \(k=(1,0)\): selector rows
+  \(J=(0,1,2,3,7,8)\)
+- diagonal representative \(k=(1,1)\): selector rows
+  \(J=(0,1,2,3,4,5)\)
+
+各代表でQ007h1と同じ`numpy.linalg.eig` centerを再構成し、modulus最大の3列をselected、残り6列を
+返却順のまま\(E\in\mathbb C^{9\times6}\)、対応固有値を\(D=\operatorname{diag}(d_j)\)とする。
+Q007h1のexact proof digestが一致しなければinvalidとする。上のselector rowsは実装後に選び直さない。
+
+\[
+U=Q_kE,\qquad C=JU,\qquad K=\operatorname{mid}(C)^{-1}
+\]
+
+とし、float centerの\(K\)はIEEE-754 dyadic rational point matrixとして固定する。complex rectangleの
+induced \(\ell^1\) norm upperを用いて
+
+\[
+\epsilon_C=\|I-KC\|_1,\qquad
+\kappa_C=\frac{\|K\|_1}{1-\epsilon_C}
+\]
+
+をexact `Fraction`で計算する。さらに
+
+\[
+R=A_kE-ED,\qquad
+\gamma=\kappa_C\|JQ_kR\|_1
+\]
+
+とする。\(Q_k\)のexact可換性から
+\(A_kU=UD+Q_kR\)であり、Q007nの固定gap lowerを\(\delta\)とすれば、
+
+\[
+C_H=
+\frac{\|U\|_1\,\kappa_C\,\|JQ_k\|_1}{\delta-\gamma}
+\]
+
+はgraph-gauge chart correctionのinternal inverse upperになる。reduced correctionはbordered全逆行列を
+評価せず、exact identity \(G=-L_k^*F\)から
+
+\[
+C_G=\|L_k^*\|_1
+\]
+
+で抑える。各代表のpair upperを
+
+\[
+C_{\mathrm{int},k}=\max(C_H,c_VC_G)
+\]
+
+とし、C4 permutation／complex conjugationが\(\ell^1\) normを保つことを用いて全8 waveへ適用する。
+最終upperは2代表、Q007n external upper、zero-wave upperの最大を80桁格子へ上向きに丸める。
+
+### validity gate
+
+1. 3入力SHA、source／scope、Q007nの全validity／hypothesis gateとrunner SHAが一致する。
+2. 2代表のQ007h1 proof digest、selected／external列数`3 / 6`、上記selector rowsが一致する。
+3. 全interval endpointが有限で、両代表について
+   \(\epsilon_C<10^{-8}\)、\(\gamma<\delta/2\)、従って\(\delta-\gamma>0\)である。
+4. 2代表がC4の全8 selected waveを被覆し、Q007h1のexact covariance／Q007jの24 mode対応を変更しない。
+5. Q007nのexternal／zero inverse、係数majorant、候補格子をbitwiseに再利用し、strict JSONを生成する。
+
+一つでも落ちれば研究判定は`inconclusive`とし、半径改善を主張しない。
+
+### hypothesis gate
+
+validity通過時だけ次を判定する。
+
+1. new internal pair inverse upperが`1e14`以下である。
+2. new total pair inverse upperがQ007n値よりstrictに小さく、改善率が少なくとも`1e40`である。
+3. 固定119候補のexact `Fraction`再走査で、Q007nの`1e-75`が引き続きpassし、最大pass候補が
+   strictに大きくなる。
+4. 新しい最大pass候補で`density buffer > 0`、`reduced range buffer > 0`、`Z < 1/2`、
+   `Y + Z*tau < tau`がすべてstrictであり、直前の大きい候補はfailする。
+
+全て通れば
+`exact external-complement resolvent strictly sharpens the registered explicit radius`
+として`accepted`とする。一つでも落ちれば
+`registered external-complement resolvent did not certify a sharper radius`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedでも、これはQ007nと同じ固定17²・固定保存量葉上のanalytic existence radiusを鋭くするだけである。
+最適半径、Q007c1の有限振幅directional shadowing、finite-ball normal attraction、forward invariance、
+positivity、grid-uniform性、continuum limitは認証しない。external eigenvalueの個別一意性も仮定せず、
+使うのはexact selected projectorと6次元external complement全体である。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
