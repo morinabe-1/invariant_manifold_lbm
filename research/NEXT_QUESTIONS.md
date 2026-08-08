@@ -6869,6 +6869,61 @@ MPFR backend、GPU、parallel／thread scaling、compressed TT rounding、TT-cro
 別grid、D3Q27、energy consumption、asymptotic rank／complexityを主張しない。runtime noiseを含む
 有限campaignなので、結果はartifactに記録した環境とblock envelopeに限定する。
 
+### Q010 封印結果
+
+全6 validity gateと全5 hypothesis gateが通過し、
+`sealed TT-SVD path is cost-dominated by natural quartic sparse-fiber`
+としてnegative hypothesisを`accepted`とした。
+
+- holdout direction hash／prior exact duplicate:
+  `ed625949a32c1cbf6cb7f00e0a4cca5e05675481159b29c61db59c769890609b / 0`
+- maximum norm error:
+  `2.220446049250313e-16`
+- sparse offline min／median／max:
+  `20.9392 / 20.9547 / 21.6592 ms`
+- fastest TT offline min／median／max（`flat-q-last`）:
+  `1.3654306 / 1.3732766 / 1.3768735 s`
+- sparse online min／median／max:
+  `0.5805375 / 0.58298125 / 0.61728125 ms per sample`
+- fastest TT online min／median／max（`flat-q-last`）:
+  `2.85776875 / 2.89795 / 3.0604 ms per sample`
+- fastest median slowdown／best-TT-min to sparse-max envelope ratio:
+  `4.9709145877333105 / 4.629605629524629`
+- sparse stored real scalars／raw payload／serialized bytes:
+  `315900 / 2614950 / 2615734`
+- best TT core stored real scalars／raw payload／serialized bytes:
+  `3550626 / 28405096 / 28406852`
+- best TT/sparse ratios:
+  `11.2397150997151 / 10.8625771047248 / 10.859992644512`
+- maximum dense-vs-sparse action error:
+  `1.20460032995549e-14`
+- maximum TT reconstruction／action error:
+  `1.49154657341154e-13 / 6.63724332998628e-13`
+- maximum block checksum relative error:
+  `4.65675471404282e-14`
+- flat／D1Q3 candidatesのordered-dense median break-even:
+  `120--144 actions`
+- wave candidatesのordered-dense median break-even:
+  なし
+- input／result digest:
+  `566d3ce0569736c140dae7c4f19d36223957e5ad2b25abc4b9d6a012558d0841` /
+  `79545f0cbf14a53fef52d46bc44cbb8586efb95e1b6645d7c8cc00b45ceed6dc`
+- runner SHA-256:
+  `c6e99082a3418d604f7d09687685cf5e6ab9efe341ea36153123bb8ad4b26b4e`
+- artifact newline-normalized SHA-256:
+  `2885a029ecfe2c17aebe3b05b305caebd927d78476971e4ab186455d0ee30b7f`
+
+全8 TTでbest offline timeがworst sparse offline timeを、best online timeがworst sparse online
+timeをstrictに上回った。従って、TTに有利な共通費用除外のもとでも登録campaignの全\(N\ge0\)で
+有限sparse-baseline time break-evenはない。さらに全候補がcore stored real scalars、raw payload、
+serialized bytesの3指標でsparseより大きいので、時間と格納量を同時に通す候補は0である。
+
+ordered-dense coefficient oracleに対するflat系の時間break-evenは、natural sparse-fiberを外す理由に
+ならない。またordered-dense controlはfull dense LBMではない。本結果は固定8 full-rank TT-SVD候補と
+現在のCPU finite campaignだけに限る。TT一般、TT-cross、別tensorization、GPU、full rollout、他grid、
+D3Q27の不可能性は主張しない。固定Q007c1係数のQ009／TT-SVD online pathは閉じる。新しい表現を試す
+場合はcandidate familyを結果前に別途事前登録する。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
@@ -6885,7 +6940,7 @@ D2Q9 で次を全て満たして初めて進む。
 - TT-SVD preservation
 - TT-cross independent validation
 - positivity/conservation
-- sparse baselineを含むcost report
+- sparse baselineを含むcost report（Q010通過、固定TT-SVD path棄却）
 
 D3Q27 の最初の問いは、D1Q3 tensor-product construction が quadrature、moment、
 \(z\)-independent limit、回転等方性を同時に満たすかである。

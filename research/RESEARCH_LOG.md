@@ -3435,6 +3435,102 @@ boundary initialization、性能、parallel reduction、他grid／MPFR build、c
 扱わない。Q009 TT-crossはQ008c rejectionにより開始せず、次はFourier sparse-fiberを必須baselineに
 残したQ010 cost／break-even gateを事前登録する。
 
+## 2026-08-09: Q010 sealed TT-SVD representation cost and break-even
+
+### 問い
+
+Q008a／Q008cでstorage棄却された固定8 TT-SVD候補に対し、独立holdout campaignでoffline
+preparation、online local quartic action、raw／serialized storageをnatural sparse-fiberと比較する。
+TT側に有利な共通費用除外を置いても有限break-evenを持つ候補はあるか。
+
+### 仮説
+
+- Q008a／Q008cのartifact、package source、fixed coefficient、8候補のfidelity／storageが再現する。
+- seed `20260901`の16方向は全Q008a／Q008c方向とexact duplicateを持たない。
+- 全8 TTでbest offline／online timeがworst sparse timeを上回り、median online slowdownが2以上である。
+- 全8 TTがstored scalars、raw payload、serialized bytesでsparseより大きい。
+- 従って登録campaignにfinite sparse-baseline time break-evenもjoint time/storage採択候補もない。
+
+### 実装
+
+- full quartic model／coefficient family構築とordered-dense materializationを全methodの共通入力として
+  timingから除外した。これはTT-SVD costを過小評価するTT-favorable protocolである。
+- sparseはfresh copyとstorage／NPZ roundtrip、TTはtensorization、full-rank TT-SVD、storage／NPZ
+  roundtripをoffline costとした。warmup 1、measured 3 blockをcyclic orderで実行した。
+- natural sparse、ordered-dense control、8 TTを16 holdout方向で評価した。warmup 1、measured 5
+  blockとし、各blockの16 output norm checksumを保存した。
+- candidate \(m\)とsparse \(s\)に対し、
+
+  \[
+  T_m^-(N)=B_m^-+Nt_m^-,
+  \qquad
+  T_s^+(N)=B_s^++Nt_s^+
+  \]
+
+  を比較した。\(B_m^->B_s^+\)かつ\(t_m^->t_s^+\)なら全整数\(N\ge0\)でrobust no
+  break-evenとした。
+- ordered-dense controlとのmedian break-evenも診断したが、必須sparse baselineを判定から外さなかった。
+
+### 結果
+
+全6 validity gate、全5 hypothesis gateが通過した。
+
+- holdout direction hash／prior duplicate／maximum norm error:
+  `ed625949a32c1cbf6cb7f00e0a4cca5e05675481159b29c61db59c769890609b / 0 / 2.220446049250313e-16`
+- sparse offline min／median／max:
+  `20.9392 / 20.9547 / 21.6592 ms`
+- fastest TT offline min／median／max（`flat-q-last`）:
+  `1.3654306 / 1.3732766 / 1.3768735 s`
+- sparse online min／median／max:
+  `0.5805375 / 0.58298125 / 0.61728125 ms per sample`
+- fastest TT online min／median／max（`flat-q-last`）:
+  `2.85776875 / 2.89795 / 3.0604 ms per sample`
+- fastest median slowdown／robust envelope ratio:
+  `4.9709145877333105 / 4.629605629524629`
+- median slowdown range over 8 TT:
+  `4.9709145877333105 -- 685.3140752811519`
+- sparse stored real scalars／raw／serialized bytes:
+  `315900 / 2614950 / 2615734`
+- best TT core stored real scalars／raw／serialized bytes:
+  `3550626 / 28405096 / 28406852`
+- best TT/sparse ratios:
+  `11.2397150997151 / 10.8625771047248 / 10.859992644512`
+- maximum dense action／TT reconstruction／TT action／checksum error:
+  `1.20460032995549e-14 / 1.49154657341154e-13 / 6.63724332998628e-13 / 4.65675471404282e-14`
+- flat／D1Q3 ordered-dense median break-even:
+  `120--144 actions`
+- input／result digest:
+  `566d3ce0569736c140dae7c4f19d36223957e5ad2b25abc4b9d6a012558d0841` /
+  `79545f0cbf14a53fef52d46bc44cbb8586efb95e1b6645d7c8cc00b45ceed6dc`
+- runner SHA-256:
+  `c6e99082a3418d604f7d09687685cf5e6ab9efe341ea36153123bb8ad4b26b4e`
+- artifact newline-normalized SHA-256:
+  `2885a029ecfe2c17aebe3b05b305caebd927d78476971e4ab186455d0ee30b7f`
+
+従って
+`sealed TT-SVD path is cost-dominated by natural quartic sparse-fiber`
+としてnegative hypothesisを`accepted`とした。
+
+### 分析
+
+最速候補でもTT offline minimumはsparse offline maximumの約63.04倍、TT online minimumはsparse
+online maximumの約4.63倍である。全8候補でこのstrict envelopeが閉じたため、初期費用を何回の
+actionで償却するかという意味のfinite break-evenは存在しない。さらに最小TT payloadもsparseの
+約10.86倍なので、時間と格納量のjoint candidateは0である。
+
+flat／D1Q3 TTがordered-dense coefficient oracleには120--144 actionでmedian break-evenを持つことは、
+dense oracleだけをbaselineにすればTTが有用に見える例である。しかしnatural sparse-fiberはdenseより
+小さく速いため、この比較を採択根拠にはしない。negative resultは忠実度不良ではなく、既知のFourier
+selection ruleを活かす専用表現にgeneral TT-SVDが負けた結果である。
+
+### 主張境界と次の改善
+
+timingは現在のCPU／Python／NumPy環境の有限blockだけに限り、他machineの性能定理ではない。
+ordered-dense coefficient oracleはfull dense LBMではなく、full reduced-chart rollout、direct TT-LBM、
+MPFR cost、GPU、thread scaling、compressed rounding、TT-cross、別tensorization、別grid、D3Q27を
+扱わない。固定Q007c1係数に対するQ009／TT-SVD online pathを閉じる。新しい表現は別candidate familyを
+事前登録しない限り再開しない。次は非TTの未解決数学gateまたはQ011 boundary／forcingへ戻る。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3534,3 +3630,5 @@ boundary initialization、性能、parallel reduction、他grid／MPFR build、c
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
 [`artifacts/q008c_wave_qtt_prequalification.json`](artifacts/q008c_wave_qtt_prequalification.json)
+
+[`artifacts/q010_representation_cost.json`](artifacts/q010_representation_cost.json)

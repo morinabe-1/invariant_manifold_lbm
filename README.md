@@ -80,6 +80,9 @@ Q007c2では係数を変えず、別seedの64方向で振幅・horizon依存を�
 圧縮仮説を棄却した。Q008cではwave／branch factorizationと3-bit wave QTTの4候補も全忠実度gateを
 通過したが、最良候補でも自然なsparse-fiberの`14.1366`倍の格納実スカラー、`13.6592`倍の
 serialized bytesを要した。このため固定Q007c1係数に対するTT-SVD圧縮経路を閉じ、TT-crossへ進まない。
+Q010ではこの停止判断を独立holdout cost campaignで再検証した。TTに有利にdense-oracle生成費用を除外しても、
+最速TTのonline中央値はsparseの`4.9709`倍で、全8候補の最良offline／online timeがsparseの最悪値を
+strictに上回った。従って固定8 TT-SVD候補にはnatural sparse-fiberに対する有限break-evenがない。
 Q007dでは固定保存量葉上の解析的full-map Jacobian、quartic chart tangent、Euclidean projector、
 matrix-free normal SVDを独立検証し、全7 validity gateを通過した。しかし平衡点でも
 `gamma_10=2.59222`、半径`0.004 / 0.01`の全32方向でも`gamma_10>1`となったため、登録した
@@ -830,6 +833,51 @@ tuple-major／factor-majorと、waveを3 bitへ分けるtuple-major／scale-inte
 grid・係数・4配置に限り、TT一般の不可能性は主張しない。次は圧縮候補を追加せず、未検証だった有限半径の
 normal-attraction診断へ戻る。
 
+### Q010 sealed TT-SVD representation cost and break-even
+
+Q008a／Q008cの固定8候補をfresh TT-SVDで再構築し、seed `20260901`の独立16方向でnatural
+sparse-fiber、ordered-dense coefficient oracle、8 TTのoffline preparationとlocal quartic actionを
+測定した。full model／coefficient生成とordered-dense materializationは全methodの共通入力として除外し、
+TT側の費用を意図的に過小評価した。
+
+- classification:
+  `sealed TT-SVD path is cost-dominated by natural quartic sparse-fiber`
+- validity / hypothesis gates: `6 / 6` passed、`5 / 5` passed
+- holdout direction hash／prior exact duplicate count:
+  `ed625949a32c1cbf6cb7f00e0a4cca5e05675481159b29c61db59c769890609b / 0`
+- sparse offline min／median／max:
+  `20.9392 / 20.9547 / 21.6592 ms`
+- fastest TT offline min／median／max（`flat-q-last`）:
+  `1.3654306 / 1.3732766 / 1.3768735 s`
+- sparse online min／median／max:
+  `0.5805375 / 0.58298125 / 0.61728125 ms per sample`
+- fastest TT online min／median／max（`flat-q-last`）:
+  `2.85776875 / 2.89795 / 3.0604 ms per sample`
+- fastest TT median slowdown／best-case envelope slowdown:
+  `4.9709145877333105 / 4.629605629524629`
+- sparse stored real scalars／raw bytes／NPZ bytes:
+  `315900 / 2614950 / 2615734`
+- best TT core stored real scalars／raw bytes／NPZ bytes:
+  `3550626 / 28405096 / 28406852`
+- best TT/sparse ratios:
+  `11.2397151 / 10.8625771 / 10.8599926`
+- maximum reconstruction／action／block-checksum relative error:
+  `1.4915466e-13 / 6.6372433e-13 / 4.6567547e-14`
+- input／result digest:
+  `566d3ce0569736c140dae7c4f19d36223957e5ad2b25abc4b9d6a012558d0841` /
+  `79545f0cbf14a53fef52d46bc44cbb8586efb95e1b6645d7c8cc00b45ceed6dc`
+- runner SHA-256:
+  `c6e99082a3418d604f7d09687685cf5e6ab9efe341ea36153123bb8ad4b26b4e`
+- artifact newline-normalized SHA-256:
+  `2885a029ecfe2c17aebe3b05b305caebd927d78476971e4ab186455d0ee30b7f`
+
+全8候補で\(B_m^->B_s^+\)かつ\(t_m^->t_s^+\)となり、登録campaignの全\(N\ge0\)で
+best-case TT cost lineがworst-case sparse cost lineを上回った。flat系TTはordered-dense coefficient
+oracleには約120--144 actionでmedian time break-evenを持つが、これはfull dense LBMではなく、必須
+sparse baselineにも格納量にも勝たない。従って固定Q007c1係数のTT-SVD／Q009経路を閉じる。
+この有限CPU campaignからTT一般、TT-cross、別tensorization／grid、GPU、full rolloutの不可能性は
+主張しない。
+
 ### Q007n quartic-centered explicit local radius
 
 Q007h1／Q007iの全次数external separationとQ007j--Q007mのexact jet boxを固定入力とし、24 complex
@@ -1425,6 +1473,7 @@ python -m research.q007aa_initialization_interior --output research/artifacts/q0
 python -m research.q007ab_forward_shadowing --output research/artifacts/q007ab_forward_shadowing.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
+python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
 ```
 
 保存済み結果:
@@ -1481,6 +1530,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007ab_forward_shadowing.json`](research/artifacts/q007ab_forward_shadowing.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
+- [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
 
 ## 文書
 
@@ -1551,13 +1601,14 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007ab fixed eigencoordinate contractionによるsame-initial MPFR-85 all-iterate forward-error認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
+- Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - external-output／phase-aware resolventの追加改善
-- TT-cross、境界条件、外力、D3Q27
+- TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
 Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を、Q007kにより登録Q006i二次係数と
