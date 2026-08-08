@@ -158,7 +158,12 @@ finite-ball normal attraction、grid-uniform性を示さない。Q007oではQ007
 Q007acではnonselected-output 630 discに対する位相付きgap \(10^{-7}\)を監査したが、登録した
 対称nominal discがQ007nの\(\sigma\)を`1.6653345369377348e-16`超え、さらに4個の位相比較がfailしたため
 `inconclusive`で停止した。診断上の半径`1e-16`は定理主張へ採用していない。
-Q007pではこの半径を固定し、全289 Fourier blockをexternal coordinate normで厳密に覆った。
+Q007adではこの失敗を固定したfollow-upとしてoriginal asymmetric discsとgap
+\(2.1\times10^{-8}\)を再登録し、287,929比較を全通過した。external inverseがQ007o internal
+inverseを下回ったため、固定17²・固定葉のanalytic existence radiusを`1e-16`へ改善した。
+Q007p--Q007abの有限tube／MPFR定数は`1e-18`のまま据え置く。
+Q007pではQ007o当時の半径`1e-18`を固定し、全289 Fourier blockをexternal coordinate normで
+厳密に覆った。
 登録tube \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)に対し、base forward invariance、
 one-step normal contraction、tangentに対するstrict normal dominationを全て認証した。ただしこれは固定17²・
 固定保存量葉・固定external-coordinate normの極小tubeだけの結果であり、Euclidean contraction、
@@ -971,9 +976,52 @@ log-gapが`1e-6`未満のaggregateだけをacoustic signごとに完全展開し
 診断としてgapが通ったと仮定すれば、external inverseは`4.425423249246816e10`、total inverseは
 Q007o internal upper `2.1920952274236575e11`に支配され、改善率`125.28856057411295`、
 最大pass候補`1e-16`となる。しかしvalidityとphase hypothesisが落ちたため、これらはcounterfactualであり
-認証値ではない。次のgateでは、selected discを再中心化せずに扱うかproduct-factor upperの微小inflationを
-明示し、critical external gapから独立に閾値を固定する。既存Q007oの`1e-18`とQ007p--Q007abの
-tube／MPFR結論は変更しない。
+認証値ではない。この停止を受けたQ007adでselected discを再中心化せず、critical external gapから
+新しい閾値を事前登録した。Q007ac自体の`1e-7`結果はinvalidのままであり、Q007p--Q007abの
+tube／MPFR結論も変更しない。
+
+### Q007ad original-asymmetric-disc critical phase certificate
+
+Q007acのinvalid／`inconclusive`結果を封印入力として保持し、Q007h1の6 selected discsを
+共役化・実軸化・再中心化せずに直接使用した。Q007n \(\beta_*\)とQ007o internal inverseから
+
+\[
+\delta_{\rm crit}
+=81\beta_*/C_{\rm int}^{\rm Q007o}
+=2.0188097642308912\times10^{-8}
+\]
+
+を先に導き、targetを \(\delta_{\rm ad}=2.1\times10^{-8}\)へ固定した。このgateはQ007acの
+失敗witnessを見た後のfollow-up certificateであり、独立な探索仮説ではない。
+
+- classification:
+  `original asymmetric discs certify the critical external-output phase gap`
+- validity／hypothesis gates: `6 / 6`、`5 / 5` passed
+- original selected disc／target disc: `6 / 630`
+- Q007n \(\sigma\)からのminimum selected-disc slack:
+  `7.672593033162951e-81`
+- Q007ac screen exact reproduction: pass
+- aggregate／dangerous aggregate: `2,919,730 / 826`
+- dangerous expanded product／exact comparison:
+  `108,273 / 287,929`
+- failed phase comparison: `0`
+- minimum witness:
+  degree `71`、counts `(24,38,2,7)`、acoustic split `(12,12,1,1)`、
+  external `wave=(-7,-7);eigenvalue_index=6`
+- certified complex distance lower: `2.4028364427409988e-8`
+- phase-comparison digest:
+  `086516b273f30d7c94c276399c16f8a6433bd90e3dc03fb740d2ab45754e4a37`
+
+80桁working external inverseは`2.107344404403246e11`で、Q007o internal upper
+`2.1920952274236575e11`より小さい。従ってnew totalはinternal-limitedとなり、Q007o totalからの
+改善率は`125.28856057411295`、固定119候補での最大passは`1e-16`、直前の
+`1e-15`はfailした。これにより固定17²・固定保存量葉・固定modal／Wiener normに対する
+Q007i manifoldのexplicit analytic existence radiusを`1e-16`として認証する。
+
+ただし \(2.1\times10^{-8}\) の最適性、Fourier wave-sumによるsharp化、Q007o internal／zero-wave
+inverseの改善、grid-uniform性、finite-ball normal attraction、global basinは示さない。特に
+Q007p--Q007abのtube、positivity、MPFR、forward-shadowing結論は再走査しておらず、従来の
+`1e-18`設定を変更しない。analytic radiusと有限tube radiusを混同しない。
 
 ### Q007p exact-manifold finite-tube normal attraction
 
@@ -1564,6 +1612,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007aa_initialization_interior.json`](research/artifacts/q007aa_initialization_interior.json)
 - [`research/artifacts/q007ab_forward_shadowing.json`](research/artifacts/q007ab_forward_shadowing.json)
 - [`research/artifacts/q007ac_phase_aware_resolvent.json`](research/artifacts/q007ac_phase_aware_resolvent.json)
+- [`research/artifacts/q007ad_asymmetric_phase_resolvent.json`](research/artifacts/q007ad_asymmetric_phase_resolvent.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -1636,6 +1685,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q007aa exact-state coordinate interiorからMPFR-85 encoding／repair後のQ007s tube membership認証
 - Q007ab fixed eigencoordinate contractionによるsame-initial MPFR-85 all-iterate forward-error認証
 - Q007ac 全291万9730 modulus aggregate／287,929位相比較、登録nominal-disc条件とgap反例によるinvalid stop
+- Q007ad original asymmetric 6 discs／287,929位相比較によるcritical external gapと`1e-16` analytic radius認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -1644,7 +1694,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 未実装・未通過:
 
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
-- Q007acで未通過のexternal-output phase-aware resolvent（nominal-disc設定とtarget gapの再登録が必要）
+- Q007ad後のselected-output internal inverse bottleneck、`1e-16` analytic radiusでの下流tube再監査
 - TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、

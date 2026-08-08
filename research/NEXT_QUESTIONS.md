@@ -7404,6 +7404,55 @@ global basin、Q007c1 finite-amplitude性能、境界、外力、D3Q27は扱わ�
 tube／positivity／MPFR／forward-shadowing定数は`1e-18`を前提に据え置き、拡大するなら
 別gateを必要とする。
 
+### Q007ad 封印結果
+
+validity 6件、hypothesis 5件が全て通過し、
+`original asymmetric discs certify the critical external-output phase gap`
+として`accepted`とした。
+
+- Q007ac invalid input、artifact／runner／3 digest reproduction: pass
+- 72 Q007h1 proof digest mismatch: `0`
+- original asymmetric selected disc／target disc: `6 / 630`
+- selected discのQ007n working \(\sigma\) containment: pass
+- minimum \(\sigma\) slack: `7.672593033162951e-81`
+- product-factor inflation over Q007n \(\sigma\): `0`
+- critical gap:
+  `2.0188097642308912e-8`
+- registered target／critical ratio:
+  `2.1e-8 / 1.0402168828423712`
+- Q007ac screen partition／identifier exact reproduction: pass
+- aggregate／dangerous aggregate: `2,919,730 / 826`
+- dangerous expanded product／comparison: `108,273 / 287,929`
+- failed comparison: `0`
+- minimum witness:
+  degree `71`、counts `(24,38,2,7)`、acoustic split `(12,12,1,1)`、
+  external `wave=(-7,-7);eigenvalue_index=6`
+- certified complex distance lower:
+  `2.4028364427409988e-8`
+- working external／internal／new total inverse:
+  `2.107344404403246e11 / 2.1920952274236575e11 / 2.1920952274236575e11`
+- total improvement factor: `125.28856057411295`
+- selected／previous candidate: `1e-16 pass / 1e-15 fail`
+- input／result digest:
+  `b1b1b2750e871c6ee3b243f7df590ec19dd6d604d9699f183af007b89d0f7935` /
+  `f5df89c55a86978c85542eeec82e6419884b69b919c0385ca77e9677b1c1d17f`
+- phase comparison digest:
+  `086516b273f30d7c94c276399c16f8a6433bd90e3dc03fb740d2ab45754e4a37`
+- runner SHA-256:
+  `3ca5e39c3ddb79c886ef7bf4d6e6ad923deb66e53da3663251f183abbab7b0ae`
+- artifact newline-normalized SHA-256:
+  `6a6f642cb681409ca160773180e025c1ffbc1929d6ec84423c384c57007571e4`
+
+従って固定17²・固定保存量葉・固定modal／Wiener normに対するQ007i analytic manifoldの
+explicit modal \(\ell^1\) radiusを`1e-16`へ更新する。Q007acの`1e-7` certificateは
+依然としてinvalidであり、Q007ad gapの最適性も主張しない。
+
+Q007p--Q007abは`1e-18` analytic radiusとそれより小さいtubeを入力にした別certificateである。
+Q007adではそれらを再走査していないため、tube／positivity／MPFR／forward-shadowing定数を拡大しない。
+次の数学的bottleneckはQ007o selected-output internal inverse
+`2.1920952274236575e11`である。これをphase-awareに改善するか、先に`1e-16` radiusを
+使って下流tubeを再監査するかは、別の事前登録gateとして扱う。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。

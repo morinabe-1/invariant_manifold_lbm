@@ -3587,6 +3587,63 @@ new totalはQ007o internal inverse`2.1920952274236575e11`、改善率は`125.288
 external bottleneckを外すcritical gapをQ007o internal inverseから先に導き、その閾値を固定してから
 再評価する。Fourier wave-sum restrictionを追加する場合も別の事前登録事項とする。
 
+## 2026-08-09: Q007ad asymmetric-disc critical phase certificate
+
+### 問いと事前登録
+
+Q007acのinvalid結果を変更せず、Q007h1 original asymmetric selected discsでexternal-output
+resolvent bottleneckを外せるかを問うた。Q007n \(\beta_*\)とQ007o internal inverseからcritical gap
+`2.0188097642308912e-8`をexactに導き、targetを`2.1e-8`へ固定した。これはQ007acの
+失敗を観測した後のfollow-up certificateであり、独立な探索仮説ではないことも事前登録した。
+
+### 実装
+
+- Q007ac artifact／runnerとinvalid outcome、input／result／phase digestを封印入力として再現した。
+- selected 2 representativeの6 eigenvalue centerをexact dyadicへ戻し、Q007h1 Bauer--Fike radiusを
+  inflationなしで使用した。全discはQ007n working \(\sigma\)内にあり、minimum slackは
+  `7.672593033162951e-81`だった。
+- target 630 discs、2,919,730 aggregate、826 dangerous aggregate、108,273 expanded product、
+  287,929 comparisonをQ007acと同じ順序で再構成した。
+- original acoustic +/- centerとshear centerを用いてphase productをexact dyadic arithmeticで作り、
+  Q007n \(\sigma^{n-1}\) telescoping uncertainty、external radius、256-bit outward thresholdを
+  含む平方距離比較を全件実行した。
+- Q007oのinternal／zero inverse、全majorant、119候補を変えず、旧recordをexact再現してから
+  external inverseだけを差し替えた。
+
+### 結果
+
+validity `6/6`、hypothesis `5/5`で`accepted`となった。
+
+1. 全287,929 comparisonがtarget `2.1e-8`をstrictに通過した。
+2. 最小witnessはQ007acと同じdegree `71`、counts `(24,38,2,7)`、
+   acoustic split `(12,12,1,1)`、external
+   `wave=(-7,-7);eigenvalue_index=6`だった。
+3. certified complex distance lowerは`2.4028364427409988e-8`、
+   minimum squared marginは`1.364447467611938e-16`だった。
+4. working external inverseは`2.107344404403246e11`となり、Q007o internal upper
+   `2.1920952274236575e11`を下回った。new totalはinternal-limitedで、改善率は
+   `125.28856057411295`となった。
+5. radius scanは`1e-16`を最大pass、`1e-15`を直前のfailとして再現した。
+
+- input／result digest:
+  `b1b1b2750e871c6ee3b243f7df590ec19dd6d604d9699f183af007b89d0f7935` /
+  `f5df89c55a86978c85542eeec82e6419884b69b919c0385ca77e9677b1c1d17f`
+- phase comparison digest:
+  `086516b273f30d7c94c276399c16f8a6433bd90e3dc03fb740d2ab45754e4a37`
+- runner／artifact SHA-256:
+  `3ca5e39c3ddb79c886ef7bf4d6e6ad923deb66e53da3663251f183abbab7b0ae` /
+  `6a6f642cb681409ca160773180e025c1ffbc1929d6ec84423c384c57007571e4`
+
+### 解釈と境界
+
+固定17²・固定保存量葉・固定modal／Wiener normで、Q007i analytic manifoldのexplicit modal
+\(\ell^1\) radiusを`1e-16`へ改善した。Q007acの`1e-7` claimはinvalidのままであり、
+Q007ad targetをoptimal gapとは解釈しない。
+
+Q007p--Q007abのfinite tube、positivity、MPFR、forward-shadowingは`1e-18`を前提とする
+別certificateなので変更しない。次のanalytic-radius bottleneckはQ007o selected-output internal
+inverseである。下流tubeの拡大も、internal phase refinementも別gateで事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3684,6 +3741,8 @@ external bottleneckを外すcritical gapをQ007o internal inverseから先に導
 [`artifacts/q007ab_forward_shadowing.json`](artifacts/q007ab_forward_shadowing.json)
 
 [`artifacts/q007ac_phase_aware_resolvent.json`](artifacts/q007ac_phase_aware_resolvent.json)
+
+[`artifacts/q007ad_asymmetric_phase_resolvent.json`](artifacts/q007ad_asymmetric_phase_resolvent.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
