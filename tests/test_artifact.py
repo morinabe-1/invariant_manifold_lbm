@@ -2397,3 +2397,52 @@ def test_q007ad_artifact_records_the_accepted_asymmetric_certificate() -> None:
     assert not cycle["theorem_consequence"][
         "q007p_through_q007ab_tube_constants_enlarged"
     ]
+
+
+def test_q007ae_artifact_records_internal_bottleneck_removal() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY / "q007ae_internal_phase_resolvent.json"
+    )
+    runner_path = artifact_path.parents[1] / (
+        "q007ae_internal_phase_resolvent.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ae_internal_phase_resolvent.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "phase-aware selected-output centers remove the internal "
+        "resolvent bottleneck"
+    )
+    assert len(cycle["validity_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 5
+    assert all(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    )
+    assert cycle["phase_aware_separation_audit"]["phase"][
+        "failed_comparison_count"
+    ] == 0
+    consequence = cycle["theorem_consequence"]
+    assert consequence[
+        "selected_output_internal_resolvent_bottleneck_removed"
+    ]
+    assert consequence["new_total_is_nonselected_external_limited"]
+    assert not consequence[
+        "strictly_larger_decimal_grid_radius_certified"
+    ]
+    assert not consequence[
+        "q007p_through_q007ab_tube_constants_enlarged"
+    ]

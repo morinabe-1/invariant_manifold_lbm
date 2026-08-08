@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import json
 from fractions import Fraction
+from pathlib import Path
 
 import pytest
 
 import research.q007ae_internal_phase_resolvent as q007ae
+from ttim_lbm.provenance import source_metadata
+from ttim_lbm.rational_spectrum import _file_sha256
 
 
 def _fraction(record: dict) -> Fraction:
@@ -17,6 +21,16 @@ def _fraction(record: dict) -> Fraction:
 @pytest.fixture(scope="module")
 def q007ae_cycle() -> dict:
     return q007ae.run_internal_phase_resolvent_audit()
+
+
+@pytest.fixture(scope="module")
+def q007ae_artifact() -> dict:
+    path = (
+        Path(q007ae.__file__).resolve().parent
+        / "artifacts"
+        / "q007ae_internal_phase_resolvent.json"
+    )
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def test_q007ae_reuses_registered_gap_above_internal_critical_gap() -> None:
@@ -144,3 +158,36 @@ def test_q007ae_accepts_bottleneck_removal_without_radius_upgrade(
     assert not consequence[
         "q007p_through_q007ab_tube_constants_enlarged"
     ]
+
+
+def test_q007ae_artifact_reproduces_the_accepted_certificate(
+    q007ae_cycle: dict,
+    q007ae_artifact: dict,
+) -> None:
+    runner_path = Path(q007ae.__file__).resolve()
+    separation = q007ae_cycle["phase_aware_separation_audit"]
+
+    assert q007ae_artifact["schema_version"] == 1
+    assert q007ae_artifact["source"] == source_metadata()
+    assert q007ae_artifact["runner_source"] == {
+        "filename": "q007ae_internal_phase_resolvent.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert q007ae_artifact["cycle"] == q007ae_cycle
+    assert q007ae_artifact["study_gate"] == "passed"
+    assert q007ae_artifact["scientific_outcome"] == "accepted"
+    assert q007ae_cycle["input_digest_sha256"] == (
+        "23fba479cfa07ec50721d9b05bcaf40a0ac04126497ff64b04785e1d20534e0e"
+    )
+    assert q007ae_cycle["result_digest_sha256"] == (
+        "3e1792c5215952d9126bf5bd61409a2a0d72ebc12970ad1e4aaca481d4fcb687"
+    )
+    assert separation["phase"]["comparison_digest_sha256"] == (
+        "4aea091076179e7ef8eb14c9c4828b41d6af3ef25665e5b2dbbf562acf692b3b"
+    )
+    assert separation["selected_center_certificate_digest_sha256"] == (
+        "3cc524ebb82c3e375bf35d456f96be11fa5d124728873046ed59a7032a2058d7"
+    )
