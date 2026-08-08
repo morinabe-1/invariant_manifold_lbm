@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import json
 from fractions import Fraction
+from pathlib import Path
 
 import pytest
 
 import research.q007ac_phase_aware_resolvent as q007ac
+from ttim_lbm.provenance import source_metadata
+from ttim_lbm.rational_spectrum import _file_sha256
 
 
 def _fraction(record: dict) -> Fraction:
@@ -17,6 +21,16 @@ def _fraction(record: dict) -> Fraction:
 @pytest.fixture(scope="module")
 def q007ac_cycle() -> dict:
     return q007ac.run_phase_aware_resolvent_audit()
+
+
+@pytest.fixture(scope="module")
+def q007ac_artifact() -> dict:
+    path = (
+        Path(q007ac.__file__).resolve().parent
+        / "artifacts"
+        / "q007ac_phase_aware_resolvent.json"
+    )
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def test_q007ac_screen_is_complete_and_phase_expansion_is_exact(
@@ -131,3 +145,23 @@ def test_q007ac_dyadic_outward_rounding_is_exact() -> None:
     assert rounded_fraction - value < Fraction(1, 2**256)
     squared = q007ac._square_dyadic(rounded)
     assert q007ac._dyadic_to_fraction(squared) >= value * value
+
+
+def test_q007ac_artifact_reproduces_the_invalid_stop(
+    q007ac_cycle: dict,
+    q007ac_artifact: dict,
+) -> None:
+    runner_path = Path(q007ac.__file__).resolve()
+
+    assert q007ac_artifact["schema_version"] == 1
+    assert q007ac_artifact["source"] == source_metadata()
+    assert q007ac_artifact["runner_source"] == {
+        "filename": "q007ac_phase_aware_resolvent.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert q007ac_artifact["cycle"] == q007ac_cycle
+    assert q007ac_artifact["study_gate"] == "failed"
+    assert q007ac_artifact["scientific_outcome"] == "inconclusive"

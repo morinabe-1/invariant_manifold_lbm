@@ -2311,3 +2311,45 @@ def test_q010_artifact_records_the_representation_cost_result() -> None:
     ]
     assert consequence["natural_sparse_fiber_remains_mandatory_baseline"]
     assert not consequence["ordered_dense_control_interpreted_as_full_lbm"]
+
+
+def test_q007ac_artifact_records_the_preregistered_invalid_stop() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY / "q007ac_phase_aware_resolvent.json"
+    )
+    runner_path = artifact_path.parents[1] / (
+        "q007ac_phase_aware_resolvent.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ac_phase_aware_resolvent.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "failed"
+    assert artifact["scientific_outcome"] == "inconclusive"
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "failed"
+    assert cycle["hypothesis_outcome"] == "inconclusive"
+    assert len(cycle["validity_gates"]) == 6
+    assert not cycle["validity_gates"][
+        "spectral_disc_reconstruction"
+    ]["passed"]
+    assert sum(
+        not gate["passed"] for gate in cycle["validity_gates"].values()
+    ) == 1
+    assert len(cycle["hypothesis_gates"]) == 5
+    assert not cycle["hypothesis_gates"][
+        "registered_phase_gap_certified"
+    ]["passed"]
+    assert cycle["phase_aware_separation_audit"]["phase"][
+        "failed_comparison_count"
+    ] == 4
+    assert not cycle["theorem_consequence"][
+        "larger_registered_explicit_modal_l1_radius_certified"
+    ]
