@@ -5632,9 +5632,12 @@ MPFRは基本演算をexact resultからdestination precisionへ正しく丸め�
 
 ### concrete map と独立oracle
 
-`src/ttim_lbm/mpfr_backend.py`に、density／momentum、velocity、second-order equilibrium、
+`research/q007x_mpfr_backend.py`に、density／momentum、velocity、second-order equilibrium、
 BGK collision、periodic streaming、five-point filterを明示loopで実装する。reductionは先頭要素からの
 left foldに固定し、各加減乗除を個別MPFR operationとして実行する。
+
+この配置は既存artifactが固定する`src/ttim_lbm` package fingerprintを変更せず、Q007x自身が
+backend source SHAを独立に封印するためである。
 
 全primitive operationについて、operandとresultをexact dyadic ratioへ戻し、Q007wの
 exact integer ties-to-even oracleで

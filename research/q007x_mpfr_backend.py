@@ -1,4 +1,4 @@
-"""Fixed 85-bit MPFR implementation of the filtered periodic D2Q9 map."""
+"""Research-only 85-bit MPFR implementation of the filtered periodic D2Q9 map."""
 
 from __future__ import annotations
 

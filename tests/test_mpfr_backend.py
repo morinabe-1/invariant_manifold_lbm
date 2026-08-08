@@ -7,7 +7,7 @@ import numpy as np
 import pytest
 
 import research.q007w_ideal_precision_threshold as q007w
-from ttim_lbm.mpfr_backend import (
+from research.q007x_mpfr_backend import (
     D2Q9_EXACT_WEIGHTS,
     MPFR_EMAX,
     MPFR_EMIN,
