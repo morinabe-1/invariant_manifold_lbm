@@ -5582,6 +5582,141 @@ trajectory、performanceも認証しない。Q007vのbinary64 `not_certified`は
 roundoff-robust claimへ進む場合は、85 bits以上の一つのconcrete correctly-rounded backendを別gateとして
 事前登録し、Q007wとbitwise／interval cross-checkする。
 
+## Q007x: concrete MPFR-85 backend と fixed-leaf closure — 事前登録
+
+### 問い
+
+Q007wで選んだideal \(p_*=85\) binary round-to-nearest演算を、固定した
+`gmpy2`／MPFR backendがoperation-by-operationで実現するか。さらに、componentwise
+correct roundingと一段mapが
+
+\[
+\delta M=\delta P_x=\delta P_y=0
+\]
+
+というQ006以降の保存量固定葉をexactに保ち、Q007wのbase／normal re-entry boundを
+all-iterate inductionへ接続できるか。
+
+MPFRは基本演算をexact resultからdestination precisionへ正しく丸め、nearest modeではties-to-evenを
+用いる。`gmpy2` contextはprecisionをbinary bit数で指定できる
+（[MPFR manual](https://www.mpfr.org/mpfr-current/mpfr.html)、
+[gmpy2 contexts](https://gmpy2.readthedocs.io/en/stable/contexts.html)）。
+
+### 固定入力とbackend
+
+- `q007w_ideal_precision_threshold.json` newline-normalized SHA-256:
+  `bac362d9dca4a681387b986a5f5802278ef61a1a3bcf1a0f8577c7f3ab0a07af`
+- Q007w runner SHA-256:
+  `86dcc0a507e24216775650d5467d0ebf6e90eac0865190d0d5186e08afb7eac8`
+- backend package: `gmpy2==2.3.1`
+- runtime libraries: `MPFR 4.2.2`、`GMP 6.3.0`
+- grid／model: \(17^2\)、D2Q9、\(\omega=3/2\)、\(\eta=1/100\)
+- context:
+  - precision: `85` total significand bits
+  - rounding: `RoundToNearest`
+  - exponent range: `emin=-1105`、`emax=1024`
+  - `subnormalize=True`
+  - invalid／division-by-zero／overflow／underflow trap: enabled
+  - inexact trap: disabled
+- \(-1105=-1022-(85-1)+1\)により、smallest positive subnormalを
+  \(2^{-1106}\)、half-ulp fallbackをQ007wと同じ\(2^{-1107}\)にする。
+- exact rationalはPython `Fraction`から`mpq(n,d)`を作り、そこから`mpfr`へ
+  一度だけ丸める。Python `float`やdecimal stringを経由しない。
+- weightは各exact D2Q9 rationalを個別に丸める。filterはQ007wと同じ順序で
+  \[
+  \widehat\eta=\operatorname{RN}_{85}(1/100),\quad
+  \widehat c_0=\operatorname{RN}_{85}(1-\widehat\eta),\quad
+  \widehat c_1=\operatorname{RN}_{85}(\widehat\eta/4)
+  \]
+  とする。FMA、fast-math、並列reductionは使わない。
+
+### concrete map と独立oracle
+
+`src/ttim_lbm/mpfr_backend.py`に、density／momentum、velocity、second-order equilibrium、
+BGK collision、periodic streaming、five-point filterを明示loopで実装する。reductionは先頭要素からの
+left foldに固定し、各加減乗除を個別MPFR operationとして実行する。
+
+全primitive operationについて、operandとresultをexact dyadic ratioへ戻し、Q007wの
+exact integer ties-to-even oracleで
+
+\[
+\widehat r_{\rm MPFR}
+=\operatorname{RN}_{85}(r_{\rm exact})
+\]
+
+を照合する。constant construction、input encoding、全map operationのcanonical trace digestと
+mismatch countを保存する。sourceを実装コミットで固定した後、そのSHAをQ007x runnerへ登録する。
+
+また同じprobeをexact `Fraction` mapで一段進め、equilibrium／post-collision／
+post-streaming／post-filterのobserved component errorが、Q007w selected 85-bit candidateの
+registered maximum-component error upper以下であることを検証する。
+
+### fixed-leaf probes
+
+\(\delta=10^{-13}\)とし、全probeをexact rationalで作る。
+
+1. `rest`: 全siteをexact D2Q9 rest weightsとする。
+2. `axial_x_pair`: population \(q=1\)の二siteへ \(+\delta,-\delta\)を加える。
+3. `axial_y_pair`: population \(q=2\)の二siteへ \(+\delta,-\delta\)を加える。
+4. `all_populations_paired`: 各\(q=0,\ldots,8\)について異なる二siteへ
+   \((-1)^q(q+1)\delta/10\)とその負を加える。
+
+各populationのpaired perturbationはglobal mass／momentumをexactに相殺する。全component deviationが
+Q007wの登録\(x_*\)未満、全density／populationがpositiveであることをgateにする。これらは
+backend semanticと保存収支を診断するfinite probeであり、Q007s tube全体のsampling proofとは呼ばない。
+
+各probeについて、exact input、componentwise MPFR encoding、post-collision、post-streaming、
+post-filterのglobal \(M,P_x,P_y\)をexact rational summationで測る。成功条件はtoleranceではなく
+bitwise／rational equalityである。
+
+### validity gate
+
+1. Q007w artifact／runner SHA、全7 validity gate、全6 hypothesis gate、selected \(p_*=85\)、
+   \(p=84\) boundary、Q007v transitive inputsが一致する。
+2. backend package／MPFR／GMP version、85-bit context、rounding、exponent range、subnormal設定、
+   trap、context restorationが登録値と一致する。
+3. backend source SHA、`pyproject.toml` dependency、D2Q9／filter upstream source SHA、
+   stage order、constant construction orderが一致する。
+4. 4 exact probesが固定recipe、fixed-leaf cancellation、component box、positivityを満たす。
+5. constant／input／mapの全trace operationがQ007w ties-to-even oracleとbitwise一致し、
+   mismatch countが0である。
+6. 各probeのper-site operation countがQ007wの
+   `9 / 36 / 36 / 18 / 83 / 2 / 22 / 61` recordと一致し、全intermediateがfinite、
+   divisorがpositive、invalid／division-by-zero／overflow／underflow flagがfalseである。
+7. exact `Fraction` stageとの差が全probe／全stageでQ007w selected 85-bit
+   component-error upper以下で、MPFR stage populationがstrict positiveである。
+8. 全値がfiniteでstrict JSONを生成し、probe／trace／result digestが再現する。
+
+一つでも落ちれば`inconclusive`とし、conservation hypothesisを解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. registered MPFR backendがQ007w ideal 85-bit operation semanticsを実現する。
+2. Q007w one-step stage positivityとbase／normal roundoff boundがconcrete backendへ適用できる。
+3. componentwise correct input encodingが全4 probeで\(M,P_x,P_y\)をexactに保存する。
+4. collisionがencoded inputの\(M,P_x,P_y\)を全probeでexactに保存する。
+5. streaming／filter後もencoded inputの\(M,P_x,P_y\)を全probeでexactに保存する。
+6. 1--5が全て通り、Q007s fixed leaf上のone-step re-entryを同じbackendへ反復適用できる。
+
+全て通れば
+`registered MPFR-85 backend closes the Q007w roundoff-robust fixed-leaf induction`
+として`accepted`とする。
+
+validityと1--2が通るが3--6のいずれかが落ちれば、
+`MPFR-85 realizes the Q007w one-step arithmetic bound but not the fixed conservation leaf`
+という有効な`not_certified`とする。丸めweightの和やfilter partition-of-unity defect、
+operation roundoffを保存量別に分解し、Q007wの閾値を変更せず次の保存補正gateへ渡す。
+
+### 主張境界
+
+finite probeのexact conservation成功だけでtube全体の保存を証明しない。acceptedには、
+backend sourceの代数構造と全trace semantic bridgeを併用する。`not_certified`の場合も、
+Q007wのideal complement-coordinate error threshold、Q007uのexact-map positivity、Q007sの
+exact fixed-leaf invarianceを撤回しない。ただしconcrete all-iterate claimは行わない。
+性能、multi-step trajectory、GPU、threaded reduction、他のgmpy2／MPFR版、D3Q27を扱わない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
