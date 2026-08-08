@@ -168,7 +168,9 @@ Q007s単独ではQ007q／Q007rのpositivityを新tubeへ拡張しない。Q007t�
 population／density positivityを別途認証し、Q007uで同じ拡大tubeのexact equilibrium／collision／
 streaming／filter各段階にもstrict positivityを拡張した。Q007vでは現行binary64実装のone-step
 stage positivityも認証したが、roundoff error upperはQ007sのstrict re-entry marginに収まらず、
-全iterateへのroundoff-robust帰納は`not_certified`である。
+全iterateへのroundoff-robust帰納は`not_certified`である。Q007wでは同じenclosureを
+ideal binary \(p=53,\ldots,128\)へ拡張し、sufficient thresholdを\(p_*=85\) bitsと決めたが、
+具体的な高精度backendはまだ認証していない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1094,6 +1096,38 @@ collision／streaming／filter outputはstrict positiveである。しかし登�
 両re-entry marginを超えるため、この一段結論を同じtube上で全iterateへ帰納しない。これは実際のtube
 escapeの反例ではなく、現certificateがroundoff-robust invarianceを示さないという否定的判定である。
 
+### Q007w ideal binary precision threshold
+
+Q007vのcomponent box、operation count、source SHA、DFT係数、analysis norm、strict marginを固定したまま、
+total significand bits \(p=53,\ldots,128\)の76候補をexact ties-to-even arithmeticで全評価した。
+\(p=53\)ではQ007vの全constant、population target/error record、stage summary、re-entry quantityを
+exactに再現している。
+
+- classification:
+  `registered ideal binary precision threshold restores roundoff-robust Q007s tube re-entry`
+- validity / hypothesis gates: `7 / 7`, `6 / 6` passed
+- candidate／passing count: `76 / 44`
+- selected sufficient precision: `85 significand bits`
+- 84-bit Wiener error／base utilization:
+  `5.360999559126826e-22 / 1.6266138872531641`
+- 85-bit Wiener error／base utilization:
+  `2.706739822688458e-22 / 0.8212685966874661`
+- 85-bit base／normal coordinate error:
+  `4.089029108522444e-22 / 8.097790411837928e-21`
+- 85-bit normal margin utilization:
+  `8.854816107415864e-8`
+- candidate digest:
+  `440a08dc36990d3e34edf1886fd7e47eacb4766c4a42352022897fd79dbb3ce2`
+- runner SHA-256:
+  `86dcc0a507e24216775650d5467d0ebf6e90eac0865190d0d5186e08afb7eac8`
+- artifact newline-normalized SHA-256:
+  `bac362d9dca4a681387b986a5f5802278ef61a1a3bcf1a0f8577c7f3ab0a07af`
+
+従って、固定worst-case enclosureに対するideal binary arithmeticでは85 bitsが最初のsufficient
+re-entry precisionであり、84 bitsではbase marginだけがfailする。これはnecessary thresholdではなく、
+NumPy／MPFR／decimal／hardwareなどの実装済みbackend、正しいrounding mode、trajectory、性能を
+認証しない。Q007vのbinary64 `not_certified`は変更しない。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -1149,6 +1183,7 @@ python -m research.q007s_finite_tube_enlargement --output research/artifacts/q00
 python -m research.q007t_larger_tube_population_positivity --output research/artifacts/q007t_larger_tube_population_positivity.json
 python -m research.q007u_larger_tube_stagewise_positivity --output research/artifacts/q007u_larger_tube_stagewise_positivity.json
 python -m research.q007v_binary64_stage_enclosure --output research/artifacts/q007v_binary64_stage_enclosure.json
+python -m research.q007w_ideal_precision_threshold --output research/artifacts/q007w_ideal_precision_threshold.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -1199,6 +1234,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007t_larger_tube_population_positivity.json`](research/artifacts/q007t_larger_tube_population_positivity.json)
 - [`research/artifacts/q007u_larger_tube_stagewise_positivity.json`](research/artifacts/q007u_larger_tube_stagewise_positivity.json)
 - [`research/artifacts/q007v_binary64_stage_enclosure.json`](research/artifacts/q007v_binary64_stage_enclosure.json)
+- [`research/artifacts/q007w_ideal_precision_threshold.json`](research/artifacts/q007w_ideal_precision_threshold.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1263,14 +1299,15 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007t Q007s tubeのexact Wiener bound、full-map時刻でのpopulation／density strict positivity認証
 - Q007u Q007s tubeのexact equilibrium／BGK／streaming／convex-filter stageでの全iterate strict positivity認証
 - Q007v 現行binary64演算のpaired roundoff enclosure、一段stage positivity認証、robust re-entry棄却
+- Q007w ideal binary 53--128 bit全候補、85-bit最小sufficient robust re-entry threshold認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007s tubeのroundoff-robust all-iterate re-entry、連続最適化、Euclidean／grid-uniform normal
-  attraction、global basin
+- 85 bits以上の具体的correctly-rounded backendによるQ007s tubeのroundoff-robust all-iterate
+  re-entry、連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
 
@@ -1288,5 +1325,6 @@ Q007sでは同じ解析的majorantを9×99有限格子へ適用し、\(r=9\times
 positive population cone内に含むことを認証し、Q007uではexact equilibrium／collision／streaming／
 filter各段階へ同じ結論を拡張した。Q007vでは現行binary64実装の一段stage positivityまで認証したが、
 roundoff error upperがQ007sのbase／normal strict marginを超えるため、同じtube上の全iterateへは
-帰納しない。Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却を変更せず、roundoff-robust invariance、
-連続最適性、grid-uniform性へは主張を広げない。
+帰納しない。Q007wでは同じenclosureをideal binary precisionへ拡張し、85 bitsを最小sufficient
+thresholdと認証したが、具体的backendは未認証である。Q007c1の有限振幅性能棄却とQ007dのEuclidean
+棄却を変更せず、実装mapのroundoff-robust invariance、連続最適性、grid-uniform性へは主張を広げない。

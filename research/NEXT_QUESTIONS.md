@@ -5541,6 +5541,47 @@ sufficient thresholdを主張する。これは実装済みのNumPy dtype、MPFR
 necessary thresholdでもない。Q007vのbinary64 `not_certified`、Q007uのexact-map acceptance、Q007sの
 finite-grid tube selectionは変更しない。
 
+### Q007w 封印結果
+
+全7 validity gateと全6 hypothesis gateが通過した。
+
+- Q007v artifact／runner SHA、source／scope、mixed outcome、transitive inputs: pass
+- ties-to-even halfway case: `4 / 4` pass
+- \(p=53\) weight／filter dyadic、全population target/error、stage summary、re-entry quantity:
+  exact Q007v reproduction
+- candidate coverage: `53..128 / 76 candidates / no missing or duplicate`
+- passing precision: `85..128 / 44 candidates`
+- error／utilization monotonic nonincrease、stage lower monotonic nondecrease: pass
+- selected precision／previous boundary: `85 / 84`
+- 84-bit Wiener error／base error／base utilization:
+  `5.360999559126826e-22 / 8.0987773794499245e-22 / 1.6266138872531641`
+- 84-bit normal utilization:
+  `1.7537949103972442e-7`
+- 85-bit Wiener error／base error／base utilization:
+  `2.706739822688458e-22 / 4.089029108522444e-22 / 0.8212685966874661`
+- 85-bit normal error／utilization:
+  `8.097790411837928e-21 / 8.854816107415864e-8`
+- 85-bit minimum stage lower:
+  `0.02777777771459692`
+- candidate digest:
+  `440a08dc36990d3e34edf1886fd7e47eacb4766c4a42352022897fd79dbb3ce2`
+- runner SHA-256:
+  `86dcc0a507e24216775650d5467d0ebf6e90eac0865190d0d5186e08afb7eac8`
+- artifact newline-normalized SHA-256:
+  `bac362d9dca4a681387b986a5f5802278ef61a1a3bcf1a0f8577c7f3ab0a07af`
+
+従って
+`registered ideal binary precision threshold restores roundoff-robust Q007s tube re-entry`
+として`accepted`とした。固定Q007v worst-case enclosureでは、84 bitsはnormal marginを通るが
+base marginを通らず、85 bitsで初めてbase／normal両方をstrictに通る。従って85 significand bitsを
+最小の登録sufficient thresholdとする。
+
+これはideal arithmetic familyの設計値であり、lower precisionが実際に必ずtubeを脱出するという
+necessary thresholdではない。具体的なNumPy／MPFR／decimal／hardware backend、rounding mode、
+trajectory、performanceも認証しない。Q007vのbinary64 `not_certified`はそのまま保持する。次に実装mapの
+roundoff-robust claimへ進む場合は、85 bits以上の一つのconcrete correctly-rounded backendを別gateとして
+事前登録し、Q007wとbitwise／interval cross-checkする。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

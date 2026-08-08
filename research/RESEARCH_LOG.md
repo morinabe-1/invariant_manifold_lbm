@@ -2998,6 +2998,58 @@ analysis normによる登録enclosureがstrict marginへ収まらないという
 nonstandard rounding、FTZ／DAZ、GPU／fast-math、entropy、monotonicity、maximum principle、連続最適tube、
 global basin、grid-uniform性、continuum limitを扱わない。
 
+## 2026-08-08: Q007w ideal binary precision threshold
+
+### 実装
+
+- Q007v artifact／runner SHA、source／scope、mixed outcome、transitive Q007s inputを固定した。
+- Q007vのpaired arithmeticを、total significand bits \(p\)を引数とするexact ties-to-even
+  binary arithmeticへ一般化した。
+- \(p=53,\ldots,128\)の全76候補について、population stage enclosure、Wiener error、
+  base／normal re-entry errorを同じoperation scheduleで再計算した。
+- \(p=53\)でQ007vの全constant、population target/error record、stage summary、
+  re-entry quantityがexactに一致することを独立gateにした。
+- registered base／normal strict marginを同時に通る最小候補をsufficient thresholdとして選んだ。
+
+### 結果
+
+全7 validity gateと全6 hypothesis gateが通過した。
+
+- ties-to-even halfway check: `4 / 4` pass
+- candidate／passing count: `76 / 44`
+- passing precision range: `85..128`
+- selected precision／previous boundary: `85 / 84`
+- 84-bit Wiener error／base error／base utilization:
+  `5.360999559126826e-22 / 8.0987773794499245e-22 / 1.6266138872531641`
+- 84-bit normal utilization:
+  `1.7537949103972442e-7`
+- 85-bit Wiener error／base error／base utilization:
+  `2.706739822688458e-22 / 4.089029108522444e-22 / 0.8212685966874661`
+- 85-bit normal error／utilization:
+  `8.097790411837928e-21 / 8.854816107415864e-8`
+- 85-bit minimum stage lower:
+  `0.02777777771459692`
+- candidate digest:
+  `440a08dc36990d3e34edf1886fd7e47eacb4766c4a42352022897fd79dbb3ce2`
+- runner SHA-256:
+  `86dcc0a507e24216775650d5467d0ebf6e90eac0865190d0d5186e08afb7eac8`
+- artifact newline-normalized SHA-256:
+  `bac362d9dca4a681387b986a5f5802278ef61a1a3bcf1a0f8577c7f3ab0a07af`
+
+従って
+`registered ideal binary precision threshold restores roundoff-robust Q007s tube re-entry`
+として`accepted`とした。固定Q007v worst-case enclosureでは84 bitsはnormal marginを通るが
+base marginを通らず、85 bitsで初めて両marginをstrictに通る。この意味で85 significand bitsが
+最小の登録sufficient thresholdである。
+
+### 主張境界
+
+これはideal binary arithmetic familyに対する十分条件であり、84 bits以下の実trajectoryが必ずtubeを
+脱出するという必要条件ではない。具体的なNumPy／MPFR／decimal／hardware backend、rounding mode、
+trajectory、性能を認証せず、Q007vのbinary64 `not_certified`も変更しない。実装mapの
+roundoff-robust claimには、85 bits以上のconcrete correctly-rounded backendを別gateとして事前登録し、
+Q007wとbitwise／interval cross-checkする必要がある。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3081,6 +3133,8 @@ global basin、grid-uniform性、continuum limitを扱わない。
 [`artifacts/q007u_larger_tube_stagewise_positivity.json`](artifacts/q007u_larger_tube_stagewise_positivity.json)
 
 [`artifacts/q007v_binary64_stage_enclosure.json`](artifacts/q007v_binary64_stage_enclosure.json)
+
+[`artifacts/q007w_ideal_precision_threshold.json`](artifacts/q007w_ideal_precision_threshold.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
