@@ -1237,3 +1237,49 @@ def test_q007h1_artifact_records_the_equivariant_linear_certificate() -> None:
         "q007h_scientific_outcome": "inconclusive",
     }
     assert "does not certify degrees 2--89" in cycle["claim_boundary"]
+
+
+def test_q007i_artifact_records_direct_nonresonance_and_theorem_use() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007i_direct_nonresonance.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "rational-log direct external nonresonance certification",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "fixed_leaf_real_dimension": 2598,
+        "selected_real_dimension": 24,
+        "excluded_complex_dimension": 2574,
+        "degree_range": [2, 89],
+        "selected_disk_count": 6,
+        "selected_modulus_type_count": 4,
+        "aggregate_count": 2_919_730,
+        "expanded_product_count": 869_107_778,
+        "claim": (
+            "direct external nonresonance and qualitative local theorem "
+            "applicability for the fixed conservation leaf only; no explicit "
+            "radius, rigorous quartic-jet identification, finite-ball "
+            "attraction, grid-uniformity, or continuum limit"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["enumeration"]["aggregate_count"] == 2_919_730
+    assert cycle["enumeration"]["expanded_product_count"] == 869_107_778
+    assert cycle["enumeration"]["overlap_count"] == 0
+    assert cycle["enumeration"]["global_minimum_log_gap"]["float"] >= 1.0e-12
+    assert cycle["enumeration"]["global_minimum_gap_witness"]["degree"] == 51
+    assert cycle["theorem_consequence"]["theorem_applies"]
+    assert cycle["theorem_consequence"]["existence_conclusion"]
+    assert not cycle["theorem_consequence"][
+        "explicit_neighborhood_radius_available"
+    ]
+    assert "no explicit neighborhood radius" in cycle["claim_boundary"]

@@ -26,6 +26,7 @@ from .d2q9 import (
     quarter_turn_population_matrix,
     spectrum_audit,
 )
+from .direct_nonresonance import run_direct_nonresonance_audit
 from .dual_reporting import run_dual_reporting_audit
 from .equivariant_spectrum import run_equivariant_rational_spectral_audit
 from .forward_error_budget import run_forward_error_budget_audit
@@ -2375,6 +2376,42 @@ def run_q007h1_study() -> dict[str, Any]:
                 "no degrees 2--89 nonresonance, Riesz projector norm, "
                 "nonlinear proof radius, manifold existence, uniqueness, or "
                 "grid-uniform claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007i_study() -> dict[str, Any]:
+    """Run and package the sealed Q007i direct nonresonance audit."""
+
+    cycle = run_direct_nonresonance_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "rational-log direct external nonresonance certification",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "fixed_leaf_real_dimension": 2598,
+            "selected_real_dimension": 24,
+            "excluded_complex_dimension": 2574,
+            "degree_range": [2, 89],
+            "selected_disk_count": 6,
+            "selected_modulus_type_count": 4,
+            "aggregate_count": 2_919_730,
+            "expanded_product_count": 869_107_778,
+            "claim": (
+                "direct external nonresonance and qualitative local theorem "
+                "applicability for the fixed conservation leaf only; no "
+                "explicit radius, rigorous quartic-jet identification, "
+                "finite-ball attraction, grid-uniformity, or continuum limit"
             ),
         },
         "cycle": cycle,
