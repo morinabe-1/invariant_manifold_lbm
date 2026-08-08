@@ -5442,6 +5442,105 @@ triangle bound、analysis normからなるworst-case enclosureではroundoff-rob
 判定である。次に進める場合は、同じgateを後付けで緩めず、roundoff-robust tube enlargementまたは
 higher-precision mapを別途事前登録する。
 
+## Q007w: roundoff-robust re-entry の ideal binary precision threshold — 事前登録
+
+### 問い
+
+Q007vと同じexact tube、component box、operation schedule、DFT triangle bound、analysis norm、
+strict re-entry marginを一切変更せず、仮数precisionだけを増やした理想的な二進round-to-nearest演算では、
+何bitからQ007s tubeへのroundoff-robust re-entryを認証できるか。
+
+### 固定入力
+
+- `q007v_binary64_stage_enclosure.json` newline-normalized SHA-256:
+  `c4c1c45941a6f6ac302691efd8e795e431f6acc1fa4f4629cb0c7a0afac3c0a5`
+- Q007v runner SHA-256:
+  `a0d3cea0fcae8a627f4a96db56d46727589411b2557e2aa91433569576a0575c`
+- precision candidateはtotal significand bit数
+  \[
+  p=53,54,\ldots,128
+  \]
+  の76個とし、全候補を昇順に評価する。候補の追加、間引き、adaptive refinementは行わない。
+- exponent rangeはbinary64と同じminimum normal exponent \(-1022\)とし、
+  \[
+  u_p=2^{-p},\qquad h_p=2^{-1022-p}
+  \]
+  を用いる。
+- Q007vのfixed 17² map、\(x_*\)、base／normal radius、operation count、source SHA、
+  \(K_a,K_z,m_a,m_z\)、normalized DFT coefficient `289`をbitwise／exactに再利用する。
+
+### ideal p-bit constant rounding
+
+有限nonzero rational \(c\)に対し、\(2^e\le |c|<2^{e+1}\)となる整数\(e\)と
+
+\[
+\Delta_{p,c}=2^{e-p+1}
+\]
+
+をexact integer arithmeticで求め、\(c/\Delta_{p,c}\)をnearest integer ties-to-evenへ丸めて
+\(\widehat c_p\)を得る。D2Q9 weightと\(\eta=1/100\)はこの規則で一度丸める。filter係数は実装順を保ち、
+
+\[
+\widehat\eta_p=\operatorname{RN}_p(1/100),\quad
+\widehat c_{0,p}=\operatorname{RN}_p(1-\widehat\eta_p),\quad
+\widehat c_{1,p}=\operatorname{RN}_p(\widehat\eta_p/4)
+\]
+
+とする。\(3,9/2,3/2,1/4\)はexact binary constantである。
+
+各\(p\)でQ007vと同じpaired interval演算を再実行し、全stage lower、post-filter component error sum、
+\(\epsilon_{\mathrm W},\epsilon_a,\epsilon_z\)、base／normal margin utilizationをexact `Fraction`で保存する。
+candidate passは
+
+\[
+\min_s\underline p_{\mathrm{fl},s}>0,\qquad
+\epsilon_a<m_a,\qquad
+\epsilon_z<m_z
+\]
+
+の全成立とする。passing candidateがあれば最小の\(p\)を\(p_*\)とし、\(p_*-1\)が少なくとも一方の
+re-entry gateでfailすることを境界確認する。
+
+### validity gate
+
+1. Q007v artifact／runner SHA、source／scope、全7 validity gate、6 hypothesis gateのうちre-entryだけfail、
+   6 theorem flagのうちall-iterate robust flagだけfalseというmixed outcomeが一致する。
+2. Q007vの\(x_*,K_a,K_z,m_a,m_z\)、source SHA、operation count、DFT coefficientをexactに再利用する。
+3. exact ties-to-even routineがknown halfway caseを通り、\(p=53\)で全weight／filter dyadicとQ007vの
+   全stage lower、component error、Wiener／coordinate error、margin utilizationをexactに再現する。
+4. `53..128`の76候補を欠落・重複なく評価し、canonical candidate digestを保存する。
+5. precision増加に対しcomponent／Wiener／coordinate error upperとmargin utilizationがnonincreasingで、
+   選択境界が最初のpassと一致する。
+6. 全候補でdensity divisorが正、全intermediateがfinite range内、全one-step stage lowerが正である。
+7. 全boundがfinite rationalでstrict JSONを生成する。
+
+一つでも落ちれば`inconclusive`とし、precision thresholdを解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. \(p=53\) controlがQ007vのone-step pass／robust re-entry failをexactに再現する。
+2. 登録範囲に少なくとも一つpassing candidateがある。
+3. selected \(p_*\)がpassing setの最小値である。
+4. selected \(p_*\)で全one-step stage lowerがstrict positiveである。
+5. selected \(p_*\)でbase／normal re-entryがともにstrict passする。
+6. \(p_*>53\)かつ\(p_*-1\)が少なくとも一方のre-entry gateでfailする。
+
+全て通れば
+`registered ideal binary precision threshold restores roundoff-robust Q007s tube re-entry`
+として`accepted`とする。passing candidateが無ければ
+`registered ideal precision ladder does not certify roundoff-robust Q007s tube re-entry`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedなら、固定operation scheduleと固定worst-case enclosureに対するideal \(p_*\)-bit arithmeticの
+sufficient thresholdを主張する。これは実装済みのNumPy dtype、MPFR／decimal backend、実測trajectory、
+性能、正しいrounding modeを認証しない。\(p_*\)未満で実際のtrajectoryが必ずtubeを脱出するという
+necessary thresholdでもない。Q007vのbinary64 `not_certified`、Q007uのexact-map acceptance、Q007sの
+finite-grid tube selectionは変更しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
