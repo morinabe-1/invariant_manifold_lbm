@@ -3491,6 +3491,41 @@ Q006iのfloat64 global-conservation rejection、Q007i／Q007jの定理・線形�
 
 acceptedの場合だけQ007lで2,600 cubic systemへ進む。quarticとexplicit radiusはさらに分離する。
 
+### Q007k 封印結果
+
+全5 validity gateと全4 hypothesis gateが通過した。
+
+- Q006i／Q007j input SHA、Q007j runner SHA、coefficient hash、12 eigenpair proof digest reproduction: pass
+- pair count zero／internal／external／total: `36 / 108 / 156 / 300`
+- output-wave support／complex unknown: `25 / 3,024`
+- rational equilibrium Hessianの \(ME=0\)、zero-wave \(MA(0)=M\): entrywise exact
+- maximum point inverse defect: `4.42134771470068e-12`
+- strict Krawczyk inclusion: `300 / 300`
+- maximum Krawczyk utilization: `3.871467353051258e-6`（登録上限`1e-2`）
+- maximum interval contraction: `2.262806292583543e-11`
+- maximum registered-center correction upper, \(H_2 / R_2\):
+  `4.012059355448033e-12 / 2.275730732794909e-14`
+- maximum correction witness: `p00024`, `m001 × m001 → (2,0)`, external 9×9 system
+- zero-wave product separation count／minimum lower: `36 / 0.015746583653469235`
+- structural fixed-leaf／internal graph-gauge inclusion count: `36 / 108`
+- pair identifier／wave／kind mismatch、singular／unassigned system: `0 / 0 / 0`
+
+無丸めの有理端点を保持する最初の実装試行は、gate評価へ到達する前に20分で計算timeoutとなった。そこで
+Q007h／Q007jの区間実装と同じ`INTERVAL_DECIMAL_DIGITS=140`を使い、各基本演算後に140桁有理格子へ
+外向き丸めした。これは全boxを包含方向へ広げるだけで、探索半径、閾値、basis、operator、登録centerを
+変更しない。timeout試行の部分値は判定へ使用していない。
+
+従って
+`registered Q006i quadratic coefficients identify the theorem-manifold graph-gauge quadratic jet`として
+`accepted`とした。artifactのnewline-normalized SHA-256は
+`022f9ded6b40dc754a1b935f69554db9407e5e07715bd9132990ca9876fc8bbf`、standalone runner source SHA-256は
+`963862710b772a63a9293bbb100ea50a21f3469932ee54d84cfd197a384f89cb`である。
+
+これは固定17²・固定保存量葉上の定理多様体について、固定graph gaugeの二次Taylor jetだけをQ006iの
+登録complex係数へ同定する。Q006iのfloat64 global-conservation rejection、Q007b／Q007c1の有限振幅性能判定は
+変更しない。cubic／quartic係数、explicit neighborhood radius、finite-ball normal attraction、grid-uniform性は
+まだ認証しない。次はQ007lで2,600 cubic tripleだけを扱う。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

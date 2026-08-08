@@ -119,7 +119,15 @@ right／left 12個の正規化固有対を有理Krawczyk boxで認証した。ma
 C4／共役で全24 modeへ輸送したexact root enclosureと登録centerの最大component correction upperはright
 `1.153401559605646e-15`、biorthogonal-left `2.9617269241843315e-15`である。従って
 `registered selected eigencoordinates rigorously bridge to the theorem spectral subspace`として`accepted`とした。
-これでlinear tangent／extractor coordinateの同定は済んだが、二次以上の数値係数はまだcandidateである。
+Q007kではこの24 mode boxからexact quadratic forcingを作り、zero-wave 36、internal graph-gauge 108、external
+156の全300 homological system（3,024 complex unknown）を140桁外向き有理区間で認証した。300/300でstrict
+Krawczyk inclusionが通り、maximum utilization／interval contraction／registered-center correction upperは
+`3.871467353051258e-6 / 2.262806292583543e-11 / 4.012059355448033e-12`だった。さらに \(ME=0\) と
+\(MA(0)=M\)をentrywise exactに検証し、36 zero-wave productの1からのminimum separation lower
+`0.015746583653469235`、108 graph-gauge inclusionを得た。従って
+`registered Q006i quadratic coefficients identify the theorem-manifold graph-gauge quadratic jet`として
+`accepted`とした。これでlinear coordinateとquadratic jetの同定は済んだが、cubic／quartic jetとexplicit
+radiusはまだ認証していない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -804,6 +812,7 @@ python -m ttim_lbm --study q007h --output research/artifacts/q007h_rational_spec
 python -m ttim_lbm --study q007h1 --output research/artifacts/q007h1_equivariant_spectrum.json
 python -m ttim_lbm --study q007i --output research/artifacts/q007i_direct_nonresonance.json
 python -m research.q007j_eigencoordinate_bridge --output research/artifacts/q007j_eigencoordinate_bridge.json
+python -m research.q007k_quadratic_jet_bridge --output research/artifacts/q007k_quadratic_jet_bridge.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -842,6 +851,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007h1_equivariant_spectrum.json`](research/artifacts/q007h1_equivariant_spectrum.json)
 - [`research/artifacts/q007i_direct_nonresonance.json`](research/artifacts/q007i_direct_nonresonance.json)
 - [`research/artifacts/q007j_eigencoordinate_bridge.json`](research/artifacts/q007j_eigencoordinate_bridge.json)
+- [`research/artifacts/q007k_quadratic_jet_bridge.json`](research/artifacts/q007k_quadratic_jet_bridge.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -894,16 +904,17 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007h1 72 C4代表からのexact preconditioner輸送、線形split／可逆性／normal gap／degree-90 tail認証
 - Q007i 4 selected modulus型と643 external diskの有理log区間、次数2--89のdirect nonresonance認証
 - Q007j 12有理Krawczyk固有対、6 selected-disc対応、全24 modeのright／biorthogonal-left輸送認証
+- Q007k exact quadratic forcing／保存恒等式、全300 graph-gauge homological systemの有理Krawczyk認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- 認証済みspectral manifoldと登録数値chartのquadratic／cubic／quartic jet同定、explicit local radius
+- 認証済みspectral manifoldと登録数値chartのcubic／quartic jet同定、explicit local radius
 - TT-cross、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
-Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を認証した。次のゲートはQ007kであり、
-300 quadratic pairだけを区間化してQ006iの数値二次jetを定理多様体の厳密二次jetへ結び付ける。
-cubic／quartic係数とexplicit radiusは後続の独立gateとする。
+Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を、Q007kにより登録Q006i二次係数と
+定理多様体のgraph-gauge quadratic jetの対応を認証した。次のゲートはQ007lであり、2,600 cubic tripleだけを
+区間化してQ007bの数値三次jetを同定する。quartic係数とexplicit radiusは後続の独立gateとする。
