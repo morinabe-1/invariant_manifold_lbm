@@ -90,7 +90,9 @@ Riesz／Stein metricを固定し、全8 validity gateを通過した。adapted `
 metricを再調整せずQ007dの33 starting pointへ適用し、全7 validity gateを通過した。半径
 `0.004 / 0.01`の最大adapted `gamma_10`は`0.980286 / 0.981561`、failure countはともに0だったため、
 登録した10-step有限sample仮説を`accepted`とした。次は、これをball全体や存在定理へ読み替えず、
-Q007gのa posteriori defect／derivative-variation gateを定義する。
+Q007gで非共鳴不変多様体定理と定量的a posteriori proofのreadinessを監査する。定理選定時の
+予備計算では必要spectral quotientが\(L=89\)となり、現在数値監査済みなのは次数4までなので、
+まずこの仮定差分を再現可能な形で固定する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。

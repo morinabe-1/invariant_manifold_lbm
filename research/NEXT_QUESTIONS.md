@@ -2838,6 +2838,99 @@ domain、inverse bound、tail／roundoff majorant、十分条件を先に固定�
 までは数値campaignを開始せず、Q007fをball全体・独立holdout・真のinvariant normal bundle・存在定理へ
 読み替えない。
 
+## Q007g: nonresonant-manifold theorem／a posteriori readiness audit — 事前登録
+
+### 問い
+
+Q006iからQ007fまでの現行証拠だけで、固定保存量葉上の24実次元candidate chartに対して、
+非共鳴スペクトル部分空間に接する局所不変多様体の定理を適用できるか。またquartic chart
+\(W_4\)の近傍に真の解があることを定量的a posteriori boundで示す準備が整っているか。
+
+このgateは新しい有限方向campaignではなく、定理の仮定と既存artifactの差分を監査する
+theorem-applicability auditである。定理選定中の探索計算でspectral quotientが
+\(L=89\)となることを既に観測したため、その再現を独立hypothesis testとは呼ばない。
+
+### 固定する定理と空間
+
+存在・局所一意性の基準には Cabré--Fontich--de la Llave,
+*The Parameterization Method for Invariant Manifolds I: Manifolds Associated to
+Non-Resonant Subspaces* の
+[Theorem 1.2とRemark 5](https://upcommons.upc.edu/bitstream/handle/2117/876/0202cabre.pdf)
+を使う。他のKAM torus、flowのstable manifold、またはradii-polynomial定理を今回の写像へ
+そのまま転用しない。
+
+- \(X\) は \(17^2\) D2Q9状態をrest equilibriumのまわりで中心化し、global mass・momentumを
+  固定した実2598次元葉の複素化とする。
+- \(F:X\to X\) は \((\eta,\omega)=(0.01,1.5)\) のstreaming、BGK collision、保存的5点filterから
+  なる一step写像の固定葉制限とする。
+- \(X_1\) はQ006hで固定した8 signed first-shell blockのshear／acoustic cluster、複素次元24とし、
+  \(X_2\) はQ007eと同じRiesz不変補空間、複素次元2574とする。
+- \(A=DF(0)\)、\(A_1=A|_{X_1}\)、\(A_2=A|_{X_2}\) とする。graph gauge以外のsplitへ
+  post-hocに変更しない。
+
+Theorem 1.2のtail条件を満たす最小整数を
+
+\[
+L_* = \min\left\{L\ge1:
+\frac{\rho(A_1)^{L+1}}{\min_{\mu\in\operatorname{Spec}(A_2)}|\mu|}<1
+\right\}
+\]
+
+と定義する。必要なexternal nonresonanceは全次数 \(2\le i\le L_*\) について
+
+\[
+\operatorname{Spec}(A_1)^{i}\cap\operatorname{Spec}(A_2)=\varnothing
+\]
+
+である。次数4までquartic係数を解けたことを、次数5以降の非共鳴へ外挿しない。
+
+### 構造・数値validity gate
+
+- source hashとQ006i、Q007a、Q007c、Q007e、Q007fの固定入力・次元・parameterを一致させる。
+- BGK equilibriumが全local density非零の複素近傍で解析的であること、\(\omega\ne1\)、
+  filter multiplierの厳密下界 \(1-2\eta>0\)、streamingの可逆性から、\(DF(0)\)とその固定葉制限が
+  可逆であることを構造的に記録する。
+- 289 Fourier blockから得る全2598固有値がfiniteかつnonzero、selected／excluded次元が
+  `24 / 2574`、Q007eのselected minimum／excluded maximum modulusをrelative error
+  `<=1e-10`で再現する。
+- \(L_*\)について、登録比 \(\rho(A_1)^{L_*+1}/\min|\operatorname{Spec}(A_2)|<1\) と、
+  一つ前の比 \(\rho(A_1)^{L_*}/\min|\operatorname{Spec}(A_2)|\ge1\) を同時に確認する。
+  両境界からのmarginはそれぞれ`>=1e-6`を要求する。このfloat64計算は次数範囲の
+  prequalificationであり、厳密なスペクトル包含とは呼ばない。
+- 次数2、3、4について、それぞれ全`300 / 2600 / 17550` unordered monomial、numerical singular
+  block `0`、既存artifactのminimum singular value／maximum conditionを再現する。artifact自体の
+  SHA-256も保存する。
+- 全値をfinite、strict JSONとし、一つでもvalidityが落ちれば`inconclusive`とする。
+
+### theorem-readiness判定
+
+validity通過後、次を別々に判定する。
+
+1. `qualitative_theorem_ready`:
+   解析性・局所可逆性・不変splitに加え、全次数 \(2,\ldots,L_*\) のexternal nonresonanceが
+   interval／outward-rounded enclosureまたは代数的証明で認証済みであること。
+2. `quantitative_chart_ready`:
+   1に加え、対象Banach関数空間とnorm、chart domainとrange buffer、graph gauge、
+   線形化不変性作用素のrigorous inverse bound、domain全体のdefect majorant、derivative-variation
+   majorant、有限Taylor tail、roundoff enclosure、および採用定理そのものの厳密な十分不等式が
+   全て固定され、strictに通過していること。
+
+次数2--4のfloat64 SVDはnumerical prequalificationに限り、1の認証済み次数へ数えない。
+`qualitative_theorem_ready`が偽なら`quantitative_chart_ready`も自動的に偽とする。
+
+両方が真のときだけ`ready for a computer-assisted existence proof`として`accepted`とする。
+どちらかが偽なら`current evidence is not theorem-ready`という有効な`not_ready`結果とし、最初の
+未充足仮定、未認証次数、必要なproof objectを保存する。これはcandidate manifoldの不存在やQ007fの
+有限sample結果の棄却を意味しない。
+
+### 停止規則
+
+Q007gでは新しい方向sample、defect最大化、metric retuning、存在半径の推定を行わない。
+未認証次数またはproof objectが一つでも残れば、\(W_4\)近傍の存在・一意性・ball全体のnormal
+attractionを主張せず、次の研究課題を最初のmissing layerに限定する。特に、一般の
+radii-polynomial contraction theoremを引用するだけで、今回の離散写像に必要なoperator・tail boundを
+省略しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
