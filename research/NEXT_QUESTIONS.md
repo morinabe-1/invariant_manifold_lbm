@@ -4533,6 +4533,94 @@ Q007dのEuclidean棄却、Q007c1の有限振幅性能棄却、population positiv
 grid-uniform性、continuum limitは変更・認証しない。次の研究gateではこのtubeを拡大解釈せず、未解決課題を
 別途事前登録する。
 
+## Q007q: registered finite tube の population positivity — 事前登録
+
+### 問い
+
+Q007pでforward invariantと認証した固定tube全体が、rest equilibriumを中心とするphysical D2Q9
+populationのstrict positive coneに含まれることを、Fourier--Wiener normから厳密に認証できるか。
+
+### 固定入力
+
+- `q007p_finite_tube_attraction.json` newline-normalized SHA-256:
+  `a5e766938cfee0174deba9c529be9aec2cce4bff9225a3a4a1da83f7d255a751`
+- Q007p runner SHA-256:
+  `23ff283acb3f872fd2ff489f17d94b8e022e3f45a5c65b5523bf976c534a9f2a`
+- map／葉／tube: Q007pと同じ固定17² filtered periodic D2Q9、\(\omega=3/2\)、
+  \(\eta=1/100\)、固定保存量葉、
+  \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)。
+- Q007pのexact tube-state Wiener upper \(x_*\)を変更せず再利用する。追加のradius、rounding、
+  sampling parameterは導入しない。
+
+### exact positivity bound
+
+rest equilibriumを\(f_i^*=w_i\)とし、D2Q9 weightsを
+
+\[
+w_0=\frac49,\qquad
+w_{1,\ldots,4}=\frac19,\qquad
+w_{5,\ldots,8}=\frac1{36}
+\]
+
+とする。Q007pのFourier-population Wiener normでは、real state
+\(\delta f=f-f^*\)に対し、各site \(x\)、各population \(i\)で
+
+\[
+\left|\delta f_i(x)\right|
+=\left|\sum_k\widehat{\delta f}_{k,i}e^{ik\cdot x}\right|
+\le \sum_k\left|\widehat{\delta f}_{k,i}\right|
+\le \|\delta f\|_{\mathrm W}
+\le x_*.
+\]
+
+従って全populationとdensityに対する登録lowerを
+
+\[
+p_*=\frac1{36}-x_*,
+\qquad
+d_*=1-x_*
+\]
+
+と固定する。Q007pのtube forward invarianceと組み合わせ、初期時刻だけでなくfull-map sampling
+時刻 \(n=0,1,2,\ldots\) の全iteratesへ同じlowerを適用する。
+
+### validity gate
+
+1. Q007p artifact／runner SHA、source、scope、全validity／hypothesis gate、
+   4 theorem-consequence flagが一致する。
+2. exact D2Q9 weight tableが`1 + 4 + 4` population、sum `1`、minimum `1/36`を再現し、
+   全weightがstrict positiveである。
+3. 17² Fourier index count `289`、phase modulus `1`、Q007pのWiener block-sum norm definitionから、
+   \(\|\delta f\|_{\infty,\mathrm{population}}\le\|\delta f\|_{\mathrm W}\)のtriangle-inequality auditを通す。
+4. Q007pの\(x_*\)、base／normal radius、forward-invariance theorem flagをexactに再利用する。
+5. 全boundがfinite rationalで、strict JSONを生成する。
+
+一つでも落ちれば`inconclusive`とし、positivity値を解釈しない。
+
+### hypothesis gate
+
+validity通過時だけ次を判定する。
+
+1. density positivity: \(d_*=1-x_*>0\)。
+2. population positivity: \(p_*=1/36-x_*>0\)。
+3. forward positivity: Q007pのregistered tubeがforward invariantで、同じ\(p_*\)が全full-map iterateへ
+   適用される。
+
+全て通れば
+`registered Q007p tube lies in the strictly positive population cone at every full-map iterate`
+として`accepted`とする。一つでも落ちれば
+`registered Q007p tube did not certify strict population positivity`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedなら、固定17²・固定保存量葉・登録Q007p tubeのreal stateについて、full one-step mapの入力／出力時刻で
+全9 populationとdensityがstrict positiveであると主張する。
+
+これはBGK collision直後、streaming直後、filter内部などのstagewise positivityを認証しない。entropy、
+monotonicity、maximum principle、より大きいtube、global basin、grid-uniform性、continuum limit、
+Q007c1の有限振幅性能、Q007dのEuclidean判定も変更・認証しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
