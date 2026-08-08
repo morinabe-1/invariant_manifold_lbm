@@ -5256,6 +5256,147 @@ exact equilibrium evaluation、BGK collision output、periodic streaming output�
 囲っていない。entropy、monotonicity、maximum principle、連続最適tube、global basin、grid-uniform性、
 continuum limit、Q007c1／Q007dの既存判定も変更しない。
 
+## Q007v: enlarged tube の binary64 stage-roundoff enclosure — 事前登録
+
+### 問い
+
+Q007uのexact stagewise positivityを、現行NumPy実装のIEEE-754 binary64演算へ拡張できるか。また、
+一段のpositivityとは別に、roundoff perturbationを含む出力がQ007s selected tubeのstrict
+forward-invariance marginへ再び入ることを認証し、同じ主張を全iterateへ帰納できるか。
+
+### 固定入力
+
+- `q007u_larger_tube_stagewise_positivity.json` newline-normalized SHA-256:
+  `b568fc304fd939121dd52543f316cb571ae6f4be4f4f664c68fe1c749b566c55`
+- Q007u runner SHA-256:
+  `56fc99f1f381e97e70710c7da0cee8d1262d0c10190cf617316f822d1eb29014`
+- `q007s_finite_tube_enlargement.json` newline-normalized SHA-256:
+  `7b70fd20df8fb7db5e5460a08d3f86fe8b81a55b56864c860a2c24e9cab63292`
+- Q007s runner SHA-256:
+  `6c8633f7e99874ac3be7dd14d3caa253b0dc8c499bb2f6edbb392fa695975b1e`
+- current D2Q9 implementation source SHA-256:
+  `6e6c5aa6734844d0393eb402e21203831faaf5f325b35249941eaa59145c6f53`
+- current checkerboard-filter implementation source SHA-256:
+  `5fb6b67e8527b0b1f5f45511ba7cd5d077ee443220632ba3019b7bf28010a7ea`
+- map／葉／tubeはQ007uと同じ固定17²、\(\omega=3/2\)、\(\eta=1/100\)、固定保存量葉、
+  \(r=9\times10^{-19}\)、\(\zeta=5\times10^{-12}\)とする。
+- 入力対象は、Q007s exact tube内のreal stateを各populationでround-to-nearest ties-to-evenにより
+  binary64へ正しく丸めた配列とする。任意の既に摂動したbinary64配列は対象に含めない。
+
+### binary64 enclosure
+
+unit roundoffとsubnormal用absolute fallbackを
+
+\[
+u=2^{-53},\qquad h=2^{-1075}
+\]
+
+に固定する。有限なexact scalar result \(y\)をbinary64へ丸める各演算について
+
+\[
+|\operatorname{fl}(y)-y|\le u|y|+h
+\]
+
+を用いる。全intermediate magnitudeがoverflow threshold未満で、density denominatorがstrict positiveで
+あることを別gateで確認する。D2Q9 weight、`0.01`、`1.0-0.01`、
+`0.25*0.01`は`Fraction.from_float`で実際のdyadic valueを固定し、対応するexact rational
+\(4/9,1/9,1/36,1/100,99/100,1/400\)との差を直接含める。
+
+各quantityを、exact target interval \(X=[\underline x,\overline x]\)とabsolute forward-error upper
+\(\epsilon_X\)のpairとして伝播する。加減算、乗除算はinput error、constant representation error、
+上記rounding errorを全て含める。長さ\(n\)のreductionは演算順に依存しない
+
+\[
+\gamma_{n-1}=\frac{(n-1)u}{1-(n-1)u}
+\]
+
+とterm absolute sumを用いる。density／momentumは最大8 additions、`einsum`の2成分dotと
+speed-squareは最大1 addition、4-neighbour sumは最大3 additionsと固定する。FMAはseparate
+multiply-add enclosureを改善する側なので許すが、演算の省略・precision変更・非IEEE rounding modeは
+対象外とする。
+
+Q007uのpopulation-summed Fourier--Wiener upper \(x_*\)から、各exact input populationを
+\([w_i-x_*,w_i+x_*]\)で囲む。このcomponent boxはQ007s tubeより広いが、相関を仮定しない安全な
+one-step enclosureとして固定する。現行sourceの順でmacroscopic reduction、velocity division、
+equilibrium polynomial、BGK update、streaming permutation、five-point filterを伝播し、各stageの
+binary64 lowerを
+
+\[
+\underline p_{\mathrm{fl},s}
+=\min_i\{\underline X_{s,i}-\epsilon_{s,i}\}
+\]
+
+とする。
+
+### roundoff-robust tube re-entry
+
+post-filter component error upperを\(\epsilon_i\)とし、normalized 17² DFTのtriangle inequalityから
+
+\[
+\epsilon_{\mathrm W}
+=289\sum_{i=0}^{8}\epsilon_i
+\]
+
+を登録Wiener error upperとする。Q007sがexactに固定したselected analysis upper
+\(K_a\)、full external analysis upper \(K_z\)を用い、
+
+\[
+\epsilon_a=K_a\epsilon_{\mathrm W},\qquad
+\epsilon_z=K_z\epsilon_{\mathrm W}
+\]
+
+とする。Q007s selected candidateのstrict margin
+\(m_a\)（base forward invariance）と\(m_z\)（normal-tube forward invariance）に対し、
+
+\[
+\epsilon_a<m_a,\qquad \epsilon_z<m_z
+\]
+
+の両方をroundoff-robust re-entryの必要な登録sufficient gateとする。失敗後にDFT係数、operation count、
+analysis norm、marginを調整しない。
+
+### validity gate
+
+1. Q007u／Q007s artifact・runner SHA、source、scope、全sealed gate／theorem flag、selected tubeが一致する。
+2. D2Q9／filter source SHA、対象関数、stage order、shape、binary64 dtypeが固定入力と一致する。
+3. \(u,h\)、binary64 exponent／mantissa、全実装定数のdyadic valueとexact-rational差を再現する。
+4. paired intervalのadd／subtract／multiply／divide／reduction boundがexact `Fraction`で構成され、
+   全denominatorが正、全intermediateがfinite range内にある。
+5. density／momentum、equilibrium polynomial、BGK、streaming、filterのoperation scheduleとreduction countを
+   source auditおよびdeterministic implementation replayで再現する。
+6. Q007uの\(x_*\)とexact stage lower、Q007sの\(K_a,K_z,m_a,m_z\)、base／normal radiusをexactに再利用する。
+7. 全boundがfinite rationalでstrict JSONを生成する。
+
+一つでも落ちれば`inconclusive`とし、stage lowerおよびre-entry比を解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. binary64 equilibrium lower \(>0\)。
+2. binary64 post-collision lower \(>0\)。
+3. streamingが算術を行わず、post-collision lowerを保つ。
+4. binary64 post-filter lower \(>0\)。
+5. 上の4 stageが全てstrict positiveで、one-step binary64 stage positivityが成立する。
+6. \(\epsilon_a<m_a\)かつ\(\epsilon_z<m_z\)で、Q007s tubeへのroundoff-robust re-entryが成立する。
+
+全て通れば
+`binary64 stage positivity and roundoff-robust Q007s tube invariance certified`
+として`accepted`とする。1--5が通り6だけが落ちた場合は
+`binary64 one-step stages remain positive, but the registered Q007s tube is not certified roundoff-invariant`
+という有効な`not_certified`とする。1--5のいずれかが落ちた場合は
+`binary64 stage positivity is not certified on the registered Q007s input tube`
+とする。
+
+### 主張境界
+
+one-step positivityが通れば、Q007s exact tube内のreal stateを正しくbinary64へ丸めた入力に対して、
+現行source・binary64 round-to-nearest modelの一段内部stageがpositiveであると主張する。re-entry gateが
+落ちた場合、その結論を全iterateへ帰納しない。これは実際のtrajectoryがtubeを脱出する反例ではなく、
+登録したworst-case enclosureがQ007sのstrict marginへ収まらないという`not certified`判定である。
+nonstandard rounding、FTZ／DAZ、GPU kernel、BLAS変更、compiler fast-math、entropy、monotonicity、
+maximum principle、連続最適tube、grid-uniform性、continuum limitは扱わない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
