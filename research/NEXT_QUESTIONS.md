@@ -2682,6 +2682,129 @@ Q007dと同じ33 starting pointへmetricを固定したまま進む。一つで�
 acceptedでも平衡点・単一gridのmetric prequalificationに限り、有限半径normal attraction、真のnormal
 bundle、grid-uniform bound、多様体の存在・一意性は主張しない。Q007dのEuclidean棄却も変更しない。
 
+### Q007e 結果
+
+全8 validity gateと2つのhypothesis gateが通過した。
+
+- selected／excluded modulusと固定rate:
+  `0.9837709569927492 / 0.9817098358325433 / 0.9827398560586499`
+- maximum split／Stein residual:
+  `4.478049432763522e-14 / 7.717980857245268e-14`
+- minimum Stein eigenvalue／maximum registered condition number:
+  `1.0914517112309456 / 1383.4345053355412`
+- maximum conjugacy／real roundtrip／imaginary leakage residual:
+  `2.2615002024861891e-13 / 4.1650348386053546e-16 / 6.534769174688447e-17`
+- matrix-free SVDのmaximum blockwise error／triplet residual／two-start disagreement:
+  `4.0053646874458993e-16 / 1.2331152676133846e-15 / 6.675607812409829e-16`
+- adapted `gamma_1 / gamma_10`:
+  `0.9988057257445229 / 0.9796329537956986`
+- metric／whitening SHA-256:
+  `23a18bd5f281ad21874da17a3a28bfeb66b36c9170fdb57308ef0eb40ff5c5d5 /`
+  `acf2be2aaec50c3ffa19658325e7dad736a0bce438e3343a72527b96f27b196b`
+
+従って`equilibrium Riesz/Stein metric prequalified for finite-radius testing`として`accepted`とする。
+Q007dのEuclidean棄却は変更しない。これはnonnormal transient amplificationが登録計量で除去できることを
+平衡点で示しただけであり、有限半径で同じ不等式が保たれるかは次の別gateで判定する。
+
+## Q007f: fixed-metric finite-radius normal cocycle — 事前登録
+
+### 問い
+
+Q007eで平衡点だけから固定したFourier-Riesz Stein metricは、再調整なしにQ007dと同じ33 starting pointの
+10-step projected tangent／normal cocycleでもnormal dominanceを回復するか。
+
+### 固定入力とmetric
+
+- Q007dと同じquartic chart、grid `17^2`、`omega=1.5`、`eta=0.01`、固定保存量葉を使う。
+- seed `20260831`、direction SHA-256
+  `99861e73b9204938e254cbfc1c01a81de7be0bd6fed726ab131b26708c741424`の16方向、amplitude
+  `0.004 / 0.01`、平衡点を含む33 starting point、horizon `10`を完全に再利用する。この比較campaignを
+  independent holdoutとは呼ばない。
+- Q007eのmetric／whitening SHA-256を上記の値と完全一致で再現する。有限半径state、chart tangent、
+  cocycle結果からStein equation、rate、block weight、balancingを更新しない。
+
+Q007eの固定葉whiteningを \(S:L\to\mathbb C^{2598}\) とする。各trajectory点で
+
+\[
+\widetilde D(a)=S D W_4(a)
+\]
+
+のthin complex QRから \(\widetilde Q(a)\) を作り、登録normal projectorを
+
+\[
+\widetilde P_N(a)=I-\widetilde Q(a)\widetilde Q(a)^*
+\]
+
+とする。共役したfull-map derivativeを
+
+\[
+\widetilde J_n=S J_n S^{-1}
+\]
+
+とし、
+
+\[
+\widetilde B_n=\widetilde Q(a_{n+1})^*\widetilde J_n\widetilde Q(a_n),
+\qquad
+\widetilde T_{10}=\widetilde B_9\cdots\widetilde B_0,
+\]
+
+\[
+\widetilde N_{10}
+=\widetilde P_N(a_{10})\widetilde J_9\widetilde P_N(a_9)\cdots
+\widetilde J_0\widetilde P_N(a_0)
+\]
+
+を使う。性能比は
+
+\[
+\widetilde\gamma_{10}
+=\frac{\sigma_{\max}(\widetilde N_{10})}
+       {\sigma_{\min}(\widetilde T_{10})}
+\]
+
+と固定する。one-step \(\widetilde\gamma_1\) は全点で保存するが、Q007dとの比較を保つため主hypothesis
+gateには使わない。
+
+### validity gate
+
+- Q007dの全coefficient hash、direction hash、33 starting point、Euclidean equilibrium
+  `gamma_1 / gamma_10`を完全一致またはrelative error `<=1e-10`で再現する。
+- Q007eのmetric／whitening hash、全8 validity gate、adapted equilibrium `gamma_1 / gamma_10`を
+  完全一致またはrelative error `<=1e-10`で再現する。
+- \(S^{-1}S\)の実fixed-leaf roundtrip、imaginary leakageを`<=1e-10`とする。共役map action
+  \(\widetilde Jv\)をcentral differenceで検証し、best relative errorを`<=2e-8`とする。
+- seed `20260909`の登録pairで \(\widetilde J\) と実装adjointのinner-product relative errorを
+  `<=5e-12`とする。
+- 全trajectory点でadapted tangent rankを24、minimum singular valueを`>=1e-8`、
+  \(\widetilde Q^*\widetilde Q-I\)とprojector idempotency／Hermitian residualを`<=1e-11`とする。
+- maximum adapted tangent leakageを`<=1e-3`、minimum \(\sigma_{\min}(\widetilde T_{10})\)を
+  `>=1e-8`とする。
+- seed `20260908`のcomplex matrix-free two-start SVDを全33点で使う。equilibriumのblockwise Q007e値との
+  relative error `<=1e-8`、全triplet residual `<=1e-8`、two-start disagreement `<=1e-6`とする。
+- Q007dと同じpositivity、reduced-coordinate growth、finite、strict JSON gateを維持する。
+
+一つでもvalidity gateが落ちればnormal-dominance結果を性能判定に使わず`inconclusive`とする。
+
+### hypothesis gateと停止規則
+
+全validity通過後、次の3条件を別々に要求する。
+
+1. 平衡点で \(\widetilde\gamma_{10}<1\)
+2. amplitude `0.004`の16方向すべてで \(\widetilde\gamma_{10}<1\)
+3. amplitude `0.01`の16方向すべてで \(\widetilde\gamma_{10}<1\)
+
+3条件が通れば`registered finite-sample adapted-metric projected normal-cocycle dominance observed`として
+`accepted`、一つでも落ちれば`registered finite-sample adapted-metric projected normal-cocycle dominance
+not observed`として有効な`rejected`とする。各amplitudeのmin／max ratio、failure count、margin、全点の
+one-step診断を保存する。結果を見てmetricをretuneしない。
+
+acceptedでも固定grid・同じ32有限方向・2半径・10 step・candidate quartic tangentとmetric-orthogonal
+projectorに限る。ball全体、独立holdout、真のinvariant normal bundle、grid-uniform attraction、多様体の
+存在・一意性は主張しない。acceptedならQ007gでdefectとderivative variationを用いるa posteriori gateを
+別途事前登録する。rejectedなら、半径・one-step・10-stepのどこで平衡marginを失うかだけを診断し、同じ
+データからmetric候補を追加しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

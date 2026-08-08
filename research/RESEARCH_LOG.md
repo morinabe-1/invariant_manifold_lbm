@@ -2224,6 +2224,57 @@ singular-value normal attractionへ読み替えることはできない。
 有限半径データを再利用せず、まず平衡点Fourier blockだけから固定するRiesz／Stein metricをprequalification
 し、nonnormal Euclidean amplificationとspectral gapを切り分ける。
 
+## 2026-08-08: Q007e equilibrium Riesz／Stein metric prequalification
+
+### 実装
+
+- \(17^2\)固定保存量葉を289個のFourier active blockへ分解し、8 signed low-wave blockの24 complex
+  selected modeと2574 excluded modeをordered-Schur／Riesz invariant splitで分離した。
+- global spectral gapから一つのrate \(r_*=\sqrt{\rho_N\mu_T}\) を固定し、selected inverse blockと
+  excluded forward blockにHermitian正定値Stein metricを構成した。
+- Cholesky whiteningを全Fourier blockへ実装し、実fixed-leaf stateの往復、共役wave、blockwise dense値と
+  2598次元matrix-free two-start SVDを独立に監査した。
+- Q007dのquartic coefficient hashとEuclidean平衡点ratioを同じ実装から再現し、上流結果を固定した。
+
+### validity
+
+全8 validity gateが通過した。
+
+- selected minimum／excluded maximum modulus:
+  `0.9837709569927492 / 0.9817098358325433`
+- fixed rate／両margin:
+  `0.9827398560586499 / 0.0010300202261065428 / 0.001031100934099305`
+- maximum invariant-split residual: `4.478049432763522e-14`
+- maximum Stein／Hermitian residual:
+  `7.717980857245268e-14 / 1.0118933183687303e-14`
+- minimum Stein eigenvalue: `1.0914517112309456`
+- maximum registered condition number: `1383.4345053355412`
+- maximum conjugacy／roundtrip／imaginary leakage residual:
+  `2.2615002024861891e-13 / 4.1650348386053546e-16 / 6.534769174688447e-17`
+- maximum blockwise SVD error／triplet residual／two-start disagreement:
+  `4.0053646874458993e-16 / 1.2331152676133846e-15 / 6.675607812409829e-16`
+- Q007d coefficient hash match／equilibrium ratio relative error: `true / 0`
+
+### 結果
+
+2つのhypothesis gateは両方通過した。
+
+- one-step normal maximum／tangent minimum／gamma:
+  `0.9820654543743582 / 0.9832397122496608 / 0.9988057257445229`
+- 10-step normal maximum／tangent minimum／gamma:
+  `0.831552014305928 / 0.8488403856607576 / 0.9796329537956986`
+
+従って`equilibrium Riesz/Stein metric prequalified for finite-radius testing`として`accepted`とした。
+Euclidean normの`gamma_1 / gamma_10 = 2.42236 / 2.59222`に対し、同じ平衡Jacobianのspectral splitを
+使う固定adapted normでは両方が1未満となった。Q006hのmodulus gapとQ007dのEuclidean棄却は矛盾せず、
+nonnormal transient amplificationを計量依存性として切り分けられた。
+
+### 主張境界と次の問い
+
+これは平衡点・単一gridのprequalificationだけである。有限半径normal attraction、真のinvariant normal
+bundle、grid-uniform bound、多様体の存在・一意性は示していない。Q007dのEuclidean棄却も変更しない。
+Q007fではmetric／whitening hashを固定し、Q007dと同じ33 starting pointへ再調整なしで適用する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2269,6 +2320,8 @@ singular-value normal attractionへ読み替えることはできない。
 [`artifacts/q007c2_quartic_shadow_radius.json`](artifacts/q007c2_quartic_shadow_radius.json)
 
 [`artifacts/q007d_normal_cocycle.json`](artifacts/q007d_normal_cocycle.json)
+
+[`artifacts/q007e_adapted_metric.json`](artifacts/q007e_adapted_metric.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
