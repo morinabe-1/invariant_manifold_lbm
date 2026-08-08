@@ -5776,6 +5776,201 @@ selected／external座標誤差だけでは、roundoffで生成される3中心�
 次は85-bit semantic bridgeを固定したまま、conservation-exact encodingとpost-stage repairを別gateとして
 事前登録し、そのrepair errorがQ007w strict marginに収まるかを評価する。
 
+## Q007y: distributed dyadic conservation repair と repair-aware error budget — 事前登録
+
+### 問い
+
+Q007xで固定した85-bit MPFR backendの演算順序とQ007wの誤差上界を変更せず、
+componentwise encoding直後とpost-filter直後に決定論的な保存量補正を加える。この補正は
+
+\[
+M=17^2,\qquad P_x=P_y=0
+\]
+
+をexact dyadic equalityで回復し、fixed-leaf mapを定義できるか。さらに、その補正を含む
+worst-case Wiener誤差がQ007wのbase／normal strict marginの両方へ収まるか。
+
+有限な4 probeで補正が成功することと、Q007s tube全体で既存のre-entry予算が閉じることを
+別の仮説とする。前者だけの成功をall-iterate certificateへ昇格しない。
+
+### 封印する入力
+
+- Q007w artifact newline-normalized SHA-256:
+  `bac362d9dca4a681387b986a5f5802278ef61a1a3bcf1a0f8577c7f3ab0a07af`
+- Q007w runner SHA-256:
+  `86dcc0a507e24216775650d5467d0ebf6e90eac0865190d0d5186e08afb7eac8`
+- Q007x artifact newline-normalized SHA-256:
+  `20ba483c4c627de015673a2f8873cc020a5c1a43ee48c7715121a00330e13566`
+- Q007x runner SHA-256:
+  `de16e86ab365e6e64b15fd62ebdb442a54e05d4e4e529ae1e018299983d7491b`
+- Q007x backend source SHA-256:
+  `25ad43629e2487c5c062920cbb5319dac4e8fbded339dc856548bfab7f18a0dc`
+- backend／grid／probe:
+  `gmpy2 2.3.1 / MPFR 4.2.2 / p=85 / RoundToNearest / 17^2 / D2Q9 / Q007xの4 exact probes`
+
+Q007w／Q007xのrunner、backend、artifactは変更しない。Q007yはそれらをread-only inputとして
+importし、観測SHAとartifact内SHAを再検証する。
+
+### 補正格子と整数solver
+
+Q007wの登録boxでは、対角population \(q=5,6,7,8\) は同じbinade
+\([2^{-6},2^{-5})\) にある。85-bit MPFR格子幅を
+
+\[
+h=2^{-90}
+\]
+
+と固定する。raw stateの保存量とtargetとの差を \((d_M,d_x,d_y)\) とし、加えるべき補正を
+
+\[
+(m,x,y)=(-d_M/h,-d_x/h,-d_y/h)\in\mathbb Z^3
+\]
+
+とする。D2Q9の全populationはこのbox内で \(h\) の整数倍であり、rest／axial速度の
+より粗い格子幅により \(m\equiv x\equiv y\pmod 2\) が成立することを検証する。
+
+対角4 populationへ加える総unit数を \((a,b,c,d)\) とし、自由整数 \(t\) を用いて
+
+\[
+\begin{aligned}
+a&=(m+x+y+t)/4, & b&=(m-x+y-t)/4,\\
+c&=(m-x-y+t)/4, & d&=(m+x-y-t)/4
+\end{aligned}
+\]
+
+とする。compatibleな \(t\) を
+
+\[
+|t|\le |m|+|x|+|y|+4
+\]
+
+の範囲で全探索し、
+
+\[
+\left(\sum_i|a_i|,\ \max_i|a_i|,\ |t|,\ t\right)
+\]
+
+を辞書式最小化する。探索区間は全breakpointとabsolute valueが最小のcompatible residueを
+含む。従ってsolverのrepair \(\ell^1\) は、\(|t|\le2\) のcompatible候補との比較から
+
+\[
+h\sum_i|a_i|
+\le |d_M|+|d_x|+|d_y|+2h
+\]
+
+を満たす。
+
+各 \(a_i\) はPythonの `divmod(a_i,289)` で商 \(s\) と非負剰余 \(r\) に分け、
+row-major順 \((y,x)=(0,0),(0,1),\ldots,(16,16)\) の先頭 \(r\) siteへ
+\((s+1)h\)、残りへ \(sh\) を加える。これは総和をexactに保ち、site間のunit差を高々1にする。
+MPFR addition後の値が同じbinadeに残り、exact rational sumとbitwise一致することをgateにする。
+
+### repaired map
+
+初期化は
+
+\[
+E_{\rm leaf}=\mathcal C\circ E_{85},
+\]
+
+一段mapは
+
+\[
+\widehat\Phi_{\rm leaf}
+=\mathcal C\circ\widehat\Phi_{85}
+\]
+
+とする。\(\mathcal C\) は上記のglobal repairである。map入力が既に85-bit fixed-leaf stateなら
+Q007x backendの `evaluate_encoded_stages` を用い、再encodingしない。collision内部の保存誤差は
+許すが、periodic streaming後のpost-filter出力をtarget leafへ戻す。Q007wのstage orderや
+primitive operationを変更せず、repair operationを別に数える。
+
+### finite probe audit
+
+Q007xと同じ4 exact probeについて次を保存する。
+
+1. raw encoding defect、整数unit triple、選択した \(t\)、対角4総unit、site配分digest。
+2. repaired encodingの \(M,P_x,P_y\) とexact input targetのbitwise equality。
+3. repaired encodingから実行したraw MPFR stagesのQ007w bound／positivity。
+4. raw post-filter defectとpost-filter repairの全整数記録。
+5. repaired post-filterの \(M,P_x,P_y\) と一段targetのbitwise equality。
+6. 全repair additionのexactness、same-binade、strict positivity、dangerous context flag。
+7. exact Fraction stageに対するraw／repaired maximum component errorとQ007w bound utilization。
+
+Q007x probe recipeとdigestが一致しなければ`inconclusive`とする。
+
+### tube-wide repair-aware bound
+
+Q007wの85-bit post-filter population別component boundを \(e_q\)、site数を \(N=289\) として
+
+\[
+\begin{aligned}
+B_M &=N\sum_q e_q,\\
+B_x &=N\sum_q |c_{qx}|e_q,\\
+B_y &=N\sum_q |c_{qy}|e_q
+\end{aligned}
+\]
+
+をexact rationalで計算する。fixed leaf上ではexact mapが保存量を保つため、raw backendの
+global defectはそれぞれこの値以下である。repairのphysical \(\ell^1\)、従ってnormalized-DFT
+Wiener \(\ell^1\) への追加上界を
+
+\[
+B_C=B_M+B_x+B_y+2h
+\]
+
+とし、総誤差を
+
+\[
+B_{\rm repaired}=B_M+B_C
+\]
+
+で評価する。Q007w artifactに封印されたselected／external analysis normを掛け、同じ
+base／normal marginとstrict比較する。このtriangle boundはcenter誤差の相殺やrepair配置の
+Fourier phaseを利用しない。ここでbase gateが落ちても、有限補正の実装失敗とは区別する。
+
+### validity gate
+
+1. Q007w／Q007x artifact・runner SHA、source、scope、upstream gateが全て一致する。
+2. Q007x backend SHAとMPFR contextが一致し、Q007yが封印済みsourceを変更していない。
+3. Q007xの4 probe recipe、fixed-leaf target、probe digestが一致する。
+4. 登録boxのbinade／\(h\)-lattice／parity条件と、全probeの整数化が成立する。
+5. solverが整数Hadamard方程式、登録objective、repair \(\ell^1\) bound、balanced distributionを満たす。
+6. 全repair additionがexact、same-binade、finiteで、dangerous MPFR flagを立てない。
+7. backend operation/domain、Q007w stage enclosure、strict positivityが全probeで通る。
+8. exact rationalでtube-wide boundを再計算し、全値finiteなstrict JSONとdigestを再現する。
+
+一つでも失敗すれば`inconclusive`とし、保存補正仮説を解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. repaired encodingが全4 probeでtarget \(M,P_x,P_y\) をexactに満たす。
+2. repaired post-filterが全4 probeで同じtargetをexactに満たす。
+3. 全finite repairがexact representable、strict positiveで、登録stage boundを破らない。
+4. lattice／binade／worst-case correction boundにより、repair mapがQ007w tube全体で定義できる。
+5. repair-aware normal-coordinate error upperがQ007w normal margin未満である。
+6. repair-aware base-coordinate error upperがQ007w base margin未満である。
+7. 1--6が全て通り、repaired MPFR-85 mapのfixed-leaf re-entryをall-iterateへ帰納できる。
+
+全て通れば
+`distributed MPFR-85 repair closes the Q007w fixed-leaf tube induction`
+として`accepted`とする。
+
+1--5が通るが6--7が落ちた場合は
+`distributed MPFR-85 repair restores the registered fixed-leaf probes but not the Q007w tube-wide base budget`
+として有効な`not_certified`とする。この場合、次はcenter cancellationとspatial phaseを保つ
+projector-aware repair normを別ゲートとして事前登録する。有限probe自体が失敗した場合は、
+integer solver／binade／配分を原因別に記録し、tube budgetを成功扱いしない。
+
+### 主張境界
+
+本ゲートは保存量固定葉の案Aだけを扱う。中心3座標を縮約座標へ含めない。有限4 probeの成功だけで
+tube-wide sampling、multi-step trajectory、性能、並列reduction、他のMPFR build、D3Q27を主張しない。
+また、粗いWiener triangle boundの失敗は、より鋭いprojector-aware boundや別の保存補正の
+不存在を意味しない。Q007w／Q007xおよびQ007s／Q007uの既存結論は変更しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
