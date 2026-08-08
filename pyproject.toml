@@ -9,6 +9,7 @@ description = "Tensor-train parameterized invariant-manifold research for lattic
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+  "gmpy2==2.3.1",
   "numpy>=2.0",
   "scipy>=1.15",
 ]
