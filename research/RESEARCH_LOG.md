@@ -2177,6 +2177,53 @@ TT一般や別の基底・別の物理問題を否定するものではない。
 Q007d: Q007c2で局在化した半径`0.004 / 0.01`の10-step領域で、quartic candidate chartに沿う
 projected normal cocycleは、最弱tangent cocycleより一様に強く減衰するか。
 
+## 2026-08-08: Q007d finite-radius projected tangent／normal cocycle
+
+### 実装
+
+- 任意の正密度stateでfiltered BGK mapの解析的matrix-free `Jv`とEuclidean adjoint `J^T u`を実装した。
+- quartic Fourier-fiber chartの解析的physical-by-reduced Jacobianを実装した。
+- global mass／momentum固定葉projector、thin-QR tangent basis、Euclidean normal projectorを構成した。
+- 33 starting pointそれぞれで10-step tangent block積とprojected normal cocycleを構成し、2つの決定的
+  startからmatrix-free SVDを実行した。one-step ratioも診断として保存した。
+
+### validity
+
+全7 validity gateが通過した。
+
+- maximum best full-map derivative relative error: `6.0343862358835346e-11`
+- maximum best quartic-chart derivative relative error: `1.2051245689498942e-10`
+- maximum adjoint inner-product relative error: `3.67240461070866e-17`
+- maximum fixed-leaf conservation derivative residual: `2.0292205916090742e-16`
+- maximum projector-family residual: `1.8367094929943913e-15`
+- minimum chart-tangent singular value / rank: `0.6963531816444375 / 24`
+- maximum normal singular-triplet residual: `2.8463046225927812e-15`
+- maximum two-start singular-value disagreement: `8.9606828648914722e-16`
+- minimum population / minimum tangent-cocycle singular value:
+  `0.02752853237565495 / 0.5733335035182436`
+- maximum tangent leakage: `2.3392329166073374e-6`
+
+### 結果
+
+3つのhypothesis gateはすべて失敗した。
+
+- equilibrium `gamma_1 / gamma_10`: `2.4223625220259515 / 2.592215401693412`
+- amplitude `0.004`の`gamma_10`範囲: `2.59246193501529–2.5929140877584227`
+- amplitude `0.01`の`gamma_10`範囲: `2.59285618762261–2.593947499641212`
+- finite-radius failure count: `16 / 16`および`16 / 16`
+
+従って`registered finite-sample projected normal-cocycle dominance not observed`として有効な
+`rejected`とした。失敗は平衡点のone-stepから既に存在し、tangent leakageも登録上限の約`1/427`なので、
+有限次chartの接空間近似だけでは説明できない。Q006hが扱った固有値modulusのspectral gapを、Euclidean
+singular-value normal attractionへ読み替えることはできない。
+
+### 主張境界と次の問い
+
+棄却したのは固定grid・Euclidean orthogonal projectorの登録仮説だけであり、adapted norm、Riesz bundle、
+真のinvariant normal bundle、grid-uniform attraction、多様体の存在・一意性は判定していない。Q007eでは
+有限半径データを再利用せず、まず平衡点Fourier blockだけから固定するRiesz／Stein metricをprequalification
+し、nonnormal Euclidean amplificationとspectral gapを切り分ける。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2220,6 +2267,8 @@ projected normal cocycleは、最弱tangent cocycleより一様に強く減衰�
 [`artifacts/q007c1_quartic_continuation.json`](artifacts/q007c1_quartic_continuation.json)
 
 [`artifacts/q007c2_quartic_shadow_radius.json`](artifacts/q007c2_quartic_shadow_radius.json)
+
+[`artifacts/q007d_normal_cocycle.json`](artifacts/q007d_normal_cocycle.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

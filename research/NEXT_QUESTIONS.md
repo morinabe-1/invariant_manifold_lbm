@@ -2581,6 +2581,107 @@ acceptedでも、固定grid・2半径・16方向・10 step・Euclidean orthogona
 rejectedならEuclidean projector上の登録仮説だけを棄却し、Riesz／adapted bundleを試す場合は別gateで
 候補と閾値を観測前に固定する。
 
+### Q007d 結果
+
+全7 validity gateは通過したが、3つのnormal-dominance gateはすべて失敗した。
+
+- maximum best full-map／chart derivative relative error:
+  `6.0343862358835346e-11 / 1.2051245689498942e-10`
+- maximum adjoint／conservation derivative residual:
+  `3.67240461070866e-17 / 2.0292205916090742e-16`
+- maximum projector-family residual: `1.8367094929943913e-15`
+- maximum normal SVD triplet residual／two-start disagreement:
+  `2.8463046225927812e-15 / 8.9606828648914722e-16`
+- maximum tangent leakage: `2.3392329166073374e-6`
+- equilibrium `gamma_1 / gamma_10`: `2.4223625220259515 / 2.592215401693412`
+- amplitude `0.004 / 0.01`のmaximum `gamma_10`:
+  `2.5929140877584227 / 2.593947499641212`
+- 両amplitudeのfailure count: `16 / 16`
+
+従って`registered finite-sample projected normal-cocycle dominance not observed`として有効な
+`rejected`とした。Q006hのeigenvalue-modulus gapはEuclidean singular-value gapを意味しない。
+一方、棄却範囲は登録Euclidean projectorだけであり、adapted norm／Riesz splitはまだ判定していない。
+
+## Q007e: equilibrium Riesz／Stein metric prequalification — 事前登録
+
+### 問い
+
+Q007dで平衡点から観測されたEuclidean transient amplificationは、Q006hのselected／excluded
+spectral gapから観測前に固定するRiesz invariant splitとrate-weighted Stein metricでは除去できるか。
+
+### 固定入力とinvariant split
+
+- Q007dと同じgrid `17^2`、filtered periodic D2Q9 map、`omega=1.5`、`eta=0.01`、固定全質量・
+  全運動量葉、平衡点Jacobian \(A_0\) を使う。quartic係数や有限半径trajectoryはmetric構築に使わない。
+- Fourier変換は`numpy.fft.fft2/ifft2`の`norm="ortho"`、population-last、C-orderと固定する。
+- Q006hの8 signed low-wave clusterに24 complex selected modeを置く。実stateの共役制約後は24実次元で
+  ある。zero waveの3保存方向は固定葉から除き、それ以外をexcluded normal clusterとする。
+- 各9次元Fourier blockでselected／excluded clusterをordered complex Schur subspaceとして分離する。
+  cluster内部の個別固有ベクトル順序は判定に使わず、左右subspaceのbiorthogonalizationからRiesz
+  coordinatesを作る。縮退内部のbasis回転は同一clusterとして扱う。
+- selected blockを \(B_E\)、excluded blockを \(B_F\) とし、全blockで
+
+  \[
+  \rho_N=\max\rho(B_F),\qquad
+  \mu_T=\min_{\lambda\in\sigma(B_E)}|\lambda|,
+  \qquad r_*=\sqrt{\rho_N\mu_T}
+  \]
+
+  を一度だけ計算する。`rho_N < r_* < mu_T`が成立しなければmetricを作らず有効な`rejected`とする。
+
+### rate-weighted Stein metric
+
+各normal blockでは \(C_F=B_F/r_*\)、各tangent blockでは \(C_E=r_*B_E^{-1}\) と固定し、
+
+\[
+C_F^*H_FC_F-H_F=-I,
+\qquad
+C_E^*H_EC_E-H_E=-I
+\]
+
+の一意なHermitian正定値解を使う。Cholesky factorでwhitenしたRiesz coordinatesを登録adapted normと
+する。右辺、rate、block scaling、追加balancingを結果観測後に変更しない。この構成ではvalidityが通れば
+理論上 \(\|B_F\|_{H_F}<r_*<\sigma_{\min,H_E}(B_E)\) となるが、実装誤差とconditioningを
+独立に監査する。
+
+### validity gate
+
+- Q007dのmode／coefficient hashと平衡点Euclidean `gamma_1 / gamma_10`をrelative error `<=1e-10`で
+  再現する。
+- selected real dimension `24`、fixed-leaf total dimension `2598`、欠落・重複mode 0とする。
+- Schur reorder、invariant split、左右biorthogonality、block diagonalization、fixed-leaf residualを
+  それぞれ`<=1e-10`とする。
+- 全Stein equationのrelative residual `<=1e-10`、Hermitian residual `<=1e-12`、minimum eigenvalue
+  `>1e-12`とする。
+- 全Riesz basis、metric、whitening transformの2-norm condition numberを`<=1e10`とする。
+- conjugate-wave metric residual `<=1e-10`とする。seed `20260906`の16 fixed-leaf real方向で
+  Fourier／Riesz roundtrip relative error `<=1e-10`、imaginary leakage `<=1e-10`を要求する。
+- seed `20260907`のmatrix-free two-start SVDでadapted one-step／10-step singular valueを再計算し、
+  blockwise dense値とのrelative error `<=1e-8`、triplet residual `<=1e-8`、two-start disagreement
+  `<=1e-6`とする。
+- 全値finite、strict JSONとする。
+
+### hypothesis gateと停止規則
+
+全validity通過後、平衡点で
+
+\[
+\gamma^{(*)}_1
+=\frac{\sigma_{\max,*}(N_1)}{\sigma_{\min,*}(T_1)}<1,
+\qquad
+\gamma^{(*)}_{10}
+=\frac{\sigma_{\max,*}(N_{10})}{\sigma_{\min,*}(T_{10})}<1
+\]
+
+を別々に要求する。両方通れば
+`equilibrium Riesz/Stein metric prequalified for finite-radius testing`として`accepted`とし、Q007fで
+Q007dと同じ33 starting pointへmetricを固定したまま進む。一つでも落ちれば
+`registered equilibrium adapted metric does not recover normal dominance`として有効な`rejected`とし、
+このmetricによるfinite-radius campaignは開始しない。
+
+acceptedでも平衡点・単一gridのmetric prequalificationに限り、有限半径normal attraction、真のnormal
+bundle、grid-uniform bound、多様体の存在・一意性は主張しない。Q007dのEuclidean棄却も変更しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
