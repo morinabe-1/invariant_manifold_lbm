@@ -1329,3 +1329,51 @@ def test_q007j_artifact_records_the_rational_eigencoordinate_bridge() -> None:
         "conjugate_label_mismatch_count"
     ] == 0
     assert "does not certify any quadratic" in cycle["claim_boundary"]
+
+
+def test_q007k_artifact_records_the_rational_quadratic_jet_bridge() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007k_quadratic_jet_bridge.json"
+    runner_path = artifact_path.parents[1] / "q007k_quadratic_jet_bridge.py"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007k_quadratic_jet_bridge.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "rational graph-gauge quadratic-jet bridge",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "selected_real_dimension": 24,
+        "unordered_pair_count": 300,
+        "complex_unknown_count": 3024,
+        "claim": (
+            "degree-two Taylor-jet identification only; no cubic, quartic, "
+            "explicit-radius, finite-ball, grid-uniform, or continuum claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["eigencoordinate_reconstruction"][
+        "proof_digest_mismatch_count"
+    ] == 0
+    assert cycle["enumeration"]["pair_count"] == 300
+    assert cycle["enumeration"]["complex_unknown_count"] == 3024
+    assert cycle["krawczyk_certification"]["included_count"] == 300
+    assert cycle["krawczyk_certification"][
+        "zero_wave_structural_fixed_leaf_count"
+    ] == 36
+    assert cycle["krawczyk_certification"][
+        "internal_graph_gauge_inclusion_count"
+    ] == 108
+    assert "does not certify cubic or quartic" in cycle["claim_boundary"]
