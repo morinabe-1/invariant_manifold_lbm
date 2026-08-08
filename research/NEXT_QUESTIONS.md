@@ -6017,6 +6017,192 @@ Wiener triangle boundでは、repair追加分がraw boundの1.832倍となり、
 固定し、raw errorとrepairがglobal conserved centerでexactに相殺すること、およびbalanced配置の
 非零Fourier係数を直接使うselected-projector boundをQ007zとして事前登録する。
 
+## Q007z: balanced repair の selected-wave Fourier certificate — 事前登録
+
+### 問い
+
+Q007yのbackend、integer solver、row-major balanced distributionを一切変更せず、補正の一様成分が
+selected非零波数でexactに消えることを使えば、Q007yで失敗したbase re-entry budgetを閉じられるか。
+normal側はQ007yの保守的なfull-Wiener boundをそのまま再利用し、base側だけをselected wave setと
+per-orbit left-operator normで再評価する。
+
+### 封印する入力
+
+- Q007p artifact newline-normalized SHA-256:
+  `a5e766938cfee0174deba9c529be9aec2cce4bff9225a3a4a1da83f7d255a751`
+- Q007p runner SHA-256:
+  `23ff283acb3f872fd2ff489f17d94b8e022e3f45a5c65b5523bf976c534a9f2a`
+- Q007y artifact newline-normalized SHA-256:
+  `a3afa87c4ee3f5d45e667eac9a6a89a1726f1d4bad0a9f90a624c562fb598648`
+- Q007y runner SHA-256:
+  `ba757030c852b68d5a4c643ec150422c0a7b4c3ba125211d2715ba1445e89811`
+- Q007y backend source SHA-256:
+  `25ad43629e2487c5c062920cbb5319dac4e8fbded339dc856548bfab7f18a0dc`
+- grid／repair:
+  \(17^2\)、\(N=289\)、\(h=2^{-90}\)、populations \(5,6,7,8\)、
+  Python `divmod(total,289)`、row-major prefix distribution
+
+Q007pが封印するselected orbitsを
+
+\[
+\begin{aligned}
+K_{\rm axis}&=\{(-1,0),(0,-1),(1,0),(0,1)\},\\
+K_{\rm diag}&=\{(-1,-1),(1,-1),(1,1),(-1,1)\}
+\end{aligned}
+\]
+
+とする。各orbitのexact rational left-operator upperをQ007p artifactから読み、
+観測floatがそれぞれ
+
+\[
+L_{\rm axis}=1.5106842091904618,\qquad
+L_{\rm diag}=1.4732828143196361
+\]
+
+であることを固定する。Q007pのselected waveがこの8点だけで、\(k=0\)を含まないこと、
+Q007w／Q007yのglobal selected-analysis upperが
+\(\max(L_{\rm axis},L_{\rm diag})=L_{\rm axis}\)とexactに一致することをgateにする。
+
+### exact balanced-prefix Fourier lemma
+
+一つの対角populationへ加える総unitを
+
+\[
+n=Ns+r,\qquad 0\le r<N
+\]
+
+とする。Q007y実装は先頭\(r\) row-major siteへ\(s+1\)、残りへ\(s\)を置く。
+normalized DFTを
+
+\[
+\widehat c(k)=\frac{h}{N}\sum_{j=0}^{N-1}c_j\chi_k(j)
+\]
+
+とする。任意の非零離散波数では\(\sum_j\chi_k(j)=0\)なので、一様な\(s\)成分はexactに消え、
+
+\[
+\widehat c(k)=\frac{h}{N}\sum_{j<r}\chi_k(j)
+=-\frac{h}{N}\sum_{j\ge r}\chi_k(j)
+\]
+
+となる。従ってtriangle inequalityから
+
+\[
+|\widehat c(k)|
+\le \frac{h}{N}\min(r,N-r)
+\le \frac{144}{289}h.
+\]
+
+これはtotal unitの大きさや符号に依存しない。4対角populationのpopulation
+\(\ell^1\) Fourier normは各selected waveで
+
+\[
+B_{\rm wave}=4\frac{144}{289}h
+\]
+
+以下である。
+
+この補題をコード表現と結び付けるため、8 selected wavesと全\(r=0,\ldots,288\)の
+2,312組をexact integer phase histogramで全走査する。各非零characterについてfull 17² gridの
+17 phase residueが各17回現れること、prefix／complement countが\(r,N-r\)であること、
+最大\(\min(r,N-r)=144\)であることを検証する。complex floatの実測値は証明に使わない。
+
+### selected-projector repair bound
+
+Q007pの各orbitは4波数を持つため、repairがbase座標へ加える上界を
+
+\[
+B_{\rm repair}^{\rm sel}
+=4\left(L_{\rm axis}+L_{\rm diag}\right)B_{\rm wave}
+\]
+
+とする。raw MPFR mapのbase errorはQ007wの登録値
+
+\[
+B_{\rm raw}^{\rm sel}
+=L_{\rm axis} B_M
+\]
+
+を変更せず、総base errorを
+
+\[
+B_{\rm repaired}^{\rm sel}
+=B_{\rm raw}^{\rm sel}+B_{\rm repair}^{\rm sel}
+\]
+
+とする。raw errorの波数相関やcenter cancellationを用いて\(B_{\rm raw}^{\rm sel}\)を小さくしない。
+repairのconstant quotientがselected非零波数でゼロであることだけを用いる。
+
+normal errorはQ007yの
+
+\[
+B_{\rm repaired}^{\rm ext}
+=2.2935127396475674\times10^{-20}
+\]
+
+をそのまま用いる。これはrepairのzero-wave kinetic成分を含むfull-Wiener triangle boundなので、
+baseと同じphase改善をnormal側へ流用しない。
+
+### fixed leaf と帰納
+
+Q007yにより、各sampling timeのrepair後状態は
+
+\[
+M=289,\qquad P_x=P_y=0
+\]
+
+をexactに満たし、登録tube全体でrepair additionはsame-binade、exact、positiveである。
+Q007wのraw one-step stage enclosure、Q007s exact-map margin、Q007u exact stage positivityを
+変更しない。base／normalの両strict marginが通れば、`already encoded, repaired MPFR-85 state`が
+Q007s tube内にあることを初期条件として、repaired one-step mapのtube re-entry、fixed leaf、
+stage positivityを全iterateへ帰納する。
+
+任意のexact boundary stateをcomponentwise encodingしただけで初期tube membershipが自動的に
+保たれるとは主張しない。Q007yのinput repairは別に記録するが、本帰納の初期条件はrepair済みMPFR state
+が登録tube内にあることとする。
+
+### validity gate
+
+1. Q007p／Q007y artifact・runner SHA、source、scope、upstream validityと判定が一致する。
+2. Q007pのselected 2 orbit／8 waves、C4 member、left-operator norm、global maximumが再現する。
+3. Q007y source、\(h\)、対角population、`divmod`、row-major prefix recipe、finite campaignが
+   artifactとfresh replayで一致する。
+4. 全2,312 phase-histogram caseで非零character、full-grid cancellation、
+   prefix／complement count、144 boundがexact integerで通る。
+5. \(B_{\rm wave}\)、\(B_{\rm repair}^{\rm sel}\)、raw／repaired base、Q007y normalを
+   exact rationalで再計算し、登録恒等式が通る。
+6. 全値finiteなstrict JSONを生成し、selected-input／phase／result digestを再現する。
+
+一つでも失敗すれば`inconclusive`とし、re-entry仮説を解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. selected base coordinatesがQ007pの非零8波数だけから成る。
+2. balanced repairのselected-wave population normが全tube stateで\(B_{\rm wave}\)以下である。
+3. projector-aware repair base contributionが\(B_{\rm repair}^{\rm sel}\)以下である。
+4. \(B_{\rm repaired}^{\rm sel}\)がQ007w base margin未満である。
+5. Q007yのfull-Wiener normal errorがQ007w normal margin未満である。
+6. Q007yのexact fixed-leaf repair、tube-wide well-definedness、stage positivityが維持される。
+7. 1--6により、登録tube内から開始するrepaired MPFR-85 mapのall-iterate re-entryが閉じる。
+
+全て通れば
+`selected-wave certificate closes the repaired MPFR-85 fixed-leaf tube induction`
+として`accepted`とする。
+
+baseが落ちる場合は
+`balanced repair phase is insufficient for the Q007w base budget`
+として有効な`not_certified`とし、repair配置の整数最適化またはraw errorのwave-resolved enclosureを
+次gateへ渡す。normal／fixed-leaf／source gateが落ちた場合はprojector改善を成功扱いしない。
+
+### 主張境界
+
+本ゲートは固定17²、固定保存量葉、封印済み85-bit backend、特定row-major balanced repairに限る。
+条件付きall-iterate tube invarianceを認証しても、任意のexact stateの初期encoding、trajectory精度、
+shadowing時間、性能、GPU／parallel reduction、他のgrid／MPFR build、center-slow構成、D3Q27を
+主張しない。Q007yの粗いtriangle-bound `not_certified`は、その判定法として保存する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
