@@ -2130,3 +2130,62 @@ def test_q007z_artifact_records_the_selected_wave_certificate() -> None:
     assert cycle["selected_repair_bound"]["base_reentry_passed"]
     assert cycle["selected_repair_bound"]["normal_reentry_passed"]
     assert all(cycle["theorem_consequence"].values())
+
+
+def test_q007aa_artifact_records_the_initialization_interior() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY / "q007aa_initialization_interior.json"
+    )
+    runner_path = (
+        artifact_path.parents[1] / "q007aa_initialization_interior.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007aa_initialization_interior.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "exact-state MPFR-85 encoding and conservation-repair "
+            "initialization-interior certificate"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": (
+            "fixed global mass and momentum leaf with exact diagonal "
+            "post-encoding repair"
+        ),
+        "manifold": "Q007s exact graph-gauge manifold",
+        "norm": "Q007p Fourier external-coordinate block-sum l1",
+        "claim": (
+            "connect a preregistered exact coordinate interior to the "
+            "conditional Q007z all-iterate repaired-backend induction"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "registered exact-state interior survives MPFR-85 encoding and "
+        "repair"
+    )
+    assert len(cycle["validity_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 6
+    assert all(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    )
+    bound = cycle["initialization_bound"]
+    assert bound["base_inward_margin_passed"]
+    assert bound["normal_inward_margin_passed"]
+    assert bound["encoded_repaired_membership_passed"]
+    assert all(cycle["theorem_consequence"].values())

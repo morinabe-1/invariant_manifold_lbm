@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import json
 from fractions import Fraction
+from pathlib import Path
 
 import pytest
 
@@ -17,6 +19,16 @@ def _fraction(record: dict) -> Fraction:
 @pytest.fixture(scope="module")
 def q007aa_cycle() -> dict:
     return q007aa.run_initialization_interior_audit()
+
+
+@pytest.fixture(scope="module")
+def q007aa_artifact() -> dict:
+    artifact_path = (
+        Path(q007aa.__file__).resolve().parent
+        / "artifacts"
+        / "q007aa_initialization_interior.json"
+    )
+    return json.loads(artifact_path.read_text(encoding="utf-8"))
 
 
 def test_q007aa_registered_interior_has_exact_preregistered_margins() -> None:
@@ -109,3 +121,21 @@ def test_q007aa_connects_initial_encoding_to_q007z_induction(
     assert "trajectory accuracy or shadowing time" in q007aa_cycle[
         "claim_boundary"
     ]
+
+
+def test_q007aa_artifact_seals_the_accepted_initialization_result(
+    q007aa_cycle: dict,
+    q007aa_artifact: dict,
+) -> None:
+    assert q007aa_artifact["cycle"] == q007aa_cycle
+    assert q007aa_artifact["study_gate"] == "passed"
+    assert q007aa_artifact["scientific_outcome"] == "accepted"
+    assert q007aa_artifact["runner_source"]["sha256"] == (
+        "a7a6334fdb157ec317f65fca2475bf3b03775af88ea6d68eec2c02c5ba74188e"
+    )
+    assert q007aa_cycle["input_digest_sha256"] == (
+        "71ca5b7b6ec65d0aee8e6486da73c4e532ce9e4721e8ae59edd7c664757fb8c7"
+    )
+    assert q007aa_cycle["result_digest_sha256"] == (
+        "9ccdfa40693489d0161521724c10f452626bb6066712ad6d0ba8c15d53fed5bc"
+    )
