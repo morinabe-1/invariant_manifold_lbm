@@ -3121,6 +3121,76 @@ repairの存在／安定性／性能を示さない。Q007wのideal sufficient t
 positivity、Q007sのexact fixed-leaf invarianceを変更しない。GPU、threaded reduction、他のMPFR build、
 continuous optimization、grid-uniform性、D3Q27を扱わない。
 
+## 2026-08-09: Q007y distributed dyadic conservation repair
+
+### 実装
+
+- Q007w／Q007xのartifact、runner、MPFR backendをread-only inputとしてSHA固定した。
+- 対角population \(q=5,6,7,8\) の85-bit格子幅 \(h=2^{-90}\) を用い、global
+  mass／momentum defectを整数Hadamard系へ変換した。
+- 自由整数 \(t\) は、対角4総unitについて
+
+  \[
+  \left(\sum_i|a_i|,\max_i|a_i|,|t|,t\right)
+  \]
+
+  を辞書式最小化した。各総unitは`divmod(total,289)`でrow-major siteへ均等配分した。
+- componentwise encoding直後とpost-filter直後にだけ補正を適用した。collision内部のdriftを
+  許し、Q007x backendの演算順序・定数・primitive operationは変更しなかった。
+- 全補正加算をexact rationalへ戻し、exact addition、same binade、positivity、MPFR flagを検査した。
+- Q007wの85-bit paired evaluatorを再生し、population別post-filter errorからmass／momentum defectと
+  repair-aware Wiener boundをexact rationalで構成した。
+
+### 結果
+
+全8 validity gateが通過した。hypothesisは7件中5件が通過し、base budgetとall-iterate inductionが
+失敗した。
+
+- finite repaired conservation:
+  `input 4/4 exact / post-filter 4/4 exact`
+- repair additions:
+  `9,248 / 9,248 exact, same-binade, positive`
+- maximum finite component-bound utilization:
+  `0.15776531320758136`
+- raw post-filter Wiener error upper:
+  `2.706739822688458e-22`
+- repair Wiener addition upper:
+  `4.959477689155467e-22`
+- repaired Wiener error upper:
+  `7.666217511843926e-22`
+- base error／margin／utilization:
+  `1.158123373936201e-21 / 4.978918133501365e-22 / 2.326054260951996`
+- normal error／margin／utilization:
+  `2.2935127396475674e-20 / 9.145068981224883e-14 / 2.507922842743146e-7`
+- finite campaign digest:
+  `f47bb30b0e2280d339a40b196d1ca3dcb84f94b9e8de087bbff215d07a220fe6`
+- runner SHA-256:
+  `ba757030c852b68d5a4c643ec150422c0a7b4c3ba125211d2715ba1445e89811`
+- artifact newline-normalized SHA-256:
+  `a3afa87c4ee3f5d45e667eac9a6a89a1726f1d4bad0a9f90a624c562fb598648`
+
+従って
+`distributed MPFR-85 repair restores the registered fixed-leaf probes but not the Q007w tube-wide base budget`
+として有効な`not_certified`とした。有限実装だけでなく、Q007w登録boxのbinade、共通dyadic lattice、
+parity、最悪site補正を用いてrepair自体がtube全体で定義できることも示した。normal marginには十分
+収まるが、粗いtriangle boundによるbase errorはmarginの2.326倍であり、Q007s re-entryを全iterateへ
+帰納できない。
+
+### 分析と次の改善
+
+今回の上界はraw errorの全Wiener normへrepairのphysical \(\ell^1\) upperを単純加算する。
+しかしrepair後にはglobal \(M,P_x,P_y\) errorがexactにゼロであり、raw center errorとrepair centerは
+相殺している。また、balanced distributionのnonzero-wave Fourier contentはphysical \(\ell^1\)より
+大幅に小さい可能性がある。次は封印済みrepairを変えず、center cancellationと実際のspatial phaseを
+selected spectral projectorへ通した上界を独立に事前登録する。
+
+### 主張境界
+
+4 finite probeの成功だけをtube sampling proofとは呼ばない。tube-wideに示したのはrepairの
+algebraic well-definednessと粗いworst-case boundであり、projector-aware bound、multi-step trajectory、
+性能、parallel reduction、他のMPFR build、center-slow構成、grid-uniform性、D3Q27を示さない。
+Q007w／Q007xおよびQ007s／Q007uの既存結論を変更しない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3208,6 +3278,8 @@ continuous optimization、grid-uniform性、D3Q27を扱わない。
 [`artifacts/q007w_ideal_precision_threshold.json`](artifacts/q007w_ideal_precision_threshold.json)
 
 [`artifacts/q007x_mpfr_fixed_leaf.json`](artifacts/q007x_mpfr_fixed_leaf.json)
+
+[`artifacts/q007y_distributed_conservation_repair.json`](artifacts/q007y_distributed_conservation_repair.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

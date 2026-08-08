@@ -173,7 +173,10 @@ ideal binary \(p=53,\ldots,128\)へ拡張し、sufficient thresholdを\(p_*=85\)
 Q007xでは`gmpy2 2.3.1`／`MPFR 4.2.2`の
 85-bit backendがQ007wの全登録演算と一段boundを再現することを認証した。一方、componentwise
 input encoding、非一様collision、filterがglobal保存量をexactには保たないため、固定保存量葉上の
-all-iterate帰納は`not_certified`のままである。
+all-iterate帰納は`not_certified`のままである。Q007yでは対角4 populationの\(2^{-90}\)格子を使う
+分散保存補正を構成し、4 probeのencoding／post-filter保存量をexactに回復した。補正は登録tube全体で
+well-definedでnormal marginも通るが、粗いrepair-aware Wiener boundはbase marginを2.326倍使用するため、
+all-iterate帰納はなお`not_certified`である。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1168,6 +1171,37 @@ fixed-leaf probeについて、constant construction、input encoding、collisio
 Q007wのre-entryを全iterateへ帰納しない。Q007wのideal threshold、Q007uのexact stage positivity、
 Q007sのexact fixed-leaf invarianceは変更しない。
 
+### Q007y distributed dyadic conservation repair
+
+Q007x backendを変更せず、componentwise encoding直後とpost-filter直後にglobal保存量補正を加えた。
+対角population \(q=5,6,7,8\) の共通MPFR格子 \(h=2^{-90}\) 上で整数Hadamard系を解き、
+各総unitを289 siteへrow-majorに均等配分する。補正前後をexact rationalへ戻し、全加算のexactness、
+same-binade、positivityを検査した。
+
+- classification:
+  `distributed MPFR-85 repair restores the registered fixed-leaf probes but not the Q007w tube-wide base budget`
+- validity / hypothesis gates: `8 / 8` passed、`5 / 7` passed
+- repaired conservation: `input 4 / 4 exact`、`post-filter 4 / 4 exact`
+- MPFR repair additions: `9,248 / 9,248 exact, same-binade, positive`
+- maximum finite component-bound utilization: `0.15776531320758136`
+- raw／repair／total Wiener error upper:
+  `2.706739822688458e-22 / 4.959477689155467e-22 / 7.666217511843926e-22`
+- base error／margin／utilization:
+  `1.158123373936201e-21 / 4.978918133501365e-22 / 2.326054260951996` (`fail`)
+- normal error／margin／utilization:
+  `2.2935127396475674e-20 / 9.145068981224883e-14 / 2.507922842743146e-7` (`pass`)
+- finite campaign digest:
+  `f47bb30b0e2280d339a40b196d1ca3dcb84f94b9e8de087bbff215d07a220fe6`
+- runner SHA-256:
+  `ba757030c852b68d5a4c643ec150422c0a7b4c3ba125211d2715ba1445e89811`
+- artifact newline-normalized SHA-256:
+  `a3afa87c4ee3f5d45e667eac9a6a89a1726f1d4bad0a9f90a624c562fb598648`
+
+従って保存補正の有限実装とtube-wide algebraic定義は成功したが、Q007wの既存Wiener triangle boundへ
+補正normを単純加算するだけではbase re-entryを認証できない。この否定結果は、repair後にexactに消える
+global conserved center成分やbalanced配置のFourier phaseを利用していない。次はbackend／repairを固定し、
+selected projectorへ直接通すprojector-aware error boundを別gateで評価する。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -1225,6 +1259,7 @@ python -m research.q007u_larger_tube_stagewise_positivity --output research/arti
 python -m research.q007v_binary64_stage_enclosure --output research/artifacts/q007v_binary64_stage_enclosure.json
 python -m research.q007w_ideal_precision_threshold --output research/artifacts/q007w_ideal_precision_threshold.json
 python -m research.q007x_mpfr_fixed_leaf --output research/artifacts/q007x_mpfr_fixed_leaf.json
+python -m research.q007y_distributed_conservation_repair --output research/artifacts/q007y_distributed_conservation_repair.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -1277,6 +1312,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007v_binary64_stage_enclosure.json`](research/artifacts/q007v_binary64_stage_enclosure.json)
 - [`research/artifacts/q007w_ideal_precision_threshold.json`](research/artifacts/q007w_ideal_precision_threshold.json)
 - [`research/artifacts/q007x_mpfr_fixed_leaf.json`](research/artifacts/q007x_mpfr_fixed_leaf.json)
+- [`research/artifacts/q007y_distributed_conservation_repair.json`](research/artifacts/q007y_distributed_conservation_repair.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1343,13 +1379,14 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007v 現行binary64演算のpaired roundoff enclosure、一段stage positivity認証、robust re-entry棄却
 - Q007w ideal binary 53--128 bit全候補、85-bit最小sufficient robust re-entry threshold認証
 - Q007x concrete MPFR-85全演算trace／Fraction stage oracle、fixed-leaf closure棄却
+- Q007y 対角dyadic保存補正のfinite／tube-wide定義認証、normal budget認証、base budget棄却
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- conservation-exact encoding／collision／filter repairと、その追加誤差を含むQ007s tubeの
+- conservation-exact repairのprojector-aware base error certificateと、その追加誤差を含むQ007s tubeの
   roundoff-robust all-iterate re-entry、連続最適化、Euclidean／grid-uniform normal attraction、
   global basin
 - external-output／phase-aware resolventの追加改善
@@ -1372,5 +1409,8 @@ roundoff error upperがQ007sのbase／normal strict marginを超えるため、�
 帰納しない。Q007wでは同じenclosureをideal binary precisionへ拡張し、85 bitsを最小sufficient
 thresholdと認証した。Q007xではfixed MPFR-85 backendの全演算がideal modelと一致し、一段stage errorが
 Q007w bound内にあることを認証したが、componentwise encoding／collision／filterがexact fixed leafを
-保たないためall-iterate invarianceは認証しない。Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却を
-変更せず、保存補正後のroundoff-robust invariance、連続最適性、grid-uniform性へは主張を広げない。
+保たないためall-iterate invarianceは認証しない。Q007yでは対角dyadic repairがfinite probeと登録tubeの
+algebraic条件でexact fixed leafを回復すること、およびnormal budgetを認証したが、粗いWiener triangle
+boundのbase utilizationが2.326となるためall-iterate invarianceはなお認証しない。Q007c1の有限振幅性能
+棄却とQ007dのEuclidean棄却を変更せず、projector-aware保存補正後のroundoff-robust invariance、
+連続最適性、grid-uniform性へは主張を広げない。

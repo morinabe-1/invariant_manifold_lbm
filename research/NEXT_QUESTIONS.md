@@ -5971,6 +5971,52 @@ tube-wide sampling、multi-step trajectory、性能、並列reduction、他のMP
 また、粗いWiener triangle boundの失敗は、より鋭いprojector-aware boundや別の保存補正の
 不存在を意味しない。Q007w／Q007xおよびQ007s／Q007uの既存結論は変更しない。
 
+### Q007y 封印結果
+
+全8 validity gateが通過した。7 hypothesis gateのうち、finite input／post-filter repair、
+exact addition・positivity・stage enclosure、tube-wide repair定義、normal budgetの5件は通過した。
+base budgetと、それに依存するall-iterate inductionの2件は失敗した。
+
+- repair quantum／diagonal populations:
+  `2^-90 / q=5,6,7,8`
+- finite repaired conservation:
+  `input 4/4 exact / post-filter 4/4 exact`
+- finite MPFR additions:
+  `9,248 / 9,248 exact, same-binade, positive`
+- maximum finite Q007w component-bound utilization:
+  `0.15776531320758136`
+- post-filter raw Wiener error upper:
+  `2.706739822688458e-22`
+- mass／x-momentum／y-momentum defect upper:
+  `2.706739822688458e-22 / 1.1263608552978353e-22 / 1.1263608552978353e-22`
+- repair Wiener addition upper:
+  `4.959477689155467e-22`
+- repaired total Wiener error upper:
+  `7.666217511843926e-22`
+- repaired／raw error factor:
+  `2.832269820536163`
+- base error／margin／utilization:
+  `1.158123373936201e-21 / 4.978918133501365e-22 / 2.326054260951996` (`fail`)
+- normal error／margin／utilization:
+  `2.2935127396475674e-20 / 9.145068981224883e-14 / 2.507922842743146e-7` (`pass`)
+- finite campaign digest:
+  `f47bb30b0e2280d339a40b196d1ca3dcb84f94b9e8de087bbff215d07a220fe6`
+- runner SHA-256:
+  `ba757030c852b68d5a4c643ec150422c0a7b4c3ba125211d2715ba1445e89811`
+- artifact newline-normalized SHA-256:
+  `a3afa87c4ee3f5d45e667eac9a6a89a1726f1d4bad0a9f90a624c562fb598648`
+
+従って
+`distributed MPFR-85 repair restores the registered fixed-leaf probes but not the Q007w tube-wide base budget`
+として有効な`not_certified`とした。整数Hadamard solverとbalanced row-major distributionは、
+Q007w登録box全体でrepairをexactに定義できる。4 probeでは入力と一段出力の保存量をexactに戻し、
+backend stage boundとpositivityも維持した。しかし、center cancellationとspatial phaseを捨てた
+Wiener triangle boundでは、repair追加分がraw boundの1.832倍となり、base marginを2.326倍使用する。
+
+これはrepair実装の失敗でも、projector-aware certificateの不存在でもない。次はbackendとrepairを
+固定し、raw errorとrepairがglobal conserved centerでexactに相殺すること、およびbalanced配置の
+非零Fourier係数を直接使うselected-projector boundをQ007zとして事前登録する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
