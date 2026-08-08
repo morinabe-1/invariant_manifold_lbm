@@ -1751,3 +1751,52 @@ def test_q007s_artifact_records_the_finite_grid_tube_enlargement() -> None:
     assert cycle["selection"]["selection_boundary_reproduced"]
     assert all(cycle["theorem_consequence"].values())
     assert "Q007q/Q007r positivity remains sealed" in cycle["claim_boundary"]
+
+
+def test_q007t_artifact_records_larger_tube_population_positivity() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY
+        / "q007t_larger_tube_population_positivity.json"
+    )
+    runner_path = (
+        artifact_path.parents[1]
+        / "q007t_larger_tube_population_positivity.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007t_larger_tube_population_positivity.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "rational larger-tube population-positivity certificate"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "base_modal_l1_radius": 9e-19,
+        "normal_coordinate_radius": 5e-12,
+        "sampling_times": "full one-step map input/output only",
+        "claim": (
+            "strict D2Q9 population and density positivity on the fixed "
+            "Q007s selected tube only; no stagewise, entropy, continuous-"
+            "optimum, grid-uniform, or continuum claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert all(cycle["theorem_consequence"].values())
+    assert cycle["q007s_tube_reuse"]["q007s_forward_invariance"]
+    assert "Q007r stagewise positivity remains sealed" in cycle[
+        "claim_boundary"
+    ]
