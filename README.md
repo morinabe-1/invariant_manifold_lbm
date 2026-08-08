@@ -100,7 +100,11 @@ Banach関数norm、rigorous inverse、defect／variation／tail／roundoff major
 `0.9920954673554354 / 0.00206112115963712 / 0.998942202264331`となった。しかし独立preconditionerが作る
 C4-related modulus endpoint差`2.32993e-11`が登録validity閾値`1e-12`を超えたため、Q007hは規則どおり
 `inconclusive`とした。次はQ007h1でC4 orbit代表のpreconditionerを厳密なpopulation permutationにより
-輸送し、線形結論を再認証する。
+輸送した。全289 C4 symbol edge、輸送した\(\epsilon\)／\(\beta\)／radius、conjugate／C4 modulus endpointは
+有理数としてexact 0差となり、10 validity gateと5 hypothesis gateを全通過した。selected radius upper、
+normal-gap lower、degree-90 tail upperは`0.9920954673554099 / 0.0020611211596580 / 0.9989422022620159`で、
+`registered symmetry-equivariant linear spectral split and degree-90 tail certified`として`accepted`とした。
+次はQ007iで次数2--89のdirect external nonresonanceを有理log-modulus区間で認証する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -867,16 +871,17 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007f fixed metric／varying quartic tangent、複素共役Jacobian／adjoint、33点の10-step adapted cocycle
 - Q007g 固定定理の構造仮定、\(L=89\) spectral quotient、sector／full-spectrum証拠差分、proof-object inventory
 - Q007h 288非零blockの有理区間Neumann／Bauer--Fike audit、全5線形仮説通過、C4 validity棄却
+- Q007h1 72 C4代表からのexact preconditioner輸送、線形split／可逆性／normal gap／degree-90 tail認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007h1 symmetry-transported outward-rounded linear spectral split／tail certification
+- Q007i degree 2--89 direct external nonresonance certification
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007h1である。Q007hの有理区間spectral enclosureと5線形仮説は通ったが、独立な
-固有基底がC4-related enclosureへ不要な差を作り、登録validityを満たさなかった。Q007h1はexact C4
-similarityでorbit代表のpreconditionerを輸送し、閾値や半径式を変えず線形split・可逆性・degree-90 tailを
-再判定する。次数2--89の非共鳴、quartic invariance defect、存在半径は後続gateへ残す。
+従って次のゲートはQ007iである。Q007h1により固定17² mapの線形split・補空間可逆性・normal gap・
+degree-90 tailは認証された。残るTheorem 1.2の線形仮定は次数2--89のdirect external nonresonanceである。
+これを通過すれば、固定保存量葉上の局所解析的不変多様体の存在とC90一意性を定性的に結論できるが、
+explicit radius、quartic chart係数の厳密同定、finite-ball normal attraction、grid-uniform性は別問題として残す。

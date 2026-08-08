@@ -2413,6 +2413,52 @@ validity失敗のため認証結論には使わないが、登録した5 hypothe
 preconditionerを作り、exact population permutationで全orbitへ輸送する。Q007hの全値と`inconclusive`は保存し、
 次数2--89の非共鳴や非線形存在主張へは進まない。
 
+## 2026-08-08: Q007h1 C4-transported rational spectrum
+
+### 実装
+
+- 289 waveをzero orbit 1個とnonzero C4 orbit 72個へexactに分割した。
+- 有理0／1 population permutation \(P\) について、全289 edgeで
+  \(A_{r(n)}=P A_nP^{-1}\) がrational rectangleとしてentrywise一致することを検証した。
+- NumPy preconditionerを72代表でだけ構築し、\(V_j=P^jV\)、\(W_j=WP^{-j}\) を全288 memberへ輸送した。
+- 各target blockでもQ007hと同じ区間残差、Neumann bound、Bauer--Fike半径を独立に再評価した。
+- Q007h artifactの`failed / inconclusive`、C4 gateだけの失敗、5 hypothesis passをSHA付きで入力照合した。
+
+### validity
+
+全10 validity gateが通過した。
+
+- orbit count／nonzero representative／member: `73 / 72 / 288`
+- exact symbol C4 mismatch edge／entry: `0 / 0`
+- maximum transported \(\epsilon\)／Bauer--Fike radius:
+  `1.1070037300235058e-14 / 1.0675245062923042e-10`
+- minimum selected／excluded disc-group gap: `1.3444770890709528`
+- maximum Q007g extrema relative error: `1.454789362016216e-15`
+- transported \(\epsilon\)／\(\beta\)／radius difference: exact `0`
+- conjugate／C4 modulus endpoint difference: exact `0 / 0`
+
+Q007hで最悪だった\((-5,4)\rightarrow(-4,-5)\)を含め、同じorbitの有効な円板包含が完全に一致した。
+threshold、norm、radius式、Taylor項数、selected clusterはQ007hから変更していない。
+
+### 結果と主張境界
+
+5 hypothesis gateも全通過した。
+
+- selected spectral-radius upper: `0.9920954673554099`
+- excluded minimum-modulus lower: `0.4900851345011790`
+- selected minimum lower／excluded maximum upper:
+  `0.9837709569923394 / 0.9817098358326815`
+- normal-gap lower: `0.002061121159657998`
+- degree-90 tail upper: `0.9989422022620159`
+- certified count: `24 / 2574 / 2598`
+
+従って`registered symmetry-equivariant linear spectral split and degree-90 tail certified`として`accepted`とした。
+Q007hの`inconclusive`は置換せず、独立preconditioner版の失敗として保存する。
+
+これは固定17² filtered mapの線形層だけの認証である。次数2--89のdirect nonresonanceをまだ示していないため、
+この時点ではTheorem 1.2から多様体存在を結論しない。Q007iはselected 6中心を4 modulus型へ包含し、96項の
+有理atanh-log区間で全2,919,730 aggregateを外部disk unionから分離する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2466,6 +2512,8 @@ preconditionerを作り、exact population permutationで全orbitへ輸送する
 [`artifacts/q007g_theorem_readiness.json`](artifacts/q007g_theorem_readiness.json)
 
 [`artifacts/q007h_rational_spectrum.json`](artifacts/q007h_rational_spectrum.json)
+
+[`artifacts/q007h1_equivariant_spectrum.json`](artifacts/q007h1_equivariant_spectrum.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

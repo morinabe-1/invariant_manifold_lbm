@@ -3123,6 +3123,117 @@ validity通過後、Q007hと同じ有理endpointで次を要求する。
 acceptedでも固定17² mapの線形層だけの認証である。次数2--89のdirect／translation-equivariant
 nonresonanceはQ007iへ残し、非線形存在・一意性を主張しない。
 
+### Q007h1 封印結果
+
+全289 C4 symbol edgeはrational rectangleとしてentrywise exactに一致し、72代表から288 memberへ輸送した
+\(\epsilon\)、\(\beta\)、Bauer--Fike radius、conjugate／C4 modulus endpointもexact 0差だった。全10
+validity gateと全5 hypothesis gateが通過した。
+
+selected spectral-radius upper、normal-gap lower、degree-90 tail upperはそれぞれ
+`0.9920954673554099 / 0.0020611211596579977 / 0.9989422022620159`である。従ってQ007h1を
+`registered symmetry-equivariant linear spectral split and degree-90 tail certified`として`accepted`とした。
+Q007hの独立preconditioner版`inconclusive`は変更しない。
+
+## Q007i: rational-log direct external nonresonance — 事前登録
+
+### 問い
+
+Q007h1が認証したselected spectrumについて、Cabré--Fontich--de la Llave Theorem 1.2のdirect条件
+
+\[
+\operatorname{Spec}(A_1)^i\cap\operatorname{Spec}(A_2)=\varnothing,
+\qquad 2\le i\le89
+\]
+
+を、translation selection ruleへ弱めず、全次数で有理区間認証できるか。
+
+Q007h1のdegree-90 tailと合わせれば、通過時には固定17²・固定保存量葉の有限次元解析写像へTheorem 1.2を
+直接適用する。これはexplicit proof radiusを作るa posteriori theoremではなく、同論文の定性的な局所存在・
+一意性定理の仮定監査である。
+
+### certified diskの再構築
+
+- Q007g、Q007h1 artifactのsource／scope／SHAを記録し、Q007h1が`passed / accepted`、全10 validity・全5
+  hypothesis gate passであることを要求する。
+- 72 nonzero C4代表だけでQ007h1のpreconditioner proofを再構築し、全representative blockの
+  `exact_proof_digest_sha256`をartifactと一致させる。
+- selected代表はaxis \((-1,0)\) とdiagonal \((-1,-1)\) の各3 disk、計6 diskとする。
+- 各代表の虚部絶対値で、2 acoustic diskと1 real/shear diskを分ける。acoustic／shear center separationを
+  `>=0.1`とし、曖昧ならvalidity failureとする。
+- acoustic pairのmodulus intervalは2 diskのhullを取り、selected productを
+  `axis acoustic / axis shear / diagonal acoustic / diagonal shear`の4型で過包含する。
+- external spectrumは70通常代表の9 disk、2 selected代表の6 disk、zero waveの\(-1/2\) disk 1個、計643
+  representative diskのunionで包含する。C4 multiplicityはQ007h1のexact similarityで処理する。
+
+### rational logarithm
+
+正の有理数 \(x<1\) に対し \(z=(x-1)/(x+1)\) として
+
+\[
+\log x=2\sum_{k=0}^{95}\frac{z^{2k+1}}{2k+1}+T,
+\qquad
+|T|\le
+\frac{2|z|^{193}}{193(1-z^2)}
+\]
+
+を使う。endpointは`Fraction`で評価し、60桁decimal rational gridへ外向き丸めする。全selected型とexternal
+diskのmodulus lower／upperへ単調性を使ってlog intervalを作る。最大tail boundを`<=1e-90`とする。
+
+degree \(n\) で4型のcountを \((a,b,c,d)\)、\(a+b+c+d=n\) とする。product modulusのlog intervalを
+
+\[
+aI_{aa}+bI_{as}+cI_{da}+dI_{ds}
+\]
+
+で包含する。次数2--89のaggregate countは`2,919,730`である。各acoustic pair内部の指数分配を展開した
+6-center monomial product countが`869,107,778`となることも組合せ恒等式で照合する。
+
+external log intervalは重なりをexact integer endpointでmergeし、各aggregate intervalとunionの交差を
+binary searchで全件判定する。complex phaseは使わない。modulus intervalが交わらなければcomplex spectrumも
+交わらないためである。
+
+### design-only探索の開示
+
+事前登録設計の計算量確認に限りfloat64 modulusで同じ圧縮を試したところ、radial overlap候補は0、予測最小
+log-gapは約`6.91224e-10`、witnessはdegree 51、count \((1,19,27,4)\)だった。この値はQ007i artifactへ
+流用せず、全endpoint、全aggregate、minimum witnessを有理log runnerから新規計算する。
+
+### validity gate
+
+- 入力artifact、`17² / 1.5 / 0.01 / 24 / 2574 / 2598` scopeを一致させる。
+- C4 representative count `72`、proof-digest mismatch count `0`、selected disk `6`、selected modulus type `4`、
+  external representative disk `643`を要求する。
+- selected acoustic／shear分類marginを`>=0.1`とする。
+- 96項log enclosureの最大tail boundを`<=1e-90`、60桁外向き丸めを固定する。
+- degree count `88`、aggregate count `2,919,730`、expanded product count `869,107,778`を一致させる。
+- 全値finite、strict JSONとする。失敗時は`inconclusive`とし、非共鳴・定理適用を主張しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次を同時に要求する。
+
+1. external merged log unionとのaggregate overlap countが0
+2. 全2,919,730 aggregateを検査済み
+3. global minimum rational log-gap lower boundが`>=1e-12`
+4. Q007h1のdegree-90 tail gateとmap-structure gateがpass
+
+全て通れば`registered direct external nonresonance through degree 89 certified`として`accepted`とする。
+一つでも落ちれば`registered modulus-only direct nonresonance certification failed`という有効な
+`not_certified`とする。同じgate内でcomplex phase、translation sector、項数、log精度、gap閾値を追加・変更しない。
+
+### accepted時だけの定理帰結
+
+Q007gの解析性・local diffeomorphism・固定保存量葉、Q007h1のstable selected split・excluded invertibility・
+degree-90 tail、Q007iの次数2--89 direct nonresonanceが全て認証された場合に限り、Theorem 1.2から次を結論する。
+
+- rest equilibrium近傍の固定保存量葉上に、selected 24実次元spectral subspaceへ接する局所解析的不変多様体が
+  存在する。
+- その多様体は、同じ接空間を持つ\(C^{90}\) locally invariant manifoldのクラスで局所一意である。
+- 解析的parameterization \(K\) とreduced map \(R\) が存在する。
+
+explicit neighborhood radius、Q007c1 quartic係数との厳密同定、finite-ball normal attraction、grid refinement、
+continuum／infinite-lattice limitは結論しない。これらは次の定量・数値同定gateへ残す。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
