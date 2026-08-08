@@ -1,0 +1,422 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-08T18:04:07.354761+00:00",
+  "source": {
+    "package_version": "0.1.0",
+    "package_source_sha256": "114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2"
+  },
+  "runner_source": {
+    "filename": "q007q_population_positivity.py",
+    "sha256": "026b4d549e92bf74ac29393244a4400fb7a8d1bb3eb263ee729d81432c8290e5",
+    "sha256_newline_normalization": "UTF-8 text with universal newlines"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.4",
+    "scipy": "1.16.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "mathematical_scope": {
+    "diagnostic": "rational population-positivity certificate",
+    "construction_grid": [
+      17,
+      17
+    ],
+    "omega": 1.5,
+    "eta": 0.01,
+    "conservation_treatment": "fixed global mass and momentum leaf",
+    "base_modal_l1_radius": 1e-19,
+    "normal_coordinate_radius": 1e-20,
+    "sampling_times": "full one-step map input/output only",
+    "claim": "strict D2Q9 population and density positivity on the fixed Q007p tube only; no stagewise, entropy, larger-domain, grid-uniform, or continuum claim"
+  },
+  "cycle": {
+    "question": "Does the Q007p Wiener tube lie strictly inside the physical D2Q9 population cone at every full-map sampling time?",
+    "registered_parameters": {
+      "size": 17,
+      "omega": 1.5,
+      "eta": 0.01,
+      "base_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x8ac7230489e80000",
+        "float": 1e-19
+      },
+      "normal_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x56bc75e2d63100000",
+        "float": 1e-20
+      },
+      "rest_density": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x1",
+        "float": 1.0
+      },
+      "rest_velocity": [
+        0,
+        0
+      ]
+    },
+    "input_artifact": {
+      "filename": "q007p_finite_tube_attraction.json",
+      "registered_sha256": "a5e766938cfee0174deba9c529be9aec2cce4bff9225a3a4a1da83f7d255a751",
+      "sha256": "a5e766938cfee0174deba9c529be9aec2cce4bff9225a3a4a1da83f7d255a751",
+      "sha256_matches": true,
+      "sha256_newline_normalization": "UTF-8 text with universal newlines",
+      "source_match": true,
+      "scope_match": true,
+      "schema_version": 1,
+      "study_gate": "passed",
+      "scientific_outcome": "accepted",
+      "all_validity_gates_pass": true,
+      "all_hypothesis_gates_pass": true,
+      "theorem_consequence_count": 4,
+      "all_theorem_consequences_true": true,
+      "registered_runner_sha256": "23ff283acb3f872fd2ff489f17d94b8e022e3f45a5c65b5523bf976c534a9f2a",
+      "artifact_runner_sha256": "23ff283acb3f872fd2ff489f17d94b8e022e3f45a5c65b5523bf976c534a9f2a",
+      "observed_runner_sha256": "23ff283acb3f872fd2ff489f17d94b8e022e3f45a5c65b5523bf976c534a9f2a",
+      "runner_sha_matches": true,
+      "passed": true
+    },
+    "d2q9_weight_audit": {
+      "velocity_weight_records": [
+        {
+          "velocity": [
+            0,
+            0
+          ],
+          "weight": {
+            "numerator_base16": "0x4",
+            "denominator_base16": "0x9",
+            "float": 0.4444444444444444
+          }
+        },
+        {
+          "velocity": [
+            1,
+            0
+          ],
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x9",
+            "float": 0.1111111111111111
+          }
+        },
+        {
+          "velocity": [
+            0,
+            1
+          ],
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x9",
+            "float": 0.1111111111111111
+          }
+        },
+        {
+          "velocity": [
+            -1,
+            0
+          ],
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x9",
+            "float": 0.1111111111111111
+          }
+        },
+        {
+          "velocity": [
+            0,
+            -1
+          ],
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x9",
+            "float": 0.1111111111111111
+          }
+        },
+        {
+          "velocity": [
+            1,
+            1
+          ],
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x24",
+            "float": 0.027777777777777776
+          }
+        },
+        {
+          "velocity": [
+            -1,
+            1
+          ],
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x24",
+            "float": 0.027777777777777776
+          }
+        },
+        {
+          "velocity": [
+            -1,
+            -1
+          ],
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x24",
+            "float": 0.027777777777777776
+          }
+        },
+        {
+          "velocity": [
+            1,
+            -1
+          ],
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x24",
+            "float": 0.027777777777777776
+          }
+        }
+      ],
+      "population_count": 9,
+      "rest_axis_diagonal_multiplicity": [
+        1,
+        4,
+        4
+      ],
+      "registered_weight_multiplicities": [
+        {
+          "weight": {
+            "numerator_base16": "0x4",
+            "denominator_base16": "0x9",
+            "float": 0.4444444444444444
+          },
+          "multiplicity": 1
+        },
+        {
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x9",
+            "float": 0.1111111111111111
+          },
+          "multiplicity": 4
+        },
+        {
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x24",
+            "float": 0.027777777777777776
+          },
+          "multiplicity": 4
+        }
+      ],
+      "observed_weight_multiplicities": [
+        {
+          "weight": {
+            "numerator_base16": "0x4",
+            "denominator_base16": "0x9",
+            "float": 0.4444444444444444
+          },
+          "multiplicity": 1
+        },
+        {
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x9",
+            "float": 0.1111111111111111
+          },
+          "multiplicity": 4
+        },
+        {
+          "weight": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x24",
+            "float": 0.027777777777777776
+          },
+          "multiplicity": 4
+        }
+      ],
+      "weight_sum": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x1",
+        "float": 1.0
+      },
+      "minimum_weight": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x24",
+        "float": 0.027777777777777776
+      },
+      "maximum_weight": {
+        "numerator_base16": "0x4",
+        "denominator_base16": "0x9",
+        "float": 0.4444444444444444
+      },
+      "velocity_class_assignment_exact": true,
+      "multiplicities_match": true,
+      "all_weights_strictly_positive": true,
+      "passed": true
+    },
+    "wiener_triangle_audit": {
+      "construction_grid": [
+        17,
+        17
+      ],
+      "fourier_wave_count": 289,
+      "expected_fourier_wave_count": 289,
+      "inverse_fourier_convention": "delta f_i(x) = sum_k delta f_hat[k,i] exp(i k dot x)",
+      "phase_modulus_identity": "|exp(i k dot x)| = 1",
+      "component_triangle_inequality": "max_(x,i) |delta f_i(x)| <= max_i sum_k |delta f_hat[k,i]| <= sum_(k,i) |delta f_hat[k,i]|",
+      "q007p_norm_definition": "block-sum external-coordinate l1; physical population l1 at zero wave, Q007o six-coordinate norm at selected waves, and Q007h1 transported full eigencoordinates elsewhere",
+      "q007p_real_state_constraint": "Fourier conjugate blocks are paired; the certified complex l1 bounds restrict unchanged to the real conjugacy subspace",
+      "norm_definition_match": true,
+      "passed": true
+    },
+    "q007p_tube_reuse": {
+      "base_modal_l1_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x8ac7230489e80000",
+        "float": 1e-19
+      },
+      "normal_coordinate_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x56bc75e2d63100000",
+        "float": 1e-20
+      },
+      "chart_radius_at_base_upper": {
+        "numerator_base16": "0xb993c1b77ea8ec891a362a8420e397f9db1d4b84818cd19536860a26aa152eae95f07b515152871d10d86e2101fee96f71d21b07d6e81ca3f05b80ea5c8437a242c5b434f70375ef2339e1e69caf49196bc74111eaa08b2f57376b0cb0d0195c03bc7b7b80950e5629d7845e32cf1d684f4665d0e2a1144d63a90cb0956fed1c6714d26c9a53b202fc936fe236407f8b97c0113e8ca5f694688c68e8c77ed4ba46d54a2461650b7cd9bc2244e976144b6560b425e3902b51e5725234d57e82206655cecd3ff00e0c1e612669a42bb6cf16d62cc09a8859adfa0a2023b302a91b13400b1ca8fdf99d1bc8c5bdd184dcb791b5e5889f0cd1a04f42cad5fb3520b16b028c19d535c01871d55a6475dea3d7f69287740771b4ab580b2b4c18eb079b2918078d9d3cc5ba357da534d04789667902db782eeb915211d1db717ddfd518255879f705387d085abc64b282316dce24b57a1f8253c2c6f92fe5876883fbfb754956ef714b9da1a2bb377318ad16abbd338b4a8d5",
+        "denominator_base16": "0x24191702b5132145b3af3ba9b37989cac9bf9046d32b38b9c4da4f8278774016d8ba19e31e613ea0d976817f530daf0fb99636c4874c9373fc6648adbfff6b7bd4ccf6e514867e8a7c9d69abcaf5ee56426c02809e7f91bfb0f508cf9858820b96ec6f8cf9befec483119b6603a9a250a62f0f9e84a8adbac4842773f8870d0ba4ac8c2c3384ddff54db1f1837181665d24018a7bab3427d4eb48fb7e2f87e311fddf5a45e072340630bffd23981e44dccff61809acc67a6ef4b96014f80270f8224e8b8eafe67661fd3c4e18415c3660798f14f5d86cd8ce2e0523aa232fb61d36a3ceb55d03f4eae8be0cd248bbe5e776df21de09230aed4efa1f7ecb32aed0b9ad6abbcbcbe38eaca7a5a2aba5b47c0cf32fa429cf1a65dfa864f5ee840000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 2.7869014191713026e-19
+      },
+      "synthesis_to_wiener_l1_upper": {
+        "numerator_base16": "0x2a418bbce9e58a6dbd1c9c7d347131577a18f1373c4e7fea10dc059066708d75896057ee3469d43e5af",
+        "denominator_base16": "0xea1575143cf97226f52d09d71a3293bd833a4e74863bbc1cf3a20253f4000000000000000000000000",
+        "float": 2.888267212368763
+      },
+      "tube_state_wiener_l1_upper": {
+        "numerator_base16": "0xcccf542195c75d1e9ed92ed8b6f1f89890dcb6f3ceec0d18c86e51b5e42e33089ebae3f2f979182c16b014d14aed18d0df1dd389d5e68391c9f4cef8f3b933f8a66428ad2aeefa7eaa8de2a4d2ef7d234d5acd9ac67ab42dfc70ffac327b99b958b8d5ed4a0ae1a362420bd57984795aa1f7b71947b313544c50950972a620c9d28b98b53e6a176130de51cdb969fe84127114d959d5db44369059d9bee753b453dd633c016f50a1964f46cf03eaec2cbe722e8b8f9e0b81031974f1e66039d0c632667127cbb5c19c1516c137523d1547ad542e51034f8c3243d4e7a6bbd40ede06bc5b14d252c5f8419ad6bb756f5bfc6cc62f4cce57646dc22c837c3a2b63279c7fe0a4503b7e6dfa2db0a7a27ae283d3f8a57e5a89c1cf7553ee8c20897096291554883cc5ba357da534d04789667902db782eeb915211d1db717ddfd518255879f705387d085abc64b282316dce24b57a1f8253c2c6f92fe5876883fbfb754956ef714b9da1a2bb377318ad16abbd338b4a8d5",
+        "denominator_base16": "0x24191702b5132145b3af3ba9b37989cac9bf9046d32b38b9c4da4f8278774016d8ba19e31e613ea0d976817f530daf0fb99636c4874c9373fc6648adbfff6b7bd4ccf6e514867e8a7c9d69abcaf5ee56426c02809e7f91bfb0f508cf9858820b96ec6f8cf9befec483119b6603a9a250a62f0f9e84a8adbac4842773f8870d0ba4ac8c2c3384ddff54db1f1837181665d24018a7bab3427d4eb48fb7e2f87e311fddf5a45e072340630bffd23981e44dccff61809acc67a6ef4b96014f80270f8224e8b8eafe67661fd3c4e18415c3660798f14f5d86cd8ce2e0523aa232fb61d36a3ceb55d03f4eae8be0cd248bbe5e776df21de09230aed4efa1f7ecb32aed0b9ad6abbcbcbe38eaca7a5a2aba5b47c0cf32fa429cf1a65dfa864f5ee840000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 3.075728140408179e-19
+      },
+      "state_radius_identity": "x_* = w(r) + K_s zeta",
+      "state_radius_reproduced_exactly": true,
+      "q007p_forward_invariance": true,
+      "q007p_normal_contraction": true,
+      "q007p_strict_normal_domination": true,
+      "q007p_exact_manifold_identification": true,
+      "passed": true
+    },
+    "positivity_bounds": {
+      "rest_equilibrium": "f_i^* = w_i at rho=1 and u=0",
+      "tube_population_deviation_linf_upper": {
+        "numerator_base16": "0xcccf542195c75d1e9ed92ed8b6f1f89890dcb6f3ceec0d18c86e51b5e42e33089ebae3f2f979182c16b014d14aed18d0df1dd389d5e68391c9f4cef8f3b933f8a66428ad2aeefa7eaa8de2a4d2ef7d234d5acd9ac67ab42dfc70ffac327b99b958b8d5ed4a0ae1a362420bd57984795aa1f7b71947b313544c50950972a620c9d28b98b53e6a176130de51cdb969fe84127114d959d5db44369059d9bee753b453dd633c016f50a1964f46cf03eaec2cbe722e8b8f9e0b81031974f1e66039d0c632667127cbb5c19c1516c137523d1547ad542e51034f8c3243d4e7a6bbd40ede06bc5b14d252c5f8419ad6bb756f5bfc6cc62f4cce57646dc22c837c3a2b63279c7fe0a4503b7e6dfa2db0a7a27ae283d3f8a57e5a89c1cf7553ee8c20897096291554883cc5ba357da534d04789667902db782eeb915211d1db717ddfd518255879f705387d085abc64b282316dce24b57a1f8253c2c6f92fe5876883fbfb754956ef714b9da1a2bb377318ad16abbd338b4a8d5",
+        "denominator_base16": "0x24191702b5132145b3af3ba9b37989cac9bf9046d32b38b9c4da4f8278774016d8ba19e31e613ea0d976817f530daf0fb99636c4874c9373fc6648adbfff6b7bd4ccf6e514867e8a7c9d69abcaf5ee56426c02809e7f91bfb0f508cf9858820b96ec6f8cf9befec483119b6603a9a250a62f0f9e84a8adbac4842773f8870d0ba4ac8c2c3384ddff54db1f1837181665d24018a7bab3427d4eb48fb7e2f87e311fddf5a45e072340630bffd23981e44dccff61809acc67a6ef4b96014f80270f8224e8b8eafe67661fd3c4e18415c3660798f14f5d86cd8ce2e0523aa232fb61d36a3ceb55d03f4eae8be0cd248bbe5e776df21de09230aed4efa1f7ecb32aed0b9ad6abbcbcbe38eaca7a5a2aba5b47c0cf32fa429cf1a65dfa864f5ee840000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 3.075728140408179e-19
+      },
+      "minimum_rest_population": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x24",
+        "float": 0.027777777777777776
+      },
+      "maximum_rest_population": {
+        "numerator_base16": "0x4",
+        "denominator_base16": "0x9",
+        "float": 0.4444444444444444
+      },
+      "registered_population_lower": {
+        "numerator_base16": "0x90645c0ad44c84a39a1d9bc28dc1c5f1ccd3e73464910d15974254e57d15a26aa4da713c1f8845aa1cb9cd50f8192372234d2557f7d4585270d2252eae53abedb97f6f8b39ecbe4c5a1ec547056ad21919e08d4bd347e32340c07c2ebc5cae505c21ed57817582d0244e181e68879d5b53959665b81e73eff6b99f978d6154c3a55e5b6050a10676e4e6966dc0b332ebcbf25ee69f2ddfaadb36849d0396a265ce454c1615fd77925fa82d88176a3652a765b190370cc5709cf42984751a23ac4a41dad215d9182902f573dfadc0d0b05286f88e57d8da3b3a01eedcf6ef2eab0781315f8d99b4ddd6658ff8dbe06a1e38d0afae103a1efd568f0d447ebb8336713250b9123a911d6321fb0c3dc7f6012683188abf0ea72f50ae3c2668b382fb4e00c9d12db2b0ab88e400735dd0c741e953124ad7c2b65bee648c659b7e41d5f9f490293218226afe3b650d1039ab4cf6075b96c4323c0b59eb4e46b0e27013d50ee3d535c2428e06bf19504577551476b0cf421ea33f659301a61083",
+        "denominator_base16": "0x144e1cf185dac2b73512918f74f45d82117bc127d6c84fe87ebaccb963c3140cd9e8ae8fc116b33a7a52a8d79eb7b278d8647ece8c1b12f13df988e1bbffac75a7b34ae0db8ba72de6188b70a22a5610855cc1685927c1fbd389d4f4c5b1c92684e4febf4c7b6f4e89b9e769620f6b4d5d7a78c92a9ee1b90e8a56313bcbf7568ca10ed8dcfabcdf9fbb417d9efd8c9946440dde5904d5667c4590d76fabc6fba1ecda2c74e403d437b6bfe64059106bc34fa6d85712fa4de69a8460bcb815f8b934c2e8042f1a2971e71ebeda4c3de9644607bca49bd39f3f9e2e40fb3cad6706ebc2446045239c422eae73648e9b15232dd830ce523b6257c6cb1b7524c825568718c09a2a2b000411e4d2b808d3585c748cacc57847ed94dceb8ca562a40000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.027777777777777776
+      },
+      "registered_population_upper": {
+        "numerator_base16": "0x90645c0ad44c851e0206e3d511e86d3ebca0e6b9bb2ea0442b2bac9c2829763a6ec946f17f24c5d0fa6c0988117895cbb289966dbf882d27c9a5928f85184e0f6ccf2254e39ccde7cbfb14c5ae3e87cd08ad01cde469ad3c7c055daf5bb25dcc3baabb41ad5462962ac5f2efa90878010d0ea8fb584afb1ac3c60db36767e22541876e05d5ea9f15ba54dac00e1b2c0200d142da6f86fc99e0cbfa83b466ae2a6a8aff392e3e7e587ef87c64f2f166e57cc703498e73ec2e6f31faed4a8f03c72478bf64c55ba5ef7714ad80768071669b21920867ff5bf310993e8b61e9b975120b6fd233db71c0886c22684d93e26f98063a041969acf733917f89660dbe3c0a3eeb4e50fe7f600faa684e71bb8490e108671eef2a18901a5dd70eeccfd7d04b1ff362ed24d4f54771bff8ca22f38be16acedb5283d49a4119b739a6481be2a060b6fd6cde7dd9501c49af2efc654b309f8a4693bcdc3f4a614b1b94f1d8fec2af11c2aca3dbd71f940e6afba88aaeb894f30bde15cc09a6cfe59ef7d",
+        "denominator_base16": "0x144e1cf185dac2b73512918f74f45d82117bc127d6c84fe87ebaccb963c3140cd9e8ae8fc116b33a7a52a8d79eb7b278d8647ece8c1b12f13df988e1bbffac75a7b34ae0db8ba72de6188b70a22a5610855cc1685927c1fbd389d4f4c5b1c92684e4febf4c7b6f4e89b9e769620f6b4d5d7a78c92a9ee1b90e8a56313bcbf7568ca10ed8dcfabcdf9fbb417d9efd8c9946440dde5904d5667c4590d76fabc6fba1ecda2c74e403d437b6bfe64059106bc34fa6d85712fa4de69a8460bcb815f8b934c2e8042f1a2971e71ebeda4c3de9644607bca49bd39f3f9e2e40fb3cad6706ebc2446045239c422eae73648e9b15232dd830ce523b6257c6cb1b7524c825568718c09a2a2b000411e4d2b808d3585c748cacc57847ed94dceb8ca562a40000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.4444444444444444
+      },
+      "registered_density_lower": {
+        "numerator_base16": "0x24191702b5132144e6dfe7881db22cac2ae6616e1c39402133fd988ea98b32fe104bc82d3a330b983abb9d8c599496e3a2e621f33c5f7aa31d487523ea18e7ea0ad827ec20cd4a91d63940fea006f3d797de1fdbcb90149c639a3b34d1ddcddd9a7b6fe0c743650b2a58c578b99ec0ad43ed03c90b243460228c705ab0d3f9b7585bf722c0debd35824f8662f8adff04a161c6da014943f93c437ade8922a2ece94d9bca9f1fcf8c0f2e9c96381293ac36b01ab196e17b7a30d96775bfe21b8e7f0b73c7049e2d9559a15e705c4a0da46b83da8e263490779b32fe0c512fabd5a1266803af146b3fd08524720fb96b987f2c5747251cc152d882dbc89fe4d3889dd8aa28408292d5c32dfa79866a1fc952d505499afa76c3da268da9e08db63e308aac1173df768f69d6eaab77c33a45ca825acb2fb8769986fd2487d1146eadee2e248e82202ae7daa78608fac782f7a5439b4d7dce9231db4a85e07dac3d3906d01a78977c04048ab6a9108eb4625e5d44c88ce752e95442cc74b572b",
+        "denominator_base16": "0x24191702b5132145b3af3ba9b37989cac9bf9046d32b38b9c4da4f8278774016d8ba19e31e613ea0d976817f530daf0fb99636c4874c9373fc6648adbfff6b7bd4ccf6e514867e8a7c9d69abcaf5ee56426c02809e7f91bfb0f508cf9858820b96ec6f8cf9befec483119b6603a9a250a62f0f9e84a8adbac4842773f8870d0ba4ac8c2c3384ddff54db1f1837181665d24018a7bab3427d4eb48fb7e2f87e311fddf5a45e072340630bffd23981e44dccff61809acc67a6ef4b96014f80270f8224e8b8eafe67661fd3c4e18415c3660798f14f5d86cd8ce2e0523aa232fb61d36a3ceb55d03f4eae8be0cd248bbe5e776df21de09230aed4efa1f7ecb32aed0b9ad6abbcbcbe38eaca7a5a2aba5b47c0cf32fa429cf1a65dfa864f5ee840000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 1.0
+      },
+      "population_lower_formula": "p_* = 1/36 - x_*",
+      "density_lower_formula": "d_* = 1 - x_*",
+      "forward_iteration_deduction": "Q007p maps the registered tube into itself, so the same lower bounds apply inductively at every full-map sampling time"
+    },
+    "validity_gates": {
+      "registered_q007p_input": {
+        "passed": true,
+        "threshold": "Q007p artifact/runner SHA, source, scope, all gates, and four theorem flags match",
+        "value": true
+      },
+      "exact_d2q9_weight_table": {
+        "passed": true,
+        "threshold": "nine weights have 1/4/4 multiplicities, sum one, minimum 1/36, and are all strictly positive",
+        "value": {
+          "count": 9,
+          "sum": 1.0,
+          "minimum": 0.027777777777777776
+        }
+      },
+      "fourier_wiener_triangle_inequality": {
+        "passed": true,
+        "threshold": "289 phases have unit modulus and the registered block-sum Wiener norm bounds every physical population component",
+        "value": {
+          "wave_count": 289,
+          "norm_definition_match": true
+        }
+      },
+      "q007p_tube_bound_reused": {
+        "passed": true,
+        "threshold": "x_*, r, zeta, and all Q007p forward-invariance theorem flags reproduce exactly",
+        "value": {
+          "state_radius_reproduced": true,
+          "forward_invariance": true
+        }
+      },
+      "finite_strict_json": {
+        "passed": true,
+        "threshold": "all exact bounds are finite and strict JSON serializable",
+        "value": true
+      }
+    },
+    "hypothesis_gates": {
+      "density_strictly_positive": {
+        "passed": true,
+        "threshold": "d_* = 1 - x_* > 0",
+        "value": 1.0
+      },
+      "all_populations_strictly_positive": {
+        "passed": true,
+        "threshold": "p_* = 1/36 - x_* > 0",
+        "value": 0.027777777777777776
+      },
+      "full_map_forward_positivity": {
+        "passed": true,
+        "threshold": "the registered tube is forward invariant and the same strict population lower applies to every full-map iterate",
+        "value": {
+          "forward_invariance": true,
+          "population_lower": 0.027777777777777776
+        }
+      }
+    },
+    "study_validity": "passed",
+    "hypothesis_outcome": "accepted",
+    "scientific_classification": "registered Q007p tube lies in the strictly positive population cone at every full-map iterate",
+    "theorem_consequence": {
+      "registered_tube_population_strictly_positive": true,
+      "registered_tube_density_strictly_positive": true,
+      "all_full_map_iterates_population_strictly_positive": true
+    },
+    "claim_boundary": "This certifies strict population and density positivity only at the input/output times of the full one-step map for real states in the fixed Q007p tube. It does not certify positivity after collision, streaming, or internal filter stages, nor entropy, monotonicity, a maximum principle, a larger tube, a global basin, grid-uniformity, a continuum limit, Q007c1 finite-amplitude performance, or Q007d Euclidean contraction.",
+    "preserved_prior_outcomes": {
+      "q007p_normal_attraction_acceptance_changed": false,
+      "q007c1_finite_amplitude_rejection_changed": false,
+      "q007d_euclidean_rejection_changed": false,
+      "q008c_tt_rejection_changed": false
+    },
+    "next_change": "If accepted, keep the tiny Q007p tube fixed and treat any stagewise-positivity or larger-domain question as a separate gate."
+  },
+  "study_gate": "passed",
+  "scientific_outcome": "accepted",
+  "next_question": "If accepted, keep the tiny Q007p tube fixed and treat any stagewise-positivity or larger-domain question as a separate gate."
+}
