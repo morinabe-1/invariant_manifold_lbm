@@ -3262,6 +3262,86 @@ exact mapとのshadowing時間、性能、parallel reduction、他のgrid／MPFR
 扱わない。Q007yは粗いestimatorに対する有効な`not_certified`として保存する。次はinitialization
 interiorを定義したうえで、repaired MPFR mapとexact mapのmulti-step shadowingを別gateで評価する。
 
+## 2026-08-09: Q007aa exact-state encoding initialization interior
+
+### 実装
+
+- Q007s／Q007y／Q007zのartifactとrunner SHAを固定し、Q007yとQ007zのcycleをfresh replayした。
+- Q007s外側tube \(r=9\times10^{-19}\)、\(\zeta=5\times10^{-12}\)に対し、
+  結果を見る前に
+
+  \[
+  r_0=8.9998\times10^{-19},\qquad
+  \zeta_0=4.999999999\times10^{-12}
+  \]
+
+  をinitialization interiorとして固定した。
+- Q007y input boundからraw componentwise encoding errorとrepair physical errorをexact rationalで
+  再構成した。base repairにはQ007zのselected-wave phase boundを再利用し、
+
+  \[
+  \epsilon_a=K_LE_{\rm raw}+B_{\rm rep}^{\rm sel}
+  \]
+
+  とした。
+- graph gauge \(W(a)=Va+H(a)\) のbase移動を無視せず、
+
+  \[
+  d_H(r)=2h_2r+3h_3r^2+4h_4r^3+\frac{\tau}{\rho-r},
+  \qquad
+  \epsilon_z=K_a(E_W+d_H(r)\epsilon_a)
+  \]
+
+  を用いた。direct external perturbationとgraph-shift perturbationをartifactで分離した。
+- \(\epsilon_a<r-r_0\)により\(a\)から\(\tilde a\)までの線分が外側base ball内に留まること、
+  \(\epsilon_z<\zeta-\zeta_0\)によりnormal座標が外側tubeへ入ることをexactに検査した。
+
+### 結果
+
+全6 validity gate、全6 hypothesis gateが通過した。
+
+- raw／repair／total physical Wiener upper:
+  `7.470474908090484e-24 / 1.2452407101265335e-23 / 1.992288200935582e-23`
+- raw／repair／total base increment:
+  `1.1285528478805861e-23 / 1.9216710236250915e-26 / 1.1304745189042113e-23`
+- base margin／headroom／utilization:
+  `2e-23 / 8.69525481095789e-24 / 0.5652372594521056`
+- chart derivative:
+  `1.0403913489904792e-16`
+- direct／graph-shift／total normal increment:
+  `5.96035575932445e-22 / 3.5186618281273335e-38 / 5.960355759324451e-22`
+- normal margin／headroom／utilization:
+  `1e-21 / 4.03964424067555e-22 / 0.596035575932445`
+- tight base／normal initialization radii:
+  `8.99988695254811e-19 / 4.999999999403964e-12`
+- input／result digest:
+  `71ca5b7b6ec65d0aee8e6486da73c4e532ce9e4721e8ae59edd7c664757fb8c7` /
+  `9ccdfa40693489d0161521724c10f452626bb6066712ad6d0ba8c15d53fed5bc`
+- runner SHA-256:
+  `a7a6334fdb157ec317f65fca2475bf3b03775af88ea6d68eec2c02c5ba74188e`
+- artifact newline-normalized SHA-256:
+  `cf6a0566b91e9b034d2c93290302182fe8b4a0bf0f7e7bbbbb232f3d4a12ee64`
+
+従って
+`registered exact-state interior survives MPFR-85 encoding and repair`
+として`accepted`とした。登録inward marginの使用率はbase／normalとも0.6未満であり、
+initial encoding／repair後の状態はstrictにQ007s tubeへ入る。
+
+### 定理的帰結
+
+固定保存量葉上で\(\|a\|_1\le r_0\)、\(\|z\|_*\le\zeta_0\)を満たすexact stateを
+sealed MPFR-85 backendへcomponentwise encodingし、Q007y balanced repairを適用する。repair後は
+exact \(M=289,P_x=P_y=0\)を満たし、base／normal座標はQ007s tube内にある。従ってQ007zの
+条件付き帰納を適用でき、sampling-time fixed leaf、tube membership、全MPFR stage positivityが
+全iterateで維持される。
+
+### 主張境界と次の改善
+
+本結果は事前登録したcoordinate interiorに限り、任意のQ007s boundary stateを含まない。
+またtube membershipはtrajectory accuracyを意味しない。exact mapとの距離、有限時間shadowing、
+性能、parallel reduction、他grid／MPFR build、center-slow構成、D3Q27は未評価である。次は同じ
+初期化interiorとbackendを固定し、multi-step shadowingの誤差再帰とhorizonを別gateで評価する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3353,6 +3433,8 @@ interiorを定義したうえで、repaired MPFR mapとexact mapのmulti-step sh
 [`artifacts/q007y_distributed_conservation_repair.json`](artifacts/q007y_distributed_conservation_repair.json)
 
 [`artifacts/q007z_selected_wave_repair.json`](artifacts/q007z_selected_wave_repair.json)
+
+[`artifacts/q007aa_initialization_interior.json`](artifacts/q007aa_initialization_interior.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

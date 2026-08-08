@@ -6419,6 +6419,48 @@ Q007yのrow-major balanced repair、および上記coordinate interiorに限定�
 state、固定保存量葉外、任意精度実装、exact軌道とのtrajectory accuracy／shadowing、性能、他grid、
 center-slow構成、D3Q27は主張しない。Q007zの条件付き定理を置換せず、その初期条件を一段だけ具体化する。
 
+### Q007aa 封印結果
+
+全6 validity gateと全6 hypothesis gateが通過した。
+
+- registered initial base／normal radii:
+  `8.9998e-19 / 4.999999999e-12`
+- registered base／normal inward margins:
+  `2e-23 / 1e-21`
+- raw／repair／total physical Wiener upper:
+  `7.470474908090484e-24 / 1.2452407101265335e-23 / 1.992288200935582e-23`
+- raw／repair／total base increment:
+  `1.1285528478805861e-23 / 1.9216710236250915e-26 / 1.1304745189042113e-23`
+- base headroom／utilization:
+  `8.69525481095789e-24 / 0.5652372594521056`
+- chart derivative \(d_H(r)\):
+  `1.0403913489904792e-16`
+- direct／graph-shift／total normal increment:
+  `5.96035575932445e-22 / 3.5186618281273335e-38 / 5.960355759324451e-22`
+- normal headroom／utilization:
+  `4.03964424067555e-22 / 0.596035575932445`
+- tight base／normal initialization radii:
+  `8.99988695254811e-19 / 4.999999999403964e-12`
+- input／result digest:
+  `71ca5b7b6ec65d0aee8e6486da73c4e532ce9e4721e8ae59edd7c664757fb8c7` /
+  `9ccdfa40693489d0161521724c10f452626bb6066712ad6d0ba8c15d53fed5bc`
+- runner SHA-256:
+  `a7a6334fdb157ec317f65fca2475bf3b03775af88ea6d68eec2c02c5ba74188e`
+- artifact newline-normalized SHA-256:
+  `cf6a0566b91e9b034d2c93290302182fe8b4a0bf0f7e7bbbbb232f3d4a12ee64`
+
+従って
+`registered exact-state interior survives MPFR-85 encoding and repair`
+として`accepted`とした。raw encodingのselected incrementにはQ007sの\(K_L\)を使い、
+repair incrementにはQ007zのphase-aware boundを使った。normal側はcombined physical errorに加えて、
+base shiftによる\(H(\tilde a)-H(a)\)を外側radiusでの\(d_H(r)\)により明示的に課金した。
+後者は小さいが、初期化定理から省略していない。
+
+これにより、上記exact fixed-leaf coordinate interiorからcomponentwise encoding／repairを経て
+Q007s tubeへ入り、その後のQ007z all-iterate inductionへ接続できる。任意のQ007s boundary stateや
+trajectory accuracyはまだ示していない。次はrepaired MPFR-85 mapとexact mapのmulti-step shadowingを、
+本tube-invariance定理を変更せず別gateとして事前登録する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

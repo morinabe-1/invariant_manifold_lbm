@@ -180,7 +180,11 @@ all-iterate帰納はなお`not_certified`である。Q007zではselected baseが
 成ることを使い、balanced repairの一様quotientをexactに除いた。repairのbase寄与上界は
 \(1.9216710236250915\times10^{-26}\)、総base利用率は`0.8213071928437413`となり、
 normal側とともにstrictに通過した。従って、登録tube内のrepair済みMPFR-85状態から開始する条件下で、
-fixed leaf、tube re-entry、stage positivityを全iterateへ帰納できる。
+fixed leaf、tube re-entry、stage positivityを全iterateへ帰納できる。Q007aaではこの条件付き初期値を
+exact state側へ接続し、\(r_0=8.9998\times10^{-19}\)、
+\(\zeta_0=4.999999999\times10^{-12}\)のcoordinate interiorを事前登録した。encoding、repair、
+graph \(W(a)\) のbase移動を含む増分は両inward marginの`0.56524 / 0.59604`だけを使用し、
+repair直後のQ007s tube membershipからQ007zの全iterate帰納へ接続できる。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1246,6 +1250,62 @@ strict positivityを全iterateへ帰納する。任意のexact stateの初期enc
 別問題として残す。Q007yの`not_certified`は、意図的に粗いphysical-\(\ell^1\) estimatorの判定として
 変更しない。
 
+### Q007aa exact-state encoding initialization interior
+
+Q007zの帰納は、すでにencoding／repair済みの状態がQ007s tube内にあることを仮定していた。
+Q007aaではexact fixed-leaf state
+
+\[
+x=W(a)+Uz,\qquad
+\|a\|_1\le r_0,\qquad \|z\|_*\le\zeta_0
+\]
+
+に対し、事前登録した
+
+\[
+r_0=8.9998\times10^{-19},\qquad
+\zeta_0=4.999999999\times10^{-12}
+\]
+
+からcomponentwise MPFR-85 encodingとQ007y repairを行う。raw／repair physical Wiener errorに加え、
+selected base shiftでgraph \(W(a)\) が移動する項も
+
+\[
+\epsilon_z=K_a\left(E_W+d_H(r)\epsilon_a\right)
+\]
+
+としてexact rationalで課金した。
+
+- classification:
+  `registered exact-state interior survives MPFR-85 encoding and repair`
+- validity / hypothesis gates: `6 / 6` passed、`6 / 6` passed
+- registered initial base／normal radii:
+  `8.9998e-19 / 4.999999999e-12`
+- raw／repair／total input Wiener upper:
+  `7.470474908090484e-24 / 1.2452407101265335e-23 / 1.992288200935582e-23`
+- raw／repair／total base increment:
+  `1.1285528478805861e-23 / 1.9216710236250915e-26 / 1.1304745189042113e-23`
+- base inward margin／headroom／utilization:
+  `2e-23 / 8.69525481095789e-24 / 0.5652372594521056`
+- \(d_H(r)\)／direct external／graph-shift／total normal increment:
+  `1.0403913489904792e-16 / 5.96035575932445e-22 / 3.5186618281273335e-38 / 5.960355759324451e-22`
+- normal inward margin／headroom／utilization:
+  `1e-21 / 4.03964424067555e-22 / 0.596035575932445`
+- tight base／normal initialization radii:
+  `8.99988695254811e-19 / 4.999999999403964e-12`
+- input／result digest:
+  `71ca5b7b6ec65d0aee8e6486da73c4e532ce9e4721e8ae59edd7c664757fb8c7` /
+  `9ccdfa40693489d0161521724c10f452626bb6066712ad6d0ba8c15d53fed5bc`
+- runner SHA-256:
+  `a7a6334fdb157ec317f65fca2475bf3b03775af88ea6d68eec2c02c5ba74188e`
+- artifact newline-normalized SHA-256:
+  `cf6a0566b91e9b034d2c93290302182fe8b4a0bf0f7e7bbbbb232f3d4a12ee64`
+
+従って、上記exact coordinate interiorから開始すれば、initial encoding／repair後のbase／normal座標は
+Q007s tubeへstrictに入り、その後はQ007zによりexact fixed leaf、tube membership、全MPFR stageの
+positivityを全iterateへ帰納できる。任意のQ007s boundary stateやexact軌道とのshadowing精度は
+まだ主張しない。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -1305,6 +1365,7 @@ python -m research.q007w_ideal_precision_threshold --output research/artifacts/q
 python -m research.q007x_mpfr_fixed_leaf --output research/artifacts/q007x_mpfr_fixed_leaf.json
 python -m research.q007y_distributed_conservation_repair --output research/artifacts/q007y_distributed_conservation_repair.json
 python -m research.q007z_selected_wave_repair --output research/artifacts/q007z_selected_wave_repair.json
+python -m research.q007aa_initialization_interior --output research/artifacts/q007aa_initialization_interior.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -1359,6 +1420,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007x_mpfr_fixed_leaf.json`](research/artifacts/q007x_mpfr_fixed_leaf.json)
 - [`research/artifacts/q007y_distributed_conservation_repair.json`](research/artifacts/q007y_distributed_conservation_repair.json)
 - [`research/artifacts/q007z_selected_wave_repair.json`](research/artifacts/q007z_selected_wave_repair.json)
+- [`research/artifacts/q007aa_initialization_interior.json`](research/artifacts/q007aa_initialization_interior.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1427,14 +1489,14 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007x concrete MPFR-85全演算trace／Fraction stage oracle、fixed-leaf closure棄却
 - Q007y 対角dyadic保存補正のfinite／tube-wide定義認証、normal budget認証、base budget棄却
 - Q007z balanced repairのselected-wave Fourier認証、条件付きMPFR-85 all-iterate tube帰納
+- Q007aa exact-state coordinate interiorからMPFR-85 encoding／repair後のQ007s tube membership認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- exact-state encodingの初期化interior、repaired MPFR mapのmulti-step shadowing、連続最適化、
-  Euclidean／grid-uniform normal attraction、
+- repaired MPFR mapのmulti-step shadowing、連続最適化、Euclidean／grid-uniform normal attraction、
   global basin
 - external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
@@ -1461,6 +1523,8 @@ algebraic条件でexact fixed leafを回復すること、およびnormal budget
 boundのbase utilizationが2.326となるため、そのestimatorではall-iterate invarianceを認証しない。
 Q007zではbalanced repairのuniform quotientが8 selected非零波数でexactに消えることを使い、
 base utilizationを0.821307へ戻した。従って、repair済みMPFR-85 stateが登録tube内にあるという
-初期条件のもとでall-iterate invarianceとstage positivityを認証する。Q007c1の有限振幅性能棄却と
-Q007dのEuclidean棄却を変更せず、任意exact-state encoding、trajectory shadowing、連続最適性、
-grid-uniform性へは主張を広げない。
+初期条件のもとでall-iterate invarianceとstage positivityを認証する。Q007aaでは事前登録した
+exact coordinate interiorからのinitial encoding／repairがその初期条件を満たすことを、
+graph shiftを含むexact rational boundで認証した。Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却を
+変更せず、任意Q007s boundary state、trajectory shadowing、連続最適性、grid-uniform性へは
+主張を広げない。
