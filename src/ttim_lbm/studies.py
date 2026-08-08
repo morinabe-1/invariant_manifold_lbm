@@ -8,6 +8,7 @@ from typing import Any
 
 import numpy as np
 
+from .adapted_metric import run_adapted_metric_audit
 from .anchor_obstruction import run_anchor_obstruction_audit
 from .checkerboard_filter import run_checkerboard_filter_audit
 from .cluster_complete import run_cluster_complete_audit
@@ -2204,6 +2205,39 @@ def run_q007d_study() -> dict[str, Any]:
                 "registered finite-sample Euclidean-projector diagnostic only; "
                 "no full-ball, adapted-norm, true invariant-normal-bundle, grid-"
                 "uniform normal-attraction, existence, or uniqueness theorem"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007e_study() -> dict[str, Any]:
+    """Run and package the sealed Q007e adapted-metric audit."""
+
+    cycle = run_adapted_metric_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "equilibrium Fourier-Riesz Stein metric prequalification",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "real_reduced_dimension": 24,
+            "selected_complex_dimension": 24,
+            "wave_block_count": 289,
+            "fixed_leaf_dimension": 2598,
+            "horizons": [1, 10],
+            "claim": (
+                "registered equilibrium single-grid adapted-metric "
+                "prequalification only; no finite-radius normal attraction, "
+                "true invariant-normal-bundle, grid-uniform bound, existence, "
+                "or uniqueness theorem"
             ),
         },
         "cycle": cycle,

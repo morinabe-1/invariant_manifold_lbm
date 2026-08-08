@@ -1014,3 +1014,48 @@ def test_q007d_artifact_records_valid_euclidean_normal_dominance_rejection() -> 
     assert cycle["cocycle_campaign"]["summary"]["maximum_tangent_leakage"] <= 1.0e-3
     assert not any(cycle["preserved_prior_outcomes"].values())
     assert "not a full-ball" in cycle["claim_boundary"]
+
+
+def test_q007e_artifact_records_valid_equilibrium_metric_prequalification() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007e_adapted_metric.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "equilibrium Fourier-Riesz Stein metric prequalification",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "real_reduced_dimension": 24,
+        "selected_complex_dimension": 24,
+        "wave_block_count": 289,
+        "fixed_leaf_dimension": 2598,
+        "horizons": [1, 10],
+        "claim": (
+            "registered equilibrium single-grid adapted-metric "
+            "prequalification only; no finite-radius normal attraction, "
+            "true invariant-normal-bundle, grid-uniform bound, existence, "
+            "or uniqueness theorem"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "equilibrium Riesz/Stein metric prequalified for finite-radius testing"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["metric_construction"]["summary"]["wave_block_count"] == 289
+    assert cycle["metric_construction"]["summary"][
+        "fixed_leaf_dimension"
+    ] == 2598
+    assert cycle["metric_construction"]["summary"][
+        "selected_complex_dimension"
+    ] == 24
+    assert cycle["q007d_reproduction"]["maximum_relative_error"] <= 1.0e-10
+    assert not any(cycle["preserved_prior_outcomes"].values())
+    assert "not finite-radius normal attraction" in cycle["claim_boundary"]
