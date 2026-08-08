@@ -2627,6 +2627,63 @@ Bauer--Fike／Neumann upperに支配される。`1e-18`は最適半径ではな�
 forward invariance、positivity、grid-uniform性、continuum limitは変更・認証していない。
 次はこの半径を固定入力とし、finite-ball normal attractionだけを独立gateで扱う。
 
+## 2026-08-08: Q007p exact-manifold finite-tube normal attraction
+
+### 実装
+
+- Q007h1／Q007n／Q007o artifact SHAとQ007n／Q007o runner SHAを固定し、source、scope、全sealed gateを
+  再確認した。Q007oのanalytic radius \(\rho=10^{-18}\)とselected boundary correction \(\tau\)を変更しなかった。
+- graph gauge \(W(a)=Va+H(a)\)、\(\mathcal LW=a\)を固定し、base radius \(r=10^{-19}\)、normal radius
+  \(\zeta=10^{-20}\)のtubeを結果を見る前に登録した。
+- zero waveにはfixed-leaf kinetic population \(\ell^1\)、8 selected waveにはQ007oの6次元external
+  coordinate、残る280 waveにはQ007h1のtransported full eigencoordinateを用いた。
+- 70 nonselected C4代表でNumPy center／returned column orderをQ007h1と同じに再構成した。
+  rational symbol boxに対し、\(I-KE\)、\(AE-ED\)、coordinate inverse、linear contractionを全て
+  `Fraction` intervalで評価し、70 proof digestを再現した。
+- 2 selected代表ではQ007o coordinate inverse／projected residualをexact replayし、C4で全8 selected
+  waveへ輸送した。zero blockを加え、`70*4 + 2*4 + 1 = 289` blockとexternal complex dimension
+  `2574`を閉じた。
+- Q007nの\(c_V,h_2,h_3,h_4,g_2,g_3,g_4\)、D2Q9 \(21/2\) derivative majorant、Q007oの
+  \(\rho,\tau\)をexact reuseし、state radius、base drift、fiber derivative、tangent conormを有理数だけで
+  評価した。
+- zero-wave collisionを\(C=-I/2+(3/2)VM\)へexact factorizationし、fixed leaf上の\(-I/2\)作用を確認した。
+  Q007oの\(AQ=QA\)、\(\mathcal LQ=0\)から\(\mathcal LAQ=0\)を監査し、C4 population permutationが
+  \(\ell^1\) normを保つことも確認した。
+
+### 結果
+
+全6 validity gateと全4 hypothesis gateが通過した。
+
+- nonselected／selected representative: `70 / 2`
+- represented wave block／external complex dimension: `289 / 2574`
+- Q007h1 proof-digest mismatch／Q007o selected replay mismatch: `0 / 0`
+- maximum nonselected coordinate defect: `9.306827894107678e-15`
+- linear external contraction \(q_0\): `0.981709835832552`
+- synthesis／analysis／selected-left upper \(K_s/K_a/K_L\):
+  `2.888267212368763 / 29.917136268364473 / 1.5106842091904618`
+- tube-state Wiener upper \(x_*\): `3.075728140408179e-19`
+- base-image modal upper \(a_*\): `9.920954673554099e-20`
+- base forward-invariance margin \(r-a_*\): `7.904532644590156e-22`
+- normal fiber contraction \(q_*\)／cap margin:
+  `0.9817098358325526 / 0.008290164167447421`
+- normal tube margin: `1.8290164167447423e-22`
+- tangent conorm lower \(m_T\): `0.9837709569923394`
+- domination ratio \(\Gamma_*\)／cap margin:
+  `0.9979048769989224 / 0.0010951230010776572`
+
+従って`registered fixed-leaf tube is uniformly normally attracting in the external-coordinate norm`として
+`accepted`とした。固定17²・固定保存量葉のexact theorem manifoldについて、
+\(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)の登録tubeはforward invariantであり、normal fiberは
+one-stepで一様に収縮し、tangentよりstrictに速く収縮する。
+
+### 主張境界
+
+これはQ007fの33 starting point／10-step observationではなく、登録tube全体に対する解析的majorantである。
+ただし\(\|\cdot\|_*\)は固定Fourier external-coordinate block-sum \(\ell^1\) normで、Euclidean normではない。
+Q007dのEuclidean projected-normal棄却、Q007c1の有限振幅directional-shadowing棄却を変更しない。
+population positivity、より大きいtube、global basin、grid-uniform attraction、continuum limitも認証していない。
+次はこの極小tubeを拡大解釈せず、残る研究課題を独立gateとして一つずつ扱う。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2696,6 +2753,8 @@ forward invariance、positivity、grid-uniform性、continuum limitは変更・�
 [`artifacts/q007n_explicit_local_radius.json`](artifacts/q007n_explicit_local_radius.json)
 
 [`artifacts/q007o_external_complement_radius.json`](artifacts/q007o_external_complement_radius.json)
+
+[`artifacts/q007p_finite_tube_attraction.json`](artifacts/q007p_finite_tube_attraction.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

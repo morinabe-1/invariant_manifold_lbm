@@ -152,7 +152,11 @@ explicit local existence radiusを`accepted`とした。ただしこの極小値
 finite-ball normal attraction、grid-uniform性を示さない。Q007oではQ007nのgap、majorant、119候補を
 固定したまま、selected projectorのexact external complementでinternal inverseを再評価した。旧119レコードは
 完全一致し、total inverse upperは`2.746444556852928e13`、最大pass modal radiusは`1e-18`へ改善した。
-ただし新しい律速は据え置いたexternal-output boundであり、finite-ball attractionはまだ示さない。
+Q007pではこの半径を固定し、全289 Fourier blockをexternal coordinate normで厳密に覆った。
+登録tube \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)に対し、base forward invariance、
+one-step normal contraction、tangentに対するstrict normal dominationを全て認証した。ただしこれは固定17²・
+固定保存量葉・固定external-coordinate normの極小tubeだけの結果であり、Euclidean contraction、
+population positivity、より大きいtube、global basin、grid-uniform性は示さない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -856,6 +860,37 @@ external eigenvalueの個別一意性は使わず、C4で全8 selected waveへ�
 維持した保守値である。Q007c1の有限振幅性能棄却、forward invariance、positivity、
 finite-ball normal attraction、grid-uniform性、continuum limitは変更・認証しない。
 
+### Q007p exact-manifold finite-tube normal attraction
+
+Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
+\(r=10^{-19}\)、\(\zeta=10^{-20}\)のtubeを事前登録した。zero waveではfixed-leaf kinetic population
+\(\ell^1\)、8 selected waveではQ007oの6次元external coordinate、残る280 waveではQ007h1のtransported
+full eigencoordinateを使い、block-sum external norm \(\|\cdot\|_*\)を構成した。
+
+- classification:
+  `registered fixed-leaf tube is uniformly normally attracting in the external-coordinate norm`
+- validity / hypothesis gates: `6 / 6`, `4 / 4` passed
+- nonselected／selected C4 representatives: `70 / 2`
+- reproduced wave blocks／external complex dimension: `289 / 2574`
+- Q007h1 proof-digest mismatch／Q007o selected-certificate mismatch: `0 / 0`
+- maximum full-coordinate defect: `9.306827894107678e-15`（登録上限`1e-8`）
+- linear external contraction \(q_0\): `0.981709835832552`
+- conversion bounds \(K_s/K_a/K_L\):
+  `2.888267212368763 / 29.917136268364473 / 1.5106842091904618`
+- tube state Wiener upper \(x_*\): `3.075728140408179e-19`
+- base-image modal upper \(a_*\): `9.920954673554099e-20`
+- base forward-invariance margin \(r-a_*\): `7.904532644590156e-22`
+- normal fiber contraction \(q_*\): `0.9817098358325526`
+- tangent conorm lower \(m_T\): `0.9837709569923394`
+- domination ratio \(\Gamma_*=q_*/m_T\): `0.9979048769989224`
+- registered domination-cap margin \(0.999-\Gamma_*\): `0.0010951230010776572`
+
+従って登録tube全体でbaseとnormal fiberがforward invariantであり、normal fiberはone stepで一様に収縮し、
+tangentよりstrictに速く収縮する。Q007fの有限33点・10-step観測とは異なり、これはexact manifoldのfull
+registered tubeに対する解析的majorantである。ただし\(\|\cdot\|_*\)は固定Fourier external-coordinate normで
+ありEuclidean normではない。Q007dのEuclidean棄却、Q007c1の有限振幅性能棄却、positivity、より大きいtube、
+global basin、grid-uniform性、continuum limitは変更・認証しない。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -904,6 +939,7 @@ python -m research.q007l_cubic_jet_bridge --output research/artifacts/q007l_cubi
 python -m research.q007m_quartic_jet_bridge --output research/artifacts/q007m_quartic_jet_bridge.json
 python -m research.q007n_explicit_local_radius --output research/artifacts/q007n_explicit_local_radius.json
 python -m research.q007o_external_complement_radius --output research/artifacts/q007o_external_complement_radius.json
+python -m research.q007p_finite_tube_attraction --output research/artifacts/q007p_finite_tube_attraction.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -947,6 +983,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007m_quartic_jet_bridge.json`](research/artifacts/q007m_quartic_jet_bridge.json)
 - [`research/artifacts/q007n_explicit_local_radius.json`](research/artifacts/q007n_explicit_local_radius.json)
 - [`research/artifacts/q007o_external_complement_radius.json`](research/artifacts/q007o_external_complement_radius.json)
+- [`research/artifacts/q007p_finite_tube_attraction.json`](research/artifacts/q007p_finite_tube_attraction.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1004,13 +1041,15 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007m exact quartic forcing／保存選択則、全17,550 graph-gauge homological systemの有理Krawczyk認証
 - Q007n Wiener \(\ell^1\) majorant、全次数homological inverse、quartic-centered explicit-radius収縮認証
 - Q007o exact external-complement resolvent、旧119判定再現、explicit-radius upperの厳密改善
+- Q007p 全289 blockのexternal-coordinate norm、有限tubeのforward invariance／normal contraction／domination認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- external-output／phase-aware resolventの追加改善とfinite-ball normal attraction
+- より大きいtube、Euclidean／grid-uniform normal attraction、positivity、global basin
+- external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -1018,6 +1057,7 @@ Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を
 定理多様体のgraph-gauge quadratic jetの対応を、Q007lにより登録Q007b三次係数とgraph-gauge cubic jetの
 対応を、Q007mにより登録Q007c1四次係数とgraph-gauge quartic jetの対応を認証した。Q007nでは同じ
 定理多様体についてmodal radius`1e-75`のexplicit local existenceを認証し、Q007oではgapとmajorantを
-変えずにexact external complementを使って`1e-18`へ改善した。次は、この半径を固定入力とする
-finite-ball normal-attraction gateを独立に扱う。Q007c1の有限振幅性能棄却やgrid-uniform性へは
-まだ主張を広げない。
+変えずにexact external complementを使って`1e-18`へ改善した。Q007pではそのexact manifoldについて
+\(r=10^{-19}\)、\(\zeta=10^{-20}\)の登録tubeをexternal-coordinate normで一様normal-attractingと認証した。
+Q007c1の有限振幅性能棄却、Q007dのEuclidean棄却、positivity、より大きいtube、grid-uniform性へは
+主張を広げない。

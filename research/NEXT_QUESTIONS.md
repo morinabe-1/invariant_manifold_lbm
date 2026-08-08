@@ -4496,6 +4496,43 @@ normal fiberがone-stepで一様収縮し、tangentよりstrictに速く収縮�
 Q007dのEuclidean棄却、Q007c1の有限振幅性能棄却、population positivity、より大きいtube、
 global basin、grid-uniform性、continuum limitは変更・認証しない。
 
+### Q007p 封印結果
+
+判定は`accepted`である。
+
+- 3 input artifact SHA／source／scope／全upstream gate: pass
+- registered Q007n／Q007o runner SHA: pass
+- nonselected／selected C4 representative: `70 / 2`
+- represented wave block／external complex dimension: `289 / 2574`
+- Q007h1 proof digest mismatch／Q007o selected replay mismatch: `0 / 0`
+- maximum nonselected coordinate defect: `9.306827894107678e-15`
+- global linear external contraction \(q_0\): `0.981709835832552`
+- \(K_s/K_a/K_L\):
+  `2.888267212368763 / 29.917136268364473 / 1.5106842091904618`
+- \(x_*/a_*/r/\rho\):
+  `3.075728140408179e-19 / 9.920954673554099e-20 / 1e-19 / 1e-18`
+- base forward-invariance margin: `7.904532644590156e-22`
+- normal contraction \(q_*\)／registered-cap margin:
+  `0.9817098358325526 / 0.008290164167447421`
+- normal tube margin \(\zeta-q_*\zeta\): `1.8290164167447423e-22`
+- tangent conorm \(m_T\): `0.9837709569923394`
+- domination ratio \(\Gamma_*\)／registered-cap margin:
+  `0.9979048769989224 / 0.0010951230010776572`
+- runner SHA-256:
+  `23ff283acb3f872fd2ff489f17d94b8e022e3f45a5c65b5523bf976c534a9f2a`
+- artifact newline-normalized SHA-256:
+  `a5e766938cfee0174deba9c529be9aec2cce4bff9225a3a4a1da83f7d255a751`
+
+従って固定17²・固定保存量葉のQ007o exact manifoldについて、登録した
+\(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)のtubeはforward invariantであり、normal fiberは
+one-stepで一様に収縮し、tangentよりstrictに速く収縮する。これはQ007fの有限sample観測ではなく、
+登録tube全体のexact rational majorantである。
+
+ただし認証normは固定Fourier external-coordinate block-sum \(\ell^1\)であり、Euclidean normではない。
+Q007dのEuclidean棄却、Q007c1の有限振幅性能棄却、population positivity、より大きいtube、global basin、
+grid-uniform性、continuum limitは変更・認証しない。次の研究gateではこのtubeを拡大解釈せず、未解決課題を
+別途事前登録する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
