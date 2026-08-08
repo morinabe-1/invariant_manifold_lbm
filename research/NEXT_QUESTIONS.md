@@ -5077,6 +5077,36 @@ acceptedなら、固定17²・固定保存量葉・登録Q007s selected tubeのr
 monotonicity、maximum principle、IEEE-754 roundoff enclosure、連続最適tube、global basin、
 grid-uniform性、continuum limit、Q007c1の有限振幅性能、Q007dのEuclidean判定も変更・認証しない。
 
+### Q007t 封印結果
+
+全5 validity gateと全3 hypothesis gateが通過した。
+
+- Q007s artifact／runner SHA、source／scope、全sealed gate、4 theorem flag、candidate digest: pass
+- transitive Q007p artifact／norm definition／real conjugacy constraint: pass
+- D2Q9 population count／weight multiplicity: `9 / (1, 4, 4)`
+- weight sum／minimum: `1 / 1/36`
+- Fourier wave count: `289`
+- selected base／normal radius: `9e-19 / 5e-12`
+- selected tube-state Wiener upper \(x_*\): `1.44413385700551e-11`
+- population lower: exact \(1/36-x_*>0\)、float `0.02777777776333644`
+- density lower: exact \(1-x_*>0\)、float `0.9999999999855587`
+- runner SHA-256:
+  `1e00281c71b5ea5d06fedcebd9bd483a73e6ec111388df20e8255ae3aefed877`
+- artifact newline-normalized SHA-256:
+  `2089d97aa19248cc17689f3e7a01e113540e5afc329ffa5cb3a4c511a43a8529`
+
+従って
+`registered Q007s larger tube lies in the strictly positive population cone at every full-map iterate`
+として`accepted`とした。Q007sのforward invarianceにより、固定17²・固定保存量葉・selected tube内の
+全real stateについて、full one-step mapの入力／出力時刻 \(n=0,1,2,\ldots\) で全9 populationとdensityに
+同じstrict lowerを適用できる。
+
+これはfull-map sampling時刻だけの結論である。equilibrium evaluation、BGK collision、streaming、filterの
+stagewise positivityは未認証であり、Q007rのstagewise certificateは旧Q007p tubeだけに封印されたままである。
+entropy、monotonicity、maximum principle、IEEE-754 roundoff enclosure、連続最適tube、global basin、
+grid-uniform性、continuum limit、Q007c1／Q007dの既存判定も変更しない。次は拡大tubeのexact stagewise
+positivityを別gateとして事前登録する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

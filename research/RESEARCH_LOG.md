@@ -2842,6 +2842,51 @@ attraction、global basin、continuum limitを意味しない。Q007q／Q007rの
 旧Q007p tubeだけに封印されたままで、新tubeへは拡張していない。Q007c1の有限振幅性能棄却とQ007dの
 Euclidean棄却も変更しない。次は新tubeのpositivityを独立gateとして扱う。
 
+## 2026-08-08: Q007t larger-tube full-map population positivity
+
+### 実装
+
+- Q007s artifact／runner SHA、source／scope、全6 validity gate、全5 hypothesis gate、4 theorem flag、
+  canonical candidate digestを固定した。
+- Q007s selected candidateのbase／normal radius、state upper、全6 candidate gate、forward-invariance
+  theorem flagをexactに再利用した。
+- Q007sが固定したtransitive Q007p artifactを再読込し、SHA、Fourier block count、external-coordinate
+  norm definition、real conjugacy constraintを再確認した。
+- D2Q9の9 velocityとweightをexact `Fraction`で構成し、rest／axis／diagonal multiplicity、
+  weight sum、minimum weightを独立に再構成した。
+- Fourier phaseのunit modulusとpopulation-wise triangle inequalityから、各physical population deviationが
+  Q007sのWiener state upper \(x_*\)以下になることを監査した。
+
+### 結果
+
+全5 validity gateと全3 hypothesis gateが通過した。
+
+- Q007s input／transitive Q007p norm audit: pass
+- D2Q9 population count／weight multiplicity: `9 / (1, 4, 4)`
+- weight sum／minimum: `1 / 1/36`
+- Fourier wave count: `289`
+- selected base／normal radius: `9e-19 / 5e-12`
+- selected tube-state Wiener upper \(x_*\): `1.44413385700551e-11`
+- population lower: exact \(1/36-x_*>0\)、float `0.02777777776333644`
+- density lower: exact \(1-x_*>0\)、float `0.9999999999855587`
+- runner SHA-256:
+  `1e00281c71b5ea5d06fedcebd9bd483a73e6ec111388df20e8255ae3aefed877`
+- artifact newline-normalized SHA-256:
+  `2089d97aa19248cc17689f3e7a01e113540e5afc329ffa5cb3a4c511a43a8529`
+
+従って
+`registered Q007s larger tube lies in the strictly positive population cone at every full-map iterate`
+として`accepted`とした。Q007s selected tube内の全real stateについて、全9 populationとdensityは
+full one-step mapの入力／出力時刻でstrict positiveである。Q007sのforward invarianceにより同じboundを
+全iterateへ帰納的に適用できる。
+
+### 主張境界
+
+これはfull-map sampling時刻だけの結論であり、equilibrium evaluation、BGK collision、streaming、filterの
+stagewise positivityは認証しない。Q007rのstagewise certificateは旧Q007p tubeだけに封印されたままである。
+entropy、monotonicity、maximum principle、IEEE-754 roundoff enclosure、連続最適tube、global basin、
+grid-uniform性、continuum limitを扱わず、Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却も変更しない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2919,6 +2964,8 @@ Euclidean棄却も変更しない。次は新tubeのpositivityを独立gateと�
 [`artifacts/q007r_stagewise_positivity.json`](artifacts/q007r_stagewise_positivity.json)
 
 [`artifacts/q007s_finite_tube_enlargement.json`](artifacts/q007s_finite_tube_enlargement.json)
+
+[`artifacts/q007t_larger_tube_population_positivity.json`](artifacts/q007t_larger_tube_population_positivity.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

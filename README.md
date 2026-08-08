@@ -164,7 +164,8 @@ equilibrium evaluation、BGK collision、periodic streaming、five-point filter�
 全stageでstrict positivityを認証した。ただしIEEE-754の各中間演算に対するroundoff enclosure、
 entropy、maximum principleは示さない。Q007sではQ007pと同じmajorantを9×99のexact rational候補へ
 適用し、\(r=9\times10^{-19}\)、\(\zeta=5\times10^{-12}\)のregistered tubeを認証した。ただし
-Q007q／Q007rのpositivityは旧tubeだけに封印され、新tubeへはまだ拡張していない。
+Q007s単独ではQ007q／Q007rのpositivityを新tubeへ拡張しない。Q007tでfull-map入力／出力時刻の
+population／density positivityは別途認証したが、stagewise positivityは旧tubeだけに封印されている。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1003,7 +1004,28 @@ Q007pのmap、固定保存量葉、exact graph-gauge manifold、external-coordin
 registered tubeのforward invariance、一様one-step normal contraction、strict normal dominationを認証した。
 これは9×99有限格子上の辞書式選択であり、連続最適化、最大可能tube、Euclidean／grid-uniform attraction、
 global basin、continuum limitを意味しない。Q007q／Q007rのpopulation positivity certificateは旧Q007p tubeに
-封印されたままで、新しいtubeへはまだ拡張していない。
+封印されたままで、Q007sの結果から新しいtubeへ自動拡張はしない。full-map positivityは次のQ007tで
+独立に扱う。
+
+### Q007t larger-tube full-map population positivity
+
+Q007s selected tubeのexact state upper \(x_*=1.44413385700551\times10^{-11}\)を再利用し、Q007pから
+transitiveに固定されたFourier--Wiener normとD2Q9 weight tableを再構成した。全289 Fourier phaseの
+modulusが1であるため、各site・populationのdeviationは\(x_*\)以下である。
+
+- classification:
+  `registered Q007s larger tube lies in the strictly positive population cone at every full-map iterate`
+- validity / hypothesis gates: `5 / 5`, `3 / 3` passed
+- selected base／normal radius: `9e-19 / 5e-12`
+- Fourier wave／D2Q9 population count: `289 / 9`
+- tube-state Wiener upper \(x_*\): `1.44413385700551e-11`
+- population lower: exact \(1/36-x_*>0\)、float `0.02777777776333644`
+- density lower: exact \(1-x_*>0\)、float `0.9999999999855587`
+
+Q007sのforward invarianceにより、同じlower boundはfull one-step mapの入力／出力時刻
+\(n=0,1,2,\ldots\)へ帰納的に適用される。これはequilibrium evaluation、BGK collision、
+periodic streaming、filter outputのstagewise positivityをまだ認証しない。Q007rのstagewise
+certificateは旧Q007p tubeに封印されたままであり、次の独立gateで扱う。
 
 ## 再現
 
@@ -1057,6 +1079,7 @@ python -m research.q007p_finite_tube_attraction --output research/artifacts/q007
 python -m research.q007q_population_positivity --output research/artifacts/q007q_population_positivity.json
 python -m research.q007r_stagewise_positivity --output research/artifacts/q007r_stagewise_positivity.json
 python -m research.q007s_finite_tube_enlargement --output research/artifacts/q007s_finite_tube_enlargement.json
+python -m research.q007t_larger_tube_population_positivity --output research/artifacts/q007t_larger_tube_population_positivity.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -1104,6 +1127,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007q_population_positivity.json`](research/artifacts/q007q_population_positivity.json)
 - [`research/artifacts/q007r_stagewise_positivity.json`](research/artifacts/q007r_stagewise_positivity.json)
 - [`research/artifacts/q007s_finite_tube_enlargement.json`](research/artifacts/q007s_finite_tube_enlargement.json)
+- [`research/artifacts/q007t_larger_tube_population_positivity.json`](research/artifacts/q007t_larger_tube_population_positivity.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1165,13 +1189,14 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007q Q007p tubeのexact Wiener bound、D2Q9 population／densityのfull-map時刻でのstrict positivity認証
 - Q007r exact equilibrium／BGK／streaming／convex-filter stageの全iterate strict positivity認証
 - Q007s 9×99 exact rational候補の全評価、base／normal両半径を拡大したregistered tubeの認証
+- Q007t Q007s tubeのexact Wiener bound、full-map時刻でのpopulation／density strict positivity認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007s tubeのpopulation／stagewise positivity、連続最適tube、Euclidean／grid-uniform normal attraction、
+- Q007s tubeのstagewise positivity、連続最適tube、Euclidean／grid-uniform normal attraction、
   IEEE-754 stage-roundoff enclosure、global basin
 - external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
@@ -1187,5 +1212,6 @@ Q007qでは同じtubeをfull-map時刻でstrict positive population cone内に�
 Q007rではexact mapのequilibrium／collision／streaming／filter stageへ正値性を拡張した。
 Q007sでは同じ解析的majorantを9×99有限格子へ適用し、\(r=9\times10^{-19}\)、
 \(\zeta=5\times10^{-12}\)のregistered tubeへ拡大した。Q007c1の有限振幅性能棄却、Q007dの
-Euclidean棄却、Q007s tubeのpositivity、IEEE-754 stage-roundoff enclosure、連続最適性、
+Euclidean棄却を変更しない。Q007tではQ007s tubeをfull-map時刻でstrict positive population cone内に
+含むことを認証したが、stagewise positivity、IEEE-754 stage-roundoff enclosure、連続最適性、
 grid-uniform性へは主張を広げない。
