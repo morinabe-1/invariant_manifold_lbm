@@ -895,6 +895,6 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - TT-cross、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性は
-認証された。次に残る最小の橋は、Q006i以降で使った数値固有ベクトルが、その定理で選ばれた厳密spectral
-subspaceを表すことを区間固有対で認証することである。Taylor係数やexplicit radiusは、そのtangent bridgeを
-通過した後の独立gateとする。
+認証された。従って次のゲートはQ007jである。Q006i以降で使ったright／left数値固有ベクトルが、その定理で
+選ばれた厳密spectral subspaceとbiorthogonal coordinatesを表すことを、12個の有理Krawczyk固有対問題で
+認証する。Taylor係数やexplicit radiusは、そのeigencoordinate bridgeを通過した後の独立gateとする。

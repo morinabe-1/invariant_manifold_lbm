@@ -3262,6 +3262,103 @@ finite-ball normal attraction、grid-uniform／continuum resultは得ていな�
 次の最小の未認証層は、Q006i以降の数値固有ベクトルが定理の厳密selected spectral subspaceを表すことの
 区間固有対によるtangent bridgeである。
 
+## Q007j: rational Krawczyk selected-eigencoordinate bridge — 事前登録
+
+### 問い
+
+Q006i以降の数値chartが使うselected right／left eigenvectorとbranch labelは、Q007iの定理で選ばれた厳密な
+24実次元spectral subspaceおよびそのbiorthogonal coordinatesを表すと、有理矩形区間で認証できるか。
+
+このgateはTaylor係数へ進む前の線形coordinate bridgeである。Q007iが既に示した多様体存在を再判定せず、
+quadratic／cubic／quartic coefficient、explicit radius、finite-ball attractionは判定しない。
+
+### 固定入力と上流再現
+
+- `q006i_full2d_quadratic.json` SHA-256を
+  `347d5349af349618333df17733ba372c8ca6f5ee02784a9e788898acefb5db89`へ固定する。source／scope、全validity
+  pass、scientific outcome `rejected`、失敗hypothesisが`global_conservation`だけであることを照合する。
+- Q006i modelをartifactから係数読込みせず再構築し、dense／reduced Hessian hashを
+  `3f26eadcc6d25514671d9b741c53df5cf87c0dc598d0ff1cf9b9fd19f47d412f /`
+  `61f5f3a9663a29022e1b41f56df0a6408d93d770a2821d012ba1974954645da5`と一致させる。
+- `q007h1_equivariant_spectrum.json`／`q007i_direct_nonresonance.json`のSHA-256を
+  `caee8fe382c0282e11e8139b8f434a944013f630288adf2e99223d0123c91af4 /`
+  `c256b30ac5bfe0a6bc5e5f8e293016d3e0aa37c4bfa82ba81a0a2679d89e082f`へ固定し、それぞれ
+  `passed / accepted`、Q007i `theorem_applies=true`を要求する。
+- grid `17²`、`omega=1.5`、`eta=0.01`、固定保存量葉、selected実次元`24`を変更しない。
+
+### 12個の正規化固有対問題
+
+代表waveをaxis `(1,0)`、diagonal `(1,1)`、branch順を
+`shear / acoustic_positive / acoustic_negative`とする。Q006iの数値right vectorで最大絶対成分をpivotに選ぶ
+登録列は`2,0,0 / 1,0,0`、left vectorでは`5,7,8 / 8,7,5`とする。同率時は最小indexを使う。
+
+right eigenpairではpivot成分を1へ固定し、残り8成分と固有値を
+
+\[
+z=(x_{j\ne p},\lambda)\in\mathbb C^9,
+\qquad F_A(z)=Ax-\lambda x=0
+\]
+
+の9複素方程式として解く。left eigenpairにも \(A^*y-\mu y=0\)、\(\mu=\overline\lambda\) を同じ形式で使う。
+従って2 wave × 3 branch × right／leftの12 systemを独立に認証する。
+
+- \(A\) はQ007h1と同じMachin 96項、trigonometric 64項、140桁外向き丸めの有理Fourier symbolとする。
+- center \(z_0\) はQ006i modeのfloat64値をexact dyadic rationalへ変換する。
+- \(J_0=F'(z_0)\) のNumPy inverseはpreconditioner提案だけに使い、全entryをexact dyadic rationalへ変換する。
+- 探索boxを各実部・虚部について固定半径 \(r=10^{-10}\) の
+  \(X=z_0+[-r,r]+i[-r,r]\) とする。
+- `Fraction` rectangleだけで
+
+\[
+K(z_0,X)=z_0-CF(z_0)+\bigl(I-CF'(X)\bigr)(X-z_0)
+\]
+
+  を評価する。各componentで\(K\)の\(z_0\)からの最大実部／虚部偏差を\(r\)で割った最大値を
+  `Krawczyk utilization`と定義する。受理計算にfloat normやfinite-differenceを使わない。
+
+### Q007h1 discとの対応と全24 modeへの輸送
+
+- Q007h1のnegative axis／diagonal代表proofを再構築し、`exact_proof_digest_sha256`を一致させる。
+- 各right-rootの固有値Krawczyk imageを共役し、対応するQ007h1 selected Bauer--Fike discの一つへ厳密に
+  包含する。6 root全てが別のsimple selected discへ一対一対応することを要求する。
+- right／left root boxから \(\langle y,x\rangle\) を区間評価し、0を含まないことを示す。Q006i rightの元のscaleを固定し、
+  exact leftをbiorthogonalに再正規化して \(\langle \ell,r\rangle=1\) とする。
+- Q007h1と同じexact population permutationと複素共役でaxis／diagonal代表を全8 selected waveへ輸送し、
+  Q006iの全24 branch labelを被覆する。輸送後のexact root enclosureと登録mode centerのcomponentwise距離上界を
+  right／biorthogonal-leftで保存する。
+
+### design-only探索の開示
+
+事前登録半径の計算量確認に限りfloat64で評価した。\(r=10^{-10}\)で予測maximum utilizationはright
+`1.59798e-5`、left `3.31491e-5`、minimum pivot-normalized right／left overlap modulusは`1.27484`だった。
+これらの値はartifactへ流用せず、全包含・距離・overlapを有理runnerから新規計算する。
+
+### validity gate
+
+1. 3 input artifactのSHA／source／scope／sealed outcomeとQ006i coefficient hashを再現する。
+2. representative wave `2`、branch `6`、right／left system `12`、transport後mode label `24`、登録pivot列を一致させる。
+3. pi／trigonometric width `<=1e-120`、symbol entry width `<=1e-110`、12 preconditioner inverse defect `<1`を要求する。
+4. 全interval endpointをexact `Fraction`とし、全summaryをfinite・strict JSONにする。
+5. Q007h1 representative proof digest mismatch、disc assignment collision、C4／conjugate label mismatchを全て0とする。
+
+validityが一つでも落ちた場合は`inconclusive`とし、同じgateでpivot、半径、精度、normalizationを変更しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次を全て要求する。
+
+1. 12 system全てで\(K(z_0,X)\subset\operatorname{int}X\)、maximum utilization `<=1e-3`
+2. 6 right-root eigenvalue imageが相異なるQ007h1 selected discへ一意に包含される
+3. 6 right／left overlap modulus lowerが`>=0.5`で、biorthogonal normalization denominatorが0を含まない
+4. 全24輸送modeでregistered right／biorthogonal-left centerへのmaximum componentwise correction upperが`<=1e-9`
+
+全て通れば`registered selected eigencoordinates rigorously bridge to the theorem spectral subspace`として
+`accepted`とする。一つでも落ちれば`registered selected eigencoordinate bridge not certified`という有効な
+`not_certified`とする。どちらの場合もQ007iの存在・一意性結論と過去の性能判定は変更しない。
+
+acceptedの場合だけ、次のQ007kで300 quadratic pairのforcing／homological solveを区間化し、Q006iの数値二次jetを
+定理多様体の厳密二次jetへ結び付ける。cubic／quarticとexplicit radiusはさらに別gateへ分ける。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
