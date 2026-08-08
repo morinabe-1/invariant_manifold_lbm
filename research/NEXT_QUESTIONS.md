@@ -6924,6 +6924,245 @@ ordered-dense coefficient oracleに対するflat系の時間break-evenは、natu
 D3Q27の不可能性は主張しない。固定Q007c1係数のQ009／TT-SVD online pathは閉じる。新しい表現を試す
 場合はcandidate familyを結果前に別途事前登録する。
 
+## Q007ac: phase-aware external-output resolvent refinement — 事前登録
+
+### 問い
+
+Q007oのtotal homological inverseを支配しているQ007n由来のexternal-output upper
+
+\[
+C_{\rm ext}=81\beta_*/\delta
+=2.746444556852928\times10^{13}
+\]
+
+について、modulusだけでなく複素位相を保持した固有値discとselected eigenvalue productを比較する。
+Q007oのselected-output internal inverse、zero-wave inverse、quartic center、非線形majorant、
+119候補を一切変えずに、external-output blockをtotal inverseの支配要因から外し、登録existence
+radiusをstrictに改善できるか。
+
+### 封印する入力とscope
+
+- Q007h1 artifact newline-normalized SHA-256:
+  `caee8fe382c0282e11e8139b8f434a944013f630288adf2e99223d0123c91af4`
+- Q007i artifact newline-normalized SHA-256:
+  `c256b30ac5bfe0a6bc5e5f8e293016d3e0aa37c4bfa82ba81a0a2679d89e082f`
+- Q007n artifact newline-normalized SHA-256:
+  `7fe09089744e41229e71666540e4885d560a4c27a2e8bc95a94d5959af0fbc36`
+- Q007o artifact newline-normalized SHA-256:
+  `36a350b27658ce0699727640d65c48cf0700f999ca1881b07d45825d086158fd`
+- Q007i／Q007h1 implementation source SHA-256:
+  `22209c56184eff9556db13b553cb89644eea11ffd77a3af69d0316a747118294` /
+  `d2d857c1b9ac20f88c9b1a1a44e59bd1d15dad043d5e96fde5069ea0c1865a94`
+- Q007n／Q007o standalone runner SHA-256:
+  `6eefae3386e5c49f151b1cd4537eb84fbb92858578fe4fce7768e50ad43c5dc9` /
+  `d34afda382784610ea2b8997e6c44376188b02c42668ade8e2d53ff9bc9afea7`
+- 固定map／葉／norm:
+  \(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)、
+  \(\delta M=\delta P_x=\delta P_y=0\)、Q007nのmodal／Wiener \(\ell^1\)とpair max norm
+
+Q007oのworking selected-output internal inverse
+`2.1920952274236575e11`、Q007nのzero-wave inverse
+`6.2060607588672085e9`、80桁外向き丸め、次数2--4 coefficient majorant、
+D2Q9 nonlinear majorant、候補 \(10^{-2},\ldots,10^{-120}\)、収縮閾値\(1/2\)を固定する。
+変更を許すのはnonzero nonselected output blockのinverse upperだけである。
+
+### 対称なselected nominal discs
+
+Q007iと同じQ007h1 proof reconstructionを行い、selected C4 representativeを
+axis \((-1,0)\)、diagonal \((-1,-1)\)へ固定する。返却固有値indexは
+
+- axis acoustic／shear: `(0,1) / 4`
+- diagonal acoustic／shear: `(0,1) / 6`
+
+とする。各type \(X\in\{A,D\}\)について、float64 centerをexact dyadic point
+\(z_{X,+},z_{X,-},z_{X,s}\)へ戻し、
+
+\[
+\widehat z_{X,+}=z_{X,+},\qquad
+\widehat z_{X,-}=\overline{z_{X,+}},\qquad
+\widehat z_{X,s}=\Re z_{X,s}
+\]
+
+をnominal centerとする。Q007h1のBauer--Fike radiusに
+\(|z_{X,-}-\overline{z_{X,+}}|\)または\(|\Im z_{X,s}|\)を加え、元の3個のexact
+selected eigenvalue discを上の共役対／実軸discで覆う。Q007h1のexact C4 transportにより、
+この6 nominal discsを全24 selected modeへ適用する。全nominal centerとdiscがQ007nのworking
+selected spectral-radius upper \(\sigma\)以下であることをvalidity gateにする。
+
+### external-output target discs
+
+Q007h1の72 nonzero C4 representativesのうちselected representative 2個を除く70個について、
+9個全てのfloat64 eigenvalue centerをexact dyadic pointへ戻し、保存された
+Bauer--Fike radiusを付ける。従ってtargetは
+
+\[
+70\times9=630
+\]
+
+個のnonzero nonselected-output eigenvalue discsである。selected output waveの6次元external
+complementはQ007oのinternal inverseが、zero waveはQ007nのfixed-leaf inverseが既に担当するため、
+この630 targetへ混ぜない。
+
+本gateでは入力waveの和によるFourier selection ruleを使わず、全selected productを全630 targetと
+比較する。これは実際に許されるpairのsupersetなので、通過すれば保守的だが有効な一様upperになる。
+失敗時だけ、別gateでwave-sum restrictionを事前登録する。
+
+### modulus screen
+
+Q007iと同じ96項rational logarithm、110桁内部／60桁最終外向き格子を使う。selected側は
+`axis_acoustic, axis_shear, diagonal_acoustic, diagonal_shear`の4 type、
+external側は上記630 discsとする。次数\(n=2,\ldots,89\)の全
+
+\[
+\sum_{n=2}^{89}{n+3\choose3}=2{,}919{,}730
+\]
+
+modulus aggregateを同じ順序で列挙する。screen幅は結果後に変えず
+
+\[
+g_{\rm screen}=10^{-6}
+\]
+
+へ固定する。aggregate log intervalと全external log intervalの距離が
+\(g_{\rm screen}\)以上なら、Q007nのfinite-degree modulus floor
+
+\[
+m_*=\min(\underline\sigma_\perp,\underline\sigma_E^{89})
+\]
+
+と \(e^x-1\ge x\) により、複素距離も
+\(m_*g_{\rm screen}\)以上である。validity gateでは
+
+\[
+m_*g_{\rm screen}>\delta_{\rm phase},\qquad
+\delta_{\rm phase}=10^{-7}
+\]
+
+をexact rationalで要求する。
+
+距離が\(g_{\rm screen}\)未満のaggregateだけを`dangerous`とし、そのaggregateから
+screen幅内にある全external merged intervalと全source disc identifierを保存する。nearest一個だけへ
+省略しない。
+
+### dangerous aggregateの完全なphase展開
+
+dangerous aggregateを
+\((a_a,a_s,d_a,d_s)\)とする。axis／diagonal acoustic countを
+
+\[
+a_++a_-=a_a,\qquad d_++d_-=d_a
+\]
+
+の全ての方法で分割し、
+
+\[
+\widehat p=
+\widehat z_{A,+}^{a_+}
+\widehat z_{A,-}^{a_-}
+\widehat z_{A,s}^{a_s}
+\widehat z_{D,+}^{d_+}
+\widehat z_{D,-}^{d_-}
+\widehat z_{D,s}^{d_s}
+\]
+
+をcomplex `Fraction` pairとして計算する。積記号の代わりに上式では隣接積を意味する。
+各factorのnominal-disc inflationを\(\epsilon_j\)、total degreeを\(n\)とすると、telescopingから
+
+\[
+\epsilon_p
+\le \sigma^{n-1}\sum_{j=1}^{n}\epsilon_j
+\]
+
+でexact selected productを囲む。各nearby external disc center／radiusを
+\((\widehat\mu,r_\mu)\)とし、全展開pairについて平方根を使わず
+
+\[
+ |\widehat p-\widehat\mu|^2
+ >
+ \left(\delta_{\rm phase}+\epsilon_p+r_\mu\right)^2
+\]
+
+をexact `Fraction`で要求する。dangerous aggregate数、expanded product数、
+disc comparison数、最小strict marginとwitnessを保存する。screen外はmodulus proof、
+screen内はこの完全展開で被覆し、未判定pairを許さない。
+
+次数90以上はQ007nの
+
+\[
+\delta_{\rm tail}
+=\underline\sigma_\perp-\overline\sigma_E^{90}
+\]
+
+をそのまま使い、\(\delta_{\rm tail}>\delta_{\rm phase}\)を要求する。
+
+### inverse upperと固定radius再走査
+
+finite degreeとtailを合わせたworking external gapを
+\(\delta_{\rm ext}=\delta_{\rm phase}=10^{-7}\)へ固定し、Q007nと同じ
+\(\beta_*\)およびnorm conversionを使って
+
+\[
+C_{\rm ext}^{\rm phase}=81\beta_*/\delta_{\rm ext}
+\]
+
+を80桁10進格子へ上向きに丸める。新しいtotal pair inverseは
+
+\[
+C_L^{\rm new}
+=\max\left\{
+C_{\rm ext}^{\rm phase},
+C_0,
+C_{\rm int}^{\rm Q007o}
+\right\}
+\]
+
+とする。Q007oの旧total inverseで119 candidate recordをexact再現した後、変更した
+\(C_L^{\rm new}\)だけで同じ`_radius_scan`を再実行する。
+
+### validity gate
+
+1. 4 artifact SHA、4 implementation／runner SHA、source、scope、Q007h1／Q007i／Q007n／Q007oの
+   sealed outcomeと全gateが一致する。
+2. 72 proof digestを再現し、selected representative／index、C4 transport、6 nominal-disc containment、
+   70 nonselected representative／630 target discをexactに確認する。
+3. Q007i logarithm設定、2,919,730 aggregate count、全screen partitionを再現し、
+   \(m_*g_{\rm screen}>\delta_{\rm phase}\)をexactに確認する。
+4. 全dangerous aggregateを完全展開し、全nearby target discとの上記平方距離判定を実行する。
+   tail gapもstrictに\(\delta_{\rm phase}\)を超える。
+5. Q007o internal inverse、Q007n zero inverse、全majorant、119候補をbitwiseに再利用し、
+   Q007o旧candidate recordをexact再現する。
+6. 全数値がfiniteでstrict JSON、input digest、phase-certificate digest、result digestを再現する。
+
+一つでも落ちれば`inconclusive`とし、external inverseや半径改善を解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. finite degreeの全screen内pairとdegree-90 tailが
+   \(\delta_{\rm ext}=10^{-7}\)をstrictに満たす。
+2. \(C_{\rm ext}^{\rm phase}<C_{\rm int}^{\rm Q007o}\)であり、external-outputがtotal inverseの
+   支配要因から外れる。
+3. \(C_L^{\rm Q007o}/C_L^{\rm new}\ge100\)である。
+4. Q007oの\(10^{-18}\)がpassし、新しい最大pass候補がstrictに大きい。
+5. 新しい最大pass候補でdensity／reduced-range buffer、\(Z<1/2\)、
+   \(Y+Z\tau<\tau\)が全てstrictで、直前の大きい候補がfailするか\(10^{-2}\)である。
+
+全て通れば
+`phase-aware external-output discs remove the registered resolvent bottleneck`
+として`accepted`とする。一つでも落ちれば
+`registered phase-aware external-output refinement did not remove the bottleneck`
+という有効な`not_certified`とする。screen幅、target gap、target discs、半径候補を結果後に
+変更しない。
+
+### 主張境界
+
+acceptedでも、固定17²・固定保存量葉・固定modal／Wiener normに対するanalytic existence radiusだけを
+鋭くする。位相付きgapの最適値、Fourier wave-sumを使ったsharp bound、Q007o selected-output internal
+inverseの追加改善、zero-wave phase改善、連続最適化、Euclidean／grid-uniform normal attraction、
+global basin、Q007c1の有限振幅性能、既存Q007p--Q007abのtube／MPFR定数の拡大、境界、外力、
+D3Q27は認証しない。既存の小さいtubeとforward-shadowing結論はそのまま有効であり、再解釈しない。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
