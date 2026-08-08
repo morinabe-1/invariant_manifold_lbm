@@ -3176,8 +3176,9 @@ Q007h1のdegree-90 tailと合わせれば、通過時には固定17²・固定�
 \frac{2|z|^{193}}{193(1-z^2)}
 \]
 
-を使う。endpointは`Fraction`で評価し、60桁decimal rational gridへ外向き丸めする。全selected型とexternal
-diskのmodulus lower／upperへ単調性を使ってlog intervalを作る。最大tail boundを`<=1e-90`とする。
+を使う。endpointは`Fraction`で評価し、級数の各積・和は110桁decimal rational gridへ外向き丸めし、最終
+log endpointを60桁gridへ再び外向き丸めする。全selected型とexternal diskのmodulus lower／upperへ単調性を
+使ってlog intervalを作る。最大tail boundを`<=1e-90`とする。
 
 degree \(n\) で4型のcountを \((a,b,c,d)\)、\(a+b+c+d=n\) とする。product modulusのlog intervalを
 
@@ -3204,7 +3205,7 @@ log-gapは約`6.91224e-10`、witnessはdegree 51、count \((1,19,27,4)\)だっ�
 - C4 representative count `72`、proof-digest mismatch count `0`、selected disk `6`、selected modulus type `4`、
   external representative disk `643`を要求する。
 - selected acoustic／shear分類marginを`>=0.1`とする。
-- 96項log enclosureの最大tail boundを`<=1e-90`、60桁外向き丸めを固定する。
+- 96項log enclosureの最大tail boundを`<=1e-90`、110桁internal／60桁final外向き丸めを固定する。
 - degree count `88`、aggregate count `2,919,730`、expanded product count `869,107,778`を一致させる。
 - 全値finite、strict JSONとする。失敗時は`inconclusive`とし、非共鳴・定理適用を主張しない。
 
