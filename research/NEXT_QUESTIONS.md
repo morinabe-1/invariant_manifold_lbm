@@ -7914,6 +7914,161 @@ majorant、別norm、より高次chart、別spectral enclosureは排除してい
 次は、認証済み`1e-16` chart domainを使うQ007p-style downstream tube再監査を
 別gateとして事前登録する。構造的に異なるexternal certificateは、その後も独立候補として残す。
 
+## Q007ag: Q007ae analytic radiusのfinite-tube伝播 — 事前登録
+
+### 問いと固定scope
+
+Q007p／Q007sのfinite-tube majorantでanalytic chart radiusとcorrection-pair boundだけを
+Q007aeのaccepted `1e-16` boundaryへ更新すると、Q007sで認証した
+\((r,\zeta)=(9\times10^{-19},5\times10^{-12})\)を両方向へstrictに拡大できるかを問う。
+固定scopeは \(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)、
+\(\delta M=\delta P_x=\delta P_y=0\)、Q007p external-coordinate block-sum \(\ell^1\) norm、
+Q007n quartic-centered exact manifoldとする。
+
+封印入力は次の4 artifactとrunnerである。
+
+- Q007p artifact／runner SHA-256:
+  `a5e766938cfee0174deba9c529be9aec2cce4bff9225a3a4a1da83f7d255a751` /
+  `23ff283acb3f872fd2ff489f17d94b8e022e3f45a5c65b5523bf976c534a9f2a`
+- Q007s artifact／runner SHA-256:
+  `7b70fd20df8fb7db5e5460a08d3f86fe8b81a55b56864c860a2c24e9cab63292` /
+  `6c8633f7e99874ac3be7dd14d3caa253b0dc8c499bb2f6edbb392fa695975b1e`
+- Q007ae artifact／runner SHA-256:
+  `c6d28bba13fcf831dfccaf03854072256f7e8ff1a241b54aaf84552dd06a2a55` /
+  `f2e0d90ae6bb5f9694c799d2ea850a014f66f2ab9681d94dc1c850cc753db600`
+- Q007af artifact／runner SHA-256:
+  `a686526552c33f5f1f01a9f1d9c49036d1c9491a2092b07ac8c8621a33d4ada1` /
+  `819679b22d7552a3f247d7c3389a83890f56c60522154bdb5ea05d7eb77a48a4`
+- Q007ae radius recordsの再生成に直接使うQ007n／Q007o implementation SHA-256:
+  `6eefae3386e5c49f151b1cd4537eb84fbb92858578fe4fce7768e50ad43c5dc9` /
+  `d34afda382784610ea2b8997e6c44376188b02c42668ade8e2d53ff9bc9afea7`
+
+Q007s old 891 candidate、passing count `676`、candidate digest
+`91fcc70355acfc4b7163c951227188960ef275408b06a678d45d5e4ec4c85300`、
+selected candidateと全gateをexact再現してから新しい評価へ進む。Q007aeのinput／result／phase／
+selected-center digestとQ007afのinput／result／integer-bisection digestも再現する。
+
+### 変更する2定数
+
+Q007pから保存された13 coefficient、selected spectral bounds、nonlinear constant、
+linear external contraction \(q_0\)、synthesis／analysis／selected-analysis constants、
+normal／domination capを変更しない。変更するのは
+
+\[
+\rho_{\rm old}=10^{-18}
+\longrightarrow
+\rho_{\rm ag}=10^{-16}
+\]
+
+と、対応するQ007ae exact boundaryの
+
+\[
+\tau_{\rm old}=2.8490986842816327\times10^{-68}
+\longrightarrow
+\tau_{\rm ag}=2.186110822784426\times10^{-60}
+\]
+
+だけである。どちらもQ007ae
+`internal_phase_refined_radius_search.exact_boundary_certificate.selected`
+からexact fractionとして読む。Q007aeの全119 recordを再生成して、selected
+`1e-16 pass / 1e-15 fail`と \((\rho_{\rm ag},\tau_{\rm ag})\)を照合する。
+
+### 固定candidate grid
+
+Q007sのanalytic radiusが100倍になったことに合わせ、base gridだけをexactに100倍する。
+
+\[
+r_m=m\times10^{-17},\qquad m=1,\ldots,9.
+\]
+
+normal gridはQ007sと同じ
+
+\[
+\zeta_{m,e}=m\times10^{-e},
+\qquad m=1,\ldots,9,\quad e=10,\ldots,20
+\]
+
+のunique 99値を使う。従ってcandidateは \(9\times99=891\) 個である。selection ruleはQ007sと
+同じく、全6 gateを通る点の中でbase radius、次にnormal radiusをlexicographicに最大化する。
+結果後にgrid、cap、selection ruleを変更しない。
+
+予備的exact evaluationから得たselection boundaryを実装前に次へ固定する。
+
+- passing candidate count: `757`
+- canonical candidate digest:
+  `a7a6a8f605339b0e8ffd16a5d3190967cb7329771d322f8edc0a53bc4b45e408`
+- selected:
+  \((r_{\rm ag},\zeta_{\rm ag})=(9\times10^{-17},5\times10^{-11})\)
+- Q007s selectedからのimprovement:
+  `100 / 10`
+- selected base sliceのfirst larger normal:
+  \(6\times10^{-11}\)、`base_forward_invariance`だけがfail
+
+base gridの上端を選ぶため、これはcontinuous maximum base radiusの主張ではない。
+
+### exact candidate formula
+
+Q007sの`_evaluate_candidate`をそのまま使う。
+
+\[
+\begin{aligned}
+w(r)&=c_Vr+\tau+h_2r^2+h_3r^3+h_4r^4,\\
+r_R(r)&=\lambda_*r+\tau/c_V+g_2r^2+g_3r^3+g_4r^4,\\
+x(r,\zeta)&=w(r)+K_s\zeta,\\
+a_+(r,\zeta)&=r_R(r)+K_L\,dN(x)\,K_s\zeta,\\
+q_*(r,\zeta)&=q_0+K_aK_s\,dN(x)
+ \{1+K_LdH(a_+)\}.
+\end{aligned}
+\]
+
+全candidateについて次の6 gateをexact `Fraction` signsで判定する。
+
+1. \(0<r<\rho_{\rm ag}\)
+2. \(0\le x<1\)
+3. \(a_+<r\)
+4. \(q_*<0.99\)かつ \(q_*\zeta<\zeta\)
+5. selected tangent conorm \(m_T>0\)
+6. \(q_*/m_T<0.999\)
+
+### validity gate
+
+1. 4 artifact／runner SHA、source、scope、accepted outcome、封印digestが一致する。
+2. Q007s old audit、891 candidate、676 passing、digest、selected boundaryをexact再現する。
+3. Q007ae 119 radius records、accepted boundary、\(\rho_{\rm ag}\)、\(\tau_{\rm ag}\)をexact再現する。
+4. \(\rho,\tau\)以外のQ007p／Q007s定数がbitwise不変で、Q007s selected controlがnew constantsでもpassする。
+5. 9 unique base、99 unique normal、891 Cartesian candidateを重複なく生成し、
+   全6 gateとfixed selectionをexactに完走する。
+6. 全数値がfinite strict JSONで、input／candidate／result digestを再現する。
+
+一つでも落ちれば`inconclusive`とし、新tubeを採用しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. passing countが`757`、candidate digestが登録値と一致する。
+2. selected candidateがexactに
+   \((9\times10^{-17},5\times10^{-11})\)で、全6 gateをstrictに通る。
+3. Q007s selectedに対するbase／normal improvementがexactに`100 / 10`である。
+4. selected sliceで全larger normalがfailし、first larger
+   \(6\times10^{-11}\)は`base_forward_invariance`だけをfailする。
+5. selected candidateで \(q_*<0.99\)、\(m_T>0\)、\(q_*/m_T<0.999\)がstrictである。
+
+全て通れば
+`Q007ae analytic radius enlarges the registered external-coordinate tube`
+として`accepted`とする。validity通過後に一つでも落ちれば
+`registered scaled grid did not propagate the Q007ae analytic radius to both tube radii`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedでも固定scaled grid上の一候補だけを認証する。continuous optimum、maximum tube、
+Euclidean／grid-uniform attraction、global basin、continuum limitは示さない。Q007t／Q007uの
+exact positivity、Q007v--Q007abのbinary64／MPFR／repair／forward-shadowingはQ007s old tubeに
+封印された別certificateなので、新tubeへ自動拡張しない。new tubeのpopulationおよびstagewise
+positivityは次の別gateとする。Q007c1 finite-amplitude rejection、Q007d Euclidean rejection、
+Q007af external-disc obstruction、Q010 TT cost rejectionは変更しない。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
