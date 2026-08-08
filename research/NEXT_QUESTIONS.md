@@ -6710,15 +6710,164 @@ adversarial residual search を分けて保存する。
 
 Q008cが登録TT-SVD候補を有効に棄却したため、固定Q007c1係数については開始しない。
 
-## Q010: online benefit はあるか
+## Q010: sealed TT-SVD representation cost and break-even — 事前登録
 
 ### 問い
 
-offline construction を含め、どの rollout 数で full dense LBM または direct
-TT-LBM より総時間・総メモリが小さくなるか。
+Q008a／Q008cで忠実度を通過しstorage仮説を棄却された固定8 TT-SVD候補について、natural
+quartic sparse-fiberを必須baselineとする独立holdout cost campaignを行う。TTに有利なoffline
+費用除外を置いても、local homogeneous quartic actionの総時間または格納量に有限break-evenを
+持つ候補はあるか。
 
-break-even が現れない regime は失敗として正直に記録する。Fourier-selection-rule
-sparse representationを必須baselineに残し、TTが負ければ不適切と判定する。
+### 封印する入力
+
+- Q008a artifact newline-normalized SHA-256:
+  `97dd1614dc62a1f58bafb74ddb7ee980763247ddc7e91686637a55f3be05d6f3`
+- Q008c artifact newline-normalized SHA-256:
+  `058dd425504fd0cd003d50e7b7c4a118b0200cb3ac6a15e556468af425a0b73e`
+- package source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+- fixed quartic coefficient SHA-256:
+  `9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b`
+- grid／map:
+  \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、24 complex input modes、9 local outputs、
+  degree 4、17,550 natural fibers
+- TT-SVD:
+  relative discarded Frobenius budget \(10^{-13}\)、maximum rankなし
+
+Q008a／Q008cの`passed / rejected`、全validity pass、全候補fidelity pass、selected
+candidateなしを要求する。Q008のtiming値は入力整合と参考診断として記録するが、Q010 hypothesisの
+成否には使わない。
+
+### 固定候補とbaseline
+
+natural sparse-fiber、ordered-dense coefficient oracle、および次の8 TTを比較する。
+
+1. `flat-q-first`
+2. `flat-q-last`
+3. `d1q3-q-first`
+4. `d1q3-q-last`
+5. `wave-branch-tuple-major`
+6. `wave-branch-factor-major`
+7. `wave-qtt-tuple-major`
+8. `wave-qtt-scale-interleaved`
+
+stored real scalar countはcore格納スカラー数であって数学的独立自由度とは呼ばない。
+格納判定には、sparse index／multiplicity metadataを含むraw array payload bytesとuncompressed NPZ
+serialized bytesも必ず併記する。TTについてはnominal gauge-adjusted dimensionを診断値として記録するが、
+判定指標へ置き換えない。
+
+### offline cost protocol
+
+full quartic modelとnatural coefficient familyの構築、およびordered-dense oracleのmaterializationは
+全methodの共通入力としてtimingから除外する。これはTT-SVDに有利な除外であり、full pipeline costを
+過小評価する。
+
+- sparse offline preparation:
+  registered dtypeへのfresh copy、storage record生成、uncompressed NPZ roundtrip
+- TT offline preparation:
+  sealed tensorization、TT-SVD、storage record生成、uncompressed NPZ roundtrip
+- ordered-dense control:
+  fresh dense copy、uncompressed NPZ roundtrip
+- warmup 1回、measured 3回
+- 各回でbitwise serialization roundtrip、fidelity、finite timeを検査する
+
+method \(m\) のoffline blockを\(B_{m,j}\)とし、
+
+\[
+B_m^-=\min_jB_{m,j},\qquad B_m^+=\max_jB_{m,j}
+\]
+
+を保存する。
+
+### independent online campaign
+
+- seed: `20260901`
+- normalized real reduced directions: 16
+- Q008a action／timing seed `20260827 / 20260828` と
+  Q008c action／timing seed `20260829 / 20260830` の全方向に対するexact duplicate: 0
+- warmup block: 1
+- measured block: 5
+- method order: blockごとのcyclic rotation
+- timer: `perf_counter_ns`
+- scope: local homogeneous quartic 9-vector action only
+- 各blockで16方向のoutput norm checksumを保存し、sparseに対する相対差を\(10^{-11}\)以下とする
+
+sample当たりonline timeを\(t_{m,j}\)とし、
+
+\[
+t_m^-=\min_jt_{m,j},\qquad
+t_m^+=\max_jt_{m,j}
+\]
+
+を保存する。環境固有の有限campaignであるため、漸近計算量や他machineの速度とは解釈しない。
+
+### break-even定義
+
+natural sparse-fiberを\(s\)、TT候補を\(m\)とする。TTに最も有利な観測下界とsparseに最も不利な
+観測上界を使い、
+
+\[
+T_m^-(N)=B_m^-+Nt_m^-,
+\qquad
+T_s^+(N)=B_s^++Nt_s^+,
+\qquad N\in\mathbb Z_{\ge0}
+\]
+
+を定義する。
+
+\[
+B_m^->B_s^+,\qquad t_m^->t_s^+
+\]
+
+なら、登録campaignの全\(N\ge0\)で\(T_m^-(N)>T_s^+(N)\)なので
+`robust no finite sparse-baseline time break-even`とする。どちらかが逆転した候補には、
+median cost lineの最小整数break-evenを別途計算する。時間上のbreak-evenがあっても、raw payloadと
+serialized bytesの両方でsparseをstrictに下回らなければTT採択とはしない。
+
+ordered-dense controlとのbreak-evenも診断として計算するが、natural sparse baselineを判定から
+外さない。ordered-dense coefficient oracleをfull dense LBMとは呼ばない。
+
+### validity gate
+
+1. Q008a／Q008c artifact SHA、package source、scope、outcome、全validity／fidelityが一致する。
+2. fixed coefficient hash、fiber count、8 candidate mapping、TT rank／storageをfresh buildで再現する。
+3. holdout方向が正規化され、hashが再現し、Q008a／Q008c全既登録方向とのexact duplicateが0である。
+4. sparse／dense／8 TT actionが全有限で、全block checksum relative errorが\(10^{-11}\)以下である。
+5. offline／onlineの回数、cyclic order、全time record、storage／serialization roundtripが再現する。
+6. strict JSON、input digest、result digestが再現する。
+
+一つでも失敗すれば`inconclusive`とし、cost仮説を解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. 8 TT全てでcore stored real scalars、raw array payload bytes、serialized bytesがnatural
+   sparse-fiberより大きい。
+2. 8 TT全てで\(B_m^->B_s^+\)である。
+3. 8 TT全てで\(t_m^->t_s^+\)かつmedian online slowdownが2以上である。
+4. 8 TT全てが`robust no finite sparse-baseline time break-even`である。
+5. 従って時間と格納量を同時にsparseより小さくする採択候補が0である。
+
+全て通れば
+`sealed TT-SVD path is cost-dominated by natural quartic sparse-fiber`
+としてnegative hypothesisを`accepted`とし、固定Q007c1係数に対するQ009／TT-SVD
+online rolloutを開始しない。
+
+onlineまたはoffline dominanceが一候補でも崩れた場合はtiming結論を
+`not_certified`とする。ただしQ008a／Q008cのstorage rejectionは変更しない。
+時間break-evenとstorage lossが併存する場合は
+`time break-even observed but sparse storage still dominates`
+と分類し、総合TT採択はしない。threshold、方向数、候補を結果後に変更しない。
+
+### 主張境界
+
+本ゲートは固定Q007c1 quartic coefficient、8 full-rank TT-SVD候補、現在のCPU／Python／NumPy環境、
+local homogeneous quartic actionに限る。full reduced-chart rollout、full dense LBM、direct TT-LBM、
+MPFR backend、GPU、parallel／thread scaling、compressed TT rounding、TT-cross、別tensorization、
+別grid、D3Q27、energy consumption、asymptotic rank／complexityを主張しない。runtime noiseを含む
+有限campaignなので、結果はartifactに記録した環境とblock envelopeに限定する。
 
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
