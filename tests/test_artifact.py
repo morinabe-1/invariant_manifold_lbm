@@ -1574,3 +1574,49 @@ def test_q007o_artifact_records_the_external_complement_refinement() -> None:
         "refined_explicit_modal_l1_radius_certified"
     ]
     assert "individual external eigenvectors" in cycle["claim_boundary"]
+
+
+def test_q007p_artifact_records_the_finite_tube_attraction() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007p_finite_tube_attraction.json"
+    runner_path = artifact_path.parents[1] / "q007p_finite_tube_attraction.py"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007p_finite_tube_attraction.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "rational finite-tube normal-attraction certificate",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "selected_real_dimension": 24,
+        "external_complex_dimension": 2574,
+        "base_modal_l1_radius": 1e-19,
+        "normal_coordinate_radius": 1e-20,
+        "claim": (
+            "registered finite-tube forward invariance and normal "
+            "attraction in one fixed external-coordinate norm only; no "
+            "Euclidean, positivity, larger-tube, basin, grid-uniform, or "
+            "continuum claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["external_coordinate_certification"][
+        "represented_wave_count"
+    ] == 289
+    assert cycle["external_coordinate_certification"][
+        "external_complex_dimension"
+    ] == 2574
+    assert cycle["theorem_consequence"]["registered_tube_forward_invariant"]
+    assert "not a Euclidean contraction result" in cycle["claim_boundary"]
