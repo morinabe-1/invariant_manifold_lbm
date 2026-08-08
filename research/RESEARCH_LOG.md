@@ -2578,6 +2578,55 @@ radius、finite-ball attractionはまだ認証していない。次はQ007kで�
 positivity、finite-ball normal attraction、grid-uniform性、continuum limitは変更・認証していない。
 次は存在結論を維持したまま、内部bordered resolvent上界だけを独立に鋭くする。
 
+## 2026-08-08: Q007o exact external-complement resolvent refinement
+
+### 実装
+
+- Q007h1／Q007j／Q007n artifact SHAとQ007n runner SHAを固定し、source、scope、全sealed gateを再確認した。
+- Q007nのworking all-degree gap、degree-2--4 majorant、D2Q9 nonlinear majorant、external／zero inverse、
+  119候補と収縮閾値を変更しなかった。旧pair inverseで119 candidate recordがartifactとexact一致することを
+  validity gateにした。
+- Q007jのexact selected \(V,L\) boxから\(P=VL^*\)、\(Q=I-P\)を構成した。Q007h1のnegative C4
+  representativeで作ったexternal center vectorsをpositive axial／diagonal代表へexact transportし、
+  artifact proof digestを再現した。
+- 固定selector rows`(0,1,2,3,7,8)`／`(0,1,2,3,4,5)`で\(JU\)を6次元化し、
+  midpoint inverseのNeumann defect、projected residual、\(\gamma\)、graph-gauge chart inverseを
+  exact `Fraction` intervalで評価した。
+- reduced correctionにはbordered全逆行列を使わず、graph-gauge identity \(G=-L^*F\)を用いた。
+  external eigenvalueの個別一意性やexternal diagonalizabilityは仮定していない。
+
+### 結果
+
+全6 validity gateと全4 hypothesis gateが通過した。
+
+- axial coordinate defect／\(\gamma\)／pair inverse:
+  `2.6657034780660514e-13 / 4.4155560973760785e-15 / 1.3284288681133191e11`
+- diagonal coordinate defect／\(\gamma\)／pair inverse:
+  `3.724809047388777e-13 / 1.1339793519314153e-14 / 2.1920952274236575e11`
+- working internal pair inverse upper: `2.1920952274236575e11`
+- unchanged external-output inverse upper: `2.746444556852928e13`
+- new total／Q007n old pair inverse upper:
+  `2.746444556852928e13 / 1.5620130640618827e71`
+- registered inverse-upper reduction factor: `5.687400680142434e57`
+- registered／passing candidate count: `119 / 103`
+- largest passing modal radius／previous fail: `1e-18 / 1e-17`
+- selected／previous contraction: `0.07901564138003579 / 0.7901564138003603`
+- correction radius \(\tau\)／radii margin:
+  `2.8490986842816327e-68 / 1.199425982247287e-68`
+- contained real-coordinate Euclidean radius lower: `3.470110468942836e-18`
+
+従って`exact external-complement resolvent strictly sharpens the registered explicit radius`として
+`accepted`とした。Q007nと同じfixed 17² map・固定保存量葉・全次数gap・nonlinear majorantのもとで、
+同じanalytic theorem manifoldの登録existence radiusを`1e-18`へ改善した。
+
+### 主張境界
+
+新しいtotal inverse upperはinternal blockではなく、Q007nから据え置いたexternal-output
+Bauer--Fike／Neumann upperに支配される。`1e-18`は最適半径ではなく、位相情報を捨てたuniform gapも
+維持している。Q007c1の有限振幅directional-shadowing棄却、finite-ball normal attraction、
+forward invariance、positivity、grid-uniform性、continuum limitは変更・認証していない。
+次はこの半径を固定入力とし、finite-ball normal attractionだけを独立gateで扱う。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2645,6 +2694,8 @@ positivity、finite-ball normal attraction、grid-uniform性、continuum limit�
 [`artifacts/q007m_quartic_jet_bridge.json`](artifacts/q007m_quartic_jet_bridge.json)
 
 [`artifacts/q007n_explicit_local_radius.json`](artifacts/q007n_explicit_local_radius.json)
+
+[`artifacts/q007o_external_complement_radius.json`](artifacts/q007o_external_complement_radius.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

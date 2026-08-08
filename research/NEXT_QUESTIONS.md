@@ -4273,6 +4273,57 @@ acceptedでも、これはQ007nと同じ固定17²・固定保存量葉上のana
 positivity、grid-uniform性、continuum limitは認証しない。external eigenvalueの個別一意性も仮定せず、
 使うのはexact selected projectorと6次元external complement全体である。
 
+### Q007o 封印結果
+
+全6 validity gateと全4 hypothesis gateが通過した。
+
+- 3 input artifact SHA／source／scope／Q007n runner SHA: pass
+- Q007h1 axial／diagonal transported proof digest: `2 / 2` match
+- selected／external column count: 各代表`3 / 6`
+- C4 selected-wave coverage／Q007j 24-mode transport: pass
+- Q007n old 119 candidate records exact reproduction: pass
+- axial \(\epsilon_C/\gamma/C_{\mathrm{int}}\):
+  `2.6657034780660514e-13 / 4.4155560973760785e-15 / 1.3284288681133191e11`
+- diagonal \(\epsilon_C/\gamma/C_{\mathrm{int}}\):
+  `3.724809047388777e-13 / 1.1339793519314153e-14 / 2.1920952274236575e11`
+- Q007n working all-degree gap lower:
+  `1.611328085325626e-10`
+- working internal pair inverse upper:
+  `2.1920952274236575e11`
+- unchanged external-output／zero-wave inverse upper:
+  `2.746444556852928e13 / 6.2060607588672085e9`
+- new total pair inverse upper／Q007n old upper:
+  `2.746444556852928e13 / 1.5620130640618827e71`
+- registered inverse-upper reduction factor:
+  `5.687400680142434e57`
+- registered／passing candidate count: `119 / 103`
+- largest passing modal radius／previous larger fail: `1e-18 / 1e-17`
+- selected／previous contraction upper:
+  `0.07901564138003579 / 0.7901564138003603`
+- selected correction radius \(\tau\)／radii margin:
+  `2.8490986842816327e-68 / 1.199425982247287e-68`
+- contained real \(\ell^2\) coordinate radius lower:
+  `3.470110468942836e-18`
+
+Q007h1 artifactのpositive wave blockは独立固有分解ではなく、negative C4 representativeの
+preconditionerをpopulation permutationでexact transportしている。この封印手順をそのまま再構成し、
+`(1,0)`／`(1,1)`のproof digestを一致させた。exact selected projector \(Q=I-VL^*\)へQ007h1の
+external center vectorsを射影し、固定selectorで\(JU\)の可逆性と
+\(\gamma<\delta/2\)を有理intervalで認証した。external eigenvectorが個別に一意であることは使っていない。
+
+従って
+`exact external-complement resolvent strictly sharpens the registered explicit radius`
+として`accepted`とした。artifactのnewline-normalized SHA-256は
+`36a350b27658ce0699727640d65c48cf0700f999ca1881b07d45825d086158fd`、standalone runner source SHA-256は
+`d34afda382784610ea2b8997e6c44376188b02c42668ade8e2d53ff9bc9afea7`である。
+
+これはQ007nの全次数gap、degree-2--4 jet、D2Q9 nonlinear majorant、119候補を変えず、inverse upperだけを
+改善した結果である。従って同じ定理多様体のfixed-leaf analytic existence radiusを`1e-18`へ鋭くした。
+ただし新しいtotal inverseは据え置いたexternal-output upperに支配される。`1e-18`は最適半径ではなく、
+Q007c1の有限振幅性能棄却、finite-ball normal attraction、forward invariance、positivity、grid-uniform性、
+continuum limitは変更・認証しない。次はこの半径を固定入力としてfinite-ball normal attractionだけを
+独立gateで扱う。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

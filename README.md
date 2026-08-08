@@ -149,7 +149,10 @@ D2Q9非線形majorant、全次数homological inverseの有理上界を固定し�
 `3.470110468942836e-75`、収縮上界は`0.449393612526706`である。従って固定17²・固定保存量葉上の
 explicit local existence radiusを`accepted`とした。ただしこの極小値は
 \(C_L=1.5620130640618827\times10^{71}\)というadjugate inverse boundの粗さに支配され、実用半径、
-finite-ball normal attraction、grid-uniform性を示さない。
+finite-ball normal attraction、grid-uniform性を示さない。Q007oではQ007nのgap、majorant、119候補を
+固定したまま、selected projectorのexact external complementでinternal inverseを再評価した。旧119レコードは
+完全一致し、total inverse upperは`2.746444556852928e13`、最大pass modal radiusは`1e-18`へ改善した。
+ただし新しい律速は据え置いたexternal-output boundであり、finite-ball attractionはまだ示さない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -817,6 +820,42 @@ explicit analytic \(W,R\)の存在を初めて数値半径付きで認証した�
 対角化不要だが極端に粗い\(\delta^{-6}\) adjugate boundの結果である。Q007c1の有限振幅性能棄却を変更せず、
 forward invariance、positivity、finite-ball normal attraction、grid-uniform性はまだ認証しない。
 
+### Q007o exact external-complement resolvent refinement
+
+Q007nの12次bordered adjugate全逆行列を、graph-gauge右辺に必要な6次元external complementのinverseへ
+置き換えた。Q007jのexact selected \(V,L\)から\(Q=I-VL^*\)を作り、axial／diagonalの2代表で
+\(U=QE\)の6列がexternal complementを張ることを有理interval Neumann boundで認証した。
+external eigenvalueの個別一意性は使わず、C4で全8 selected waveへ輸送した。
+
+- classification:
+  `exact external-complement resolvent strictly sharpens the registered explicit radius`
+- validity / hypothesis gates: `6 / 6`, `4 / 4` passed
+- Q007n old 119 candidate records reproduced exactly: `true`
+- maximum coordinate inverse defect:
+  `3.724809047388777e-13`（登録上限`1e-8`）
+- maximum external representation perturbation \(\gamma\):
+  `1.1339793519314153e-14`
+- working internal pair inverse upper:
+  `2.1920952274236575e11`
+- unchanged external-output inverse upper／new total inverse upper:
+  `2.746444556852928e13 / 2.746444556852928e13`
+- registered inverse-upper reduction factor:
+  `5.687400680142434e57`
+- registered／passing radius count: `119 / 103`
+- largest passing modal \(\ell^1\) radius／previous fail:
+  `1e-18 / 1e-17`
+- selected／previous contraction upper:
+  `0.07901564138003579 / 0.7901564138003603`
+- correction radius \(\tau\)／radii margin at `1e-18`:
+  `2.8490986842816327e-68 / 1.199425982247287e-68`
+- contained real-coordinate Euclidean radius lower:
+  `3.470110468942836e-18`
+
+従ってQ007nのexistence結論を保ったまま、同じ固定17²・固定保存量葉で登録半径を57桁改善した。ただし
+`1e-18`も最適半径ではなく、位相を捨てた全次数gapとQ007nのexternal-output Bauer--Fike／Neumann upperを
+維持した保守値である。Q007c1の有限振幅性能棄却、forward invariance、positivity、
+finite-ball normal attraction、grid-uniform性、continuum limitは変更・認証しない。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -864,6 +903,7 @@ python -m research.q007k_quadratic_jet_bridge --output research/artifacts/q007k_
 python -m research.q007l_cubic_jet_bridge --output research/artifacts/q007l_cubic_jet_bridge.json
 python -m research.q007m_quartic_jet_bridge --output research/artifacts/q007m_quartic_jet_bridge.json
 python -m research.q007n_explicit_local_radius --output research/artifacts/q007n_explicit_local_radius.json
+python -m research.q007o_external_complement_radius --output research/artifacts/q007o_external_complement_radius.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -906,6 +946,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007l_cubic_jet_bridge.json`](research/artifacts/q007l_cubic_jet_bridge.json)
 - [`research/artifacts/q007m_quartic_jet_bridge.json`](research/artifacts/q007m_quartic_jet_bridge.json)
 - [`research/artifacts/q007n_explicit_local_radius.json`](research/artifacts/q007n_explicit_local_radius.json)
+- [`research/artifacts/q007o_external_complement_radius.json`](research/artifacts/q007o_external_complement_radius.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -962,19 +1003,21 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007l exact cubic forcing／保存選択則、全2,600 graph-gauge homological systemの有理Krawczyk認証
 - Q007m exact quartic forcing／保存選択則、全17,550 graph-gauge homological systemの有理Krawczyk認証
 - Q007n Wiener \(\ell^1\) majorant、全次数homological inverse、quartic-centered explicit-radius収縮認証
+- Q007o exact external-complement resolvent、旧119判定再現、explicit-radius upperの厳密改善
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- explicit radiusの鋭いresolvent boundとfinite-ball normal attraction
+- external-output／phase-aware resolventの追加改善とfinite-ball normal attraction
 - TT-cross、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
 Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を、Q007kにより登録Q006i二次係数と
 定理多様体のgraph-gauge quadratic jetの対応を、Q007lにより登録Q007b三次係数とgraph-gauge cubic jetの
 対応を、Q007mにより登録Q007c1四次係数とgraph-gauge quartic jetの対応を認証した。Q007nでは同じ
-定理多様体についてmodal radius`1e-75`のexplicit local existenceを認証した。次は、この存在証明を
-維持したまま内部bordered inverseの極端に粗いadjugate boundを別gateで鋭くする。Q007c1の有限振幅
-性能棄却やfinite-ball normal attraction、grid-uniform性へはまだ主張を広げない。
+定理多様体についてmodal radius`1e-75`のexplicit local existenceを認証し、Q007oではgapとmajorantを
+変えずにexact external complementを使って`1e-18`へ改善した。次は、この半径を固定入力とする
+finite-ball normal-attraction gateを独立に扱う。Q007c1の有限振幅性能棄却やgrid-uniform性へは
+まだ主張を広げない。
