@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import json
 from fractions import Fraction
+from pathlib import Path
 
 import pytest
 
 import research.q007af_radius_step_obstruction as q007af
+from ttim_lbm.provenance import source_metadata
+from ttim_lbm.rational_spectrum import _file_sha256
 
 
 def _fraction(record: dict) -> Fraction:
@@ -171,3 +175,40 @@ def test_q007af_accepts_only_the_certificate_family_obstruction(
     assert not consequence[
         "q007p_through_q007ab_tube_constants_enlarged"
     ]
+
+
+def test_q007af_artifact_reproduces_the_accepted_obstruction(
+    q007af_cycle: dict,
+) -> None:
+    runner_path = Path(q007af.__file__).resolve()
+    artifact_path = (
+        runner_path.parent
+        / "artifacts"
+        / "q007af_radius_step_obstruction.json"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "a686526552c33f5f1f01a9f1d9c49036d1c9491a2092b07ac8c8621a33d4ada1"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007af_radius_step_obstruction.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["cycle"] == q007af_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert q007af_cycle["input_digest_sha256"] == (
+        "6cfeabe16a18fdb6de08e67c575a0b0db2f3ab1341c35c434faff100fd959255"
+    )
+    assert q007af_cycle["result_digest_sha256"] == (
+        "3d210cf25513e373ac6a2e7a276163998a602c529878f3c95f085c9e0625bfdd"
+    )
+    assert q007af_cycle["integer_inverse_threshold_audit"][
+        "bisection_decision_digest_sha256"
+    ] == "24b0e993f676082579158cfeddfe74009161d72412bf228f715baa396246c31b"

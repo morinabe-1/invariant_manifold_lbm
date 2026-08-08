@@ -2446,3 +2446,71 @@ def test_q007ae_artifact_records_internal_bottleneck_removal() -> None:
     assert not consequence[
         "q007p_through_q007ab_tube_constants_enlarged"
     ]
+
+
+def test_q007af_artifact_records_the_radius_step_obstruction() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY / "q007af_radius_step_obstruction.json"
+    )
+    runner_path = artifact_path.parents[1] / (
+        "q007af_radius_step_obstruction.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007af_radius_step_obstruction.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "exact inverse-threshold and sealed-witness radius-step "
+            "obstruction audit"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": (
+            "fixed global mass and momentum leaf"
+        ),
+        "selected_real_dimension": 24,
+        "selected_complex_dimension": 24,
+        "claim": (
+            "certificate-family obstruction only; no true analytic-"
+            "radius upper bound or downstream tube enlargement"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "sealed external phase-disc family cannot certify the "
+        "1e-15 radius step"
+    )
+    assert len(cycle["validity_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 5
+    assert all(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    )
+    assert cycle["integer_inverse_threshold_audit"][
+        "registered_bracket_reproduced"
+    ]
+    assert cycle["witness_obstruction_audit"][
+        "single_witness_obstructs_required_uniform_gap"
+    ]
+    consequence = cycle["theorem_consequence"]
+    assert consequence[
+        "sealed_q007ad_disc_family_obstructs_1e_minus_15"
+    ]
+    assert consequence["q007ae_explicit_radius_1e_minus_16_preserved"]
+    assert not consequence["true_analytic_radius_upper_bound_proved"]
+    assert not consequence[
+        "q007p_through_q007ab_tube_constants_enlarged"
+    ]
