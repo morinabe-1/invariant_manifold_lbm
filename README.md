@@ -176,7 +176,11 @@ input encoding、非一様collision、filterがglobal保存量をexactには保�
 all-iterate帰納は`not_certified`のままである。Q007yでは対角4 populationの\(2^{-90}\)格子を使う
 分散保存補正を構成し、4 probeのencoding／post-filter保存量をexactに回復した。補正は登録tube全体で
 well-definedでnormal marginも通るが、粗いrepair-aware Wiener boundはbase marginを2.326倍使用するため、
-all-iterate帰納はなお`not_certified`である。
+all-iterate帰納はなお`not_certified`である。Q007zではselected baseが軸・対角の8非零波数だけから
+成ることを使い、balanced repairの一様quotientをexactに除いた。repairのbase寄与上界は
+\(1.9216710236250915\times10^{-26}\)、総base利用率は`0.8213071928437413`となり、
+normal側とともにstrictに通過した。従って、登録tube内のrepair済みMPFR-85状態から開始する条件下で、
+fixed leaf、tube re-entry、stage positivityを全iterateへ帰納できる。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1202,6 +1206,46 @@ same-binade、positivityを検査した。
 global conserved center成分やbalanced配置のFourier phaseを利用していない。次はbackend／repairを固定し、
 selected projectorへ直接通すprojector-aware error boundを別gateで評価する。
 
+### Q007z selected-wave repair certificate
+
+Q007pが封印するselected base waveは軸4点と対角4点の計8非零波数であり、\(k=0\)を含まない。
+Q007yのbalanced distributionを\(n=289s+r\)と書くと、一様quotient \(s\) は各selected waveの
+normalized DFTでexactに消える。prefixとcomplementのtriangle boundから、各対角populationの
+selected-wave振幅はtotal unitに依存せず
+
+\[
+|\widehat c_q(k)|\le\frac{144}{289}2^{-90}
+\]
+
+となる。8 wavesと全289 remaindersをexact integer phase histogramで全走査し、Q007pの軸／対角
+left-operator normを別々に適用した。
+
+- classification:
+  `selected-wave certificate closes the repaired MPFR-85 fixed-leaf tube induction`
+- validity / hypothesis gates: `6 / 6` passed、`7 / 7` passed
+- exact phase／balanced-distribution cases: `2,312 / 4,624`
+- selected wave set: `2 C4 orbits / 8 nonzero waves / k=0 excluded`
+- repair base-coordinate error upper: `1.9216710236250915e-26`
+- raw／repaired base-coordinate error:
+  `4.089029108522444e-22 / 4.0892212756248066e-22`
+- base margin／headroom／utilization:
+  `4.978918133501365e-22 / 8.896968578765586e-23 / 0.8213071928437413` (`pass`)
+- unchanged normal utilization: `2.507922842743146e-7` (`pass`)
+- selected／phase／result digest:
+  `ea5d303e4333638447d70ef8ec6692599948260657e7cb51c133b8c3c5d20b90` /
+  `f0da04edcc58edd6b96b2869ee67c79cc44b020278545bc52d03a142c0fa4a83` /
+  `62262fe2cfb0bf361e5b79aaf89c8ba319ad1df046bf59aff56be8b7a54d4054`
+- runner SHA-256:
+  `0e2b3aebdc30d6a441178e3ac05fe417ab66673885a52ac9da801bd787dd8f79`
+- artifact newline-normalized SHA-256:
+  `b1ca382a76e874c18b804c7614ff8ad1ded3a5d0b9dda583facf6641b24f0c53`
+
+これにより、`already encoded, repaired MPFR-85 state`が登録Q007s tube内にあることを初期条件として、
+sampling timeのexact保存量、tube membership、equilibrium／collision／streaming／filter／repairの
+strict positivityを全iterateへ帰納する。任意のexact stateの初期encodingやtrajectory shadowingは
+別問題として残す。Q007yの`not_certified`は、意図的に粗いphysical-\(\ell^1\) estimatorの判定として
+変更しない。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -1260,6 +1304,7 @@ python -m research.q007v_binary64_stage_enclosure --output research/artifacts/q0
 python -m research.q007w_ideal_precision_threshold --output research/artifacts/q007w_ideal_precision_threshold.json
 python -m research.q007x_mpfr_fixed_leaf --output research/artifacts/q007x_mpfr_fixed_leaf.json
 python -m research.q007y_distributed_conservation_repair --output research/artifacts/q007y_distributed_conservation_repair.json
+python -m research.q007z_selected_wave_repair --output research/artifacts/q007z_selected_wave_repair.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -1313,6 +1358,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007w_ideal_precision_threshold.json`](research/artifacts/q007w_ideal_precision_threshold.json)
 - [`research/artifacts/q007x_mpfr_fixed_leaf.json`](research/artifacts/q007x_mpfr_fixed_leaf.json)
 - [`research/artifacts/q007y_distributed_conservation_repair.json`](research/artifacts/q007y_distributed_conservation_repair.json)
+- [`research/artifacts/q007z_selected_wave_repair.json`](research/artifacts/q007z_selected_wave_repair.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1380,14 +1426,15 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007w ideal binary 53--128 bit全候補、85-bit最小sufficient robust re-entry threshold認証
 - Q007x concrete MPFR-85全演算trace／Fraction stage oracle、fixed-leaf closure棄却
 - Q007y 対角dyadic保存補正のfinite／tube-wide定義認証、normal budget認証、base budget棄却
+- Q007z balanced repairのselected-wave Fourier認証、条件付きMPFR-85 all-iterate tube帰納
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- conservation-exact repairのprojector-aware base error certificateと、その追加誤差を含むQ007s tubeの
-  roundoff-robust all-iterate re-entry、連続最適化、Euclidean／grid-uniform normal attraction、
+- exact-state encodingの初期化interior、repaired MPFR mapのmulti-step shadowing、連続最適化、
+  Euclidean／grid-uniform normal attraction、
   global basin
 - external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
@@ -1411,6 +1458,9 @@ thresholdと認証した。Q007xではfixed MPFR-85 backendの全演算がideal 
 Q007w bound内にあることを認証したが、componentwise encoding／collision／filterがexact fixed leafを
 保たないためall-iterate invarianceは認証しない。Q007yでは対角dyadic repairがfinite probeと登録tubeの
 algebraic条件でexact fixed leafを回復すること、およびnormal budgetを認証したが、粗いWiener triangle
-boundのbase utilizationが2.326となるためall-iterate invarianceはなお認証しない。Q007c1の有限振幅性能
-棄却とQ007dのEuclidean棄却を変更せず、projector-aware保存補正後のroundoff-robust invariance、
-連続最適性、grid-uniform性へは主張を広げない。
+boundのbase utilizationが2.326となるため、そのestimatorではall-iterate invarianceを認証しない。
+Q007zではbalanced repairのuniform quotientが8 selected非零波数でexactに消えることを使い、
+base utilizationを0.821307へ戻した。従って、repair済みMPFR-85 stateが登録tube内にあるという
+初期条件のもとでall-iterate invarianceとstage positivityを認証する。Q007c1の有限振幅性能棄却と
+Q007dのEuclidean棄却を変更せず、任意exact-state encoding、trajectory shadowing、連続最適性、
+grid-uniform性へは主張を広げない。

@@ -6203,6 +6203,50 @@ baseが落ちる場合は
 shadowing時間、性能、GPU／parallel reduction、他のgrid／MPFR build、center-slow構成、D3Q27を
 主張しない。Q007yの粗いtriangle-bound `not_certified`は、その判定法として保存する。
 
+### Q007z 封印結果
+
+全6 validity gateと全7 hypothesis gateが通過した。
+
+- selected wave set:
+  `2 C4 orbits / 8 nonzero waves / k=0 excluded`
+- axis／diagonal left-operator upper:
+  `1.5106842091904618 / 1.4732828143196361`
+- exact phase cases／balanced distribution cases:
+  `2,312 / 4,624`
+- maximum prefix／complement unit bound:
+  `144`
+- per-population／four-population per-selected-wave upper:
+  `4.024992167483374e-28 / 1.6099968669933496e-27`
+- repair base-coordinate error upper:
+  `1.9216710236250915e-26`
+- raw／repaired base-coordinate error upper:
+  `4.089029108522444e-22 / 4.0892212756248066e-22`
+- base margin／headroom／utilization:
+  `4.978918133501365e-22 / 8.896968578765586e-23 / 0.8213071928437413` (`pass`)
+- unchanged normal utilization:
+  `2.507922842743146e-7` (`pass`)
+- phase-aware／Q007y coarse base-error ratio:
+  `0.353090298292354`
+- selected-input／phase／result digest:
+  `ea5d303e4333638447d70ef8ec6692599948260657e7cb51c133b8c3c5d20b90` /
+  `f0da04edcc58edd6b96b2869ee67c79cc44b020278545bc52d03a142c0fa4a83` /
+  `62262fe2cfb0bf361e5b79aaf89c8ba319ad1df046bf59aff56be8b7a54d4054`
+- runner SHA-256:
+  `0e2b3aebdc30d6a441178e3ac05fe417ab66673885a52ac9da801bd787dd8f79`
+- artifact newline-normalized SHA-256:
+  `b1ca382a76e874c18b804c7614ff8ad1ded3a5d0b9dda583facf6641b24f0c53`
+
+従って
+`selected-wave certificate closes the repaired MPFR-85 fixed-leaf tube induction`
+として`accepted`とした。balanced distributionの大きなuniform quotientはselected非零波数でexactに
+消え、剰余prefixだけがbase座標へ寄与する。repair追加base upperはQ007yのphysical-\(\ell^1\)
+triangle estimateより十分小さく、base／normalの両marginをstrictに通した。
+
+これにより、`already encoded, repaired MPFR-85 state`が登録Q007s tube内にあることを初期条件として、
+fixed leaf、one-step re-entry、MPFR stage positivityを全iterateへ帰納できる。任意のexact boundary
+stateの初期encoding、trajectory accuracy、shadowing時間はまだ示していない。次は初期化interiorを
+別定義した後、exact mapとのmulti-step shadowingを新しいgateとして扱う。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

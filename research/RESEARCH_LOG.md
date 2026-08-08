@@ -3191,6 +3191,77 @@ algebraic well-definednessと粗いworst-case boundであり、projector-aware b
 性能、parallel reduction、他のMPFR build、center-slow構成、grid-uniform性、D3Q27を示さない。
 Q007w／Q007xおよびQ007s／Q007uの既存結論を変更しない。
 
+## 2026-08-09: Q007z selected-wave repair certificate
+
+### 実装
+
+- Q007pの2 selected C4 orbitとper-orbit left-operator norm、Q007yのbackend／repair／artifactを
+  SHA固定し、Q007y cycleをfresh replayした。
+- 8 selected wavesと全\(r=0,\ldots,288\)について、row-major prefixの17th-root phase
+  histogramをexact integerで構成した。
+- 各nonzero characterのfull 17² histogramが17 phaseごとに17個であることから、一様quotientの
+  DFTがcyclotomic identityでexactにゼロとなることを検証した。
+- prefixとcomplementのtriangle boundを同時に使い、
+
+  \[
+  |\widehat c_q(k)|\le \frac{144}{289}2^{-90}
+  \]
+
+  をtotal correction unitに依存しないtube-wide upperとして構成した。
+- 軸／対角orbitのexact left normを別々に掛け、repairのselected-base寄与だけを再評価した。
+  raw MPFR base errorとQ007y full-Wiener normal errorは小さくせず、そのまま再利用した。
+
+### 結果
+
+全6 validity gate、全7 hypothesis gateが通過した。
+
+- selected structure:
+  `2 C4 orbits / 8 nonzero waves / k=0 excluded`
+- phase histogram／distribution cases:
+  `2,312 / 4,624`
+- axis／diagonal left norm:
+  `1.5106842091904618 / 1.4732828143196361`
+- four-population per-selected-wave upper:
+  `1.6099968669933496e-27`
+- repair base-coordinate error upper:
+  `1.9216710236250915e-26`
+- raw／repaired base error:
+  `4.089029108522444e-22 / 4.0892212756248066e-22`
+- base margin／headroom／utilization:
+  `4.978918133501365e-22 / 8.896968578765586e-23 / 0.8213071928437413`
+- normal utilization:
+  `2.507922842743146e-7`
+- selected／phase／result digest:
+  `ea5d303e4333638447d70ef8ec6692599948260657e7cb51c133b8c3c5d20b90` /
+  `f0da04edcc58edd6b96b2869ee67c79cc44b020278545bc52d03a142c0fa4a83` /
+  `62262fe2cfb0bf361e5b79aaf89c8ba319ad1df046bf59aff56be8b7a54d4054`
+- runner SHA-256:
+  `0e2b3aebdc30d6a441178e3ac05fe417ab66673885a52ac9da801bd787dd8f79`
+- artifact newline-normalized SHA-256:
+  `b1ca382a76e874c18b804c7614ff8ad1ded3a5d0b9dda583facf6641b24f0c53`
+
+従って
+`selected-wave certificate closes the repaired MPFR-85 fixed-leaf tube induction`
+として`accepted`とした。Q007yのcoarse physical-\(\ell^1\) repair normはuniform quotientを
+全波数へ課金したためbase gateを落としたが、selected baseは8 nonzero wavesだけである。uniform
+quotientをexactに除きprefix remainderだけへ課金すると、repair base寄与は\(1.92\times10^{-26}\)となり、
+base marginに\(8.90\times10^{-23}\)のstrict headroomが残った。normal側はQ007yの粗い上界のまま通る。
+
+### 定理的帰結
+
+`already encoded, repaired MPFR-85 state`が登録Q007s tubeとfixed leafに属することを初期条件とする。
+この条件下で、Q007w raw stage enclosure、Q007y exact post-stage repair、Q007z base／normal strict
+re-entryを反復できる。従ってsampling timeのexact \(M,P_x,P_y\)、Q007s tube membership、
+全MPFR equilibrium／collision／streaming／filter／repair stageのstrict positivityを全iterateへ
+帰納できる。
+
+### 主張境界と次の改善
+
+任意のexact boundary stateを85-bitへencodingした後もtube内に入るとは示していない。trajectory error、
+exact mapとのshadowing時間、性能、parallel reduction、他のgrid／MPFR build、center-slow構成、D3Q27を
+扱わない。Q007yは粗いestimatorに対する有効な`not_certified`として保存する。次はinitialization
+interiorを定義したうえで、repaired MPFR mapとexact mapのmulti-step shadowingを別gateで評価する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3280,6 +3351,8 @@ Q007w／Q007xおよびQ007s／Q007uの既存結論を変更しない。
 [`artifacts/q007x_mpfr_fixed_leaf.json`](artifacts/q007x_mpfr_fixed_leaf.json)
 
 [`artifacts/q007y_distributed_conservation_repair.json`](artifacts/q007y_distributed_conservation_repair.json)
+
+[`artifacts/q007z_selected_wave_repair.json`](artifacts/q007z_selected_wave_repair.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
