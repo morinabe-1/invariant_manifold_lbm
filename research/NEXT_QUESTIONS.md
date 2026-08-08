@@ -3884,6 +3884,218 @@ acceptedの場合だけ、別のQ007nでexplicit local radiusを扱う。Q007m�
 既存認証、他の性能判定は変更しない。explicit neighborhood radius、finite-ball normal attraction、
 grid-uniform性、continuum limitはまだ認証しない。次はQ007nを事前登録し、explicit local radiusだけを扱う。
 
+## Q007n: fixed-leaf theorem manifold の explicit local radius — 事前登録
+
+### 問いと主張範囲
+
+Q007iが定性的に存在・局所一意性を与え、Q007j／Q007k／Q007l／Q007mが固定graph gaugeの
+一次から四次までを同定した定理多様体について、複素化したselected modal coordinateの明示的な
+\(\ell^1\) ball上で、解析的parameterization \(W\) とreduced map \(R\) の存在をBanach収縮として
+直接認証できるか。
+
+このgateは固定\(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、固定保存量葉だけを扱う。得られる値は
+登録した候補格子上の保証半径であり、最大の数学的存在半径ではない。finite-ball normal attraction、
+forward invariance、positivity、grid-uniform性、continuum limit、Q007c1の有限振幅性能棄却は扱わない。
+
+### 固定入力
+
+次のartifactのnewline-normalized SHA-256へ固定する。
+
+- Q007h1: `caee8fe382c0282e11e8139b8f434a944013f630288adf2e99223d0123c91af4`
+- Q007i: `c256b30ac5bfe0a6bc5e5f8e293016d3e0aa37c4bfa82ba81a0a2679d89e082f`
+- Q007j: `feae846b81dc0991aa2c9babbd38ee72eb9ae493526655435cf0bf5951c7ec44`
+- Q007k: `022f9ded6b40dc754a1b935f69554db9407e5e07715bd9132990ca9876fc8bbf`
+- Q007l: `aa0e572b43ed4f5544e2b8ead9d01c13bc08c47f40ec8963bcd37a1b51fc1bbd`
+- Q007m: `19090371bb7f8be1f59e47502f303f1c3eea18d3ccb365972363d377a214364b`
+
+standalone runner source SHA-256はQ007j／Q007k／Q007l／Q007mについて順に
+`7ef97e55ffff46244fee98d8017db1637a0e6c73ba3f1caf5c7dad77b7a26b57`、
+`963862710b772a63a9293bbb100ea50a21f3469932ee54d84cfd197a384f89cb`、
+`bb2be852c5413ceb2d27abd4f48db36ed2045ed79f2330e45ae89818067d33a4`、
+`d086f2cc27684521c13daf7d2594cd21e5c0ad92f3953cca884c57d06986a918`へ固定する。
+全artifactのsource、scope、sealed outcome、validity／hypothesis gateを再確認し、登録係数hashも
+`build_full2d_quartic_model()`から再現する。既存artifactの証明箱自体は再探索しない。
+
+### Banach空間、graph gauge、実半径への変換
+
+24個のselected complex modeを\(b=(b_1,\ldots,b_{24})\)とし、
+\(\|b\|_1=\sum_i|b_i|\)とする。full stateには、各離散Fourier waveの9 population係数を全部足す
+Wiener \(\ell^1\) normを使う。これは周期畳み込みに対して劣乗法的である。
+
+\[
+ W(b)=Vb+H(b),\qquad R(b)=\Lambda b+G(b),
+\]
+
+とし、\(H,G\)は0次・1次係数を持たず、Q007jと同じgraph gauge
+\(L_q^*H_q=0\)を満たす。次数\(n\)の対称多重線形係数には、入力\(\ell^1\)から出力
+\(\ell^1\)へのoperator normを使い、半径\(\rho\)で次数別normを足す。pair normは
+
+\[
+ \|(H,G)\|_\rho=\max\{\|H\|_\rho,c_V\|G\|_\rho\},\qquad
+ c_V=\max_i\sum_{s=0}^8 |(V_i)_s|
+\]
+
+とする。\(c_V\)はQ007jのexact root boxに対して、登録float64中心の
+\(|\Re z|+|\Im z|\)とcomponent correction upperから有理数で上から囲む。
+
+登録real coordinate \(a\in\mathbb R^{24}\)では
+\(b_+=a_\mathrm{scale}(a_{\rm re}+ia_{\rm im})\)、
+\(b_-=\overline{b_+}\)、\(a_\mathrm{scale}=1/(\sqrt2\,17)\)なので、
+
+\[
+ \|b\|_1\le {\sqrt{24}\over17}\|a\|_2.
+\]
+
+従って認証modal radius \(\rho_*\)から
+\(r_{\mathbb R,2}=17\rho_*/\sqrt{24}\)を、含まれるreal Euclidean ballの半径として報告する。
+
+### 全次数homological inverseの上界
+
+Q007iのglobal rational log-gap lowerを\(\gamma\)、Q007h1のselected modulus lower／upperを
+\(\underline\sigma_E,\overline\sigma_E\)、excluded modulus lowerを
+\(\underline\sigma_\perp\)とする。modulus差の一様下界を
+
+\[
+ \delta_{2:89}=\min(\underline\sigma_\perp,\underline\sigma_E^{89})\gamma,
+ \quad
+ \delta_{90:}=\underline\sigma_\perp-\overline\sigma_E^{90},
+ \quad
+ \delta=\min(\delta_{2:89},\delta_{90:})
+\]
+
+とする。\(e^x-1\ge x\)により、最初の式はlog-gapからabsolute modulus gapへの厳密な変換である。
+Q007h1の最大\(\beta\)を\(\beta_*\)とする。selectedでないnonzero output blockではQ007h1の
+近似固有基底残差とBauer--Fike半径を使い、\(\|S\|_\infty\le9\)、
+\(\|M\|_1\le9\|M\|_\infty\)から
+
+\[
+ C_{\rm ext}=81\beta_*/\delta
+\]
+
+とする。zero-wave fixed-leaf blockでは衝突作用が厳密に\(-I/2\)なので
+\(C_0=1/\delta\)とする。
+
+selected outputでは各次数・各monomial product \(p\)に対する12次bordered行列
+
+\[
+ B_q(p)=\begin{bmatrix}A(q)-pI&-V_q\\L_q^*&0\end{bmatrix}
+\]
+
+を使う。exact biorthogonalityと左右固有方程式により
+\(|\det B_q(p)|\)は6個のexcluded eigenvalueとの差の積であり、\(\delta^6\)以上である。
+exact collision entry、\(|p|<1\)、Q007j root boxから全entryのabsolute upperが2未満であることを
+再確認し、Leibniz adjugate bound
+
+\[
+ C_{\rm int}=12!\,2^{11}/\delta^6
+\]
+
+を使う。対角化可能性や個別external eigenvectorの一意性は仮定しない。最終的なpair inverse boundは
+
+\[
+ C_L=\max\{C_{\rm ext},C_0,\max(1,c_V)C_{\rm int}\}
+\]
+
+とする。全式は`fractions.Fraction`で評価する。
+
+### quartic centerとD2Q9非線形majorant
+
+Q007k／Q007l／Q007mのexact root boxから、次数\(n=2,3,4\)のchart／reduced coefficient
+operator norm upperを\(h_n,g_n\)とする。登録float64 complex centerには
+\(|\Re z|+|\Im z|\)を使い、各出力成分へ登録component correction upperを加え、\(n!\)で割る。
+
+\[
+ h(t)=h_2t^2+h_3t^3+h_4t^4,\qquad
+ g(t)=g_2t^2+g_3t^3+g_4t^4.
+\]
+
+D2Q9 equilibriumの保存moment表示と\(\omega=3/2\)から、density perturbationのWiener normが
+\(x<1\)なら、streaming／filter後も含む非線形部は
+
+\[
+ n(x)={21\over2}{x^2\over1-x},\qquad
+ n'(x)={21\over2}{x(2-x)\over(1-x)^2}
+\]
+
+で上から抑える。係数\(21/2\)は、D2Q9 weightsについて
+\(\sum_sw_s(|c_{sx}|X+|c_{sy}|Y)^2\le8x^2/9\)、
+\(X,Y\le x\)をexact rationalで再計算して確認する。
+
+\(\sigma=\overline\sigma_E\)、\(v(t)=c_Vt+h(t)\)として、exact quartic jetの不変性残差は
+4次まで厳密に消える。従って残差majorantを
+
+\[
+ E(\rho)=\operatorname{Tail}_{\ge5}
+ \left[
+ {21\over2}{v(t)^2\over1-v(t)}+
+ \sum_{n=2}^4h_n\{(\sigma t+g(t))^n-(\sigma t)^n\}
+ \right]_{t=\rho}
+\]
+
+とする。tailは方向samplingやfloat subtractionを使わず、非負係数の有理多項式／有理級数として
+次数別に計算する。
+
+### 固定したradii inequalityと候補選択
+
+候補modal radiusは、順序も含めて
+
+\[
+ \mathcal R=\{10^{-j}:j=2,3,\ldots,120\}
+\]
+
+へ固定する。各\(\rho\)について
+
+\[
+ Y=C_LE(\rho),\qquad \tau=2Y,
+\]
+
+\[
+ x=c_V\rho+h(\rho)+\tau,\qquad
+ s=\sigma\rho+g(\rho)+\tau/c_V,
+\]
+
+\[
+ Z=C_L\left[
+ n'(x)+{g(\rho)+\tau/c_V\over\rho-s}
+       +{h(\rho)+\tau\over c_V(\rho-s)}
+ \right]
+\]
+
+をexact rationalで評価する。\(x<1\)、\(s<\rho\)、\(Z<1/2\)、
+\(Y+Z\tau<\tau\)を全て満たす候補だけをpassとし、そのうち最大の\(\rho\)を\(\rho_*\)とする。
+\(\tau=2Y\)を実行後に変えない。pass候補が無ければ有効な`not_certified`とする。
+
+### validity gate
+
+1. 全6 input artifact SHA、4 runner SHA、source、scope、sealed outcome、全既存gateを一致させる。
+2. Q007c1の5 coefficient hashを再現し、Q007j／Q007k／Q007l／Q007m correction upperから
+   \(c_V,h_2,h_3,h_4,g_2,g_3,g_4\)を有理数で構成する。
+3. \(\gamma,\underline\sigma_E,\overline\sigma_E,\underline\sigma_\perp,\beta_*\)をartifactの
+   base-16有理数から復元し、\(\delta>0\)、tail gap正、全bordered entry upper `<2`を確認する。
+4. Wiener algebra、fixed-leaf zero block、bordered determinant identity、D2Q9 \(21/2\) majorantに必要な
+   exact finite-dimensional identityを再計算する。
+5. 全119候補についてtail非負、分母正の判定を保存し、全summaryをfinite・strict JSONとする。
+
+validityが一つでも落ちれば`inconclusive`とし、basis、norm、候補、閾値を変更しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次を全て要求する。
+
+1. \(\delta>0\)かつ\(C_L<\infty\)
+2. 少なくとも一つの登録候補で\(x<1\)、\(s<\rho\)
+3. 少なくとも一つの同じ候補で\(Z<1/2\)かつ\(Y+Z\tau<\tau\)
+4. 保存した\(\rho_*\)が全pass候補の最大値であり、直前の大きい登録候補がfailするか\(10^{-2}\)である
+
+全て通れば`registered quartic-centered contraction gives an explicit fixed-leaf local radius`として
+`accepted`とする。これは\(\|b\|_1<\rho_*\)でexact analytic \(W,R\)を与え、exact certified quartic
+jetからpair norm \(\tau\)以内にあることだけを主張する。Q007iの局所一意性と合わせて同じ定理多様体を
+同定するが、normal attractionや実用的な大きさは主張しない。
+
+一つでも落ちれば`registered explicit local radius not certified`という有効な`not_certified`とする。
+acceptedでも半径が極端に小さい場合はそのまま記録し、次の改善gateでresolvent／bordered inverse boundを
+鋭くする。候補格子やadjugate boundを事後変更して結果を良く見せない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
