@@ -2931,6 +2931,120 @@ attractionを主張せず、次の研究課題を最初のmissing layerに限定
 radii-polynomial contraction theoremを引用するだけで、今回の離散写像に必要なoperator・tail boundを
 省略しない。
 
+### Q007g 結果
+
+全6 validity gateが通過し、`current evidence is not theorem-ready`として有効な`not_ready`となった。
+
+- selected spectral radius／excluded minimum modulus:
+  `0.9920954673550985 / 0.49008513450158`
+- spectral quotient \(L_*\): `89`
+- degree-90 tail ratio／1つ前のratio:
+  `0.9989422022329809 / 1.006901286320898`
+- theoremが要求する次数: `2--89`の88次数
+- sector-aware float64監査済み次数: `2, 3, 4`
+- direct full-spectrum条件をinterval／代数的に認証した次数: `0`
+- 未監査sector-aware次数／未認証direct次数: `85 / 88`
+
+解析性、固定保存量葉の不変性、局所可逆性は構造的に通った。しかし既存homological SVDは各monomialの
+Fourier和で決まるoutput sectorだけを監査しており、固定したTheorem 1.2の
+\(\operatorname{Spec}(A_1)^i\cap\operatorname{Spec}(A_2)=\varnothing\)というfull-spectrum条件そのものでは
+ない。Q007eのadapted state normもBanach関数normではない。rigorous inverse、domain buffer、defect、
+derivative variation、Taylor tail、roundoff enclosure、十分不等式も未構築である。
+
+従ってQ007fの有限sample採択、Q007dのEuclidean棄却、Q008cのTT棄却は変更しない。candidate manifoldの
+不存在も主張しない。最初のmissing layerをoutward-rounded linear spectrumに固定する。
+
+## Q007h: rational-interval linear spectral enclosure — 事前登録
+
+### 問い
+
+\((N,\eta,\omega)=(17,0.01,1.5)\) の固定保存量葉で、289 Fourier blockのselected／excluded
+線形スペクトル、補空間の可逆性、normal gap、およびTheorem 1.2のdegree-90 tail不等式を、
+platformの`sin`／`eig`の正確性を仮定せずoutward-roundedに認証できるか。
+
+これは線形層だけのcomputer-assisted gateである。次数2--89のexternal nonresonance、Riesz projector norm、
+quartic chart、有限半径normal cocycle、非線形多様体の存在・一意性は判定しない。
+
+### exact symbolと区間生成
+
+\(c_i\)をD2Q9速度、\(w_i\)を有理weightとし、collision symbolを有理数で
+
+\[
+C_{ij}=-\frac12\delta_{ij}
+       +\frac32 w_i\left(1+3c_i\mathbin{\cdot}c_j\right)
+\]
+
+と構成する。wave index \((n_x,n_y)\) では
+
+\[
+A_n=m_n\,\operatorname{diag}
+\left(e^{-2\pi i(n_xc_{ix}+n_yc_{iy})/17}\right)C,
+\qquad
+m_n=\frac{99}{100}+\frac1{200}
+\left(\cos\frac{2\pi n_x}{17}+\cos\frac{2\pi n_y}{17}\right)
+\]
+
+を使う。
+
+- `fractions.Fraction`だけでendpointを保持する。
+- \(\pi=16\arctan(1/5)-4\arctan(1/239)\) を各96項の交代級数と次項remainderで包含する。
+- canonical index `-8,...,8`のsin／cosを64項Taylor多項式とLagrange remainderで包含する。
+- interval add／multiplyは全endpoint combinationから取り、floatへ丸めてgateを判定しない。
+- \(n=(0,0)\) の固定葉は6重の厳密固有値\(-1/2\)として別扱いする。
+
+### eigenvalue inclusion
+
+各非零9次blockでNumPyの \((V,\Lambda)\) と \(W\simeq V^{-1}\) はpreconditionerとしてだけ使い、
+全floatをexact dyadic rationalへ変換する。symbol intervalに対して
+
+\[
+R=AV-V\Lambda,
+\qquad
+\epsilon=\|I-WV\|_\infty<1,
+\qquad
+\beta=\frac{\|W\|_\infty}{1-\epsilon}
+\]
+
+を有理上界で評価する。これにより \(\|V^{-1}\|_\infty\le\beta\) であり、各真の固有値は
+
+\[
+r_{BF}=\|V\|_\infty\,\beta^2\,\|R\|_\infty
+\]
+
+を半径とする近似固有値円板の合併に入る。complex absolute valueの平方根もinteger `isqrt`から作る
+有理上下界を使う。selected waveでは3個のselected円板群と6個のexcluded円板群が互いに素であることを
+要求し、homotopyによる固有値countを固定する。
+
+### validity gate
+
+- Q007g source／artifact、grid、parameter、`24 / 2574 / 2598`次元を一致させる。
+- Machin \(\pi\) intervalと全sin／cos intervalの幅を`<=1e-120`、全symbol entry rectangle幅を
+  `<=1e-110`とする。
+- 全288 nonzero blockで \(\epsilon<1\)、最大\(\epsilon\)`<=1e-10`、全Bauer--Fike radiusをfiniteかつ
+  `<=1e-8`とする。
+- 全8 selected waveでselected center countを3、selected／excluded円板群間距離を`>=1e-6`とする。
+- float64 centerのselected minimum／maximum、excluded minimum／maximumをQ007g値からrelative error
+  `<=1e-10`で再現する。
+- conjugate waveとC4-related waveのcertified modulus boundsのendpoint差を`<=1e-12`とする。
+- 全値finite、strict JSONとする。失敗時はspectral結論を使わず`inconclusive`とする。
+
+### hypothesis gateと停止規則
+
+validity通過後、有理endpointだけで次を別々に要求する。
+
+1. selected spectral-radius upper bound \(<1\)
+2. excluded minimum-modulus lower bound \(>0\)
+3. selected minimum-modulus lower bound \(-\) excluded maximum-modulus upper bound \(>0\)
+4. \(\rho_{F,+}^{90}/\mu_{E,-}<1\)
+5. selected 24固有値とexcluded 2574固有値のcountが全block円板分離から確定する
+
+全て通れば`registered linear spectral split and degree-90 tail certified`として`accepted`とする。
+一つでも落ちれば`registered rational-interval linear certification failed`という有効な`not_certified`とする。
+結果を見てTaylor項数、norm、radius式、selected clusterを変更しない。
+
+acceptedでも、認証するのは固定17² filtered mapの線形層だけである。次数2--89のdirectまたは
+translation-equivariant nonresonanceはQ007iへ残し、非線形存在主張を行わない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

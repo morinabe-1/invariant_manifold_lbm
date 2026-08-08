@@ -2327,6 +2327,47 @@ candidate quartic tangentに限り、ball全体、真のinvariant normal bundle�
 一意性は示していない。one-step全点通過も事前登録hypothesisではないため診断に留める。次のQ007gは
 a posteriori theoremの対象空間・inverse・tail・roundoff majorantと十分条件を先に固定してから開始する。
 
+## 2026-08-08: Q007g nonresonant-manifold theorem readiness
+
+### 実装
+
+- Cabré--Fontich--de la Llave Theorem 1.2／Remark 5を固定し、固定保存量葉の解析性・局所可逆性を
+  collision、streaming、filterの構造から監査した。
+- Q007eと同じ289 Fourier blockからselected 24、excluded 2574固有値を再構築した。
+- theorem tailを満たす最小float64 spectral quotientを計算し、Q006i／Q007a／Q007cの次数2--4
+  homological evidenceをsource hash・artifact hash付きで再照合した。
+- direct theoremのfull-spectrum条件と、既存Fourier-selection-rule sector条件を別fieldへ分離した。
+- Banach関数norm、inverse、domain、defect、variation、tail、roundoff、十分不等式をproof-object inventoryへ
+  明示した。新しい方向sample、defect探索、metric retuningは行っていない。
+
+### validity
+
+全6 validity gateが通過した。
+
+- selected spectral radius／excluded minimum modulus:
+  `0.9920954673550985 / 0.49008513450158`
+- spectral quotient \(L_*\): `89`
+- degree-90 tail ratio／previous ratio:
+  `0.9989422022329809 / 1.006901286320898`
+- tail／previous boundary margin:
+  `0.0010577977670190863 / 0.006901286320897926`
+- sector-aware degree record／singular count:
+  `300 / 2600 / 17550`, `0 / 0 / 0`
+- required／sector-audited／direct-certified order count:
+  `88 / 3 / 0`
+
+### 結果
+
+`current evidence is not theorem-ready`として有効な`not_ready`とした。構造的な解析性・局所可逆性と
+float64再現は通ったが、次数2--4の既存SVDはmonomialのFourier和で決まるoutput sectorに限り、固定した
+Theorem 1.2のfull-spectrum条件を直接認証しない。次数5--89はsector-awareにも未監査であり、全88次数が
+interval／代数的には未認証である。定量的proof objectもgraph gauge以外は未構築だった。
+
+これはcandidate manifoldの不存在を意味せず、Q007f、Q007d、Q008cの既存判定も変更しない。最初の
+missing layerはoutward-rounded linear eigenvalue／split enclosureである。Q007hでは有理区間、Machin
+formula、Taylor remainder、Neumann inverse bound、Bauer--Fike inclusionにより、線形splitとdegree-90
+tailだけを認証する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2376,6 +2417,8 @@ a posteriori theoremの対象空間・inverse・tail・roundoff majorantと十�
 [`artifacts/q007e_adapted_metric.json`](artifacts/q007e_adapted_metric.json)
 
 [`artifacts/q007f_adapted_finite_cocycle.json`](artifacts/q007f_adapted_finite_cocycle.json)
+
+[`artifacts/q007g_theorem_readiness.json`](artifacts/q007g_theorem_readiness.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

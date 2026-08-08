@@ -90,9 +90,12 @@ Riesz／Stein metricを固定し、全8 validity gateを通過した。adapted `
 metricを再調整せずQ007dの33 starting pointへ適用し、全7 validity gateを通過した。半径
 `0.004 / 0.01`の最大adapted `gamma_10`は`0.980286 / 0.981561`、failure countはともに0だったため、
 登録した10-step有限sample仮説を`accepted`とした。次は、これをball全体や存在定理へ読み替えず、
-Q007gで非共鳴不変多様体定理と定量的a posteriori proofのreadinessを監査する。定理選定時の
-予備計算では必要spectral quotientが\(L=89\)となり、現在数値監査済みなのは次数4までなので、
-まずこの仮定差分を再現可能な形で固定する。
+Q007gでは非共鳴不変多様体定理と定量的a posteriori proofのreadinessを監査し、全6 validity gateを
+通過した。必要spectral quotientは\(L=89\)である一方、既存の次数2--4監査はFourier selection ruleに
+沿うsector-aware float64条件であり、固定した定理のfull-spectrum条件を直接認証していない。さらに
+Banach関数norm、rigorous inverse、defect／variation／tail／roundoff majorantも未構築なので、結果は
+有効な`not_ready`とした。これはcandidate manifoldの不存在やQ007fの棄却ではない。次はQ007hで
+有理区間とNeumann／Bauer--Fike boundを使い、線形spectral splitと\(L=89\) tailだけを認証する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -741,7 +744,7 @@ normal-attraction診断へ戻る。
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
 `q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
-`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1`、`q007c2`、`q007d`、`q007e`、`q007f`、`q008a`、`q008c` は
+`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1`、`q007c2`、`q007d`、`q007e`、`q007f`、`q007g`、`q008a`、`q008c` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -775,6 +778,7 @@ python -m ttim_lbm --study q007c2 --output research/artifacts/q007c2_quartic_sha
 python -m ttim_lbm --study q007d --output research/artifacts/q007d_normal_cocycle.json
 python -m ttim_lbm --study q007e --output research/artifacts/q007e_adapted_metric.json
 python -m ttim_lbm --study q007f --output research/artifacts/q007f_adapted_finite_cocycle.json
+python -m ttim_lbm --study q007g --output research/artifacts/q007g_theorem_readiness.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -808,6 +812,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007d_normal_cocycle.json`](research/artifacts/q007d_normal_cocycle.json)
 - [`research/artifacts/q007e_adapted_metric.json`](research/artifacts/q007e_adapted_metric.json)
 - [`research/artifacts/q007f_adapted_finite_cocycle.json`](research/artifacts/q007f_adapted_finite_cocycle.json)
+- [`research/artifacts/q007g_theorem_readiness.json`](research/artifacts/q007g_theorem_readiness.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -855,16 +860,16 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007d 解析的full-map／quartic-chart Jacobian、fixed-leaf Euclidean projector、10-step normal cocycle
 - Q007e 289 Fourier blockのRiesz invariant split、Stein metric、実往復、adapted matrix-free SVD
 - Q007f fixed metric／varying quartic tangent、複素共役Jacobian／adjoint、33点の10-step adapted cocycle
+- Q007g 固定定理の構造仮定、\(L=89\) spectral quotient、sector／full-spectrum証拠差分、proof-object inventory
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007g a posteriori defect／derivative-variation gate
+- Q007h outward-rounded linear spectral split／tail certification
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007gである。Q007fは同じ方向を使う計量比較なのでindependent holdoutではなく、
-finite sampleの通過だけでは真のinvariant normal bundleや存在・一意性を示さない。適用するa posteriori
-theorem、Banach norm、domain、inverse bound、tail／roundoff majorant、十分条件を観測前に固定し、
-quartic invariance defectとderivative variationがそのbudgetを閉じるかを判定する。
+従って次のゲートはQ007hである。Q007gにより、構造的な解析性・局所可逆性とfloat64の線形再現は通ったが、
+outward-rounded spectral enclosureが最初のmissing layerだと確定した。Q007hは線形split・可逆性・degree-90
+tailだけを認証し、次数2--89の非共鳴、quartic invariance defect、存在半径は後続gateへ残す。
