@@ -6247,6 +6247,178 @@ fixed leaf、one-step re-entry、MPFR stage positivityを全iterateへ帰納で�
 stateの初期encoding、trajectory accuracy、shadowing時間はまだ示していない。次は初期化interiorを
 別定義した後、exact mapとのmulti-step shadowingを新しいgateとして扱う。
 
+## Q007aa: exact-state encoding の初期化 interior — 事前登録
+
+### 問い
+
+Q007sの登録tubeより明示的に小さいexact-state tubeを固定すれば、任意のその内部状態を
+componentwise MPFR-85へround-to-nearest encodingし、Q007yのbalanced conservation repairを
+適用した直後の状態がQ007s tube内に入ることを、Q007zのselected-wave boundとQ007sの
+analytic chart majorantだけで認証できるか。
+
+### 封印する入力
+
+- Q007s artifact newline-normalized SHA-256:
+  `7b70fd20df8fb7db5e5460a08d3f86fe8b81a55b56864c860a2c24e9cab63292`
+- Q007s runner SHA-256:
+  `6c8633f7e99874ac3be7dd14d3caa253b0dc8c499bb2f6edbb392fa695975b1e`
+- Q007y artifact newline-normalized SHA-256:
+  `a3afa87c4ee3f5d45e667eac9a6a89a1726f1d4bad0a9f90a624c562fb598648`
+- Q007y runner SHA-256:
+  `ba757030c852b68d5a4c643ec150422c0a7b4c3ba125211d2715ba1445e89811`
+- Q007z artifact newline-normalized SHA-256:
+  `b1ca382a76e874c18b804c7614ff8ad1ded3a5d0b9dda583facf6641b24f0c53`
+- Q007z runner SHA-256:
+  `0e2b3aebdc30d6a441178e3ac05fe417ab66673885a52ac9da801bd787dd8f79`
+- grid／map／leaf:
+  \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、
+  \(M=289,\ P_x=P_y=0\)、MPFR precision 85 bits、\(h=2^{-90}\)
+
+Q007sの外側tubeを
+
+\[
+\mathcal T(r,\zeta),\qquad
+r=9\times10^{-19},\qquad \zeta=5\times10^{-12}
+\]
+
+とし、事前登録する初期化interiorを
+
+\[
+\boxed{
+r_0=8.9998\times10^{-19},\qquad
+\zeta_0=4.999999999\times10^{-12}
+}
+\]
+
+とする。従って登録した内向き余裕はexact rationalで
+
+\[
+\Delta r=2\times10^{-23},\qquad
+\Delta\zeta=10^{-21}
+\]
+
+である。radiusを結果に合わせて動かさない。
+
+### coordinate perturbation lemma
+
+Q007p／Q007sのgraph gaugeを
+
+\[
+W(a)=Va+H(a),\qquad L W(a)=a,\qquad Q=I-VL
+\]
+
+と書く。exact初期状態は固定保存量葉上で
+
+\[
+x=W(a)+Uz,\qquad \|a\|_1\le r_0,\qquad \|z\|_*\le\zeta_0
+\]
+
+を満たすものに限定する。componentwise encodingとrepair後を
+\(\tilde x=x+e\)とし、\(\tilde a=L\tilde x=a+\delta a\)と置く。
+Q007sのselected／external analysis upperをそれぞれ\(K_L,K_a\)とする。
+
+Q007y input boundのraw encoding Wiener errorを\(E_{\rm raw}\)、repair additionの
+physical Wiener boundを\(E_{\rm rep}\)とし、
+
+\[
+E_W=E_{\rm raw}+E_{\rm rep}
+\]
+
+とする。baseにはQ007zのphase-aware repair upper \(B_{\rm rep}^{\rm sel}\)を使い、
+
+\[
+\epsilon_a
+=K_L E_{\rm raw}+B_{\rm rep}^{\rm sel}
+\]
+
+と評価する。raw encodingのFourier相関による追加改善は使わない。
+
+Q007sのmajorant係数を\(h_2,h_3,h_4,\tau,\rho\)とし、外側base radiusで
+
+\[
+d_H(r)
+=2h_2r+3h_3r^2+4h_4r^3+\frac{\tau}{\rho-r}
+\]
+
+をexact rationalに再計算する。\(\|a\|_1\le r_0\)かつ
+\(\|\delta a\|_1\le\epsilon_a<\Delta r\)なら、\(a\)から\(\tilde a\)までの線分は
+\(\|\cdot\|_1<r\)にある。graph gaugeから
+
+\[
+\tilde x-W(\tilde a)
+=Uz+Qe-\bigl(H(\tilde a)-H(a)\bigr)
+\]
+
+なので、encoding後のnormal-coordinate増分を
+
+\[
+\epsilon_z
+=K_a\left(E_W+d_H(r)\epsilon_a\right)
+\]
+
+で評価する。\(K_a E_W\)を直接摂動、
+\(K_a d_H(r)\epsilon_a\)をchart移動分として別記する。
+
+封印値から期待される概数は
+
+\[
+\begin{aligned}
+E_{\rm raw}&\simeq7.4704749081\times10^{-24},\\
+E_{\rm rep}&\simeq1.2452407101\times10^{-23},\\
+\epsilon_a&\simeq1.1304745189\times10^{-23},\\
+d_H(r)&\simeq1.0403913490\times10^{-16},\\
+\epsilon_z&\simeq5.9603557593\times10^{-22}.
+\end{aligned}
+\]
+
+これらは診断値であり、判定はartifactのexact rational recordだけで行う。
+
+### validity gate
+
+1. Q007s／Q007y／Q007z artifact・runner SHA、source、scope、upstream validityと
+   登録判定が一致する。
+2. Q007sの\(r,\zeta,\rho,\tau,h_2,h_3,h_4,K_L,K_a\)をexactに再利用し、
+   selected candidateの全gateが通っている。
+3. Q007yのtube-wide input encoding bound、repair lattice、fixed-leaf target、
+   same-binade positivityがfresh replayとartifactで一致する。
+4. Q007zのselected-wave set、phase histogram、\(B_{\rm rep}^{\rm sel}\)、accepted判定が
+   fresh replayとartifactで一致する。
+5. \(E_W,\epsilon_a,d_H(r),\epsilon_z\)とtight interior radius
+   \(r-\epsilon_a,\zeta-\epsilon_z\)をexact rationalで再計算し、全恒等式が通る。
+6. 全値finiteなstrict JSONを生成し、input／result digestを再現する。
+
+一つでも失敗すれば`inconclusive`とし、初期化仮説を解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. 登録initialization tubeはQ007s tubeのstrict subsetで、解析半径内にある。
+2. Q007y input repairは登録initialization tube全体でwell-defined、exact fixed-leaf、positiveである。
+3. \(\epsilon_a<\Delta r\)であり、encoding前後のbase線分がQ007s base ball内に留まる。
+4. \(\epsilon_z<\Delta\zeta\)であり、direct external errorとgraph移動分の双方を含む。
+5. encoding＋repair後に\(\|\tilde a\|_1<r\)、
+   \(\|\tilde z\|_*<\zeta\)が成り立つ。
+6. Q007zの条件付き帰納を接続し、その後の全sampling timeでfixed leaf、tube membership、
+   stage positivityが維持される。
+
+全て通れば
+`registered exact-state interior survives MPFR-85 encoding and repair`
+として`accepted`とする。
+
+baseまたはnormal余裕が落ちた場合は
+`registered initialization interior is too shallow for encoding and repair`
+として有効な`not_certified`とし、radiusを事後変更せず、次gateでより内側の候補または
+wave-resolved input enclosureを事前登録する。source／scope／upstream gateが落ちた場合は
+`inconclusive`とする。
+
+### 主張境界
+
+本ゲートは固定17²、固定保存量葉、Q007sのexact graph-gauge manifold、封印済みMPFR-85 backend、
+Q007yのrow-major balanced repair、および上記coordinate interiorに限定する。任意のQ007s boundary
+state、固定保存量葉外、任意精度実装、exact軌道とのtrajectory accuracy／shadowing、性能、他grid、
+center-slow構成、D3Q27は主張しない。Q007zの条件付き定理を置換せず、その初期条件を一段だけ具体化する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
