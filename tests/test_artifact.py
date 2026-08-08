@@ -1917,3 +1917,47 @@ def test_q007v_artifact_records_binary64_partial_certificate() -> None:
     assert not cycle["theorem_consequence"][
         "all_iterate_roundoff_robust_q007s_tube_invariance"
     ]
+
+
+def test_q007w_artifact_records_the_ideal_precision_threshold() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY / "q007w_ideal_precision_threshold.json"
+    )
+    runner_path = (
+        artifact_path.parents[1] / "q007w_ideal_precision_threshold.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007w_ideal_precision_threshold.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "rational ideal-binary precision-threshold certificate",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "precision_candidates": "all integer significand bits 53 through 128",
+        "minimum_normal_exponent": -1022,
+        "rounding_model": "ideal binary round-to-nearest ties-to-even",
+        "claim": (
+            "minimum sufficient registered precision for the unchanged "
+            "Q007v worst-case re-entry enclosure; no implemented backend"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert len(cycle["validity_gates"]) == 7
+    assert len(cycle["hypothesis_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert all(cycle["theorem_consequence"].values())
+    assert cycle["selection"]["selected_precision_bits"] == 85
+    assert cycle["selection"]["selection_boundary_reproduced"]
