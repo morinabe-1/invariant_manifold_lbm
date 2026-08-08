@@ -3526,6 +3526,136 @@ Q007h／Q007jの区間実装と同じ`INTERVAL_DECIMAL_DIGITS=140`を使い、�
 変更しない。cubic／quartic係数、explicit neighborhood radius、finite-ball normal attraction、grid-uniform性は
 まだ認証しない。次はQ007lで2,600 cubic tripleだけを扱う。
 
+## Q007l: rational cubic-jet bridge — 事前登録
+
+### 問い
+
+Q007bで保存した2,600 unordered tripleの数値\(H_3,R_3\)は、Q007jのexact eigencoordinatesとQ007kの
+exact quadratic jetを使うgraph-gauge cubic homological equationの一意な厳密解を、登録誤差内で表しているか。
+
+Q007iの定理多様体は解析的で、Q007j／Q007kにより一次・二次jetは固定された。従ってこのgateが通れば、固定した
+graph gaugeにおけるその多様体の三次Taylor jetとQ007b係数を結び付ける。Q007bの有限振幅residual-ratio棄却は
+性能判定として維持し、quartic coefficient、explicit neighborhood radius、finite-ball attractionは扱わない。
+
+### 固定入力
+
+- `q007b_cubic_continuation.json`のnewline-normalized SHA-256を
+  `5524fd316bece33387a3d1f6590321bc74579c48a87ee31bba090a295f9fa6dd`へ固定する。`passed / rejected`、全7
+  validity pass、失敗hypothesis `held_out_residual_ratio`だけを要求する。
+- Q007bのcoefficient hashを次へ固定し、`build_full2d_cubic_model()`から再現する。
+  - triple indices: `e646d2de7212c823cbca5804fbf20e9543918ecca80452dd508c278dfc5f130c`
+  - output waves: `d431bfabad714d9d7ee9d8bfaf779eb2362ab27c916740494a379610c1389a6f`
+  - chart coefficients: `ed182069713bff0558b806ce7a70e77299ea9fbc6671de38c4fa58019da5615b`
+  - reduced coefficients: `4ca5a953833d5913f160e9fc36061e31697c7531865c4ef06d7517898f7c597e`
+  - forcing coefficients: `6e2559a194d2b1e6a96f01653c1bccbe1852db00233700e16b3b980ae96df8eb`
+- `q007k_quadratic_jet_bridge.json` SHA-256を
+  `022f9ded6b40dc754a1b935f69554db9407e5e07715bd9132990ca9876fc8bbf`、runner source SHA-256を
+  `963862710b772a63a9293bbb100ea50a21f3469932ee54d84cfd197a384f89cb`へ固定する。`passed / accepted`、
+  全5 validity／全4 hypothesis passを要求する。
+- Q007kをroot-box readerとして使わない。Q007jの12 eigenpair proofとQ007kの300 quadratic proofを再計算し、
+  全`proof_digest_sha256`をartifactと一致させてから、対称な24×24のexact \(H_2,R_2\) boxを再構築する。
+- grid `17²`、`omega=1.5`、`eta=0.01`、固定保存量葉、mode／triple順序、Q007b係数を変更しない。
+
+### exact cubic forcing
+
+unordered triple \((i,j,k)\)、output wave \(q=k_i+k_j+k_k\)について、Q007bと同じ三次forcing
+
+\[
+\begin{aligned}
+F_{ijk}={}&D^3\Phi[V_i,V_j,V_k]
++D^2\Phi[H_{ij},V_k]+D^2\Phi[H_{ik},V_j]+D^2\Phi[H_{jk},V_i]\\
+&-\sum_p\left(
+\lambda_k H_{pk}R_{pij}
++\lambda_j H_{pj}R_{pik}
++\lambda_i H_{pi}R_{pjk}
+\right)
+\end{aligned}
+\]
+
+をexact complex rectangleで評価する。\(D^2\Phi\)にはQ007kのrational equilibrium Hessianを使う。
+\(D^3\Phi\)は、保存moment \(m(x)=Mx\) と同じHessian \(E_s\) により
+
+\[
+D^3\Phi_q[x,y,z]_s=-\omega g(q)e^{-ic_s\cdot q}
+\left[m_0(x)E_s(m(y),m(z))+m_0(y)E_s(m(x),m(z))+m_0(z)E_s(m(x),m(y))\right]
+\]
+
+とする。streaming／filterはQ007kと同じMachin／Taylor tableを使い、全基本演算後に
+`INTERVAL_DECIMAL_DIGITS=140`の有理格子へ外向き丸めする。
+
+保存恒等式 \(ME=0\) からzero-waveで \(M D^2\Phi=M D^3\Phi=0\) を構造的に示す。reduced-composition項は、
+nonzero \(R_{pij}\) のwave-selection ruleとQ007kの36 fixed-leaf zero-wave \(H_{pk}\) certificateを列挙して
+保存momentが0であることを示す。float64 cancellationを保存証明に使わない。
+
+### 2,600 homological system
+
+- external 1,448 tripleとzero-wave 108 tripleにはfull 9×9 system
+
+\[
+\left(A(q)-\lambda_i\lambda_j\lambda_k I\right)H_{ijk}=-F_{ijk}
+\]
+
+  を使う。Q007bのzero-wave 6×6 numerical restrictionはcenter生成だけの既存表現として再現し、Q007lの
+  certificateはfull 9×9と積の1からの分離でfixed-leaf解を同定する。
+- selected internal 1,044 tripleにはQ007kと同じexact \(V_q,L_q^*\) による12×12 augmented graph-gauge system
+
+\[
+\begin{bmatrix}
+A(q)-\lambda_i\lambda_j\lambda_kI&-V_q\\
+L_q^*&0
+\end{bmatrix}
+\begin{bmatrix}H_{ijk}\\R_{ijk}\end{bmatrix}
+=
+\begin{bmatrix}-F_{ijk}\\0\end{bmatrix}
+\]
+
+  を使う。
+
+triple countを`2,600 = 108 + 1,044 + 1,448`、output-wave supportを49、complex unknown countを
+`108*9 + 1,448*9 + 1,044*12 = 26,532`へ固定する。Q007bのcomplex \(H_3,R_3\)をcenter \(z_0\)とし、
+各実部・虚部の探索半径を\(r_3=10^{-3}\)に固定する。float64 inverseをexact dyadic preconditioner \(C\)へ変換し、
+
+\[
+K_3(z_0,X)=z_0-C(Bz_0-b)+(I-CB)(X-z_0)
+\]
+
+を全2,600 systemで評価する。
+
+### design-only探索の開示
+
+Q007bの既存float64結果はmaximum condition number `10821.814847751179`、maximum homological residual
+`7.5074201571007706e-13`である。Q007lのforcingを作らずQ007kの300 root boxだけを再構築した設計計算では、
+maximum component width \(H_2/R_2\) は`5.787647966686327e-14 / 1.3739078996001612e-16`、maximum
+component absolute upperは`34.04272577331188 / 1.0496353375362775`だった。これらは探索半径と計算量の設定だけに
+使い、Q007lのcubic forcing、Krawczyk image、correction、witnessへ流用しない。
+
+### validity gate
+
+1. Q007b／Q007kのSHA、source、scope、sealed outcome、5 coefficient hash、runner、12＋300 proof digestを再現する。
+2. triple `2,600`、zero／internal／external `108 / 1,044 / 1,448`、support `49`、unknown `26,532`を一致させる。
+3. rational \(D^2\Phi,D^3\Phi\)、zero-wave保存恒等式、quadratic selection-rule chainをexactに再現する。
+4. 140桁外向き丸め、pi／trigonometric width `<=1e-120`、symbol entry width `<=1e-110`、2,600 point inverse
+   defect `<1`を要求する。
+5. 全summaryをfinite・strict JSONとし、triple identifier、input modes、output wave／kindをQ007bと全件一致させる。
+
+validityが一つでも落ちた場合は`inconclusive`とし、同じgateで半径、basis、operator、精度を変更しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次を全て要求する。
+
+1. 2,600 system全てで\(K_3(z_0,X)\subset\operatorname{int}X\)、maximum utilization `<=1e-2`
+2. maximum interval contraction `<1`、singular／unassigned system `0`
+3. exact rootから登録complex \(H_3,R_3\) centerへのmaximum componentwise correction upper `<=1e-5`
+4. 108 zero-wave triple全てでproduct separation from 1が正、1,044 internal system全てでgraph-gauge rowを含む
+   Krawczyk inclusionが通過
+
+全て通れば`registered Q007b cubic coefficients identify the theorem-manifold graph-gauge cubic jet`として
+`accepted`とする。一つでも落ちれば`registered cubic-jet bridge not certified`という有効な`not_certified`とする。
+Q007bの有限振幅性能棄却、Q007i／Q007j／Q007kの定理・jet認証、他の性能判定は変更しない。
+
+acceptedの場合だけQ007mで17,550 quartic systemへ進む。explicit radiusはさらに分離する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
