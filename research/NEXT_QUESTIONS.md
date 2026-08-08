@@ -3045,6 +3045,84 @@ validity通過後、有理endpointだけで次を別々に要求する。
 acceptedでも、認証するのは固定17² filtered mapの線形層だけである。次数2--89のdirectまたは
 translation-equivariant nonresonanceはQ007iへ残し、非線形存在主張を行わない。
 
+### Q007h 封印結果
+
+全288非零blockの有理区間計算は完了し、pi／trigonometric／symbol幅、Neumann inverse、Bauer--Fike半径、
+selected円板群分離、Q007g再現、strict JSONは通過した。5 hypothesis gateもすべて通り、degree-90 tail
+upperは`0.9989422022643313`だった。
+
+しかし、各waveで独立に作ったpreconditionerによるC4-related modulus boundの最大endpoint差
+`2.3299336398161276e-11`が登録閾値`1e-12`を超えた。共役差は0で、最悪C4 pairはexcluded群の
+\((-5,4)\rightarrow(-4,-5)\)だった。停止規則に従いQ007hは`inconclusive`とし、線形認証を主張しない。
+threshold、norm、radius式、selected clusterは変更しない。
+
+## Q007h1: C4-orbit transported rational spectral enclosure — 事前登録
+
+### 問い
+
+Q007hの独立preconditionerだけをC4-equivariantに置き換え、exact symbol、区間幅、Neumann／Bauer--Fike式、
+validity threshold、5 hypothesis gateを一切緩めず、固定17² mapの線形splitとdegree-90 tailを認証できるか。
+
+これはQ007hの失敗値を削除・置換する再実行ではなく、観測されたC4 enclosure mismatchを対象にした新しい
+封印gateである。Q007h artifactは`inconclusive`のまま入力として固定する。
+
+### exact C4 orbitとpreconditioner輸送
+
+wave rotationを
+
+\[
+r(n_x,n_y)=(-n_y,n_x)\pmod {17}
+\]
+
+とする。D2Q9 population permutation \(P\) は有理な0／1行列として、entrywiseに
+
+\[
+A_{r(n)}=P A_n P^{-1}
+\]
+
+を満たす向きへ一意に構成する。289 waveはzero orbit 1個とnonzero C4 orbit 72個に分け、各orbitの
+lexicographic minimumを代表に固定する。
+
+- NumPyの \((V,\Lambda)\) と \(W\simeq V^{-1}\) は72 nonzero代表でだけ計算する。
+- \(r^j(n)\) では \(V_j=P^jV\)、\(W_j=WP^{-j}\)、\(\Lambda_j=\Lambda\) をexact dyadic／integer
+  matrixとして使う。
+- 各target blockでもQ007hと同じ区間残差、\(\epsilon\)、\(\beta\)、\(r_{BF}\) を独立に再評価する。
+- selected／excluded labelは代表で固定し、permutationと同じorbit順で輸送する。
+- zero waveはQ007hと同じ6重の厳密固有値\(-1/2\)とする。
+
+### validity gate
+
+- Q007h artifactのsource／scope／SHAを記録し、`failed / inconclusive`、失敗gateがC4 symmetryだけ、全5
+  hypothesis gateがpassであることを要求する。
+- orbit countを`73`、nonzero代表countを`72`、全nonzero member countを`288`とする。
+- rational symbol rectangleについて、全C4 edgeで \(A_{r(n)}=P A_nP^{-1}\) がentrywiseに厳密一致し、
+  mismatch countを0とする。
+- Q007hと同じpi／trigonometric width `<=1e-120`、symbol width `<=1e-110`を要求する。
+- 全288 nonzero blockで \(\epsilon<1\)、maximum \(\epsilon\)`<=1e-10`、全Bauer--Fike radiusをfiniteかつ
+  `<=1e-8`とする。normとradius式はQ007hから変更しない。
+- 全8 selected waveで3／6円板群gapを`>=1e-6`、countを`3 / 6`とする。
+- Q007gのfloat64 center extremaをrelative error`<=1e-10`で再現する。
+- conjugate／C4-related certified modulus endpoint differenceをexact `0`とする。
+- 全値finite、strict JSONとする。失敗時は`inconclusive`とし、spectral結論を使わない。
+
+### hypothesis gateと停止規則
+
+validity通過後、Q007hと同じ有理endpointで次を要求する。
+
+1. selected spectral-radius upper bound \(<1\)
+2. excluded minimum-modulus lower bound \(>0\)
+3. selected minimum-modulus lower bound minus excluded maximum-modulus upper bound \(>0\)
+4. \(\rho_{F,+}^{90}/\mu_{E,-}<1\)
+5. selected／excluded／fixed-leaf countが`24 / 2574 / 2598`
+
+全て通れば`registered symmetry-equivariant linear spectral split and degree-90 tail certified`として
+`accepted`とする。一つでも落ちれば`registered symmetry-equivariant linear certification failed`という有効な
+`not_certified`とする。結果を見てorbit代表、permutation、Taylor項数、norm、radius式、selected cluster、閾値を
+変更しない。
+
+acceptedでも固定17² mapの線形層だけの認証である。次数2--89のdirect／translation-equivariant
+nonresonanceはQ007iへ残し、非線形存在・一意性を主張しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

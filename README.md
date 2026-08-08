@@ -94,8 +94,13 @@ Q007gでは非共鳴不変多様体定理と定量的a posteriori proofのreadin
 通過した。必要spectral quotientは\(L=89\)である一方、既存の次数2--4監査はFourier selection ruleに
 沿うsector-aware float64条件であり、固定した定理のfull-spectrum条件を直接認証していない。さらに
 Banach関数norm、rigorous inverse、defect／variation／tail／roundoff majorantも未構築なので、結果は
-有効な`not_ready`とした。これはcandidate manifoldの不存在やQ007fの棄却ではない。次はQ007hで
-有理区間とNeumann／Bauer--Fike boundを使い、線形spectral splitと\(L=89\) tailだけを認証する。
+有効な`not_ready`とした。これはcandidate manifoldの不存在やQ007fの棄却ではない。Q007hでは
+`Fraction`端点、Machin／Taylor区間、Neumann inverse bound、Bauer--Fike inclusionを全288非零blockへ
+適用した。線形5仮説はすべて通り、selected radius upper、normal-gap lower、degree-90 tail upperは
+`0.9920954673554354 / 0.00206112115963712 / 0.998942202264331`となった。しかし独立preconditionerが作る
+C4-related modulus endpoint差`2.32993e-11`が登録validity閾値`1e-12`を超えたため、Q007hは規則どおり
+`inconclusive`とした。次はQ007h1でC4 orbit代表のpreconditionerを厳密なpopulation permutationにより
+輸送し、線形結論を再認証する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -861,15 +866,17 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007e 289 Fourier blockのRiesz invariant split、Stein metric、実往復、adapted matrix-free SVD
 - Q007f fixed metric／varying quartic tangent、複素共役Jacobian／adjoint、33点の10-step adapted cocycle
 - Q007g 固定定理の構造仮定、\(L=89\) spectral quotient、sector／full-spectrum証拠差分、proof-object inventory
+- Q007h 288非零blockの有理区間Neumann／Bauer--Fike audit、全5線形仮説通過、C4 validity棄却
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007h outward-rounded linear spectral split／tail certification
+- Q007h1 symmetry-transported outward-rounded linear spectral split／tail certification
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007hである。Q007gにより、構造的な解析性・局所可逆性とfloat64の線形再現は通ったが、
-outward-rounded spectral enclosureが最初のmissing layerだと確定した。Q007hは線形split・可逆性・degree-90
-tailだけを認証し、次数2--89の非共鳴、quartic invariance defect、存在半径は後続gateへ残す。
+従って次のゲートはQ007h1である。Q007hの有理区間spectral enclosureと5線形仮説は通ったが、独立な
+固有基底がC4-related enclosureへ不要な差を作り、登録validityを満たさなかった。Q007h1はexact C4
+similarityでorbit代表のpreconditionerを輸送し、閾値や半径式を変えず線形split・可逆性・degree-90 tailを
+再判定する。次数2--89の非共鳴、quartic invariance defect、存在半径は後続gateへ残す。

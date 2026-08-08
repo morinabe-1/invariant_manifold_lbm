@@ -2368,6 +2368,51 @@ missing layerはoutward-rounded linear eigenvalue／split enclosureである。Q
 formula、Taylor remainder、Neumann inverse bound、Bauer--Fike inclusionにより、線形splitとdegree-90
 tailだけを認証する。
 
+## 2026-08-08: Q007h rational-interval linear spectrum
+
+### 実装
+
+- D2Q9 collision symbolを有理数で構成し、Machin公式96項とTaylor多項式64項から17個のsin／cos区間を
+  `Fraction`端点だけで生成した。
+- 全288非零Fourier blockでNumPy固有分解をpreconditionerに限定し、floatをexact dyadic rationalへ変換した。
+- \(\epsilon=\|I-WV\|_\infty\)、Neumann inverse bound、区間残差、Bauer--Fike半径を完全有理演算で評価した。
+- 8 selected waveでは3／6円板群を分離し、homotopyでselected 24／excluded 2574のcountを固定した。
+- zero waveの固定保存量葉は、6重の厳密固有値\(-1/2\)として処理した。
+
+### validityと停止
+
+8 validity gateのうち7個が通過した。
+
+- maximum pi／trigonometric／symbol width:
+  `1.0408e-136 / 9.4537e-136 / 6.24574e-136`
+- maximum inverse defect \(\epsilon\): `1.10700e-14`
+- maximum Bauer--Fike radius: `1.06752e-10`
+- minimum selected／excluded disc-group gap: `1.34448`
+- Q007g extrema reproduction maximum relative error: `1.56670e-15`
+- conjugate endpoint difference: `0`
+- maximum C4 endpoint difference: `2.32993e-11`
+
+最後の値だけが事前登録閾値`1e-12`を超えた。最悪pairはexcluded群の
+\((-5,4)\rightarrow(-4,-5)\)である。従って結果を見てthreshold、norm、Bauer--Fike半径式、selected clusterを
+変更せず、`study_validity=failed`、`hypothesis_outcome=inconclusive`とした。
+
+### 線形仮説の診断値
+
+validity失敗のため認証結論には使わないが、登録した5 hypothesis gate自体はすべて通過した。
+
+- selected spectral-radius upper: `0.9920954673554354`
+- excluded minimum-modulus lower: `0.4900851345011790`
+- selected minimum lower／excluded maximum upper:
+  `0.9837709569923185 / 0.9817098358326815`
+- normal-gap lower: `0.002061121159637118`
+- degree-90 tail upper: `0.9989422022643313`
+- certified disc count: `24 / 2574 / 2598`
+
+これは線形splitの反証ではない。独立に正規化されたC4-related eigenvector matrixの条件数と残差が少し異なり、
+真の対称スペクトルを包含する有効な円板半径が同一にならなかったためである。Q007h1ではC4 orbit代表だけで
+preconditionerを作り、exact population permutationで全orbitへ輸送する。Q007hの全値と`inconclusive`は保存し、
+次数2--89の非共鳴や非線形存在主張へは進まない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2419,6 +2464,8 @@ tailだけを認証する。
 [`artifacts/q007f_adapted_finite_cocycle.json`](artifacts/q007f_adapted_finite_cocycle.json)
 
 [`artifacts/q007g_theorem_readiness.json`](artifacts/q007g_theorem_readiness.json)
+
+[`artifacts/q007h_rational_spectrum.json`](artifacts/q007h_rational_spectrum.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
