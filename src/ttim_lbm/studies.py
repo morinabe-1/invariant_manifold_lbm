@@ -8,6 +8,7 @@ from typing import Any
 
 import numpy as np
 
+from .adapted_finite_cocycle import run_adapted_finite_cocycle_audit
 from .adapted_metric import run_adapted_metric_audit
 from .anchor_obstruction import run_anchor_obstruction_audit
 from .checkerboard_filter import run_checkerboard_filter_audit
@@ -2237,6 +2238,41 @@ def run_q007e_study() -> dict[str, Any]:
                 "registered equilibrium single-grid adapted-metric "
                 "prequalification only; no finite-radius normal attraction, "
                 "true invariant-normal-bundle, grid-uniform bound, existence, "
+                "or uniqueness theorem"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007f_study() -> dict[str, Any]:
+    """Run and package the sealed Q007f fixed-metric cocycle audit."""
+
+    cycle = run_adapted_finite_cocycle_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "fixed-metric finite-radius projected normal cocycle",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "real_reduced_dimension": 24,
+            "adapted_fixed_leaf_dimension": 2598,
+            "direction_count_per_amplitude": 16,
+            "amplitudes": [0.004, 0.01],
+            "starting_point_count": 33,
+            "steps": 10,
+            "metric_reestimated_at_finite_radius": False,
+            "claim": (
+                "same-direction comparative finite-sample fixed-metric "
+                "diagnostic only; no independent holdout, full-ball, true "
+                "invariant-normal-bundle, grid-uniform attraction, existence, "
                 "or uniqueness theorem"
             ),
         },

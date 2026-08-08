@@ -28,7 +28,7 @@ from .normal_cocycle import (
     _coefficient_reproduction,
     _trajectory_record,
 )
-from .quartic_chart import build_full2d_quartic_model
+from .quartic_chart import Full2DQuarticModel, build_full2d_quartic_model
 
 Array = npt.NDArray[np.float64]
 ComplexArray = npt.NDArray[np.complex128]
@@ -80,6 +80,27 @@ def _relative_scalar_error(observed: float, registered: float) -> float:
         abs(float(registered)),
         np.finfo(float).eps,
     )
+
+
+def _complex_columns(
+    value: npt.ArrayLike,
+    dimension: int,
+    *,
+    label: str,
+) -> tuple[ComplexArray, bool]:
+    array = np.asarray(value, dtype=np.complex128)
+    if array.shape == (dimension,):
+        return array[:, None], True
+    if array.ndim == 2 and array.shape[0] == dimension:
+        return array, False
+    raise ValueError(f"{label} must have shape ({dimension},) or ({dimension}, m)")
+
+
+def _restore_complex_columns(
+    value: ComplexArray,
+    was_vector: bool,
+) -> ComplexArray:
+    return np.asarray(value[:, 0] if was_vector else value, dtype=np.complex128)
 
 
 def _wave_indices(size: int = SIZE) -> tuple[WaveIndex, ...]:
@@ -173,35 +194,100 @@ class AdaptedFourierMetric:
         return sum(block.active_dimension for block in self.blocks)
 
     def forward(self, state: npt.ArrayLike) -> ComplexArray:
-        value = np.asarray(state, dtype=np.float64)
-        if value.shape != (self.size * self.size * 9,):
-            raise ValueError("physical state has the wrong dimension")
+        physical_dimension = self.size * self.size * 9
+        value, was_vector = _complex_columns(
+            state,
+            physical_dimension,
+            label="physical state",
+        )
         spectrum = np.fft.fft2(
-            value.reshape(self.size, self.size, 9),
+            value.reshape(self.size, self.size, 9, value.shape[1]),
             axes=(0, 1),
             norm="ortho",
         )
-        transformed = np.empty(self.dimension, dtype=np.complex128)
+        transformed = np.empty(
+            (self.dimension, value.shape[1]),
+            dtype=np.complex128,
+        )
         for block, target in zip(self.blocks, self.slices, strict=True):
             ix, iy = block.wave_index
             population = spectrum[iy % self.size, ix % self.size]
             active = block.active_basis.conj().T @ population
             transformed[target] = block.whitening @ active
-        return transformed
+        return _restore_complex_columns(transformed, was_vector)
 
     def inverse(self, coordinates: npt.ArrayLike) -> ComplexArray:
-        value = np.asarray(coordinates, dtype=np.complex128)
-        if value.shape != (self.dimension,):
-            raise ValueError("adapted coordinates have the wrong dimension")
-        spectrum = np.zeros((self.size, self.size, 9), dtype=np.complex128)
+        value, was_vector = _complex_columns(
+            coordinates,
+            self.dimension,
+            label="adapted coordinates",
+        )
+        spectrum = np.zeros(
+            (self.size, self.size, 9, value.shape[1]),
+            dtype=np.complex128,
+        )
         for block, source in zip(self.blocks, self.slices, strict=True):
             ix, iy = block.wave_index
             active = block.whitening_inverse @ value[source]
             spectrum[iy % self.size, ix % self.size] = block.active_basis @ active
-        return np.asarray(
-            np.fft.ifft2(spectrum, axes=(0, 1), norm="ortho").ravel(),
+        physical = np.asarray(
+            np.fft.ifft2(spectrum, axes=(0, 1), norm="ortho").reshape(
+                self.size * self.size * 9,
+                value.shape[1],
+            ),
             dtype=np.complex128,
         )
+        return _restore_complex_columns(physical, was_vector)
+
+    def forward_adjoint(self, coordinates: npt.ArrayLike) -> ComplexArray:
+        """Apply the Euclidean adjoint of ``forward``."""
+
+        value, was_vector = _complex_columns(
+            coordinates,
+            self.dimension,
+            label="adapted coordinates",
+        )
+        spectrum = np.zeros(
+            (self.size, self.size, 9, value.shape[1]),
+            dtype=np.complex128,
+        )
+        for block, source in zip(self.blocks, self.slices, strict=True):
+            ix, iy = block.wave_index
+            active = block.whitening.conj().T @ value[source]
+            spectrum[iy % self.size, ix % self.size] = block.active_basis @ active
+        physical = np.asarray(
+            np.fft.ifft2(spectrum, axes=(0, 1), norm="ortho").reshape(
+                self.size * self.size * 9,
+                value.shape[1],
+            ),
+            dtype=np.complex128,
+        )
+        return _restore_complex_columns(physical, was_vector)
+
+    def inverse_adjoint(self, state: npt.ArrayLike) -> ComplexArray:
+        """Apply the Euclidean adjoint of ``inverse``."""
+
+        physical_dimension = self.size * self.size * 9
+        value, was_vector = _complex_columns(
+            state,
+            physical_dimension,
+            label="physical state",
+        )
+        spectrum = np.fft.fft2(
+            value.reshape(self.size, self.size, 9, value.shape[1]),
+            axes=(0, 1),
+            norm="ortho",
+        )
+        transformed = np.empty(
+            (self.dimension, value.shape[1]),
+            dtype=np.complex128,
+        )
+        for block, target in zip(self.blocks, self.slices, strict=True):
+            ix, iy = block.wave_index
+            population = spectrum[iy % self.size, ix % self.size]
+            active = block.active_basis.conj().T @ population
+            transformed[target] = block.whitening_inverse.conj().T @ active
+        return _restore_complex_columns(transformed, was_vector)
 
 
 def _raw_wave_splits() -> tuple[_RawWaveSplit, ...]:
@@ -878,8 +964,11 @@ def _adapted_svd_audit(metric: AdaptedFourierMetric) -> dict[str, Any]:
     }
 
 
-def _q007d_reproduction() -> dict[str, Any]:
-    model = build_full2d_quartic_model()
+def _q007d_reproduction(
+    model: Full2DQuarticModel | None = None,
+) -> dict[str, Any]:
+    if model is None:
+        model = build_full2d_quartic_model()
     coefficient_reproduction = _coefficient_reproduction(model)
     leaf = FixedLeafProjector.for_square_grid(model.size)
     rng = np.random.default_rng(Q007D_NORMAL_SVD_SEED)
@@ -916,10 +1005,13 @@ def _q007d_reproduction() -> dict[str, Any]:
     }
 
 
-def run_adapted_metric_audit() -> dict[str, Any]:
+def run_adapted_metric_audit(
+    *,
+    model: Full2DQuarticModel | None = None,
+) -> dict[str, Any]:
     """Run the preregistered Q007e equilibrium adapted-metric audit."""
 
-    upstream = _q007d_reproduction()
+    upstream = _q007d_reproduction(model)
     metric, construction = build_adapted_fourier_metric()
     conjugacy = _conjugacy_audit(metric)
     roundtrip = _transform_roundtrip_audit(metric)

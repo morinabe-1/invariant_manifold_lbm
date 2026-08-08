@@ -2,14 +2,57 @@ from __future__ import annotations
 
 import json
 
+import numpy as np
 import pytest
 
-from ttim_lbm.adapted_metric import run_adapted_metric_audit
+from ttim_lbm.adapted_metric import (
+    build_adapted_fourier_metric,
+    run_adapted_metric_audit,
+)
+
+
+@pytest.fixture(scope="module")
+def adapted_fourier_metric():
+    return build_adapted_fourier_metric()[0]
 
 
 @pytest.fixture(scope="module")
 def adapted_metric_audit():
     return run_adapted_metric_audit()
+
+
+def test_adapted_transform_supports_columns_and_exact_adjoint_pairs(
+    adapted_fourier_metric,
+) -> None:
+    metric = adapted_fourier_metric
+    rng = np.random.default_rng(20260909)
+    adapted_left = rng.normal(size=(metric.dimension, 3)) + 1j * rng.normal(
+        size=(metric.dimension, 3)
+    )
+    adapted_right = rng.normal(size=(metric.dimension, 3)) + 1j * rng.normal(
+        size=(metric.dimension, 3)
+    )
+    physical_left = metric.inverse(adapted_left)
+    physical_right = metric.inverse(adapted_right)
+
+    assert np.allclose(
+        metric.forward(physical_left),
+        adapted_left,
+        rtol=2.0e-13,
+        atol=2.0e-13,
+    )
+    assert np.allclose(
+        np.vdot(metric.forward(physical_left), adapted_right),
+        np.vdot(physical_left, metric.forward_adjoint(adapted_right)),
+        rtol=2.0e-13,
+        atol=2.0e-13,
+    )
+    assert np.allclose(
+        np.vdot(metric.inverse(adapted_left), physical_right),
+        np.vdot(adapted_left, metric.inverse_adjoint(physical_right)),
+        rtol=2.0e-13,
+        atol=2.0e-13,
+    )
 
 
 def test_q007e_passes_every_registered_validity_gate(adapted_metric_audit) -> None:

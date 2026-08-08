@@ -1059,3 +1059,53 @@ def test_q007e_artifact_records_valid_equilibrium_metric_prequalification() -> N
     assert cycle["q007d_reproduction"]["maximum_relative_error"] <= 1.0e-10
     assert not any(cycle["preserved_prior_outcomes"].values())
     assert "not finite-radius normal attraction" in cycle["claim_boundary"]
+
+
+def test_q007f_artifact_records_valid_fixed_metric_finite_sample_acceptance() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007f_adapted_finite_cocycle.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "fixed-metric finite-radius projected normal cocycle",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "real_reduced_dimension": 24,
+        "adapted_fixed_leaf_dimension": 2598,
+        "direction_count_per_amplitude": 16,
+        "amplitudes": [0.004, 0.01],
+        "starting_point_count": 33,
+        "steps": 10,
+        "metric_reestimated_at_finite_radius": False,
+        "claim": (
+            "same-direction comparative finite-sample fixed-metric "
+            "diagnostic only; no independent holdout, full-ball, true "
+            "invariant-normal-bundle, grid-uniform attraction, existence, "
+            "or uniqueness theorem"
+        ),
+    }
+    cycle = artifact["cycle"]
+    campaign = cycle["adapted_cocycle_campaign"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "registered finite-sample adapted-metric projected normal-cocycle "
+        "dominance observed"
+    )
+    assert len(cycle["validity_gates"]) == 7
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert campaign["starting_point_count"] == 33
+    assert campaign["equilibrium_control"]["gamma_10"] < 1.0
+    assert all(
+        record["summary"]["maximum_gamma_10"] < 1.0
+        and record["summary"]["gamma_10_failure_count"] == 0
+        for record in campaign["amplitude_records"]
+    )
+    assert campaign["summary"]["maximum_tangent_leakage"] <= 1.0e-3
+    assert not any(cycle["preserved_prior_outcomes"].values())
+    assert "not an independent holdout" in cycle["claim_boundary"]
