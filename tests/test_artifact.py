@@ -2247,3 +2247,67 @@ def test_q007ab_artifact_records_the_forward_shadowing_certificate() -> None:
     assert shadow["recurrence_interval_invariant"]
     assert shadow["registered_accuracy_threshold_passed"]
     assert all(cycle["theorem_consequence"].values())
+
+
+def test_q010_artifact_records_the_representation_cost_result() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q010_representation_cost.json"
+    runner_path = artifact_path.parents[1] / "q010_representation_cost.py"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q010_representation_cost.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "environment-specific TT-SVD representation cost and "
+            "break-even audit"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "coefficient_family": (
+            "fixed Q007c1 local homogeneous quartic 9-vector correction"
+        ),
+        "candidate_count": 8,
+        "mandatory_baseline": "natural quartic sparse-fiber",
+        "timing_scope": (
+            "offline representation preparation and in-memory local "
+            "quartic action"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "sealed TT-SVD path is cost-dominated by natural quartic "
+        "sparse-fiber"
+    )
+    assert len(cycle["validity_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 5
+    assert all(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    )
+    assert cycle["protocol_audit"]["passed"]
+    assert cycle["break_even_audit"]["passed"]
+    assert cycle["break_even_audit"][
+        "candidate_beating_time_and_storage_count"
+    ] == 0
+    assert cycle["selected_candidate"] is None
+    consequence = cycle["decision_consequence"]
+    assert consequence[
+        "fixed_q007c1_tt_svd_path_cost_dominated_in_campaign"
+    ]
+    assert consequence[
+        "q009_tt_cross_remains_held_for_fixed_coefficients"
+    ]
+    assert consequence["natural_sparse_fiber_remains_mandatory_baseline"]
+    assert not consequence["ordered_dense_control_interpreted_as_full_lbm"]

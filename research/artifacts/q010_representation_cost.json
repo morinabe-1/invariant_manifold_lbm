@@ -1,0 +1,1254 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-08T21:55:09.428897+00:00",
+  "source": {
+    "package_version": "0.1.0",
+    "package_source_sha256": "114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2"
+  },
+  "runner_source": {
+    "filename": "q010_representation_cost.py",
+    "sha256": "c6e99082a3418d604f7d09687685cf5e6ab9efe341ea36153123bb8ad4b26b4e",
+    "sha256_newline_normalization": "UTF-8 text with universal newlines"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.4",
+    "scipy": "1.16.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+    "machine": "AMD64",
+    "python_implementation": "CPython",
+    "garbage_collector_disabled_inside_timed_blocks": true
+  },
+  "mathematical_scope": {
+    "diagnostic": "environment-specific TT-SVD representation cost and break-even audit",
+    "construction_grid": [
+      17,
+      17
+    ],
+    "omega": 1.5,
+    "eta": 0.01,
+    "coefficient_family": "fixed Q007c1 local homogeneous quartic 9-vector correction",
+    "candidate_count": 8,
+    "mandatory_baseline": "natural quartic sparse-fiber",
+    "timing_scope": "offline representation preparation and in-memory local quartic action"
+  },
+  "cycle": {
+    "question": "Does any of the eight sealed faithful quartic TT-SVD representations have a finite total-time break-even and lower payload than the natural sparse-fiber baseline?",
+    "registered_parameters": {
+      "grid": [
+        17,
+        17
+      ],
+      "omega": 1.5,
+      "eta": 0.01,
+      "degree": 4,
+      "complex_input_mode_count": 24,
+      "local_output_count": 9,
+      "natural_fiber_count": 17550,
+      "tt_relative_tolerance": 1e-13,
+      "tt_maximum_rank": null,
+      "tt_candidate_ids": [
+        "flat-q-first",
+        "flat-q-last",
+        "d1q3-q-first",
+        "d1q3-q-last",
+        "wave-branch-tuple-major",
+        "wave-branch-factor-major",
+        "wave-qtt-tuple-major",
+        "wave-qtt-scale-interleaved"
+      ],
+      "holdout_seed": 20260901,
+      "holdout_direction_count": 16,
+      "offline_warmup_measured_blocks": [
+        1,
+        3
+      ],
+      "online_warmup_measured_blocks": [
+        1,
+        5
+      ],
+      "maximum_checksum_relative_error": 1e-11,
+      "minimum_median_online_slowdown": 2.0
+    },
+    "input_audit": {
+      "artifacts": {
+        "q008a": {
+          "filename": "q008a_tt_storage_prequalification.json",
+          "registered_sha256": "97dd1614dc62a1f58bafb74ddb7ee980763247ddc7e91686637a55f3be05d6f3",
+          "sha256": "97dd1614dc62a1f58bafb74ddb7ee980763247ddc7e91686637a55f3be05d6f3",
+          "sha256_matches": true,
+          "source_match": true,
+          "scope_match": true,
+          "schema_version": 1,
+          "study_gate": "passed",
+          "scientific_outcome": "rejected",
+          "cycle_study_validity": "passed",
+          "cycle_hypothesis_outcome": "rejected",
+          "classification_match": true,
+          "all_validity_gates_pass": true,
+          "all_candidate_fidelity_passes": true,
+          "selected_candidate_is_none": true,
+          "passed": true
+        },
+        "q008c": {
+          "filename": "q008c_wave_qtt_prequalification.json",
+          "registered_sha256": "058dd425504fd0cd003d50e7b7c4a118b0200cb3ac6a15e556468af425a0b73e",
+          "sha256": "058dd425504fd0cd003d50e7b7c4a118b0200cb3ac6a15e556468af425a0b73e",
+          "sha256_matches": true,
+          "source_match": true,
+          "scope_match": true,
+          "schema_version": 1,
+          "study_gate": "passed",
+          "scientific_outcome": "rejected",
+          "cycle_study_validity": "passed",
+          "cycle_hypothesis_outcome": "rejected",
+          "classification_match": true,
+          "all_validity_gates_pass": true,
+          "all_candidate_fidelity_passes": true,
+          "selected_candidate_is_none": true,
+          "passed": true
+        }
+      },
+      "registered_package_source_sha256": "114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2",
+      "observed_package_source_sha256": "114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2",
+      "passed": true
+    },
+    "common_input_audit": {
+      "registered_hashes": {
+        "mode_table_sha256": "6e08a2706a44965143944b692615c6a8525799d3e01ca06a636d852d6610d4d9",
+        "quadratic_chart_coefficients_sha256": "4d0ddc917c3b722496b918f38f8e810e0f200c5fd2ffa138025a93aa2571f8db",
+        "cubic_indices_sha256": "e646d2de7212c823cbca5804fbf20e9543918ecca80452dd508c278dfc5f130c",
+        "cubic_chart_coefficients_sha256": "ed182069713bff0558b806ce7a70e77299ea9fbc6671de38c4fa58019da5615b",
+        "quartic_indices_sha256": "968b35d36cbd28c1f30e6cacb906649a42b36ba4e7bf4122394c2722cd809c16",
+        "quartic_chart_coefficients_sha256": "9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b"
+      },
+      "observed_hashes": {
+        "mode_table_sha256": "6e08a2706a44965143944b692615c6a8525799d3e01ca06a636d852d6610d4d9",
+        "quadratic_chart_coefficients_sha256": "4d0ddc917c3b722496b918f38f8e810e0f200c5fd2ffa138025a93aa2571f8db",
+        "cubic_indices_sha256": "e646d2de7212c823cbca5804fbf20e9543918ecca80452dd508c278dfc5f130c",
+        "cubic_chart_coefficients_sha256": "ed182069713bff0558b806ce7a70e77299ea9fbc6671de38c4fa58019da5615b",
+        "quartic_indices_sha256": "968b35d36cbd28c1f30e6cacb906649a42b36ba4e7bf4122394c2722cd809c16",
+        "quartic_chart_coefficients_sha256": "9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b"
+      },
+      "all_registered_hashes_match": true,
+      "registered_quartic_coefficient_sha256": "9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b",
+      "observed_quartic_coefficient_sha256": "9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b",
+      "quartic_coefficient_hash_matches": true,
+      "registered_fiber_count": 17550,
+      "observed_fiber_count": 17550,
+      "ordered_dense_shape": [
+        9,
+        24,
+        24,
+        24,
+        24
+      ],
+      "ordered_dense_complex_entry_count": 2985984,
+      "ordered_dense_all_finite": true,
+      "passed": true
+    },
+    "direction_audit": {
+      "seed": 20260901,
+      "direction_count": 16,
+      "direction_sha256": "ed625949a32c1cbf6cb7f00e0a4cca5e05675481159b29c61db59c769890609b",
+      "prior_direction_campaigns": [
+        {
+          "seed": 20260827,
+          "count": 64
+        },
+        {
+          "seed": 20260828,
+          "count": 128
+        },
+        {
+          "seed": 20260829,
+          "count": 64
+        },
+        {
+          "seed": 20260830,
+          "count": 128
+        }
+      ],
+      "prior_direction_count": 384,
+      "exact_duplicate_count_vs_prior": 0,
+      "maximum_norm_error": 2.220446049250313e-16,
+      "vectors_all_finite": true,
+      "passed": true
+    },
+    "fresh_fidelity_audit": {
+      "dense_maximum_relative_action_error_vs_sparse": 1.2046003299554877e-14,
+      "sparse_storage_matches_registered": true,
+      "candidate_records": {
+        "flat-q-first": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "relative_tensor_reconstruction_error": 1.0601074033942119e-13,
+          "maximum_relative_action_error_vs_sparse": 3.1994181093651887e-13,
+          "maximum_relative_action_error_vs_dense": 3.219774371616727e-13,
+          "fresh_storage_matches_registered": true,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "flat-q-last": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "relative_tensor_reconstruction_error": 8.581934454479954e-15,
+          "maximum_relative_action_error_vs_sparse": 5.4238676646647904e-14,
+          "maximum_relative_action_error_vs_dense": 5.4749866833360706e-14,
+          "fresh_storage_matches_registered": true,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "d1q3-q-first": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "relative_tensor_reconstruction_error": 6.564338714424935e-14,
+          "maximum_relative_action_error_vs_sparse": 3.9914195410664556e-13,
+          "maximum_relative_action_error_vs_dense": 3.9895970895691865e-13,
+          "fresh_storage_matches_registered": true,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "d1q3-q-last": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "relative_tensor_reconstruction_error": 7.963310116710717e-15,
+          "maximum_relative_action_error_vs_sparse": 5.112775675652464e-14,
+          "maximum_relative_action_error_vs_dense": 5.417588929035288e-14,
+          "fresh_storage_matches_registered": true,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "wave-branch-tuple-major": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "relative_tensor_reconstruction_error": 5.031532004519204e-14,
+          "maximum_relative_action_error_vs_sparse": 3.475028340894494e-13,
+          "maximum_relative_action_error_vs_dense": 3.483826925082366e-13,
+          "fresh_storage_matches_registered": true,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "wave-branch-factor-major": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "relative_tensor_reconstruction_error": 3.761408791141638e-14,
+          "maximum_relative_action_error_vs_sparse": 2.3116270491119237e-13,
+          "maximum_relative_action_error_vs_dense": 2.314193366479622e-13,
+          "fresh_storage_matches_registered": true,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "wave-qtt-tuple-major": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "relative_tensor_reconstruction_error": 8.710102359284505e-14,
+          "maximum_relative_action_error_vs_sparse": 6.637243329986283e-13,
+          "maximum_relative_action_error_vs_dense": 6.647141529387846e-13,
+          "fresh_storage_matches_registered": true,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "wave-qtt-scale-interleaved": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "relative_tensor_reconstruction_error": 1.4915465734115449e-13,
+          "maximum_relative_action_error_vs_sparse": 3.455704089425022e-13,
+          "maximum_relative_action_error_vs_dense": 3.4656421062772167e-13,
+          "fresh_storage_matches_registered": true,
+          "all_values_finite": true,
+          "passed": true
+        }
+      },
+      "all_candidate_records_passed": true,
+      "passed": true
+    },
+    "offline_cost_campaign": {
+      "timer": "perf_counter_ns",
+      "common_model_coefficient_and_dense_materialization_excluded": true,
+      "exclusion_is_tt_favorable": true,
+      "warmup_block_count": 1,
+      "measured_block_count": 3,
+      "order_by_block": [
+        [
+          "sparse-fiber",
+          "ordered-dense-control",
+          "flat-q-first",
+          "flat-q-last",
+          "d1q3-q-first",
+          "d1q3-q-last",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved"
+        ],
+        [
+          "ordered-dense-control",
+          "flat-q-first",
+          "flat-q-last",
+          "d1q3-q-first",
+          "d1q3-q-last",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber"
+        ],
+        [
+          "flat-q-first",
+          "flat-q-last",
+          "d1q3-q-first",
+          "d1q3-q-last",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber",
+          "ordered-dense-control"
+        ]
+      ],
+      "method_records": {
+        "sparse-fiber": {
+          "nanoseconds_by_block": [
+            20939200,
+            21659200,
+            20954700
+          ],
+          "minimum_nanoseconds": 20939200,
+          "maximum_nanoseconds": 21659200,
+          "median_nanoseconds": 20954700.0,
+          "median_absolute_deviation_nanoseconds": 15500.0,
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "fiber_count": 17550,
+            "coefficient_stored_real_scalar_count": 315900,
+            "coefficient_payload_bytes": 2527200,
+            "index_and_multiplicity_metadata_bytes": 87750,
+            "raw_array_payload_bytes": 2614950,
+            "uncompressed_npz_serialized_bytes": 2615734,
+            "serialization_roundtrip_bitwise_equal": true,
+            "scalar_sparse_lossless_diagnostic": {
+              "bitwise_nonzero_coefficient_count": 157950,
+              "coefficient_stored_real_scalar_count": 315900,
+              "index_and_multiplicity_metadata_bytes": 947700,
+              "raw_array_payload_bytes": 3474900,
+              "uncompressed_npz_serialized_bytes": 3475936,
+              "serialization_roundtrip_bitwise_equal": true
+            }
+          }
+        },
+        "ordered-dense-control": {
+          "nanoseconds_by_block": [
+            138488000,
+            137518700,
+            140173400
+          ],
+          "minimum_nanoseconds": 137518700,
+          "maximum_nanoseconds": 140173400,
+          "median_nanoseconds": 138488000.0,
+          "median_absolute_deviation_nanoseconds": 969300.0,
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "complex_entry_count": 2985984,
+            "stored_real_scalar_count": 5971968,
+            "raw_array_payload_bytes": 47775744,
+            "uncompressed_npz_serialized_bytes": 47776010,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "flat-q-first": {
+          "nanoseconds_by_block": [
+            1442803500,
+            1467140600,
+            1507196700
+          ],
+          "minimum_nanoseconds": 1442803500,
+          "maximum_nanoseconds": 1507196700,
+          "median_nanoseconds": 1467140600.0,
+          "median_absolute_deviation_nanoseconds": 24337100.0,
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "core_count": 5,
+            "tt_ranks": [
+              1,
+              9,
+              216,
+              300,
+              24,
+              1
+            ],
+            "mode_shape": [
+              9,
+              24,
+              24,
+              24,
+              24
+            ],
+            "complex_core_entry_count": 1775313,
+            "core_stored_real_scalar_count": 3550626,
+            "core_payload_bytes": 28405008,
+            "rank_and_shape_metadata_bytes": 88,
+            "raw_array_payload_bytes": 28405096,
+            "uncompressed_npz_serialized_bytes": 28406852,
+            "nominal_gauge_adjusted_real_dimension": 3276000,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "flat-q-last": {
+          "nanoseconds_by_block": [
+            1373276600,
+            1376873500,
+            1365430600
+          ],
+          "minimum_nanoseconds": 1365430600,
+          "maximum_nanoseconds": 1376873500,
+          "median_nanoseconds": 1373276600.0,
+          "median_absolute_deviation_nanoseconds": 3596900.0,
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "core_count": 5,
+            "tt_ranks": [
+              1,
+              24,
+              300,
+              216,
+              9,
+              1
+            ],
+            "mode_shape": [
+              24,
+              24,
+              24,
+              24,
+              9
+            ],
+            "complex_core_entry_count": 1775313,
+            "core_stored_real_scalar_count": 3550626,
+            "core_payload_bytes": 28405008,
+            "rank_and_shape_metadata_bytes": 88,
+            "raw_array_payload_bytes": 28405096,
+            "uncompressed_npz_serialized_bytes": 28406852,
+            "nominal_gauge_adjusted_real_dimension": 3276000,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "d1q3-q-first": {
+          "nanoseconds_by_block": [
+            1515245000,
+            1479464900,
+            1489413900
+          ],
+          "minimum_nanoseconds": 1479464900,
+          "maximum_nanoseconds": 1515245000,
+          "median_nanoseconds": 1489413900.0,
+          "median_absolute_deviation_nanoseconds": 9949000.0,
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "core_count": 6,
+            "tt_ranks": [
+              1,
+              3,
+              9,
+              216,
+              300,
+              24,
+              1
+            ],
+            "mode_shape": [
+              3,
+              3,
+              24,
+              24,
+              24,
+              24
+            ],
+            "complex_core_entry_count": 1775322,
+            "core_stored_real_scalar_count": 3550644,
+            "core_payload_bytes": 28405152,
+            "rank_and_shape_metadata_bytes": 104,
+            "raw_array_payload_bytes": 28405256,
+            "uncompressed_npz_serialized_bytes": 28407260,
+            "nominal_gauge_adjusted_real_dimension": 3276000,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "d1q3-q-last": {
+          "nanoseconds_by_block": [
+            1412537300,
+            1392415900,
+            1395944400
+          ],
+          "minimum_nanoseconds": 1392415900,
+          "maximum_nanoseconds": 1412537300,
+          "median_nanoseconds": 1395944400.0,
+          "median_absolute_deviation_nanoseconds": 3528500.0,
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "core_count": 6,
+            "tt_ranks": [
+              1,
+              24,
+              300,
+              216,
+              9,
+              3,
+              1
+            ],
+            "mode_shape": [
+              24,
+              24,
+              24,
+              24,
+              3,
+              3
+            ],
+            "complex_core_entry_count": 1775322,
+            "core_stored_real_scalar_count": 3550644,
+            "core_payload_bytes": 28405152,
+            "rank_and_shape_metadata_bytes": 104,
+            "raw_array_payload_bytes": 28405256,
+            "uncompressed_npz_serialized_bytes": 28407260,
+            "nominal_gauge_adjusted_real_dimension": 3276000,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "wave-branch-tuple-major": {
+          "nanoseconds_by_block": [
+            2656781600,
+            2670938900,
+            2661531300
+          ],
+          "minimum_nanoseconds": 2656781600,
+          "maximum_nanoseconds": 2670938900,
+          "median_nanoseconds": 2661531300.0,
+          "median_absolute_deviation_nanoseconds": 4749700.0,
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "core_count": 9,
+            "tt_ranks": [
+              1,
+              8,
+              24,
+              192,
+              300,
+              648,
+              216,
+              27,
+              9,
+              1
+            ],
+            "mode_shape": [
+              8,
+              3,
+              8,
+              3,
+              8,
+              3,
+              8,
+              3,
+              9
+            ],
+            "complex_core_entry_count": 2232874,
+            "core_stored_real_scalar_count": 4465748,
+            "core_payload_bytes": 35725984,
+            "rank_and_shape_metadata_bytes": 152,
+            "raw_array_payload_bytes": 35726136,
+            "uncompressed_npz_serialized_bytes": 35728884,
+            "nominal_gauge_adjusted_real_dimension": 3276000,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "wave-branch-factor-major": {
+          "nanoseconds_by_block": [
+            2846195900,
+            2847062900,
+            2881330300
+          ],
+          "minimum_nanoseconds": 2846195900,
+          "maximum_nanoseconds": 2881330300,
+          "median_nanoseconds": 2847062900.0,
+          "median_absolute_deviation_nanoseconds": 867000.0,
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "core_count": 9,
+            "tt_ranks": [
+              1,
+              8,
+              64,
+              512,
+              729,
+              243,
+              81,
+              27,
+              9,
+              1
+            ],
+            "mode_shape": [
+              8,
+              8,
+              8,
+              8,
+              3,
+              3,
+              3,
+              3,
+              9
+            ],
+            "complex_core_entry_count": 3850149,
+            "core_stored_real_scalar_count": 7700298,
+            "core_payload_bytes": 61602384,
+            "rank_and_shape_metadata_bytes": 152,
+            "raw_array_payload_bytes": 61602536,
+            "uncompressed_npz_serialized_bytes": 61605284,
+            "nominal_gauge_adjusted_real_dimension": 5971968,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "wave-qtt-tuple-major": {
+          "nanoseconds_by_block": [
+            5658677900,
+            5664106700,
+            5694276500
+          ],
+          "minimum_nanoseconds": 5658677900,
+          "maximum_nanoseconds": 5694276500,
+          "median_nanoseconds": 5664106700.0,
+          "median_absolute_deviation_nanoseconds": 5428800.0,
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "core_count": 17,
+            "tt_ranks": [
+              1,
+              2,
+              4,
+              8,
+              24,
+              48,
+              96,
+              192,
+              301,
+              600,
+              1200,
+              648,
+              216,
+              108,
+              54,
+              27,
+              9,
+              1
+            ],
+            "mode_shape": [
+              2,
+              2,
+              2,
+              3,
+              2,
+              2,
+              2,
+              3,
+              2,
+              2,
+              2,
+              3,
+              2,
+              2,
+              2,
+              3,
+              9
+            ],
+            "complex_core_entry_count": 4060770,
+            "core_stored_real_scalar_count": 8121540,
+            "core_payload_bytes": 64972320,
+            "rank_and_shape_metadata_bytes": 280,
+            "raw_array_payload_bytes": 64972600,
+            "uncompressed_npz_serialized_bytes": 64977332,
+            "nominal_gauge_adjusted_real_dimension": 3278350,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "wave-qtt-scale-interleaved": {
+          "nanoseconds_by_block": [
+            9406394800,
+            9564252700,
+            9328122200
+          ],
+          "minimum_nanoseconds": 9328122200,
+          "maximum_nanoseconds": 9564252700,
+          "median_nanoseconds": 9406394800.0,
+          "median_absolute_deviation_nanoseconds": 78272600.0,
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "core_count": 17,
+            "tt_ranks": [
+              1,
+              2,
+              4,
+              8,
+              16,
+              32,
+              64,
+              128,
+              256,
+              512,
+              1024,
+              1398,
+              729,
+              243,
+              81,
+              27,
+              9,
+              1
+            ],
+            "mode_shape": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              3,
+              3,
+              3,
+              3,
+              9
+            ],
+            "complex_core_entry_count": 6897349,
+            "core_stored_real_scalar_count": 13794698,
+            "core_payload_bytes": 110357584,
+            "rank_and_shape_metadata_bytes": 280,
+            "raw_array_payload_bytes": 110357864,
+            "uncompressed_npz_serialized_bytes": 110362596,
+            "nominal_gauge_adjusted_real_dimension": 5893968,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        }
+      }
+    },
+    "online_cost_campaign": {
+      "seed": 20260901,
+      "direction_count": 16,
+      "warmup_block_count": 1,
+      "measured_block_count": 5,
+      "order_by_block": [
+        [
+          "sparse-fiber",
+          "ordered-dense-control",
+          "flat-q-first",
+          "flat-q-last",
+          "d1q3-q-first",
+          "d1q3-q-last",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved"
+        ],
+        [
+          "ordered-dense-control",
+          "flat-q-first",
+          "flat-q-last",
+          "d1q3-q-first",
+          "d1q3-q-last",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber"
+        ],
+        [
+          "flat-q-first",
+          "flat-q-last",
+          "d1q3-q-first",
+          "d1q3-q-last",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber",
+          "ordered-dense-control"
+        ],
+        [
+          "flat-q-last",
+          "d1q3-q-first",
+          "d1q3-q-last",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber",
+          "ordered-dense-control",
+          "flat-q-first"
+        ],
+        [
+          "d1q3-q-first",
+          "d1q3-q-last",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber",
+          "ordered-dense-control",
+          "flat-q-first",
+          "flat-q-last"
+        ]
+      ],
+      "timer": "perf_counter_ns",
+      "scope": "local homogeneous quartic 9-vector action only",
+      "method_records": {
+        "sparse-fiber": {
+          "nanoseconds_per_sample_by_block": [
+            580537.5,
+            617281.25,
+            585781.25,
+            582981.25,
+            581487.5
+          ],
+          "minimum_nanoseconds_per_sample": 580537.5,
+          "maximum_nanoseconds_per_sample": 617281.25,
+          "median_nanoseconds_per_sample": 582981.25,
+          "median_absolute_deviation_nanoseconds_per_sample": 2443.75,
+          "checksum_by_block": [
+            634.7462905547476,
+            634.7462905547476,
+            634.7462905547476,
+            634.7462905547476,
+            634.7462905547476
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 0.0,
+          "all_times_positive_and_finite": true
+        },
+        "ordered-dense-control": {
+          "nanoseconds_per_sample_by_block": [
+            13597237.5,
+            13050750.0,
+            13248231.25,
+            13125437.5,
+            13757337.5
+          ],
+          "minimum_nanoseconds_per_sample": 13050750.0,
+          "maximum_nanoseconds_per_sample": 13757337.5,
+          "median_nanoseconds_per_sample": 13248231.25,
+          "median_absolute_deviation_nanoseconds_per_sample": 197481.25,
+          "checksum_by_block": [
+            634.7462905547478,
+            634.7462905547478,
+            634.7462905547478,
+            634.7462905547478,
+            634.7462905547478
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 3.582119010802172e-16,
+          "all_times_positive_and_finite": true
+        },
+        "flat-q-first": {
+          "nanoseconds_per_sample_by_block": [
+            4046031.25,
+            3896156.25,
+            3827925.0,
+            3749937.5,
+            3867006.25
+          ],
+          "minimum_nanoseconds_per_sample": 3749937.5,
+          "maximum_nanoseconds_per_sample": 4046031.25,
+          "median_nanoseconds_per_sample": 3867006.25,
+          "median_absolute_deviation_nanoseconds_per_sample": 39081.25,
+          "checksum_by_block": [
+            634.7462905547721,
+            634.7462905547721,
+            634.7462905547721,
+            634.7462905547721,
+            634.7462905547721
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 3.868688531666346e-14,
+          "all_times_positive_and_finite": true
+        },
+        "flat-q-last": {
+          "nanoseconds_per_sample_by_block": [
+            3060400.0,
+            2897950.0,
+            3032418.75,
+            2857768.75,
+            2868968.75
+          ],
+          "minimum_nanoseconds_per_sample": 2857768.75,
+          "maximum_nanoseconds_per_sample": 3060400.0,
+          "median_nanoseconds_per_sample": 2897950.0,
+          "median_absolute_deviation_nanoseconds_per_sample": 40181.25,
+          "checksum_by_block": [
+            634.7462905547484,
+            634.7462905547484,
+            634.7462905547484,
+            634.7462905547484,
+            634.7462905547484
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 1.2537416537807603e-15,
+          "all_times_positive_and_finite": true
+        },
+        "d1q3-q-first": {
+          "nanoseconds_per_sample_by_block": [
+            3854087.5,
+            3819706.25,
+            3728312.5,
+            3931100.0,
+            3887787.5
+          ],
+          "minimum_nanoseconds_per_sample": 3728312.5,
+          "maximum_nanoseconds_per_sample": 3931100.0,
+          "median_nanoseconds_per_sample": 3854087.5,
+          "median_absolute_deviation_nanoseconds_per_sample": 34381.25,
+          "checksum_by_block": [
+            634.7462905547667,
+            634.7462905547667,
+            634.7462905547667,
+            634.7462905547667,
+            634.7462905547667
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 3.0089799690738245e-14,
+          "all_times_positive_and_finite": true
+        },
+        "d1q3-q-last": {
+          "nanoseconds_per_sample_by_block": [
+            2874256.25,
+            3000650.0,
+            3252412.5,
+            3020756.25,
+            2963725.0
+          ],
+          "minimum_nanoseconds_per_sample": 2874256.25,
+          "maximum_nanoseconds_per_sample": 3252412.5,
+          "median_nanoseconds_per_sample": 3000650.0,
+          "median_absolute_deviation_nanoseconds_per_sample": 36925.0,
+          "checksum_by_block": [
+            634.7462905547491,
+            634.7462905547491,
+            634.7462905547491,
+            634.7462905547491,
+            634.7462905547491
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 2.3283773570214118e-15,
+          "all_times_positive_and_finite": true
+        },
+        "wave-branch-tuple-major": {
+          "nanoseconds_per_sample_by_block": [
+            22690293.75,
+            22282950.0,
+            22433181.25,
+            22164612.5,
+            22446662.5
+          ],
+          "minimum_nanoseconds_per_sample": 22164612.5,
+          "maximum_nanoseconds_per_sample": 22690293.75,
+          "median_nanoseconds_per_sample": 22433181.25,
+          "median_absolute_deviation_nanoseconds_per_sample": 150231.25,
+          "checksum_by_block": [
+            634.7462905547494,
+            634.7462905547494,
+            634.7462905547494,
+            634.7462905547494,
+            634.7462905547494
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 2.8656952086417378e-15,
+          "all_times_positive_and_finite": true
+        },
+        "wave-branch-factor-major": {
+          "nanoseconds_per_sample_by_block": [
+            70896568.75,
+            70718287.5,
+            72955068.75,
+            71100968.75,
+            70911181.25
+          ],
+          "minimum_nanoseconds_per_sample": 70718287.5,
+          "maximum_nanoseconds_per_sample": 72955068.75,
+          "median_nanoseconds_per_sample": 70911181.25,
+          "median_absolute_deviation_nanoseconds_per_sample": 189787.5,
+          "checksum_by_block": [
+            634.7462905547468,
+            634.7462905547468,
+            634.7462905547468,
+            634.7462905547468,
+            634.7462905547468
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 1.2537416537807603e-15,
+          "all_times_positive_and_finite": true
+        },
+        "wave-qtt-tuple-major": {
+          "nanoseconds_per_sample_by_block": [
+            97156425.0,
+            97408662.5,
+            96721237.5,
+            96270725.0,
+            96359881.25
+          ],
+          "minimum_nanoseconds_per_sample": 96270725.0,
+          "maximum_nanoseconds_per_sample": 97408662.5,
+          "median_nanoseconds_per_sample": 96721237.5,
+          "median_absolute_deviation_nanoseconds_per_sample": 435187.5,
+          "checksum_by_block": [
+            634.7462905547482,
+            634.7462905547482,
+            634.7462905547482,
+            634.7462905547482,
+            634.7462905547482
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 8.95529752700543e-16,
+          "all_times_positive_and_finite": true
+        },
+        "wave-qtt-scale-interleaved": {
+          "nanoseconds_per_sample_by_block": [
+            399189012.5,
+            399525256.25,
+            398593450.0,
+            399685943.75,
+            400574812.5
+          ],
+          "minimum_nanoseconds_per_sample": 398593450.0,
+          "maximum_nanoseconds_per_sample": 400574812.5,
+          "median_nanoseconds_per_sample": 399525256.25,
+          "median_absolute_deviation_nanoseconds_per_sample": 336243.75,
+          "checksum_by_block": [
+            634.7462905547771,
+            634.7462905547771,
+            634.7462905547771,
+            634.7462905547771,
+            634.7462905547771
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 4.656754714042824e-14,
+          "all_times_positive_and_finite": true
+        }
+      }
+    },
+    "protocol_audit": {
+      "all_method_ids_match": true,
+      "offline_counts_match": true,
+      "online_counts_match": true,
+      "all_times_positive_and_finite": true,
+      "all_serialization_roundtrips_bitwise_equal": true,
+      "all_checksum_errors_within_registered_bound": true,
+      "offline_orders_are_complete_cyclic_permutations": true,
+      "online_orders_are_complete_cyclic_permutations": true,
+      "passed": true
+    },
+    "break_even_audit": {
+      "cost_line_definition": "T_m(N)=B_m+N*t_m for integer N>=0",
+      "robust_envelope_definition": "candidate minimum offline/online versus sparse maximum offline/online",
+      "sparse_offline_maximum_nanoseconds": 21659200,
+      "sparse_online_maximum_nanoseconds_per_sample": 617281.25,
+      "candidate_records": {
+        "flat-q-first": {
+          "core_stored_real_scalars_exceed_sparse_coefficients": true,
+          "raw_array_payload_bytes_exceed_sparse": true,
+          "serialized_bytes_exceed_sparse": true,
+          "storage_strictly_dominated_in_all_registered_metrics": true,
+          "storage_strictly_beats_sparse_in_all_registered_metrics": false,
+          "offline_best_tt_exceeds_worst_sparse": true,
+          "online_best_tt_exceeds_worst_sparse": true,
+          "median_online_slowdown_vs_sparse": 6.633157155568897,
+          "minimum_registered_median_slowdown": 2.0,
+          "median_slowdown_gate_passed": true,
+          "robust_no_finite_sparse_baseline_time_break_even": true,
+          "median_time_break_even_vs_sparse_action_count": null,
+          "median_time_break_even_vs_ordered_dense_action_count": 142
+        },
+        "flat-q-last": {
+          "core_stored_real_scalars_exceed_sparse_coefficients": true,
+          "raw_array_payload_bytes_exceed_sparse": true,
+          "serialized_bytes_exceed_sparse": true,
+          "storage_strictly_dominated_in_all_registered_metrics": true,
+          "storage_strictly_beats_sparse_in_all_registered_metrics": false,
+          "offline_best_tt_exceeds_worst_sparse": true,
+          "online_best_tt_exceeds_worst_sparse": true,
+          "median_online_slowdown_vs_sparse": 4.9709145877333105,
+          "minimum_registered_median_slowdown": 2.0,
+          "median_slowdown_gate_passed": true,
+          "robust_no_finite_sparse_baseline_time_break_even": true,
+          "median_time_break_even_vs_sparse_action_count": null,
+          "median_time_break_even_vs_ordered_dense_action_count": 120
+        },
+        "d1q3-q-first": {
+          "core_stored_real_scalars_exceed_sparse_coefficients": true,
+          "raw_array_payload_bytes_exceed_sparse": true,
+          "serialized_bytes_exceed_sparse": true,
+          "storage_strictly_dominated_in_all_registered_metrics": true,
+          "storage_strictly_beats_sparse_in_all_registered_metrics": false,
+          "offline_best_tt_exceeds_worst_sparse": true,
+          "online_best_tt_exceeds_worst_sparse": true,
+          "median_online_slowdown_vs_sparse": 6.610997351973155,
+          "minimum_registered_median_slowdown": 2.0,
+          "median_slowdown_gate_passed": true,
+          "robust_no_finite_sparse_baseline_time_break_even": true,
+          "median_time_break_even_vs_sparse_action_count": null,
+          "median_time_break_even_vs_ordered_dense_action_count": 144
+        },
+        "d1q3-q-last": {
+          "core_stored_real_scalars_exceed_sparse_coefficients": true,
+          "raw_array_payload_bytes_exceed_sparse": true,
+          "serialized_bytes_exceed_sparse": true,
+          "storage_strictly_dominated_in_all_registered_metrics": true,
+          "storage_strictly_beats_sparse_in_all_registered_metrics": false,
+          "offline_best_tt_exceeds_worst_sparse": true,
+          "online_best_tt_exceeds_worst_sparse": true,
+          "median_online_slowdown_vs_sparse": 5.14707805782776,
+          "minimum_registered_median_slowdown": 2.0,
+          "median_slowdown_gate_passed": true,
+          "robust_no_finite_sparse_baseline_time_break_even": true,
+          "median_time_break_even_vs_sparse_action_count": null,
+          "median_time_break_even_vs_ordered_dense_action_count": 123
+        },
+        "wave-branch-tuple-major": {
+          "core_stored_real_scalars_exceed_sparse_coefficients": true,
+          "raw_array_payload_bytes_exceed_sparse": true,
+          "serialized_bytes_exceed_sparse": true,
+          "storage_strictly_dominated_in_all_registered_metrics": true,
+          "storage_strictly_beats_sparse_in_all_registered_metrics": false,
+          "offline_best_tt_exceeds_worst_sparse": true,
+          "online_best_tt_exceeds_worst_sparse": true,
+          "median_online_slowdown_vs_sparse": 38.48010763639483,
+          "minimum_registered_median_slowdown": 2.0,
+          "median_slowdown_gate_passed": true,
+          "robust_no_finite_sparse_baseline_time_break_even": true,
+          "median_time_break_even_vs_sparse_action_count": null,
+          "median_time_break_even_vs_ordered_dense_action_count": null
+        },
+        "wave-branch-factor-major": {
+          "core_stored_real_scalars_exceed_sparse_coefficients": true,
+          "raw_array_payload_bytes_exceed_sparse": true,
+          "serialized_bytes_exceed_sparse": true,
+          "storage_strictly_dominated_in_all_registered_metrics": true,
+          "storage_strictly_beats_sparse_in_all_registered_metrics": false,
+          "offline_best_tt_exceeds_worst_sparse": true,
+          "online_best_tt_exceeds_worst_sparse": true,
+          "median_online_slowdown_vs_sparse": 121.63544067669415,
+          "minimum_registered_median_slowdown": 2.0,
+          "median_slowdown_gate_passed": true,
+          "robust_no_finite_sparse_baseline_time_break_even": true,
+          "median_time_break_even_vs_sparse_action_count": null,
+          "median_time_break_even_vs_ordered_dense_action_count": null
+        },
+        "wave-qtt-tuple-major": {
+          "core_stored_real_scalars_exceed_sparse_coefficients": true,
+          "raw_array_payload_bytes_exceed_sparse": true,
+          "serialized_bytes_exceed_sparse": true,
+          "storage_strictly_dominated_in_all_registered_metrics": true,
+          "storage_strictly_beats_sparse_in_all_registered_metrics": false,
+          "offline_best_tt_exceeds_worst_sparse": true,
+          "online_best_tt_exceeds_worst_sparse": true,
+          "median_online_slowdown_vs_sparse": 165.90797302657677,
+          "minimum_registered_median_slowdown": 2.0,
+          "median_slowdown_gate_passed": true,
+          "robust_no_finite_sparse_baseline_time_break_even": true,
+          "median_time_break_even_vs_sparse_action_count": null,
+          "median_time_break_even_vs_ordered_dense_action_count": null
+        },
+        "wave-qtt-scale-interleaved": {
+          "core_stored_real_scalars_exceed_sparse_coefficients": true,
+          "raw_array_payload_bytes_exceed_sparse": true,
+          "serialized_bytes_exceed_sparse": true,
+          "storage_strictly_dominated_in_all_registered_metrics": true,
+          "storage_strictly_beats_sparse_in_all_registered_metrics": false,
+          "offline_best_tt_exceeds_worst_sparse": true,
+          "online_best_tt_exceeds_worst_sparse": true,
+          "median_online_slowdown_vs_sparse": 685.3140752811519,
+          "minimum_registered_median_slowdown": 2.0,
+          "median_slowdown_gate_passed": true,
+          "robust_no_finite_sparse_baseline_time_break_even": true,
+          "median_time_break_even_vs_sparse_action_count": null,
+          "median_time_break_even_vs_ordered_dense_action_count": null
+        }
+      },
+      "all_tt_storage_strictly_dominated": true,
+      "all_tt_offline_envelopes_strictly_dominated": true,
+      "all_tt_online_envelopes_and_slowdowns_strictly_dominated": true,
+      "all_tt_have_robust_no_finite_sparse_time_break_even": true,
+      "candidate_beating_time_and_storage_count": 0,
+      "candidate_beating_time_and_storage_ids": [],
+      "ordered_dense_control_is_not_full_dense_lbm": true,
+      "passed": true
+    },
+    "input_digest_sha256": "566d3ce0569736c140dae7c4f19d36223957e5ad2b25abc4b9d6a012558d0841",
+    "result_digest_sha256": "79545f0cbf14a53fef52d46bc44cbb8586efb95e1b6645d7c8cc00b45ceed6dc",
+    "validity_gates": {
+      "registered_q008a_q008c_inputs": {
+        "passed": true,
+        "threshold": "artifact SHA, package source, scope, rejected outcome, validity, fidelity and null selection match",
+        "value": true
+      },
+      "fresh_quartic_build_and_storage": {
+        "passed": true,
+        "threshold": "coefficient hash, fiber count, dense expansion, mappings, ranks, storage and fresh fidelity reproduce",
+        "value": {
+          "common_input": true,
+          "fidelity": true
+        }
+      },
+      "independent_holdout_directions": {
+        "passed": true,
+        "threshold": "16 normalized seed-20260901 directions, exact duplicate count zero versus all Q008a/Q008c campaigns",
+        "value": true
+      },
+      "finite_sparse_dense_tt_actions": {
+        "passed": true,
+        "threshold": "fresh action fidelity and every block checksum relative error <=1e-11",
+        "value": true
+      },
+      "registered_cost_protocol": {
+        "passed": true,
+        "threshold": "offline 1+3 and online 1+5 blocks, cyclic orders, positive times, storage records and serialization reproduce",
+        "value": true
+      },
+      "finite_strict_json_and_digests": {
+        "passed": true,
+        "threshold": "all records are finite strict JSON and input/result digests reproduce",
+        "value": {
+          "strict_json": true,
+          "digests": true
+        }
+      }
+    },
+    "hypothesis_gates": {
+      "all_tt_storage_metrics_exceed_sparse": {
+        "passed": true,
+        "threshold": "all eight TT stored scalars, raw payload bytes and serialized bytes exceed natural sparse-fiber",
+        "value": true
+      },
+      "all_tt_offline_envelopes_exceed_sparse": {
+        "passed": true,
+        "threshold": "min TT offline > max sparse offline",
+        "value": true
+      },
+      "all_tt_online_envelopes_and_slowdowns_exceed_sparse": {
+        "passed": true,
+        "threshold": "min TT online > max sparse online and median slowdown >=2",
+        "value": true
+      },
+      "all_tt_have_no_finite_sparse_time_break_even": {
+        "passed": true,
+        "threshold": "best registered TT cost line exceeds worst registered sparse cost line for every integer N>=0",
+        "value": true
+      },
+      "no_candidate_beats_sparse_time_and_storage": {
+        "passed": true,
+        "threshold": "joint time-and-storage passing candidate count=0",
+        "value": 0
+      }
+    },
+    "study_validity": "passed",
+    "hypothesis_outcome": "accepted",
+    "scientific_classification": "sealed TT-SVD path is cost-dominated by natural quartic sparse-fiber",
+    "selected_candidate": null,
+    "decision_consequence": {
+      "fixed_q007c1_tt_svd_path_cost_dominated_in_campaign": true,
+      "q009_tt_cross_remains_held_for_fixed_coefficients": true,
+      "natural_sparse_fiber_remains_mandatory_baseline": true,
+      "ordered_dense_control_interpreted_as_full_lbm": false
+    },
+    "claim_boundary": "This is an environment-specific finite cost campaign for one local homogeneous quartic 9-vector action and eight full-rank TT-SVD tensorizations of the fixed Q007c1 coefficients. Common model/coefficient construction and ordered-dense materialization are excluded in a TT-favorable way. Stored core scalars are not called independent degrees of freedom. The ordered-dense coefficient oracle is not full dense LBM. This does not certify a full reduced-chart or LBM rollout, MPFR cost, GPU or threaded scaling, compressed rounding, TT-cross, another tensorization, grid, machine, asymptotic complexity, D3Q27, or energy use.",
+    "preserved_prior_outcomes": {
+      "q008a_storage_rejection_changed": false,
+      "q008c_storage_rejection_changed": false,
+      "q009_hold_changed": false,
+      "q007ab_forward_shadowing_changed": false
+    },
+    "next_change": "If accepted, close Q010 for the sealed TT-SVD path and return to the remaining non-TT mathematical or boundary/forcing gates; any new representation requires a separately preregistered candidate family."
+  },
+  "study_gate": "passed",
+  "scientific_outcome": "accepted",
+  "next_question": "If accepted, close Q010 for the sealed TT-SVD path and return to the remaining non-TT mathematical or boundary/forcing gates; any new representation requires a separately preregistered candidate family."
+}

@@ -1,6 +1,21 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
+import pytest
+
 import research.q010_representation_cost as q010
+
+
+@pytest.fixture(scope="module")
+def q010_artifact() -> dict:
+    artifact_path = (
+        Path(q010.__file__).resolve().parent
+        / "artifacts"
+        / "q010_representation_cost.json"
+    )
+    return json.loads(artifact_path.read_text(encoding="utf-8"))
 
 
 def test_q010_registered_protocol_is_fixed() -> None:
@@ -116,3 +131,94 @@ def test_q010_break_even_audit_requires_strict_envelope_dominance() -> None:
         for record in audit["candidate_records"].values()
     )
     assert audit["passed"]
+
+
+def test_q010_artifact_seals_the_registered_cost_campaign(
+    q010_artifact: dict,
+) -> None:
+    cycle = q010_artifact["cycle"]
+
+    assert q010_artifact["study_gate"] == "passed"
+    assert q010_artifact["scientific_outcome"] == "accepted"
+    assert q010_artifact["runner_source"]["sha256"] == (
+        "c6e99082a3418d604f7d09687685cf5e6ab9efe341ea36153123bb8ad4b26b4e"
+    )
+    assert cycle["input_digest_sha256"] == (
+        "566d3ce0569736c140dae7c4f19d36223957e5ad2b25abc4b9d6a012558d0841"
+    )
+    assert cycle["result_digest_sha256"] == (
+        "79545f0cbf14a53fef52d46bc44cbb8586efb95e1b6645d7c8cc00b45ceed6dc"
+    )
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "sealed TT-SVD path is cost-dominated by natural quartic "
+        "sparse-fiber"
+    )
+    assert len(cycle["validity_gates"]) == 6
+    assert all(
+        gate["passed"] for gate in cycle["validity_gates"].values()
+    )
+    assert len(cycle["hypothesis_gates"]) == 5
+    assert all(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    )
+    assert cycle["direction_audit"]["exact_duplicate_count_vs_prior"] == 0
+    assert cycle["protocol_audit"]["passed"]
+    assert cycle["break_even_audit"]["passed"]
+    assert cycle["selected_candidate"] is None
+    consequence = cycle["decision_consequence"]
+    assert consequence[
+        "fixed_q007c1_tt_svd_path_cost_dominated_in_campaign"
+    ]
+    assert consequence[
+        "q009_tt_cross_remains_held_for_fixed_coefficients"
+    ]
+    assert consequence["natural_sparse_fiber_remains_mandatory_baseline"]
+    assert not consequence["ordered_dense_control_interpreted_as_full_lbm"]
+
+
+def test_q010_artifact_digests_recompute_from_sealed_records(
+    q010_artifact: dict,
+) -> None:
+    cycle = q010_artifact["cycle"]
+    input_payload = {
+        "artifact_sha256": {
+            name: record["sha256"]
+            for name, record in cycle["input_audit"]["artifacts"].items()
+        },
+        "package_source_sha256": q010.REGISTERED_PACKAGE_SOURCE_SHA256,
+        "quartic_coefficient_sha256": (
+            q010.REGISTERED_QUARTIC_COEFFICIENT_SHA256
+        ),
+        "candidate_ids": list(q010.TT_CANDIDATE_IDS),
+        "method_ids": list(q010.METHOD_IDS),
+        "holdout": cycle["direction_audit"],
+        "offline_protocol": {
+            "warmup_blocks": q010.OFFLINE_WARMUP_BLOCKS,
+            "measured_blocks": q010.OFFLINE_MEASURED_BLOCKS,
+        },
+        "online_protocol": {
+            "warmup_blocks": q010.ONLINE_WARMUP_BLOCKS,
+            "measured_blocks": q010.ONLINE_MEASURED_BLOCKS,
+            "checksum_tolerance": q010.MAXIMUM_CHECKSUM_RELATIVE_ERROR,
+            "minimum_median_slowdown": (
+                q010.MINIMUM_MEDIAN_ONLINE_SLOWDOWN
+            ),
+        },
+    }
+    input_digest = q010._digest_payload(input_payload)
+    result_payload = {
+        "input_digest": input_digest,
+        "common_input": cycle["common_input_audit"],
+        "fidelity": cycle["fresh_fidelity_audit"],
+        "offline": cycle["offline_cost_campaign"],
+        "online": cycle["online_cost_campaign"],
+        "protocol": cycle["protocol_audit"],
+        "break_even": cycle["break_even_audit"],
+    }
+
+    assert input_digest == cycle["input_digest_sha256"]
+    assert q010._digest_payload(result_payload) == cycle[
+        "result_digest_sha256"
+    ]
