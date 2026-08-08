@@ -7866,6 +7866,54 @@ selection rule、別norm、blockwise majorant、より高次chart、別spectral 
 continuous optimal radius、Q007p--Q007ab tube enlargement、Euclidean／grid-uniform attraction、
 global basin、境界、外力、D3Q27は認証しない。
 
+### Q007af 封印結果
+
+validity 6件、hypothesis 5件が全て通過し、
+`sealed external phase-disc family cannot certify the 1e-15 radius step`
+というnegative obstructionを`accepted`とした。
+
+- sealed artifact input: Q007n／Q007ad／Q007ae `3 / 3` pass
+- sealed implementation source: Q007ac／Q007ad／Q007ae／Q007n／Q007o
+  `5 / 5` pass
+- Q007ae candidate records exact reproduction: `119 / 119`
+- integer bisection iteration: `44`
+- maximum passing／minimum failing inverse:
+  `173791195571 / 173791195572`
+- passing／failing \(Z\):
+  `0.4999999999994811 / 0.5000000000023581`
+- passing／failing radii margin:
+  `9.35528407264837e-68 / -4.2513570828920896e-67`
+- necessary external gap lower:
+  `2.546402442702229e-8`
+- Q007ad witness allowable gap upper:
+  `2.4028364427409988e-8`
+- allowable／required ratio、absolute shortfall:
+  `0.9436200666659436 / 1.4356599996123017e-9`
+- required gapでのexact squared margin:
+  `-7.109332998428586e-17`
+- optimistic raw external inverse floor／failing-endpoint ratio:
+  `1.841749679890231e11 / 1.059748552755201`
+- input／result digest:
+  `6cfeabe16a18fdb6de08e67c575a0b0db2f3ab1341c35c434faff100fd959255` /
+  `3d210cf25513e373ac6a2e7a276163998a602c529878f3c95f085c9e0625bfdd`
+- integer-bisection digest:
+  `24b0e993f676082579158cfeddfe74009161d72412bf228f715baa396246c31b`
+- runner SHA-256:
+  `819679b22d7552a3f247d7c3389a83890f56c60522154bdb5ea05d7eb77a48a4`
+- artifact newline-normalized SHA-256:
+  `a686526552c33f5f1f01a9f1d9c49036d1c9491a2092b07ac8c8621a33d4ada1`
+
+単調性監査により、positive domainで \(Z(C)\)はstrictに増加し、domain外ではbuffer gateが
+failするため、`173791195572`以上のinverseは全て`1e-15` candidateをfailさせる。
+一方、Q007adの固定witnessは100桁sqrt upperを使っても必要gapへ届かず、threshold roundingなしでも
+直接failした。従って同じoriginal-disc familyのgap micro-sharpeningはここで停止する。
+
+これは真のspectral separationやanalytic radiusの上限ではない。wave-sum restriction、blockwise
+majorant、別norm、より高次chart、別spectral enclosureは排除していない。Q007aeの
+`1e-16 pass / 1e-15 fail`とQ007p--Q007abのtube／MPFR constantsは変更しない。
+次は、認証済み`1e-16` chart domainを使うQ007p-style downstream tube再監査を
+別gateとして事前登録する。構造的に異なるexternal certificateは、その後も独立候補として残す。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。

@@ -164,6 +164,12 @@ inverseを下回ったため、固定17²・固定葉のanalytic existence radiu
 Q007aeでは同じgapをselected-outputの12 point centersへ適用し、internal inverseを
 `1.6818752065691547e9`へ下げた。totalは再びQ007ad external inverseに支配され、
 10進候補上のanalytic radiusは`1e-16`のままである。
+Q007afではQ007n scalar majorantから`1e-15` candidateに許されるinverseを
+`173791195571 pass / 173791195572 fail`とexactに挟んだ。必要external gapは
+`2.546402442702229e-8`より大きくなければならないが、Q007adの封印witness一対が許す
+sqrt-upper gapは`2.4028364427409988e-8`に留まる。従って同じoriginal-disc
+certificate familyでは次の10進radiusへ届かないというnegative obstructionを`accepted`とした。
+これは真のanalytic radiusの上限ではなく、別norm・wave-sum・blockwise certificateを排除しない。
 Q007p--Q007abの有限tube／MPFR定数は`1e-18`のまま据え置く。
 Q007pではQ007o当時の半径`1e-18`を固定し、全289 Fourier blockをexternal coordinate normで
 厳密に覆った。
@@ -1066,6 +1072,50 @@ Q007h1 Bauer--Fike radiusを加えず、target residualは既存\(\gamma_k\)と�
 certificateである。次のanalytic bottleneckはQ007ad nonselected-output external inverseである。
 Q007p--Q007abのtube定数は変更しない。
 
+### Q007af sealed external phase-disc radius-step obstruction
+
+Q007ae後に残ったexternal inverseを同じQ007ad original-disc family内でsharp化する価値があるかを、
+新しいphase gapの探索前に判定した。Q007nの`1e-15` candidateへpair inverseだけを入れ、
+exact integer bisectionを \([1,10^{13}]\)から44回行った。
+
+- classification:
+  `sealed external phase-disc family cannot certify the 1e-15 radius step`
+- validity／hypothesis gates: `6 / 6`、`5 / 5` passed
+- maximum passing／minimum failing integer inverse:
+  `173791195571 / 173791195572`
+- passing／failing contraction \(Z\):
+  `0.4999999999994811 / 0.5000000000023581`
+- passing／failing radii margin:
+  `9.35528407264837e-68 / -4.2513570828920896e-67`
+- necessary external gap lower:
+  `2.546402442702229e-8`
+- sealed witness allowable gap upper:
+  `2.4028364427409988e-8`
+- witness／required ratio、absolute shortfall:
+  `0.9436200666659436 / 1.4356599996123017e-9`
+- optimistic external inverse floor／failing-endpoint ratio:
+  `1.841749679890231e11 / 1.059748552755201`
+- integer-bisection digest:
+  `24b0e993f676082579158cfeddfe74009161d72412bf228f715baa396246c31b`
+
+positive domainではQ007n derivative majorant \(D(C)\)が非減少で
+\(Z(C)=CD(C)\)がstrictに増加し、domainを外れればbuffer gateがfailする。従ってfailing端点以上の
+inverseは全てfailする。external formula \(C_{\rm ext}^{\rm raw}=81\beta_*/\delta\)から、passには
+\(\delta>81\beta_*/173791195572\)が必要である。
+
+反証にはQ007adのdegree `71`、counts `(24,38,2,7)`、
+external `wave=(-7,-7);eigenvalue_index=6`を固定した。center distanceの平方を保存centerから
+exact再構成し、100桁`isqrt` enclosureの上端からproduct uncertaintyとexternal radiusを
+差し引いた。必要gapでのexact squared marginは`-7.109332998428586e-17`で、thresholdの
+外向き丸めを行わなくてもfailする。従って全287,929 comparisonを別gapで再探索する前に、
+同じcertificate familyの停止条件が成立した。
+
+この結論はQ007ad gapが真に最適、または真のanalytic radiusが`1e-15`未満だという主張ではない。
+Q007n scalar majorant、Q007ad original asymmetric discs、Q007ad norm formulaを同時に固定した
+場合だけのobstructionである。Q007aeの`1e-16 pass / 1e-15 fail`と
+Q007p--Q007abのtube／MPFR constantsは変更しない。次は同じgapのmicro-sharpeningではなく、
+認証済み`1e-16` chart domainを使う下流tube再監査を別gateにする。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -1597,6 +1647,10 @@ python -m research.q007y_distributed_conservation_repair --output research/artif
 python -m research.q007z_selected_wave_repair --output research/artifacts/q007z_selected_wave_repair.json
 python -m research.q007aa_initialization_interior --output research/artifacts/q007aa_initialization_interior.json
 python -m research.q007ab_forward_shadowing --output research/artifacts/q007ab_forward_shadowing.json
+python -m research.q007ac_phase_aware_resolvent --output research/artifacts/q007ac_phase_aware_resolvent.json
+python -m research.q007ad_asymmetric_phase_resolvent --output research/artifacts/q007ad_asymmetric_phase_resolvent.json
+python -m research.q007ae_internal_phase_resolvent --output research/artifacts/q007ae_internal_phase_resolvent.json
+python -m research.q007af_radius_step_obstruction --output research/artifacts/q007af_radius_step_obstruction.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -1657,6 +1711,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007ac_phase_aware_resolvent.json`](research/artifacts/q007ac_phase_aware_resolvent.json)
 - [`research/artifacts/q007ad_asymmetric_phase_resolvent.json`](research/artifacts/q007ad_asymmetric_phase_resolvent.json)
 - [`research/artifacts/q007ae_internal_phase_resolvent.json`](research/artifacts/q007ae_internal_phase_resolvent.json)
+- [`research/artifacts/q007af_radius_step_obstruction.json`](research/artifacts/q007af_radius_step_obstruction.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -1731,6 +1786,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q007ac 全291万9730 modulus aggregate／287,929位相比較、登録nominal-disc条件とgap反例によるinvalid stop
 - Q007ad original asymmetric 6 discs／287,929位相比較によるcritical external gapと`1e-16` analytic radius認証
 - Q007ae selected-output 12 point centers／19,870位相比較によるinternal resolvent bottleneck除去
+- Q007af `1e-15` inverse thresholdのexact bracketとsealed Q007ad witnessによる
+  external-disc certificate family obstruction
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -1739,7 +1796,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 未実装・未通過:
 
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
-- Q007ae後のnonselected-output external inverse bottleneck、`1e-16` analytic radiusでの下流tube再監査
+- Q007afが排除していないwave-sum／blockwise／別norm external certificate、
+  `1e-16` analytic radiusでの下流tube再監査
 - TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、

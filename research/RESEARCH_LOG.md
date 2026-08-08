@@ -3703,6 +3703,80 @@ nonselected-output external inverseである。Q007aeは`1e-16` radiusを維持�
 Q007p--Q007ab tube／MPFR定数も変更しない。external gap sharp化、連続radius最適化、下流tube
 再監査のいずれも別の事前登録を必要とする。
 
+## 2026-08-09: Q007af sealed external phase-disc radius-step obstruction
+
+### 問いと事前登録
+
+Q007ae後のexternal bottleneckを同じQ007ad original-disc family内でsharp化すれば
+`1e-15` candidateへ届く余地があるかを、位相比較の再探索前に判定した。Q007n scalar
+majorant、Q007ad discs／norm formula、Q007ae inverse orderingを固定し、次を事前登録した。
+
+1. Q007n `_candidate_record`へpair inverse \(C\)だけを入れ、
+   \([1,10^{13}]\)のexact integer bisectionで`1e-15` pass／fail境界を挟む。
+2. 予備的exact algebraで得たbracket
+   `173791195571 / 173791195572`を結果前に封印する。
+3. external inverse formulaからfail側端点に対応する必要gap
+   \(\delta_{\rm req}=81\beta_*/173791195572\)を使う。
+4. Q007ad minimum-margin witnessを固定し、保存centerからdistance squaredを再構成する。
+5. witnessの許容gapは保存lowerではなく100桁`isqrt` enclosureのupperから評価する。
+
+### 実装
+
+- Q007n／Q007ad／Q007ae artifact 3件と、Q007ac／Q007ad／Q007ae／Q007n／Q007o
+  implementation 5件のSHA、scope、accepted outcome、封印digestを再現した。
+- Q007aeの13 working coefficients、inverse ordering、119 candidate records、
+  `1e-16 pass / 1e-15 fail`をexactに再現した。
+- integer bisectionを44回完走し、隣接する整数端点を得た。
+- positive domainではstate majorantとcomposition numeratorが増加し、bufferが減少するため
+  derivative majorant \(D(C)\)は非減少、\(Z(C)=CD(C)\)はstrict増加することを符号と
+  exact endpoint identityで監査した。domain外はbuffer gateでfailする。
+- radii marginがexactに \(CT(1-2Z)\)であることを両端で確認した。
+- fixed witnessのcenter distance squared、product uncertainty、external radiusをexact再構成し、
+  required gapをthreshold roundingなしで直接比較した。
+
+### 結果
+
+validity `6/6`、hypothesis `5/5`で、
+`sealed external phase-disc family cannot certify the 1e-15 radius step`
+というnegative obstructionを`accepted`とした。
+
+1. maximum passing／minimum failing integer inverseは
+   `173791195571 / 173791195572`だった。
+2. 両端の \(Z\) は
+   `0.4999999999994811 / 0.5000000000023581`、
+   radii marginは
+   `9.35528407264837e-68 / -4.2513570828920896e-67`だった。
+3. 必要external gap lowerは`2.546402442702229e-8`だった。
+4. Q007ad fixed witnessのsqrt-upper allowable gapは
+   `2.4028364427409988e-8`で、required ratioは
+   `0.9436200666659436`、shortfallは
+   `1.4356599996123017e-9`だった。
+5. required gapでのexact squared marginは
+   `-7.109332998428586e-17`で、outward threshold roundingなしでもfailした。
+6. allowable gap upperを楽観的に使うraw external inverse floorは
+   `1.841749679890231e11`で、failing端点の
+   `1.059748552755201`倍だった。
+
+- integer-bisection digest:
+  `24b0e993f676082579158cfeddfe74009161d72412bf228f715baa396246c31b`
+- input／result digest:
+  `6cfeabe16a18fdb6de08e67c575a0b0db2f3ab1341c35c434faff100fd959255` /
+  `3d210cf25513e373ac6a2e7a276163998a602c529878f3c95f085c9e0625bfdd`
+- runner／artifact SHA-256:
+  `819679b22d7552a3f247d7c3389a83890f56c60522154bdb5ea05d7eb77a48a4` /
+  `a686526552c33f5f1f01a9f1d9c49036d1c9491a2092b07ac8c8621a33d4ada1`
+
+### 解釈と次のbottleneck
+
+同じQ007ad disc family内でgapを少しずつ上げても、Q007n scalar majorantの次の10進radiusへは
+届かない。従ってこのmicro-sharpening branchは停止する。ただしこれは真のspectral separationや
+analytic radiusの上限ではなく、wave-sum、blockwise majorant、別norm、別spectral enclosureを
+排除しない。
+
+Q007aeの`1e-16` analytic radiusとQ007p--Q007abの`1e-18` tube／MPFR定数は
+ともに維持する。次はexternal certificateを同じ形でsharp化せず、認証済み`1e-16` chart
+domainをQ007p-style finite-tube boundへ渡す下流再監査を別gateとして事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3804,6 +3878,8 @@ Q007p--Q007ab tube／MPFR定数も変更しない。external gap sharp化、連�
 [`artifacts/q007ad_asymmetric_phase_resolvent.json`](artifacts/q007ad_asymmetric_phase_resolvent.json)
 
 [`artifacts/q007ae_internal_phase_resolvent.json`](artifacts/q007ae_internal_phase_resolvent.json)
+
+[`artifacts/q007af_radius_step_obstruction.json`](artifacts/q007af_radius_step_obstruction.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
