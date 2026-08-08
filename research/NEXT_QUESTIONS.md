@@ -2807,6 +2807,37 @@ projectorに限る。ball全体、独立holdout、真のinvariant normal bundle�
 別途事前登録する。rejectedなら、半径・one-step・10-stepのどこで平衡marginを失うかだけを診断し、同じ
 データからmetric候補を追加しない。
 
+### Q007f 結果
+
+全7 validity gateと3つのhypothesis gateが通過した。
+
+- transform roundtrip／imaginary leakage:
+  `3.9730855178692216e-16 / 5.782992871388017e-17`
+- maximum adapted-map derivative／adjoint relative error:
+  `1.9411413072870177e-10 / 1.1552411204406219e-16`
+- maximum projector-family residual／adapted tangent leakage:
+  `1.864754803590191e-15 / 1.5024964047170558e-7`
+- maximum equilibrium blockwise error／normal triplet residual／two-start disagreement:
+  `2.6702431249639317e-15 / 8.851836222444479e-15 / 1.0678514354388054e-15`
+- minimum population／tangent-cocycle singular value:
+  `0.02752853237565495 / 0.8485215443610019`
+- equilibrium adapted `gamma_1 / gamma_10`:
+  `0.9988057257445231 / 0.979632953795698`
+- amplitude `0.004`の`gamma_10`範囲／failure count:
+  `0.9798077420025896–0.980286028267377 / 0`
+- amplitude `0.01`の`gamma_10`範囲／failure count:
+  `0.9802276957977255–0.9815609124608508 / 0`
+- 全点のmaximum one-step `gamma_1`: `0.9991153531281403`
+
+従って`registered finite-sample adapted-metric projected normal-cocycle dominance observed`として
+`accepted`とする。Q007dのEuclidean棄却とQ007eの平衡点採択は変更しない。one-stepも観測上は全点で
+1未満だったが、Q007fの性能主張は事前登録どおり10-stepに限る。
+
+次はQ007gのa posteriori defect／derivative-variation gateである。ただし、適用する定理、Banach norm、
+domain、inverse bound、tail／roundoff majorant、十分条件を先に固定する必要がある。これらを事前登録する
+までは数値campaignを開始せず、Q007fをball全体・独立holdout・真のinvariant normal bundle・存在定理へ
+読み替えない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

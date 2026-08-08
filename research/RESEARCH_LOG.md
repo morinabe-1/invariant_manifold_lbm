@@ -2275,6 +2275,58 @@ nonnormal transient amplificationを計量依存性として切り分けられ�
 bundle、grid-uniform bound、多様体の存在・一意性は示していない。Q007dのEuclidean棄却も変更しない。
 Q007fではmetric／whitening hashを固定し、Q007dと同じ33 starting pointへ再調整なしで適用する。
 
+## 2026-08-08: Q007f fixed-metric finite-radius normal cocycle
+
+### 実装
+
+- Q007eの2598次元Fourier-Riesz whitening \(S\)、その逆、両方の複素Euclidean adjointを実装した。
+- 任意の有限半径stateで共役Jacobian \(S J S^{-1}\) とそのmatrix-free adjointを構成した。
+- \(S D W_4(a)\)のthin complex QRからvarying adapted tangentとmetric-orthogonal normal projectorを
+  構成し、Q007dと同じ33 starting pointで10-step cocycleを評価した。
+- seed `20260908`のcomplex two-start SVD、seed `20260909`の9点derivative／adjoint validationを
+  独立に実装した。Stein metricは有限半径dataから再推定していない。
+
+### validity
+
+全7 validity gateが通過した。
+
+- Q007d coefficient／direction／Euclidean equilibrium reproduction: pass、maximum relative error `0`
+- Q007e全8 gate／metric hash／whitening hash reproduction: pass、maximum gamma relative error `0`
+- transform roundtrip／imaginary leakage:
+  `3.9730855178692216e-16 / 5.782992871388017e-17`
+- maximum adapted-map derivative／adjoint relative error:
+  `1.9411413072870177e-10 / 1.1552411204406219e-16`
+- maximum projector-family residual: `1.864754803590191e-15`
+- minimum adapted chart-tangent singular value／rank: `7.215951647785912 / 24`
+- maximum equilibrium blockwise error／normal triplet residual／two-start disagreement:
+  `2.6702431249639317e-15 / 8.851836222444479e-15 / 1.0678514354388054e-15`
+- minimum population／minimum tangent-cocycle singular value:
+  `0.02752853237565495 / 0.8485215443610019`
+- maximum adapted tangent leakage: `1.5024964047170558e-7`
+
+### 結果
+
+3つのhypothesis gateはすべて通過した。
+
+- equilibrium adapted `gamma_1 / gamma_10`:
+  `0.9988057257445231 / 0.979632953795698`
+- amplitude `0.004`の`gamma_10`範囲／failure count:
+  `0.9798077420025896–0.980286028267377 / 0`
+- amplitude `0.01`の`gamma_10`範囲／failure count:
+  `0.9802276957977255–0.9815609124608508 / 0`
+- 全33点のmaximum one-step `gamma_1`: `0.9991153531281403`
+
+従って`registered finite-sample adapted-metric projected normal-cocycle dominance observed`として
+`accepted`とした。Q007dと同じ方向・半径・horizonで、Euclidean ratioは全点失敗した一方、平衡点だけから
+固定したadapted metricでは全点が通過した。これは計量比較としての有効な結果である。
+
+### 主張境界と次の問い
+
+方向を再利用した比較campaignなのでindependent holdoutではない。固定grid・2半径・32方向・10 step・
+candidate quartic tangentに限り、ball全体、真のinvariant normal bundle、grid-uniform attraction、存在・
+一意性は示していない。one-step全点通過も事前登録hypothesisではないため診断に留める。次のQ007gは
+a posteriori theoremの対象空間・inverse・tail・roundoff majorantと十分条件を先に固定してから開始する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2322,6 +2374,8 @@ Q007fではmetric／whitening hashを固定し、Q007dと同じ33 starting point
 [`artifacts/q007d_normal_cocycle.json`](artifacts/q007d_normal_cocycle.json)
 
 [`artifacts/q007e_adapted_metric.json`](artifacts/q007e_adapted_metric.json)
+
+[`artifacts/q007f_adapted_finite_cocycle.json`](artifacts/q007f_adapted_finite_cocycle.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

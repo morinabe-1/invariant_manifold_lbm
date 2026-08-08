@@ -86,8 +86,11 @@ matrix-free normal SVDを独立検証し、全7 validity gateを通過した。�
 Euclidean projected normal-dominance仮説を有効に棄却した。Q007eでは平衡点Fourier blockだけから
 Riesz／Stein metricを固定し、全8 validity gateを通過した。adapted `gamma_1 / gamma_10`は
 `0.998806 / 0.979633`となったため、平衡点prequalificationを`accepted`とした。これはQ007dの棄却を
-変更せず、Euclidean nonnormal amplificationを計量依存性として切り分けた結果である。次はQ007fで、
-同じmetricを再調整せずQ007dの33 starting pointへ適用する。
+変更せず、Euclidean nonnormal amplificationを計量依存性として切り分けた結果である。Q007fでは同じ
+metricを再調整せずQ007dの33 starting pointへ適用し、全7 validity gateを通過した。半径
+`0.004 / 0.01`の最大adapted `gamma_10`は`0.980286 / 0.981561`、failure countはともに0だったため、
+登録した10-step有限sample仮説を`accepted`とした。次は、これをball全体や存在定理へ読み替えず、
+Q007gのa posteriori defect／derivative-variation gateを定義する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -736,7 +739,7 @@ normal-attraction診断へ戻る。
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
 `q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
-`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1`、`q007c2`、`q007d`、`q007e`、`q008a`、`q008c` は
+`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1`、`q007c2`、`q007d`、`q007e`、`q007f`、`q008a`、`q008c` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -769,6 +772,7 @@ python -m ttim_lbm --study q007c1 --output research/artifacts/q007c1_quartic_con
 python -m ttim_lbm --study q007c2 --output research/artifacts/q007c2_quartic_shadow_radius.json
 python -m ttim_lbm --study q007d --output research/artifacts/q007d_normal_cocycle.json
 python -m ttim_lbm --study q007e --output research/artifacts/q007e_adapted_metric.json
+python -m ttim_lbm --study q007f --output research/artifacts/q007f_adapted_finite_cocycle.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -801,6 +805,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007c2_quartic_shadow_radius.json`](research/artifacts/q007c2_quartic_shadow_radius.json)
 - [`research/artifacts/q007d_normal_cocycle.json`](research/artifacts/q007d_normal_cocycle.json)
 - [`research/artifacts/q007e_adapted_metric.json`](research/artifacts/q007e_adapted_metric.json)
+- [`research/artifacts/q007f_adapted_finite_cocycle.json`](research/artifacts/q007f_adapted_finite_cocycle.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -847,16 +852,17 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007c2 独立64方向のquartic shadow amplitude／horizon localization、forward-error budget
 - Q007d 解析的full-map／quartic-chart Jacobian、fixed-leaf Euclidean projector、10-step normal cocycle
 - Q007e 289 Fourier blockのRiesz invariant split、Stein metric、実往復、adapted matrix-free SVD
+- Q007f fixed metric／varying quartic tangent、複素共役Jacobian／adjoint、33点の10-step adapted cocycle
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007f fixed-metric finite-radius normal cocycle
+- Q007g a posteriori defect／derivative-variation gate
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ007fである。Q007eのmetric／whitening hashを固定し、Q007dと同じ33 starting point、
-2半径、10 stepへ適用する。有限半径stateからmetricを再推定せず、adapted chart tangent、共役map
-Jacobian／adjoint、projected normal SVDを独立に検証する。これは同じ方向を使う計量比較であり、
-independent holdoutや真のinvariant normal bundleの検証とは呼ばない。
+従って次のゲートはQ007gである。Q007fは同じ方向を使う計量比較なのでindependent holdoutではなく、
+finite sampleの通過だけでは真のinvariant normal bundleや存在・一意性を示さない。適用するa posteriori
+theorem、Banach norm、domain、inverse bound、tail／roundoff majorant、十分条件を観測前に固定し、
+quartic invariance defectとderivative variationがそのbudgetを閉じるかを判定する。
