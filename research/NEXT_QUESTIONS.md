@@ -4096,6 +4096,48 @@ jetからpair norm \(\tau\)以内にあることだけを主張する。Q007iの
 acceptedでも半径が極端に小さい場合はそのまま記録し、次の改善gateでresolvent／bordered inverse boundを
 鋭くする。候補格子やadjugate boundを事後変更して結果を良く見せない。
 
+### Q007n 封印結果
+
+全5 validity gateと全4 hypothesis gateが通過した。
+
+- 全6 input artifact SHA、全4 predecessor runner SHA、source／scope／sealed gate: pass
+- Q007c1の5 coefficient hash reproduction: pass
+- Q007i representative proof count／stored proof-digest mismatch: `72 / 0`
+- registered candidate／nonnegative-tail／positive-domain／pass count: `119 / 119 / 100 / 46`
+- raw／80桁外向きworking absolute gap lower:
+  `1.611328085325626e-10 / 1.611328085325626e-10`
+- representative \(S_\infty\) upper／bordered-entry upper:
+  `6.025984057925574 / 1.6509200830138158`（登録上限`9 / 2`）
+- working \(c_V\): `2.7869014191713024`
+- working \((h_2,h_3,h_4)\):
+  `57.79951938835994 / 9032.836456317458 / 7811697.725656692`
+- working \((g_2,g_3,g_4)\):
+  `1.5391451988086782 / 16.74466889386485 / 4471.844336719125`
+- pair homological inverse upper \(C_L\): `1.5620130640618827e71`
+- largest passing modal radius／previous larger fail: `1e-75 / 1e-74`
+- selected／previous contraction upper: `0.449393612526706 / 4.49393612526706`
+- selected correction radius \(\tau=2Y\): `1.620396579477627e-295`
+- selected radii-inequality margin: `8.2002417161445e-297`
+- contained real \(\ell^2\) coordinate radius lower: `3.470110468942836e-75`
+
+元のartifact／coefficient有理upperは保存したまま、候補走査に使うupperを80桁10進格子へ上向き、gap lowerを
+下向きに丸めた。その後の全119判定は`fractions.Fraction`で行った。全候補にはexact signとbit lengthを、
+選択候補`1e-75`と直前fail`1e-74`には完全なbase-16有理数を保存した。これは判定式や閾値の変更ではなく、
+巨大分母を外向きに縮約した保守的な証明表現である。
+
+従って
+`registered quartic-centered contraction gives an explicit fixed-leaf local radius`として`accepted`とした。
+artifactのnewline-normalized SHA-256は
+`7fe09089744e41229e71666540e4885d560a4c27a2e8bc95a94d5959af0fbc36`、standalone runner source SHA-256は
+`6eefae3386e5c49f151b1cd4537eb84fbb92858578fe4fce7768e50ad43c5dc9`である。
+
+これは固定17²・固定保存量葉上で、Q007mのexact quartic jetからpair norm \(\tau\)以内にあるanalytic
+parameterization \(W\) とreduced map \(R\)の存在を、\(\|b\|_1<10^{-75}\)で保証する。Q007iの局所一意性と
+合わせて同じ定理多様体を同定する。ただし、この半径は登録10進格子上の保証値であって最適半径ではない。
+極端な小ささは、内部bordered blockへ対角化不要の\(12!2^{11}\delta^{-6}\) adjugate boundを使ったためである。
+Q007c1の有限振幅性能棄却、forward invariance、positivity、finite-ball normal attraction、grid-uniform性、
+continuum limitは変更・認証しない。次はこの結論を維持したまま、内部resolvent boundだけを別gateで鋭くする。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

@@ -2534,6 +2534,50 @@ subspaceの一意なsimple eigenpairsを表すと認証された。
 これはlinear coordinate同定だけである。Q006iの300 quadratic coefficient、Q007b／Q007c1の高次係数、explicit
 radius、finite-ball attractionはまだ認証していない。次はQ007kで二次forcing／homological solveだけを区間化する。
 
+## 2026-08-08: Q007n quartic-centered explicit local radius
+
+### 実装
+
+- Q007h1--Q007mの6 artifact SHAとQ007j--Q007mの4 runner SHAを固定し、全sealed gateとQ007c1の
+  5 coefficient hashを再確認した。
+- 24 complex modal coordinateへ\(\ell^1\) norm、full Fourier-population stateへWiener \(\ell^1\) norm、
+  pairへ\(\max(\|H\|,c_V\|G\|)\)を固定した。
+- D2Q9 weightsと\(\omega=3/2\)から、非線形部の全次数majorant
+  \((21/2)x^2/(1-x)\)とその微分をexact rationalで導いた。
+- Q007i log-gapをabsolute gapへ変換し、external blockにはQ007h1のBauer--Fike／Neumann bound、
+  selected outputには12次bordered determinantとadjugate boundを使った。後者はexternal eigenvectorの
+  個別一意性や対角化可能性を仮定しない。
+- Q007k／Q007l／Q007mのexact root boxから\(h_2,h_3,h_4,g_2,g_3,g_4\)を上から囲み、quartic centerで
+  4次まで消える不変性残差のdegree-5 tailを構成した。
+- 元の有理upperを80桁10進格子へ外向きに丸め、登録した`1e-2`から`1e-120`までの119候補を
+  `Fraction`で評価した。全候補のexact signとbit length、選択境界2点の完全なbase-16有理数を保存した。
+
+### 結果
+
+全5 validity gateと全4 hypothesis gateが通過した。
+
+- raw／working all-degree absolute gap lower: `1.611328085325626e-10 / 1.611328085325626e-10`
+- \(S_\infty\) upper／bordered-entry upper: `6.025984057925574 / 1.6509200830138158`
+- pair homological inverse upper: `1.5620130640618827e71`
+- registered／passing radius count: `119 / 46`
+- largest passing modal radius: `1e-75`
+- previous larger candidate: `1e-74`（contraction `4.49393612526706`でfail）
+- selected contraction／radii margin:
+  `0.449393612526706 / 8.2002417161445e-297`
+- selected correction radius \(\tau\): `1.620396579477627e-295`
+- contained real-coordinate Euclidean radius lower: `3.470110468942836e-75`
+
+従って`registered quartic-centered contraction gives an explicit fixed-leaf local radius`として
+`accepted`とした。固定17²・固定保存量葉で、Q007mのexact quartic jetから\(\tau\)以内にあるanalytic
+\(W,R\)の存在を\(\|b\|_1<10^{-75}\)で認証し、Q007iの局所一意性により同じ定理多様体と同定した。
+
+### 主張境界
+
+`1e-75`は最適半径ではなく、内部blockへ使った\(12!2^{11}\delta^{-6}\) adjugate boundの粗さに支配される。
+従って実用半径を得たとは解釈しない。Q007c1の有限振幅directional-shadowing棄却、forward invariance、
+positivity、finite-ball normal attraction、grid-uniform性、continuum limitは変更・認証していない。
+次は存在結論を維持したまま、内部bordered resolvent上界だけを独立に鋭くする。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2593,6 +2637,14 @@ radius、finite-ball attractionはまだ認証していない。次はQ007kで�
 [`artifacts/q007i_direct_nonresonance.json`](artifacts/q007i_direct_nonresonance.json)
 
 [`artifacts/q007j_eigencoordinate_bridge.json`](artifacts/q007j_eigencoordinate_bridge.json)
+
+[`artifacts/q007k_quadratic_jet_bridge.json`](artifacts/q007k_quadratic_jet_bridge.json)
+
+[`artifacts/q007l_cubic_jet_bridge.json`](artifacts/q007l_cubic_jet_bridge.json)
+
+[`artifacts/q007m_quartic_jet_bridge.json`](artifacts/q007m_quartic_jet_bridge.json)
+
+[`artifacts/q007n_explicit_local_radius.json`](artifacts/q007n_explicit_local_radius.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
