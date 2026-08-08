@@ -4657,6 +4657,130 @@ strict inequalityをテストで再構成した。
 Q007dのEuclidean棄却も変更しない。stagewise positivityやtube拡大は、同じ判定へ混ぜず別gateとして
 事前登録する。
 
+## Q007r: registered finite tube の exact stagewise positivity — 事前登録
+
+### 問い
+
+Q007qでfull-map sampling時刻のstrict positivityを認証した同じ固定tubeについて、各one-step内部の
+equilibrium evaluation、BGK collision後、periodic streaming後、five-point filter後でも全9 populationが
+strict positiveであることを、exact Fourier--Wiener majorantから認証できるか。
+
+### 固定入力
+
+- `q007q_population_positivity.json` newline-normalized SHA-256:
+  `e8c763419f6e803f102f81a3beb957261b736754ab490ca3cb914dc9247269cb`
+- Q007q runner SHA-256:
+  `026b4d549e92bf74ac29393244a4400fb7a8d1bb3eb263ee729d81432c8290e5`
+- map／葉／tube: Q007p／Q007qと同じ固定17² filtered periodic D2Q9、\(\omega=3/2\)、
+  \(\eta=1/100\)、固定保存量葉、
+  \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)。
+- input state upperはQ007qのexact \(x_*\)を変更せず再利用する。新しいradius、sample、rounding parameterは
+  導入しない。
+- stage順序は`equilibrium evaluation -> BGK collision -> periodic streaming -> five-point filter`とする。
+
+### exact stage majorant
+
+各full-map sampling時刻ではQ007pのforward invarianceにより
+\(\|\delta f\|_{\mathrm W}\le x_*<1\)である。D2Q9のmoment map \(M\)、rest-equilibrium tangent \(E\)、
+BGK collision linearization \(C=(1-\omega)I+\omega EM\)について、population-summed Fourier--Wiener
+\(\ell^1\)誘導normをentrywise exactに評価し、
+
+\[
+\|EM\|_1=\frac{13}{6},
+\qquad
+\|C\|_1=\frac{19}{6}
+\]
+
+を再構成する。equilibriumの非線形部分は
+
+\[
+N_i(\delta f)
+=w_i\left[
+\frac92\frac{(c_i\cdot j)^2}{1+\delta\rho}
+-\frac32\frac{|j|^2}{1+\delta\rho}
+\right]
+\]
+
+である。D2Q9 weight sum、weighted absolute velocity quadratic、cyclic Fourier convolutionをexactに
+監査し、
+
+\[
+\|N(\delta f)\|_{\mathrm W}
+\le 7\frac{x_*^2}{1-x_*}
+\]
+
+を用いる。従ってequilibrium evaluationとpost-collision perturbationの登録upperを
+
+\[
+e_*=\frac{13}{6}x_*+7\frac{x_*^2}{1-x_*},
+\qquad
+c_*=\frac{19}{6}x_*+\frac{21}{2}\frac{x_*^2}{1-x_*}
+\]
+
+と固定し、lowerを
+
+\[
+p_{\mathrm{eq}}=\frac1{36}-e_*,
+\qquad
+p_{\mathrm{coll}}=\frac1{36}-c_*
+\]
+
+とする。
+
+periodic streamingは各population componentのsite置換なので\(p_{\mathrm{stream}}=p_{\mathrm{coll}}\)とする。
+登録filterは
+
+\[
+(\mathcal F_\eta f)_i(x)
+=\frac{99}{100}f_i(x)
++\frac1{400}\sum_{y\sim x}f_i(y)
+\]
+
+という5点凸結合なので、\(p_{\mathrm{filter}}=p_{\mathrm{coll}}\)とする。full-map outputではQ007qの
+\(p_*=1/36-x_*\)も独立に再利用する。
+
+### validity gate
+
+1. Q007q artifact／runner SHA、source、scope、全validity／hypothesis gate、
+   3 theorem-consequence flagが一致する。
+2. exact \(M,E,C\)が実装したD2Q9 weight／velocity／\(\omega=3/2\)から再構成され、
+   \(\|EM\|_1=13/6\)、\(\|C\|_1=19/6\)である。
+3. weight sum \(1\)、weighted absolute velocity quadratic \(8/9\)、equilibrium nonlinear constant \(7\)、
+   collision nonlinear constant \(21/2\)をexactに再構成し、\(1-x_*>0\)である。
+4. streamingが9個のpopulation-wise periodic permutation、filter coefficientが
+   \(99/100,1/400,1/400,1/400,1/400\)で全てnonnegativeかつsum \(1\)である。
+5. Q007qの\(x_*\)、base／normal radius、forward-invariance flagをexactに再利用する。
+6. 全boundがfinite rationalでstrict JSONを生成する。
+
+一つでも落ちれば`inconclusive`とし、stagewise positivity値を解釈しない。
+
+### hypothesis gate
+
+validity通過時だけ次を判定する。
+
+1. equilibrium evaluation: \(p_{\mathrm{eq}}>0\)。
+2. post-collision: \(p_{\mathrm{coll}}>0\)。
+3. post-streaming: streaming permutationが同じstrict lowerを保つ。
+4. post-filter: five-point convex filterが同じstrict lowerを保つ。
+5. all-iterate stagewise positivity: Q007pのtube forward invarianceにより、同じ4 stage boundを
+   全one-step \(n=0,1,2,\ldots\)へ適用できる。
+
+全て通れば
+`registered Q007p tube is population-positive at every exact BGK, streaming, and filter stage`
+として`accepted`とする。一つでも落ちれば
+`registered Q007p tube did not certify exact stagewise population positivity`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedなら、固定17²・固定保存量葉・登録Q007p tubeのreal stateについて、exact mathematical mapの
+equilibrium evaluation、BGK collision後、periodic streaming後、five-point filter後で全populationが
+strict positiveであると主張する。
+
+これはIEEE-754演算の全中間加算・除算に対するroundoff enclosureではなく、entropy、monotonicity、
+maximum principle、より大きいtube、global basin、grid-uniform性、continuum limitも認証しない。
+Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却も変更しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
