@@ -1,0 +1,3761 @@
+{
+  "cycle": {
+    "claim_boundary": "The result concerns four preregistered wave/branch tensorizations of the fixed local degree-two through degree-four coefficients. It is not an asymptotic-rank, full-chart invariance, rollout, online-speed, TT-cross, other-shell, other-grid, existence, uniqueness, or normal-attraction claim. Timing is diagnostic only.",
+    "decision": "All registered wave-factorized tensors are valid, but none beats the natural quartic sparse fiber in both registered storage metrics.",
+    "degree_records": [
+      {
+        "candidate_records": [
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-branch-tuple-major",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 1.3325854238628364e-14,
+            "maximum_relative_action_error_vs_sparse": 1.541158840998523e-14,
+            "maximum_relative_dense_mapping_action_error": 1.0238443578418916e-15,
+            "relative_tensor_reconstruction_error": 3.3359674312840917e-15,
+            "storage": {
+              "complex_core_entry_count": 6634,
+              "core_count": 5,
+              "core_payload_bytes": 106144,
+              "core_stored_real_scalar_count": 13268,
+              "mode_shape": [
+                8,
+                3,
+                8,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 10368,
+              "rank_and_shape_metadata_bytes": 88,
+              "raw_array_payload_bytes": 106232,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                8,
+                24,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 107988
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 2.457037037037037,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 2.405935299884146,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              8,
+              3,
+              8,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 0.0,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                8,
+                3,
+                8,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 0.0,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    648
+                  ],
+                  "maximum_singular_value": 97.5273926989104,
+                  "minimum_singular_value": 44.79239143632647,
+                  "mode_index": 0,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    24,
+                    216
+                  ],
+                  "maximum_singular_value": 69.67728350093053,
+                  "minimum_singular_value": 10.282082073023455,
+                  "mode_index": 1,
+                  "retained_rank": 24,
+                  "singular_value_count": 24
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    192,
+                    27
+                  ],
+                  "maximum_singular_value": 117.14263181319774,
+                  "minimum_singular_value": 0.4004052363303716,
+                  "mode_index": 2,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 156.20121619537784,
+                  "minimum_singular_value": 1.3771626590153931,
+                  "mode_index": 3,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 196.720228031451,
+              "tt_ranks": [
+                1,
+                8,
+                24,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 1760300
+          },
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-branch-factor-major",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 7.982604535561939e-15,
+            "maximum_relative_action_error_vs_sparse": 8.384236688077742e-15,
+            "maximum_relative_dense_mapping_action_error": 7.965688653748729e-16,
+            "relative_tensor_reconstruction_error": 2.586795248418816e-15,
+            "storage": {
+              "complex_core_entry_count": 9864,
+              "core_count": 5,
+              "core_payload_bytes": 157824,
+              "core_stored_real_scalar_count": 19728,
+              "mode_shape": [
+                8,
+                8,
+                3,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 10292,
+              "rank_and_shape_metadata_bytes": 88,
+              "raw_array_payload_bytes": 157912,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                8,
+                62,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 159668
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 3.6533333333333333,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 3.557347829961679,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              8,
+              8,
+              3,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 1.593678217062178e-14,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                8,
+                8,
+                3,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 8.10124222104595e-17,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    648
+                  ],
+                  "maximum_singular_value": 97.5273926989104,
+                  "minimum_singular_value": 44.79239143632646,
+                  "mode_index": 0,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 1.593678217062178e-14,
+                  "matrix_shape": [
+                    64,
+                    81
+                  ],
+                  "maximum_singular_value": 135.2692783849103,
+                  "minimum_singular_value": 1.1269006743139525e-14,
+                  "mode_index": 1,
+                  "retained_rank": 62,
+                  "singular_value_count": 64
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    186,
+                    27
+                  ],
+                  "maximum_singular_value": 117.14263181319762,
+                  "minimum_singular_value": 0.40040523633037234,
+                  "mode_index": 2,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 156.20121619537773,
+                  "minimum_singular_value": 1.3771626590153927,
+                  "mode_index": 3,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 196.720228031451,
+              "tt_ranks": [
+                1,
+                8,
+                62,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 2956500
+          },
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-qtt-tuple-major",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 1.2625339201453002e-14,
+            "maximum_relative_action_error_vs_sparse": 1.3391504468921181e-14,
+            "maximum_relative_dense_mapping_action_error": 7.214124049175791e-16,
+            "relative_tensor_reconstruction_error": 4.142775454855785e-15,
+            "storage": {
+              "complex_core_entry_count": 11874,
+              "core_count": 9,
+              "core_payload_bytes": 189984,
+              "core_stored_real_scalar_count": 23748,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 10368,
+              "rank_and_shape_metadata_bytes": 152,
+              "raw_array_payload_bytes": 190136,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                24,
+                48,
+                54,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 192884
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 4.397777777777778,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 4.297388824525443,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              2,
+              2,
+              2,
+              3,
+              2,
+              2,
+              2,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 0.0,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 0.0,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2,
+                    2592
+                  ],
+                  "maximum_singular_value": 162.99763996513647,
+                  "minimum_singular_value": 110.13908244824759,
+                  "mode_index": 0,
+                  "retained_rank": 2,
+                  "singular_value_count": 2
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    4,
+                    1296
+                  ],
+                  "maximum_singular_value": 116.878136435123,
+                  "minimum_singular_value": 76.43606547934009,
+                  "mode_index": 1,
+                  "retained_rank": 4,
+                  "singular_value_count": 4
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    648
+                  ],
+                  "maximum_singular_value": 97.5273926989104,
+                  "minimum_singular_value": 44.79239143632648,
+                  "mode_index": 2,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    24,
+                    216
+                  ],
+                  "maximum_singular_value": 69.67728350093053,
+                  "minimum_singular_value": 10.28208207302346,
+                  "mode_index": 3,
+                  "retained_rank": 24,
+                  "singular_value_count": 24
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    48,
+                    108
+                  ],
+                  "maximum_singular_value": 72.33039811903511,
+                  "minimum_singular_value": 0.9660429644683172,
+                  "mode_index": 4,
+                  "retained_rank": 48,
+                  "singular_value_count": 48
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    96,
+                    54
+                  ],
+                  "maximum_singular_value": 89.14087317187361,
+                  "minimum_singular_value": 0.1288470901931677,
+                  "mode_index": 5,
+                  "retained_rank": 54,
+                  "singular_value_count": 54
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    108,
+                    27
+                  ],
+                  "maximum_singular_value": 117.14263181319777,
+                  "minimum_singular_value": 0.40040523633037306,
+                  "mode_index": 6,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 156.20121619537784,
+                  "minimum_singular_value": 1.3771626590153943,
+                  "mode_index": 7,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 196.720228031451,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                24,
+                48,
+                54,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 5142600
+          },
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-qtt-scale-interleaved",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 3.127258896799465e-14,
+            "maximum_relative_action_error_vs_sparse": 3.145902739854677e-14,
+            "maximum_relative_dense_mapping_action_error": 8.435062179805266e-16,
+            "relative_tensor_reconstruction_error": 8.700043154485635e-15,
+            "storage": {
+              "complex_core_entry_count": 11164,
+              "core_count": 9,
+              "core_payload_bytes": 178624,
+              "core_stored_real_scalar_count": 22328,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                3,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 10292,
+              "rank_and_shape_metadata_bytes": 152,
+              "raw_array_payload_bytes": 178776,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                62,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 181524
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 4.134814814814815,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 4.044291952588896,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              3,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 1.878316540649255e-14,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                3,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 9.54816166819894e-17,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2,
+                    2592
+                  ],
+                  "maximum_singular_value": 162.99763996513641,
+                  "minimum_singular_value": 110.13908244824758,
+                  "mode_index": 0,
+                  "retained_rank": 2,
+                  "singular_value_count": 2
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    4,
+                    1296
+                  ],
+                  "maximum_singular_value": 155.40775420279863,
+                  "minimum_singular_value": 57.823542639240685,
+                  "mode_index": 1,
+                  "retained_rank": 4,
+                  "singular_value_count": 4
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    648
+                  ],
+                  "maximum_singular_value": 112.3199433825188,
+                  "minimum_singular_value": 34.44020811216883,
+                  "mode_index": 2,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    16,
+                    324
+                  ],
+                  "maximum_singular_value": 132.45358028762575,
+                  "minimum_singular_value": 12.200276316323798,
+                  "mode_index": 3,
+                  "retained_rank": 16,
+                  "singular_value_count": 16
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    32,
+                    162
+                  ],
+                  "maximum_singular_value": 102.18870009561752,
+                  "minimum_singular_value": 3.173024930710158,
+                  "mode_index": 4,
+                  "retained_rank": 32,
+                  "singular_value_count": 32
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 1.878316540649255e-14,
+                  "matrix_shape": [
+                    64,
+                    81
+                  ],
+                  "maximum_singular_value": 135.26927838491025,
+                  "minimum_singular_value": 1.3281703631079456e-14,
+                  "mode_index": 5,
+                  "retained_rank": 62,
+                  "singular_value_count": 64
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    186,
+                    27
+                  ],
+                  "maximum_singular_value": 117.14263181319775,
+                  "minimum_singular_value": 0.40040523633037184,
+                  "mode_index": 6,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 156.20121619537795,
+                  "minimum_singular_value": 1.3771626590153974,
+                  "mode_index": 7,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 196.720228031451,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                62,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 5368300
+          }
+        ],
+        "degree": 2,
+        "fiber_count": 300,
+        "flat_q_last_control": {
+          "all_values_finite": true,
+          "candidate_id": "flat-q-last",
+          "degree": 2,
+          "fidelity_passed": true,
+          "maximum_relative_action_error_vs_sparse": 5.645836536101874e-15,
+          "registered_identity_exact": true,
+          "relative_tensor_reconstruction_error": 2.4895475224765425e-15,
+          "storage": {
+            "complex_core_entry_count": 5841,
+            "core_count": 3,
+            "core_payload_bytes": 93456,
+            "core_stored_real_scalar_count": 11682,
+            "mode_shape": [
+              24,
+              24,
+              9
+            ],
+            "nominal_gauge_adjusted_real_dimension": 10368,
+            "rank_and_shape_metadata_bytes": 56,
+            "raw_array_payload_bytes": 93512,
+            "serialization_roundtrip_bitwise_equal": true,
+            "tt_ranks": [
+              1,
+              24,
+              9,
+              1
+            ],
+            "uncompressed_npz_serialized_bytes": 94772
+          },
+          "tt_svd_diagnostics": {
+            "all_singular_values_finite": true,
+            "construction_method": "direct registered TT-SVD",
+            "discarded_frobenius_norm": 0.0,
+            "input_dtype": "complex128",
+            "maximum_rank": null,
+            "mode_shape": [
+              24,
+              24,
+              9
+            ],
+            "relative_discarded_frobenius_norm": 0.0,
+            "requested_relative_tolerance": 1e-13,
+            "split_records": [
+              {
+                "all_singular_values_finite": true,
+                "discarded_frobenius_norm": 0.0,
+                "matrix_shape": [
+                  24,
+                  216
+                ],
+                "maximum_singular_value": 69.6772835009305,
+                "minimum_singular_value": 10.28208207302344,
+                "mode_index": 0,
+                "retained_rank": 24,
+                "singular_value_count": 24
+              },
+              {
+                "all_singular_values_finite": true,
+                "discarded_frobenius_norm": 0.0,
+                "matrix_shape": [
+                  576,
+                  9
+                ],
+                "maximum_singular_value": 156.20121619537773,
+                "minimum_singular_value": 1.3771626590153916,
+                "mode_index": 1,
+                "retained_rank": 9,
+                "singular_value_count": 9
+              }
+            ],
+            "tensor_frobenius_norm": 196.720228031451,
+            "tt_ranks": [
+              1,
+              24,
+              9,
+              1
+            ]
+          }
+        },
+        "maximum_canonical_dense_vs_sparse_relative_action_error": 2.5479037080387462e-15,
+        "natural_sparse_fiber_storage": {
+          "coefficient_payload_bytes": 43200,
+          "coefficient_stored_real_scalar_count": 5400,
+          "fiber_count": 300,
+          "index_and_multiplicity_metadata_bytes": 900,
+          "raw_array_payload_bytes": 44100,
+          "scalar_sparse_lossless_diagnostic": {
+            "bitwise_nonzero_coefficient_count": 2700,
+            "coefficient_stored_real_scalar_count": 5400,
+            "index_and_multiplicity_metadata_bytes": 10800,
+            "raw_array_payload_bytes": 54000,
+            "serialization_roundtrip_bitwise_equal": true,
+            "uncompressed_npz_serialized_bytes": 55036
+          },
+          "serialization_roundtrip_bitwise_equal": true,
+          "uncompressed_npz_serialized_bytes": 44884
+        },
+        "ordered_tensor_complex_entry_count": 5184,
+        "ordered_tensor_payload_bytes": 82944,
+        "ordered_tensor_shape": [
+          9,
+          24,
+          24
+        ],
+        "ordered_tensor_stored_real_scalar_count": 10368
+      },
+      {
+        "candidate_records": [
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-branch-tuple-major",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 1.2782913108507864e-14,
+            "maximum_relative_action_error_vs_sparse": 1.3120226051296047e-14,
+            "maximum_relative_dense_mapping_action_error": 9.091083293790046e-16,
+            "relative_tensor_reconstruction_error": 5.25499302931772e-15,
+            "storage": {
+              "complex_core_entry_count": 209386,
+              "core_count": 7,
+              "core_payload_bytes": 3350176,
+              "core_stored_real_scalar_count": 418772,
+              "mode_shape": [
+                8,
+                3,
+                8,
+                3,
+                8,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 248832,
+              "rank_and_shape_metadata_bytes": 120,
+              "raw_array_payload_bytes": 3350296,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                8,
+                24,
+                192,
+                216,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 3352548
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 8.948119658119658,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 8.694727997012324,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              8,
+              3,
+              8,
+              3,
+              8,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 0.0,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                8,
+                3,
+                8,
+                3,
+                8,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 0.0,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    15552
+                  ],
+                  "maximum_singular_value": 72522.5422933058,
+                  "minimum_singular_value": 45894.51873149151,
+                  "mode_index": 0,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    24,
+                    5184
+                  ],
+                  "maximum_singular_value": 71565.49377188996,
+                  "minimum_singular_value": 3939.882466462454,
+                  "mode_index": 1,
+                  "retained_rank": 24,
+                  "singular_value_count": 24
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    192,
+                    648
+                  ],
+                  "maximum_singular_value": 63516.645523620224,
+                  "minimum_singular_value": 51.74412085542847,
+                  "mode_index": 2,
+                  "retained_rank": 192,
+                  "singular_value_count": 192
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    576,
+                    216
+                  ],
+                  "maximum_singular_value": 63488.84364353889,
+                  "minimum_singular_value": 2.7047219266312585,
+                  "mode_index": 3,
+                  "retained_rank": 216,
+                  "singular_value_count": 216
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    1728,
+                    27
+                  ],
+                  "maximum_singular_value": 109437.15253298281,
+                  "minimum_singular_value": 169.24754516249527,
+                  "mode_index": 4,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 111959.51255330774,
+                  "minimum_singular_value": 545.7944698532838,
+                  "mode_index": 5,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 163451.64108802262,
+              "tt_ranks": [
+                1,
+                8,
+                24,
+                192,
+                216,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 200722700
+          },
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-branch-factor-major",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 2.1964194294522794e-14,
+            "maximum_relative_action_error_vs_sparse": 2.3631584845794964e-14,
+            "maximum_relative_dense_mapping_action_error": 9.765833496118794e-16,
+            "relative_tensor_reconstruction_error": 8.489653324623629e-15,
+            "storage": {
+              "complex_core_entry_count": 194996,
+              "core_count": 7,
+              "core_payload_bytes": 3119936,
+              "core_stored_real_scalar_count": 389992,
+              "mode_shape": [
+                8,
+                8,
+                8,
+                3,
+                3,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 248832,
+              "rank_and_shape_metadata_bytes": 120,
+              "raw_array_payload_bytes": 3120056,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                8,
+                64,
+                243,
+                81,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 3122308
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 8.333162393162393,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 8.097607784555375,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              8,
+              8,
+              8,
+              3,
+              3,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 0.0,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                8,
+                8,
+                8,
+                3,
+                3,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 0.0,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    15552
+                  ],
+                  "maximum_singular_value": 72522.54229330583,
+                  "minimum_singular_value": 45894.51873149153,
+                  "mode_index": 0,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    64,
+                    1944
+                  ],
+                  "maximum_singular_value": 63554.88887793579,
+                  "minimum_singular_value": 167.3531536442233,
+                  "mode_index": 1,
+                  "retained_rank": 64,
+                  "singular_value_count": 64
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    512,
+                    243
+                  ],
+                  "maximum_singular_value": 108175.55395714493,
+                  "minimum_singular_value": 0.8415644918861814,
+                  "mode_index": 2,
+                  "retained_rank": 243,
+                  "singular_value_count": 243
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    729,
+                    81
+                  ],
+                  "maximum_singular_value": 108177.04294931047,
+                  "minimum_singular_value": 17.211651616800353,
+                  "mode_index": 3,
+                  "retained_rank": 81,
+                  "singular_value_count": 81
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    243,
+                    27
+                  ],
+                  "maximum_singular_value": 109437.15253298287,
+                  "minimum_singular_value": 169.2475451624945,
+                  "mode_index": 4,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 111959.51255330778,
+                  "minimum_singular_value": 545.7944698532863,
+                  "mode_index": 5,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 163451.64108802262,
+              "tt_ranks": [
+                1,
+                8,
+                64,
+                243,
+                81,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 154111600
+          },
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-qtt-tuple-major",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 2.1507096209183272e-14,
+            "maximum_relative_action_error_vs_sparse": 2.1544945975829275e-14,
+            "maximum_relative_dense_mapping_action_error": 7.29628457521001e-16,
+            "relative_tensor_reconstruction_error": 7.534330418646105e-15,
+            "storage": {
+              "complex_core_entry_count": 235506,
+              "core_count": 13,
+              "core_payload_bytes": 3768096,
+              "core_stored_real_scalar_count": 471012,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 248832,
+              "rank_and_shape_metadata_bytes": 216,
+              "raw_array_payload_bytes": 3768312,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                24,
+                48,
+                96,
+                192,
+                216,
+                108,
+                54,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 3772052
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 10.064358974358974,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 9.782698452217934,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              2,
+              2,
+              2,
+              3,
+              2,
+              2,
+              2,
+              3,
+              2,
+              2,
+              2,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 0.0,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 0.0,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2,
+                    62208
+                  ],
+                  "maximum_singular_value": 119428.4538908171,
+                  "minimum_singular_value": 111594.28021012958,
+                  "mode_index": 0,
+                  "retained_rank": 2,
+                  "singular_value_count": 2
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    4,
+                    31104
+                  ],
+                  "maximum_singular_value": 85816.58144437023,
+                  "minimum_singular_value": 77942.23728970523,
+                  "mode_index": 1,
+                  "retained_rank": 4,
+                  "singular_value_count": 4
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    15552
+                  ],
+                  "maximum_singular_value": 72522.54229330571,
+                  "minimum_singular_value": 45894.51873149149,
+                  "mode_index": 2,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    24,
+                    5184
+                  ],
+                  "maximum_singular_value": 71565.49377188992,
+                  "minimum_singular_value": 3939.882466462455,
+                  "mode_index": 3,
+                  "retained_rank": 24,
+                  "singular_value_count": 24
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    48,
+                    2592
+                  ],
+                  "maximum_singular_value": 56789.789793904805,
+                  "minimum_singular_value": 1314.1475351365582,
+                  "mode_index": 4,
+                  "retained_rank": 48,
+                  "singular_value_count": 48
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    96,
+                    1296
+                  ],
+                  "maximum_singular_value": 56513.815283906326,
+                  "minimum_singular_value": 441.6570912609622,
+                  "mode_index": 5,
+                  "retained_rank": 96,
+                  "singular_value_count": 96
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    192,
+                    648
+                  ],
+                  "maximum_singular_value": 63516.645523620195,
+                  "minimum_singular_value": 51.7441208554285,
+                  "mode_index": 6,
+                  "retained_rank": 192,
+                  "singular_value_count": 192
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    576,
+                    216
+                  ],
+                  "maximum_singular_value": 63488.84364353872,
+                  "minimum_singular_value": 2.7047219266313687,
+                  "mode_index": 7,
+                  "retained_rank": 216,
+                  "singular_value_count": 216
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    432,
+                    108
+                  ],
+                  "maximum_singular_value": 70436.29701223141,
+                  "minimum_singular_value": 36.86074625027755,
+                  "mode_index": 8,
+                  "retained_rank": 108,
+                  "singular_value_count": 108
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    216,
+                    54
+                  ],
+                  "maximum_singular_value": 88088.01808191332,
+                  "minimum_singular_value": 111.28585335668603,
+                  "mode_index": 9,
+                  "retained_rank": 54,
+                  "singular_value_count": 54
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    108,
+                    27
+                  ],
+                  "maximum_singular_value": 109437.15253298283,
+                  "minimum_singular_value": 169.24754516249425,
+                  "mode_index": 10,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 111959.51255330764,
+                  "minimum_singular_value": 545.7944698532831,
+                  "mode_index": 11,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 163451.64108802262,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                24,
+                48,
+                96,
+                192,
+                216,
+                108,
+                54,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 299954900
+          },
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-qtt-scale-interleaved",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 2.0642156625245844e-14,
+            "maximum_relative_action_error_vs_sparse": 2.1004247116481388e-14,
+            "maximum_relative_dense_mapping_action_error": 9.003808851286574e-16,
+            "relative_tensor_reconstruction_error": 1.0005874433041296e-14,
+            "storage": {
+              "complex_core_entry_count": 278216,
+              "core_count": 13,
+              "core_payload_bytes": 4451456,
+              "core_stored_real_scalar_count": 556432,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                3,
+                3,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 248832,
+              "rank_and_shape_metadata_bytes": 216,
+              "raw_array_payload_bytes": 4451672,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                128,
+                256,
+                243,
+                81,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 4455412
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 11.88957264957265,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 11.554971160629071,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              3,
+              3,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 0.0,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                3,
+                3,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 0.0,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2,
+                    62208
+                  ],
+                  "maximum_singular_value": 119428.45389081656,
+                  "minimum_singular_value": 111594.28021012951,
+                  "mode_index": 0,
+                  "retained_rank": 2,
+                  "singular_value_count": 2
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    4,
+                    31104
+                  ],
+                  "maximum_singular_value": 101627.7184198993,
+                  "minimum_singular_value": 60004.71713522767,
+                  "mode_index": 1,
+                  "retained_rank": 4,
+                  "singular_value_count": 4
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    15552
+                  ],
+                  "maximum_singular_value": 88688.51751623895,
+                  "minimum_singular_value": 5193.559041002397,
+                  "mode_index": 2,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    16,
+                    7776
+                  ],
+                  "maximum_singular_value": 67558.6269818486,
+                  "minimum_singular_value": 3220.1370569638734,
+                  "mode_index": 3,
+                  "retained_rank": 16,
+                  "singular_value_count": 16
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    32,
+                    3888
+                  ],
+                  "maximum_singular_value": 54364.784662782105,
+                  "minimum_singular_value": 1443.2881625824618,
+                  "mode_index": 4,
+                  "retained_rank": 32,
+                  "singular_value_count": 32
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    64,
+                    1944
+                  ],
+                  "maximum_singular_value": 63751.33411580532,
+                  "minimum_singular_value": 527.8496803797739,
+                  "mode_index": 5,
+                  "retained_rank": 64,
+                  "singular_value_count": 64
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    128,
+                    972
+                  ],
+                  "maximum_singular_value": 70263.76355279388,
+                  "minimum_singular_value": 182.3121088707926,
+                  "mode_index": 6,
+                  "retained_rank": 128,
+                  "singular_value_count": 128
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    256,
+                    486
+                  ],
+                  "maximum_singular_value": 87092.73154264617,
+                  "minimum_singular_value": 4.592853589002516,
+                  "mode_index": 7,
+                  "retained_rank": 256,
+                  "singular_value_count": 256
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    512,
+                    243
+                  ],
+                  "maximum_singular_value": 108175.55395714493,
+                  "minimum_singular_value": 0.8415644918862594,
+                  "mode_index": 8,
+                  "retained_rank": 243,
+                  "singular_value_count": 243
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    729,
+                    81
+                  ],
+                  "maximum_singular_value": 108177.04294931055,
+                  "minimum_singular_value": 17.21165161680012,
+                  "mode_index": 9,
+                  "retained_rank": 81,
+                  "singular_value_count": 81
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    243,
+                    27
+                  ],
+                  "maximum_singular_value": 109437.15253298295,
+                  "minimum_singular_value": 169.24754516249598,
+                  "mode_index": 10,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 111959.51255330784,
+                  "minimum_singular_value": 545.7944698532732,
+                  "mode_index": 11,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 163451.64108802262,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                128,
+                256,
+                243,
+                81,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 377951000
+          }
+        ],
+        "degree": 3,
+        "fiber_count": 2600,
+        "flat_q_last_control": {
+          "all_values_finite": true,
+          "candidate_id": "flat-q-last",
+          "degree": 3,
+          "fidelity_passed": true,
+          "maximum_relative_action_error_vs_sparse": 1.2561405676367551e-14,
+          "registered_identity_exact": true,
+          "relative_tensor_reconstruction_error": 5.714971564772035e-15,
+          "storage": {
+            "complex_core_entry_count": 171729,
+            "core_count": 4,
+            "core_payload_bytes": 2747664,
+            "core_stored_real_scalar_count": 343458,
+            "mode_shape": [
+              24,
+              24,
+              24,
+              9
+            ],
+            "nominal_gauge_adjusted_real_dimension": 248832,
+            "rank_and_shape_metadata_bytes": 72,
+            "raw_array_payload_bytes": 2747736,
+            "serialization_roundtrip_bitwise_equal": true,
+            "tt_ranks": [
+              1,
+              24,
+              216,
+              9,
+              1
+            ],
+            "uncompressed_npz_serialized_bytes": 2749244
+          },
+          "tt_svd_diagnostics": {
+            "all_singular_values_finite": true,
+            "construction_method": "direct registered TT-SVD",
+            "discarded_frobenius_norm": 0.0,
+            "input_dtype": "complex128",
+            "maximum_rank": null,
+            "mode_shape": [
+              24,
+              24,
+              24,
+              9
+            ],
+            "relative_discarded_frobenius_norm": 0.0,
+            "requested_relative_tolerance": 1e-13,
+            "split_records": [
+              {
+                "all_singular_values_finite": true,
+                "discarded_frobenius_norm": 0.0,
+                "matrix_shape": [
+                  24,
+                  5184
+                ],
+                "maximum_singular_value": 71565.4937718901,
+                "minimum_singular_value": 3939.8824664624585,
+                "mode_index": 0,
+                "retained_rank": 24,
+                "singular_value_count": 24
+              },
+              {
+                "all_singular_values_finite": true,
+                "discarded_frobenius_norm": 0.0,
+                "matrix_shape": [
+                  576,
+                  216
+                ],
+                "maximum_singular_value": 63488.84364353897,
+                "minimum_singular_value": 2.704721926631665,
+                "mode_index": 1,
+                "retained_rank": 216,
+                "singular_value_count": 216
+              },
+              {
+                "all_singular_values_finite": true,
+                "discarded_frobenius_norm": 0.0,
+                "matrix_shape": [
+                  5184,
+                  9
+                ],
+                "maximum_singular_value": 111959.51255330775,
+                "minimum_singular_value": 545.7944698532795,
+                "mode_index": 2,
+                "retained_rank": 9,
+                "singular_value_count": 9
+              }
+            ],
+            "tensor_frobenius_norm": 163451.64108802262,
+            "tt_ranks": [
+              1,
+              24,
+              216,
+              9,
+              1
+            ]
+          }
+        },
+        "maximum_canonical_dense_vs_sparse_relative_action_error": 4.95752938488358e-15,
+        "natural_sparse_fiber_storage": {
+          "coefficient_payload_bytes": 374400,
+          "coefficient_stored_real_scalar_count": 46800,
+          "fiber_count": 2600,
+          "index_and_multiplicity_metadata_bytes": 10400,
+          "raw_array_payload_bytes": 384800,
+          "scalar_sparse_lossless_diagnostic": {
+            "bitwise_nonzero_coefficient_count": 23400,
+            "coefficient_stored_real_scalar_count": 46800,
+            "index_and_multiplicity_metadata_bytes": 117000,
+            "raw_array_payload_bytes": 491400,
+            "serialization_roundtrip_bitwise_equal": true,
+            "uncompressed_npz_serialized_bytes": 492436
+          },
+          "serialization_roundtrip_bitwise_equal": true,
+          "uncompressed_npz_serialized_bytes": 385584
+        },
+        "ordered_tensor_complex_entry_count": 124416,
+        "ordered_tensor_payload_bytes": 1990656,
+        "ordered_tensor_shape": [
+          9,
+          24,
+          24,
+          24
+        ],
+        "ordered_tensor_stored_real_scalar_count": 248832
+      },
+      {
+        "candidate_records": [
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-branch-tuple-major",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 1.6215032642249494e-13,
+            "maximum_relative_action_error_vs_sparse": 1.6289316331775004e-13,
+            "maximum_relative_dense_mapping_action_error": 1.0640721857562075e-15,
+            "relative_tensor_reconstruction_error": 5.031532004519204e-14,
+            "storage": {
+              "complex_core_entry_count": 2232874,
+              "core_count": 9,
+              "core_payload_bytes": 35725984,
+              "core_stored_real_scalar_count": 4465748,
+              "mode_shape": [
+                8,
+                3,
+                8,
+                3,
+                8,
+                3,
+                8,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 3276000,
+              "rank_and_shape_metadata_bytes": 152,
+              "raw_array_payload_bytes": 35726136,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                8,
+                24,
+                192,
+                300,
+                648,
+                216,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 35728884
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 14.136587527698639,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 13.659219171368342,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              8,
+              3,
+              8,
+              3,
+              8,
+              3,
+              8,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 1.504252798716467e-05,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                8,
+                3,
+                8,
+                3,
+                8,
+                3,
+                8,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 1.9344003904578105e-14,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    373248
+                  ],
+                  "maximum_singular_value": 371825160.5580715,
+                  "minimum_singular_value": 176689244.4872402,
+                  "mode_index": 0,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    24,
+                    124416
+                  ],
+                  "maximum_singular_value": 371814396.4685741,
+                  "minimum_singular_value": 1693804.540321077,
+                  "mode_index": 1,
+                  "retained_rank": 24,
+                  "singular_value_count": 24
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    192,
+                    15552
+                  ],
+                  "maximum_singular_value": 260132950.74219677,
+                  "minimum_singular_value": 141980.51550244668,
+                  "mode_index": 2,
+                  "retained_rank": 192,
+                  "singular_value_count": 192
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 1.504252798716467e-05,
+                  "matrix_shape": [
+                    576,
+                    5184
+                  ],
+                  "maximum_singular_value": 260130251.00222385,
+                  "minimum_singular_value": 3.16726217976342e-09,
+                  "mode_index": 3,
+                  "retained_rank": 300,
+                  "singular_value_count": 576
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2400,
+                    648
+                  ],
+                  "maximum_singular_value": 340284949.18492365,
+                  "minimum_singular_value": 634.220339960588,
+                  "mode_index": 4,
+                  "retained_rank": 648,
+                  "singular_value_count": 648
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    1944,
+                    216
+                  ],
+                  "maximum_singular_value": 340288626.06452656,
+                  "minimum_singular_value": 4704.251235214089,
+                  "mode_index": 5,
+                  "retained_rank": 216,
+                  "singular_value_count": 216
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    1728,
+                    27
+                  ],
+                  "maximum_singular_value": 522894155.7774398,
+                  "minimum_singular_value": 40164.52887963418,
+                  "mode_index": 6,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 522944250.4105599,
+                  "minimum_singular_value": 2240974.7399460943,
+                  "mode_index": 7,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 777632596.7140952,
+              "tt_ranks": [
+                1,
+                8,
+                24,
+                192,
+                300,
+                648,
+                216,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 2548091900
+          },
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-branch-factor-major",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 1.0261083361794765e-13,
+            "maximum_relative_action_error_vs_sparse": 1.0628658512257203e-13,
+            "maximum_relative_dense_mapping_action_error": 1.3427825001646324e-15,
+            "relative_tensor_reconstruction_error": 3.761408791141638e-14,
+            "storage": {
+              "complex_core_entry_count": 3850149,
+              "core_count": 9,
+              "core_payload_bytes": 61602384,
+              "core_stored_real_scalar_count": 7700298,
+              "mode_shape": [
+                8,
+                8,
+                8,
+                8,
+                3,
+                3,
+                3,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 5971968,
+              "rank_and_shape_metadata_bytes": 152,
+              "raw_array_payload_bytes": 61602536,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                8,
+                64,
+                512,
+                729,
+                243,
+                81,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 61605284
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 24.375745489078824,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 23.551815283970008,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              8,
+              8,
+              8,
+              8,
+              3,
+              3,
+              3,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 0.0,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                8,
+                8,
+                8,
+                8,
+                3,
+                3,
+                3,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 0.0,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    373248
+                  ],
+                  "maximum_singular_value": 371825160.55808586,
+                  "minimum_singular_value": 176689244.48724464,
+                  "mode_index": 0,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    64,
+                    46656
+                  ],
+                  "maximum_singular_value": 260135790.8613782,
+                  "minimum_singular_value": 568989.5255120466,
+                  "mode_index": 1,
+                  "retained_rank": 64,
+                  "singular_value_count": 64
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    512,
+                    5832
+                  ],
+                  "maximum_singular_value": 340282792.3596366,
+                  "minimum_singular_value": 4326.525404105048,
+                  "mode_index": 2,
+                  "retained_rank": 512,
+                  "singular_value_count": 512
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    4096,
+                    729
+                  ],
+                  "maximum_singular_value": 522838998.39160967,
+                  "minimum_singular_value": 439.8145231325298,
+                  "mode_index": 3,
+                  "retained_rank": 729,
+                  "singular_value_count": 729
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2187,
+                    243
+                  ],
+                  "maximum_singular_value": 522841763.98038054,
+                  "minimum_singular_value": 1901.15741304555,
+                  "mode_index": 4,
+                  "retained_rank": 243,
+                  "singular_value_count": 243
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    729,
+                    81
+                  ],
+                  "maximum_singular_value": 522860088.10034066,
+                  "minimum_singular_value": 9049.863032748917,
+                  "mode_index": 5,
+                  "retained_rank": 81,
+                  "singular_value_count": 81
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    243,
+                    27
+                  ],
+                  "maximum_singular_value": 522894155.7774369,
+                  "minimum_singular_value": 40164.52887963063,
+                  "mode_index": 6,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 522944250.4105571,
+                  "minimum_singular_value": 2240974.7399459956,
+                  "mode_index": 7,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 777632596.7140952,
+              "tt_ranks": [
+                1,
+                8,
+                64,
+                512,
+                729,
+                243,
+                81,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 2726959600
+          },
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-qtt-tuple-major",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 3.4484391282055113e-13,
+            "maximum_relative_action_error_vs_sparse": 3.4521033833229096e-13,
+            "maximum_relative_dense_mapping_action_error": 9.468477402344674e-16,
+            "relative_tensor_reconstruction_error": 8.710102359284505e-14,
+            "storage": {
+              "complex_core_entry_count": 4060770,
+              "core_count": 17,
+              "core_payload_bytes": 64972320,
+              "core_stored_real_scalar_count": 8121540,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 3278350,
+              "rank_and_shape_metadata_bytes": 280,
+              "raw_array_payload_bytes": 64972600,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                24,
+                48,
+                96,
+                192,
+                301,
+                600,
+                1200,
+                648,
+                216,
+                108,
+                54,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 64977332
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 25.709211775878444,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 24.840955540586314,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              2,
+              2,
+              2,
+              3,
+              2,
+              2,
+              2,
+              3,
+              2,
+              2,
+              2,
+              3,
+              2,
+              2,
+              2,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 1.3059137179499346e-05,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                2,
+                2,
+                2,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 1.6793453919860144e-14,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2,
+                    1492992
+                  ],
+                  "maximum_singular_value": 673012064.0463777,
+                  "minimum_singular_value": 389573121.6599134,
+                  "mode_index": 0,
+                  "retained_rank": 2,
+                  "singular_value_count": 2
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    4,
+                    746496
+                  ],
+                  "maximum_singular_value": 525806266.6042704,
+                  "minimum_singular_value": 275434630.59351826,
+                  "mode_index": 1,
+                  "retained_rank": 4,
+                  "singular_value_count": 4
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    373248
+                  ],
+                  "maximum_singular_value": 371825160.55809104,
+                  "minimum_singular_value": 176689244.487251,
+                  "mode_index": 2,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    24,
+                    124416
+                  ],
+                  "maximum_singular_value": 371814396.4685826,
+                  "minimum_singular_value": 1693804.5403211375,
+                  "mode_index": 3,
+                  "retained_rank": 24,
+                  "singular_value_count": 24
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    48,
+                    62208
+                  ],
+                  "maximum_singular_value": 303490853.31057554,
+                  "minimum_singular_value": 383830.196723349,
+                  "mode_index": 4,
+                  "retained_rank": 48,
+                  "singular_value_count": 48
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    96,
+                    31104
+                  ],
+                  "maximum_singular_value": 244107026.90843242,
+                  "minimum_singular_value": 256845.29611723704,
+                  "mode_index": 5,
+                  "retained_rank": 96,
+                  "singular_value_count": 96
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    192,
+                    15552
+                  ],
+                  "maximum_singular_value": 260132950.74219772,
+                  "minimum_singular_value": 141980.5155024474,
+                  "mode_index": 6,
+                  "retained_rank": 192,
+                  "singular_value_count": 192
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 3.1312831247713867e-06,
+                  "matrix_shape": [
+                    576,
+                    5184
+                  ],
+                  "maximum_singular_value": 260130251.00222507,
+                  "minimum_singular_value": 5.0427964839602505e-09,
+                  "mode_index": 7,
+                  "retained_rank": 301,
+                  "singular_value_count": 576
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 1.26781753365973e-05,
+                  "matrix_shape": [
+                    602,
+                    2592
+                  ],
+                  "maximum_singular_value": 279176803.8740302,
+                  "minimum_singular_value": 3.4452144625886835e-08,
+                  "mode_index": 8,
+                  "retained_rank": 600,
+                  "singular_value_count": 602
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    1200,
+                    1296
+                  ],
+                  "maximum_singular_value": 274077322.871633,
+                  "minimum_singular_value": 74.91878287993556,
+                  "mode_index": 9,
+                  "retained_rank": 1200,
+                  "singular_value_count": 1200
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2400,
+                    648
+                  ],
+                  "maximum_singular_value": 340284949.18492526,
+                  "minimum_singular_value": 634.2203399604379,
+                  "mode_index": 10,
+                  "retained_rank": 648,
+                  "singular_value_count": 648
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    1944,
+                    216
+                  ],
+                  "maximum_singular_value": 340288626.06452847,
+                  "minimum_singular_value": 4704.251235208671,
+                  "mode_index": 11,
+                  "retained_rank": 216,
+                  "singular_value_count": 216
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    432,
+                    108
+                  ],
+                  "maximum_singular_value": 371749160.72720975,
+                  "minimum_singular_value": 16892.48853892057,
+                  "mode_index": 12,
+                  "retained_rank": 108,
+                  "singular_value_count": 108
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    216,
+                    54
+                  ],
+                  "maximum_singular_value": 415218412.2627129,
+                  "minimum_singular_value": 27597.382225467383,
+                  "mode_index": 13,
+                  "retained_rank": 54,
+                  "singular_value_count": 54
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    108,
+                    27
+                  ],
+                  "maximum_singular_value": 522894155.77744234,
+                  "minimum_singular_value": 40164.52887962758,
+                  "mode_index": 14,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 522944250.4105629,
+                  "minimum_singular_value": 2240974.739946043,
+                  "mode_index": 15,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 777632596.7140952,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                24,
+                48,
+                96,
+                192,
+                301,
+                600,
+                1200,
+                648,
+                216,
+                108,
+                54,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 5578369800
+          },
+          {
+            "all_values_finite": true,
+            "candidate_id": "wave-qtt-scale-interleaved",
+            "fidelity_passed": true,
+            "mapping_roundtrip_bitwise_equal": true,
+            "maximum_relative_action_error_vs_candidate_dense": 6.624420380734265e-13,
+            "maximum_relative_action_error_vs_sparse": 6.624328755394939e-13,
+            "maximum_relative_dense_mapping_action_error": 1.1503577592453786e-15,
+            "relative_tensor_reconstruction_error": 1.4915465734115449e-13,
+            "storage": {
+              "complex_core_entry_count": 6897349,
+              "core_count": 17,
+              "core_payload_bytes": 110357584,
+              "core_stored_real_scalar_count": 13794698,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                3,
+                3,
+                3,
+                3,
+                9
+              ],
+              "nominal_gauge_adjusted_real_dimension": 5893968,
+              "rank_and_shape_metadata_bytes": 280,
+              "raw_array_payload_bytes": 110357864,
+              "serialization_roundtrip_bitwise_equal": true,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                128,
+                256,
+                512,
+                1024,
+                1398,
+                729,
+                243,
+                81,
+                27,
+                9,
+                1
+              ],
+              "uncompressed_npz_serialized_bytes": 110362596
+            },
+            "storage_comparison": {
+              "core_real_scalar_ratio_over_natural_sparse": 43.66792655903767,
+              "core_real_scalars_less_than_natural_sparse": false,
+              "serialized_byte_ratio_over_natural_sparse": 42.19182684477856,
+              "serialized_bytes_less_than_natural_sparse": false
+            },
+            "storage_hypothesis_passed": false,
+            "tensor_shape": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              2,
+              3,
+              3,
+              3,
+              3,
+              9
+            ],
+            "tt_svd_diagnostics": {
+              "all_singular_values_finite": true,
+              "discarded_frobenius_norm": 2.630029853391129e-07,
+              "input_dtype": "complex128",
+              "maximum_rank": null,
+              "mode_shape": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                3,
+                3,
+                3,
+                3,
+                9
+              ],
+              "relative_discarded_frobenius_norm": 3.382098261446835e-16,
+              "requested_relative_tolerance": 1e-13,
+              "split_records": [
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2,
+                    1492992
+                  ],
+                  "maximum_singular_value": 673012064.0463421,
+                  "minimum_singular_value": 389573121.65978044,
+                  "mode_index": 0,
+                  "retained_rank": 2,
+                  "singular_value_count": 2
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    4,
+                    746496
+                  ],
+                  "maximum_singular_value": 549191015.2509828,
+                  "minimum_singular_value": 20701961.939004205,
+                  "mode_index": 1,
+                  "retained_rank": 4,
+                  "singular_value_count": 4
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    8,
+                    373248
+                  ],
+                  "maximum_singular_value": 467937670.6688769,
+                  "minimum_singular_value": 6687372.304864494,
+                  "mode_index": 2,
+                  "retained_rank": 8,
+                  "singular_value_count": 8
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    16,
+                    186624
+                  ],
+                  "maximum_singular_value": 502585521.49766487,
+                  "minimum_singular_value": 1135574.3747707054,
+                  "mode_index": 3,
+                  "retained_rank": 16,
+                  "singular_value_count": 16
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    32,
+                    93312
+                  ],
+                  "maximum_singular_value": 357411427.6270246,
+                  "minimum_singular_value": 800780.509152341,
+                  "mode_index": 4,
+                  "retained_rank": 32,
+                  "singular_value_count": 32
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    64,
+                    46656
+                  ],
+                  "maximum_singular_value": 282561833.19288117,
+                  "minimum_singular_value": 506817.03501213435,
+                  "mode_index": 5,
+                  "retained_rank": 64,
+                  "singular_value_count": 64
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    128,
+                    23328
+                  ],
+                  "maximum_singular_value": 287574609.3318788,
+                  "minimum_singular_value": 349141.7665246196,
+                  "mode_index": 6,
+                  "retained_rank": 128,
+                  "singular_value_count": 128
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    256,
+                    11664
+                  ],
+                  "maximum_singular_value": 316729643.85151076,
+                  "minimum_singular_value": 30953.72451900738,
+                  "mode_index": 7,
+                  "retained_rank": 256,
+                  "singular_value_count": 256
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    512,
+                    5832
+                  ],
+                  "maximum_singular_value": 328472200.0534769,
+                  "minimum_singular_value": 18941.39223349754,
+                  "mode_index": 8,
+                  "retained_rank": 512,
+                  "singular_value_count": 512
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    1024,
+                    2916
+                  ],
+                  "maximum_singular_value": 338729281.80388916,
+                  "minimum_singular_value": 740.2608862619941,
+                  "mode_index": 9,
+                  "retained_rank": 1024,
+                  "singular_value_count": 1024
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 2.630029853391129e-07,
+                  "matrix_shape": [
+                    2048,
+                    1458
+                  ],
+                  "maximum_singular_value": 415172290.66427076,
+                  "minimum_singular_value": 1.7365659038077495e-08,
+                  "mode_index": 10,
+                  "retained_rank": 1398,
+                  "singular_value_count": 1458
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2796,
+                    729
+                  ],
+                  "maximum_singular_value": 522838998.39161885,
+                  "minimum_singular_value": 439.81452313258677,
+                  "mode_index": 11,
+                  "retained_rank": 729,
+                  "singular_value_count": 729
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    2187,
+                    243
+                  ],
+                  "maximum_singular_value": 522841763.9803906,
+                  "minimum_singular_value": 1901.1574130440874,
+                  "mode_index": 12,
+                  "retained_rank": 243,
+                  "singular_value_count": 243
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    729,
+                    81
+                  ],
+                  "maximum_singular_value": 522860088.10035086,
+                  "minimum_singular_value": 9049.863032749945,
+                  "mode_index": 13,
+                  "retained_rank": 81,
+                  "singular_value_count": 81
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    243,
+                    27
+                  ],
+                  "maximum_singular_value": 522894155.77744734,
+                  "minimum_singular_value": 40164.52887963042,
+                  "mode_index": 14,
+                  "retained_rank": 27,
+                  "singular_value_count": 27
+                },
+                {
+                  "all_singular_values_finite": true,
+                  "discarded_frobenius_norm": 0.0,
+                  "matrix_shape": [
+                    81,
+                    9
+                  ],
+                  "maximum_singular_value": 522944250.4105679,
+                  "minimum_singular_value": 2240974.7399459984,
+                  "mode_index": 15,
+                  "retained_rank": 9,
+                  "singular_value_count": 9
+                }
+              ],
+              "tensor_frobenius_norm": 777632596.7140952,
+              "tt_ranks": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                128,
+                256,
+                512,
+                1024,
+                1398,
+                729,
+                243,
+                81,
+                27,
+                9,
+                1
+              ]
+            },
+            "tt_svd_wall_time_ns": 9026034900
+          }
+        ],
+        "degree": 4,
+        "fiber_count": 17550,
+        "flat_q_last_control": {
+          "all_values_finite": true,
+          "candidate_id": "flat-q-last",
+          "degree": 4,
+          "fidelity_passed": true,
+          "maximum_relative_action_error_vs_sparse": 1.2239423554125708e-13,
+          "registered_identity_exact": true,
+          "relative_tensor_reconstruction_error": 8.581934454479954e-15,
+          "storage": {
+            "complex_core_entry_count": 1775313,
+            "core_count": 5,
+            "core_payload_bytes": 28405008,
+            "core_stored_real_scalar_count": 3550626,
+            "mode_shape": [
+              24,
+              24,
+              24,
+              24,
+              9
+            ],
+            "nominal_gauge_adjusted_real_dimension": 3276000,
+            "rank_and_shape_metadata_bytes": 88,
+            "raw_array_payload_bytes": 28405096,
+            "serialization_roundtrip_bitwise_equal": true,
+            "tt_ranks": [
+              1,
+              24,
+              300,
+              216,
+              9,
+              1
+            ],
+            "uncompressed_npz_serialized_bytes": 28406852
+          },
+          "tt_svd_diagnostics": {
+            "all_singular_values_finite": true,
+            "construction_method": "direct registered TT-SVD",
+            "discarded_frobenius_norm": 1.990188411876706e-06,
+            "input_dtype": "complex128",
+            "maximum_rank": null,
+            "mode_shape": [
+              24,
+              24,
+              24,
+              24,
+              9
+            ],
+            "relative_discarded_frobenius_norm": 2.5592913932444366e-15,
+            "requested_relative_tolerance": 1e-13,
+            "split_records": [
+              {
+                "all_singular_values_finite": true,
+                "discarded_frobenius_norm": 0.0,
+                "matrix_shape": [
+                  24,
+                  124416
+                ],
+                "maximum_singular_value": 371814396.4685641,
+                "minimum_singular_value": 1693804.5403210516,
+                "mode_index": 0,
+                "retained_rank": 24,
+                "singular_value_count": 24
+              },
+              {
+                "all_singular_values_finite": true,
+                "discarded_frobenius_norm": 1.990188411876706e-06,
+                "matrix_shape": [
+                  576,
+                  5184
+                ],
+                "maximum_singular_value": 260130251.00222543,
+                "minimum_singular_value": 2.24365643667521e-09,
+                "mode_index": 1,
+                "retained_rank": 300,
+                "singular_value_count": 576
+              },
+              {
+                "all_singular_values_finite": true,
+                "discarded_frobenius_norm": 0.0,
+                "matrix_shape": [
+                  7200,
+                  216
+                ],
+                "maximum_singular_value": 340288626.0645227,
+                "minimum_singular_value": 4704.2512352155945,
+                "mode_index": 2,
+                "retained_rank": 216,
+                "singular_value_count": 216
+              },
+              {
+                "all_singular_values_finite": true,
+                "discarded_frobenius_norm": 0.0,
+                "matrix_shape": [
+                  5184,
+                  9
+                ],
+                "maximum_singular_value": 522944250.41055596,
+                "minimum_singular_value": 2240974.7399460697,
+                "mode_index": 3,
+                "retained_rank": 9,
+                "singular_value_count": 9
+              }
+            ],
+            "tensor_frobenius_norm": 777632596.7140952,
+            "tt_ranks": [
+              1,
+              24,
+              300,
+              216,
+              9,
+              1
+            ]
+          }
+        },
+        "maximum_canonical_dense_vs_sparse_relative_action_error": 1.8460488990463964e-14,
+        "natural_sparse_fiber_storage": {
+          "coefficient_payload_bytes": 2527200,
+          "coefficient_stored_real_scalar_count": 315900,
+          "fiber_count": 17550,
+          "index_and_multiplicity_metadata_bytes": 87750,
+          "raw_array_payload_bytes": 2614950,
+          "scalar_sparse_lossless_diagnostic": {
+            "bitwise_nonzero_coefficient_count": 157950,
+            "coefficient_stored_real_scalar_count": 315900,
+            "index_and_multiplicity_metadata_bytes": 947700,
+            "raw_array_payload_bytes": 3474900,
+            "serialization_roundtrip_bitwise_equal": true,
+            "uncompressed_npz_serialized_bytes": 3475936
+          },
+          "serialization_roundtrip_bitwise_equal": true,
+          "uncompressed_npz_serialized_bytes": 2615734
+        },
+        "ordered_tensor_complex_entry_count": 2985984,
+        "ordered_tensor_payload_bytes": 47775744,
+        "ordered_tensor_shape": [
+          9,
+          24,
+          24,
+          24,
+          24
+        ],
+        "ordered_tensor_stored_real_scalar_count": 5971968
+      }
+    ],
+    "evaluation_benchmark": {
+      "acceptance_role": "diagnostic only",
+      "direction_count": 128,
+      "direction_sha256": "cb051812bbe3e443316e834b4590030d2f2c8db2187f57ed4b5202cc2cee240d",
+      "measured_block_count": 7,
+      "method_records": {
+        "flat-q-last-control": {
+          "checksum_by_block": [
+            6014.292896623256,
+            6014.292896623256,
+            6014.292896623256,
+            6014.292896623256,
+            6014.292896623256,
+            6014.292896623256,
+            6014.292896623256
+          ],
+          "median_absolute_deviation_nanoseconds_per_sample": 64110.15625,
+          "median_checksum_relative_error_vs_sparse": 2.1171110292899045e-15,
+          "median_nanoseconds_per_sample": 4316310.15625,
+          "nanoseconds_per_sample_by_block": [
+            4261608.59375,
+            4456021.875,
+            4189330.46875,
+            4382278.90625,
+            4316310.15625,
+            4284271.09375,
+            4380420.3125
+          ]
+        },
+        "sparse-fiber": {
+          "checksum_by_block": [
+            6014.292896623243,
+            6014.292896623243,
+            6014.292896623243,
+            6014.292896623243,
+            6014.292896623243,
+            6014.292896623243,
+            6014.292896623243
+          ],
+          "median_absolute_deviation_nanoseconds_per_sample": 6181.25,
+          "median_checksum_relative_error_vs_sparse": 0.0,
+          "median_nanoseconds_per_sample": 573325.78125,
+          "nanoseconds_per_sample_by_block": [
+            590826.5625,
+            573325.78125,
+            568385.9375,
+            617928.90625,
+            567103.90625,
+            567144.53125,
+            573813.28125
+          ]
+        },
+        "wave-branch-factor-major": {
+          "checksum_by_block": [
+            6014.292896623268,
+            6014.292896623268,
+            6014.292896623268,
+            6014.292896623268,
+            6014.292896623268,
+            6014.292896623268,
+            6014.292896623268
+          ],
+          "median_absolute_deviation_nanoseconds_per_sample": 158964.84375,
+          "median_checksum_relative_error_vs_sparse": 4.082999842201959e-15,
+          "median_nanoseconds_per_sample": 71264581.25,
+          "nanoseconds_per_sample_by_block": [
+            71423546.09375,
+            71056924.21875,
+            71505112.5,
+            71262635.15625,
+            71264581.25,
+            70669609.375,
+            71398916.40625
+          ]
+        },
+        "wave-branch-tuple-major": {
+          "checksum_by_block": [
+            6014.29289662329,
+            6014.29289662329,
+            6014.29289662329,
+            6014.29289662329,
+            6014.29289662329,
+            6014.29289662329,
+            6014.29289662329
+          ],
+          "median_absolute_deviation_nanoseconds_per_sample": 81121.875,
+          "median_checksum_relative_error_vs_sparse": 7.863555251648217e-15,
+          "median_nanoseconds_per_sample": 22348794.53125,
+          "nanoseconds_per_sample_by_block": [
+            22429916.40625,
+            22080639.84375,
+            22302789.84375,
+            22466228.90625,
+            22368086.71875,
+            22138390.625,
+            22348794.53125
+          ]
+        },
+        "wave-qtt-scale-interleaved": {
+          "checksum_by_block": [
+            6014.292896623453,
+            6014.292896623453,
+            6014.292896623453,
+            6014.292896623453,
+            6014.292896623453,
+            6014.292896623453,
+            6014.292896623453
+          ],
+          "median_absolute_deviation_nanoseconds_per_sample": 503812.5,
+          "median_checksum_relative_error_vs_sparse": 3.4932331983283424e-14,
+          "median_nanoseconds_per_sample": 399040278.125,
+          "nanoseconds_per_sample_by_block": [
+            398672775.78125,
+            400375308.59375,
+            399040278.125,
+            402100637.5,
+            398545089.0625,
+            398536465.625,
+            401167004.6875
+          ]
+        },
+        "wave-qtt-tuple-major": {
+          "checksum_by_block": [
+            6014.292896623329,
+            6014.292896623329,
+            6014.292896623329,
+            6014.292896623329,
+            6014.292896623329,
+            6014.292896623329,
+            6014.292896623329
+          ],
+          "median_absolute_deviation_nanoseconds_per_sample": 69150.0,
+          "median_checksum_relative_error_vs_sparse": 1.436611055589578e-14,
+          "median_nanoseconds_per_sample": 97144964.0625,
+          "nanoseconds_per_sample_by_block": [
+            97191295.3125,
+            97163545.3125,
+            96836886.71875,
+            97144964.0625,
+            97318092.96875,
+            97075814.0625,
+            96960714.84375
+          ]
+        }
+      },
+      "order_by_block": [
+        [
+          "sparse-fiber",
+          "flat-q-last-control",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved"
+        ],
+        [
+          "flat-q-last-control",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber"
+        ],
+        [
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber",
+          "flat-q-last-control"
+        ],
+        [
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber",
+          "flat-q-last-control",
+          "wave-branch-tuple-major"
+        ],
+        [
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber",
+          "flat-q-last-control",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major"
+        ],
+        [
+          "wave-qtt-scale-interleaved",
+          "sparse-fiber",
+          "flat-q-last-control",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major"
+        ],
+        [
+          "sparse-fiber",
+          "flat-q-last-control",
+          "wave-branch-tuple-major",
+          "wave-branch-factor-major",
+          "wave-qtt-tuple-major",
+          "wave-qtt-scale-interleaved"
+        ]
+      ],
+      "scope": "local homogeneous quartic 9-vector action only",
+      "seed": 20260830,
+      "warmup_block_count": 2
+    },
+    "hypothesis": "At least one faithful registered degree-4 wave-factorized TT uses fewer than 315900 core-stored real scalars and fewer than 2615734 uncompressed NPZ bytes.",
+    "hypothesis_gates": {
+      "quartic_wave_factorized_tt_beats_natural_sparse_storage": {
+        "passed": false,
+        "threshold": {
+          "core_stored_real_scalars_strictly_less_than": 315900,
+          "minimum_passing_candidate_count": 1,
+          "serialized_bytes_strictly_less_than": 2615734
+        },
+        "value": {
+          "passing_candidate_count": 0,
+          "passing_candidate_ids": [],
+          "selected_candidate": null
+        }
+      }
+    },
+    "hypothesis_outcome": "rejected",
+    "input_registration": {
+      "action_direction_count": 64,
+      "action_direction_duplicate_count_vs_q008a": 0,
+      "action_direction_sha256": "ebd94cb106e0d9d586e307b7a59f22452eb76d3b35bb2d246349dcba2e98ba1b",
+      "action_seed": 20260829,
+      "match": true,
+      "observed_hashes": {
+        "cubic_chart_coefficients_sha256": "ed182069713bff0558b806ce7a70e77299ea9fbc6671de38c4fa58019da5615b",
+        "cubic_indices_sha256": "e646d2de7212c823cbca5804fbf20e9543918ecca80452dd508c278dfc5f130c",
+        "mode_table_sha256": "6e08a2706a44965143944b692615c6a8525799d3e01ca06a636d852d6610d4d9",
+        "quadratic_chart_coefficients_sha256": "4d0ddc917c3b722496b918f38f8e810e0f200c5fd2ffa138025a93aa2571f8db",
+        "quartic_chart_coefficients_sha256": "9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b",
+        "quartic_indices_sha256": "968b35d36cbd28c1f30e6cacb906649a42b36ba4e7bf4122394c2722cd809c16"
+      },
+      "registered_hashes": {
+        "cubic_chart_coefficients_sha256": "ed182069713bff0558b806ce7a70e77299ea9fbc6671de38c4fa58019da5615b",
+        "cubic_indices_sha256": "e646d2de7212c823cbca5804fbf20e9543918ecca80452dd508c278dfc5f130c",
+        "mode_table_sha256": "6e08a2706a44965143944b692615c6a8525799d3e01ca06a636d852d6610d4d9",
+        "quadratic_chart_coefficients_sha256": "4d0ddc917c3b722496b918f38f8e810e0f200c5fd2ffa138025a93aa2571f8db",
+        "quartic_chart_coefficients_sha256": "9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b",
+        "quartic_indices_sha256": "968b35d36cbd28c1f30e6cacb906649a42b36ba4e7bf4122394c2722cd809c16"
+      }
+    },
+    "next_change": "Close the TT-SVD compression path for the fixed Q007c1 coefficients and do not start Q009 TT-cross. Return to the unresolved invariant-manifold mathematical gates before considering a newly preregistered representation.",
+    "question": "Does explicit 24=8-wave-by-3-branch structure or a three-bit wave QTT preserve the local degree-2 to degree-4 Fourier coefficients and beat the natural quartic sparse-fiber storage baseline?",
+    "registered_setup": {
+      "branch_count": 3,
+      "branch_order": [
+        "shear",
+        "acoustic_positive",
+        "acoustic_negative"
+      ],
+      "complex_mode_count": 24,
+      "degrees": [
+        2,
+        3,
+        4
+      ],
+      "eta": 0.01,
+      "grid": [
+        17,
+        17
+      ],
+      "local_output_count": 9,
+      "maximum_rank": null,
+      "mode_index_mapping": "i = 3*w + b",
+      "omega": 1.5,
+      "physical_full_dense_tensor_materialized": false,
+      "tensorization_ids": [
+        "wave-branch-tuple-major",
+        "wave-branch-factor-major",
+        "wave-qtt-tuple-major",
+        "wave-qtt-scale-interleaved"
+      ],
+      "tt_relative_discarded_frobenius_budget": 1e-13,
+      "wave_bit_mapping": "w = 4*s2 + 2*s1 + s0",
+      "wave_count": 8,
+      "wave_order": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          1,
+          -1
+        ]
+      ]
+    },
+    "scientific_classification": "registered wave-factorized TTs do not beat natural quartic sparse-fiber storage",
+    "selected_candidate": null,
+    "study_validity": "passed",
+    "validity_gates": {
+      "q008a_flat_q_last_control_reproduction": {
+        "passed": true,
+        "threshold": {
+          "all_registered_identities_exact": true,
+          "maximum_action_error_vs_sparse": 1e-11,
+          "maximum_tensor_reconstruction_error": 2e-13
+        },
+        "value": {
+          "all_registered_identities_exact": true,
+          "records": [
+            {
+              "all_values_finite": true,
+              "candidate_id": "flat-q-last",
+              "degree": 2,
+              "fidelity_passed": true,
+              "maximum_relative_action_error_vs_sparse": 5.645836536101874e-15,
+              "registered_identity_exact": true,
+              "relative_tensor_reconstruction_error": 2.4895475224765425e-15,
+              "storage": {
+                "complex_core_entry_count": 5841,
+                "core_count": 3,
+                "core_payload_bytes": 93456,
+                "core_stored_real_scalar_count": 11682,
+                "mode_shape": [
+                  24,
+                  24,
+                  9
+                ],
+                "nominal_gauge_adjusted_real_dimension": 10368,
+                "rank_and_shape_metadata_bytes": 56,
+                "raw_array_payload_bytes": 93512,
+                "serialization_roundtrip_bitwise_equal": true,
+                "tt_ranks": [
+                  1,
+                  24,
+                  9,
+                  1
+                ],
+                "uncompressed_npz_serialized_bytes": 94772
+              },
+              "tt_svd_diagnostics": {
+                "all_singular_values_finite": true,
+                "construction_method": "direct registered TT-SVD",
+                "discarded_frobenius_norm": 0.0,
+                "input_dtype": "complex128",
+                "maximum_rank": null,
+                "mode_shape": [
+                  24,
+                  24,
+                  9
+                ],
+                "relative_discarded_frobenius_norm": 0.0,
+                "requested_relative_tolerance": 1e-13,
+                "split_records": [
+                  {
+                    "all_singular_values_finite": true,
+                    "discarded_frobenius_norm": 0.0,
+                    "matrix_shape": [
+                      24,
+                      216
+                    ],
+                    "maximum_singular_value": 69.6772835009305,
+                    "minimum_singular_value": 10.28208207302344,
+                    "mode_index": 0,
+                    "retained_rank": 24,
+                    "singular_value_count": 24
+                  },
+                  {
+                    "all_singular_values_finite": true,
+                    "discarded_frobenius_norm": 0.0,
+                    "matrix_shape": [
+                      576,
+                      9
+                    ],
+                    "maximum_singular_value": 156.20121619537773,
+                    "minimum_singular_value": 1.3771626590153916,
+                    "mode_index": 1,
+                    "retained_rank": 9,
+                    "singular_value_count": 9
+                  }
+                ],
+                "tensor_frobenius_norm": 196.720228031451,
+                "tt_ranks": [
+                  1,
+                  24,
+                  9,
+                  1
+                ]
+              }
+            },
+            {
+              "all_values_finite": true,
+              "candidate_id": "flat-q-last",
+              "degree": 3,
+              "fidelity_passed": true,
+              "maximum_relative_action_error_vs_sparse": 1.2561405676367551e-14,
+              "registered_identity_exact": true,
+              "relative_tensor_reconstruction_error": 5.714971564772035e-15,
+              "storage": {
+                "complex_core_entry_count": 171729,
+                "core_count": 4,
+                "core_payload_bytes": 2747664,
+                "core_stored_real_scalar_count": 343458,
+                "mode_shape": [
+                  24,
+                  24,
+                  24,
+                  9
+                ],
+                "nominal_gauge_adjusted_real_dimension": 248832,
+                "rank_and_shape_metadata_bytes": 72,
+                "raw_array_payload_bytes": 2747736,
+                "serialization_roundtrip_bitwise_equal": true,
+                "tt_ranks": [
+                  1,
+                  24,
+                  216,
+                  9,
+                  1
+                ],
+                "uncompressed_npz_serialized_bytes": 2749244
+              },
+              "tt_svd_diagnostics": {
+                "all_singular_values_finite": true,
+                "construction_method": "direct registered TT-SVD",
+                "discarded_frobenius_norm": 0.0,
+                "input_dtype": "complex128",
+                "maximum_rank": null,
+                "mode_shape": [
+                  24,
+                  24,
+                  24,
+                  9
+                ],
+                "relative_discarded_frobenius_norm": 0.0,
+                "requested_relative_tolerance": 1e-13,
+                "split_records": [
+                  {
+                    "all_singular_values_finite": true,
+                    "discarded_frobenius_norm": 0.0,
+                    "matrix_shape": [
+                      24,
+                      5184
+                    ],
+                    "maximum_singular_value": 71565.4937718901,
+                    "minimum_singular_value": 3939.8824664624585,
+                    "mode_index": 0,
+                    "retained_rank": 24,
+                    "singular_value_count": 24
+                  },
+                  {
+                    "all_singular_values_finite": true,
+                    "discarded_frobenius_norm": 0.0,
+                    "matrix_shape": [
+                      576,
+                      216
+                    ],
+                    "maximum_singular_value": 63488.84364353897,
+                    "minimum_singular_value": 2.704721926631665,
+                    "mode_index": 1,
+                    "retained_rank": 216,
+                    "singular_value_count": 216
+                  },
+                  {
+                    "all_singular_values_finite": true,
+                    "discarded_frobenius_norm": 0.0,
+                    "matrix_shape": [
+                      5184,
+                      9
+                    ],
+                    "maximum_singular_value": 111959.51255330775,
+                    "minimum_singular_value": 545.7944698532795,
+                    "mode_index": 2,
+                    "retained_rank": 9,
+                    "singular_value_count": 9
+                  }
+                ],
+                "tensor_frobenius_norm": 163451.64108802262,
+                "tt_ranks": [
+                  1,
+                  24,
+                  216,
+                  9,
+                  1
+                ]
+              }
+            },
+            {
+              "all_values_finite": true,
+              "candidate_id": "flat-q-last",
+              "degree": 4,
+              "fidelity_passed": true,
+              "maximum_relative_action_error_vs_sparse": 1.2239423554125708e-13,
+              "registered_identity_exact": true,
+              "relative_tensor_reconstruction_error": 8.581934454479954e-15,
+              "storage": {
+                "complex_core_entry_count": 1775313,
+                "core_count": 5,
+                "core_payload_bytes": 28405008,
+                "core_stored_real_scalar_count": 3550626,
+                "mode_shape": [
+                  24,
+                  24,
+                  24,
+                  24,
+                  9
+                ],
+                "nominal_gauge_adjusted_real_dimension": 3276000,
+                "rank_and_shape_metadata_bytes": 88,
+                "raw_array_payload_bytes": 28405096,
+                "serialization_roundtrip_bitwise_equal": true,
+                "tt_ranks": [
+                  1,
+                  24,
+                  300,
+                  216,
+                  9,
+                  1
+                ],
+                "uncompressed_npz_serialized_bytes": 28406852
+              },
+              "tt_svd_diagnostics": {
+                "all_singular_values_finite": true,
+                "construction_method": "direct registered TT-SVD",
+                "discarded_frobenius_norm": 1.990188411876706e-06,
+                "input_dtype": "complex128",
+                "maximum_rank": null,
+                "mode_shape": [
+                  24,
+                  24,
+                  24,
+                  24,
+                  9
+                ],
+                "relative_discarded_frobenius_norm": 2.5592913932444366e-15,
+                "requested_relative_tolerance": 1e-13,
+                "split_records": [
+                  {
+                    "all_singular_values_finite": true,
+                    "discarded_frobenius_norm": 0.0,
+                    "matrix_shape": [
+                      24,
+                      124416
+                    ],
+                    "maximum_singular_value": 371814396.4685641,
+                    "minimum_singular_value": 1693804.5403210516,
+                    "mode_index": 0,
+                    "retained_rank": 24,
+                    "singular_value_count": 24
+                  },
+                  {
+                    "all_singular_values_finite": true,
+                    "discarded_frobenius_norm": 1.990188411876706e-06,
+                    "matrix_shape": [
+                      576,
+                      5184
+                    ],
+                    "maximum_singular_value": 260130251.00222543,
+                    "minimum_singular_value": 2.24365643667521e-09,
+                    "mode_index": 1,
+                    "retained_rank": 300,
+                    "singular_value_count": 576
+                  },
+                  {
+                    "all_singular_values_finite": true,
+                    "discarded_frobenius_norm": 0.0,
+                    "matrix_shape": [
+                      7200,
+                      216
+                    ],
+                    "maximum_singular_value": 340288626.0645227,
+                    "minimum_singular_value": 4704.2512352155945,
+                    "mode_index": 2,
+                    "retained_rank": 216,
+                    "singular_value_count": 216
+                  },
+                  {
+                    "all_singular_values_finite": true,
+                    "discarded_frobenius_norm": 0.0,
+                    "matrix_shape": [
+                      5184,
+                      9
+                    ],
+                    "maximum_singular_value": 522944250.41055596,
+                    "minimum_singular_value": 2240974.7399460697,
+                    "mode_index": 3,
+                    "retained_rank": 9,
+                    "singular_value_count": 9
+                  }
+                ],
+                "tensor_frobenius_norm": 777632596.7140952,
+                "tt_ranks": [
+                  1,
+                  24,
+                  300,
+                  216,
+                  9,
+                  1
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "registered_input_and_independent_campaign": {
+        "passed": true,
+        "threshold": {
+          "fiber_counts_match": true,
+          "hashes_match": true,
+          "maximum_action_direction_duplicate_count_vs_q008a": 0,
+          "quartic_sparse_baseline_match": true,
+          "registered_fiber_counts": {
+            "2": 300,
+            "3": 2600,
+            "4": 17550
+          },
+          "registered_hashes": {
+            "cubic_chart_coefficients_sha256": "ed182069713bff0558b806ce7a70e77299ea9fbc6671de38c4fa58019da5615b",
+            "cubic_indices_sha256": "e646d2de7212c823cbca5804fbf20e9543918ecca80452dd508c278dfc5f130c",
+            "mode_table_sha256": "6e08a2706a44965143944b692615c6a8525799d3e01ca06a636d852d6610d4d9",
+            "quadratic_chart_coefficients_sha256": "4d0ddc917c3b722496b918f38f8e810e0f200c5fd2ffa138025a93aa2571f8db",
+            "quartic_chart_coefficients_sha256": "9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b",
+            "quartic_indices_sha256": "968b35d36cbd28c1f30e6cacb906649a42b36ba4e7bf4122394c2722cd809c16"
+          }
+        },
+        "value": {
+          "action_direction_duplicate_count_vs_q008a": 0,
+          "fiber_counts_match": true,
+          "hashes_match": true,
+          "observed_hashes": {
+            "cubic_chart_coefficients_sha256": "ed182069713bff0558b806ce7a70e77299ea9fbc6671de38c4fa58019da5615b",
+            "cubic_indices_sha256": "e646d2de7212c823cbca5804fbf20e9543918ecca80452dd508c278dfc5f130c",
+            "mode_table_sha256": "6e08a2706a44965143944b692615c6a8525799d3e01ca06a636d852d6610d4d9",
+            "quadratic_chart_coefficients_sha256": "4d0ddc917c3b722496b918f38f8e810e0f200c5fd2ffa138025a93aa2571f8db",
+            "quartic_chart_coefficients_sha256": "9597e0d31c32c940c76526754f0ec70c666e5fe03511977e80b3fd0610a7f29b",
+            "quartic_indices_sha256": "968b35d36cbd28c1f30e6cacb906649a42b36ba4e7bf4122394c2722cd809c16"
+          },
+          "quartic_sparse_baseline_match": true
+        }
+      },
+      "serialization_finiteness_and_strict_json": {
+        "passed": true,
+        "threshold": {
+          "all_roundtrips_bitwise_equal": true,
+          "all_values_finite": true,
+          "strict_json_serializable": true
+        },
+        "value": {
+          "all_roundtrips_bitwise_equal": true,
+          "all_values_finite": true,
+          "strict_json_serializable": true
+        }
+      },
+      "tensorization_mapping": {
+        "passed": true,
+        "threshold": {
+          "all_mapping_roundtrips_bitwise_equal": true,
+          "maximum_relative_action_error": 5e-14
+        },
+        "value": {
+          "all_mapping_roundtrips_bitwise_equal": true,
+          "maximum_candidate_dense_mapping_action_error": 1.3427825001646324e-15,
+          "maximum_canonical_dense_vs_sparse_action_error": 1.8460488990463964e-14
+        }
+      },
+      "tt_reconstruction_and_action": {
+        "passed": true,
+        "threshold": {
+          "all_candidates_passed": true,
+          "maximum_action_error_vs_sparse": 1e-11,
+          "maximum_tensor_reconstruction_error": 2e-13
+        },
+        "value": {
+          "all_candidates_passed": true,
+          "maximum_action_error_vs_sparse": 6.624328755394939e-13,
+          "maximum_tensor_reconstruction_error": 1.4915465734115449e-13
+        }
+      }
+    }
+  },
+  "generated_at_utc": "2026-08-08T00:18:09.963172+00:00",
+  "mathematical_scope": {
+    "branch_count": 3,
+    "claim": "registered local coefficient storage and fidelity only; no asymptotic-rank, online-speed, full-chart, rollout, TT-cross, other-shell, other-grid, existence, uniqueness, or normal-attraction claim",
+    "complex_mode_count": 24,
+    "construction_grid": [
+      17,
+      17
+    ],
+    "degrees": [
+      2,
+      3,
+      4
+    ],
+    "diagnostic": "wave-branch and wave-QTT storage prequalification",
+    "eta": 0.01,
+    "local_output_count": 9,
+    "omega": 1.5,
+    "physical_full_dense_tensor_materialized": false,
+    "tensorization_count": 4,
+    "wave_count": 8
+  },
+  "next_question": "Close the TT-SVD compression path for the fixed Q007c1 coefficients and do not start Q009 TT-cross. Return to the unresolved invariant-manifold mathematical gates before considering a newly preregistered representation.",
+  "runtime": {
+    "numpy": "2.3.4",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.5",
+    "scipy": "1.16.3"
+  },
+  "schema_version": 1,
+  "scientific_outcome": "rejected",
+  "source": {
+    "package_source_sha256": "db46f7e65aaf90e5027a170ca472e3435252b29d2a09de6d50974314e0f0aa4d",
+    "package_version": "0.1.0"
+  },
+  "study_gate": "passed"
+}

@@ -61,6 +61,7 @@ from .spectra import (
 )
 from .stripe import StripeQuadraticModel, build_stripe_quadratic_model
 from .tt_storage_prequalification import run_tt_storage_prequalification_audit
+from .wave_qtt_prequalification import run_wave_qtt_prequalification_audit
 
 
 def _complex_record(value: complex) -> dict[str, float]:
@@ -2202,6 +2203,41 @@ def run_q008a_study() -> dict[str, Any]:
                 "registered local coefficient storage and fidelity only; no "
                 "asymptotic-rank, online-speed, full-chart, rollout, TT-cross, "
                 "other-shell, other-grid, existence, or uniqueness claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q008c_study() -> dict[str, Any]:
+    """Run and package the sealed Q008c wave-factorized TT audit."""
+
+    cycle = run_wave_qtt_prequalification_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "wave-branch and wave-QTT storage prequalification",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "complex_mode_count": 24,
+            "wave_count": 8,
+            "branch_count": 3,
+            "local_output_count": 9,
+            "degrees": [2, 3, 4],
+            "tensorization_count": 4,
+            "physical_full_dense_tensor_materialized": False,
+            "claim": (
+                "registered local coefficient storage and fidelity only; no "
+                "asymptotic-rank, online-speed, full-chart, rollout, TT-cross, "
+                "other-shell, other-grid, existence, uniqueness, or "
+                "normal-attraction claim"
             ),
         },
         "cycle": cycle,

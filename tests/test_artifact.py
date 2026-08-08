@@ -921,3 +921,52 @@ def test_q008a_artifact_records_valid_sparse_storage_rejection() -> None:
     assert "four registered local coefficient tensorizations" in cycle[
         "claim_boundary"
     ]
+
+
+def test_q008c_artifact_records_valid_wave_factorization_rejection() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q008c_wave_qtt_prequalification.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "rejected"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "wave-branch and wave-QTT storage prequalification",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "complex_mode_count": 24,
+        "wave_count": 8,
+        "branch_count": 3,
+        "local_output_count": 9,
+        "degrees": [2, 3, 4],
+        "tensorization_count": 4,
+        "physical_full_dense_tensor_materialized": False,
+        "claim": (
+            "registered local coefficient storage and fidelity only; no "
+            "asymptotic-rank, online-speed, full-chart, rollout, TT-cross, "
+            "other-shell, other-grid, existence, uniqueness, or "
+            "normal-attraction claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "rejected"
+    assert cycle["selected_candidate"] is None
+    assert cycle["scientific_classification"] == (
+        "registered wave-factorized TTs do not beat natural quartic sparse-fiber storage"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    quartic = next(record for record in cycle["degree_records"] if record["degree"] == 4)
+    sparse = quartic["natural_sparse_fiber_storage"]
+    assert sparse["coefficient_stored_real_scalar_count"] == 315900
+    assert sparse["uncompressed_npz_serialized_bytes"] == 2615734
+    assert all(
+        candidate["storage"]["core_stored_real_scalar_count"] > 14 * 315900
+        and candidate["storage"]["uncompressed_npz_serialized_bytes"]
+        > 13 * sparse["uncompressed_npz_serialized_bytes"]
+        and not candidate["storage_hypothesis_passed"]
+        for candidate in quartic["candidate_records"]
+    )
+    assert "four preregistered wave/branch tensorizations" in cycle["claim_boundary"]
