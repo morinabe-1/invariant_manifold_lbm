@@ -7453,6 +7453,211 @@ Q007adではそれらを再走査していないため、tube／positivity／MPF
 `2.1920952274236575e11`である。これをphase-awareに改善するか、先に`1e-16` radiusを
 使って下流tubeを再監査するかは、別の事前登録gateとして扱う。
 
+## Q007ae: phase-aware selected-output internal resolvent — 事前登録
+
+### 問いとbottleneck再現
+
+Q007ad後のtotal inverseはQ007o diagonal selected-output internal block
+`2.1920952274236575e11`に支配される。Q007oのexact recordから、そのchart upperは
+
+\[
+C_{{\rm int},k}
+=\frac{N_k}{\delta_{\rm global}-\gamma_k},\qquad
+N_k=\|U_k\|_1\kappa_k\|J_kQ_k\|_1
+\]
+
+であり、axial／diagonalについて
+
+- \(N_A=21.404760870264376\ldots\)、
+  \(\gamma_A=4.4155560973760785\times10^{-15}\)
+- \(N_D=35.31936026583468\ldots\)、
+  \(\gamma_D=1.1339793519314153\times10^{-14}\)
+
+だった。ここで再利用されたQ007n global absolute gapは
+`1.611328085325626e-10`である。一方、その元となるQ007i global minimum log-gap
+witnessはdegree `51`、counts `(1,19,27,4)`、external
+`wave=(-2,-2);eigenvalue_index=(8,7)`であり、selected output waveではない。
+
+そこで、selected outputのexternal coordinate centersだけをoriginal selected product discsと
+complex phase付きで比較し、Q007oのglobal modulus gapを置き換える。Q007adのexternal-output
+certificateと全majorantを固定したまま、internal blockをtotalの支配要因から外せるかを問う。
+
+### 封印する入力
+
+- Q007h1 artifact newline-normalized SHA-256:
+  `caee8fe382c0282e11e8139b8f434a944013f630288adf2e99223d0123c91af4`
+- Q007i artifact newline-normalized SHA-256:
+  `c256b30ac5bfe0a6bc5e5f8e293016d3e0aa37c4bfa82ba81a0a2679d89e082f`
+- Q007n artifact newline-normalized SHA-256:
+  `7fe09089744e41229e71666540e4885d560a4c27a2e8bc95a94d5959af0fbc36`
+- Q007o artifact newline-normalized SHA-256:
+  `36a350b27658ce0699727640d65c48cf0700f999ca1881b07d45825d086158fd`
+- Q007ad artifact newline-normalized SHA-256:
+  `6a6f642cb681409ca160773180e025c1ffbc1929d6ec84423c384c57007571e4`
+- Q007i／Q007h1／Q007n／Q007o／Q007ad implementation／runner SHA-256:
+  `22209c56184eff9556db13b553cb89644eea11ffd77a3af69d0316a747118294` /
+  `d2d857c1b9ac20f88c9b1a1a44e59bd1d15dad043d5e96fde5069ea0c1865a94` /
+  `6eefae3386e5c49f151b1cd4537eb84fbb92858578fe4fce7768e50ad43c5dc9` /
+  `d34afda382784610ea2b8997e6c44376188b02c42668ade8e2d53ff9bc9afea7` /
+  `3ca5e39c3ddb79c886ef7bf4d6e6ad923deb66e53da3663251f183abbab7b0ae`
+- Q007ad input／result／phase digest:
+  `b1b1b2750e871c6ee3b243f7df590ec19dd6d604d9699f183af007b89d0f7935` /
+  `f5df89c55a86978c85542eeec82e6419884b69b919c0385ca77e9677b1c1d17f` /
+  `086516b273f30d7c94c276399c16f8a6433bd90e3dc03fb740d2ab45754e4a37`
+
+固定scopeは \(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)、
+\(\delta M=\delta P_x=\delta P_y=0\)、Q007n pair max normおよびmodal／Wiener \(\ell^1\)とする。
+Q007ad external inverse、Q007n zero-wave inverse、Q007o external-complement coordinate
+constants、80桁外向き丸め、全majorant、119候補を変更しない。
+
+### target gapとcritical internal gap
+
+新しいphase gapは探索せず、Q007adと同じ
+
+\[
+\delta_{\rm ae}=\frac{21}{10^9}=2.1\times10^{-8}
+\]
+
+へ固定する。Q007o internal upperをQ007n zero-wave upper \(C_0\)より小さくするための各代表の
+critical gapは
+
+\[
+\delta_{{\rm crit},k}
+=\gamma_k+\frac{N_k}{C_0}
+\]
+
+である。maximumはdiagonalの
+`5.691119055000859e-9`で、exact既約分数の16進表現を
+
+- numerator:
+  `0x13b365003d68998a2eff2773756558d32ebe28d1a2d8f901f16ac1fcb4787a91e6a181a003a99e14f9735a6c54a7d153fad5d6f931002887e9b498dda887fcde8201bc36f4f4de76bdc9467222a8603a6d9768d3f0c66e798187db670d0ed9e455960aef38632333de25ffba5b21bb8d0f07c947cbdf3cd29f3cba3410234571c00057afe4f22bce515bc4541e485acb69f11f545c12dbf8ef45`
+- denominator:
+  `0xce54d951f6b1b735456e9141526f4160dafe61661b02c9c49be7c18aa2cabce02d1d2c83a3aba864c96ece92e130d585fe3409cfce8d627aabd927c60e874d75edc1fac720de10bcc2b25b16124f937daa544038adc15d83e51808e736f429c6941a2cb56b9d53f7747285969bcc3c454c3d4844306b3dcde3034000000000000000000000000000000000000000000000000000000000000000000000`
+
+へ封印する。target／critical ratioは`3.6899597068782164`である。これらはQ007o sealed
+constantsだけから計算し、phase comparison結果を見て選んでいない。
+
+### original selected product discs
+
+Q007adと同じQ007h1 original asymmetric discsを使用する。
+
+- axis \((-1,0)\): acoustic index `(0,1)`、shear `4`
+- diagonal \((-1,-1)\): acoustic index `(0,1)`、shear `6`
+
+再中心化・共役化・radius inflationは行わず、product uncertaintyはQ007n working
+\(\sigma^{n-1}\sum_jc_jr_j\)で覆う。Q007adの6-disc auditとminimum sigma slack
+`7.672593033162951e-81`をexact再現する。
+
+### selected-output external center targets
+
+Q007oの2 representativeについて、Q007h1 source blockで`numpy.linalg.eig`が返した
+eigenvalue centerのうちselected 3 indexを除いた6 indexを返却順で使う。
+
+- output \((1,0)\): source \((-1,0)\)、external index `(2,3,5,6,7,8)`
+- output \((1,1)\): source \((-1,-1)\)、external index `(2,3,4,5,7,8)`
+
+従ってtargetは12個のexact dyadic point center \(d_{k,j}\)である。ここではQ007h1
+Bauer--Fike radiusをtargetへ加えない。Q007o identity
+
+\[
+A_kU_k=U_kD_k+Q_kR_k
+\]
+
+では \(D_k\)がこのpoint centerで、target eigenpairの残差は既に
+\(\gamma_k=\kappa_k\|J_kQ_kR_k\|_1\)として分母から差し引くためである。target radiusと
+\(\gamma_k\)を二重計上しない。
+
+C4 transportにより2代表が全8 selected output waveを覆うことを再確認する。本gateではFourier
+wave-sum restrictionを使わず、全selected productを全12 centerと比較する。これは許容される
+homological pairのsupersetであり、通過すれば保守的に有効である。
+
+### modulus screenとphase比較
+
+Q007adと同じ96項rational logarithm、110／60桁格子、screen
+\(g_{\rm screen}=10^{-6}\)、次数2--89の全2,919,730 aggregateを使う。selected typeは4、
+external log intervalは上記12 point centerから作る。screen外はQ007n finite modulus floorにより
+
+\[
+m_*g_{\rm screen}>\delta_{\rm ae}
+\]
+
+で覆う。screen内aggregateだけをaxis／diagonal acoustic +/-へ完全展開し、全nearby centerに対して
+
+\[
+|\widehat p-d_{k,j}|^2
+>
+\left(\delta_{\rm ae}+\epsilon_p\right)^2
+\]
+
+をexact dyadic arithmeticで判定する。thresholdは256 binary bit格子へ上向きに丸める。
+dangerous aggregate、expanded product、comparison数は結果として保存するが、結果前に特定値を
+仮定しない。未判定pairを許さない。degree 90以上はQ007n tail gapを再利用し、
+\(\delta_{\rm tail}>\delta_{\rm ae}\)を要求する。
+
+### internal inverseと固定radius再走査
+
+phase certificateが通れば、Q007o各代表のcenter／coordinate constantsを変えず
+
+\[
+\begin{aligned}
+C_{H,k}^{\rm ae}
+&=\frac{N_k}{\delta_{\rm ae}-\gamma_k},\\
+C_{{\rm int},k}^{\rm ae}
+&=\max\{C_{H,k}^{\rm ae},c_VC_{G,k}\},\\
+C_{\rm int}^{\rm ae}
+&=\max_k C_{{\rm int},k}^{\rm ae}
+\end{aligned}
+\]
+
+をexact `Fraction`で計算し、80桁格子へ上向きに丸める。new totalは
+
+\[
+C_L^{\rm ae}
+=\max\{C_{\rm int}^{\rm ae},C_{\rm ext}^{\rm Q007ad},C_0\}
+\]
+
+とする。Q007ad旧119 candidate recordをexact再現してから \(C_L^{\rm ae}\)だけで再走査する。
+
+### validity gate
+
+1. 5 artifact SHA、5 implementation／runner SHA、source、scope、Q007ad accepted outcomeと3 digestが一致する。
+2. Q007i global witness、Q007o 2 representative record、\(N_k,\gamma_k\)、critical fractionをexact再現する。
+3. Q007ad original 6 discs、Q007o external indices、12 dyadic point targets、C4 coverageをexact確認する。
+4. 2,919,730 aggregateを完全partitionし、全dangerous split／nearby centerを比較し、tailを確認する。
+5. Q007ad external、Q007n zero、Q007o coordinate constants、majorant、119候補をbitwiseに再利用し、
+   Q007ad旧candidate recordsをexact再現する。
+6. 全数値がfinite strict JSONで、input／phase／result digestを再現する。
+
+一つでも落ちれば`inconclusive`とし、internal inverseを更新しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. 全finite-degree selected-output center comparisonとdegree-90 tailが
+   \(\delta_{\rm ae}=2.1\times10^{-8}\)をstrictに満たす。
+2. working \(C_{\rm int}^{\rm ae}<2\times10^9<C_0\)で、selected-output internal blockが
+   totalを支配しなくなる。
+3. new totalがQ007ad external inverseに一致し、
+   \(C_L^{\rm Q007ad}/C_L^{\rm ae}\ge1.04\)である。
+4. Q007adの`1e-16`が引き続き最大passで、`1e-15`はfailする。
+5. `1e-16`の全buffer、\(Z<1/2\)、radii inequalityがstrictである。
+
+全て通れば
+`phase-aware selected-output centers remove the internal resolvent bottleneck`
+として`accepted`とする。validity通過後に一つでも落ちれば
+`registered selected-output phase certificate did not remove the internal bottleneck`
+という有効な`not_certified`とする。target gap、target centers、screen、radius候補を
+結果後に変更しない。
+
+### 主張境界
+
+acceptedでもQ007adのexplicit analytic radius`1e-16`をstrictに拡大するとは限らず、
+今回の登録では同じ10進候補が維持されることを仮説にする。selected-output internal bottleneckを外した後の
+支配要因はQ007ad nonselected-output external inverseになる。phase gapの最適性、Fourier wave-sumによる
+sharp化、external／zero-waveの追加改善、連続radius最適化、Q007p--Q007ab tubeの拡大、
+Euclidean／grid-uniform attraction、global basin、境界、外力、D3Q27は認証しない。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
