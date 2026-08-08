@@ -2684,6 +2684,57 @@ Q007dのEuclidean projected-normal棄却、Q007c1の有限振幅directional-shad
 population positivity、より大きいtube、global basin、grid-uniform attraction、continuum limitも認証していない。
 次はこの極小tubeを拡大解釈せず、残る研究課題を独立gateとして一つずつ扱う。
 
+## 2026-08-08: Q007q registered-tube population positivity
+
+### 実装
+
+- Q007p artifact／runner SHA、package source、固定17²・\(\omega=3/2\)・\(\eta=1/100\)・固定保存量葉、
+  base radius \(10^{-19}\)、normal radius \(10^{-20}\)、全validity／hypothesis gate、4 theorem flagを
+  再確認した。
+- D2Q9の9 velocityとweightをexact `Fraction`として監査し、rest／axis／diagonalのmultiplicity
+  \(1/4/4\)、weight sum \(1\)、minimum weight \(1/36\)を再構成した。
+- Q007pの289 Fourier blockとreal conjugacy constraintを再確認し、
+  \[
+  \max_{x,i}|\delta f_i(x)|
+  \le\max_i\sum_k|\widehat{\delta f}_{k,i}|
+  \le\|\delta f\|_{\mathrm W}
+  \]
+  を明示的なvalidity gateにした。
+- Q007pのchart upper \(w(r)\)、synthesis upper \(K_s\)、normal radius \(\zeta\)から
+  \(x_*=w(r)+K_s\zeta\)を保存済み有理数だけでexactに再構成した。
+- population／density lowerを浮動小数値ではなく
+  \(p_*=1/36-x_*\)、\(d_*=1-x_*\)というexact rational差で判定した。
+
+### 結果
+
+全5 validity gateと全3 hypothesis gateが通過した。
+
+- D2Q9 population count／weight multiplicity: `9 / (1, 4, 4)`
+- weight sum／minimum: `1 / 1/36`
+- Fourier wave count: `289`
+- chart radius upper \(w(r)\): `2.7869014191713026e-19`
+- synthesis upper \(K_s\): `2.888267212368763`
+- tube-state Wiener upper \(x_*\): `3.075728140408179e-19`
+- population lower: exact \(1/36-x_*>0\)
+- density lower: exact \(1-x_*>0\)
+- runner SHA-256:
+  `026b4d549e92bf74ac29393244a4400fb7a8d1bb3eb263ee729d81432c8290e5`
+- artifact newline-normalized SHA-256:
+  `e8c763419f6e803f102f81a3beb957261b736754ab490ca3cb914dc9247269cb`
+
+従って
+`registered Q007p tube lies in the strictly positive population cone at every full-map iterate`
+として`accepted`とした。Q007pのforward invarianceにより、固定tube内から開始する全real stateの
+9 populationとdensityには、full one-step mapの入力／出力時刻 \(n=0,1,2,\ldots\) で同じstrict lowerが
+帰納的に適用される。
+
+### 主張境界
+
+これはfull mapのsampling時刻だけの結論である。BGK collision直後、streaming直後、filter内部の
+stagewise positivity、entropy、monotonicity、maximum principleは認証していない。より大きいtube、
+global basin、grid-uniform性、continuum limitも扱わず、Q007c1の有限振幅性能棄却とQ007dのEuclidean
+棄却も変更しない。次の課題は別gateとして事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2755,6 +2806,8 @@ population positivity、より大きいtube、global basin、grid-uniform attrac
 [`artifacts/q007o_external_complement_radius.json`](artifacts/q007o_external_complement_radius.json)
 
 [`artifacts/q007p_finite_tube_attraction.json`](artifacts/q007p_finite_tube_attraction.json)
+
+[`artifacts/q007q_population_positivity.json`](artifacts/q007q_population_positivity.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

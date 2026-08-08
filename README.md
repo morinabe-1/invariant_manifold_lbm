@@ -156,7 +156,11 @@ Q007pではこの半径を固定し、全289 Fourier blockをexternal coordinate
 登録tube \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)に対し、base forward invariance、
 one-step normal contraction、tangentに対するstrict normal dominationを全て認証した。ただしこれは固定17²・
 固定保存量葉・固定external-coordinate normの極小tubeだけの結果であり、Euclidean contraction、
-population positivity、より大きいtube、global basin、grid-uniform性は示さない。
+より大きいtube、global basin、grid-uniform性は示さない。Q007qでは同じtube-state Wiener upper
+\(x_*=3.075728140408179\times10^{-19}\)をexactに再利用し、
+\(p_*=1/36-x_*>0\)、\(d_*=1-x_*>0\)を認証した。従って登録tube内の全9 populationとdensityは
+full one-step mapの入力／出力時刻で全iterateにわたりstrict positiveである。ただしcollision直後や
+filter内部などのstagewise positivity、entropy、maximum principleは示さない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -891,6 +895,42 @@ registered tubeに対する解析的majorantである。ただし\(\|\cdot\|_*\)
 ありEuclidean normではない。Q007dのEuclidean棄却、Q007c1の有限振幅性能棄却、positivity、より大きいtube、
 global basin、grid-uniform性、continuum limitは変更・認証しない。
 
+### Q007q registered-tube population positivity
+
+Q007pで認証した同じ固定tubeに対し、D2Q9 rest equilibrium
+\(f_i^*=w_i\)とFourier--Wiener triangle inequalityを用いた。全289 Fourier phaseのmodulusが1であるため、
+
+\[
+\max_{x,i}|\delta f_i(x)|
+\le \max_i\sum_k|\widehat{\delta f}_{k,i}|
+\le \|\delta f\|_{\mathrm W}
+\le x_*.
+\]
+
+Q007pのexact tube-state upper \(x_*=3.075728140408179\times10^{-19}\)と
+\(\min_i w_i=1/36\)、\(\sum_iw_i=1\)から、exact rational boundとして
+
+\[
+p_*=\frac1{36}-x_*>0,\qquad d_*=1-x_*>0
+\]
+
+を得た。Q007pのforward invarianceにより、このlower boundは初期状態だけでなく
+full-map sampling時刻 \(n=0,1,2,\ldots\) の全iterateへ帰納的に適用される。
+
+- classification:
+  `registered Q007p tube lies in the strictly positive population cone at every full-map iterate`
+- validity / hypothesis gates: `5 / 5`, `3 / 3` passed
+- exact D2Q9 weight multiplicity: `1 / 4 / 4`
+- Fourier wave count: `289`
+- tube-state Wiener upper \(x_*\): `3.075728140408179e-19`
+- population lower: exact \(1/36-x_*>0\)
+- density lower: exact \(1-x_*>0\)
+
+これはfixed 17²、fixed conservation leaf、registered Q007p tubeのreal stateについて、
+full one-step mapの入力／出力時刻だけを扱う。BGK collision直後、streaming直後、filter内部の
+stagewise positivity、entropy、monotonicity、maximum principle、より大きいtube、global basin、
+grid-uniform性、continuum limitは認証しない。Q007c1とQ007dの既存棄却も変更しない。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -940,6 +980,7 @@ python -m research.q007m_quartic_jet_bridge --output research/artifacts/q007m_qu
 python -m research.q007n_explicit_local_radius --output research/artifacts/q007n_explicit_local_radius.json
 python -m research.q007o_external_complement_radius --output research/artifacts/q007o_external_complement_radius.json
 python -m research.q007p_finite_tube_attraction --output research/artifacts/q007p_finite_tube_attraction.json
+python -m research.q007q_population_positivity --output research/artifacts/q007q_population_positivity.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -984,6 +1025,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007n_explicit_local_radius.json`](research/artifacts/q007n_explicit_local_radius.json)
 - [`research/artifacts/q007o_external_complement_radius.json`](research/artifacts/q007o_external_complement_radius.json)
 - [`research/artifacts/q007p_finite_tube_attraction.json`](research/artifacts/q007p_finite_tube_attraction.json)
+- [`research/artifacts/q007q_population_positivity.json`](research/artifacts/q007q_population_positivity.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1042,13 +1084,14 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007n Wiener \(\ell^1\) majorant、全次数homological inverse、quartic-centered explicit-radius収縮認証
 - Q007o exact external-complement resolvent、旧119判定再現、explicit-radius upperの厳密改善
 - Q007p 全289 blockのexternal-coordinate norm、有限tubeのforward invariance／normal contraction／domination認証
+- Q007q Q007p tubeのexact Wiener bound、D2Q9 population／densityのfull-map時刻でのstrict positivity認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- より大きいtube、Euclidean／grid-uniform normal attraction、positivity、global basin
+- より大きいtube、Euclidean／grid-uniform normal attraction、stagewise positivity、global basin
 - external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
 
@@ -1059,5 +1102,6 @@ Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を
 定理多様体についてmodal radius`1e-75`のexplicit local existenceを認証し、Q007oではgapとmajorantを
 変えずにexact external complementを使って`1e-18`へ改善した。Q007pではそのexact manifoldについて
 \(r=10^{-19}\)、\(\zeta=10^{-20}\)の登録tubeをexternal-coordinate normで一様normal-attractingと認証した。
-Q007c1の有限振幅性能棄却、Q007dのEuclidean棄却、positivity、より大きいtube、grid-uniform性へは
-主張を広げない。
+Q007qでは同じtubeをfull-map時刻でstrict positive population cone内に含むことを認証した。
+Q007c1の有限振幅性能棄却、Q007dのEuclidean棄却、stagewise positivity、より大きいtube、
+grid-uniform性へは主張を広げない。

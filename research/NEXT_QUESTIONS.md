@@ -4621,6 +4621,42 @@ acceptedなら、固定17²・固定保存量葉・登録Q007p tubeのreal state
 monotonicity、maximum principle、より大きいtube、global basin、grid-uniform性、continuum limit、
 Q007c1の有限振幅性能、Q007dのEuclidean判定も変更・認証しない。
 
+### Q007q 封印結果
+
+判定は`accepted`である。
+
+- Q007p artifact／runner SHA、source／scope／全sealed gate／4 theorem flag: pass
+- exact D2Q9 population count／weight multiplicity: `9 / (1, 4, 4)`
+- exact weight sum／minimum: `1 / 1/36`
+- Fourier wave count／Wiener norm-definition audit: `289 / pass`
+- Q007p base／normal radius:
+  \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)
+- chart radius upper \(w(r)\): `2.7869014191713026e-19`
+- synthesis upper \(K_s\): `2.888267212368763`
+- exact tube-state identity:
+  \(x_*=w(r)+K_s\zeta\)
+- tube-state Wiener upper \(x_*\): `3.075728140408179e-19`
+- population lower: exact \(p_*=1/36-x_*>0\)
+- density lower: exact \(d_*=1-x_*>0\)
+- validity／hypothesis gate: `5 / 5`、`3 / 3` passed
+- runner SHA-256:
+  `026b4d549e92bf74ac29393244a4400fb7a8d1bb3eb263ee729d81432c8290e5`
+- artifact newline-normalized SHA-256:
+  `e8c763419f6e803f102f81a3beb957261b736754ab490ca3cb914dc9247269cb`
+
+従って固定17²・固定保存量葉・登録Q007p tubeの全real stateは、D2Q9のstrict positive population coneに
+含まれる。Q007pのforward invarianceと合わせ、全9 populationとdensityはfull one-step mapの
+入力／出力時刻 \(n=0,1,2,\ldots\) でstrict positiveである。
+
+浮動小数表示では\(x_*\)が機械精度より十分小さいため、\(p_*\)は`1/36`、\(d_*\)は`1`と
+同じ表示へ丸められる。判定は保存した16進分子・分母から復元したexact rational差で行い、
+strict inequalityをテストで再構成した。
+
+この結果はcollision／streaming／filter内部stageのpositivity、entropy、monotonicity、maximum principle、
+より大きいtube、global basin、grid-uniform性、continuum limitを認証しない。Q007c1の有限振幅性能棄却と
+Q007dのEuclidean棄却も変更しない。stagewise positivityやtube拡大は、同じ判定へ混ぜず別gateとして
+事前登録する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
