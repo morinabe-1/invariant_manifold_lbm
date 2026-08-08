@@ -1665,3 +1665,49 @@ def test_q007q_artifact_records_full_map_population_positivity() -> None:
     assert "does not certify positivity after collision" in cycle[
         "claim_boundary"
     ]
+
+
+def test_q007r_artifact_records_exact_stagewise_population_positivity() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007r_stagewise_positivity.json"
+    runner_path = artifact_path.parents[1] / "q007r_stagewise_positivity.py"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007r_stagewise_positivity.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "rational exact stagewise-positivity certificate",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "base_modal_l1_radius": 1e-19,
+        "normal_coordinate_radius": 1e-20,
+        "stages": [
+            "equilibrium evaluation",
+            "BGK collision output",
+            "periodic streaming output",
+            "five-point filter output",
+        ],
+        "arithmetic_scope": (
+            "exact mathematical map; no IEEE-754 intermediate roundoff enclosure"
+        ),
+        "claim": (
+            "strict D2Q9 population positivity at every exact internal "
+            "one-step stage on the fixed Q007p tube only"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert all(cycle["theorem_consequence"].values())
+    assert cycle["stage_structure_audit"]["passed"]
+    assert "IEEE-754" in cycle["claim_boundary"]
