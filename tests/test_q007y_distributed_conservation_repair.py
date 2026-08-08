@@ -1,19 +1,31 @@
 from __future__ import annotations
 
+import json
 from fractions import Fraction
+from pathlib import Path
 
 import pytest
 
 import research.q007x_mpfr_backend as backend
 import research.q007x_mpfr_fixed_leaf as q007x
+import research.q007y_distributed_conservation_repair as q007y
 from research.q007y_distributed_conservation_repair import (
     REPAIR_QUANTUM,
     TARGET_CONSERVED,
     balanced_unit_distribution,
     repair_conserved_state,
-    run_q007y_study,
     solve_diagonal_repair_units,
 )
+
+
+@pytest.fixture(scope="module")
+def q007y_artifact() -> dict:
+    artifact_path = (
+        Path(q007y.__file__).resolve().parent
+        / "artifacts"
+        / "q007y_distributed_conservation_repair.json"
+    )
+    return json.loads(artifact_path.read_text(encoding="utf-8"))
 
 
 @pytest.mark.parametrize(
@@ -129,12 +141,14 @@ def test_q007y_repair_restores_the_encoded_rest_probe_exactly() -> None:
     ) == TARGET_CONSERVED
 
 
-def test_q007y_study_separates_finite_repair_from_the_base_budget() -> None:
-    artifact = run_q007y_study()
-    cycle = artifact["cycle"]
+def test_q007y_study_separates_finite_repair_from_the_base_budget(
+    q007y_artifact: dict,
+) -> None:
+    cycle = q007y_artifact["cycle"]
 
-    assert artifact["study_gate"] == "passed"
-    assert artifact["scientific_outcome"] == "not_certified"
+    assert cycle == q007y.run_distributed_repair_audit()
+    assert q007y_artifact["study_gate"] == "passed"
+    assert q007y_artifact["scientific_outcome"] == "not_certified"
     assert cycle["scientific_classification"] == (
         "distributed MPFR-85 repair restores the registered fixed-leaf "
         "probes but not the Q007w tube-wide base budget"

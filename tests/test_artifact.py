@@ -2016,3 +2016,65 @@ def test_q007x_artifact_records_the_mpfr_fixed_leaf_boundary() -> None:
     assert not cycle["backend_campaign"]["summary"][
         "all_filters_conserve"
     ]
+
+
+def test_q007y_artifact_records_the_distributed_repair_boundary() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY / "q007y_distributed_conservation_repair.json"
+    )
+    runner_path = (
+        artifact_path.parents[1]
+        / "q007y_distributed_conservation_repair.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007y_distributed_conservation_repair.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "not_certified"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "distributed dyadic fixed-leaf repair and repair-aware "
+            "Wiener-budget audit"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": (
+            "fixed global mass and momentum leaf with exact diagonal "
+            "post-stage repair"
+        ),
+        "repair_lattice": "four diagonal populations on h=2^-90",
+        "rounding_model": (
+            "sealed Q007x gmpy2 2.3.1 / MPFR 4.2.2 nearest-even backend"
+        ),
+        "claim": (
+            "separate finite exact repair feasibility from the unchanged "
+            "Q007w tube-wide base and normal margin decisions"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "not_certified"
+    assert len(cycle["validity_gates"]) == 8
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 7
+    assert sum(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    ) == 5
+    assert cycle["finite_campaign"]["passed"]
+    assert cycle["tube_wide_repair_bound"]["normal_reentry_passed"]
+    assert not cycle["tube_wide_repair_bound"]["base_reentry_passed"]
+    assert cycle["theorem_consequence"][
+        "registered_finite_output_repairs_restore_exact_fixed_leaf"
+    ]
+    assert not cycle["theorem_consequence"][
+        "all_iterate_repaired_mpfr85_q007s_tube_invariance"
+    ]
