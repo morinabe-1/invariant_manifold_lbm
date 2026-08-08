@@ -2786,6 +2786,62 @@ roundoff intervalで囲った結果ではない。entropy、monotonicity、maxim
 global basin、grid-uniform性、continuum limitを扱わず、Q007c1の有限振幅性能棄却とQ007dのEuclidean
 棄却も変更しない。
 
+## 2026-08-08: Q007s registered-grid finite-tube enlargement
+
+### 実装
+
+- Q007p artifact／runner SHA、package source、固定17²・固定保存量葉・exact manifold・external-coordinate
+  norm、全upstream／sealed gate、4 theorem flagを固定した。
+- Q007pの\(\rho,\tau,c_V,h_2,h_3,h_4,g_2,g_3,g_4,q_0,K_s,K_a,K_L,\lambda_s,\lambda_{\min}\)と
+  nonlinear derivative constant \(21/2\)をexactに再利用した。保存されていた6個のbox-audit係数も別欄で
+  完全照合した。
+- base grid \(\{m\,10^{-19}:m=1,\ldots,9\}\)とnormal grid
+  \(\{m\,10^{-e}:e=10,\ldots,20,\ m=1,\ldots,9\}\)の全891 candidateを`Fraction`で評価し、
+  単調性による枝刈りを行わなかった。
+- Q007p control \((10^{-19},10^{-20})\)について12 fieldと8 strict marginをexactに再現した。
+- passing candidateのbase radius、次にnormal radiusを最大化する事前登録済み辞書式規則を適用し、
+  全candidateのexact decision quantityとgateをcanonical digestへ封印した。
+
+### 結果
+
+全6 validity gateと全5 hypothesis gateが通過した。
+
+- registered／passing candidate count: `891 / 676`
+- base-slice passing counts:
+  `73 / 74 / 74 / 75 / 75 / 76 / 76 / 76 / 77`
+- selected base／normal radius:
+  `9e-19 / 5e-12`
+- Q007p controlからのbase／normal improvement factor:
+  `9 / 500000000`
+- tube-state Wiener upper \(x_*\): `1.44413385700551e-11`
+- base-image modal upper \(a_*\): `8.9950210818665e-19`
+- base forward-invariance margin \(r-a_*\): `4.97891813350137e-22`
+- normal contraction \(q_*\): `0.9817098620375503`
+- tangent conorm lower \(m_T\): `0.9837709569923394`
+- domination ratio \(\Gamma_*\): `0.9979049036362179`
+- domination-cap margin: `0.001095096363782186`
+- selected sliceのfirst larger normal candidate:
+  `6e-12`、`base_forward_invariance`だけでfail
+- canonical candidate digest:
+  `91fcc70355acfc4b7163c951227188960ef275408b06a678d45d5e4ec4c85300`
+- runner SHA-256:
+  `6c8633f7e99874ac3be7dd14d3caa253b0dc8c499bb2f6edbb392fa695975b1e`
+- artifact newline-normalized SHA-256:
+  `7b70fd20df8fb7db5e5460a08d3f86fe8b81a55b56864c860a2c24e9cab63292`
+
+従って
+`registered exact-manifold tube enlarged on the fixed rational candidate grid`
+として`accepted`とした。固定17²・固定保存量葉・同じexact manifold・同じexternal-coordinate normで、
+選択tubeはforward invariantかつ一様one-step normal-contractingであり、tangentに対してstrictly normally
+dominatingである。
+
+### 主張境界
+
+これは9×99有限登録格子上の辞書式最大点であり、連続最適化、最大可能tube、Euclidean／grid-uniform
+attraction、global basin、continuum limitを意味しない。Q007q／Q007rのpopulation／stagewise positivityは
+旧Q007p tubeだけに封印されたままで、新tubeへは拡張していない。Q007c1の有限振幅性能棄却とQ007dの
+Euclidean棄却も変更しない。次は新tubeのpositivityを独立gateとして扱う。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2861,6 +2917,8 @@ global basin、grid-uniform性、continuum limitを扱わず、Q007c1の有限�
 [`artifacts/q007q_population_positivity.json`](artifacts/q007q_population_positivity.json)
 
 [`artifacts/q007r_stagewise_positivity.json`](artifacts/q007r_stagewise_positivity.json)
+
+[`artifacts/q007s_finite_tube_enlargement.json`](artifacts/q007s_finite_tube_enlargement.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

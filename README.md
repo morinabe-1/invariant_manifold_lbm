@@ -162,7 +162,9 @@ one-step normal contraction、tangentに対するstrict normal dominationを全�
 full one-step mapの入力／出力時刻で全iterateにわたりstrict positiveである。Q007rではexact
 equilibrium evaluation、BGK collision、periodic streaming、five-point filterの各出力へ範囲を拡張し、
 全stageでstrict positivityを認証した。ただしIEEE-754の各中間演算に対するroundoff enclosure、
-entropy、maximum principleは示さない。
+entropy、maximum principleは示さない。Q007sではQ007pと同じmajorantを9×99のexact rational候補へ
+適用し、\(r=9\times10^{-19}\)、\(\zeta=5\times10^{-12}\)のregistered tubeを認証した。ただし
+Q007q／Q007rのpositivityは旧tubeだけに封印され、新tubeへはまだ拡張していない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -973,6 +975,36 @@ mathematical mapのequilibrium evaluation、collision output、streaming output�
 NumPy／IEEE-754の全中間加算・除算を外向き区間で囲った結果ではなく、entropy、monotonicity、
 maximum principle、より大きいtube、global basin、grid-uniform性、continuum limitも認証しない。
 
+### Q007s registered-grid finite-tube enlargement
+
+Q007pのmap、固定保存量葉、exact graph-gauge manifold、external-coordinate norm、analytic majorantを
+変更せず、base radius 9点とnormal radius 99点のCartesian product全891候補を`Fraction`で評価した。
+候補は枝刈りせず、passing candidateのbase radiusを先に、次にnormal radiusを最大化する事前登録済み
+辞書式規則を適用した。
+
+- classification:
+  `registered exact-manifold tube enlarged on the fixed rational candidate grid`
+- validity / hypothesis gates: `6 / 6`, `5 / 5` passed
+- registered／passing candidates: `891 / 676`
+- selected base／normal radius:
+  `9e-19 / 5e-12`
+- Q007pからのbase／normal improvement factor:
+  `9 / 500000000`
+- tube-state Wiener upper \(x_*\): `1.44413385700551e-11`
+- base-image modal upper \(a_*\): `8.9950210818665e-19`
+- base forward-invariance margin \(r-a_*\): `4.97891813350137e-22`
+- normal contraction／tangent conorm／domination ratio:
+  `0.9817098620375503 / 0.9837709569923394 / 0.9979049036362179`
+- selected sliceの次候補: \(\zeta=6\times10^{-12}\)、base forward invarianceでfail
+- canonical candidate digest:
+  `91fcc70355acfc4b7163c951227188960ef275408b06a678d45d5e4ec4c85300`
+
+従って固定17²・固定保存量葉・同じexact manifold・同じexternal-coordinate normについて、選択した
+registered tubeのforward invariance、一様one-step normal contraction、strict normal dominationを認証した。
+これは9×99有限格子上の辞書式選択であり、連続最適化、最大可能tube、Euclidean／grid-uniform attraction、
+global basin、continuum limitを意味しない。Q007q／Q007rのpopulation positivity certificateは旧Q007p tubeに
+封印されたままで、新しいtubeへはまだ拡張していない。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -1024,6 +1056,7 @@ python -m research.q007o_external_complement_radius --output research/artifacts/
 python -m research.q007p_finite_tube_attraction --output research/artifacts/q007p_finite_tube_attraction.json
 python -m research.q007q_population_positivity --output research/artifacts/q007q_population_positivity.json
 python -m research.q007r_stagewise_positivity --output research/artifacts/q007r_stagewise_positivity.json
+python -m research.q007s_finite_tube_enlargement --output research/artifacts/q007s_finite_tube_enlargement.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -1070,6 +1103,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007p_finite_tube_attraction.json`](research/artifacts/q007p_finite_tube_attraction.json)
 - [`research/artifacts/q007q_population_positivity.json`](research/artifacts/q007q_population_positivity.json)
 - [`research/artifacts/q007r_stagewise_positivity.json`](research/artifacts/q007r_stagewise_positivity.json)
+- [`research/artifacts/q007s_finite_tube_enlargement.json`](research/artifacts/q007s_finite_tube_enlargement.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1130,13 +1164,15 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007p 全289 blockのexternal-coordinate norm、有限tubeのforward invariance／normal contraction／domination認証
 - Q007q Q007p tubeのexact Wiener bound、D2Q9 population／densityのfull-map時刻でのstrict positivity認証
 - Q007r exact equilibrium／BGK／streaming／convex-filter stageの全iterate strict positivity認証
+- Q007s 9×99 exact rational候補の全評価、base／normal両半径を拡大したregistered tubeの認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- より大きいtube、Euclidean／grid-uniform normal attraction、IEEE-754 stage-roundoff enclosure、global basin
+- Q007s tubeのpopulation／stagewise positivity、連続最適tube、Euclidean／grid-uniform normal attraction、
+  IEEE-754 stage-roundoff enclosure、global basin
 - external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
 
@@ -1149,5 +1185,7 @@ Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を
 \(r=10^{-19}\)、\(\zeta=10^{-20}\)の登録tubeをexternal-coordinate normで一様normal-attractingと認証した。
 Q007qでは同じtubeをfull-map時刻でstrict positive population cone内に含むことを認証した。
 Q007rではexact mapのequilibrium／collision／streaming／filter stageへ正値性を拡張した。
-Q007c1の有限振幅性能棄却、Q007dのEuclidean棄却、IEEE-754 stage-roundoff enclosure、
-より大きいtube、grid-uniform性へは主張を広げない。
+Q007sでは同じ解析的majorantを9×99有限格子へ適用し、\(r=9\times10^{-19}\)、
+\(\zeta=5\times10^{-12}\)のregistered tubeへ拡大した。Q007c1の有限振幅性能棄却、Q007dの
+Euclidean棄却、Q007s tubeのpositivity、IEEE-754 stage-roundoff enclosure、連続最適性、
+grid-uniform性へは主張を広げない。

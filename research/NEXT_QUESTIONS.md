@@ -4948,6 +4948,44 @@ strict normal dominationを主張する。
 意味しない。Q007q／Q007rのpositivity certificateは旧tubeだけに封印されたままで、新tubeへは自動拡張しない。
 Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却も変更しない。
 
+### Q007s 封印結果
+
+全6 validity gateと全5 hypothesis gateが通過した。
+
+- Q007p artifact／runner SHA、source／scope、全upstream／sealed gate、4 theorem flag: pass
+- Q007p majorant constant reuse、control candidateの12 field／8 strict margin exact replay: pass
+- registered base／normal／Cartesian candidate count: `9 / 99 / 891`
+- passing candidate count: `676`
+- canonical candidate digest:
+  `91fcc70355acfc4b7163c951227188960ef275408b06a678d45d5e4ec4c85300`
+- lexicographic selected base／normal radius:
+  `9e-19 / 5e-12`
+- Q007p controlからのbase／normal improvement factor:
+  `9 / 500000000`
+- selected tube-state Wiener upper \(x_*\): `1.44413385700551e-11`
+- selected base-image modal upper \(a_*\): `8.9950210818665e-19`
+- base forward-invariance margin \(r-a_*\): `4.97891813350137e-22`
+- normal contraction \(q_*\): `0.9817098620375503`
+- tangent conorm lower \(m_T\): `0.9837709569923394`
+- domination ratio \(\Gamma_*\): `0.9979049036362179`
+- domination-cap margin \(0.999-\Gamma_*\): `0.001095096363782186`
+- selected base sliceのfirst larger normal candidate:
+  `6e-12`、`base_forward_invariance`だけでfail
+- runner SHA-256:
+  `6c8633f7e99874ac3be7dd14d3caa253b0dc8c499bb2f6edbb392fa695975b1e`
+- artifact newline-normalized SHA-256:
+  `7b70fd20df8fb7db5e5460a08d3f86fe8b81a55b56864c860a2c24e9cab63292`
+
+従って
+`registered exact-manifold tube enlarged on the fixed rational candidate grid`
+として`accepted`とした。固定17²・固定保存量葉・Q007o exact graph-gauge manifold・Q007p
+external-coordinate normについて、辞書式selected tubeのforward invariance、一様one-step normal contraction、
+strict normal dominationが成立する。
+
+これは9×99有限格子上の辞書式最大であり、連続最適化、最大可能tube、Euclidean／grid-uniform attraction、
+global basin、continuum limitを意味しない。Q007q／Q007rのpopulation／stagewise positivity certificateは旧Q007p
+tubeだけに封印されたままで、新tubeへは自動拡張しない。次は新tubeのpositivityを別gateとして事前登録する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
