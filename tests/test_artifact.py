@@ -2078,3 +2078,55 @@ def test_q007y_artifact_records_the_distributed_repair_boundary() -> None:
     assert not cycle["theorem_consequence"][
         "all_iterate_repaired_mpfr85_q007s_tube_invariance"
     ]
+
+
+def test_q007z_artifact_records_the_selected_wave_certificate() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007z_selected_wave_repair.json"
+    runner_path = artifact_path.parents[1] / "q007z_selected_wave_repair.py"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007z_selected_wave_repair.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "selected-wave Fourier certificate for the sealed balanced "
+            "dyadic conservation repair"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": (
+            "fixed global mass and momentum leaf with exact diagonal "
+            "post-stage repair"
+        ),
+        "selected_wave_count": 8,
+        "repair_distribution": (
+            "sealed row-major balanced quotient-plus-prefix remainder"
+        ),
+        "claim": (
+            "conditional all-iterate Q007s tube re-entry and stage "
+            "positivity for already repaired MPFR-85 states"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert len(cycle["validity_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 7
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["phase_histogram_audit"][
+        "phase_histogram_case_count"
+    ] == 2312
+    assert cycle["selected_repair_bound"]["base_reentry_passed"]
+    assert cycle["selected_repair_bound"]["normal_reentry_passed"]
+    assert all(cycle["theorem_consequence"].values())

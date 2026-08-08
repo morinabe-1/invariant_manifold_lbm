@@ -1,10 +1,22 @@
 from __future__ import annotations
 
+import json
 from fractions import Fraction
+from pathlib import Path
 
 import pytest
 
 import research.q007z_selected_wave_repair as q007z
+
+
+@pytest.fixture(scope="module")
+def q007z_artifact() -> dict:
+    artifact_path = (
+        Path(q007z.__file__).resolve().parent
+        / "artifacts"
+        / "q007z_selected_wave_repair.json"
+    )
+    return json.loads(artifact_path.read_text(encoding="utf-8"))
 
 
 @pytest.mark.parametrize("wave", q007z.SELECTED_WAVES)
@@ -70,12 +82,14 @@ def test_q007z_exhaustive_prefix_certificate_is_exact_and_float_free() -> None:
     assert audit["passed"]
 
 
-def test_q007z_closes_the_conditional_repaired_backend_induction() -> None:
-    artifact = q007z.run_q007z_study()
-    cycle = artifact["cycle"]
+def test_q007z_closes_the_conditional_repaired_backend_induction(
+    q007z_artifact: dict,
+) -> None:
+    cycle = q007z_artifact["cycle"]
 
-    assert artifact["study_gate"] == "passed"
-    assert artifact["scientific_outcome"] == "accepted"
+    assert cycle == q007z.run_selected_wave_repair_audit()
+    assert q007z_artifact["study_gate"] == "passed"
+    assert q007z_artifact["scientific_outcome"] == "accepted"
     assert cycle["scientific_classification"] == (
         "selected-wave certificate closes the repaired MPFR-85 fixed-leaf "
         "tube induction"
