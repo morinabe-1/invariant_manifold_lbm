@@ -77,7 +77,10 @@ Q007c2では係数を変えず、別seedの64方向で振幅・horizon依存を�
 棄却は変更しない。Q008aでは固定した四次Fourier coefficientを自然なsparse-fiber baselineと
 4つのflat／D1Q3 TT-SVDへ同じ格納・忠実度規則で比較した。全忠実度gateは通過したが、最良TTでも
 格納実スカラー数は`11.2397`倍、serialized bytesは`10.8600`倍となったため、この4 tensorizationの
-圧縮仮説を棄却した。次は、未検証のwave／branch factorizationと3-bit wave QTTだけをQ008cで判定する。
+圧縮仮説を棄却した。Q008cではwave／branch factorizationと3-bit wave QTTの4候補も全忠実度gateを
+通過したが、最良候補でも自然なsparse-fiberの`14.1366`倍の格納実スカラー、`13.6592`倍の
+serialized bytesを要した。このため固定Q007c1係数に対するTT-SVD圧縮経路を閉じ、TT-crossへ進まない。
+次はQ007dで、Q007c2の有限shadow領域におけるprojected tangent／normal cocycleを監査する。
 stripe を含め、
 存在・一意性 gate を通るまでは非零波数の対象を
 **candidate spectral subspace / candidate chart** と呼ぶ。
@@ -700,11 +703,33 @@ Q007c1のdegree `2 / 3 / 4` local complex Fourier chart係数をordered dense or
 Q009 TT-crossはこの4候補について開始しない。Q008cでは、Q008aで未計算の`24=8 wave×3 branch`分解と
 wave indexの3-bit QTTだけを新しい事前登録候補として試す。
 
+### Q008c wave-branch / wave-QTT storage prequalification
+
+Q008aのflat-q-lastを完全一致controlとして再構築した上で、入力modeを`24=8 wave×3 branch`へ分ける
+tuple-major／factor-majorと、waveを3 bitへ分けるtuple-major／scale-interleaved QTTをdegree `2 / 3 / 4`
+で比較した。任意の24次元方向は分割軸上のrank-one vectorとは限らないため、各元座標に属する小軸を
+同じfeature tensorで結ぶ一般tensor-network contractionでTT作用を評価した。
+
+- classification: `registered wave-factorized TTs do not beat natural quartic sparse-fiber storage`
+- validity / hypothesis gates: `5 / 5`, `0 / 1` passed
+- maximum candidate mapping action error: `1.34278e-15`
+- maximum TT reconstruction / action error: `1.49155e-13 / 6.62433e-13`
+- degree-4 natural sparse-fiber: `315,900` stored real scalars / `2,615,734` NPZ bytes
+- degree-4 best wave-branch TT: `4,465,748` stored real scalars / `35,728,884` NPZ bytes
+- best TT/sparse scalar / byte ratio: `14.1366 / 13.6592`
+- degree-4 best wave-QTT: `8,121,540` stored real scalars / `64,977,332` NPZ bytes
+- diagnostic median action time sparse / best registered candidate: `0.573 / 22.349` ms per sample
+
+全12候補は再構成・作用・serializationを通過しているため、これは忠実度不良ではなく有効なstorage棄却で
+ある。明示的なwave構造もflat-q-lastより改善せず、QTTはさらに大きかった。この結論は登録した有限degree・
+grid・係数・4配置に限り、TT一般の不可能性は主張しない。次は圧縮候補を追加せず、未検証だった有限半径の
+normal-attraction診断へ戻る。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
 `q006g`、`q006h`、`q006i`、`q006j`、`q006k`、`q006l`、`q006m`、`q006o`、`q006p`、
-`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1`、`q007c2`、`q008a` は
+`q006q`、`q007a`、`q007b`、`q007b1`、`q007c`、`q007c1`、`q007c2`、`q008a`、`q008c` は
 登録条件を実行するため、CLI の `--omega` は baseline study にだけ適用される。
 
 ```powershell
@@ -736,6 +761,7 @@ python -m ttim_lbm --study q007c --output research/artifacts/q007c_quartic_prequ
 python -m ttim_lbm --study q007c1 --output research/artifacts/q007c1_quartic_continuation.json
 python -m ttim_lbm --study q007c2 --output research/artifacts/q007c2_quartic_shadow_radius.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
+python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
 
 保存済み結果:
@@ -765,6 +791,7 @@ python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_pr
 - [`research/artifacts/q007c1_quartic_continuation.json`](research/artifacts/q007c1_quartic_continuation.json)
 - [`research/artifacts/q007c2_quartic_shadow_radius.json`](research/artifacts/q007c2_quartic_shadow_radius.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
+- [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
 ## 文書
 
@@ -808,15 +835,16 @@ python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_pr
 - Q007c1 全17,550 quartic forcing／coefficient、独立4階微分・forcing、残差・shadow audit
 - Q007c2 独立64方向のquartic shadow amplitude／horizon localization、forward-error budget
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
+- Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q008c wave／branch factorizationと3-bit wave QTTの格納prequalification
+- Q007d finite-radius projected tangent／normal cocycle audit
 - TT-cross、境界条件、外力、D3Q27
 
-従って次のゲートはQ008cである。Q008aのflat-q-lastをupstream controlとして固定し、入力mode
-`i=3w+b`のtuple-major／factor-majorと、wave index \(w\in\{0,\ldots,7\}\) を3 bitへ分けた
-tuple-major／scale-interleaved QTTの4候補を比較する。degree 4でcore stored real scalarsと
-uncompressed serialized bytesの両方が自然なunordered sparse-fiberを下回らなければ、固定Q007c1
-係数に対するTT-SVD圧縮経路を終了し、TT-crossへ進まない。
+従って次のゲートはQ007dである。固定保存量葉上のquartic chartと解析的full-map Jacobianから、
+半径`0.004 / 0.01`の独立16方向について10-step projected tangent／normal cocycleを構成する。
+Q006hの線形spectral gapを有限半径で自動的にnormal attractionとみなさず、最大normal singular valueと
+最小tangent singular valueの比が全登録点で1未満かを直接判定する。これは有限sample・Euclidean
+projectorの数値診断であり、通過しても多様体の存在・一意性定理とは呼ばない。

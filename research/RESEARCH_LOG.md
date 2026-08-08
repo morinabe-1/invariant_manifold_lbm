@@ -2108,6 +2108,75 @@ flat／D1Q3出力配置の否定である。
 Q008c: wave／branch factorizationまたは3-bit wave QTTは、固定四次係数の忠実度を保ったまま、
 natural sparse-fiberよりstored real scalarsとserialized bytesの両方で小さくなるか。
 
+## Cycle Q008c: wave-branch / wave-QTT storage prequalification
+
+### 問い
+
+Q008aで未検証だった入力modeの`24=8 wave×3 branch`構造とwave indexの3-bit分解を明示すれば、
+固定degree `2 / 3 / 4`係数を忠実に保ちながら、四次natural sparse-fiberよりstored real scalarsと
+serialized bytesの両方で小さいTTが得られるか。
+
+### 仮説
+
+- Q008aの6入力hash、fiber count、flat-q-last ranks／格納量を完全一致で再現する。
+- 4 tensorizationのmapping action errorは`<=5e-14`である。
+- 12 TTのtensor reconstruction errorは`<=2e-13`、sparse action errorは`<=1e-11`である。
+- degree 4で少なくとも1候補が`<315900` core stored real scalarsかつ`<2615734` NPZ bytesを持つ。
+
+### 実験
+
+- `wave-branch-tuple-major / wave-branch-factor-major / wave-qtt-tuple-major /
+  wave-qtt-scale-interleaved`をdegree `2 / 3 / 4`で直接TT-SVDした。
+- mode indexは`i=3w+b`、wave bitは`w=4s2+2s1+s0`、C-orderと固定した。
+- 分割された入力軸へ任意の24次元方向を正しく作用させるため、同じ元座標に属する物理軸を一つの
+  feature tensorで結ぶ一般tensor-network contractionを用いた。
+- seed `20260829`の独立64方向でmapping／作用誤差、seed `20260830`の128方向で2 warm-up／7 blockの
+  診断timingを測った。
+
+### 結果
+
+全5 validity gateは通過したが、degree-4 storage gateを通る候補は0だった。従って
+`registered wave-factorized TTs do not beat natural quartic sparse-fiber storage`として
+有効な`rejected`とした。
+
+- maximum canonical dense-vs-sparse action error: `1.8460488990463964e-14`
+- maximum candidate mapping action error: `1.3427825001646324e-15`
+- maximum TT reconstruction error: `1.4915465734115449e-13`
+- maximum TT action error: `6.624328755394939e-13`
+- degree-4 natural sparse stored real scalars / NPZ bytes: `315900 / 2615734`
+- degree-4 wave-branch-tuple-major stored real scalars / NPZ bytes:
+  `4465748 / 35728884`
+- minimum TT/sparse scalar / byte ratio:
+  `14.136587527698639 / 13.659219171368342`
+- degree-4 wave-QTT-tuple-major stored real scalars / NPZ bytes:
+  `8121540 / 64977332`
+- degree-4 wave-branch-tuple-major ranks:
+  `[1,8,24,192,300,648,216,27,9,1]`
+- diagnostic sparse / fastest registered-candidate median action time:
+  `573325.78125 / 22348794.53125 ns per sample`
+
+### 分析
+
+mapping、再構成、作用、serializationは全候補で通過したため、棄却は実装忠実度の失敗ではない。
+最小のwave-branch TTでも自然なsparse-fiberの約14.14倍で、Q008a flat-q-lastの約11.24倍より悪化した。
+最小wave-QTTは約25.71倍、scale-interleaved QTTは約43.67倍であり、bit分解もrank低減へつながらなかった。
+
+timingは診断だけだが、最速登録候補もsparse-fiberの約38.98倍だった。従って固定Q007c1係数に対する
+TT-SVD圧縮経路を閉じ、Q009 TT-crossを開始しない。これは登録4配置の有限問題に対する結論であり、
+TT一般や別の基底・別の物理問題を否定するものではない。
+
+### 改善
+
+- 圧縮候補のpost-hoc追加を止め、自然なFourier sparse-fiberをこの係数族の採用表現とする。
+- Q006hの線形spectral gapとQ007c2の有限shadow領域の間に残る、非線形normal-attraction診断へ戻る。
+- full-map Jacobian、quartic chart tangent、fixed-leaf projector、normal cocycle adjointを独立に検証する。
+- 有限sampleのEuclidean projector結果と、存在・一意性のa posteriori theoremを混同しない。
+
+### 次の問い
+
+Q007d: Q007c2で局在化した半径`0.004 / 0.01`の10-step領域で、quartic candidate chartに沿う
+projected normal cocycleは、最弱tangent cocycleより一様に強く減衰するか。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2153,3 +2222,5 @@ natural sparse-fiberよりstored real scalarsとserialized bytesの両方で小�
 [`artifacts/q007c2_quartic_shadow_radius.json`](artifacts/q007c2_quartic_shadow_radius.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
+
+[`artifacts/q008c_wave_qtt_prequalification.json`](artifacts/q008c_wave_qtt_prequalification.json)

@@ -2458,7 +2458,130 @@ acceptedでも固定degree・grid・coefficientのlocal storage claimに限る�
 benefit、TT-cross、他shell／grid、漸近rank boundは未検証である。rejectedなら固定Q007c1係数に対する
 TT-SVD圧縮経路を終了し、Q009 TT-crossへ進まない。
 
-## Q009: TT-cross は residual peak を見つけられるか
+### 実行結果（2026-08-08）
+
+全5 validity gateは通過したが、degree-4 storage gateを通る候補は0だった。従って
+`registered wave-factorized TTs do not beat natural quartic sparse-fiber storage`として有効な
+`rejected`となった。
+
+- maximum canonical dense-vs-sparse / candidate mapping action error:
+  `1.8460488990463964e-14 / 1.3427825001646324e-15`
+- maximum TT reconstruction / sparse-action error:
+  `1.4915465734115449e-13 / 6.624328755394939e-13`
+- degree-4 natural sparse stored real scalars / NPZ bytes:
+  `315900 / 2615734`
+- degree-4 best wave-branch TT stored real scalars / NPZ bytes:
+  `4465748 / 35728884`
+- minimum TT/sparse scalar / byte ratio:
+  `14.136587527698639 / 13.659219171368342`
+- degree-4 best wave-QTT stored real scalars / NPZ bytes:
+  `8121540 / 64977332`
+- diagnostic sparse / fastest-candidate median action time:
+  `573325.78125 / 22348794.53125 ns per sample`
+
+全12候補がmapping、再構成、作用、serializationを通過しているため、これは表現サイズの有効な棄却で
+ある。固定Q007c1係数に対するTT-SVD圧縮経路を閉じ、Q009 TT-crossへ進まない。
+
+## Q007d: finite-radius projected tangent/normal cocycle — 事前登録
+
+### 問い
+
+Q006hで確認した平衡点の有限格子spectral gapは、Q007c2で局在化したquartic candidate chartの
+有限shadow領域でも、10-step projected normal cocycleが最弱tangent cocycleより強く減衰するという
+有限sampleのnormal-dominanceとして残るか。
+
+### 数学的対象と固定入力
+
+- Q007c1と同じfiltered periodic D2Q9 map、grid \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、
+  固定全質量・全運動量葉、24実座標quartic chart \(W_4\) とreduced map \(R_4\) を使う。
+- Q007c1のmode、quadratic、cubic、quartic chart／reduced coefficient hashを完全一致で再現する。
+- Q007c2が有限sampleで受理した二つのcellに合わせ、amplitude `0.004 / 0.01`、horizon `10`を使う。
+  `0.004`の100-step受理や`0.01`の100-step棄却は変更しない。
+- seed `20260831`の16 normalized real方向を使い、Q006iからQ008cまでの登録方向とのexact duplicateを
+  0とする。平衡点 \(a=0\) を別controlとして1点加え、合計33 starting pointとする。
+- 各starting pointから \(a_{n+1}=R_4(a_n)\) を10 step進め、各点で \(W_4(a_n)\)、
+  \(D W_4(a_n)\)、full-map Jacobian \(J_n=D\Phi(W_4(a_n))\) を解析的に評価する。
+
+### fixed-leaf tangent／normal projector
+
+global mass／momentum matrixを \(C\) とし、Euclidean fixed-leaf projectorを
+
+\[
+P_L=I-C^\top(CC^\top)^{-1}C
+\]
+
+と固定する。\(P_LD W_4(a)\) のthin QRから \(Q(a)\in\mathbb R^{2601\times24}\) を作り、
+
+\[
+P_N(a)=P_L-Q(a)Q(a)^\top
+\]
+
+を登録normal projectorとする。別の重み付きnorm、oblique projector、Riesz bundle、basis最適化を
+結果観測後に追加しない。
+
+各stepのtangent blockとrelative tangent leakageを
+
+\[
+B_n=Q(a_{n+1})^\top J_nQ(a_n),\qquad
+\ell_n=\frac{\|P_N(a_{n+1})J_nQ(a_n)\|_2}{\|J_nQ(a_n)\|_2}
+\]
+
+とする。10-step cocycleは
+
+\[
+T_{10}=B_9\cdots B_0,
+\]
+
+\[
+N_{10}=P_N(a_{10})J_9P_N(a_9)\cdots J_0P_N(a_0)
+\]
+
+であり、primary ratioを
+
+\[
+\gamma_{10}=\frac{\sigma_{\max}(N_{10})}{\sigma_{\min}(T_{10})}
+\]
+
+と固定する。one-step \(\gamma_1\) も保存するが判定は変えない。
+
+### 解析的微分と数値solverのvalidity
+
+- BGK equilibriumの任意state微分、collision、periodic streaming、checkerboard filterを合成した
+  matrix-free \(Jv\) と \(J^\top u\) を実装する。
+- 平衡点と各amplitudeの先頭4方向、合計9点で、seed `20260902`の8 tangent／8 leaf-normal方向を使う。
+  central-difference step `2e-5 / 1e-5 / 5e-6`のbest full-map derivative relative error
+  `<=2e-8`、quartic chart derivative error `<=2e-9`を要求する。
+- 同じ9点で4独立pairのadjoint inner-product relative error `<=5e-13`、全33軌道点でfixed-leaf
+  conservation derivative residual `<=5e-13`を要求する。
+- 全点で \(Q^\top Q-I\)、\(CQ\)、projector symmetry／idempotencyのrelative residualを
+  `<=1e-12`、chart tangent rankを24、minimum singular valueを`>=1e-8`とする。
+- seed `20260901`を起点とするmatrix-free two-sided Lanczos／SVDで\(\sigma_{\max}(N_{10})\)を求める。
+  singular-triplet relative residual `<=1e-8`、別の決定的startとのsingular value relative agreement
+  `<=1e-6`を要求する。
+- 全trajectoryでpopulationを正、\(\|a_n\|_2\le1.05\|a_0\|_2\)（平衡点を除く）、
+  \(\sigma_{\min}(T_{10})>=1e-8\)、全値をfinite、summaryをstrict JSONとする。
+- maximum tangent leakageは`<=1e-3`をvalidity条件とする。超過時はnormal ratioを性能棄却に使わず
+  `inconclusive`とする。
+
+### hypothesis gateと判定規則
+
+全validity通過後、次の3条件を別々に要求する。
+
+1. 平衡点controlで \(\gamma_{10}<1\)
+2. amplitude `0.004`の16方向すべてで \(\gamma_{10}<1\)
+3. amplitude `0.01`の16方向すべてで \(\gamma_{10}<1\)
+
+3条件が通れば`registered finite-sample projected normal-cocycle dominance observed`として`accepted`、
+一つでも落ちれば`registered finite-sample projected normal-cocycle dominance not observed`として有効な
+`rejected`とする。最大ratio、最小margin \(1-\gamma_{10}\)、方向別ratio、one-step診断をすべて保存する。
+
+acceptedでも、固定grid・2半径・16方向・10 step・Euclidean orthogonal projectorに限る。ball全体、
+他horizon、adapted norm、真のinvariant normal bundle、grid-uniform normal attraction、chartの存在・一意性を
+主張しない。acceptedならQ007eでdefectとderivative Lipschitz boundを用いるa posteriori boundを事前登録する。
+rejectedならEuclidean projector上の登録仮説だけを棄却し、Riesz／adapted bundleを試す場合は別gateで
+候補と閾値を観測前に固定する。
+
+## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
 
@@ -2467,6 +2590,8 @@ TT-cross chart は、dense/TT-SVD oracle と比較して independent \(L^\infty\
 
 cross points は validation に使わず、random、domain boundary、high-shear、
 adversarial residual search を分けて保存する。
+
+Q008cが登録TT-SVD候補を有効に棄却したため、固定Q007c1係数については開始しない。
 
 ## Q010: online benefit はあるか
 
