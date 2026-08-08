@@ -2500,6 +2500,40 @@ Taylor係数がこの一意な多様体の厳密jetであること、finite-ball
 limitも示していない。次は係数へ進む前に、登録数値固有ベクトルと定理の厳密selected subspaceのtangent bridgeを
 区間固有対で認証する。
 
+## 2026-08-08: Q007j rational Krawczyk selected-eigencoordinate bridge
+
+### 実装
+
+- Q006i、Q007h1、Q007iのfull-file SHAとpackage sourceを固定したまま、独立proof runnerのSHAを別記録した。
+- axis `(1,0)`、diagonal `(1,1)`の3 branchについてright／left各6、計12個のpivot-normalized complex
+  eigenpair systemを構成した。
+- exact rational Fourier rectangle、exact dyadic center／inverse candidate、component半径`1e-10`から
+  Krawczyk imageを`Fraction`だけで評価した。
+- right rootをQ007h1 negative representativeのselected Bauer--Fike discへ対応させ、C4 permutation／共役で
+  全24 modeへ輸送した。left rootはright rootとのoverlapを区間評価してexact biorthogonal normalizationを作った。
+
+### 結果
+
+全5 validity gateと全4 hypothesis gateが通過した。
+
+- representative／branch／system／transported mode: `2 / 6 / 12 / 24`
+- maximum Krawczyk utilization: `3.453560282251993e-5`
+- maximum point inverse defect／interval contraction:
+  `7.929821403096009e-15 / 7.431317256896775e-9`
+- Q007h1 representative proof digest mismatch: `0`
+- selected-disc unique assignment／collision: `6 / 0`
+- minimum overlap modulus lower: `0.9888476879367266`
+- maximum right／biorthogonal-left correction upper:
+  `1.153401559605646e-15 / 2.9617269241843315e-15`
+- conjugate label mismatch: `0`
+
+従って`registered selected eigencoordinates rigorously bridge to the theorem spectral subspace`として`accepted`とした。
+Q006i以降のmode label、right tangent direction、left extractor coordinateは、Q007iの定理で選ばれた厳密spectral
+subspaceの一意なsimple eigenpairsを表すと認証された。
+
+これはlinear coordinate同定だけである。Q006iの300 quadratic coefficient、Q007b／Q007c1の高次係数、explicit
+radius、finite-ball attractionはまだ認証していない。次はQ007kで二次forcing／homological solveだけを区間化する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2557,6 +2591,8 @@ limitも示していない。次は係数へ進む前に、登録数値固有ベ
 [`artifacts/q007h1_equivariant_spectrum.json`](artifacts/q007h1_equivariant_spectrum.json)
 
 [`artifacts/q007i_direct_nonresonance.json`](artifacts/q007i_direct_nonresonance.json)
+
+[`artifacts/q007j_eigencoordinate_bridge.json`](artifacts/q007j_eigencoordinate_bridge.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

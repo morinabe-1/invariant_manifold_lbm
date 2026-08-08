@@ -3359,6 +3359,29 @@ validity通過後、次を全て要求する。
 acceptedの場合だけ、次のQ007kで300 quadratic pairのforcing／homological solveを区間化し、Q006iの数値二次jetを
 定理多様体の厳密二次jetへ結び付ける。cubic／quarticとexplicit radiusはさらに別gateへ分ける。
 
+### Q007j 封印結果
+
+全5 validity gateと全4 hypothesis gateが通過した。
+
+- Q006i input／coefficient hash、Q007h1／Q007i input SHA reproduction: pass
+- representative／branch／right-left system／transported mode: `2 / 6 / 12 / 24`
+- maximum Krawczyk utilization: `3.453560282251993e-5`（登録上限`1e-3`）
+- maximum interval-Jacobian contraction: `7.431317256896775e-9`
+- Q007h1 selected-disc unique assignment／collision: `6 / 0`
+- minimum right／left overlap modulus lower: `0.9888476879367266`
+- maximum registered-center correction upper, right／biorthogonal-left:
+  `1.153401559605646e-15 / 2.9617269241843315e-15`
+- C4／conjugate label mismatch: `0`
+
+従って`registered selected eigencoordinates rigorously bridge to the theorem spectral subspace`として
+`accepted`とした。各代表固有対について、exact Fourier symbolを含むbox上で(K(X)\subset\operatorname{int}X)と
+contraction `<1`を同時に示したため、固定pivot正規化のsimple eigenpairがbox内に一意に存在する。6 rootは
+Q007h1の相異なるselected discへ一対一に入り、exact C4／共役輸送後もQ006iの全24 branch labelと対応する。
+
+これはlinear eigencoordinate bridgeだけである。Q007iの多様体存在・一意性を変更せず、Q006i／Q007b／Q007c1の
+quadratic／cubic／quartic係数、explicit neighborhood radius、finite-ball normal attraction、grid-uniform性は
+まだ認証しない。次は300 quadratic pairだけをQ007kで扱う。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
