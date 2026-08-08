@@ -1800,3 +1800,60 @@ def test_q007t_artifact_records_larger_tube_population_positivity() -> None:
     assert "Q007r stagewise positivity remains sealed" in cycle[
         "claim_boundary"
     ]
+
+
+def test_q007u_artifact_records_larger_tube_stagewise_positivity() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY / "q007u_larger_tube_stagewise_positivity.json"
+    )
+    runner_path = (
+        artifact_path.parents[1]
+        / "q007u_larger_tube_stagewise_positivity.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007u_larger_tube_stagewise_positivity.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "rational larger-tube exact stagewise-positivity certificate"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "base_modal_l1_radius": 9e-19,
+        "normal_coordinate_radius": 5e-12,
+        "stages": [
+            "equilibrium evaluation",
+            "BGK collision output",
+            "periodic streaming output",
+            "five-point filter output",
+        ],
+        "arithmetic_scope": (
+            "exact mathematical map; no IEEE-754 intermediate roundoff "
+            "enclosure"
+        ),
+        "claim": (
+            "strict D2Q9 population positivity at every exact internal "
+            "one-step stage on the fixed Q007s selected tube only"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert len(cycle["validity_gates"]) == 6
+    assert len(cycle["hypothesis_gates"]) == 5
+    assert len(cycle["theorem_consequence"]) == 5
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert all(cycle["theorem_consequence"].values())
+    assert cycle["q007s_tube_reuse"]["q007s_forward_invariance"]
+    assert "IEEE-754" in cycle["claim_boundary"]
