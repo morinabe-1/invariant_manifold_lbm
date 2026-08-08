@@ -2735,6 +2735,57 @@ stagewise positivity、entropy、monotonicity、maximum principleは認証して
 global basin、grid-uniform性、continuum limitも扱わず、Q007c1の有限振幅性能棄却とQ007dのEuclidean
 棄却も変更しない。次の課題は別gateとして事前登録する。
 
+## 2026-08-08: Q007r exact stagewise population positivity
+
+### 実装
+
+- Q007q artifact／runner SHA、package source、scope、全sealed gate、3 theorem flag、transitive Q007p inputを
+  固定し、Q007qのexact \(x_*\)、base／normal radius、Q007p forward-invariance flagを再利用した。
+- D2Q9 moment matrix \(M\)、rest-equilibrium tangent \(E\)、BGK collision linearization
+  \(C=(1-\omega)I+\omega EM\)を`Fraction`だけで構成し、登録rational collision symbolとentrywise
+  一致させた。
+- \(EM\)と\(C\)の全9 column absolute sumをexactに列挙し、induced \(\ell^1\) norm
+  \(13/6\)、\(19/6\)を得た。
+- D2Q9 weight sum、weighted absolute velocity quadratic、2 momentum-square componentを監査し、
+  equilibrium／collision nonlinear constant \(7\)、\(21/2\)を再構成した。
+- 17² periodic site mapを全9 populationで列挙して各streaming mapのbijectivityを確認し、basis replayも
+  行った。
+- five-point filterを\(99/100\)と4個の\(1/400\)からなるexact convex combinationとして再構成し、
+  全9 population basisとwrapped stage compositionを実装に対してreplayした。
+
+### 結果
+
+全6 validity gateと全5 hypothesis gateが通過した。
+
+- equilibrium projector／collision linear norm: `13/6 / 19/6`
+- equilibrium／collision nonlinear constant: `7 / 21/2`
+- equilibrium／collision nonlinear remainder upper:
+  `6.622072515589128e-37 / 9.933108773383692e-37`
+- equilibrium deviation upper \(e_*\):
+  `6.66407763755105e-19`
+- post-collision deviation upper \(c_*\):
+  `9.73980577795923e-19`
+- streaming periodic permutation replay: `9 / 9`
+- filter coefficient sum／minimum: `1 / 1/400`
+- filter basis／wrapped composition replay: pass
+- runner SHA-256:
+  `0f990cb4c046f9c7aedd4f68d6255ed014e1bdb694401505c5e4cc65ead028d6`
+- artifact newline-normalized SHA-256:
+  `f88710066712720552594e96aad24d8ca216fd8ffa2dc7eb2877a3287647ba67`
+
+従って
+`registered Q007p tube is population-positive at every exact BGK, streaming, and filter stage`
+として`accepted`とした。equilibrium evaluation、BGK collision output、periodic streaming output、
+five-point filter outputのpopulation lowerは全てexactに正である。Q007pのforward invarianceにより、
+同じstage boundを全iterateへ再適用できる。
+
+### 主張境界
+
+これはexact mathematical mapの各stage outputに対する結論であり、NumPy／IEEE-754の全中間加算・除算を
+roundoff intervalで囲った結果ではない。entropy、monotonicity、maximum principle、より大きいtube、
+global basin、grid-uniform性、continuum limitを扱わず、Q007c1の有限振幅性能棄却とQ007dのEuclidean
+棄却も変更しない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2808,6 +2859,8 @@ global basin、grid-uniform性、continuum limitも扱わず、Q007c1の有限�
 [`artifacts/q007p_finite_tube_attraction.json`](artifacts/q007p_finite_tube_attraction.json)
 
 [`artifacts/q007q_population_positivity.json`](artifacts/q007q_population_positivity.json)
+
+[`artifacts/q007r_stagewise_positivity.json`](artifacts/q007r_stagewise_positivity.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

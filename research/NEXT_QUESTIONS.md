@@ -4781,6 +4781,51 @@ strict positiveであると主張する。
 maximum principle、より大きいtube、global basin、grid-uniform性、continuum limitも認証しない。
 Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却も変更しない。
 
+### Q007r 封印結果
+
+判定は`accepted`である。
+
+- Q007q artifact／runner SHA、source／scope／全sealed gate／3 theorem flag／transitive Q007p input: pass
+- equilibrium projector／collision linear induced \(\ell^1\) norm:
+  `13/6 / 19/6`
+- exact projector／collision column-sum pattern:
+  `[1,(5/3)*4,(13/6)*4] / [1,2*4,(19/6)*4]`
+- D2Q9 weight sum／weighted absolute velocity quadratic:
+  `1 / 8/9`
+- equilibrium／collision nonlinear majorant constant:
+  `7 / 21/2`
+- density denominator lower: exact \(1-x_*>0\)
+- equilibrium nonlinear remainder upper:
+  `6.622072515589128e-37`
+- collision nonlinear remainder upper:
+  `9.933108773383692e-37`
+- equilibrium deviation upper \(e_*\):
+  `6.66407763755105e-19`
+- post-collision deviation upper \(c_*\):
+  `9.73980577795923e-19`
+- equilibrium／collision／streaming／filter population lower:
+  exact \(1/36-e_*>0\)、\(1/36-c_*>0\)、\(1/36-c_*>0\)、\(1/36-c_*>0\)
+- streaming permutation replay: `9 / 9`
+- filter coefficient: \(99/100\)と4個の\(1/400\)、sum `1`、全nonnegative
+- filter basis replay／wrapped composition replay: pass
+- validity／hypothesis gate: `6 / 6`、`5 / 5` passed
+- runner SHA-256:
+  `0f990cb4c046f9c7aedd4f68d6255ed014e1bdb694401505c5e4cc65ead028d6`
+- artifact newline-normalized SHA-256:
+  `f88710066712720552594e96aad24d8ca216fd8ffa2dc7eb2877a3287647ba67`
+
+従って固定17²・固定保存量葉・登録Q007p tubeの全real stateについて、exact equilibrium evaluation、
+BGK collision後、periodic streaming後、five-point filter後の全9 populationはstrict positiveである。
+Q007pのforward invarianceにより、この結論は初回だけでなく全one-step iterateへ適用される。
+
+\(e_*,c_*\)は機械精度より小さいため、保存artifactのpopulation lowerは浮動小数表示では全て
+`0.027777777777777776`へ丸められる。判定は16進分子・分母から復元したexact rational差で行い、
+各formula、operator norm、convex coefficientを独立テストで再構成した。
+
+これはexact mathematical mapに対する結果であり、NumPy／IEEE-754の全中間加算・除算を外向き区間で
+囲ってはいない。entropy、monotonicity、maximum principle、より大きいtube、global basin、
+grid-uniform性、continuum limitも認証せず、Q007c1とQ007dの既存棄却も変更しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
