@@ -165,7 +165,8 @@ equilibrium evaluation、BGK collision、periodic streaming、five-point filter�
 entropy、maximum principleは示さない。Q007sではQ007pと同じmajorantを9×99のexact rational候補へ
 適用し、\(r=9\times10^{-19}\)、\(\zeta=5\times10^{-12}\)のregistered tubeを認証した。ただし
 Q007s単独ではQ007q／Q007rのpositivityを新tubeへ拡張しない。Q007tでfull-map入力／出力時刻の
-population／density positivityは別途認証したが、stagewise positivityは旧tubeだけに封印されている。
+population／density positivityを別途認証し、Q007uで同じ拡大tubeのexact equilibrium／collision／
+streaming／filter各段階にもstrict positivityを拡張した。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1027,6 +1028,34 @@ Q007sのforward invarianceにより、同じlower boundはfull one-step mapの�
 periodic streaming、filter outputのstagewise positivityをまだ認証しない。Q007rのstagewise
 certificateは旧Q007p tubeに封印されたままであり、次の独立gateで扱う。
 
+### Q007u larger-tube exact stagewise population positivity
+
+Q007tのexact \(x_*=1.44413385700551\times10^{-11}\)とQ007s forward invarianceを固定し、
+D2Q9 moment map、rest-equilibrium tangent、BGK collision linearization、非線形convolution
+majorant、streaming permutation、five-point convex filterをexact arithmeticから再構成した。
+
+- classification:
+  `registered Q007s larger tube is population-positive at every exact BGK, streaming, and filter stage`
+- validity / hypothesis gates: `6 / 6`, `5 / 5` passed
+- equilibrium／collision induced \(\ell^1\) norm: `13/6 / 19/6`
+- equilibrium／collision nonlinear constant: `7 / 21/2`
+- equilibrium deviation upper／population lower:
+  `3.12895669032459e-11 / 0.02777777774648821`
+- collision deviation upper／population lower:
+  `4.5730905474030926e-11 / 0.02777777773204687`
+- streaming／filter population lower:
+  `0.02777777773204687 / 0.02777777773204687`
+- runner SHA-256:
+  `56fc99f1f381e97e70710c7da0cee8d1262d0c10190cf617316f822d1eb29014`
+- artifact newline-normalized SHA-256:
+  `b568fc304fd939121dd52543f316cb571ae6f4be4f4f664c68fe1c749b566c55`
+
+従って固定17²・固定保存量葉・Q007s selected tube内の全real stateについて、exact mathematical
+mapのequilibrium evaluation、BGK collision output、periodic streaming output、five-point filter
+outputで全9 populationがstrict positiveであり、同じboundを全iterateへ再適用できる。これは全ての
+NumPy／IEEE-754中間演算のroundoff enclosure、entropy、monotonicity、maximum principle、連続最適tube、
+global basin、grid-uniform性、continuum limitを認証しない。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -1080,6 +1109,7 @@ python -m research.q007q_population_positivity --output research/artifacts/q007q
 python -m research.q007r_stagewise_positivity --output research/artifacts/q007r_stagewise_positivity.json
 python -m research.q007s_finite_tube_enlargement --output research/artifacts/q007s_finite_tube_enlargement.json
 python -m research.q007t_larger_tube_population_positivity --output research/artifacts/q007t_larger_tube_population_positivity.json
+python -m research.q007u_larger_tube_stagewise_positivity --output research/artifacts/q007u_larger_tube_stagewise_positivity.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -1128,6 +1158,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007r_stagewise_positivity.json`](research/artifacts/q007r_stagewise_positivity.json)
 - [`research/artifacts/q007s_finite_tube_enlargement.json`](research/artifacts/q007s_finite_tube_enlargement.json)
 - [`research/artifacts/q007t_larger_tube_population_positivity.json`](research/artifacts/q007t_larger_tube_population_positivity.json)
+- [`research/artifacts/q007u_larger_tube_stagewise_positivity.json`](research/artifacts/q007u_larger_tube_stagewise_positivity.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1190,14 +1221,15 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007r exact equilibrium／BGK／streaming／convex-filter stageの全iterate strict positivity認証
 - Q007s 9×99 exact rational候補の全評価、base／normal両半径を拡大したregistered tubeの認証
 - Q007t Q007s tubeのexact Wiener bound、full-map時刻でのpopulation／density strict positivity認証
+- Q007u Q007s tubeのexact equilibrium／BGK／streaming／convex-filter stageでの全iterate strict positivity認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- Q007s tubeのstagewise positivity、連続最適tube、Euclidean／grid-uniform normal attraction、
-  IEEE-754 stage-roundoff enclosure、global basin
+- Q007s tubeの連続最適化、Euclidean／grid-uniform normal attraction、IEEE-754 stage-roundoff
+  enclosure、global basin
 - external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
 
@@ -1211,7 +1243,7 @@ Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を
 Q007qでは同じtubeをfull-map時刻でstrict positive population cone内に含むことを認証した。
 Q007rではexact mapのequilibrium／collision／streaming／filter stageへ正値性を拡張した。
 Q007sでは同じ解析的majorantを9×99有限格子へ適用し、\(r=9\times10^{-19}\)、
-\(\zeta=5\times10^{-12}\)のregistered tubeへ拡大した。Q007c1の有限振幅性能棄却、Q007dの
-Euclidean棄却を変更しない。Q007tではQ007s tubeをfull-map時刻でstrict positive population cone内に
-含むことを認証したが、stagewise positivity、IEEE-754 stage-roundoff enclosure、連続最適性、
-grid-uniform性へは主張を広げない。
+\(\zeta=5\times10^{-12}\)のregistered tubeへ拡大した。Q007tではそのtubeをfull-map時刻でstrict
+positive population cone内に含むことを認証し、Q007uではexact equilibrium／collision／streaming／
+filter各段階へ同じ結論を拡張した。Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却を変更せず、
+IEEE-754 stage-roundoff enclosure、連続最適性、grid-uniform性へは主張を広げない。

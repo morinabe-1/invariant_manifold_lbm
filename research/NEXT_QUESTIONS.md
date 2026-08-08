@@ -5219,6 +5219,43 @@ mapのequilibrium evaluation、BGK collision output、periodic streaming output�
 monotonicity、maximum principle、連続最適tube、global basin、grid-uniform性、continuum limit、
 Q007c1の有限振幅性能、Q007dのEuclidean判定も変更・認証しない。
 
+### Q007u 封印結果
+
+全6 validity gateと全5 hypothesis gateが通過した。
+
+- Q007t artifact／runner SHA、source／scope、全5 validity gate、全3 hypothesis gate、
+  3 theorem flag、transitive Q007s input／tube reuse: pass
+- exact equilibrium projector／collision induced \(\ell^1\) norm:
+  `13/6 / 19/6`
+- exact equilibrium／collision nonlinear constant:
+  `7 / 21/2`
+- selected base／normal radius:
+  `9e-19 / 5e-12`
+- input state Wiener upper \(x_*\):
+  `1.44413385700551e-11`
+- equilibrium deviation upper／population lower:
+  `3.12895669032459e-11 / 0.02777777774648821`
+- post-collision deviation upper／population lower:
+  `4.5730905474030926e-11 / 0.02777777773204687`
+- post-streaming／post-filter population lower:
+  `0.02777777773204687 / 0.02777777773204687`
+- periodic streaming bijections／filter coefficients／wrapped composition: pass
+- runner SHA-256:
+  `56fc99f1f381e97e70710c7da0cee8d1262d0c10190cf617316f822d1eb29014`
+- artifact newline-normalized SHA-256:
+  `b568fc304fd939121dd52543f316cb571ae6f4be4f4f664c68fe1c749b566c55`
+
+従って
+`registered Q007s larger tube is population-positive at every exact BGK, streaming, and filter stage`
+として`accepted`とした。固定17²・固定保存量葉・Q007s selected tube内の全real stateについて、
+exact equilibrium evaluation、BGK collision output、periodic streaming output、five-point filter outputで
+全9 populationがstrict positiveである。Q007s forward invarianceにより同じ4 stage boundを全iterateへ
+帰納的に再適用できる。
+
+これはexact mathematical mapの結論であり、NumPy／IEEE-754の全中間演算を外向きroundoff intervalで
+囲っていない。entropy、monotonicity、maximum principle、連続最適tube、global basin、grid-uniform性、
+continuum limit、Q007c1／Q007dの既存判定も変更しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

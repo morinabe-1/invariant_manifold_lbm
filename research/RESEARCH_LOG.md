@@ -2887,6 +2887,58 @@ stagewise positivityは認証しない。Q007rのstagewise certificateは旧Q007
 entropy、monotonicity、maximum principle、IEEE-754 roundoff enclosure、連続最適tube、global basin、
 grid-uniform性、continuum limitを扱わず、Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却も変更しない。
 
+## 2026-08-08: Q007u larger-tube exact stagewise population positivity
+
+### 実装
+
+- Q007t artifact／runner SHA、source／scope、全5 validity gate、全3 hypothesis gate、3 theorem flag、
+  transitive Q007s input／tube reuseを固定した。
+- Q007tのexact state upper \(x_*\)、population lower、base／normal radius、Q007s selected candidateの
+  全6 gate、forward-invariance flagをexactに再利用した。
+- D2Q9 moment map \(M\)、rest-equilibrium tangent \(E\)、equilibrium projector \(EM\)、BGK
+  collision linearization \(C=(1-\omega)I+\omega EM\)を`Fraction`で再構成し、全column sumと
+  rational collision mapを照合した。
+- D2Q9 weight sum、weighted absolute velocity quadratic、cyclic Fourier convolutionから、
+  equilibrium／collision nonlinear majorant constant \(7,21/2\)を再導出した。
+- 全9 populationの17² periodic streaming bijection、filter係数 \(99/100\)と4個の\(1/400\)、
+  wrapped stage compositionを実装basis replayで照合した。
+
+### 結果
+
+全6 validity gateと全5 hypothesis gateが通過した。
+
+- Q007t input／transitive Q007s selected tube reuse: pass
+- equilibrium projector／collision induced \(\ell^1\) norm:
+  `13/6 / 19/6`
+- equilibrium／collision nonlinear constant:
+  `7 / 21/2`
+- selected base／normal radius:
+  `9e-19 / 5e-12`
+- input state Wiener upper \(x_*\):
+  `1.44413385700551e-11`
+- equilibrium deviation upper／population lower:
+  `3.12895669032459e-11 / 0.02777777774648821`
+- post-collision deviation upper／population lower:
+  `4.5730905474030926e-11 / 0.02777777773204687`
+- post-streaming／post-filter population lower:
+  `0.02777777773204687 / 0.02777777773204687`
+- runner SHA-256:
+  `56fc99f1f381e97e70710c7da0cee8d1262d0c10190cf617316f822d1eb29014`
+- artifact newline-normalized SHA-256:
+  `b568fc304fd939121dd52543f316cb571ae6f4be4f4f664c68fe1c749b566c55`
+
+従って
+`registered Q007s larger tube is population-positive at every exact BGK, streaming, and filter stage`
+として`accepted`とした。Q007s selected tube内の全real stateについて、exact equilibrium
+evaluation、BGK collision output、periodic streaming output、five-point filter outputで全9 populationが
+strict positiveである。Q007sのforward invarianceにより同じstage boundを全iterateへ帰納的に適用できる。
+
+### 主張境界
+
+これはexact mathematical mapに対する結果であり、NumPy／IEEE-754の全中間加算・除算を外向きroundoff
+intervalで囲っていない。entropy、monotonicity、maximum principle、連続最適tube、global basin、
+grid-uniform性、continuum limitを扱わず、Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却も変更しない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -2966,6 +3018,8 @@ grid-uniform性、continuum limitを扱わず、Q007c1の有限振幅性能棄�
 [`artifacts/q007s_finite_tube_enlargement.json`](artifacts/q007s_finite_tube_enlargement.json)
 
 [`artifacts/q007t_larger_tube_population_positivity.json`](artifacts/q007t_larger_tube_population_positivity.json)
+
+[`artifacts/q007u_larger_tube_stagewise_positivity.json`](artifacts/q007u_larger_tube_stagewise_positivity.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
