@@ -4324,6 +4324,178 @@ Q007c1の有限振幅性能棄却、finite-ball normal attraction、forward inva
 continuum limitは変更・認証しない。次はこの半径を固定入力としてfinite-ball normal attractionだけを
 独立gateで扱う。
 
+## Q007p: exact manifold の finite-tube normal attraction — 事前登録
+
+### 問い
+
+Q007oで存在を認証したexact fixed-leaf manifoldをgraph gaugeで固定し、その周囲の有限tube全体で
+one-step fiber contractionとtangentに対するnormal dominationを同時に厳密化できるか。
+
+### 固定入力
+
+- `q007h1_equivariant_spectrum.json` SHA-256:
+  `caee8fe382c0282e11e8139b8f434a944013f630288adf2e99223d0123c91af4`
+- `q007n_explicit_local_radius.json` SHA-256:
+  `7fe09089744e41229e71666540e4885d560a4c27a2e8bc95a94d5959af0fbc36`
+- `q007o_external_complement_radius.json` SHA-256:
+  `36a350b27658ce0699727640d65c48cf0700f999ca1881b07d45825d086158fd`
+- Q007n／Q007o runner SHA-256:
+  `6eefae3386e5c49f151b1cd4537eb84fbb92858578fe4fce7768e50ad43c5dc9` /
+  `d34afda382784610ea2b8997e6c44376188b02c42668ade8e2d53ff9bc9afea7`
+- map／葉: 固定17² filtered periodic D2Q9、\(\omega=3/2\)、\(\eta=1/100\)、
+  \(\delta M=\delta P_x=\delta P_y=0\)。
+- Q007oのanalytic chart domain \(\rho=10^{-18}\)と、そのselected boundary certificateの
+  correction pair radius \(\tau\)を変更しない。
+- finite tubeのbase modal radiusを
+  \(r=10^{-19}\)、normal-coordinate radiusを\(\zeta=10^{-20}\)に固定する。
+  結果を見てこれらを変更しない。
+
+### graph-gauge tube
+
+Q007j--Q007oが同定したexact selected analysisを\(\mathcal L\)、exact manifoldを
+
+\[
+W(a)=Va+H(a),\qquad \mathcal L W(a)=a,\qquad \mathcal L H(a)=0
+\]
+
+とする。固定external spectral complementを\(X_n=\ker\mathcal L\)とし、
+
+\[
+\mathcal T_{r,\zeta}
+=\{\,x=W(a)+z:\|a\|_1\le r,\ z\in X_n,\ \|z\|_*\le\zeta\,\}
+\]
+
+を判定対象とする。real stateではFourier共役制約を課し、zero waveは保存3成分を除いたkinetic 6次元だけを
+含める。
+
+### 固定external-coordinate norm
+
+各Fourier blockのnormal coordinateを次で固定し、global \(\|\cdot\|_*\)はblock normの和とする。
+
+1. \(k=0\): fixed-leaf kinetic population vectorのphysical complex \(\ell^1\) norm。
+2. 8 selected wave: Q007oの\(U_k=Q_kE_k\)、\(C_k=J_kU_k\)を使い、
+   \(z_k=U_kc_k\)、\(\|z_k\|_*=\|c_k\|_1\)。
+3. その他280 nonzero wave: Q007h1のC4 representativeで得たfull
+   \(E_k\in\mathbb C^{9\times9}\)をexact transportし、
+   \(z_k=E_kc_k\)、\(\|z_k\|_*=\|c_k\|_1\)。
+
+nonselected 70 C4 representativeではQ007h1と同じ`numpy.linalg.eig` center、returned column order、
+inverse candidateを用いる。rational symbol boxに対し
+
+\[
+\epsilon_k=\|I-K_kE_k\|_1,\quad
+\kappa_k=\frac{\|K_k\|_1}{1-\epsilon_k},\quad
+\gamma_k=\kappa_k\|A_kE_k-E_kD_k\|_1
+\]
+
+を`Fraction`で評価し、
+
+\[
+q_{0,k}=\max_j|d_{k,j}|+\gamma_k
+\]
+
+とする。selected 2代表はQ007oのcoordinate inverse／projected residualを再利用し、
+同じ式の6次元external \(q_{0,k}\)を作る。zero blockは\(q_{0,0}=1/2\)とする。C4
+population permutation／complex conjugationは\(\ell^1\) normを保つので代表upperをorbit全体へ用いる。
+
+global conversion constantを
+
+\[
+K_s=\sup_{z\ne0}\frac{\|z\|_{\mathrm W}}{\|z\|_*},\qquad
+K_a=\sup_{y\ne0}\frac{\|Qy\|_*}{\|y\|_{\mathrm W}},\qquad
+K_L=\|\mathcal L\|_{\mathrm W\to\ell^1}
+\]
+
+とする。ここで\(\|\cdot\|_{\mathrm W}\)はQ007nのFourier-population Wiener \(\ell^1\) normである。
+各定数はblockwise synthesis／certified inverse／selected-left boxの最大から構成する。
+
+### nonlinear tube majorant
+
+Q007nのworking \(c_V,h_2,h_3,h_4,g_2,g_3,g_4\)、Q007oの\(\rho,\tau\)をbitwiseに再利用する。
+
+\[
+\begin{aligned}
+w(s)&=c_Vs+\sum_{j=2}^4h_js^j+\tau,\\
+r_R(s)&=\rho_s s+\sum_{j=2}^4g_js^j+\tau/c_V,\\
+d_H(s)&=\sum_{j=2}^4j h_js^{j-1}+\frac{\tau}{\rho-s},\\
+d_G(s)&=\sum_{j=2}^4j g_js^{j-1}
+       +\frac{\tau}{c_V(\rho-s)},\\
+d_N(x)&=\frac{21}{2}\frac{x(2-x)}{(1-x)^2}.
+\end{aligned}
+\]
+
+\(d_H,d_G\)の最後の項はfull \(\rho\)-ball上のanalytic correctionに対するCauchy boundである。
+次をexact rationalで順に計算する。
+
+\[
+\begin{aligned}
+x_*&=w(r)+K_s\zeta,\\
+a_*&=r_R(r)+K_Ld_N(x_*)K_s\zeta,\\
+q_*&=q_0+K_aK_sd_N(x_*)\bigl(1+K_Ld_H(a_*)\bigr),\\
+m_T&=\underline\mu_s-d_G(r),\\
+\Gamma_*&=q_*/m_T.
+\end{aligned}
+\]
+
+ここで\(q_0=\max_kq_{0,k}\)、\(\underline\mu_s\)はQ007h1 selected minimum-modulus lowerである。
+linear external vectorには\(\mathcal L A_0z=0\)がexactに成り立つため、off-manifold base driftには
+nonlinear derivativeだけが入る。
+
+fiber mapを
+
+\[
+a_+=\mathcal L\Phi(W(a)+z),\qquad
+z_+=\Phi(W(a)+z)-W(a_+)
+\]
+
+とすると、そのfiber derivativeは
+
+\[
+\bigl(Q-DH(a_+)\mathcal L\bigr)D\Phi(W(a)+z)|_{X_n}
+\]
+
+である。上の\(q_*\)はこのoperatorの\(\|\cdot\|_*\) upperであり、segment積分から
+\(\|z_+\|_*\le q_*\|z\|_*\)を与える。
+
+### validity gate
+
+1. 3 artifact SHA、2 runner SHA、source／scope、全upstream validity／hypothesis gateが一致する。
+2. nonselected 70 representativeのQ007h1 proof digestが全一致し、C4 orbit count
+   `70*4 + 2*4 + 1 = 289`を再現する。
+3. 全70 full coordinateで\(\epsilon_k<10^{-8}\)、selected 2 coordinateでQ007o certificateを再現する。
+4. \(K_s\le4\)、\(K_a\le40\)、\(K_L\le2\)で、全boundがfinite positive rationalである。
+5. Q007n coefficient majorant、Q007o \(\rho,\tau\)、D2Q9 \(21/2\) derivative majorantをexactに再利用する。
+6. fixed-leaf zero block、\(\mathcal L A_0Q=0\)、C4 norm invarianceの構造auditとstrict JSONを通す。
+
+一つでも落ちれば`inconclusive`とし、normal-attraction値を解釈しない。
+
+### hypothesis gate
+
+validity通過時だけ次を判定する。
+
+1. density／analytic domain: \(x_*<1\)、\(a_*<r<\rho\)。
+2. base forward invariance: \(a_*<r\)がstrictである。
+3. normal fiber contraction: \(q_*<0.99<1\)、従って\(q_*\zeta<\zeta\)。
+4. tangent invertibility／normal domination:
+   \(m_T>0\)、\(\Gamma_*=q_*/m_T<0.999<1\)。
+
+全て通れば
+`registered fixed-leaf tube is uniformly normally attracting in the external-coordinate norm`
+として`accepted`とする。一つでも落ちれば
+`registered finite tube did not certify uniform normal attraction`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedなら、固定17²・固定保存量葉のexact theorem manifoldについて、
+\(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)の明示tubeがforward invariantで、
+normal fiberがone-stepで一様収縮し、tangentよりstrictに速く収縮すると主張する。
+これはQ007fのsampled 10-step observationではなくfull registered tubeの解析boundである。
+
+ただし\(\|\cdot\|_*\)は固定Fourier external-coordinate normであり、Euclidean normではない。
+Q007dのEuclidean棄却、Q007c1の有限振幅性能棄却、population positivity、より大きいtube、
+global basin、grid-uniform性、continuum limitは変更・認証しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
