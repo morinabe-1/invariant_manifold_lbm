@@ -1526,3 +1526,51 @@ def test_q007n_artifact_records_the_explicit_local_radius() -> None:
         "explicit_modal_l1_radius_certified"
     ]
     assert "deliberately coarse" in cycle["claim_boundary"]
+
+
+def test_q007o_artifact_records_the_external_complement_refinement() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007o_external_complement_radius.json"
+    runner_path = (
+        artifact_path.parents[1]
+        / "q007o_external_complement_radius.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007o_external_complement_radius.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "rational exact-external-complement explicit-radius refinement"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "selected_real_dimension": 24,
+        "selected_complex_dimension": 24,
+        "claim": (
+            "sharper explicit analytic existence radius only; no finite-ball "
+            "normal-attraction, forward-invariance, positivity, grid-uniform, "
+            "or continuum claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    search = cycle["radius_comparison"]["refined_radius_search"]
+    assert search["candidate_count"] == 119
+    assert search["passing_candidate_count"] == 103
+    assert search["selected_candidate"]["candidate_exponent"] == 18
+    assert cycle["theorem_consequence"][
+        "refined_explicit_modal_l1_radius_certified"
+    ]
+    assert "individual external eigenvectors" in cycle["claim_boundary"]
