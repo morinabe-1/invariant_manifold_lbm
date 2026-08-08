@@ -1857,3 +1857,63 @@ def test_q007u_artifact_records_larger_tube_stagewise_positivity() -> None:
     assert all(cycle["theorem_consequence"].values())
     assert cycle["q007s_tube_reuse"]["q007s_forward_invariance"]
     assert "IEEE-754" in cycle["claim_boundary"]
+
+
+def test_q007v_artifact_records_binary64_partial_certificate() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY / "q007v_binary64_stage_enclosure.json"
+    )
+    runner_path = (
+        artifact_path.parents[1] / "q007v_binary64_stage_enclosure.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007v_binary64_stage_enclosure.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "not_certified"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "rational binary64 stage-roundoff enclosure and tube-reentry audit"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": "fixed global mass and momentum leaf",
+        "base_modal_l1_radius": 9e-19,
+        "normal_coordinate_radius": 5e-12,
+        "input_encoding": (
+            "correctly rounded binary64 encoding of an exact real Q007s tube state"
+        ),
+        "rounding_model": (
+            "IEEE-754 binary64 round-to-nearest ties-to-even with u=2^-53 "
+            "and absolute subnormal fallback h=2^-1075"
+        ),
+        "claim": (
+            "separate one-step internal-stage positivity and robust-tube "
+            "re-entry decisions for the registered implementation only"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["one_step_outcome"] == "accepted"
+    assert cycle["robust_reentry_outcome"] == "not_certified"
+    assert cycle["hypothesis_outcome"] == "not_certified"
+    assert len(cycle["validity_gates"]) == 7
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 6
+    assert sum(
+        not gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    ) == 1
+    assert not cycle["roundoff_reentry_audit"]["passed"]
+    assert cycle["theorem_consequence"][
+        "one_step_binary64_stagewise_population_strictly_positive"
+    ]
+    assert not cycle["theorem_consequence"][
+        "all_iterate_roundoff_robust_q007s_tube_invariance"
+    ]
