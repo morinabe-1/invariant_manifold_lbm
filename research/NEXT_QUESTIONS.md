@@ -6461,6 +6461,202 @@ Q007s tubeへ入り、その後のQ007z all-iterate inductionへ接続できる�
 trajectory accuracyはまだ示していない。次はrepaired MPFR-85 mapとexact mapのmulti-step shadowingを、
 本tube-invariance定理を変更せず別gateとして事前登録する。
 
+## Q007ab: fixed-coordinate all-iterate forward shadowing — 事前登録
+
+### 問い
+
+Q007aaのexact initial state \(x_0\)と、そのcomponentwise MPFR-85 encoding／repair
+\(\tilde x_0\)から出発する二つの軌道を考える。Q007s tube全体でexact mapが固定線形
+eigencoordinate normに関してstrict contractionであることを認証し、Q007zの一段local defectを
+幾何級数で蓄積すれば、sampling timeにおけるsame-initial-state forward errorを全iterateで
+一様に抑えられるか。
+
+### 封印する入力
+
+- Q007s artifact newline-normalized SHA-256:
+  `7b70fd20df8fb7db5e5460a08d3f86fe8b81a55b56864c860a2c24e9cab63292`
+- Q007s runner SHA-256:
+  `6c8633f7e99874ac3be7dd14d3caa253b0dc8c499bb2f6edbb392fa695975b1e`
+- Q007z artifact newline-normalized SHA-256:
+  `b1ca382a76e874c18b804c7614ff8ad1ded3a5d0b9dda583facf6641b24f0c53`
+- Q007z runner SHA-256:
+  `0e2b3aebdc30d6a441178e3ac05fe417ab66673885a52ac9da801bd787dd8f79`
+- Q007aa artifact newline-normalized SHA-256:
+  `cf6a0566b91e9b034d2c93290302182fe8b4a0bf0f7e7bbbbb232f3d4a12ee64`
+- Q007aa runner SHA-256:
+  `a7a6334fdb157ec317f65fca2475bf3b03775af88ea6d68eec2c02c5ba74188e`
+- grid／map／leaf／backend:
+  \(17^2\)、\(\omega=1.5\)、\(\eta=0.01\)、
+  \(M=289,\ P_x=P_y=0\)、85-bit MPFR、Q007y row-major balanced repair
+
+Q007aaのinitialization interiorとQ007s／Q007zのtube inductionを変更しない。
+
+### fixed linear coordinate norm
+
+Q007p／Q007sが封印したselected analysis \(L\)、external analysis \(JQ\)を使い、
+固定線形座標
+
+\[
+\mathcal Cx=(Lx,JQx),\qquad
+\|\mathcal Cx\|_\oplus=\|Lx\|_1+\|JQx\|_*
+\]
+
+を定義する。これはgraph-relative normal coordinateではなく、平衡点で固定したlinear
+eigencoordinateである。selected synthesis upperを\(c_V\)、external synthesis upperを\(K_s\)とし、
+
+\[
+K_{\rm syn}=\max(c_V,K_s)
+\]
+
+とする。従って固定保存量葉上で
+
+\[
+\|x\|_W\le K_{\rm syn}\|\mathcal Cx\|_\oplus
+\]
+
+を使う。selected／external linear contraction upperを\(q_s,q_0\)、
+selected／external nonlinear analysis upperを\(K_L,K_a\)とする。
+
+Q007s tubeのphysical Wiener radiusを\(R_T\)、そこでのfull-map nonlinear derivative
+majorantを\(d_N(R_T)\)とする。tube内の二状態を結ぶ線分はphysical Wiener ball内にあるため、
+exact map \(\Phi=A+N\) のfixed-coordinate Lipschitz upperを
+
+\[
+\boxed{
+L_\oplus
+=\max(q_s,q_0)
++(K_L+K_a)d_N(R_T)K_{\rm syn}
+}
+\]
+
+とする。Q007sのgraph-coordinate normal contraction \(q_*\)を、この全状態Lipschitz定数の代用に
+使わない。
+
+### initial errorとone-step local defect
+
+exact initial stateとQ007aa repair後状態のfixed-coordinate誤差を
+
+\[
+d_0
+=\epsilon_{a,0}+K_aE_{W,0}
+\]
+
+で抑える。\(\epsilon_{a,0}\)はQ007aaのphase-aware base increment、
+\(E_{W,0}\)はraw encoding＋repair physical Wiener upperである。graph-shift項はQ007aaの
+graph-relative membershipには必要だが、\(\mathcal C\)がlinearなので\(d_0\)へ重複加算しない。
+
+各sampling stepで、同じMPFR入力にexact mapを適用した値とrepaired MPFR出力との差を
+
+\[
+\epsilon_{\rm step}
+=B_{\rm step}^{\rm sel}+B_{\rm step}^{\rm ext}
+\]
+
+とする。baseにはQ007zのrepaired selected-wave upper、externalにはQ007y由来でQ007zが
+変更せず再利用したfull-Wiener external upperを用いる。
+
+### 誤差再帰と登録accuracy gate
+
+exact軌道 \(x_{n+1}=\Phi(x_n)\) とrepaired MPFR軌道
+\(\tilde x_{n+1}=\widetilde\Phi(\tilde x_n)\) に対し、
+
+\[
+d_n=\|\mathcal C(\tilde x_n-x_n)\|_\oplus
+\]
+
+と置く。Q007s exact invarianceとQ007aa／Q007z repaired invarianceにより両軌道は全時刻で
+同じtube内にあるので、
+
+\[
+d_{n+1}\le L_\oplus d_n+\epsilon_{\rm step}
+\]
+
+を反復する。\(L_\oplus<1\)なら
+
+\[
+d_n\le
+L_\oplus^nd_0
++\epsilon_{\rm step}\frac{1-L_\oplus^n}{1-L_\oplus}
+\le
+D_\oplus,
+\qquad
+D_\oplus=\max\left(d_0,\frac{\epsilon_{\rm step}}{1-L_\oplus}\right).
+\]
+
+physical Wiener error upperを
+
+\[
+D_W=K_{\rm syn}D_\oplus
+\]
+
+とする。accuracy thresholdは結果を見る前に
+
+\[
+\boxed{D_W<10^{-6}R_T}
+\]
+
+と固定する。これはQ007s tubeのphysical state radiusに対する相対accuracy gateであり、
+population componentの相対誤差とは呼ばない。
+
+封印値から期待される診断概数は
+
+\[
+\begin{aligned}
+L_\oplus&\simeq0.9920954949,\\
+d_0&\simeq6.0734\times10^{-22},\\
+\epsilon_{\rm step}&\simeq2.3344\times10^{-20},\\
+D_\oplus&\simeq2.9533\times10^{-18},\\
+D_W&\simeq8.5298\times10^{-18}.
+\end{aligned}
+\]
+
+判定はartifactのexact rational recordだけで行う。
+
+### validity gate
+
+1. Q007s／Q007z／Q007aa artifact・runner SHA、source、scope、upstream validity／outcomeと
+   Q007aa fresh replayが一致する。
+2. \(q_s,q_0,c_V,K_s,K_L,K_a,R_T,d_N(R_T)\)と固定保存量葉のcoordinate coverageを
+   Q007sからexactに再現する。
+3. Q007aaのinitial selected／external errorとQ007zのstep selected／external defectを
+   exact rationalで再構成する。
+4. linear block、nonlinear mean-value bound、analysis／synthesis normから\(L_\oplus\)の式を
+   exactに再現し、graph-relative \(q_*\)と混同しない。
+5. \(d_0,\epsilon_{\rm step},D_\oplus,D_W,D_W/R_T\)の恒等式をexactに再現する。
+6. 全値finiteなstrict JSONを生成し、input／result digestを再現する。
+
+一つでも失敗すれば`inconclusive`とし、shadowing仮説を解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. exact／repaired両軌道が同じQ007s physical Wiener ballに全iterateで留まる。
+2. \(L_\oplus<1\)である。
+3. \(d_0\)がQ007aa initialization errorをfixed-coordinate normで覆う。
+4. \(\epsilon_{\rm step}\)が各repaired MPFR stepのlocal coordinate defectを覆う。
+5. 幾何級数による\(D_\oplus\)が全\(n\ge0\)のsame-initial forward errorを覆う。
+6. \(D_W<10^{-6}R_T\)を満たす。
+
+全て通れば
+`fixed-coordinate contraction certifies all-iterate MPFR-85 forward shadowing`
+として`accepted`とする。
+
+\(L_\oplus\ge1\)なら
+`registered fixed-coordinate majorant is not contractive`、
+contractionは通るがaccuracy gateが落ちるなら
+`uniform shadow bound exceeds the registered tube-scale accuracy threshold`
+として有効な`not_certified`とする。thresholdやnormを事後変更せず、必要ならblock-weighted
+coordinate normを次gateとして事前登録する。
+
+### 主張境界
+
+本ゲートのshadowingは、Q007aaの同じexact initial stateから出発するexact軌道と、そこから
+encoding／repairしたrepaired MPFR軌道とのsampling-time forward errorを意味する。古典的な
+bi-infinite shadowing lemma、backward error、各intermediate stageのtrajectory distance、componentwise
+relative error、任意のQ007s boundary initialization、性能、他grid／MPFR build、center-slow構成、
+D3Q27を主張しない。Q007s／Q007z／Q007aaのinvariance定理は変更しない。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い
