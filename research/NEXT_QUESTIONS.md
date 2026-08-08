@@ -5720,6 +5720,62 @@ Q007wのideal complement-coordinate error threshold、Q007uのexact-map positivi
 exact fixed-leaf invarianceを撤回しない。ただしconcrete all-iterate claimは行わない。
 性能、multi-step trajectory、GPU、threaded reduction、他のgmpy2／MPFR版、D3Q27を扱わない。
 
+### Q007x 封印結果
+
+全8 validity gateが通過した。6 hypothesis gateのうち、MPFR semantic bridgeとQ007w一段boundの
+2件は通過し、encoding／collision／streaming-filter exact conservationとfixed-leaf inductionの
+4件は失敗した。
+
+- package／runtime:
+  `gmpy2 2.3.1 / MPFR 4.2.2 / GMP 6.3.0`
+- context:
+  `p=85 / RoundToNearest / emin=-1105 / emax=1024 / subnormalize`、dangerous flagなし
+- backend source SHA-256:
+  `25ad43629e2487c5c062920cbb5319dac4e8fbded339dc856548bfab7f18a0dc`
+- probe count／trace count:
+  `4 / 70,824 per probe / 283,296 total`
+- trace mismatch:
+  `0`
+- all operation count／domain／stage bound／positivity gates: pass
+- maximum observed Q007w component-bound utilization:
+  `0.15250294804773457`
+- exact conservation summary:
+  - componentwise encoding: fail
+  - collision: fail
+  - periodic streaming: pass
+  - five-point filter: fail
+  - full step: fail
+- rounded-weight sum defect:
+  `1/154742504910672534362390528 = 6.462348535570529e-27`
+- rounded-filter partition defect:
+  `5/618970019642690137449562112 = 8.077935669463161e-27`
+- rest 17² encoding mass defect:
+  `1.8676187267798828e-24`
+- rest filter mass defect:
+  `8.404284270509473e-24`
+- probe digest:
+  `a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329`
+- aggregate trace digest:
+  `49ce9b304b4b6a07fdf7d7baed6c9118a97c5a08e489e3aa5eacde28662c2351`
+- result digest:
+  `12cb83a87895d50523c909ad314b9ad155ac507af73e05f1b28cfb2a65328c7d`
+- runner SHA-256:
+  `de16e86ab365e6e64b15fd62ebdb442a54e05d4e4e529ae1e018299983d7491b`
+- artifact newline-normalized SHA-256:
+  `20ba483c4c627de015673a2f8873cc020a5c1a43ee48c7715121a00330e13566`
+
+従って
+`MPFR-85 realizes the Q007w one-step arithmetic bound but not the fixed conservation leaf`
+として有効な`not_certified`とした。Q007wの85-bit paired enclosureはconcrete backendの
+全registered primitive operationと4 probeのexact Fraction stage errorを覆う。しかしQ007sの
+all-iterate theoremを適用する保存量固定葉は、componentwise correct encodingだけでもexactには維持されず、
+非一様collisionとfilterでも追加driftが生じる。streamingだけはexact permutationとして保存した。
+
+これはQ007wのideal sufficient thresholdやQ007s／Q007uのexact-map theoremを棄却しない。Q007wが測った
+selected／external座標誤差だけでは、roundoffで生成される3中心保存方向を閉じられないことを示す。
+次は85-bit semantic bridgeを固定したまま、conservation-exact encodingとpost-stage repairを別gateとして
+事前登録し、そのrepair errorがQ007w strict marginに収まるかを評価する。
+
 ## Q009: TT-cross は residual peak を見つけられるか — Q008cにより保留
 
 ### 問い

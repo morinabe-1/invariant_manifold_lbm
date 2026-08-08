@@ -169,8 +169,11 @@ population／density positivityを別途認証し、Q007uで同じ拡大tubeのe
 streaming／filter各段階にもstrict positivityを拡張した。Q007vでは現行binary64実装のone-step
 stage positivityも認証したが、roundoff error upperはQ007sのstrict re-entry marginに収まらず、
 全iterateへのroundoff-robust帰納は`not_certified`である。Q007wでは同じenclosureを
-ideal binary \(p=53,\ldots,128\)へ拡張し、sufficient thresholdを\(p_*=85\) bitsと決めたが、
-具体的な高精度backendはまだ認証していない。
+ideal binary \(p=53,\ldots,128\)へ拡張し、sufficient thresholdを\(p_*=85\) bitsと決めた。
+Q007xでは`gmpy2 2.3.1`／`MPFR 4.2.2`の
+85-bit backendがQ007wの全登録演算と一段boundを再現することを認証した。一方、componentwise
+input encoding、非一様collision、filterがglobal保存量をexactには保たないため、固定保存量葉上の
+all-iterate帰納は`not_certified`のままである。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1128,6 +1131,43 @@ re-entry precisionであり、84 bitsではbase marginだけがfailする。こ�
 NumPy／MPFR／decimal／hardwareなどの実装済みbackend、正しいrounding mode、trajectory、性能を
 認証しない。Q007vのbinary64 `not_certified`は変更しない。
 
+### Q007x concrete MPFR-85 backend and fixed-leaf closure
+
+`gmpy2==2.3.1`、`MPFR 4.2.2`、85 significand bits、nearest-even、
+`emin=-1105`、`emax=1024`、gradual subnormalを固定した。4個のexact rational
+fixed-leaf probeについて、constant construction、input encoding、collision、streaming、filterの
+全primitive operationをexact dyadic ratioへ戻し、Q007wのinteger rounding oracleと照合した。
+
+- classification:
+  `MPFR-85 realizes the Q007w one-step arithmetic bound but not the fixed conservation leaf`
+- validity / hypothesis gates: `8 / 8` passed、`2 / 6` passed
+- trace: `70,824 / probe`、`283,296 total`、mismatch `0`
+- all stage error-bound maximum utilization: `0.15250294804773457`
+- operation semantics／one-step Q007w bound: `pass / pass`
+- encoding／collision／streaming／filter exact conservation:
+  `fail / fail / pass / fail`
+- rounded-weight partition defect:
+  `6.462348535570529e-27`
+- rounded-filter partition-of-unity defect:
+  `8.077935669463161e-27`
+- rest-grid encoding／filter mass defect:
+  `1.8676187267798828e-24 / 8.404284270509473e-24`
+- probe／trace／result digest:
+  `a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329` /
+  `49ce9b304b4b6a07fdf7d7baed6c9118a97c5a08e489e3aa5eacde28662c2351` /
+  `12cb83a87895d50523c909ad314b9ad155ac507af73e05f1b28cfb2a65328c7d`
+- backend／runner SHA-256:
+  `25ad43629e2487c5c062920cbb5319dac4e8fbded339dc856548bfab7f18a0dc` /
+  `de16e86ab365e6e64b15fd62ebdb442a54e05d4e4e529ae1e018299983d7491b`
+- artifact newline-normalized SHA-256:
+  `20ba483c4c627de015673a2f8873cc020a5c1a43ee48c7715121a00330e13566`
+
+従って、Q007wのideal 85-bit complement-coordinate error boundはconcrete MPFR backendへ接続できる。
+しかしQ007sの定理はexact fixed mass／momentum leaf上の結果であり、componentwise encoding時点で
+中心保存方向に非零誤差が生じる。finite probeはこの障害を検出する診断であり、保存補正なしに
+Q007wのre-entryを全iterateへ帰納しない。Q007wのideal threshold、Q007uのexact stage positivity、
+Q007sのexact fixed-leaf invarianceは変更しない。
+
 ## 再現
 
 Python 3.11 以上を使う。`q004b`、`q005`、`q006s`、`q006r`、`q006n`、`q006c`、`q006f`、
@@ -1184,6 +1224,7 @@ python -m research.q007t_larger_tube_population_positivity --output research/art
 python -m research.q007u_larger_tube_stagewise_positivity --output research/artifacts/q007u_larger_tube_stagewise_positivity.json
 python -m research.q007v_binary64_stage_enclosure --output research/artifacts/q007v_binary64_stage_enclosure.json
 python -m research.q007w_ideal_precision_threshold --output research/artifacts/q007w_ideal_precision_threshold.json
+python -m research.q007x_mpfr_fixed_leaf --output research/artifacts/q007x_mpfr_fixed_leaf.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 ```
@@ -1235,6 +1276,7 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - [`research/artifacts/q007u_larger_tube_stagewise_positivity.json`](research/artifacts/q007u_larger_tube_stagewise_positivity.json)
 - [`research/artifacts/q007v_binary64_stage_enclosure.json`](research/artifacts/q007v_binary64_stage_enclosure.json)
 - [`research/artifacts/q007w_ideal_precision_threshold.json`](research/artifacts/q007w_ideal_precision_threshold.json)
+- [`research/artifacts/q007x_mpfr_fixed_leaf.json`](research/artifacts/q007x_mpfr_fixed_leaf.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 
@@ -1300,14 +1342,16 @@ python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_preq
 - Q007u Q007s tubeのexact equilibrium／BGK／streaming／convex-filter stageでの全iterate strict positivity認証
 - Q007v 現行binary64演算のpaired roundoff enclosure、一段stage positivity認証、robust re-entry棄却
 - Q007w ideal binary 53--128 bit全候補、85-bit最小sufficient robust re-entry threshold認証
+- Q007x concrete MPFR-85全演算trace／Fraction stage oracle、fixed-leaf closure棄却
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - 二次多項式チャートの output-block TT-SVD と sparse storage baselines
 
 未実装・未通過:
 
-- 85 bits以上の具体的correctly-rounded backendによるQ007s tubeのroundoff-robust all-iterate
-  re-entry、連続最適化、Euclidean／grid-uniform normal attraction、global basin
+- conservation-exact encoding／collision／filter repairと、その追加誤差を含むQ007s tubeの
+  roundoff-robust all-iterate re-entry、連続最適化、Euclidean／grid-uniform normal attraction、
+  global basin
 - external-output／phase-aware resolventの追加改善
 - TT-cross、境界条件、外力、D3Q27
 
@@ -1326,5 +1370,7 @@ positive population cone内に含むことを認証し、Q007uではexact equili
 filter各段階へ同じ結論を拡張した。Q007vでは現行binary64実装の一段stage positivityまで認証したが、
 roundoff error upperがQ007sのbase／normal strict marginを超えるため、同じtube上の全iterateへは
 帰納しない。Q007wでは同じenclosureをideal binary precisionへ拡張し、85 bitsを最小sufficient
-thresholdと認証したが、具体的backendは未認証である。Q007c1の有限振幅性能棄却とQ007dのEuclidean
-棄却を変更せず、実装mapのroundoff-robust invariance、連続最適性、grid-uniform性へは主張を広げない。
+thresholdと認証した。Q007xではfixed MPFR-85 backendの全演算がideal modelと一致し、一段stage errorが
+Q007w bound内にあることを認証したが、componentwise encoding／collision／filterがexact fixed leafを
+保たないためall-iterate invarianceは認証しない。Q007c1の有限振幅性能棄却とQ007dのEuclidean棄却を
+変更せず、保存補正後のroundoff-robust invariance、連続最適性、grid-uniform性へは主張を広げない。

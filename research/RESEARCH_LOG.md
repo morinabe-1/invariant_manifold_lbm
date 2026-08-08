@@ -3050,6 +3050,77 @@ trajectory、性能を認証せず、Q007vのbinary64 `not_certified`も変更�
 roundoff-robust claimには、85 bits以上のconcrete correctly-rounded backendを別gateとして事前登録し、
 Q007wとbitwise／interval cross-checkする必要がある。
 
+## 2026-08-09: Q007x concrete MPFR-85 backend and fixed-leaf closure
+
+### 実装
+
+- `gmpy2==2.3.1`、`MPFR 4.2.2`、`GMP 6.3.0`を固定し、
+  \(p=85\)、nearest-even、`emin=-1105`、`emax=1024`、
+  gradual subnormalのcontextを構成した。
+- exact rationalを`Fraction -> mpq -> mpfr`でcomponentwiseに丸め、float／decimal stringを
+  経由しない専用D2Q9 collision／streaming／filter backendを実装した。
+- density、momentum、velocity、equilibrium、BGK、filterを明示left-foldと個別加減乗除で実装し、
+  FMA、`np.sum`、parallel reductionを使わなかった。
+- constant construction、input encoding、全map operationのoperand／resultをexact dyadicへ戻し、
+  Q007wのinteger ties-to-even oracleで全件照合した。
+- exact fixed-leafの4 rational probeを17²で構成し、exact `Fraction` mapとの差、
+  stage positivity、global \(M,P_x,P_y\)を各stageで測定した。
+- backendを`research/`へ隔離し、既存`src/ttim_lbm` package fingerprintと
+  upstream artifactを変更しないようにした。
+
+### 結果
+
+全8 validity gateが通過した。hypothesisは6件中2件が通過した。
+
+- MPFR semantic bridge／Q007w one-step bound: pass／pass
+- fixed-leaf encoding／collision／streaming／filter: fail／fail／pass／fail
+- trace count: `70,824 per probe / 283,296 total`
+- trace mismatch: `0`
+- maximum component-bound utilization:
+  `0.15250294804773457`
+- rounded-weight sum defect:
+  `6.462348535570529e-27`
+- rounded-filter partition-of-unity defect:
+  `8.077935669463161e-27`
+- rest-grid encoding／filter mass defect:
+  `1.8676187267798828e-24 / 8.404284270509473e-24`
+- probe digest:
+  `a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329`
+- aggregate trace digest:
+  `49ce9b304b4b6a07fdf7d7baed6c9118a97c5a08e489e3aa5eacde28662c2351`
+- result digest:
+  `12cb83a87895d50523c909ad314b9ad155ac507af73e05f1b28cfb2a65328c7d`
+- backend／runner SHA-256:
+  `25ad43629e2487c5c062920cbb5319dac4e8fbded339dc856548bfab7f18a0dc` /
+  `de16e86ab365e6e64b15fd62ebdb442a54e05d4e4e529ae1e018299983d7491b`
+- artifact newline-normalized SHA-256:
+  `20ba483c4c627de015673a2f8873cc020a5c1a43ee48c7715121a00330e13566`
+
+従って
+`MPFR-85 realizes the Q007w one-step arithmetic bound but not the fixed conservation leaf`
+として有効な`not_certified`とした。concrete backendはQ007wのideal \(p=85\) arithmeticを
+operationwiseに実現し、全registered probe／stageでQ007w error upper内に収まる。しかし
+componentwise encoding時点でexact fixed leafから外れ、非一様collisionとfilterも追加の保存量driftを
+生成する。periodic streamingだけはexact permutationとして保存する。
+
+### 分析と次の改善
+
+85-bitに丸めたD2Q9 weightsは和が1ではなく、filterのrounded center／neighbour係数も
+partition of unityをexactには満たさない。さらに非一様probeでは、operation roundoffによりcollisionの
+mass／momentumもexactには保存されない。従ってQ007wのselected／external coordinate errorがstrict
+margin内でも、固定葉から外れる3 center componentsを無視してall-iterate re-entryを主張できない。
+
+次はQ007wのprecision／operation boundとQ007xのbackend semanticを固定し、conservation-exact
+input encodingおよびpost-stage repairを別gateとして事前登録する。repairがexact \(M,P_x,P_y\)を
+回復するだけでなく、その追加Wiener／base／normal errorが既存strict marginに収まることを要求する。
+
+### 主張境界
+
+finite probeは障害の反例を与えるが、任意のtube stateに対するdrift最大値やmulti-step trajectory、
+repairの存在／安定性／性能を示さない。Q007wのideal sufficient threshold、Q007uのexact stage
+positivity、Q007sのexact fixed-leaf invarianceを変更しない。GPU、threaded reduction、他のMPFR build、
+continuous optimization、grid-uniform性、D3Q27を扱わない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3135,6 +3206,8 @@ Q007wとbitwise／interval cross-checkする必要がある。
 [`artifacts/q007v_binary64_stage_enclosure.json`](artifacts/q007v_binary64_stage_enclosure.json)
 
 [`artifacts/q007w_ideal_precision_threshold.json`](artifacts/q007w_ideal_precision_threshold.json)
+
+[`artifacts/q007x_mpfr_fixed_leaf.json`](artifacts/q007x_mpfr_fixed_leaf.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
