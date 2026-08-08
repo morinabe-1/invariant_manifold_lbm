@@ -459,6 +459,74 @@ class Full2DQuarticModel:
             dtype=np.float64,
         ).ravel()
 
+    def complex_quartic_jacobian_field(
+        self,
+        coordinates: npt.ArrayLike,
+    ) -> ComplexArray:
+        """Differentiate ``Q[a,a,a,a]`` with respect to real coordinates."""
+
+        value = np.asarray(coordinates, dtype=np.float64)
+        if value.shape != (self.reduced_dimension,):
+            raise ValueError("coordinate dimension does not match quartic chart")
+        complex_coordinates = self.coordinate_map @ value
+        derivative_products = np.zeros(
+            (len(self.quartet_indices), self.reduced_dimension),
+            dtype=np.complex128,
+        )
+        for position in range(4):
+            other_positions = tuple(index for index in range(4) if index != position)
+            derivative_products += self.coordinate_map[
+                self.quartet_indices[:, position]
+            ] * np.prod(
+                complex_coordinates[self.quartet_indices[:, other_positions]],
+                axis=1,
+            )[:, None]
+        derivative_products *= self.multiplicities[:, None]
+
+        field = np.zeros(
+            (self.size, self.size, 9, self.reduced_dimension),
+            dtype=np.complex128,
+        )
+        for wave, group in self.wave_groups.items():
+            coefficient = np.einsum(
+                "tr,tq->qr",
+                derivative_products[group],
+                self.quartic_coefficients[group],
+            )
+            field += np.einsum(
+                "xy,qr->xyqr",
+                self.phase_fields[wave],
+                coefficient,
+            )
+        return field
+
+    def chart_jacobian(self, coordinates: npt.ArrayLike) -> Array:
+        """Evaluate the analytic physical-by-reduced Jacobian of ``W4``."""
+
+        value = np.asarray(coordinates, dtype=np.float64)
+        if value.shape != (self.reduced_dimension,):
+            raise ValueError("coordinate dimension does not match quartic chart")
+        quartic = self.complex_quartic_jacobian_field(value).real.reshape(
+            self.cubic.quadratic.chart.base.size,
+            self.reduced_dimension,
+        )
+        return np.asarray(
+            self.cubic.chart_jacobian(value) + quartic / 24.0,
+            dtype=np.float64,
+        )
+
+    def chart_jacobian_action(
+        self,
+        coordinates: npt.ArrayLike,
+        direction: npt.ArrayLike,
+    ) -> Array:
+        """Apply the analytic quartic-chart Jacobian to one real direction."""
+
+        value = np.asarray(direction, dtype=np.float64)
+        if value.shape != (self.reduced_dimension,):
+            raise ValueError("direction dimension does not match quartic chart")
+        return np.asarray(self.chart_jacobian(coordinates) @ value, dtype=np.float64)
+
     def complex_forcing_field(self, coordinates: npt.ArrayLike) -> ComplexArray:
         return self._complex_physical_field(coordinates, self.forcing_coefficients)
 

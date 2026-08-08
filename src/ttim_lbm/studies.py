@@ -47,6 +47,7 @@ from .nonresonance import (
     stripe_quadratic_audit,
     wave_vector_from_index,
 )
+from .normal_cocycle import run_normal_cocycle_audit
 from .normal_refinement import run_normal_gap_refinement_audit
 from .projection_representability import run_projection_representability_audit
 from .provenance import runtime_metadata, source_metadata
@@ -2171,6 +2172,38 @@ def run_q007c2_study() -> dict[str, Any]:
                 "registered finite-direction amplitude-horizon localization "
                 "only; no all-ball, other-horizon, injectivity, grid-uniform, "
                 "existence, uniqueness, normal-attraction, or TT claim"
+            ),
+        },
+        "cycle": cycle,
+        "study_gate": cycle["study_validity"],
+        "scientific_outcome": cycle["hypothesis_outcome"],
+        "next_question": cycle["next_change"],
+    }
+
+
+def run_q007d_study() -> dict[str, Any]:
+    """Run and package the sealed Q007d projected normal-cocycle audit."""
+
+    cycle = run_normal_cocycle_audit()
+    return {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "source": source_metadata(),
+        "runtime": runtime_metadata(),
+        "mathematical_scope": {
+            "diagnostic": "finite-radius projected tangent/normal cocycle",
+            "construction_grid": [17, 17],
+            "omega": 1.5,
+            "eta": 0.01,
+            "real_reduced_dimension": 24,
+            "direction_count_per_amplitude": 16,
+            "amplitudes": [0.004, 0.01],
+            "starting_point_count": 33,
+            "steps": 10,
+            "claim": (
+                "registered finite-sample Euclidean-projector diagnostic only; "
+                "no full-ball, adapted-norm, true invariant-normal-bundle, grid-"
+                "uniform normal-attraction, existence, or uniqueness theorem"
             ),
         },
         "cycle": cycle,

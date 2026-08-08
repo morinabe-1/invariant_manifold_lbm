@@ -970,3 +970,47 @@ def test_q008c_artifact_records_valid_wave_factorization_rejection() -> None:
         for candidate in quartic["candidate_records"]
     )
     assert "four preregistered wave/branch tensorizations" in cycle["claim_boundary"]
+
+
+def test_q007d_artifact_records_valid_euclidean_normal_dominance_rejection() -> None:
+    artifact_path = ARTIFACT_DIRECTORY / "q007d_normal_cocycle.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "rejected"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": "finite-radius projected tangent/normal cocycle",
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "real_reduced_dimension": 24,
+        "direction_count_per_amplitude": 16,
+        "amplitudes": [0.004, 0.01],
+        "starting_point_count": 33,
+        "steps": 10,
+        "claim": (
+            "registered finite-sample Euclidean-projector diagnostic only; "
+            "no full-ball, adapted-norm, true invariant-normal-bundle, grid-"
+            "uniform normal-attraction, existence, or uniqueness theorem"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "rejected"
+    assert cycle["scientific_classification"] == (
+        "registered finite-sample projected normal-cocycle dominance not observed"
+    )
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert not any(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["coefficient_reproduction"]["match"]
+    assert cycle["cocycle_campaign"]["starting_point_count"] == 33
+    assert cycle["cocycle_campaign"]["equilibrium_control"]["gamma_10"] > 2.0
+    assert all(
+        record["summary"]["gamma_10_failure_count"] == 16
+        for record in cycle["cocycle_campaign"]["amplitude_records"]
+    )
+    assert cycle["cocycle_campaign"]["summary"]["maximum_tangent_leakage"] <= 1.0e-3
+    assert not any(cycle["preserved_prior_outcomes"].values())
+    assert "not a full-ball" in cycle["claim_boundary"]

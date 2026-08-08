@@ -31,6 +31,7 @@ from .studies import (
     run_q007c1_study,
     run_q007c2_study,
     run_q007c_study,
+    run_q007d_study,
     run_q008a_study,
     run_q008c_study,
 )
@@ -73,6 +74,7 @@ def main() -> None:
             "q007c",
             "q007c1",
             "q007c2",
+            "q007d",
             "q008a",
             "q008c",
         ),
@@ -132,6 +134,8 @@ def main() -> None:
         result = run_q007c1_study()
     elif arguments.study == "q007c2":
         result = run_q007c2_study()
+    elif arguments.study == "q007d":
+        result = run_q007d_study()
     elif arguments.study == "q008a":
         result = run_q008a_study()
     else:
