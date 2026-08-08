@@ -7208,6 +7208,202 @@ Q010のnegative outcomeは全て据え置く。
 Q007acの失敗witnessから十分離した新しいtarget gapを事前登録する。Fourier wave-sumを使う場合も
 追加改善として明示し、Q007acの`1e-7`を事後に書き換えない。
 
+## Q007ad: asymmetric-disc critical phase certificate — 事前登録
+
+### 問いと位置づけ
+
+Q007acは、対称化したselected nominal discがQ007n working spectral radiusを
+`1.6653345369377348e-16`超え、登録gap \(10^{-7}\)にも4反例があったため無効・
+`inconclusive`で停止した。この結果を変更せず、元のQ007h1 asymmetric selected discsを
+直接使い、external inverseをQ007o internal inverseより小さくするために必要なcritical gapを先に
+導いた別のcertificateを問う。
+
+本gateはQ007acの失敗witnessを見た後のfollow-up certificateであり、独立な探索仮説ではない。
+Q007acのcounterfactualを証明入力として使わず、新しい閾値、disc、停止規則を結果計算前に固定する。
+
+### 封印する入力
+
+- Q007h1 artifact newline-normalized SHA-256:
+  `caee8fe382c0282e11e8139b8f434a944013f630288adf2e99223d0123c91af4`
+- Q007i artifact newline-normalized SHA-256:
+  `c256b30ac5bfe0a6bc5e5f8e293016d3e0aa37c4bfa82ba81a0a2679d89e082f`
+- Q007n artifact newline-normalized SHA-256:
+  `7fe09089744e41229e71666540e4885d560a4c27a2e8bc95a94d5959af0fbc36`
+- Q007o artifact newline-normalized SHA-256:
+  `36a350b27658ce0699727640d65c48cf0700f999ca1881b07d45825d086158fd`
+- Q007ac artifact newline-normalized SHA-256:
+  `b3c9d99088492bf157cbb651d958597573a9c7b5386a189b6b9e4ee5d88dbcf5`
+- Q007i／Q007h1／Q007n／Q007o implementation／runner SHA-256:
+  `22209c56184eff9556db13b553cb89644eea11ffd77a3af69d0316a747118294` /
+  `d2d857c1b9ac20f88c9b1a1a44e59bd1d15dad043d5e96fde5069ea0c1865a94` /
+  `6eefae3386e5c49f151b1cd4537eb84fbb92858578fe4fce7768e50ad43c5dc9` /
+  `d34afda382784610ea2b8997e6c44376188b02c42668ade8e2d53ff9bc9afea7`
+- Q007ac runner SHA-256:
+  `8c2757c4c3771007dc15135bc407551bbef74906294ab897b1a4f251d5abe2ae`
+- Q007ac input／result／phase-comparison digest:
+  `15166f90e39b132c0d6956b7a14f821095cc1b31da9d9e83b9b3f5b9cf3314b9` /
+  `369809e953652c9e99ade3553e2754a06c1b0add52549e2f53dbcdb0ab15f018` /
+  `5039563c60ab57b85b683b324506049535372847b1a5adef3362da2b16a954ab`
+
+固定scopeは \(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)、
+\(\delta M=\delta P_x=\delta P_y=0\)、Q007nのmodal／Wiener \(\ell^1\)およびpair max normとする。
+Q007o internal inverse、Q007n zero-wave inverse、80桁外向き丸め、全majorant、119 radius候補、
+収縮閾値 \(1/2\)を変えない。変更対象はnonzero nonselected-output inverseだけである。
+
+### critical gapと登録target
+
+Q007n working \(\beta_*\)とQ007o working internal pair inverseから
+
+\[
+\delta_{\rm crit}
+=\frac{81\beta_*}{C_{\rm int}^{\rm Q007o}}
+=2.0188097642308912\ldots\times10^{-8}
+\]
+
+をexact `Fraction`として先に計算する。既約分数の16進表現を
+
+- numerator:
+  `0x137064b41f6973f11f3f0d50cba3d16b9eacb4ae5b8d89232971db9f7ebae6994c7dad`
+- denominator:
+  `0x3964a0243f0d52700d16c0516ff99b6188ae3fabc5034ea22cf4ab1268f148a006530509af97`
+
+へ封印する。新しいtarget gapは
+
+\[
+\delta_{\rm ad}=\frac{21}{10^9}=2.1\times10^{-8}
+\]
+
+とする。これは \(\delta_{\rm ad}/\delta_{\rm crit}
+=1.0402168828423712\ldots>1\) であり、Q007acの診断上の最小distance lower
+`2.4028360293239852e-8`より約12.6%小さい。後者は閾値選択の動機に限り、
+Q007adのcertificateとして再利用しない。80桁上向き丸め後にも
+
+\[
+\left\lceil81\beta_*/\delta_{\rm ad}\right\rceil_{80}
+<C_{\rm int}^{\rm Q007o}
+\]
+
+をexactに要求する。
+
+### original asymmetric selected discs
+
+Q007h1 proofを72 C4 representativeについて再構成する。selected representativeとindexは
+Q007acと同じく
+
+- axis \((-1,0)\): acoustic `(0,1)`、shear `4`
+- diagonal \((-1,-1)\): acoustic `(0,1)`、shear `6`
+
+へ固定する。ただし共役化・実軸化・再中心化を一切行わない。6個それぞれについて、保存された
+float64 eigenvalueをexact dyadic center \(z_j\)へ戻し、同じrepresentativeのQ007h1
+Bauer--Fike radius \(r_j\)をそのまま使う。
+
+全6 discで
+
+\[
+\overline{|z_j|}+r_j\le\sigma_{\rm Q007n}
+\]
+
+をexact rationalで確認し、product telescoping factorには新しいmaxやinflationではなく
+Q007nの封印済み \(\sigma_{\rm Q007n}\) を使う。C4 transportにより全24 selected modeを覆うことも
+再確認する。Q007acで無効だったsymmetric nominal discsは比較診断としてのみ再現し、
+Q007adのproduct center／radiusへ混ぜない。
+
+### target、screen、phase expansion
+
+external targetはQ007acと同一の70 nonselected C4 representative \(\times9=630\) original
+Bauer--Fike discsとし、selected-output external complementとzero waveは除く。Fourier wave-sum
+restrictionは今回も使わず、全selected productと全630 targetのsupersetを証明する。
+
+modulus screenはQ007acの \(g_{\rm screen}=10^{-6}\)、96項rational logarithm、
+110／60桁格子、次数2--89を固定する。2,919,730 aggregate、826 dangerous aggregate、
+108,273 expanded product、287,929 nearby comparison、およびdangerous identifier列が
+Q007ac artifactとexactに一致することをvalidity gateにする。screen外は
+
+\[
+m_*g_{\rm screen}>\delta_{\rm ad}
+\]
+
+で覆う。
+
+dangerous aggregate \((a_a,a_s,d_a,d_s)\)では、axis／diagonal acousticを全て
+positive／negative indexへ分割し、original asymmetric centersからproduct center
+\(\widehat p\)をexact dyadic arithmeticで計算する。各splitのdisc uncertaintyは
+
+\[
+\epsilon_p
+\le \sigma_{\rm Q007n}^{n-1}
+\sum_j c_j r_j
+\]
+
+とし、nearby external disc \((\widehat\mu,r_\mu)\)ごとに
+
+\[
+|\widehat p-\widehat\mu|^2
+>
+\left(\delta_{\rm ad}+\epsilon_p+r_\mu\right)^2
+\]
+
+を要求する。右辺thresholdだけを256 binary bit dyadic格子へ上向きに丸め、丸め増分が
+\(2^{-256}\)未満であることを保存する。degree 90以上はQ007n tail gapを再利用し、
+\(\delta_{\rm tail}>\delta_{\rm ad}\)を要求する。
+
+### inverseとradius再走査
+
+phase certificateが通れば
+
+\[
+C_{\rm ext}^{\rm ad}
+=\left\lceil81\beta_*/\delta_{\rm ad}\right\rceil_{80},\qquad
+C_L^{\rm ad}
+=\max\{C_{\rm ext}^{\rm ad},C_0,C_{\rm int}^{\rm Q007o}\}
+\]
+
+とする。Q007o旧119 recordをexact再現してから、\(C_L^{\rm ad}\)だけを差し替えて同じ
+radius scanを行う。Q007acで観測済みのcounterfactual scanに依存せず、Q007o入力から再計算する。
+
+### validity gate
+
+1. 5 artifact SHA、5 implementation／runner SHA、source、scope、sealed outcomeが一致し、
+   Q007acのinvalid／`inconclusive`結果と3 digestをexact再現する。
+2. 72 proof digest、selected representative／index、C4 coverage、6 original asymmetric discs、
+   Q007n \(\sigma\) containment、70 representative／630 targetをexact確認する。
+3. Q007acと同じ全screen partition・dangerous identifiers・4 countをexact再現し、
+   safe floorとtailが \(\delta_{\rm ad}\)をstrictに超える。
+4. 108,273 original-center productと287,929 nearby comparisonを省略なく実行し、
+   最小margin、witness、comparison digestを保存する。
+5. Q007o internal、Q007n zero、majorant、119候補をbitwiseに再利用し、旧Q007o recordsをexact再現する。
+6. 全数値がfinite strict JSONであり、input／phase／result digestを再現する。
+
+一つでも落ちれば`inconclusive`で停止し、external inverseとradiusを更新しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. 全finite-degree comparisonとdegree-90 tailが \(\delta_{\rm ad}=2.1\times10^{-8}\)をstrictに満たす。
+2. 80桁working \(C_{\rm ext}^{\rm ad}<C_{\rm int}^{\rm Q007o}\)で、new totalがinternal-limitedになる。
+3. \(C_L^{\rm Q007o}/C_L^{\rm ad}\ge100\)である。
+4. Q007oの`1e-18`がpassし、新しい最大pass候補がexactに`1e-16`、
+   直前の大きい`1e-15`がfailする。
+5. `1e-16`でdensity／reduced-range buffer、\(Z<1/2\)、
+   \(Y+Z\tau<\tau\)が全てstrictである。
+
+全て通れば
+`original asymmetric discs certify the critical external-output phase gap`
+として`accepted`とする。validityは通るが一つでも仮説が落ちれば
+`registered asymmetric-disc critical phase certificate did not pass`
+という有効な`not_certified`とする。gap、disc、screen、candidateを結果後に変更しない。
+
+### 主張境界
+
+acceptedでも、固定17²・固定保存量葉・固定normに対するQ007o analytic existence radiusを
+`1e-16`へ改善するだけである。これはQ007acの`1e-7`主張を復活させず、
+\(\delta_{\rm ad}\)がoptimal gapであるとも主張しない。Fourier wave-sum、selected-output internal／
+zero-wave inverseの改善、連続最適化、Euclidean／grid-uniform bound、finite-ball normal attraction、
+global basin、Q007c1 finite-amplitude性能、境界、外力、D3Q27は扱わない。既存Q007p--Q007abの
+tube／positivity／MPFR／forward-shadowing定数は`1e-18`を前提に据え置き、拡大するなら
+別gateを必要とする。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
