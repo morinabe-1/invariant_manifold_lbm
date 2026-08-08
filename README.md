@@ -161,6 +161,9 @@ Q007acではnonselected-output 630 discに対する位相付きgap \(10^{-7}\)�
 Q007adではこの失敗を固定したfollow-upとしてoriginal asymmetric discsとgap
 \(2.1\times10^{-8}\)を再登録し、287,929比較を全通過した。external inverseがQ007o internal
 inverseを下回ったため、固定17²・固定葉のanalytic existence radiusを`1e-16`へ改善した。
+Q007aeでは同じgapをselected-outputの12 point centersへ適用し、internal inverseを
+`1.6818752065691547e9`へ下げた。totalは再びQ007ad external inverseに支配され、
+10進候補上のanalytic radiusは`1e-16`のままである。
 Q007p--Q007abの有限tube／MPFR定数は`1e-18`のまま据え置く。
 Q007pではQ007o当時の半径`1e-18`を固定し、全289 Fourier blockをexternal coordinate normで
 厳密に覆った。
@@ -1023,6 +1026,46 @@ inverseの改善、grid-uniform性、finite-ball normal attraction、global basi
 Q007p--Q007abのtube、positivity、MPFR、forward-shadowing結論は再走査しておらず、従来の
 `1e-18`設定を変更しない。analytic radiusと有限tube radiusを混同しない。
 
+### Q007ae phase-aware selected-output internal resolvent
+
+Q007o internal upperを支配したglobal modulus gapの元witnessはdegree `51`、
+counts `(1,19,27,4)`、nonselected output
+`wave=(-2,-2);eigenvalue_index=(8,7)`だった。これをselected-output internal blockへ
+一様適用する保守性を外すため、Q007o axial／diagonal representativeのexternal coordinate
+point centers 6個ずつ、計12個だけを位相付きで比較した。target gapは探索せず、Q007adと同じ
+\(2.1\times10^{-8}\)を固定した。
+
+- classification:
+  `phase-aware selected-output centers remove the internal resolvent bottleneck`
+- validity／hypothesis gates: `6 / 6`、`5 / 5` passed
+- selected-output point center: `12`、target radius `0`
+- aggregate／dangerous aggregate: `2,919,730 / 81`
+- dangerous expanded product／comparison: `15,773 / 19,870`
+- failed comparison: `0`
+- minimum witness:
+  degree `63`、counts `(1,39,17,6)`、acoustic split `(0,1,3,14)`、
+  target `selected_output_wave=1,0;external_index=6`
+- certified complex distance lower:
+  `5.228929928706603e-4`
+- maximum critical gap／target ratio:
+  `5.691119055000859e-9 / 3.6899597068782164`
+- axial／diagonal working internal upper:
+  `1.0192745414727758e9 / 1.6818752065691547e9`
+- phase／selected-center certificate digest:
+  `4aea091076179e7ef8eb14c9c4828b41d6af3ef25665e5b2dbbf562acf692b3b` /
+  `3cc524ebb82c3e375bf35d456f96be11fa5d124728873046ed59a7032a2058d7`
+
+新internal upperはzero-wave upper`6.2060607588672085e9`より小さい。new totalはQ007ad
+external upper`2.107344404403246e11`に一致し、直前totalからの改善率は
+`1.0402168828423712`だった。固定radius scanでは`1e-16`が最大pass、
+`1e-15`がfailのままであり、より大きい10進半径は認証していない。
+
+targetはQ007o identity \(A_kU_k=U_kD_k+Q_kR_k\)の\(D_k\) point centerであるため、
+Q007h1 Bauer--Fike radiusを加えず、target residualは既存\(\gamma_k\)としてinternal inverseの
+分母から差し引いた。Fourier wave-sumを使わない全product \(\times\) 12 centersのsuperset
+certificateである。次のanalytic bottleneckはQ007ad nonselected-output external inverseである。
+Q007p--Q007abのtube定数は変更しない。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -1613,6 +1656,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007ab_forward_shadowing.json`](research/artifacts/q007ab_forward_shadowing.json)
 - [`research/artifacts/q007ac_phase_aware_resolvent.json`](research/artifacts/q007ac_phase_aware_resolvent.json)
 - [`research/artifacts/q007ad_asymmetric_phase_resolvent.json`](research/artifacts/q007ad_asymmetric_phase_resolvent.json)
+- [`research/artifacts/q007ae_internal_phase_resolvent.json`](research/artifacts/q007ae_internal_phase_resolvent.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -1686,6 +1730,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q007ab fixed eigencoordinate contractionによるsame-initial MPFR-85 all-iterate forward-error認証
 - Q007ac 全291万9730 modulus aggregate／287,929位相比較、登録nominal-disc条件とgap反例によるinvalid stop
 - Q007ad original asymmetric 6 discs／287,929位相比較によるcritical external gapと`1e-16` analytic radius認証
+- Q007ae selected-output 12 point centers／19,870位相比較によるinternal resolvent bottleneck除去
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -1694,7 +1739,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 未実装・未通過:
 
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
-- Q007ad後のselected-output internal inverse bottleneck、`1e-16` analytic radiusでの下流tube再監査
+- Q007ae後のnonselected-output external inverse bottleneck、`1e-16` analytic radiusでの下流tube再監査
 - TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、

@@ -7658,6 +7658,58 @@ acceptedでもQ007adのexplicit analytic radius`1e-16`をstrictに拡大する�
 sharp化、external／zero-waveの追加改善、連続radius最適化、Q007p--Q007ab tubeの拡大、
 Euclidean／grid-uniform attraction、global basin、境界、外力、D3Q27は認証しない。
 
+### Q007ae 封印結果
+
+validity 6件、hypothesis 5件が全て通過し、
+`phase-aware selected-output centers remove the internal resolvent bottleneck`
+として`accepted`とした。
+
+- Q007ad artifact／runner／accepted outcome／3 digest reproduction: pass
+- Q007i global minimum witness reproduction: pass
+- global witness selected-output membership: false
+- original selected disc／selected-output point center: `6 / 12`
+- target point radius／Fourier wave-sum restriction: `0 / unused`
+- aggregate／dangerous aggregate: `2,919,730 / 81`
+- dangerous expanded product／comparison: `15,773 / 19,870`
+- failed comparison: `0`
+- minimum witness:
+  degree `63`、counts `(1,39,17,6)`、acoustic split `(0,1,3,14)`、
+  target `selected_output_wave=1,0;external_index=6`
+- certified complex distance lower:
+  `5.228929928706603e-4`
+- minimum squared margin:
+  `2.7341709557261616e-7`
+- maximum critical gap／target ratio:
+  `5.691119055000859e-9 / 3.6899597068782164`
+- axial resolvent numerator／working internal:
+  `21.404760870264376 / 1.0192745414727758e9`
+- diagonal resolvent numerator／working internal:
+  `35.31936026583468 / 1.6818752065691547e9`
+- working internal／zero／external／new total:
+  `1.6818752065691547e9 / 6.2060607588672085e9 / 2.107344404403246e11 / 2.107344404403246e11`
+- total improvement factor:
+  `1.0402168828423712`
+- selected／previous candidate:
+  `1e-16 pass / 1e-15 fail`
+- input／result digest:
+  `23fba479cfa07ec50721d9b05bcaf40a0ac04126497ff64b04785e1d20534e0e` /
+  `3e1792c5215952d9126bf5bd61409a2a0d72ebc12970ad1e4aaca481d4fcb687`
+- phase／selected-center certificate digest:
+  `4aea091076179e7ef8eb14c9c4828b41d6af3ef25665e5b2dbbf562acf692b3b` /
+  `3cc524ebb82c3e375bf35d456f96be11fa5d124728873046ed59a7032a2058d7`
+- runner SHA-256:
+  `f2e0d90ae6bb5f9694c799d2ea850a014f66f2ab9681d94dc1c850cc753db600`
+- artifact newline-normalized SHA-256:
+  `c6d28bba13fcf831dfccaf03854072256f7e8ff1a241b54aaf84552dd06a2a55`
+
+従ってselected-output internal upperはtotalを支配しなくなった。新しいbottleneckはQ007adの
+nonselected-output external inverse`2.107344404403246e11`である。10進候補上のexplicit
+analytic radiusは`1e-16`のままで、strictなradius upgradeはない。
+
+minimum selected-center distanceが登録gapより大幅に大きいことは診断結果だが、Q007aeでは
+gapを結果後に拡大しない。external gapのsharp化、連続radius最適化、または`1e-16`での
+Q007p--Q007ab tube再監査は別gateにする。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。

@@ -3644,6 +3644,65 @@ Q007p--Q007abのfinite tube、positivity、MPFR、forward-shadowingは`1e-18`を
 別certificateなので変更しない。次のanalytic-radius bottleneckはQ007o selected-output internal
 inverseである。下流tubeの拡大も、internal phase refinementも別gateで事前登録する。
 
+## 2026-08-09: Q007ae phase-aware selected-output internal resolvent
+
+### 問いと事前登録
+
+Q007o internal inverseを支配したglobal gapのQ007i witnessを再確認すると、degree `51`、
+counts `(1,19,27,4)`、external `wave=(-2,-2);eigenvalue_index=(8,7)`で、
+selected outputではなかった。そこでQ007o 2 representativeの12 external coordinate point
+centersだけを位相付きで比較した。target gapは探索せずQ007adと同じ`2.1e-8`、
+Fourier wave-sum restrictionはunusedと事前登録した。
+
+### 実装
+
+- Q007ad artifact／runner、accepted outcome、input／result／phase digestを再現した。
+- Q007ad original asymmetric 6 discsとQ007n working \(\sigma\) product uncertaintyを再利用した。
+- Q007o axial／diagonal source blockのexternal index
+  `(2,3,5,6,7,8)`／`(2,3,4,5,7,8)`から12 exact dyadic point centersを作った。
+- target residualはQ007o \(\gamma_k\)で扱うためtarget radiusを0とし、Bauer--Fike radiusとの
+  二重計上を避けた。
+- 2,919,730 aggregateをscreenし、81 dangerous aggregate、15,773 expanded product、
+  19,870 comparisonをexact dyadic arithmeticで完走した。
+- phase gap通過後、Q007o numerator／\(\gamma_k\)を固定して
+  \(N_k/(\delta_{\rm ae}-\gamma_k)\)を再評価し、Q007ad external、Q007n zero、majorant、
+  119候補を変えずに再走査した。
+
+### 結果
+
+validity `6/6`、hypothesis `5/5`で`accepted`となった。
+
+1. 19,870 comparisonのfailは0だった。
+2. minimum witnessはdegree `63`、counts `(1,39,17,6)`、
+   acoustic split `(0,1,3,14)`、target
+   `selected_output_wave=1,0;external_index=6`だった。
+3. certified complex distance lowerは`5.228929928706603e-4`で、登録`2.1e-8`を
+   大幅に上回った。ただし登録gapは事後変更しない。
+4. axial／diagonal working internal upperは
+   `1.0192745414727758e9 / 1.6818752065691547e9`となり、zero-wave upper
+   `6.2060607588672085e9`をともに下回った。
+5. new totalはQ007ad external upper`2.107344404403246e11`に支配され、改善率は
+   `1.0402168828423712`だった。
+6. 最大pass candidateは`1e-16`、直前の`1e-15`はfailのままで、decimal-grid
+   radiusのstrict improvementはなかった。
+
+- input／result digest:
+  `23fba479cfa07ec50721d9b05bcaf40a0ac04126497ff64b04785e1d20534e0e` /
+  `3e1792c5215952d9126bf5bd61409a2a0d72ebc12970ad1e4aaca481d4fcb687`
+- phase／selected-center certificate digest:
+  `4aea091076179e7ef8eb14c9c4828b41d6af3ef25665e5b2dbbf562acf692b3b` /
+  `3cc524ebb82c3e375bf35d456f96be11fa5d124728873046ed59a7032a2058d7`
+- runner／artifact SHA-256:
+  `f2e0d90ae6bb5f9694c799d2ea850a014f66f2ab9681d94dc1c850cc753db600` /
+  `c6d28bba13fcf831dfccaf03854072256f7e8ff1a241b54aaf84552dd06a2a55`
+
+### 解釈と次のbottleneck
+
+selected-output internal blockはtotalの支配要因から外れた。新しいanalytic bottleneckはQ007ad
+nonselected-output external inverseである。Q007aeは`1e-16` radiusを維持するが拡大しない。
+Q007p--Q007ab tube／MPFR定数も変更しない。external gap sharp化、連続radius最適化、下流tube
+再監査のいずれも別の事前登録を必要とする。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3743,6 +3802,8 @@ inverseである。下流tubeの拡大も、internal phase refinementも別gate�
 [`artifacts/q007ac_phase_aware_resolvent.json`](artifacts/q007ac_phase_aware_resolvent.json)
 
 [`artifacts/q007ad_asymmetric_phase_resolvent.json`](artifacts/q007ad_asymmetric_phase_resolvent.json)
+
+[`artifacts/q007ae_internal_phase_resolvent.json`](artifacts/q007ae_internal_phase_resolvent.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
