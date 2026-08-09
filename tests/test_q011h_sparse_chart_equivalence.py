@@ -124,10 +124,18 @@ def test_q011h_artifact_records_the_registered_equivalence_campaign() -> None:
         pytest.skip("Q011h artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     cycle = artifact["cycle"]
+    campaign = cycle["trajectory_campaign"]
 
+    assert _file_sha256(artifact_path) == (
+        "2cfcf5cb76698ae8e451f448a3048e3d29a1b8aed034d3afa5c25f7fd66038f5"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
-    assert artifact["runner_source"] == q011h._runner_source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011h_sparse_chart_equivalence.py",
+        "sha256": "1e6848e572137d019531514235741b18ca10644dd7d14e304dc26d92d81cda9e",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "accepted"
@@ -135,6 +143,24 @@ def test_q011h_artifact_records_the_registered_equivalence_campaign() -> None:
     assert cycle["hypothesis_outcome"] == "accepted"
     assert all(gate["passed"] for gate in cycle["validity_gates"].values())
     assert all(gate["passed"] for gate in cycle["hypothesis_gates"].values())
+    assert cycle["input_digest_sha256"] == (
+        "c9ea06c8961940f54dd3c02e3d68d7ba777e77fc9be2f0a7c3eecab5ab257b83"
+    )
+    assert cycle["coefficient_digest_sha256"] == (
+        "2ab44a23811ef9f7e1975fb27561dd92660938778bf73ef149e46ed04f399669"
+    )
+    assert cycle["campaign_digest_sha256"] == (
+        "bbb6a489fc76af150a3a162f585b0b2e1a65d0445d5eb14ab11b280bc492a035"
+    )
+    assert cycle["result_digest_sha256"] == (
+        "a78812d93063ed7deeaca09dad5feb2cf018fb1bec315dab94b4f02d27f75864"
+    )
+    assert campaign["state_metric_sha256"] == (
+        "298efab077e38fe3d31b146460558219675ab88ab9c0182ad3fb14e25a52d854"
+    )
+    assert campaign["checkpoint_metric_sha256"] == (
+        "7fd9446be00f5822f7aee5a2750b03b36d5b0f4b1916e123878b824cba95757b"
+    )
     assert cycle["result_digest_sha256"] == (
         q011h.q011e.q011c._canonical_json_sha256(q011h._result_digest_sections(cycle))
     )
