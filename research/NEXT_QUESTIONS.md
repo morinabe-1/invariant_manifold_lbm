@@ -18155,6 +18155,219 @@ hypothesis `5 / 5`を通過し、
 SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、次はQ011agで
 degree 13を監査する。
 
+## Q011ag: degree-13 batched outward-dyadic Fourier／modulus audit — 事前登録
+
+### 問い
+
+Q011uでdegree 13に残った44 modulus-overlap aggregateについて、Q011afのexact modulus-signature fiberを
+保ったまま、17-sector巡回畳み込みをpair-factorized integer matrixとして評価し、exact有理積区間を
+外向きbinary64区間で包むことで、degree-13 external nonresonanceを認証できるか。
+
+Q011uのdegree-13 inventoryは`560 aggregate / 8568 expanded control / 516 old-separated / 44 overlap`
+である。overlap tuple／external groupを次へ固定する。
+
+- `[0,3,0,10] / 167`
+- `[0,3,1,9] / 167`
+- `[0,3,2,8] / 167`
+- `[0,5,1,7] / 165`
+- `[0,5,2,6] / 165`
+- `[0,5,3,5] / 165`
+- `[2,6,2,3] / 162`
+- `[2,6,3,2] / 162`
+- `[2,6,4,1] / 162`
+- `[2,6,5,0] / 162`
+- `[3,5,0,5] / 162`
+- `[3,5,1,4] / 162`
+- `[3,5,2,3] / 162`
+- `[3,5,3,2] / 162`
+- `[3,5,4,1] / 162`
+- `[3,5,5,0] / 162`
+- `[3,8,0,2] / 159`
+- `[3,8,1,1] / 159`
+- `[3,8,2,0] / 159`
+- `[4,4,0,5] / 162`
+- `[4,4,1,4] / 162`
+- `[4,4,2,3] / 162`
+- `[4,4,3,2] / 162`
+- `[4,4,4,1] / 162`
+- `[4,4,5,0] / 162`
+- `[4,7,0,2] / 159`
+- `[4,7,1,1] / 159`
+- `[5,3,0,5] / 162`
+- `[5,3,1,4] / 162`
+- `[5,3,2,3] / 162`
+- `[5,3,3,2] / 162`
+- `[5,3,4,1] / 162`
+- `[5,3,5,0] / 162`
+- `[5,8,0,0] / 156`
+- `[6,2,0,5] / 162`
+- `[6,2,1,4] / 162`
+- `[6,7,0,0] / 156`
+- `[7,6,0,0] / 156`
+- `[8,5,0,0] / 156`
+- `[9,0,0,4] / 161`
+- `[9,0,1,3] / 161`
+- `[9,0,2,2] / 161`
+- `[9,0,3,1] / 161`
+- `[9,0,4,0] / 161`
+
+exact inventory canonical digestは
+`12352e39ce74b79ea327b5dbb032499d21c306d5d71ba7cd5d0e1779623e140a`とする。
+
+### pair-factorized exact Fourier multiplicity
+
+Q011afの`4 / 2 / 3 / 6` modulus classとper-class weak-composition polynomialをそのまま使う。各aggregateで
+group 0／1およびgroup 2／3を先にexact cyclic convolutionし、left／right coefficient rowを作る。output
+block \(b\)の係数行列を
+
+\[
+W_b[p,q]=\sum_{s=0}^{16}L_p[s]R_q[(b-s)\bmod17]
+\]
+
+として`int64` matrix productで求める。全係数は非負整数であり、per-signature fiber cardinality以下である。
+design pilotの最大係数は`213`なので、`2^63-1`未満を事前・実行時に確認し、整数overflowを許さない。
+group-signature recordは8818件、degree-13 signatureは1116561件、最大live aggregateは95256 signatureとする。
+
+44 aggregateの元monomial数は
+
+`388960 / 915200 / 1287000 / 768768 / 960960 / 887040 / 3628800 / 2177280 / 846720 / 169344 / 5322240 / 8870400 / 8064000 / 4838400 / 1881600 / 376320 / 712800 / 633600 / 198000 / 9147600 / 15246000 / 13860000 / 8316000 / 3234000 / 646800 / 1425600 / 1267200 / 12545280 / 20908800 / 19008000 / 11404800 / 4435200 / 887040 / 130680 / 13590720 / 22651200 / 205920 / 288288 / 360360 / 3775200 / 5491200 / 4118400 / 1830400 / 400400`
+
+でtotal `218102520`、modulus-signature数は
+
+`12012 / 24024 / 30888 / 14256 / 16632 / 15120 / 23520 / 14700 / 6300 / 1470 / 30240 / 45360 / 40320 / 25200 / 10800 / 2520 / 3780 / 3240 / 1080 / 44100 / 66150 / 58800 / 36750 / 15750 / 3675 / 5880 / 5040 / 56448 / 84672 / 75264 / 47040 / 20160 / 4704 / 504 / 63504 / 95256 / 672 / 840 / 990 / 27720 / 36960 / 27720 / 13200 / 3300`
+
+でtotal `1116561`とする。Fourier-compatible signature数は
+
+`5868 / 11912 / 15260 / 7248 / 8496 / 7680 / 23520 / 14700 / 6300 / 1470 / 30240 / 45360 / 40320 / 25200 / 10800 / 2520 / 3780 / 3240 / 1080 / 44100 / 66150 / 58800 / 36750 / 15750 / 3675 / 5880 / 5040 / 56448 / 84672 / 75264 / 47040 / 20160 / 4704 / 504 / 63504 / 95256 / 672 / 840 / 990 / 13420 / 18480 / 13420 / 6600 / 1540`
+
+でtotal `1004653`、元monomialへ戻したcompatible multiplicityは
+
+`87768 / 210080 / 298256 / 118040 / 149188 / 137824 / 653800 / 393832 / 154704 / 31608 / 918560 / 1512160 / 1370240 / 826080 / 325280 / 66560 / 132800 / 116160 / 37360 / 1519420 / 2497800 / 2261700 / 1364550 / 538500 / 110330 / 268380 / 235560 / 2058720 / 3383312 / 3063040 / 1848336 / 729760 / 149552 / 34184 / 2263560 / 3721756 / 55112 / 78200 / 98540 / 1021720 / 1536960 / 1128120 / 510640 / 101800`
+
+でtotal `38119852`とする。
+
+target multiplicityを戻したweighted comparison数は
+
+`256176 / 616800 / 879472 / 236080 / 298376 / 275648 / 1307600 / 787664 / 309408 / 63216 / 1837120 / 3024320 / 2740480 / 1652160 / 650560 / 133120 / 357120 / 323840 / 97600 / 3038840 / 4995600 / 4523400 / 2729100 / 1077000 / 220660 / 733880 / 668240 / 4117440 / 6766624 / 6126080 / 3696672 / 1459520 / 299104 / 68368 / 4527120 / 7443512 / 110224 / 156400 / 197080 / 2043440 / 3073920 / 2256240 / 1021280 / 203600`
+
+でtotal `77400104`、実際に判定するdistinct signature／target comparison数は
+
+`46768 / 95136 / 121936 / 28992 / 33984 / 30720 / 144480 / 90440 / 39200 / 9520 / 189120 / 277920 / 247680 / 155040 / 67200 / 16320 / 20880 / 18720 / 5760 / 275800 / 405300 / 361200 / 226100 / 98000 / 23800 / 32480 / 29120 / 353024 / 518784 / 462336 / 289408 / 125440 / 30464 / 4032 / 397152 / 583632 / 5376 / 6720 / 7920 / 102960 / 144320 / 104720 / 51040 / 11440`
+
+でtotal `6290384`とする。
+
+### outward-dyadic enclosure
+
+各exact Fraction endpointを、それぞれ下向き／上向きの最隣接binary64へ変換する。正数の積、差、和を
+round-to-nearestで1回計算した直後に`nextafter(-inf)`／`nextafter(+inf)`を適用し、各group、pair、
+left-right outer productの全段階で包含を保つ。exactな
+
+\[
+R=\prod_i(u_i+\rho)-\prod_i u_i,
+\qquad I_p=[\max(0,\prod_i\ell_i-R),\prod_i u_i+R]
+\]
+
+に対し、下側積、上側積、\(R\)を外側へ丸めた区間 \(\widehat I_p\supseteq I_p\) を作る。targetも
+exact endpointから外向きに変換する。従って外向き区間同士がstrictに分離すれば、元のexact Fraction
+intervalも同じ向きに分離する。全演算のfinite、正値、順序、underflow／overflow不在を検査する。
+
+既認証Q011afをoracleとし、degree 12について`36596091 / 213618 / 184154 / 6904665 /
+13980960 / 1116256`の各count、weighted relation `7676904 / 6304056`、distinct relation
+`648656 / 467600`、unresolved `0 / 0`を再現する。oracleのminimum certified lower boundは
+`5.935468006756927e-6`、witnessはQ011afと同じaggregate `[0,6,2,4]`とする。
+
+degree 13のarray封印はbig-endian `>i8` coefficient、big-endian `>f8` product bound、`uint8`
+classificationをdtype／shape込みでSHA-256化し、そのordered digest recordをcanonical JSONで再封印する。
+
+- class-membership／outward-base digest:
+  `269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c` /
+  `f616c74320ae94e2b9aaffa82cfbc33713bed2c336332e6c96a2ab8822b178b0`
+- 8818 group-signature factorization／aggregate wave-histogram digest:
+  `5bdff6f6766c77b7c73ddb20eeb26b8a047f242ace033aeef5a1c6c2a5c265a3` /
+  `c6d21cf776ced791c85e245edec778fc29725824ca02ab678bf7044697554308`
+- 162 coefficient-matrix／44 dyadic-bound／340 classification-matrix digest:
+  `a1c0d42f8343a2ab8aff0b1f4c3e206adadf2384be87cb2015ebf89e6e4ac77a` /
+  `5be6e793081de098f6fceae5abcdda061ced1ebdb11fd065d42c419763100515` /
+  `daaf7c7a3e7a3e7427ee043f1d100485eca3d78718c3cb823dc0eaedfea7cdda`
+- compact pilot digest:
+  `5afe9e14301d1e62a133766d71881062d0a56d03587e11993c0dac328efe9802`
+
+### uniform envelopeとsealed input
+
+直接必要な集合はselected 24 identifierとexternal group 167／165／162／159／156／161の44 unique
+identifier、合計68 identifierである。Q011afの92 uniform recordをexactに保存し、新external group 156の
+8 recordを加える100-record monotone envelopeとする。unique center-modulus evaluationは60件、
+uniform-record digestは`c75c93e6cb23a93d212e2b2664f0dc3a63db6d7278d377b30e640bbabc21e993`とする。
+
+Q011afまでの入力を再照合し、Q011afを直接封印する。
+
+- Q011af artifact／runner newline-normalized SHA-256:
+  `19f2ea8f23e91532ab6acfddc346409800983b17b916b6be0c27699e4b036555` /
+  `b270b0c4c884d1243e4db55b1dcad57af4c2e72d2143400de9c7c72d263f3293`
+- Q011af input／inventory／compression／product／result digest:
+  `14a3b80b475f418cf9963555a4cabcea19875a0f3028ef023961c67081708718` /
+  `39f1a63ca73b22969c150c84224ae94761edc53481d7822f8dc63a7abca7e493` /
+  `b8845507a83e6778f70c192a00ba85a747b28edc9a1235a202d4214e3e66e502` /
+  `16140d16ff621d4915f1571ae535031629bffb4f19d8392c18a4e2ad47e206ab` /
+  `da02c8613dc60079b977ec7d3dedd8545c486c6d401e5d84d77e3df7ff9c8204`
+
+direct digest countは`58`とする。
+
+### design-only pilotの開示
+
+outward-dyadic pilotでは全6290384 distinct comparison、元monomialへ戻した77400104 weighted
+comparisonが分離し、unresolvedはともに0だった。weighted relation countはproduct below target
+`47068304`、target below product `30331800`、distinct relation countは`3874124 / 2416260`だった。
+全比較に対するminimum certified lower boundは`5.793046996660499e-6`だった。
+
+この下限を与えたaggregate `[0,5,2,6]`のclass count
+`[[0,0,0,0],[0,5],[0,0,2],[0,0,0,6,0,0]]`について、最初のexact witness gapを上限として残る
+138 comparisonだけをexact Fractionで再評価した。exact global minimumは`5.793047003290255e-6`で、
+target `block=14;center=146`と対称な`block=3;center=146`の2件がtieだった。canonical witnessは
+
+`(block=16;center=151)^5 × (block=1;center=152)^2 × (block=0;center=147)^6`
+
+対target `block=14;center=146`、wave multiplicity `3`、relation `product_below_target`とする。登録minimum
+certified lower boundは`5e-6`とする。
+
+### validity gate
+
+1. Q011kからQ011afまでの11 artifact、runner、58 digest、outcome、claim boundaryとQ011l／Q011o sourceを再現する。
+2. degree-13の560 aggregate、8568 control、516 separation、44 overlap tuple／external groupを再現する。
+3. 68 directly relevant interval、100-record monotone envelope、Q011af 92 recordのexact preservationを再現する。
+4. 4／2／3／6 modulus class、weak-composition bijection、Q011af outward-dyadic oracleを再現する。
+5. 全218102520 monomial、1116561 signature、wave histogram、compatible multiplicity、weighted／distinct comparisonを再現する。
+6. 8818 factor record、162 coefficient matrix、44 product-bound matrix、340 classification matrixと登録digestを再現する。
+7. outward conversion／演算の包含、finite、順序、非負性、`int64`非overflowを再現する。
+8. 全comparisonのstrict separation、minimum certified lower boundと138 exact refinement／2 tieを再現する。
+9. 516 old separationと44 compressed full auditが全560 aggregateを被覆し、strict JSON、section digest、runner provenanceを再現する。
+
+### hypothesis gateと停止規則
+
+1. uniform \(\rho\)-discが全Q011y enclosureを含み、全Q011k旧discに含まれる。
+2. multiplicity compressionが元monomialを重複・欠落なく分割し、Q011af exact certificateを外向きoracleで再現する。
+3. outward-dyadic intervalが全exact Fraction product／target intervalを含み、整数係数にoverflowがない。
+4. 全77400104 weighted comparisonを表す6290384 distinct comparisonがoutward intervalでstrictに分離する。
+5. global certified lower boundが`>=5e-6`で、138候補のexact refinementが登録minimum／tieを再現する。
+6. 516 old separationと44 batched full auditからdegree-13 nonresonanceが従う。
+
+全6項目が通る場合だけ
+`degree-13 external nonresonance is certified by exact Fourier multiplicities and outward-rounded dyadic product enclosures`
+として`accepted`とする。certified degreesを2--13、tail-certifiedを91以降、missing rangeをdegrees 14--90へ更新する。
+
+Q011af oracle、integer exactness、外向き包含のいずれかが一致しなければ`inconclusive`とする。1件でも
+outward interval overlapが残れば、exact refinementを許さず
+`at least one degree-13 outward-dyadic indexed-modulus product remains inseparable from an external target`
+として`rejected`とする。`accepted`ならQ011ahでdegree 14へ進む。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 13、Q011uの44 overlap aggregate、
+Q011y transformed-residual enclosure、uniform \(\rho\)-disc、x-Fourier multiplicity polynomial、exact
+modulus-class fiber、outward-rounded dyadic product enclosureに限る。degrees 14--90、all-order
+nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／
+force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
