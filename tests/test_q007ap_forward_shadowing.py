@@ -292,3 +292,41 @@ def test_q007ap_records_provenance_and_deterministic_digests(
         )
     )
     json.dumps(q007ap_cycle, allow_nan=False)
+
+
+def test_q007ap_artifact_reproduces_the_accepted_shadowing_result(
+    q007ap_cycle: dict,
+) -> None:
+    runner_path = Path(q007ap.__file__).resolve()
+    artifact_path = (
+        runner_path.parent / "artifacts" / "q007ap_forward_shadowing.json"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "3b35ad0c3f8979f295214ae16c7be09f6a1047b2779f9eeabe3dabec759e49f0"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ap_forward_shadowing.py",
+        "sha256": (
+            "095bd3cf728e916d937df22bf9e6773698801064213cd679af52d39719f94d3d"
+        ),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q007ap_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "06692ce9d11691d2a45cd57220ea3e5e201b5c2beb2d0b55776a60f15456830f"
+    )
+    assert artifact["cycle"]["recurrence_digest_sha256"] == (
+        "108cb6d50ecaa2d9ad50c02777f6c0bb03a979903849149e30f686c8004fc1ce"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "1ee4dc09badbba0264ccc05317ba87de68557d5df148cb7085b158097d17a910"
+    )
