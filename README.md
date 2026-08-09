@@ -2487,6 +2487,53 @@ complement、real-coordinate norm、Q011o再受理、equivariant nonlinear cutof
 exact invariant manifold／SSMはまだ認証していない。次はQ011qで明示real frameとcomplementを構成し、
 coordinate lift／inverse、linear domination、cutoffを再発行する。
 
+### Q011q explicit real-frame localized setup certificate
+
+Q011j--Q011pの6 artifactと29 digestを直接封印し、Q011pのzero-block共役をQ011l graph座標へ移した。
+固定Gaussian-integer seed poolから決定的にselected 6列／external 144列を選び、256-bit directed MPFRと
+独立192-bit containment laneで、共役固定frameのinvertibilityを認証した。canonical real section
+
+\[
+H(e)=\frac12K_{SE}\overline e
+\]
+
+と合わせて、zero blockを実次元`6 + 144 = 150`の直和として明示し、Q011oの固定葉座標、線形支配、
+radius `1e-11`のradial cutoffをreal-typed setupとして再発行した。
+
+- classification:
+  `the repaired fixed-leaf split admits a certified real-frame localized graph-transform setup`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- outcome: `accepted`
+- \(\varepsilon_f / \varepsilon_K / h\):
+  `1.0274789924034183e-14 / 5.066101711744531e-10 / 2.533719458312505e-10`
+- selected point-frame norm／actual inverse／perturbation:
+  `2.6049885677674496 / 1.1494585872526437 / 1.0132203423489061e-9`
+- external point-frame norm／actual inverse／perturbation:
+  `5.267401433754149 / 1.5755497300774828 / 1.0132203423489061e-9`
+- real \(K_L / K_P / K_L\rho\):
+  `2577.187820884975 / 891.1458398501893 / 2.577187820884975e-8`
+- real \(m_S / q_E / (m_S-q_E) / (q_E/m_S)\):
+  `0.9837709559259398 / 0.9817098561324995 / 0.002061099793440198 / 0.9979048987154736`
+- selected inverse／real selected--external coupling:
+  `1.0164967708960113 / 2.080001889821235e-8`
+- localized population／density floor:
+  `0.027775882541472084 / 0.999999768052464`
+- input／conjugation／frame／setup／result digest:
+  `c9e57c60fe678901c5502bf163d7317c06fedb35322e8591e741c330969829b5` /
+  `583a28e1453b75700d0674bf090c4f8c0652d7538f84bef7c8ea7e09415db54e` /
+  `1210f4d2c85d4a0cad9978531b297b5e493bac5f8d54d5eafa6ee7a5a68a6d7b` /
+  `ec52daadd80261b9e94672beb979fd5f01e4f1c4bc0e63090a0cccbb90cda26b` /
+  `274ddd32b50000c953c623285993ba533651a720c6dc79ae693a0e24a3f623ae`
+- runner／artifact newline-normalized SHA-256:
+  `83031650f7ecd54adb048a74ace2df96068317531aeb84fb57b9f797b9e33f67` /
+  `776be2af80fdbb867fd72eb3c0bdfe82ca30f5fa50bc9436818df5c7f87e676d`
+
+Q011oの履歴上のvalid `rejected`は変更せず、実構造を明示した別座標でsetupを受理した。このgateが認証した
+のはlinear coordinate、same-norm domination、radial cutoff、closed complete real graph spaceまでである。
+nonlinear derivative bound、induced graph transform、self-map／contraction、fixed graph、exact invariant
+manifold／SSMはまだ認証していない。次はQ011rでQ011mのanalytic derivative majorantをこのreal normへ移し、
+非線形graph transformを定義して判定する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -3052,6 +3099,7 @@ python -m research.q011m_quadratic_jet_majorant --output research/artifacts/q011
 python -m research.q011n_correction_readiness --output research/artifacts/q011n_correction_readiness.json
 python -m research.q011o_graph_transform_setup --output research/artifacts/q011o_graph_transform_setup.json
 python -m research.q011p_zero_block_reality --output research/artifacts/q011p_zero_block_reality.json
+python -m research.q011q_real_frame_setup --output research/artifacts/q011q_real_frame_setup.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -3143,6 +3191,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011n_correction_readiness.json`](research/artifacts/q011n_correction_readiness.json)
 - [`research/artifacts/q011o_graph_transform_setup.json`](research/artifacts/q011o_graph_transform_setup.json)
 - [`research/artifacts/q011p_zero_block_reality.json`](research/artifacts/q011p_zero_block_reality.json)
+- [`research/artifacts/q011q_real_frame_setup.json`](research/artifacts/q011q_real_frame_setup.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)

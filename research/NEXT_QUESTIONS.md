@@ -14461,6 +14461,58 @@ entry、frameの最適condition number、nonlinear derivative bound、induced gr
 fixed graph、exact invariant manifold／SSM、smoothness／一意性、normal attraction、basin、他grid／force／wall、
 D3Q27を構成・認証しない。
 
+### Q011q 実行結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the repaired fixed-leaf split admits a certified real-frame localized graph-transform setup`
+として`accepted`とした。
+
+Q011j--Q011pの6 artifactと29 digestはすべて直接再現した。Q011pのdirected conjugation enclosureに、
+binary64 point productをexact dyadicへ戻した誤差とQ011l graph radiusを加え、
+
+\[
+\varepsilon_K
+=\varepsilon_J+\varepsilon_f+j_{SE}r_G
+=5.066101711744531\times10^{-10}
+\]
+
+を得た。固定seed pool `[I+K_c, i(I-K_c)]` のtwo-pass MGS pivotはselected `6`列、external `144`列を
+決定的に選び、256-bit proofと192-bit containmentの双方でframe inverseを認証した。
+
+- \(\varepsilon_f\): `1.0274789924034183e-14`
+- selected seed norm／point-frame norm／actual inverse／perturbation:
+  `2 / 2.6049885677674496 / 1.1494585872526437 / 1.0132203423489061e-9`
+- external seed norm／point-frame norm／actual inverse／perturbation:
+  `2 / 5.267401433754149 / 1.5755497300774828 / 1.0132203423489061e-9`
+- canonical section norm \(h\): `2.533719458312505e-10`
+- zero-block real dimension: `6 + 144 = 150`
+- fixed-leaf real dimension: `24 + 2574 = 2598`
+- \(K_L^{\mathbb R} / K_P^{\mathbb R} / K_L^{\mathbb R}\rho\):
+  `2577.187820884975 / 891.1458398501893 / 2.577187820884975e-8`
+- \(m_S / q_E / (m_S-q_E) / (q_E/m_S)\):
+  `0.9837709559259398 / 0.9817098561324995 / 0.002061099793440198 / 0.9979048987154736`
+- selected inverse／real coupling:
+  `1.0164967708960113 / 2.080001889821235e-8`
+- localized population／density floor:
+  `0.027775882541472084 / 0.999999768052464`
+- input／conjugation／frame／setup／result digest:
+  `c9e57c60fe678901c5502bf163d7317c06fedb35322e8591e741c330969829b5` /
+  `583a28e1453b75700d0674bf090c4f8c0652d7538f84bef7c8ea7e09415db54e` /
+  `1210f4d2c85d4a0cad9978531b297b5e493bac5f8d54d5eafa6ee7a5a68a6d7b` /
+  `ec52daadd80261b9e94672beb979fd5f01e4f1c4bc0e63090a0cccbb90cda26b` /
+  `274ddd32b50000c953c623285993ba533651a720c6dc79ae693a0e24a3f623ae`
+- runner／artifact newline-normalized SHA-256:
+  `83031650f7ecd54adb048a74ace2df96068317531aeb84fb57b9f797b9e33f67` /
+  `776be2af80fdbb867fd72eb3c0bdfe82ca30f5fa50bc9436818df5c7f87e676d`
+
+これでQ011oで失敗したzero-blockの標準共役typingを、明示real frameとcanonical external sectionを持つ
+別座標として修復した。Q011oの履歴上のvalid `rejected`は変更しない。radial cutoffは両real fixed spaceを
+保つが、このgateではnonlinear derivative majorantをreal normへ輸送しておらず、induced graph transformも
+定義していない。従ってself-map、contraction、fixed graph、exact invariant manifold／SSMは未認証である。
+
+停止規則どおり、次はQ011rを事前登録し、Q011mのanalytic derivative majorantをQ011qのreal normへ移し、
+localized nonlinear graph transformの定義、self-map、contractionだけを独立に判定する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
