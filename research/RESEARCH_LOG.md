@@ -3987,6 +3987,62 @@ base約100分の1、normal約10分の1へ改善したが、all-iterate再入に�
 局所roundoff accumulationをまとめた固定worst-case certificateの失敗である。Q007akでは4因子を分離し、
 どこを改善すれば再入thresholdへ届くかを定量化する。Q007akまではnew-tube MPFR／repair／shadowingへ進まない。
 
+## 2026-08-09: Q007ak Q007ag re-entry obstructionの4因子分解
+
+### 問いと事前登録
+
+Q007ajのbase／normal failureをstrict margin、analysis upper、289-wave Wiener lifting、post-filter local
+component-error sumへexact分解し、単独因子の必要改善率を求めた。加えてQ007wのsealed ideal-binary
+evaluatorをnew tubeへ移し、53--128 bitの全整数候補からbase／normal／joint first-passを独立に選ぶよう
+登録した。\(p=53\)はQ007ajの全target／error recordとsplit outcomeをexact再現することを必須とした。
+
+### 実装
+
+- Q007aj stored cycle、2 digest、5-pass／2-fail hypothesis、全stage／re-entry quantityをfresh replayした。
+- Q007w stored cycle、old 85-bit boundary、76候補digest、ties-to-even／p53 controlをfresh replayした。
+- \(U_X=K_XNE_{53}/m_X\)とlocal-error／analysis／wave／marginの4 boundary identityを`Fraction`で再構成した。
+- counterfactual \(N=1\)、\(K=1\)を診断として計算したが、実現可能な新normとは扱わなかった。
+- 全76 precisionでoperation count、domain、error monotonicity、stage-lower monotonicityを検証し、3 selection
+  boundaryをexactに再構成した。
+
+### 結果
+
+validity `7/7`、hypothesis `7/7`で、
+`registered factor audit isolates base re-entry as the dominant Q007ag binary64 obstruction`
+として`accepted`とした。
+
+- binary64 base／normal utilization: `35399902.97837664 / 38.16743540245316`
+- maximum local component error at boundary:
+  `1.1403927055836785e-22 / 1.0577024814278182e-16`
+- maximum analysis factor at boundary:
+  `4.26748121347461e-08 / 0.7838393109965568`
+- maximum wave factor at boundary:
+  `8.163864182806664e-06 / 7.5718998919540965`
+- unit-wave base／normal utilization:
+  `122491.01376600914 / 0.13206725052751958`
+- unit-analysis base／normal utilization:
+  `23433026.41479689 / 1.2757716868379836`
+- minimal sufficient ideal precision base／normal／joint: `79 / 59 / 79`
+- base boundary `p=78 / 79` utilization: `1.049142142753718 / 0.5226851687280066`
+- normal boundary `p=58 / 59` utilization: `1.1922608315359098 / 0.5970734654373829`
+- input／candidate／result digest:
+  `333ce7e6b4537947808a369f1c218c2d930a11df4b826994df0947fa42489d46` /
+  `eacc824a8f0fc891971c210883d05f7178e4fe5848ab3b2432dc94adf289e567` /
+  `a4d10df4c1d6edd83488115d501af21ad6727dd6321e159e37b2b0e434858644`
+- runner／artifact SHA-256:
+  `c8bb3f7a84d19d9ab2794d9a1c27334ecd53e62dabce7862343b51ef30cd29b1` /
+  `aae6b560125cd29dad5b87bf20e9806ae26a5b1b6ae2ee9c055580042561cf7c`
+
+### 解釈と次のbottleneck
+
+baseはbinary64で約3540万倍超過し、wave factorを反実仮想的に1へ下げても約12.2万倍超過する。
+normalはbinary64で約38.17倍だが、unit-wave counterfactualでは0.132へ下がる。precision boundaryでも
+normalは59 bit、base／jointは79 bitなので、固定enclosureの支配障害はbase coordinateである。
+
+joint ideal threshold 79は既存MPFR-85 precision以下だが、これはimplemented backendの証明ではない。
+次はQ007alでQ007xのconcrete MPFR-85全演算traceをnew tube上へ一段だけ再適用する。fixed-leaf closure、
+repair、all-iterate induction、same-initial shadowingは別gateに残す。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4098,6 +4154,8 @@ base約100分の1、normal約10分の1へ改善したが、all-iterate再入に�
 [`artifacts/q007ai_propagated_tube_stagewise_positivity.json`](artifacts/q007ai_propagated_tube_stagewise_positivity.json)
 
 [`artifacts/q007aj_propagated_tube_binary64_enclosure.json`](artifacts/q007aj_propagated_tube_binary64_enclosure.json)
+
+[`artifacts/q007ak_reentry_factor_audit.json`](artifacts/q007ak_reentry_factor_audit.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

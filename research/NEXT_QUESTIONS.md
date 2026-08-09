@@ -8701,6 +8701,42 @@ fixed-leaf closure、repair、same-initial shadowing、continuous optimum、grid
 Q010結論は変更しない。acceptedなら次のgateは結果に従い、new-tube ideal thresholdが85以下ならQ007alで
 既存MPFR-85 backendの一段包囲を再監査する。85を超えるなら先にprecision選択を再登録する。
 
+### Q007ak 封印結果
+
+validity 7件、hypothesis 7件が全て通過し、
+`registered factor audit isolates base re-entry as the dominant Q007ag binary64 obstruction`
+として`accepted`とした。
+
+- sealed Q007aj／Q007w inputs: `2 / 2` pass
+- Q007aj／Q007w stored cycle fresh reproduction: `2 / 2` pass
+- Q007aj \(p=53\) target／error／stage／re-entry exact control: pass
+- exact base／normal 4-factor identities: `2 / 2` pass
+- precision coverage／domain／monotonicity: `76 / 76` pass
+- binary64 base／normal utilization: `35399902.97837664 / 38.16743540245316`
+- maximum local component-error sum at boundary:
+  `1.1403927055836785e-22 / 1.0577024814278182e-16`
+- maximum analysis factor at boundary:
+  `4.26748121347461e-08 / 0.7838393109965568`
+- maximum wave factor at boundary:
+  `8.163864182806664e-06 / 7.5718998919540965`
+- unit-wave base／normal utilization:
+  `122491.01376600914 / 0.13206725052751958`
+- minimal sufficient ideal precision base／normal／joint: `79 / 59 / 79`
+- base `p=78 / 79` utilization: `1.049142142753718 / 0.5226851687280066`
+- normal `p=58 / 59` utilization: `1.1922608315359098 / 0.5970734654373829`
+- input／candidate／result digest:
+  `333ce7e6b4537947808a369f1c218c2d930a11df4b826994df0947fa42489d46` /
+  `eacc824a8f0fc891971c210883d05f7178e4fe5848ab3b2432dc94adf289e567` /
+  `a4d10df4c1d6edd83488115d501af21ad6727dd6321e159e37b2b0e434858644`
+- runner／artifact SHA-256:
+  `c8bb3f7a84d19d9ab2794d9a1c27334ecd53e62dabce7862343b51ef30cd29b1` /
+  `aae6b560125cd29dad5b87bf20e9806ae26a5b1b6ae2ee9c055580042561cf7c`
+
+従って固定Q007aj／Q007w enclosureではbase coordinateが支配障害であり、joint ideal sufficient thresholdは
+79 bitsである。これはactual escape thresholdでもimplemented backend証明でもない。79が85以下なので、
+次はQ007alで既存Q007x concrete MPFR-85 backendの一段stage／re-entry包囲をnew tube上へ再監査する。
+fixed-leaf closure、repair、all-iterate induction、same-initial shadowingはまだ開始しない。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。

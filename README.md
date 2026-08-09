@@ -183,7 +183,9 @@ Q007aiではexact equilibrium／collision／streaming／filterへ拡張し、最
 Q007ajではcurrent binary64演算も一段だけ囲い、最悪stage lower
 `0.02777777714596806`を認証した。一方、roundoff re-entry upperはbase／normal marginの
 `35399902.97837664 / 38.16743540245316`倍で、all-iterate binary64帰納は`not_certified`である。
-MPFR／repair／shadowingは引き続き旧tubeに封印されている。
+Q007akではこのfailureをexactに4因子へ分解し、ideal-binary最小十分precisionを
+base／normal／joint=`79 / 59 / 79` bitsと認証した。MPFR／repair／shadowingは引き続き旧tubeに
+封印されており、79-bit値をimplemented-map結論とは扱わない。
 Q007pではQ007o当時の半径`1e-18`を固定し、全289 Fourier blockをexternal coordinate normで
 厳密に覆った。
 登録tube \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)に対し、base forward invariance、
@@ -1256,6 +1258,44 @@ mixed resultもfresh replayし、one-step stage positivityとbase／normal re-en
 これは実際のtube escapeや反例ではなく、現行enclosureの再入認証失敗である。Q007akではmargin、analysis
 norm、Wiener lifting、local roundoff accumulationを分離してbottleneckを決める。
 
+### Q007ak Q007ag roundoff re-entry obstructionの因子分解
+
+Q007aj／Q007wを封印し、binary64 utilizationを
+\(U_X=K_X\,289\,E_{53}/m_X\)へexactに分解した。さらにQ007wと同じideal-binary evaluatorを
+53--128 bitの全76整数候補へ適用し、base、normal、jointのfirst-pass boundaryを別々に決めた。
+
+- classification:
+  `registered factor audit isolates base re-entry as the dominant Q007ag binary64 obstruction`
+- validity／hypothesis gates: `7 / 7`、`7 / 7` passed
+- binary64 base／normal utilization: `35399902.97837664 / 38.16743540245316`
+- maximum local component-error sum at the strict boundary:
+  - base: `1.1403927055836785e-22`
+  - normal: `1.0577024814278182e-16`
+- maximum analysis factor at the strict boundary:
+  - base: `4.26748121347461e-08`
+  - normal: `0.7838393109965568`
+- maximum wave-lifting factor at the strict boundary:
+  - base: `8.163864182806664e-06`
+  - normal: `7.5718998919540965`
+- unit-wave counterfactual base／normal utilization:
+  `122491.01376600914 / 0.13206725052751958`
+- minimal sufficient ideal precision base／normal／joint: `79 / 59 / 79` bits
+- boundary utilization:
+  - base `p=78 / 79`: `1.049142142753718 / 0.5226851687280066`
+  - normal `p=58 / 59`: `1.1922608315359098 / 0.5970734654373829`
+- input／candidate／result digest:
+  `333ce7e6b4537947808a369f1c218c2d930a11df4b826994df0947fa42489d46` /
+  `eacc824a8f0fc891971c210883d05f7178e4fe5848ab3b2432dc94adf289e567` /
+  `a4d10df4c1d6edd83488115d501af21ad6727dd6321e159e37b2b0e434858644`
+- runner／artifact SHA-256:
+  `c8bb3f7a84d19d9ab2794d9a1c27334ecd53e62dabce7862343b51ef30cd29b1` /
+  `aae6b560125cd29dad5b87bf20e9806ae26a5b1b6ae2ee9c055580042561cf7c`
+
+従って固定enclosureではbase coordinateが支配的である。wave factorを反実仮想的に289から1へ下げてもbaseは
+約12.2万倍超過する一方、normalは通る。ideal 79 bitは固定operation model内の十分条件であり、必要条件、
+actual trajectory threshold、MPFR-85実装証明ではない。次はQ007alで既存MPFR-85 backendをnew tube上の
+一段stage／re-entryだけに対して再監査し、fixed-leaf closureとrepairは分離したまま残す。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -1795,6 +1835,7 @@ python -m research.q007ag_tube_radius_propagation --output research/artifacts/q0
 python -m research.q007ah_propagated_tube_population_positivity --output research/artifacts/q007ah_propagated_tube_population_positivity.json
 python -m research.q007ai_propagated_tube_stagewise_positivity --output research/artifacts/q007ai_propagated_tube_stagewise_positivity.json
 python -m research.q007aj_propagated_tube_binary64_enclosure --output research/artifacts/q007aj_propagated_tube_binary64_enclosure.json
+python -m research.q007ak_reentry_factor_audit --output research/artifacts/q007ak_reentry_factor_audit.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -1860,6 +1901,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007ah_propagated_tube_population_positivity.json`](research/artifacts/q007ah_propagated_tube_population_positivity.json)
 - [`research/artifacts/q007ai_propagated_tube_stagewise_positivity.json`](research/artifacts/q007ai_propagated_tube_stagewise_positivity.json)
 - [`research/artifacts/q007aj_propagated_tube_binary64_enclosure.json`](research/artifacts/q007aj_propagated_tube_binary64_enclosure.json)
+- [`research/artifacts/q007ak_reentry_factor_audit.json`](research/artifacts/q007ak_reentry_factor_audit.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -1941,6 +1983,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q007ah Q007ag tubeのexact Wiener bound、full-map時刻でのpopulation／density strict positivity認証
 - Q007ai Q007ag tubeのexact equilibrium／BGK／streaming／convex-filter全iterate strict positivity認証
 - Q007aj Q007ag tubeのcurrent binary64 paired enclosure、一段stage positivity認証、base／normal re-entry棄却
+- Q007ak Q007aj re-entry failureの4因子分解、base／normal／joint ideal threshold `79 / 59 / 79`認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -1950,7 +1993,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
-  Q007ag新tubeのroundoff re-entry obstruction分解とMPFR／repair／shadowing再監査
+  Q007ag新tubeのMPFR-85／fixed-leaf repair／shadowing再監査
 - TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -1987,4 +2030,6 @@ Q007agではQ007aeのanalytic radiusとcorrectionだけを同じmajorantへ伝�
 Q007t--Q007abのpositivity／有限精度結論を自動的には移していない。Q007ahでは新tubeを
 full-map時刻のstrict positive population coneへ含め、Q007aiではexact内部stageへ拡張した。Q007ajでは
 current binary64の一段stage positivityまで移したが、base／normal roundoff re-entryがともにfailするため、
-all-iterate finite-precision結論はまだ移していない。
+all-iterate finite-precision結論はまだ移していない。Q007akではこの失敗を4因子へ分解し、同じideal
+operation family内のjoint sufficient thresholdを79 bitsと決めた。implemented MPFR／repair／shadowingは
+まだ新tubeへ移していない。
