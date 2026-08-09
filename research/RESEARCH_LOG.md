@@ -6099,6 +6099,82 @@ smoothness、degrees 3--90のexternal nonresonance、spectral-quotient SSM uniqu
 basin、optimal radiusを示さない。停止規則どおり、次はQ011uでhigher-smoothness localizationとmissing
 degree evidenceだけを事前登録する。
 
+### Q011u 実行結果
+
+Q011j／Q011k／Q011m／Q011tの4 artifact、runner、21 digest、outcome、claim boundaryとQ007i
+rational-log sourceを直接照合し、validity `8 / 8`を通過した。登録した
+
+\[
+c_{91}=\frac{183!}{(91!)^2},
+\qquad
+S_{91}(y)=c_{91}\int_0^y u^{91}(1-u)^{91}\,du
+\]
+
+を92個のexact rational coefficientとして展開し、(S_{91}(0)=0)、(S_{91}(1)=1)、derivatives
+1--91の両endpoint valueが0であることをexactに確認した。従ってQ011tと同じ
+(t_r(z)=\sum_j(|z_j|/(2r))^{16})を用いるpiecewise scalar cutoffは(C^{91})で、radius (r) ball上の
+identity、radius (4r) ball内のsupport、conjugacy-fixed selected／external real-space preservationを持つ。
+high-derivative graph-transform boundとQ011t graph equalityはこのgateへ含めていない。
+
+Q011kの2598 eigencenterと17 Bauer--Fike radiusを直接再構成した。個別modulus intervalはすべて
+(0<\rho^-\le\rho^+<1)で、overlap連結成分は
+
+- selected: `24 -> 4`、multiplicity `8 / 4 / 4 / 8`
+- external: `2574 -> 186`
+
+となった。Q007iの96-term atanh rational log、110／60-digit outward gridsをそのまま用い、全190 componentの
+maximum endpoint tailを`1.538017643004299e-92`へ囲んだ。
+
+degrees 3--90の88 degreeについて全count tupleを列挙した。exact countは
+
+\[
+\sum_{d=3}^{90}\binom{d+3}{3}=3{,}049{,}486,
+\qquad
+\sum_{d=3}^{90}\binom{d+5}{5}=927{,}048{,}276
+\]
+
+で一致したが、aggregate intervalのうち`423,729`件がexternal merged log intervalとoverlapし、
+nonoverlapは`2,625,757`件だった。最初のwitnessはdegree `3`、selected-type counts `[0,1,1,1]`、
+external group `183`である。degree 3には1件、degree 90にも2件のoverlapが残った。nonoverlap aggregateだけの
+global minimum gapは`2.593371508729764e-9`だったが、zero-overlap hypothesisを満たさないので
+nonresonance証明には使わない。
+
+Q011kのdegree-2 300 unordered pair certificateは再現した。またQ011t modulus enclosureから
+
+\[
+(\rho_S^+)^{91}/\rho_E^-=0.9922327356143813\le0.999,
+\qquad
+\rho_S^+<1
+\]
+
+をexactに再評価し、degree 91以降のtailを認証した。hypothesis gateはscalar localizationとcompressionの
+`2 / 5`だけが通過し、
+`the C91 localization and degree-91 tail are certified, but modulus-only nonresonance through degree 90 is obstructed`
+としてvalid `rejected`とした。
+
+- exact cutoff／individual-modulus／compression／log／degree-record digest:
+  `4e6d2f9962271394639bc8a8aad56ec5f379d94220e48c3ef8a80d62ba5d1051` /
+  `120d9214caa90d3eff168fca272ce8da3ee47eb5e11cbd65b0d462139b2d73fb` /
+  `57c9dd6cc7a3d3ab422698cf77a964036fbc2e4116f3ff79a0b7822f9fec7963` /
+  `a4e193d4314674636d7f20e3b50c792ed1844a981d0438b021cef760bf6e19a5` /
+  `f23f333ea13a8d6542928ad812419ce72a2ecaac40694b38ccbc3add5657541a`
+- input／cutoff／spectrum／log／enumeration／tail／result digest:
+  `ba768da7be5663c607a24fa4a399bae06a8d8b4128a45ab9bb2b57f8a12461f4` /
+  `55a374a5d91d2c88e5e34be2173f9861ee14915daaee55efd8848f0cd7ebaf94` /
+  `a514c3a13142d379886c56b08109f28b69aee4cbcef2d4c5c9bed8d29182e89d` /
+  `10f9aa954446e1e7d8095488ef82abc48fcc99fde3ddabd93a1a188b17ea51b5` /
+  `5c94deb8acd69b1346e6d46af829804b401027ecea48caf7e5ce2d9b22d6631c` /
+  `307ca2762bb5aecb626983acb8d38eb5728e2a8eb9e64769cc0b632b40da66c6` /
+  `b005bb622e7f3abad98a1ef6875af289fa2dccdc16911faf11e7ee04b822722c`
+- runner／artifact newline-normalized SHA-256:
+  `fa3c7c01355c0b3c19b58618fe97edc5863dc2d0fa02c4f810ddbc57053a419e` /
+  `4e0a74cffaeb6781b85621362d4463ac8d9ab98ee14bcf3b5764642b5a15d5e4`
+
+このoverlapはmodulus-only sufficient certificateの失敗であり、actual complex resonance、analytic invariant
+manifoldの不存在、Q011t graphの非滑らかさを示さない。complex phase、Fourier output sector、phase-sensitive
+product disk、homological inverse normも未評価である。停止規則どおり、次はQ011vで最初のwitnessから
+phase-sensitive output-sector product auditを事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6270,6 +6346,8 @@ degree evidenceだけを事前登録する。
 [`artifacts/q011s_original_map_invariant_core.json`](artifacts/q011s_original_map_invariant_core.json)
 
 [`artifacts/q011t_c1_tangent_graph.json`](artifacts/q011t_c1_tangent_graph.json)
+
+[`artifacts/q011u_c91_modulus_nonresonance.json`](artifacts/q011u_c91_modulus_nonresonance.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

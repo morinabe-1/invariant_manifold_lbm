@@ -15639,6 +15639,64 @@ eigendisc modulus、degrees 3--90のmodulus-only aggregate、degree-91 tailに�
 sector、phase-sensitive product disk、homological inverse norm、Q011t graphとの一致、explicit higher-smoothness
 radius、normal attraction、basin、他grid／force／wall、D3Q27を構成・認証しない。
 
+### Q011u 実行結果
+
+Q011j／Q011k／Q011m／Q011tの4 artifact、runner、21 digestとQ007i rational-log sourceを直接照合し、
+validity `8 / 8`を通過した。登録したbeta polynomialは92個のexact coefficientを持ち、
+(S_{91}(0)=0)、(S_{91}(1)=1)、derivatives 1--91の両endpoint flatnessをexact combinatoricsで再現した。
+従ってQ011tと同じscalar power (t_r)を用いるcutoffは、origin近傍でoriginal mapと一致する
+(C^{91}) real localizationである。ただしhigh-derivative graph-transform capやQ011t graphとの一致は
+主張していない。
+
+全2598 eigendisc modulus intervalを再構成し、selected `24 -> 4`、multiplicity `8 / 4 / 4 / 8`、
+external `2574 -> 186`のstrict overlap-component compressionを得た。Q007iの96-term atanh seriesと
+110／60-digit outward gridで全190 componentをlogへ輸送し、maximum endpoint tailは
+`1.538017643004299e-92`で登録上限`1e-90`を通過した。
+
+degrees 3--90について、登録した
+
+\[
+3{,}049{,}486
+\]
+
+aggregateと`927,048,276` expanded-product controlを完全列挙した。結果は
+
+- overlap aggregate: `423,729`
+- nonoverlap aggregate: `2,625,757`
+- first overlap: degree `3`、selected-type counts `[0,1,1,1]`、external group `183`
+- degree 3／90 overlap count: `1 / 2`
+- global minimum nonoverlap log gap: `2.593371508729764e-9`
+
+だった。minimum nonoverlap gap自体は`1e-12`より大きいが、zero-overlap gateを満たさないため
+nonresonance certificateには使えない。一方、Q011kの300 quadratic pairは再現し、
+
+\[
+(\rho_S^+)^{91}/\rho_E^-=0.9922327356143813\le0.999
+\]
+
+なのでdegree 91以降のtailは独立に認証した。
+
+hypothesisは`2 / 5`だけが通過し、
+`the C91 localization and degree-91 tail are certified, but modulus-only nonresonance through degree 90 is obstructed`
+としてvalid `rejected`とした。これはactual complex resonance、analytic invariant manifoldの不存在、
+Q011t graphの非滑らかさを意味しない。
+
+- input／cutoff／spectrum／log／enumeration／tail／result digest:
+  `ba768da7be5663c607a24fa4a399bae06a8d8b4128a45ab9bb2b57f8a12461f4` /
+  `55a374a5d91d2c88e5e34be2173f9861ee14915daaee55efd8848f0cd7ebaf94` /
+  `a514c3a13142d379886c56b08109f28b69aee4cbcef2d4c5c9bed8d29182e89d` /
+  `10f9aa954446e1e7d8095488ef82abc48fcc99fde3ddabd93a1a188b17ea51b5` /
+  `5c94deb8acd69b1346e6d46af829804b401027ecea48caf7e5ce2d9b22d6631c` /
+  `307ca2762bb5aecb626983acb8d38eb5728e2a8eb9e64769cc0b632b40da66c6` /
+  `b005bb622e7f3abad98a1ef6875af289fa2dccdc16911faf11e7ee04b822722c`
+- runner／artifact newline-normalized SHA-256:
+  `fa3c7c01355c0b3c19b58618fe97edc5863dc2d0fa02c4f810ddbc57053a419e` /
+  `4e0a74cffaeb6781b85621362d4463ac8d9ab98ee14bcf3b5764642b5a15d5e4`
+
+停止規則どおり、次はQ011vで最初のoverlap witnessから始め、Fourier output sector、complex phase、
+phase-sensitive product diskを使って、modulus overlapのどれが真のhomological obstruction候補として残るかを
+事前登録して判定する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

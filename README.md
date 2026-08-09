@@ -2722,6 +2722,53 @@ Lipschitz fixed graphと集合として同じとは示していない。backward
 degrees 3--90のnonresonance、spectral-quotient SSM uniqueness、normal attraction、basinは未認証である。
 次はQ011uでhigher-smoothness localizationとmissing degreesのevidenceを判定する。
 
+### Q011u C91 localization and modulus-only nonresonance audit
+
+Q011j／Q011k／Q011m／Q011tの4 artifact、21 digestとQ007i rational-log sourceを直接封印した。
+92 exact coefficientから
+
+\[
+S_{91}(y)=\frac{183!}{(91!)^2}\int_0^y u^{91}(1-u)^{91}\,du
+\]
+
+を構成し、値`0 / 1`とderivatives 1--91の両endpoint flatnessをexactに再現した。これにより
+origin近傍でoriginal mapと一致し、radius \(r\)でidentity、radius \(4r\)内にsupportを持つ
+\(C^{91}\) real scalar localizationを認証した。
+
+全2598 eigendiscをmodulus overlap componentへmergeすると、selectedは`24 -> 4`、multiplicity
+`8 / 4 / 4 / 8`、externalは`2574 -> 186`となった。96-term rational log、110／60-digit outward gridで
+maximum endpoint tail `1.538017643004299e-92`を得た。degrees 3--90の全`3,049,486` aggregateと
+`927,048,276` expanded-product controlを列挙した結果は次のとおりだった。
+
+- classification:
+  `the C91 localization and degree-91 tail are certified, but modulus-only nonresonance through degree 90 is obstructed`
+- validity／hypothesis gates: `8 / 8` passed、`2 / 5` passed
+- outcome: `rejected`
+- overlap／nonoverlap aggregate: `423,729 / 2,625,757`
+- first overlap: degree `3`、counts `[0,1,1,1]`、external group `183`
+- degree 3／90 overlap count: `1 / 2`
+- global minimum nonoverlap log gap: `2.593371508729764e-9`
+- degree-91 tail ratio: `0.9922327356143813`（cap `0.999`）
+
+Q011kのdegree-2 300 pairとdegree 91以降のtailは通過したが、423,729 aggregateがexternal modulus intervalと
+overlapしたため、degrees 3--90のmodulus-only sufficient certificateを棄却した。このoverlapはactual complex
+resonanceを意味せず、analytic invariant manifoldの不存在やQ011t graphの非滑らかさも示さない。
+
+- input／cutoff／spectrum／log／enumeration／tail／result digest:
+  `ba768da7be5663c607a24fa4a399bae06a8d8b4128a45ab9bb2b57f8a12461f4` /
+  `55a374a5d91d2c88e5e34be2173f9861ee14915daaee55efd8848f0cd7ebaf94` /
+  `a514c3a13142d379886c56b08109f28b69aee4cbcef2d4c5c9bed8d29182e89d` /
+  `10f9aa954446e1e7d8095488ef82abc48fcc99fde3ddabd93a1a188b17ea51b5` /
+  `5c94deb8acd69b1346e6d46af829804b401027ecea48caf7e5ce2d9b22d6631c` /
+  `307ca2762bb5aecb626983acb8d38eb5728e2a8eb9e64769cc0b632b40da66c6` /
+  `b005bb622e7f3abad98a1ef6875af289fa2dccdc16911faf11e7ee04b822722c`
+- runner／artifact newline-normalized SHA-256:
+  `fa3c7c01355c0b3c19b58618fe97edc5863dc2d0fa02c4f810ddbc57053a419e` /
+  `4e0a74cffaeb6781b85621362d4463ac8d9ab98ee14bcf3b5764642b5a15d5e4`
+
+次はQ011vでFourier output sectorとcomplex phaseを復元し、最初のoverlap witnessからphase-sensitive
+product disk監査を行う。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -3386,6 +3433,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011r_nonlinear_graph_transform.json`](research/artifacts/q011r_nonlinear_graph_transform.json)
 - [`research/artifacts/q011s_original_map_invariant_core.json`](research/artifacts/q011s_original_map_invariant_core.json)
 - [`research/artifacts/q011t_c1_tangent_graph.json`](research/artifacts/q011t_c1_tangent_graph.json)
+- [`research/artifacts/q011u_c91_modulus_nonresonance.json`](research/artifacts/q011u_c91_modulus_nonresonance.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -3512,6 +3560,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q011r global bounded real graph space、localized nonlinear graph-transform self-map／strict contraction
 - Q011s original-map cutoff-core transfer、24-real-dimensional forward-invariant Lipschitz graph patch
 - Q011t scalar C1 localization、derivative-fiber contraction、selected tangency、spectral quotient `[89,90]`
+- Q011u C91 beta-polynomial localization、2598 modulus compression、degrees 3--90 exact enumeration、
+  modulus-only nonresonance routeのvalid rejection
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -3522,8 +3572,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapの\(C^2\)以上のsmoothness、degrees 3--90 external nonresonance、
-  spectral-quotient SSM uniqueness
+- repaired exact mapの\(C^2\)以上のgraph smoothness、phase-sensitive degrees 3--90 external
+  nonresonance、spectral-quotient SSM uniqueness（Q011uはmodulus-only routeを棄却）
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
 
@@ -3631,4 +3681,8 @@ Q011tではQ011r cutoffとは別のscalar \(C^1\) localizationを構成し、C0 
 derivative-fiber contractionを合成した。selected scale `1/256`、radius `1.171875e-18`でoriginal mapへ
 transferできる24-real-dimensional \(C^1\) graph patchとorigin tangencyを認証し、全2598 eigendiscから
 spectral quotientを`[89,90]`に囲んだ。ただしQ011s graphとの一致、\(C^2\)以上、degrees 3--90の
-external nonresonance、SSM uniqueness、normal attraction、basinは未認証である。
+external nonresonance、SSM uniqueness、normal attraction、basinは未認証である。Q011uでは92係数の
+\(C^{91}\) scalar localizationとdegree-91 tailを認証した一方、degrees 3--90の3,049,486 modulus aggregate中
+423,729件がexternal modulus componentとoverlapしたため、modulus-only sufficient routeをvalid
+`rejected`とした。actual resonanceやanalytic manifoldの不存在は示しておらず、次はFourier-sector／phase-aware
+certificateが必要である。
