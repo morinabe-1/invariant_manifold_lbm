@@ -9389,7 +9389,7 @@ d_H(r)=1.0398158027969315\times10^{-14}
 でexact rational評価する。事前登録値は次のとおりとする。
 
 - base inward margin／increment／headroom／utilization:
-  `2e-21 / 3.009718329710275e-23 / 1.9699028167028972e-21 / 0.015048591648551374`
+  `2e-21 / 3.009718329710275e-23 / 1.969902816702897e-21 / 0.015048591648551374`
 - direct external／graph-shift／total normal increment:
   `5.960355768038905e-22 / 9.362725402249564e-36 / 5.960355768038998e-22`
 - normal inward margin／headroom／utilization:
