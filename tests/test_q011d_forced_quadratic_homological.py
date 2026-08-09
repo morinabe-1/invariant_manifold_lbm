@@ -252,3 +252,41 @@ def test_q011d_records_reproducible_digests_and_provenance(
     }
     assert source_metadata()["package_version"] == "0.1.0"
     json.dumps(q011d_cycle, allow_nan=False)
+
+
+def test_q011d_artifact_reproduces_the_accepted_prequalification(
+    q011d_cycle: dict,
+) -> None:
+    runner_path = Path(q011d.__file__).resolve()
+    artifact_path = runner_path.parent / "artifacts" / "q011d_forced_quadratic_homological.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "c3acb9b7acc6e3121cb6e48a04bb060b5c95d7b128fe15fb11b67ee456337fd0"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011d_forced_quadratic_homological.py",
+        "sha256": ("815fe7e0101cc05cc44fcb224534762f0ef7625f8c9604ff0a822c13171a617d"),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q011d_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "ee2713e8169ea0f475ddee1b1233964ba40739d2276b78db3fff5410158dd2f8"
+    )
+    assert artifact["cycle"]["linear_split_digest_sha256"] == (
+        "7208875ff95f3a768e4b822cf9be854228d6664800dfc69218c0e6a030a0c63e"
+    )
+    assert artifact["cycle"]["pair_family_digest_sha256"] == (
+        "f9caee5b591e74b40b497ca7eb8244f1bbaeba71d239684c47d8215c46c2fb0b"
+    )
+    assert artifact["cycle"]["sector_probe_digest_sha256"] == (
+        "feb864e2725e0cf726b43c443bb48b53f34ba0ac54693bb97a2b986f598a1414"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "a6941371e54a5e4d4abbea2f835196ddd7cce35c7c266ce399020764ed5b9dd7"
+    )
