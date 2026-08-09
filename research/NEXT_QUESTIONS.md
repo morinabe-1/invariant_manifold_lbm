@@ -19042,6 +19042,143 @@ strictly positiveな幅で交差した。幅は\(10^{-7}+\delta\)、\(\delta\app
 従ってuniform-radius certificateだけを棄却し、degree-16 nonresonanceとactual resonanceは未確立のまま
 維持した。次はQ011akでQ011y blockwise radiusを用いて登録obstructionを再監査する。
 
+## Q011ak: degree-16 blockwise-radius obstruction re-audit — 事前登録
+
+### 問いと判定境界
+
+Q011ajで最初にfully unresolvedとなったdegree-16 aggregate index 99について、一律
+\(\rho=5\times10^{-8}\)をQ011yのblockwise transformed-residual radius \(\theta_b\)へ置き換えると、
+Fourier-compatibleな全comparisonを分離できるか。design-only pilotでは分離数は大きく増えたが、
+125440 distinct comparisonがなおoverlapした。従って本gateは次の二つを分ける。
+
+1. `the Q011y blockwise-radius degree-16 certificate remains unresolved at the registered obstruction`
+2. `an actual degree-16 complex resonance is not established; the remaining blockwise eigendisc overlaps are enclosure failures only`
+
+登録した比較数、block-0 multiplicity分解、separated witnessとunresolved witnessが再現すれば1を
+`rejected`、2を`not_established`と報告する。overlapが実在のcomplex resonanceを意味するとは
+解釈しない。
+
+### sealed inputとblockwise eigendisc
+
+Q011ajまでの15 artifact、runner、78 direct digest、outcome、claim boundaryとQ011l／Q011o sourceを
+再照合する。Q011ajは直接封印する。
+
+- Q011aj artifact／runner newline-normalized SHA-256:
+  `6dae03177982dbf2fee7d84439a78775fb5b89aef23b3f4cec57b5f45b997ec7` /
+  `d87c6733613d803c9ea58d63d861659637e5ad9d57e061d962795be523336bfe`
+- Q011aj input／inventory／obstruction／center／result digest:
+  `4847b8b335a5fcb3fd22924c7439067503753fc8657fa38bcea9a11b8d1d7111` /
+  `6043ab6444ad176f4624daccc5c4cdf712932c9c02e95dda2b2995afefbc741a` /
+  `e73117b4bbdf98c477428657cc8d31c883558f4f7d21ddb992b16dab83cc354e` /
+  `fee1cfab83e977e8f549945012496526a4e6731059bddb0975559de01397d155` /
+  `a1415d0597ca649014dbaf6b79a8a0e9bc72b3e19794ab298090e93c304565fc`
+
+Q011lのexact spectral reconstructionから全17 blockの
+\(\theta_b=\beta_b\lVert A_bV_b-V_bD_b\rVert_\infty\)を再構成する。登録obstructionで使うblockの
+binary64 hexは次とする。
+
+- block 0: `0x1.5cbff506e79d2p-26`
+- block 1 / 16: `0x1.23ce0990a1325p-30`
+- block 6 / 11: `0x1.55edd7894e3b9p-30`
+
+全17 blockのradius record digestは
+`7f84ce4de99178837aaba056d2307db67836892da1af1adc71684df4d5f1a657`とする。Q011ajの204
+monotone identifierのそれぞれに対し、center-modulus intervalをblockwise \(\theta_b\)で拡大する。
+全blockwise intervalはQ011aj uniform intervalに含まれ、さらにQ011k eigendiscに含まれなければ
+ならない。204-record digestは
+`e68a8508c788f89507e9a2561e553273f1a204afc3525eb09b9288b2511b3bc3`とする。
+
+selected modulus classはQ011ajと同じ`4 / 2 / 3 / 6`とする。class内でcenter modulusだけでなく
+blockwise radiusもexactに一致することを確認し、class-membership digest
+`269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c`を保存する。
+
+### 登録obstructionのblockwise再評価
+
+Q011ajと同じaggregate index 99、selected-type count `[5,6,4,1]`、external group 155、4 target
+
+`block=11;center=3 / block=11;center=4 / block=6;center=3 / block=6;center=4`
+
+だけを再評価する。35280 modulus signature、1732864 compatible original monomial、3465728 weighted／
+141120 distinct comparisonとexact Fourier multiplicityはQ011ajから不変とする。blockwise outward-dyadic判定の
+登録結果は次とする。
+
+- weighted: `product_below_target 664288 / target_below_product 0 / overlap 2801440`
+- distinct: `product_below_target 15680 / target_below_product 0 / overlap 125440`
+
+source monomialに含まれるblock-0 identifier数ごとに分解する。各行は
+`multiplicity: separated distinct / separated weighted / overlap distinct / overlap weighted`である。
+
+- `0: 3136 / 440736 / 0 / 0`
+- `1: 12544 / 223552 / 0 / 0`
+- `2: 0 / 0 / 21952 / 1479552`
+- `3: 0 / 0 / 31360 / 176064`
+- `4: 0 / 0 / 40768 / 1114464`
+- `5: 0 / 0 / 31360 / 31360`
+
+histogram digestは`991722ecf3c09311416490d62fbb83e2dc7b59b755df8c5ae9816627435adb10`とする。
+block-0 multiplicity 0／1では全件分離、2--5では全件overlapという境界も登録する。
+
+最小のseparated outward gapは`0x1.0c512ffffffffp-29`とする。canonical witnessはblock-0
+multiplicity 1、target `block=11;center=4`、left／right index `385 / 2`、wave multiplicity `6`、
+class count
+
+`[[5,0,0,0],[0,6],[0,0,4],[0,0,0,1,0,0]]`
+
+とし、exact witness-record digestは
+`789780dd85bbfec2d8bc9e45848f77052537450c734ac7583fca6abc973daa01`とする。
+
+unresolved comparisonは`(block-0 multiplicity, target identifier, left index, right index)`で辞書順に並べ、
+最初のものをexact Fractionで封印する。登録witnessはblock-0 multiplicity 2、target
+`block=11;center=3`、left／right index `0 / 8`、wave multiplicity `14`、class count
+
+`[[0,0,0,5],[0,6],[0,1,3],[0,0,0,1,0,0]]`
+
+とする。sourceは
+
+`(block=16;center=145)^5 × (block=16;center=151)^5 × block=1;center=151 × block=0;center=149 × (block=1;center=152)^3 × block=0;center=147`
+
+である。exact center gapのhexは`0x1.192690bd0e92ap-25`で正だが、blockwise product／target intervalは
+strictly positiveな幅で交差する。intersection-width hexは`0x1.55edd7894e3b9p-29`、witness-record
+digestは`11dcbfc6e4481ee8faf680cacbb49ac7383904e262b2d74728b86cb2620c94da`とする。aggregate全体の
+record digestは`e618ddd470f114bcb4e7d6744c45d56b14b46b3a4b135cb1a2452afe9cf33dfc`とする。
+
+### validity gate
+
+1. Q011ajまでの15 artifact、runner、78 direct digest、outcome、boundaryとsourceが再現する。
+2. Q011yの17 exact block radius、共役transport、radius-record digestが再現する。
+3. 204 blockwise interval、uniform／Q011k containment、record digestが再現する。
+4. `4 / 2 / 3 / 6` modulus class、class内radius一致、outward containment、finite ordered array、
+   `int64`非overflowが再現する。
+5. index 99の対象、signature／monomial／comparison数、relation countとaggregate digestが再現する。
+6. block-0 multiplicity histogramとそのdigest、登録した0／1対2--5の境界が再現する。
+7. minimum separated witness、first unresolved exact intersection、strict JSON、section digest、runner provenanceが
+   再現する。
+
+### hypothesis gateと停止規則
+
+1. Q011y blockwise eigendiscがQ011aj uniform envelopeおよびQ011k eigendiscに含まれる。
+2. index 99の141120 distinct／3465728 weighted comparisonが重複・欠落なく分類される。
+3. 15680 distinct comparisonはpositive outward gapで分離する。
+4. 125440 distinct comparisonがなおblockwise interval overlapとなる。
+5. block-0 multiplicity 0／1は全分離、2--5は全overlapとなる。
+6. first unresolved exact product／target intervalの交差幅がstrictly positiveである。
+
+全6項目が通る場合、登録obstructionにおけるblockwise-radius certificateを`rejected`、actual resonanceを
+`not_established`とする。certified degreesは2--15および91以降、missing rangeは16--90のままとする。
+
+登録したseal、radius／interval digest、class不変性、Fourier係数、relation count、histogram、witnessのいずれかが
+失敗した場合は`inconclusive`とする。登録に後付けのmargin thresholdを導入しない。登録どおり
+rejectedなら、Q011alでblock-0因子を含む未分離fiberに焦点を絞り、block-common \(\theta_0\)を
+identifier／eigenpair-specificなcontained eigendiscへ精密化できるかを監査する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 16、Q011aj aggregate index 99、Q011y
+blockwise transformed-residual radii、exact x-Fourier multiplicity、outward-rounded dyadic product enclosureに限る。
+remaining overlapは現在のenclosureの不足だけを示し、actual complex resonanceを示さない。degree-16の他aggregate、
+degree-16 external nonresonance、degrees 17--90、all-order nonresonance、higher graph smoothness、SSM
+existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
