@@ -14169,6 +14169,298 @@ graph transform、fixed graph、exact invariant manifold／SSMも未認証であ
 explicit real zero-block frameとexternal real complementを観測前に事前登録し、real-coordinate
 lift／inverse、linear domination、equivariant cutoffを再評価する。
 
+## Q011q: explicit real frame, complement, and localized setup reissue — 事前登録
+
+### 問い
+
+Q011pが存在を認証したzero-blockの6次元real selected spaceに対し、固定seedから明示real frameを構成し、
+144次元external real complementと合わせて、Q011oのcoordinate lift／inverse、linear domination、
+localizationをreal-typed setupとして再発行できるか。
+
+本gateはlinear coordinateとcutoffの型だけを修復する。nonlinear derivative bound、induced graph transform、
+self-map／contraction、fixed graph、exact invariant manifold／SSMは判定しない。
+
+### 封印入力
+
+次の6 artifactを直接照合する。nested sealで直接入力の照合を代用しない。
+
+- Q011j artifact／runner newline-normalized SHA-256:
+  `74a2e084137699739c14d980b05676e14e6802b4018b3893d3d05270850c2c5a` /
+  `23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5`
+- Q011j input／coordinate／oracle／proof／result digest:
+  `a183f4830c757b58122132cf64111fd5375636affdb6c0b31e1cd90e89085799` /
+  `adaef353b8b64509334794c6014dc8b88e81ca2b776c3b65bd4d50911ae9452b` /
+  `177468a48f667ddd922ed4b979d3e7e5d4cc0ed3afffe27a34651060da8e0f5f` /
+  `1080fcea24358422514bba7fb9881928269c853cb4d12b0282e63840c56124c0` /
+  `ddad5beca9693eeab726382ac864d01a27b749d579c2ec8f12dd9f8c499db934`
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011l artifact／runner newline-normalized SHA-256:
+  `2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a` /
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7`
+- Q011l input／graph／pair／homological／result digest:
+  `1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011` /
+  `a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3` /
+  `694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377` /
+  `14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915` /
+  `c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45`
+- Q011m artifact／runner newline-normalized SHA-256:
+  `b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f` /
+  `0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150`
+- Q011m input／derivative／coefficient／majorant／result digest:
+  `dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb` /
+  `0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a` /
+  `1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514` /
+  `bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00` /
+  `f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4`
+- Q011o artifact／runner newline-normalized SHA-256:
+  `bbbc26939d4ef73aae95ad6517f5f1549f2eaf7b6edcbac5e5171f329064bc07` /
+  `60d9c445dace16d114e46263f2b47fe2db993b894337cdd462f204da09543f1f`
+- Q011o input／coordinate／linear／localization／result digest:
+  `0bddd90fc21a745b910ff47e133e72045842c77b589a818a21e946f85ba63da0` /
+  `6c00ce5d9df986830a4ad2d98df3970417d47e4fb9f1784364ce32b64d7396b7` /
+  `f9aaea144b0e79c6adf42296b7e8dcd562f2b75525b6abf4ac99c43dcbd1859c` /
+  `5799e9997ac1ec692ddce97465174204ee22debaea942ed7fab637209c912e0d` /
+  `6ec0a97c1b3d653e5edd3ffc7f4b8b9fa746e86e8d706e251753eecb8ab9a864`
+- Q011p artifact／runner newline-normalized SHA-256:
+  `68968f8d01135fa3575a69c878b5ab89952ae39ec8e44b7fb398a3384f2fa6e1` /
+  `fec9509068939663d6172539630f577383ad4da15f4c4575ef5caab7c65971f7`
+- Q011p input／conjugation／uniqueness／result digest:
+  `49a2df9f7f8db4ba95ebb93413324e667d2237a52a390e2e6f44b512c5fd953f` /
+  `087bcf415559cf0985194ad50dcbb0748ecdadda4df6b53ad7172f5b7cba1a05` /
+  `41eee5097e7a0c2ea18ac79cd1b48abb1223d1925e953d7b2f34a4fb24777339` /
+  `19edd32732a658a3811ebedc07a9a4483f1fff3d4a26ff64d7917ad2ea01c7f7`
+
+Q011j--Q011mとQ011pの`accepted`、Q011oのvalid `rejected`と唯一のfailed hypothesisを再現する。
+Q011qの新setupはQ011oの履歴を書き換えず、別のreal-coordinate reissueとして採点する。
+
+### graph coordinate上の共役
+
+zero-block eigencoordinateをexternal／selected順に \(y=(y_E,y_S)\)、Q011l graphを
+\(y_E=G s\) とする。graph coordinateをselected／external順の
+
+\[
+e=y_E-Gs,
+\qquad
+(s,e)\longmapsto y=(e+Gs,s)
+\]
+
+とする。Q011pの \(J_0\) をこの座標へ移すと、selected graphの共役不変性により
+
+\[
+\mathcal K(s,e)=
+\left(K_{SS}\overline s+K_{SE}\overline e,
+K_{EE}\overline e\right),
+\]
+
+\[
+K_{SS}=J_{SE}\overline G+J_{SS},
+\qquad
+K_{SE}=J_{SE},
+\qquad
+K_{EE}=J_{EE}-GJ_{SE}.
+\]
+
+selectedからexternalへの欠落blockがexactにzeroであることを、Q011pの
+\(\mathcal C(G)=G\) と同じRiccati identityから再現する。\(\mathcal K^2=I\) から
+\(K_{SS}\overline{K_{SS}}=I\)、\(K_{EE}\overline{K_{EE}}=I\) も確認する。
+
+binary64 point product \(J_f=\operatorname{fl}(W_0\overline{V_0})\) はseed選択だけに使う。
+全entryをexact dyadicへ戻し、Q011pのdirected product enclosureからpoint-product error
+\(\varepsilon_f\) を求める。\(G\) のpointはzeroに固定し、
+
+\[
+\varepsilon_K=\varepsilon_J+\varepsilon_f+j_{SE}r_G
+\]
+
+をselected／external diagonal conjugation blockの共通perturbation upperとする。gate判定に未包絡の
+binary64 matrix normを使わない。
+
+### 固定seedによるreal frame
+
+各 \(n\times n\) point conjugation block \(K_c\) に対し、candidate poolを
+
+\[
+P_c=[I+K_c,\ i(I-K_c)]
+\]
+
+とする。binary64 modified Gram--Schmidtのgreedy pivotを、最大残差、同値なら小さいpool index優先で
+固定し、最初の \(n\) pivotからseed matrix \(C\) を選ぶ。pivotingはseed proposalだけであり、rank判定は
+しない。seedは \([I,iI]\) の列なのでexact Gaussian-integer matrixとして再構成する。
+
+actual frameは
+
+\[
+F_S=C_S+K_{SS}\overline{C_S},
+\qquad
+F_E=C_E+K_{EE}\overline{C_E}
+\]
+
+とする。各列はexactに共役固定である。point frame inverse candidateのdefectとnormをdirected MPFRで
+包絡し、\(\lVert F-F_c\rVert\le\varepsilon_K\lVert C\rVert\) を加えたNeumann argumentでactual
+\(F_S,F_E\) のinvertibilityを認証する。seed index、frame、inverse candidate、interval productのhashを
+artifactへ保存する。
+
+primary proof laneは`256 bit`、independent containment laneは`192 bit`に固定する。両laneでexact
+binary64 conversion、directed endpoint、forbidden flag、caller context restorationを検査する。
+
+### external real section とdirect sum
+
+\(S_{\mathbb R}=\{s:K_{SS}\bar s=s\}\)、
+\(E_{\mathbb R}=\{e:K_{EE}\bar e=e\}\) とする。external quotientのcanonical real sectionを
+
+\[
+H(e)=\frac12K_{SE}\overline e
+\]
+
+と固定する。これは \((0,e)\) とその共役像の平均であり、
+
+\[
+X_{0,\mathbb R}^{G}
+=
+\{(s,0):s\in S_{\mathbb R}\}
+\oplus
+\{(H(e),e):e\in E_{\mathbb R}\}
+\]
+
+を与える。従ってzero blockの明示real frameは
+
+\[
+\widehat F_S=\binom{F_S}{0},
+\qquad
+\widehat F_E=\binom{HF_E}{F_E}
+\]
+
+で、real dimensionは`6 + 144 = 150`である。section normは
+\(h\le j_{SE}/2\) で包絡する。
+
+### real-coordinate norm とQ011o boundの再発行
+
+real coefficient frameのbijectivityを認証したうえで、解析normはcomplex modulus block-sup normの
+real fixed locusへのrestrictionを用いる。
+
+\[
+\lVert(s,e)\rVert_{\mathcal X_{\mathbb R}}
+=\max\{\lVert s\rVert_\infty,\lVert e\rVert_\infty\},
+\qquad s\in S_{\mathbb R},\ e\in E_{\mathbb R}.
+\]
+
+full graph coordinateへのreal shearは \((s,e)\mapsto(s+H(e),e)\) で、そのlift／inverse factorは
+\(1+h\) である。Q011oのzero-block contributionだけを
+
+\[
+186\,v_0(1+r_G)
+\longmapsto
+186\,v_0(1+r_G)(1+h),
+\]
+
+\[
+\beta_0(1+r_G)
+\longmapsto
+\beta_0(1+r_G)(1+h)
+\]
+
+へ置換し、他16 blockは変更しない。cross-block cancellationは使わない。
+
+linear mapはreal split上でもupper triangularである。selected conorm \(m_S\) とexternal quotient norm
+\(q_E\) はQ011oと同じrestriction boundを使う。zero-block couplingだけを
+
+\[
+b_{\mathbb R,0}
+\le
+\theta_0+(p_{S,0}+q_{E,0})h
+\]
+
+で再評価する。ここで \(p_{S,0}\) はzero selected blockのoperator norm upperである。eigenvalue gapだけを
+operator boundへ代用しない。
+
+### equivariant cutoff
+
+radiusはQ011oと同じ \(\rho=10^{-11}\) に固定する。selected／external real space上でradial retraction
+
+\[
+c_\rho(z)=
+\begin{cases}
+z,&\lVert z\rVert\le\rho,\\
+\rho z/\lVert z\rVert,&\lVert z\rVert>\rho
+\end{cases}
+\]
+
+を用い、\(C_\rho(s,e)=(c_\rho(s),c_\rho(e))\) とする。real scalar multiplicationだけなので各real
+fixed spaceを保ち、core ballでidentity、global Lipschitz upperは`2`とする。Q011oのcomponentwise complex
+disk projectionは再利用しない。localized mapがreal spaceからreal spaceへ写りcoreでoriginal mapと一致する
+こと、real graph spaceがclosed completeであることだけを確認する。nonlinear derivativeとgraph transformは
+未定義のまま残す。
+
+### 登録cap
+
+次を観測前に固定する。
+
+- \(\varepsilon_K\le10^{-8}\)
+- selected／external point frame norm upper: 各`20`
+- selected actual frame inverse norm upper: `100`
+- external actual frame inverse norm upper: `1000`
+- selected／external frame perturbation upper: 各`1e-6`
+- section norm \(h\le10^{-6}\)
+- real dimension: selected／external／total `24 / 2574 / 2598`
+- \(K_L^{\mathbb R}\le2600\)、\(K_P^{\mathbb R}\le900\)
+- \(K_L^{\mathbb R}\rho\le3\times10^{-8}\)
+- \(m_S\ge0.983\)、\(q_E\le0.982\)、\(m_S-q_E\ge10^{-3}\)
+- \(q_E/m_S\le0.999\)、\(1/m_S\le1.02\)
+- real selected--external coupling upper \(\le10^{-6}\)
+- cutoff global Lipschitz upper \(\le2\)、population／density bufferはQ011oと同じthresholdを通過
+
+frame capはcondition numberの最適性を主張するものではなく、固定seed frameが有限でbijectiveであることを
+拒否可能にするための登録包絡である。
+
+### validity gate
+
+1. Q011j／Q011k／Q011l／Q011m／Q011o／Q011pのartifact、runner、29 digest、outcome、claim boundaryを直接再現する。
+2. \(J_f\)、directed point-product error、\(K_{SS},K_{SE},K_{EE}\) の式とinvolution identityを再現する。
+3. deterministic pivot、exact seed、selected／external frame candidate、dual-precision inverse proofを再現する。
+4. frameの共役固定性、Neumann invertibility、section identity、`6 + 144 = 150` direct sumを確認する。
+5. 17 block、`24 + 2574 = 2598`、real lift／inverse formula、zero lift `186`を再現する。
+6. real linear split、coupling formula、radial cutoff、localized map、closed complete graph spaceの型を確認する。
+7. 192／256-bit containment、MPFR flag、finite性、strict JSON、4 section digest、result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、real setupを解釈しない。
+
+### hypothesis gate と停止規則
+
+validity通過後、次の5項目を別々に要求する。
+
+1. fixed seedsがinvertibleなselected／external共役固定frameを与え、sectionと合わせてreal direct sumがbijectiveである。
+2. frame／section boundとreal coordinate lift／inverseが登録cap内に入る。
+3. 同じreal normでselected conormとexternal normがstrictに分離する。
+4. selected inverseとreal selected--external couplingが登録cap内に入る。
+5. radial cutoff、localized map、real graph Banach spaceがtype-correctで、localization bufferが登録cap内に入る。
+
+全5項目が通る場合だけ
+`the repaired fixed-leaf split admits a certified real-frame localized graph-transform setup`
+として`accepted`とする。一つでも落ちれば
+`the registered symmetrized real frames do not close a real-typed localized graph-transform setup`
+として`rejected`とする。これは別seed／real Schur frameまたはinvariant manifold／SSMの不存在を意味しない。
+
+`accepted`なら次のQ011rで、Q011mのanalytic derivative majorantをこのreal normへ変換し、induced nonlinear
+graph transformの定義、self-map、contractionを事前登録する。`rejected`なら最初のfailed frame／section／
+coordinate／linear／cutoff conditionだけを使い、seed selection、direct real Schur／Riesz frame、block weight、
+またはcutoffを一つだけ修正する。`inconclusive`なら最初のprotocol failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed-conservation leaf、Q011l selected graph、Q011p zero-block reality、
+固定seed real frame、external real section、radius`1e-11` localization setupに限る。componentwise exact frame
+entry、frameの最適condition number、nonlinear derivative bound、induced graph transform、self-map／contraction、
+fixed graph、exact invariant manifold／SSM、smoothness／一意性、normal attraction、basin、他grid／force／wall、
+D3Q27を構成・認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
