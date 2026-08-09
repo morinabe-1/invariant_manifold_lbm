@@ -235,3 +235,42 @@ def test_q007am_records_provenance_and_deterministic_digests(
         q007am_cycle["finite_campaign"]["result_digest_sha256"]
     )
     json.dumps(q007am_cycle, allow_nan=False)
+
+
+def test_q007am_artifact_reproduces_the_accepted_repair_audit(
+    q007am_cycle: dict,
+) -> None:
+    runner_path = Path(q007am.__file__).resolve()
+    artifact_path = (
+        runner_path.parent
+        / "artifacts"
+        / "q007am_propagated_tube_distributed_repair.json"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "3b1b6f3c839cec572d0279f41c158dfafa09088e5f8ee1c3eab84f5bd279b781"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007am_propagated_tube_distributed_repair.py",
+        "sha256": "a0bdebc150c4c3ad055e1840b98196dee95bf967c417d17097f7a35579f2aa16",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q007am_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "f1a0dfd0b90cf354e9847cb076058fd241ab813a90bdee0bfdbafa9dfee17de5"
+    )
+    assert artifact["cycle"]["probe_digest_sha256"] == (
+        "a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329"
+    )
+    assert artifact["cycle"]["finite_result_digest_sha256"] == (
+        "905b65f13ee01711f3b083a0bd93e44b32d0fc5201007fad77e99de03063ab6d"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "2217172b48bf86b987a316c9b8c14db6aaeceb3e50f304fa7fefb021c2fd5bd2"
+    )
