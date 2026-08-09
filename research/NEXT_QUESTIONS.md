@@ -17933,6 +17933,175 @@ hypothesis `5 / 5`を通過し、
 SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、次はQ011afで
 degree 12を監査する。
 
+## Q011af: degree-12 multiplicity-compressed Fourier／modulus audit — 事前登録
+
+### 問い
+
+Q011uでdegree 12に残った29 modulus-overlap aggregateについて、全36596091 commutative monomialを
+modulus class countとFourier multiplicityへexactに圧縮し、同一積区間を共有するfiberごとに1回だけ
+比較することで、degree-12 external nonresonanceを認証できるか。
+
+Q011uのdegree-12 inventoryは`455 aggregate / 6188 expanded control / 426 old-separated / 29 overlap`
+である。overlap tuple／external groupを次へ固定する。
+
+- `[0,4,0,8] / 167`
+- `[0,4,1,7] / 167`
+- `[0,6,1,5] / 165`
+- `[0,6,2,4] / 165`
+- `[0,6,3,3] / 165`
+- `[2,7,2,1] / 162`
+- `[2,7,3,0] / 162`
+- `[3,6,0,3] / 162`
+- `[3,6,1,2] / 162`
+- `[3,6,2,1] / 162`
+- `[3,6,3,0] / 162`
+- `[3,9,0,0] / 159`
+- `[4,5,0,3] / 162`
+- `[4,5,1,2] / 162`
+- `[4,5,2,1] / 162`
+- `[4,5,3,0] / 162`
+- `[4,8,0,0] / 159`
+- `[5,4,0,3] / 162`
+- `[5,4,1,2] / 162`
+- `[5,4,2,1] / 162`
+- `[5,4,3,0] / 162`
+- `[6,3,0,3] / 162`
+- `[6,3,1,2] / 162`
+- `[9,1,0,2] / 161`
+- `[9,1,1,1] / 161`
+- `[9,1,2,0] / 161`
+- `[10,0,0,2] / 161`
+- `[10,0,1,1] / 161`
+- `[10,0,2,0] / 161`
+
+### modulus-class multiplicity compression
+
+selected group 0／1／2／3のidentifierを、exact center-modulus intervalが等しいclassへ分割する。class数は
+`4 / 2 / 3 / 6`である。class \(C\)から合計\(n\)個を選ぶ全weak compositionを
+
+\[
+G_{C,n}(z)=\sum_{|\alpha|=n}z^{\sum_j\alpha_j b_j}
+\quad\text{in }\mathbb Z[z]/(z^{17}-1)
+\]
+
+で数え、class-count vectorごとに4 groupの係数を巡回畳み込みする。各元monomialはper-identifier weak
+compositionを一意に持つので、得られるwave coefficientはそのmodulus-signature fiberのexact cardinality
+である。同一class内ではcenter-modulus intervalとuniform radiusが等しいため、積区間
+
+\[
+R=\prod_{i=1}^{12}(u_i+\rho)-\prod_{i=1}^{12}u_i,
+\qquad I_p=\left[\max(0,\prod_i\ell_i-R),\prod_i u_i+R\right]
+\]
+
+はclass-count vectorだけで決まる。従ってsignature／target比較がstrictに分離すれば、その正のwave
+multiplicityを持つ全元monomialが同じrelationで分離する。
+
+この圧縮則はQ011aeのdegree-11 full-stream oracleに適用し、全14 aggregateについてmonomial count、
+17-sector histogram、compatible／incompatible count、comparison countをexactに再現しなければならない。
+degree 11では`20361 signature / 14497 compatible product signature`が元の
+`2299104 monomial / 383062 compatible monomial / 820492 comparison`を再現することを固定する。
+
+### degree-12 fixed counts
+
+29 aggregateの元monomial数を
+
+`225225 / 480480 / 266112 / 277200 / 201600 / 345600 / 86400 / 1209600 / 1451520 / 806400 / 201600 / 26400 / 2217600 / 2661120 / 1478400 / 369600 / 54450 / 3326400 / 3991680 / 2217600 / 554400 / 4118400 / 4942080 / 1647360 / 1464320 / 457600 / 700128 / 622336 / 194480`
+
+へ固定し、totalを`36596091`とする。modulus-signature数は
+
+`6435 / 11880 / 5292 / 5292 / 3920 / 2880 / 800 / 7840 / 8820 / 5040 / 1400 / 200 / 11760 / 13230 / 7560 / 2100 / 315 / 15680 / 17640 / 10080 / 2800 / 18816 / 21168 / 9240 / 7920 / 2640 / 6006 / 5148 / 1716`
+
+でtotal `213618`、Fourier-compatible product signature数は
+
+`3355 / 6040 / 2576 / 2548 / 1904 / 2880 / 800 / 7840 / 8820 / 5040 / 1400 / 200 / 11760 / 13230 / 7560 / 2100 / 315 / 15680 / 17640 / 10080 / 2800 / 18816 / 21168 / 5720 / 4400 / 1760 / 3718 / 2860 / 1144`
+
+でtotal `184154`とする。元monomialへ戻したcompatible multiplicityは
+
+`51925 / 111564 / 40304 / 41944 / 30640 / 66496 / 16616 / 218960 / 262200 / 145840 / 36560 / 3920 / 381840 / 456260 / 253960 / 63940 / 8440 / 556608 / 664176 / 369856 / 93376 / 688272 / 821456 / 512720 / 411360 / 153520 / 210276 / 168664 / 62972`
+
+でtotal `6904665`とする。target multiplicityも戻したweighted comparison数は
+
+`150780 / 325168 / 80608 / 83888 / 61280 / 132992 / 33232 / 437920 / 524400 / 291680 / 73120 / 14880 / 763680 / 912520 / 507920 / 127880 / 32500 / 1113216 / 1328352 / 739712 / 186752 / 1376544 / 1642912 / 1025440 / 822720 / 307040 / 420552 / 337328 / 125944`
+
+でtotal `13980960`、実際に評価するdistinct signature／target comparison数は
+
+`26840 / 48320 / 10304 / 10192 / 7616 / 16640 / 4480 / 44800 / 51520 / 29120 / 7840 / 1600 / 67200 / 77280 / 43680 / 11760 / 2520 / 89600 / 103040 / 58240 / 15680 / 107520 / 123648 / 45760 / 35200 / 14080 / 29744 / 22880 / 9152`
+
+でtotal `1116256`とする。
+
+class membership／degree-12 aggregate wave-histogram canonical digestは
+`269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c` /
+`c40e7b6d9941f7c7c2836b9720c4a577f56d529591c01af3f3c732ba4ed10171`、213618 ordered
+signature recordのframed digestは
+`d03f1a33f561698d1fca3ca62e929ffc1cef686ff3838e41359b9adf24471432`とする。
+
+### uniform envelopeとsealed input
+
+直接必要な集合はselected 24 identifierとexternal group 167／165／162／161／159の36 unique identifier、
+合計60 identifierである。Q011aeの84 uniform recordをexactに保存し、新external group 159の8 recordを
+加える92-record monotone envelopeとする。unique center-modulus evaluationは56件とする。
+
+Q011aeまでの入力を再照合し、Q011aeを直接封印する。
+
+- Q011ae artifact／runner newline-normalized SHA-256:
+  `7da61f31c9a00017c2ab0665bb58b75b157f4b7f0ffad1194f07cac4ed51ff71` /
+  `2bc97a29a1ae73924a61059c7f1de7b96e35b325479874cf28325946aa7e4286`
+- Q011ae input／inventory／sector／product／result digest:
+  `c3a18a891f037c01134871aa876441df4c56bb6ce2b1657420b54fa0ae72fc99` /
+  `261284bc4cd18048228af34a1897ba00b89b930fd118afc3f7ce4dba77bf380d` /
+  `afeea956028309574d5f23c5a8da10c427b981bf7d54c8194265f75de8370d11` /
+  `40024743d9a6e193461dc5a7eb7821356b14da2a54793d126afe9b8ec2e58921` /
+  `90223809a06a85733d36c53b7278c9ba36e83ce2bc49a87b090945b26a638560`
+
+direct digest countは`53`とする。
+
+### design-only pilotの開示
+
+圧縮pilotでは全1116256 distinct comparison、元monomialへ戻した13980960 weighted comparisonが分離し、
+unresolvedはともに0だった。weighted relation countはproduct below target `7676904`、target below product
+`6304056`、distinct relation countは`648656 / 467600`だった。29 aggregateのminimum gapは
+
+`7.644395795970946e-4 / 8.244604958480301e-4 / 5.198343594182929e-5 / 5.935468013051209e-6 / 6.500319018529858e-5 / 8.112156130773629e-4 / 7.535941667249237e-4 / 5.120425071653584e-4 / 4.5444144857722163e-4 / 3.9684431533124585e-4 / 3.392511071599305e-4 / 1.8030979331334064e-4 / 9.781782330845996e-5 / 4.024499291014315e-5 / 1.6194629345745302e-5 / 7.375968580270664e-5 / 2.2305549481696136e-4 / 3.1507490728910597e-4 / 3.7261958522085044e-4 / 4.301603570775591e-4 / 4.8769720299054147e-4 / 7.288941646490601e-4 / 7.864106420236008e-4 / 7.590017676925743e-4 / 7.020238520476087e-4 / 6.450498146134928e-4 / 3.4925825533753705e-4 / 2.9230826250263423e-4 / 2.3536214597801069e-4`
+
+だった。global witnessはaggregate `[0,6,2,4]`の
+`(block=16;center=151)^5 × block=1;center=151 × block=0;center=149 × block=1;center=152 × (block=0;center=147)^4`
+対target `block=14;center=146`、relation `product_below_target`である。登録minimum gapは`5e-6`とする。
+
+### validity gate
+
+1. Q011kからQ011aeまでのartifact、runner、53 digest、outcome、claim boundaryとQ011l／Q011o sourceを再現する。
+2. degree-12の455 aggregate、6188 control、426 separation、29 overlap tuple／external groupを再現する。
+3. 60 directly relevant interval、92-record monotone envelope、Q011ae 84 recordのexact preservationを再現する。
+4. 4／2／3／6 modulus class、weak-composition bijection、Q011ae full-stream oracleを再現する。
+5. 全36596091 monomial、213618 signature、wave histogram、compatible multiplicity、weighted／distinct comparisonを再現する。
+6. 184154 product intervalと1116256 distinct comparisonをstreamし、strict gap、weighted relation、framed digestを再現する。
+7. 426 old separationと29 compressed full auditが全455 aggregateを被覆する。
+8. finite strict JSON、input／inventory／compression／product／result digest、runner provenanceを再現する。
+
+### hypothesis gateと停止規則
+
+1. uniform \(\rho\)-discが全Q011y enclosureを含み、全Q011k旧discに含まれる。
+2. multiplicity compressionが元monomialを重複・欠落なく分割し、Q011ae full-stream oracleをexactに再現する。
+3. 全13980960 weighted comparisonを代表する1116256 distinct comparisonがindividual modulus separationである。
+4. global minimum exact modulus gapが`>=5e-6`である。
+5. 426 old separationと29 multiplicity-compressed auditからdegree-12 nonresonanceが従う。
+
+全5項目が通る場合だけ
+`degree-12 external nonresonance is certified by exact Fourier-multiplicity compression and the contained uniform refined-envelope products`
+として`accepted`とする。certified degreesを2--12、tail-certifiedを91以降、missing rangeをdegrees 13--90へ更新する。
+
+圧縮oracleが一致しなければ`inconclusive`とする。1件でもrepresentative interval overlapが残れば
+`at least one degree-12 multiplicity-compressed indexed-modulus product remains inseparable from an external target`
+として`rejected`とする。`accepted`ならQ011agでdegree 13へ進む。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 12、Q011uの29 overlap aggregate、
+Q011y transformed-residual enclosure、uniform \(\rho\)-disc、x-Fourier multiplicity polynomial、exact
+modulus-class fiber、indexed-modulus product formulaに限る。degrees 13--90、all-order nonresonance、
+higher graph smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を
+認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
