@@ -13026,6 +13026,73 @@ raw coefficientの移植、quadratic jet／coefficient自体、higher-order nonr
 nonlinear normal attraction、basin、他grid／force／wall、D3Q27は主張しない。inverse boundをSSM theoremや
 normal attractionへ読み替えない。
 
+### Q011l 実行結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the exact repaired selected/external split has a rigorously bounded quadratic homological inverse in the registered quotient norm`
+として`accepted`とした。
+
+Q011kのexact dyadic centerと256-bit outward upperから
+
+\[
+\theta_n=\beta_n r_n\ge
+\lVert V_n^{-1}(A_n(x_\ast)V_n-V_n\widehat\Lambda_n)\rVert_\infty
+\]
+
+を構成した。block `0 / 1 / 16`ではRiccati mapが登録graph ballをstrict self-map／contractionとし、
+selected invariant graphをexact root上で認証した。graphでblock triangularizeしたselected dynamicsと
+external quotientを使い、unscaled 300-dimensional symmetric-product actionの非対角perturbationも含めて
+5 sectorのfull Sylvester operatorをNeumann lemmaで認証した。
+
+- full-space substitution unsafe pair count／indices:
+  `8 / [11, 19, 33, 43, 56, 64, 76, 86]`
+- selected block graph dimensions:
+  `0: 144 x 6 / 1: 144 x 9 / 16: 144 x 9`
+- minimum graph diagonal component gap:
+  `0.023905378580609926`
+- maximum graph radius／self-map utilization／contraction upper:
+  `1.6628540517032178e-6 / 0.5000016628554342 / 1.662856816786815e-6`
+- minimum graph split-identification margin lower:
+  `0.02390537645745014`
+- selected center complex-l1／selected dynamics perturbation upper:
+  `1.230405331961541 / 2.029994575335569e-8`
+- symmetric-product action perturbation upper:
+  `4.9954323399005556e-8`
+- sector pair dimensions:
+  `0:102 / 1:54 / 16:54 / 2:45 / 15:45`
+- unordered pair／external comparison count:
+  `300 / 44010`
+- minimum base homological distance／witness:
+  `0.00019318395012417515 / sector 0, pair 173, external center 143`
+- maximum Neumann quotient／sector:
+  `0.0003636651445795734 / 0`
+- maximum quotient-coordinate inverse bound／sector:
+  `5178.2966276547 / 0`
+- maximum ambient-output lifted inverse bound／sector:
+  `3325900.503434659 / 0`
+- exact base-pair／reproduced Q011k pair／sector digest:
+  `e6068c78d608d765d77dcfdaa0efb0f15a24d941c45c2859e51482d4c70d83bf` /
+  `be8548cd8ac4bea69b71b7bb0617f232ddcc9535d33b13279e371cc242cf2b79` /
+  `6cfb130f45822becdca29ae6841e7c4069b03c670781501f94a59c0d2a5b2fc3`
+- input／graph／pair／homological／result digest:
+  `1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011` /
+  `a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3` /
+  `694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377` /
+  `14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915` /
+  `c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45`
+- runner／artifact newline-normalized SHA-256:
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7` /
+  `2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a`
+
+8 pairはselected output discと重なるため、全空間resolventへ置き換えると証明できない。しかし一件も
+除外せず、rigorous selected graphのexternal quotient上では全5 full sector operatorがinvertibleである。
+従ってQ011kのeigenvalue-level distanceを非正規coupling込みのquadratic homological inverseへ持ち上げた。
+
+ただしQ011e--Q011hのraw-map Hessian／coefficientはrepaired mapへ移植しておらず、本gateはquadratic jet、
+coefficient bound、残差majorant、higher order、SSM存在・一意性、normal attractionを認証しない。
+次は停止規則どおりQ011mでrepaired exact mapのquadratic jetと、このinverse boundに合成する
+coefficient／residual majorantを観測前に事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

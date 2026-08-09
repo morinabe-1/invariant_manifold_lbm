@@ -5345,6 +5345,103 @@ continuous-amplitude pathは依然numericalであり、個別branch labelもrigo
 raw map coefficientのままで、forced SSM存在・一意性やnonlinear normal attractionへ移せない。次はQ011lで
 repaired splitに対するinterval Sylvester／homological inverse boundを独立に事前登録する。
 
+## 2026-08-09: Q011l rigorous invariant graph and homological inverse
+
+### 問いと方法
+
+Q011kのeigenvalue-level quadratic external distanceを、exact repaired root上の非正規なfull-sector
+homological inverseへ持ち上げた。最初に全空間resolventへの置換を監査したところ、pair
+`11 / 19 / 33 / 43 / 56 / 64 / 76 / 86`ではproduct discがoutput selected discと重なった。
+従ってこの8件を除外せず、selected invariant graphをrigorousに構成してexternal quotientを定義した。
+
+Q011kのbinary64 eigenvector／centerをexact dyadic pointとし、256-bit outward upperから
+
+\[
+M_n=V_n^{-1}A_n(x_\ast)V_n=\widehat\Lambda_n+F_n,
+\qquad
+\lVert F_n\rVert_\infty\le\theta_n=\beta_n r_n
+\]
+
+を得た。block `0 / 1 / 16`でdiagonal selected／external Sylvester operatorをbaseとするRiccati mapを
+matrix infinity norm ballへ閉じた。graph radiusを事前登録どおり`2 theta / gap`とし、self-map boundと
+Lipschitz boundをexact `Fraction`で評価した。graph triangularizationによりselected dynamics \(S_n\)と
+external quotient \(E_n\)を得て、両方のcenter diagonalからのずれを
+\(\eta_n=\theta_n(1+r_n^G)\)で包んだ。
+
+24 selected coordinateのunscaled symmetric monomialをQ011dと同じlexicographic順で使った。square
+monomialのfactor 2を含むrow-sumを直接評価し、pair action perturbationを
+
+\[
+\lVert K(S)-K(\widehat\Lambda)\rVert_\infty
+\le 2L\eta_S+\eta_S^2
+\]
+
+で包んだ。sector `0 / 1 / 16 / 2 / 15`ごとに全external centerと対応pair product centerをexact dyadic
+arithmeticで比較し、full operator
+
+\[
+\mathcal H_q(Z)=E_qZ-ZK_q(S)
+\]
+
+をdiagonal operatorからのNeumann perturbationとして認証した。Q011k exact pair digestも数千桁の
+有理数演算で独立に再現した。
+
+### 結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the exact repaired selected/external split has a rigorously bounded quadratic homological inverse in the registered quotient norm`
+として`accepted`とした。
+
+- full-space unsafe pair count／indices:
+  `8 / [11, 19, 33, 43, 56, 64, 76, 86]`
+- minimum graph diagonal component gap:
+  `0.023905378580609926`
+- maximum graph radius／self-map utilization／contraction upper:
+  `1.6628540517032178e-6 / 0.5000016628554342 / 1.662856816786815e-6`
+- minimum graph split-identification margin lower:
+  `0.02390537645745014`
+- selected center complex-l1／selected dynamics perturbation upper:
+  `1.230405331961541 / 2.029994575335569e-8`
+- symmetric-product perturbation upper:
+  `4.9954323399005556e-8`
+- sector pair dimensions:
+  `102 / 54 / 54 / 45 / 45`
+- pair／external comparison count:
+  `300 / 44010`
+- minimum base homological distance／witness:
+  `0.00019318395012417515 / sector 0, pair 173, external center 143`
+- maximum Neumann quotient／sector:
+  `0.0003636651445795734 / 0`
+- maximum quotient-coordinate inverse bound／sector:
+  `5178.2966276547 / 0`
+- maximum ambient-output lifted inverse bound／sector:
+  `3325900.503434659 / 0`
+- exact base-pair／reproduced Q011k pair／sector digest:
+  `e6068c78d608d765d77dcfdaa0efb0f15a24d941c45c2859e51482d4c70d83bf` /
+  `be8548cd8ac4bea69b71b7bb0617f232ddcc9535d33b13279e371cc242cf2b79` /
+  `6cfb130f45822becdca29ae6841e7c4069b03c670781501f94a59c0d2a5b2fc3`
+- input／graph／pair／homological／result digest:
+  `1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011` /
+  `a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3` /
+  `694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377` /
+  `14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915` /
+  `c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45`
+- runner／artifact newline-normalized SHA-256:
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7` /
+  `2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a`
+
+### 解釈と次のbottleneck
+
+Q011kのselected／external spectral splitはexact invariant graphへ持ち上がり、5 sectorのfull quadratic
+homological operatorは登録quotient normでinvertibleである。8件のinternal selected overlapは証明から
+隠しておらず、external quotientを構成する必要性そのものを再現した。coordinate inverseだけでなく、
+external output factorをambient fixed-leaf coordinateへ戻すprojection／lift boundも記録した。
+
+一方、Q011e--Q011hはraw map coefficientであり、repaired mapのHessian／quadratic jetはまだ構成していない。
+従って本結果だけではquadratic coefficient、residual majorant、SSM存在・一意性、smoothness、nonlinear
+normal attraction、basinを主張しない。次はQ011mでrepaired exact mapのquadratic jetをinterval／analyticに
+構成し、Q011l inverseと合成するcoefficient／residual majorantを独立に事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -5498,6 +5595,8 @@ repaired splitに対するinterval Sylvester／homological inverse boundを独�
 [`artifacts/q011j_interval_fixed_point.json`](artifacts/q011j_interval_fixed_point.json)
 
 [`artifacts/q011k_interval_spectral_split.json`](artifacts/q011k_interval_spectral_split.json)
+
+[`artifacts/q011l_interval_homological_inverse.json`](artifacts/q011l_interval_homological_inverse.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

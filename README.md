@@ -281,8 +281,11 @@ exact rational nonlinear map／Jacobian enclosureと256／384-bit外向きMPFR�
 `accepted`とした。Q011kでは収縮証明からexact root半径を`1.13014e-15`へ絞り、17 Fourier blockの
 256／384-bit Bauer--Fike enclosureを構成した。全2598 eigenvalue discが`0.992108506`以下、
 selected／external countが`24 / 2574`、normal modulus gapが`0.002047690`、300 quadratic productの
-external distance lowerが`1.79373e-4`となり`accepted`とした。raw Q011b exact map、nonnormal
-homological inverse、forced SSMは未認証である。
+external distance lowerが`1.79373e-4`となり`accepted`とした。Q011lではQ011k eigencoordinateの
+selected invariant graphをexactに囲み、非対角symmetric-product couplingを含む5 sectorのquadratic
+homological inverseを認証した。最大coordinate inverse boundは`5178.30`、ambient-output lift後は
+`3.326e6`であり`accepted`とした。raw Q011b exact map、repaired quadratic coefficient、forced SSMは
+未認証である。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -2238,6 +2241,75 @@ eigenvalue-level nonresonanceであり、Q011c2のcontinuous-amplitude continuat
 homological inverse bound、Q011e--Q011h raw-map coefficientの移植、forced SSM、nonlinear normal attractionを
 認証しない。次はQ011lでrepaired split上のinterval homological inverseを別gateにする。
 
+### Q011l repaired invariant graph and quadratic homological inverse
+
+Q011kのbinary64 eigenvector matrixをexact dyadic pointとし、認証済みinverse norm upper
+\(\beta_n\)とfamily residual upper \(r_n\)から
+
+\[
+V_n^{-1}A_n(x_\ast)V_n=\widehat\Lambda_n+F_n,
+\qquad
+\lVert F_n\rVert_\infty\le\theta_n:=\beta_n r_n
+\]
+
+をexact `Fraction`で導いた。selectedを持つblock `0 / 1 / 16`では、selected／external diagonal
+center間Sylvester inverseをbaseとしてRiccati mapを閉じ、一意なselected invariant graphを認証した。
+graph triangularization後のselected dynamicsとexternal quotientは各center diagonalから
+\(\eta_n=\theta_n(1+r_n^G)\)以内にある。
+
+全空間resolventへの置換は使っていない。実際、pair
+`[11, 19, 33, 43, 56, 64, 76, 86]`の8件ではQ011k product discがoutput selected discと
+重なる。これらも除外せず、external quotient上で扱った。
+
+24 selected座標のunscaled symmetric monomial `i <= j`をQ011dと同じ順で使い、selected dynamicsの
+非対角perturbationを
+
+\[
+\lVert K(S)-K(\widehat\Lambda)\rVert_\infty
+\le 2L\eta_S+\eta_S^2
+\]
+
+で包んだ。各sectorのfull operator
+\(\mathcal H_q(Z)=E_qZ-ZK_q(S)\)をdiagonal product operatorのperturbationとして評価し、
+全5 sectorでNeumann quotientがstrictly 1未満であることをexact rational arithmeticで示した。
+
+- classification:
+  `the exact repaired selected/external split has a rigorously bounded quadratic homological inverse in the registered quotient norm`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- unsafe full-space pair count／indices:
+  `8 / [11, 19, 33, 43, 56, 64, 76, 86]`
+- maximum graph radius／self-map utilization／contraction upper:
+  `1.6628540517032178e-6 / 0.5000016628554342 / 1.662856816786815e-6`
+- minimum selected-graph identification margin lower:
+  `0.02390537645745014`
+- symmetric-product action perturbation upper:
+  `4.9954323399005556e-8`
+- sector pair counts／external comparisons:
+  `102 / 54 / 54 / 45 / 45 / 44010`
+- minimum base homological distance／witness:
+  `0.00019318395012417515 / sector 0, pair 173, external center 143`
+- maximum Neumann quotient／coordinate inverse／ambient-output inverse upper:
+  `0.0003636651445795734 / 5178.2966276547 / 3325900.503434659`
+- exact base-pair／Q011k-pair／sector digest:
+  `e6068c78d608d765d77dcfdaa0efb0f15a24d941c45c2859e51482d4c70d83bf` /
+  `be8548cd8ac4bea69b71b7bb0617f232ddcc9535d33b13279e371cc242cf2b79` /
+  `6cfb130f45822becdca29ae6841e7c4069b03c670781501f94a59c0d2a5b2fc3`
+- input／graph／pair／homological／result digest:
+  `1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011` /
+  `a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3` /
+  `694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377` /
+  `14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915` /
+  `c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45`
+- runner／artifact newline-normalized SHA-256:
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7` /
+  `2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a`
+
+従ってQ011kのeigenvalue-level nonresonanceは、登録quotient normにおけるnonnormal full-sector
+homological inverseへ持ち上がった。ただしrepaired mapのquadratic jet／coefficient自体はまだ構成していない。
+Q011e--Q011hのraw-map coefficient、higher-order nonresonance、forced SSM存在・一意性、nonlinear normal
+attraction、basinへは広げない。次はQ011mでrepaired quadratic jetとcoefficient／residual majorantを
+別gateとして事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2798,6 +2870,7 @@ python -m research.q011h_sparse_chart_equivalence --output research/artifacts/q0
 python -m research.q011i_exact_zero_mean_repair --output research/artifacts/q011i_exact_zero_mean_repair.json
 python -m research.q011j_interval_fixed_point --output research/artifacts/q011j_interval_fixed_point.json
 python -m research.q011k_interval_spectral_split --output research/artifacts/q011k_interval_spectral_split.json
+python -m research.q011l_interval_homological_inverse --output research/artifacts/q011l_interval_homological_inverse.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2884,6 +2957,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011i_exact_zero_mean_repair.json`](research/artifacts/q011i_exact_zero_mean_repair.json)
 - [`research/artifacts/q011j_interval_fixed_point.json`](research/artifacts/q011j_interval_fixed_point.json)
 - [`research/artifacts/q011k_interval_spectral_split.json`](research/artifacts/q011k_interval_spectral_split.json)
+- [`research/artifacts/q011l_interval_homological_inverse.json`](research/artifacts/q011l_interval_homological_inverse.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2999,6 +3073,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   dual-precision outward Krawczyk fixed-point existence／local-uniqueness proof
 - Q011k contraction-derived exact-root enclosure、17-block dual-precision Bauer--Fike spectrum、
   rigorous 24／2574 selected-external split、300 quadratic-product spectral nonresonance
+- Q011l exact eigencoordinate invariant graph、8 full-space overlap obstruction、unscaled symmetric-product
+  perturbation、5-sector rigorous quadratic homological inverse bound
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -3009,7 +3085,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired selected／external split上のrigorous nonnormal Sylvester／homological inverse bound
+- repaired exact mapのquadratic jet／coefficientとQ011l inverseを合成したresidual majorant
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
 
@@ -3095,4 +3171,7 @@ Krawczyk boxでfixed pointの存在と局所一意性を認証した。x-indepen
 periodic mapへも同じ結論を移した。Q011kではその収縮証明からexact rootを半径`1.13014e-15`へ絞り、
 全2598 fixed-leaf eigenvalueのstrict stability、Q011c2-designated `24 / 2574` split、全300 selected
 quadratic productのexternal spectral nonresonanceを認証した。nonnormal homological inverse、forced SSM、
-normal attractionは未認証である。
+normal attractionはこの段階では未認証だった。Q011lではQ011k eigencoordinate上のselected invariant graphを
+Riccati contractionで認証し、8件のselected-overlap pairを除外せずexternal quotientへ移した。さらに
+unscaled symmetric-product couplingを含む5 sectorのquadratic homological inverse normをexact rational
+Neumann boundで認証した。repaired quadratic jet／coefficient、forced SSM、normal attractionは未認証である。
