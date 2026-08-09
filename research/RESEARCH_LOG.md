@@ -5023,6 +5023,79 @@ boundaryは未認証である。
 残し、TT-SVDと格納scalar数、実メモリ、評価時間、rounding時間、実効自由度、不変性残差を比較する。
 結果を見て表現や閾値を変えないよう、実装前に独立gateを事前登録する。
 
+## 2026-08-09: Q011g forced quadratic Fourier-sparse／TT-SVD audit
+
+### 問いと方法
+
+Q011f1 accepted artifactとQ011e coefficientを封印し、native complex (W_2/R_2)、coordinate map、
+real chartを一度だけfresh再構築した。300 unordered pairをoutput sector `0 / 1 / 16 / 2 / 15`へ
+`102 / 54 / 54 / 45 / 45`と分割した。各(W_2) pairは該当する17×9 Fourier fiberだけ、(R_2)は
+selected sector `0 / 1 / 16`の`6 / 9 / 9` output fiberだけを保存するnatural表現を構築した。
+
+同じ構造射影済みordered-dense (W_2^F/R_2^F)を、output-first／last、flat／Fourier-factor／D1Q3-factorの
+6 uncapped TT-SVD bundleへ入力した。toleranceは`1e-13`である。独立seed `20260902`の32方向で作用、
+seed `20260903`の16方向・振幅`2.56e-3`でone-step invariance defectを比較した。offlineはwarmup 1、
+measured 3、onlineはwarmup 1、measured 5とし、各blockでmethod順をcyclic rotationした。TT採択には
+同じ候補が忠実度、4 storage metric、robust online envelope、conservative break-evenを全て通ることを
+要求した。
+
+### 結果
+
+validity `6 / 6`を通過した。全6 TTの係数・作用・realification・invariance residualは登録閾値を通った。
+一方、storage winnerは0、robust timing winnerは3、joint winnerは0だった。hypothesisは`1 / 4`通過で、
+`registered TT-SVD bundles do not beat the natural Fourier-sparse forced-quadratic baseline`
+として`rejected`とした。
+
+- robust timing winners:
+  `flat-output-last / fourier-output-last / d1q3-output-last`
+- natural sparse stored real scalars／raw／in-memory／NPZ bytes:
+  `94,968 / 760,644 / 761,995 / 762,188`
+- best-storage TT (`fourier-output-first`) corresponding values:
+  `474,050 / 3,792,544 / 3,795,218 / 3,795,586`
+- best TT／sparse scalar／raw／memory／NPZ ratio:
+  `4.99168140847443 / 4.98596452479741 / 4.98063373119246 / 4.97985536376852`
+- sparse offline min／median／max:
+  `2.6452 / 2.7488 / 2.7883 ms`
+- best-storage TT offline min／median／max:
+  `396.4686 / 401.5353 / 411.2165 ms`
+- sparse online min／median／max:
+  `0.725621875 / 0.7321 / 0.735528125 ms per joint action`
+- fastest TT (`flat-output-last`) online min／median／max:
+  `0.46046875 / 0.47460625 / 0.480134375 ms per joint action`
+- fastest TT online ratio／stored-scalar ratio:
+  `0.6482806310613304 / 15.2224538792014`
+- maximum TT reconstruction／joint-action／realification error:
+  `2.41559062578165e-14 / 3.84139374578316e-14 / 3.82602037711869e-14`
+- natural projection loss (W_2/R_2):
+  `3.33475349414364e-15 / 0`
+- natural-vs-dense action／defect relative difference:
+  `3.23695449081624e-16 / 4.16928788077864e-9`
+- maximum TT-vs-sparse defect relative difference:
+  `2.12579364573947e-8`
+- minimum population／maximum conservation drift:
+  `0.027702486940874498 / 1.13691215527115e-13`
+- input／coefficient／fidelity／cost／result digest:
+  `0632be40fccc212f23a271fa00ed80696f9a146a1b107e513b3a47edb9870a20` /
+  `fc9edec10ee22abfaa2b763be9f69c9d72bfc59543aa34faea6ab206c35ab264` /
+  `30dabea285da9070e2ebc0b351afde4695deb275d5f96ee66de1b1ca0468fcad` /
+  `222a42321f4ae814478cc65102afcbc8926754d8cb7c48ed8ca2952e350767a7` /
+  `e0874eabe2c5b924d0b5d7b56533cd695406166d4370b493a0dabdc0b22dbb2a`
+- runner／artifact newline-normalized SHA-256:
+  `84ed56dabd0b0f870f1c6b27c9907c9566439ff03affe5aacc61ba611f4678fe` /
+  `842ddbae2a28ccd2f11a112f23205cb049668b82691fdd180edc5ac20fecaa25`
+
+### 解釈と次のbottleneck
+
+output-last配置はこのCPU campaignのlocal joint actionではnatural sparseより速かった。従って「TTは常に
+遅い」とは結論しない。しかし最速候補は格納scalarで約15.2倍、最小格納候補でも約5倍を要し、事前登録した
+joint採択条件を満たさない。全忠実度gateが通っているため、棄却は数値精度不足ではなくこのtensorizationの
+格納損失である。
+
+このsealed forced coefficientにはnatural Fourier-sparseを採用し、TT-crossを開始しない。Q011e--Q011f1の
+既存結果は変更せず、TT一般、別tensorization、GPU、full rollout、他grid／forceの不可能性は主張しない。
+次に実装上の表現を進める場合は、natural sparse-backed chartのfinite multi-step equivalenceを独立gateとして
+事前登録する。数学側へ戻る場合は、forced SSM存在・一意性またはnormal attractionを別gateにする。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -5166,6 +5239,8 @@ boundaryは未認証である。
 [`artifacts/q011f_multistep_shadowing.json`](artifacts/q011f_multistep_shadowing.json)
 
 [`artifacts/q011f1_heldout_amplitude_reissue.json`](artifacts/q011f1_heldout_amplitude_reissue.json)
+
+[`artifacts/q011g_forced_representation_audit.json`](artifacts/q011g_forced_representation_audit.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

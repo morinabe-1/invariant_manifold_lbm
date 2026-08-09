@@ -11832,6 +11832,54 @@ rounding、GPU、parallel scaling、full 64-step TT rollout、higher-order coeff
 D3Q27、asymptotic complexity、energy、forced SSM existence／uniqueness、normal attraction、basinを
 主張しない。Q011e、Q011e1、Q011f、Q011f1の既存outcomeは変更しない。
 
+### Q011g 実行結果
+
+validity `6 / 6`を通過した。全6 TT bundleはreconstruction、joint action、realification、one-step
+invariance-defect preservationを通過したが、natural sparseより4格納指標を全て小さくする候補は0だった。
+robust online-time winnerは3個あったもののstorage winnerと交わらず、hypothesisは`1 / 4`通過、
+joint winner `0`で
+`registered TT-SVD bundles do not beat the natural Fourier-sparse forced-quadratic baseline`
+として`rejected`とした。
+
+- robust timing winners:
+  `flat-output-last / fourier-output-last / d1q3-output-last`
+- natural sparse stored real scalars／raw／in-memory／NPZ bytes:
+  `94,968 / 760,644 / 761,995 / 762,188`
+- best-storage TT (`fourier-output-first`) corresponding values:
+  `474,050 / 3,792,544 / 3,795,218 / 3,795,586`
+- best TT／sparse scalar／raw／memory／NPZ ratio:
+  `4.99168140847443 / 4.98596452479741 / 4.98063373119246 / 4.97985536376852`
+- sparse／best-storage-TT offline median:
+  `2.7488 / 401.5353 ms`
+- sparse／fastest-TT online median:
+  `0.7321 / 0.47460625 ms per joint action`
+- fastest-TT online ratio／stored-scalar ratio:
+  `0.6482806310613304 / 15.2224538792014`
+- maximum TT reconstruction／action／realification error:
+  `2.41559062578165e-14 / 3.84139374578316e-14 / 3.82602037711869e-14`
+- natural (W_2/R_2) projection loss:
+  `3.33475349414364e-15 / 0`
+- natural-vs-dense action／defect relative difference:
+  `3.23695449081624e-16 / 4.16928788077864e-9`
+- maximum TT-vs-sparse defect relative difference:
+  `2.12579364573947e-8`
+- minimum population／maximum conservation drift:
+  `0.027702486940874498 / 1.13691215527115e-13`
+- input／coefficient／fidelity／cost／result digest:
+  `0632be40fccc212f23a271fa00ed80696f9a146a1b107e513b3a47edb9870a20` /
+  `fc9edec10ee22abfaa2b763be9f69c9d72bfc59543aa34faea6ab206c35ab264` /
+  `30dabea285da9070e2ebc0b351afde4695deb275d5f96ee66de1b1ca0468fcad` /
+  `222a42321f4ae814478cc65102afcbc8926754d8cb7c48ed8ca2952e350767a7` /
+  `e0874eabe2c5b924d0b5d7b56533cd695406166d4370b493a0dabdc0b22dbb2a`
+- runner／artifact newline-normalized SHA-256:
+  `84ed56dabd0b0f870f1c6b27c9907c9566439ff03affe5aacc61ba611f4678fe` /
+  `842ddbae2a28ccd2f11a112f23205cb049668b82691fdd180edc5ac20fecaa25`
+
+全候補の忠実度は十分なので、negative outcomeはTT近似不良ではなく、固定tensorizationの格納損失に
+よる。output-lastのonline速度改善は診断として保持するが、storage-only／timing-onlyを採択しない規則を
+変えない。従ってこのsealed forced coefficientではnatural Fourier-sparseを保持し、TT-crossへ進まない。
+TT一般、別tensorization、GPU、full rollout、他grid／forceの不可能性は主張しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

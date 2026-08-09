@@ -262,7 +262,9 @@ Q011fでは別seedの160初期値を64 step追跡した。誤差次数、quadrat
 `224 / 224`に対して`222 / 224`だったため`rejected`とした。Q011f1では同じ方向・閾値を固定し、
 未使用振幅`4.8e-4`だけを追加した独立再発行を行った。全224 fitがeligibleとなり、linear／quadratic
 slope、全checkpoint改善、64-step相対誤差、positivity、保存則を通過したため`accepted`とした。
-Q011f自体の棄却は変更していない。
+Q011f自体の棄却は変更していない。Q011gではこのforced (W_2/R_2)をnatural Fourier-sparseと
+6個のuncapped TT-SVD bundleで比較した。3個のoutput-last TTは現在環境のonline作用時間で勝ったが、
+最小TTでもsparseの約5倍の格納量だったためjoint winnerは0で、TT優位性を`rejected`とした。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1974,6 +1976,57 @@ Q011f artifactと二つのdegenerate witnessを封印し、同じseed `20260826`
 attraction、forced SSM existence／uniqueness、他grid／force／wall boundaryは主張しない。次は
 natural Fourier-sparse baselineを必須比較対象としてQ011gのTT-SVD費用・精度gateを事前登録する。
 
+### Q011g forced quadratic Fourier-sparse／TT-SVD representation audit
+
+Q011f1とQ011eを封印し、native complex (W_2/R_2)、complex-to-real map、real chartを一度だけ
+fresh再構築した。300 unordered pairをoutput sector `0 / 1 / 16 / 2 / 15`へ
+`102 / 54 / 54 / 45 / 45`と分け、同じ構造射影済みordered-dense tensorからnatural sparseと
+6個のTT-SVD bundleを生成した。TT-SVD toleranceは`1e-13`、rank capは置いていない。
+
+- classification:
+  `registered TT-SVD bundles do not beat the natural Fourier-sparse forced-quadratic baseline`
+- validity／hypothesis gates: `6 / 6` passed、`1 / 4` passed
+- storage／robust-timing／joint winner count: `0 / 3 / 0`
+- robust timing winners:
+  `flat-output-last / fourier-output-last / d1q3-output-last`
+- natural sparse stored real scalars／raw／in-memory／NPZ bytes:
+  `94,968 / 760,644 / 761,995 / 762,188`
+- best-storage TT (`fourier-output-first`) corresponding values:
+  `474,050 / 3,792,544 / 3,795,218 / 3,795,586`
+- best TT／sparse scalar／raw／memory／NPZ ratio:
+  `4.99168140847443 / 4.98596452479741 / 4.98063373119246 / 4.97985536376852`
+- sparse offline median／best TT offline median:
+  `2.7488 ms / 401.5353 ms`
+- sparse online median／fastest TT online median (`flat-output-last`):
+  `0.7321 ms / 0.47460625 ms per joint action`
+- fastest TT online ratio／its stored-scalar ratio:
+  `0.6482806310613304 / 15.2224538792014`
+- maximum TT reconstruction／joint-action／realification error:
+  `2.41559062578165e-14 / 3.84139374578316e-14 / 3.82602037711869e-14`
+- natural projection loss (W_2/R_2):
+  `3.33475349414364e-15 / 0`
+- natural-vs-dense action／one-step defect relative difference:
+  `3.23695449081624e-16 / 4.16928788077864e-9`
+- maximum TT-vs-sparse one-step defect relative difference:
+  `2.12579364573947e-8`
+- minimum population／maximum conservation drift:
+  `0.027702486940874498 / 1.13691215527115e-13`
+- input／coefficient／fidelity／cost／result digest:
+  `0632be40fccc212f23a271fa00ed80696f9a146a1b107e513b3a47edb9870a20` /
+  `fc9edec10ee22abfaa2b763be9f69c9d72bfc59543aa34faea6ab206c35ab264` /
+  `30dabea285da9070e2ebc0b351afde4695deb275d5f96ee66de1b1ca0468fcad` /
+  `222a42321f4ae814478cc65102afcbc8926754d8cb7c48ed8ca2952e350767a7` /
+  `e0874eabe2c5b924d0b5d7b56533cd695406166d4370b493a0dabdc0b22dbb2a`
+- runner／artifact newline-normalized SHA-256:
+  `84ed56dabd0b0f870f1c6b27c9907c9566439ff03affe5aacc61ba611f4678fe` /
+  `842ddbae2a28ccd2f11a112f23205cb049668b82691fdd180edc5ac20fecaa25`
+
+全6候補は係数忠実度と一段不変性残差保存を通過したため、棄却原因は近似精度ではなく格納量である。
+onlineだけならoutput-last配置に明確な利点があるが、最速候補のcore格納scalarはsparseの約15.2倍で、
+事前登録した同一候補によるstorage＋timeのjoint採択条件を満たさない。従ってこの固定係数ではnatural
+Fourier-sparseを採用し、TT-crossを開始しない。これはTT一般、別tensorization、GPU、他grid、full rolloutの
+不可能性を主張せず、Q011e--Q011f1のoutcomeも変更しない。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2529,6 +2582,7 @@ python -m research.q011e_forced_quadratic_chart --output research/artifacts/q011
 python -m research.q011e1_enlarged_residual_window --output research/artifacts/q011e1_enlarged_residual_window.json
 python -m research.q011f_multistep_shadowing --output research/artifacts/q011f_multistep_shadowing.json
 python -m research.q011f1_heldout_amplitude_reissue --output research/artifacts/q011f1_heldout_amplitude_reissue.json
+python -m research.q011g_forced_representation_audit --output research/artifacts/q011g_forced_representation_audit.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2610,6 +2664,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011e1_enlarged_residual_window.json`](research/artifacts/q011e1_enlarged_residual_window.json)
 - [`research/artifacts/q011f_multistep_shadowing.json`](research/artifacts/q011f_multistep_shadowing.json)
 - [`research/artifacts/q011f1_heldout_amplitude_reissue.json`](research/artifacts/q011f1_heldout_amplitude_reissue.json)
+- [`research/artifacts/q011g_forced_representation_audit.json`](research/artifacts/q011g_forced_representation_audit.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2793,3 +2848,6 @@ campaignでは長時間性能gateを全て通したが、early horizonの2 fit�
 eligibility gateだけを棄却した。Q011f1では未使用振幅`4.8e-4`だけを追加した独立再発行により
 全224 fitを解像し、同じ有限multi-step shadowing gateを通過した。Q011fは棄却のままであり、
 all-time shadowing、uniform remainder、basin、normal attraction、forced SSM存在・一意性は未認証である。
+Q011gではforced (W_2/R_2)の6 TT-SVD bundleが全忠実度gateを通ったが、格納量でnatural
+Fourier-sparseに勝つ候補は0だった。現在環境でonline時間に勝つ3候補は記録したもののjoint winnerはなく、
+この固定係数に対するTT-SVD／TT-cross rolloutは停止する。
