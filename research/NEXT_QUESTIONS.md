@@ -11342,6 +11342,108 @@ Q011e1だけが独立拡大窓の有限holdoutとしてacceptedである。従�
 existence／uniqueness、nonlinear normal attraction、basinは主張しない。次はQ011f multi-step
 shadowing windowを観測前に事前登録する。
 
+## Q011f: independent multi-step forced-chart shadowing window — 事前登録
+
+### 問いと範囲
+
+Q011e1で一段残差次数を確認した同じforced fixed-leaf quadratic chartについて、別seedの初期座標から
+full forced mapとquadratic reduced mapを64 step追跡すると、有限horizonのlifted reduced orbitは
+linear chartより小さいshadowing errorを保ち、振幅に対する三次次数を維持するか。
+
+本gateは有限binary64 trajectory campaignであり、shadowing lemma、uniform-in-time bound、basin、
+normal attractionの証明ではない。linear baselineとquadratic chartは同じ初期reduced coordinate
+\(a_0\)を使うが、full初期状態はそれぞれ\(W_{\rm lin}(a_0)\)、\(W_2(a_0)\)とする。従って両者は
+各chart自身のsame-chart initial stateから始まる比較であり、二つのfull orbitが同一初期physical stateを
+共有するとは主張しない。
+
+### 封印入力
+
+- Q011e1 artifact／runner newline-normalized SHA-256:
+  `989801d1e4e1396ebba279e11c396f7f6d4e9616d2aa170f5687f9ba08a95840` /
+  `bb8a052f387d2748fee823af10f2ab4ea4a9a08ebe62e8b4ff87d68d55c2929f`
+- Q011e1 input／chart-reconstruction／residual-window／result digest:
+  `8e979deeed0e5f4151addb5f3b06c1a9815a28f4e0c5762726d7c29a03d035c0` /
+  `2e739657032352d7d0496568a216b761000a68beb6d00749e1e427e6447598fb` /
+  `20267150710538f797f21cc2846ee6be14060ad9ea6bef98ef29e4731121410b` /
+  `0370a24ce7a74da71ee978b3892ea23412c3d18adb110e2b2b53aaf02ccdf039`
+- Q011e1 direction SHA-256:
+  `64b017fb5a3c55378ccee4d457b4d2a8c75a92cd5b421897f9b7de1ad6a77b1d`
+- Q011e real tangent／extractor／linear／second derivative／\(W_2\)／\(R_2\) hashは
+  Q011e1事前登録の6値をそのまま固定する。
+- sealed package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+
+Q011e1 artifactのvalidity `5 / 5`、hypothesis `6 / 6`、accepted classification、4 digest、
+direction hashをexactに照合する。Q011eの元`rejected` outcomeも変更しない。Q011e1と同じhelperで
+Q011e chartを一度だけfresh再構築し、6 array hashとconstruction auditを再現する。
+
+### 独立trajectory campaign
+
+未使用seed `20260826`から32 unit directionを生成する。初期振幅はQ011e1と同じ
+
+\[
+(1.6\times10^{-4},\ 3.2\times10^{-4},\ 6.4\times10^{-4},\
+1.28\times10^{-3},\ 2.56\times10^{-3})
+\]
+
+とし、合計160 initial coordinateを使う。各初期値についてlinear／quadraticのfull orbitとreduced orbitを
+64 step進め、各stepで
+
+\[
+e_n^{\rm lin}=\|\Phi^n(W_{\rm lin}(a_0))-W_{\rm lin}(R_{\rm lin}^n(a_0))\|_2,
+\]
+
+\[
+e_n^{\rm quad}=\|\Phi^n(W_2(a_0))-W_2(R_2^n(a_0))\|_2
+\]
+
+を保存する。全stepでfull／lifted stateのminimum population、global mass／momentum drift、reduced
+coordinate normも保存し、horizon
+
+\[
+n\in\{1,2,4,8,16,32,64\}
+\]
+
+ではfull／lifted state hashを追加で保存する。
+
+各direction・horizonについて5 amplitudeに対するlog-log slopeを求める。error `>=1e-12`の点だけを
+fitに使い、linear／quadraticとも4点以上ある場合だけslope-eligibleとする。これはQ011e1の一段
+noise floorより10倍大きくし、64-step roundoff accumulationをslopeへ数えないための事前固定値である。
+
+### validity gate
+
+1. Q011e1 artifact／runner／package source、4 digest、accepted outcome、direction hashを封印どおり再現する。
+2. Q011e chartを一度だけfresh再構築し、6 array hashとconstruction auditを再現する。
+3. seed `20260826`、32 unit direction、5 amplitude、linear／quadratic各160 trajectoryを完全列挙する。
+4. 全trajectoryの64 step error／positivity／conservation／coordinate normと7 checkpoint hashを保存する。
+5. 全224 direction-horizon fitのmask／slope／ratioを完全列挙する。
+6. 全値finiteなstrict JSON、input／chart／trajectory／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、multi-step shadowing hypothesisを解釈しない。
+
+### hypothesis gateと判定
+
+validity通過時だけ次を全て要求する。
+
+1. slope-eligible direction-horizon count: `224 / 224`。
+2. eligible linear shadow-error slope: each `1.75 <= slope <= 2.25`。
+3. eligible quadratic shadow-error slope: each `2.50 <= slope <= 3.50`。
+4. every registered direction／amplitude／horizonで
+   \(e_n^{\rm quad}/e_n^{\rm lin}\le0.05\)。
+5. horizon 64でevery trajectoryの\(e_{64}^{\rm quad}/\|a_0\|_2\le10^{-3}\)。
+6. full／lifted state minimum population: `>0`、maximum global conservation drift: `<=1e-10`。
+
+全て通れば
+`the sealed forced quadratic chart passes the registered 64-step shadowing window`
+として`accepted`とする。validだが一つでも落ちれば
+`the forced quadratic chart fails the registered finite shadowing window`
+として`rejected`とする。
+
+acceptedでもこれは160 initial condition、64 step、7 horizonのfinite binary64 evidenceである。
+all-time shadowing、uniform remainder、basin、normal attraction、forced SSM existence／uniqueness、他grid／
+force／wall boundaryを主張しない。acceptedの場合だけQ011gでこのforced quadratic coefficient tensorの
+natural Fourier-sparse storageを確定し、TT-SVDを同じ残差・action・実メモリ基準で比較する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
