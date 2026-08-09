@@ -259,7 +259,10 @@ eligibleとなり、linear／quadraticのprimary・上位4点secondary slopeが�
 `accepted`とした。これはQ011eの再採点ではなく、有限独立窓で残差次数を確認した新しい結果である。
 Q011fでは別seedの160初期値を64 step追跡した。誤差次数、quadratic改善、64-step相対誤差、positivity、
 保存則は通ったが、direction 4のhorizon 1・2でquadratic errorのfit点が3個しかなく、登録要求
-`224 / 224`に対して`222 / 224`だったため`rejected`とした。
+`224 / 224`に対して`222 / 224`だったため`rejected`とした。Q011f1では同じ方向・閾値を固定し、
+未使用振幅`4.8e-4`だけを追加した独立再発行を行った。全224 fitがeligibleとなり、linear／quadratic
+slope、全checkpoint改善、64-step相対誤差、positivity、保存則を通過したため`accepted`とした。
+Q011f自体の棄却は変更していない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1924,6 +1927,53 @@ Q011e1とQ011eのoutcomeを封印し、Q011e chartを同じ6 array hashで再構
 それでもQ011fを合格へ読み替えない。次はfloorを下げず、未使用amplitudeを追加する独立再発行gateを
 事前登録してからQ011gへ進む。
 
+### Q011f1 held-out-amplitude multi-step reissue
+
+Q011f artifactと二つのdegenerate witnessを封印し、同じseed `20260826`の32方向へ未使用振幅
+`4.8e-4`のlinear／quadratic trajectoryだけを追加した。元5振幅の保存済みerrorと合わせた6点fitを
+行い、noise floor `1e-12`、7 horizon、全slope／performance thresholdを変更せず再評価した。
+
+- classification:
+  `the forced quadratic chart passes a held-out-amplitude 64-step shadowing reissue`
+- validity／hypothesis gates: `6 / 6` passed、`6 / 6` passed
+- slope-eligible／degenerate direction-horizon fits:
+  `224 / 224`、`0 / 224`
+- merged linear／quadratic slope range:
+  `1.9999204011998797 -- 2.000130424734462` /
+  `2.9992217798368643 -- 3.00027147080911`
+- repaired direction `4`、horizon `1 / 2`のquadratic fit-point count:
+  `4 / 4`
+- repaired quadratic slopes at horizon `1 / 2`:
+  `3.000037106494855 / 3.0000355600774475`
+- held-out quadratic errors at horizon `1 / 2`:
+  `3.1730810288365184e-12 / 3.0952409781368448e-12`
+- maximum merged checkpoint quadratic／linear error ratio:
+  `0.002547526388856511`
+- maximum merged horizon-64 quadratic error／initial amplitude:
+  `1.1019505895816554e-6`
+- minimum merged full-or-lifted population／maximum conservation drift:
+  `0.027704572566416702 / 1.8214860035899544e-12`
+- held-out-only maximum checkpoint ratio／horizon-64 relative error:
+  `0.00047765951440299786 / 3.8740640529751134e-8`
+- direction SHA-256:
+  `4d0bef57236d4f70a8a8f422b1bdfa39cd5737c88401c2441decdd98d886d2f9`
+- input／chart-reconstruction／heldout-trajectory／merged-fit／result digest:
+  `101adcdc6fc2d40dc984e6ba900d234b913f7c78aa34381a08d0a77aa9e23000` /
+  `ba50ee295551dae970d33e1bba735ac0502987aef0f4a82987f2998ae884f732` /
+  `243c41522a9eb7d7b78b2031bdbe8f55eb23b447e8d84162b1aae2f53b651829` /
+  `2e3fcee7bebec5c82f2fbd2b78ddac8c44401fd0681ad5d9feb60c7257a8326e` /
+  `484580786b6c535856f0693b14c58815462e1de979759057dc3b402d475bcbc7`
+- runner／artifact newline-normalized SHA-256:
+  `eab2d63a075f2c43b4c6adfaa7941e9c23bf85a351427057130f68945346ce62` /
+  `79ddb64e0965b5b87b7ad68c6dc8698efdd2281540c798ed27f355747d265bc1`
+
+追加点により、元witnessのquadratic fit maskは
+`[false, false, true, true, true, true]`となり、両fitが4点で解像された。これはQ011fの棄却を
+再採点せず、同じ有限shadowing hypothesisを独立データで再発行した結果である。6振幅、32方向、
+64 step、7 horizonのbinary64観測を越えるall-time shadowing、uniform remainder、basin、normal
+attraction、forced SSM existence／uniqueness、他grid／force／wall boundaryは主張しない。次は
+natural Fourier-sparse baselineを必須比較対象としてQ011gのTT-SVD費用・精度gateを事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2478,6 +2528,7 @@ python -m research.q011d_forced_quadratic_homological --output research/artifact
 python -m research.q011e_forced_quadratic_chart --output research/artifacts/q011e_forced_quadratic_chart.json
 python -m research.q011e1_enlarged_residual_window --output research/artifacts/q011e1_enlarged_residual_window.json
 python -m research.q011f_multistep_shadowing --output research/artifacts/q011f_multistep_shadowing.json
+python -m research.q011f1_heldout_amplitude_reissue --output research/artifacts/q011f1_heldout_amplitude_reissue.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2558,6 +2609,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011e_forced_quadratic_chart.json`](research/artifacts/q011e_forced_quadratic_chart.json)
 - [`research/artifacts/q011e1_enlarged_residual_window.json`](research/artifacts/q011e1_enlarged_residual_window.json)
 - [`research/artifacts/q011f_multistep_shadowing.json`](research/artifacts/q011f_multistep_shadowing.json)
+- [`research/artifacts/q011f1_heldout_amplitude_reissue.json`](research/artifacts/q011f1_heldout_amplitude_reissue.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2738,4 +2790,6 @@ normal attraction、不変多様体の存在・一意性、wall-bounded flowは�
 32方向と16倍まで拡大した振幅窓で二次／三次残差を全方向に解像し、primary／secondary fitを全通過した。
 ただし有限一段holdoutであり、Q011e自体の判定や上記未認証事項は変更しない。Q011fの64-step
 campaignでは長時間性能gateを全て通したが、early horizonの2 fitがnoise floor上に3点しかなく、
-eligibility gateだけを棄却した。従って有限multi-step shadowingもまだ確認済みとは扱わない。
+eligibility gateだけを棄却した。Q011f1では未使用振幅`4.8e-4`だけを追加した独立再発行により
+全224 fitを解像し、同じ有限multi-step shadowing gateを通過した。Q011fは棄却のままであり、
+all-time shadowing、uniform remainder、basin、normal attraction、forced SSM存在・一意性は未認証である。

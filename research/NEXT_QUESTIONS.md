@@ -11579,6 +11579,43 @@ acceptedでも、Q011f自体は`rejected`のままである。Q011f1は元5点�
 forced SSM existence／uniqueness、他grid／force／wall boundaryを主張しない。acceptedの場合だけQ011gの
 natural Fourier-sparse／TT-SVD比較を事前登録する。
 
+### Q011f1 実行結果
+
+validity `6 / 6`、hypothesis `6 / 6`を通過し、
+`the forced quadratic chart passes a held-out-amplitude 64-step shadowing reissue`
+として`accepted`とした。Q011f artifactの`rejected` outcomeと二つの元witnessはexactに再現され、
+Q011e chartの6 array hashも一致した。
+
+- merged slope-eligible／degenerate fit: `224 / 224`、`0 / 224`
+- merged linear slope range:
+  `1.9999204011998797 -- 2.000130424734462`
+- merged quadratic slope range:
+  `2.9992217798368643 -- 3.00027147080911`
+- direction `4`、horizon `1 / 2`のheld-out quadratic error:
+  `3.1730810288365184e-12 / 3.0952409781368448e-12`
+- 同witnessのcombined quadratic fit-point count／slope:
+  `4 / 4`、`3.000037106494855 / 3.0000355600774475`
+- maximum merged checkpoint quadratic／linear ratio:
+  `0.002547526388856511`
+- maximum merged horizon-64 quadratic error／initial amplitude:
+  `1.1019505895816554e-6`
+- minimum merged population／maximum conservation drift:
+  `0.027704572566416702 / 1.8214860035899544e-12`
+- input／chart／heldout／merged-fit／result digest:
+  `101adcdc6fc2d40dc984e6ba900d234b913f7c78aa34381a08d0a77aa9e23000` /
+  `ba50ee295551dae970d33e1bba735ac0502987aef0f4a82987f2998ae884f732` /
+  `243c41522a9eb7d7b78b2031bdbe8f55eb23b447e8d84162b1aae2f53b651829` /
+  `2e3fcee7bebec5c82f2fbd2b78ddac8c44401fd0681ad5d9feb60c7257a8326e` /
+  `484580786b6c535856f0693b14c58815462e1de979759057dc3b402d475bcbc7`
+- runner／artifact newline-normalized SHA-256:
+  `eab2d63a075f2c43b4c6adfaa7941e9c23bf85a351427057130f68945346ce62` /
+  `79ddb64e0965b5b87b7ad68c6dc8698efdd2281540c798ed27f355747d265bc1`
+
+この結果は事前登録した有限再発行範囲だけを受理する。Q011fを再採点せず、all-time shadowingや
+normal attractionを追加認証しない。従って次の課題はQ011gであり、forced dense quadratic coefficientを
+Fourier selection ruleで表したnatural sparse baselineとTT-SVDを、格納量だけでなく実メモリ、評価時間、
+rounding時間、実効自由度、不変性残差で比較する。Q011gは実装・観測前に別途事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
