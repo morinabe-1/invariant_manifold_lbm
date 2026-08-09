@@ -257,3 +257,37 @@ def test_q007an_records_provenance_and_deterministic_digests(
         )
     )
     json.dumps(q007an_cycle, allow_nan=False)
+
+
+def test_q007an_artifact_reproduces_the_accepted_conditional_induction(
+    q007an_cycle: dict,
+) -> None:
+    runner_path = Path(q007an.__file__).resolve()
+    artifact_path = (
+        runner_path.parent / "artifacts" / "q007an_repaired_tube_induction.json"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "dd28dc89f2096252db80e2ad7461ebdf71bb757e879b8657df01da766849ebdb"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007an_repaired_tube_induction.py",
+        "sha256": "bacf2eca47348ebbb5f5fbfe739f3239ebdb49eedc0d615efc144eb113b5f1bf",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q007an_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "7d93718b4e8375ea3983c37042d0aaedc98f4a16a329687afa69f75511e29657"
+    )
+    assert artifact["cycle"]["composition_digest_sha256"] == (
+        "7ce1bde2ddc99ace52610c1a814a65dada1711baf048ec5410241ce497f809d7"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "80bae2065ec27d22c7e5a392f764e422ef57d521e0848d6c9eae3e0ed07e8bf7"
+    )
