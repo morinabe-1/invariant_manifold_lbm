@@ -18581,6 +18581,55 @@ modulus-class fiber、outward-rounded dyadic product enclosureに限る。degree
 nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／
 force／wall、D3Q27を認証しない。
 
+### Q011ah 実行結果
+
+Q011agまでの12 artifactと63 direct digestを封印し、validity `9 / 9`を通過した。degree-14 inventory
+`680 / 11628 / 617 / 63`を再現し、80 directly relevant identifierと、Q011agの100 recordをexactに
+保存してgroup 157／158から12 recordだけを加えた112-record uniform envelopeを構成した。
+
+63 overlapの全893043240 monomialを4091730 modulus signatureへexactに分割した。3543001 compatible
+signatureは152292218 original monomialを表す。232 exact `int64` coefficient matrix、63 outward-dyadic
+bound matrix、480 classification matrixにより21891420 distinct comparison（310135908 weighted
+comparison）を評価した。weighted relationは`204194352 / 105941556 / 0`、distinct relationは
+`14247584 / 7643836 / 0`で、全比較がstrictに分離した。Q011agのdegree-13 certificateも同じ実装で
+oracleとして完全再現した。
+
+outward global lower boundは`5.650630797937594e-6`だった。近傍278件のexact Fraction refinementは
+global minimum `5.650630805194988e-6`と2 tieを再現した。canonical witnessはaggregate `[0,4,2,8]`、
+class count `[[0,0,0,0],[0,4],[0,1,1],[0,0,0,8,0,0]]`、source
+`(block=16;center=151)^4 × block=0;center=149 × block=1;center=152 × (block=0;center=147)^8`、
+target `block=14;center=146`、wave multiplicity `2`、relation `product_below_target`である。
+
+hypothesis `6 / 6`を通過し、
+`degree-14 external nonresonance is certified by exact Fourier multiplicities and outward-rounded dyadic product enclosures`
+として`accepted`とした。certified degreesは2--14、tail-certifiedは91以降、missing rangeはdegrees
+15--90である。
+
+- inventory／uniform digest:
+  `3ef339e30f7a2a531d4dc83e83a4d5f33d505a23e41d3cc29c7b41afa206e1b6` /
+  `4d1402e2a71c2de26fa35d9fac739a0258b35b0a2873a95148fe5be4454b6ac3`
+- factorization／wave-histogram digest:
+  `d9864e1c230c64a4d14263d73c2cbdfea4168a11d5bf45515d1ea96b166c0e65` /
+  `0e7c21a64e13b5467662d4897685b4e0c1dfb5fdc471ff25401ec91eb24d00cc`
+- coefficient／bound／classification／exact-minimum digest:
+  `ca3e91f4842a3ce7fab87bd07d24558875b58ad24423257750cf4dda777af13b` /
+  `27089bc09c64fef366f04422eb8878d769ab450ff96325f6875c5636ef88378e` /
+  `37ae2ecb609f79883ad3cab5355b2e5885612cb07ca8e3131c4df10d9755ea59` /
+  `ac40d9d8023786f5ff921cc045db0b0cc03a041ddc8a768d701c85a92e041664`
+- input／inventory-section／compression／product／result digest:
+  `f9b56d7c946e87637efb31736eeccb12bfba8649dc174eb625f461fe9fd07be1` /
+  `84470f689b8d102fa3710a392444a7624ff00b6e5581be767155b27069693d80` /
+  `8968069139fcfa41bed5128d8f561afd3f68eab2bd48035243d2b7736951345b` /
+  `370e36d8d088b6e4900c312ff16dc7656f250f1b67420d729936ad88ac971558` /
+  `f16b601ad207edd7b9bf19152385d304148a1b9f767ab1d087af039ef49177fa`
+- runner／artifact newline-normalized SHA-256:
+  `af63c12025be0f2364d572065b073d3daafe8c7c1fcc0439365931afbc822d6d` /
+  `eb44d70634db37d392829d597495595fc334d6ff448d597856d4558f34cc6510`
+
+本certificateはdegree 14に限られ、degrees 15--90、all-order nonresonance、higher graph smoothness、
+SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、次はQ011aiで
+degree 15を監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
