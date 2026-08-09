@@ -2514,3 +2514,80 @@ def test_q007af_artifact_records_the_radius_step_obstruction() -> None:
     assert not consequence[
         "q007p_through_q007ab_tube_constants_enlarged"
     ]
+
+
+def test_q007ag_artifact_records_the_propagated_larger_tube() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY / "q007ag_tube_radius_propagation.json"
+    )
+    runner_path = artifact_path.parents[1] / (
+        "q007ag_tube_radius_propagation.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ag_tube_radius_propagation.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "analytic-radius-propagated rational finite-tube "
+            "enlargement certificate"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": (
+            "fixed global mass and momentum leaf"
+        ),
+        "manifold": "Q007ae exact graph-gauge manifold",
+        "norm": "Q007p Fourier external-coordinate block-sum l1",
+        "candidate_grid": "9 scaled base radii by 99 normal radii",
+        "selection": (
+            "lexicographically maximize base then normal radius"
+        ),
+        "claim": (
+            "forward invariance, one-step normal contraction, and strict "
+            "normal domination for one selected registered tube only"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "Q007ae analytic radius enlarges the registered "
+        "external-coordinate tube"
+    )
+    assert len(cycle["validity_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 5
+    assert all(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    )
+    selected = cycle["selection"]["selected_candidate"]
+    assert selected["base_radius"]["float"] == 9e-17
+    assert selected["normal_radius"]["float"] == 5e-11
+    assert selected["passed"]
+    consequence = cycle["theorem_consequence"]
+    assert consequence["selected_registered_tube_forward_invariant"]
+    assert consequence[
+        "selected_registered_tube_uniformly_normal_contracting"
+    ]
+    assert consequence[
+        "selected_registered_tube_strictly_normally_dominating"
+    ]
+    assert consequence[
+        "both_q007s_registered_tube_radii_strictly_enlarged"
+    ]
+    assert not consequence["new_tube_population_positivity_certified"]
+    assert not consequence["new_tube_stagewise_positivity_certified"]
+    assert not consequence[
+        "new_tube_binary64_or_mpfr_induction_certified"
+    ]

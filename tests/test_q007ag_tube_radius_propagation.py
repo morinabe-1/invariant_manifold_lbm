@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import json
 from fractions import Fraction
+from pathlib import Path
 
 import pytest
 
 import research.q007ag_tube_radius_propagation as q007ag
+from ttim_lbm.provenance import source_metadata
+from ttim_lbm.rational_spectrum import _file_sha256
 
 
 def _fraction(record: dict) -> Fraction:
@@ -169,3 +173,40 @@ def test_q007ag_accepts_only_the_fixed_grid_tube_enlargement(
     assert not consequence[
         "new_tube_binary64_or_mpfr_induction_certified"
     ]
+
+
+def test_q007ag_artifact_reproduces_the_accepted_tube(
+    q007ag_cycle: dict,
+) -> None:
+    runner_path = Path(q007ag.__file__).resolve()
+    artifact_path = (
+        runner_path.parent
+        / "artifacts"
+        / "q007ag_tube_radius_propagation.json"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "5783df74abb4b6ec7d658fd7e3dd272cf100cd134783c31863d643fcd17d4200"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ag_tube_radius_propagation.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["cycle"] == q007ag_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert q007ag_cycle["input_digest_sha256"] == (
+        "262cbeccacf858bd798de06f363635f15c78ff3d361b44bdd5850aeb90679613"
+    )
+    assert q007ag_cycle["candidate_digest_sha256"] == (
+        "a7a6a8f605339b0e8ffd16a5d3190967cb7329771d322f8edc0a53bc4b45e408"
+    )
+    assert q007ag_cycle["result_digest_sha256"] == (
+        "6f52c6f1cfa618ca881439504f1bd5b46e45eb245670f1a2c6341669aa024f43"
+    )
