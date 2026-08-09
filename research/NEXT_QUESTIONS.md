@@ -16632,6 +16632,216 @@ hypothesis `5 / 5`を通過し、
 comparison、degrees 7--90、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
 未認証である。停止規則どおり、次はQ011zで3 overlap aggregateの全6956 sector-compatible comparisonを監査する。
 
+## Q011z: degree-6 uniform refined-envelope indexed-modulus audit — 事前登録
+
+### 問い
+
+Q011uでdegree 6に残った3 modulus-overlap aggregateについて、Q011yのtransformed-residual eigendiscを
+block-independentな有理半径へ外向きに丸め、全可換coordinate monomialとFourier-sector-compatible external
+targetをexact indexed modulusだけで分離できるか。
+
+Q011uのdegree-6 inventoryは
+
+- aggregate: `84 = 81 old-modulus-separated + 3 overlap`
+- expanded product control: `462`
+- overlap:
+  - `[0,2,1,3]`／external group `178`
+  - `[0,2,2,2]`／external group `178`
+  - `[0,3,1,2]`／external group `177`
+
+である。Q011zは3 overlapを個別indexへ展開し、Q011uの81 separationと合わせてdegree 6全体を判定する。
+
+### uniform refined envelope
+
+Q011yは全17 blockでtransformed-residual半径
+
+\[
+\theta_b=\beta_b\|A_bV_b-V_bD_b\|_\infty
+\]
+
+を認証し、\(\max_b\theta_b=4.7369170150175137\times10^{-8}\)を得た。Q011zでは
+
+\[
+\rho=\frac{1}{20{,}000{,}000}=5\times10^{-8}
+\]
+
+を固定し、全centerに\(D(c_j,\rho)\)を使う。従って
+
+\[
+D(c_j,\theta_b)\subset D(c_j,\rho).
+\]
+
+さらに全Q011k旧半径が\(\rho\)より大きいことをexactに確認し、uniform discも旧discに包含する。この丸めは
+Q011y円板より大きいが、巨大な\(\theta_b\)分母をproductごとに掛けずに済み、証明計算を小さい固定分母で行える。
+
+### 封印入力
+
+Q011k／Q011u／Q011x／Q011yの4 artifactを直接照合する。
+
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011u artifact／runner newline-normalized SHA-256:
+  `4e0a74cffaeb6781b85621362d4463ac8d9ab98ee14bcf3b5764642b5a15d5e4` /
+  `fa3c7c01355c0b3c19b58618fe97edc5863dc2d0fa02c4f810ddbc57053a419e`
+- Q011u input／cutoff／spectrum／log／enumeration／tail／result digest:
+  `ba768da7be5663c607a24fa4a399bae06a8d8b4128a45ab9bb2b57f8a12461f4` /
+  `55a374a5d91d2c88e5e34be2173f9861ee14915daaee55efd8848f0cd7ebaf94` /
+  `a514c3a13142d379886c56b08109f28b69aee4cbcef2d4c5c9bed8d29182e89d` /
+  `10f9aa954446e1e7d8095488ef82abc48fcc99fde3ddabd93a1a188b17ea51b5` /
+  `5c94deb8acd69b1346e6d46af829804b401027ecea48caf7e5ce2d9b22d6631c` /
+  `307ca2762bb5aecb626983acb8d38eb5728e2a8eb9e64769cc0b632b40da66c6` /
+  `b005bb622e7f3abad98a1ef6875af289fa2dccdc16911faf11e7ee04b822722c`
+- Q011x artifact／runner newline-normalized SHA-256:
+  `11ef4d47f60840c4bc05c4056024e2af14b8339a8983b65dcb878bd355cfc328` /
+  `62712392faca2c154883edd93792f81e60ff975f6da16010aa3190ee44657a18`
+- Q011x input／inventory／sector／product／result digest:
+  `9d13fa470f4c0bd8efa13868af90c6931025d7f3007e600c66af05bd0037a7ed` /
+  `717c4eadbd0e5f160a87de8846968933b8c5fbe604d769f215b6dcc65dacc955` /
+  `d31b7ea3cfcd7eca9d936cded13a1dc316e64dc2fc088bda745ea927d15ce52c` /
+  `add9d07725802c5fba84b68a207d5adc6f3f405a152a22f88059259f9a255222` /
+  `608bb3a7aee34a833e7980dbd18f4a3e641426966352126833f298e282437b31`
+- Q011y artifact／runner newline-normalized SHA-256:
+  `2886708898f634b3ff85587f3f4b9257d35e14f25b4e3b4524fd01f4c12a254a` /
+  `0017ea849f518c69ce93a36db349bd8b18246b678fef9a54a48ae5f6f1acd187`
+- Q011y input／theorem／radius／containment／witness／result digest:
+  `a31fe1606f7be3931567ec63bbad3037d38a9a57eef43f73d7b8f9afc7523c03` /
+  `f3b9518fe67e85f0e701c4e6a97eac95db188ce85f813e358ddc0ecf85ba1ad5` /
+  `70919d4697068d7500609551a17325533e83f40bb2e309f5e98b3313a6a93ee5` /
+  `54e13cb993a0b99bc2d85dcf687d470cebe5692b4d10ab03865115230c53712c` /
+  `933d2841e5501bd48827ead0ea836fb54ebca7f42e36f8bc6228c3f7dcfaaa4b` /
+  `51d83bad9b0c2188c05b147f0075b5e7f05f3dea0dd291e0c282e9236914bff8`
+
+direct digest countは`23`とする。center modulus再構成に使うQ011l／Q011o sourceも、それぞれ
+`59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7` /
+`60d9c445dace16d114e46263f2b47fe2db993b894337cdd462f204da09543f1f`
+へ直接封印する。
+
+### monomialとFourier sector
+
+selected modulus group sizeは`8 / 4 / 4 / 8`である。combination with replacementにより、3 aggregateの
+可換monomial数は
+
+\[
+4800,\qquad3600,\qquad2880,\qquad\text{total }11280
+\]
+
+となる。monomialのwave block histogramを次へ固定する。
+
+- `[0,2,1,3]`:
+  `0:820 / 1:760 / 2:600 / 3:380 / 4:178 / 5:60 / 6:12 / 11:12 / 12:60 / 13:178 / 14:380 / 15:600 / 16:760`
+- `[0,2,2,2]`:
+  `0:628 / 1:560 / 2:459 / 3:278 / 4:138 / 5:42 / 6:9 / 11:9 / 12:42 / 13:138 / 14:278 / 15:459 / 16:560`
+- `[0,3,1,2]`:
+  `0:420 / 1:404 / 2:348 / 3:260 / 4:150 / 5:56 / 6:12 / 11:12 / 12:56 / 13:150 / 14:260 / 15:348 / 16:404`
+
+external group 178は4 targetでsector `2:2 / 15:2`、group 177は8 targetでsector
+`0:4 / 3:2 / 14:2`である。exact Fourier law
+
+\[
+b_{\mathrm{out}}=(b_1+b_2+b_3+b_4+b_5+b_6)\bmod17
+\]
+
+からcompatible comparisonを`2400 / 1836 / 2720`、合計`6956`へ固定する。
+
+### indexed modulus product enclosure
+
+各source centerについてQ011oからexact rational
+
+\[
+\ell_i\le|c_i|\le u_i
+\]
+
+を得る。uniform disc productはcenter \(C=\prod_i c_i\)と
+
+\[
+R=\prod_{i=1}^{6}(u_i+\rho)-\prod_{i=1}^{6}u_i
+\]
+
+を持つ円板に含まれる。また
+
+\[
+\prod_i\ell_i\le|C|\le\prod_i u_i
+\]
+
+なので、product modulus intervalを
+
+\[
+I_p=\left[
+\max\left(0,\prod_i\ell_i-R\right),
+\prod_i u_i+R
+\right]
+\]
+
+とする。target \(e\)には
+
+\[
+I_e=[\max(0,\ell_e-\rho),u_e+\rho]
+\]
+
+を使う。\(I_p\cap I_e=\varnothing\)ならcomplex phaseを計算せずstrict nonresonanceが従う。
+
+### design-only pilotの開示
+
+事前登録用のexact-rational pilotでは、uniform \(\rho=5\times10^{-8}\)でも3 aggregateの全6956比較が
+individual modulusで分離した。aggregate別minimum gapは
+
+- `[0,2,1,3]`: `1.6311010454743865e-5`
+- `[0,2,2,2]`: `4.6970543553274824e-5`
+- `[0,3,1,2]`: `6.7565223274027445e-6`
+
+だった。global witnessは
+
+`(block=16;center=151)^3 × block=0;center=149 × (block=0;center=147)^2`
+
+対target `block=14;center=143`である。登録minimum gapは`5e-6`とする。pilotのexact valueや一時計算を
+proof digestへ流用せず、独立runnerがinventory、全monomial、全comparison、minimum witnessを再構成する。
+
+### validity gate
+
+1. Q011k／Q011u／Q011x／Q011y artifact、runner、23 digest、outcome、claim boundaryとQ011l／Q011o sourceを再現する。
+2. degree-6の84 aggregate、462 expanded control、81 separation、3 overlap tuple／external groupを再現する。
+3. Q011yの全\(\theta_b\le\rho\)、全Q011k旧半径\(\ge\rho\)、source／target refined modulus intervalを再現する。
+4. group membership、11280 monomial、wave histogram、`4 / 4 / 8` target entry（12 unique）、6956 compatible comparisonを再現する。
+5. 全product radius、center-modulus product interval、target interval、strict gap、framed exact-record digestを再現する。
+6. Q011uの81 separationと3 full indexed auditが84 aggregateを重複なく被覆することを再現する。
+7. finite strict JSON、input／inventory／sector／product／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、degree-6 nonresonanceを主張しない。
+
+### hypothesis gateと停止規則
+
+1. uniform \(\rho\)-discが全Q011y spectral enclosureを含み、全Q011k旧discに含まれる。
+2. 84 aggregate、11280 monomial、6956 comparisonがdegree 6を完全被覆する。
+3. 6956 comparisonすべてがindividual modulus separationで、unresolvedが0である。
+4. global minimum exact modulus gapが`>=5e-6`である。
+5. Q011uの81 old separationと3 refined full auditからdegree-6 external nonresonanceが従う。
+
+全5項目が通る場合だけ
+`degree-6 external nonresonance is certified by a contained uniform transformed-residual envelope and exact Fourier-sector indexed-modulus products`
+として`accepted`とする。certified degreesを2／3／4／5／6、tail-certifiedを91以降、missing rangeを
+degrees 7--90へ更新する。
+
+1件でもinterval overlapが残れば
+`at least one degree-6 refined indexed-modulus product remains inseparable from an external target`
+として`rejected`とする。actual resonanceとは解釈せず、最初のoverlapだけをexact complex phaseへ送る。
+
+`accepted`ならQ011aaでdegree 7へ進む。`rejected`ならQ011aaで最初のremaining productだけをphase-sensitive
+complex discへ送る。`inconclusive`なら最初のvalidity failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 6、Q011uの3 overlap aggregate、
+Q011y transformed-residual enclosure、uniform \(\rho\)-disc、x-Fourier sector、indexed modulus product formulaに
+限る。degrees 7--90、all-order nonresonance、Q011t graphとのhigher-order一致、\(C^2\)以上のgraph smoothness、
+SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
