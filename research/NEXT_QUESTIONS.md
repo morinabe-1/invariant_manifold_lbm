@@ -10506,6 +10506,165 @@ validity `5 / 6`、失敗閾値`1e-12`を変更していない。forced cluster�
 次は共役orbit endpoint semanticsを最初から固定し、Q011cで未使用のforce-amplitude midpointを
 holdoutにするQ011c2を観測前に事前登録する。それを通るまでQ011dへ進まない。
 
+## Q011c2: held-out forced spectral-cluster reissue — 事前登録
+
+### 問いと独立性
+
+Q011c1で局在したpointwise witness問題を最初から共役orbit意味論へ置き換え、Q011cで未使用だった
+8個のforce-amplitude midpointでも、Q006h first-shell 24-mode subspaceはdimension exchangeなく
+継続し、external spectrumから分離され、linear modulusでnormally dominantか。
+
+Q011cの9 node
+
+\[
+t=j/8,\qquad j=0,\ldots,8
+\]
+
+をtraining／reproduction nodeとし、新しいholdoutを
+
+\[
+t=(2j+1)/16,\qquad j=0,\ldots,7
+\]
+
+と固定する。reissued pathは両者を合わせた\(t=j/16\), \(j=0,\ldots,16\)の17 nodeである。
+観測後のnode追加、adaptive subdivision、threshold変更は行わない。
+
+### 封印入力
+
+- Q011c1 artifact／runner newline-normalized SHA-256:
+  `939baa85fa4db1efaf701985d81665f863e5f77f6ec2c95cfc2bacf004c0c45c` /
+  `1f777dc50c6748cb8d8a64d643822b55733ac247b5de7d08b119d628b63c52a6`
+- Q011c1 input／metric／enclosure／result digest:
+  `e9ea01348fe839dd745c3ccb7cf2e622bec3c0a4f080a1ab1c62a92a02ced064` /
+  `fca5a81f3fc47e24a6f17578065adb527d892400d5d88c8eb18cf7089e234a9e` /
+  `7a6cd761f88b328c2ffa74de5b9fb7952f454b86a99630d6266973e8fa6fea20` /
+  `ad8b47548ebc04595246301864314502158e686520197377b3a33d30db1d4f86`
+- Q011c artifact／runner SHA-256:
+  `dbb562dd3628dc7589219baa94ae6791e084847f302c69dbcdc328b94ac6d2b3` /
+  `10222da26fe14b97cd9565c517838d3a03e21f19e605d4a60cb2461e011d1d13`
+- Q011c input／path／spectrum／result digest:
+  `7d8d4a593dc29a715c995e237890da4de17314c4feffabe10111b289120435ee` /
+  `06254ea5569d8b0c8c5369477c82ea685284aec9970574c46c24fea749280b92` /
+  `5b1e79280b752268248f5150dd12c73a96719cb20d86cbd34fb3ff1e1b8b472c` /
+  `4b41c4e7bda3a45f1ece871c183d321bed637d255053e22a82e7000dd83f5751`
+- Q011b stored endpoint state SHA-256:
+  `612ef4aca91a5c0100286988e0e7979342a9046c3c78fe60ee59ca4e232a7613`
+- sealed package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+
+Q011c1をfresh replayし、validity `5 / 5`、hypothesis `4 / 4`、accepted classificationと
+四digestをexactに再現する。Q011cも`5 / 6`、`inconclusive`、唯一のendpoint failure、raw
+cluster／checkpoint diagnostics trueをexactに保存する。いずれの過去判定も変更しない。
+
+### 17-node fixed-point path
+
+Q011cと同じfixed-leaf basis、analytic Jacobian、Newton最大12 step、line-search列、residual閾値を
+そのまま使う。forwardはrestから0→1、backwardはQ011b stored endpointから1→0へ17 nodeを進む。
+
+- 各solveのprojected／full／maximum-component residual:
+  `<=5e-13 / 5e-12 / 5e-13`
+- 全17対応nodeのforward／backward state absolute distance:
+  `<=1e-11`
+- 非零16 nodeのrest-departure relative distance:
+  `<=1e-8`
+- forward endpoint／Q011b stored stateも同じ二閾値。
+- 全forward／backward stateのpopulationとdensityをstrict positiveとする。
+
+training 9 nodeでは、Q011c original pathを別に再構築し、reissued stateとのabsolute／relative distanceを
+同じ`1e-11 / 1e-8`以内とする。\(t=0\)のrelative gateは使わない。全traceとstate hashを保存する。
+
+### 17-node cluster path
+
+Q011cと同じunforced reference、selected block \(k_x=0,1,16\)、dimension`6 / 9 / 9`、Hungarian
+eigenvalue-set assignment、ordered complex Schur selectorを変更しない。17 node全てで
+
+- adjacent maximum principal angle `<=0.05`、
+- reference minimum singular alignment `>=0.95`、
+- selected／excluded eigenvalue absolute separation `>=1e-6`、
+- Riesz projector 2-norm `<=100`、
+- Schur reconstruction、unitarity、invariance、projector idempotency／commutator residual
+  `<=1e-10`、
+- \(k_x=\pm1\) projector／spectrum conjugacy `<=1e-10`、subspace angle `<=1e-6`、
+- \(k_x=0\) projector imaginary relative norm `<=1e-10`
+
+を要求する。forward／backward対応clusterのangle、forward endpoint／unforced-target direct
+endpointのangleも`<=1e-6`とする。
+
+さらにtraining 9 nodeではQ011c original selected rangeとのangleを`<=1e-6`、selected-spectrum
+Hausdorff errorを`<=1e-10`とする。Q011b stored endpointからunforced targetで直接選んだcanonical
+clusterを追加し、forward endpointとのangleを各block`<=1e-6`とする。個別branch labelやcluster内
+permutationは使わない。
+
+### 8 held-out checkpoint
+
+holdout 8 node全てでQ011cと同じ明示的Sylvester operator
+
+\[
+\mathcal S=I_e\otimes T_s-T_e^T\otimes I_s
+\]
+
+を3 selected blockについて構成し、全24 operatorのminimum singular valueを`>=1e-5`とする。
+同じ8 nodeで全17 fixed-leaf block、合計2598 eigenvalueを再列挙し、
+
+- selected 24／external 2574のcountをexactに再現、
+- global modulus normal-dominance gap `>=1e-6`、
+- full fixed-leaf spectral radius `<=0.9999`
+
+を要求する。Q011cの3 training checkpoint値はsealed replayだけに使い、held-out decisionへ混ぜない。
+
+### endpoint conjugacy-orbit semantics
+
+Q011b stored endpointとreissued forward endpointについてQ011c1と同じ34 full SVDを行い、
+reconstruction／unitarity`<=1e-10`、matrix conjugacy`<=1e-12`を要求する。
+Q011c1と同じ固定式
+
+\[
+d_k=\|A_k^c-A_k^s\|_F+
+64\epsilon_{\rm mach}\max(1,\|A_k^s\|_F,\|A_k^c\|_F)
+\]
+
+から全17 blockの\(\sigma_{\min}\)、\(\sigma_{\max}\)、\(\kappa_2\) intervalを作り、continued値を
+全て囲む。radius winning orbitは`{0}`、minimum-singular／maximum-condition winning orbitは
+`{1,16}`とし、後者二つはinterval込みで全外部orbitからstrictに分離させる。個別indexの一致、
+Q011b condition numberとの固定absolute differenceはgateにしない。
+
+### validity gate
+
+1. Q011c1／Q011c／Q011b artifact、runner、全digest、cycle、package sourceを封印どおりfresh replayする。
+2. 17-node forward／backward Newton path、training-node reproduction、positivity、state hashを再現する。
+3. unforced referenceと17-node ordered-Schur／projector／conjugacy constructionがstructurally validである。
+4. training cluster、direct endpoint、canonical stored-endpoint controlを登録閾値内に再現する。
+5. 8 held-out node × 3 Sylvesterと8 full spectrumを完全列挙する。
+6. endpoint 34 SVD、matrix conjugacy、Weyl intervalを登録式どおり構成する。
+7. 全値finiteなstrict JSON、input／path／holdout-spectrum／endpoint／result digest、
+   runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、cluster hypothesisを解釈しない。
+
+### hypothesis gateと判定
+
+validity通過時だけ次を全て要求する。
+
+1. 17-node fixed-point pathが両方向で同じpositive branchを通り、Q011b endpointへ接続する。
+2. 17 node全てで24-dimensional conjugacy-closed clusterがdimension、alignment、
+   adjacent／reversal／training／direct／canonical angle gateを通る。
+3. 全17 nodeのexternal gap／projectorと、全24 held-out Sylvester separationが閾値内である。
+4. 8 held-out node全てでglobal normal-dominance gapとstrict fixed-leaf stabilityが成立する。
+5. endpoint resolvent metricがQ011c1のorbit意味論とperturbation interval gateを通る。
+
+全て通れば
+`the forced first-shell cluster passes a conjugacy-orbit reissue with eight held-out amplitude nodes`
+として`accepted`とし、この有限数値prequalificationの範囲でforced candidate spectral clusterを
+selectedとする。validだが一つでも落ちれば
+`the forced first-shell cluster fails the registered held-out reissue`として`rejected`とする。
+
+acceptedでもQ011cの`inconclusive`は変更しない。これは単一17² grid、登録17 amplitude node、
+binary64 Newton／Schur／SVDによるfinite prequalificationであり、continuous-\(t\) theorem、
+rigorous projector／SVD enclosure、individual forced-mode label、external nonresonance、
+spectral-quotient smoothness、forced SSM existence／uniqueness、quadratic chart、nonlinear normal
+attraction、basin、他grid／amplitude、wall boundaryは主張しない。acceptedの場合だけQ011dの
+quadratic external nonresonance／homological operatorを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
