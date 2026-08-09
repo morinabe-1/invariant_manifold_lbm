@@ -6245,6 +6245,98 @@ missing rangeをdegrees 4--90とした。
 \(C^2\)以上のgraph smoothness、SSM existence／uniqueness、normal attraction、basinを示さない。停止規則
 どおり、次はQ011wでdegree 4の2 modulus-overlap aggregateへ同じsector／phase auditを拡張する。
 
+### Q011w 実行結果
+
+Q011k／Q011u／Q011vの3 artifact、runner、17 digest、outcome、claim boundary、Q011l／Q011o sourceを
+直接照合し、validity `7 / 7`を通過した。Q011uのdegree-4 recordは35 modulus aggregateのうち33件を分離し、
+2 overlapを`[0,0,0,4]`／`[0,0,1,3]`として持っていた。scaled rational log intervalを全35 tupleと
+external 186 componentに対して再評価し、両tupleがexternal group `183`だけとoverlapすることを確認した。
+
+selected modulus group membership `8 / 4 / 4 / 8`をQ011k eigendiscから再構成した。degree-4 polynomial
+monomialはordered tupleではなく可換multi-indexなので、各group内をcombination with replacementで列挙した。
+その結果、
+
+\[
+\binom{11}{4}=330,
+\qquad
+\binom41\binom{10}{3}=480
+\]
+
+の合計810 monomialを重複なく得た。aggregate別sector histogramは
+
+- `[0,0,0,4]`:
+  `0:84 / 1:64 / 2:38 / 3:16 / 4:5 / 13:5 / 14:16 / 15:38 / 16:64`
+- `[0,0,1,3]`:
+  `0:124 / 1:100 / 2:54 / 3:20 / 4:4 / 13:4 / 14:20 / 15:54 / 16:100`
+
+だった。external group 183のtarget histogram `0:4 / 2:2 / 15:2`とquartic wave-sum law
+
+\[
+b_{\mathrm{out}}=(b_1+b_2+b_3+b_4)\bmod17
+\]
+
+を合わせ、compatible comparisonを`488 / 712`、合計1200件に固定した。
+
+各monomialについて
+
+\[
+C=\prod_{i=1}^{4}c_i,
+\qquad
+R=\prod_{i=1}^{4}(u_i+r_i)-\prod_{i=1}^{4}u_i
+\]
+
+をexactに構成し、各targetへの
+
+\[
+\Delta^-=|C-c_e|^- -R-r_e
+\]
+
+を評価した。comparison partitionは
+
+- `[0,0,0,4]`: `348 individual modulus / 140 complex phase / 0 unresolved`
+- `[0,0,1,3]`: `88 individual modulus / 624 complex phase / 0 unresolved`
+- total: `436 / 764 / 0`
+
+となった。minimum complex separation lowerは`0.004057305895234305`で、登録threshold `1/500`を通過した。
+minimum witnessは
+
+`block=0;center=144 / block=0;center=144 / block=0;center=144 / block=0;center=145`
+
+のproductとtarget `block=0;center=137`である。
+
+exact fraction recordのartifact肥大化を避けるため、product 810件とcomparison 1200件をそれぞれcanonical
+JSONにし、domainと8-byte big-endian record lengthを付けた逐次SHA-256へ封印した。これはexact計算を
+省略せずserializationだけをcompactにする。product／comparison framed digestは
+
+- `87afe07ba51448f4827854908fe5c6fde851ee0ce919ec107e8fd2a50d36d3f7`
+- `d3ca632166e3c2c69b947837056b5b6e416baf8160da4958dfd11e8f5d3d125c`
+
+である。
+
+hypothesis `5 / 5`を通過し、
+`degree-4 external nonresonance is certified by modulus separation plus Fourier-sector phase-sensitive elimination of both overlap aggregates`
+として`accepted`とした。Q011uの33 modulus-separated aggregateと2 aggregateのfull phase auditを合わせるため、
+degree 4全体がcompleteである。evidence inventoryはdegree 2／3／4をcertified、degree 91以降をtail-certified、
+missing rangeをdegrees 5--90とした。
+
+- inventory／sector／compact-product digest:
+  `12fd69ae0d7f290ae7d575ef85448c84b43b21157cb35e991a32cd2a075b0243` /
+  `bc38352978cafd86b8b9d4b1524997108f1adf96555072bf862e00efc9a03397` /
+  `cbfcc669e638be0211d0ac11e038b2885259deda1f0a9598ab18368f1e3d5ed6`
+- input／inventory／sector／product／result digest:
+  `ed3eea9c2a0f5c07de59dbddb0579b2dbb36e15409c3372729efc1e0d65c7a8d` /
+  `51c97d78b13ba2d9e787f833fe0f3c805848723710096da566f569c2fd301416` /
+  `369ef47a86630f84d96033539d3a7a7e94b34a45a95a15cef6bde71174eaa455` /
+  `182672f831dd715402b4f52ab9aa2628ff9eba09a3c4a8de07d32a10bf736476` /
+  `4681053a49eb583faa30d94d44e39d0ebfb1d00091ad7447ae086f21fd5d94d3`
+- runner／artifact newline-normalized SHA-256:
+  `288a12d72f90f6df1f79a8e5f02d527d317f9a4a9828ebbcdf0cc58008b56247` /
+  `6e0b0a166b6a5f4f915cf6ba4a46c699a26c63faf92dc92388502a2244fe0b9c`
+
+これはdegree 4だけのcertificateであり、degrees 5--90、all-order nonresonance、Q011t graphとの一致、
+\(C^2\)以上のgraph smoothness、SSM existence／uniqueness、normal attraction、basinを示さない。停止規則
+どおり、次はQ011xでdegree 5の2 modulus-overlap aggregateへ同じsector／phase auditを拡張する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6420,6 +6512,8 @@ missing rangeをdegrees 4--90とした。
 [`artifacts/q011u_c91_modulus_nonresonance.json`](artifacts/q011u_c91_modulus_nonresonance.json)
 
 [`artifacts/q011v_degree3_phase_disks.json`](artifacts/q011v_degree3_phase_disks.json)
+
+[`artifacts/q011w_degree4_phase_disks.json`](artifacts/q011w_degree4_phase_disks.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
