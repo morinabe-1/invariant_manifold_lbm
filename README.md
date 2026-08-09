@@ -3505,6 +3505,59 @@ missing rangeはdegrees 16--90となった。
 この固定envelopeに限る。degrees 16--90、all-order nonresonance、higher graph smoothness、SSM
 existence／uniqueness、normal attraction、basinは認証していない。次はQ011ajでdegree 16を監査する。
 
+### Q011aj degree-16 first uniform-envelope obstruction certificate
+
+Q011uのdegree-16 inventory `969 = 815 old-separated + 154 overlap`を再構成した。index 73の
+`[4,6,2,4]`はexternal group 156と157の両方に重なるため、両target membershipの和集合を使う
+multi-target規則へ一般化した。selected 24／external 136の160 direct identifierを再構成し、Q011aiの
+144 recordをexactに保存して60 recordだけを加えた204-record monotone uniform envelopeを得た。
+
+154 overlapを辞書順に走査し、分離済みcomparisonが0件となる最初のaggregateで停止した。index 0--98には
+少なくとも1件のoutward separationがあり、index 99、selected-type count `[5,6,4,1]`、external group
+155が最初のfully unresolved aggregateだった。このaggregateの35280 Fourier-compatible signature、
+1732864 compatible original monomialが表す141120 distinct／3465728 weighted comparisonは、uniform
+\(\rho=5\times10^{-8}\) envelopeで全件overlapした。
+
+一方、同じ141120 comparisonからdisc radiusを除いたcenter-only rational intervalは全件
+`product_below_target`だった。28候補のexact refinementによるcenter minimumは
+`0x1.1894d8f4a9740p-25`で2 tieである。canonical source
+
+`(block=16;center=142)^2 × (block=1;center=142)^3 × (block=1;center=151)^6 × (block=1;center=152)^4 × block=0;center=147`
+
+対target `block=11;center=4`、wave multiplicity `6`では、center gapはstrictly positiveだが、uniform
+exact product intervalはtarget interval全体を含む。intersection widthは
+\(10^{-7}+\delta\)、\(\delta\approx10^{-100}>0\)で、binary64 hexは
+`0x1.ad7f29abcaf48p-24`だった。
+
+- validity／hypothesis gates: `9 / 9` passed、`6 / 6` passed
+- uniform-envelope certificate outcome: `rejected`
+- actual complex resonance outcome: `not_established`
+- degree aggregate／control／old-separated／overlap: `969 / 20349 / 815 / 154`
+- direct／monotone identifier: `160 / 204`
+- scanned prefix／first obstruction index: `100 / 99`
+- obstruction weighted／distinct overlap: `3465728 / 141120`
+- center-only weighted／distinct separation: `3465728 / 141120`
+- prefix／obstruction digest:
+  `2ae58d4e4bb63a68733c23beae78037faa3aaf3f57549028a76808183e35ed91` /
+  `448da50fd34eae26d2b1e01c753af0cd901bb2a849ccfca2a05ab73f564a3cd6`
+- center-record／exact-candidate／witness digest:
+  `da33cde69a774719bed414e8b79b1f3ffd2c6086e96e0ae770cba52000854b4b` /
+  `7abedfc2fbd68b92baf6df17427e19846d608289974dafb972ce2b664427950b` /
+  `c570b77d2ce20ea1057f36e59e5e1152982af74aaef2f984f85495003e61f57a`
+- input／inventory／obstruction／center／result digest:
+  `4847b8b335a5fcb3fd22924c7439067503753fc8657fa38bcea9a11b8d1d7111` /
+  `6043ab6444ad176f4624daccc5c4cdf712932c9c02e95dda2b2995afefbc741a` /
+  `e73117b4bbdf98c477428657cc8d31c883558f4f7d21ddb992b16dab83cc354e` /
+  `fee1cfab83e977e8f549945012496526a4e6731059bddb0975559de01397d155` /
+  `a1415d0597ca649014dbaf6b79a8a0e9bc72b3e19794ab298090e93c304565fc`
+- runner／artifact newline-normalized SHA-256:
+  `d87c6733613d803c9ea58d63d861659637e5ad9d57e061d962795be523336bfe` /
+  `6dae03177982dbf2fee7d84439a78775fb5b89aef23b3f4cec57b5f45b997ec7`
+
+従ってdegree-16 nonresonanceやactual resonanceはまだ決まっていない。certified degreesは2--15および
+91以降、missing rangeは16--90のままである。次はQ011akでuniform radiusをQ011yのblockwise
+transformed-residual radiusへ置き換え、まず同じobstructionを再監査する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -4184,6 +4237,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011ag_degree13_batched_dyadic.json`](research/artifacts/q011ag_degree13_batched_dyadic.json)
 - [`research/artifacts/q011ah_degree14_batched_dyadic.json`](research/artifacts/q011ah_degree14_batched_dyadic.json)
 - [`research/artifacts/q011ai_degree15_dual_outcome.json`](research/artifacts/q011ai_degree15_dual_outcome.json)
+- [`research/artifacts/q011aj_degree16_uniform_obstruction.json`](research/artifacts/q011aj_degree16_uniform_obstruction.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -4331,6 +4385,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   21891420 distinct／310135908 weighted outward-dyadic comparison、degree-14 nonresonance
 - Q011ai degree-15 144-record monotone envelope、2813485588 monomialのpair-factorized exact multiplicity、
   degree-15 nonresonance認証／legacy `5e-6` margin benchmark棄却
+- Q011aj degree-16 multi-target inventory、204-record monotone envelope、first fully-unresolved aggregate、
+  uniform-radius certificate棄却／center-only actual-resonance未確立
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -4503,3 +4559,8 @@ rangeはdegrees 15--90へ縮んだ。Q011aiではdegree 15の103 overlapに含�
 全てstrictに分離した。従ってdegree-15 external nonresonanceを認証し、missing rangeはdegrees 16--90へ
 縮んだ。一方、outward／exact minimumは`4.680108781629499e-6 / 4.68010878881232e-6`であり、legacy
 `5e-6` certified-margin benchmarkは初めて棄却された。この棄却を小さい代替thresholdで上書きしない。
+Q011ajではdegree 16の154 overlapをmulti-target規則で再構成し、辞書順index 99のaggregateが最初の
+fully unresolved uniform-envelope obstructionであることを認証した。141120 distinct comparisonは全て
+uniform \(\rho\)-discでoverlapした一方、center-only intervalでは全てstrictに分離した。従ってuniform
+radius certificateだけを棄却し、degree-16 nonresonanceとactual complex resonanceはともに未確立のまま
+保持した。

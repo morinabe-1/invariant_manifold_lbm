@@ -18999,6 +18999,49 @@ nonresonanceを認証しない。actual complex resonance、degree-16 external n
 all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basin、
 他grid／force／wall、D3Q27を認証しない。
 
+### Q011aj 実行結果
+
+Q011aiまでの14 artifact、runner、73 digestを再照合し、validity `9 / 9`を通過した。degree-16 inventory
+`969 / 20349 / 815 / 154`、index 73のexternal group 156／157 union、160 direct／204 monotone
+identifierを全て再現した。
+
+登録停止走査はindex 0--99の100 aggregateを再現した。index 0--98には分離済みcomparisonがあり、index
+99、count `[5,6,4,1]`、external group 155が最初のfully unresolved aggregateだった。35280 compatible
+signature、1732864 compatible monomialが表す3465728 weighted／141120 distinct comparisonは全件
+uniform-envelope overlapだった。
+
+同じcomparisonのcenter-only auditは141120件全てを`product_below_target`へ分離した。28 exact candidateの
+minimumは`0x1.1894d8f4a9740p-25`、2 tieだった。canonical source／targetのuniform exact intervalは
+strictly positiveな幅で交差した。幅は\(10^{-7}+\delta\)、\(\delta\approx10^{-100}>0\)である。
+
+- hypothesis gate: `6 / 6` passed
+- uniform-envelope certificate outcome: `rejected`
+- actual complex resonance outcome: `not_established`
+- certified degrees: `2--15`および`91+`
+- missing range: degrees `16--90`
+- inventory／uniform-record digest:
+  `63d3e8edb49292d7674037800525c53f590ec78cfc9163acb09bb91c0fc108c1` /
+  `bad945dbf84eeba3d5f54f9fa4938c7b15c1d918f83ffdc7252e7a6b8267c204`
+- prefix／obstruction digest:
+  `2ae58d4e4bb63a68733c23beae78037faa3aaf3f57549028a76808183e35ed91` /
+  `448da50fd34eae26d2b1e01c753af0cd901bb2a849ccfca2a05ab73f564a3cd6`
+- center-record／candidate／witness digest:
+  `da33cde69a774719bed414e8b79b1f3ffd2c6086e96e0ae770cba52000854b4b` /
+  `7abedfc2fbd68b92baf6df17427e19846d608289974dafb972ce2b664427950b` /
+  `c570b77d2ce20ea1057f36e59e5e1152982af74aaef2f984f85495003e61f57a`
+- input／inventory／obstruction／center／result digest:
+  `4847b8b335a5fcb3fd22924c7439067503753fc8657fa38bcea9a11b8d1d7111` /
+  `6043ab6444ad176f4624daccc5c4cdf712932c9c02e95dda2b2995afefbc741a` /
+  `e73117b4bbdf98c477428657cc8d31c883558f4f7d21ddb992b16dab83cc354e` /
+  `fee1cfab83e977e8f549945012496526a4e6731059bddb0975559de01397d155` /
+  `a1415d0597ca649014dbaf6b79a8a0e9bc72b3e19794ab298090e93c304565fc`
+- runner／artifact newline-normalized SHA-256:
+  `d87c6733613d803c9ea58d63d861659637e5ad9d57e061d962795be523336bfe` /
+  `6dae03177982dbf2fee7d84439a78775fb5b89aef23b3f4cec57b5f45b997ec7`
+
+従ってuniform-radius certificateだけを棄却し、degree-16 nonresonanceとactual resonanceは未確立のまま
+維持した。次はQ011akでQ011y blockwise radiusを用いて登録obstructionを再監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

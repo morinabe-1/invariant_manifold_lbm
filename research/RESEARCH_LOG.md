@@ -7144,6 +7144,69 @@ tail-certifiedは91以降、missing rangeはdegrees 16--90である。
 棄却もこの固定envelopeに限る。degrees 16--90、all-order nonresonance、higher graph smoothness、SSM
 existence／uniqueness、normal attraction、basinは未認証である。次はQ011ajでdegree 16へ進む。
 
+### Q011aj 実行結果
+
+Q011aiまでの14 artifact、runner、73 direct digest、outcome、claim boundaryとsourceを照合し、validity
+`9 / 9`を通過した。degree-16 inventoryは
+
+`969 aggregate / 20349 expanded control / 815 old-separated / 154 overlap`
+
+だった。index 73の`[4,6,2,4]`だけはexternal group 156／157の両方と重なるため、両membershipの和集合を
+targetとした。unique external targetは136、selected 24を加えたdirect identifierは160である。Q011aiの
+144 uniform recordをexactに保存して60 recordだけを加え、204-record monotone envelopeを得た。
+
+154 overlapを辞書順に走査し、分離済みcomparisonが0件となる最初のaggregateで停止した。index 0--98は
+少なくとも1件のseparationを持ち、100件目のindex 99、selected-type count `[5,6,4,1]`、external group
+155が最初のfully unresolved aggregateだった。35280 modulus signatureは全てFourier-compatibleで、
+1732864 original monomialを表した。4 targetに対する3465728 weighted／141120 distinct comparisonは、
+uniform \(\rho=5\times10^{-8}\) intervalで全件overlapした。
+
+center-only counterdiagnosticでは同じ141120 comparisonが全件`product_below_target`となった。28候補を
+exact Fractionでrefineし、minimum `0x1.1894d8f4a9740p-25`と2 tieを得た。canonical class countは
+`[[5,0,0,0],[0,6],[0,0,4],[0,0,0,1,0,0]]`、sourceは
+
+`(block=16;center=142)^2 × (block=1;center=142)^3 × (block=1;center=151)^6 × (block=1;center=152)^4 × block=0;center=147`
+
+対target `block=11;center=4`、wave multiplicity `6`だった。center gapはpositiveだが、uniform exact
+product intervalはtarget interval全体を含む。intersection widthは
+\(10^{-7}+\delta\)、\(\delta\approx10^{-100}>0\)である。事前登録本文の`exactly 1e-7`という転記誤りは
+結果確定前に別コミットで訂正し、当初から正しいexact recordを封印していたwitness digestは変更しなかった。
+
+hypothesis `6 / 6`を通過したため、
+
+`the degree-16 uniform-rho external nonresonance certificate is rejected at the first fully unresolved aggregate`
+
+を`rejected`とした。同時に、
+
+`an actual degree-16 complex resonance is not established; all center-only comparisons at the obstruction are separated`
+
+を`not_established`とした。center-only separationはactual spectrumのcertificateではない。certified degreesは
+2--15および91以降、missing rangeは16--90のままである。
+
+- inventory／uniform-record digest:
+  `63d3e8edb49292d7674037800525c53f590ec78cfc9163acb09bb91c0fc108c1` /
+  `bad945dbf84eeba3d5f54f9fa4938c7b15c1d918f83ffdc7252e7a6b8267c204`
+- prefix／obstruction-record digest:
+  `2ae58d4e4bb63a68733c23beae78037faa3aaf3f57549028a76808183e35ed91` /
+  `448da50fd34eae26d2b1e01c753af0cd901bb2a849ccfca2a05ab73f564a3cd6`
+- center-record／candidate／witness digest:
+  `da33cde69a774719bed414e8b79b1f3ffd2c6086e96e0ae770cba52000854b4b` /
+  `7abedfc2fbd68b92baf6df17427e19846d608289974dafb972ce2b664427950b` /
+  `c570b77d2ce20ea1057f36e59e5e1152982af74aaef2f984f85495003e61f57a`
+- input／inventory／obstruction／center／result digest:
+  `4847b8b335a5fcb3fd22924c7439067503753fc8657fa38bcea9a11b8d1d7111` /
+  `6043ab6444ad176f4624daccc5c4cdf712932c9c02e95dda2b2995afefbc741a` /
+  `e73117b4bbdf98c477428657cc8d31c883558f4f7d21ddb992b16dab83cc354e` /
+  `fee1cfab83e977e8f549945012496526a4e6731059bddb0975559de01397d155` /
+  `a1415d0597ca649014dbaf6b79a8a0e9bc72b3e19794ab298090e93c304565fc`
+- runner／artifact newline-normalized SHA-256:
+  `d87c6733613d803c9ea58d63d861659637e5ad9d57e061d962795be523336bfe` /
+  `6dae03177982dbf2fee7d84439a78775fb5b89aef23b3f4cec57b5f45b997ec7`
+
+本certificateは固定17² repaired exact map、fixed conservation leaf、degree 16とuniform radius routeに限る。
+actual resonance、degree-16 nonresonance、degrees 17--90、all-order result、higher smoothness、SSM
+existence／uniqueness、normal attraction、basinは未認証である。次はQ011akでblockwise radiusを監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7345,6 +7408,8 @@ existence／uniqueness、normal attraction、basinは未認証である。次は
 [`artifacts/q011ah_degree14_batched_dyadic.json`](artifacts/q011ah_degree14_batched_dyadic.json)
 
 [`artifacts/q011ai_degree15_dual_outcome.json`](artifacts/q011ai_degree15_dual_outcome.json)
+
+[`artifacts/q011aj_degree16_uniform_obstruction.json`](artifacts/q011aj_degree16_uniform_obstruction.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
