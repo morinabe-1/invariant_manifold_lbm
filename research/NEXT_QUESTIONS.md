@@ -12496,6 +12496,52 @@ domain、Jacobian-variation、inclusion failureを局在化する。
 normal attraction、basin、他grid／force／wall、D3Q27は主張しない。局所一意性をglobal uniquenessや
 wall-bounded Poiseuille／Couette解へ読み替えない。
 
+### Q011j 実行結果
+
+validity `6 / 6`、hypothesis `4 / 4`を通過し、
+`the repaired periodic forcing admits a locally unique exact fixed-leaf fixed point in the registered rational box`
+として`accepted`とした。
+
+- affine pivot determinant／lift shape／rank／infinity norm:
+  `1 / 153 x 150 / 150 / 186`
+- center maximum pivot correction: `1.1032841307212493e-15`
+- exact-center reduced residual maximum: `2.2024432251775355e-16`
+- exact-vs-binary64 map／independent-Jacobian relative discrepancy:
+  `1.994466096750315e-16 / 1.4468366996163912e-16`
+- registered／passing radius count: `10 / 5`
+- selected free-coordinate radius／first failed radius: `1e-8 / 1e-7`
+- selected ambient-component radius upper: `1.86e-6`
+- selected-box population／density lower:
+  `0.02777589831335142 / 0.9999944000000008`
+- point Jacobian condition／preconditioner infinity norm:
+  `1672.0533600047117 / 714.5779769798695`
+- 256-bit point inverse-defect／center-correction upper:
+  `2.0361209046326675e-13 / 9.043895266505443e-16`
+- selected 256-bit contraction／Krawczyk utilization upper:
+  `0.1997569427734526 / 0.19975703321240526`
+- 384-bit upper containment／selected-radius agreement: `pass / pass`
+- coordinate／lifted-center／exact-Jacobian／preconditioner SHA-256:
+  `508f175fc7d1d62d253b5e34877a25fded6f4d207ef26f281a01d10eb5571ed8` /
+  `c85cddc2072cb2e86d1a73024da97828d4a7f21f10b631c86a5d9ee0297c72dd` /
+  `236083b8ad6f5f8426deb3371df3043bd9a8ee50071a90f466659173fe1dc504` /
+  `1d157cd3ef26ae109f45698dd049e50677f6ec6432be0d17b8a09b6d41152035`
+- input／coordinate／oracle／proof／result digest:
+  `a183f4830c757b58122132cf64111fd5375636affdb6c0b31e1cd90e89085799` /
+  `adaef353b8b64509334794c6014dc8b88e81ca2b776c3b65bd4d50911ae9452b` /
+  `177468a48f667ddd922ed4b979d3e7e5d4cc0ed3afffe27a34651060da8e0f5f` /
+  `1080fcea24358422514bba7fb9881928269c853cb4d12b0282e63840c56124c0` /
+  `ddad5beca9693eeab726382ac864d01a27b749d579c2ec8f12dd9f8c499db934`
+- runner／artifact newline-normalized SHA-256:
+  `23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5` /
+  `74a2e084137699739c14d980b05676e14e6802b4018b3893d3d05270850c2c5a`
+
+`q<=0.199757<1`でNewton-like mapがselected boxをstrict self-mapとし、preconditionerも
+Neumann boundでnonsingularなので、exact repaired stripe mapにはfixed pointが存在してbox内で一意である。
+periodic x-independent replicationによりfull 17² mapにも同じfixed pointが存在する。ただし本結果は
+global uniqueness、basin、raw Q011b exact map、Q011e--Q011h coefficient、区間spectrum、forced SSM、
+normal attractionへ広げない。次はQ011kでcertified box上のrigorous fixed-leaf spectrumと
+selected／external splitを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

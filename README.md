@@ -274,6 +274,11 @@ reflection pairのmidpoint丸めと登録ULP search、exact-moment source alloca
 保存ledgerが厳密に0となる別のrepaired mapを一意に構成した。validity `6 / 6`、hypothesis `4 / 4`を
 通過し、repaired fixed pointと全17 spectrum blockはQ011b数値baselineとbitwise同一だったため
 `accepted`とした。Q011bの数値結果は変更せず、Q011e--Q011hのraw-map coefficientも修復mapへ移さない。
+Q011jではsite 0の3 populationをexactに消去する150次元affine fixed-leaf chartを構成し、
+exact rational nonlinear map／Jacobian enclosureと256／384-bit外向きMPFRを用いたKrawczyk証明を行った。
+登録10半径のうち5候補が通り、最大の自由座標半径`1e-8`で収縮上限`0.199756943`、包含利用率
+`0.199757034`を得た。従ってrepaired mapのx-independent fixed pointの存在と同box内局所一意性を
+`accepted`としたが、raw Q011b exact map、区間spectrum、forced SSMは未認証である。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -2118,9 +2123,58 @@ local ledgerとglobal ledgerをexactに閉じた。
 
 修復量は小さく、現在のbinary64演算ではfixed pointとlinear blocksにbitwiseな変化を生じなかったが、
 exact-real mapの保存則compatibilityはraw sourceと異なる。従ってQ011bのnumerical `accepted`は維持し、
-Q011e--Q011hのraw-map coefficient、残差次数、shadowingを修復mapへ自動移植しない。次はQ011jで
-repaired mapのexact affine fixed-leaf coordinateとinterval Newton／Krawczyk fixed-point proofを
-独立に事前登録する。区間存在・局所一意性、rigorous spectrum、forced SSM、normal attractionは未認証である。
+Q011e--Q011hのraw-map coefficient、残差次数、shadowingを修復mapへ自動移植しない。Q011i単独では
+区間存在・局所一意性を主張せず、その証明は後続Q011jで独立に行った。rigorous spectrum、forced SSM、
+normal attractionは引き続き未認証である。
+
+### Q011j repaired fixed-point interval Krawczyk proof
+
+site-major stripe stateのsite 0、velocity `(0,0)/(1,0)/(0,1)`をpivotとし、残る150 populationを
+自由座標にした。pivot moment matrixのdeterminantはexact 1、liftはshape `153 x 150`、rank `150`、
+infinity operator norm `186`である。Q011i stateのfree entryをexact dyadic centerとし、3 pivotだけを
+mass／momentum `(17,0,0)`へexactに戻した。最大pivot補正は`1.1032841307212493e-15`だった。
+
+nonlinear equilibrium、collision、repaired source、periodic streaming、stripe filterを`Fraction`で
+構成し、analytic Jacobian enclosureもexact rationalで評価した。dense preconditioner積だけを
+256 bit／384 bitの外向きMPFRで独立に計算した。
+
+- classification:
+  `the repaired periodic forcing admits a locally unique exact fixed-leaf fixed point in the registered rational box`
+- validity／hypothesis gates: `6 / 6` passed、`4 / 4` passed
+- registered／passing radius count: `10 / 5`
+- selected free-coordinate radius／first failed radius: `1e-8 / 1e-7`
+- selected ambient-component radius upper: `1.86e-6`
+- selected-box population／density lower:
+  `0.02777589831335142 / 0.9999944000000008`
+- exact-center reduced residual maximum: `2.2024432251775355e-16`
+- exact-vs-binary64 map／independent-Jacobian relative discrepancy:
+  `1.994466096750315e-16 / 1.4468366996163912e-16`
+- point Jacobian condition／preconditioner infinity norm:
+  `1672.0533600047117 / 714.5779769798695`
+- 256-bit inverse-defect／center-correction upper:
+  `2.0361209046326675e-13 / 9.043895266505443e-16`
+- selected 256-bit contraction／Krawczyk utilization upper:
+  `0.1997569427734526 / 0.19975703321240526`
+- 384-bit upper: 256-bit upper以下、selected radius bitwise一致
+- coordinate／lifted-center／preconditioner SHA-256:
+  `508f175fc7d1d62d253b5e34877a25fded6f4d207ef26f281a01d10eb5571ed8` /
+  `c85cddc2072cb2e86d1a73024da97828d4a7f21f10b631c86a5d9ee0297c72dd` /
+  `1d157cd3ef26ae109f45698dd049e50677f6ec6432be0d17b8a09b6d41152035`
+- input／coordinate／oracle／proof／result digest:
+  `a183f4830c757b58122132cf64111fd5375636affdb6c0b31e1cd90e89085799` /
+  `adaef353b8b64509334794c6014dc8b88e81ca2b776c3b65bd4d50911ae9452b` /
+  `177468a48f667ddd922ed4b979d3e7e5d4cc0ed3afffe27a34651060da8e0f5f` /
+  `1080fcea24358422514bba7fb9881928269c853cb4d12b0282e63840c56124c0` /
+  `ddad5beca9693eeab726382ac864d01a27b749d579c2ec8f12dd9f8c499db934`
+- runner／artifact newline-normalized SHA-256:
+  `23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5` /
+  `74a2e084137699739c14d980b05676e14e6802b4018b3893d3d05270850c2c5a`
+
+`q<1`かつKrawczyk imageがbox interiorに入るため、Banach／Krawczyk argumentによりexact repaired
+stripe mapのfixed pointが存在し、同じbox内で一意である。x-independent replicationによりfull
+17² periodic mapにもfixed pointを与える。ただしlocal uniquenessをglobal uniquenessやbasinへ拡張せず、
+Q011b raw exact map、Q011e--Q011h coefficient、区間spectrum、forced SSM、normal attractionを認証しない。
+次はQ011kでcertified fixed-point box上のrigorous spectrumとselected／external splitを別gateにする。
 
 ### Q007p exact-manifold finite-tube normal attraction
 
@@ -2680,6 +2734,7 @@ python -m research.q011f1_heldout_amplitude_reissue --output research/artifacts/
 python -m research.q011g_forced_representation_audit --output research/artifacts/q011g_forced_representation_audit.json
 python -m research.q011h_sparse_chart_equivalence --output research/artifacts/q011h_sparse_chart_equivalence.json
 python -m research.q011i_exact_zero_mean_repair --output research/artifacts/q011i_exact_zero_mean_repair.json
+python -m research.q011j_interval_fixed_point --output research/artifacts/q011j_interval_fixed_point.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2764,6 +2819,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011g_forced_representation_audit.json`](research/artifacts/q011g_forced_representation_audit.json)
 - [`research/artifacts/q011h_sparse_chart_equivalence.json`](research/artifacts/q011h_sparse_chart_equivalence.json)
 - [`research/artifacts/q011i_exact_zero_mean_repair.json`](research/artifacts/q011i_exact_zero_mean_repair.json)
+- [`research/artifacts/q011j_interval_fixed_point.json`](research/artifacts/q011j_interval_fixed_point.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2875,6 +2931,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q011h dense／natural-sparse経路の64-step reduced-chart／checkpoint-defect同値性
 - Q011i raw binary64 forcingのexact-dyadic obstruction、reflection-symmetric exact-zero-sum waveform、
   exact local／global moment source、Q011b fixed-point／spectrum numerical bridge
+- Q011j exact affine fixed-leaf coordinate、exact rational map／Jacobian enclosure、
+  dual-precision outward Krawczyk fixed-point existence／local-uniqueness proof
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2885,7 +2943,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- Q011i repaired fixed pointのinterval existence／local uniqueness、rigorous spectrum
+- Q011j certified repaired fixed-point box上のrigorous spectrum／selected-external split
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
 
@@ -2966,3 +3024,6 @@ Q011iではQ011b raw waveform／sourceのexact dyadic global-momentum obstructio
 reflection／ULP searchでexact-zero-sum waveformとexact local／global-moment sourceを構成した。
 修復後の二Newton start、fixed point、17 block spectrumはQ011b numerical baselineとbitwise同一だった。
 ただしraw mapとrepaired mapは数学的に別であり、Q011e--Q011h coefficientは移植していない。
+Q011jではrepaired mapの150次元exact affine fixed-leaf residualを構成し、登録半径`1e-8`の
+Krawczyk boxでfixed pointの存在と局所一意性を認証した。x-independent replicationによりfull 17²
+periodic mapへも同じ結論を移すが、区間spectrum、forced SSM、normal attractionは未認証である。

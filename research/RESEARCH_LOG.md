@@ -5215,6 +5215,66 @@ numerical outcomeも再採点しない。次はQ011jでexact affine fixed-leaf c
 Newton／Krawczykによりrepaired fixed pointの存在と局所一意性を独立に認証する。rigorous spectrum、
 forced SSM存在・一意性、normal attraction、basin、他grid／force／wallは未認証である。
 
+## 2026-08-09: Q011j repaired fixed-point interval Krawczyk proof
+
+### 問いと方法
+
+Q011i repaired exact-rational mapのfixed point存在を数値Newtonから独立に認証するため、site 0の
+rest／east／north populationをglobal mass／momentumからexactに復元し、残り150 populationを自由座標とした。
+pivot moment determinantは1、lift shape／rank／infinity normは`153 x 150 / 150 / 186`である。
+Q011i representative stateのfree entryをexact dyadic centerに固定し、3 pivotだけをexact leafへ移した。
+
+D2Q9 equilibrium、collision、Q011i source、periodic streaming、x-independent filterを`Fraction`だけで
+合成し、analytic reduced Jacobianのpoint／box enclosureを構成した。binary64 inverseをexact dyadic
+preconditionerとし、dense productだけを256／384-bit MPFRのRoundDown／RoundUpで独立に包囲した。
+登録半径`1e-12`から`1e-3`までの10候補を変更せず全評価した。
+
+### 結果
+
+validity `6 / 6`、hypothesis `4 / 4`を通過し、
+`the repaired periodic forcing admits a locally unique exact fixed-leaf fixed point in the registered rational box`
+として`accepted`とした。
+
+- center maximum pivot correction: `1.1032841307212493e-15`
+- exact-center reduced residual maximum: `2.2024432251775355e-16`
+- exact-vs-binary64 map／independent-Jacobian relative discrepancy:
+  `1.994466096750315e-16 / 1.4468366996163912e-16`
+- registered／passing radius count: `10 / 5`
+- selected free-coordinate radius／first failed radius: `1e-8 / 1e-7`
+- selected ambient-component radius upper: `1.86e-6`
+- selected-box population／density lower:
+  `0.02777589831335142 / 0.9999944000000008`
+- point Jacobian condition／preconditioner infinity norm:
+  `1672.0533600047117 / 714.5779769798695`
+- 256-bit inverse-defect／center-correction upper:
+  `2.0361209046326675e-13 / 9.043895266505443e-16`
+- selected 256-bit contraction／Krawczyk utilization upper:
+  `0.1997569427734526 / 0.19975703321240526`
+- 384-bit upper containment／selected-radius agreement: `pass / pass`
+- coordinate／lifted-center／exact-Jacobian／preconditioner SHA-256:
+  `508f175fc7d1d62d253b5e34877a25fded6f4d207ef26f281a01d10eb5571ed8` /
+  `c85cddc2072cb2e86d1a73024da97828d4a7f21f10b631c86a5d9ee0297c72dd` /
+  `236083b8ad6f5f8426deb3371df3043bd9a8ee50071a90f466659173fe1dc504` /
+  `1d157cd3ef26ae109f45698dd049e50677f6ec6432be0d17b8a09b6d41152035`
+- input／coordinate／oracle／proof／result digest:
+  `a183f4830c757b58122132cf64111fd5375636affdb6c0b31e1cd90e89085799` /
+  `adaef353b8b64509334794c6014dc8b88e81ca2b776c3b65bd4d50911ae9452b` /
+  `177468a48f667ddd922ed4b979d3e7e5d4cc0ed3afffe27a34651060da8e0f5f` /
+  `1080fcea24358422514bba7fb9881928269c853cb4d12b0282e63840c56124c0` /
+  `ddad5beca9693eeab726382ac864d01a27b749d579c2ec8f12dd9f8c499db934`
+- runner／artifact newline-normalized SHA-256:
+  `23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5` /
+  `74a2e084137699739c14d980b05676e14e6802b4018b3893d3d05270850c2c5a`
+
+### 解釈と次のbottleneck
+
+selected radius `1e-8`でcontractionとKrawczyk inclusionは登録cap`0.9`に対して約`0.20`であり、
+外向き丸めprecisionを384 bitへ上げても全upperは狭まり、同じ最大radiusを選んだ。従ってexact repaired
+stripe mapのfixed point存在とbox内局所一意性が成立し、x-independent replicationでfull 17² periodic
+mapへ移る。これはglobal uniqueness、basin、raw Q011b exact map、区間spectrum、forced SSM、normal
+attractionを示さない。次はQ011kでcertified box全体のrigorous fixed-leaf spectrumとselected／external
+splitを独立gateとして認証する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -5364,6 +5424,8 @@ forced SSM存在・一意性、normal attraction、basin、他grid／force／wal
 [`artifacts/q011h_sparse_chart_equivalence.json`](artifacts/q011h_sparse_chart_equivalence.json)
 
 [`artifacts/q011i_exact_zero_mean_repair.json`](artifacts/q011i_exact_zero_mean_repair.json)
+
+[`artifacts/q011j_interval_fixed_point.json`](artifacts/q011j_interval_fixed_point.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
