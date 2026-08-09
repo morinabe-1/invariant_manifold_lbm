@@ -190,7 +190,12 @@ def test_q011e_is_valid_but_rejects_the_registered_slope_gate(
     assert q011e_cycle["study_validity"] == "passed"
     assert q011e_cycle["hypothesis_outcome"] == "rejected"
     assert q011e_cycle["scientific_classification"] == (
-        "the forced fixed-leaf quadratic chart fails the registered construction tests"
+        "the forced fixed-leaf quadratic chart is constructed, but the "
+        "registered residual-order window is underresolved"
+    )
+    assert q011e_cycle["next_change"] == (
+        "Preregister Q011e1 with a larger independent residual-amplitude "
+        "window while preserving the Q011e noise floor and slope thresholds."
     )
     consequence = q011e_cycle["numerical_consequence"]
     assert consequence["fixed_conservation_leaf_is_used"]

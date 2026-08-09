@@ -2064,6 +2064,7 @@ def run_forced_quadratic_chart_audit() -> dict[str, Any]:
         },
     }
     hypotheses_passed = all(gate["passed"] for gate in hypothesis_gates.values())
+    failed_hypotheses = [name for name, gate in hypothesis_gates.items() if not gate["passed"]]
     if not validity_passed:
         outcome = "inconclusive"
         classification = "registered dense forced quadratic fixed-leaf chart audit is invalid"
@@ -2072,6 +2073,15 @@ def run_forced_quadratic_chart_audit() -> dict[str, Any]:
         classification = (
             "the forced fixed-leaf quadratic chart satisfies the registered "
             "homological and residual-order tests"
+        )
+    elif (
+        failed_hypotheses == ["linear_and_quadratic_residual_orders_pass"]
+        and residual_order["slope_eligible_direction_count"] < MINIMUM_ELIGIBLE_DIRECTION_COUNT
+    ):
+        outcome = "rejected"
+        classification = (
+            "the forced fixed-leaf quadratic chart is constructed, but the "
+            "registered residual-order window is underresolved"
         )
     else:
         outcome = "rejected"
@@ -2143,8 +2153,17 @@ def run_forced_quadratic_chart_audit() -> dict[str, Any]:
         "amplitude/multi-step holdout before any TT or sparse cost study."
         if outcome == "accepted"
         else (
-            "Localize the first failed derivative, graph-gauge, "
-            "homological, realification or residual-order gate."
+            "Preregister Q011e1 with a larger independent residual-amplitude "
+            "window while preserving the Q011e noise floor and slope thresholds."
+            if classification
+            == (
+                "the forced fixed-leaf quadratic chart is constructed, but the "
+                "registered residual-order window is underresolved"
+            )
+            else (
+                "Localize the first failed derivative, graph-gauge, "
+                "homological, realification or residual-order gate."
+            )
         )
     )
     if not (
