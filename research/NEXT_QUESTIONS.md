@@ -16507,7 +16507,7 @@ direct digest countは`22`とする。
 ### registered refined radii
 
 9 representative blockについて、Q011k primary proofのexact \(\beta\)、family residual、vector norm、旧半径を
-読み、\(\theta=\beta\eta\)を再構成する。blocks 9--16はexact conjugacyでtransportする。
+読み、\(\theta=\beta\|E\|_\infty\)を再構成する。blocks 9--16はexact conjugacyでtransportする。
 design-only exact pilot値は次のとおりである。
 
 | representative block | old radius | refined \(\theta\) | old／new |
@@ -16587,6 +16587,50 @@ validity failureだけを修復する。
 transformed-residual eigendisc、fixed degree-6 witnessに限る。degree-6全体、degrees 7--90、all-order
 nonresonance、Q011t graphとのhigher-order一致、SSM existence／uniqueness、normal attraction、basin、
 他grid／force／wall、D3Q27を認証しない。Q011kの既存コミットやartifactは変更しない。
+
+### Q011y 実行結果
+
+Q011k／Q011l／Q011u／Q011x artifact、runner、22 digest、outcome、claim boundaryとQ011o sourceを照合し、
+validity `7 / 7`を通過した。9 representative blockのinverse certificate、\(\beta\)、family residual、vector norm、
+旧半径をexactに再構成し、Q011lの\(\theta=\beta\|AV-VD\|_\infty\)と全17 blockで一致した。
+
+相似変換後の残差にinduced infinity normとGershgorin inclusionを適用して、半径\(\theta\)のunionがspectrumを
+含むことを確認した。旧半径とのexact関係
+
+\[
+r_{\mathrm{old}}=\bigl(\|V\|_\infty\beta\bigr)\theta
+\]
+
+と\(\|V\|_\infty\beta\ge1\)から、全2598 refined discが対応する旧Q011k discに包含される。
+
+- maximum refined radius: `4.7369170150175137e-8 <= 5e-8`
+- minimum old／new ratio: `370.0132423109111 >= 300`
+- eigendisc／selected／external count: `2598 / 24 / 2574`
+- maximum refined modulus upper: `0.9920954876550118 <= 0.9921 < 1`
+- old-disc containment failure: `0`
+
+固定した`[0,2,2,2]`／external group 178の最初のwitnessでは、旧margin
+`-3.2975560108425774e-6`がrefined margin `4.72250069801592e-5`へ改善し、登録下限`4e-5`を通過した。
+hypothesis `5 / 5`を通過し、
+`the Q011k eigenvalue families admit contained transformed-residual eigendiscs that clear the first degree-six enclosure obstruction`
+として`accepted`とした。
+
+- framed eigendisc digest:
+  `7421634849c0f732045e576793863f758a09bddf6ab70205bfbd3aca45f9f18b`
+- input／theorem／radius／containment／witness／result digest:
+  `a31fe1606f7be3931567ec63bbad3037d38a9a57eef43f73d7b8f9afc7523c03` /
+  `f3b9518fe67e85f0e701c4e6a97eac95db188ce85f813e358ddc0ecf85ba1ad5` /
+  `70919d4697068d7500609551a17325533e83f40bb2e309f5e98b3313a6a93ee5` /
+  `54e13cb993a0b99bc2d85dcf687d470cebe5692b4d10ab03865115230c53712c` /
+  `933d2841e5501bd48827ead0ea836fb54ebca7f42e36f8bc6228c3f7dcfaaa4b` /
+  `51d83bad9b0c2188c05b147f0075b5e7f05f3dea0dd291e0c282e9236914bff8`
+- runner／artifact newline-normalized SHA-256:
+  `0017ea849f518c69ce93a36db349bd8b18246b678fef9a54a48ae5f6f1acd187` /
+  `2886708898f634b3ff85587f3f4b9257d35e14f25b4e3b4524fd01f4c12a254a`
+
+これはlinear eigendisc refinementと最初の1 comparisonだけのcertificateである。degree 6全体、残る6955
+comparison、degrees 7--90、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
+未認証である。停止規則どおり、次はQ011zで3 overlap aggregateの全6956 sector-compatible comparisonを監査する。
 
 ## Q012: D3Q27 へ移してよいか
 

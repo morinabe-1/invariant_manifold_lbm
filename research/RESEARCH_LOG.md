@@ -6420,6 +6420,79 @@ tail-certified、missing rangeをdegrees 6--90とした。
 \(C^2\)以上のgraph smoothness、SSM existence／uniqueness、normal attraction、basinを示さない。停止規則
 どおり、次はQ011yでdegree 6の3 modulus-overlap aggregateへ進む。
 
+### Q011y 実行結果
+
+degree-6 design auditでQ011kの旧block-uniform半径を使うと、3 overlap aggregate中
+`[0,2,2,2]`／external group 178の144 comparisonが円板分離できなかった。最初のwitnessではcenter distanceが
+約`4.73051e-5`、旧product／target combined radiusが約`5.06026e-5`で、exact separation upperは
+`-3.2975560108425774e-6`だった。この負値はactual resonanceではなく、旧enclosureの重なりである。
+
+Q011k／Q011l／Q011u／Q011xの4 artifact、runner、22 digest、outcome、claim boundaryとQ011o sourceを
+直接照合し、validity `7 / 7`を通過した。Q011kの9 representative blockについて、approximate inverse defect
+\(<1\)から得たexact \(\beta\)、family residual \(E=AV-VD\)、vector norm、旧半径を再構成した。Q011lに保存済みの
+\(\theta=\beta\|E\|_\infty\)とも全17 blockで一致した。
+
+\(V\)が可逆なので
+
+\[
+V^{-1}AV=D+F,
+\qquad
+F=V^{-1}(AV-VD),
+\qquad
+\|F\|_\infty\le\theta.
+\]
+
+Gershgorin row discを\(D+F\)へ適用し、shifted centerを元の\(d_j\)へ戻して半径\(\theta\)へ拡大すると、
+spectrumは\(\bigcup_jD(d_j,\theta)\)に含まれる。一方、Q011kの旧半径はexactに
+
+\[
+r_{\mathrm{old}}=\|V\|_\infty\beta^2\|E\|_\infty
+=\bigl(\|V\|_\infty\beta\bigr)\theta
+\]
+
+を満たした。全representativeで\(\|V\|_\infty\beta\ge1\)なので、refined discは同centerの旧discに包含される。
+blocks 9--16はconjugate transportで同じ関係を持つ。
+
+exact extremaは次だった。
+
+- maximum refined radius: `4.7369170150175137e-8`（block 4／13）、登録上限`5e-8`
+- minimum old／new ratio: `370.0132423109111`（block 8／9）、登録下限`300`
+- eigendisc／selected／external count: `2598 / 24 / 2574`
+- maximum refined modulus upper: `0.9920954876550118`（block 0、center 147）、登録上限`0.9921`
+- strict-unit-disc failure／old-disc-containment failure: `0 / 0`
+
+全2598 recordはlength-framed canonical JSONへstreaming封印し、digestを
+`7421634849c0f732045e576793863f758a09bddf6ab70205bfbd3aca45f9f18b`とした。refined selected／external
+unionはそれぞれ旧Q011k unionの部分集合なので、既存のmembership `24 / 2574`とstable splitを弱めない。
+
+固定witness
+
+`(block=16;center=151)^2 × (block=0;center=149)^2 × block=0;center=146 × block=0;center=147`
+
+対target `block=15;center=148`について、refined product radiusは`7.882817212468169e-8`、target radiusは
+`1.223952119991868e-9`、combined radiusは`8.005212424467356e-8`だった。exact separation lowerは
+`4.72250069801592e-5`となり、登録下限`4e-5`を通過した。
+
+hypothesis `5 / 5`を通過し、
+`the Q011k eigenvalue families admit contained transformed-residual eigendiscs that clear the first degree-six enclosure obstruction`
+として`accepted`とした。
+
+- input／theorem／radius／containment／witness／result digest:
+  `a31fe1606f7be3931567ec63bbad3037d38a9a57eef43f73d7b8f9afc7523c03` /
+  `f3b9518fe67e85f0e701c4e6a97eac95db188ce85f813e358ddc0ecf85ba1ad5` /
+  `70919d4697068d7500609551a17325533e83f40bb2e309f5e98b3313a6a93ee5` /
+  `54e13cb993a0b99bc2d85dcf687d470cebe5692b4d10ab03865115230c53712c` /
+  `933d2841e5501bd48827ead0ea836fb54ebca7f42e36f8bc6228c3f7dcfaaa4b` /
+  `51d83bad9b0c2188c05b147f0075b5e7f05f3dea0dd291e0c282e9236914bff8`
+- runner／artifact newline-normalized SHA-256:
+  `0017ea849f518c69ce93a36db349bd8b18246b678fef9a54a48ae5f6f1acd187` /
+  `2886708898f634b3ff85587f3f4b9257d35e14f25b4e3b4524fd01f4c12a254a`
+
+これはlinear eigendisc refinementと最初の1 comparisonだけのcertificateである。degree 6の3 overlap
+aggregate全体、残る6955 sector-compatible comparison、degrees 7--90、all-order nonresonance、higher graph
+smoothness、SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、次はQ011zで
+degree 6全体をrefined discにより監査する。Q011kの既存artifactとコミットは変更していない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6599,6 +6672,8 @@ tail-certified、missing rangeをdegrees 6--90とした。
 [`artifacts/q011w_degree4_phase_disks.json`](artifacts/q011w_degree4_phase_disks.json)
 
 [`artifacts/q011x_degree5_phase_disks.json`](artifacts/q011x_degree5_phase_disks.json)
+
+[`artifacts/q011y_transformed_residual_eigendiscs.json`](artifacts/q011y_transformed_residual_eigendiscs.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

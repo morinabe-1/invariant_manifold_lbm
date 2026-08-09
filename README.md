@@ -2884,8 +2884,61 @@ merged modulusでoverlapした`[0,3,1,1]`は、320比較すべてがindexed indi
   `62712392faca2c154883edd93792f81e60ff975f6da16010aa3190ee44657a18` /
   `11ef4d47f60840c4bc05c4056024e2af14b8339a8983b65dcb878bd355cfc328`
 
-認証済みdegreeは`2 / 3 / 4 / 5 / 91+`となり、missing rangeはdegrees 6--90へ縮んだ。次はQ011yで
-degree 6の3 modulus-overlap aggregateを判定する。
+認証済みdegreeは`2 / 3 / 4 / 5 / 91+`となり、missing rangeはdegrees 6--90へ縮んだ。degree 6の
+design auditで旧Q011k円板の過大評価が見つかったため、Q011yで円板自体を包含的に精密化した。
+
+### Q011y contained transformed-residual eigendisc certificate
+
+Q011kのapproximate eigenvector matrix \(V\)、center matrix \(D\)、residual \(E=AV-VD\)に対し、
+
+\[
+V^{-1}AV=D+V^{-1}E,
+\qquad
+\|V^{-1}E\|_\infty\le\beta\|E\|_\infty=\theta
+\]
+
+を使った。Gershgorin inclusionを変換後の行列へ適用し、各centerを半径\(\theta\)で囲むunionが
+spectrumを含むことを認証した。旧Q011k半径は
+\(r_{\mathrm{old}}=\|V\|_\infty\beta\theta\)なので、refined unionは同じcenterを持つ旧unionの部分集合である。
+
+- classification:
+  `the Q011k eigenvalue families admit contained transformed-residual eigendiscs that clear the first degree-six enclosure obstruction`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- outcome: `accepted`
+- representative／transported block: `9 / 8`
+- eigendisc／selected／external count: `2598 / 24 / 2574`
+- maximum refined radius／registered upper:
+  `4.7369170150175137e-8 / 5e-8`（block 4、conjugate block 13も同値）
+- minimum old／new radius ratio／registered lower:
+  `370.0132423109111 / 300`（block 8、conjugate block 9も同値）
+- maximum refined modulus upper／registered upper:
+  `0.9920954876550118 / 0.9921`（block 0、center 147）
+
+2598個すべてでrefined discが対応する旧Q011k discに包含され、全refined unionはstrict unit disc内にある。
+従ってQ011kのselected／external membership `24 / 2574`と既存のstable splitを弱めない。
+
+固定した最初のdegree-6 obstruction
+
+`(block=16;center=151)^2 × (block=0;center=149)^2 × block=0;center=146 × block=0;center=147`
+
+対target `block=15;center=148`では、旧margin `-3.2975560108425774e-6`がrefined margin
+`4.72250069801592e-5`へ変わり、登録下限`4e-5`を通過した。
+
+- framed 2598-eigendisc digest:
+  `7421634849c0f732045e576793863f758a09bddf6ab70205bfbd3aca45f9f18b`
+- input／theorem／radius／containment／witness／result digest:
+  `a31fe1606f7be3931567ec63bbad3037d38a9a57eef43f73d7b8f9afc7523c03` /
+  `f3b9518fe67e85f0e701c4e6a97eac95db188ce85f813e358ddc0ecf85ba1ad5` /
+  `70919d4697068d7500609551a17325533e83f40bb2e309f5e98b3313a6a93ee5` /
+  `54e13cb993a0b99bc2d85dcf687d470cebe5692b4d10ab03865115230c53712c` /
+  `933d2841e5501bd48827ead0ea836fb54ebca7f42e36f8bc6228c3f7dcfaaa4b` /
+  `51d83bad9b0c2188c05b147f0075b5e7f05f3dea0dd291e0c282e9236914bff8`
+- runner／artifact newline-normalized SHA-256:
+  `0017ea849f518c69ce93a36db349bd8b18246b678fef9a54a48ae5f6f1acd187` /
+  `2886708898f634b3ff85587f3f4b9257d35e14f25b4e3b4524fd01f4c12a254a`
+
+これはlinear eigendisc refinementと1 comparisonのcertificateであり、degree 6全体はまだ認証していない。
+残る6955 sector-compatible comparisonを含む3 overlap aggregateのfull auditはQ011zで行う。
 
 ### Q007p exact-manifold finite-tube normal attraction
 
@@ -3555,6 +3608,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011v_degree3_phase_disks.json`](research/artifacts/q011v_degree3_phase_disks.json)
 - [`research/artifacts/q011w_degree4_phase_disks.json`](research/artifacts/q011w_degree4_phase_disks.json)
 - [`research/artifacts/q011x_degree5_phase_disks.json`](research/artifacts/q011x_degree5_phase_disks.json)
+- [`research/artifacts/q011y_transformed_residual_eigendiscs.json`](research/artifacts/q011y_transformed_residual_eigendiscs.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -3686,6 +3740,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q011v degree-3 Fourier-sector product discs、128 phase-resolved comparisons、degree-3 nonresonance
 - Q011w degree-4 commutative monomial expansion、1200 phase-resolved comparisons、degree-4 nonresonance
 - Q011x degree-5 indexed-modulus refinement、444 phase-resolved comparisons、degree-5 nonresonance
+- Q011y transformed-residual eigendisc inclusion、2598旧円板への包含、最初のdegree-6 obstruction clearance
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -3817,4 +3872,6 @@ degrees 4--90だった。Q011wではdegree 4の2 overlapを810可換monomialと1
 `0.004057305895234305`であり、degree-4 external nonresonanceを認証した。Q011xではdegree 5の2 overlapを
 780可換monomialと444 comparisonへ展開し、372件をindexed modulus、72件をcomplex phaseで分離した。
 unresolvedは0、minimum complex marginは`0.19921630498069512`であり、degree-5 external nonresonanceを
-認証した。missing rangeはdegrees 6--90である。
+認証した。Q011yではQ011kの旧半径を\(\theta=\|V^{-1}\|_\infty\|AV-VD\|_\infty\)へ包含的に
+精密化し、2598 refined unionのstrict stabilityと最初のdegree-6 obstructionのmargin
+`4.72250069801592e-5`を認証した。ただしdegree 6全体は未認証であり、missing rangeはdegrees 6--90のままである。
