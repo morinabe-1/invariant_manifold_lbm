@@ -185,9 +185,16 @@ def test_q011y_artifact_records_the_refinement_if_generated() -> None:
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     cycle = artifact["cycle"]
 
+    assert _file_sha256(artifact_path) == (
+        "2886708898f634b3ff85587f3f4b9257d35e14f25b4e3b4524fd01f4c12a254a"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
-    assert artifact["runner_source"]["filename"] == ("q011y_transformed_residual_eigendiscs.py")
+    assert artifact["runner_source"] == {
+        "filename": "q011y_transformed_residual_eigendiscs.py",
+        "sha256": "0017ea849f518c69ce93a36db349bd8b18246b678fef9a54a48ae5f6f1acd187",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "accepted"
