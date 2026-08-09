@@ -11299,6 +11299,49 @@ attraction、basin、他grid／force／wall boundaryを主張しない。accepte
 multi-step shadowing windowを事前登録し、その後にnatural Fourier-sparse baselineを保った
 TT／sparse費用評価へ進む。
 
+### Q011e1 最終結果
+
+Q011e artifact、runner、package source、5 digest、`passed / rejected` outcome、唯一の失敗gateを
+exactに再現した。同じ解析手順でQ011e chartを一度だけfresh再構築し、real tangent／extractor／linear
+dynamics／analytic second derivative／\(W_2\)／\(R_2\)の6 array hashと全construction gateも再現した。
+
+未使用seed `20260825`の32方向、登録5振幅、160 sampleは全てfiniteかつpositiveで、全方向が
+slope-eligibleとなった。primary fitと上位4点secondary fitの双方がlinear二次／quadratic三次の
+登録区間を通り、window差も登録上限を通過した。validity `5 / 5`、hypothesis `6 / 6`として
+Q011e1を`accepted`とする。
+
+- classification:
+  `the independent enlarged window resolves second- and third-order forced chart residuals`
+- slope-eligible／degenerate directions: `32 / 32`、`0 / 32`
+- linear primary／secondary slope range:
+  `1.9999592141961493 -- 2.0000652994279995` /
+  `1.9999478838445748 -- 2.000083440834926`
+- quadratic primary／secondary slope range:
+  `2.9998586349153378 -- 3.000154889315294` /
+  `2.999908289307265 -- 3.000145181102861`
+- maximum linear／quadratic primary-secondary difference:
+  `1.8141406926464043e-5 / 1.7126610593187763e-4`
+- maximum largest-amplitude quadratic／linear residual ratio:
+  `0.0013091448869808333`
+- minimum population／maximum conservation drift:
+  `0.027713756598630398 / 1.1370820561363141e-13`
+- direction SHA-256:
+  `64b017fb5a3c55378ccee4d457b4d2a8c75a92cd5b421897f9b7de1ad6a77b1d`
+- input／chart-reconstruction／residual-window／result digest:
+  `8e979deeed0e5f4151addb5f3b06c1a9815a28f4e0c5762726d7c29a03d035c0` /
+  `2e739657032352d7d0496568a216b761000a68beb6d00749e1e427e6447598fb` /
+  `20267150710538f797f21cc2846ee6be14060ad9ea6bef98ef29e4731121410b` /
+  `0370a24ce7a74da71ee978b3892ea23412c3d18adb110e2b2b53aaf02ccdf039`
+- runner／artifact newline-normalized SHA-256:
+  `bb8a052f387d2748fee823af10f2ab4ea4a9a08ebe62e8b4ff87d68d55c2929f` /
+  `989801d1e4e1396ebba279e11c396f7f6d4e9616d2aa170f5687f9ba08a95840`
+
+これはQ011eの再採点ではない。Q011eは元の小振幅measurement windowに対して`rejected`のままであり、
+Q011e1だけが独立拡大窓の有限holdoutとしてacceptedである。従ってforced quadratic chartの一段残差次数は
+登録有限範囲で確認したが、uniform Taylor remainder、continuous-amplitude family、forced SSM
+existence／uniqueness、nonlinear normal attraction、basinは主張しない。次はQ011f multi-step
+shadowing windowを観測前に事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

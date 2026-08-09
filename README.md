@@ -254,7 +254,9 @@ nonresonance／solvabilityをprequalifiedとした。Q011eでは案Aの固定保
 dense \(W_2/R_2\)を構築し、homological／graph-gauge／保存則／実座標化の検査を通した。一方、登録した
 小振幅窓ではquadratic residualが`1e-13`以上となる点が各方向1点しかなく、slope-eligible方向が
 `0 / 32`だったため、Q011e自体は`rejected`である。二次チャートの構築成功と三次残差次数の未確認を
-分け、次は閾値を緩めず独立seed・拡大振幅窓のQ011e1を別gateとして事前登録する。
+分け、閾値を緩めず独立seed・拡大振幅窓のQ011e1を別gateとして実行した。Q011e1では32/32方向が
+eligibleとなり、linear／quadraticのprimary・上位4点secondary slopeが全て登録区間を通ったため
+`accepted`とした。これはQ011eの再採点ではなく、有限独立窓で残差次数を確認した新しい結果である。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1831,6 +1833,49 @@ invariant external complementを使って全300 unordered pairを5 output sector
 uniform Taylor remainder、nonlinear normal attraction、basin、他grid／force／wall boundaryは未認証である。
 次は同じnoise floorとslope閾値を保った独立拡大振幅窓をQ011e1として事前登録する。
 
+### Q011e1 independent enlarged residual-window reissue
+
+Q011e chartの6 array hashと全construction thresholdをfreshに再現したうえで、未使用seed
+`20260825`の32 unit directionと振幅
+`1.6e-4 / 3.2e-4 / 6.4e-4 / 1.28e-3 / 2.56e-3`を評価した。Q011eと同じnoise floor、
+slope interval、最低eligible方向数を維持し、5点primary fitとbridge点を除く上位4点secondary fitを
+比較した。
+
+- classification:
+  `the independent enlarged window resolves second- and third-order forced chart residuals`
+- validity／hypothesis gates: `5 / 5`、`6 / 6` passed
+- slope-eligible／degenerate directions: `32 / 32`、`0 / 32`
+- linear primary slope range:
+  `1.9999592141961493 -- 2.0000652994279995`
+- linear secondary slope range:
+  `1.9999478838445748 -- 2.000083440834926`
+- quadratic primary slope range:
+  `2.9998586349153378 -- 3.000154889315294`
+- quadratic secondary slope range:
+  `2.999908289307265 -- 3.000145181102861`
+- maximum linear／quadratic primary-secondary slope difference:
+  `1.8141406926464043e-5 / 1.7126610593187763e-4`
+- maximum largest-amplitude quadratic／linear residual ratio:
+  `0.0013091448869808333`
+- minimum chart/reduced/mapped population／maximum conservation drift:
+  `0.027713756598630398 / 1.1370820561363141e-13`
+- direction SHA-256:
+  `64b017fb5a3c55378ccee4d457b4d2a8c75a92cd5b421897f9b7de1ad6a77b1d`
+- input／chart-reconstruction／residual-window／result digest:
+  `8e979deeed0e5f4151addb5f3b06c1a9815a28f4e0c5762726d7c29a03d035c0` /
+  `2e739657032352d7d0496568a216b761000a68beb6d00749e1e427e6447598fb` /
+  `20267150710538f797f21cc2846ee6be14060ad9ea6bef98ef29e4731121410b` /
+  `0370a24ce7a74da71ee978b3892ea23412c3d18adb110e2b2b53aaf02ccdf039`
+- runner／artifact newline-normalized SHA-256:
+  `bb8a052f387d2748fee823af10f2ab4ea4a9a08ebe62e8b4ff87d68d55c2929f` /
+  `989801d1e4e1396ebba279e11c396f7f6d4e9616d2aa170f5687f9ba08a95840`
+
+独立拡大窓ではlinear chartの二次、quadratic chartの三次が32方向全てで解像され、上位4点fitにも
+安定だった。Q011eの元小振幅窓と`rejected` outcomeは変更しない。これは単一17² forced endpoint、
+32方向、5振幅のbinary64一段holdoutであり、uniform Taylor remainder、continuous-amplitude family、
+forced SSM existence／uniqueness、nonlinear normal attraction、basinは未認証である。次はQ011fで
+独立multi-step shadowing windowを事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2383,6 +2428,7 @@ python -m research.q011c1_endpoint_localization --output research/artifacts/q011
 python -m research.q011c2_heldout_cluster_reissue --output research/artifacts/q011c2_heldout_cluster_reissue.json
 python -m research.q011d_forced_quadratic_homological --output research/artifacts/q011d_forced_quadratic_homological.json
 python -m research.q011e_forced_quadratic_chart --output research/artifacts/q011e_forced_quadratic_chart.json
+python -m research.q011e1_enlarged_residual_window --output research/artifacts/q011e1_enlarged_residual_window.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2461,6 +2507,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011c2_heldout_cluster_reissue.json`](research/artifacts/q011c2_heldout_cluster_reissue.json)
 - [`research/artifacts/q011d_forced_quadratic_homological.json`](research/artifacts/q011d_forced_quadratic_homological.json)
 - [`research/artifacts/q011e_forced_quadratic_chart.json`](research/artifacts/q011e_forced_quadratic_chart.json)
+- [`research/artifacts/q011e1_enlarged_residual_window.json`](research/artifacts/q011e1_enlarged_residual_window.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2637,4 +2684,6 @@ clusterをselectedとした。Q011dではそのcanonical endpointにおける全
 quadratic chart、residual orderはこの段階では未実装だった。Q011eでは実Hessianとdense quadratic chartを
 構築し、全homological／構造gateを通したが、登録振幅窓のquadratic residualはnoise floor上に各方向1点
 しかなく、residual order gateだけを棄却した。従ってforced dense chartは構築済みだが、三次残差次数、
-normal attraction、不変多様体の存在・一意性、wall-bounded flowは未認証である。
+normal attraction、不変多様体の存在・一意性、wall-bounded flowは未認証である。Q011e1では別seedの
+32方向と16倍まで拡大した振幅窓で二次／三次残差を全方向に解像し、primary／secondary fitを全通過した。
+ただし有限一段holdoutであり、Q011e自体の判定や上記未認証事項は変更しない。

@@ -4841,6 +4841,65 @@ gateとbinary outcomeは変えていない。次は同じ閾値を固定し、�
 事前登録する。forced SSM existence／uniqueness、uniform Taylor remainder、nonlinear normal attraction、
 basin、他grid／force／wall boundaryは依然として未認証である。
 
+## 2026-08-09: Q011e1 independent enlarged residual-window reissue
+
+### 問いと方法
+
+Q011eのmeasurement-window underresolutionだけを修復する独立gateとして、Q011e artifactとrunner、
+全digest、元の`rejected` outcomeを封印した。Q011e chartは同じ解析手順で一度だけfresh再構築し、
+real tangent／extractor／linear dynamics／analytic second derivative／\(W_2\)／\(R_2\)の6 array hashと
+全construction thresholdを照合した。係数の再fitやQ011eの再採点は行っていない。
+
+未使用seed `20260825`から32 unit directionを生成し、振幅を
+`1.6e-4 / 3.2e-4 / 6.4e-4 / 1.28e-3 / 2.56e-3`に固定した。Q011eと同じnoise floor
+`1e-13`、最低eligible `28 / 32`、linear slope `1.85--2.15`、quadratic slope `2.70--3.30`を使った。
+5点primary fitに加え、bridge点を除く上位4点secondary fitを保存し、両slope差を`<=0.15`でgateした。
+160 sample全てについてchart／reduced／mapped state hash、residual、minimum population、global
+conservation driftを保存した。
+
+### 結果
+
+validity `5 / 5`、hypothesis `6 / 6`を通過し、
+`the independent enlarged window resolves second- and third-order forced chart residuals`
+として`accepted`とした。
+
+- slope-eligible／degenerate directions: `32 / 32`、`0 / 32`
+- linear primary slope range:
+  `1.9999592141961493 -- 2.0000652994279995`
+- linear secondary slope range:
+  `1.9999478838445748 -- 2.000083440834926`
+- quadratic primary slope range:
+  `2.9998586349153378 -- 3.000154889315294`
+- quadratic secondary slope range:
+  `2.999908289307265 -- 3.000145181102861`
+- maximum linear／quadratic primary-secondary slope difference:
+  `1.8141406926464043e-5 / 1.7126610593187763e-4`
+- maximum largest-amplitude quadratic／linear residual ratio:
+  `0.0013091448869808333`
+- minimum chart/reduced/mapped population／maximum conservation drift:
+  `0.027713756598630398 / 1.1370820561363141e-13`
+- direction SHA-256:
+  `64b017fb5a3c55378ccee4d457b4d2a8c75a92cd5b421897f9b7de1ad6a77b1d`
+- input／chart-reconstruction／residual-window／result digest:
+  `8e979deeed0e5f4151addb5f3b06c1a9815a28f4e0c5762726d7c29a03d035c0` /
+  `2e739657032352d7d0496568a216b761000a68beb6d00749e1e427e6447598fb` /
+  `20267150710538f797f21cc2846ee6be14060ad9ea6bef98ef29e4731121410b` /
+  `0370a24ce7a74da71ee978b3892ea23412c3d18adb110e2b2b53aaf02ccdf039`
+- runner／artifact newline-normalized SHA-256:
+  `bb8a052f387d2748fee823af10f2ab4ea4a9a08ebe62e8b4ff87d68d55c2929f` /
+  `989801d1e4e1396ebba279e11c396f7f6d4e9616d2aa170f5687f9ba08a95840`
+
+### 解釈と次のbottleneck
+
+独立拡大窓ではlinear chartの二次、quadratic chartの三次が全32方向でnoise floor上に解像され、
+上位4点secondary fitにも安定だった。従って単一17² forced endpointの登録有限方向・振幅範囲では、
+Q011e dense quadratic chartの一段残差次数を確認した。
+
+Q011eの元小振幅窓と`rejected` outcomeは変更しない。Q011e1もuniform Taylor remainder、
+continuous-amplitude family、forced SSM existence／uniqueness、nonlinear normal attraction、basin、
+他grid／force／wall boundaryを示さない。次はQ011fで独立multi-step shadowing windowを観測前に
+事前登録し、その後にnatural Fourier-sparse baselineを残したTT／sparse費用評価へ進む。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4978,6 +5037,8 @@ basin、他grid／force／wall boundaryは依然として未認証である。
 [`artifacts/q011d_forced_quadratic_homological.json`](artifacts/q011d_forced_quadratic_homological.json)
 
 [`artifacts/q011e_forced_quadratic_chart.json`](artifacts/q011e_forced_quadratic_chart.json)
+
+[`artifacts/q011e1_enlarged_residual_window.json`](artifacts/q011e1_enlarged_residual_window.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
