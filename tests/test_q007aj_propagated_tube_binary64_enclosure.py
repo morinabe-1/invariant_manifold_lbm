@@ -207,3 +207,30 @@ def test_q007aj_records_provenance_and_deterministic_digests(
         "517846a3a99f1e684f40c2ea6d5a8ae7b3db8c0849dae3097fc7f380f4eca923"
     )
     json.dumps(study, allow_nan=False)
+
+
+def test_q007aj_artifact_reproduces_the_mixed_certificate(
+    q007aj_cycle: dict,
+) -> None:
+    runner_path = Path(q007aj.__file__).resolve()
+    artifact_path = (
+        runner_path.parent / "artifacts" / "q007aj_propagated_tube_binary64_enclosure.json"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "29b8cd320f40396cc24ae30b46e46eecc7e23564600284aeb916a90af3a1fd8e"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007aj_propagated_tube_binary64_enclosure.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": ("UTF-8 text with universal newlines"),
+    }
+    assert artifact["cycle"] == q007aj_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "not_certified"
+    assert artifact["cycle"]["one_step_outcome"] == "accepted"
+    assert artifact["cycle"]["base_reentry_outcome"] == "not_certified"
+    assert artifact["cycle"]["normal_reentry_outcome"] == "not_certified"
