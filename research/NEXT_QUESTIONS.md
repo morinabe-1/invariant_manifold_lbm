@@ -11492,6 +11492,93 @@ positivity／conservationの5 gateを通った。一方、全224 fit eligibleと
 slope／performance thresholdを固定し、未使用midpoint amplitude `4.8e-4`の32 trajectoryだけを追加する。
 Q011f1が通るまでfinite multi-step shadowing windowを確認済みとは扱わず、Q011gへ進まない。
 
+## Q011f1: held-out amplitude multi-step reissue — 事前登録
+
+### 問いと修復範囲
+
+Q011fの同じ32 direction・64 step・7 horizonに、未使用amplitude `4.8e-4`のtrajectoryを1本ずつ追加し、
+元5点と合わせた6点fitを行うと、登録floor `1e-12`を変えずに全224 direction-horizon fitを解像できるか。
+
+これはQ011fの再採点ではない。Q011fの`rejected`、seed、元5 amplitude、horizon、noise floor、slope、
+quadratic／linear ratio、64-step relative-error、positivity／conservation thresholdを変更しない。
+Q011f1は2つのearly-horizon measurement-floor failureだけを、未使用amplitudeで修復する独立再発行gateである。
+
+### 封印入力
+
+- Q011f artifact／runner newline-normalized SHA-256:
+  `9c091dbafd60617850cd3168f3ad9235a353b0990cbd003df9be0b487ead1591` /
+  `e9c0a8e38b94dbe693855dc836f8cf02393675b417ff3f43fc43059ab361a741`
+- Q011f input／chart-reconstruction／trajectory／result digest:
+  `e9b29c95d41af0062259d3aab19ab2c58175cd98582ed82f3af36863f023bc53` /
+  `aa1da452db8ff6b84e88a32f7a7119c63816b12e283147daaa303e9e09c3ae42` /
+  `aa62fc11a36bef881bbcdb05919818f6db167f3f95eee396fcdaf79fead5e182` /
+  `629a5a7a3d3bfed12a590646c375d4977db1726ddc521ddb86394786b1005f22`
+- Q011f direction SHA-256:
+  `4d0bef57236d4f70a8a8f422b1bdfa39cd5737c88401c2441decdd98d886d2f9`
+- Q011e1 artifact／runner／4 digest、Q011e chartの6 array hash、package-source hashはQ011fが封印した値を
+  そのまま再現する。
+
+Q011f artifactのvalidity `6 / 6`、hypothesis `5 / 6`、`rejected` outcome、唯一の失敗gate、
+degenerate witness `(direction 4, horizon 1 / 2)`とraw error／maskをexactに照合する。Q011e1 accepted、
+Q011e rejected outcomeも変更しない。Q011f helperでchartを一度だけfresh再構築する。
+
+### held-out amplitude campaign
+
+Q011fと同じseed `20260826`から同じ32 unit directionを再現し、direction hashを照合する。新しい振幅は
+
+\[
+a_{\rm hold}=4.8\times10^{-4}
+\]
+
+に固定する。これは元の`3.2e-4`と`6.4e-4`の間にある未使用点で、Q011f artifact生成前には観測して
+いない。各directionについてlinear／quadratic full orbitとreduced-lift orbitを64 step進め、Q011fと同じ
+全step診断と7 checkpoint hashを保存する。合計32 trajectory per chart、2,048 step、224 checkpointである。
+
+元Q011f artifactの5 amplitude errorとheld-out errorを振幅順
+
+\[
+(1.6\times10^{-4},\ 3.2\times10^{-4},\ 4.8\times10^{-4},\
+6.4\times10^{-4},\ 1.28\times10^{-3},\ 2.56\times10^{-3})
+\]
+
+にmergeし、floor `1e-12`以上の点だけで224 fitを再計算する。元artifactのstateやerrorは再計算値で
+置き換えない。特に2つの元degenerate witnessでは、held-out quadratic errorがfloor以上でfitへ入り、
+combined quadratic fit-point countが4以上になることを明示的に要求する。
+
+### validity gate
+
+1. Q011f artifact／runner／package source、4 digest、direction hash、valid/rejected outcome、2 witnessを再現する。
+2. Q011e1／Q011e outcomeを保持し、Q011e chartを一度だけfresh再構築して6 array hashを再現する。
+3. 同じ32 directionとheld-out amplitude `4.8e-4`の32 trajectoryを64 step完全列挙する。
+4. held-out全2,048 step診断、224 checkpoint hash、positivity／conservationを保存する。
+5. 元5点とheld-out点を正しい振幅順へmergeし、全224 mask／slope／ratioを完全列挙する。
+6. 全値finiteなstrict JSON、input／chart／heldout／merged-fit／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、再発行shadowing hypothesisを解釈しない。
+
+### hypothesis gateと判定
+
+validity通過時だけ次を全て要求する。
+
+1. 2 repaired witnessでheld-out quadratic pointがfloor以上かつcombined fit-point count `>=4`。
+2. slope-eligible direction-horizon count: `224 / 224`。
+3. eligible linear slope: each `1.75 <= slope <= 2.25`。
+4. eligible quadratic slope: each `2.50 <= slope <= 3.50`。
+5. merged 6 amplitudeのevery checkpointでquadratic／linear error ratio `<=0.05`、every trajectoryの
+   horizon-64 quadratic error／initial amplitude `<=1e-3`。
+6. held-out full／lifted state minimum population `>0`、maximum global conservation drift `<=1e-10`。
+
+全て通れば
+`the forced quadratic chart passes a held-out-amplitude 64-step shadowing reissue`
+として`accepted`とする。validだが一つでも落ちれば
+`the held-out amplitude does not repair the registered finite shadowing window`
+として`rejected`とする。
+
+acceptedでも、Q011f自体は`rejected`のままである。Q011f1は元5点を含む6 amplitude、32 direction、64 step、
+7 horizonのfinite binary64 reissueに限る。all-time shadowing、uniform remainder、basin、normal attraction、
+forced SSM existence／uniqueness、他grid／force／wall boundaryを主張しない。acceptedの場合だけQ011gの
+natural Fourier-sparse／TT-SVD比較を事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
