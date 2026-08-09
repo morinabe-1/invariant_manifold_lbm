@@ -9888,6 +9888,165 @@ non-fixed reference-state診断に限る。次はQ011bでzero-mean single-wave s
 forced fixed point、保存量葉、Fourier-sector closure、spectrumを初めて判定する。
 wall-bounded Poiseuille／Couetteはさらに別gateとする。
 
+## Q011b: zero-mean single-wave periodic forced fixed point — 事前登録
+
+### 問い
+
+Q011aと同じperiodic filtered BGK mapで、spatial meanが0のsingle-wave body forceならglobal momentum
+obstructionを回避し、固定mass／momentum leaf上にpositiveな定常fixed pointを数値的に解けるか。
+さらに、そのfixed pointの全x-Fourier blockを用いたfixed-leaf spectrumはstrictにstableか。
+
+このgateはforced invariant manifoldをまだ構築しない。まずx-independent forced fixed point、
+保存収支、nonlinear Fourier response、full linear spectrumを独立oracleとして固定する。
+
+### 封印入力とforced map
+
+- Q011a artifact／runner newline-normalized SHA-256:
+  `31c427660b10771af7756c249408606578a9b7a02d756bc77b918b56e7a5b14a` /
+  `41e45565066fd4c96c2ae927bc8cc6a1218377f67b711f6cc312ecbf0d1c68de`
+- Q011a source／probe／result digest:
+  `75fd3fe1050b39a333f483375969a67c79ab9ec75009a2048359d0f0dabb7492` /
+  `43d0b722ba63a45ccf6b5a41cffaef387448fcc2cd9324538887fd3169571001` /
+  `9b1f0c1516a365481c72617957b30424a7873136d221bd164b6d0617c4c3d958`
+
+Q011a stored cycleをfresh replayし、validity 6/6、hypothesis 4/4、accepted classification、
+source scheme、stage order、\(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)をexactに再現する。
+Q011a runnerはread-onlyとし、source definitionを変更しない。
+
+force waveformを
+
+\[
+F_x(y)=A\cos(2\pi y/17),\qquad F_y(y)=0,qquad
+A=3\,2^{-24}
+\]
+
+と固定し、全x siteへ同じ値をliftする。float実装は`numpy.cos(2*pi*y/17)`をそのまま使い、
+結果観測後のmean subtractionやwaveform修正をしない。analytic discrete meanは0である。
+float waveform sumのabsolute値を`<=1e-14`、orthonormal FFTで\(k_y=\pm1\)外のrelative
+\(\ell^2\) leakageを`<=1e-13`とする。
+
+各siteのsourceはQ011aと同じ
+
+\[
+S_q(y)=3w_qc_{qx}F_x(y)
+\]
+
+とし、collision後、periodic streaming前に加える。boundary、drag、momentum repairは使わない。
+各siteで再構成したsourceの\((\rho,j_x,j_y)\)と\((0,F_x(y),0)\)のmaximum absolute
+residualを`<=1e-20`、public forced stepとcollision→source→streaming→filterを独立に並べた
+stage replayのmaximum absolute discrepancyを`<=1e-15`とする。
+
+### fixed-leaf stripe solve
+
+fixed pointはx-independent stripe \(f(y,q)\in\mathbb R^{17\times9}\)で解き、全17 x-siteへliftする。
+target conserved momentsはstripeで\((17,0,0)\)、full gridで\((289,0,0)\)とする。
+global moment matrixのorthonormal nullspace basis \(B\in\mathbb R^{153\times150}\)を
+`scipy.linalg.null_space`で一度だけ作り、
+
+\[
+f(z)=f_{\rm rest}+Bz,qquad
+r(z)=B^T(\Phi_F(f(z))-f(z))
+\]
+
+を解く。basis orthogonality、moment annihilation、dimensionをそれぞれ
+Frobenius normで`<=1e-12 / <=1e-12 / 150`とする。
+
+一段mapのanalytic Jacobianは、各siteのdensity／momentumに関するD2Q9 equilibrium derivative、
+BGK、streaming、filterをchainして構成する。seed `20260812`の4 fixed-leaf direction、
+central step `2e-5 / 1e-5 / 5e-6`で、best action relative errorを各方向`<=2e-8`とする。
+
+Newton法はanalytic reduced Jacobian
+
+\[
+Dr(z)=B^T(D\Phi_F(f(z))-I)B
+\]
+
+を使い、maximum 12 iterationとする。full stepがresidualを減らさない場合だけ
+\(1,1/2,\ldots,1/64\)の最初のdecreasing factorを使い、それもなければ失敗とする。
+次の二初期値を独立に走らせる。
+
+1. zero coordinate \(z=0\)
+2. rest linear response
+
+   \[
+   z_{\rm lin}=(I-B^TJ_0B)^{-1}B^T(\Phi_F(f_{\rm rest})-f_{\rm rest})
+   \]
+
+各solveでprojected residual \(\ell^2\)`<=5e-13`、full residual \(\ell^2\)`<=5e-12`、
+maximum component residual `<=5e-13`を要求する。二解のpopulation \(\ell^2\) distanceを
+`<=1e-11`、relative distanceを`<=1e-9`とする。結果観測後にmethod、start、toleranceを変えない。
+
+### fixed pointの物理・Fourier gate
+
+- minimum population／densityを別々に`>0`とする。
+- full-grid global mass／momentum target residualをcompensated sumで`<=5e-11`とする。
+- orthonormal y-FFTでfirst-harmonic \(j_x\) cosine amplitudeを
+  \(2|\widehat j_x(1)|/\sqrt{17}\)と定義し、strict positiveかつforce amplitudeより大きくする。
+- rest差のorthonormal y-FFTについて、\(k_y=0,\pm1,\pm2\)外のrelative \(\ell^2\) leakageを
+  `<=1e-8`とする。これはsmall-amplitude sector concentrationであり、exact finite Fourier closureとは
+  呼ばない。
+- x-independent lift／stripe restriction roundtripをbitwise一致とする。
+
+### full fixed-point spectrum
+
+fixed pointはx translationを保つので、linearizationを17個の\(k_x\) blockへ分解する。各blockは
+y×populationの153 complex次元とする。collision derivativeはfixed pointのy-dependent fieldで評価し、
+streamingのx phase、periodic y shift、filterのx multiplierを明示的に組み込む。
+
+- \(k_x=0\)のunrestricted blockではglobal mass／momentumに対応する
+  \(|\lambda-1|\le10^{-9}\)のeigenvalueを3個要求する。
+- stability判定では\(k_x=0\)だけを同じ\(B\)で150次元fixed leafへ制限し、\(k_x\ne0\)は153次元
+  block全体を使う。
+- 全blockをordered labelingではなくcomplex Schur spectrumとして扱う。reconstructionは
+  \(\|J-QTQ^*\|_F/\max(\|J\|_F,\mathrm{tiny})\)、unitarityは
+  \(\|Q^*Q-I\|_F\)とし、そのmaximumを各`<=1e-10`とする。
+  \(k_x\leftrightarrow-k_x\) spectrum間のabsolute Hausdorff errorを`<=1e-10`とする。
+- block action検証はseed `20260813`のstandard-normal real／imaginary y-population directionを
+  \(k_x\) index `0 / 1 / 4 / 8`へ一つずつ割り当て、unit \(\ell^2\) normへ正規化してfull-gridへ
+  liftする。block actionとfull-grid analytic Jacobian actionのrelative errorを各方向`<=2e-10`とする。
+- 全fixed-leaf eigenvalueのmaximum modulusを`<=0.9999`とする。
+- 全fixed-leaf \(I-J(k_x)\)のminimum singular valueを`>=1e-4`、maximum condition numberを
+  `<=1e6`とする。
+
+individual shear／acoustic labels、forced slow spectral subspace、spectral quotient、nonresonanceは
+このgateで判定しない。
+
+### validity gate
+
+1. Q011a artifact／runner／scope／classification／gate／digestを封印し、stored cycleをfresh replayする。
+2. registered cosine sourceのfloat mean、FFT support、source moments、stage orderが閾値内である。
+3. fixed-leaf basis、analytic Jacobian、finite-difference action、linear-response equationを再現する。
+4. 二Newton trace、residual、line-search decision、solution agreementを完全記録し、solver arithmeticが
+   finiteかつdeterministicである。
+5. x-Fourier block Jacobianをdirect full-grid actionの登録4 directionで`<=2e-10`に再現し、
+   Schur／conjugacy residualが閾値内である。
+6. 全値finiteなstrict JSON、input／fixed-point／spectrum／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、fixed point／stability hypothesisを解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を独立に要求する。
+
+1. 二Newton startが全residual閾値内へ収束し、同じfixed pointへ一致する。
+2. fixed pointがpositive、target fixed leaf、nontrivial first-harmonic response、登録sector leakage内である。
+3. full x-Fourier fixed-leaf spectral radiusが`<=0.9999`である。
+4. 全blockの\(I-J\) singular-value／condition gateが通る。
+
+全て通れば
+`zero-mean single-wave periodic forcing yields a numerically resolved stable fixed-leaf fixed point`
+として`accepted`とする。fixed pointは解けるがspectral radius gateが落ちれば
+`registered zero-mean forced fixed point is not spectrally stable on the fixed leaf`
+として有効な`rejected`とする。solver hypothesisが閉じなければ
+`registered zero-mean forced fixed point was not numerically certified`として`not_certified`とする。
+
+acceptedでもfloating-point Newton／Schurによる単一grid・単一amplitudeのnumerical prequalificationに
+限る。rigorous existence／uniqueness、basin、forced invariant manifold、slow-subspace selection、
+nonresonance、normal attraction、finite-precision all-iterate shadowing、他amplitude／grid、boundary、
+Poiseuille／Couetteを主張しない。acceptedなら次はQ011cでforced fixed pointにおけるslow
+spectral clusterと外部gapを別途事前登録する。rejected／not_certifiedなら原因をfixed-point solveと
+spectrumに分離し、同じ結果からamplitudeやthresholdを変更しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
