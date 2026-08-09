@@ -1728,6 +1728,56 @@ grid・登録force・17 amplitude nodeのbinary64 prequalificationとしてcandi
 external nonresonance、forced invariant manifold、nonlinear normal attractionは未認証である。
 次はQ011dでquadratic external nonresonanceとforced homological operatorを事前登録する。
 
+### Q011d forced quadratic external homological-family prequalification
+
+Q011b stored forced endpointでQ011c2のselected clusterを直接ordered-Schur分解し、
+\(R_1=\operatorname{diag}(T_{s,0},T_{s,1},T_{s,16})\in\mathbb C^{24\times24}\)と、
+output sector \(k_x=0,1,16,2,15\)のexternal quotientを構成した。24 selected coordinateの
+unordered quadratic pair全300個をsector count `102 / 54 / 54 / 45 / 45`へ分解し、
+300×300 symmetric-product action \(K\)を明示的にassemblyした。
+
+各固有値積 \(\mu_{ij}\)について
+\(H_{ij}=A_{e,k}-\mu_{ij}I\)のfull singular spectrum、rank、spectral distance、
+condition number、登録複素RHSのdirect solveを全300 blockで評価した。さらにSchur基底の
+nonnormal couplingを保持した
+\(\mathcal H_k(X)=A_{e,k}X-XK_k\)を、5 sector × 4 RHSで検査した。
+
+- classification:
+  `the forced quadratic external homological family is numerically nonresonant and solvable`
+- validity／hypothesis gates: `7 / 7`、`5 / 5` passed
+- maximum structural／conjugate-spectrum residual:
+  `7.35746952368904e-14 / 1.3286214932264194e-14`
+- selected minimum／external maximum eigenvalue modulus:
+  `0.983770956987517 / 0.981709835832543`
+- global normal gap／full fixed-leaf radius／spectral quotient:
+  `0.0020611211549740327 / 0.9920954673551019 / 1.128181043680419`
+- sector leakage／maximum action error／maximum product-spectrum error:
+  `0.0 / 2.4215004011706513e-16 / 0.0`
+- minimum block singular value／spectral distance:
+  `0.0001550243474275936 / 0.00019318395013023792`
+- maximum block condition／direct-solve residual:
+  `15018.139810898925 / 3.0754729793416724e-15`
+- maximum conjugate-sector scalar discrepancy:
+  `2.0227681201111162e-11`
+- 20 sector-probe maximum residual／response amplification:
+  `1.620591689280895e-13 / 361.53308227372094`
+- input／linear-split／pair-family／sector-probe／result digest:
+  `ee2713e8169ea0f475ddee1b1233964ba40739d2276b78db3fff5410158dd2f8` /
+  `7208875ff95f3a768e4b822cf9be854228d6664800dfc69218c0e6a030a0c63e` /
+  `f9caee5b591e74b40b497ca7eb8244f1bbaeba71d239684c47d8215c46c2fb0b` /
+  `feb864e2725e0cf726b43c443bb48b53f34ba0ac54693bb97a2b986f598a1414` /
+  `a6941371e54a5e4d4abbea2f835196ddd7cce35c7c266ce399020764ed5b9dd7`
+- runner／artifact newline-normalized SHA-256:
+  `815fe7e0101cc05cc44fcb224534762f0ef7625f8c9604ff0a822c13171a617d` /
+  `c3acb9b7acc6e3121cb6e48a04bb060b5c95d7b128fe15fb11b67ee456337fd0`
+
+全300 blockはfull rankで、最小特異値と最小spectral distanceは登録floor `1e-5`を通過した。
+sector-wide probeも通過したため、canonical endpointのcomplete quadratic external spectrumと
+登録有限RHSに対してoperator familyをprequalifiedとする。ただしprobeはrigorous inverse-norm
+upper boundではない。forced-map Hessian、quadratic forcing、\(W_2\)、\(R_2\)、homological residual、
+independent derivative、invariance residual order、forced SSM existence／uniqueness、nonlinear
+normal attractionは未認証である。次はQ011eでdense forced quadratic chartを観測前に事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2278,6 +2328,7 @@ python -m research.q011b_zero_mean_forced_fixed_point --output research/artifact
 python -m research.q011c_forced_spectral_cluster --output research/artifacts/q011c_forced_spectral_cluster.json
 python -m research.q011c1_endpoint_localization --output research/artifacts/q011c1_endpoint_localization.json
 python -m research.q011c2_heldout_cluster_reissue --output research/artifacts/q011c2_heldout_cluster_reissue.json
+python -m research.q011d_forced_quadratic_homological --output research/artifacts/q011d_forced_quadratic_homological.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2354,6 +2405,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011c_forced_spectral_cluster.json`](research/artifacts/q011c_forced_spectral_cluster.json)
 - [`research/artifacts/q011c1_endpoint_localization.json`](research/artifacts/q011c1_endpoint_localization.json)
 - [`research/artifacts/q011c2_heldout_cluster_reissue.json`](research/artifacts/q011c2_heldout_cluster_reissue.json)
+- [`research/artifacts/q011d_forced_quadratic_homological.json`](research/artifacts/q011d_forced_quadratic_homological.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2456,6 +2508,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   witness交換の摂動整合的局在化
 - Q011c2 17-node cluster path、8 held-out midpointの24 Sylvester operator／全spectrum、
   共役orbit endpoint semanticsによるcandidate forced cluster選択
+- Q011d forced endpointの300 quadratic external block完全SVD／direct solve、5 sectorの
+  symmetric-product spectrumと20 nonnormal Sylvester probeによるoperator-family prequalification
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2466,7 +2520,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- TT-cross（固定Q007c1係数では保留）、forced external nonresonance／invariant manifold、境界条件、
+- TT-cross（固定Q007c1係数では保留）、forced quadratic chart／invariant manifold、境界条件、
   Poiseuille／Couette、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -2523,5 +2577,6 @@ separation／normal-dominance診断が通ったが、continued endpointとQ011b 
 selectedとはまだ扱わない。Q011c1では全metric変化をJacobian perturbation区間で囲み、extremal
 orbitが`{1,16}`のまま個別witnessだけ交換したことを認証したが、Q011cは再採点していない。
 Q011c2では8 held-out midpointを含む別の再発行gateを通し、この有限範囲でcandidate forced spectral
-clusterをselectedとした。external nonresonance、normal attraction、不変多様体、wall-bounded flowは
-未実装である。
+clusterをselectedとした。Q011dではそのcanonical endpointにおける全300 quadratic external blockと
+5 sector actionを通し、数値的external nonresonance／solvabilityをprequalifiedとした。実Hessian、
+quadratic chart、residual order、normal attraction、不変多様体、wall-bounded flowは未実装である。

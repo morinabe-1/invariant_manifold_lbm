@@ -4702,6 +4702,76 @@ external nonresonance、spectral quotient smoothness、forced invariant manifold
 attractionは未認証である。次はQ011dでquadratic external nonresonanceとforced homological operatorを
 事前登録する。
 
+## 2026-08-09: Q011d forced quadratic external homological-family prequalification
+
+### 問いと方法
+
+Q011c2でselectedとしたforced 24-dimensional clusterについて、quadratic monomial全300個の
+external homological blockが数値的に非共鳴かを、forced-map Hessianを観測する前に検査した。
+base pointはQ011b stored endpointに固定し、\(k_x=0,1,16\)のordered-Schur selected dynamicsを
+block diagonalに並べた。external quotientは同3 sectorのexcluded Schur blockと、
+\(k_x=2,15\)のfull complex Schur blockで構成した。
+
+selected coordinateのunordered pairをlexicographicに列挙し、output sectorごとに
+`102 / 54 / 54 / 45 / 45` pairへ分解した。対称二次monomial action
+\(m(R_1a)=Km(a)\)を直接assemblyし、8登録方向のactionと各sector spectrumを独立に照合した。
+
+各pairの固有値積に対して\(A_{e,k}-\mu_{ij}I\)を構成し、300 block全てでfull SVD、
+registered rank threshold、spectral distance、condition number、seed `20260820`のdirect solveを
+保存した。非正規性を落とさない診断として、5 sectorで
+\(A_{e,k}X-XK_k=B\)を各4 RHS、合計20本解いた。
+
+### 結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the forced quadratic external homological family is numerically nonresonant and solvable`
+として`accepted`とした。
+
+- selected／external／full fixed-leaf eigenvalue count:
+  `24 / 2574 / 2598`
+- maximum structural／conjugate-spectrum residual:
+  `7.35746952368904e-14 / 1.3286214932264194e-14`
+- selected minimum／external maximum modulus:
+  `0.983770956987517 / 0.981709835832543`
+- global normal gap／full radius／logarithmic spectral quotient:
+  `0.0020611211549740327 / 0.9920954673551019 / 1.128181043680419`
+- pair count by output sector \(0,1,16,2,15\):
+  `102 / 54 / 54 / 45 / 45`
+- pair-enumeration SHA-256:
+  `c94c79f6bdf98fd2e85706b5e15f2534dfb4e0132cc19e2bf17cdf02471b9f85`
+- sector leakage／maximum action error／maximum product-spectrum error:
+  `0.0 / 2.4215004011706513e-16 / 0.0`
+- singular block count／minimum operator singular value:
+  `0 / 0.0001550243474275936`
+- minimum spectral distance／maximum condition number:
+  `0.00019318395013023792 / 15018.139810898925`
+- maximum direct-solve residual／conjugate-sector discrepancy:
+  `3.0754729793416724e-15 / 2.0227681201111162e-11`
+- 20 probe maximum equation residual／response amplification:
+  `1.620591689280895e-13 / 361.53308227372094`
+- input／linear-split／pair-family／sector-probe／result digest:
+  `ee2713e8169ea0f475ddee1b1233964ba40739d2276b78db3fff5410158dd2f8` /
+  `7208875ff95f3a768e4b822cf9be854228d6664800dfc69218c0e6a030a0c63e` /
+  `f9caee5b591e74b40b497ca7eb8244f1bbaeba71d239684c47d8215c46c2fb0b` /
+  `feb864e2725e0cf726b43c443bb48b53f34ba0ac54693bb97a2b986f598a1414` /
+  `a6941371e54a5e4d4abbea2f835196ddd7cce35c7c266ce399020764ed5b9dd7`
+- runner／artifact newline-normalized SHA-256:
+  `815fe7e0101cc05cc44fcb224534762f0ef7625f8c9604ff0a822c13171a617d` /
+  `c3acb9b7acc6e3121cb6e48a04bb060b5c95d7b128fe15fb11b67ee456337fd0`
+
+### 解釈と次のbottleneck
+
+全300固有値積はexternal spectrumから分離し、full-rank SVDとdirect solve gateを通過した。
+5 sectorのfull nonnormal \(K_k\) actionも登録20 RHSを安定に解いた。従って単一17² grid、
+登録forced endpoint、binary64 Schur／SVDにおけるquadratic external operator familyを
+numerically nonresonant and solvableとしてprequalifiedとする。
+
+ただし20 probeはrigorous inverse-operator norm upperではなく、spectral quotient `1.12818`も
+smoothness／uniqueness定理には解釈しない。forced-map Hessian、quadratic forcing support、
+\(W_2\)、\(R_2\)、homological residual、independent derivative、invariance residual order、
+forced SSM existence／uniqueness、nonlinear normal attractionは未認証である。次はQ011eで
+dense forced quadratic chartと独立残差検証を観測前に事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4835,6 +4905,8 @@ attractionは未認証である。次はQ011dでquadratic external nonresonance�
 [`artifacts/q011c1_endpoint_localization.json`](artifacts/q011c1_endpoint_localization.json)
 
 [`artifacts/q011c2_heldout_cluster_reissue.json`](artifacts/q011c2_heldout_cluster_reissue.json)
+
+[`artifacts/q011d_forced_quadratic_homological.json`](artifacts/q011d_forced_quadratic_homological.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

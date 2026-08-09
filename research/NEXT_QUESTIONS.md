@@ -10895,6 +10895,51 @@ prequalificationである。実際のHessian、forcing support、\(W_2\)、\(R_2
 independent derivative、invariance residual order、forced SSM existence／uniqueness、normal attractionは
 未認証である。acceptedの場合だけQ011e dense forced quadratic chartを事前登録する。
 
+### Q011d 最終結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the forced quadratic external homological family is numerically nonresonant and solvable`
+として`accepted`とした。
+
+- selected／external／full fixed-leaf eigenvalue count:
+  `24 / 2574 / 2598`
+- maximum structural／conjugate-spectrum residual:
+  `7.35746952368904e-14 / 1.3286214932264194e-14`
+- global normal gap／full fixed-leaf radius／spectral quotient:
+  `0.0020611211549740327 / 0.9920954673551019 / 1.128181043680419`
+- 300 pairのsector count \(k_x=0,1,16,2,15\):
+  `102 / 54 / 54 / 45 / 45`
+- sector leakage／maximum action error／product-spectrum error:
+  `0.0 / 2.4215004011706513e-16 / 0.0`
+- numerical singular block count:
+  `0`
+- minimum operator singular value／spectral distance:
+  `0.0001550243474275936 / 0.00019318395013023792`
+- maximum condition／direct-solve residual:
+  `15018.139810898925 / 3.0754729793416724e-15`
+- maximum conjugate-sector scalar discrepancy:
+  `2.0227681201111162e-11`
+- 20 sector-wide probe maximum residual／response amplification:
+  `1.620591689280895e-13 / 361.53308227372094`
+- input／linear-split／pair-family／sector-probe／result digest:
+  `ee2713e8169ea0f475ddee1b1233964ba40739d2276b78db3fff5410158dd2f8` /
+  `7208875ff95f3a768e4b822cf9be854228d6664800dfc69218c0e6a030a0c63e` /
+  `f9caee5b591e74b40b497ca7eb8244f1bbaeba71d239684c47d8215c46c2fb0b` /
+  `feb864e2725e0cf726b43c443bb48b53f34ba0ac54693bb97a2b986f598a1414` /
+  `a6941371e54a5e4d4abbea2f835196ddd7cce35c7c266ce399020764ed5b9dd7`
+- runner／artifact newline-normalized SHA-256:
+  `815fe7e0101cc05cc44fcb224534762f0ef7625f8c9604ff0a822c13171a617d` /
+  `c3acb9b7acc6e3121cb6e48a04bb060b5c95d7b128fe15fb11b67ee456337fd0`
+
+全300 blockのfull singular spectrum、rank、spectral distance、condition、direct solveと、
+5 sector × 4 RHSのfull nonnormal Sylvester probeを完全列挙した。従ってcanonical forced
+endpointのquadratic external operator familyは有限binary64範囲でprequalifiedである。
+
+これはforced quadratic chartの構築ではない。実Hessian、quadratic forcing support、\(W_2\)、
+\(R_2\)、homological residual、独立微分、invariance residual orderはまだ観測していない。
+20 probeもrigorous inverse norm boundではなく、spectral quotientをsmoothness／uniqueness定理には
+読み替えない。次はQ011e dense forced quadratic chartを観測前に事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
