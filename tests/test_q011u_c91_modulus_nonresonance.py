@@ -263,8 +263,16 @@ def test_q011u_artifact_records_the_valid_rejection_if_generated() -> None:
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     cycle = artifact["cycle"]
 
+    assert _file_sha256(artifact_path) == (
+        "4e0a74cffaeb6781b85621362d4463ac8d9ab98ee14bcf3b5764642b5a15d5e4"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011u_c91_modulus_nonresonance.py",
+        "sha256": "fa3c7c01355c0b3c19b58618fe97edc5863dc2d0fa02c4f810ddbc57053a419e",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "rejected"
