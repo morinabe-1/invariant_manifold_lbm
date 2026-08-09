@@ -8139,11 +8139,18 @@ streaming、filter各段階のpositivityは扱わず、通過時にも次のQ007
   `5783df74abb4b6ec7d658fd7e3dd272cf100cd134783c31863d643fcd17d4200` /
   `bafd9a56d2d2ceb94acb709609bd710c9fff0f6c0bf543202fa411b9456fb6e0`
 - Q007t old-tube population oracle artifact／runner SHA-256:
-  `de5ee6db33e06459c64e5cea92b206673938d5f8d6fef948e5b4496dcca92283` /
+  `2089d97aa19248cc17689f3e7a01e113540e5afc329ffa5cb3a4c511a43a8529` /
   `1e00281c71b5ea5d06fedcebd9bd483a73e6ec111388df20e8255ae3aefed877`
 - transitive Q007p artifact／runner SHA-256:
   `a5e766938cfee0174deba9c529be9aec2cce4bff9225a3a4a1da83f7d255a751` /
   `23ff283acb3f872fd2ff489f17d94b8e022e3f45a5c65b5523bf976c534a9f2a`
+
+訂正記録: 事前登録直後の最初のinput-only実装監査で、Q007t artifactに当初記した
+`de5ee6db33e06459c64e5cea92b206673938d5f8d6fef948e5b4496dcca92283`がraw-byte SHA-256であり、
+この研究でartifact provenanceに用いるnewline-normalized SHA-256ではないことを検出した。
+既存Q007t封印結果、Q007u input、研究ログに保存済みのnewline-normalized値`2089...`へ、
+Q007ahのvalidityがfailした状態のまま、hypothesis結果を採用する前に訂正した。ファイル内容、runner、
+数値bound、成功条件は変更していない。
 
 Q007agについてscope、accepted classification、validity `6 / 6`、hypothesis `5 / 5`、
 input／candidate／result digest、selected candidate、全6 candidate gate、forward-invariance theoremを
