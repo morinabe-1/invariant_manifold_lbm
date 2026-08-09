@@ -3093,6 +3093,55 @@ global minimum witnessは
 all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
 認証していない。次はQ011acでdegree 9を監査する。
 
+### Q011ac degree-9 refined-envelope nonresonance certificate
+
+degree 9で直接必要なselected 24／external 36の60 identifierを再構成し、Q011abの36 recordもexactに
+保存する64-record monotone uniform envelopeへ拡張した。Q011uのdegree-9 inventory
+`220 = 215 old-separated + 5 overlap`を再構成し、5 overlapを87260 monomial／82872
+Fourier-compatible comparisonへ展開した。
+
+- classification:
+  `degree-9 external nonresonance is certified by the contained uniform transformed-residual envelope and exact Fourier-sector indexed-modulus products`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- outcome: `accepted`
+- aggregate／expanded control／old-separated／overlap: `220 / 2002 / 215 / 5`
+- monomial／compatible comparison: `87260 / 82872`
+- compatible／incompatible monomial: `26578 / 60682`
+- individual modulus separation／unresolved: `82872 / 0`
+- relation count: product below target `57120`、target below product `25752`
+- overlap別minimum gap:
+  `5.620482708927926e-5 / 6.297629130186793e-6 / 6.974283071507663e-5 / 7.648737435877863e-4 / 4.589058211328851e-4`
+
+global minimum witnessは
+
+`block=16;center=152 × (block=0;center=147)^6 × (block=16;center=149)^2`
+
+対target `block=14;center=143`で、relationは`product_below_target`だった。最小値
+`6.297629130186793e-6`は登録下限`5e-6`を通過した。従ってcertified degreesは
+`2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 91+`、missing rangeはdegrees 10--90となった。
+
+- 64-ID uniform-record digest:
+  `686812fcf2eaee7eab3766bd23405dd747cc7440ac762e10ce7c2abad3b51b6a`
+- monomial／compatible-pair framed digest:
+  `ce7c15884773b2eac4c3f2ca499f2698b5a9eecddc9cb915624c63adb764b455` /
+  `5f1330d1b2f8b404e4c7fce7d629521c756b33d5f2ca735b018c50e0abd7a308`
+- exact-product／comparison framed digest:
+  `4de9bbef5a45e751d772f4c68425cb3bc5d6f8614dedd051663e07992775e98d` /
+  `a2dd6eb42b9067d8671653ac7912b202ac417f55c01bcd23e4251fafc7413c9e`
+- input／inventory／sector／product／result digest:
+  `9736be0479a5bea455a48fc1723eb92400a34c332c0484f6eb5ee8f01cf1de83` /
+  `0c54f22e4907d676d014a8b512a4eff07d55adc5b9a20905b085a8548158f15e` /
+  `b877b5db479071043c52605725e44a350efdf402ff70795c9bcf9cf664cdb02a` /
+  `29fe385171af17292a0afa303e0bf406b678a02f41367932a12395948e9b47b7` /
+  `7fd97a88d2fb3d0c20098cca73702b376493bd5635b98f7cb17494c518dd7173`
+- runner／artifact newline-normalized SHA-256:
+  `d028f83bf45c18977fccd58091007507a69a0c725a6f4f22d3527246d8344277` /
+  `018fab41465f4fefcd3df03a05bcd7ad2445f2e840eae66cd8ff0f1d4522f773`
+
+これは固定17² repaired exact map、固定保存量葉、degree 9だけのcertificateである。degrees 10--90、
+all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
+認証していない。次はQ011adでdegree 10を監査する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -3765,6 +3814,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011z_degree6_refined_modulus.json`](research/artifacts/q011z_degree6_refined_modulus.json)
 - [`research/artifacts/q011aa_degree7_refined_modulus.json`](research/artifacts/q011aa_degree7_refined_modulus.json)
 - [`research/artifacts/q011ab_degree8_refined_modulus.json`](research/artifacts/q011ab_degree8_refined_modulus.json)
+- [`research/artifacts/q011ac_degree9_refined_modulus.json`](research/artifacts/q011ac_degree9_refined_modulus.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -3900,6 +3950,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q011z degree-6 uniform refined envelope、11280 monomial／6956 comparison、degree-6 nonresonance
 - Q011aa degree-7 uniform refined envelope、58992 monomial／44380 comparison、degree-7 nonresonance
 - Q011ab degree-8 36-identifier refined envelope、110352 monomial／86176 comparison、degree-8 nonresonance
+- Q011ac degree-9 64-record monotone refined envelope、87260 monomial／82872 comparison、degree-9 nonresonance
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -3910,7 +3961,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 9--90 external
+- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 10--90 external
   nonresonance、spectral-quotient SSM uniqueness（Q011uはmodulus-only routeを棄却）
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
@@ -4041,4 +4092,7 @@ comparisonへ完全展開し、全件をindividual modulusで分離した。unre
 `6.603546614599508e-6`であり、degree-7 external nonresonanceを認証した。Q011abではexternal group
 167を加えた36-ID包絡を構成し、degree 8の7 overlapを110352 monomial／86176 comparisonへ展開した。
 全件がindividual modulusで分離し、minimum gapは`6.450587884958278e-6`だった。従ってdegree-8
-external nonresonanceを認証し、missing rangeはdegrees 9--90へ縮んだ。
+external nonresonanceを認証した。Q011acではQ011abの36 recordをexactに保存する64-record monotone
+envelopeを構成し、degree 9の5 overlapを87260 monomial／82872 comparisonへ展開した。全件が
+individual modulusで分離し、minimum gapは`6.297629130186793e-6`だった。従ってdegree-9 external
+nonresonanceを認証し、missing rangeはdegrees 10--90へ縮んだ。
