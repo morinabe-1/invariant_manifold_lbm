@@ -10105,6 +10105,186 @@ binary64 prequalificationであり、rigorous existence／uniqueness、forced sl
 external gap、nonresonance、normal attraction、不変多様体は未認証である。次はQ011cでslow
 spectral clusterと外部gapを事前登録する。
 
+## Q011c: forced slow spectral cluster continuation — 事前登録
+
+### 問い
+
+Q006hで選んだunforced first-shell hydrodynamic 24-mode subspaceは、Q011bの零平均single-wave
+forced fixed pointまで、固定保存量葉上の共役閉invariant clusterとして連続化できるか。さらに、
+そのclusterは全external spectrumから分離され、linear modulusでstrictにnormally dominantか。
+
+このgateでは個別shear／acoustic labelをforced endpointへ割り当てない。追跡対象はordered-Schur
+invariant subspace、Riesz projector、cluster全体のeigenvalue setである。通過してもforced invariant
+manifold、nonlinear normal attraction、nonresonance、homological equationはまだ主張しない。
+
+### 封印入力
+
+- Q011b artifact／runner newline-normalized SHA-256:
+  `477202184694da1386c6b5bc0f0441e004a7a44f7a7b064f1d060d50adc66c27` /
+  `bac9448f280ce2dfb2e1627ce1558b792cb53e05746b94246baa6c329b8c8ef0`
+- Q011b input／fixed-point／spectrum／result digest:
+  `53dea81353ed4bcd77ab0c06533528f6d867d8b1bfa80d3d2ac3eddd7cf7dfbb` /
+  `8db05ad1e7ae7806b70b6330d798f6dad05bc8718027ba13cb315116b021b17c` /
+  `3ab8866e141b64a4d1d81bdfae1a70c61d8e7964d8480e2bd7ec7c7e174850fc` /
+  `66c4b579dbd7d7c391fd2017f165c2de251ecf850b7c485cb936b9742c8addf6`
+- Q006h artifact newline-normalized SHA-256:
+  `71ff668cbc247450029840bf5de71e6ecbd364c5fcca21c9e8ec8085a5ee956c`
+- sealed package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+
+Q011b stored cycleをfresh replayし、validity 6/6、hypothesis 4/4、accepted classification、
+forced fixed point、全2598 fixed-leaf spectrumをexact JSON一致で再現する。Q006hはread-onlyで
+`cluster-complete filtered finite-ladder prequalification passed`、selected
+\((\eta,\omega)=(0.01,1.5)\)、24-mode first-shell cluster、registered normal-gap threshold
+\(10^{-6}\)、projector ceiling 100を再現する。
+
+### fixed-point amplitude path
+
+Q011b forceを
+
+\[
+F_x^{(t)}(y)=t\,3\,2^{-24}\cos(2\pi y/17),\qquad
+t_j=j/8,\quad j=0,\ldots,8
+\]
+
+とscaleする。観測後のadaptive subdivisionは行わない。Q011bと同じ153×150 fixed-leaf basis、
+analytic Jacobian、Newton最大12 step、line-search
+\(1,1/2,\ldots,1/64\)、residual閾値を再利用する。
+
+forward pathはrestから\(t_0\to t_8\)、backward pathはQ011b stored endpointから
+\(t_8\to t_0\)へ進み、各solveの直前node stateを初期値とする。各nodeでprojected／full／maximum
+component residualを`5e-13 / 5e-12 / 5e-13`以下とする。対応nodeのforward／backward state distanceを
+`<=1e-11`、二stateのrest departureの大きい方を分母とするrelative distanceを`<=1e-8`とする。
+forward endpointとQ011b stored stripe stateも同じ二閾値内で一致させる。全trace、line-search decision、
+state hashを保存する。
+
+### unforced reference cluster
+
+Q006hの8 first-shell wave
+
+\[
+(n_x,n_y)\in\{-1,0,1\}^2\setminus\{(0,0)\}
+\]
+
+にあるshear／acoustic-positive／acoustic-negativeの全3 modeをreferenceとする。外力後はy-translationが
+失われるため、x-Fourier blockごとのselected dimensionだけを次のように固定する。
+
+\[
+\begin{array}{c|c|c}
+k_x\text{ index} & t=0\text{ selected }k_y\text{ indices} & \dim_{\mathbb C}\\
+\hline
+0 & -1,+1 & 6\\
+1 & -1,0,+1 & 9\\
+16\ (-1) & -1,0,+1 & 9
+\end{array}
+\]
+
+\(k_x=0\) blockはQ011bと同じ150次元fixed leafへ制限し、\(k_x=1,16\)は153次元full blockを使う。
+従ってtotal selected complex dimensionは24で、\(k_x=1\)と16の共役制約および\(k_x=0\)の
+real-conjugacy closureによりphysical real dimensionも24とする。
+
+\(t=0\)ではregistered filtered Fourier symbolのhydrodynamic eigenvalue setをtargetとして
+ordered complex Schur分解を行う。次nodeでは前node selected eigenvalue setと全current eigenvalueの
+absolute-distance costをHungarian assignmentし、そのpartitionをnearest selected／excluded
+Schur selectorへ渡す。cluster内部のpermutationは失敗としない。backward trackingはforward endpoint
+clusterから逆順に同じ規則を使う。さらに\(t=1\)でunforced targetから直接選んだcontrol clusterを
+一つ作る。
+
+### path／projector gate
+
+全9 node、3 selected blockで次を要求する。
+
+- ordered selected dimensionが`6 / 9 / 9`で一定、Schur selector count failureが0。
+- 隣接nodeのmaximum principal angleを`<=0.05` radとする。
+- 各node selected rangeと対応unforced reference rangeのminimum singular-value alignmentを
+  `>=0.95`とする。
+- selected／excluded eigenvalue setのminimum absolute separationを`>=1e-6`とする。
+- selected Riesz projector 2-normを`<=100`とする。
+- Schur reconstruction relative residual、unitarity Frobenius residual、selected invariance relative
+  residual、projector idempotency Frobenius residual、projector commutator relative residualを
+  各`<=1e-10`とする。
+- forward／backward対応clusterと、forward endpoint／direct endpoint controlのmaximum principal
+  angleを各`<=1e-6`とする。
+- \(k_x=1\) projectorと\(k_x=16\) projectorのcomplex-conjugacy relative error、selected-spectrum
+  absolute Hausdorff errorを`<=1e-10`、subspace principal angleを`<=1e-6`とする。
+- \(k_x=0\) selected projectorのimaginary relative normを`<=1e-10`とする。
+
+individual eigenvector、forced shear／acoustic label、cluster内部branch permutationはgateに使わない。
+
+### checkpoint external separation／normal dominance
+
+\(t=0,1/2,1\)だけを登録checkpointとし、各selected blockのordered Schur partition
+
+\[
+T=\begin{pmatrix}T_s&C\\0&T_e\end{pmatrix}
+\]
+
+からSylvester operator
+
+\[
+\mathcal S=I_e\otimes T_s-T_e^T\otimes I_s
+\]
+
+を明示的に構成する。全9 checkpoint-blockのminimum singular valueを`>=1e-5`とする。
+
+同じ3 checkpointでは全17個のx-Fourier fixed-leaf spectrumを再列挙する。selected 24 eigenvalueの
+minimum modulusと、上記3 blockのexcluded eigenvalueおよび残り14 blockの全eigenvalueからなる
+external spectrumのmaximum modulusを比較し、
+
+\[
+\Delta_{\rm normal}
+=\min_{\lambda\in\sigma_s}|\lambda|
+-\max_{\mu\in\sigma_e}|\mu|
+\ge10^{-6}
+\]
+
+を要求する。全fixed-leaf spectral radiusも`<=0.9999`とする。参考値として
+\(\log(\max|\sigma_e|)/\log(\min|\sigma_s|)\)を記録するが、整数spectral quotientやsmoothness classは
+このgateで主張しない。
+
+\(t=1\)のfull fixed-leaf spectral radius、unit count、resolvent singular-value／condition witnessは
+Q011b artifactとabsolute`<=1e-12`で一致させる。
+
+### validity gate
+
+1. Q011b artifact／runner／四digest／stored cycleとQ006h artifact／selected family／package sourceを
+   封印どおりfresh replayする。
+2. 登録9-node fixed-point forward／backward pathがfiniteに完走し、residual、state agreement、
+   Q011b endpoint reproductionを満たす。
+3. unforced 8-wave×3-mode reference、`6 / 9 / 9` partition、fixed-leaf restriction、
+   ordered-Schur／Riesz constructionを再現する。
+4. 全nodeのSchur／projector／path reversal／direct endpoint／conjugacy診断が登録閾値内である。
+5. 3 checkpointでSylvester operatorと全fixed-leaf spectrumを再列挙し、Q011b endpoint spectrumを
+   登録誤差内に再現する。
+6. 全値finiteなstrict JSON、input／path／spectrum／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、cluster hypothesisを解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を独立に要求する。
+
+1. fixed-point amplitude pathが両方向で同じQ011b endpointへ接続する。
+2. 24-dimensional conjugacy-closed selected clusterがdimension、alignment、adjacent／reversal／direct
+   endpoint angle gateを通り、external clusterとの交換がない。
+3. 全nodeのexternal eigenvalue separation、Riesz projector norm、3 checkpointのSylvester
+   separationが閾値内である。
+4. 3 checkpoint全てでglobal modulus normal-dominance gapが`>=1e-6`、full fixed-leaf spectrumが
+   strictly stableである。
+
+全て通れば
+`the Q006h first-shell hydrodynamic subspace continues to a separated linearly normally dominant forced fixed-leaf spectral cluster`
+として`accepted`とする。validityは通るがdimension exchange、separation、projector、
+normal-dominanceのいずれかが落ちれば
+`the registered first-shell cluster does not remain spectrally separated under forcing`
+として`rejected`とする。
+
+acceptedでもfinite 9-node amplitude path、単一\(17^2\) grid、単一endpoint amplitudeのlinear
+prequalificationに限る。continuous-\(t\) theorem、rigorous projector enclosure、individual mode label、
+external nonresonance、spectral quotient smoothness、forced SSM existence／uniqueness、quadratic chart、
+normal attraction、basin、他grid／amplitude、wall boundaryを主張しない。acceptedなら次はQ011dで
+forced selected clusterに対するquadratic external nonresonance／homological operatorを別途事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
