@@ -268,6 +268,12 @@ Q011f自体の棄却は変更していない。Q011gではこのforced (W_2/R_2)
 Q011hでは未使用24方向×3振幅のnatural sparse経路とdense経路を64 reduced stepまで
 独立更新し、9,360 common-input actionと4,680 state、576 checkpoint defectを全て登録閾値内で
 一致させた。従ってこの固定係数のnatural Fourier-sparse chart同値性を`accepted`とした。
+Q011iではQ011b waveformのbinary64値をexact dyadicとして再監査し、その和が
+\(-71/2^{78}\ne0\)であるためraw exact-real mapにはglobal momentum obstructionが残ることを確認した。
+reflection pairのmidpoint丸めと登録ULP search、exact-moment source allocationによりlocal／global
+保存ledgerが厳密に0となる別のrepaired mapを一意に構成した。validity `6 / 6`、hypothesis `4 / 4`を
+通過し、repaired fixed pointと全17 spectrum blockはQ011b数値baselineとbitwise同一だったため
+`accepted`とした。Q011bの数値結果は変更せず、Q011e--Q011hのraw-map coefficientも修復mapへ移さない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -2071,6 +2077,51 @@ forced quadratic chart実装baselineとする。ただしfull LBM orbitを64 ste
 Q011f／Q011f1のshadowing outcome、all-time equivalence、forced SSMの存在・一意性、normal attraction、
 basinは追加認証しない。Q011gのTT棄却を変更せず、TT-crossを開始しない。
 
+### Q011i exact-dyadic zero-mean forcing compatibility repair
+
+Q011bのbinary64 cosine waveformとsourceをexact dyadic arithmeticで再監査した。raw waveformの和は
+\(-71/2^{78}\)、raw global x-momentum sourceはnonzeroであり、exact-real mapとしてはfixed pointと
+両立しない。登録済みのreflection midpoint丸めと2,056候補のULP searchはpair `(3,14)`の
+`+7 ULP`を選び、exact sum 0のwaveformを一意に得た。各siteではaxis／diagonal source amplitudeを
+最大1 ULPだけ調整し、保存したbinary64 source entryそのものについてmass／x-momentum／y-momentumの
+local ledgerとglobal ledgerをexactに閉じた。
+
+- classification:
+  `the exact-dyadic zero-mean repair preserves the numerical forced fixed-point and linear-spectrum baseline`
+- validity／hypothesis gates: `6 / 6` passed、`4 / 4` passed
+- raw exact waveform sum／global x-momentum source:
+  `-71 / 2^78` / `-267 / 2^80`
+- repaired waveform selected pair／shift／changed entries:
+  `(3,14) / +7 ULP / 11`
+- waveform maximum-component／relative-ℓ2／Fourier-leakage perturbation:
+  `1.4558378780933287e-22 / 3.9903677672599853e-16 / 2.661531424982623e-16`
+- source maximum selected shift／maximum-component／relative-ℓ2 perturbation:
+  `1 ULP / 4.963083675318166e-23 / 4.0883745079611583e-16`
+- repaired waveform／source SHA-256:
+  `025d6122db8e0d3512224ce4a2af82d57b5728ce0c7450425436218dd561bcbf` /
+  `24bb558464cce4ac154b3f2574bd1fe816d11d58c9365e8312f12b0a389df490`
+- two-start／repaired-vs-Q011b state ℓ2 distance: `0 / 0`
+- representative repaired／sealed Q011b stripe-state SHA-256:
+  `612ef4aca91a5c0100286988e0e7979342a9046c3c78fe60ee59ca4e232a7613`
+- maximum block-matrix relative perturbation／spectrum Hausdorff distance: `0 / 0`
+- spectral radius／minimum σmin(I-J)／maximum condition(I-J):
+  `0.9920954673551019 / 0.00649328212134047 / 360.53472657220163`
+- input／repair／fixed-point／spectrum／result digest:
+  `81a1dc3f9fe934d8e9391dbfe6b80701d68c04b7db954da2f62e92b581dd5b51` /
+  `910a82fa1485ce8ad6b488c5bb71ad0c8bcb12b98b6202ebc3805caa8f4a3239` /
+  `3adfbcfc7d5e9c3396bbfb60b8d10dce6ff080b90097b82f40b4c057b8518f1e` /
+  `5e63b9cc22a662238391dc83b8de1a81eb259af25b3ad2335e481bb0cf83466d` /
+  `ac94658b95d2ae1f190fab57af3bd80dbf50a4addd37f6bb7bee27d6aa1d2398`
+- runner／artifact newline-normalized SHA-256:
+  `2cec0472422ba02bb925e8c90336000058def7c36303479a4037405f873b9b88` /
+  `1c8b11a3ae47895a79639a5cfe901ec936fbdde8d10273c56c1578b9a88780ea`
+
+修復量は小さく、現在のbinary64演算ではfixed pointとlinear blocksにbitwiseな変化を生じなかったが、
+exact-real mapの保存則compatibilityはraw sourceと異なる。従ってQ011bのnumerical `accepted`は維持し、
+Q011e--Q011hのraw-map coefficient、残差次数、shadowingを修復mapへ自動移植しない。次はQ011jで
+repaired mapのexact affine fixed-leaf coordinateとinterval Newton／Krawczyk fixed-point proofを
+独立に事前登録する。区間存在・局所一意性、rigorous spectrum、forced SSM、normal attractionは未認証である。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2628,6 +2679,7 @@ python -m research.q011f_multistep_shadowing --output research/artifacts/q011f_m
 python -m research.q011f1_heldout_amplitude_reissue --output research/artifacts/q011f1_heldout_amplitude_reissue.json
 python -m research.q011g_forced_representation_audit --output research/artifacts/q011g_forced_representation_audit.json
 python -m research.q011h_sparse_chart_equivalence --output research/artifacts/q011h_sparse_chart_equivalence.json
+python -m research.q011i_exact_zero_mean_repair --output research/artifacts/q011i_exact_zero_mean_repair.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2711,6 +2763,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011f1_heldout_amplitude_reissue.json`](research/artifacts/q011f1_heldout_amplitude_reissue.json)
 - [`research/artifacts/q011g_forced_representation_audit.json`](research/artifacts/q011g_forced_representation_audit.json)
 - [`research/artifacts/q011h_sparse_chart_equivalence.json`](research/artifacts/q011h_sparse_chart_equivalence.json)
+- [`research/artifacts/q011i_exact_zero_mean_repair.json`](research/artifacts/q011i_exact_zero_mean_repair.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2820,6 +2873,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q011f／Q011f1 64-step forced-chart shadowing campaign、early-horizon解像失敗とheld-out-amplitude再発行
 - Q011g natural Fourier-sparse baselineと6 uncapped TT-SVD bundleのfidelity／storage／timing比較
 - Q011h dense／natural-sparse経路の64-step reduced-chart／checkpoint-defect同値性
+- Q011i raw binary64 forcingのexact-dyadic obstruction、reflection-symmetric exact-zero-sum waveform、
+  exact local／global moment source、Q011b fixed-point／spectrum numerical bridge
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2830,6 +2885,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
+- Q011i repaired fixed pointのinterval existence／local uniqueness、rigorous spectrum
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
 
@@ -2906,3 +2962,7 @@ Q011hでは新規72初期値のdense／natural-sparse reduced trajectoryを別�
 9,360 action、4,680 lifted state、576 checkpoint defectを全て登録閾値内で一致させた。
 従ってnatural sparseをforced quadratic chartの実装baselineとするが、full-state 64-step orbit、
 all-time equivalence、forced SSM存在・一意性、normal attractionは未認証である。
+Q011iではQ011b raw waveform／sourceのexact dyadic global-momentum obstructionを再現し、登録した
+reflection／ULP searchでexact-zero-sum waveformとexact local／global-moment sourceを構成した。
+修復後の二Newton start、fixed point、17 block spectrumはQ011b numerical baselineとbitwise同一だった。
+ただしraw mapとrepaired mapは数学的に別であり、Q011e--Q011h coefficientは移植していない。

@@ -12280,6 +12280,53 @@ spectrumに限る。Q011b--Q011hのraw-map outcomeを変更せず、repaired map
 residual order、shadowingを移さない。区間fixed-point存在・一意性、区間spectrum、external nonresonance、
 forced SSM、normal attraction、basin、他grid／force／wall、D3Q27は主張しない。
 
+### Q011i 実行結果
+
+validity `6 / 6`、hypothesis `4 / 4`を通過し、
+`the exact-dyadic zero-mean repair preserves the numerical forced fixed-point and linear-spectrum baseline`
+として`accepted`とした。
+
+- raw exact waveform sum／global x-momentum source:
+  `-71 / 2^78` / `-267 / 2^80`
+- waveform search candidate count／selected pair／shift: `2,056 / (3,14) / +7 ULP`
+- repaired exact waveform sum／changed entry count: `0 / 11`
+- waveform maximum-component／relative-ℓ2／Fourier-leakage perturbation:
+  `1.4558378780933287e-22 / 3.9903677672599853e-16 / 2.661531424982623e-16`
+- source shape／nonzero count／maximum selected shift: `(17,1,9) / 102 / 1 ULP`
+- source maximum-component／relative-ℓ2 perturbation:
+  `4.963083675318166e-23 / 4.0883745079611583e-16`
+- repaired local exact ledger: `17 / 17` pass
+- repaired global mass／x-momentum／y-momentum ledger: exact `0 / 0 / 0`
+- repaired waveform／source SHA-256:
+  `025d6122db8e0d3512224ce4a2af82d57b5728ce0c7450425436218dd561bcbf` /
+  `24bb558464cce4ac154b3f2574bd1fe816d11d58c9365e8312f12b0a389df490`
+- zero／sealed-coordinate start Newton steps: `2 / 0`
+- terminal projected／full／component residual:
+  `3.4838391155252677e-16 / 4.088062755440557e-16 / 1.6653345369377348e-16`
+- two-start state distance／repaired-vs-sealed Q011b state distance: `0 / 0`
+- representative repaired／sealed stripe-state SHA-256:
+  `612ef4aca91a5c0100286988e0e7979342a9046c3c78fe60ee59ca4e232a7613`
+- minimum population／density: `0.027775908313351423 / 0.9999999999999997`
+- maximum block-matrix relative perturbation／spectrum Hausdorff distance: `0 / 0`
+- fixed-leaf eigenvalue count／spectral radius: `2,598 / 0.9920954673551019`
+- minimum σmin(I-J)／maximum condition(I-J): `0.00649328212134047 / 360.53472657220163`
+- input／repair／fixed-point／spectrum／result digest:
+  `81a1dc3f9fe934d8e9391dbfe6b80701d68c04b7db954da2f62e92b581dd5b51` /
+  `910a82fa1485ce8ad6b488c5bb71ad0c8bcb12b98b6202ebc3805caa8f4a3239` /
+  `3adfbcfc7d5e9c3396bbfb60b8d10dce6ff080b90097b82f40b4c057b8518f1e` /
+  `5e63b9cc22a662238391dc83b8de1a81eb259af25b3ad2335e481bb0cf83466d` /
+  `ac94658b95d2ae1f190fab57af3bd80dbf50a4addd37f6bb7bee27d6aa1d2398`
+- runner／artifact newline-normalized SHA-256:
+  `2cec0472422ba02bb925e8c90336000058def7c36303479a4037405f873b9b88` /
+  `1c8b11a3ae47895a79639a5cfe901ec936fbdde8d10273c56c1578b9a88780ea`
+
+修復後のsourceはexact-real ledgerを閉じる一方、登録binary64計算ではQ011b fixed pointと全17
+linear blockをbitwiseに変えなかった。これは修復mapのfixed-point numerical baselineを確立するが、
+Q011e--Q011hのraw-map coefficient、residual-order、shadowingは移植しない。Q011bのnumerical
+`accepted`も再採点しない。次は事前登録どおりQ011jでexact affine fixed-leaf coordinateと
+interval Newton／Krawczykによる存在・局所一意性証明を行う。それまではrigorous fixed point、
+rigorous spectrum、forced SSM存在・一意性、normal attractionを主張しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
