@@ -257,6 +257,9 @@ dense \(W_2/R_2\)を構築し、homological／graph-gauge／保存則／実座�
 分け、閾値を緩めず独立seed・拡大振幅窓のQ011e1を別gateとして実行した。Q011e1では32/32方向が
 eligibleとなり、linear／quadraticのprimary・上位4点secondary slopeが全て登録区間を通ったため
 `accepted`とした。これはQ011eの再採点ではなく、有限独立窓で残差次数を確認した新しい結果である。
+Q011fでは別seedの160初期値を64 step追跡した。誤差次数、quadratic改善、64-step相対誤差、positivity、
+保存則は通ったが、direction 4のhorizon 1・2でquadratic errorのfit点が3個しかなく、登録要求
+`224 / 224`に対して`222 / 224`だったため`rejected`とした。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1876,6 +1879,51 @@ slope interval、最低eligible方向数を維持し、5点primary fitとbridge�
 forced SSM existence／uniqueness、nonlinear normal attraction、basinは未認証である。次はQ011fで
 独立multi-step shadowing windowを事前登録する。
 
+### Q011f independent multi-step forced-chart shadowing window
+
+Q011e1とQ011eのoutcomeを封印し、Q011e chartを同じ6 array hashで再構築した。未使用seed
+`20260826`の32方向、Q011e1と同じ5振幅から、linear／quadratic各160 full orbitとreduced-lift orbitを
+64 step追跡した。全10,240 stepでerror、positivity、conservation、coordinate normを保存し、7 horizonの
+1,120 checkpointでstate hashと振幅slopeを評価した。
+
+- classification:
+  `the forced quadratic chart fails the registered finite shadowing window`
+- validity／hypothesis gates: `6 / 6` passed、`5 / 6` passed
+- slope-eligible／degenerate direction-horizon fits:
+  `222 / 224`、`2 / 224`
+- degenerate witnesses:
+  direction `4`、horizon `1 / 2`、linear／quadratic fit points `5 / 3`
+- witness quadratic errors at amplitudes `1.6e-4 / 3.2e-4`:
+  horizon 1 `1.1752258806252989e-13 / 9.402263023336189e-13`、
+  horizon 2 `1.1463003790416861e-13 / 9.171105405464717e-13`
+- eligible linear／quadratic slope range:
+  `1.9999216343019504 -- 2.000128344576816` /
+  `2.999096737571295 -- 3.000265091846932`
+- maximum checkpoint quadratic／linear error ratio:
+  `0.002547526388856511`
+- maximum horizon-64 quadratic error／initial amplitude:
+  `1.1019505895816554e-6`
+- minimum full-or-lifted population／maximum conservation drift:
+  `0.027704572566416702 / 1.8214860035899544e-12`
+- maximum linear／quadratic reduced-coordinate amplification:
+  `1.3831860210790254 / 1.38318678185839`
+- direction SHA-256:
+  `4d0bef57236d4f70a8a8f422b1bdfa39cd5737c88401c2441decdd98d886d2f9`
+- input／chart-reconstruction／trajectory／result digest:
+  `e9b29c95d41af0062259d3aab19ab2c58175cd98582ed82f3af36863f023bc53` /
+  `aa1da452db8ff6b84e88a32f7a7119c63816b12e283147daaa303e9e09c3ae42` /
+  `aa62fc11a36bef881bbcdb05919818f6db167f3f95eee396fcdaf79fead5e182` /
+  `629a5a7a3d3bfed12a590646c375d4977db1726ddc521ddb86394786b1005f22`
+- runner／artifact newline-normalized SHA-256:
+  `e9c0a8e38b94dbe693855dc836f8cf02393675b417ff3f43fc43059ab361a741` /
+  `9c091dbafd60617850cd3168f3ad9235a353b0990cbd003df9be0b487ead1591`
+
+失敗は長時間shadowing劣化ではない。唯一落ちたgateは`224 / 224` eligibilityで、direction 4の最初の
+2 horizonでは第2振幅のquadratic errorが登録floor `1e-12`を僅かに下回り、高振幅側3点しかfitに
+残らなかった。他222 fitの次数と、全checkpoint改善、64-step相対誤差、positivity、保存則は通った。
+それでもQ011fを合格へ読み替えない。次はfloorを下げず、未使用amplitudeを追加する独立再発行gateを
+事前登録してからQ011gへ進む。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2429,6 +2477,7 @@ python -m research.q011c2_heldout_cluster_reissue --output research/artifacts/q0
 python -m research.q011d_forced_quadratic_homological --output research/artifacts/q011d_forced_quadratic_homological.json
 python -m research.q011e_forced_quadratic_chart --output research/artifacts/q011e_forced_quadratic_chart.json
 python -m research.q011e1_enlarged_residual_window --output research/artifacts/q011e1_enlarged_residual_window.json
+python -m research.q011f_multistep_shadowing --output research/artifacts/q011f_multistep_shadowing.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2508,6 +2557,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011d_forced_quadratic_homological.json`](research/artifacts/q011d_forced_quadratic_homological.json)
 - [`research/artifacts/q011e_forced_quadratic_chart.json`](research/artifacts/q011e_forced_quadratic_chart.json)
 - [`research/artifacts/q011e1_enlarged_residual_window.json`](research/artifacts/q011e1_enlarged_residual_window.json)
+- [`research/artifacts/q011f_multistep_shadowing.json`](research/artifacts/q011f_multistep_shadowing.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2686,4 +2736,6 @@ quadratic chart、residual orderはこの段階では未実装だった。Q011e�
 しかなく、residual order gateだけを棄却した。従ってforced dense chartは構築済みだが、三次残差次数、
 normal attraction、不変多様体の存在・一意性、wall-bounded flowは未認証である。Q011e1では別seedの
 32方向と16倍まで拡大した振幅窓で二次／三次残差を全方向に解像し、primary／secondary fitを全通過した。
-ただし有限一段holdoutであり、Q011e自体の判定や上記未認証事項は変更しない。
+ただし有限一段holdoutであり、Q011e自体の判定や上記未認証事項は変更しない。Q011fの64-step
+campaignでは長時間性能gateを全て通したが、early horizonの2 fitがnoise floor上に3点しかなく、
+eligibility gateだけを棄却した。従って有限multi-step shadowingもまだ確認済みとは扱わない。

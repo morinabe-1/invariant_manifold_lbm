@@ -11444,6 +11444,54 @@ all-time shadowing、uniform remainder、basin、normal attraction、forced SSM 
 force／wall boundaryを主張しない。acceptedの場合だけQ011gでこのforced quadratic coefficient tensorの
 natural Fourier-sparse storageを確定し、TT-SVDを同じ残差・action・実メモリ基準で比較する。
 
+### Q011f 最終結果
+
+validity `6 / 6`を通過した。Q011e1 accepted artifactとQ011e rejected artifact、全digest、chartの6 array
+hashを再現し、linear／quadratic各160 trajectory、全10,240 step、1,120 checkpoint、224 fitを完全に
+保存した。
+
+hypothesisはeligible fitのlinear／quadratic slope、全checkpointのquadratic改善、64-step相対誤差、
+positivity／conservationの5 gateを通った。一方、全224 fit eligibleという登録gateだけが`222 / 224`で
+落ちたため、Q011fを`rejected`とした。
+
+- classification:
+  `the forced quadratic chart fails the registered finite shadowing window`
+- degenerate direction-horizon:
+  `(direction 4, horizon 1)`、`(direction 4, horizon 2)`
+- 両witnessのlinear／quadratic fit-point count: `5 / 3`
+- quadratic fit mask: `[false, false, true, true, true]`
+- horizon 1 quadratic errors at first two amplitudes:
+  `1.1752258806252989e-13 / 9.402263023336189e-13`
+- horizon 2 quadratic errors at first two amplitudes:
+  `1.1463003790416861e-13 / 9.171105405464717e-13`
+- eligible linear／quadratic slope range:
+  `1.9999216343019504 -- 2.000128344576816` /
+  `2.999096737571295 -- 3.000265091846932`
+- maximum checkpoint quadratic／linear error ratio:
+  `0.002547526388856511`
+- maximum horizon-64 quadratic error／initial amplitude:
+  `1.1019505895816554e-6`
+- minimum population／maximum conservation drift:
+  `0.027704572566416702 / 1.8214860035899544e-12`
+- maximum linear／quadratic reduced-coordinate amplification:
+  `1.3831860210790254 / 1.38318678185839`
+- direction SHA-256:
+  `4d0bef57236d4f70a8a8f422b1bdfa39cd5737c88401c2441decdd98d886d2f9`
+- input／chart-reconstruction／trajectory／result digest:
+  `e9b29c95d41af0062259d3aab19ab2c58175cd98582ed82f3af36863f023bc53` /
+  `aa1da452db8ff6b84e88a32f7a7119c63816b12e283147daaa303e9e09c3ae42` /
+  `aa62fc11a36bef881bbcdb05919818f6db167f3f95eee396fcdaf79fead5e182` /
+  `629a5a7a3d3bfed12a590646c375d4977db1726ddc521ddb86394786b1005f22`
+- runner／artifact newline-normalized SHA-256:
+  `e9c0a8e38b94dbe693855dc836f8cf02393675b417ff3f43fc43059ab361a741` /
+  `9c091dbafd60617850cd3168f3ad9235a353b0990cbd003df9be0b487ead1591`
+
+失敗は二つのearly-horizon fitのmeasurement-floor underresolutionへ局在化した。第2振幅のerrorは
+`1e-12`を約6--8%下回り、高振幅側3点だけが残った。他の222 fitと全長時間性能gateが通っても、登録した
+`224 / 224`を緩めずQ011fは再採点しない。次はQ011f1を別gateとして、同じdirection set・floor・horizon・
+slope／performance thresholdを固定し、未使用midpoint amplitude `4.8e-4`の32 trajectoryだけを追加する。
+Q011f1が通るまでfinite multi-step shadowing windowを確認済みとは扱わず、Q011gへ進まない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

@@ -4900,6 +4900,66 @@ continuous-amplitude family、forced SSM existence／uniqueness、nonlinear norm
 他grid／force／wall boundaryを示さない。次はQ011fで独立multi-step shadowing windowを観測前に
 事前登録し、その後にnatural Fourier-sparse baselineを残したTT／sparse費用評価へ進む。
 
+## 2026-08-09: Q011f independent multi-step forced-chart shadowing window
+
+### 問いと方法
+
+Q011e1 accepted artifactとQ011e rejected artifactを封印し、同じforced quadratic chartを一度だけ
+fresh再構築した。未使用seed `20260826`の32方向、5振幅について、linear／quadratic各160 full orbitと
+reduced-lift orbitを64 step追跡した。linear／quadraticは同じreduced coordinateから始めるが、それぞれ
+自分のchart上のphysical initial stateを使うsame-chart comparisonとした。
+
+全10,240 stepでshadowing error、minimum population、global conservation drift、reduced-coordinate normを
+保存し、horizon `1 / 2 / 4 / 8 / 16 / 32 / 64`の1,120 checkpointでは4 state hashを追加した。
+各direction・horizonの5振幅errorをfloor `1e-12`以上の点だけでfitし、224 fit全てに4点以上を要求した。
+
+### 結果
+
+validity `6 / 6`を通過した。hypothesisは5 gateを通ったが、slope-eligible fit countが登録`224 / 224`に
+対して`222 / 224`だったため、
+`the forced quadratic chart fails the registered finite shadowing window`
+として`rejected`とした。
+
+- degenerate direction-horizon:
+  `(4, 1)`、`(4, 2)`
+- linear／quadratic fit-point count: `5 / 3`
+- quadratic fit mask: `[false, false, true, true, true]`
+- horizon 1 first-two quadratic errors:
+  `1.1752258806252989e-13 / 9.402263023336189e-13`
+- horizon 2 first-two quadratic errors:
+  `1.1463003790416861e-13 / 9.171105405464717e-13`
+- eligible linear／quadratic slope range:
+  `1.9999216343019504 -- 2.000128344576816` /
+  `2.999096737571295 -- 3.000265091846932`
+- maximum checkpoint quadratic／linear error ratio:
+  `0.002547526388856511`
+- maximum horizon-64 quadratic error／initial amplitude:
+  `1.1019505895816554e-6`
+- minimum full-or-lifted population／maximum conservation drift:
+  `0.027704572566416702 / 1.8214860035899544e-12`
+- maximum linear／quadratic reduced-coordinate amplification:
+  `1.3831860210790254 / 1.38318678185839`
+- direction SHA-256:
+  `4d0bef57236d4f70a8a8f422b1bdfa39cd5737c88401c2441decdd98d886d2f9`
+- input／chart-reconstruction／trajectory／result digest:
+  `e9b29c95d41af0062259d3aab19ab2c58175cd98582ed82f3af36863f023bc53` /
+  `aa1da452db8ff6b84e88a32f7a7119c63816b12e283147daaa303e9e09c3ae42` /
+  `aa62fc11a36bef881bbcdb05919818f6db167f3f95eee396fcdaf79fead5e182` /
+  `629a5a7a3d3bfed12a590646c375d4977db1726ddc521ddb86394786b1005f22`
+- runner／artifact newline-normalized SHA-256:
+  `e9c0a8e38b94dbe693855dc836f8cf02393675b417ff3f43fc43059ab361a741` /
+  `9c091dbafd60617850cd3168f3ad9235a353b0990cbd003df9be0b487ead1591`
+
+### 解釈と次のbottleneck
+
+失敗はdirection 4のhorizon 1・2に局在した。両者とも第2振幅のquadratic errorが登録floor `1e-12`を
+僅かに下回り、第三振幅以降の3点しかfitに残らなかった。222 eligible fitの次数、全checkpoint改善比、
+64-step相対誤差、positivity、conservationは通過しているため、長時間shadowing劣化の観測ではない。
+
+それでも`224 / 224` gateを緩めず、Q011fは再採点しない。次は同じdirection、floor、horizon、slope／
+performance thresholdを維持し、未使用midpoint amplitude `4.8e-4`の32 trajectoryだけを追加する
+Q011f1を独立再発行として事前登録する。Q011f1が通るまでQ011gのTT／sparse比較へ進まない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -5039,6 +5099,8 @@ continuous-amplitude family、forced SSM existence／uniqueness、nonlinear norm
 [`artifacts/q011e_forced_quadratic_chart.json`](artifacts/q011e_forced_quadratic_chart.json)
 
 [`artifacts/q011e1_enlarged_residual_window.json`](artifacts/q011e1_enlarged_residual_window.json)
+
+[`artifacts/q011f_multistep_shadowing.json`](artifacts/q011f_multistep_shadowing.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
