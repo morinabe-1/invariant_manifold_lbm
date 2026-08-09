@@ -15697,6 +15697,193 @@ Q011t graphの非滑らかさを意味しない。
 phase-sensitive product diskを使って、modulus overlapのどれが真のhomological obstruction候補として残るかを
 事前登録して判定する。
 
+## Q011v: degree-3 phase-sensitive output-sector product disks — 事前登録
+
+### 問い
+
+Q011uでdegree 3に残った唯一のmodulus-overlap aggregateについて、selected eigendiscのindexed triple、
+Fourier output sector、exact complex center、Bauer--Fike radiusを復元し、全sector-compatible external
+eigendiscからstrictに分離できるか。Q011uがmodulusだけで分離した残り19 aggregateと合成し、degree-3
+external nonresonance全体を認証できるか。
+
+本gateはdegrees 4--90へ結果を外挿しない。Q011uの423,729 overlapを一括解消したとも、Q011t graphの
+higher smoothnessやSSM uniquenessを示したとも解釈しない。
+
+### 封印入力
+
+次の4 artifactを直接照合し、Q011uのnested sealだけで代用しない。
+
+- Q011j artifact／runner newline-normalized SHA-256:
+  `74a2e084137699739c14d980b05676e14e6802b4018b3893d3d05270850c2c5a` /
+  `23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5`
+- Q011j input／coordinate／oracle／proof／result digest:
+  `a183f4830c757b58122132cf64111fd5375636affdb6c0b31e1cd90e89085799` /
+  `adaef353b8b64509334794c6014dc8b88e81ca2b776c3b65bd4d50911ae9452b` /
+  `177468a48f667ddd922ed4b979d3e7e5d4cc0ed3afffe27a34651060da8e0f5f` /
+  `1080fcea24358422514bba7fb9881928269c853cb4d12b0282e63840c56124c0` /
+  `ddad5beca9693eeab726382ac864d01a27b749d579c2ec8f12dd9f8c499db934`
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011m artifact／runner newline-normalized SHA-256:
+  `b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f` /
+  `0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150`
+- Q011m input／derivative／coefficient／majorant／result digest:
+  `dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb` /
+  `0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a` /
+  `1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514` /
+  `bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00` /
+  `f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4`
+- Q011u artifact／runner newline-normalized SHA-256:
+  `4e0a74cffaeb6781b85621362d4463ac8d9ab98ee14bcf3b5764642b5a15d5e4` /
+  `fa3c7c01355c0b3c19b58618fe97edc5863dc2d0fa02c4f810ddbc57053a419e`
+- Q011u input／cutoff／spectrum／log／enumeration／tail／result digest:
+  `ba768da7be5663c607a24fa4a399bae06a8d8b4128a45ab9bb2b57f8a12461f4` /
+  `55a374a5d91d2c88e5e34be2173f9861ee14915daaee55efd8848f0cd7ebaf94` /
+  `a514c3a13142d379886c56b08109f28b69aee4cbcef2d4c5c9bed8d29182e89d` /
+  `10f9aa954446e1e7d8095488ef82abc48fcc99fde3ddabd93a1a188b17ea51b5` /
+  `5c94deb8acd69b1346e6d46af829804b401027ecea48caf7e5ce2d9b22d6631c` /
+  `307ca2762bb5aecb626983acb8d38eb5728e2a8eb9e64769cc0b632b40da66c6` /
+  `b005bb622e7f3abad98a1ef6875af289fa2dccdc16911faf11e7ee04b822722c`
+
+exact eigencenter reconstructionとcomplex modulus enclosureに使うQ011l／Q011o runner sourceも直接封印する。
+
+- Q011l source SHA-256:
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7`
+- Q011o source SHA-256:
+  `60d9c445dace16d114e46263f2b47fe2db993b894337cdd462f204da09543f1f`
+
+direct digest countは`22`とする。
+
+### degree-3 modulus inventoryの再現
+
+Q011uのdegree-3 recordを直接再現する。
+
+- modulus-type aggregate count: \(\binom63=20\)
+- expanded-product control count: \(\binom85=56\)
+- modulus-separated aggregate count: `19`
+- modulus-overlap aggregate count: `1`
+- sole count tuple: `[0,1,1,1]`
+- sole overlapping external component: `183`
+- external component 183 source eigendisc count: `8`
+
+selected modulus groups 1／2／3のsource eigendisc countは`4 / 4 / 8`なので、sole aggregateのindexed
+triple countは
+
+\[
+4\times4\times8=128
+\]
+
+である。group membershipはQ011kの`block=center` identifierまで照合し、multiplicityをeigenvalueの反復上限とは
+解釈しない。本witnessは各group countが1なので、128 Cartesian tripleが全monomial choiceを被覆する。
+
+### Fourier output-sector filter
+
+repaired forcingとexact fixed pointはx-independentであり、collision linearization／higher derivativeはx-local、
+streaming、filter、repairはx-translation equivariantである。従ってselected input block
+\(b_1,b_2,b_3\in\{0,1,16\}\)のcubic output blockは
+
+\[
+b_{\mathrm{out}}=(b_1+b_2+b_3)\bmod17
+\]
+
+である。128 tripleの登録sector histogramは
+
+`0:32 / 1:28 / 2:16 / 3:4 / 14:4 / 15:16 / 16:28`
+
+とする。external component 183のblock histogramは`0:4 / 2:2 / 15:2`である。従ってsector-compatible
+target comparison countは
+
+\[
+32\times4+16\times2+16\times2=192
+\]
+
+となる。sectorが一致しないtargetとの比較をnonresonance evidenceへ数えず、sector-compatible 192比較だけを
+exactに評価する。
+
+### phase-sensitive product disk
+
+selected source discを\(D(c_i,r_i)\)、exact rational center modulus upperを\(u_i\ge|c_i|\)とする。
+triple productを
+
+\[
+C=c_1c_2c_3,
+\qquad
+R=\prod_{i=1}^3(u_i+r_i)-\prod_{i=1}^3u_i
+\]
+
+で囲み、\(D(c_1,r_1)D(c_2,r_2)D(c_3,r_3)\subset D(C,R)\)をtriangle inequalityで
+exactに確認する。external target \(D(c_e,r_e)\)に対して
+
+\[
+\Delta^- = |C-c_e|^- - R-r_e
+\]
+
+をexact rational lower boundとして計算する。\(\Delta^->0\)ならcomplex product discはtarget discから分離する。
+同時にindividual product modulus intervalも計算し、192比較を
+
+1. individual modulusだけで分離
+2. modulusはoverlapするがcomplex phaseで分離
+3. complex product disc overlapが残る
+
+へ重複なく分類する。成功にはcategory 3が0であることを要求する。phase-sensitive追加情報を実際に監査した
+ことを示すため、category 2が1件以上あることも要求する。
+
+### design-only pilotの扱い
+
+事前登録前のexact-rational設計pilotでは、128 triple／192 sector-compatible comparisonを得て、64比較が
+individual modulusで、残る128比較がcomplex phaseで分離し、minimum complex separationは約`0.2015`だった。
+このpilotは証明record、exact margin、witness、digestには使わない。pilotを踏まえ、独立監査のregistered
+minimum complex-separation capを`>=0.1`とする。
+
+### validity gate
+
+1. Q011j／Q011k／Q011m／Q011uのartifact、runner、22 digest、outcome、claim boundaryとQ011l／Q011o sourceを直接再現する。
+2. Q011u degree-3の20 aggregate、19 modulus separation、sole `[0,1,1,1]` witness、external group 183を再現する。
+3. selected group membership `4 / 4 / 8`、128 indexed triple、external target 8をQ011k centersから再構成する。
+4. x-Fourier sum law、registered sector histograms、192 compatible comparison countを再現する。
+5. product center、product radius、individual modulus、complex distance lowerのexact formulaを192比較すべてで再現する。
+6. comparison partition、minimum margin、first record、full comparison digestを再現する。
+7. finite性、strict JSON、input／inventory／sector／product／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、degree-3 nonresonanceもresonanceも解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次を別々に判定する。
+
+1. x-translation equivarianceからcubic output-sector sum lawがexactに成り立つ。
+2. 20 modulus aggregateとsole-overlap 128 triple／192 compatible comparisonがdegree 3を完全被覆する。
+3. 全192比較がindividual modulusまたはcomplex phaseでstrictに分離し、complex product-disc overlapが0である。
+4. 全comparisonのminimum complex separation lowerが`>=0.1`である。
+5. modulus-overlapからcomplex phaseで新たに分離したcomparisonが1件以上ある。
+
+全5項目が通る場合だけ
+`degree-3 external nonresonance is certified by modulus separation plus Fourier-sector phase-sensitive elimination of the sole overlap aggregate`
+として`accepted`とする。この場合、Q011k degree 2、Q011v degree 3、Q011u degree 91+をevidence inventoryへ
+記録し、missing rangeをdegrees 4--90へ更新する。
+
+validityは通るがcomplex product-disc overlapが1件以上残れば
+`the sole degree-3 modulus aggregate retains a phase-sensitive product-disc overlap`
+として`rejected`とする。これはactual resonanceではなく、registered disc enclosureでは分離できないことだけを意味する。
+
+`accepted`ならQ011wでdegree 4の2 modulus-overlap aggregateへ同じsector／phase auditを拡張する。
+`rejected`ならQ011wで最初のremaining product-disc overlapだけを高精度center enclosureまたはfull homological
+operatorへ送る。`inconclusive`なら最初のseal／inventory／sector／product／serialization failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 3、Q011u sole modulus-overlap aggregate、
+Q011k eigendisc、x-Fourier output sector、registered product-disc formulaに限る。degrees 4--90、all-order
+nonresonance、Q011t graphとの一致、\(C^2\)以上のgraph smoothness、SSM existence／uniqueness、explicit radius、
+normal attraction、basin、他grid／force／wall、D3Q27を構成・認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
