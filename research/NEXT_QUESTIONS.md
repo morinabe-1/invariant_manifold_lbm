@@ -9448,6 +9448,37 @@ Q007an conditional inductionはそれぞれのscopeで保存する。
 acceptedなら次はQ007apで、Q007abのfixed-coordinate contraction／local defect boundをQ007ag tubeと
 Q007ao初期集合へ移し、same-initial repaired-MPFR forward shadowingを独立に判定する。
 
+### Q007ao 最終結果
+
+validity 7/7、hypothesis 6/6が全て通過し、
+「registered propagated-tube exact-state interior survives MPFR-85 encoding and repair」
+としてacceptedとした。
+
+- raw／repair／total input Wiener upper:
+  7.470474916829075e-24 / 1.2452407121655381e-23 / 1.9922882038484456e-23
+- base increment／inward margin／headroom／utilization:
+  3.009718329710275e-23 / 2e-21 / 1.969902816702897e-21 / 0.015048591648551374
+- direct external／graph-shift／total normal increment:
+  5.960355768038905e-22 / 9.362725402249564e-36 / 5.960355768038998e-22
+- normal inward margin／headroom／utilization:
+  1e-20 / 9.4039644231961e-21 / 0.05960355768038998
+- tight base／normal initialization radius:
+  8.99999699028167e-17 / 4.9999999999403966e-11
+- input／bound／result digest:
+  4793702239a7bc6252b71b5fff43cc68e78dcad1d1b9446db94544b85270deb3 /
+  b747e0a635cf4d747728fd5447e613b62a0b951813634f8a98c9e80a17f3308a /
+  6c2a41f2ff2d610d8f542cb132a50a678298098245063d54bcd2a38b6e6a8360
+- runner／artifact newline-normalized SHA-256:
+  2cd4c852c2855b93efaeb618bc3b1cb488885375c69f11e2c7624f0ea84614f7 /
+  c6262043848a479b90634fc8aa82dbd02bfcaea4bcb3467d240b956fd7602b8f
+
+登録strict inner exact-state setのcomponentwise MPFR-85 encodingとinput repairは、base／normalの
+両coordinateでQ007ag outer tubeへstrictに入る。Q007anと合成できるため、この登録initial setから
+sampling-time fixed leaf／tube membershipと全内部stage positivityを全iterateへ帰納できる。
+
+任意Q007ag boundary state、arbitrary exact physical state、same-initial exact軌道とのshadowingは
+証明していない。次はQ007apでshadowingだけを独立gateとして扱う。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。

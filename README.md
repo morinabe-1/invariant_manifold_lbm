@@ -1409,6 +1409,47 @@ Q007amの修復込みcoordinate errorを引いても、base／normalの両方に
 tube-wide exact-rational boundだけを使う。任意exact stateのinitial encoding／repairがこの初期集合へ
 入ることとsame-initial shadowingは未認証であり、次はQ007aoでinitialization interiorを独立に判定する。
 
+### Q007ao propagated-tube exact-state initialization interior
+
+Q007ag／Q007am／Q007anのartifactとrunnerを封印し、Q007anをtransitive upstreamごとfresh replayした。
+Q007aaの登録内側半径をQ007agのtube拡大率（base 100倍、normal 10倍）で写したexact-state set
+
+\[
+\lVert a\rVert_1\le8.9998\times10^{-17},\qquad
+\lVert z\rVert_*\le4.999999999\times10^{-11}
+\]
+
+に対し、componentwise MPFR-85 encodingとQ007y row-major repair後のbase shift、direct external error、
+graph shiftをexact rationalで評価した。
+
+- classification:
+  registered propagated-tube exact-state interior survives MPFR-85 encoding and repair
+- validity／hypothesis gates: 7 / 7、6 / 6 passed
+- base／normal inward margin: 2e-21 / 1e-20
+- raw／repair／total input Wiener upper:
+  7.470474916829075e-24 / 1.2452407121655381e-23 / 1.9922882038484456e-23
+- base increment／headroom／margin utilization:
+  3.009718329710275e-23 / 1.969902816702897e-21 / 0.015048591648551374
+- direct external／graph-shift／total normal increment:
+  5.960355768038905e-22 / 9.362725402249564e-36 / 5.960355768038998e-22
+- normal headroom／margin utilization:
+  9.4039644231961e-21 / 0.05960355768038998
+- tight base／normal initialization radius:
+  8.99999699028167e-17 / 4.9999999999403966e-11
+- input／bound／result digest:
+  4793702239a7bc6252b71b5fff43cc68e78dcad1d1b9446db94544b85270deb3 /
+  b747e0a635cf4d747728fd5447e613b62a0b951813634f8a98c9e80a17f3308a /
+  6c2a41f2ff2d610d8f542cb132a50a678298098245063d54bcd2a38b6e6a8360
+- runner／artifact newline-normalized SHA-256:
+  2cd4c852c2855b93efaeb618bc3b1cb488885375c69f11e2c7624f0ea84614f7 /
+  c6262043848a479b90634fc8aa82dbd02bfcaea4bcb3467d240b956fd7602b8f
+
+従って登録inner setのexact fixed-leaf stateは、encoding・input repair後にQ007ag repaired tubeへstrictに
+入り、Q007anと合成してsampling-time fixed leaf／tube membershipと全内部stage positivityを全iterateへ
+帰納できる。このcoarse boundはcenter cancellation、spatial phase、Q007zを使わない。任意Q007ag
+boundary state、arbitrary exact physical state、same-initial shadowing／trajectory errorは未認証であり、
+次はQ007apでshadowingだけを独立に判定する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -1952,6 +1993,7 @@ python -m research.q007ak_reentry_factor_audit --output research/artifacts/q007a
 python -m research.q007al_propagated_tube_mpfr85_bridge --output research/artifacts/q007al_propagated_tube_mpfr85_bridge.json
 python -m research.q007am_propagated_tube_distributed_repair --output research/artifacts/q007am_propagated_tube_distributed_repair.json
 python -m research.q007an_repaired_tube_induction --output research/artifacts/q007an_repaired_tube_induction.json
+python -m research.q007ao_initialization_interior --output research/artifacts/q007ao_initialization_interior.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2021,6 +2063,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007al_propagated_tube_mpfr85_bridge.json`](research/artifacts/q007al_propagated_tube_mpfr85_bridge.json)
 - [`research/artifacts/q007am_propagated_tube_distributed_repair.json`](research/artifacts/q007am_propagated_tube_distributed_repair.json)
 - [`research/artifacts/q007an_repaired_tube_induction.json`](research/artifacts/q007an_repaired_tube_induction.json)
+- [`research/artifacts/q007ao_initialization_interior.json`](research/artifacts/q007ao_initialization_interior.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2109,6 +2152,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   repair-aware base／normal一段budget認証
 - Q007an Q007ag tubeのrepaired MPFR-85自己写像、fixed-leaf保存、全iterate stage positivityの
   条件付き数学的帰納
+- Q007ao 登録strict inner exact-state setのMPFR-85 encoding／input repair後のQ007ag tube包含と
+  Q007anへのinitialization接続
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2118,7 +2163,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
-  Q007ag新tubeのarbitrary exact-state initialization／same-initial shadowing合成
+  Q007ag新tubeのarbitrary boundary-state initialization／same-initial shadowing合成
 - TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -2160,4 +2205,6 @@ operation family内のjoint sufficient thresholdを79 bitsと決めた。Q007al�
 stage包囲とcomplement-coordinate誤差予算をnew tubeへ移し、Q007amでdistributed repairによる
 fixed-leaf closureと修復込み一段予算も認証した。Q007anでは両結果をexact Q007ag invarianceと合成し、
 already-repaired MPFR-85 stateを条件とするrepaired-map自己写像とall-iterate inductionを認証した。
-arbitrary exact-state initializationとsame-initial shadowingはまだ移していない。
+Q007aoでは登録strict inner exact-state setからのcomponentwise encoding／input repairがその条件を
+満たすことを認証した。arbitrary Q007ag boundary-state initializationとsame-initial shadowingはまだ
+移していない。

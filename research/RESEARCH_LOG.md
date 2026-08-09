@@ -4215,6 +4215,65 @@ fixed leafとtube membershipを保ち、各stepの内部stage population positiv
 same-initial exact軌道とのshadowingも主張しない。次はQ007aoでstrict inner exact-state setからの
 initialization interiorだけを独立に事前登録する。
 
+## 2026-08-09: Q007ao propagated tubeのexact-state initialization interior
+
+### 問いと事前登録
+
+Q007anの条件付き帰納へexact-state initializationを接続するため、fixed leaf上のstrict inner set
+
+\[
+\lVert a\rVert_1\le8.9998\times10^{-17},\qquad
+\lVert z\rVert_*\le4.999999999\times10^{-11}
+\]
+
+を事前登録した。内側半径はQ007aaの値をQ007ag tubeのbase／normal拡大率100／10で写した。
+componentwise MPFR-85 encodingとQ007y row-major input repair後にQ007ag outer tubeへstrictに入るかだけを
+判定し、same-initial shadowingは含めないと固定した。
+
+### 実装
+
+- Q007ag／Q007am／Q007an artifact・runner SHA、scope、classification、gate count、digestを封印した。
+- Q007an stored cycleをfresh replayし、そのtransitive Q007ag／Q007ai／Q007amと、Q007am内の
+  Q007al／Q007y reproductionまで通した。
+- Q007am input-encoding boundからraw／repair physical Wiener errorをexactに再構成し、Q007amの
+  selected／external analysis upperとQ007ag selected candidateのchart derivativeを再利用した。
+- base shiftをK_L E_W、normal shiftをK_a(E_W+d_H(r) epsilon_a)でexact rational評価した。
+- center cancellation、spatial Fourier phase、Q007z selected-wave boundは使わなかった。
+
+### 結果
+
+validity 7/7、hypothesis 6/6で、
+「registered propagated-tube exact-state interior survives MPFR-85 encoding and repair」
+としてacceptedとした。
+
+- raw／repair／total input Wiener upper:
+  7.470474916829075e-24 / 1.2452407121655381e-23 / 1.9922882038484456e-23
+- base increment／inward margin／headroom／utilization:
+  3.009718329710275e-23 / 2e-21 / 1.969902816702897e-21 / 0.015048591648551374
+- direct external／graph-shift／total normal increment:
+  5.960355768038905e-22 / 9.362725402249564e-36 / 5.960355768038998e-22
+- normal inward margin／headroom／utilization:
+  1e-20 / 9.4039644231961e-21 / 0.05960355768038998
+- tight base／normal initialization radius:
+  8.99999699028167e-17 / 4.9999999999403966e-11
+- input／bound／result digest:
+  4793702239a7bc6252b71b5fff43cc68e78dcad1d1b9446db94544b85270deb3 /
+  b747e0a635cf4d747728fd5447e613b62a0b951813634f8a98c9e80a17f3308a /
+  6c2a41f2ff2d610d8f542cb132a50a678298098245063d54bcd2a38b6e6a8360
+- runner／artifact newline-normalized SHA-256:
+  2cd4c852c2855b93efaeb618bc3b1cb488885375c69f11e2c7624f0ea84614f7 /
+  c6262043848a479b90634fc8aa82dbd02bfcaea4bcb3467d240b956fd7602b8f
+
+### 解釈と次のbottleneck
+
+登録inner setのexact fixed-leaf stateは、encoding／repair後にQ007ag repaired tubeへ入り、Q007anと
+合成してall-iterate tube invarianceと内部stage positivityへ接続できる。base inward margin使用率は
+約1.50%、normalは約5.96%である。
+
+この結論は任意Q007ag boundary stateやarbitrary exact physical stateを初期化できるという主張ではない。
+またexact軌道とのtrajectory errorもまだ与えない。次はQ007apでQ007abのfixed-coordinate contractionと
+local MPFR defectを新tubeへ移し、same-initial forward shadowingを独立に判定する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4334,6 +4393,8 @@ initialization interiorだけを独立に事前登録する。
 [`artifacts/q007am_propagated_tube_distributed_repair.json`](artifacts/q007am_propagated_tube_distributed_repair.json)
 
 [`artifacts/q007an_repaired_tube_induction.json`](artifacts/q007an_repaired_tube_induction.json)
+
+[`artifacts/q007ao_initialization_interior.json`](artifacts/q007ao_initialization_interior.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
