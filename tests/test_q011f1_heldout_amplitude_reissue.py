@@ -169,3 +169,45 @@ def test_q011f1_records_reproducible_digests_and_provenance(
     }
     assert source_metadata()["package_source_sha256"] == (q011f1.SEALED_PACKAGE_SOURCE_SHA256)
     json.dumps(q011f1_cycle, allow_nan=False)
+
+
+def test_q011f1_artifact_reproduces_the_accepted_reissue(
+    q011f1_cycle: dict,
+) -> None:
+    runner_path = Path(q011f1.__file__).resolve()
+    artifact_path = runner_path.parent / "artifacts" / ("q011f1_heldout_amplitude_reissue.json")
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "79ddb64e0965b5b87b7ad68c6dc8698efdd2281540c798ed27f355747d265bc1"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011f1_heldout_amplitude_reissue.py",
+        "sha256": ("eab2d63a075f2c43b4c6adfaa7941e9c23bf85a351427057130f68945346ce62"),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q011f1_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "101adcdc6fc2d40dc984e6ba900d234b913f7c78aa34381a08d0a77aa9e23000"
+    )
+    assert artifact["cycle"]["chart_reconstruction_digest_sha256"] == (
+        "ba50ee295551dae970d33e1bba735ac0502987aef0f4a82987f2998ae884f732"
+    )
+    assert artifact["cycle"]["heldout_trajectory_digest_sha256"] == (
+        "243c41522a9eb7d7b78b2031bdbe8f55eb23b447e8d84162b1aae2f53b651829"
+    )
+    assert artifact["cycle"]["merged_fit_digest_sha256"] == (
+        "2e3fcee7bebec5c82f2fbd2b78ddac8c44401fd0681ad5d9feb60c7257a8326e"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "484580786b6c535856f0693b14c58815462e1de979759057dc3b402d475bcbc7"
+    )
+    assert (
+        artifact["cycle"]["heldout_trajectory_audit"]["direction_sha256"]
+        == "4d0bef57236d4f70a8a8f422b1bdfa39cd5737c88401c2441decdd98d886d2f9"
+    )
