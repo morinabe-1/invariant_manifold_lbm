@@ -207,3 +207,41 @@ def test_q011c2_records_reproducible_digests_and_runner_provenance(
     }
     assert source_metadata()["package_version"] == "0.1.0"
     json.dumps(q011c2_cycle, allow_nan=False)
+
+
+def test_q011c2_artifact_reproduces_the_accepted_heldout_reissue(
+    q011c2_cycle: dict,
+) -> None:
+    runner_path = Path(q011c2.__file__).resolve()
+    artifact_path = runner_path.parent / "artifacts" / "q011c2_heldout_cluster_reissue.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "c1794ca72eebd60c4bc097278495218e9e2d2e84bdacd0f478e510a80fcba42a"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011c2_heldout_cluster_reissue.py",
+        "sha256": "87bdfc1ed20e6e68e4a395d36399adbab19e82809c626ecefa65a342ce42b9d2",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q011c2_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "de4b0c4d38d0efcff9c7db4bbef66ba6d081a6703c732dbd7116a294020459f2"
+    )
+    assert artifact["cycle"]["path_digest_sha256"] == (
+        "36be8801af32ae178e91e049b2640ed4bb058107abdf2df2af8860930c53c27d"
+    )
+    assert artifact["cycle"]["holdout_spectrum_digest_sha256"] == (
+        "d7319399578d3755ee0679122dec5e6b6d3454e394295bd62886920d104b0d72"
+    )
+    assert artifact["cycle"]["endpoint_digest_sha256"] == (
+        "8c78791883b82f4a964d0c102006d9295b7b96733e77dea93249f30dc427b6a8"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "8c23b985d69ffaa980e752e5d262184c0a6d466681d9d44fa4f0e9101df02b0c"
+    )
