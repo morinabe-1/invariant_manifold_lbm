@@ -9795,6 +9795,7 @@ D\Phi_F(f_{\rm rest};k)=h_\eta(k)A_\omega(k)
 
 と一致することを診断する。odd grid上のstrict unit-circle countは3を要求するが、rest stateは
 forced mapのfixed pointではないため、これをforced fixed-point spectrumまたはstabilityとは呼ばない。
+unit-circle判定は\(\bigl||\lambda|-1\bigr|<10^{-10}\)と固定する。
 
 ### finite implementation probe
 
