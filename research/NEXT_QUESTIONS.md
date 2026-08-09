@@ -12327,6 +12327,175 @@ Q011e--Q011hのraw-map coefficient、residual-order、shadowingは移植しな�
 interval Newton／Krawczykによる存在・局所一意性証明を行う。それまではrigorous fixed point、
 rigorous spectrum、forced SSM存在・一意性、normal attractionを主張しない。
 
+## Q011j: repaired fixed-point interval Krawczyk proof — 事前登録
+
+### 問いと対象map
+
+Q011iでexact dyadic local／global source ledgerを閉じたrepaired \(17\times1\) stripe mapは、
+固定mass／momentum葉上にexact fixed pointを持ち、その解は登録box内で局所一意か。ここで対象は
+binary64実装そのものではなく、D2Q9 weight、\(\omega=3/2\)、\(\eta=1/100\)、Q011i sourceの
+保存されたbinary64 entryをexact rationalとして読むreal-analytic mapである。x-independent stripeを
+17列へexact replicationしたfull \(17^2\) periodic stateにも同じfixed pointを与えることを構造的に確認する。
+
+### 封印入力
+
+- Q011i artifact／runner newline-normalized SHA-256:
+  `1c8b11a3ae47895a79639a5cfe901ec936fbdde8d10273c56c1578b9a88780ea` /
+  `2cec0472422ba02bb925e8c90336000058def7c36303479a4037405f873b9b88`
+- Q011i input／repair／fixed-point／spectrum／result digest:
+  `81a1dc3f9fe934d8e9391dbfe6b80701d68c04b7db954da2f62e92b581dd5b51` /
+  `910a82fa1485ce8ad6b488c5bb71ad0c8bcb12b98b6202ebc3805caa8f4a3239` /
+  `3adfbcfc7d5e9c3396bbfb60b8d10dce6ff080b90097b82f40b4c057b8518f1e` /
+  `5e63b9cc22a662238391dc83b8de1a81eb259af25b3ad2335e481bb0cf83466d` /
+  `ac94658b95d2ae1f190fab57af3bd80dbf50a4addd37f6bb7bee27d6aa1d2398`
+- Q011i waveform／source／representative stripe-state SHA-256:
+  `025d6122db8e0d3512224ce4a2af82d57b5728ce0c7450425436218dd561bcbf` /
+  `24bb558464cce4ac154b3f2574bd1fe816d11d58c9365e8312f12b0a389df490` /
+  `612ef4aca91a5c0100286988e0e7979342a9046c3c78fe60ee59ca4e232a7613`
+- package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+
+Q011i validity `6 / 6`、hypothesis `4 / 4`、`accepted`、exact-zero repaired ledger、
+Q011b raw numerical outcome不変、Q011e--Q011h coefficient非移植をexactに再現する。
+
+### exact affine fixed-leaf coordinate
+
+stripe populationをsite-major／D2Q9 velocity orderで153成分にflattenする。pivotをsite 0の
+population `q=0,1,2`、すなわちvelocity `(0,0),(1,0),(0,1)`とし、残る150成分を
+coordinate \(x\in\mathbb R^{150}\) とする。free entryのglobal mass／momentumを
+\((M_f,P_{x,f},P_{y,f})\)とすると、target stripe moment `(17,0,0)`に対して
+
+\[
+f_{0,1}=-P_{x,f},\qquad
+f_{0,2}=-P_{y,f},\qquad
+f_{0,0}=17-M_f-f_{0,1}-f_{0,2}
+\]
+
+でpivotをexactに復元する。このaffine liftを \(L(x)\)、free-entry extractionを \(E\) とする。
+pivot moment matrixのdeterminantはexact `1`、linear lift shapeは`153 x 150`、rankは`150`、
+infinity operator normは`186`でなければならない。全coordinateで
+
+\[
+M(Lx)=17,\qquad P_x(Lx)=P_y(Lx)=0,\qquad E(Lx)=x
+\]
+
+をentrywise exact rational arithmeticで確認する。center \(x_0\)はQ011i representative
+stripe-stateの150 free binary64 entryを`Fraction.from_float`でexact化したものとする。
+\(L(x_0)\)とsealed stateはfree entryがbitwise同一で、3 pivotだけがexact leafへ移る。
+maximum pivot correction `<=1e-14`を要求する。
+
+reduced residualは
+
+\[
+G(x)=E\{\Phi_{\rm repaired}(Lx)-Lx\}\in\mathbb R^{150}
+\]
+
+とする。repaired sourceのglobal momentがexact 0で、collision、periodic streaming、filterが
+global 3-momentをexactに保つため、\(G(x)=0\)ならpivot residualもexact 0であることを
+pivot moment matrixから確認する。
+
+### exact map／Jacobian oracle
+
+D2Q9 equilibriumを
+
+\[
+f_q^{eq}=w_q\left[\rho+3c_q\cdot j+
+\frac{9(c_q\cdot j)^2-3(j\cdot j)}{2\rho}\right]
+\]
+
+として`Fraction`だけで評価し、collision、Q011i source、periodic streaming、x-independent
+filter `(1-eta/2, eta/4, eta/4)`をexactに合成する。Jacobianもこの式を解析微分し、
+\(J_G=E(D\Phi L)-I\)をexact rational point／interval matrixとして構成する。
+
+- exact center mapをfloatへ変換した値とQ011i repaired binary64 stepのrelative ℓ2 discrepancy:
+  `<=1e-12`
+- exact center Jacobianをfloatへ変換した値と独立Q011b analytic Jacobian actionから組み立てた
+  affine reduced Jacobianのmaximum relative discrepancy: `<=1e-12`
+- exact quadrature moments、source ledger、collision／streaming／filter global-moment identities:
+  entrywise exact pass
+- 全候補boxでdensity lower: strict positive
+- point Jacobian \(J_G(x_0)\)は各interval Jacobian enclosureにentrywise含まれる
+
+このoracle checkが落ちた場合は証明結果を解釈しない。
+
+### outward interval Krawczyk protocol
+
+point preconditioner \(C\)は、exact \(J_G(x_0)\)をbinary64へ変換して一度だけ
+`scipy.linalg.inv`した150×150 matrixとし、その各binary64 entryをexact dyadic pointとして扱う。
+radius候補を次の10個に固定する。
+
+`1e-12 / 1e-11 / 1e-10 / 1e-9 / 1e-8 / 1e-7 / 1e-6 / 1e-5 / 1e-4 / 1e-3`
+
+各 \(r\) で \(X_r=x_0+[-r,r]^{150}\) とする。map／Jacobian enclosureまではexact `Fraction`、
+dense preconditioner積だけをGMPY2 `2.3.1`／MPFR `4.2.2`で外向き丸めする。primary precisionは
+256 bit、independent replayは384 bitとし、rational endpoint変換、積、和、absolute row sumの
+下端には`RoundDown`、上端には`RoundUp`を使う。全MPFR endpointは`as_integer_ratio`でexact dyadicへ
+戻してからgate判定する。caller context不変、overflow／underflow／invalid／division-by-zero flagなしを要求する。
+
+\[
+z=C G(x_0),\qquad
+\beta=\|I-CJ_G(x_0)\|_\infty,
+\]
+
+\[
+\Delta(r)=\sup_{J\in J_G(X_r)}\|J-J_G(x_0)\|_\infty,qquad
+q(r)=\beta+\|C\|_\infty\Delta(r),
+\]
+
+\[
+u(r)=\frac{\|z\|_\infty}{r}+q(r)
+\]
+
+の外向きupperを計算する。このときKrawczyk imageは
+\(x_0+[-\|z\|_\infty-q(r)r,\|z\|_\infty+q(r)r]^{150}\)に含まれる。
+robust passをprimary／replayの両方で
+
+\[
+\beta\le10^{-8},\qquad q(r)\le0.9,\qquad u(r)\le0.9
+\]
+
+と定義する。少なくとも1候補のpassを要求し、採択radiusは両precisionでpassする最大候補とする。
+384-bit upperは対応する256-bit upper以下、採択radiusは両precisionで同一でなければならない。
+
+### validity gate
+
+1. Q011i artifact／runner／package source／5 digest／3 hash／`accepted` outcomeとclaim boundaryを再現する。
+2. exact affine lift／extractor、pivot determinant、shape／rank／norm、center、全moment identityを再現する。
+3. exact map／Jacobian oracleと独立binary64 map／Jacobian comparisonを登録閾値内で完了する。
+4. 全10 radiusでexact interval Jacobian、point containment、positive-density domainを完了する。
+5. 256／384-bit outward protocol、context／flag監査、preconditioner、全scalar upperを完了する。
+6. finite strict JSON、input／coordinate／oracle／proof／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、fixed-point theoremを主張しない。
+
+### existence／local-uniqueness hypothesis gateと停止規則
+
+validity通過後、次の4項目を全て要求する。
+
+1. repaired exact mapがfixed leafとx-independent replicationを保ち、\(G=0\)がfull residual 0を含意する。
+2. center boxがstrict-positive population／density domain内にあり、point inverse defectが`<=1e-8`。
+3. 少なくとも1候補が両precisionで`q<=0.9`かつ`u<=0.9`を満たし、最大pass radiusが一致する。
+4. selected Krawczyk imageがbox interiorにstrict inclusionし、`q<1`からpreconditioner／Jacobian regularityと
+   box内の局所一意性条件が成立する。
+
+全項目が通れば
+`the repaired periodic forcing admits a locally unique exact fixed-leaf fixed point in the registered rational box`
+として`accepted`とする。validityは通るが一項目でも落ちれば
+`the registered interval boxes do not certify a locally unique repaired fixed point`
+として`rejected`とする。これはfixed pointの不存在を意味しない。結果後にpivot、center、precision、
+radius grid、preconditioner、`0.9` capを変更しない。
+
+acceptedの場合だけ、次のQ011kでinterval fixed-point box上のrigorous fixed-leaf spectrum、
+selected／external split、nonresonance readinessを事前登録する。rejectedなら最初のinverse-defect、
+domain、Jacobian-variation、inclusion failureを局在化する。
+
+### 主張境界
+
+本gateは固定17²、固定振幅、periodic repaired source、x-independent fixed leaf、登録rational box内の
+存在と局所一意性に限る。raw Q011b map、Q011e--Q011h coefficient、区間spectrum、forced SSM、
+normal attraction、basin、他grid／force／wall、D3Q27は主張しない。局所一意性をglobal uniquenessや
+wall-bounded Poiseuille／Couette解へ読み替えない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
