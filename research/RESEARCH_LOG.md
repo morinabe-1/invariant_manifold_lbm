@@ -5096,6 +5096,65 @@ joint採択条件を満たさない。全忠実度gateが通っているため�
 次に実装上の表現を進める場合は、natural sparse-backed chartのfinite multi-step equivalenceを独立gateとして
 事前登録する。数学側へ戻る場合は、forced SSM存在・一意性またはnormal attractionを別gateにする。
 
+## 2026-08-09: Q011h natural Fourier-sparse 64-step chart equivalence
+
+### 問いと方法
+
+Q011gで必須baselineとして残ったnatural Fourier-sparse (W_2/R_2)作用が、ordered-dense
+real Hessianを使うforced quadratic chartと64 reduced stepにわたり同じ計算を行うかを調べた。
+Q011g artifact、TT-cross非許可、Q011f1／Q011fのoutcomeを封印し、natural coefficientを一度だけ
+fresh再構築した。
+
+sparse runtimeはbase、tangent、reduced linear map、complex-to-real coordinate map、pair、sector、
+Fourier fiberだけを所有し、dense Hessian、ordered-dense tensor、native dense coefficientを持たない。
+seed `20260906`の24方向と未使用3振幅`4.0e-4 / 9.6e-4 / 2.4e-3`から72初期値を作り、
+dense／sparse reduced coordinateとlifted stateを別々に64 step更新した。全65 stateの両coordinateで
+common-input actionを比較し、8 checkpointで両chartのone-step invariance defectを比較した。
+
+### 結果
+
+validity `5 / 5`、hypothesis `4 / 4`を通過し、
+`the natural Fourier-sparse chart reproduces the dense forced quadratic reduced trajectory through 64 steps`
+として`accepted`とした。
+
+- trajectory／state／update count per implementation:
+  `72 / 4,680 / 4,608`
+- common-input action comparison／checkpoint defect count per implementation:
+  `9,360 / 576`
+- maximum joint-action relative error／sparse imaginary leakage:
+  `2.8548696893009472e-15 / 6.582416358786708e-13`
+- maximum coordinate error / initial-coordinate norm:
+  `1.0164395367051605e-16`
+- maximum lifted-state error / initial-tangent-perturbation norm:
+  `1.4456028966473394e-14`
+- maximum checkpoint defect-vector／defect-norm scaled difference:
+  `6.624584698733856e-15 / 1.492977856773724e-16`
+- minimum population／maximum conservation drift:
+  `0.027709129004501398 / 1.1371721488215581e-13`
+- state／checkpoint metric SHA-256:
+  `298efab077e38fe3d31b146460558219675ab88ab9c0182ad3fb14e25a52d854` /
+  `7fd9446be00f5822f7aee5a2750b03b36d5b0f4b1916e123878b824cba95757b`
+- input／coefficient／campaign／result digest:
+  `c9ea06c8961940f54dd3c02e3d68d7ba777e77fc9be2f0a7c3eecab5ab257b83` /
+  `2ab44a23811ef9f7e1975fb27561dd92660938778bf73ef149e46ed04f399669` /
+  `bbb6a489fc76af150a3a162f585b0b2e1a65d0445d5eb14ab11b280bc492a035` /
+  `a78812d93063ed7deeaca09dad5feb2cf018fb1bec315dab94b4f02d27f75864`
+- runner／artifact newline-normalized SHA-256:
+  `1e6848e572137d019531514235741b18ca10644dd7d14e304dc26d92d81cda9e` /
+  `2cfcf5cb76698ae8e451f448a3048e3d29a1b8aed034d3afa5c25f7fd66038f5`
+
+### 解釈と次のbottleneck
+
+64-stepでの表現差の蓄積は、coordinateで初期振幅比`1.02e-16`、lifted stateで初期接線
+摂動比`1.45e-14`に留まった。従ってこのfixed coefficientにはnatural Fourier-sparseをforced
+quadratic chartの実装baselineとする。Q011gのTT棄却とTT-cross非許可は変更しない。
+
+一方、本campaignが64 step進めたのはreduced trajectoryであり、full LBM orbitは各checkpointの
+one-step defectにのみ使った。従ってQ011f／Q011f1のshadowing outcomeを再採点せず、all-time
+equivalence、uniform remainder、forced SSM存在・一意性、normal attraction、basinを追加認証しない。
+実装表現の問題はここで一度閉じ、次はforced SSMの存在・一意性またはnormal attractionの
+数学gateを別途事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -5241,6 +5300,8 @@ joint採択条件を満たさない。全忠実度gateが通っているため�
 [`artifacts/q011f1_heldout_amplitude_reissue.json`](artifacts/q011f1_heldout_amplitude_reissue.json)
 
 [`artifacts/q011g_forced_representation_audit.json`](artifacts/q011g_forced_representation_audit.json)
+
+[`artifacts/q011h_sparse_chart_equivalence.json`](artifacts/q011h_sparse_chart_equivalence.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

@@ -265,6 +265,9 @@ slope、全checkpoint改善、64-step相対誤差、positivity、保存則を通
 Q011f自体の棄却は変更していない。Q011gではこのforced (W_2/R_2)をnatural Fourier-sparseと
 6個のuncapped TT-SVD bundleで比較した。3個のoutput-last TTは現在環境のonline作用時間で勝ったが、
 最小TTでもsparseの約5倍の格納量だったためjoint winnerは0で、TT優位性を`rejected`とした。
+Q011hでは未使用24方向×3振幅のnatural sparse経路とdense経路を64 reduced stepまで
+独立更新し、9,360 common-input actionと4,680 state、576 checkpoint defectを全て登録閾値内で
+一致させた。従ってこの固定係数のnatural Fourier-sparse chart同値性を`accepted`とした。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -2027,6 +2030,47 @@ onlineだけならoutput-last配置に明確な利点があるが、最速候補
 Fourier-sparseを採用し、TT-crossを開始しない。これはTT一般、別tensorization、GPU、他grid、full rolloutの
 不可能性を主張せず、Q011e--Q011f1のoutcomeも変更しない。
 
+### Q011h natural Fourier-sparse 64-step chart equivalence
+
+Q011g artifactとTT-cross非許可を封印し、natural Fourier-fiber係数だけを持つruntimeと
+ordered-dense real Hessian oracleを分離した。seed `20260906`の未使用24方向と、既存campaignで
+未使用の振幅`4.0e-4 / 9.6e-4 / 2.4e-3`から72縮約軌道を別々に64 step更新した。
+
+- classification:
+  `the natural Fourier-sparse chart reproduces the dense forced quadratic reduced trajectory through 64 steps`
+- validity／hypothesis gates: `5 / 5` passed、`4 / 4` passed
+- trajectory／state／update count per implementation:
+  `72 / 4,680 / 4,608`
+- common-input action comparison／checkpoint defect count per implementation:
+  `9,360 / 576`
+- maximum joint-action relative error／sparse imaginary leakage:
+  `2.8548696893009472e-15 / 6.582416358786708e-13`
+- maximum coordinate error / initial-coordinate norm:
+  `1.0164395367051605e-16`
+- maximum lifted-state error / initial-tangent-perturbation norm:
+  `1.4456028966473394e-14`
+- maximum checkpoint defect-vector／defect-norm scaled difference:
+  `6.624584698733856e-15 / 1.492977856773724e-16`
+- minimum population／maximum conservation drift:
+  `0.027709129004501398 / 1.1371721488215581e-13`
+- state／checkpoint metric SHA-256:
+  `298efab077e38fe3d31b146460558219675ab88ab9c0182ad3fb14e25a52d854` /
+  `7fd9446be00f5822f7aee5a2750b03b36d5b0f4b1916e123878b824cba95757b`
+- input／coefficient／campaign／result digest:
+  `c9ea06c8961940f54dd3c02e3d68d7ba777e77fc9be2f0a7c3eecab5ab257b83` /
+  `2ab44a23811ef9f7e1975fb27561dd92660938778bf73ef149e46ed04f399669` /
+  `bbb6a489fc76af150a3a162f585b0b2e1a65d0445d5eb14ab11b280bc492a035` /
+  `a78812d93063ed7deeaca09dad5feb2cf018fb1bec315dab94b4f02d27f75864`
+- runner／artifact newline-normalized SHA-256:
+  `1e6848e572137d019531514235741b18ca10644dd7d14e304dc26d92d81cda9e` /
+  `2cfcf5cb76698ae8e451f448a3048e3d29a1b8aed034d3afa5c25f7fd66038f5`
+
+sparse runtimeはbase／tangent／reduced linear map／coordinate map／pair／sector／fiberだけを所有し、
+dense quadratic fieldを持たない。全stepで両経路を独立更新したため、natural sparseを今後の
+forced quadratic chart実装baselineとする。ただしfull LBM orbitを64 step進めたわけではなく、
+Q011f／Q011f1のshadowing outcome、all-time equivalence、forced SSMの存在・一意性、normal attraction、
+basinは追加認証しない。Q011gのTT棄却を変更せず、TT-crossを開始しない。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2583,6 +2627,7 @@ python -m research.q011e1_enlarged_residual_window --output research/artifacts/q
 python -m research.q011f_multistep_shadowing --output research/artifacts/q011f_multistep_shadowing.json
 python -m research.q011f1_heldout_amplitude_reissue --output research/artifacts/q011f1_heldout_amplitude_reissue.json
 python -m research.q011g_forced_representation_audit --output research/artifacts/q011g_forced_representation_audit.json
+python -m research.q011h_sparse_chart_equivalence --output research/artifacts/q011h_sparse_chart_equivalence.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2665,6 +2710,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011f_multistep_shadowing.json`](research/artifacts/q011f_multistep_shadowing.json)
 - [`research/artifacts/q011f1_heldout_amplitude_reissue.json`](research/artifacts/q011f1_heldout_amplitude_reissue.json)
 - [`research/artifacts/q011g_forced_representation_audit.json`](research/artifacts/q011g_forced_representation_audit.json)
+- [`research/artifacts/q011h_sparse_chart_equivalence.json`](research/artifacts/q011h_sparse_chart_equivalence.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2769,6 +2815,11 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   共役orbit endpoint semanticsによるcandidate forced cluster選択
 - Q011d forced endpointの300 quadratic external block完全SVD／direct solve、5 sectorの
   symmetric-product spectrumと20 nonnormal Sylvester probeによるoperator-family prequalification
+- Q011e／Q011e1 forced fixed-leaf dense quadratic chart、analytic Hessian、homological residual、
+  independent enlarged-window residual-order reissue
+- Q011f／Q011f1 64-step forced-chart shadowing campaign、early-horizon解像失敗とheld-out-amplitude再発行
+- Q011g natural Fourier-sparse baselineと6 uncapped TT-SVD bundleのfidelity／storage／timing比較
+- Q011h dense／natural-sparse経路の64-step reduced-chart／checkpoint-defect同値性
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2779,7 +2830,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- TT-cross（固定Q007c1係数では保留）、forced quadratic chart／invariant manifold、境界条件、
+- TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -2851,3 +2902,7 @@ all-time shadowing、uniform remainder、basin、normal attraction、forced SSM�
 Q011gではforced (W_2/R_2)の6 TT-SVD bundleが全忠実度gateを通ったが、格納量でnatural
 Fourier-sparseに勝つ候補は0だった。現在環境でonline時間に勝つ3候補は記録したもののjoint winnerはなく、
 この固定係数に対するTT-SVD／TT-cross rolloutは停止する。
+Q011hでは新規72初期値のdense／natural-sparse reduced trajectoryを別々に64 step更新し、
+9,360 action、4,680 lifted state、576 checkpoint defectを全て登録閾値内で一致させた。
+従ってnatural sparseをforced quadratic chartの実装baselineとするが、full-state 64-step orbit、
+all-time equivalence、forced SSM存在・一意性、normal attractionは未認証である。

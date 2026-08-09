@@ -12045,6 +12045,45 @@ shadowing outcome、all-time equivalence、uniform remainder、higher order、�
 SSM存在・一意性、normal attraction、basinは主張しない。Q011gのTT棄却を変更せず、
 TT-crossを開始しない。
 
+### Q011h 実行結果
+
+validity `5 / 5`、equivalence hypothesis `4 / 4`を通過し、
+`the natural Fourier-sparse chart reproduces the dense forced quadratic reduced trajectory through 64 steps`
+として`accepted`とした。Q011gの`rejected`とTT-cross非許可、Q011f1の`accepted`、
+Q011fの`rejected`は変更していない。
+
+- trajectory／state／update count per implementation:
+  `72 / 4,680 / 4,608`
+- common-input action comparison／checkpoint defect count per implementation:
+  `9,360 / 576`
+- maximum joint-action relative error／sparse imaginary leakage:
+  `2.8548696893009472e-15 / 6.582416358786708e-13`
+- maximum coordinate error / initial-coordinate norm:
+  `1.0164395367051605e-16`
+- maximum lifted-state error / initial-tangent-perturbation norm:
+  `1.4456028966473394e-14`
+- maximum checkpoint defect-vector／defect-norm scaled difference:
+  `6.624584698733856e-15 / 1.492977856773724e-16`
+- minimum population／maximum conservation drift:
+  `0.027709129004501398 / 1.1371721488215581e-13`
+- state／checkpoint metric SHA-256:
+  `298efab077e38fe3d31b146460558219675ab88ab9c0182ad3fb14e25a52d854` /
+  `7fd9446be00f5822f7aee5a2750b03b36d5b0f4b1916e123878b824cba95757b`
+- input／coefficient／campaign／result digest:
+  `c9ea06c8961940f54dd3c02e3d68d7ba777e77fc9be2f0a7c3eecab5ab257b83` /
+  `2ab44a23811ef9f7e1975fb27561dd92660938778bf73ef149e46ed04f399669` /
+  `bbb6a489fc76af150a3a162f585b0b2e1a65d0445d5eb14ab11b280bc492a035` /
+  `a78812d93063ed7deeaca09dad5feb2cf018fb1bec315dab94b4f02d27f75864`
+- runner／artifact newline-normalized SHA-256:
+  `1e6848e572137d019531514235741b18ca10644dd7d14e304dc26d92d81cda9e` /
+  `2cfcf5cb76698ae8e451f448a3048e3d29a1b8aed034d3afa5c25f7fd66038f5`
+
+sparse runtimeはdense quadratic fieldを所有せず、natural pair／sector／fiber作用だけで縮約経路を
+更新した。全応答は登録閾値を大きく下回ったため、今後のforced quadratic chart実装には
+natural Fourier-sparseを採用する。ただし本campaignは縮約経路とcheckpointのone-step defectであり、
+full LBM orbitの64-step shadowingを新たに実行していない。all-time equivalence、uniform remainder、
+forced SSM存在・一意性、normal attraction、basinは未認証である。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
@@ -12053,8 +12092,8 @@ D2Q9 で次を全て満たして初めて進む。
 - Q005 sector-aware nonresonance
 - fixed-leaf nonzero-mode quadratic residual order
 - same-initial repaired-MPFR all-iterate forward shadowing（Q007ap拡大tube通過）
-- TT-SVD preservation
-- TT-cross independent validation
+- representation fidelityとnatural-sparse multi-step equivalence（Q011g／Q011h通過）
+- mandatory sparse baselineに勝つTT候補が出た場合のみTT-cross independent validation
 - positivity/conservation
 - sparse baselineを含むcost report（Q010通過、固定TT-SVD path棄却）
 
