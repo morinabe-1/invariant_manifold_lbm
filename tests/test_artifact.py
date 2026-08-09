@@ -2591,3 +2591,78 @@ def test_q007ag_artifact_records_the_propagated_larger_tube() -> None:
     assert not consequence[
         "new_tube_binary64_or_mpfr_induction_certified"
     ]
+
+
+def test_q007ah_artifact_records_propagated_tube_population_positivity() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY
+        / "q007ah_propagated_tube_population_positivity.json"
+    )
+    runner_path = artifact_path.parents[1] / (
+        "q007ah_propagated_tube_population_positivity.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ah_propagated_tube_population_positivity.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "rational propagated-tube population-positivity certificate"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": (
+            "fixed global mass and momentum leaf"
+        ),
+        "manifold": "Q007ae exact graph-gauge manifold",
+        "norm": "Q007p Fourier external-coordinate block-sum l1",
+        "base_modal_l1_radius": 9e-17,
+        "normal_coordinate_radius": 5e-11,
+        "sampling_times": "full one-step map input/output only",
+        "claim": (
+            "strict D2Q9 population and density positivity on the fixed "
+            "Q007ag selected tube only; no stagewise, finite-precision, "
+            "continuous-optimum, grid-uniform, or continuum claim"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "registered Q007ag propagated tube lies in the strictly positive "
+        "population cone at every full-map iterate"
+    )
+    assert len(cycle["validity_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 3
+    assert all(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    )
+    bounds = cycle["positivity_bounds"]
+    assert bounds["registered_population_lower"]["float"] == (
+        0.027777777633364167
+    )
+    assert bounds["registered_density_lower"]["float"] == (
+        0.9999999998555864
+    )
+    consequence = cycle["theorem_consequence"]
+    assert consequence[
+        "registered_q007ag_tube_population_strictly_positive"
+    ]
+    assert consequence[
+        "registered_q007ag_tube_density_strictly_positive"
+    ]
+    assert consequence["all_full_map_iterates_population_strictly_positive"]
+    assert not consequence[
+        "registered_q007ag_tube_stagewise_positivity_certified"
+    ]
