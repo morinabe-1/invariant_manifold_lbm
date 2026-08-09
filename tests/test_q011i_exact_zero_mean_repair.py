@@ -192,6 +192,9 @@ def test_q011i_artifact_records_the_exact_zero_mean_repair() -> None:
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     cycle = artifact["cycle"]
 
+    assert _file_sha256(artifact_path) == (
+        "1c8b11a3ae47895a79639a5cfe901ec936fbdde8d10273c56c1578b9a88780ea"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
     assert artifact["runner_source"] == {
