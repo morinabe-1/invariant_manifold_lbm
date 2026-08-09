@@ -15066,6 +15066,75 @@ forward-invariant Lipschitz graph patchに限る。backward invariance、patch�
 origin tangency、SSM／spectral quotient uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を
 構成・認証しない。
 
+### Q011s 実行結果
+
+Q011k／Q011l／Q011q／Q011rの4 artifact、4 runner、20 digestを直接封印し、validity `7 / 7`を通過した。
+全24 selected centerからsame-norm operator upperを再構成し、
+
+\[
+(p_{S,0},p_{S,1},p_{S,16})
+=
+(0.9920954876550455,\,
+0.9920954684013225,\,
+0.9920954684013225)
+\]
+
+を得た。global witnessはblock `0`で、登録cap \(p_S\le0.993\)を通過した。blocks `1 / 16`はexact
+conjugateで同じupperを持つ。Q011q real shearがselected diagonalを保つことと、real coupling
+\(b=2.080001889821235\times10^{-8}\)を別に使うことも再現した。
+
+Q011r fixed graphのrefined slope
+
+\[
+\ell_*=0.9989479817734533
+\]
+
+とorigin固定を使い、11個の登録scaleをexact `Fraction`で全評価した。`11 / 11` candidateが通過し、最大の
+\(\sigma=1\)、\(r=\rho_*=3\times10^{-16}\)を選んだ。このとき
+
+\[
+c_r=0.9922238426930379,
+\qquad
+\ell_*c_r=0.9911800051257107
+\]
+
+であり、input graph patchとone-step full imageはともに同じcutoff identity coreへ留まる。input／output
+physical displacement upperは
+
+\[
+7.731563462654924\times10^{-13},
+\qquad
+7.671441608940559\times10^{-13}
+\]
+
+で、output population／density floorは
+`0.02777590831258315 / 0.9999999999924637`だった。
+
+hypothesis `5 / 5`を通過し、
+
+`the original repaired exact map has a certified forward-invariant Lipschitz graph patch on the fixed conservation leaf`
+
+として`accepted`とした。original mapとlocalized mapはpatch上でexactに一致し、one-step inclusionを帰納して
+全forward iterateがcoreに留まる。graph patchはfixed conservation leaf上の24-real-dimensional Lipschitz
+graphである。
+
+- input／linear／graph／core／result digest:
+  `4808619d977f8d14c4f8b454e846558ad047337e4343c6b9bef791e2c2b99af5` /
+  `6a657463b847ce242346aea8b582f1f4e108b0abb0935e270a5c03c1ceb3cc36` /
+  `b9837d31b26bced4243457e3357a93c8d546883390104f1b43d5e182e92f98a7` /
+  `ab837deb8459678d4fce223e06d03cc8e6f4d391ff35bad191392a923825e622` /
+  `3e01d86f279bc6c5a2f0769a9728a98e3e49fa749be15a2c6c6e0f32132ca270`
+- runner／artifact newline-normalized SHA-256:
+  `beeeb6699b5c3a7e7636b2c7afd6036bc6959213e81339f39961c325d9347367` /
+  `d7399671504cc513aecc491210108c31365c63a74864ecf04e629b3d1348bc52`
+
+これはforward-invariant Lipschitz graph patchの認証であり、backward invariance、patchへのonto性、
+\(C^1\)以上のsmoothness、origin tangency、spectral-quotient SSM uniqueness、normal attraction、basin、
+\(\rho_*\)より大きいradiusの最適性は認証していない。
+
+停止規則どおり、次はQ011tを事前登録し、\(C^1\) graph-transform space、origin derivative equation、
+selected tangency、spectral quotientを同じfixed-leaf real normで判定する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

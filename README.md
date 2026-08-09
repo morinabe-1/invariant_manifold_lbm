@@ -2582,6 +2582,70 @@ Banach contractionにより、selected radius `3e-16`ではlocalized mapに一�
 forward invariantかはまだ評価していない。従ってoriginal mapのlocal invariant manifold／SSM、smoothness、
 normal attraction、basinは未認証である。次はQ011sでinner-core containmentだけを独立に判定する。
 
+### Q011s original-map forward-invariant Lipschitz-core certificate
+
+Q011k／Q011l／Q011q／Q011rの4 artifactと20 digestを直接封印し、全24 selected centerからsame-norm
+selected operator upperを再構成した。3 selected blockについて
+
+\[
+p_{S,n}
+=\max_{j\in I_{S,n}}|\lambda_{n,j}|_{\rm upper}
++\theta_n(1+r_{G,n}),
+\qquad
+p_S=\max_n p_{S,n}
+\]
+
+をexact `Fraction`で評価した。Q011qのreal shearがselected diagonal \(S\)を変えないことを確認し、
+real coupling \(b\)だけを別に加えた。Q011r fixed graphのfixed-point identityから
+\(\psi_*(0)=0\)、\(\operatorname{Lip}(\psi_*)\le\ell_*\)を使い、11個の登録scale
+\(r=\sigma\rho_*\)について
+
+\[
+c_r=p_S+b\ell_*+\frac12\mu_2r,
+\qquad
+\|u\|\le c_r\,r,
+\qquad
+\|\psi_*(u)\|\le\ell_*c_r\,r
+\]
+
+を評価した。
+
+- classification:
+  `the original repaired exact map has a certified forward-invariant Lipschitz graph patch on the fixed conservation leaf`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- outcome: `accepted`
+- selected operator upper for blocks `0 / 1 / 16`:
+  `0.9920954876550455 / 0.9920954684013225 / 0.9920954684013225`
+- global \(p_S\) witness／real coupling／fixed-graph slope:
+  `block 0 / 2.080001889821235e-8 / 0.9989479817734533`
+- registered／passing scale count: `11 / 11`
+- selected scale／core radius／first failed larger:
+  `1 / 3e-16 / none`
+- selected／external image ratio:
+  `0.9922238426930379 / 0.9911800051257107`
+- input／output physical displacement upper:
+  `7.731563462654924e-13 / 7.671441608940559e-13`
+- output population／density floor:
+  `0.02777590831258315 / 0.9999999999924637`
+- input／linear／graph／core／result digest:
+  `4808619d977f8d14c4f8b454e846558ad047337e4343c6b9bef791e2c2b99af5` /
+  `6a657463b847ce242346aea8b582f1f4e108b0abb0935e270a5c03c1ceb3cc36` /
+  `b9837d31b26bced4243457e3357a93c8d546883390104f1b43d5e182e92f98a7` /
+  `ab837deb8459678d4fce223e06d03cc8e6f4d391ff35bad191392a923825e622` /
+  `3e01d86f279bc6c5a2f0769a9728a98e3e49fa749be15a2c6c6e0f32132ca270`
+- runner／artifact newline-normalized SHA-256:
+  `beeeb6699b5c3a7e7636b2c7afd6036bc6959213e81339f39961c325d9347367` /
+  `d7399671504cc513aecc491210108c31365c63a74864ecf04e629b3d1348bc52`
+
+最大登録radius自体で \(c_r<1\) かつ \(\ell_*c_r<1\) なので、graph patchとone-step imageはともにcutoff
+identity coreへ留まる。従ってそのpatch上ではoriginal mapとlocalized mapがexactに一致し、包含を帰納して
+全forward iterateが同じcoreに留まる。これはfixed conservation leaf上の24-real-dimensional Lipschitz
+graph patchをoriginal repaired exact mapへ移す証明である。
+
+ただしbackward invariance、patchへのonto性、\(C^1\)以上のsmoothness、origin tangency、
+spectral-quotient SSM uniqueness、normal attraction、basin、\(\rho_*\)より大きいradiusの最適性は未認証である。
+次はQ011tで\(C^1\) graph-transform spaceとorigin derivative／tangencyだけを事前登録して判定する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -3149,6 +3213,7 @@ python -m research.q011o_graph_transform_setup --output research/artifacts/q011o
 python -m research.q011p_zero_block_reality --output research/artifacts/q011p_zero_block_reality.json
 python -m research.q011q_real_frame_setup --output research/artifacts/q011q_real_frame_setup.json
 python -m research.q011r_nonlinear_graph_transform --output research/artifacts/q011r_nonlinear_graph_transform.json
+python -m research.q011s_original_map_invariant_core --output research/artifacts/q011s_original_map_invariant_core.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -3242,6 +3307,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011p_zero_block_reality.json`](research/artifacts/q011p_zero_block_reality.json)
 - [`research/artifacts/q011q_real_frame_setup.json`](research/artifacts/q011q_real_frame_setup.json)
 - [`research/artifacts/q011r_nonlinear_graph_transform.json`](research/artifacts/q011r_nonlinear_graph_transform.json)
+- [`research/artifacts/q011s_original_map_invariant_core.json`](research/artifacts/q011s_original_map_invariant_core.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -3362,6 +3428,11 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q011m repaired exact mapのanalytic二階／三階微分、implicit graph-gauge quadratic jet、
   coefficient／finite-radius cubic-defect majorant
 - Q011n degree-2 inverseとdegree-3以上のfunction defectの型監査、8 exact radiusのscalar correction obstruction
+- Q011o componentwise-complex localized setupの型監査とzero-block reality obstruction
+- Q011p zero-block selected invariant spaceの実構造、canonical conjugation、実部分空間一意性
+- Q011q explicit real frame／external section、fixed-leaf real coordinate、same-norm linear domination
+- Q011r global bounded real graph space、localized nonlinear graph-transform self-map／strict contraction
+- Q011s original-map cutoff-core transfer、24-real-dimensional forward-invariant Lipschitz graph patch
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -3372,7 +3443,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapに対する型付きgraph-transform／full analytic inverseとa posteriori existence proof
+- repaired exact mapのLipschitz graph patchに対する\(C^1\) graph transform、origin tangency、
+  spectral-quotient SSM uniqueness
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
 
@@ -3466,4 +3538,13 @@ graph-gauge quadratic jet、係数majorant、最大登録半径`1e-11`でのunif
 Q011nではQ011lのdegree-2 inverseとQ011mのdegree-3以上のfunction defectが型不整合であり、登録scalar
 surrogateも8 radiusすべてで閉じないことを`not_ready`として確定した。これは多様体の不存在やQ011l／
 Q011mの棄却ではない。componentwise coefficient、型付きa posteriori theorem、exact invariant manifold／
-forced SSM、smoothness、normal attractionは未認証である。
+forced SSM、smoothness、normal attractionはこの段階では未認証だった。Q011oではcomplex coordinate上の
+componentwise cutoffがzero-block real fixed spaceを保たないためvalid `rejected`とし、Q011pでその実構造を
+独立に認証した。Q011qではexplicit real frameとcanonical external sectionを構成し、fixed-leaf real
+coordinate、same-norm linear domination、radial cutoffを型付きで再発行した。Q011rではQ011mのanalytic
+derivative boundをこのreal normへ輸送し、global bounded Lipschitz graph space上のlocalized nonlinear
+graph transformがradius `3e-16`でstrict contractionになることを認証した。Q011sでは全24 selected centerから
+selected operator upperを再構成し、同じ最大radiusでfixed graph patchとその像がcutoff identity coreへ
+留まることを認証した。従ってoriginal repaired exact mapにはfixed conservation leaf上の24-real-dimensional
+forward-invariant Lipschitz graph patchが存在し、全forward iterateがcore内に留まる。backward invariance、
+\(C^1\) smoothness、origin tangency、spectral-quotient SSM uniqueness、normal attraction、basinは未認証である。

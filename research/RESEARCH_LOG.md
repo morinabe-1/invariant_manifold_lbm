@@ -5901,6 +5901,109 @@ original mapと一致するが、graph patchのone-step selected base imageが�
 いない。従ってoriginal mapのlocal invariant manifold／SSM、$C^1$以上のsmoothness、spectral quotient
 uniqueness、normal attraction、basinは未認証である。次はQ011sでinner-core containmentだけを判定する。
 
+## Q011s: original-map forward-invariant Lipschitz core
+
+### 実施内容
+
+Q011k／Q011l／Q011q／Q011rのartifact、runner、20 digest、outcome、theorem consequence、claim boundaryを
+直接封印した。Q011kのdyadic eigencenterとQ011lのselected index、transformed residual \(\theta_n\)、
+invariant-graph radius \(r_{G,n}\)を再構成し、selected blocks \(n=0,1,16\)について
+
+\[
+p_{S,n}
+=\max_{j\in I_{S,n}}|\lambda_{n,j}|_{\rm upper}
++\theta_n(1+r_{G,n})
+\]
+
+をexact `Fraction`で評価した。全24 selected centerを列挙し、blocks `1 / 16`のexact conjugacyと
+operator upperの一致を確認した。Q011qのreal shear
+
+\[
+R^{-1}
+\begin{bmatrix}
+S&B\\0&E
+\end{bmatrix}
+R
+=
+\begin{bmatrix}
+S&SH+B-HE\\0&E
+\end{bmatrix}
+\]
+
+がselected diagonal \(S\)を変えないことを使い、real couplingだけをQ011qのbound \(b\)へ置き換えた。
+
+Q011rのBanach fixed graph \(\psi_*\)はoriginを固定し、graph-transform image boundから
+
+\[
+\operatorname{Lip}(\psi_*)\le\ell_*<1,
+\qquad
+\|\psi_*(s)\|\le\ell_*\|s\|
+\]
+
+を満たす。事前登録した11 scale \(r=\sigma\rho_*\)について、input graphのfull coordinate radiusを\(r\)で
+包み、cutoffを重ねずoriginal core Taylor bound
+
+\[
+c_r=p_S+b\ell_*+\frac12\mu_2r,
+\qquad
+\|P_{\psi_*}(s)\|\le c_r\,r,
+\qquad
+\|\psi_*(P_{\psi_*}(s))\|\le\ell_*c_r\,r
+\]
+
+を評価した。\(c_r\le1\)ならone-step imageは同じcore patchへ入り、input上で
+\(F=F_{\rho_*}\)なので、包含の帰納から全forward iterateについてoriginal／localized mapが一致する。
+physical lift \(K_L\)でinput／output displacementを包み、population／density floorも別々に再評価した。
+
+### 結果
+
+validityは`7 / 7`、hypothesisは`5 / 5`を通過し、
+`the original repaired exact map has a certified forward-invariant Lipschitz graph patch on the fixed conservation leaf`
+として`accepted`とした。
+
+- selected center count／blocks: `24 / (0, 1, 16)`
+- block \(p_{S,0}/p_{S,1}/p_{S,16}\):
+  `0.9920954876550455 / 0.9920954684013225 / 0.9920954684013225`
+- global \(p_S\) witness: `block 0`
+- real coupling \(b\)／fixed-graph slope \(\ell_*\):
+  `2.080001889821235e-8 / 0.9989479817734533`
+- registered／passing scale count: `11 / 11`
+- selected scale／radius: `1 / 3e-16`
+- first failed larger registered radius: `none`
+- selected image ratio \(c_r\): `0.9922238426930379`
+- external image ratio \(\ell_*c_r\): `0.9911800051257107`
+- input／output physical displacement upper:
+  `7.731563462654924e-13 / 7.671441608940559e-13`
+- input population／density floor:
+  `0.027775908312577136 / 0.9999999999924095`
+- output population／density floor:
+  `0.02777590831258315 / 0.9999999999924637`
+- selected-center／selected-block／core-record digest:
+  `d948ea7ea2b84c0b4124a8bfca012dadbed0c7e4e81d8bf874967845336c3b4e` /
+  `2cb9a0dbf2ed73a6ea9e996b496adec8b5b7b3d3dd6b1be44d11a108f6756cfe` /
+  `8f7aec78b72bcec3b7464a16c8bfd5940bdf63b7a20ea79b33d10b50207b1abf`
+- input／linear／graph／core／result digest:
+  `4808619d977f8d14c4f8b454e846558ad047337e4343c6b9bef791e2c2b99af5` /
+  `6a657463b847ce242346aea8b582f1f4e108b0abb0935e270a5c03c1ceb3cc36` /
+  `b9837d31b26bced4243457e3357a93c8d546883390104f1b43d5e182e92f98a7` /
+  `ab837deb8459678d4fce223e06d03cc8e6f4d391ff35bad191392a923825e622` /
+  `3e01d86f279bc6c5a2f0769a9728a98e3e49fa749be15a2c6c6e0f32132ca270`
+- runner／artifact newline-normalized SHA-256:
+  `beeeb6699b5c3a7e7636b2c7afd6036bc6959213e81339f39961c325d9347367` /
+  `d7399671504cc513aecc491210108c31365c63a74864ecf04e629b3d1348bc52`
+
+### 解釈と次のbottleneck
+
+最大登録radius \(\rho_*=3\times10^{-16}\)自体がstrict core-ratio capsを通った。従ってinner scaleを縮める
+必要はなく、Q011r fixed graphのradius-\(\rho_*\) patch全体をoriginal repaired exact mapへ移せる。
+これはfixed conservation leaf上の24-real-dimensional Lipschitz graph patchであり、全forward iterateが
+cutoff identity core内に留まる。
+
+一方、forward inclusionだけを使っており、backward invarianceやpatchへのonto性は示していない。また
+\(C^1\)以上のsmoothness、originでselected spaceに接すること、spectral-quotient SSM uniqueness、
+normal attraction、basin、登録radiusより大きい最適radiusは未認証である。次はQ011tを事前登録し、
+\(C^1\) graph-transform space、origin derivative equation、tangency、spectral quotientだけを判定する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6068,6 +6171,8 @@ uniqueness、normal attraction、basinは未認証である。次はQ011sでinne
 [`artifacts/q011q_real_frame_setup.json`](artifacts/q011q_real_frame_setup.json)
 
 [`artifacts/q011r_nonlinear_graph_transform.json`](artifacts/q011r_nonlinear_graph_transform.json)
+
+[`artifacts/q011s_original_map_invariant_core.json`](artifacts/q011s_original_map_invariant_core.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
