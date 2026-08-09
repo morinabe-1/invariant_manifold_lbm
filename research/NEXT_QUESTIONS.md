@@ -13729,10 +13729,12 @@ v_k\ge\lVert V_k\rVert_\infty,
 \beta_k\ge\lVert V_k^{-1}\rVert_\infty
 \]
 
-とQ011l graph radius \(r_{G,k}\) を使う。nonselected blockでは \(r_{G,k}=0\) とし、
+とQ011l graph radius \(r_{G,k}\) を使う。zero blockの \(V_0\) は150次元leaf coordinateへ
+値を返すため、populationへのQ011j affine lift normを \(\ell_0=186\) とする。非零blockでは
+\(\ell_k=1\)、nonselected blockでは \(r_{G,k}=0\) とし、
 
 \[
-K_L=\sum_{k=0}^{16}v_k(1+r_{G,k}),
+K_L=\sum_{k=0}^{16}\ell_kv_k(1+r_{G,k}),
 \qquad
 K_P=\max_{0\le k\le16}\beta_k(1+r_{G,k})
 \]
@@ -13745,7 +13747,8 @@ K_P=\max_{0\le k\le16}\beta_k(1+r_{G,k})
 \lVert(s,e)\rVert_{\mathcal X}\le K_P\lVert x\rVert_\infty
 \]
 
-となる。登録capは \(K_L\le300\)、\(K_P\le900\) とする。cross-block cancellationは使わない。
+となる。登録capは \(K_L\le2600\)、\(K_P\le900\) とする。cross-block cancellationは使わない。
+`186`を省略した旧式は使用しない。
 
 ### 同一norm上のlinear triangular split
 
@@ -13826,7 +13829,7 @@ F_\rho(z)=Az+N(C_\rho z)
 
 と定義する。これはcore ball上で元のrepaired exact mapと一致する。
 
-physical localization upper \(K_L\rho\) は`<=1e-8`を要求する。Q011mのexact-root population／density floorから
+physical localization upper \(K_L\rho\) は`<=3e-8`を要求する。Q011mのexact-root population／density floorから
 
 \[
 f_{\min}\ge f_{*,\min}-K_L\rho\ge0.02,
@@ -13851,7 +13854,8 @@ graph transformのwell-definedness、self-map、base inverse、contractionは判
 
 1. Q011k--Q011nのartifact／runner、19 digest、outcome、claim boundaryを直接再現する。
 2. 17 Fourier block、zero／nonzero dimension、conjugacy、`24 + 2574 = 2598`を再現する。
-3. \(V_k,V_k^{-1},G_k\) の型とsame-norm boundをQ011k／Q011l recordから再構成する。
+3. \(V_k,V_k^{-1},G_k\) の型、zero-block population lift `186`、same-norm boundを
+   Q011k--Q011m recordから再構成する。
 4. 全17 blockのmodulus interval、\(\theta_k,\eta_k,m_k,q_k,B_k\)をexact arithmeticで評価する。
 5. \(K_L,K_P,m_S,q_E,\gamma_0\)の式とwitness block／centerを保存する。
 6. cutoff、localized map、graph spaceのdomain／codomain、conjugacy、core一致を明示する。
@@ -13864,7 +13868,8 @@ graph transformのwell-definedness、self-map、base inverse、contractionは判
 validity通過後、次の5項目を別々に要求する。
 
 1. fixed-leaf Fourier／eigencoordinate／graph triangular mapがbijectiveで、全dimensionとconjugacyが閉じる。
-2. \(K_L\le300\)、\(K_P\le900\)、cutoff physical upperとpopulation／density／derivative-domain bufferが通る。
+2. \(K_L\le2600\)、\(K_P\le900\)、\(K_L\rho\le3\times10^{-8}\) と
+   population／density／derivative-domain bufferが通る。
 3. same normで \(m_S\ge0.983\)、\(q_E\le0.982\)、\(m_S-q_E\ge10^{-3}\) が通る。
 4. \(\gamma_0\le0.999\)、\(1/m_S\le1.02\)、selected-external coupling upper `<=1e-6`が通る。
 5. \(C_\rho,F_\rho,\mathcal G_{\rho,1}\) のdomain／codomainが型付きで固定され、scalar surrogateを
