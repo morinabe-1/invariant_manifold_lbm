@@ -10716,6 +10716,185 @@ validity `7 / 7`、hypothesis `5 / 5`を通過し、
 次はQ011dで、selected 24-dimensional forced clusterに対するquadratic external
 nonresonance、spectral quotient、homological operatorを観測前に事前登録する。
 
+## Q011d: forced quadratic external homological-family prequalification — 事前登録
+
+### 問いと範囲
+
+Q011c2でselectedとしたforced 24-dimensional clusterについて、quadratic monomial全300個の
+external graph-gauge homological blockは数値的に非共鳴であり、5個の\(k_x\)-sector Sylvester
+operatorは登録probeを安定に解けるか。
+
+このgateではforced-map Hessian、quadratic forcing、\(W_2\)、\(R_2\)をまだ構築しない。
+通過してもquadratic invariant chart、不変性残差次数、SSM existence／uniqueness、nonlinear normal
+attractionは主張しない。まずlinear selected／quotient dynamicsとquadratic input actionだけを固定する。
+
+### 封印入力
+
+- Q011c2 artifact／runner newline-normalized SHA-256:
+  `c1794ca72eebd60c4bc097278495218e9e2d2e84bdacd0f478e510a80fcba42a` /
+  `87bdfc1ed20e6e68e4a395d36399adbab19e82809c626ecefa65a342ce42b9d2`
+- Q011c2 input／path／holdout-spectrum／endpoint／result digest:
+  `de4b0c4d38d0efcff9c7db4bbef66ba6d081a6703c732dbd7116a294020459f2` /
+  `36be8801af32ae178e91e049b2640ed4bb058107abdf2df2af8860930c53c27d` /
+  `d7319399578d3755ee0679122dec5e6b6d3454e394295bd62886920d104b0d72` /
+  `8c78791883b82f4a964d0c102006d9295b7b96733e77dea93249f30dc427b6a8` /
+  `8c23b985d69ffaa980e752e5d262184c0a6d466681d9d44fa4f0e9101df02b0c`
+- Q011b stored endpoint state SHA-256:
+  `612ef4aca91a5c0100286988e0e7979342a9046c3c78fe60ee59ca4e232a7613`
+- Q006i unforced quadratic artifact SHA-256:
+  `347d5349af349618333df17733ba372c8ca6f5ee02784a9e788898acefb5db89`
+- sealed package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+
+Q011c2をfresh replayし、validity `7 / 7`、hypothesis `5 / 5`、accepted classification、5 digestを
+exactに再現する。Q011c originalの`inconclusive`とQ011c1 localizationも変更しない。Q006iは
+read-only calibrationとしてpair count 300、minimum operator singular value
+`0.00015502435597333105`、maximum condition `14513.930547954875`、singular block 0を再現する。
+
+### canonical forced linear split
+
+base pointはQ011b stored endpointとする。Q011c2と同じunforced targetから\(k_x=0,1,16\)の
+ordered-Schur clusterを直接選び、selected dimensionsを`6 / 9 / 9`とする。selected dynamicsを
+
+\[
+R_1=\operatorname{diag}(T_{s,0},T_{s,1},T_{s,16})\in\mathbb C^{24\times24}
+\]
+
+とする。external quotient dynamicsは
+
+\[
+A_{e,k}=
+\begin{cases}
+T_{e,k}, & k=0,1,16,\\
+T_k, & k=2,15,
+\end{cases}
+\]
+
+とする。\(k=0\)は150-dimensional fixed leaf内なのでexternal dimension 144、
+\(k=1,16\)も144、\(k=2,15\)はfull 153とする。\(k=2,15\)はcomplex Schurでunitary triangularize
+する。全Schur reconstruction／unitarity／invariance／projector residualを`<=1e-10`、
+conjugate-sector spectrum Hausdorff errorを`<=1e-10`とする。
+
+全17 fixed-leaf blockも再列挙し、selected 24／external 2574、normal gap`>=1e-6`、
+full radius`<=0.9999`を要求する。spectral quotient diagnostic
+
+\[
+q_{\rm spec}=
+\frac{\log\max_{\mu\in\sigma_e}|\mu|}
+{\log\min_{\lambda\in\sigma_s}|\lambda|}
+\]
+
+をfiniteに記録し、`1<q_spec<2`を確認する。ただし整数smoothness classやuniqueness次数の定理とは
+解釈しない。
+
+### symmetric quadratic input action
+
+selected coordinateはblock順\(k_x=0,1,16\)、各block内Schur順とする。unordered pair
+\((i,j)\), \(0\le i\le j<24\)をlexicographicに全列挙し、pair countを
+\(\binom{25}{2}=300\)とする。output sectorは\(k_i+k_j\bmod17\)で決める。
+
+| output \(k_x\) | pair count | external dimension | homological scalar dimension |
+|---:|---:|---:|---:|
+| 0 | 102 | 144 | 14,688 |
+| 1 | 54 | 144 | 7,776 |
+| 16 | 54 | 144 | 7,776 |
+| 2 | 45 | 153 | 6,885 |
+| 15 | 45 | 153 | 6,885 |
+
+monomial vectorを\(m_{ij}(a)=a_i a_j\)とし、
+
+\[
+m(R_1a)=K\,m(a)
+\]
+
+を満たす300×300 symmetric-product matrix \(K\)を直接assemblyする。sector外leakageを
+`<=1e-12`、seed `20260821`の8 normalized complex directionでaction relative errorを
+`<=1e-12`とする。各sector \(K_k\)のspectrumと、対応selected eigenvalue product multisetの
+Hausdorff errorを`<=1e-10`とする。
+
+### 300 external homological block
+
+各pairのmultiplier product \(\mu_{ij}\)とoutput sector \(k\)に対し、
+
+\[
+H_{ij}=A_{e,k}-\mu_{ij}I
+\]
+
+を構成する。全300 blockでfull singular spectrum、numerical rank、spectral distance、
+condition numberを計算する。rank thresholdは
+
+\[
+100\,\epsilon_{\rm mach}\,
+\max(\operatorname{shape}H_{ij})\,\sigma_{\max}(H_{ij})
+\]
+
+とする。seed `20260820`のpairごとのnormalized complex RHSを`numpy.random.Generator`で順に生成し、
+direct solve relative residualも保存する。
+
+登録thresholdは次のとおり。
+
+- numerical singular block count: 0
+- minimum \(\sigma_{\min}(H_{ij})\): `>=1e-5`
+- minimum spectral distance
+  \(\min_{\nu\in\sigma(A_{e,k})}|\nu-\mu_{ij}|\): `>=1e-5`
+- maximum condition number: `<=1e6`
+- maximum direct-solve relative residual: `<=1e-10`
+
+sector \(1/16\)、\(2/15\)ではpair-product、smallest-singular、condition multisetのconjugacy
+Hausdorff／relative discrepancyを各`<=1e-8`とする。個別shear／acoustic labelは付けない。
+
+### 5 sector-wide Sylvester probe
+
+各sectorで
+
+\[
+\mathcal H_k(X)=A_{e,k}X-XK_k
+\]
+
+を使う。seed `20260822`からsectorごとに4 normalized complex RHS、合計20 probeを生成し、
+`scipy.linalg.solve_sylvester(A_e,-K,B)`で解く。
+
+- maximum relative equation residual: `<=1e-10`
+- maximum response amplification \(\|X\|_F/\|B\|_F\): `<=1e6`
+- nonfinite／solver failure: 0
+
+とする。これはoperator normのrigorous upper boundではなく、full nonnormal sector actionに対する
+登録probe診断である。invertibilityの主判定はcomplete pair-product spectrumと300 blockの
+nonresonanceから行う。
+
+### validity gate
+
+1. Q011c2／Q011c1／Q011c／Q011b、Q006i、package sourceを封印どおり再現する。
+2. canonical stored-endpoint selected／external Schur splitと全fixed-leaf spectrumをstructurally再現する。
+3. 300 pair、sector count`102 / 54 / 54 / 45 / 45`、各dimension、pair hashを完全再現する。
+4. symmetric-product \(K\)のaction、sector closure、product spectrumを独立に再現する。
+5. 全300 SVD／rank／direct solveと20 sector-wide Sylvester probeを完全列挙する。
+6. conjugate-sector scalar diagnosticsが登録閾値内である。
+7. 全値finiteなstrict JSON、input／linear-split／pair-family／sector-probe／result digest、
+   runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、nonresonance hypothesisを解釈しない。
+
+### hypothesis gateと判定
+
+validity通過時だけ次を全て要求する。
+
+1. 全300 external homological blockがfull rankでminimum singular／spectral-distance gateを通る。
+2. 全300 condition／direct-solve residualが登録上限内である。
+3. 全5 sectorの\(K\) spectrumがselected pair productsを再現し、conjugate sectorが閉じる。
+4. 全20 sector-wide Sylvester probeがresidual／amplification gateを通る。
+5. canonical forced clusterがglobal normal dominance／stabilityを保持し、\(1<q_{\rm spec}<2\)である。
+
+全て通れば
+`the forced quadratic external homological family is numerically nonresonant and solvable`として
+`accepted`とする。validだが一つでも落ちれば
+`the forced quadratic external homological family fails prequalification`として`rejected`とする。
+
+acceptedでもこれはbinary64 canonical endpointのlinear／quadratic-input operator
+prequalificationである。実際のHessian、forcing support、\(W_2\)、\(R_2\)、homological residual、
+independent derivative、invariance residual order、forced SSM existence／uniqueness、normal attractionは
+未認証である。acceptedの場合だけQ011e dense forced quadratic chartを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
