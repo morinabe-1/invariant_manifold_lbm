@@ -1100,6 +1100,7 @@ def _prepare_method(
         relative_tolerance=TT_RELATIVE_TOLERANCE,
         max_rank=None,
     )
+    w_cores = [np.array(core, copy=True, order="C") for core in w_cores]
     subphase["w_tt_svd_rounding_nanoseconds"] = perf_counter_ns() - started
     started = perf_counter_ns()
     r_cores, r_diagnostics = tt_svd_with_diagnostics(
@@ -1107,6 +1108,7 @@ def _prepare_method(
         relative_tolerance=TT_RELATIVE_TOLERANCE,
         max_rank=None,
     )
+    r_cores = [np.array(core, copy=True, order="C") for core in r_cores]
     subphase["r_tt_svd_rounding_nanoseconds"] = perf_counter_ns() - started
     started = perf_counter_ns()
     storage = _tt_bundle_storage(w_cores, r_cores)

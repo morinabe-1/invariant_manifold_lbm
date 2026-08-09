@@ -1,0 +1,1769 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-09T09:18:49.676141+00:00",
+  "source": {
+    "package_version": "0.1.0",
+    "package_source_sha256": "114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2"
+  },
+  "runner_source": {
+    "filename": "q011g_forced_representation_audit.py",
+    "sha256": "84ed56dabd0b0f870f1c6b27c9907c9566439ff03affe5aacc61ba611f4678fe",
+    "sha256_newline_normalization": "UTF-8 text with universal newlines"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.4",
+    "scipy": "1.16.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "mathematical_scope": {
+    "diagnostic": "natural Fourier-sparse versus registered uncapped TT-SVD representation audit for sealed forced quadratic coefficients",
+    "grid": [
+      17,
+      17
+    ],
+    "omega": 1.5,
+    "eta": 0.01,
+    "fixed_conservation_leaf": true,
+    "selected_real_dimension": 24,
+    "pair_count": 300,
+    "coefficient_families": [
+      "W2",
+      "R2"
+    ],
+    "candidate_count": 6,
+    "natural_fourier_sparse_is_mandatory": true,
+    "claim": "finite binary64 coefficient fidelity, storage and current-environment joint-action cost only"
+  },
+  "cycle": {
+    "question": "Does one registered uncapped TT-SVD W2/R2 bundle beat the mandatory natural Fourier-sparse baseline in fidelity, storage and robust finite-environment joint-action time?",
+    "registered_parameters": {
+      "size": 17,
+      "omega": 1.5,
+      "eta": 0.01,
+      "fixed_conservation_leaf": true,
+      "selected_dimension": 24,
+      "pair_count": 300,
+      "output_sector_order": [
+        0,
+        1,
+        16,
+        2,
+        15
+      ],
+      "selected_block_order": [
+        0,
+        1,
+        16
+      ],
+      "expected_sector_pair_counts": {
+        "0": 102,
+        "1": 54,
+        "16": 54,
+        "2": 45,
+        "15": 45
+      },
+      "tt_relative_tolerance": 1e-13,
+      "tt_max_rank": null,
+      "tt_candidate_ids": [
+        "flat-output-first",
+        "flat-output-last",
+        "fourier-output-first",
+        "fourier-output-last",
+        "d1q3-output-first",
+        "d1q3-output-last"
+      ],
+      "method_ids": [
+        "natural-fourier-sparse",
+        "ordered-dense-control",
+        "flat-output-first",
+        "flat-output-last",
+        "fourier-output-first",
+        "fourier-output-last",
+        "d1q3-output-first",
+        "d1q3-output-last"
+      ],
+      "action_seed": 20260902,
+      "action_direction_count": 32,
+      "invariance_seed": 20260903,
+      "invariance_direction_count": 16,
+      "invariance_amplitude": 0.00256,
+      "offline_warmup_blocks": 1,
+      "offline_measured_blocks": 3,
+      "online_warmup_blocks": 1,
+      "online_measured_blocks": 5,
+      "thresholds": {
+        "maximum_projection_relative_loss": 1e-12,
+        "maximum_sparse_dense_action_error": 1e-12,
+        "maximum_tt_reconstruction_error": 2e-13,
+        "maximum_tt_action_error": 1e-11,
+        "maximum_realification_action_error": 1e-11,
+        "maximum_invariance_defect_perturbation": 0.0001,
+        "minimum_population": 0.0,
+        "maximum_conservation_drift": 1e-10,
+        "maximum_checksum_relative_error": 1e-11
+      },
+      "natural_sparse_registered_counts": {
+        "coefficient_complex_entry_count": 47484,
+        "coefficient_stored_real_scalar_count": 94968,
+        "raw_array_payload_bytes": 760644
+      }
+    },
+    "sealed_q011f1_artifact_audit": {
+      "artifact": {
+        "filename": "q011f1_heldout_amplitude_reissue.json",
+        "sha256": "79ddb64e0965b5b87b7ad68c6dc8698efdd2281540c798ed27f355747d265bc1",
+        "runner_filename": "q011f1_heldout_amplitude_reissue.py",
+        "runner_sha256": "eab2d63a075f2c43b4c6adfaa7941e9c23bf85a351427057130f68945346ce62",
+        "input_digest_sha256": "101adcdc6fc2d40dc984e6ba900d234b913f7c78aa34381a08d0a77aa9e23000",
+        "chart_reconstruction_digest_sha256": "ba50ee295551dae970d33e1bba735ac0502987aef0f4a82987f2998ae884f732",
+        "heldout_trajectory_digest_sha256": "243c41522a9eb7d7b78b2031bdbe8f55eb23b447e8d84162b1aae2f53b651829",
+        "merged_fit_digest_sha256": "2e3fcee7bebec5c82f2fbd2b78ddac8c44401fd0681ad5d9feb60c7257a8326e",
+        "result_digest_sha256": "484580786b6c535856f0693b14c58815462e1de979759057dc3b402d475bcbc7",
+        "study_validity": "passed",
+        "hypothesis_outcome": "accepted",
+        "scientific_classification": "the forced quadratic chart passes a held-out-amplitude 64-step shadowing reissue"
+      },
+      "preserved_q011f_artifact": {
+        "filename": "q011f_multistep_shadowing.json",
+        "sha256": "9c091dbafd60617850cd3168f3ad9235a353b0990cbd003df9be0b487ead1591",
+        "runner_filename": "q011f_multistep_shadowing.py",
+        "runner_sha256": "e9c0a8e38b94dbe693855dc836f8cf02393675b417ff3f43fc43059ab361a741",
+        "input_digest_sha256": "e9b29c95d41af0062259d3aab19ab2c58175cd98582ed82f3af36863f023bc53",
+        "chart_reconstruction_digest_sha256": "aa1da452db8ff6b84e88a32f7a7119c63816b12e283147daaa303e9e09c3ae42",
+        "trajectory_digest_sha256": "aa62fc11a36bef881bbcdb05919818f6db167f3f95eee396fcdaf79fead5e182",
+        "result_digest_sha256": "629a5a7a3d3bfed12a590646c375d4977db1726ddc521ddb86394786b1005f22",
+        "direction_sha256": "4d0bef57236d4f70a8a8f422b1bdfa39cd5737c88401c2441decdd98d886d2f9",
+        "study_validity": "passed",
+        "hypothesis_outcome": "rejected",
+        "scientific_classification": "the forced quadratic chart fails the registered finite shadowing window",
+        "failed_hypothesis_gates": [
+          "all_direction_horizon_fits_are_slope_eligible"
+        ]
+      },
+      "checks": {
+        "q011f1_artifact_sha256_matches": true,
+        "q011f1_runner_sha256_matches": true,
+        "q011f1_package_source_matches": true,
+        "q011f1_five_digests_match": true,
+        "q011f1_valid_accepted_outcome_reproduces": true,
+        "q011f_rejected_outcome_remains_sealed": true,
+        "q011f1_artifact_is_strict_finite_json": true
+      },
+      "passed": true
+    },
+    "q011e_coefficient_reconstruction_audit": {
+      "q011e_artifact_audit": {
+        "artifact": {
+          "filename": "q011e_forced_quadratic_chart.json",
+          "sha256": "45d563103678d790aa3df4db692bbe781c9c86ed550c7499c61b397688666fca",
+          "runner_filename": "q011e_forced_quadratic_chart.py",
+          "runner_sha256": "3aa608852be7a1df7dbe37b4d3c7e1bb3fbf125eae115260fc45a223e0757955"
+        },
+        "checks": {
+          "q011e_artifact_sha256_matches": true,
+          "q011e_runner_sha256_matches": true,
+          "q011e_digests_match": true,
+          "q011e_valid_rejected_window_is_preserved": true
+        },
+        "passed": true
+      },
+      "input_digest_sha256": "f0bd65361d0cdc39e6499b8b0065ce6d7705945927ed77af5d2b231d0572bc9c",
+      "derivative_digest_sha256": "d017d3ea204ad337f538b6f1819e215b6ab8a69f89090cc51ca9eb4885b75fce",
+      "chart_digest_sha256": "6d4ee0102a6df052fac857890468ed911cff994e07c573dde837eb54a4a22e05",
+      "real_array_hashes": {
+        "real_tangent_sha256": "e0b6fb929d49a1371d1eebf836308a795a7f0e9dbad44f55b2386add9f3d0628",
+        "real_extractor_sha256": "e77d149787d187ca756a23efcf6b833cfd6ab15b5fd617b5d3ae3ba5c0859f6f",
+        "real_reduced_linear_sha256": "b6521e3090b61c72d0689b765e1fad0a0318029a0ab5767bd3c7679d4ce2c525",
+        "analytic_second_derivative_sha256": "6bfea17a7bbfa1dcdded5dadec15296ec2f478aefe7984dd1e4885498a186221",
+        "real_chart_hessian_sha256": "ab55a8b50f2565be494fcf3d5f140f93fc0112484da56e1333ce58dfd220a6c2",
+        "real_reduced_hessian_sha256": "7ae45cbabda8da17ec73d6779761077a67e19fae4dc53ca11fe98b78bcf074e2"
+      },
+      "native_array_hashes": {
+        "native_chart_hessian_sha256": "0b4c2f6967624e62b8b45a1fde67d0a092894ff367ed402a076c15c46a2206db",
+        "native_reduced_hessian_sha256": "b450cba9d58d0853bed95acaa9b4f2a69659e5c24b943708c0700d11c8962ee9",
+        "coordinate_map_sha256": "ba7e73e99f82b5c14fb0d96005d7952248c4f6da9a48e1430b7c389ba42674f1"
+      },
+      "maximum_complex_linear_structural_residual": 7.35746952368904e-14,
+      "maximum_sector_sylvester_relative_residual": 8.463492700134046e-16,
+      "maximum_pairwise_homological_relative_residual": 1.3875757356771478e-14,
+      "checks": {
+        "q011e_artifact_is_sealed": true,
+        "q011e_input_sections_reproduce": true,
+        "q011e_derivative_sections_reproduce": true,
+        "q011e_chart_sections_reproduce": true,
+        "six_real_array_hashes_reproduce": true,
+        "native_complex_and_coordinate_hashes_reproduce": true,
+        "q011f1_stored_chart_hashes_reproduce": true,
+        "all_reconstructed_chart_gates_pass": true
+      },
+      "passed": true
+    },
+    "natural_fourier_coefficient_audit": {
+      "pair_count": 300,
+      "pair_indices_sha256": "a8917518620a67b9a2e3cbc2bddde81d0e4cb72033265e6a0c863cf0bdc02327",
+      "output_sector_order": [
+        0,
+        1,
+        16,
+        2,
+        15
+      ],
+      "sector_pair_counts": {
+        "0": 102,
+        "1": 54,
+        "16": 54,
+        "2": 45,
+        "15": 45
+      },
+      "output_sectors_sha256": "c47ee20550188307589755188d2d856e763e466430acadeb0e3342bd93db3114",
+      "w_fibers_shape": [
+        300,
+        17,
+        9
+      ],
+      "w_fibers_sha256": "3b1e553bee7a9231087639fdd8d72524eae93347175a393bb3d48d207f144d66",
+      "r_fiber_shapes": {
+        "0": [
+          102,
+          6
+        ],
+        "1": [
+          54,
+          9
+        ],
+        "16": [
+          54,
+          9
+        ]
+      },
+      "r_fiber_sha256": {
+        "0": "6689974b4f081a51a347930e5a74128b532a0727b27bd7f6de7a4b9348a89c40",
+        "1": "7b49bd25f1eff1c2347e3493797113a2d3023417d9c4e970528562b5c4f275b6",
+        "16": "0c66ebad5cc3a86048a8c6caeb38da081700cce37cfeea9d17380d395bec0678"
+      },
+      "projected_w_tensor_shape": [
+        17,
+        17,
+        9,
+        24,
+        24
+      ],
+      "projected_r_tensor_shape": [
+        24,
+        24,
+        24
+      ],
+      "projected_w_tensor_sha256": "a0b14a224a6f4d5921c4e21894821018d1df6badca8dd6b5d21d571756515ddc",
+      "projected_r_tensor_sha256": "b450cba9d58d0853bed95acaa9b4f2a69659e5c24b943708c0700d11c8962ee9",
+      "w_projection_relative_loss": 3.3347534941436427e-15,
+      "r_projection_relative_loss": 0.0,
+      "natural_storage": {
+        "w_fiber_count": 300,
+        "r_active_fiber_count": 210,
+        "coefficient_complex_entry_count": 47484,
+        "coefficient_stored_real_scalar_count": 94968,
+        "coefficient_payload_bytes": 759744,
+        "index_and_sector_metadata_bytes": 900,
+        "raw_array_payload_bytes": 760644,
+        "in_memory_object_bytes": 736651,
+        "uncompressed_npz_serialized_bytes": 762188,
+        "serialization_roundtrip_bitwise_equal": true,
+        "scalar_sparse_lossless_diagnostic": {
+          "bitwise_nonzero_complex_coefficient_count": 47484,
+          "coefficient_stored_real_scalar_count": 94968,
+          "raw_array_payload_bytes": 998064,
+          "in_memory_object_bytes": 999084,
+          "uncompressed_npz_serialized_bytes": 999356,
+          "serialization_roundtrip_bitwise_equal": true
+        }
+      },
+      "checks": {
+        "three_hundred_pairs_are_complete": true,
+        "registered_sector_counts_reproduce": true,
+        "natural_array_shapes_are_registered": true,
+        "projection_losses_are_within_tolerance": true,
+        "natural_storage_counts_are_preregistered": true,
+        "natural_serialization_roundtrip_is_bitwise_equal": true,
+        "all_projected_coefficients_are_finite": true
+      },
+      "passed": true
+    },
+    "direction_audit": {
+      "seed": 20260902,
+      "direction_count": 32,
+      "direction_sha256": "4e41534f25510958bfa23b4042fafad437afbf6cadbf158903c92c34de9b3cd3",
+      "maximum_unit_norm_error": 1.1102230246251565e-16,
+      "prior_campaigns": [
+        {
+          "seed": 20260824,
+          "direction_count": 32
+        },
+        {
+          "seed": 20260825,
+          "direction_count": 32
+        },
+        {
+          "seed": 20260826,
+          "direction_count": 32
+        }
+      ],
+      "exact_duplicate_count_vs_prior": 0,
+      "checks": {
+        "direction_shape_is_registered": true,
+        "all_directions_are_unit_norm": true,
+        "no_direction_duplicates_prior_campaigns": true,
+        "all_direction_values_are_finite": true
+      },
+      "passed": true
+    },
+    "fidelity_audit": {
+      "maximum_dense_vs_sparse_relative_action_error": 3.236954490816236e-16,
+      "maximum_sparse_realification_action_error": 2.6308369589850537e-15,
+      "maximum_sparse_imaginary_leakage_relative_norm": 6.298922905604679e-13,
+      "candidate_records": {
+        "flat-output-first": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "w_relative_tensor_reconstruction_error": 1.876019256950484e-14,
+          "r_relative_tensor_reconstruction_error": 1.3455014982964091e-14,
+          "maximum_relative_action_error_vs_sparse": 3.4789289284205176e-14,
+          "maximum_relative_action_error_vs_dense": 3.4793425846005104e-14,
+          "maximum_realification_action_error": 3.47352419929717e-14,
+          "maximum_imaginary_leakage_relative_norm": 6.297785782096505e-13,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "flat-output-last": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "w_relative_tensor_reconstruction_error": 1.860567883540885e-14,
+          "r_relative_tensor_reconstruction_error": 1.3176947021874847e-14,
+          "maximum_relative_action_error_vs_sparse": 3.478540398734967e-14,
+          "maximum_relative_action_error_vs_dense": 3.478946168628458e-14,
+          "maximum_realification_action_error": 3.473919596155602e-14,
+          "maximum_imaginary_leakage_relative_norm": 6.30332600609684e-13,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "fourier-output-first": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "w_relative_tensor_reconstruction_error": 2.3879478509376187e-14,
+          "r_relative_tensor_reconstruction_error": 1.3455014982964091e-14,
+          "maximum_relative_action_error_vs_sparse": 3.818315039602978e-14,
+          "maximum_relative_action_error_vs_dense": 3.818279348821242e-14,
+          "maximum_realification_action_error": 3.8060385061239857e-14,
+          "maximum_imaginary_leakage_relative_norm": 6.300451181876807e-13,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "fourier-output-last": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "w_relative_tensor_reconstruction_error": 1.913381417958607e-14,
+          "r_relative_tensor_reconstruction_error": 1.3176947021874847e-14,
+          "maximum_relative_action_error_vs_sparse": 3.509085617353856e-14,
+          "maximum_relative_action_error_vs_dense": 3.5096822904024545e-14,
+          "maximum_realification_action_error": 3.502049927138638e-14,
+          "maximum_imaginary_leakage_relative_norm": 6.302038970111954e-13,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "d1q3-output-first": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "w_relative_tensor_reconstruction_error": 2.4155906257816465e-14,
+          "r_relative_tensor_reconstruction_error": 1.3455014982964091e-14,
+          "maximum_relative_action_error_vs_sparse": 3.8413937457831615e-14,
+          "maximum_relative_action_error_vs_dense": 3.84111508500263e-14,
+          "maximum_realification_action_error": 3.826020377118693e-14,
+          "maximum_imaginary_leakage_relative_norm": 6.295350254943243e-13,
+          "all_values_finite": true,
+          "passed": true
+        },
+        "d1q3-output-last": {
+          "mapping_roundtrip_bitwise_equal": true,
+          "w_relative_tensor_reconstruction_error": 1.9317624184080025e-14,
+          "r_relative_tensor_reconstruction_error": 1.3176947021874847e-14,
+          "maximum_relative_action_error_vs_sparse": 3.515408186584294e-14,
+          "maximum_relative_action_error_vs_dense": 3.515929943514106e-14,
+          "maximum_realification_action_error": 3.513477230587385e-14,
+          "maximum_imaginary_leakage_relative_norm": 6.303564183779715e-13,
+          "all_values_finite": true,
+          "passed": true
+        }
+      },
+      "checks": {
+        "natural_and_dense_actions_agree": true,
+        "natural_actions_realify_to_sealed_hessians": true,
+        "all_candidate_fidelity_records_pass": true
+      },
+      "passed": true
+    },
+    "invariance_residual_preservation_audit": {
+      "seed": 20260903,
+      "direction_count": 16,
+      "amplitude": 0.00256,
+      "direction_sha256": "a894ee3c915f0a268c5c395ad0f49a39add8b4d8e1d6238e0b730555856adc0f",
+      "exact_duplicate_count_vs_prior": 0,
+      "natural_maximum_defect_vector_relative_difference_vs_dense": 4.169287880778642e-09,
+      "natural_minimum_population": 0.027702486940874498,
+      "natural_maximum_global_conservation_drift": 1.1369121552711457e-13,
+      "natural_maximum_imaginary_leakage_relative_norm": 6.827048677424647e-13,
+      "candidate_records": {
+        "flat-output-first": {
+          "maximum_defect_vector_relative_difference_vs_sparse": 2.1257936457394672e-08,
+          "minimum_population": 0.027702486940874498,
+          "maximum_global_conservation_drift": 1.1369121552711457e-13,
+          "maximum_imaginary_leakage_relative_norm": 6.828036041539386e-13,
+          "passed": true
+        },
+        "flat-output-last": {
+          "maximum_defect_vector_relative_difference_vs_sparse": 2.1257936457394672e-08,
+          "minimum_population": 0.027702486940874498,
+          "maximum_global_conservation_drift": 1.1369121552711457e-13,
+          "maximum_imaginary_leakage_relative_norm": 6.82817416067157e-13,
+          "passed": true
+        },
+        "fourier-output-first": {
+          "maximum_defect_vector_relative_difference_vs_sparse": 2.1257936457394672e-08,
+          "minimum_population": 0.027702486940874498,
+          "maximum_global_conservation_drift": 1.1369121552711457e-13,
+          "maximum_imaginary_leakage_relative_norm": 6.825741494756892e-13,
+          "passed": true
+        },
+        "fourier-output-last": {
+          "maximum_defect_vector_relative_difference_vs_sparse": 2.1257936457394672e-08,
+          "minimum_population": 0.027702486940874498,
+          "maximum_global_conservation_drift": 1.1369121552711457e-13,
+          "maximum_imaginary_leakage_relative_norm": 6.82799392261462e-13,
+          "passed": true
+        },
+        "d1q3-output-first": {
+          "maximum_defect_vector_relative_difference_vs_sparse": 2.1257936457394672e-08,
+          "minimum_population": 0.027702486940874498,
+          "maximum_global_conservation_drift": 1.1369121552711457e-13,
+          "maximum_imaginary_leakage_relative_norm": 6.827018763402836e-13,
+          "passed": true
+        },
+        "d1q3-output-last": {
+          "maximum_defect_vector_relative_difference_vs_sparse": 2.1257936457394672e-08,
+          "minimum_population": 0.027702486940874498,
+          "maximum_global_conservation_drift": 1.1369121552711457e-13,
+          "maximum_imaginary_leakage_relative_norm": 6.826346024864481e-13,
+          "passed": true
+        }
+      },
+      "checks": {
+        "invariance_direction_campaign_is_registered": true,
+        "natural_projected_chart_preserves_dense_defects": true,
+        "all_tt_charts_preserve_natural_defects": true
+      },
+      "passed": true
+    },
+    "offline_cost_campaign": {
+      "timer": "perf_counter_ns",
+      "common_chart_coefficient_projection_and_dense_materialization_excluded": true,
+      "common_input_exclusion_is_tt_favorable": true,
+      "warmup_block_count": 1,
+      "measured_block_count": 3,
+      "order_by_block": [
+        [
+          "natural-fourier-sparse",
+          "ordered-dense-control",
+          "flat-output-first",
+          "flat-output-last",
+          "fourier-output-first",
+          "fourier-output-last",
+          "d1q3-output-first",
+          "d1q3-output-last"
+        ],
+        [
+          "ordered-dense-control",
+          "flat-output-first",
+          "flat-output-last",
+          "fourier-output-first",
+          "fourier-output-last",
+          "d1q3-output-first",
+          "d1q3-output-last",
+          "natural-fourier-sparse"
+        ],
+        [
+          "flat-output-first",
+          "flat-output-last",
+          "fourier-output-first",
+          "fourier-output-last",
+          "d1q3-output-first",
+          "d1q3-output-last",
+          "natural-fourier-sparse",
+          "ordered-dense-control"
+        ]
+      ],
+      "method_records": {
+        "natural-fourier-sparse": {
+          "nanoseconds_by_block": [
+            2748800,
+            2645200,
+            2788300
+          ],
+          "minimum_nanoseconds": 2645200,
+          "maximum_nanoseconds": 2788300,
+          "median_nanoseconds": 2748800.0,
+          "median_absolute_deviation_nanoseconds": 39500.0,
+          "subphase_records": {
+            "fresh_copy_nanoseconds": {
+              "nanoseconds_by_block": [
+                205500,
+                116200,
+                208200
+              ],
+              "minimum_nanoseconds": 116200,
+              "maximum_nanoseconds": 208200,
+              "median_nanoseconds": 205500.0
+            },
+            "storage_and_serialization_nanoseconds": {
+              "nanoseconds_by_block": [
+                2539900,
+                2525600,
+                2577100
+              ],
+              "minimum_nanoseconds": 2525600,
+              "maximum_nanoseconds": 2577100,
+              "median_nanoseconds": 2539900.0
+            }
+          },
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "w_fiber_count": 300,
+            "r_active_fiber_count": 210,
+            "coefficient_complex_entry_count": 47484,
+            "coefficient_stored_real_scalar_count": 94968,
+            "coefficient_payload_bytes": 759744,
+            "index_and_sector_metadata_bytes": 900,
+            "raw_array_payload_bytes": 760644,
+            "in_memory_object_bytes": 761995,
+            "uncompressed_npz_serialized_bytes": 762188,
+            "serialization_roundtrip_bitwise_equal": true,
+            "scalar_sparse_lossless_diagnostic": {
+              "bitwise_nonzero_complex_coefficient_count": 47484,
+              "coefficient_stored_real_scalar_count": 94968,
+              "raw_array_payload_bytes": 998064,
+              "in_memory_object_bytes": 999084,
+              "uncompressed_npz_serialized_bytes": 999356,
+              "serialization_roundtrip_bitwise_equal": true
+            }
+          }
+        },
+        "ordered-dense-control": {
+          "nanoseconds_by_block": [
+            69248500,
+            68560100,
+            70347800
+          ],
+          "minimum_nanoseconds": 68560100,
+          "maximum_nanoseconds": 70347800,
+          "median_nanoseconds": 69248500.0,
+          "median_absolute_deviation_nanoseconds": 688400.0,
+          "subphase_records": {
+            "fresh_copy_nanoseconds": {
+              "nanoseconds_by_block": [
+                3836300,
+                3607200,
+                4625500
+              ],
+              "minimum_nanoseconds": 3607200,
+              "maximum_nanoseconds": 4625500,
+              "median_nanoseconds": 3836300.0
+            },
+            "storage_and_serialization_nanoseconds": {
+              "nanoseconds_by_block": [
+                65407900,
+                64949700,
+                65718300
+              ],
+              "minimum_nanoseconds": 64949700,
+              "maximum_nanoseconds": 65718300,
+              "median_nanoseconds": 65407900.0
+            }
+          },
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "complex_entry_count": 1512000,
+            "stored_real_scalar_count": 3024000,
+            "raw_array_payload_bytes": 24192000,
+            "in_memory_object_bytes": 24192602,
+            "uncompressed_npz_serialized_bytes": 24192518,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "flat-output-first": {
+          "nanoseconds_by_block": [
+            564481800,
+            567145300,
+            577411400
+          ],
+          "minimum_nanoseconds": 564481800,
+          "maximum_nanoseconds": 577411400,
+          "median_nanoseconds": 567145300.0,
+          "median_absolute_deviation_nanoseconds": 2663500.0,
+          "subphase_records": {
+            "tensorization_nanoseconds": {
+              "nanoseconds_by_block": [
+                41500,
+                41000,
+                99200
+              ],
+              "minimum_nanoseconds": 41000,
+              "maximum_nanoseconds": 99200,
+              "median_nanoseconds": 41500.0
+            },
+            "w_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                523035300,
+                526527300,
+                536784400
+              ],
+              "minimum_nanoseconds": 523035300,
+              "maximum_nanoseconds": 536784400,
+              "median_nanoseconds": 526527300.0
+            },
+            "r_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                5100900,
+                4967200,
+                5269600
+              ],
+              "minimum_nanoseconds": 4967200,
+              "maximum_nanoseconds": 5269600,
+              "median_nanoseconds": 5100900.0
+            },
+            "storage_and_serialization_nanoseconds": {
+              "nanoseconds_by_block": [
+                33959100,
+                33195100,
+                33013600
+              ],
+              "minimum_nanoseconds": 33013600,
+              "maximum_nanoseconds": 33959100,
+              "median_nanoseconds": 33195100.0
+            }
+          },
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "tt_count": 2,
+            "w_core_count": 3,
+            "r_core_count": 3,
+            "w_tt_ranks": [
+              1,
+              223,
+              24,
+              1
+            ],
+            "r_tt_ranks": [
+              1,
+              22,
+              24,
+              1
+            ],
+            "w_mode_shape": [
+              2601,
+              24,
+              24
+            ],
+            "r_mode_shape": [
+              24,
+              24,
+              24
+            ],
+            "complex_core_entry_count": 722823,
+            "core_stored_real_scalar_count": 1445646,
+            "core_payload_bytes": 11565168,
+            "rank_and_shape_metadata_bytes": 112,
+            "raw_array_payload_bytes": 11565280,
+            "in_memory_object_bytes": 11567372,
+            "uncompressed_npz_serialized_bytes": 11567818,
+            "nominal_gauge_adjusted_real_dimension": 1342916,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "flat-output-last": {
+          "nanoseconds_by_block": [
+            838392700,
+            843226000,
+            846359800
+          ],
+          "minimum_nanoseconds": 838392700,
+          "maximum_nanoseconds": 846359800,
+          "median_nanoseconds": 843226000.0,
+          "median_absolute_deviation_nanoseconds": 3133800.0,
+          "subphase_records": {
+            "tensorization_nanoseconds": {
+              "nanoseconds_by_block": [
+                15300,
+                16100,
+                15200
+              ],
+              "minimum_nanoseconds": 15200,
+              "maximum_nanoseconds": 16100,
+              "median_nanoseconds": 15300.0
+            },
+            "w_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                797663000,
+                801259700,
+                805234700
+              ],
+              "minimum_nanoseconds": 797663000,
+              "maximum_nanoseconds": 805234700,
+              "median_nanoseconds": 801259700.0
+            },
+            "r_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                5945300,
+                7055100,
+                6308000
+              ],
+              "minimum_nanoseconds": 5945300,
+              "maximum_nanoseconds": 7055100,
+              "median_nanoseconds": 6308000.0
+            },
+            "storage_and_serialization_nanoseconds": {
+              "nanoseconds_by_block": [
+                32545200,
+                32689900,
+                32638600
+              ],
+              "minimum_nanoseconds": 32545200,
+              "maximum_nanoseconds": 32689900,
+              "median_nanoseconds": 32638600.0
+            }
+          },
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "tt_count": 2,
+            "w_core_count": 3,
+            "r_core_count": 3,
+            "w_tt_ranks": [
+              1,
+              24,
+              223,
+              1
+            ],
+            "r_tt_ranks": [
+              1,
+              24,
+              22,
+              1
+            ],
+            "w_mode_shape": [
+              24,
+              24,
+              2601
+            ],
+            "r_mode_shape": [
+              24,
+              24,
+              24
+            ],
+            "complex_core_entry_count": 722823,
+            "core_stored_real_scalar_count": 1445646,
+            "core_payload_bytes": 11565168,
+            "rank_and_shape_metadata_bytes": 112,
+            "raw_array_payload_bytes": 11565280,
+            "in_memory_object_bytes": 11567372,
+            "uncompressed_npz_serialized_bytes": 11567818,
+            "nominal_gauge_adjusted_real_dimension": 1342916,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "fourier-output-first": {
+          "nanoseconds_by_block": [
+            401535300,
+            411216500,
+            396468600
+          ],
+          "minimum_nanoseconds": 396468600,
+          "maximum_nanoseconds": 411216500,
+          "median_nanoseconds": 401535300.0,
+          "median_absolute_deviation_nanoseconds": 5066700.0,
+          "subphase_records": {
+            "tensorization_nanoseconds": {
+              "nanoseconds_by_block": [
+                3725500,
+                3882500,
+                3540500
+              ],
+              "minimum_nanoseconds": 3540500,
+              "maximum_nanoseconds": 3882500,
+              "median_nanoseconds": 3725500.0
+            },
+            "w_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                373257600,
+                382091600,
+                367754000
+              ],
+              "minimum_nanoseconds": 367754000,
+              "maximum_nanoseconds": 382091600,
+              "median_nanoseconds": 373257600.0
+            },
+            "r_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                4697800,
+                5111500,
+                5216300
+              ],
+              "minimum_nanoseconds": 4697800,
+              "maximum_nanoseconds": 5216300,
+              "median_nanoseconds": 5111500.0
+            },
+            "storage_and_serialization_nanoseconds": {
+              "nanoseconds_by_block": [
+                12434800,
+                12690500,
+                12330500
+              ],
+              "minimum_nanoseconds": 12330500,
+              "maximum_nanoseconds": 12690500,
+              "median_nanoseconds": 12434800.0
+            }
+          },
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "tt_count": 2,
+            "w_core_count": 5,
+            "r_core_count": 3,
+            "w_tt_ranks": [
+              1,
+              5,
+              45,
+              223,
+              24,
+              1
+            ],
+            "r_tt_ranks": [
+              1,
+              22,
+              24,
+              1
+            ],
+            "w_mode_shape": [
+              17,
+              17,
+              9,
+              24,
+              24
+            ],
+            "r_mode_shape": [
+              24,
+              24,
+              24
+            ],
+            "complex_core_entry_count": 237025,
+            "core_stored_real_scalar_count": 474050,
+            "core_payload_bytes": 3792400,
+            "rank_and_shape_metadata_bytes": 144,
+            "raw_array_payload_bytes": 3792544,
+            "in_memory_object_bytes": 3795218,
+            "uncompressed_npz_serialized_bytes": 3795586,
+            "nominal_gauge_adjusted_real_dimension": 367220,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "fourier-output-last": {
+          "nanoseconds_by_block": [
+            905499000,
+            917966000,
+            894388900
+          ],
+          "minimum_nanoseconds": 894388900,
+          "maximum_nanoseconds": 917966000,
+          "median_nanoseconds": 905499000.0,
+          "median_absolute_deviation_nanoseconds": 11110100.0,
+          "subphase_records": {
+            "tensorization_nanoseconds": {
+              "nanoseconds_by_block": [
+                13400,
+                12700,
+                12500
+              ],
+              "minimum_nanoseconds": 12500,
+              "maximum_nanoseconds": 13400,
+              "median_nanoseconds": 12700.0
+            },
+            "w_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                875786800,
+                888544100,
+                865256400
+              ],
+              "minimum_nanoseconds": 865256400,
+              "maximum_nanoseconds": 888544100,
+              "median_nanoseconds": 875786800.0
+            },
+            "r_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                5555700,
+                5653500,
+                5250300
+              ],
+              "minimum_nanoseconds": 5250300,
+              "maximum_nanoseconds": 5653500,
+              "median_nanoseconds": 5555700.0
+            },
+            "storage_and_serialization_nanoseconds": {
+              "nanoseconds_by_block": [
+                21842600,
+                21437700,
+                21650400
+              ],
+              "minimum_nanoseconds": 21437700,
+              "maximum_nanoseconds": 21842600,
+              "median_nanoseconds": 21650400.0
+            }
+          },
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "tt_count": 2,
+            "w_core_count": 5,
+            "r_core_count": 3,
+            "w_tt_ranks": [
+              1,
+              24,
+              223,
+              81,
+              9,
+              1
+            ],
+            "r_tt_ranks": [
+              1,
+              24,
+              22,
+              1
+            ],
+            "w_mode_shape": [
+              24,
+              24,
+              17,
+              17,
+              9
+            ],
+            "r_mode_shape": [
+              24,
+              24,
+              24
+            ],
+            "complex_core_entry_count": 462345,
+            "core_stored_real_scalar_count": 924690,
+            "core_payload_bytes": 7397520,
+            "rank_and_shape_metadata_bytes": 144,
+            "raw_array_payload_bytes": 7397664,
+            "in_memory_object_bytes": 7400338,
+            "uncompressed_npz_serialized_bytes": 7400706,
+            "nominal_gauge_adjusted_real_dimension": 808676,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "d1q3-output-first": {
+          "nanoseconds_by_block": [
+            495508400,
+            478639200,
+            474796900
+          ],
+          "minimum_nanoseconds": 474796900,
+          "maximum_nanoseconds": 495508400,
+          "median_nanoseconds": 478639200.0,
+          "median_absolute_deviation_nanoseconds": 3842300.0,
+          "subphase_records": {
+            "tensorization_nanoseconds": {
+              "nanoseconds_by_block": [
+                4857200,
+                4794900,
+                4863700
+              ],
+              "minimum_nanoseconds": 4794900,
+              "maximum_nanoseconds": 4863700,
+              "median_nanoseconds": 4857200.0
+            },
+            "w_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                463648600,
+                446709000,
+                443269700
+              ],
+              "minimum_nanoseconds": 443269700,
+              "maximum_nanoseconds": 463648600,
+              "median_nanoseconds": 446709000.0
+            },
+            "r_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                5167800,
+                4890000,
+                4870300
+              ],
+              "minimum_nanoseconds": 4870300,
+              "maximum_nanoseconds": 5167800,
+              "median_nanoseconds": 4890000.0
+            },
+            "storage_and_serialization_nanoseconds": {
+              "nanoseconds_by_block": [
+                13467000,
+                13600400,
+                13471900
+              ],
+              "minimum_nanoseconds": 13467000,
+              "maximum_nanoseconds": 13600400,
+              "median_nanoseconds": 13471900.0
+            }
+          },
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "tt_count": 2,
+            "w_core_count": 6,
+            "r_core_count": 3,
+            "w_tt_ranks": [
+              1,
+              5,
+              45,
+              135,
+              223,
+              24,
+              1
+            ],
+            "r_tt_ranks": [
+              1,
+              22,
+              24,
+              1
+            ],
+            "w_mode_shape": [
+              17,
+              17,
+              3,
+              3,
+              24,
+              24
+            ],
+            "r_mode_shape": [
+              24,
+              24,
+              24
+            ],
+            "complex_core_entry_count": 255250,
+            "core_stored_real_scalar_count": 510500,
+            "core_payload_bytes": 4084000,
+            "rank_and_shape_metadata_bytes": 160,
+            "raw_array_payload_bytes": 4084160,
+            "in_memory_object_bytes": 4087029,
+            "uncompressed_npz_serialized_bytes": 4087454,
+            "nominal_gauge_adjusted_real_dimension": 367220,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        },
+        "d1q3-output-last": {
+          "nanoseconds_by_block": [
+            921043600,
+            913686600,
+            908480500
+          ],
+          "minimum_nanoseconds": 908480500,
+          "maximum_nanoseconds": 921043600,
+          "median_nanoseconds": 913686600.0,
+          "median_absolute_deviation_nanoseconds": 5206100.0,
+          "subphase_records": {
+            "tensorization_nanoseconds": {
+              "nanoseconds_by_block": [
+                5194200,
+                4973900,
+                5260000
+              ],
+              "minimum_nanoseconds": 4973900,
+              "maximum_nanoseconds": 5260000,
+              "median_nanoseconds": 5194200.0
+            },
+            "w_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                879624400,
+                873177200,
+                867675400
+              ],
+              "minimum_nanoseconds": 867675400,
+              "maximum_nanoseconds": 879624400,
+              "median_nanoseconds": 873177200.0
+            },
+            "r_tt_svd_rounding_nanoseconds": {
+              "nanoseconds_by_block": [
+                5459600,
+                5518200,
+                5498200
+              ],
+              "minimum_nanoseconds": 5459600,
+              "maximum_nanoseconds": 5518200,
+              "median_nanoseconds": 5498200.0
+            },
+            "storage_and_serialization_nanoseconds": {
+              "nanoseconds_by_block": [
+                22215500,
+                21625900,
+                21633900
+              ],
+              "minimum_nanoseconds": 21625900,
+              "maximum_nanoseconds": 22215500,
+              "median_nanoseconds": 21633900.0
+            }
+          },
+          "all_times_positive_and_finite": true,
+          "storage": {
+            "tt_count": 2,
+            "w_core_count": 6,
+            "r_core_count": 3,
+            "w_tt_ranks": [
+              1,
+              24,
+              223,
+              81,
+              9,
+              3,
+              1
+            ],
+            "r_tt_ranks": [
+              1,
+              24,
+              22,
+              1
+            ],
+            "w_mode_shape": [
+              24,
+              24,
+              17,
+              17,
+              3,
+              3
+            ],
+            "r_mode_shape": [
+              24,
+              24,
+              24
+            ],
+            "complex_core_entry_count": 462354,
+            "core_stored_real_scalar_count": 924708,
+            "core_payload_bytes": 7397664,
+            "rank_and_shape_metadata_bytes": 160,
+            "raw_array_payload_bytes": 7397824,
+            "in_memory_object_bytes": 7400693,
+            "uncompressed_npz_serialized_bytes": 7401118,
+            "nominal_gauge_adjusted_real_dimension": 808676,
+            "serialization_roundtrip_bitwise_equal": true
+          }
+        }
+      }
+    },
+    "online_cost_campaign": {
+      "seed": 20260902,
+      "direction_count": 32,
+      "warmup_block_count": 1,
+      "measured_block_count": 5,
+      "order_by_block": [
+        [
+          "natural-fourier-sparse",
+          "ordered-dense-control",
+          "flat-output-first",
+          "flat-output-last",
+          "fourier-output-first",
+          "fourier-output-last",
+          "d1q3-output-first",
+          "d1q3-output-last"
+        ],
+        [
+          "ordered-dense-control",
+          "flat-output-first",
+          "flat-output-last",
+          "fourier-output-first",
+          "fourier-output-last",
+          "d1q3-output-first",
+          "d1q3-output-last",
+          "natural-fourier-sparse"
+        ],
+        [
+          "flat-output-first",
+          "flat-output-last",
+          "fourier-output-first",
+          "fourier-output-last",
+          "d1q3-output-first",
+          "d1q3-output-last",
+          "natural-fourier-sparse",
+          "ordered-dense-control"
+        ],
+        [
+          "flat-output-last",
+          "fourier-output-first",
+          "fourier-output-last",
+          "d1q3-output-first",
+          "d1q3-output-last",
+          "natural-fourier-sparse",
+          "ordered-dense-control",
+          "flat-output-first"
+        ],
+        [
+          "fourier-output-first",
+          "fourier-output-last",
+          "d1q3-output-first",
+          "d1q3-output-last",
+          "natural-fourier-sparse",
+          "ordered-dense-control",
+          "flat-output-first",
+          "flat-output-last"
+        ]
+      ],
+      "timer": "perf_counter_ns",
+      "scope": "joint homogeneous quadratic W2/R2 action only",
+      "method_records": {
+        "natural-fourier-sparse": {
+          "nanoseconds_per_sample_by_block": [
+            732100.0,
+            734515.625,
+            725621.875,
+            725762.5,
+            735528.125
+          ],
+          "minimum_nanoseconds_per_sample": 725621.875,
+          "maximum_nanoseconds_per_sample": 735528.125,
+          "median_nanoseconds_per_sample": 732100.0,
+          "median_absolute_deviation_nanoseconds_per_sample": 3428.125,
+          "checksum_by_block": [
+            13.334879366269266,
+            13.334879366269266,
+            13.334879366269266,
+            13.334879366269266,
+            13.334879366269266
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 0.0,
+          "all_times_positive_and_finite": true
+        },
+        "ordered-dense-control": {
+          "nanoseconds_per_sample_by_block": [
+            2626256.25,
+            2706462.5,
+            2671800.0,
+            2620921.875,
+            2632018.75
+          ],
+          "minimum_nanoseconds_per_sample": 2620921.875,
+          "maximum_nanoseconds_per_sample": 2706462.5,
+          "median_nanoseconds_per_sample": 2632018.75,
+          "median_absolute_deviation_nanoseconds_per_sample": 11096.875,
+          "checksum_by_block": [
+            13.334879366269266,
+            13.334879366269266,
+            13.334879366269266,
+            13.334879366269266,
+            13.334879366269266
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 0.0,
+          "all_times_positive_and_finite": true
+        },
+        "flat-output-first": {
+          "nanoseconds_per_sample_by_block": [
+            3393243.75,
+            3329218.75,
+            3367668.75,
+            3464300.0,
+            3450825.0
+          ],
+          "minimum_nanoseconds_per_sample": 3329218.75,
+          "maximum_nanoseconds_per_sample": 3464300.0,
+          "median_nanoseconds_per_sample": 3393243.75,
+          "median_absolute_deviation_nanoseconds_per_sample": 57581.25,
+          "checksum_by_block": [
+            13.334879366269265,
+            13.334879366269265,
+            13.334879366269265,
+            13.334879366269265,
+            13.334879366269265
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 1.3321131677378095e-16,
+          "all_times_positive_and_finite": true
+        },
+        "flat-output-last": {
+          "nanoseconds_per_sample_by_block": [
+            477228.125,
+            480134.375,
+            474356.25,
+            460468.75,
+            474606.25
+          ],
+          "minimum_nanoseconds_per_sample": 460468.75,
+          "maximum_nanoseconds_per_sample": 480134.375,
+          "median_nanoseconds_per_sample": 474606.25,
+          "median_absolute_deviation_nanoseconds_per_sample": 2621.875,
+          "checksum_by_block": [
+            13.334879366269266,
+            13.334879366269266,
+            13.334879366269266,
+            13.334879366269266,
+            13.334879366269266
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 0.0,
+          "all_times_positive_and_finite": true
+        },
+        "fourier-output-first": {
+          "nanoseconds_per_sample_by_block": [
+            4057231.25,
+            3993503.125,
+            4026831.25,
+            4112875.0,
+            4010609.375
+          ],
+          "minimum_nanoseconds_per_sample": 3993503.125,
+          "maximum_nanoseconds_per_sample": 4112875.0,
+          "median_nanoseconds_per_sample": 4026831.25,
+          "median_absolute_deviation_nanoseconds_per_sample": 30400.0,
+          "checksum_by_block": [
+            13.33487936626927,
+            13.33487936626927,
+            13.33487936626927,
+            13.33487936626927,
+            13.33487936626927
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 2.664226335475619e-16,
+          "all_times_positive_and_finite": true
+        },
+        "fourier-output-last": {
+          "nanoseconds_per_sample_by_block": [
+            519800.0,
+            546200.0,
+            529471.875,
+            522887.5,
+            543043.75
+          ],
+          "minimum_nanoseconds_per_sample": 519800.0,
+          "maximum_nanoseconds_per_sample": 546200.0,
+          "median_nanoseconds_per_sample": 529471.875,
+          "median_absolute_deviation_nanoseconds_per_sample": 9671.875,
+          "checksum_by_block": [
+            13.334879366269268,
+            13.334879366269268,
+            13.334879366269268,
+            13.334879366269268,
+            13.334879366269268
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 1.3321131677378095e-16,
+          "all_times_positive_and_finite": true
+        },
+        "d1q3-output-first": {
+          "nanoseconds_per_sample_by_block": [
+            5827378.125,
+            5724278.125,
+            5759684.375,
+            5725206.25,
+            5739387.5
+          ],
+          "minimum_nanoseconds_per_sample": 5724278.125,
+          "maximum_nanoseconds_per_sample": 5827378.125,
+          "median_nanoseconds_per_sample": 5739387.5,
+          "median_absolute_deviation_nanoseconds_per_sample": 15109.375,
+          "checksum_by_block": [
+            13.33487936626927,
+            13.33487936626927,
+            13.33487936626927,
+            13.33487936626927,
+            13.33487936626927
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 2.664226335475619e-16,
+          "all_times_positive_and_finite": true
+        },
+        "d1q3-output-last": {
+          "nanoseconds_per_sample_by_block": [
+            576043.75,
+            575081.25,
+            569015.625,
+            569665.625,
+            588278.125
+          ],
+          "minimum_nanoseconds_per_sample": 569015.625,
+          "maximum_nanoseconds_per_sample": 588278.125,
+          "median_nanoseconds_per_sample": 575081.25,
+          "median_absolute_deviation_nanoseconds_per_sample": 5415.625,
+          "checksum_by_block": [
+            13.334879366269272,
+            13.334879366269272,
+            13.334879366269272,
+            13.334879366269272,
+            13.334879366269272
+          ],
+          "maximum_checksum_relative_error_vs_sparse": 3.996339503213428e-16,
+          "all_times_positive_and_finite": true
+        }
+      }
+    },
+    "protocol_audit": {
+      "checks": {
+        "method_ids_and_order_are_registered": true,
+        "offline_block_counts_are_registered": true,
+        "online_block_counts_are_registered": true,
+        "all_times_are_positive_and_finite": true,
+        "all_serialization_roundtrips_are_bitwise_equal": true,
+        "all_checksum_errors_are_within_tolerance": true,
+        "offline_orders_are_complete_cyclic_permutations": true,
+        "online_orders_are_complete_cyclic_permutations": true
+      },
+      "passed": true
+    },
+    "selection_audit": {
+      "storage_baseline_method_id": "natural-fourier-sparse",
+      "natural_sparse_stored_real_scalars": 94968,
+      "candidate_records": {
+        "flat-output-first": {
+          "fidelity_passed": true,
+          "invariance_residual_preservation_passed": true,
+          "storage_checks": {
+            "core_stored_real_scalars_are_smaller": false,
+            "raw_array_payload_is_smaller": false,
+            "in_memory_object_bytes_are_smaller": false,
+            "uncompressed_npz_is_smaller": false
+          },
+          "strict_storage_winner": false,
+          "robust_online_time_advantage": false,
+          "conservative_break_even_vs_sparse_action_count": null,
+          "median_online_ratio_vs_sparse": 4.6349457041387785,
+          "joint_winner": false
+        },
+        "flat-output-last": {
+          "fidelity_passed": true,
+          "invariance_residual_preservation_passed": true,
+          "storage_checks": {
+            "core_stored_real_scalars_are_smaller": false,
+            "raw_array_payload_is_smaller": false,
+            "in_memory_object_bytes_are_smaller": false,
+            "uncompressed_npz_is_smaller": false
+          },
+          "strict_storage_winner": false,
+          "robust_online_time_advantage": true,
+          "conservative_break_even_vs_sparse_action_count": 3437,
+          "median_online_ratio_vs_sparse": 0.6482806310613304,
+          "joint_winner": false
+        },
+        "fourier-output-first": {
+          "fidelity_passed": true,
+          "invariance_residual_preservation_passed": true,
+          "storage_checks": {
+            "core_stored_real_scalars_are_smaller": false,
+            "raw_array_payload_is_smaller": false,
+            "in_memory_object_bytes_are_smaller": false,
+            "uncompressed_npz_is_smaller": false
+          },
+          "strict_storage_winner": false,
+          "robust_online_time_advantage": false,
+          "conservative_break_even_vs_sparse_action_count": null,
+          "median_online_ratio_vs_sparse": 5.500384168829395,
+          "joint_winner": false
+        },
+        "fourier-output-last": {
+          "fidelity_passed": true,
+          "invariance_residual_preservation_passed": true,
+          "storage_checks": {
+            "core_stored_real_scalars_are_smaller": false,
+            "raw_array_payload_is_smaller": false,
+            "in_memory_object_bytes_are_smaller": false,
+            "uncompressed_npz_is_smaller": false
+          },
+          "strict_storage_winner": false,
+          "robust_online_time_advantage": true,
+          "conservative_break_even_vs_sparse_action_count": 5102,
+          "median_online_ratio_vs_sparse": 0.723223432591176,
+          "joint_winner": false
+        },
+        "d1q3-output-first": {
+          "fidelity_passed": true,
+          "invariance_residual_preservation_passed": true,
+          "storage_checks": {
+            "core_stored_real_scalars_are_smaller": false,
+            "raw_array_payload_is_smaller": false,
+            "in_memory_object_bytes_are_smaller": false,
+            "uncompressed_npz_is_smaller": false
+          },
+          "strict_storage_winner": false,
+          "robust_online_time_advantage": false,
+          "conservative_break_even_vs_sparse_action_count": null,
+          "median_online_ratio_vs_sparse": 7.839622319355279,
+          "joint_winner": false
+        },
+        "d1q3-output-last": {
+          "fidelity_passed": true,
+          "invariance_residual_preservation_passed": true,
+          "storage_checks": {
+            "core_stored_real_scalars_are_smaller": false,
+            "raw_array_payload_is_smaller": false,
+            "in_memory_object_bytes_are_smaller": false,
+            "uncompressed_npz_is_smaller": false
+          },
+          "strict_storage_winner": false,
+          "robust_online_time_advantage": true,
+          "conservative_break_even_vs_sparse_action_count": 6687,
+          "median_online_ratio_vs_sparse": 0.785522811091381,
+          "joint_winner": false
+        }
+      },
+      "storage_winner_ids": [],
+      "robust_timing_winner_ids": [
+        "flat-output-last",
+        "fourier-output-last",
+        "d1q3-output-last"
+      ],
+      "joint_winner_ids": [],
+      "joint_winner_count": 0,
+      "selected_candidate_id": null,
+      "selection_order": [
+        "conservative_break_even",
+        "raw_array_payload_bytes",
+        "online_maximum_nanoseconds_per_sample",
+        "candidate_id"
+      ],
+      "natural_sparse_baseline_remains_mandatory": true,
+      "ordered_dense_control_is_not_full_dense_lbm": true
+    },
+    "runner_source": {
+      "filename": "q011g_forced_representation_audit.py",
+      "sha256": "84ed56dabd0b0f870f1c6b27c9907c9566439ff03affe5aacc61ba611f4678fe",
+      "sha256_newline_normalization": "UTF-8 text with universal newlines"
+    },
+    "input_digest_sha256": "0632be40fccc212f23a271fa00ed80696f9a146a1b107e513b3a47edb9870a20",
+    "coefficient_digest_sha256": "fc9edec10ee22abfaa2b763be9f69c9d72bfc59543aa34faea6ab206c35ab264",
+    "fidelity_digest_sha256": "30dabea285da9070e2ebc0b351afde4695deb275d5f96ee66de1b1ca0468fcad",
+    "cost_digest_sha256": "222a42321f4ae814478cc65102afcbc8926754d8cb7c48ed8ca2952e350767a7",
+    "validity_gates": {
+      "q011f1_and_prior_outcomes_are_sealed": {
+        "passed": true,
+        "threshold": "Q011f1 artifact, runner, package source, five digests and accepted outcome reproduce while Q011f remains rejected",
+        "value": {
+          "q011f1_artifact_sha256_matches": true,
+          "q011f1_runner_sha256_matches": true,
+          "q011f1_package_source_matches": true,
+          "q011f1_five_digests_match": true,
+          "q011f1_valid_accepted_outcome_reproduces": true,
+          "q011f_rejected_outcome_remains_sealed": true,
+          "q011f1_artifact_is_strict_finite_json": true
+        }
+      },
+      "q011e_native_and_real_coefficients_reconstruct_once": {
+        "passed": true,
+        "threshold": "one fresh Q011e reconstruction reproduces native complex, coordinate-map and six real array hashes",
+        "value": {
+          "q011e_artifact_is_sealed": true,
+          "q011e_input_sections_reproduce": true,
+          "q011e_derivative_sections_reproduce": true,
+          "q011e_chart_sections_reproduce": true,
+          "six_real_array_hashes_reproduce": true,
+          "native_complex_and_coordinate_hashes_reproduce": true,
+          "q011f1_stored_chart_hashes_reproduce": true,
+          "all_reconstructed_chart_gates_pass": true
+        }
+      },
+      "natural_fourier_projection_and_storage_are_complete": {
+        "passed": true,
+        "threshold": "300 pairs, registered sector counts, projection loss <=1e-12, 94,968 stored real scalars, 760,644 raw bytes and serialization",
+        "value": {
+          "three_hundred_pairs_are_complete": true,
+          "registered_sector_counts_reproduce": true,
+          "natural_array_shapes_are_registered": true,
+          "projection_losses_are_within_tolerance": true,
+          "natural_storage_counts_are_preregistered": true,
+          "natural_serialization_roundtrip_is_bitwise_equal": true,
+          "all_projected_coefficients_are_finite": true
+        }
+      },
+      "all_registered_tt_bundles_preserve_coefficients_and_defects": {
+        "passed": true,
+        "threshold": "all six reversible uncapped TT-SVD bundles pass registered reconstruction, action, realification and invariance thresholds",
+        "value": {
+          "fidelity_checks": {
+            "natural_and_dense_actions_agree": true,
+            "natural_actions_realify_to_sealed_hessians": true,
+            "all_candidate_fidelity_records_pass": true
+          },
+          "invariance_checks": {
+            "invariance_direction_campaign_is_registered": true,
+            "natural_projected_chart_preserves_dense_defects": true,
+            "all_tt_charts_preserve_natural_defects": true
+          }
+        }
+      },
+      "independent_directions_and_cost_protocol_are_complete": {
+        "passed": true,
+        "threshold": "held-out directions have no prior duplicates and registered offline/online blocks, checksums, subphase times and storage pass",
+        "value": {
+          "direction_checks": {
+            "direction_shape_is_registered": true,
+            "all_directions_are_unit_norm": true,
+            "no_direction_duplicates_prior_campaigns": true,
+            "all_direction_values_are_finite": true
+          },
+          "protocol_checks": {
+            "method_ids_and_order_are_registered": true,
+            "offline_block_counts_are_registered": true,
+            "online_block_counts_are_registered": true,
+            "all_times_are_positive_and_finite": true,
+            "all_serialization_roundtrips_are_bitwise_equal": true,
+            "all_checksum_errors_are_within_tolerance": true,
+            "offline_orders_are_complete_cyclic_permutations": true,
+            "online_orders_are_complete_cyclic_permutations": true
+          }
+        }
+      },
+      "strict_serialization_digests_and_runner_reproduce": {
+        "passed": true,
+        "threshold": "finite strict JSON, four section digests and newline-normalized runner provenance reproduce",
+        "value": {
+          "strict_json": true,
+          "digests_reproduce": true,
+          "runner_reproduces": true
+        }
+      }
+    },
+    "hypothesis_gates": {
+      "all_candidate_fidelity_and_residual_gates_pass": {
+        "passed": true,
+        "threshold": "all six candidates preserve coefficient actions and registered one-step invariance defects",
+        "value": {
+          "fidelity_passed": true,
+          "invariance_passed": true
+        }
+      },
+      "at_least_one_candidate_strictly_beats_sparse_storage": {
+        "passed": false,
+        "threshold": "one candidate is strictly smaller in core scalars, raw bytes, in-memory object bytes and uncompressed NPZ bytes",
+        "value": []
+      },
+      "a_storage_winner_has_robust_time_advantage": {
+        "passed": false,
+        "threshold": "the same storage winner has TT online maximum below sparse online minimum and a conservative finite break-even",
+        "value": {
+          "flat-output-first": {
+            "fidelity_passed": true,
+            "invariance_residual_preservation_passed": true,
+            "storage_checks": {
+              "core_stored_real_scalars_are_smaller": false,
+              "raw_array_payload_is_smaller": false,
+              "in_memory_object_bytes_are_smaller": false,
+              "uncompressed_npz_is_smaller": false
+            },
+            "strict_storage_winner": false,
+            "robust_online_time_advantage": false,
+            "conservative_break_even_vs_sparse_action_count": null,
+            "median_online_ratio_vs_sparse": 4.6349457041387785,
+            "joint_winner": false
+          },
+          "flat-output-last": {
+            "fidelity_passed": true,
+            "invariance_residual_preservation_passed": true,
+            "storage_checks": {
+              "core_stored_real_scalars_are_smaller": false,
+              "raw_array_payload_is_smaller": false,
+              "in_memory_object_bytes_are_smaller": false,
+              "uncompressed_npz_is_smaller": false
+            },
+            "strict_storage_winner": false,
+            "robust_online_time_advantage": true,
+            "conservative_break_even_vs_sparse_action_count": 3437,
+            "median_online_ratio_vs_sparse": 0.6482806310613304,
+            "joint_winner": false
+          },
+          "fourier-output-first": {
+            "fidelity_passed": true,
+            "invariance_residual_preservation_passed": true,
+            "storage_checks": {
+              "core_stored_real_scalars_are_smaller": false,
+              "raw_array_payload_is_smaller": false,
+              "in_memory_object_bytes_are_smaller": false,
+              "uncompressed_npz_is_smaller": false
+            },
+            "strict_storage_winner": false,
+            "robust_online_time_advantage": false,
+            "conservative_break_even_vs_sparse_action_count": null,
+            "median_online_ratio_vs_sparse": 5.500384168829395,
+            "joint_winner": false
+          },
+          "fourier-output-last": {
+            "fidelity_passed": true,
+            "invariance_residual_preservation_passed": true,
+            "storage_checks": {
+              "core_stored_real_scalars_are_smaller": false,
+              "raw_array_payload_is_smaller": false,
+              "in_memory_object_bytes_are_smaller": false,
+              "uncompressed_npz_is_smaller": false
+            },
+            "strict_storage_winner": false,
+            "robust_online_time_advantage": true,
+            "conservative_break_even_vs_sparse_action_count": 5102,
+            "median_online_ratio_vs_sparse": 0.723223432591176,
+            "joint_winner": false
+          },
+          "d1q3-output-first": {
+            "fidelity_passed": true,
+            "invariance_residual_preservation_passed": true,
+            "storage_checks": {
+              "core_stored_real_scalars_are_smaller": false,
+              "raw_array_payload_is_smaller": false,
+              "in_memory_object_bytes_are_smaller": false,
+              "uncompressed_npz_is_smaller": false
+            },
+            "strict_storage_winner": false,
+            "robust_online_time_advantage": false,
+            "conservative_break_even_vs_sparse_action_count": null,
+            "median_online_ratio_vs_sparse": 7.839622319355279,
+            "joint_winner": false
+          },
+          "d1q3-output-last": {
+            "fidelity_passed": true,
+            "invariance_residual_preservation_passed": true,
+            "storage_checks": {
+              "core_stored_real_scalars_are_smaller": false,
+              "raw_array_payload_is_smaller": false,
+              "in_memory_object_bytes_are_smaller": false,
+              "uncompressed_npz_is_smaller": false
+            },
+            "strict_storage_winner": false,
+            "robust_online_time_advantage": true,
+            "conservative_break_even_vs_sparse_action_count": 6687,
+            "median_online_ratio_vs_sparse": 0.785522811091381,
+            "joint_winner": false
+          }
+        }
+      },
+      "joint_winner_is_selected_by_registered_order": {
+        "passed": false,
+        "threshold": "at least one joint winner and one deterministic selected candidate",
+        "value": {
+          "joint_winner_ids": [],
+          "selected_candidate_id": null
+        }
+      }
+    },
+    "study_validity": "passed",
+    "hypothesis_outcome": "rejected",
+    "scientific_classification": "registered TT-SVD bundles do not beat the natural Fourier-sparse forced-quadratic baseline",
+    "result_digest_sha256": "e0874eabe2c5b924d0b5d7b56533cd695406166d4370b493a0dabdc0b22dbb2a",
+    "decision_consequence": {
+      "natural_fourier_sparse_remains_mandatory_baseline": true,
+      "registered_tt_svd_bundle_is_selected": false,
+      "selected_candidate_id": null,
+      "tt_cross_followup_is_authorized": false,
+      "q011f1_accepted_outcome_changed": false,
+      "q011f_rejected_outcome_changed": false,
+      "q011e1_accepted_outcome_changed": false,
+      "q011e_rejected_outcome_changed": false,
+      "forced_ssm_exists_or_is_unique": false,
+      "nonlinear_normal_attraction_is_certified": false
+    },
+    "claim_boundary": "This finite audit covers the sealed 17x17 zero-mean-forced fixed-leaf quadratic W2/R2 coefficients, six uncapped TT-SVD tensorizations and the recorded CPU/NumPy/BLAS environment. It does not establish a result for TT generally, TT-cross, rank-capped rounding, GPU or parallel cost, full 64-step TT rollout, higher coefficients, other grids, forces or walls, D3Q27, SSM existence or uniqueness, normal attraction or a basin.",
+    "preserved_prior_outcomes": {
+      "q011f1_accepted_shadowing_reissue_changed": false,
+      "q011f_rejected_shadowing_window_changed": false,
+      "q011e1_accepted_residual_window_changed": false,
+      "q011e_rejected_original_window_changed": false,
+      "q011d_accepted_homological_family_changed": false,
+      "q008c_unforced_tt_rejection_changed": false,
+      "q010_unforced_tt_cost_rejection_changed": false
+    },
+    "next_change": "Retain the natural Fourier-sparse forced quadratic representation and do not start TT-cross for these sealed coefficients."
+  },
+  "study_gate": "passed",
+  "scientific_outcome": "rejected",
+  "next_question": "Retain the natural Fourier-sparse forced quadratic representation and do not start TT-cross for these sealed coefficients."
+}

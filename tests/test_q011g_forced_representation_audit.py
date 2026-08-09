@@ -119,6 +119,16 @@ def test_q011g_conservative_break_even_uses_adverse_envelopes() -> None:
     assert q011g._conservative_break_even(100.0, 5.0, 20.0, 5.0) is None
 
 
+def test_q011g_tt_memory_footprint_counts_owned_core_payload() -> None:
+    w_cores = [np.ones((1, 3, 2)), np.ones((2, 4, 1))]
+    r_cores = [np.ones((1, 5, 1))]
+
+    storage = q011g._tt_bundle_storage(w_cores, r_cores)
+
+    assert storage["in_memory_object_bytes"] > storage["raw_array_payload_bytes"]
+    assert storage["core_payload_bytes"] == sum(core.nbytes for core in (*w_cores, *r_cores))
+
+
 def test_q011g_artifact_seals_the_registered_representation_campaign() -> None:
     runner_path = Path(q011g.__file__).resolve()
     artifact_path = runner_path.parent / "artifacts" / ("q011g_forced_representation_audit.json")
@@ -127,19 +137,64 @@ def test_q011g_artifact_seals_the_registered_representation_campaign() -> None:
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     cycle = artifact["cycle"]
 
+    assert _file_sha256(artifact_path) == (
+        "842ddbae2a28ccd2f11a112f23205cb049668b82691fdd180edc5ac20fecaa25"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011g_forced_representation_audit.py",
+        "sha256": ("84ed56dabd0b0f870f1c6b27c9907c9566439ff03affe5aacc61ba611f4678fe"),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "rejected"
     assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "rejected"
+    assert cycle["scientific_classification"] == (
+        "registered TT-SVD bundles do not beat the natural Fourier-sparse forced-quadratic baseline"
+    )
     assert len(cycle["validity_gates"]) == 6
     assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 4
+    assert [name for name, gate in cycle["hypothesis_gates"].items() if gate["passed"]] == [
+        "all_candidate_fidelity_and_residual_gates_pass"
+    ]
     assert cycle["selection_audit"]["natural_sparse_baseline_remains_mandatory"]
+    assert cycle["selection_audit"]["storage_winner_ids"] == []
+    assert cycle["selection_audit"]["robust_timing_winner_ids"] == [
+        "flat-output-last",
+        "fourier-output-last",
+        "d1q3-output-last",
+    ]
+    assert cycle["selection_audit"]["joint_winner_ids"] == []
+    assert cycle["selection_audit"]["selected_candidate_id"] is None
     assert (
         cycle["natural_fourier_coefficient_audit"]["natural_storage"][
             "coefficient_stored_real_scalar_count"
         ]
         == 94_968
+    )
+    assert all(
+        record["storage"]["in_memory_object_bytes"] > record["storage"]["raw_array_payload_bytes"]
+        for method_id, record in cycle["offline_cost_campaign"]["method_records"].items()
+        if method_id in q011g.TT_CANDIDATE_IDS
+    )
+    assert cycle["input_digest_sha256"] == (
+        "0632be40fccc212f23a271fa00ed80696f9a146a1b107e513b3a47edb9870a20"
+    )
+    assert cycle["coefficient_digest_sha256"] == (
+        "fc9edec10ee22abfaa2b763be9f69c9d72bfc59543aa34faea6ab206c35ab264"
+    )
+    assert cycle["fidelity_digest_sha256"] == (
+        "30dabea285da9070e2ebc0b351afde4695deb275d5f96ee66de1b1ca0468fcad"
+    )
+    assert cycle["cost_digest_sha256"] == (
+        "222a42321f4ae814478cc65102afcbc8926754d8cb7c48ed8ca2952e350767a7"
+    )
+    assert cycle["result_digest_sha256"] == (
+        "e0874eabe2c5b924d0b5d7b56533cd695406166d4370b493a0dabdc0b22dbb2a"
     )
     assert cycle["result_digest_sha256"] == (
         q011g.q011e.q011c._canonical_json_sha256(q011g._result_digest_sections(cycle))
