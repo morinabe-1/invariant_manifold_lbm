@@ -14513,6 +14513,280 @@ binary64 point productをexact dyadicへ戻した誤差とQ011l graph radiusを�
 停止規則どおり、次はQ011rを事前登録し、Q011mのanalytic derivative majorantをQ011qのreal normへ移し、
 localized nonlinear graph transformの定義、self-map、contractionだけを独立に判定する。
 
+## Q011r: real-norm nonlinear graph transform — 事前登録
+
+### 問い
+
+Q011mのanalytic $D^2\Phi/D^3\Phi$ boundをQ011qのreal fixed-leaf coordinate normへ厳密に輸送し、
+radial cutoffで局所化した写像が、明示したcomplete real graph space上でwell-definedなgraph transformを与え、
+self-mapかつstrict contractionになる有限radiusを認証できるか。
+
+本gateはQ011qで未定義だった**非線形graph transformそのもの**だけを扱う。acceptedでも、localized mapの
+fixed graphをoriginal mapのforward-invariant core germへ移す評価、smoothness、SSM uniqueness、normal
+attraction、basinは次の独立gateへ残す。
+
+### 封印入力
+
+次の2 artifactを直接照合する。Q011qのnested sealだけでQ011mの直接照合を代用しない。
+
+- Q011m artifact／runner newline-normalized SHA-256:
+  `b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f` /
+  `0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150`
+- Q011m input／derivative／coefficient／majorant／result digest:
+  `dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb` /
+  `0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a` /
+  `1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514` /
+  `bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00` /
+  `f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4`
+- Q011q artifact／runner newline-normalized SHA-256:
+  `776be2af80fdbb867fd72eb3c0bdfe82ca30f5fa50bc9436818df5c7f87e676d` /
+  `83031650f7ecd54adb048a74ace2df96068317531aeb84fb57b9f797b9e33f67`
+- Q011q input／conjugation／frame／setup／result digest:
+  `c9e57c60fe678901c5502bf163d7317c06fedb35322e8591e741c330969829b5` /
+  `583a28e1453b75700d0674bf090c4f8c0652d7538f84bef7c8ea7e09415db54e` /
+  `1210f4d2c85d4a0cad9978531b297b5e493bac5f8d54d5eafa6ee7a5a68a6d7b` /
+  `ec52daadd80261b9e94672beb979fd5f01e4f1c4bc0e63090a0cccbb90cda26b` /
+  `274ddd32b50000c953c623285993ba533651a720c6dc79ae693a0e24a3f623ae`
+
+両artifactの`accepted`、theorem consequence、claim boundaryを再現する。Q011mのexact conserved-moment
+identitiesにより、二次・三次非線形出力がfixed conservation leafに属することも直接確認する。
+
+### analytic derivative boundのreal coordinateへの輸送
+
+Q011qのreal coordinate synthesis／analysisを $L_{\mathbb R},P_{\mathbb R}$ とし、
+
+\[
+\lVert L_{\mathbb R}\rVert\le K_L,
+\qquad
+\lVert P_{\mathbb R}\rVert\le K_P
+\]
+
+を同じcomplex-modulus block-sup normのreal restrictionで用いる。Q011mのphysical population
+infinity-norm boundを $M_2,M_3$ とし、coordinate map
+
+\[
+F_{\mathbb R}(z)=A_{\mathbb R}z+N_{\mathbb R}(z)
+\]
+
+について
+
+\[
+\mu_2=K_P M_2 K_L^2,
+\qquad
+\mu_3=K_P M_3 K_L^3
+\]
+
+を登録する。normalized forward DFTのanalysis constant `1`、inverse DFTのblock-sum synthesis、Q011mの
+streaming／filter nonexpansivityをこの式の根拠とし、未包絡のbinary64 normを使わない。
+
+exact rootで $N_{\mathbb R}(0)=0$、$DN_{\mathbb R}(0)=0$ であることを再現する。radius $\rho$ で
+$K_L\rho\le10^{-4}$なら、Taylorの積分形から
+
+\[
+\sup_{\lVert z\rVert\le\rho}\lVert N_{\mathbb R}(z)\rVert
+\le n_\rho:=\frac12\mu_2\rho^2,
+\qquad
+\sup_{\lVert z\rVert\le\rho}\lVert DN_{\mathbb R}(z)\rVert
+\le\mu_2\rho
+\]
+
+を得る。transported $\mu_3$ は独立provenanceとして保存するが、このself-map／contraction boundを
+見かけ上鋭くするためには使わない。
+
+### radial cutoff後のglobal nonlinear bound
+
+Q011qと同じblockwise radial retraction $C_\rho$ を各candidate radiusで再発行し、
+
+\[
+N_\rho=N_{\mathbb R}\circ C_\rho
+\]
+
+とする。$C_\rho$ は両real fixed spaceを保ち、global Lipschitz upper `2`である。従って
+
+\[
+\lVert N_\rho\rVert_\infty\le n_\rho,
+\qquad
+\operatorname{Lip}(N_\rho)\le
+\delta_\rho:=2\mu_2\rho
+\]
+
+を用いる。amplitude boundへcutoff Lipschitz factor `2`を重ねて掛けず、difference boundには必ず掛ける。
+
+### complete global bounded graph space
+
+Q011qのlocal graphを無証明に延長する代わりに、最初から
+
+\[
+\mathscr G_{\rho,1}
+=\left\{
+\psi:S_{\mathbb R}\to E_{\mathbb R}:
+\psi(0)=0,
+\sup_s\lVert\psi(s)\rVert\le\rho,
+\operatorname{Lip}(\psi)\le1
+\right\}
+\]
+
+を定義する。metricはglobal uniform metric
+
+\[
+d_\infty(\psi,\varphi)=
+\sup_s\lVert\psi(s)-\varphi(s)\rVert
+\]
+
+とする。boundednessによりmetricは有限で、uniform limitがorigin、height、Lipschitz条件を保つためclosed
+completeである。各 $\psi$ のselected radius-$\rho$ ballへのrestrictionはQ011qのlocal graph spaceに入る。
+Q011qのradial extensionのLipschitz定数を暗黙に`1`へ改善しない。
+
+### base inverseとgraph transformの定義
+
+Q011qのreal upper-triangular linear splitを
+
+\[
+A_{\mathbb R}=
+\begin{pmatrix}S&B\\0&E\end{pmatrix},
+\qquad
+m=m(S),\quad q=\lVert E\rVert,\quad b=\lVert B\rVert,
+\quad \alpha=\lVert S^{-1}\rVert\le1/m
+\]
+
+とする。各 $\psi\in\mathscr G_{\rho,1}$ について
+
+\[
+P_\psi(s)=
+Ss+B\psi(s)+(N_\rho)_S(s,\psi(s))
+\]
+
+を定義する。
+
+\[
+d_\rho:=m-b-\delta_\rho>0,
+\qquad
+u_\rho:=\alpha(b+\delta_\rho)<1
+\]
+
+なら、任意のbase output $u$ に対する
+
+\[
+s=S^{-1}\{u-B\psi(s)-(N_\rho)_S(s,\psi(s))\}
+\]
+
+はstrict contractionであり、$P_\psi$ はglobal bijection、
+$\operatorname{Lip}(P_\psi^{-1})\le1/d_\rho$ である。有限次元性だけでsurjectivityを推測せず、
+このfixed-point inverseを明示する。
+
+graph transformを
+
+\[
+(\mathcal T_\rho\psi)(u)=
+E\psi(P_\psi^{-1}u)
++(N_\rho)_E\left(P_\psi^{-1}u,
+\psi(P_\psi^{-1}u)\right)
+\]
+
+と固定する。origin固定、real typing、domain／codomainを監査する。
+
+### self-mapとcontraction majorant
+
+height、slope、uniform contractionをそれぞれ
+
+\[
+h_\rho=q+\frac{n_\rho}{\rho}
+=q+\frac12\mu_2\rho,
+\]
+
+\[
+\ell_\rho=
+\frac{q+\delta_\rho}{d_\rho},
+\]
+
+\[
+\kappa_\rho=
+(q+\delta_\rho)
+\left(1+\frac{b+\delta_\rho}{d_\rho}\right)
+=\frac{m(q+\delta_\rho)}{d_\rho}
+\]
+
+で包絡する。self-mapには $h_\rho\le1$、$\ell_\rho\le1$ を要求する。
+
+uniform contractionでは、同じoutput $u$ のpreimage差を
+
+\[
+\lVert P_\psi^{-1}u-P_\varphi^{-1}u\rVert
+\le\frac{b+\delta_\rho}{d_\rho}
+d_\infty(\psi,\varphi)
+\]
+
+で評価し、$\kappa_\rho<1$ を要求する。eigenvalue gap、Q011pのRiccati contraction、Q007系列の
+normal-fiber contractionをこの式へ代入しない。
+
+### radius campaignと登録cap
+
+candidate radiusを昇順に
+
+\[
+10^{-18},3\!\times\!10^{-18},10^{-17},3\!\times\!10^{-17},
+10^{-16},3\!\times\!10^{-16},10^{-15},3\!\times\!10^{-15},
+10^{-14},3\!\times\!10^{-14},10^{-13},3\!\times\!10^{-13},
+10^{-12},3\!\times\!10^{-12},10^{-11}
+\]
+
+に固定し、全条件を満たす最大candidateを選ぶ。candidate間の連続最適化や事後のradius追加は行わない。
+最低受理radiusは`1e-16`とする。selected candidateで次をすべて要求する。
+
+- $\mu_2\le10^{12}$、$\mu_3\le10^{17}$
+- $K_L\rho\le10^{-4}$、population／density bufferはQ011m thresholdを通過
+- $\delta_\rho\le10^{-3}$
+- base inverse utilization $u_\rho\le10^{-2}$
+- height ratio $h_\rho\le0.99$
+- graph slope upper $\ell_\rho\le0.999$
+- uniform graph-transform contraction $\kappa_\rho\le0.99$
+- 最初のより大きいcandidateが失敗する場合、その最初のfailed conditionを保存
+
+全式はexact `Fraction`で計算する。各majorantがnondecreasing、$d_\rho$がnonincreasingであることを
+代数的に確認し、最大passing candidateの選択を再現可能にする。
+
+### validity gate
+
+1. Q011m／Q011qのartifact、runner、10 digest、outcome、theorem consequence、claim boundaryを直接再現する。
+2. physical $M_2,M_3$、real $K_L,K_P$、fixed-leaf conserved-moment identityから
+   $\mu_2,\mu_3$ の輸送式をexactに再現する。
+3. $N(0)=DN(0)=0$、Taylor amplitude／derivative、radial cutoff後の $n_\rho,\delta_\rho$ を再現する。
+4. global bounded graph spaceのreal typing、finite uniform metric、closed completenessを確認する。
+5. base fixed-point inverse、$d_\rho,u_\rho$、graph transformのdomain／codomainを式どおり再現する。
+6. 15 radiusについてheight、slope、contraction、domain、bufferをexactに全列挙し、monotonicityを確認する。
+7. finite性、strict JSON、input／transport／radius／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、graph transformの成否を解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次の5項目を別々に要求する。
+
+1. transported $\mu_2,\mu_3$ が登録cap内で、少なくとも一つのcandidateがderivative domainとbufferを通る。
+2. 最大passing candidateが`1e-16`以上で、$\delta_\rho,u_\rho,h_\rho$ の登録capを通る。
+3. base mapがglobal bijectionとして定義され、inverse Lipschitz boundが有限である。
+4. graph transformが $\mathscr G_{\rho,1}$ のself-mapで、slope upperが`0.999`以下である。
+5. uniform metric contraction upperが`0.99`以下である。
+
+全5項目が通る場合だけ
+`the registered real localized graph transform is a strict contraction at a certified finite radius`
+として`accepted`とする。一つでも落ちれば
+`the transported Q011m majorant does not certify the Q011q nonlinear graph transform on the registered radius grid`
+として`rejected`とする。rejectedはgraph transformやinvariant manifold／SSMの不存在を意味せず、最初の
+failed radius conditionだけを使ってsectorwise derivative transport、block weight、cutoff、またはradius gridの
+うち一つを次gateで変更する。
+
+`accepted`なら次のQ011sで、localized fixed graphのcore restrictionとoriginal exact mapの一致、selected
+base imageのinner-ball containmentを事前登録し、nonzero original-map invariant graph germへ移せるかを判定する。
+`inconclusive`なら最初のseal／transport／typing／inverse／serialization failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed-conservation leaf、Q011q real split、Q011m derivative domain、
+登録15 radius、radially localized map、global bounded Lipschitz graph spaceに限る。selected radiusの最適性、
+original mapのinvariant manifold／SSM、$C^1$以上のsmoothness、spectral quotient uniqueness、normal
+attraction、basin、長時間trajectory、他grid／force／wall、D3Q27を構成・認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
