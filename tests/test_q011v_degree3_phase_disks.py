@@ -237,8 +237,16 @@ def test_q011v_artifact_records_degree_three_nonresonance_if_generated() -> None
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     cycle = artifact["cycle"]
 
+    assert _file_sha256(artifact_path) == (
+        "639afa89ccecadb428c4cb1c16a60ad7f788cc4786cdbb0ac2a5e681744bc663"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011v_degree3_phase_disks.py",
+        "sha256": "f9e7b0ffb353bc9f462616b42943860ecc4431b15176be7ca405c894d4d4a8cd",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "accepted"
