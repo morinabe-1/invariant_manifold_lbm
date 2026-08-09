@@ -13093,6 +13093,276 @@ coefficient bound、残差majorant、higher order、SSM存在・一意性、norm
 次は停止規則どおりQ011mでrepaired exact mapのquadratic jetと、このinverse boundに合成する
 coefficient／residual majorantを観測前に事前登録する。
 
+## Q011m: repaired exact quadratic jet and cubic-defect majorant — 事前登録
+
+### 問いと証明対象
+
+Q011lで認証したexact selected invariant graphと5 sector homological inverseに、repaired exact map自身の
+二階微分を合成し、graph-gauge quadratic jetの一意な存在と係数normを認証できるか。さらに三階微分の
+domain majorantを用い、その二次多項式chartの不変性欠陥を全方向一様な \(O(\lVert a\rVert_\infty^3)\)
+で包めるか。
+
+本gateでいう「quadratic jetの構成」は、componentwise binary64 coefficientを保存することではない。
+Q011lのexact invariant subspace／quotient上でhomological equationの一意解を定義し、そのexact解を
+registered norm ballへ包むcomputer-assisted existence certificateである。Q011e--Q011hのraw-map
+Hessian／coefficientは入力に使わない。
+
+### 封印入力
+
+- Q011j artifact／runner newline-normalized SHA-256:
+  `74a2e084137699739c14d980b05676e14e6802b4018b3893d3d05270850c2c5a` /
+  `23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5`
+- Q011j input／coordinate／oracle／proof／result digest:
+  `a183f4830c757b58122132cf64111fd5375636affdb6c0b31e1cd90e89085799` /
+  `adaef353b8b64509334794c6014dc8b88e81ca2b776c3b65bd4d50911ae9452b` /
+  `177468a48f667ddd922ed4b979d3e7e5d4cc0ed3afffe27a34651060da8e0f5f` /
+  `1080fcea24358422514bba7fb9881928269c853cb4d12b0282e63840c56124c0` /
+  `ddad5beca9693eeab726382ac864d01a27b749d579c2ec8f12dd9f8c499db934`
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011l artifact／runner newline-normalized SHA-256:
+  `2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a` /
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7`
+- Q011l input／graph／pair／homological／result digest:
+  `1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011` /
+  `a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3` /
+  `694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377` /
+  `14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915` /
+  `c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45`
+
+三artifactのhash、runner、全digest、accepted outcome、claim boundaryを再現する。Q011jからexact affine
+center／liftを、Q011kからcontraction-derived root boxとdyadic eigencoordinate normを、Q011lからgraph、
+selected dynamics、5 inverse boundを読む。Q011e--Q011hは照合にも使わず、非移植を明示する。
+
+### normとFourier規約
+
+x-Fourier係数は
+
+\[
+\widehat f_n(y,q)=\frac1{17}\sum_{x=0}^{16}f(y,x,q)e^{-2\pi i nx/17},
+\qquad
+f(y,x,q)=\sum_{n=0}^{16}\widehat f_n(y,q)e^{2\pi i nx/17}
+\]
+
+とする。selected reduced coordinateはblock `0 / 1 / 16`の24 complex coordinateで、conjugacy-real sliceへ
+制限する。reduced normは24成分のcomplex \(\ell^\infty\)、population normはfull 17² stateのcomplex
+component \(\ell^\infty\) とする。quadratic coordinateはQ011lと同じunscaled lexicographic monomial
+
+\[
+m(a)=(a_i a_j)_{0\le i\le j<24}
+\]
+
+とする。coefficient matrix normはmaximum population／coordinate row sum over 300 pair columnsである。
+
+zero-wave fixed-leaf coordinateをpopulationへ戻すlift norm `186`を必ず含める。block `1 / 16`は153
+population coordinateのままである。Fourier inverseのtriangle inequalityを使い、異なるsector間のcancelは
+majorantに利用しない。
+
+### 事前登録する単純有理envelope
+
+Q011j--Q011lの巨大denominatorを後段formulaへ直接増殖させず、まず次の単純 `Fraction` envelopeに含める。
+各包含はexact recordとの比較で検証し、一つでも外れればvalidity failureとする。
+
+- exact-root population component radius: `<= 3e-13`
+- root population／density floor: `>= 0.027 / 0.999`
+- center local momentum component absolute upper: `<= 3e-5`
+- eigencolumn infinity norm upper: block `0 <= 13`、block `1 / 16 <= 16`
+- graph radius upper: block `0 <= 2e-6`、block `1 / 16 <= 1e-7`
+- selected inverse-coordinate norm upper: block `0 <= 53`、block `1 / 16 <= 25`
+- ambient-output homological inverse upper:
+  sector `0 <= 3.4e6`、`1 / 16 <= 2.4e4`、`2 / 15 <= 2.3e6`
+- selected linear dynamics infinity norm upper: `<= 1.24`
+
+後段証明はartifactの観測floatではなく、これらの外側envelopeだけを使う。
+
+### repaired exact mapの二階・三階微分
+
+sourceはstate-independentであるため全二階以上の微分は0である。streamingと5-point filterも線形で、
+population \(\ell^\infty\) operator normはそれぞれ1以下である。非線形性はlocal equilibrium
+
+\[
+f_q^{eq}=w_q\left[\rho+3c_q\cdot j+
+\frac{Q_q(j)}{\rho}\right],
+\qquad
+Q_q(j)=\frac92(c_q\cdot j)^2-\frac32|j|^2
+\]
+
+だけから来る。moment coordinate \(z=(\rho,j_x,j_y)\) に対し、二階微分を
+
+\[
+\partial_{\rho\rho}f_q^{eq}=\frac{2w_qQ_q}{\rho^3},
+\quad
+\partial_{\rho j}f_q^{eq}=-\frac{w_q\nabla Q_q}{\rho^2},
+\quad
+\partial_{jj}f_q^{eq}=\frac{w_q\nabla^2Q_q}{\rho}
+\]
+
+とし、三階微分を
+
+\[
+\partial_{\rho\rho\rho}f_q^{eq}=-\frac{6w_qQ_q}{\rho^4},
+\quad
+\partial_{\rho\rho j}f_q^{eq}=\frac{2w_q\nabla Q_q}{\rho^3},
+\quad
+\partial_{\rho jj}f_q^{eq}=-\frac{w_q\nabla^2Q_q}{\rho^2},
+\quad
+\partial_{jjj}f_q^{eq}=0
+\]
+
+とする。符号はabsolute majorantでは消えるが、symmetry／conservation auditでは保持する。
+population perturbation1成分あたりのmoment row-sumを`(9,6,6)`とし、全site／population／tensor indexを
+exact rationalで列挙する。BGK factor `omega=3/2`を掛ける。登録state displacement domain
+`U <= 1e-4`上で
+
+\[
+\lVert D^2\Phi\rVert_{\infty,\mathrm{bil}}\le145,
+\qquad
+\lVert D^3\Phi\rVert_{\infty,\mathrm{tri}}\le4000
+\]
+
+を要求する。D2Q9 quadratureとequilibrium moment identityから二階・三階forcingのglobal conserved
+momentsがexact zeroであることも検証する。
+
+### quadratic jetの存在と係数bound
+
+Q011lのexact selected tangent／dynamicsを \(T,S\)、graph-gauge external quadratic coefficientを \(Z\)、
+selected reduced coefficientを \(P\) とし、
+
+\[
+W^{[2]}(a)=x_\ast+Ta+Zm(a),
+\qquad
+R^{[2]}(a)=Sa+Pm(a)
+\]
+
+と定める。zero-wave liftを含むtangent boundを
+
+\[
+K_T=186\cdot13(1+2\times10^{-6})
+    +2\cdot16(1+10^{-7})
+\]
+
+とする。quadratic forcing coefficient row-sumは
+
+\[
+K_F=\frac12\cdot145\,K_T^2
+\]
+
+で包む。factor `1/2`はunscaled symmetric monomialでdiagonal pairを半分にする規約を含む。
+
+Q011lの5 ambient-output inverse envelopeを使い、population chart coefficientを
+
+\[
+K_Z=K_F\left(186\cdot3.4\times10^6
+ +2\cdot2.4\times10^4+2\cdot2.3\times10^6\right)
+\]
+
+で包む。zero sectorだけpopulation lift `186`をもう一度掛ける。selected projectionから
+
+\[
+K_P=53K_F,
+\qquad
+K_S=1.24
+\]
+
+とする。全300 pairとsector count `102 / 54 / 54 / 45 / 45`を維持し、Q011l invertibilityから
+graph-gauge \(Z\) の一意性を得る。登録capは
+
+\[
+K_T\le2500,
+\quad K_F\le5\times10^8,
+\quad K_Z\le3\times10^{17},
+\quad K_P\le3\times10^{10}.
+\]
+
+### cubic-defect majorantとradius campaign
+
+\(r=\lVert a\rVert_\infty\) に対して
+
+\[
+U(r)=K_Tr+K_Zr^2,
+\qquad
+A_R(r)=K_Sr+K_Pr^2
+\]
+
+とする。二次homological equationでdegree 2までをexactに消去した後の不変性欠陥を
+
+\[
+\begin{aligned}
+D(r)={}&145K_TK_Zr^3+\frac{145}{2}K_Z^2r^4\\
+&+2K_ZK_SK_Pr^3+K_ZK_P^2r^4\\
+&+\frac{4000}{6}U(r)^3
+\end{aligned}
+\]
+
+で包む。第1行はHessianへのlinear／quadratic chart cross term、第2行は
+\(m(Sa+Pm(a))-m(Sa)\)、第3行はmapのthird-derivative Taylor remainderである。
+全係数がnonnegativeなので \(D(t)/t^3\le D(r)/r^3\) for `0 < t <= r`もexactに検証する。
+
+radius candidatesは昇順に
+
+`[1e-14, 3e-14, 1e-13, 3e-13, 1e-12, 3e-12, 1e-11, 3e-11]`
+
+と固定する。各radiusで次を評価する。
+
+1. `U(r) <= 1e-4`。
+2. root floorから `population >= 0.02`、`density >= 0.99`。
+3. `A_R(r) / r <= 2`。
+4. `D(r) <= 2e-5`。
+5. `D(r) / U(r) <= 0.75`。
+
+全5条件を通る最大radiusを選ぶ。少なくとも`1e-11`が通ることをhypothesis gateとする。
+larger candidateのfailは棄却ではなく、first failed constraintを記録する。candidate、envelope、thresholdは
+結果後に変更しない。
+
+### validity gate
+
+1. Q011j／Q011k／Q011l artifact、runner、全digest、accepted outcome、claim boundaryを再現する。
+2. exact affine center、root enclosure、simple rational envelopeの全包含を再現する。
+3. Fourier規約、zero-wave lift `186`、selected／pair／sector countを再現する。
+4. local equilibriumの二階／三階tensor、mixed-partial symmetry、quadrature／conservation identityをexactに列挙する。
+5. \(K_T,K_F,K_Z,K_P,K_S\) とgraph-gauge quadratic homological solutionの存在／一意性を登録式から導く。
+6. 全8 radius recordと \(U,A_R,D,D/r^3\) をexact `Fraction`で計算する。
+7. finite strict JSON、input／derivative／coefficient／majorant／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、quadratic jet／majorantを解釈しない。
+
+### quadratic-jet / cubic-defect hypothesis gate と停止規則
+
+validity通過後、次の5項目を全て要求する。
+
+1. derivative domainでHessian／third derivative norm upperが`<=145 / 4000`である。
+2. coefficient boundsが`K_T <=2500`、`K_F <=5e8`、`K_Z <=3e17`、`K_P <=3e10`である。
+3. Q011l inverseにより全5 sectorのgraph-gauge quadratic solutionが一意に存在する。
+4. passing radiusが存在し、最大passing radiusが`>=1e-11`である。
+5. selected radiusでpopulation／density／reduced expansion／residual／utilizationの全capが通り、
+   \(D(t)\le[D(r)/r^3]t^3\) が`0 <= t <= r`で成立する。
+
+全項目が通れば
+`the repaired exact map admits a unique graph-gauge quadratic jet with the registered coefficient and cubic-defect majorants`
+として`accepted`とする。validityは通るが一項目でも落ちれば
+`the registered derivative and coefficient envelopes do not certify the repaired quadratic jet majorant`
+として`rejected`とする。これはquadratic jetやSSMの不存在を意味しない。最初に落ちたderivative tensor、
+sector、coefficient、radius constraintを記録する。
+
+acceptedの場合だけ、次のQ011nでこのfinite second-order defectとQ011l inverseを使うa posteriori
+radii-polynomial／graph-transform correctionを事前登録する。rejectedならcomponentwise verified forcing／
+coefficient enclosureでscalar majorantを鋭化する。inconclusiveなら最初のprotocol failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17²、固定振幅、periodic repaired exact map、その一意なx-independent fixed point、
+Q011k／Q011l selected invariant graph、quadratic graph-gauge jet、登録normと有限radius majorantに限る。
+componentwise coefficient array、raw Q011b map、Q011e--Q011h coefficientの移植、Q011c2 continuous-amplitude
+path、higher-order jet、exact invariant manifold／SSMの存在・一意性・滑らかさ、nonlinear normal attraction、
+basin、他grid／force／wall、D3Q27は主張しない。finite cubic defectをexact invarianceへ読み替えない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
