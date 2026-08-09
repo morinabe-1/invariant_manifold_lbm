@@ -2446,6 +2446,47 @@ zero Fourier blockの6 selected centerが現在のdyadic eigencoordinateでexact
 invariant subspaceが6次元実部分空間のcomplexificationであることを独立に認証し、その後にreal-typed
 coordinateとcutoffを再発行する。
 
+### Q011p zero-block invariant-subspace reality certificate
+
+Q011j／Q011k／Q011l／Q011oを直接封印し、自己共役zero Fourier blockのexact real operatorと、Q011lの
+6次元selected invariant graphを再構成した。標準共役をeigencoordinateへpull backした
+
+\[
+\mathcal J_0(y)=J_0\overline y,
+\qquad
+J_0=V_0^{-1}\overline{V_0}
+\]
+
+を256-bit directed MPFRで包絡し、192-bit laneで独立containmentを確認した。共役したgraph
+\(\mathcal C(G)\) と元のQ011l graph \(G\) がともにradius \(10^{-2}\) の同じRiccati一意性球へ入るため、
+\(\mathcal C(G)=G\) が従う。
+
+- classification:
+  `the Q011l zero-block selected invariant subspace is the complexification of a six-dimensional real invariant subspace`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- outcome: `accepted`
+- \(\varepsilon_J / j_{ES} / j_{SE}\):
+  `5.065990537433956e-10 / 5.066312585495729e-10 / 5.06743891662501e-10`
+- \(j_{EE} / \lVert J_{SS}^{-1}\rVert / m_{SS}\):
+  `3.4122262852713123 / 1.3024942847431704 / 0.7677576874720666`
+- \(d_C / r_C / R_{\rm real}\):
+  `0.7677576874720659 / 7.391057136444022e-6 / 0.01`
+- expanded self-map／contraction／identification margin:
+  `8.481387090712263e-7 / 1.6794825922202499e-6 / 0.02441570609690408`
+- input／conjugation／uniqueness／result digest:
+  `49a2df9f7f8db4ba95ebb93413324e667d2237a52a390e2e6f44b512c5fd953f` /
+  `087bcf415559cf0985194ad50dcbb0748ecdadda4df6b53ad7172f5b7cba1a05` /
+  `41eee5097e7a0c2ea18ac79cd1b48abb1223d1925e953d7b2f34a4fb24777339` /
+  `19edd32732a658a3811ebedc07a9a4483f1fff3d4a26ff64d7917ad2ea01c7f7`
+- runner／artifact newline-normalized SHA-256:
+  `fec9509068939663d6172539630f577383ad4da15f4c4575ef5caab7c65971f7` /
+  `68968f8d01135fa3575a69c878b5ab89952ae39ec8e44b7fb398a3384f2fa6e1`
+
+これでzero-block selected invariant subspaceの実構造は認証された。ただし明示real frame、external real
+complement、real-coordinate norm、Q011o再受理、equivariant nonlinear cutoff、nonlinear graph transform、
+exact invariant manifold／SSMはまだ認証していない。次はQ011qで明示real frameとcomplementを構成し、
+coordinate lift／inverse、linear domination、cutoffを再発行する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -3009,6 +3050,8 @@ python -m research.q011k_interval_spectral_split --output research/artifacts/q01
 python -m research.q011l_interval_homological_inverse --output research/artifacts/q011l_interval_homological_inverse.json
 python -m research.q011m_quadratic_jet_majorant --output research/artifacts/q011m_quadratic_jet_majorant.json
 python -m research.q011n_correction_readiness --output research/artifacts/q011n_correction_readiness.json
+python -m research.q011o_graph_transform_setup --output research/artifacts/q011o_graph_transform_setup.json
+python -m research.q011p_zero_block_reality --output research/artifacts/q011p_zero_block_reality.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -3098,6 +3141,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011l_interval_homological_inverse.json`](research/artifacts/q011l_interval_homological_inverse.json)
 - [`research/artifacts/q011m_quadratic_jet_majorant.json`](research/artifacts/q011m_quadratic_jet_majorant.json)
 - [`research/artifacts/q011n_correction_readiness.json`](research/artifacts/q011n_correction_readiness.json)
+- [`research/artifacts/q011o_graph_transform_setup.json`](research/artifacts/q011o_graph_transform_setup.json)
+- [`research/artifacts/q011p_zero_block_reality.json`](research/artifacts/q011p_zero_block_reality.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)

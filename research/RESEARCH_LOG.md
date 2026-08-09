@@ -5634,6 +5634,83 @@ validityは`7 / 7`を通過した。hypothesisは`4 / 5`で、唯一
 subspaceが6次元実部分空間のcomplexificationであるかだけを独立gateで判定する。real coordinate、equivariant
 cutoff、nonlinear graph transformはその後へ残す。
 
+## Q011p: zero-block invariant-subspace reality certificate
+
+### 実施内容
+
+Q011j／Q011k／Q011l／Q011oのartifact、runner、20 digest、outcome、claim boundaryを直接封印した。
+Q011kと同じzero-block exact interval operator family、canonical binary64 eigencolumn matrix \(V_0\)、inverse
+candidate \(W_0\)、Q011lの6／144 selected／external invariant graph splitを再構成した。operator familyが
+exact realであることを確認し、物理共役をeigencoordinateへpull backした
+
+\[
+\mathcal J_0(y)=J_0\overline y,
+\qquad
+J_0=V_0^{-1}\overline{V_0}
+\]
+
+を標準共役の代わりに用いた。Q011kのdirected inverse-defect certificateから
+
+\[
+\lVert J_0-W_0\overline{V_0}\rVert_\infty
+\le
+\frac{\delta_V}{1-\delta_V}
+\lVert W_0\rVert_\infty\lVert V_0\rVert_\infty
+\]
+
+を導き、4 conjugation blockと6次元 \(J_{SS}^{-1}\) をprimary 256-bit directed MPFRで包絡した。
+192-bit laneを独立に再計算し、全interval／upper／lowerのcontainment、MPFR flag、caller contextを検査した。
+
+Q011l graph \(G:S\to E\) の物理共役graphを
+
+\[
+\mathcal C(G)=
+(J_{EE}\overline G+J_{ES})
+(J_{SE}\overline G+J_{SS})^{-1}
+\]
+
+として同じsplit上に表し、\(G\) と \(\mathcal C(G)\) の双方がradius \(R_{\rm real}=10^{-2}\) の
+expanded Riccati contraction ballへ入ることをexact `Fraction`で認証した。exact operatorがrealなので
+\(\mathcal C(G)\) もinvariant graphであり、同じ球内のfixed point一意性から \(\mathcal C(G)=G\) が従う。
+
+### 結果
+
+validityは`7 / 7`、hypothesisは`5 / 5`を通過し、
+`the Q011l zero-block selected invariant subspace is the complexification of a six-dimensional real invariant subspace`
+として`accepted`とした。
+
+- selected／external complex dimension: `6 / 144`
+- \(\lVert V_0\rVert_\infty / \lVert W_0\rVert_\infty / \delta_V\):
+  `12.325418776439488 / 52.109861896176966 / 7.887561672581473e-13`
+- \(\varepsilon_J\): `5.065990537433956e-10`
+- \(j_{EE} / j_{ES} / j_{SE} / j_{SS}\):
+  `3.4122262852713123 / 5.066312585495729e-10 / 5.06743891662501e-10 / 1.3024942843903295`
+- \(\lVert J_{SS}^{-1}\rVert_\infty / m_{SS}\):
+  `1.3024942847431704 / 0.7677576874720666`
+- Q011l graph radius／\(d_C\)／\(r_C\)／\(R_{\rm real}\):
+  `1.6628540517032178e-6 / 0.7677576874720659 / 7.391057136444022e-6 / 0.01`
+- expanded self-map／contraction／identification margin:
+  `8.481387090712263e-7 / 1.6794825922202499e-6 / 0.02441570609690408`
+- input／conjugation／uniqueness／result digest:
+  `49a2df9f7f8db4ba95ebb93413324e667d2237a52a390e2e6f44b512c5fd953f` /
+  `087bcf415559cf0985194ad50dcbb0748ecdadda4df6b53ad7172f5b7cba1a05` /
+  `41eee5097e7a0c2ea18ac79cd1b48abb1223d1925e953d7b2f34a4fb24777339` /
+  `19edd32732a658a3811ebedc07a9a4483f1fff3d4a26ff64d7917ad2ea01c7f7`
+- runner／artifact newline-normalized SHA-256:
+  `fec9509068939663d6172539630f577383ad4da15f4c4575ef5caab7c65971f7` /
+  `68968f8d01135fa3575a69c878b5ab89952ae39ec8e44b7fb398a3384f2fa6e1`
+
+### 解釈と次のbottleneck
+
+Q011oのzero-block failureは「selected subspaceが実でない」ことではなく、現在のdyadic eigencolumnを標準共役
+座標と誤認できないという座標表現上の障害だった。Q011pにより、subspace自身は6次元real invariant
+subspaceのcomplexificationであることが認証された。
+
+一方、本gateはそのreal fixed spaceの明示basis、external real complement、real-coordinate normを構成して
+いないため、Q011oのvalid `rejected`は変更しない。equivariant nonlinear cutoff、nonlinear graph transform、
+fixed graph、exact invariant manifold／SSM、smoothness、normal attraction、basinも未認証である。次はQ011qで
+明示real frame／complementを構成し、coordinate lift／inverse、linear domination、cutoffを再発行する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -5795,6 +5872,8 @@ cutoff、nonlinear graph transformはその後へ残す。
 [`artifacts/q011n_correction_readiness.json`](artifacts/q011n_correction_readiness.json)
 
 [`artifacts/q011o_graph_transform_setup.json`](artifacts/q011o_graph_transform_setup.json)
+
+[`artifacts/q011p_zero_block_reality.json`](artifacts/q011p_zero_block_reality.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

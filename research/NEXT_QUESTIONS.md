@@ -14131,6 +14131,44 @@ selected invariant graphとその実構造に限る。明示real basis、real-co
 nonlinear cutoffのequivariance、nonlinear graph transform、fixed graph、exact invariant manifold／SSM、
 smoothness／一意性、normal attraction、basin、他grid／force／wall、D3Q27を構成・認証しない。
 
+### Q011p 実行結果
+
+validity `7 / 7`、hypothesis `5 / 5`がすべて通過した。結果は`accepted`、分類は
+`the Q011l zero-block selected invariant subspace is the complexification of a six-dimensional real invariant subspace`
+である。
+
+zero blockのexact operator familyがrealであることを再現し、canonical \(V_0,W_0\) から
+\(J_c=W_0\overline{V_0}\) をdirected MPFRで包絡した。primary 256-bit proofはindependent 192-bit
+enclosureへ包含され、両laneでforbidden flagなし、caller context保存を確認した。
+
+- \(\lVert V_0\rVert_\infty / \lVert W_0\rVert_\infty / \delta_V\):
+  `12.325418776439488 / 52.109861896176966 / 7.887561672581473e-13`
+- \(\varepsilon_J\): `5.065990537433956e-10`
+- \(j_{EE} / j_{ES} / j_{SE} / j_{SS}\):
+  `3.4122262852713123 / 5.066312585495729e-10 / 5.06743891662501e-10 / 1.3024942843903295`
+- \(\lVert J_{SS}^{-1}\rVert_\infty / m_{SS}\):
+  `1.3024942847431704 / 0.7677576874720666`
+- Q011l graph radius／\(d_C\)／\(r_C\)／\(R_{\rm real}\):
+  `1.6628540517032178e-6 / 0.7677576874720659 / 7.391057136444022e-6 / 0.01`
+- expanded self-map／contraction／identification margin:
+  `8.481387090712263e-7 / 1.6794825922202499e-6 / 0.02441570609690408`
+- input／conjugation／uniqueness／result digest:
+  `49a2df9f7f8db4ba95ebb93413324e667d2237a52a390e2e6f44b512c5fd953f` /
+  `087bcf415559cf0985194ad50dcbb0748ecdadda4df6b53ad7172f5b7cba1a05` /
+  `41eee5097e7a0c2ea18ac79cd1b48abb1223d1925e953d7b2f34a4fb24777339` /
+  `19edd32732a658a3811ebedc07a9a4483f1fff3d4a26ff64d7917ad2ea01c7f7`
+- runner／artifact newline-normalized SHA-256:
+  `fec9509068939663d6172539630f577383ad4da15f4c4575ef5caab7c65971f7` /
+  `68968f8d01135fa3575a69c878b5ab89952ae39ec8e44b7fb398a3384f2fa6e1`
+
+\(G\) と物理共役graph \(\mathcal C(G)\) はともにradius `1e-2`のRiccati一意性球内のfixed pointである。
+従って両者は一致し、selected complex 6-planeはconjugation invariant、そのreal fixed spaceは6次元である。
+
+この受理は明示real frameをまだ与えず、Q011oのvalid `rejected`も変更しない。nonlinear cutoff、nonlinear
+graph transform、fixed graph、exact invariant manifold／SSMも未認証である。停止規則どおり、次はQ011qで
+explicit real zero-block frameとexternal real complementを観測前に事前登録し、real-coordinate
+lift／inverse、linear domination、equivariant cutoffを再評価する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
