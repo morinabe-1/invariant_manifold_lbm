@@ -18630,6 +18630,151 @@ hypothesis `6 / 6`を通過し、
 SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、次はQ011aiで
 degree 15を監査する。
 
+## Q011ai: degree-15 dual-outcome outward-dyadic Fourier／modulus audit — 事前登録
+
+### 問いと二重判定
+
+Q011uでdegree 15に残った103 modulus-overlap aggregateについて、Q011ahまでと同じexact Fourier
+multiplicityとoutward-dyadic product enclosureにより、degree-15 external nonresonanceを認証できるか。
+同時に、Q011ag／Q011ahで補助的に用いたglobal lower bound `>=5e-6`を独立なlegacy margin benchmark
+として維持し、通過／棄却を主定理と分けて報告する。
+
+design-only pilotでは全comparisonがstrictに分離した一方、global lower boundは
+`4.680108781629499e-6`で、legacy `5e-6` benchmarkを初めて下回った。従ってQ011aiでは閾値を小さな
+値へ置き換えない。主nonresonance判定は全outward intervalのstrict separationと登録値のexact再現で行い、
+legacy benchmarkは`rejected`として残す。
+
+Q011uのdegree-15 inventoryは`816 aggregate / 15504 expanded control / 713 old-separated / 103 overlap`
+である。external group sequenceは167／165／162／159／157／156／154／158／153／152からなり、各
+overlapにはexactly one external groupが対応する。selected source membership、全103 overlap tuple、
+external target membershipとlog intervalを含むexact inventory canonical digestは
+`b9689962ea60817e439df5010316829ac11e1aa35be2a2c772cc8c3bc3593683`とする。
+
+### scalable count-vector seal
+
+Q011ahと同じ`4 / 2 / 3 / 6` modulus class、group 0／1およびgroup 2／3のexact cyclic convolution、
+target-sector `int64` matrix productを使う。103要素ずつの次の6 vectorをcanonical JSONとしてまとめて
+封印し、長いvectorの本文重複を今後のgateでは避ける。
+
+- original monomial counts
+- modulus signature counts
+- compatible modulus signature counts
+- compatible original-monomial multiplicities
+- weighted comparison counts
+- distinct comparison counts
+
+count-vector digestは`827f22787b76507f734f578a34cefb6d697aa8ec4b534a59e24529435473c4a5`、
+全aggregate record digestは`7e9ac281c20ba8f2f98a48f95219d7b1a80e9a7cfaa66d1deea1bb33b23863cf`
+とする。合計値は次へ固定する。
+
+- original monomial／modulus signature: `2813485588 / 12188436`
+- compatible original monomial／signature: `529597352 / 10399739`
+- incompatible original monomial: `2283888236`
+- weighted／distinct comparison: `1103228296 / 61611952`
+- group-signature／coefficient／bound／classification record:
+  `42095 / 383 / 103 / 816`
+- maximum wave coefficient／crude `int64` dot-product bound／peak live signature:
+  `839 / 6528 / 532224`
+
+### outward enclosure、uniform envelope、sealed input
+
+exact Fraction endpointの外向きbinary64変換、各演算後の`nextafter`、exact `int64` multiplicity、arrayの
+big-endian digestというQ011ahの包含契約を変更せず使う。Q011ahのdegree-14 certificateをoracleとし、
+`893043240 / 4091730 / 3543001 / 152292218 / 310135908 / 21891420`のcount、weighted relation
+`204194352 / 105941556`、distinct relation `14247584 / 7643836`、unresolved `0 / 0`、minimum lower
+`5.650630797937594e-6`とwitnessを再現する。
+
+直接必要な集合はselected 24 identifierとexternal 80 unique identifierの合計104 identifierである。
+Q011ahの112 uniform recordをexactに保存し、external group 152／153／154に由来する32 recordだけを
+加える144-record monotone envelopeとする。unique center-modulus evaluationは83件、uniform-record
+digestは`8b831db61f0fe21988bdcdc5efe0c19d0b176aaa3a4acf8c214bae2050359ae0`とする。
+
+Q011ahまでの入力を再照合し、Q011ahを直接封印する。
+
+- Q011ah artifact／runner newline-normalized SHA-256:
+  `eb44d70634db37d392829d597495595fc334d6ff448d597856d4558f34cc6510` /
+  `af63c12025be0f2364d572065b073d3daafe8c7c1fcc0439365931afbc822d6d`
+- Q011ah input／inventory／compression／product／result digest:
+  `f9b56d7c946e87637efb31736eeccb12bfba8649dc174eb625f461fe9fd07be1` /
+  `84470f689b8d102fa3710a392444a7624ff00b6e5581be767155b27069693d80` /
+  `8968069139fcfa41bed5128d8f561afd3f68eab2bd48035243d2b7736951345b` /
+  `370e36d8d088b6e4900c312ff16dc7656f250f1b67420d729936ad88ac971558` /
+  `f16b601ad207edd7b9bf19152385d304148a1b9f767ab1d087af039ef49177fa`
+
+direct digest countは`68`とする。
+
+### design-only pilotの固定値
+
+全61611952 distinct comparison、元monomialへ戻した1103228296 weighted comparisonがstrictに分離し、
+unresolvedは双方0だった。weighted relation countはproduct below target `669413248`、target below
+product `433815048`、distinct relation countは`37189092 / 24422860`だった。
+
+global outward lower boundは`4.680108781629499e-6`（`0x1.3a13a8193ffffp-18`）だった。最小近傍16
+comparisonのexact Fraction refinementではexact global minimumは`4.68010878881232e-6`
+（`0x1.3a13a821564eap-18`）で、target `block=13;center=1`と対称な`block=4;center=1`の2件がtieだった。
+canonical witnessはaggregate `[3,3,9,0]`、class count
+`[[3,0,0,0],[0,3],[0,0,9],[0,0,0,0,0,0]]`、source
+
+`block=16;center=142 × (block=1;center=142)^2 × (block=1;center=151)^3 × (block=1;center=152)^9`
+
+対target `block=13;center=1`、wave multiplicity `3`、relation `product_below_target`とする。
+
+- class-membership／outward-base digest:
+  `269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c` /
+  `f616c74320ae94e2b9aaffa82cfbc33713bed2c336332e6c96a2ab8822b178b0`
+- factorization／wave-histogram digest:
+  `8a5389a579b55e86c7587fb7b7d8bd47d12eb815181d3a5c49324615ef47e559` /
+  `bf96f1ac176f2f80416a1557a00c439e80cdf7ba5f55d633231e36571b5ab12b`
+- coefficient／bound／classification matrix digest:
+  `9800aa1785efe3f08787070bee633a2790cc0bf46ae10a6bf6b995254c41bac8` /
+  `a72ba6becfe0c66e54099e9fd292a2c6eb47326f8ac7d09e92e4e810475d0ab3` /
+  `13f31639cb94b045eb21d83f969d4d24799d9f3f4e5371fa5efd098f467bf157`
+- compact pilot／candidate-record／exact-minimum digest:
+  `d535a14d207e038b9e7b883262a3371217b6428bbd4207861932e72f2d3d5513` /
+  `94c950b8e748257792fe14563ea29b4c5e42eece2262374fb67b15076febd5dd` /
+  `3b4297b1c4892d5f0699ad8382a514d5121410b6ba41905084849c6f03118dee`
+
+### validity gate
+
+1. Q011kからQ011ahまでの13 artifact、runner、68 direct digest、outcome、claim boundaryとQ011l／Q011o sourceを再現する。
+2. degree-15の816 aggregate、15504 control、713 separation、103 overlap tuple／external groupを再現する。
+3. 104 directly relevant interval、144-record monotone envelope、Q011ah 112 recordのexact preservationを再現する。
+4. 4／2／3／6 modulus class、weak-composition bijection、Q011ah outward-dyadic oracleを再現する。
+5. 6本の103要素count vector、全合計、count-vector／aggregate-record digestを再現する。
+6. 42095 factor record、383 coefficient matrix、103 product-bound matrix、816 classification matrixと登録digestを再現する。
+7. outward conversion／演算の包含、finite、順序、非負性、`int64`非overflowを再現する。
+8. 全comparisonのstrict separation、registered lower boundと16 exact refinement／2 tieを再現する。
+9. 713 old separationと103 batched full auditが全816 aggregateを被覆し、legacy `5e-6` benchmarkの棄却、strict JSON、section digest、runner provenanceを再現する。
+
+### primary hypothesis gateと停止規則
+
+1. uniform \(\rho\)-discが全Q011y enclosureを含み、全Q011k旧discに含まれる。
+2. multiplicity compressionが元monomialを重複・欠落なく分割し、Q011ah certificateを外向きoracleで再現する。
+3. outward-dyadic intervalが全exact Fraction product／target intervalを含み、整数係数にoverflowがない。
+4. 全1103228296 weighted comparisonを表す61611952 distinct comparisonがoutward intervalでstrictに分離する。
+5. global lower boundが登録hexと一致してstrictly positiveで、16候補のexact refinementが登録minimum／tieを再現する。
+6. 713 old separationと103 batched full auditからdegree-15 nonresonanceが従う。
+
+全6項目が通る場合だけ主結果を
+`degree-15 external nonresonance is certified by strict outward-dyadic separation`
+として`accepted`とする。legacy benchmarkは別に
+`the legacy 5e-6 certified-margin benchmark is rejected at degree 15`
+として`rejected`とする。combined classificationには両方を明記する。certified degreesを2--15、
+tail-certifiedを91以降、missing rangeをdegrees 16--90へ更新する。
+
+Q011ah oracle、integer exactness、外向き包含のいずれかが一致しなければ主結果を`inconclusive`とする。
+1件でもoutward interval overlapが残れば主結果を`rejected`とする。legacy benchmarkを主nonresonance
+判定へ混ぜず、またpilot後に小さい代替margin thresholdを導入しない。主結果が`accepted`ならQ011ajで
+degree 16へ進む。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 15、Q011uの103 overlap aggregate、
+Q011y transformed-residual enclosure、uniform \(\rho\)-disc、x-Fourier multiplicity polynomial、exact
+modulus-class fiber、outward-rounded dyadic product enclosureに限る。legacy `5e-6` benchmarkの棄却は
+degree-15のこの固定envelopeに限る。degrees 16--90、all-order nonresonance、higher graph smoothness、
+SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
