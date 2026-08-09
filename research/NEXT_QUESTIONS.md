@@ -8259,6 +8259,127 @@ Q007ag forward invarianceにより、population／density lowerはexact full-map
 次はQ007aiとして同じQ007ag tubeのexact stagewise positivityだけを事前登録する。Q007v--Q007abの
 binary64／MPFR／repair／forward-shadowing再監査はQ007ai通過後まで開始しない。
 
+## Q007ai: Q007ag selected tubeのexact stagewise positivity — 事前登録
+
+### 問いと固定scope
+
+Q007ahでfull-map入力／出力時刻のpositivityを認証したQ007ag selected tubeについて、exact
+equilibrium evaluation、BGK collision output、periodic streaming output、five-point filter outputの
+全内部stageでも全9 populationがstrict positiveかを問う。
+
+固定scopeは\(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)、固定mass／momentum leaf、
+Q007ae exact graph-gauge manifold、Q007p external-coordinate norm、
+\((r,\zeta)=(9\times10^{-17},5\times10^{-11})\)とする。exact mathematical mapだけを扱い、
+IEEE-754 roundoff enclosureは含めない。
+
+### 封印入力と実装
+
+- Q007ah artifact／runner SHA-256:
+  `cab5ecc090b794a21a21fded8e5c503eca40be2bbc6502767c29844ba8209fa9` /
+  `f29a974f0219af1767140e977775aa95dcf22b41a36de7a97bb553d540968d27`
+- Q007u old-tube stagewise oracle artifact／runner SHA-256:
+  `b568fc304fd939121dd52543f316cb571ae6f4be4f4f664c68fe1c749b566c55` /
+  `56fc99f1f381e97e70710c7da0cee8d1262d0c10190cf617316f822d1eb29014`
+- current D2Q9 implementation SHA-256:
+  `6e6c5aa6734844d0393eb402e21203831faaf5f325b35249941eaa59145c6f53`
+- current checkerboard-filter implementation SHA-256:
+  `5fb6b67e8527b0b1f5f45511ba7cd5d077ee443220632ba3019b7bf28010a7ea`
+
+Q007ahのstored cycle、input／result digest、Q007ag tube reuse、6 validity gate、3 hypothesis gate、
+full-map theoremをfresh replayする。Q007uもstored cycle、6 validity gate、5 hypothesis gate、5 theorem
+flag、linear／nonlinear／streaming／filter boundをfresh replayする。結果後にoperator norm、nonlinear
+constant、filter、stage orderを変更しない。
+
+### exact stage majorant
+
+Q007ahからexact fractionとして
+
+\[
+x_{\rm ag}=1.4441361143956586\times10^{-10}
+\]
+
+を読む。Q007uと同じexact D2Q9 operatorを再構成し、
+
+\[
+\|EM\|_1=\frac{13}{6},\qquad
+\|C\|_1=\frac{19}{6}
+\]
+
+および
+
+\[
+\|N_{\rm eq}\|_{\rm W}\le7\frac{x_{\rm ag}^2}{1-x_{\rm ag}},
+\qquad
+\|N_{\rm coll}\|_{\rm W}\le\frac{21}{2}\frac{x_{\rm ag}^2}{1-x_{\rm ag}}
+\]
+
+を使う。stage deviation upperを
+
+\[
+e_{\rm ag}=\frac{13}{6}x_{\rm ag}+7\frac{x_{\rm ag}^2}{1-x_{\rm ag}},
+\qquad
+c_{\rm ag}=\frac{19}{6}x_{\rm ag}+\frac{21}{2}\frac{x_{\rm ag}^2}{1-x_{\rm ag}}
+\]
+
+とし、population lowerを
+
+\[
+p_{\rm eq}=\frac1{36}-e_{\rm ag},\qquad
+p_{\rm coll}=\frac1{36}-c_{\rm ag}
+\]
+
+とする。periodic streamingは各populationのbijection、filterは係数
+\((99/100,1/400,1/400,1/400,1/400)\)の凸結合なので、
+\(p_{\rm stream}=p_{\rm filter}=p_{\rm coll}\)とする。
+
+事前登録した表示値は次のとおりで、符号判定にはexact fractionだけを使う。
+
+- density denominator lower: `0.9999999998555864`
+- equilibrium／collision nonlinear remainder:
+  `1.459870382042079e-19 / 2.1898055730631184e-19`
+- equilibrium deviation／population lower:
+  `3.1289615826504644e-10 / 0.02777777746488162`
+- collision deviation／population lower:
+  `4.5730976977760583e-10 / 0.027777777320468006`
+- streaming／filter population lower:
+  `0.027777777320468006 / 0.027777777320468006`
+
+### validity gate
+
+1. Q007ah／Q007u artifactとrunner SHA、source、scope、schema、accepted outcome、全sealed gateが一致する。
+2. Q007ah stored cycle、2 digest、selected tube、state identity、forward invarianceをfresh replayする。
+3. Q007u old stagewise oracleのstored cycle、operator／majorant／stage structure、exact boundsをfresh replayする。
+4. exact \(M,E,EM,C\)がcurrent rational mapと一致し、induced \(\ell^1\) norm \(13/6,19/6\)を再現する。
+5. nonlinear constants \(7,21/2\)、17² streamingの9 bijection、sum-one nonnegative filter、
+   current wrapped compositionを再現する。
+6. 全boundがfinite strict JSONで、canonical input／result digestを再現する。
+
+一つでも落ちれば`inconclusive`とし、stage lowerを採用しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. equilibrium evaluation: \(p_{\rm eq}>0\)。
+2. post-collision: \(p_{\rm coll}>0\)。
+3. post-streaming: 9 population-wise permutationが\(p_{\rm coll}\)を保持する。
+4. post-filter: nonnegative sum-one filterが\(p_{\rm coll}\)を保持する。
+5. all-iterate: Q007ag forward invarianceにより同じ4 stage boundを全iterateへ再適用できる。
+
+全て通れば
+`registered Q007ag propagated tube is population-positive at every exact BGK, streaming, and filter stage`
+として`accepted`とする。validity通過後に一つでも落ちれば
+`registered Q007ag propagated tube did not certify exact stagewise population positivity`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedでもfixed Q007ag tube上のexact mathematical stagesだけの結論である。NumPy／IEEE-754の
+各中間加算、乗除算、実装定数を外向きroundoff intervalで囲わない。entropy、monotonicity、maximum
+principle、Q007v--Q007ab有限精度帰納、continuous optimum、global basin、grid-uniformity、continuum
+limitは認証しない。既存のQ007c1／Q007d／Q007af／Q010結論も変更しない。acceptedなら次はQ007ajで、
+このnew tubeに対する現行binary64 one-step stage enclosureを独立に事前登録する。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
