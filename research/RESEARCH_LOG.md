@@ -6569,6 +6569,78 @@ certified degreesは2／3／4／5／6、tail-certifiedは91以降、missing rang
 all-order nonresonance、Q011t graphとのhigher-order一致、\(C^2\)以上のsmoothness、SSM
 existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、次はQ011aaでdegree 7へ進む。
 
+### Q011aa 実行結果
+
+Q011zの23-input-digest封印にQ011z自身の5 section digestを加え、Q011k／Q011u／Q011x／Q011y／Q011zの
+5 artifact、runner、28 direct digest、outcome、claim boundaryとQ011l／Q011o sourceを直接照合した。
+validity `7 / 7`を通過した。
+
+Q011uのdegree-7 inventoryをfull spectrumから再構成した結果は
+
+- aggregate／expanded control: `120 / 792`
+- old-modulus-separated／overlap: `115 / 5`
+- overlap tuple:
+  `[0,1,1,5]`、`[0,1,2,4]`、`[0,2,0,5]`、`[0,2,1,4]`、`[0,2,2,3]`
+- external group:
+  `178 / 178 / 177 / 177 / 177`
+
+で事前登録と一致した。5 overlapで使うselected groupは1／2／3だけで、16 selected identifierと12 external
+targetの合計28 identifierについてQ011zと同じuniform \(\rho=5\times10^{-8}\) modulus intervalを再構成した。
+Q011y refined disc \(\subseteq\) uniform disc \(\subseteq\) Q011k旧discの包含鎖も維持した。
+
+5 overlapのmonomial数は`12672 / 13200 / 7920 / 13200 / 12000`、合計`58992`だった。
+Fourier sectorで`6080 / 6352 / 7536 / 12740 / 11672`、合計`44380` comparisonへ絞った。
+compatible／incompatible monomialは`16878 / 42114`である。
+
+degree-7 uniform product interval
+
+\[
+R=\prod_{i=1}^{7}(u_i+\rho)-\prod_{i=1}^{7}u_i,
+\qquad
+I_p=\left[\max\left(0,\prod_i\ell_i-R\right),\prod_i u_i+R\right]
+\]
+
+を全58992 productへexactに適用し、全44380 target comparisonを評価した。individual modulus separationは
+`44380`、unresolvedは`0`、relation countはproduct below target `30764`、target below product
+`13616`だった。aggregate別minimum exact gapは
+
+- `[0,1,1,5]`: `1.6371355291399596e-5`
+- `[0,1,2,4]`: `4.681636472938023e-5`
+- `[0,2,0,5]`: `5.608507807101488e-5`
+- `[0,2,1,4]`: `6.603546614599508e-6`
+- `[0,2,2,3]`: `7.004874435925448e-5`
+
+だった。global minimum witnessは
+
+`(block=16;center=151)^2 × block=16;center=152 × (block=0;center=147)^4`
+
+対target `block=14;center=143`で、relationは`product_below_target`だった。登録下限`5e-6`を通過した。
+
+hypothesis `5 / 5`を通過し、
+`degree-7 external nonresonance is certified by the contained uniform transformed-residual envelope and exact Fourier-sector indexed-modulus products`
+として`accepted`とした。Q011uの115 old separationと5 full auditがdegree 7を完全被覆する。certified
+degreesは2／3／4／5／6／7、tail-certifiedは91以降、missing rangeはdegrees 8--90である。
+
+- monomial／compatible-pair framed digest:
+  `5e2a0d986b63eb77a4f67ae2c79c0f1ed6acb3531317f530bf82b95ebb45c43b` /
+  `36bb54954525bf0867d5fdf31523bd20bd72971acbbd6d5135f7e70523d403c1`
+- exact-product／comparison framed digest:
+  `ff476eaf7cb575058d7a43002ce56e4f7e5bd733c52347832237f4b8d4c2f0a3` /
+  `348a32179485b1f5766787262ea163d36f951eb76bc049070a8d3c0074844c73`
+- input／inventory／sector／product／result digest:
+  `9d460085b29b9a3e094bc6ed19fd94908a0f9d5507f5c1901b0f8b5e7da3cb76` /
+  `c7c6d89542c1b8d563e091530b2bd07aadbd2e4eedf5db3be7b86a9d68b97a65` /
+  `4c70de8129596fa631392014f44514290906efa9d2000bf865a9a8700f65d080` /
+  `ca37525b63f7e906b352dd86bf0b16b79954b88fd7b6066f880f8b00e474b7fb` /
+  `c136c7e2963ef5700a1d1c969ea67f7463db390f6141427a517092ac9e0b44e4`
+- runner／artifact newline-normalized SHA-256:
+  `d5db6eb414ebc0479fbf91e62b9a3618c675556aa80df2e693a39171ee838c70` /
+  `f9485e0dc57b2cf55de6867627893eca2defd45fbf1d64a1654d6cab0efcdf85`
+
+本certificateは固定17² repaired exact map、fixed conservation leaf、degree 7だけを扱う。degrees 8--90、
+all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
+未認証である。停止規則どおり、次はQ011abでdegree 8へ進む。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6752,6 +6824,8 @@ existence／uniqueness、normal attraction、basinは未認証である。停止
 [`artifacts/q011y_transformed_residual_eigendiscs.json`](artifacts/q011y_transformed_residual_eigendiscs.json)
 
 [`artifacts/q011z_degree6_refined_modulus.json`](artifacts/q011z_degree6_refined_modulus.json)
+
+[`artifacts/q011aa_degree7_refined_modulus.json`](artifacts/q011aa_degree7_refined_modulus.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
