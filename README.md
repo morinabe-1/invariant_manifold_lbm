@@ -2325,14 +2325,14 @@ streaming／filter norm `<=1`を合成し、登録domain `U <= 1e-4`で
 を得た。mixed-partial symmetry、D2Q9 quadrature、全二階／三階forcingのglobal conserved moment zeroも
 exactに列挙した。Q011e--Q011hのraw-map Hessian／coefficientは入力に使っていない。
 
-Q011lの5 sector inverseからgraph-gauge quadratic coefficient (Z) の一意解をimplicitに定義し、
+Q011lの5 sector inverseからgraph-gauge quadratic coefficient \(Z\) の一意解をimplicitに定義し、
 componentwise arrayを保存せず、登録式から
 
-- (K_T=2450.0048392)
-- (K_F=435182969.1274978)
-- (K_Z=2.772324401167342\times10^{17})
-- (K_P=23064697363.75738)
-- (K_S=1.24)
+- \(K_T=2450.0048392\)
+- \(K_F=435182969.1274978\)
+- \(K_Z=2.772324401167342\times10^{17}\)
+- \(K_P=23064697363.75738\)
+- \(K_S=1.24\)
 
 を認証した。8個の事前登録radiusをexactに評価した結果、最大passing radiusは`1e-11`だった。この点で
 `U=2.7747744060065423e-5`、`A_R/r=1.4706469736375738`、
@@ -3231,6 +3231,6 @@ quadratic productのexternal spectral nonresonanceを認証した。nonnormal ho
 normal attractionはこの段階では未認証だった。Q011lではQ011k eigencoordinate上のselected invariant graphを
 Riccati contractionで認証し、8件のselected-overlap pairを除外せずexternal quotientへ移した。さらに
 unscaled symmetric-product couplingを含む5 sectorのquadratic homological inverse normをexact rational
-Neumann boundで認証した。Q011mではrepaired map自身のanalytic (D^2/D^3) を合成し、5 sectorのunique
+Neumann boundで認証した。Q011mではrepaired map自身のanalytic \(D^2/D^3\) を合成し、5 sectorのunique
 graph-gauge quadratic jet、係数majorant、最大登録半径`1e-11`でのuniform cubic defectを認証した。
 componentwise coefficient、exact invariant manifold／forced SSM、smoothness、normal attractionは未認証である。

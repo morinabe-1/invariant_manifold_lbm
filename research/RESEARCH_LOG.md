@@ -5463,9 +5463,9 @@ indexをexact `Fraction`で列挙し、mixed-partial symmetry、equilibrium cons
 二階27成分／三階81成分のglobal conserved component zeroを確認した。
 
 Q011l invertibilityにより、全300 unscaled symmetric pairをsector `102 / 54 / 54 / 45 / 45`へ分けた
-graph-gauge external coefficient (Z) の一意解をimplicitに定義した。zero-wave population lift `186`を
+graph-gauge external coefficient \(Z\) の一意解をimplicitに定義した。zero-wave population lift `186`を
 tangentとoutput inverseの両方に含め、係数normをscalar majorantで包んだ。最後に8 radiusで
-(U(r),A_R(r),D(r),D(r)/r^3)をexactに計算した。全係数非負なので、normalized defectの導関数
+\(U(r),A_R(r),D(r),D(r)/r^3\)をexactに計算した。全係数非負なので、normalized defectの導関数
 
 \[
 \frac{d}{dr}\frac{D(r)}{r^3}
@@ -5485,9 +5485,9 @@ validity `7 / 7`、hypothesis `5 / 5`を通過し、
   `0.027775908313350292 / 0.999999999999368`
 - center／enclosed-root momentum component upper:
   `2.202356130560565e-5 / 2.2023562566845846e-5`
-- map (D^2/D^3) norm upper:
+- map \(D^2/D^3\) norm upper:
   `144.5474473239429 / 3910.210477654001`
-- (K_T/K_F/K_Z/K_P/K_S):
+- \(K_T/K_F/K_Z/K_P/K_S\):
   `2450.0048392 / 435182969.1274978 / 2.772324401167342e17 / 23064697363.75738 / 1.24`
 - selected radius／passing count: `1e-11 / 7`
 - selected `U / A_R/r / D / D/U`:
