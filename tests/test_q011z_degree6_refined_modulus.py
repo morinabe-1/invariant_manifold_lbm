@@ -235,8 +235,16 @@ def test_q011z_study_metadata_and_generated_artifact_are_scoped() -> None:
     if not artifact_path.exists():
         pytest.skip("Q011z artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert _file_sha256(artifact_path) == (
+        "bd435ceea3795475f6b17619e13626ba936f8fcbd15da749a39a4e2b034a4e23"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011z_degree6_refined_modulus.py",
+        "sha256": "6e6d7327e4b85b307098203fe882434bf77f3920a1da7323b1c89d118df3ae87",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "accepted"
