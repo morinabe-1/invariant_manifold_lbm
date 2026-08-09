@@ -284,8 +284,16 @@ def test_q011ah_study_metadata_and_generated_artifact_are_scoped(
     if not artifact_path.exists():
         pytest.skip("Q011ah artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert _file_sha256(artifact_path) == (
+        "eb44d70634db37d392829d597495595fc334d6ff448d597856d4558f34cc6510"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011ah_degree14_batched_dyadic.py",
+        "sha256": ("af63c12025be0f2364d572065b073d3daafe8c7c1fcc0439365931afbc822d6d"),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "accepted"
