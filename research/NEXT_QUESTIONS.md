@@ -11616,6 +11616,222 @@ normal attractionを追加認証しない。従って次の課題はQ011gであ�
 Fourier selection ruleで表したnatural sparse baselineとTT-SVDを、格納量だけでなく実メモリ、評価時間、
 rounding時間、実効自由度、不変性残差で比較する。Q011gは実装・観測前に別途事前登録する。
 
+## Q011g: forced quadratic Fourier-sparse／TT-SVD representation audit — 事前登録
+
+### 問いと判定対象
+
+Q011f1で有限multi-step shadowing windowを通過したforced quadratic chartの二次係数
+\(W_2,R_2\)について、Fourier selection ruleをそのまま使うnatural sparse-fiber表現より、登録した
+TT-SVD tensorizationの少なくとも一つが忠実度、格納量、現在環境でのjoint action時間を同時に改善するか。
+
+これはTT採用を前提にしたgateではない。natural Fourier-sparseを必須baselineとし、TTがこれをstrictに
+上回らなければ、固定17² forced quadratic coefficientに対して
+`registered TT-SVD bundles do not beat the natural Fourier-sparse forced-quadratic baseline`
+としてTT優位性仮説を`rejected`とする。TT-crossはこのgateの対象外で、TT-SVD winnerが出た場合だけ
+別gateとして検討する。
+
+### 封印入力
+
+- Q011f1 artifact／runner newline-normalized SHA-256:
+  `79ddb64e0965b5b87b7ad68c6dc8698efdd2281540c798ed27f355747d265bc1` /
+  `eab2d63a075f2c43b4c6adfaa7941e9c23bf85a351427057130f68945346ce62`
+- Q011f1 input／chart／heldout／merged-fit／result digest:
+  `101adcdc6fc2d40dc984e6ba900d234b913f7c78aa34381a08d0a77aa9e23000` /
+  `ba50ee295551dae970d33e1bba735ac0502987aef0f4a82987f2998ae884f732` /
+  `243c41522a9eb7d7b78b2031bdbe8f55eb23b447e8d84162b1aae2f53b651829` /
+  `2e3fcee7bebec5c82f2fbd2b78ddac8c44401fd0681ad5d9feb60c7257a8326e` /
+  `484580786b6c535856f0693b14c58815462e1de979759057dc3b402d475bcbc7`
+- package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+- Q011e artifact／runner newline-normalized SHA-256:
+  `45d563103678d790aa3df4db692bbe781c9c86ed550c7499c61b397688666fca` /
+  `3aa608852be7a1df7dbe37b4d3c7e1bb3fbf125eae115260fc45a223e0757955`
+- Q011e native complex \(W_2/R_2\) SHA-256:
+  `0b4c2f6967624e62b8b45a1fde67d0a092894ff367ed402a076c15c46a2206db` /
+  `b450cba9d58d0853bed95acaa9b4f2a69659e5c24b943708c0700d11c8962ee9`
+- complex-to-real coordinate map SHA-256:
+  `ba7e73e99f82b5c14fb0d96005d7952248c4f6da9a48e1430b7c389ba42674f1`
+- real \(W_2/R_2\) SHA-256:
+  `ab55a8b50f2565be494fcf3d5f140f93fc0112484da56e1333ce58dfd220a6c2` /
+  `7ae45cbabda8da17ec73d6779761077a67e19fae4dc53ca11fe98b78bcf074e2`
+
+Q011f1のvalidity `6 / 6`、hypothesis `6 / 6`、`accepted` outcomeをexactに再現し、Q011fの
+`rejected` outcomeを変更しない。Q011e chartは一度だけfresh再構築し、real tangent、extractor、
+reduced linear map、analytic Hessianを含む既登録6 array hashを全て照合する。
+
+### canonical Fourier coefficientとnatural sparse baseline
+
+Q011eのnative complex coordinate順と300 unordered pair順を固定する。pair \(p=(i,j)\), \(i\le j\)の
+polynomial coefficientを
+
+\[
+C^W_p=\begin{cases}\frac12W_2[:,i,i],&i=j,\\W_2[:,i,j],&i<j,\end{cases}
+\qquad
+C^R_p=\begin{cases}\frac12R_2[:,i,i],&i=j,\\R_2[:,i,j],&i<j\end{cases}
+\]
+
+とする。Q011dのpair-sector tableに従い、\(x\)出力へunitary FFT `fft / sqrt(17)`を適用する。
+各\(C^W_p\)は登録output sector \(s_p\in\{0,1,2,15,16\}\)の17×9 fiberだけを残し、それ以外を
+構造的zeroとする。\(C^R_p\)はsector `0 / 1 / 16`について対応するselected output block
+`6 / 9 / 9`だけを残し、sector `2 / 15`では構造的zeroとする。元native tensorからこのprojectionで
+捨てる相対normを`1e-12`以下と要求する。
+
+natural representationは次だけを所有する。
+
+- pair indices: `(300, 2)`、`uint8`
+- output sectors: `(300,)`、`uint8`
+- \(W_2\) fibers: `(300, 17, 9)`、`complex128`
+- \(R_2\) active fibers: `(102, 6)`、`(54, 9)`、`(54, 9)`、`complex128`
+
+pair indicesからdiagonal factorを決めるため、multiplicityを重複格納しない。係数payloadは
+`47,484 complex = 94,968 stored real scalars`、indexを含むraw array payloadは事前計算上
+`760,644 bytes`である。これらは数学的独立自由度ではなく格納量である。bitwise nonzeroだけを保存する
+scalar-sparse表現も診断として併記するが、natural Fourier-fiber baselineを判定から外さない。
+
+natural tableから構成したprojected ordered-dense oracleは
+
+- \(W_2^F\): `(17, 17, 9, 24, 24)`、`complex128`
+- \(R_2^F\): `(24, 24, 24)`、`complex128`
+
+とする。全TTとdense controlはこの同じprojected tensorを入力とし、natural sparseだけが数値noiseを
+捨てて有利になる比較にはしない。dense materialization費用は共通入力としてoffline timingから除外する。
+
+### 登録TT-SVD bundle
+
+relative discarded-Frobenius toleranceを`1e-13`、rank capを`None`に固定する。各candidateは\(W_2^F\)と
+\(R_2^F\)の二つのTTを一つのbundleとして持つ。
+
+1. `flat-output-first`: \(W=(2601,24,24)\)、\(R=(24,24,24)\) output-first
+2. `flat-output-last`: \(W=(24,24,2601)\)、\(R=(24,24,24)\) output-last
+3. `fourier-output-first`: \(W=(17,17,9,24,24)\)、\(R\) output-first
+4. `fourier-output-last`: \(W=(24,24,17,17,9)\)、\(R\) output-last
+5. `d1q3-output-first`: velocityをlexicographic D1Q3×D1Q3へ並べ、
+   \(W=(17,17,3,3,24,24)\)、\(R\) output-first
+6. `d1q3-output-last`: \(W=(24,24,17,17,3,3)\)、\(R\) output-last
+
+全tensorization／untensorizationをbitwiseに検証する。比較する格納指標は、二TTの合計について
+
+- core stored real scalar count
+- core payloadとrank／shape metadataを含むraw array payload bytes
+- `sys.getsizeof`で数えた所有array／containerのin-memory object bytes
+- uncompressed NPZ serialized bytes
+- core shapeとTT rank
+- nominal gauge-adjusted real dimension
+
+である。最後の値はTT gaugeを差し引く診断的parameter countで、数学的独立自由度や格納scalar数の代替には
+使わない。TT-SVD construction／truncation wall timeを`rounding/preparation time`として別記し、
+tensorization、SVD、serializationのsubphaseを分ける。
+
+### independent fidelity／invariance campaign
+
+- action seed: `20260902`
+- normalized real reduced directions: `32`
+- invariance seed: `20260903`
+- normalized real reduced directions: `16`
+- invariance amplitude: `2.56e-3`
+- Q011e／Q011e1／Q011fの登録方向とのexact duplicate: `0`
+
+real direction \(a\)をsealed coordinate mapでnative complex coordinate \(z\)へ移す。natural、dense、
+各TTについて同じhomogeneous quadratic joint action
+
+\[
+\left(\frac12W_2^F[z,z],\frac12R_2^F[z,z]\right)
+\]
+
+を評価する。natural-vs-dense maximum relative action errorを`1e-12`、TT tensor reconstructionを
+`2e-13`、TT joint action errorをnatural／dense双方に対して`1e-11`以下とする。complex actionを
+physical real chartへ戻した結果もsealed real \(W_2/R_2\) actionと`1e-11`以下で一致させる。
+
+invariance campaignではdense Q011e chart、natural projected chart、各TT-backed chartのone-step defectを
+同じ16初期座標で計算する。natural-vs-denseおよびTT-vs-natural defect-vector relative differenceを
+`1e-4`以下、全初期／写像stateのminimum populationをstrict positive、global conservation driftを
+`1e-10`以下とする。これは既存residual-order slopeを再採点せず、係数表現が登録点の不変性残差を壊さない
+ことだけを検査する。
+
+### offline／online cost protocol
+
+共通のchart再構築、native係数生成、Fourier projection、ordered-dense materializationは全methodの
+timingから除外する。これはTTに有利な費用除外である。
+
+- methods: `natural-fourier-sparse`、`ordered-dense-control`、上記6 TT bundle
+- offline warmup／measured blocks: `1 / 3`
+- online warmup／measured blocks: `1 / 5`
+- online vectors: action seed `20260902`の32方向
+- method order: blockごとのcyclic rotation
+- timer: `perf_counter_ns`
+- garbage collector: 各timed block内でdisableし、終了時に元の状態へ戻す
+- online scope: \(W_2/R_2\) joint homogeneous quadratic actionだけ
+- 各blockで両output normのchecksumを保存し、natural比`1e-11`以下とする
+
+offlineではnaturalのfresh array copy／serialization、dense controlのfresh copy／serialization、TTの
+tensorization／二TT-SVD／serializationを測る。全blockでstorage recordとserialization roundtripが一致する
+ことを要求する。runtime、BLAS、CPU、thread環境をartifactへ保存し、他machineの性能へ外挿しない。
+
+method \(m\)のoffline／online envelopeを\(B_m^-,B_m^+,t_m^-,t_m^+\)とする。TTが時間でnaturalを
+robustに上回る条件を
+
+\[
+t_m^+<t_s^-
+\]
+
+とする。この場合だけ、TTに不利・sparseに有利なcost line
+
+\[
+T_m^+(N)=B_m^+ + Nt_m^+,
+\qquad T_s^-(N)=B_s^-+Nt_s^-
+\]
+
+から最小整数break-evenを計算する。envelopeが重なればmedianが速くても`timing advantage not certified`
+とする。ordered-dense controlとのbreak-evenは診断に留め、natural baselineを外す理由にしない。
+
+### validity gate
+
+1. Q011f1 artifact／runner／package source、5 digest、accepted outcome、Q011f rejected outcomeを再現する。
+2. Q011e chartをfresh再構築し、native complex／real係数、coordinate map、既登録array hashを再現する。
+3. 300 pair、sector `0 / 1 / 16 / 2 / 15`のcount `102 / 54 / 54 / 45 / 45`、natural storage
+   shape／事前計算量、projection、serialization roundtripが一致する。
+4. 全6 tensorizationがbitwise reversibleで、TT-SVD、rank、core、reconstruction、actionがfiniteかつ
+   登録fidelity／realification／invariance thresholdを通る。
+5. 独立方向hash、prior duplicate 0、offline／online block数、cyclic order、checksum、subphase time、
+   storage／memory recordが完全である。
+6. 全値finiteなstrict JSON、input／coefficient／fidelity／cost／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、TT／sparse優位性を解釈しない。
+
+### TT優位性hypothesis gateと選択規則
+
+validity通過後、candidateごとに次を判定する。
+
+1. fidelity、realification、invariance-residual preservationを全て通る。
+2. core stored real scalarsがnaturalの`94,968`よりstrictに小さい。
+3. raw payload、in-memory object bytes、uncompressed NPZ bytesがnaturalより全てstrictに小さい。
+4. \(t_m^+<t_s^-\)で、naturalに対するconservative finite break-evenが存在する。
+
+同じcandidateが4条件を全て満たした場合だけ`joint winner`とする。winnerが複数なら
+
+1. conservative break-evenが小さい
+2. raw payloadが小さい
+3. online maximumが小さい
+4. candidate IDの辞書順
+
+で一意に選ぶ。一つ以上あれば
+`a registered TT-SVD bundle beats the natural Fourier-sparse forced-quadratic baseline`
+としてTT優位性仮説を`accepted`とする。0個なら
+`registered TT-SVD bundles do not beat the natural Fourier-sparse forced-quadratic baseline`
+として`rejected`とし、このforced coefficientに対するTT-SVD／TT-cross rolloutを開始しない。
+
+storage-onlyまたはtiming-onlyの候補はそのまま診断に残すが採択しない。結果後にtolerance、候補、baseline、
+seed、block数、閾値を変更しない。negative outcomeでもTT一般の不可能性とは解釈せず、固定tensorizationと
+現在環境に限って「このテンソル化ではTTは不適切」と結論する。
+
+### 主張境界
+
+本gateは固定17²、固定zero-mean force、固定保存量葉、Q011eのquadratic \(W_2/R_2\)、binary64、登録6
+uncapped TT-SVD bundle、現在CPU／NumPy／BLAS環境のlocal quadratic actionに限る。TT-cross、rank cap付き
+rounding、GPU、parallel scaling、full 64-step TT rollout、higher-order coefficient、他grid／force／wall、
+D3Q27、asymptotic complexity、energy、forced SSM existence／uniqueness、normal attraction、basinを
+主張しない。Q011e、Q011e1、Q011f、Q011f1の既存outcomeは変更しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
