@@ -9976,7 +9976,8 @@ Dr(z)=B^T(D\Phi_F(f(z))-I)B
 
 各solveでprojected residual \(\ell^2\)`<=5e-13`、full residual \(\ell^2\)`<=5e-12`、
 maximum component residual `<=5e-13`を要求する。二解のpopulation \(\ell^2\) distanceを
-`<=1e-11`、relative distanceを`<=1e-9`とする。各runはstep開始時のprojected residualが閾値内なら
+`<=1e-11`とし、relative distanceはそのdistanceを二解それぞれのrestからの\(\ell^2\) departureの
+大きい方で割って`<=1e-9`とする。各runはstep開始時のprojected residualが閾値内なら
 停止し、そうでなければ最大12 Newton stepを試す。二startを同じprocess内でもう一度ずつ再実行し、
 terminal coordinateとline-search traceのbitwise／exact JSON一致を要求する。結果観測後にmethod、
 start、toleranceを変えない。
