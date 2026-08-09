@@ -2534,6 +2534,54 @@ nonlinear derivative bound、induced graph transform、self-map／contraction、
 manifold／SSMはまだ認証していない。次はQ011rでQ011mのanalytic derivative majorantをこのreal normへ移し、
 非線形graph transformを定義して判定する。
 
+### Q011r real-norm nonlinear graph-transform certificate
+
+Q011m／Q011qを直接封印し、physical population infinity normのanalytic derivative boundをQ011qのreal
+fixed-leaf normへ
+
+\[
+\mu_2=K_P M_2 K_L^2,
+\qquad
+\mu_3=K_P M_3 K_L^3
+\]
+
+で輸送した。全域でheightがradius以下、Lipschitz定数が`1`以下のreal graph spaceをuniform metricで完備化し、
+base inverseを明示fixed-point problemとして定義した。15個の事前登録radiusをexact `Fraction`で評価し、
+radially localized mapのgraph transformがself-mapかつstrict contractionになる最大passing candidateを選んだ。
+
+- classification:
+  `the registered real localized graph transform is a strict contraction at a certified finite radius`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- outcome: `accepted`
+- transported \(\mu_2 / \mu_3\):
+  `855561732369.8289 / 5.96467973853591e16`
+- passing radius count／selected radius／first failed larger radius:
+  `6 / 3e-16 / 1e-15`
+- first failed larger conditions:
+  `localized_nonlinear_lipschitz_fits_cap / graph_slope_fits_cap`
+- physical radius／nonlinear amplitude／localized Lipschitz:
+  `7.73156346265492e-13 / 3.85002779566423e-20 / 0.0005133370394218973`
+- base conorm／inverse utilization／inverse Lipschitz:
+  `0.9832575980864989 / 0.0005218265861057217 / 1.0170274828753758`
+- height ratio／graph slope／uniform contraction:
+  `0.981838190392355 / 0.9989479817734533 / 0.9827360109495584`
+- localized population／density floor:
+  `0.027775908312577136 / 0.9999999999924095`
+- input／transport／graph／radius／result digest:
+  `7e9fa7b147ede559cffd117b7a6b8592d2939774f9821494759bbf3d634badd2` /
+  `3b8fba9cd370521880be3d4b77a9e2fc715e67ac22dc78e631f96e0d71317191` /
+  `77f2ac35d83726d0868ab08dd7648aee26bed7b00a40fb1405df1e1f162e023b` /
+  `8d33d01931c42730b18778c674282e6870224336cca72f66e81b447178d32d79` /
+  `b0520673f844d3f94a735c27800ff40d025a9437b01899e3d400b3c3fe0661ea`
+- runner／artifact newline-normalized SHA-256:
+  `8169e2fc7d5f7dccdc424bba31f37d4c03e6a669ab2e3f04d6289f03240b6d09` /
+  `2d45e3c64965ee1e8bc47f1a7d75070fbeabbcb2711a62b1711da92878a58e11`
+
+Banach contractionにより、selected radius `3e-16`ではlocalized mapに一意なbounded Lipschitz fixed graphが
+存在する。ただし、このglobal fixed graphのどのcore patchがcutoff identity region内でoriginal mapにより
+forward invariantかはまだ評価していない。従ってoriginal mapのlocal invariant manifold／SSM、smoothness、
+normal attraction、basinは未認証である。次はQ011sでinner-core containmentだけを独立に判定する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -3100,6 +3148,7 @@ python -m research.q011n_correction_readiness --output research/artifacts/q011n_
 python -m research.q011o_graph_transform_setup --output research/artifacts/q011o_graph_transform_setup.json
 python -m research.q011p_zero_block_reality --output research/artifacts/q011p_zero_block_reality.json
 python -m research.q011q_real_frame_setup --output research/artifacts/q011q_real_frame_setup.json
+python -m research.q011r_nonlinear_graph_transform --output research/artifacts/q011r_nonlinear_graph_transform.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -3192,6 +3241,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011o_graph_transform_setup.json`](research/artifacts/q011o_graph_transform_setup.json)
 - [`research/artifacts/q011p_zero_block_reality.json`](research/artifacts/q011p_zero_block_reality.json)
 - [`research/artifacts/q011q_real_frame_setup.json`](research/artifacts/q011q_real_frame_setup.json)
+- [`research/artifacts/q011r_nonlinear_graph_transform.json`](research/artifacts/q011r_nonlinear_graph_transform.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)

@@ -14787,6 +14787,68 @@ base imageのinner-ball containmentを事前登録し、nonzero original-map inv
 original mapのinvariant manifold／SSM、$C^1$以上のsmoothness、spectral quotient uniqueness、normal
 attraction、basin、長時間trajectory、他grid／force／wall、D3Q27を構成・認証しない。
 
+### Q011r 実行結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the registered real localized graph transform is a strict contraction at a certified finite radius`
+として`accepted`とした。
+
+Q011m／Q011qの2 artifact、runner、10 digest、outcome、theorem consequence、claim boundaryを直接再現した。
+Q011mのfixed-leaf conserved-moment identityを使ってnonlinear outputがreal coordinate analysisのdomainに
+入ることを確認し、
+
+\[
+\mu_2=K_P M_2 K_L^2,
+\qquad
+\mu_3=K_P M_3 K_L^3
+\]
+
+をexact `Fraction`で評価した。
+
+- transported \(\mu_2\): `855561732369.8289`
+- transported \(\mu_3\): `5.96467973853591e16`
+- registered radius count／passing count: `15 / 6`
+- selected radius: `3e-16`
+- first failed larger radius: `1e-15`
+- first failed larger conditions:
+  `localized_nonlinear_lipschitz_fits_cap / graph_slope_fits_cap`
+
+selected radiusでは
+
+- physical state radius: `7.73156346265492e-13`
+- nonlinear amplitude $n_\rho$: `3.85002779566423e-20`
+- localized nonlinear Lipschitz \(\delta_\rho\): `0.0005133370394218973`
+- base conorm $d_\rho$: `0.9832575980864989`
+- base inverse utilization $u_\rho$: `0.0005218265861057217`
+- base inverse Lipschitz upper: `1.0170274828753758`
+- height ratio $h_\rho$: `0.981838190392355`
+- graph slope \(\ell_\rho\): `0.9989479817734533`
+- uniform contraction \(\kappa_\rho\): `0.9827360109495584`
+- population／density floor: `0.027775908312577136 / 0.9999999999924095`
+
+となり、すべての登録capを通った。passing setは登録候補の先頭6個とexactに一致し、全majorantの
+monotonicityも通過した。第三微分boundはtransport provenanceとして保存したが、self-map／contractionを
+事後に鋭く見せる項としては使用していない。
+
+- input／transport／graph／radius／result digest:
+  `7e9fa7b147ede559cffd117b7a6b8592d2939774f9821494759bbf3d634badd2` /
+  `3b8fba9cd370521880be3d4b77a9e2fc715e67ac22dc78e631f96e0d71317191` /
+  `77f2ac35d83726d0868ab08dd7648aee26bed7b00a40fb1405df1e1f162e023b` /
+  `8d33d01931c42730b18778c674282e6870224336cca72f66e81b447178d32d79` /
+  `b0520673f844d3f94a735c27800ff40d025a9437b01899e3d400b3c3fe0661ea`
+- runner／artifact newline-normalized SHA-256:
+  `8169e2fc7d5f7dccdc424bba31f37d4c03e6a669ab2e3f04d6289f03240b6d09` /
+  `2d45e3c64965ee1e8bc47f1a7d75070fbeabbcb2711a62b1711da92878a58e11`
+
+これによりradially localized mapには登録graph space内で一意なbounded Lipschitz fixed graphが存在する。
+ただし、original mapとlocalized mapが一致するのはcutoff core内だけであり、fixed graphのcore restrictionと
+そのselected base imageが同時にcoreへ留まることはまだ示していない。従ってoriginal-map local invariant
+manifold／SSM、$C^1$以上のsmoothness、normal attraction、basinは未認証である。
+
+停止規則どおり、次はQ011sを事前登録し、selected operator upper、fixed-graph height／slope、nonlinear
+amplitudeからinner base radiusを構成し、そのgraph patchとone-step imageがcutoff identity regionに留まるか
+だけを判定する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

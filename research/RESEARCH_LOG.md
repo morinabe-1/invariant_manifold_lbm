@@ -5804,6 +5804,103 @@ graph transformを定義していない。従ってself-map、contraction、fixe
 smoothness、一意性、normal attraction、basinは未認証である。次はQ011rを事前登録し、real-norm nonlinear
 majorantとinduced graph transformだけを判定する。
 
+## Q011r: real-norm nonlinear graph-transform contraction
+
+### 実施内容
+
+Q011m／Q011qのartifact、runner、10 digest、outcome、theorem consequence、claim boundaryを直接封印した。
+Q011mのphysical population infinity-norm derivative upperとQ011qのreal coordinate synthesis／analysisを
+
+\[
+\mu_2=K_P M_2 K_L^2,
+\qquad
+\mu_3=K_P M_3 K_L^3
+\]
+
+で合成した。Q011mの二次・三次conserved-moment identityにより、nonlinear outputがfixed conservation leafに
+属し、Q011qのanalysisを適用できることを確認した。exact rootをoriginに移したcoordinate mapでは
+$N(0)=DN(0)=0$ なので、radius $\rho$ で
+
+\[
+n_\rho=\frac12\mu_2\rho^2,
+\qquad
+\delta_\rho=2\mu_2\rho
+\]
+
+をそれぞれradial cutoff後のglobal amplitude／Lipschitz upperとした。factor `2`はQ011q radial retractionの
+difference boundだけへ掛け、amplitudeへ重複適用しなかった。
+
+local graphの延長を仮定せず、全selected real space上でorigin固定、uniform height $\rho$、Lipschitz `1`の
+global bounded graph spaceを定義した。この空間はuniform metricが有限でclosed completeである。各graphの
+base map
+
+\[
+P_\psi(s)=Ss+B\psi(s)+(N_\rho)_S(s,\psi(s))
+\]
+
+をfixed-point inverseとして解き、
+
+\[
+d_\rho=m-b-\delta_\rho,
+\qquad
+u_\rho=\lVert S^{-1}\rVert(b+\delta_\rho)
+\]
+
+からglobal bijectionとinverse Lipschitz upperを得た。graph transformのheight、slope、uniform metric
+contractionには
+
+\[
+h_\rho=q+\frac12\mu_2\rho,
+\qquad
+\ell_\rho=\frac{q+\delta_\rho}{d_\rho},
+\qquad
+\kappa_\rho=\frac{m(q+\delta_\rho)}{d_\rho}
+\]
+
+を用いた。15個の登録radiusをexact `Fraction`で全列挙し、最大passing candidateを選んだ。
+
+### 結果
+
+validityは`7 / 7`、hypothesisは`5 / 5`を通過し、
+`the registered real localized graph transform is a strict contraction at a certified finite radius`
+として`accepted`とした。
+
+- physical $M_2 / M_3$:
+  `144.5474473239429 / 3910.210477654001`
+- transported \(\mu_2 / \mu_3\):
+  `855561732369.8289 / 5.96467973853591e16`
+- registered／passing radius count: `15 / 6`
+- selected radius／first failed larger radius: `3e-16 / 1e-15`
+- first failed larger conditions:
+  `localized_nonlinear_lipschitz_fits_cap / graph_slope_fits_cap`
+- physical radius／nonlinear amplitude／localized Lipschitz:
+  `7.73156346265492e-13 / 3.85002779566423e-20 / 0.0005133370394218973`
+- base conorm／inverse utilization／inverse Lipschitz:
+  `0.9832575980864989 / 0.0005218265861057217 / 1.0170274828753758`
+- height ratio／graph slope／uniform contraction:
+  `0.981838190392355 / 0.9989479817734533 / 0.9827360109495584`
+- localized population／density floor:
+  `0.027775908312577136 / 0.9999999999924095`
+- input／transport／graph／radius／result digest:
+  `7e9fa7b147ede559cffd117b7a6b8592d2939774f9821494759bbf3d634badd2` /
+  `3b8fba9cd370521880be3d4b77a9e2fc715e67ac22dc78e631f96e0d71317191` /
+  `77f2ac35d83726d0868ab08dd7648aee26bed7b00a40fb1405df1e1f162e023b` /
+  `8d33d01931c42730b18778c674282e6870224336cca72f66e81b447178d32d79` /
+  `b0520673f844d3f94a735c27800ff40d025a9437b01899e3d400b3c3fe0661ea`
+- runner／artifact newline-normalized SHA-256:
+  `8169e2fc7d5f7dccdc424bba31f37d4c03e6a669ab2e3f04d6289f03240b6d09` /
+  `2d45e3c64965ee1e8bc47f1a7d75070fbeabbcb2711a62b1711da92878a58e11`
+
+### 解釈と次のbottleneck
+
+Banach contraction theoremにより、selected radius `3e-16`ではlocalized mapに一意なbounded Lipschitz fixed
+graphが存在する。Q011qの型だけのgraph spaceから、非線形self-map／contractionまで進んだ。
+
+一方、このfixed graphはglobal radial cutoffを含むlocalized mapのobjectである。cutoff identity core内では
+original mapと一致するが、graph patchのone-step selected base imageが同じcoreへ留まることはまだ認証して
+いない。従ってoriginal mapのlocal invariant manifold／SSM、$C^1$以上のsmoothness、spectral quotient
+uniqueness、normal attraction、basinは未認証である。次はQ011sでinner-core containmentだけを判定する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -5969,6 +6066,8 @@ majorantとinduced graph transformだけを判定する。
 [`artifacts/q011p_zero_block_reality.json`](artifacts/q011p_zero_block_reality.json)
 
 [`artifacts/q011q_real_frame_setup.json`](artifacts/q011q_real_frame_setup.json)
+
+[`artifacts/q011r_nonlinear_graph_transform.json`](artifacts/q011r_nonlinear_graph_transform.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
