@@ -10155,8 +10155,9 @@ forward pathはrestから\(t_0\to t_8\)、backward pathはQ011b stored endpoint�
 \(t_8\to t_0\)へ進み、各solveの直前node stateを初期値とする。各nodeでprojected／full／maximum
 component residualを`5e-13 / 5e-12 / 5e-13`以下とする。対応nodeのforward／backward state distanceを
 `<=1e-11`、二stateのrest departureの大きい方を分母とするrelative distanceを`<=1e-8`とする。
-forward endpointとQ011b stored stripe stateも同じ二閾値内で一致させる。全trace、line-search decision、
-state hashを保存する。
+ただし\(t=0\)はdepartureが厳密に0なのでabsolute gateだけを使い、relative gateの対象は非零8 nodeに
+限定する。forward endpointとQ011b stored stripe stateも同じ二閾値内で一致させる。全trace、
+line-search decision、state hashを保存する。
 
 ### unforced reference cluster
 
