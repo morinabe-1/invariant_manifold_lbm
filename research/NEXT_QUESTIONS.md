@@ -8416,6 +8416,136 @@ invarianceにより同じstage boundを全iterateへ再適用できる。
 囲っていない。次はQ007ajで同じnew tubeに対するcurrent binary64 one-step stage enclosureを独立に
 監査する。all-iterate finite-precision re-entryは同じgate内でもstage positivityと分けて判定する。
 
+## Q007aj: Q007ag selected tubeのcurrent binary64 one-step enclosure — 事前登録
+
+### 問いと固定scope
+
+Q007aiでexact stagewise positivityを認証したQ007ag selected tubeについて、current NumPy
+implementationのbinary64 equilibrium evaluation、BGK collision output、periodic streaming output、
+five-point filter outputを、Q007vと同一のFraction-based outward forward-error modelで一段階だけ
+包囲したとき、全stageのpopulation lowerがstrict positiveかを問う。同時に、post-filter roundoff
+errorをQ007p Fourier coordinateへ戻したupperがQ007agのbase／normal forward-invariance marginへ
+収まるかを別々に判定する。
+
+固定scopeは\(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)、固定mass／momentum leaf、
+Q007ae exact graph-gauge manifold、Q007p Fourier external-coordinate block-sum \(\ell^1\) norm、
+\((r,\zeta)=(9\times10^{-17},5\times10^{-11})\)とする。inputはexact real tube stateを
+correctly rounded binary64へencodeしたものとし、round-to-nearest ties-to-even、unit roundoff
+\(u=2^{-53}\)、subnormal fallback \(h=2^{-1075}\)を固定する。FTZ／DAZ、GPU kernel、BLAS変更、
+compiler fast-math、非標準roundingは扱わない。
+
+### 封印入力と実装
+
+- Q007ag artifact／runner SHA-256:
+  `5783df74abb4b6ec7d658fd7e3dd272cf100cd134783c31863d643fcd17d4200` /
+  `bafd9a56d2d2ceb94acb709609bd710c9fff0f6c0bf543202fa411b9456fb6e0`
+- Q007ai artifact／runner SHA-256:
+  `3ce5fa6358eaa6f3a64f93fe773e3fbc1990abfb83886aad1a4ade9c82425804` /
+  `3235b2dc31445e5912f2aaf7fc080e8295035801ade9b27d3f683d34da61173d`
+- Q007v old-tube binary64 oracle artifact／runner SHA-256:
+  `c4c1c45941a6f6ac302691efd8e795e431f6acc1fa4f4629cb0c7a0afac3c0a5` /
+  `a0d3cea0fcae8a627f4a96db56d46727589411b2557e2aa91433569576a0575c`
+- current D2Q9 implementation SHA-256:
+  `6e6c5aa6734844d0393eb402e21203831faaf5f325b35249941eaa59145c6f53`
+- current checkerboard-filter implementation SHA-256:
+  `5fb6b67e8527b0b1f5f45511ba7cd5d077ee443220632ba3019b7bf28010a7ea`
+
+Q007agはstored cycle、3 digest、6 validity gate、5 hypothesis gate、selected candidateとその6 strict
+gate／margin、forward invariance theoremをfresh replayする。Q007aiはstored cycle、2 digest、6 validity
+gate、5 hypothesis gate、exact stage boundsとall-iterate exact-stage theoremをfresh replayする。Q007vは
+stored cycle、7 validity gate、binary64 model、primitive interval arithmetic、83 multiplicationを含む固定
+operation schedule、source schedule、deterministic NumPy replay、および「old tubeではone-step acceptedだが
+robust re-entryはnot certified」という分離結果をfresh replayする。Q007vのoverall `not_certified`を
+invalid inputとは扱わず、全validity gate通過と封印された分離結果の一致を要求する。
+
+### binary64 stage enclosureとre-entry bound
+
+Q007ag／Q007aiから同一のexact fractionとして
+
+\[
+x_{\rm ag}=1.4441361143956586\times10^{-10}
+\]
+
+を読み、各site／population inputを
+
+\[
+f_i\in[w_i-x_{\rm ag},w_i+x_{\rm ag}]
+\]
+
+で包囲する。Q007vのpaired quantity \((I,e)\)と同一の演算順序を用い、各binary64基本演算後に
+\(u|x|+h\)を加える。streamingはpopulation-wise `np.roll` permutationなので新しい算術誤差を
+加えず、filterまでのtarget intervalとforward-error upperをexact Fractionで計算する。各stage lowerは
+
+\[
+p_s^{64}=\min_i\{\inf I_{s,i}-e_{s,i}\}
+\]
+
+とする。Q007vの登録operation countが一件でも変わればvalidity failureであり、新しいscheduleへ
+結果を合わせない。
+
+post-filterのcomponent error upper \(e_i^{\rm filt}\)から
+
+\[
+\epsilon_W=17^2\sum_{i=0}^{8}e_i^{\rm filt},\qquad
+\epsilon_B=K_B\epsilon_W,\qquad
+\epsilon_N=K_N\epsilon_W
+\]
+
+を作る。\(K_B,K_N\)はQ007vで封印したQ007p selected／external analysis upperを変更せず再利用する。
+比較対象はQ007ag selected candidateのexact strict margin
+
+- base forward-invariance margin: `4.978814700017615e-20`
+- normal-tube forward-invariance margin: `9.144951058528087e-13`
+
+とする。等号は不合格とし、baseとnormalを独立に判定する。
+
+### validity gate
+
+1. Q007ag／Q007ai／Q007v artifactとrunner SHA、source、scope、schema、登録classificationと分離outcomeが一致する。
+2. Q007ag stored cycle、3 digest、selected tube、6 gate、strict margin、forward invarianceをfresh replayする。
+3. Q007ai stored cycle、2 digest、new-tube exact stage bounds、全accepted gate／theoremをfresh replayする。
+4. Q007v stored cycle、old one-step acceptance／re-entry rejection、binary64 model、interval primitives、operation
+   count、source schedule、deterministic replayをfresh replayする。
+5. current D2Q9／filter source SHAと必要operation snippetが一致し、new-tube rest-state replayが全包囲へ入る。
+6. Q007agとQ007aiの\(x_{\rm ag}\)がexact一致し、Q007vの\(K_B,K_N\)とQ007ag strict marginが正である。
+7. 全boundがfinite strict JSONで、canonical input／result digestを出力する。
+
+一つでも落ちれば`inconclusive`とし、stage lowerもre-entry判定も採用しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を独立に判定する。
+
+1. equilibrium evaluation: \(p_{\rm eq}^{64}>0\)。
+2. post-collision: \(p_{\rm coll}^{64}>0\)。
+3. post-streaming: arithmetic-free permutationがpost-collision lowerを保持する。
+4. post-filter: \(p_{\rm filt}^{64}>0\)。
+5. one-step stage positivity: 上の4件が全て通る。
+6. base-coordinate re-entry: \(\epsilon_B<m_B^{\rm ag}\)。
+7. normal-coordinate re-entry: \(\epsilon_N<m_N^{\rm ag}\)。
+
+one-step stage positivityが通れば`one_step_outcome=accepted`とする。base／normalの両方が通った場合だけ
+`robust_reentry_outcome=accepted`とし、overallを
+`binary64 stage positivity and roundoff-robust Q007ag tube invariance certified`
+として`accepted`にする。one-stepが通るがre-entryの一方でも落ちればoverallは
+`binary64 one-step stages remain positive, but the registered Q007ag tube is not certified roundoff-invariant`
+という有効な`not_certified`とする。one-step自体が落ちれば
+`binary64 stage positivity is not certified on the registered Q007ag input tube`
+という有効な`not_certified`とする。
+
+re-entry不合格は実際のtube escapeや反例ではなく、この固定worst-case enclosureがstrict marginへ収まらない
+ことだけを意味する。不合格時はone-step positivityを全iterateへ帰納せず、Q007akで原因をmargin不足、
+analysis norm、Wiener lifting、local roundoff accumulationへ分解するまでMPFR／repair／shadowing拡張へ進まない。
+
+### 主張境界
+
+accepted one-step結果も、correctly rounded binary64 encodingから始めたfixed component boxと、登録された
+current NumPy演算順序だけに適用する。component box内の状態がfixed mass／momentum leafを満たすことは
+利用しないためconservativeだが、arbitrary compiler／hardware実行を認証しない。entropy、monotonicity、
+maximum principle、continuous optimum、global basin、grid-uniformity、continuum limit、およびre-entry不合格時の
+all-iterate finite-precision positivityは認証しない。既存Q007ag／Q007ai acceptance、Q007v old-tube mixed
+result、Q007c1／Q007d／Q007af／Q010結論は変更しない。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
