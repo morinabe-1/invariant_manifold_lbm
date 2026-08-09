@@ -10940,6 +10940,225 @@ endpointのquadratic external operator familyは有限binary64範囲でprequalif
 20 probeもrigorous inverse norm boundではなく、spectral quotientをsmoothness／uniqueness定理には
 読み替えない。次はQ011e dense forced quadratic chartを観測前に事前登録する。
 
+## Q011e: dense forced quadratic fixed-leaf chart — 事前登録
+
+### 問いと数学的範囲
+
+Q011b stored forced fixed pointとQ011dの24-dimensional selected clusterに対し、forced mapの
+解析的二階微分から、固定保存量葉上のdense quadratic parameterization
+
+\[
+W(a)=x_*+W_1a+\frac12W_2[a,a],\qquad
+R(a)=R_1a+\frac12R_2[a,a]
+\]
+
+を構築すると、一段不変性欠陥はlinear chartの二次からquadratic chartの三次へ改善するか。
+
+本gateは保存量の扱いとして案Aを採用し、
+
+\[
+\delta M=\delta P_x=\delta P_y=0
+\]
+
+の不変葉に制限する。\(k_x=0\)のquadratic mean correctionは許すが、そのglobal conserved
+momentはbinary64 tolerance内でゼロでなければならない。\(k=0\)の3 center coordinateは
+reduced coordinateへ含めず、center-slow構成と混ぜない。
+
+### 封印入力
+
+- Q011d artifact／runner newline-normalized SHA-256:
+  `c3acb9b7acc6e3121cb6e48a04bb060b5c95d7b128fe15fb11b67ee456337fd0` /
+  `815fe7e0101cc05cc44fcb224534762f0ef7625f8c9604ff0a822c13171a617d`
+- Q011d input／linear-split／pair-family／sector-probe／result digest:
+  `ee2713e8169ea0f475ddee1b1233964ba40739d2276b78db3fff5410158dd2f8` /
+  `7208875ff95f3a768e4b822cf9be854228d6664800dfc69218c0e6a030a0c63e` /
+  `f9caee5b591e74b40b497ca7eb8244f1bbaeba71d239684c47d8215c46c2fb0b` /
+  `feb864e2725e0cf726b43c443bb48b53f34ba0ac54693bb97a2b986f598a1414` /
+  `a6941371e54a5e4d4abbea2f835196ddd7cce35c7c266ce399020764ed5b9dd7`
+- Q011b stored endpoint state SHA-256:
+  `612ef4aca91a5c0100286988e0e7979342a9046c3c78fe60ee59ca4e232a7613`
+- sealed package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+
+Q011dをfresh replayし、validity `7 / 7`、hypothesis `5 / 5`、accepted classification、
+5 digest、artifact cycleをexactに再現する。Q011c originalの`inconclusive`、Q011c1／Q011c2の
+accepted outcomeも変更しない。
+
+### invariant Schur complementとgraph gauge
+
+\(k_x=0,1,16\)のordered Schur formを
+
+\[
+U^*A_kU=
+\begin{bmatrix}
+T_{s,k}&C_k\\0&T_{e,k}
+\end{bmatrix}
+\]
+
+とし、
+
+\[
+T_{s,k}Y_k-Y_kT_{e,k}=C_k
+\]
+
+を解く。selected basis、invariant external basis、selected／external left coordinateを
+
+\[
+W_{s,k}=U_{s,k},\quad
+V_{e,k}=U_{e,k}-U_{s,k}Y_k,\quad
+L_{s,k}=U_{s,k}^*+Y_kU_{e,k}^*,\quad
+L_{e,k}=U_{e,k}^*
+\]
+
+とする。これにより
+
+\[
+L_sW_s=I,\quad L_sV_e=0,\quad L_eV_e=I,\quad
+A_kV_e=V_eT_e
+\]
+
+を要求する。単なるSchur orthogonal complementをgraph gaugeには使わない。
+\(k_x=0\)ではQ011b fixed-leaf basisの150 coordinate内でこの構成を行い、物理153 stripe
+coordinateへ戻す。\(k_x=2,15\)はfull Schur basisをexternal basisとする。
+
+full-grid Fourier embeddingはunitary convention
+
+\[
+(E_kv)(y,x,q)=N^{-1/2}e^{2\pi ikx/N}v(y,q)
+\]
+
+を使う。complex selected tangent \(W_1\)のorthonormality、linear invariance、spectral-left
+duality、conjugacy closureを各`<=1e-10`とする。Q011dのselected／external dynamics、
+projector、pair enumeration、\(K_k\) hashをexactに再現する。
+
+### forced-map解析Hessianと独立微分
+
+local equilibriumを保存moment \(m=(\rho,j_x,j_y)\)で
+
+\[
+f_q^{eq}=w_q\left[
+\rho+3c_q\cdot j+
+\frac{\frac92(c_q\cdot j)^2-\frac32j\cdot j}{\rho}
+\right]
+\]
+
+と書き、Q011b forced endpointの各siteで解析Hessianを構成する。BGK係数、streaming、
+conservative filterを順に作用させる。additive force sourceの二階微分はゼロとする。
+
+解析Hessianを用いた\(B(W_1u,W_1v)\)とは別に、seed `20260823`の16 normalized real
+direction pairについてforced mapそのもののcentered mixed differenceをstep
+`0.004 / 0.002`で計算し、Richardson extrapolationする。
+
+- maximum analytic relative discrepancy: `<=1e-6`
+- maximum coarse-to-fine relative change: `<=1e-4`
+- minimum analytic directional Hessian norm: `>=1e-8`
+- perturbed state／mapped stateは全てstrict positive
+
+とする。homological equationを解けたことだけでHessianを正しいとは判定しない。
+
+### sector-wide quadratic solve
+
+unordered pair \((i,j)\)のpolynomial coefficientは、off-diagonalでHessian係数そのもの、
+diagonalでHessian係数の`1/2`とする。これを\(C_2\)、解析forcingを\(B_2\)、
+reduced coefficientを\(G_2\)と書けば、
+
+\[
+JC_2+B_2-W_1G_2-C_2K=0
+\]
+
+である。output sectorごとに
+
+\[
+T_{e,k}X_k-X_kK_k=-L_{e,k}B_{2,k},\qquad
+G_{2,k}=L_{s,k}B_{2,k}
+\]
+
+を解き、\(C_{2,k}=V_{e,k}X_k\)とする。Q011dと同じ
+sector pair count `102 / 54 / 54 / 45 / 45`、合計300を使う。
+
+登録thresholdは次のとおり。
+
+- maximum sector Sylvester solve relative residual: `<=1e-10`
+- full homological relative residual: `<=1e-10`
+- maximum pairwise homological relative residual: `<=1e-9`
+- graph-gauge relative residual \(L_sC_2\): `<=1e-10`
+- tangent／Hessian global conservation relative residual: `<=1e-10`
+- zero-\(k_x\) quadratic correction global conserved-moment relative residual: `<=1e-10`
+- Hessian／reduced-Hessian symmetry relative residual: `<=1e-12`
+- \(k_x\)-selection leakage outside `0 / 1 / 16 / 2 / 15`: `<=1e-12`
+- analytic forcing、\(W_2\)、\(R_2\) Frobenius norm: each `>=1e-12`
+
+### real fixed-leaf chart
+
+complex \(W_1\)のreal／imaginary columnsを並べ、column-pivoted QRの先頭24列からdeterministicな
+real orthonormal tangent \(V\)を作る。\(C=W_1^*V\)でcomplex Schur coordinateとreal coordinateを
+結び、
+
+\[
+A_r=C^*R_1C,\quad
+H_r=W_2[C\,\cdot,C\,\cdot],\quad
+G_r=C^*R_2[C\,\cdot,C\,\cdot]
+\]
+
+とする。real tangent／linear／Hessian／reduced-Hessianのimaginary leakage、range residual、
+\(C^*C-I\)、real extractor dualityを各`<=1e-10`とする。
+
+### 一段不変性残差次数
+
+seed `20260824`の32 normalized real directionとamplitude
+
+\[
+(10^{-5},2\times10^{-5},4\times10^{-5},8\times10^{-5},1.6\times10^{-4})
+\]
+
+を観測する。residual `>=1e-13`の点だけをlog-log fitに使い、4点未満の方向はdegenerateとして
+slope判定から除外する。degenerate方向の小残差を成功に数えない。
+
+- slope-eligible direction count: `>=28 / 32`
+- eligible linear slope: `1.85 <= slope <= 2.15`
+- eligible quadratic slope: `2.70 <= slope <= 3.30`
+- largest-amplitude quadratic／linear residual ratio: `<=0.25`
+- chart state／mapped state minimum population: `>0`
+- maximum global conservation drift: `<=1e-10`
+
+とする。これは有限方向・有限振幅の次数監査であり、一様Taylor remainder boundではない。
+
+### validity gate
+
+1. Q011d／Q011c2／Q011c1／Q011c／Q011bとpackage sourceを封印どおり再現する。
+2. invariant Schur complement、unitary Fourier embedding、complex／real tangentをstructurally再現する。
+3. analytic forced Hessianと16-pair independent finite differenceを完全列挙する。
+4. 全300 pair forcing、5 sector Sylvester solve、\(W_2/R_2\)を完全列挙する。
+5. homological、graph-gauge、conservation、symmetry、Fourier-support診断を完全列挙する。
+6. 32方向×5 amplitudeのlinear／quadratic residualとpositivityを完全列挙する。
+7. 全値finiteなstrict JSON、input／derivative／chart／residual／result digest、runner provenanceを
+   再現する。
+
+一つでも落ちれば`inconclusive`とし、quadratic chart hypothesisを解釈しない。
+
+### hypothesis gateと判定
+
+validity通過時だけ次を全て要求する。
+
+1. independent Hessian discrepancy／step-dependence／positivity gateを通る。
+2. 全sector solveとfull／pairwise homological residual gateを通る。
+3. graph gauge、固定葉保存、zero-\(k_x\) conserved-moment、symmetry、Fourier supportを通る。
+4. complex-to-real chartとlinear invariance／dualityを通る。
+5. linear chartの二次、quadratic chartの三次residual slope gateを通る。
+6. largest amplitudeでquadratic residualがlinear residualの`0.25`以下となり、全stateがpositiveで
+   conservation driftが登録上限内である。
+
+全て通れば
+`the forced fixed-leaf quadratic chart satisfies the registered homological and residual-order tests`
+として`accepted`とする。validだが一つでも落ちれば
+`the forced fixed-leaf quadratic chart fails the registered construction tests`として`rejected`とする。
+
+acceptedでもこれは単一17² grid、登録forced endpoint、有限方向／振幅のbinary64 dense chartである。
+continuous-amplitude family、rigorous derivative／inverse enclosure、SSM existence／uniqueness、
+uniform Taylor remainder、nonlinear normal attraction、basin、他grid／force／wall boundaryは主張しない。
+acceptedの場合だけ、Q011fでforced chartのamplitude／multi-step holdoutまたはTT／sparse費用評価の
+どちらを先に行うかを、Q011eの観測結果から事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
