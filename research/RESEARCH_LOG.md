@@ -5272,8 +5272,78 @@ selected radius `1e-8`でcontractionとKrawczyk inclusionは登録cap`0.9`に対
 外向き丸めprecisionを384 bitへ上げても全upperは狭まり、同じ最大radiusを選んだ。従ってexact repaired
 stripe mapのfixed point存在とbox内局所一意性が成立し、x-independent replicationでfull 17² periodic
 mapへ移る。これはglobal uniqueness、basin、raw Q011b exact map、区間spectrum、forced SSM、normal
-attractionを示さない。次はQ011kでcertified box全体のrigorous fixed-leaf spectrumとselected／external
-splitを独立gateとして認証する。
+attractionを示さない。次はQ011kでcertified box内の一意なrootを収縮不等式で再局在化し、rigorous
+fixed-leaf spectrumとselected／external splitを独立gateとして認証する。
+
+## 2026-08-09: Q011k repaired fixed-point interval spectral split
+
+### 問いと方法
+
+Q011jのKrawczyk boxに存在する一意なexact repaired fixed pointについて、fixed-leaf spectrumの
+strict stability、Q011c2-designated 24-dimensional selected clusterと2574-dimensional external
+spectrumの分離、quadratic selected productのexternal spectral nonresonanceを認証した。
+
+Q011jのcenter correction upperとselected-box contraction upperから
+
+\[
+\|x_\ast-x_0\|_\infty\le\frac{\|CG(x_0)\|_\infty}{1-q}
+\]
+
+をexactに導き、root coordinate radiusを`1.1301435463682045e-15`へ縮小した。zero x-waveはQ011jの
+150-dimensional affine coordinate、nonzero 16 blockは各153-dimensional population coordinateを使った。
+equilibrium derivative、streaming、filter、17th-root phaseをrational rectangleで包み、9代表blockの
+binary64 eig proposalをexact dyadicとして256／384-bit directed MPFRでBauer--Fike認証した。
+残る8 blockはreal-state conjugacyでtransportした。
+
+Q011c2 endpoint setとのminimum-total-distance matchingでblock `0 / 1 / 16`の`6 / 9 / 9` centersを
+selectedとした。cluster内部の個別labelは固定せず、selected／external disc unionの分離からhomotopy
+eigenvalue countだけを保存した。24 selected centersの全300 unordered productを対応x-wave output sectorの
+external centers44,010件と比較した。
+
+### 結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the exact repaired fixed point has a rigorously stable and quadratically nonresonant selected/external spectral split`
+として`accepted`とした。
+
+- root coordinate／ambient component radius upper:
+  `1.1301435463682045e-15 / 2.1020669962448604e-13`
+- root-box population／density lower:
+  `0.027775908313350292 / 0.999999999999368`
+- maximum point-proposal／interval-family infinity distance upper:
+  `2.6239799629414762e-15 / 3.159514510653837e-11`
+- maximum inverse defect／point eig residual upper:
+  `2.659104047707985e-12 / 1.364939039226648e-13`
+- maximum Bauer--Fike radius／witness block: `0.000785981566123045 / 4`
+- maximum fixed-leaf modulus upper: `0.9921085054987441`
+- selected／external count: `24 / 2574`
+- maximum Q011c2 selected matching distance: `9.447267645531843e-15`
+- minimum selected／external complex disc gap lower: `0.023904592735975918`
+- selected minimum／external maximum modulus bound:
+  `0.9837705640652026 / 0.9817228739761981`
+- normal modulus gap lower: `0.0020476900890045394`
+- quadratic pair／external comparison count: `300 / 44010`
+- minimum quadratic external spectral-distance lower: `0.0001793727151978435`
+- exact quadratic-pair digest:
+  `be8548cd8ac4bea69b71b7bb0617f232ddcc9535d33b13279e371cc242cf2b79`
+- input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- runner／artifact newline-normalized SHA-256:
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07` /
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a`
+
+### 解釈と次のbottleneck
+
+exact repaired fixed pointのfull fixed-leaf spectrumはstrictly stableで、Q011c2-designated selected clusterは
+external spectrumと交換せず、eigenvalue-level quadratic external resonanceも排除された。一方、Q011c2の
+continuous-amplitude pathは依然numericalであり、個別branch labelもrigorousには固定していない。
+またeigenvalue distanceだけではnonnormal homological operatorのinverse normを与えない。Q011e--Q011hは
+raw map coefficientのままで、forced SSM存在・一意性やnonlinear normal attractionへ移せない。次はQ011lで
+repaired splitに対するinterval Sylvester／homological inverse boundを独立に事前登録する。
 
 ## 再現 artifact
 
@@ -5426,6 +5496,8 @@ splitを独立gateとして認証する。
 [`artifacts/q011i_exact_zero_mean_repair.json`](artifacts/q011i_exact_zero_mean_repair.json)
 
 [`artifacts/q011j_interval_fixed_point.json`](artifacts/q011j_interval_fixed_point.json)
+
+[`artifacts/q011k_interval_spectral_split.json`](artifacts/q011k_interval_spectral_split.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

@@ -12742,6 +12742,55 @@ Q011e--Q011h raw-map coefficient、rigorous homological inverse、forced SSM存�
 nonlinear normal attraction、basin、他grid／force／wall、D3Q27は主張しない。selected／external modulus gapを
 非線形normal attractionへ読み替えない。
 
+### Q011k 実行結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the exact repaired fixed point has a rigorously stable and quadratically nonresonant selected/external spectral split`
+として`accepted`とした。
+
+- contraction-derived root coordinate／ambient component radius upper:
+  `1.1301435463682045e-15 / 2.1020669962448604e-13`
+- root-box population／density lower:
+  `0.027775908313350292 / 0.999999999999368`
+- block／fixed-leaf dimension: `17 / 2598`
+- maximum point-proposal／interval-family infinity distance upper:
+  `2.6239799629414762e-15 / 3.159514510653837e-11`
+- maximum inverse defect／point eigendecomposition residual upper:
+  `2.659104047707985e-12 / 1.364939039226648e-13`
+- maximum Bauer--Fike radius／witness block: `0.000785981566123045 / 4`
+- fixed-leaf modulus upper／witness: `0.9921085054987441 / block 0, center 147`
+- selected／external／total count: `24 / 2574 / 2598`
+- maximum Q011c2 selected matching distance: `9.447267645531843e-15`
+- minimum selected／external complex disc gap lower: `0.023904592735975918`
+- selected minimum／external maximum modulus bound:
+  `0.9837705640652026 / 0.9817228739761981`
+- normal modulus gap lower: `0.0020476900890045394`
+- quadratic unordered pair／external comparison count: `300 / 44010`
+- minimum quadratic external spectral-distance lower: `0.0001793727151978435`
+- minimum quadratic witness:
+  `pair 173: block 1 center 144 * block 16 center 144 -> block 0 external center 143`
+- exact quadratic-pair digest:
+  `be8548cd8ac4bea69b71b7bb0617f232ddcc9535d33b13279e371cc242cf2b79`
+- input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- runner／artifact newline-normalized SHA-256:
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07` /
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a`
+
+Q011jの元box全体ではなく、同box内の一意なexact rootをcontraction inequalityで導出したboxに包み、
+17 Fourier blockの全2598 spectrumを認証した。Q011c2 selected eigenvalue setはclusterの識別にだけ使い、
+cluster内部の個別label不変性は要求していない。disc-union gapが正なのでhomotopy中のselected／external
+交換はなく、全300 quadratic selected productも対応external sectorから分離する。
+
+ただしQ011c2のcontinuous-amplitude continuation自体はrigorousになっておらず、quadratic distanceは
+eigenvalue-levelである。nonnormal Sylvester／homological inverse norm、Q011e--Q011h raw-map coefficient、
+forced SSM存在・一意性、nonlinear normal attraction、basinへ広げない。次は事前登録どおりQ011lで
+repaired split上のrigorous interval homological inverse boundを構成する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

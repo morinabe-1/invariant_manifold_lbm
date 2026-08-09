@@ -278,7 +278,11 @@ Q011jではsite 0の3 populationをexactに消去する150次元affine fixed-lea
 exact rational nonlinear map／Jacobian enclosureと256／384-bit外向きMPFRを用いたKrawczyk証明を行った。
 登録10半径のうち5候補が通り、最大の自由座標半径`1e-8`で収縮上限`0.199756943`、包含利用率
 `0.199757034`を得た。従ってrepaired mapのx-independent fixed pointの存在と同box内局所一意性を
-`accepted`としたが、raw Q011b exact map、区間spectrum、forced SSMは未認証である。
+`accepted`とした。Q011kでは収縮証明からexact root半径を`1.13014e-15`へ絞り、17 Fourier blockの
+256／384-bit Bauer--Fike enclosureを構成した。全2598 eigenvalue discが`0.992108506`以下、
+selected／external countが`24 / 2574`、normal modulus gapが`0.002047690`、300 quadratic productの
+external distance lowerが`1.79373e-4`となり`accepted`とした。raw Q011b exact map、nonnormal
+homological inverse、forced SSMは未認証である。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -2174,7 +2178,65 @@ nonlinear equilibrium、collision、repaired source、periodic streaming、strip
 stripe mapのfixed pointが存在し、同じbox内で一意である。x-independent replicationによりfull
 17² periodic mapにもfixed pointを与える。ただしlocal uniquenessをglobal uniquenessやbasinへ拡張せず、
 Q011b raw exact map、Q011e--Q011h coefficient、区間spectrum、forced SSM、normal attractionを認証しない。
-次はQ011kでcertified fixed-point box上のrigorous spectrumとselected／external splitを別gateにする。
+後続Q011kではQ011j box内の一意なexact rootを収縮不等式で再局在化し、その点のspectrumを別gateで認証した。
+
+### Q011k repaired fixed-point interval spectrum and selected／external split
+
+Q011jのNewton-like mapについて、selected box全体の収縮上限とcenter correctionから
+
+\[
+\|x_\ast-x_0\|_\infty\le\frac{\|CG(x_0)\|_\infty}{1-q}
+\]
+
+をexact rationalで評価した。root coordinate radius upperは`1.1301435463682045e-15`、affine lift後の
+population component radius upperは`2.1020669962448604e-13`である。この導出box上でzero blockを
+150次元exact affine fixed-leaf coordinate、16 nonzero x-wave blockを各153次元population coordinateとし、
+合計2598次元を17 blockへexactに分解した。
+
+Q007hと同じMachin／Taylor trigonometric enclosure、Q011jのexact equilibrium derivative、
+256／384-bit directed MPFRを用い、9代表blockのapproximate eigendecompositionからBauer--Fike discを
+構成した。残る8 blockはexact conjugacyでtransportした。Q011c2 endpoint eigenvalue setはblockごとの
+selected cluster識別にだけ使い、cluster内部の個別branch labelは要求していない。
+
+- classification:
+  `the exact repaired fixed point has a rigorously stable and quadratically nonresonant selected/external spectral split`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- root coordinate／ambient component radius upper:
+  `1.1301435463682045e-15 / 2.1020669962448604e-13`
+- root-box population／density lower:
+  `0.027775908313350292 / 0.999999999999368`
+- maximum point-proposal／interval-family infinity distance upper:
+  `2.6239799629414762e-15 / 3.159514510653837e-11`
+- maximum inverse defect／point eigendecomposition residual upper:
+  `2.659104047707985e-12 / 1.364939039226648e-13`
+- maximum Bauer--Fike radius／witness block: `0.000785981566123045 / 4`
+- fixed-leaf modulus upper／witness: `0.9921085054987441 / block 0, center 147`
+- selected／external／total count: `24 / 2574 / 2598`
+- maximum Q011c2 selected matching distance: `9.447267645531843e-15`
+- minimum selected／external complex disc gap lower: `0.023904592735975918`
+- selected minimum／external maximum modulus bound:
+  `0.9837705640652026 / 0.9817228739761981`
+- normal modulus gap lower: `0.0020476900890045394`
+- quadratic unordered pair／external comparison count: `300 / 44010`
+- minimum quadratic external spectral-distance lower: `0.0001793727151978435`
+- exact quadratic-pair digest:
+  `be8548cd8ac4bea69b71b7bb0617f232ddcc9535d33b13279e371cc242cf2b79`
+- input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- runner／artifact newline-normalized SHA-256:
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07` /
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a`
+
+従ってQ011c2でdesignateした24-dimensional selected clusterと2574-dimensional external spectrumは
+exact repaired fixed pointで交換せず、全fixed-leaf spectrumはstrictly stableである。またselected
+eigenvalueの全300 quadratic productは対応output sectorのexternal spectrumから分離する。ただしこれは
+eigenvalue-level nonresonanceであり、Q011c2のcontinuous-amplitude continuation、nonnormal Sylvester／
+homological inverse bound、Q011e--Q011h raw-map coefficientの移植、forced SSM、nonlinear normal attractionを
+認証しない。次はQ011lでrepaired split上のinterval homological inverseを別gateにする。
 
 ### Q007p exact-manifold finite-tube normal attraction
 
@@ -2735,6 +2797,7 @@ python -m research.q011g_forced_representation_audit --output research/artifacts
 python -m research.q011h_sparse_chart_equivalence --output research/artifacts/q011h_sparse_chart_equivalence.json
 python -m research.q011i_exact_zero_mean_repair --output research/artifacts/q011i_exact_zero_mean_repair.json
 python -m research.q011j_interval_fixed_point --output research/artifacts/q011j_interval_fixed_point.json
+python -m research.q011k_interval_spectral_split --output research/artifacts/q011k_interval_spectral_split.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2820,6 +2883,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011h_sparse_chart_equivalence.json`](research/artifacts/q011h_sparse_chart_equivalence.json)
 - [`research/artifacts/q011i_exact_zero_mean_repair.json`](research/artifacts/q011i_exact_zero_mean_repair.json)
 - [`research/artifacts/q011j_interval_fixed_point.json`](research/artifacts/q011j_interval_fixed_point.json)
+- [`research/artifacts/q011k_interval_spectral_split.json`](research/artifacts/q011k_interval_spectral_split.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2933,6 +2997,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   exact local／global moment source、Q011b fixed-point／spectrum numerical bridge
 - Q011j exact affine fixed-leaf coordinate、exact rational map／Jacobian enclosure、
   dual-precision outward Krawczyk fixed-point existence／local-uniqueness proof
+- Q011k contraction-derived exact-root enclosure、17-block dual-precision Bauer--Fike spectrum、
+  rigorous 24／2574 selected-external split、300 quadratic-product spectral nonresonance
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2943,7 +3009,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- Q011j certified repaired fixed-point box上のrigorous spectrum／selected-external split
+- repaired selected／external split上のrigorous nonnormal Sylvester／homological inverse bound
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
 
@@ -3026,4 +3092,7 @@ reflection／ULP searchでexact-zero-sum waveformとexact local／global-moment 
 ただしraw mapとrepaired mapは数学的に別であり、Q011e--Q011h coefficientは移植していない。
 Q011jではrepaired mapの150次元exact affine fixed-leaf residualを構成し、登録半径`1e-8`の
 Krawczyk boxでfixed pointの存在と局所一意性を認証した。x-independent replicationによりfull 17²
-periodic mapへも同じ結論を移すが、区間spectrum、forced SSM、normal attractionは未認証である。
+periodic mapへも同じ結論を移した。Q011kではその収縮証明からexact rootを半径`1.13014e-15`へ絞り、
+全2598 fixed-leaf eigenvalueのstrict stability、Q011c2-designated `24 / 2574` split、全300 selected
+quadratic productのexternal spectral nonresonanceを認証した。nonnormal homological inverse、forced SSM、
+normal attractionは未認証である。
