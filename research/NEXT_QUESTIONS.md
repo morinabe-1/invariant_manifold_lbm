@@ -17721,6 +17721,168 @@ hypothesis `5 / 5`を通過し、
 smoothness、SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、
 次はQ011aeでdegree 11を監査する。
 
+## Q011ae: degree-11 streaming refined-envelope indexed-modulus audit — 事前登録
+
+### 問い
+
+Q011uでdegree 11に残った14 modulus-overlap aggregateについて、全可換coordinate monomialのFourier
+sectorをsingle passで監査し、sector-compatible monomialだけへuniform refined-envelope productを
+適用することで、degree 11 external nonresonanceをexactに認証できるか。
+
+Q011uのdegree-11 inventoryは
+
+- aggregate: `364 = 350 old-modulus-separated + 14 overlap`
+- expanded product control: `4368`
+- overlap／external group:
+  - `[0,5,0,6] / 167`
+  - `[0,5,1,5] / 167`
+  - `[0,7,2,2] / 165`
+  - `[3,7,0,1] / 162`
+  - `[3,7,1,0] / 162`
+  - `[4,6,0,1] / 162`
+  - `[4,6,1,0] / 162`
+  - `[5,5,0,1] / 162`
+  - `[5,5,1,0] / 162`
+  - `[6,4,0,1] / 162`
+  - `[6,4,1,0] / 162`
+  - `[9,2,0,0] / 161`
+  - `[10,1,0,0] / 161`
+  - `[11,0,0,0] / 161`
+
+である。
+
+### uniform refined envelope
+
+半径は従来と同じ\(\rho=5\times10^{-8}\)とする。今回直接必要な集合はselected group 0／1／2／3の
+24 identifierと、external group 167／165／162／161の`8 / 4 / 8 / 8` identifierである。unique
+externalは`28`、直接必要なidentifierは`52`である。Q011adの68 uniform recordをexactに保存し、
+新しいexternal group 162／161を加えるため、monotone envelope全体は`84` identifierとなる。
+
+external target sectorは
+
+- group 167: `0:4 / 4:2 / 13:2`
+- group 165: `3:2 / 14:2`
+- group 162: `4:2 / 8:2 / 9:2 / 13:2`
+- group 161: `2:2 / 4:2 / 13:2 / 15:2`
+
+である。
+
+### sealed input
+
+Q011adで照合した8 artifact、runner、43 digest、outcome、claim boundaryとQ011l／Q011o sourceを
+再照合し、Q011adも直接封印する。
+
+- Q011ad artifact／runner newline-normalized SHA-256:
+  `dfdee641924a9e3cb6cbea57c23e54a9438f86aa3fc6c540f0d613ff1add340c` /
+  `666b33f38e773efda70d498c7e4068d108630be31f4be52a64f0640122f95d3b`
+- Q011ad input／inventory／sector／product／result digest:
+  `7dd67186b06547d59e08f531192d3c1a58183a5f92121f9567f9aca5ce28303f` /
+  `bd9537e8b182fde2ccbd3ff3ae347d85eba673ed93c3e21451069ff1f8b9cac1` /
+  `440afad1b33c896451a458b62855a71269c1cbef728ea3ecb5b9a75a3fa71d6f` /
+  `29fea1d86fdd06b124df677e3b4cf02a4828355e63e91a7cc14ece63c03c524d` /
+  `e3618fed4c565e76e59653b7affc86c045a617fc463666c7dc468aba302a05f9`
+
+direct digest countは`48`とする。
+
+### 全monomialのstreaming Fourier監査
+
+14 aggregateの可換monomial数を
+
+`96096 / 177408 / 43200 / 115200 / 57600 / 221760 / 110880 / 354816 / 177408 / 480480 / 240240 / 114400 / 77792 / 31824`
+
+へ固定し、totalを`2299104`とする。各aggregateのoutput wave histogramは次とする。
+
+- `[0,5,0,6]`: `0:9408 / 1:9394 / 2:8560 / 3:7714 / 4:6208 / 5:4808 / 6:3210 / 7:2048 / 8:1402 / 9:1402 / 10:2048 / 11:3210 / 12:4808 / 13:6208 / 14:7714 / 15:8560 / 16:9394`
+- `[0,5,1,5]`: `0:17776 / 1:17380 / 2:16192 / 3:14260 / 4:11696 / 5:8752 / 6:5828 / 7:3480 / 8:2228 / 9:2228 / 10:3480 / 11:5828 / 12:8752 / 13:11696 / 14:14260 / 15:16192 / 16:17380`
+- `[0,7,2,2]`: `0:3464 / 1:3572 / 2:3288 / 3:3204 / 4:2760 / 5:2468 / 6:1904 / 7:1506 / 8:1166 / 9:1166 / 10:1506 / 11:1904 / 12:2468 / 13:2760 / 14:3204 / 15:3288 / 16:3572`
+- `[3,7,0,1]`: `0:9280 / 1:9040 / 2:8800 / 3:8080 / 4:7360 / 5:6160 / 6:5280 / 7:4320 / 8:3920 / 9:3920 / 10:4320 / 11:5280 / 12:6160 / 13:7360 / 14:8080 / 15:8800 / 16:9040`
+- `[3,7,1,0]`: `0:4640 / 1:4520 / 2:4400 / 3:4040 / 4:3680 / 5:3080 / 6:2640 / 7:2160 / 8:1960 / 9:1960 / 10:2160 / 11:2640 / 12:3080 / 13:3680 / 14:4040 / 15:4400 / 16:4520`
+- `[4,6,0,1]`: `0:19360 / 1:18700 / 2:18040 / 3:16060 / 4:14080 / 5:11410 / 6:9230 / 7:7310 / 8:6370 / 9:6370 / 10:7310 / 11:9230 / 12:11410 / 13:14080 / 14:16060 / 15:18040 / 16:18700`
+- `[4,6,1,0]`: `0:9680 / 1:9350 / 2:9020 / 3:8030 / 4:7040 / 5:5705 / 6:4615 / 7:3655 / 8:3185 / 9:3185 / 10:3655 / 11:4615 / 12:5705 / 13:7040 / 14:8030 / 15:9020 / 16:9350`
+- `[5,5,0,1]`: `0:33088 / 1:31504 / 2:29920 / 3:26064 / 4:22208 / 5:17648 / 6:13760 / 7:10688 / 8:9072 / 9:9072 / 10:10688 / 11:13760 / 12:17648 / 13:22208 / 14:26064 / 15:29920 / 16:31504`
+- `[5,5,1,0]`: `0:16544 / 1:15752 / 2:14960 / 3:13032 / 4:11104 / 5:8824 / 6:6880 / 7:5344 / 8:4536 / 9:4536 / 10:5344 / 11:6880 / 12:8824 / 13:11104 / 14:13032 / 15:14960 / 16:15752`
+- `[6,4,0,1]`: `0:45760 / 1:43504 / 2:41248 / 3:35600 / 4:29952 / 5:23572 / 6:18032 / 7:13860 / 8:11592 / 9:11592 / 10:13860 / 11:18032 / 12:23572 / 13:29952 / 14:35600 / 15:41248 / 16:43504`
+- `[6,4,1,0]`: `0:22880 / 1:21752 / 2:20624 / 3:17800 / 4:14976 / 5:11786 / 6:9016 / 7:6930 / 8:5796 / 9:5796 / 10:6930 / 11:9016 / 12:11786 / 13:14976 / 14:17800 / 15:20624 / 16:21752`
+- `[9,2,0,0]`: `1:18760 / 3:16200 / 5:11820 / 6:660 / 7:6900 / 8:2860 / 9:2860 / 10:6900 / 11:660 / 12:11820 / 14:16200 / 16:18760`
+- `[10,1,0,0]`: `1:12152 / 3:10680 / 5:8100 / 6:572 / 7:5060 / 8:2332 / 9:2332 / 10:5060 / 11:572 / 12:8100 / 14:10680 / 16:12152`
+- `[11,0,0,0]`: `1:4704 / 3:4200 / 5:3300 / 6:364 / 7:2200 / 8:1144 / 9:1144 / 10:2200 / 11:364 / 12:3300 / 14:4200 / 16:4704`
+
+exact Fourier law \(b_{\mathrm{out}}=(b_1+\cdots+b_{11})\bmod17\)により、compatible monomial数を
+
+`21824 / 41168 / 6408 / 22560 / 11280 / 40900 / 20450 / 62560 / 31280 / 83088 / 41544 / 0 / 0 / 0`
+
+へ固定する。total compatible／incompatibleは`383062 / 1916042`である。compatible comparison数は
+
+`62464 / 117888 / 12816 / 45120 / 22560 / 81800 / 40900 / 125120 / 62560 / 166176 / 83088 / 0 / 0 / 0`
+
+で、totalは`820492`である。最後の3 aggregateはexternal group 161のtarget sectorと交わらず、
+product intervalを作る前にexact Fourier structureだけで除外される。
+
+### streaming product contract
+
+全2299104 monomial recordを順序どおりframed digestへ流すが、完全なrecord listは保持しない。
+sector-compatibleな383062 monomialについてだけ
+
+\[
+R=\prod_{i=1}^{11}(u_i+\rho)-\prod_{i=1}^{11}u_i,\qquad
+I_p=\left[\max\left(0,\prod_i\ell_i-R\right),\prod_i u_i+R\right]
+\]
+
+を作る。各productと820492 comparisonも順序どおり別のframed digestへ流し、処理後は破棄する。
+保持するのはaggregate histogram、first／last boundary record、count、extrema、witness、digest stateだけとする。
+Fourier-incompatibleな1916042 monomialは対応するoutput coefficientが構造的にzeroなので、product
+intervalを作らないことは証明の欠落ではない。
+
+### design-only pilotの開示
+
+streaming pilotでは全820492 comparisonがindividual modulusで分離し、unresolvedは0だった。relation
+countはproduct below target `630112`、target below product `190380`である。最初の11 aggregateの
+minimum gapは
+
+`7.64584310040286e-4 / 8.24605200339048e-4 / 6.077884164345725e-6 / 5.119881515674461e-4 / 4.543870966834832e-4 / 9.7763494348257e-5 / 4.019066765229879e-5 / 3.1521364059060536e-4 / 3.727583244935288e-4 / 7.290328299624059e-4 / 7.865493133051993e-4`
+
+であり、最後の3 aggregateはcomparison 0なのでminimumは`null`である。global witnessは
+
+`(block=16;center=151)^6 × block=1;center=151 × (block=1;center=152)^2 × (block=0;center=147)^2`
+
+対target `block=14;center=146`、relation `product_below_target`である。登録minimum gapは`5e-6`とする。
+
+### validity gate
+
+1. Q011k／Q011u／Q011x／Q011y／Q011z／Q011aa／Q011ab／Q011ac／Q011ad artifact、runner、48
+   digest、outcome、claim boundaryとQ011l／Q011o sourceを再現する。
+2. degree-11の364 aggregate、4368 expanded control、350 separation、14 overlapを再現する。
+3. 全\(\theta_b\le\rho\le r_{\mathrm{old},b}\)、52 directly relevant interval、84-record monotone
+   envelope、Q011ad 68 recordのexact preservationを再現する。
+4. 全2299104 monomial、wave／target histogram、383062 compatible monomial、820492 comparisonを再現する。
+5. streaming contract、全compatible product／comparison、strict gap、4 framed digestを再現する。
+6. Q011uの350 separation、11 modulus-resolved overlap、3 Fourier-empty overlapが364 aggregateを被覆する。
+7. finite strict JSON、input／inventory／sector／product／result digest、runner provenanceを再現する。
+
+### hypothesis gateと停止規則
+
+1. uniform \(\rho\)-discが全Q011y enclosureを含み、全Q011k旧discに含まれる。
+2. 全364 aggregateと2299104 monomialが、old separation、Fourier-empty、indexed productへ完全分割される。
+3. 全820492 comparisonがindividual modulus separationで、unresolvedが0である。
+4. global minimum exact modulus gapが`>=5e-6`である。
+5. 350 old separation、11 refined product audit、3 Fourier-empty auditからdegree-11 nonresonanceが従う。
+
+全5項目が通る場合だけ
+`degree-11 external nonresonance is certified by the contained uniform transformed-residual envelope, exact Fourier sectors and streamed indexed-modulus products`
+として`accepted`とする。certified degreesを2--11、tail-certifiedを91以降、missing rangeをdegrees 12--90へ更新する。
+
+1件でもcompatible interval overlapが残れば
+`at least one degree-11 streamed indexed-modulus product remains inseparable from an external target`
+として`rejected`とする。`accepted`ならQ011afでdegree 12へ進み、`inconclusive`なら最初のvalidity
+failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 11、Q011uの14 overlap aggregate、
+Q011y transformed-residual enclosure、uniform \(\rho\)-disc、x-Fourier sector、streamed indexed-modulus
+product formulaに限る。degrees 12--90、all-order nonresonance、higher graph smoothness、SSM
+existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
