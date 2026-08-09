@@ -248,7 +248,13 @@ Q011cではQ006h first-shell 24-mode subspaceを9点のforce-amplitude pathでor
 摂動区間を作り、交換が同じ共役orbit`{1,16}`内に限られ、全resolvent metric変化が区間内である
 ことを確認した。これは失敗原因の局在化であり、Q011cの判定は変更していない。Q011c2では元の9点の
 中間に8個の未使用amplitudeを置き、全8点でSylvester familyと2598 spectrumを評価する再発行gateを
-通過したため、この有限数値範囲ではforced candidate spectral clusterをselectedとする。
+通過したため、この有限数値範囲ではforced candidate spectral clusterをselectedとする。Q011dでは
+このselected clusterの全300 quadratic external blockと5 sector actionを通し、数値的external
+nonresonance／solvabilityをprequalifiedとした。Q011eでは案Aの固定保存量葉上で解析Hessianと
+dense \(W_2/R_2\)を構築し、homological／graph-gauge／保存則／実座標化の検査を通した。一方、登録した
+小振幅窓ではquadratic residualが`1e-13`以上となる点が各方向1点しかなく、slope-eligible方向が
+`0 / 32`だったため、Q011e自体は`rejected`である。二次チャートの構築成功と三次残差次数の未確認を
+分け、次は閾値を緩めず独立seed・拡大振幅窓のQ011e1を別gateとして事前登録する。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1778,6 +1784,53 @@ upper boundではない。forced-map Hessian、quadratic forcing、\(W_2\)、\(R
 independent derivative、invariance residual order、forced SSM existence／uniqueness、nonlinear
 normal attractionは未認証である。次はQ011eでdense forced quadratic chartを観測前に事前登録する。
 
+### Q011e dense forced quadratic fixed-leaf chart
+
+Q011b stored endpointとQ011d selected clusterを固定し、案Aの
+\(\delta M=\delta P_x=\delta P_y=0\)葉上でforced-map解析Hessianを構成した。ordered-Schurの
+invariant external complementを使って全300 unordered pairを5 output sectorへ分け、dense
+\(W_2\)と\(R_2\)を解いた。さらにcomplex chartをdeterministic real QR basisへ移し、forced map
+そのものの独立mixed finite differenceと一段不変性残差を評価した。
+
+- classification:
+  `the forced fixed-leaf quadratic chart is constructed, but the registered residual-order window is underresolved`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 6` passed
+- maximum complex structural／real linear invariance residual:
+  `7.35746952368904e-14 / 8.341890217669523e-15`
+- analytic forcing／\(W_2\)／\(R_2\) Frobenius norm:
+  `6.834040875959414 / 14.084081139824606 / 0.5789086833342865`
+- maximum sector solve／full homological／pairwise homological residual:
+  `8.463492700134046e-16 / 1.2377387705494087e-14 / 1.3875757356771478e-14`
+- graph-gauge／zero-\(k_x\) conserved-moment residual:
+  `2.028243962507091e-15 / 8.28412455635593e-15`
+- forcing／\(W_2\) Fourier leakage:
+  `4.5884705629714995e-15 / 2.903640423048552e-15`
+- independent Hessian maximum discrepancy／coarse-to-fine change:
+  `1.2602687807695985e-9 / 3.254644954471969e-7`
+- residual slope eligible／degenerate directions: `0 / 32`、`32 / 32`
+- linear／quadratic residual fit-point count per direction: `5 / 1`
+- maximum largest-amplitude quadratic／linear residual ratio:
+  `8.954201113852774e-5`
+- minimum chart-or-mapped population／maximum conservation drift:
+  `0.027772230628583257 / 1.1370760687229683e-13`
+- input／derivative／chart／residual／result digest:
+  `f0bd65361d0cdc39e6499b8b0065ce6d7705945927ed77af5d2b231d0572bc9c` /
+  `d017d3ea204ad337f538b6f1819e215b6ab8a69f89090cc51ca9eb4885b75fce` /
+  `6d4ee0102a6df052fac857890468ed911cff994e07c573dde837eb54a4a22e05` /
+  `5570cb7acfc465f57850f960c6c9d68770182856b6a9aba62e81256c77e84948` /
+  `89b39a6a6a80452142a2c9288780a08c1b24b49614080b5412fff82171a8188e`
+- runner／artifact newline-normalized SHA-256:
+  `3aa608852be7a1df7dbe37b4d3c7e1bb3fbf125eae115260fc45a223e0757955` /
+  `45d563103678d790aa3df4db692bbe781c9c86ed550c7499c61b397688666fca`
+
+構造・Hessian・homological・実座標化の全gateは通り、有限binary64 dense quadratic chartは
+構築できた。しかし登録noise floor `1e-13`に対してquadratic residualの有効点が各方向1点しかなく、
+三次slopeは測定できなかった。従ってQ011eのbinary outcomeは再採点せず`rejected`とし、
+`dense_forced_quadratic_chart_is_constructed=true`と
+`registered_residual_order_is_confirmed=false`を同時に記録する。forced SSM existence／uniqueness、
+uniform Taylor remainder、nonlinear normal attraction、basin、他grid／force／wall boundaryは未認証である。
+次は同じnoise floorとslope閾値を保った独立拡大振幅窓をQ011e1として事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2329,6 +2382,7 @@ python -m research.q011c_forced_spectral_cluster --output research/artifacts/q01
 python -m research.q011c1_endpoint_localization --output research/artifacts/q011c1_endpoint_localization.json
 python -m research.q011c2_heldout_cluster_reissue --output research/artifacts/q011c2_heldout_cluster_reissue.json
 python -m research.q011d_forced_quadratic_homological --output research/artifacts/q011d_forced_quadratic_homological.json
+python -m research.q011e_forced_quadratic_chart --output research/artifacts/q011e_forced_quadratic_chart.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2406,6 +2460,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011c1_endpoint_localization.json`](research/artifacts/q011c1_endpoint_localization.json)
 - [`research/artifacts/q011c2_heldout_cluster_reissue.json`](research/artifacts/q011c2_heldout_cluster_reissue.json)
 - [`research/artifacts/q011d_forced_quadratic_homological.json`](research/artifacts/q011d_forced_quadratic_homological.json)
+- [`research/artifacts/q011e_forced_quadratic_chart.json`](research/artifacts/q011e_forced_quadratic_chart.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2579,4 +2634,7 @@ orbitが`{1,16}`のまま個別witnessだけ交換したことを認証したが
 Q011c2では8 held-out midpointを含む別の再発行gateを通し、この有限範囲でcandidate forced spectral
 clusterをselectedとした。Q011dではそのcanonical endpointにおける全300 quadratic external blockと
 5 sector actionを通し、数値的external nonresonance／solvabilityをprequalifiedとした。実Hessian、
-quadratic chart、residual order、normal attraction、不変多様体、wall-bounded flowは未実装である。
+quadratic chart、residual orderはこの段階では未実装だった。Q011eでは実Hessianとdense quadratic chartを
+構築し、全homological／構造gateを通したが、登録振幅窓のquadratic residualはnoise floor上に各方向1点
+しかなく、residual order gateだけを棄却した。従ってforced dense chartは構築済みだが、三次残差次数、
+normal attraction、不変多様体の存在・一意性、wall-bounded flowは未認証である。

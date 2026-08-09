@@ -11159,6 +11159,53 @@ uniform Taylor remainder、nonlinear normal attraction、basin、他grid／force
 acceptedの場合だけ、Q011fでforced chartのamplitude／multi-step holdoutまたはTT／sparse費用評価の
 どちらを先に行うかを、Q011eの観測結果から事前登録する。
 
+### Q011e 最終結果
+
+validityは`7 / 7`を通過した。independent Hessian、全300 pairの5 sector solve、full／pairwise
+homological equation、graph gauge、固定葉保存、Fourier support、complex-to-real変換も全て登録閾値を
+通過した。従って有限binary64 dense quadratic chart自体は構築できた。
+
+一方、seed `20260824`の32方向ではlinear residualは各5 amplitude全てがnoise floor以上だったが、
+quadratic residualは各方向1点だけが`1e-13`以上だった。全32方向が4点未満のdegenerate方向となり、
+slope-eligible countは登録下限`28 / 32`に対して`0 / 32`だった。従ってhypothesisは`5 / 6`で、
+Q011eを`rejected`とした。
+
+- classification:
+  `the forced fixed-leaf quadratic chart is constructed, but the registered residual-order window is underresolved`
+- maximum complex structural／real linear invariance residual:
+  `7.35746952368904e-14 / 8.341890217669523e-15`
+- analytic forcing／\(W_2\)／\(R_2\) norm:
+  `6.834040875959414 / 14.084081139824606 / 0.5789086833342865`
+- maximum sector solve／full／pairwise homological residual:
+  `8.463492700134046e-16 / 1.2377387705494087e-14 / 1.3875757356771478e-14`
+- graph-gauge／zero-\(k_x\) conservation residual:
+  `2.028243962507091e-15 / 8.28412455635593e-15`
+- maximum independent-Hessian discrepancy／step change:
+  `1.2602687807695985e-9 / 3.254644954471969e-7`
+- slope-eligible／degenerate directions: `0 / 32`、`32 / 32`
+- linear／quadratic fit points per direction: `5 / 1`
+- maximum largest-amplitude quadratic／linear residual ratio:
+  `8.954201113852774e-5`
+- minimum population／maximum conservation drift:
+  `0.027772230628583257 / 1.1370760687229683e-13`
+- input／derivative／chart／residual／result digest:
+  `f0bd65361d0cdc39e6499b8b0065ce6d7705945927ed77af5d2b231d0572bc9c` /
+  `d017d3ea204ad337f538b6f1819e215b6ab8a69f89090cc51ca9eb4885b75fce` /
+  `6d4ee0102a6df052fac857890468ed911cff994e07c573dde837eb54a4a22e05` /
+  `5570cb7acfc465f57850f960c6c9d68770182856b6a9aba62e81256c77e84948` /
+  `89b39a6a6a80452142a2c9288780a08c1b24b49614080b5412fff82171a8188e`
+- runner／artifact newline-normalized SHA-256:
+  `3aa608852be7a1df7dbe37b4d3c7e1bb3fbf125eae115260fc45a223e0757955` /
+  `45d563103678d790aa3df4db692bbe781c9c86ed550c7499c61b397688666fca`
+
+事前登録したbinary ruleは変更せず、Q011eを合格へ読み替えない。観測後に、唯一の失敗が
+constructionではなく残差窓の未解像だったことを正確に表すため、genericなreject reporting stringだけを
+上記classificationへ精密化した。threshold、seed、amplitude、noise floor、gate count、outcomeは変更していない。
+
+次はQ011e1を別gateとして観測前に事前登録する。同じQ011e chart、noise floor `1e-13`、linear／quadratic
+slope区間、最低eligible方向数を固定し、別seedと拡大振幅窓で三次残差を再測定する。Q011e artifactは
+再採点せず、Q011e1が通るまでforced quadratic residual orderを確認済みとは扱わない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

@@ -4772,6 +4772,75 @@ smoothness／uniqueness定理には解釈しない。forced-map Hessian、quadra
 forced SSM existence／uniqueness、nonlinear normal attractionは未認証である。次はQ011eで
 dense forced quadratic chartと独立残差検証を観測前に事前登録する。
 
+## 2026-08-09: Q011e dense forced quadratic fixed-leaf chart
+
+### 問いと方法
+
+Q011b stored endpointとQ011d selected 24-dimensional clusterを封印し、保存量の扱いは案A、すなわち
+\(\delta M=\delta P_x=\delta P_y=0\)の不変葉に固定した。zero-wave center coordinateは追加せず、
+zero-\(k_x\) quadratic correctionのglobal conserved momentをゼロに制限した。
+
+ordered-Schur selected basisに対してSylvester equationからinvariant external complementとRiesz型
+left coordinatesを構成した。forced-map equilibriumの解析Hessianを各siteで評価し、全300 unordered
+pairをoutput sector `102 / 54 / 54 / 45 / 45`へ分割した。5 sectorのfull nonnormal
+Sylvester equationから\(W_2/R_2\)を解き、deterministic real QR basisへ移した。
+
+解析Hessianはseed `20260823`の16 independent direction pairについて、forced mapそのものの
+step `0.004 / 0.002` centered mixed differenceと比較した。一段不変性残差はseed `20260824`の
+32方向、振幅`1e-5 / 2e-5 / 4e-5 / 8e-5 / 1.6e-4`で測定し、登録どおり`1e-13`以上の点だけを
+log-log fitへ使った。
+
+### 結果
+
+validity `7 / 7`を通過した。hypothesisはhomological construction、graph gauge／保存／support、
+realification、independent Hessian、largest-amplitude improvement／positivity／conservationの5 gateが
+通り、residual slope gateだけが落ちたため`5 / 6`である。Q011eは事前登録どおり`rejected`とした。
+
+- classification:
+  `the forced fixed-leaf quadratic chart is constructed, but the registered residual-order window is underresolved`
+- maximum complex structural／real linear invariance residual:
+  `7.35746952368904e-14 / 8.341890217669523e-15`
+- analytic forcing／\(W_2\)／\(R_2\) Frobenius norm:
+  `6.834040875959414 / 14.084081139824606 / 0.5789086833342865`
+- maximum sector solve／full／pairwise homological residual:
+  `8.463492700134046e-16 / 1.2377387705494087e-14 / 1.3875757356771478e-14`
+- graph-gauge／zero-\(k_x\) conservation residual:
+  `2.028243962507091e-15 / 8.28412455635593e-15`
+- forcing／\(W_2\) support leakage:
+  `4.5884705629714995e-15 / 2.903640423048552e-15`
+- independent Hessian maximum discrepancy／coarse-to-fine change:
+  `1.2602687807695985e-9 / 3.254644954471969e-7`
+- minimum independent directional Hessian norm／population:
+  `0.19527762984006905 / 0.027594496291526268`
+- slope-eligible／degenerate directions: `0 / 32`、`32 / 32`
+- linear／quadratic fit-point count per direction: `5 / 1`
+- maximum largest-amplitude quadratic／linear residual ratio:
+  `8.954201113852774e-5`
+- minimum chart-or-mapped population／maximum global conservation drift:
+  `0.027772230628583257 / 1.1370760687229683e-13`
+- input／derivative／chart／residual／result digest:
+  `f0bd65361d0cdc39e6499b8b0065ce6d7705945927ed77af5d2b231d0572bc9c` /
+  `d017d3ea204ad337f538b6f1819e215b6ab8a69f89090cc51ca9eb4885b75fce` /
+  `6d4ee0102a6df052fac857890468ed911cff994e07c573dde837eb54a4a22e05` /
+  `5570cb7acfc465f57850f960c6c9d68770182856b6a9aba62e81256c77e84948` /
+  `89b39a6a6a80452142a2c9288780a08c1b24b49614080b5412fff82171a8188e`
+- runner／artifact newline-normalized SHA-256:
+  `3aa608852be7a1df7dbe37b4d3c7e1bb3fbf125eae115260fc45a223e0757955` /
+  `45d563103678d790aa3df4db692bbe781c9c86ed550c7499c61b397688666fca`
+
+### 解釈と次のbottleneck
+
+解析Hessian、全300 homological coefficient、graph gauge、固定葉保存、Fourier support、実座標化は
+登録精度で整合した。従って`dense_forced_quadratic_chart_is_constructed=true`は記録する。一方、
+quadratic residualはnoise floor以上の点が各方向1点しかなく、三次slopeをfitできなかったため、
+`registered_residual_order_is_confirmed=false`である。小さい残差を成功に読み替えず、Q011eは再採点しない。
+
+観測後に唯一の失敗がconstructionではなくmeasurement windowだったことを明示するため、genericな
+reject reporting stringのみ上記classificationへ精密化した。登録threshold、seed、amplitude、noise floor、
+gateとbinary outcomeは変えていない。次は同じ閾値を固定し、別seed・拡大振幅窓のQ011e1を独立gateとして
+事前登録する。forced SSM existence／uniqueness、uniform Taylor remainder、nonlinear normal attraction、
+basin、他grid／force／wall boundaryは依然として未認証である。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4907,6 +4976,8 @@ dense forced quadratic chartと独立残差検証を観測前に事前登録す�
 [`artifacts/q011c2_heldout_cluster_reissue.json`](artifacts/q011c2_heldout_cluster_reissue.json)
 
 [`artifacts/q011d_forced_quadratic_homological.json`](artifacts/q011d_forced_quadratic_homological.json)
+
+[`artifacts/q011e_forced_quadratic_chart.json`](artifacts/q011e_forced_quadratic_chart.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
