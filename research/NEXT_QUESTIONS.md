@@ -13584,6 +13584,39 @@ theorem-readiness auditに限る。新しいcoefficient、higher-degree inverse�
 exact invariant manifold／SSM、smoothness、normal attraction、basin、他grid／force／wall、D3Q27を構成・
 認証しない。scalar surrogateは存在定理でも非存在定理でもない。
 
+### Q011n 実行結果
+
+validity `7 / 7`はすべて通過した。Q011l operatorのdomainは5個のexternal-by-degree-2-monomial matrix
+space、Q011m defectのdomainは24-coordinate ball、codomainはfull repaired fixed-leaf population stateであり、
+`(H^(2))^(-1) E^[2] is undefined`を再現した。最初のmissing proof objectは
+`specified_a_posteriori_theorem`だった。
+
+readiness hypothesisは`0 / 5`で、結果は`not_ready`である。Q011mと同じ8 radiusではscalar passing
+candidateも`0 / 8`だった。最小radius `1e-14`で既に
+
+- `U = 5.222329240367342e-11`
+- `D = 1.5859449210967877e-14`
+- `Y = 1.0103230400948665e-5`
+- `Z = 4.823967880455232`
+- `tau = 2.020646080189733e-5`
+- `tau / U = 386924.2989451196`
+
+となり、`Z < 1/2`、strict radii inequality、`tau <= U`がfailした。従って分類は
+`the registered Q011l/Q011m certificates are not sufficient for an a posteriori invariant-manifold proof`
+である。これはexact manifold／SSMの不存在ではなく、Q011l／Q011mのaccepted outcomeも変更しない。
+
+- input／typing／scalar／result digest:
+  `f916b59d1c9fba0e4ace57b110f4b960d5dce078578a77ac28f8a8d005e1e0d0` /
+  `e3952e5ac897ba9250f3a77ec5d8760c0f3ee2a3df350ba4451837a46dd91f76` /
+  `ee7f21a6075963c510e234a032aa8de40f65989c609d10228aca54f6e371ed8d` /
+  `9893aed4a7ce4d05cbd21e849de4ddd4f1c9f86c7fcc3fad7a4504b823d6a321`
+- runner／artifact newline-normalized SHA-256:
+  `7e526dcf013efce628137023f69de7b929d31e52f19378cb05c483284e36dc57` /
+  `1277170b85d2f515a5b9dabbc1cf23cfdf36e109c5ab212e3a123ee07a50683b`
+
+停止規則どおり、次はQ011oでtype-correct graph-transform setupを観測前に事前登録する。scalar forcing／
+inverse envelopeの鋭化は、Banach spaceとoperator mappingを固定した後に行う。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

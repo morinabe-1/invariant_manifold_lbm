@@ -2365,6 +2365,52 @@ utilizationの3条件で失敗した。
 exact invarianceへ読み替えず、componentwise coefficient、exact invariant manifold／SSM、smoothness、
 normal attraction、basinはまだ主張しない。次はQ011nでa posteriori correctionを独立gateにする。
 
+### Q011n a posteriori correction readiness and scalar obstruction
+
+Q011lのquadratic homological inverseとQ011mのfinite cubic defectを封印し、両者がa posteriori
+invariant-manifold proofへ型付きで接続できるかを監査した。Q011lのoperatorはdegree-2の300 monomial
+columnを持つ5個のexternal matrix spaceだけに作用する。一方、Q011m defectはdegree 3以上の関数なので、
+
+\[
+(\mathcal H^{(2)})^{-1}\mathcal E^{[2]}
+\]
+
+は現状では未定義である。full function-space inverse＋tail、またはBanach space、base inverse、cutoff、
+normal dominanceを明示したself-contained graph transformが別途必要である。
+
+粗さの位置も固定するため、degree-2 sector boundのscalar surrogate
+
+\[
+C_I=186(3.4\times10^6)+2(2.4\times10^4)+2(2.3\times10^6)=637048000
+\]
+
+をQ011mの同じ8 radiusへ適用した。最小候補`1e-14`でも
+`Z=4.823967880455232 > 1/2`、`tau/U=386924.2989451196`で、全候補がfailした。
+
+- classification:
+  `the registered Q011l/Q011m certificates are not sufficient for an a posteriori invariant-manifold proof`
+- validity／readiness gates: `7 / 7` passed、`0 / 5` passed
+- outcome／scalar passing count: `not_ready / 0`
+- first candidate radius／U／D:
+  `1e-14 / 5.222329240367342e-11 / 1.5859449210967877e-14`
+- first candidate \(Y\)／\(Z\)／\(\tau\):
+  `1.0103230400948665e-5 / 4.823967880455232 / 2.020646080189733e-5`
+- first failed conditions:
+  `contraction < 1/2 / strict radii inequality / correction <= chart state`
+- first missing proof object: `specified_a_posteriori_theorem`
+- input／typing／scalar／result digest:
+  `f916b59d1c9fba0e4ace57b110f4b960d5dce078578a77ac28f8a8d005e1e0d0` /
+  `e3952e5ac897ba9250f3a77ec5d8760c0f3ee2a3df350ba4451837a46dd91f76` /
+  `ee7f21a6075963c510e234a032aa8de40f65989c609d10228aca54f6e371ed8d` /
+  `9893aed4a7ce4d05cbd21e849de4ddd4f1c9f86c7fcc3fad7a4504b823d6a321`
+- runner／artifact newline-normalized SHA-256:
+  `7e526dcf013efce628137023f69de7b929d31e52f19378cb05c483284e36dc57` /
+  `1277170b85d2f515a5b9dabbc1cf23cfdf36e109c5ab212e3a123ee07a50683b`
+
+これはexact invariant manifold／SSMの不存在を示さず、Q011l／Q011mのaccepted判定も変更しない。
+次はscalar boundの微調整より先に、Q011oで型の合うselected／external graph-transform spaceと
+coordinate lift／inverse、linear conorm／external norm、cutoff／localizationを固定する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2927,6 +2973,7 @@ python -m research.q011j_interval_fixed_point --output research/artifacts/q011j_
 python -m research.q011k_interval_spectral_split --output research/artifacts/q011k_interval_spectral_split.json
 python -m research.q011l_interval_homological_inverse --output research/artifacts/q011l_interval_homological_inverse.json
 python -m research.q011m_quadratic_jet_majorant --output research/artifacts/q011m_quadratic_jet_majorant.json
+python -m research.q011n_correction_readiness --output research/artifacts/q011n_correction_readiness.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -3015,6 +3062,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011k_interval_spectral_split.json`](research/artifacts/q011k_interval_spectral_split.json)
 - [`research/artifacts/q011l_interval_homological_inverse.json`](research/artifacts/q011l_interval_homological_inverse.json)
 - [`research/artifacts/q011m_quadratic_jet_majorant.json`](research/artifacts/q011m_quadratic_jet_majorant.json)
+- [`research/artifacts/q011n_correction_readiness.json`](research/artifacts/q011n_correction_readiness.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -3132,6 +3180,9 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   rigorous 24／2574 selected-external split、300 quadratic-product spectral nonresonance
 - Q011l exact eigencoordinate invariant graph、8 full-space overlap obstruction、unscaled symmetric-product
   perturbation、5-sector rigorous quadratic homological inverse bound
+- Q011m repaired exact mapのanalytic二階／三階微分、implicit graph-gauge quadratic jet、
+  coefficient／finite-radius cubic-defect majorant
+- Q011n degree-2 inverseとdegree-3以上のfunction defectの型監査、8 exact radiusのscalar correction obstruction
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -3142,7 +3193,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapのquadratic jet／coefficientとQ011l inverseを合成したresidual majorant
+- repaired exact mapに対する型付きgraph-transform／full analytic inverseとa posteriori existence proof
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
 
@@ -3233,4 +3284,7 @@ Riccati contractionで認証し、8件のselected-overlap pairを除外せずext
 unscaled symmetric-product couplingを含む5 sectorのquadratic homological inverse normをexact rational
 Neumann boundで認証した。Q011mではrepaired map自身のanalytic \(D^2/D^3\) を合成し、5 sectorのunique
 graph-gauge quadratic jet、係数majorant、最大登録半径`1e-11`でのuniform cubic defectを認証した。
-componentwise coefficient、exact invariant manifold／forced SSM、smoothness、normal attractionは未認証である。
+Q011nではQ011lのdegree-2 inverseとQ011mのdegree-3以上のfunction defectが型不整合であり、登録scalar
+surrogateも8 radiusすべてで閉じないことを`not_ready`として確定した。これは多様体の不存在やQ011l／
+Q011mの棄却ではない。componentwise coefficient、型付きa posteriori theorem、exact invariant manifold／
+forced SSM、smoothness、normal attractionは未認証である。

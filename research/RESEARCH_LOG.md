@@ -5517,6 +5517,63 @@ nonpassing candidateとして残した。
 invariant manifold／SSMの存在・一意性・滑らかさ、normal attraction、basinを意味しない。次はQ011nで
 Q011l inverseとQ011m defectを用いるa posteriori radii-polynomial／graph-transform correctionを事前登録する。
 
+## Q011n: a posteriori correction readiness and scalar obstruction
+
+### 実施内容
+
+Q011k--Q011mのartifact／runner／15 digest／accepted outcomeとclaim boundaryを再度封印した。
+Q011lが認証した5個のquadratic homological operatorは、合計300個のdegree-2 monomial columnを持つ
+external matrix space上のoperatorである。Q011mのfinite defectはdegree 3以上を含む24-coordinate ball上の
+関数であるため、`(H^(2))^(-1) E^[2]`は未登録かつ型不整合であることをproof-object matrixへ記録した。
+
+定理とは切り離した粗さ診断として、Q011mと同じcross-sector triangle envelope
+
+\[
+C_I=186(3.4\times10^6)+2(2.4\times10^4)+2(2.3\times10^6)=637048000
+\]
+
+を固定した。Q011mの8 exact radius recordを変更せず、
+
+\[
+V=145U+2000U^2,\qquad Y=C_ID,\qquad Z=C_IV,\qquad \tau=2Y
+\]
+
+と6条件を`Fraction`で全評価した。このscalar surrogateをfull function-space inverseや存在定理とは呼ばない。
+
+### 結果
+
+validityは`7 / 7`を通過したが、readiness hypothesisは`0 / 5`で、
+`the registered Q011l/Q011m certificates are not sufficient for an a posteriori invariant-manifold proof`
+として有効な`not_ready`とした。
+
+- scalar passing radius count: `0 / 8`
+- first／minimum-\(Z\) radius: `1e-14`
+- first-candidate U／D／V:
+  `5.222329240367342e-11 / 1.5859449210967877e-14 / 7.57237740398719e-9`
+- first-candidate Y／Z／tau:
+  `1.0103230400948665e-5 / 4.823967880455232 / 2.020646080189733e-5`
+- first-candidate radii margin／correction utilization:
+  `-8.737208748508172e-5 / 386924.2989451196`
+- first failed conditions:
+  `formal contraction / strict radii inequality / correction <= chart state`
+- first missing proof object: `specified_a_posteriori_theorem`
+- input／typing／scalar／result digest:
+  `f916b59d1c9fba0e4ace57b110f4b960d5dce078578a77ac28f8a8d005e1e0d0` /
+  `e3952e5ac897ba9250f3a77ec5d8760c0f3ee2a3df350ba4451837a46dd91f76` /
+  `ee7f21a6075963c510e234a032aa8de40f65989c609d10228aca54f6e371ed8d` /
+  `9893aed4a7ce4d05cbd21e849de4ddd4f1c9f86c7fcc3fad7a4504b823d6a321`
+- runner／artifact newline-normalized SHA-256:
+  `7e526dcf013efce628137023f69de7b929d31e52f19378cb05c483284e36dc57` /
+  `1277170b85d2f515a5b9dabbc1cf23cfdf36e109c5ab212e3a123ee07a50683b`
+
+### 解釈と次のbottleneck
+
+Q011nは多様体の非存在を示していない。Q011lのdegree-2 inverseとQ011mのquadratic jet／cubic-defect
+majorantは引き続きacceptedである。一方、同じ8 radiusでscalar envelopeを小さくするだけでは、型のない
+operator compositionを修復できない。次はQ011oでfixed split上のselected／external graph space、
+coordinate lift／inverse、base inverse、linear conorm／external norm、cutoff／localizationを先に固定する。
+exact invariant manifold／SSM、smoothness、normal attraction、basinは未認証のままである。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -5674,6 +5731,8 @@ Q011l inverseとQ011m defectを用いるa posteriori radii-polynomial／graph-tr
 [`artifacts/q011l_interval_homological_inverse.json`](artifacts/q011l_interval_homological_inverse.json)
 
 [`artifacts/q011m_quadratic_jet_majorant.json`](artifacts/q011m_quadratic_jet_majorant.json)
+
+[`artifacts/q011n_correction_readiness.json`](artifacts/q011n_correction_readiness.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
