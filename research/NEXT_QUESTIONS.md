@@ -16401,6 +16401,193 @@ degrees 6--90となる。
 SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、次はQ011yでdegree 6の
 3 modulus-overlap aggregateへ進む。
 
+## Q011y: transformed-residual eigendisc refinement — 事前登録
+
+### 問い
+
+Q011yのdegree-6 design pilotでは、Q011kのblock-uniform Bauer--Fike radiusを使うと3 overlap aggregate中
+`[0,2,2,2]`／external group 178に144 product-disc overlapが残り、minimum marginは約`-3.30e-6`だった。
+これはactual resonanceではなく、block 0 radius `1.3038e-5`が積に4回入るenclosure obstructionである。
+
+Q011kがすでに証明したinvertible approximate eigenvector matrix \(V\)、diagonal center matrix \(D\)、
+family residual \(E=AV-VD\)から、transformed residual
+
+\[
+\theta=\|V^{-1}\|_\infty\|E\|_\infty
+\]
+
+を直接使うcontained eigendiscを認証できるか。そのrefined discで最初のdegree-6 obstruction witnessをstrictに
+分離できるか。
+
+本gateはdegree-6全体を認証しない。linear eigendisc inclusionの精密化と最初のwitness clearanceだけを扱う。
+
+### 数学的根拠
+
+\(V\)が可逆なら
+
+\[
+V^{-1}AV=D+F,
+\qquad
+F=V^{-1}(AV-VD)
+\]
+
+であり、
+
+\[
+\|F\|_\infty\le
+\|V^{-1}\|_\infty\|AV-VD\|_\infty\le\theta.
+\]
+
+従ってGershgorin inclusionを\(D+F\)へ適用すると、任意の固有値は少なくとも一つの
+\(D(d_j,\theta)\)に入る。これは[Bauer--Fikeの原論文](http://eudml.org/doc/131452)のexclusion argumentと
+同じ相似変換である。Q011lは同じexact quantityを`transformed_perturbation_upper = beta * family_residual`
+として既に再構成し、Riccati graphとquadratic homological inverseに使用している。
+
+Q011kの旧半径
+
+\[
+r_{\mathrm{old}}
+=\|V\|_\infty\|V^{-1}\|_\infty^2\|E\|_\infty
+=\bigl(\|V\|_\infty\|V^{-1}\|_\infty\bigr)\theta
+\]
+
+もvalidなsupersetである。従って\(\|V\|_\infty\|V^{-1}\|_\infty\ge1\)をexactに確認すれば、
+同じcenterのrefined discは旧discに包含され、Q011k以降の旧certificateを弱めない。
+
+### 封印入力
+
+Q011k／Q011l／Q011u／Q011xの4 artifactを直接照合する。
+
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011l artifact／runner newline-normalized SHA-256:
+  `2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a` /
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7`
+- Q011l input／graph／pair／homological／result digest:
+  `1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011` /
+  `a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3` /
+  `694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377` /
+  `14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915` /
+  `c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45`
+- Q011u artifact／runner newline-normalized SHA-256:
+  `4e0a74cffaeb6781b85621362d4463ac8d9ab98ee14bcf3b5764642b5a15d5e4` /
+  `fa3c7c01355c0b3c19b58618fe97edc5863dc2d0fa02c4f810ddbc57053a419e`
+- Q011u input／cutoff／spectrum／log／enumeration／tail／result digest:
+  `ba768da7be5663c607a24fa4a399bae06a8d8b4128a45ab9bb2b57f8a12461f4` /
+  `55a374a5d91d2c88e5e34be2173f9861ee14915daaee55efd8848f0cd7ebaf94` /
+  `a514c3a13142d379886c56b08109f28b69aee4cbcef2d4c5c9bed8d29182e89d` /
+  `10f9aa954446e1e7d8095488ef82abc48fcc99fde3ddabd93a1a188b17ea51b5` /
+  `5c94deb8acd69b1346e6d46af829804b401027ecea48caf7e5ce2d9b22d6631c` /
+  `307ca2762bb5aecb626983acb8d38eb5728e2a8eb9e64769cc0b632b40da66c6` /
+  `b005bb622e7f3abad98a1ef6875af289fa2dccdc16911faf11e7ee04b822722c`
+- Q011x artifact／runner newline-normalized SHA-256:
+  `11ef4d47f60840c4bc05c4056024e2af14b8339a8983b65dcb878bd355cfc328` /
+  `62712392faca2c154883edd93792f81e60ff975f6da16010aa3190ee44657a18`
+- Q011x input／inventory／sector／product／result digest:
+  `9d13fa470f4c0bd8efa13868af90c6931025d7f3007e600c66af05bd0037a7ed` /
+  `717c4eadbd0e5f160a87de8846968933b8c5fbe604d769f215b6dcc65dacc955` /
+  `d31b7ea3cfcd7eca9d936cded13a1dc316e64dc2fc088bda745ea927d15ce52c` /
+  `add9d07725802c5fba84b68a207d5adc6f3f405a152a22f88059259f9a255222` /
+  `608bb3a7aee34a833e7980dbd18f4a3e641426966352126833f298e282437b31`
+
+complex modulus lower／upperに使うQ011o sourceも直接封印する。
+
+- Q011o source SHA-256:
+  `60d9c445dace16d114e46263f2b47fe2db993b894337cdd462f204da09543f1f`
+
+direct digest countは`22`とする。
+
+### registered refined radii
+
+9 representative blockについて、Q011k primary proofのexact \(\beta\)、family residual、vector norm、旧半径を
+読み、\(\theta=\beta\eta\)を再構成する。blocks 9--16はexact conjugacyでtransportする。
+design-only exact pilot値は次のとおりである。
+
+| representative block | old radius | refined \(\theta\) | old／new |
+|---:|---:|---:|---:|
+| 0 | `1.3038143644301623e-5` | `2.0299911997564775e-8` | `642.28` |
+| 1 | `3.9292231700426665e-7` | `1.0615797998969425e-9` | `370.13` |
+| 2 | `5.230382477700401e-7` | `1.223952119991868e-9` | `427.34` |
+| 3 | `6.921161201925137e-7` | `1.4069946614862016e-9` | `491.91` |
+| 4 | `7.85981566123045e-4` | `4.7369170150175137e-8` | `16592.68` |
+| 5 | `2.7378963980438355e-4` | `2.7932109133679385e-8` | `9801.97` |
+| 6 | `5.438442399537979e-7` | `1.2439307104566969e-9` | `437.20` |
+| 7 | `4.555634685122818e-7` | `1.137780728280521e-9` | `400.40` |
+| 8 | `3.8891601146814717e-7` | `1.0510867368940072e-9` | `370.01` |
+
+pilotを踏まえ、次を登録する。
+
+- maximum refined radius: `<=5e-8`
+- minimum old／new improvement ratio: `>=300`
+- maximum refined eigenvalue-disc modulus upper: `<=0.9921`
+- first degree-6 witness refined separation lower: `>=4e-5`
+
+pilot exact値はmaximum refined radius `4.7369170150175137e-8`、minimum ratio `370.0132`、
+maximum modulus upper `0.9920954876550118`、witness margin `4.72250069801592e-5`だった。
+pilot値は証明digestへ使わず、独立runnerが全exact valueを再構成する。
+
+### first degree-6 witness
+
+Q011yへ送る最初のold-disc obstructionを固定する。
+
+- overlap tuple: `[0,2,2,2]`
+- source:
+  `(block=16;center=151)^2 × (block=0;center=149)^2 × block=0;center=146 × block=0;center=147`
+- output block: `15`
+- target: `block=15;center=148`
+- old product／target combined radius: 約`5.06026e-5`
+- center distance: 約`4.73051e-5`
+- old margin: 約`-3.29756e-6`
+
+refined radiiで同じproduct centerとtriangle-inequality product radiusをexactに再計算する。ここでmarginが正でも、
+残る143 old-overlap comparisonやdegree-6全体を本gateでは認証しない。
+
+### validity gate
+
+1. Q011k／Q011l／Q011u／Q011x artifact、runner、22 digest、outcome、claim boundaryとQ011o sourceを再現する。
+2. 9 representativeのexact \(\beta\)、residual、vector norm、旧半径とQ011l thetaを再現する。
+3. \(V^{-1}AV=D+V^{-1}(AV-VD)\)とinduced infinity norm／Gershgorin inclusionの有限次元前提を確認する。
+4. 17 blockへのconjugate transport、2598 center、refined discの旧disc containmentを再現する。
+5. refined stability、selected／external component containment、旧certificate preservationを再現する。
+6. fixed degree-6 witnessのcenter、product radius、target radius、marginをexactに再現する。
+7. finite strict JSON、input／radius／containment／witness／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、refined eigendiscもdegree-6 clearanceも主張しない。
+
+### hypothesis gateと停止規則
+
+1. transformed-residual eigendisc inclusionがexact norm boundから成り立つ。
+2. maximum refined radius `<=5e-8`かつminimum improvement ratio `>=300`である。
+3. 全2598 refined discのmodulus upper `<=0.9921<1`である。
+4. 全refined discが対応するQ011k discに包含され、selected／external splitと既存結論を弱めない。
+5. fixed degree-6 witness marginが`>=4e-5`である。
+
+全5項目が通る場合だけ
+`the Q011k eigenvalue families admit contained transformed-residual eigendiscs that clear the first degree-six enclosure obstruction`
+として`accepted`とする。
+
+witness marginが正にならなければ
+`the transformed-residual eigendiscs do not clear the first degree-six enclosure obstruction`
+として`rejected`とする。actual resonanceとは解釈しない。
+
+`accepted`ならQ011zで3 degree-6 overlap aggregateの全sector-compatible monomialをrefined discで監査する。
+`rejected`ならrow-wise transformed Gershgorinまたはtargeted interval eigenpairへ進む。`inconclusive`なら最初の
+validity failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、Q011k approximate eigendecomposition family、
+transformed-residual eigendisc、fixed degree-6 witnessに限る。degree-6全体、degrees 7--90、all-order
+nonresonance、Q011t graphとのhigher-order一致、SSM existence／uniqueness、normal attraction、basin、
+他grid／force／wall、D3Q27を認証しない。Q011kの既存コミットやartifactは変更しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
