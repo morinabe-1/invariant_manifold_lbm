@@ -6493,6 +6493,82 @@ aggregate全体、残る6955 sector-compatible comparison、degrees 7--90、all-
 smoothness、SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、次はQ011zで
 degree 6全体をrefined discにより監査する。Q011kの既存artifactとコミットは変更していない。
 
+### Q011z 実行結果
+
+Q011k／Q011u／Q011x／Q011yの4 artifact、runner、23 direct digest、outcome、claim boundaryと
+Q011l／Q011o helper sourceを直接照合し、validity `7 / 7`を通過した。Q011uのdegree-6 recordを
+full spectrumから再構成し、
+
+- aggregate: `84`
+- expanded product control: `462`
+- old-modulus-separated／overlap: `81 / 3`
+- overlap tuple／external group:
+  `[0,2,1,3] / 178`、`[0,2,2,2] / 178`、`[0,3,1,2] / 177`
+
+が保存artifactと一致することを確認した。
+
+Q011yの全block transformed-residual半径に対し
+
+\[
+\theta_b\le\rho=\frac{1}{20{,}000{,}000}=5\times10^{-8}
+\le r_{\mathrm{old},b}
+\]
+
+をexactに確認した。積へ実際に現れるselected group 1／2／3とexternal targetの28 identifierについて、
+center modulusを有理区間化した。最大\(\theta_b\)は`4.7369170150175137e-8`、最小Q011k旧半径は
+`3.8891601146814717e-7`なので、Q011y refined disc、uniform \(\rho\)-disc、Q011k旧discの包含鎖が成立した。
+
+3 overlapをcombination with replacementで展開したmonomial数は`4800 / 3600 / 2880`、合計`11280`だった。
+exact Fourier law \(b_{\mathrm{out}}=\sum_i b_i\bmod17\)でexternal targetと照合すると、
+compatible comparison数は`2400 / 1836 / 2720`、合計`6956`となり、事前登録値と一致した。
+
+各source center modulusを\(\ell_i\le|c_i|\le u_i\)とし、
+
+\[
+R=\prod_{i=1}^{6}(u_i+\rho)-\prod_{i=1}^{6}u_i,
+\qquad
+I_p=\left[\max\left(0,\prod_i\ell_i-R\right),\prod_i u_i+R\right]
+\]
+
+をtarget interval \(I_e=[\max(0,\ell_e-\rho),u_e+\rho]\)と比較した。全`6956`件がindividual
+modulus separationとなり、unresolvedは`0`だった。relation countはproduct below target `4556`、
+target below product `2400`である。aggregate別minimum exact gapは
+
+- `[0,2,1,3]`: `1.6311010454743865e-5`
+- `[0,2,2,2]`: `4.6970543553274824e-5`
+- `[0,3,1,2]`: `6.7565223274027445e-6`
+
+で、global minimumは登録下限`5e-6`を通過した。minimum witnessは
+
+`(block=16;center=151)^3 × block=0;center=149 × (block=0;center=147)^2`
+
+対target `block=14;center=143`で、relationは`product_below_target`だった。
+
+hypothesis `5 / 5`を通過し、
+`degree-6 external nonresonance is certified by a contained uniform transformed-residual envelope and exact Fourier-sector indexed-modulus products`
+として`accepted`とした。Q011uの81 separationと3 full auditによりdegree 6全体を完全被覆した。
+certified degreesは2／3／4／5／6、tail-certifiedは91以降、missing rangeはdegrees 7--90である。
+
+- monomial／compatible-pair framed digest:
+  `2115b6f7affd09687908eb6dc6193d20701167102dbfdf138359091799e06d70` /
+  `aa30254a73d854d1d654e749abd863b11a4d87a624593c436397eb77880a411f`
+- exact-product／comparison framed digest:
+  `b9cc4cbab096815f81c15ffeae3b7e78accb0ff68fd15ee6c93549c85e1c2dfd` /
+  `6a61466b0efc2a170d3d43d43b5cc899f1aae198870abc98e80640f543c39ea0`
+- input／inventory／sector／product／result digest:
+  `394728b15820900b642776843b96b7383b31fec27bede2274d97ee9c635054bb` /
+  `46248ce31e7e04039eb9eb1788d42f04d19dd949b026a921e61812ab3d37e8cc` /
+  `b172439520fa25bba82fa936564ebc0ae51763a57006cb279d1e3fe9f0ed0a3c` /
+  `148acb302034412498638201703eee8722f90afa093adcf6215094170e4a8c1e` /
+  `a695e5c632e6dda8114377f33824ca6b234ebadae7c25d6b8aa1c3d3774c4aff`
+- runner／artifact newline-normalized SHA-256:
+  `6e6d7327e4b85b307098203fe882434bf77f3920a1da7323b1c89d118df3ae87` /
+  `bd435ceea3795475f6b17619e13626ba936f8fcbd15da749a39a4e2b034a4e23`
+
+本certificateは固定17² repaired exact map、fixed conservation leaf、degree 6だけを扱う。degrees 7--90、
+all-order nonresonance、Q011t graphとのhigher-order一致、\(C^2\)以上のsmoothness、SSM
+existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、次はQ011aaでdegree 7へ進む。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6674,6 +6750,8 @@ degree 6全体をrefined discにより監査する。Q011kの既存artifactと�
 [`artifacts/q011x_degree5_phase_disks.json`](artifacts/q011x_degree5_phase_disks.json)
 
 [`artifacts/q011y_transformed_residual_eigendiscs.json`](artifacts/q011y_transformed_residual_eigendiscs.json)
+
+[`artifacts/q011z_degree6_refined_modulus.json`](artifacts/q011z_degree6_refined_modulus.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
