@@ -4043,6 +4043,63 @@ joint ideal threshold 79は既存MPFR-85 precision以下だが、これはimplem
 次はQ007alでQ007xのconcrete MPFR-85全演算traceをnew tube上へ一段だけ再適用する。fixed-leaf closure、
 repair、all-iterate induction、same-initial shadowingは別gateに残す。
 
+## 2026-08-09: Q007al Q007ag tubeのconcrete MPFR-85 one-step bridge
+
+### 問いと事前登録
+
+Q007akでjoint ideal sufficient thresholdが79 bitsとなったため、既存Q007x MPFR-85 backendを
+変更せずnew Q007ag component boxへ再適用した。一段stage discrepancy／positivityと、ideal
+85-bit base／normal complement-coordinate error budgetを独立hypothesisとした。Q007xの
+fixed-leaf defectは診断としてexact再現するが、acceptance hypothesisには入れないと先に固定した。
+
+### 実装
+
+- Q007ak stored cycle、3 digest、7+7 gate、79／59／79 boundary、$p=85$ candidateをfresh replayした。
+- Q007x stored cycle、probe／trace／result digest、8 validity、2-pass／4-fail hypothesis、runtime／source／
+  context／conservation結果をfresh replayした。
+- sealed Q007w evaluatorでnew-tube $p=85$ candidateをexact再評価し、stored candidateと比較した。
+- 同じ4 exact probeで各70,824 operationをties-to-even oracleと照合し、exact Fraction mapとの
+  stage discrepancyをnew 85-bit boundと比較した。
+- Q007xのconservation recordとobserved stage recordが変更されていないことを独立回帰にした。
+
+### 結果
+
+validity `8/8`、hypothesis `5/5`で、
+`registered MPFR-85 backend realizes the Q007ag one-step arithmetic and complement-coordinate error budgets`
+として`accepted`とした。
+
+- probes／trace: `4 / 70,824 per probe / 283,296 total`
+- trace mismatch／operation-domain failure: `0 / 0`
+- post-filter component-error sum／Wiener error upper:
+  `9.365881800643092e-25 / 2.7067398403858536e-22`
+- base error／margin／utilization:
+  `4.08902913525762e-22 / 4.978814700017615e-20 / 0.008212856636827946`
+- normal error／margin／utilization:
+  `8.097790464783468e-21 / 9.144951058528087e-13 / 8.8549303467643e-09`
+- maximum concrete stage-bound utilization: `0.15250294771440714`
+- minimum observed concrete stage population: `0.027777777777759027`
+- conservation:
+  encoding `fail` / collision `fail` / streaming `pass` / filter `fail` / full step `fail`
+- input／candidate／probe／trace／campaign-result／result digest:
+  `e14b6251a0f5da2ad4c73c1b08c5e21205e99749917f3f78228de6bb12b13738` /
+  `7b63d94121aea24e589ed3e7b221e154705f42df37c4c603c3f99a4a3b1799c0` /
+  `a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329` /
+  `49ce9b304b4b6a07fdf7d7baed6c9118a97c5a08e489e3aa5eacde28662c2351` /
+  `edbfbe317f2254f3d6a628608a19b4986f7ea308cae889d19ce470f31234dad5` /
+  `a46f4850d57b0e7d503177205c2cb3d1ed91679cc4c13b9ef31382dbd7bdcd06`
+- runner／artifact SHA-256:
+  `b82e03145e0c7f1c20b1d1345b87acbae5ce526b732969c391b88141118dfd8e` /
+  `bf1a2d9959f24cfc83a4efb2926ec76d9ced97755846ee310490585940d8dcf5`
+
+### 解釈と次のbottleneck
+
+fixed MPFR-85 backendはnew tubeの一段算術包囲を実現し、両complement-coordinate marginに十分な
+余裕がある。しかしcomponentwise encoding／collision／filterのexact conservation failureも
+Q007xどおり再現した。従ってactual rounded stateはfixed leafに属さず、Q007ag tube re-entryや
+all-iterate invarianceをここから帰納しない。これは一段算術bridgeの成功とfixed-leaf closureの未解決を
+分離した結果である。次はQ007amでnew-tube repairとその追加誤差を別途判定し、
+all-iterate induction／same-initial shadowingはさらに後続gateへ残す。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4156,6 +4213,8 @@ repair、all-iterate induction、same-initial shadowingは別gateに残す。
 [`artifacts/q007aj_propagated_tube_binary64_enclosure.json`](artifacts/q007aj_propagated_tube_binary64_enclosure.json)
 
 [`artifacts/q007ak_reentry_factor_audit.json`](artifacts/q007ak_reentry_factor_audit.json)
+
+[`artifacts/q007al_propagated_tube_mpfr85_bridge.json`](artifacts/q007al_propagated_tube_mpfr85_bridge.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

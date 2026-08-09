@@ -8871,6 +8871,51 @@ GPU／threaded reduction／compiler変更、grid-uniformity、continuum limitは
 Q007x mixed result、Q007ak threshold、Q007ag／Q007ai acceptance、Q007c1／Q007d／Q007af／Q010結論は
 変更しない。acceptedなら次はfixed-leaf defectを修正するnew-tube repair gateを別途事前登録する。
 
+### Q007al 封印結果
+
+validity 8件、hypothesis 5件が全て通過し、
+`registered MPFR-85 backend realizes the Q007ag one-step arithmetic and complement-coordinate error budgets`
+として`accepted`とした。
+
+- sealed Q007ak／Q007x inputs: `2 / 2` pass
+- Q007ak／Q007x stored cycle fresh reproduction: `2 / 2` pass
+- Q007ak base／normal／joint threshold: `79 / 59 / 79` bits
+- concrete runtime／context:
+  `gmpy2 2.3.1 / MPFR 4.2.2 / GMP 6.3.0 / p=85 / RoundToNearest`
+- probe／trace count: `4 / 70,824 per probe / 283,296 total`
+- trace mismatch／operation-domain failure: `0 / 0`
+- 85-bit post-filter component-error sum／Wiener error upper:
+  `9.365881800643092e-25 / 2.7067398403858536e-22`
+- 85-bit base error／margin／utilization:
+  `4.08902913525762e-22 / 4.978814700017615e-20 / 0.008212856636827946`
+- 85-bit normal error／margin／utilization:
+  `8.097790464783468e-21 / 9.144951058528087e-13 / 8.8549303467643e-09`
+- registered equilibrium／collision-stream／filter error upper:
+  `1.637128299597522e-25 / 2.8577941370245856e-25 / 3.1286383452856557e-25`
+- registered minimum ideal stage lower: `0.027777777145968227`
+- maximum concrete stage-bound utilization:
+  `0.15250294771440714` (`all_populations_paired`, post-filter)
+- minimum observed concrete stage population:
+  `0.027777777777759027` (`all_populations_paired`, post-collision)
+- conservation regression:
+  encoding `fail` / collision `fail` / streaming `pass` / filter `fail` / full step `fail`
+- input／candidate／probe／trace／campaign-result／result digest:
+  `e14b6251a0f5da2ad4c73c1b08c5e21205e99749917f3f78228de6bb12b13738` /
+  `7b63d94121aea24e589ed3e7b221e154705f42df37c4c603c3f99a4a3b1799c0` /
+  `a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329` /
+  `49ce9b304b4b6a07fdf7d7baed6c9118a97c5a08e489e3aa5eacde28662c2351` /
+  `edbfbe317f2254f3d6a628608a19b4986f7ea308cae889d19ce470f31234dad5` /
+  `a46f4850d57b0e7d503177205c2cb3d1ed91679cc4c13b9ef31382dbd7bdcd06`
+- runner／artifact SHA-256:
+  `b82e03145e0c7f1c20b1d1345b87acbae5ce526b732969c391b88141118dfd8e` /
+  `bf1a2d9959f24cfc83a4efb2926ec76d9ced97755846ee310490585940d8dcf5`
+
+従って既存MPFR-85 backendはnew component boxの一段stage包囲とideal complement-coordinate
+誤差予算を実現する。ただしQ007xと同じfixed-leaf defectもexact再現したため、
+actual rounded stateのtube re-entry、all-iterate invariance、same-initial shadowingは依然として未認証である。
+次はQ007amでnew tubeのfixed-leaf repairとその追加算術誤差を別途事前登録し、
+all-iterate／shadowingへはまだ帰納しない。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
