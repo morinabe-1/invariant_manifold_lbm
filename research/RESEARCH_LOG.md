@@ -6805,6 +6805,79 @@ hypothesis `5 / 5`を通過し、
 all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
 未認証である。停止規則どおり、次はQ011aeでdegree 11へ進む。
 
+### Q011ae 実行結果
+
+Q011adまでの8 artifact／43 digest封印にQ011adの5 digestを加え、9 artifact、runner、48 direct digest、
+outcome、claim boundaryとQ011l／Q011o sourceを照合した。validity `7 / 7`を通過した。
+
+degree-11 inventoryは`364 aggregate / 4368 expanded control / 350 old-separated / 14 overlap`だった。
+selected group 0／1／2／3の24 identifierとexternal group 167／165／162／161の28 unique targetを合わせた
+52 directly relevant identifierを再構成した。新external group 162／161の16 recordを加え、Q011adの68
+uniform recordを全件exactに保存した84-record monotone \(\rho=5\times10^{-8}\) envelopeとなった。
+
+14 overlapのmonomial数は
+
+`96096 / 177408 / 43200 / 115200 / 57600 / 221760 / 110880 / 354816 / 177408 / 480480 / 240240 / 114400 / 77792 / 31824`
+
+で、合計`2299104`だった。全monomialをsingle passでFourier監査し、compatible／incompatibleを
+`383062 / 1916042`へexactに分割した。compatible comparison数は
+
+`62464 / 117888 / 12816 / 45120 / 22560 / 81800 / 40900 / 125120 / 62560 / 166176 / 83088 / 0 / 0 / 0`
+
+で、合計`820492`だった。末尾3 aggregate `[9,2,0,0] / [10,1,0,0] / [11,0,0,0]`はexternal
+group 161のtarget sectorと交わらず、product intervalを作る前にexact Fourier structureだけで除外した。
+完全なmonomial、pair、product、comparison listは保持せず、現在record、histogram、first／last boundary、
+extrema、witness、4 framed digest stateだけを保持した。product intervalはcompatibleな383062件だけに作った。
+
+全820492 comparisonがindividual modulusで分離し、unresolvedは`0`だった。relation countはproduct below
+target `630112`、target below product `190380`である。product-audited 11 aggregateのminimum exact gapは
+
+- `7.64584310040286e-4`
+- `8.24605200339048e-4`
+- `6.077884164345725e-6`
+- `5.119881515674461e-4`
+- `4.543870966834832e-4`
+- `9.7763494348257e-5`
+- `4.019066765229879e-5`
+- `3.1521364059060536e-4`
+- `3.727583244935288e-4`
+- `7.290328299624059e-4`
+- `7.865493133051993e-4`
+
+だった。Fourier-emptyな末尾3 aggregateのminimumは`null`である。global minimum witnessは
+`(block=16;center=151)^6 × block=1;center=151 × (block=1;center=152)^2 × (block=0;center=147)^2`
+対target `block=14;center=146`で、relationは`product_below_target`だった。最小値
+`6.077884164345725e-6`は登録下限`5e-6`を通過した。
+
+hypothesis `5 / 5`を通過し、
+`degree-11 external nonresonance is certified by the contained uniform transformed-residual envelope, exact Fourier sectors and streamed indexed-modulus products`
+として`accepted`とした。certified degreesは2--11、tail-certifiedは91以降、missing rangeはdegrees 12--90である。
+
+- 84-ID uniform-record digest:
+  `b099c8294d2ff14bbf36886f085e39cddffaaf2220b9c0e47206404cee023391`
+- monomial／compatible-pair framed digest:
+  `34be940e350535f5e8461033e9fda32f5c065c8545f561f1652c10af26e473c9` /
+  `314a2408cc7719b64a8d452a54b45020b50b1ff08731b0140dc1bbb30a24d9df`
+- compatible-product／comparison framed digest:
+  `2260b7904ec46a76f4da0e7ec83e0af84d763adb28c2985f3ca4140915015fe3` /
+  `cdca67557036eddb40900058d0501cf622cfd811e7bbf80cb972997395edcbaa`
+- compact sector／product digest:
+  `832b9c3035f0cc28cfed683b6f779f04fe85693c7d137d64b287ec1dac69d077` /
+  `0cd3f3a92881776baf5d298f282985fee66d0f26d8221373db10ca3dfbd34029`
+- input／inventory／sector／product／result digest:
+  `c3a18a891f037c01134871aa876441df4c56bb6ce2b1657420b54fa0ae72fc99` /
+  `261284bc4cd18048228af34a1897ba00b89b930fd118afc3f7ce4dba77bf380d` /
+  `afeea956028309574d5f23c5a8da10c427b981bf7d54c8194265f75de8370d11` /
+  `40024743d9a6e193461dc5a7eb7821356b14da2a54793d126afe9b8ec2e58921` /
+  `90223809a06a85733d36c53b7278c9ba36e83ce2bc49a87b090945b26a638560`
+- runner／artifact newline-normalized SHA-256:
+  `2bc97a29a1ae73924a61059c7f1de7b96e35b325479874cf28325946aa7e4286` /
+  `7da61f31c9a00017c2ab0665bb58b75b157f4b7f0ffad1194f07cac4ed51ff71`
+
+本certificateは固定17² repaired exact map、fixed conservation leaf、degree 11だけを扱う。degrees 12--90、
+all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
+未認証である。停止規則どおり、次はQ011afでdegree 12へ進む。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6996,6 +7069,8 @@ all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
 [`artifacts/q011ac_degree9_refined_modulus.json`](artifacts/q011ac_degree9_refined_modulus.json)
 
 [`artifacts/q011ad_degree10_refined_modulus.json`](artifacts/q011ad_degree10_refined_modulus.json)
+
+[`artifacts/q011ae_degree11_streaming_modulus.json`](artifacts/q011ae_degree11_streaming_modulus.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
