@@ -8114,6 +8114,111 @@ binary64／MPFR／repair／forward-shadowingは旧Q007s tubeに封印されて�
 tubeのfull-map population positivityを一つの独立gateとして事前登録し、その後にstagewise
 positivityを別gateで扱う。
 
+## Q007ah: Q007ag selected tubeのfull-map population positivity — 事前登録
+
+### 問いと固定scope
+
+Q007agで認証した
+
+\[
+\|a\|_1\le9\times10^{-17},\qquad
+\|z\|_*\le5\times10^{-11}
+\]
+
+のforward-invariant tubeは、full one-step mapの入力／出力時刻でD2Q9の全9 populationと
+densityがstrict positiveとなる領域へ含まれるかを問う。固定scopeはQ007agと同じ
+\(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)、固定mass／momentum leaf、Q007ae exact
+graph-gauge manifold、Q007p Fourier external-coordinate block-sum \(\ell^1\) normとする。
+
+このgateではexact full-map sampling timeだけを扱う。equilibrium evaluation、BGK collision、
+streaming、filter各段階のpositivityは扱わず、通過時にも次のQ007aiへ残す。
+
+### 封印入力
+
+- Q007ag artifact／runner SHA-256:
+  `5783df74abb4b6ec7d658fd7e3dd272cf100cd134783c31863d643fcd17d4200` /
+  `bafd9a56d2d2ceb94acb709609bd710c9fff0f6c0bf543202fa411b9456fb6e0`
+- Q007t old-tube population oracle artifact／runner SHA-256:
+  `de5ee6db33e06459c64e5cea92b206673938d5f8d6fef948e5b4496dcca92283` /
+  `1e00281c71b5ea5d06fedcebd9bd483a73e6ec111388df20e8255ae3aefed877`
+- transitive Q007p artifact／runner SHA-256:
+  `a5e766938cfee0174deba9c529be9aec2cce4bff9225a3a4a1da83f7d255a751` /
+  `23ff283acb3f872fd2ff489f17d94b8e022e3f45a5c65b5523bf976c534a9f2a`
+
+Q007agについてscope、accepted classification、validity `6 / 6`、hypothesis `5 / 5`、
+input／candidate／result digest、selected candidate、全6 candidate gate、forward-invariance theoremを
+照合する。Q007tについてもscope、accepted classification、validity `5 / 5`、hypothesis `3 / 3`、
+3 theorem flag、D2Q9 weight table、Q007s old tube boundsをexactに再現する。
+
+### exact positivity bound
+
+Q007ag selected stateの保存exact Wiener upperを
+
+\[
+x_{\rm ag}=1.4441361143956586\times10^{-10}
+\]
+
+とする。artifactのbase-16 numerator／denominatorから`Fraction`を復元し、丸めた表示値は符号判定に
+使わない。inverse Fourier conventionと位相の絶対値1から、各格子点・各populationについて
+
+\[
+|\delta f_i(x)|\le
+\max_i\sum_k|\widehat{\delta f_i}(k)|
+\le \sum_{k,i}|\widehat{\delta f_i}(k)|
+\le x_{\rm ag}
+\]
+
+を使う。D2Q9 rest equilibriumの最小weightはexactに\(1/36\)、densityは1なので、
+
+\[
+p_{\rm ag}=\frac1{36}-x_{\rm ag},\qquad
+d_{\rm ag}=1-x_{\rm ag}
+\]
+
+をexactに評価する。事前登録値は
+
+- population lower: `0.027777777633364167`
+- density lower: `0.9999999998555864`
+- population upper: `0.44444444458885807`
+
+である。
+
+### validity gate
+
+1. Q007ag／Q007t／Q007p artifactとrunner SHA、package source、scope、schema、sealed outcomeが一致する。
+2. Q007ag selected \((r,\zeta)\)、state upper identity、全6 candidate gate、forward invarianceをexact再現する。
+3. Q007t old oracleのweight table、Wiener norm argument、old exact positivity bounds、全gateを再現する。
+4. 現行D2Q9 velocity／weight tableを`Fraction`へ変換し、multiplicity `1 / 4 / 4`、sum 1、
+   minimum \(1/36\)、全weight strict positiveを再構成する。
+5. Q007pの289 wave、norm definition、real conjugacy constraintを直接読み、componentwise physical
+   population boundへ移るtriangle inequalityの前提を照合する。
+6. 全数値がfinite strict JSONで、canonical input／result digestを再現する。
+
+一つでも落ちれば`inconclusive`とし、positivityを採用しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. \(d_{\rm ag}=1-x_{\rm ag}>0\)。
+2. \(p_{\rm ag}=1/36-x_{\rm ag}>0\)。
+3. Q007ag tubeがforward invariantであり、同じstrict lower boundを全full-map iterateへ帰納できる。
+
+全て通れば
+`registered Q007ag propagated tube lies in the strictly positive population cone at every full-map iterate`
+として`accepted`とする。validity通過後に一つでも落ちれば
+`registered Q007ag propagated tube did not certify strict full-map population positivity`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedでも、固定Q007ag tube内のreal stateに対するexact full-map入力／出力時刻だけの結論である。
+equilibrium／collision／streaming／filter stage、entropy、monotonicity、maximum principle、IEEE-754
+roundoff、Q007v--Q007ab有限精度帰納、continuous optimum、global basin、grid-uniformity、continuum
+limitは認証しない。Q007c1 finite-amplitude rejection、Q007d Euclidean rejection、Q007af
+external-disc obstruction、Q010 TT cost rejectionは変更しない。acceptedなら次にQ007aiとして、同じ
+Q007ag tube上のexact stagewise positivityを独立に事前登録する。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
