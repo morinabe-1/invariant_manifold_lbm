@@ -12791,6 +12791,241 @@ eigenvalue-levelである。nonnormal Sylvester／homological inverse norm、Q01
 forced SSM存在・一意性、nonlinear normal attraction、basinへ広げない。次は事前登録どおりQ011lで
 repaired split上のrigorous interval homological inverse boundを構成する。
 
+## Q011l: repaired split の rigorous invariant-graph / homological inverse certificate — 事前登録
+
+### 問いと設計上の障害
+
+Q011kが認証したeigenvalue-level external distanceを、exact repaired fixed pointにおける
+quadratic homological operator全体の逆作用素境界へ持ち上げられるか。Q011dの数値oracleは
+300 scalar-shift blockと5 sector Sylvester actionを通したが、binary64 Schur coordinate、
+Q011b raw endpoint、probe residualに基づくため、exact repaired root上の非正規な逆作用素を
+まだ認証していない。
+
+全空間resolvent \(A_n-\lambda_i\lambda_j I\) への置換は採用しない。Q011k artifactを用いた
+実装前監査では、300 pairのうち8 pairでproduct discがoutput sectorのselected discと重なり、
+external spectrumだけからは分離している。この8 pairを除外して結論を作らず、selected invariant
+subspaceをrigorousに囲んでexternal quotientを構成する。登録unsafe pair indexは
+`11 / 19 / 33 / 43 / 56 / 64 / 76 / 86`とし、exact再計算で一致しなければvalidity failureとする。
+
+### 封印入力
+
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011d artifact／runner newline-normalized SHA-256:
+  `c3acb9b7acc6e3121cb6e48a04bb060b5c95d7b128fe15fb11b67ee456337fd0` /
+  `815fe7e0101cc05cc44fcb224534762f0ef7625f8c9604ff0a822c13171a617d`
+- Q011d input／linear-split／pair-family／sector-probe／result digest:
+  `ee2713e8169ea0f475ddee1b1233964ba40739d2276b78db3fff5410158dd2f8` /
+  `7208875ff95f3a768e4b822cf9be854228d6664800dfc69218c0e6a030a0c63e` /
+  `f9caee5b591e74b40b497ca7eb8244f1bbaeba71d239684c47d8215c46c2fb0b` /
+  `feb864e2725e0cf726b43c443bb48b53f34ba0ac54693bb97a2b986f598a1414` /
+  `a6941371e54a5e4d4abbea2f835196ddd7cce35c7c266ce399020764ed5b9dd7`
+
+両artifactの全digest、runner、outcome、claim boundaryを再現する。Q011kの256-bit exact
+fraction upper、binary64 eigenvalue center、selected center index、300 pair orderだけを証明入力とする。
+Q011dはpair／sector dimension `102 / 54 / 54 / 45 / 45`、数値oracleとの対応、既存の否定されていない
+prequalificationを照合するだけであり、そのbinary64 Schur basisをrigorous basisとして流用しない。
+
+### exact eigencoordinate residual bound
+
+Q011kの各必要block \(n\in\{0,1,2,15,16\}\) について、binary64 proposalをexact dyadic
+\((\widehat\Lambda_n,V_n,W_n)\) と読む。Q011kが与えた
+
+\[
+\beta_n\ge\lVert V_n^{-1}\rVert_\infty,
+\qquad
+r_n\ge\lVert A_n(x_\ast)V_n-V_n\widehat\Lambda_n\rVert_\infty
+\]
+
+から
+
+\[
+M_n:=V_n^{-1}A_n(x_\ast)V_n
+=\widehat\Lambda_n+F_n,
+\qquad
+\lVert F_n\rVert_\infty\le\theta_n:=\beta_n r_n
+\]
+
+をexact `Fraction`で導く。block `15 / 16`は`2 / 1`のconjugate transportを使う。
+decimal値を再入力せず、artifactのbase-16 numerator／denominatorから全upperを復元する。
+
+### selected invariant graph
+
+selectedを持つblock \(n\in\{0,1,16\}\) では、Q011kのselected center indexで
+\(M_n\)をselected／externalに分割する。対角center間について
+
+\[
+g_n=\min_{e\in E_n,s\in S_n}
+\max\bigl(|\Re(\widehat\lambda_e-\widehat\lambda_s)|,
+          |\Im(\widehat\lambda_e-\widehat\lambda_s)|\bigr)
+\]
+
+をexact dyadic lowerとして全列挙し、
+\(h_n=\theta_n/g_n\)、登録graph radius \(r_n^G=2h_n\) とする。
+外部行×selected列のmatrix infinity norm ball上でRiccati map
+
+\[
+\mathcal T_n(X)=-(\widehat\Lambda_{E,n}\,\cdot-
+\cdot\,\widehat\Lambda_{S,n})^{-1}
+\left(F_{ES}+F_{EE}X-XF_{SS}-XF_{SE}X\right)
+\]
+
+を使う。次の二不等式をexact rational arithmeticで要求する。
+
+\[
+h_n(1+2r_n^G+(r_n^G)^2)\le r_n^G,
+\qquad
+h_n(2+2r_n^G)<1.
+\]
+
+これにより一意なgraph \(X_n\)、
+\(\lVert X_n\rVert_\infty\le r_n^G\) を得る。登録capは
+`maximum graph radius <= 1e-4`、self-map utilization／contractionはそれぞれ`<=0.9`とする。
+Q011kのeigenvalue countだけをprojector存在と読み替えず、このRiccati certificateを必須とする。
+
+triangular change
+
+\[
+P_n=\begin{bmatrix}I&0\\X_n&I\end{bmatrix}
+\]
+
+によりexact selected dynamicsとexternal quotient dynamicsを
+
+\[
+S_n=M_{SS}+M_{SE}X_n,
+\qquad
+E_n=M_{EE}-X_nM_{SE}
+\]
+
+と定める。両者の対角centerからのずれを
+
+\[
+\eta_n=\theta_n(1+r_n^G)
+\]
+
+で包む。selectedを持たないsector `2 / 15`はfull blockをexternalとし、
+\(\eta_n=\theta_n\) とする。
+
+### symmetric-product action と5 sector Sylvester operator
+
+selected global dynamicsはblock `0 / 1 / 16`のdirect sumとする。unscaled symmetric monomial
+\(a_i a_j\;(i\le j)\) をQ011dと同じ順序で使い、sector pair countを
+`0:102 / 1:54 / 16:54 / 2:45 / 15:45`とする。selected centerのcomplex modulusは
+sqrtを使わず
+
+\[
+L=\max_s(|\Re\widehat\lambda_s|+|\Im\widehat\lambda_s|)
+\]
+
+で上から包み、
+\(\eta_S=\max(\eta_0,\eta_1,\eta_{16})\) とする。exact symmetric-product action
+\(K_q(S)\) とcenter product diagonal \(D_q\) の差に
+
+\[
+\lVert K_q(S)-D_q\rVert_\infty
+\le\kappa:=2L\eta_S+\eta_S^2
+\]
+
+を用いる。このboundはsquare monomialのfactor `2`を含むunscaled basisに対して、各rowの
+absolute sumを直接評価したものとする。scaled／orthonormal symmetric basisへ途中で変更しない。
+
+各output sector \(q\in\{0,1,16,2,15\}\) で、全external centerと全対応pair product centerを列挙し、
+
+\[
+d_q=\min_{e,(i,j)\in q}
+\max\bigl(|\Re(\widehat\lambda_e-\widehat\lambda_i\widehat\lambda_j)|,
+          |\Im(\widehat\lambda_e-\widehat\lambda_i\widehat\lambda_j)|\bigr)
+\]
+
+をexact lowerとする。center productはstored decimalを掛け直さず、二つのbinary64 centerを
+exact dyadic complex multiplicationして作る。full sector homological operator
+
+\[
+\mathcal H_q(Z)=E_qZ-ZK_q(S)
+\]
+
+について
+
+\[
+\Delta_q=\eta_q+\kappa,
+\qquad
+\nu_q=\Delta_q/d_q
+\]
+
+とし、`d_q >= 1e-5`、`nu_q <= 0.1`を全5 sectorに要求する。Neumann lemmaから
+
+\[
+\lVert\mathcal H_q^{-1}\rVert_{\infty\to\infty}
+\le B_q:=\frac{1}{d_q-\Delta_q}
+\]
+
+を得る。ここでmatrix infinity normはexternal rowごとのpair-column absolute row sumであり、
+`maximum B_q <= 1e5`を要求する。これは300 scalar diagonal blockだけでなく、selected dynamicsの
+非対角couplingを含む5個のfull sector Sylvester operatorのboundである。
+
+さらにambient fixed-leaf quotientへのlift／projectionを
+
+\[
+B_q^{\mathrm{amb}}
+\le\lVert V_{E,q}\rVert_\infty(1+r_q^G)\beta_q B_q
+\]
+
+で包む。selectedを持たないsectorでは \(r_q^G=0\)。
+\(\lVert V_{E,q}\rVert_\infty\le\lVert V_q\rVert_\infty\) を使い、
+`maximum ambient lifted inverse bound <= 1e7`を要求する。これは登録eigencoordinate quotient normと
+ambient fixed-leaf infinity normの橋であり、Euclidean minimum singular valueと同一視しない。
+
+### validity gate
+
+1. Q011k／Q011d artifact、runner、全登録digest、outcome、claim boundaryを再現する。
+2. Q011k exact fraction records、center index、conjugate transport、block／pair／sector countをexactに復元する。
+3. full-space substitution監査を全300 pairで完了し、unsafe pair count／indexが登録した8件と一致する。
+4. \(\theta_n=\beta_nr_n\)、center gap、Riccati self-map／contractionをexact `Fraction`で全列挙する。
+5. 24 selected center、300 unordered pair、44,010 external comparison、5 sector pair countを欠落なく再構成する。
+6. \(L,\eta_S,\kappa,d_q,\Delta_q,\nu_q,B_q,B_q^{\mathrm{amb}}\) をexact rational formulaだけで計算する。
+7. finite strict JSON、input／graph／pair／homological／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、inverse certificateを解釈しない。
+
+### homological-inverse hypothesis gate と停止規則
+
+validity通過後、次の5項目を全て要求する。
+
+1. block `0 / 1 / 16`のgraph radiusが`<=1e-4`、self-map utilization／contractionが各`<=0.9`である。
+2. 全graph gapと全5 sector base homological distanceがstrict positiveで、後者は`>=1e-5`である。
+3. 全5 sectorでNeumann quotient `nu_q <= 0.1`である。
+4. full sector coordinate inverse boundの最大が`<=1e5`である。
+5. ambient lifted inverse boundの最大が`<=1e7`である。
+
+全項目が通れば
+`the exact repaired selected/external split has a rigorously bounded quadratic homological inverse in the registered quotient norm`
+として`accepted`とする。validityは通るが一項目でも落ちれば
+`the registered invariant-graph and Neumann bounds do not certify the repaired quadratic homological inverse`
+として`rejected`とする。これは実operatorのsingularityを意味しない。最初に落ちたblock／sector／pair witness、
+graph gap、Neumann marginを記録する。結果後にcenter ordering、pair basis、graph radius formula、
+`1e-4 / 0.9 / 1e-5 / 0.1 / 1e5 / 1e7` thresholdを変更しない。
+
+acceptedの場合だけ、次のQ011mでrepaired exact mapのquadratic jetをinterval／analyticに構成し、
+このinverse boundと合成したcoefficient／residual majorantを事前登録する。rejectedなら対角center Neumann
+majorantを個別block inverse／verified Schur-Sylvester solveへ鋭化する。inconclusiveなら最初のprotocol
+failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17²、固定振幅、periodic repaired exact map、その一意なx-independent fixed point、
+Q011k-designated selected cluster、quadratic order、登録eigencoordinate quotient normに限る。
+Q011c2 continuous-amplitude path、cluster内部の個別branch continuity、raw Q011b map、Q011d／Q011e--Q011h
+raw coefficientの移植、quadratic jet／coefficient自体、higher-order nonresonance、SSM存在・一意性・滑らかさ、
+nonlinear normal attraction、basin、他grid／force／wall、D3Q27は主張しない。inverse boundをSSM theoremや
+normal attractionへ読み替えない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
