@@ -9859,6 +9859,35 @@ bounce-back、Poiseuille／Couette、forced invariant manifold、normal attracti
 rest Jacobianはnon-fixed reference-state diagnosticに限り、forced fixed-point spectrumではない。
 Q007apまでのunforced periodic certificateは変更しない。
 
+### Q011a 最終結果
+
+validity 6/6、hypothesis 4/4が全て通過し、
+`nonzero-mean periodic body force is incompatible with a fixed point of the registered conservative map`
+としてnegative obstructionをacceptedとした。
+
+- exact per-step global momentum increment／population-l1 residual lower:
+  `867*2^-40 / 867*2^-40`（`7.885319064371288e-10`）
+- source moment residual:
+  `0.0`
+- maximum finite state／compensated global ledger error:
+  `1.3877787807814457e-17 / 1.2032042029375134e-14`
+- maximum best source-derivative discrepancy:
+  `5.062223386808321e-14`
+- rest reference strict unit-circle count／largest nonunit modulus:
+  `3 / 0.9920954673551`
+- source／probe／result digest:
+  `75fd3fe1050b39a333f483375969a67c79ab9ec75009a2048359d0f0dabb7492` /
+  `43d0b722ba63a45ccf6b5a41cffaef387448fcc2cd9324538887fd3169571001` /
+  `9b1f0c1516a365481c72617957b30424a7873136d221bd164b6d0617c4c3d958`
+- runner／artifact newline-normalized SHA-256:
+  `41e45565066fd4c96c2ae927bc8cc6a1218377f67b711f6cc312ecbf0d1c68de` /
+  `31c427660b10771af7756c249408606578a9b7a02d756bc77b918b56e7a5b14a`
+
+従ってnonzero-mean periodic fixed-point Newton solveは開始しない。rest symbolはsource微分0を示す
+non-fixed reference-state診断に限る。次はQ011bでzero-mean single-wave sourceを事前登録し、
+forced fixed point、保存量葉、Fourier-sector closure、spectrumを初めて判定する。
+wall-bounded Poiseuille／Couetteはさらに別gateとする。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

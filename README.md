@@ -232,6 +232,10 @@ Q007an--Q007apではこの有限精度証明鎖をQ007agの拡大tubeへ移し�
 fixed-coordinate Lipschitz upper \(0.9920957426381974<1\)と初期／一段欠陥を合成した。
 その結果、同じexact initial stateからのsampling-time Wiener誤差を全非負iterateで
 \(8.803831096064757\times10^{-18}\)以下に抑え、propagated-tube finite-precision chainを閉じた。
+Q011aでは次に、一様非零平均body forceをperiodic filtered BGKへ加える前提を監査した。各stepの
+exact global momentum incrementが\(867\,2^{-40}>0\)で、boundary／drag／repair sinkがないため、
+このforced mapにはfixed pointが存在しない。従って非零平均periodic Newton solveは開始せず、
+zero-mean forcingとwall-bounded flowを別問題として扱う。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1492,6 +1496,46 @@ initialization、他grid／MPFR build、性能、grid-uniform／continuum結果�
 Q008c／Q010により保留したままとし、次はQ011 boundary／forcingまたは別norm certificateを
 新しいgateとして事前登録する。
 
+### Q011a nonzero-mean periodic forcing fixed-point obstruction
+
+odd periodic \(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)のfiltered BGK mapへ、collision後に
+state-independent source
+
+\[
+S_q(F)=3w_q(c_q\cdot F),\qquad F=(3\,2^{-40},0)
+\]
+
+を各siteで加えた。D2Q9 source moment、10 positive probe、source derivative、rest reference
+Fourier symbolを独立に監査した。
+
+- classification:
+  `nonzero-mean periodic body force is incompatible with a fixed point of the registered conservative map`
+- validity／hypothesis gates: `6 / 6`、`4 / 4` passed
+- exact per-step global momentum increment／population-l1 residual lower:
+  `867*2^-40 / 867*2^-40`（float `7.885319064371288e-10`）
+- source moment residual: `0.0`
+- maximum finite state／compensated global ledger error:
+  `1.3877787807814457e-17 / 1.2032042029375134e-14`
+- maximum best forced／unforced derivative discrepancy:
+  `5.062223386808321e-14`
+- rest reference strict unit-circle count／largest nonunit modulus:
+  `3 / 0.9920954673551`
+- minimum rest forced-output population:
+  `0.027777777777550403`
+- source／probe／result digest:
+  `75fd3fe1050b39a333f483375969a67c79ab9ec75009a2048359d0f0dabb7492` /
+  `43d0b722ba63a45ccf6b5a41cffaef387448fcc2cd9324538887fd3169571001` /
+  `9b1f0c1516a365481c72617957b30424a7873136d221bd164b6d0617c4c3d958`
+- runner／artifact newline-normalized SHA-256:
+  `41e45565066fd4c96c2ae927bc8cc6a1218377f67b711f6cc312ecbf0d1c68de` /
+  `31c427660b10771af7756c249408606578a9b7a02d756bc77b918b56e7a5b14a`
+
+exact collisionはlocal momentumを、periodic streamingとpopulation-wise filterはglobal momentumを
+保存するため、fixed point仮定は上のstrict positive incrementと矛盾する。rest Jacobianがunforced
+symbolと一致することはsource微分0のreference-state診断であり、restはforced fixed pointではない。
+finite-precision bitwise fixed point、Guo／EDM精度、zero-mean forcing、drag、Poiseuille／Couette、
+forced manifoldは主張しない。次はQ011bでzero-mean single-wave periodic forcingを事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2037,6 +2081,7 @@ python -m research.q007am_propagated_tube_distributed_repair --output research/a
 python -m research.q007an_repaired_tube_induction --output research/artifacts/q007an_repaired_tube_induction.json
 python -m research.q007ao_initialization_interior --output research/artifacts/q007ao_initialization_interior.json
 python -m research.q007ap_forward_shadowing --output research/artifacts/q007ap_forward_shadowing.json
+python -m research.q011a_periodic_forcing_compatibility --output research/artifacts/q011a_periodic_forcing_compatibility.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2108,6 +2153,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007an_repaired_tube_induction.json`](research/artifacts/q007an_repaired_tube_induction.json)
 - [`research/artifacts/q007ao_initialization_interior.json`](research/artifacts/q007ao_initialization_interior.json)
 - [`research/artifacts/q007ap_forward_shadowing.json`](research/artifacts/q007ap_forward_shadowing.json)
+- [`research/artifacts/q011a_periodic_forcing_compatibility.json`](research/artifacts/q011a_periodic_forcing_compatibility.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2200,6 +2246,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   Q007anへのinitialization接続
 - Q007ap Q007ag tube上のfixed-coordinate収縮、initial／local defectの幾何級数合成、
   same-initial repaired-MPFR-85 all-iterate forward-error認証
+- Q011a nonzero-mean periodic sourceのexact global momentum ledger、fixed-point obstruction、
+  non-fixed rest reference-spectrum診断
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2210,7 +2258,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
+- TT-cross（固定Q007c1係数では保留）、zero-mean forced fixed point、境界条件、
+  Poiseuille／Couette、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
 Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を、Q007kにより登録Q006i二次係数と
@@ -2256,3 +2305,6 @@ Q007aoでは登録strict inner exact-state setからのcomponentwise encoding／
 Q007ao初期誤差とQ007am一段local defectを幾何級数へ合成した。従って登録inner exact-state setからの
 same-initial sampling-time forward shadowingまで新tubeへ移した。arbitrary Q007ag boundary-state
 initialization、bi-infinite shadowing、内部stage間距離、他grid／MPFR buildへは主張を広げない。
+Q011aでは一様非零平均sourceのexact global momentum ledgerを閉じ、sinkのないperiodic mapでは
+fixed pointが不可能と認証した。rest reference Jacobianはsource微分0によりunforced symbolと一致するが、
+forced fixed-point stabilityとは解釈しない。zero-mean periodic forcingとwall-bounded flowは未実装である。

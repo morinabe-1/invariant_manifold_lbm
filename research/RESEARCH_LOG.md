@@ -4349,6 +4349,80 @@ exact軌道とsealed repaired MPFR-85軌道は、全非負sampling timeで一様
 continuum limit、D3Q27を主張しない。Q009 TT-crossはQ008c／Q010の固定経路棄却により保留する。
 次はQ011 boundary／forcingまたはQ007af後に残る別norm certificateを独立に事前登録してから進む。
 
+## 2026-08-09: Q011a nonzero-mean periodic forcing fixed-point compatibility
+
+### 問いと事前登録
+
+odd periodic \(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)のfiltered BGK mapに、一様body-force
+
+\[
+F=(3\,2^{-40},0),\qquad
+S_q(F)=3w_q(c_q\cdot F)
+\]
+
+をcollision後に加える問題を固定した。periodic streamingとpopulation-wise filterの後にもglobal
+momentum incrementが残るため、boundary／drag／repairのないmapでfixed pointがcompatibleかを
+Newton solveより先に判定した。rest-state spectrumはsource微分0の実装診断にだけ使い、fixed-point
+stabilityとは呼ばないと事前登録した。
+
+### 実装
+
+- exact D2Q9 rational weight／velocity tableから9 source populationとmass／momentum momentを構成した。
+  \(F_x=3\,2^{-40}\)により全source populationはdyadicとなる。
+- rest、一様moving equilibrium、seed `20260809`の8 fixed-leaf positive perturbationの全10 probeで、
+  forced-minus-unforced stateとcompensated global ledgerを照合した。
+- 先頭4 direction、step \(2^{-12},2^{-13},2^{-14}\)でforced／unforced central derivativeを比較した。
+- 全17² Fourier blockでstate-independent sourceのreference symbolをunforced filtered symbolと照合し、
+  tolerance \(10^{-10}\)のstrict unit-circle countを監査した。
+- exact global ledgerとdual moment inequalityから、任意stateのpopulation-l1 fixed-point residual lowerを
+  \(867\,2^{-40}\)と構成した。
+- Q011a codeは`research/`内へ閉じ、既存Q004--Q010 artifactのpackage source fingerprintを変更しない
+  ことを全artifact回帰で確認した。
+
+### 結果
+
+validity 6/6、hypothesis 4/4で、
+`nonzero-mean periodic body force is incompatible with a fixed point of the registered conservative map`
+としてnegative obstructionをacceptedとした。
+
+- exact source mass／momentum:
+  `0 / 3*2^-40 / 0`
+- exact per-step global momentum increment／population-l1 residual lower:
+  `867*2^-40 / 867*2^-40`（float `7.885319064371288e-10`）
+- source float moment residual:
+  `0.0`
+- maximum finite state-difference error:
+  `1.3877787807814457e-17`
+- maximum compensated global-ledger error:
+  `1.2032042029375134e-14`
+- maximum best forced／unforced derivative discrepancy:
+  `5.062223386808321e-14`
+- rest forced-output minimum population:
+  `0.027777777777550403`
+- rest reference strict unit-circle count／largest nonunit modulus:
+  `3 / 0.9920954673551`
+- direction／reference-spectrum digest:
+  `6dbe9348ef90a73006319b366923706082faf69eda4dcf0295e5ea1e35720c32` /
+  `e402291edccddbcfad43aef9ee8344ab3ac220b2324c66951e4b5ee88013f293`
+- source／probe／result digest:
+  `75fd3fe1050b39a333f483375969a67c79ab9ec75009a2048359d0f0dabb7492` /
+  `43d0b722ba63a45ccf6b5a41cffaef387448fcc2cd9324538887fd3169571001` /
+  `9b1f0c1516a365481c72617957b30424a7873136d221bd164b6d0617c4c3d958`
+- runner／artifact newline-normalized SHA-256:
+  `41e45565066fd4c96c2ae927bc8cc6a1218377f67b711f6cc312ecbf0d1c68de` /
+  `31c427660b10771af7756c249408606578a9b7a02d756bc77b918b56e7a5b14a`
+
+### 解釈と次のbottleneck
+
+exact collision、periodic streaming、population-wise filterはいずれもsource以外のglobal momentumを
+保存する。従って毎stepのstrict positive incrementはfixed-point等式と矛盾し、非零平均periodic
+fixed-point Newton solveやmanifold continuationを開始すべきではない。
+
+この結論はexact real-arithmetic global ledgerに限る。finite-precision bitwise fixed point、
+Guo／EDM高次精度、zero-mean forcing、drag、pressure boundary、bounce-back、Poiseuille／Couette、
+forced invariant manifold、normal attraction、他gridは未評価である。次はQ011bでzero-mean
+single-wave periodic sourceを事前登録し、そこでforced fixed pointとspectrumを判定する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4472,6 +4546,8 @@ continuum limit、D3Q27を主張しない。Q009 TT-crossはQ008c／Q010の固�
 [`artifacts/q007ao_initialization_interior.json`](artifacts/q007ao_initialization_interior.json)
 
 [`artifacts/q007ap_forward_shadowing.json`](artifacts/q007ap_forward_shadowing.json)
+
+[`artifacts/q011a_periodic_forcing_compatibility.json`](artifacts/q011a_periodic_forcing_compatibility.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
