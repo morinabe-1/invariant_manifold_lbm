@@ -13926,6 +13926,211 @@ eigencoordinateではexactな標準共役multisetを作らない。従って登�
 これはlinear dominationの失敗でも、invariant manifold／SSMの不存在でもない。停止規則どおり、次は
 zero blockの実構造だけを修復し、通過するまでnonlinear graph transformへ進まない。
 
+## Q011p: zero-block invariant-subspace reality certificate — 事前登録
+
+### 問い
+
+Q011oで唯一failした自己共役zero Fourier blockについて、Q011lが認証した6次元complex selected
+invariant subspaceが、6次元real invariant subspaceのcomplexificationであることをrigorousに示せるか。
+
+本gateはzero blockの**invariant subspaceの実構造**だけを判定する。real basis、Q011oのcoordinate
+lift／inverse再評価、conjugacy-equivariant cutoff、nonlinear graph transform、fixed graphは構成しない。
+
+### 封印入力
+
+- Q011j artifact／runner newline-normalized SHA-256:
+  `74a2e084137699739c14d980b05676e14e6802b4018b3893d3d05270850c2c5a` /
+  `23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5`
+- Q011j input／coordinate／oracle／proof／result digest:
+  `a183f4830c757b58122132cf64111fd5375636affdb6c0b31e1cd90e89085799` /
+  `adaef353b8b64509334794c6014dc8b88e81ca2b776c3b65bd4d50911ae9452b` /
+  `177468a48f667ddd922ed4b979d3e7e5d4cc0ed3afffe27a34651060da8e0f5f` /
+  `1080fcea24358422514bba7fb9881928269c853cb4d12b0282e63840c56124c0` /
+  `ddad5beca9693eeab726382ac864d01a27b749d579c2ec8f12dd9f8c499db934`
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011l artifact／runner newline-normalized SHA-256:
+  `2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a` /
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7`
+- Q011l input／graph／pair／homological／result digest:
+  `1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011` /
+  `a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3` /
+  `694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377` /
+  `14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915` /
+  `c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45`
+- Q011o artifact／runner newline-normalized SHA-256:
+  `bbbc26939d4ef73aae95ad6517f5f1549f2eaf7b6edcbac5e5171f329064bc07` /
+  `60d9c445dace16d114e46263f2b47fe2db993b894337cdd462f204da09543f1f`
+- Q011o input／coordinate／linear／localization／result digest:
+  `0bddd90fc21a745b910ff47e133e72045842c77b589a818a21e946f85ba63da0` /
+  `6c00ce5d9df986830a4ad2d98df3970417d47e4fb9f1784364ce32b64d7396b7` /
+  `f9aaea144b0e79c6adf42296b7e8dcd562f2b75525b6abf4ac99c43dcbd1859c` /
+  `5799e9997ac1ec692ddce97465174204ee22debaea942ed7fab637209c912e0d` /
+  `6ec0a97c1b3d653e5edd3ffc7f4b8b9fa746e86e8d706e251753eecb8ab9a864`
+
+Q011j--Q011lの`accepted`とQ011oのvalid `rejected`を直接再現する。Q011oのnested sealだけで
+Q011j--Q011lの直接照合を省略しない。Q011oの他4 hypothesisとclaim boundaryも変更しない。
+
+### zero-block conjugation operator
+
+Q011kと同じcanonical binary64 eigencolumn matrix \(V_0\) とinverse candidate \(W_0\) を再構成し、全
+binary64 entryをexact dyadic rationalとして扱う。zero blockのexact fixed-leaf linear operator \(A_0\) が
+real、\(V_0\) がinvertibleであることをQ011j／Q011k certificateから再現する。
+
+physical conjugationをeigencoordinateへpull backしたantilinear involutionは
+
+\[
+\mathcal J_0(y)=J_0\overline y,
+\qquad
+J_0=V_0^{-1}\overline{V_0}
+\]
+
+である。Q011oで棄却した \(y_0=\overline y_0\) を仮定し直さず、\(J_0\) を明示的に扱う。
+
+Q011kのdirected inverse defect
+
+\[
+\delta_V=\lVert I-W_0V_0\rVert_\infty<1,\qquad
+w=\lVert W_0\rVert_\infty,\qquad v=\lVert V_0\rVert_\infty
+\]
+
+から、point product \(J_c=W_0\overline{V_0}\) に対する
+
+\[
+\lVert J_0-J_c\rVert_\infty
+\le
+\varepsilon_J
+:=\frac{\delta_V}{1-\delta_V}wv
+\]
+
+を使う。selected indexはQ011lと同じ6個、external indexは残る144個とし、
+
+\[
+J_0=
+\begin{pmatrix}
+J_{EE}&J_{ES}\\
+J_{SE}&J_{SS}
+\end{pmatrix}
+\]
+
+の4 blockをcomplex absolute row-sum normで包絡する。\(J_{SS}\) のinverseは6次元point candidateと
+Neumann defectから直接認証し、
+
+\[
+m_{SS}:=\frac1{\lVert J_{SS}^{-1}\rVert_\infty}
+\]
+
+のlower boundを作る。full condition numberやeigenvalue pairingだけを代用しない。
+
+### conjugated graph とexpanded uniqueness ball
+
+Q011l zero-block invariant graphを \(G:S\to E\)、そのradius upperを \(r_G\) とする。物理共役した
+subspaceが同じreference split上のgraphで表せる場合、そのgraphは
+
+\[
+\mathcal C(G)=
+(J_{EE}\overline G+J_{ES})
+(J_{SE}\overline G+J_{SS})^{-1}
+\]
+
+である。block boundを \(j_{\alpha\beta}\) と書き、
+
+\[
+d_C=m_{SS}-j_{SE}r_G,
+\qquad
+r_C=\frac{j_{EE}r_G+j_{ES}}{d_C}
+\]
+
+をdirected upper／lower arithmeticで評価する。
+
+Q011lのRiccati contractionを再利用するexpanded uniqueness radiusは観測前に
+
+\[
+R_{\rm real}=10^{-2}
+\]
+
+へ固定する。Q011lの \(h=\theta/g\) を用い、
+
+\[
+h(1+2R_{\rm real}+R_{\rm real}^2)\le R_{\rm real},
+\qquad
+h(2+2R_{\rm real})<1,
+\qquad
+g-2\theta(1+R_{\rm real})>0
+\]
+
+をexactに再評価する。\(G\) と \(\mathcal C(G)\) がともにこのball内のRiccati fixed pointなら、一意性から
+\(\mathcal C(G)=G\) であり、selected invariant subspaceはcomplex conjugation invariantである。
+
+### arithmetic と登録閾値
+
+primary proof laneはMPFR `256 bit`、independent containment laneは`192 bit`に固定する。binary64 inputの
+exact conversion、directed lower／upper、forbidden flag、caller context restorationを両laneで検査する。
+gate判定にbinary64 normを使わない。
+
+次を観測前に固定する。
+
+- \(\varepsilon_J\le10^{-8}\)
+- \(j_{ES}\le10^{-6}\)
+- \(j_{EE}\le100\)
+- \(j_{SE}\le100\)
+- \(\lVert J_{SS}^{-1}\rVert_\infty\le20\)
+- \(d_C>0\)
+- \(r_C\le R_{\rm real}=10^{-2}\)
+- expanded Riccati self-map／strict contraction／identification marginの3条件がすべてpass
+
+最初の5 capは良いcondition numberを主張するためではなく、conjugated graphを同じuniqueness ballへ
+入れるための有限な登録包絡である。
+
+### validity gate
+
+1. Q011j／Q011k／Q011l／Q011oのartifact、runner、20 digest、outcome、claim boundaryを直接再現する。
+2. zero block \(A_0,V_0,W_0\)、selected／external dimension `6 / 144`、Q011l graph certificateを再構成する。
+3. \(A_0\) のexact reality、\(V_0\) のcertified invertibility、\(\mathcal J_0\) のdomain／codomainを確認する。
+4. \(J_c\)、\(\varepsilon_J\)、4 block bound、\(J_{SS}^{-1}\) boundをdirected arithmeticで再現する。
+5. \(d_C,r_C\) とexpanded Riccati self-map／contraction／identification式をexactに再現する。
+6. 192／256-bit laneのcontainment、MPFR flag、caller context、全boundのfinite性を確認する。
+7. strict JSON、input／conjugation／uniqueness／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、zero-block realityを解釈しない。
+
+### hypothesis gate と停止規則
+
+validity通過後、次の5項目を別々に要求する。
+
+1. zero-block physical operatorがexact realで、\(J_0\overline{J_0}=I\) と
+   \(J_0\overline{(V_0^{-1}A_0V_0)}=(V_0^{-1}A_0V_0)J_0\) が定義から従う。
+2. \(\varepsilon_J,j_{ES},j_{EE},j_{SE},\lVert J_{SS}^{-1}\rVert_\infty\) が登録cap内に入る。
+3. \(d_C>0\) かつ \(r_C\le R_{\rm real}\) で、共役subspaceが同じreference split上のgraphになる。
+4. radius \(R_{\rm real}\) でRiccati mapがself-mapかつstrict contractionで、spectral identificationが保たれる。
+5. \(G\) と \(\mathcal C(G)\) が同じuniqueness ballのfixed pointとなり、selected subspaceがconjugation
+   invariantで、そのreal fixed subspaceのdimensionが6になる。
+
+全5項目が通る場合だけ
+`the Q011l zero-block selected invariant subspace is the complexification of a six-dimensional real invariant subspace`
+として`accepted`とする。一つでも落ちれば
+`the registered Q011l zero-block certificate does not close a conjugation-invariant uniqueness neighborhood`
+として`rejected`とする。これはreal invariant subspaceまたはmanifold／SSMの不存在を意味しない。
+
+`accepted`なら次のQ011qで、このreal subspaceの明示real frame、external real complement、coordinate
+lift／inverse、linear domination、equivariant cutoffを事前登録し、Q011oのfailed hypothesisを再発行する。
+`rejected`ならzero blockだけをdirect real Schur／Riesz projectorで再構成する。`inconclusive`なら最初の
+protocol failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact mapのfixed-conservation leaf、zero Fourier linear block、Q011lの6次元
+selected invariant graphとその実構造に限る。明示real basis、real-coordinate norm、Q011o acceptance、
+nonlinear cutoffのequivariance、nonlinear graph transform、fixed graph、exact invariant manifold／SSM、
+smoothness／一意性、normal attraction、basin、他grid／force／wall、D3Q27を構成・認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
