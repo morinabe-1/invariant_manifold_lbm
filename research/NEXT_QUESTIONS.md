@@ -15135,6 +15135,292 @@ graphである。
 停止規則どおり、次はQ011tを事前登録し、\(C^1\) graph-transform space、origin derivative equation、
 selected tangency、spectral quotientを同じfixed-leaf real normで判定する。
 
+## Q011t: C1-localized tangent graph patch — 事前登録
+
+### 問い
+
+Q011qのreal fixed-leaf coordinate上にscalar \(C^1\) localizationを新たに定義し、Q011mのanalytic derivative
+boundを用いたgraph transformとderivative-fiber transformを同時にstrict contractionにできるか。そのfixed
+graphのinner patchをoriginal repaired exact mapへ移し、originでselected real spectral subspaceに接する
+\(C^1\) forward-invariant graph patchを認証できるか。
+
+Q011rのradial retractionは境界で\(C^1\)ではないため、そのLipschitz fixed graphが自動的にsmoothであるとは
+仮定しない。本gateは別の\(C^1\)-localized mapからoriginal-map \(C^1\) graph patchを構成する。Q011s graphとの
+集合としての一致や、spectral-quotient SSM uniquenessは別判定とする。
+
+### 封印入力
+
+次の5 artifactを直接照合し、nested sealだけで代用しない。
+
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011m artifact／runner newline-normalized SHA-256:
+  `b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f` /
+  `0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150`
+- Q011m input／derivative／coefficient／majorant／result digest:
+  `dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb` /
+  `0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a` /
+  `1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514` /
+  `bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00` /
+  `f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4`
+- Q011q artifact／runner newline-normalized SHA-256:
+  `776be2af80fdbb867fd72eb3c0bdfe82ca30f5fa50bc9436818df5c7f87e676d` /
+  `83031650f7ecd54adb048a74ace2df96068317531aeb84fb57b9f797b9e33f67`
+- Q011q input／conjugation／frame／setup／result digest:
+  `c9e57c60fe678901c5502bf163d7317c06fedb35322e8591e741c330969829b5` /
+  `583a28e1453b75700d0674bf090c4f8c0652d7538f84bef7c8ea7e09415db54e` /
+  `1210f4d2c85d4a0cad9978531b297b5e493bac5f8d54d5eafa6ee7a5a68a6d7b` /
+  `ec52daadd80261b9e94672beb979fd5f01e4f1c4bc0e63090a0cccbb90cda26b` /
+  `274ddd32b50000c953c623285993ba533651a720c6dc79ae693a0e24a3f623ae`
+- Q011r artifact／runner newline-normalized SHA-256:
+  `2d45e3c64965ee1e8bc47f1a7d75070fbeabbcb2711a62b1711da92878a58e11` /
+  `8169e2fc7d5f7dccdc424bba31f37d4c03e6a669ab2e3f04d6289f03240b6d09`
+- Q011r input／transport／graph／radius／result digest:
+  `7e9fa7b147ede559cffd117b7a6b8592d2939774f9821494759bbf3d634badd2` /
+  `3b8fba9cd370521880be3d4b77a9e2fc715e67ac22dc78e631f96e0d71317191` /
+  `77f2ac35d83726d0868ab08dd7648aee26bed7b00a40fb1405df1e1f162e023b` /
+  `8d33d01931c42730b18778c674282e6870224336cca72f66e81b447178d32d79` /
+  `b0520673f844d3f94a735c27800ff40d025a9437b01899e3d400b3c3fe0661ea`
+- Q011s artifact／runner newline-normalized SHA-256:
+  `d7399671504cc513aecc491210108c31365c63a74864ecf04e629b3d1348bc52` /
+  `beeeb6699b5c3a7e7636b2c7afd6036bc6959213e81339f39961c325d9347367`
+- Q011s input／linear／graph／core／result digest:
+  `4808619d977f8d14c4f8b454e846558ad047337e4343c6b9bef791e2c2b99af5` /
+  `6a657463b847ce242346aea8b582f1f4e108b0abb0935e270a5c03c1ceb3cc36` /
+  `b9837d31b26bced4243457e3357a93c8d546883390104f1b43d5e182e92f98a7` /
+  `ab837deb8459678d4fce223e06d03cc8e6f4d391ff35bad191392a923825e622` /
+  `3e01d86f279bc6c5a2f0769a9728a98e3e49fa749be15a2c6c6e0f32132ca270`
+
+5 artifactの`accepted`、theorem consequence、claim boundaryを再現する。Q011rから
+\(\mu_2,m,q,b,\alpha,\rho_*\)、Q011sから\(p_S\)とphysical／root bufferを直接取り出す。
+
+### scalar C1 localization
+
+Q011q real fixed spaceを2598個のcomplex-coordinate slotの共役固定部分空間として扱い、そのglobal
+complex-modulus block-sup normを使う。scale \(r\)ごとに
+
+\[
+t_r(z)=\sum_{j=1}^{2598}
+\left(\frac{|z_j|}{2r}\right)^{16}
+\]
+
+とし、
+
+\[
+\chi(t)=
+\begin{cases}
+1,&t\le1,\\
+1-3y^2+2y^3,\quad y=(t-1)/3,&1<t<4,\\
+0,&t\ge4
+\end{cases}
+\]
+
+および
+
+\[
+C_r^{(1)}(z)=\chi(t_r(z))z
+\]
+
+を定義する。\(\chi\)はendpoint derivativeが0の\(C^1\) scalar bumpで、
+\(0\le\chi\le1\)、\(|\chi'|\le1/2\)をexactに確認する。scalar multiplicationと全slotの対称和により、
+selected／external real fixed spacesとconjugacyを保つ。
+
+\[
+\frac{2598}{2^{16}}<1
+\]
+
+なので\(\|z\|\le r\)ではidentityである。support上は\(\|z\|<4r\)であり、
+\(2598^{1/16}\le2\)、\(t^{15/16}\le4\)を用いて
+
+\[
+\|DC_r^{(1)}(z)\|\le129
+\]
+
+を登録する。componentwise complex disk projectionやQ011rのnonsmooth radial retractionは使わない。
+
+### C1-localized nonlinear majorant
+
+\[
+N_r^{(1)}(z)=N(C_r^{(1)}z)
+\]
+
+とする。Q011mの\(N(0)=DN(0)=0\)とQ011rのreal-norm \(\mu_2\)から、
+
+\[
+n_r=8\mu_2r^2,
+\qquad
+\delta_r=516\mu_2r
+\]
+
+をglobal amplitude／derivative upperとして登録する。前者はsupport radius \(4r\)、後者は
+\(\|DC_r^{(1)}\|\le129\)を一度ずつ使う。cutoff factorを重複適用しない。
+
+### C1 graph transformとderivative fiber
+
+全selected real space上の\(C^1\) graph
+
+\[
+\psi:S_{\mathbb R}\to E_{\mathbb R},
+\qquad
+\psi(0)=0,
+\qquad
+\sup\|\psi\|\le r,
+\qquad
+\sup\|D\psi\|\le1
+\]
+
+を\(C_b^1\) normで完備化する。Q011rと同じupper-triangular linear splitを用い、
+
+\[
+d_r=m-b-\delta_r,
+\qquad
+u_r=\alpha(b+\delta_r),
+\qquad
+h_r=q+8\mu_2r
+\]
+
+とする。base inverseはglobal fixed-point inverseと\(C^1\) inverse function theoremを合成する。
+graph-transform derivativeは
+
+\[
+D(\mathcal T_r\psi)(u)
+=
+\left[D_sg+D_eg\,D\psi(s)\right]
+\left[D_sf+D_ef\,D\psi(s)\right]^{-1},
+\qquad
+s=P_\psi^{-1}(u)
+\]
+
+で定義する。self-map slope、base-graph contraction、derivative-fiber contractionを
+
+\[
+\ell_r=\frac{q+\delta_r}{d_r},
+\qquad
+\kappa_r=\frac{m(q+\delta_r)}{d_r},
+\]
+
+\[
+\chi_r
+=
+\frac{q+\delta_r}{d_r}
++\frac{(q+\delta_r)(b+\delta_r)}{d_r^2}
+\]
+
+で包絡する。C0 graph transformのcontractionと、各base graph上のuniform fiber contractionを
+fiber-contraction theoremで合成し、\(C^1\) fixed graphを得る。direct \(C^1\)-norm contractionを仮定しない。
+
+originでは\(DN(0)=0\)かつlower-left linear blockが0なので、derivative fiberは\(H=0\)を固定する。
+\(\chi_r<1\)によるfiber fixed pointの一意性から
+
+\[
+D\psi_*(0)=0
+\]
+
+を結論し、physical tangentをQ011q lift of selected real spectral subspaceとして記録する。
+
+### 登録scaleとoriginal-map transfer
+
+\[
+r_j=2^{-j}\rho_*,
+\qquad
+j=6,7,\ldots,16
+\]
+
+の11候補をexact `Fraction`で全列挙し、全条件を満たす最大\(r_j\)を選ぶ。fixed graphのrefined slope
+\(\ell_{r_j}\)を使い、original coreでは
+
+\[
+c_j=p_S+b\ell_{r_j}+\frac12\mu_2r_j
+\]
+
+を再評価する。\(c_j\le1\)ならradius-\(r_j\) patchとその像はsmooth cutoffのidentity coreへ入り、
+original mapと\(C^1\)-localized mapが一致する。physical support \(4K_Lr_j\)、input／output displacement、
+population／density floorを別々に記録する。
+
+### rigorous spectral-quotient diagnostic
+
+Q011kの2598 eigencenterとBauer--Fike radiusからselected 24／external 2574のmodulus intervalを全再構成する。
+selected spectral-radius enclosureを\([\rho_S^-,\rho_S^+]\)、external minimum-modulus enclosureを
+\([\rho_E^-,\rho_E^+]\)とする。
+
+- sufficient upper quotient:
+  最小の\(L_+\)で\((\rho_S^+)^{L_++1}<\rho_E^-\)
+- excluded lower quotient:
+  \((\rho_S^-)^{L_-} \ge \rho_E^+\)からactual quotientが\(L_-\)以下でないことを示す
+
+actual quotientを含む整数bracket、boundary ratios、witnessをexact rational powersで記録する。
+登録capはbracket width `<=1`、conservative \(L_+\le90\)とする。Q011kが直接認証したexternal
+nonresonanceはdegree `2`だけなので、degrees `3..L_+`をmissingとして全列挙する。従って本gateでは
+spectral-quotient SSM uniquenessを主張しない。
+
+### 登録cap
+
+- coordinate slot count: `2598`、selected／external real dimension: `24 / 2574`
+- smooth-cutoff identity ratio: \(2598/2^{16}<1\)
+- smooth-cutoff support factor／derivative upper: `4 / 129`
+- localized derivative upper \(\delta_r\le10^{-3}\)
+- base inverse utilization \(u_r\le10^{-2}\)
+- height ratio \(h_r\le0.99\)
+- \(C^1\) graph slope \(\ell_r\le0.999\)
+- C0 graph contraction \(\kappa_r\le0.99\)
+- derivative-fiber contraction \(\chi_r\le0.9995\)
+- support physical displacement \(4K_Lr\le10^{-11}\)
+- original selected／external image ratio: each `<=0.999`
+- population floor `>=0.02`、density floor `>=0.99`
+- selected scale \(r/\rho_*\ge1/4096\)
+- spectral quotient bracket width `<=1`、conservative upper `<=90`
+
+### validity gate
+
+1. Q011k／Q011m／Q011q／Q011r／Q011sのartifact、runner、25 digest、outcome、claim boundaryを直接再現する。
+2. \(t_r,\chi,C_r^{(1)}\)の\(C^1\) typing、identity、support、real conjugacy、derivative `129` boundを再現する。
+3. Q011m／Q011rから\(n_r,\delta_r\)を同じreal normで再現する。
+4. \(C_b^1\) graph space、global \(C^1\) base inverse、graph derivative formula、fiber theoremの型を確認する。
+5. 11 scaleのexact records、monotonicity、最大passing candidate、最初のlarger failureを再現する。
+6. selected candidateのorigin derivative `0`、selected tangency、original/core equality、forward invarianceを再現する。
+7. 2598 modulus interval、quotient bracket、boundary powers、degree-evidence inventoryを再現する。
+8. finite性、strict JSON、input／cutoff／graph／radius／spectral／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、\(C^1\) graph patchを解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次の6項目を別々に要求する。
+
+1. scalar cutoffが両real spacesを保つglobal \(C^1\) localizationで、support／derivative cap内に入る。
+2. 最大passing scaleでbase inverse、height、slope、C0 contractionが全capを通る。
+3. derivative-fiber contractionが`0.9995`以下で、fiber theoremが\(C^1\) fixed graphを与える。
+4. origin derivativeが0で、graph tangentがselected real spectral subspaceに一致する。
+5. inner patchと像がidentity core／physical bufferへ入り、original exact mapでforward invariantである。
+6. spectral quotientのrigorous bracketが登録幅／upper cap内に入り、missing degreeを残したままSSM uniquenessを
+   主張していない。
+
+全6項目が通る場合だけ
+`the original repaired exact map has a certified C1 forward-invariant graph patch tangent to the selected real spectral subspace`
+として`accepted`とする。一つでも落ちれば
+`the registered C1 localization does not certify a tangent original-map graph patch`
+として`rejected`とする。rejectedは\(C^1\) manifoldの不存在を意味せず、最初のcutoff／derivative／fiber／
+core conditionだけを修正する。
+
+`accepted`なら次のQ011uで、conservative quotientまでのhigher-smoothness localizationとdegrees
+`3..L_+`のexternal nonresonance／homological evidenceを事前登録し、SSM uniquenessへ進めるか判定する。
+`inconclusive`なら最初のseal／typing／formula／serialization failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed-conservation leaf、Q011q real coordinate、登録\(C^1\) scalar
+localization、11 scales、24-real-dimensional forward-invariant \(C^1\) graph patchとorigin tangencyに限る。
+Q011s fixed graphとの一致、backward invariance、patchへのonto性、\(C^2\)以上のsmoothness、
+spectral-quotient SSM uniqueness、normal attraction、basin、optimal radius、他grid／force／wall、D3Q27を
+構成・認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
