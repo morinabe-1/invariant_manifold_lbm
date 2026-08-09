@@ -5574,6 +5574,66 @@ operator compositionを修復できない。次はQ011oでfixed split上のselec
 coordinate lift／inverse、base inverse、linear conorm／external norm、cutoff／localizationを先に固定する。
 exact invariant manifold／SSM、smoothness、normal attraction、basinは未認証のままである。
 
+## Q011o: type-correct localized graph-transform setup audit
+
+### 実施内容
+
+Q011k--Q011nのartifact／runner／19 digest／outcome／claim boundaryを直接封印した。固定17²保存量葉に
+normalized x-DFTを適用し、zero block `150`、非零block各`153`、合計`2598`実次元を再構成した。
+Q011l selected blocks `0 / 1 / 16`のimplicit invariant graphを用い、selected／external実次元を
+`24 / 2574`とした。
+
+zero blockのpopulation lift norm `186`を省略せず、
+
+\[
+K_L=\sum_{k=0}^{16}\ell_k\lVert V_k\rVert_\infty(1+r_{G,k}),
+\qquad
+K_P=\max_k\lVert V_k^{-1}\rVert_\infty(1+r_{G,k})
+\]
+
+をexact `Fraction`で評価した。さらに全2598 centerへ有理sqrt enclosureを適用し、Q011l residualとgraph
+radiusを含む同一complex block-sup norm上で \(m_S,q_E,\gamma_0\) を評価した。componentwise radial
+cutoff \(C_\rho\)、localized map \(F_\rho\)、closed complete graph space \(\mathcal G_{\rho,1}\) の型も
+明示したが、nonlinear graph transform自体は定義・認証していない。
+
+### 結果
+
+validityは`7 / 7`を通過した。hypothesisは`4 / 5`で、唯一
+`fixed_leaf_triangular_coordinate_is_bijective_and_real_typed`がfailし、
+`the registered block-sup norm does not support the localized graph-transform setup`として有効な`rejected`とした。
+
+- fixed-leaf／selected／external real dimension: `2598 / 24 / 2574`
+- \(K_L / K_P / K_L\rho\):
+  `2577.1878203041115 / 891.1458398501893 / 2.5771878203041115e-8`
+- localized population／density floor:
+  `0.02777588254147209 / 0.9999997680524642`
+- \(m_S / q_E / (m_S-q_E)\):
+  `0.9837709559259398 / 0.9817098561324995 / 0.002061099793440198`
+- \(\gamma_0 / 1/m_S / \max\lVert B_k\rVert\):
+  `0.9979048987154736 / 1.0164967708960113 / 2.0299911997564775e-8`
+- selected-conorm witness block／center: `1 / 144`
+- external-norm witness block／center: `0 / 0`
+- input／coordinate／linear／localization／result digest:
+  `0bddd90fc21a745b910ff47e133e72045842c77b589a818a21e946f85ba63da0` /
+  `6c00ce5d9df986830a4ad2d98df3970417d47e4fb9f1784364ce32b64d7396b7` /
+  `f9aaea144b0e79c6adf42296b7e8dcd562f2b75525b6abf4ac99c43dcbd1859c` /
+  `5799e9997ac1ec692ddce97465174204ee22debaea942ed7fab637209c912e0d` /
+  `6ec0a97c1b3d653e5edd3ffc7f4b8b9fa746e86e8d706e251753eecb8ab9a864`
+- runner／artifact newline-normalized SHA-256:
+  `60d9c445dace16d114e46263f2b47fe2db993b894337cdd462f204da09543f1f` /
+  `bbbc26939d4ef73aae95ad6517f5f1549f2eaf7b6edcbac5e5171f329064bc07`
+
+### 解釈と次のbottleneck
+
+全8組の非零共役block、coordinate cap、linear domination、inverse／coupling cap、localizationは通過した。
+失敗は自己共役なzero Fourier blockだけである。Q011lのdyadic center seed 6個はexactな標準共役multisetでは
+ないため、登録した成分ごとの \(y_0=\overline{y_0}\) という実型をそのまま使用できない。
+
+これはQ011l invariant subspaceが実型を持たないこと、またはmanifold／SSMが存在しないことを意味しない。
+次はzero blockのconjugation actionとQ011l Riccati fixed pointの一意性を組み合わせ、selected invariant
+subspaceが6次元実部分空間のcomplexificationであるかだけを独立gateで判定する。real coordinate、equivariant
+cutoff、nonlinear graph transformはその後へ残す。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -5733,6 +5793,8 @@ exact invariant manifold／SSM、smoothness、normal attraction、basinは未認
 [`artifacts/q011m_quadratic_jet_majorant.json`](artifacts/q011m_quadratic_jet_majorant.json)
 
 [`artifacts/q011n_correction_readiness.json`](artifacts/q011n_correction_readiness.json)
+
+[`artifacts/q011o_graph_transform_setup.json`](artifacts/q011o_graph_transform_setup.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

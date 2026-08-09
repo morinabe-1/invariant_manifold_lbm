@@ -13893,6 +13893,39 @@ complex block-sup norm、radius`1e-11`のcutoff setupに限る。nonlinear graph
 fixed graph、exact invariant manifold／SSM、smoothness／一意性、normal attraction、basin、componentwise
 quadratic coefficient、raw Q011b map、他grid／force／wall、D3Q27を構成・認証しない。
 
+### Q011o 実行結果
+
+validity `7 / 7`はすべて通過した。hypothesisは`4 / 5`で、結果は有効な`rejected`、分類は
+`the registered block-sup norm does not support the localized graph-transform setup`である。
+
+数値条件はすべて通った。
+
+- fixed-leaf／selected／external real dimension: `2598 / 24 / 2574`
+- \(K_L / K_P / K_L\rho\):
+  `2577.1878203041115 / 891.1458398501893 / 2.5771878203041115e-8`
+- \(m_S / q_E / (m_S-q_E)\):
+  `0.9837709559259398 / 0.9817098561324995 / 0.002061099793440198`
+- \(\gamma_0 / 1/m_S / \max\lVert B_k\rVert\):
+  `0.9979048987154736 / 1.0164967708960113 / 2.0299911997564775e-8`
+
+唯一のfailed hypothesisは`fixed_leaf_triangular_coordinate_is_bijective_and_real_typed`である。非零8組の
+conjugate blockはすべて一致したが、自己共役なzero Fourier blockのselected center 6個は、現在のdyadic
+eigencoordinateではexactな標準共役multisetを作らない。従って登録した成分ごとの標準共役をzero blockへ
+適用できない。
+
+- input／coordinate／linear／localization／result digest:
+  `0bddd90fc21a745b910ff47e133e72045842c77b589a818a21e946f85ba63da0` /
+  `6c00ce5d9df986830a4ad2d98df3970417d47e4fb9f1784364ce32b64d7396b7` /
+  `f9aaea144b0e79c6adf42296b7e8dcd562f2b75525b6abf4ac99c43dcbd1859c` /
+  `5799e9997ac1ec692ddce97465174204ee22debaea942ed7fab637209c912e0d` /
+  `6ec0a97c1b3d653e5edd3ffc7f4b8b9fa746e86e8d706e251753eecb8ab9a864`
+- runner／artifact newline-normalized SHA-256:
+  `60d9c445dace16d114e46263f2b47fe2db993b894337cdd462f204da09543f1f` /
+  `bbbc26939d4ef73aae95ad6517f5f1549f2eaf7b6edcbac5e5171f329064bc07`
+
+これはlinear dominationの失敗でも、invariant manifold／SSMの不存在でもない。停止規則どおり、次は
+zero blockの実構造だけを修復し、通過するまでnonlinear graph transformへ進まない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

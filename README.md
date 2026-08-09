@@ -2411,6 +2411,41 @@ C_I=186(3.4\times10^6)+2(2.4\times10^4)+2(2.3\times10^6)=637048000
 次はscalar boundの微調整より先に、Q011oで型の合うselected／external graph-transform spaceと
 coordinate lift／inverse、linear conorm／external norm、cutoff／localizationを固定する。
 
+### Q011o type-correct localized graph-transform setup
+
+Q011k--Q011nを直接封印し、固定17²保存量葉の2598実次元を、selected `24`／external `2574`の
+Fourier／eigencoordinate／implicit-graph座標へ持ち上げた。zero blockのpopulation lift `186`を含む
+coordinate bound、全2598 centerの有理sqrt enclosure、同じcomplex block-sup norm上のlinear
+conorm／external norm、radius `1e-11`のradial cutoffとcomplete graph spaceをexact arithmeticで監査した。
+
+- classification:
+  `the registered block-sup norm does not support the localized graph-transform setup`
+- validity／hypothesis gates: `7 / 7` passed、`4 / 5` passed
+- outcome: valid `rejected`
+- failed hypothesis:
+  `fixed_leaf_triangular_coordinate_is_bijective_and_real_typed`
+- \(K_L\)／\(K_P\)／\(K_L\rho\):
+  `2577.1878203041115 / 891.1458398501893 / 2.5771878203041115e-8`
+- \(m_S\)／\(q_E\)／\(m_S-q_E\):
+  `0.9837709559259398 / 0.9817098561324995 / 0.002061099793440198`
+- \(\gamma_0\)／selected inverse／selected-external coupling:
+  `0.9979048987154736 / 1.0164967708960113 / 2.0299911997564775e-8`
+- input／coordinate／linear／localization／result digest:
+  `0bddd90fc21a745b910ff47e133e72045842c77b589a818a21e946f85ba63da0` /
+  `6c00ce5d9df986830a4ad2d98df3970417d47e4fb9f1784364ce32b64d7396b7` /
+  `f9aaea144b0e79c6adf42296b7e8dcd562f2b75525b6abf4ac99c43dcbd1859c` /
+  `5799e9997ac1ec692ddce97465174204ee22debaea942ed7fab637209c912e0d` /
+  `6ec0a97c1b3d653e5edd3ffc7f4b8b9fa746e86e8d706e251753eecb8ab9a864`
+- runner／artifact newline-normalized SHA-256:
+  `60d9c445dace16d114e46263f2b47fe2db993b894337cdd462f204da09543f1f` /
+  `bbbc26939d4ef73aae95ad6517f5f1549f2eaf7b6edcbac5e5171f329064bc07`
+
+数値cap、linear domination、localizationはすべて通った。棄却理由は、非零共役blockではなく、自己共役な
+zero Fourier blockの6 selected centerが現在のdyadic eigencoordinateでexactな標準共役multisetを作らない
+ことだけである。従ってこれはlinear gapの不足でもmanifold／SSMの不存在でもない。次はzero blockの
+invariant subspaceが6次元実部分空間のcomplexificationであることを独立に認証し、その後にreal-typed
+coordinateとcutoffを再発行する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
