@@ -15884,6 +15884,52 @@ Q011k eigendisc、x-Fourier output sector、registered product-disc formulaに�
 nonresonance、Q011t graphとの一致、\(C^2\)以上のgraph smoothness、SSM existence／uniqueness、explicit radius、
 normal attraction、basin、他grid／force／wall、D3Q27を構成・認証しない。
 
+### Q011v 実行結果
+
+Q011j／Q011k／Q011m／Q011uの4 artifact、runner、22 digest、outcome、claim boundaryとQ011l／Q011o
+sourceを直接照合し、validity `7 / 7`を通過した。Q011u degree-3 recordの20 aggregate、19 modulus
+separation、sole `[0,1,1,1]` overlap、external group 183を再現した。selected source group size
+`4 / 4 / 8`から128 indexed tripleを構成し、sector histogram
+
+`0:32 / 1:28 / 2:16 / 3:4 / 14:4 / 15:16 / 16:28`
+
+を得た。external group 183のtarget histogramは`0:4 / 2:2 / 15:2`であり、x-Fourier sum lawで残る
+sector-compatible comparisonは`192`だった。
+
+全128 product discと192 target comparisonをexact rational arithmeticで再構成した。comparison partitionは
+
+- individual modulus separation: `64`
+- complex phase separation: `128`
+- unresolved product-disc overlap: `0`
+
+だった。minimum complex separation lowerは`0.20153632779642386`で登録cap`0.1`を通過した。minimum witnessは
+selected triple
+`block=16;center=150 / block=0;center=148 / block=1;center=148`
+とtarget `block=0;center=139`である。
+
+hypothesis `5 / 5`を通過し、
+`degree-3 external nonresonance is certified by modulus separation plus Fourier-sector phase-sensitive elimination of the sole overlap aggregate`
+として`accepted`とした。従ってevidence inventoryはdegree 2／3をcertified、degree 91以降をtail-certified、
+missing rangeをdegrees 4--90とする。
+
+- inventory／sector-record／product-comparison digest:
+  `8a0e025230faade977fcf04be45441f74cf32368089dabb3ddacce4e0349fc5b` /
+  `3e372ba3750c06c2a4d48003e6c45bc96fd404cf76511412de9147de92bb2467` /
+  `dbb690b311e5ff065295c6e5ae42e46da05259c94e9e1a90b8d8c96a952c2a89`
+- input／inventory／sector／product／result digest:
+  `10153049ce3cc7f50aa5a57ca6f4e8f92556bbefb3980e1d4c7dd61164aab470` /
+  `591e6261238ac2253b0e0f11aaa13ce8a0c78948780633ea890a824ea9c5ccba` /
+  `8988ade3f1fc974423040a2fe168904eb6610897f281e681387da7e3e2d3e919` /
+  `a93737bcf662b154fcbea83905d733628e1ae397f4f70265d811e7ce657665db` /
+  `1a2a83c6ae0d6f512a48f5f6d20e869abd0b69126504adbf5ba50054e1b749fc`
+- runner／artifact newline-normalized SHA-256:
+  `f9e7b0ffb353bc9f462616b42943860ecc4431b15176be7ca405c894d4d4a8cd` /
+  `639afa89ccecadb428c4cb1c16a60ad7f788cc4786cdbb0ac2a5e681744bc663`
+
+これはdegree 3だけのcertificateである。degrees 4--90、all-order nonresonance、Q011t graphとの一致、
+higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、
+次はQ011wでdegree 4に残る2 modulus-overlap aggregateへ同じsector／phase auditを拡張する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

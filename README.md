@@ -2769,6 +2769,48 @@ resonanceを意味せず、analytic invariant manifoldの不存在やQ011t graph
 次はQ011vでFourier output sectorとcomplex phaseを復元し、最初のoverlap witnessからphase-sensitive
 product disk監査を行う。
 
+### Q011v degree-three phase-sensitive output-sector certificate
+
+Q011uでdegree 3に残った唯一のmodulus aggregate `[0,1,1,1]`を、Q011kのindexed eigendiscへ戻した。
+selected group size `4 / 4 / 8`から128 tripleを列挙し、x-Fourier output blockをinput block sum modulo 17で
+固定した。external group 183の8 targetとsectorを合わせると、exact比較は192件になった。
+
+- classification:
+  `degree-3 external nonresonance is certified by modulus separation plus Fourier-sector phase-sensitive elimination of the sole overlap aggregate`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- outcome: `accepted`
+- degree-3 modulus aggregate: `20 = 19 separated + 1 overlap`
+- indexed triple／sector-compatible comparison: `128 / 192`
+- individual-modulus／complex-phase／unresolved comparison: `64 / 128 / 0`
+- minimum complex separation lower／registered cap:
+  `0.20153632779642386 / 0.1`
+- minimum witness:
+  `block=16;center=150 × block=0;center=148 × block=1;center=148` versus
+  `block=0;center=139`
+
+product center (C=c_1c_2c_3)と
+
+\[
+R=\prod_{i=1}^3(u_i+r_i)-\prod_{i=1}^3u_i
+\]
+
+をexactに構成し、全comparisonで(|C-c_e|^- -R-r_e>0)を確認した。128件はindividual modulusが
+overlapしたままcomplex phaseで新たに分離しており、phase informationが実際にcertificateを強めている。
+これによりdegree 3全体のexternal nonresonanceを認証した。
+
+- input／inventory／sector／product／result digest:
+  `10153049ce3cc7f50aa5a57ca6f4e8f92556bbefb3980e1d4c7dd61164aab470` /
+  `591e6261238ac2253b0e0f11aaa13ce8a0c78948780633ea890a824ea9c5ccba` /
+  `8988ade3f1fc974423040a2fe168904eb6610897f281e681387da7e3e2d3e919` /
+  `a93737bcf662b154fcbea83905d733628e1ae397f4f70265d811e7ce657665db` /
+  `1a2a83c6ae0d6f512a48f5f6d20e869abd0b69126504adbf5ba50054e1b749fc`
+- runner／artifact newline-normalized SHA-256:
+  `f9e7b0ffb353bc9f462616b42943860ecc4431b15176be7ca405c894d4d4a8cd` /
+  `639afa89ccecadb428c4cb1c16a60ad7f788cc4786cdbb0ac2a5e681744bc663`
+
+認証済みdegreeは`2 / 3 / 91+`となり、missing rangeはdegrees 4--90へ縮んだ。次はQ011wでdegree 4の
+2 modulus-overlap aggregateを同じ方法で判定する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -3434,6 +3476,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011s_original_map_invariant_core.json`](research/artifacts/q011s_original_map_invariant_core.json)
 - [`research/artifacts/q011t_c1_tangent_graph.json`](research/artifacts/q011t_c1_tangent_graph.json)
 - [`research/artifacts/q011u_c91_modulus_nonresonance.json`](research/artifacts/q011u_c91_modulus_nonresonance.json)
+- [`research/artifacts/q011v_degree3_phase_disks.json`](research/artifacts/q011v_degree3_phase_disks.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -3562,6 +3605,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q011t scalar C1 localization、derivative-fiber contraction、selected tangency、spectral quotient `[89,90]`
 - Q011u C91 beta-polynomial localization、2598 modulus compression、degrees 3--90 exact enumeration、
   modulus-only nonresonance routeのvalid rejection
+- Q011v degree-3 Fourier-sector product discs、128 phase-resolved comparisons、degree-3 nonresonance
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -3572,7 +3616,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapの\(C^2\)以上のgraph smoothness、phase-sensitive degrees 3--90 external
+- repaired exact mapの\(C^2\)以上のgraph smoothness、phase-sensitive degrees 4--90 external
   nonresonance、spectral-quotient SSM uniqueness（Q011uはmodulus-only routeを棄却）
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
@@ -3685,4 +3729,7 @@ external nonresonance、SSM uniqueness、normal attraction、basinは未認証�
 \(C^{91}\) scalar localizationとdegree-91 tailを認証した一方、degrees 3--90の3,049,486 modulus aggregate中
 423,729件がexternal modulus componentとoverlapしたため、modulus-only sufficient routeをvalid
 `rejected`とした。actual resonanceやanalytic manifoldの不存在は示しておらず、次はFourier-sector／phase-aware
-certificateが必要である。
+certificateが必要である。Q011vではdegree 3のsole overlapを128 indexed tripleと192 sector-compatible
+comparisonへ展開し、64件をindividual modulus、128件をcomplex phaseで分離した。unresolvedは0、minimum
+complex marginは`0.20153632779642386`であり、degree-3 external nonresonanceを認証した。missing rangeは
+degrees 4--90である。

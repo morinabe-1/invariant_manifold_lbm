@@ -6175,6 +6175,76 @@ manifoldの不存在、Q011t graphの非滑らかさを示さない。complex ph
 product disk、homological inverse normも未評価である。停止規則どおり、次はQ011vで最初のwitnessから
 phase-sensitive output-sector product auditを事前登録する。
 
+### Q011v 実行結果
+
+Q011j／Q011k／Q011m／Q011uの4 artifact、runner、22 digest、outcome、claim boundary、Q011l／Q011o
+sourceを直接照合し、validity `7 / 7`を通過した。Q011u degree-3 recordは20 modulus aggregateのうち
+19件を分離し、sole overlapをselected-type counts `[0,1,1,1]`、external group `183`として記録していた。
+Q011k centerからselected source membership `4 / 4 / 8`とexternal target 8件を再構成し、sole aggregateの
+全128 indexed tripleを列挙した。
+
+x-independent fixed point、local collision derivative、x-translation-equivariant streaming／filter／repairから
+
+\[
+b_{\mathrm{out}}=(b_1+b_2+b_3)\bmod17
+\]
+
+を用いた。triple sector histogramは
+
+`0:32 / 1:28 / 2:16 / 3:4 / 14:4 / 15:16 / 16:28`
+
+で、external group 183は`0:4 / 2:2 / 15:2`だった。従って64 tripleがtarget sectorを持ち、
+sector-compatible comparisonは`192`、残る64 tripleはgroup 183とsector-incompatibleだった。
+
+各tripleについてexact product center (C=c_1c_2c_3)と、center modulus upper (u_i)を使う
+
+\[
+R=\prod_{i=1}^{3}(u_i+r_i)-\prod_{i=1}^{3}u_i
+\]
+
+を構成した。全192 targetについてindividual product modulus intervalと
+
+\[
+\Delta^-=|C-c_e|^- -R-r_e
+\]
+
+をexactに評価した。partitionは
+
+- individual modulus separation: `64`
+- modulus overlap but complex phase separation: `128`
+- unresolved product-disc overlap: `0`
+
+となった。minimum complex separation lowerは`0.20153632779642386`で、登録robust cap`0.1`を通過した。
+minimum witnessは
+
+`block=16;center=150 / block=0;center=148 / block=1;center=148`
+
+のproductとtarget `block=0;center=139`である。
+
+hypothesis `5 / 5`を通過し、
+`degree-3 external nonresonance is certified by modulus separation plus Fourier-sector phase-sensitive elimination of the sole overlap aggregate`
+として`accepted`とした。Q011uの19 modulus-separated aggregateとsole aggregateのfull phase auditを合わせるため、
+degree 3全体がcompleteである。evidence inventoryはdegree 2／3をcertified、degree 91以降をtail-certified、
+missing rangeをdegrees 4--90とした。
+
+- inventory／sector-record／product-comparison digest:
+  `8a0e025230faade977fcf04be45441f74cf32368089dabb3ddacce4e0349fc5b` /
+  `3e372ba3750c06c2a4d48003e6c45bc96fd404cf76511412de9147de92bb2467` /
+  `dbb690b311e5ff065295c6e5ae42e46da05259c94e9e1a90b8d8c96a952c2a89`
+- input／inventory／sector／product／result digest:
+  `10153049ce3cc7f50aa5a57ca6f4e8f92556bbefb3980e1d4c7dd61164aab470` /
+  `591e6261238ac2253b0e0f11aaa13ce8a0c78948780633ea890a824ea9c5ccba` /
+  `8988ade3f1fc974423040a2fe168904eb6610897f281e681387da7e3e2d3e919` /
+  `a93737bcf662b154fcbea83905d733628e1ae397f4f70265d811e7ce657665db` /
+  `1a2a83c6ae0d6f512a48f5f6d20e869abd0b69126504adbf5ba50054e1b749fc`
+- runner／artifact newline-normalized SHA-256:
+  `f9e7b0ffb353bc9f462616b42943860ecc4431b15176be7ca405c894d4d4a8cd` /
+  `639afa89ccecadb428c4cb1c16a60ad7f788cc4786cdbb0ac2a5e681744bc663`
+
+これはdegree 3だけのcertificateであり、degrees 4--90、all-order nonresonance、Q011t graphとの一致、
+\(C^2\)以上のgraph smoothness、SSM existence／uniqueness、normal attraction、basinを示さない。停止規則
+どおり、次はQ011wでdegree 4の2 modulus-overlap aggregateへ同じsector／phase auditを拡張する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6348,6 +6418,8 @@ phase-sensitive output-sector product auditを事前登録する。
 [`artifacts/q011t_c1_tangent_graph.json`](artifacts/q011t_c1_tangent_graph.json)
 
 [`artifacts/q011u_c91_modulus_nonresonance.json`](artifacts/q011u_c91_modulus_nonresonance.json)
+
+[`artifacts/q011v_degree3_phase_disks.json`](artifacts/q011v_degree3_phase_disks.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
