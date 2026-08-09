@@ -169,3 +169,42 @@ def test_q011e1_records_reproducible_digests_and_provenance(
     }
     assert source_metadata()["package_source_sha256"] == (q011e1.SEALED_PACKAGE_SOURCE_SHA256)
     json.dumps(q011e1_cycle, allow_nan=False)
+
+
+def test_q011e1_artifact_reproduces_the_accepted_window(
+    q011e1_cycle: dict,
+) -> None:
+    runner_path = Path(q011e1.__file__).resolve()
+    artifact_path = runner_path.parent / "artifacts" / ("q011e1_enlarged_residual_window.json")
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "989801d1e4e1396ebba279e11c396f7f6d4e9616d2aa170f5687f9ba08a95840"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011e1_enlarged_residual_window.py",
+        "sha256": ("bb8a052f387d2748fee823af10f2ab4ea4a9a08ebe62e8b4ff87d68d55c2929f"),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q011e1_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "8e979deeed0e5f4151addb5f3b06c1a9815a28f4e0c5762726d7c29a03d035c0"
+    )
+    assert artifact["cycle"]["chart_reconstruction_digest_sha256"] == (
+        "2e739657032352d7d0496568a216b761000a68beb6d00749e1e427e6447598fb"
+    )
+    assert artifact["cycle"]["residual_window_digest_sha256"] == (
+        "20267150710538f797f21cc2846ee6be14060ad9ea6bef98ef29e4731121410b"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "0370a24ce7a74da71ee978b3892ea23412c3d18adb110e2b2b53aaf02ccdf039"
+    )
+    assert (
+        artifact["cycle"]["enlarged_residual_window_audit"]["direction_sha256"]
+        == "64b017fb5a3c55378ccee4d457b4d2a8c75a92cd5b421897f9b7de1ad6a77b1d"
+    )
