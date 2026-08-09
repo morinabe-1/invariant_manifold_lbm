@@ -18942,6 +18942,24 @@ targetのuniform exact product intervalはtarget interval全体を含み、inter
 `1e-7`、binary64 hexは`0x1.ad7f29abcaf48p-24`である。center minimumとuniform intersectionをまとめた
 witness digestは`c570b77d2ce20ea1057f36e59e5e1152982af74aaef2f984f85495003e61f57a`とする。
 
+#### 事前登録のexact-width転記訂正
+
+実装前のexact consistency checkにより、直前の`exactly 1e-7`は転記誤りと判明した。targetの
+center-modulus rational enclosureにもstrictly positiveな幅があるため、正しいintersection widthは
+
+\[
+10^{-7}+\delta,\qquad
+\delta=\frac{1}{
+\mathtt{0x1249ad2594c37ceb0b2784c4ce0bf38ace408e211a7caab24308a82e8f1
+00000000000000000000000}}>0
+\]
+
+である。\(\delta\)のbinary64値は約`1e-100`、hexは`0x1.bff2ee48e0530p-333`、exact Fraction
+record digestは`013784fb645298711cabed645e63cc80fa9d5ee661185a111165158ea6d29b42`である。従ってwidthの
+binary64 hex `0x1.ad7f29abcaf48p-24`は変わらない。また、上記witness digestは当初からこの正しいexact
+Fraction recordを封印しており変更しない。hypothesis gateはwidthがstrictly positiveであること、
+registered witness digest、\(\delta\) record digestを検証し、誤った`width == 1e-7`を要求しない。
+
 ### validity gate
 
 1. Q011kからQ011aiまでの14 artifact、runner、73 direct digest、outcome、claim boundaryとsourceを再現する。
