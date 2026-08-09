@@ -186,8 +186,9 @@ Q007ajではcurrent binary64演算も一段だけ囲い、最悪stage lower
 Q007akではこのfailureをexactに4因子へ分解し、ideal-binary最小十分precisionを
 base／normal／joint=`79 / 59 / 79` bitsと認証した。Q007alでは既存MPFR-85 backendの
 全283,296 operation traceをnew tube上へ再適用し、一段stage包囲とbase／normal誤差予算を
-認証した。ただしQ007xと同じfixed-leaf defectも再現したため、repair／shadowingは引き続き
-旧tubeに封印され、new-tube re-entryはall-iterateへ帰納しない。
+認証した。Q007amではQ007yのdistributed dyadic repairを同じnew tubeへ適用し、fixed-leaf
+closureと修復込みbase／normal一段予算の共存を認証した。ただしQ007ag exact invarianceとの
+自己写像合成、all-iterate induction、initialization、same-initial shadowingはまだ主張しない。
 Q007pではQ007o当時の半径`1e-18`を固定し、全289 Fourier blockをexternal coordinate normで
 厳密に覆った。
 登録tube \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)に対し、base forward invariance、
@@ -1336,6 +1337,40 @@ ideal exact-map outputに対する誤差予算とfinite probe stage checkであ�
 属することを示さない。actual tube re-entry、all-iterate invariance、repair、same-initial shadowingは
 未認証である。次はQ007amでnew-tube repairを独立に判定する。
 
+### Q007am propagated-tube distributed fixed-leaf repair
+
+Q007al／Q007y artifactとrunnerを封印し、Q007yと同一の\(h=2^{-90}\) diagonal dyadic repairを
+Q007ag component boxへ変更せず再適用した。4 exact probeではinput encoding後とpost-filter後の
+\((M,P_x,P_y)=(289,0,0)\)をexactに回復し、tube-wideではbinade／integer-lattice／parity条件と
+coarse Wiener triangle boundをexact rationalで監査した。
+
+- classification:
+  `distributed MPFR-85 repair restores the Q007ag fixed leaf and fits both registered one-step budgets`
+- validity／hypothesis gates: `8 / 8`、`7 / 7` passed
+- input repair \(\ell^1\) upper／maximum site correction:
+  `1.2452407121655381e-23 / 4.362085261510107e-26`
+- raw／repair／total post-filter Wiener upper:
+  `2.7067398403858536e-22 / 4.959477728036884e-22 / 7.666217568422737e-22`
+- repaired／raw Wiener ratio: `2.8322698229209555`
+- repair-aware base error／strict margin／utilization:
+  `1.1581233824834727e-21 / 4.978814700017615e-20 / 0.02326102601246388`
+- repair-aware normal error／strict margin／utilization:
+  `2.2935127565743277e-20 / 9.144951058528087e-13 / 2.5079552005207522e-08`
+- input／probe／finite-result／result digest:
+  `f1a0dfd0b90cf354e9847cb076058fd241ab813a90bdee0bfdbafa9dfee17de5` /
+  `a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329` /
+  `905b65f13ee01711f3b083a0bd93e44b32d0fc5201007fad77e99de03063ab6d` /
+  `2217172b48bf86b987a316c9b8c14db6aaeceb3e50f304fa7fefb021c2fd5bd2`
+- runner／artifact newline-normalized SHA-256:
+  `a0bdebc150c4c3ad055e1840b98196dee95bf967c417d17097f7a35579f2aa16` /
+  `3b1b6f3c839cec572d0279f41c158dfafa09088e5f8ee1c3eab84f5bd279b781`
+
+従ってnew tubeではfixed-leaf repair feasibilityと両一段誤差予算が同時に成立する。finite probeは
+実装回帰でありtube sampling proofではなく、coarse boundはcenter cancellation、spatial phase、
+Q007z selected-wave boundを使わない。この結果だけではrepaired MPFR-85 mapのtube self-mapや
+all-iterate invarianceにならないため、次はQ007anでexact Q007ag invariance、stage positivity、
+repair-aware budgetを明示的に合成する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -1877,6 +1912,7 @@ python -m research.q007ai_propagated_tube_stagewise_positivity --output research
 python -m research.q007aj_propagated_tube_binary64_enclosure --output research/artifacts/q007aj_propagated_tube_binary64_enclosure.json
 python -m research.q007ak_reentry_factor_audit --output research/artifacts/q007ak_reentry_factor_audit.json
 python -m research.q007al_propagated_tube_mpfr85_bridge --output research/artifacts/q007al_propagated_tube_mpfr85_bridge.json
+python -m research.q007am_propagated_tube_distributed_repair --output research/artifacts/q007am_propagated_tube_distributed_repair.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -1944,6 +1980,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007aj_propagated_tube_binary64_enclosure.json`](research/artifacts/q007aj_propagated_tube_binary64_enclosure.json)
 - [`research/artifacts/q007ak_reentry_factor_audit.json`](research/artifacts/q007ak_reentry_factor_audit.json)
 - [`research/artifacts/q007al_propagated_tube_mpfr85_bridge.json`](research/artifacts/q007al_propagated_tube_mpfr85_bridge.json)
+- [`research/artifacts/q007am_propagated_tube_distributed_repair.json`](research/artifacts/q007am_propagated_tube_distributed_repair.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2028,6 +2065,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q007ak Q007aj re-entry failureの4因子分解、base／normal／joint ideal threshold `79 / 59 / 79`認証
 - Q007al Q007ag tubeのconcrete MPFR-85全演算trace、一段stage／complement-error budget認証、
   fixed-leaf closure未認証
+- Q007am Q007ag tubeのdistributed MPFR-85 fixed-leaf repair、tube-wide well-definedness、
+  repair-aware base／normal一段budget認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2037,7 +2076,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
-  Q007ag新tubeのfixed-leaf repair／shadowing再監査
+  Q007ag新tubeのrepaired-map自己写像／all-iterate induction／initialization／shadowing合成
 - TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -2076,5 +2115,6 @@ full-map時刻のstrict positive population coneへ含め、Q007aiではexact内
 current binary64の一段stage positivityまで移したが、base／normal roundoff re-entryがともにfailするため、
 all-iterate finite-precision結論はまだ移していない。Q007akではこの失敗を4因子へ分解し、同じideal
 operation family内のjoint sufficient thresholdを79 bitsと決めた。Q007alでimplemented MPFR-85の一段
-stage包囲とcomplement-coordinate誤差予算まではnew tubeへ移したが、fixed-leaf defectが残るため
-actual re-entry、repair、all-iterate induction、same-initial shadowingはまだ移していない。
+stage包囲とcomplement-coordinate誤差予算をnew tubeへ移し、Q007amでdistributed repairによる
+fixed-leaf closureと修復込み一段予算も認証した。両結果をexact Q007ag invarianceと合成した
+repaired-map自己写像、all-iterate induction、initialization、same-initial shadowingはまだ移していない。

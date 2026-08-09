@@ -4100,6 +4100,61 @@ all-iterate invarianceをここから帰納しない。これは一段算術brid
 分離した結果である。次はQ007amでnew-tube repairとその追加誤差を別途判定し、
 all-iterate induction／same-initial shadowingはさらに後続gateへ残す。
 
+## 2026-08-09: Q007am propagated tubeのdistributed fixed-leaf repair
+
+### 問いと事前登録
+
+Q007alのMPFR-85一段包囲は通過したが、componentwise rounding後stateはfixed leafから外れた。
+そこでQ007yと同じ\(h=2^{-90}\) diagonal dyadic repairを変更せずQ007ag component boxへ移し、
+fixed-leaf closure、tube-wide well-definedness、修復込みbase／normal一段予算を独立に判定した。
+Q007ag exact invarianceとの自己写像合成、all-iterate induction、initialization、shadowingはこのgateに
+含めないと事前登録した。
+
+### 実装
+
+- Q007al accepted cycleとQ007y mixed cycleをartifact／runner SHA、全gate、digestごとfresh replayした。
+- Q007alのfresh \(p=85\) component boundsへQ007yの`_tube_stage_repair_bound`をそのまま適用した。
+- input encodingとpost-filterについてHadamard integer solution、balanced distribution、lattice／parity／
+  binade、最大site correctionをexact rationalで再監査した。
+- 4 exact probeでinput repair、raw MPFR-85 map、output repairを実行し、保存量、operation exactness、
+  positivity、registered component enclosureをQ007y campaignとbitwise／exactに回帰した。
+- coarse Wiener triangle boundだけを使い、Q007zのphase-aware selected-wave cancellationは導入しなかった。
+
+### 結果
+
+validity `8/8`、hypothesis `7/7`で、
+`distributed MPFR-85 repair restores the Q007ag fixed leaf and fits both registered one-step budgets`
+として`accepted`とした。
+
+- input repair \(\ell^1\) upper／maximum site correction:
+  `1.2452407121655381e-23 / 4.362085261510107e-26`
+- raw／repair／total post-filter Wiener upper:
+  `2.7067398403858536e-22 / 4.959477728036884e-22 / 7.666217568422737e-22`
+- repaired／raw ratio: `2.8322698229209555`
+- repair-aware base error／margin／utilization:
+  `1.1581233824834727e-21 / 4.978814700017615e-20 / 0.02326102601246388`
+- repair-aware normal error／margin／utilization:
+  `2.2935127565743277e-20 / 9.144951058528087e-13 / 2.5079552005207522e-08`
+- finite campaign: 4 probeともinput／output fixed-leaf restoration、exact repair operation、
+  backend domain、positivity、component enclosureが通過した。
+- input／probe／finite-result／result digest:
+  `f1a0dfd0b90cf354e9847cb076058fd241ab813a90bdee0bfdbafa9dfee17de5` /
+  `a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329` /
+  `905b65f13ee01711f3b083a0bd93e44b32d0fc5201007fad77e99de03063ab6d` /
+  `2217172b48bf86b987a316c9b8c14db6aaeceb3e50f304fa7fefb021c2fd5bd2`
+- runner／artifact newline-normalized SHA-256:
+  `a0bdebc150c4c3ad055e1840b98196dee95bf967c417d17097f7a35579f2aa16` /
+  `3b1b6f3c839cec572d0279f41c158dfafa09088e5f8ee1c3eab84f5bd279b781`
+
+### 解釈と次のbottleneck
+
+old Q007y tubeでは修復込みbase budgetが2.326倍超過したが、Q007agの縮小boxでは同じcoarse
+repairを含めてもbase margin使用率は0.0233、normalは約\(2.51\times10^{-8}\)である。従って
+fixed-leaf repair feasibilityと両一段予算は共存する。しかしQ007amは、exact-map invariance、
+MPFR error budget、repairを一つのrepaired-map tube self-mapへまだ合成していない。次はQ007anで
+already-repaired MPFR-85 statesに対するall-iterate inductionを事前登録し、initializationと
+same-initial shadowingは別gateに残す。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4215,6 +4270,8 @@ all-iterate induction／same-initial shadowingはさらに後続gateへ残す。
 [`artifacts/q007ak_reentry_factor_audit.json`](artifacts/q007ak_reentry_factor_audit.json)
 
 [`artifacts/q007al_propagated_tube_mpfr85_bridge.json`](artifacts/q007al_propagated_tube_mpfr85_bridge.json)
+
+[`artifacts/q007am_propagated_tube_distributed_repair.json`](artifacts/q007am_propagated_tube_distributed_repair.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

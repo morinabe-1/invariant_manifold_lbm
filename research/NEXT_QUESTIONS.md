@@ -9067,6 +9067,37 @@ Q007al acceptance、Q007ag／Q007ai exact結論、Q007c1／Q007d／Q007af／Q010
 acceptedなら次はQ007anでexact tube invariance、stage positivity、repair-aware budgetを明示的に合成し、
 already-repaired MPFR-85 stateのall-iterate inductionを別途事前登録する。
 
+### Q007am 封印結果
+
+validity 8件、hypothesis 7件が全て通過し、
+`distributed MPFR-85 repair restores the Q007ag fixed leaf and fits both registered one-step budgets`
+として`accepted`とした。
+
+- input repair \(\ell^1\) upper／maximum site correction:
+  `1.2452407121655381e-23 / 4.362085261510107e-26`
+- raw／repair／total post-filter Wiener upper:
+  `2.7067398403858536e-22 / 4.959477728036884e-22 / 7.666217568422737e-22`
+- repaired／raw ratio: `2.8322698229209555`
+- repair-aware base error／margin／utilization:
+  `1.1581233824834727e-21 / 4.978814700017615e-20 / 0.02326102601246388`
+- repair-aware normal error／margin／utilization:
+  `2.2935127565743277e-20 / 9.144951058528087e-13 / 2.5079552005207522e-08`
+- finite campaign: 4 probeのinput／output repair、exact conservation、operation domain、
+  positivity、component enclosureが全て通過し、Q007yのrepair operation／distribution digestを再現した。
+- input／probe／finite-result／result digest:
+  `f1a0dfd0b90cf354e9847cb076058fd241ab813a90bdee0bfdbafa9dfee17de5` /
+  `a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329` /
+  `905b65f13ee01711f3b083a0bd93e44b32d0fc5201007fad77e99de03063ab6d` /
+  `2217172b48bf86b987a316c9b8c14db6aaeceb3e50f304fa7fefb021c2fd5bd2`
+- runner／artifact newline-normalized SHA-256:
+  `a0bdebc150c4c3ad055e1840b98196dee95bf967c417d17097f7a35579f2aa16` /
+  `3b1b6f3c839cec572d0279f41c158dfafa09088e5f8ee1c3eab84f5bd279b781`
+
+従ってQ007yでold tubeのbase budgetを2.326倍超過した同じcoarse repairは、Q007agの縮小component
+boxではbase marginの約2.326%、normal marginの約\(2.51\times10^{-8}\)だけを使い、fixed leafを
+exactに回復する。ただしQ007ag exact forward invarianceとの自己写像合成、all-iterate induction、
+initialization、same-initial shadowingは未認証である。次はQ007anを事前登録する。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
