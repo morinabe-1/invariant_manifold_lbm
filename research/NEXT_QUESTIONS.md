@@ -11880,6 +11880,171 @@ joint winner `0`で
 変えない。従ってこのsealed forced coefficientではnatural Fourier-sparseを保持し、TT-crossへ進まない。
 TT一般、別tensorization、GPU、full rollout、他grid／forceの不可能性は主張しない。
 
+## Q011h: natural Fourier-sparse 64-step chart equivalence — 事前登録
+
+### 問いと判定対象
+
+Q011gで必須baselineとして残ったnatural Fourier-sparse (W_2/R_2)係数作用は、
+Q011eのordered-dense real quadratic chartおよびreduced mapと、独立初期値から64 stepに
+わたって同じ計算を行うか。
+
+これはQ011f／Q011f1のshadowing成立を再採点するgateではない。各stepでパラメータ化法の
+reduced coordinateとlifted stateをdense実装とsparse実装で別々進め、表現差の蓄積だけを
+測る。全LBM orbitの64-step shadowing、残差次数、normal attraction、SSMの存在・一意性は
+判定対象にしない。
+
+### 封印入力
+
+- Q011g artifact／runner newline-normalized SHA-256:
+  `842ddbae2a28ccd2f11a112f23205cb049668b82691fdd180edc5ac20fecaa25` /
+  `84ed56dabd0b0f870f1c6b27c9907c9566439ff03affe5aacc61ba611f4678fe`
+- Q011g input／coefficient／fidelity／cost／result digest:
+  `0632be40fccc212f23a271fa00ed80696f9a146a1b107e513b3a47edb9870a20` /
+  `fc9edec10ee22abfaa2b763be9f69c9d72bfc59543aa34faea6ab206c35ab264` /
+  `30dabea285da9070e2ebc0b351afde4695deb275d5f96ee66de1b1ca0468fcad` /
+  `222a42321f4ae814478cc65102afcbc8926754d8cb7c48ed8ca2952e350767a7` /
+  `e0874eabe2c5b924d0b5d7b56533cd695406166d4370b493a0dabdc0b22dbb2a`
+- package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+- natural pair／sector／(W_2) fiber SHA-256:
+  `a8917518620a67b9a2e3cbc2bddde81d0e4cb72033265e6a0c863cf0bdc02327` /
+  `c47ee20550188307589755188d2d856e763e466430acadeb0e3342bd93db3114` /
+  `3b1e553bee7a9231087639fdd8d72524eae93347175a393bb3d48d207f144d66`
+- natural (R_2) sector `0 / 1 / 16` fiber SHA-256:
+  `6689974b4f081a51a347930e5a74128b532a0727b27bd7f6de7a4b9348a89c40` /
+  `7b49bd25f1eff1c2347e3493797113a2d3023417d9c4e970528562b5c4f275b6` /
+  `0c66ebad5cc3a86048a8c6caeb38da081700cce37cfeea9d17380d395bec0678`
+- projected ordered-dense (W_2/R_2) SHA-256:
+  `a0b14a224a6f4d5921c4e21894821018d1df6badca8dd6b5d21d571756515ddc` /
+  `b450cba9d58d0853bed95acaa9b4f2a69659e5c24b943708c0700d11c8962ee9`
+
+Q011gのvalidity `6 / 6`、hypothesis `1 / 4`、`rejected` outcome、storage winner `0`、
+joint winner `0`、TT-cross非許可をexactに再現する。Q011gを通じてQ011f1の`accepted`と
+Q011fの`rejected`も封印する。係数はQ011gと同じ手順で一度だけfresh再構築し、
+300 pair、sector count `102 / 54 / 54 / 45 / 45`、`94,968`格納real scalar、
+`760,644` raw bytesと上記係数hashを照合する。
+
+### independent 64-step campaign
+
+- direction seed: `20260906`
+- normalized real reduced directions: `24`
+- direction SHA-256:
+  `25fec4f35db569404d83f20f45bb510c226679999e1fa8bc21aa4e96d22926c8`
+- amplitudes: `4.0e-4 / 9.6e-4 / 2.4e-3`
+- amplitude SHA-256:
+  `ee39c1d89f58484222107e494e8e2b87525544708f7c0067e18268ed9fb5b8a5`
+- maximum reduced step: `64`
+- checkpoints: `0 / 1 / 2 / 4 / 8 / 16 / 32 / 64`
+- trajectory count: `24 * 3 = 72`
+- reduced update count per implementation: `72 * 64 = 4,608`
+- common-input action comparison count:
+  `72 * 65 * 2 = 9,360`（dense-streamとsparse-streamの両coordinateで比較）
+- checkpoint defect count per implementation: `72 * 8 = 576`
+
+方向はQ011e、Q011e1、Q011f、Q011g action／invariance campaignの全方向とbitwise exact duplicate
+`0`を要求する。3振幅はQ011f1までの
+`1.6e-4 / 3.2e-4 / 4.8e-4 / 6.4e-4 / 1.28e-3 / 2.56e-3`およびQ011gの
+`2.56e-3`と一致しない。この方向・振幅でshadowing slopeをfitしない。
+
+### dense／sparseの独立更新
+
+real reduced coordinate \(a\)に対し、Q011gのcoordinate map \(C\)で \(z=Ca\) へ移した
+natural Fourier-fiber actionをphysical real spaceへ戻し、\(S_W(a),S_R(a)\)と書く。dense oracleは
+
+\[
+D_W(a)=\frac12W_2[a,a],\qquad D_R(a)=\frac12R_2[a,a]
+\]
+
+とする。同じ \(a_0\) から、二つの経路を独立に
+
+\[
+\begin{aligned}
+a^d_{n+1}&=La^d_n+D_R(a^d_n), &
+x^d_n&=b+Ta^d_n+D_W(a^d_n),\\
+a^s_{n+1}&=La^s_n+S_R(a^s_n), &
+x^s_n&=b+Ta^s_n+S_W(a^s_n)
+\end{aligned}
+\]
+
+で64 step進める。sparse経路のquadratic actionにordered-dense tensorやreal Hessianを使わない。
+ただしcommon linear term \(b,T,L\)とcomplex-to-real mapは共有する。各 \(n=0,\ldots,64\) で
+\(a^d_n\)と \(a^s_n\) の両方をcommon inputとしてdense／sparse actionを比較する。
+
+各checkpoint \(n\) では
+
+\[
+d^d_n=F(x^d_n)-W_d(a^d_{n+1}),\qquad
+d^s_n=F(x^s_n)-W_s(a^s_{n+1})
+\]
+
+を別々計算する。これは縮約orbit上のone-step invariance defectであり、Q011f1の
+full-state orbitに対する64-step shadowing errorとは異なる。
+
+### 登録誤差と閾値
+
+各trajectoryの \(A_0=\lVert a_0\rVert_2\)、\(X_0=\lVert Ta_0\rVert_2\) を固定し、
+
+\[
+E_a(n)=\frac{\lVert a^s_n-a^d_n\rVert_2}{A_0},\qquad
+E_x(n)=\frac{\lVert x^s_n-x^d_n\rVert_2}{X_0},\qquad
+E_d(n)=\frac{\lVert d^s_n-d^d_n\rVert_2}{A_0}
+\]
+
+を使う。分母を時間発展中の減衰normにせず、初期スケールで固定する。
+
+- common-input dense／sparse joint action relative error: maximum `1e-11`
+- sparse realification imaginary leakage relative norm: maximum `1e-11`
+- \(E_a(n)\): all 72 trajectories／65 statesでmaximum `1e-11`
+- \(E_x(n)\): all 72 trajectories／65 statesでmaximum `1e-11`
+- \(E_d(n)\): all 576 checkpointsでmaximum `1e-10`
+- dense／sparse defect norm差:
+  `abs(||d_s||-||d_d||) / A_0 <= 1e-10`
+- dense／sparseのchart、reduced coordinate、quadratic action、defectは全てfinite
+- 全chart／full-map／next-lifted stateのminimum population: strict positive
+- baseとのglobal conservation drift: maximum `1e-10`
+
+relative joint actionは\((W\ action,R\ action)\)を連結したEuclidean normで計算する。dense action normが
+machine tiny未満の場合のみmachine tinyを分母に使う。各trajectoryのcheckpoint hash、全65-state
+metric array hash、aggregate digestをartifactに保存する。
+
+### validity gate
+
+1. Q011g artifact／runner／package source／5 digest／`rejected` outcomeとTT-cross非許可を再現し、
+   Q011f1 `accepted`／Q011f `rejected`を変更しない。
+2. natural係数を一度だけfresh再構築し、pair／sector count、shape、storage、projection、
+   serialization、登録係数hashを全て再現する。
+3. seed／direction／amplitude hash、prior duplicate `0`、72 trajectory、4,608 update、9,360 action比較、
+   576 checkpointが完全である。
+4. dense経路とsparse経路を独立更新し、sparse runtime pathがordered-dense係数作用を
+   呼ばず、全値とhashが再現可能である。
+5. finite strict JSON、input／coefficient／campaign／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、表現同値性を解釈しない。
+
+### equivalence hypothesis gate
+
+validity通過後、次の4項目を全て要求する。
+
+1. 9,360 common-input作用のmaximum relative errorとimaginary leakageが登録閾値以下。
+2. 全4,680 state record（72×65）で \(E_a,E_x\le10^{-11}\)。
+3. 全576 checkpointで \(E_d\) とdefect norm差が`1e-10`以下。
+4. completeness、finiteness、strict positivity、global conservation `1e-10`を通過。
+
+全項目が通れば
+`the natural Fourier-sparse chart reproduces the dense forced quadratic reduced trajectory through 64 steps`
+として`accepted`とする。validityは通るが一つでも落ちれば
+`the natural Fourier-sparse chart does not reproduce the dense forced quadratic reduced trajectory through 64 steps`
+として`rejected`とする。結果後にseed、振幅、step、checkpoint、正規化、閾値を
+変更しない。
+
+### 主張境界
+
+本gateは固定17²、固定zero-mean force、固定保存量葉、Q011eのquadratic chart、binary64、
+登録72初期値、64 reduced step、8 one-step-defect checkpointに限る。Q011f／Q011f1の
+shadowing outcome、all-time equivalence、uniform remainder、higher order、他grid／force／wall、D3Q27、
+SSM存在・一意性、normal attraction、basinは主張しない。Q011gのTT棄却を変更せず、
+TT-crossを開始しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
