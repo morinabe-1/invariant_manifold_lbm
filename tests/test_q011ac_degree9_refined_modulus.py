@@ -239,7 +239,7 @@ def test_q011ac_study_metadata_and_generated_artifact_are_scoped(
         pytest.skip("Q011ac artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     assert _file_sha256(artifact_path) == (
-        "18a6e146d0d24af9e9bab22f45668bec6c5bc25efcdb05faee2a7228e1870a98"
+        "018fab41465f4fefcd3df03a05bcd7ad2445f2e840eae66cd8ff0f1d4522f773"
     )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
