@@ -9713,6 +9713,151 @@ Q009は再開せず、次の実験はQ011または別norm certificateを観測�
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
 boundary mask rank、保存収支、normal attraction を測る。
 
+## Q011a: nonzero-mean periodic forcingのfixed-point compatibility — 事前登録
+
+### 問い
+
+境界・drag・momentum repairを持たない周期D2Q9 mapへ、各siteで同じ非零body-force sourceを加えたとき、
+定常fixed pointは存在し得るか。fixed point探索や固有値分類の前に、global momentum ledgerだけで
+必要条件が破れるかを判定する。
+
+このgateはQ007apのperiodic unforced manifoldをforced manifoldへ摂動継続するものではない。
+まずnonzero-mean forcingの構造的compatibilityを独立に監査し、通らなければ次のfixed-point campaignは
+zero-mean periodic forcingまたはwall momentum sinkを持つ問題として別登録する。
+
+### 固定mapとsource
+
+- gridはodd periodic \(17^2\)、\(\omega=3/2\)、checkerboard filterは\(\eta=1/100\)とする。
+- 一段mapのstage順序を
+
+  \[
+  \Phi_F=\mathcal H_\eta\circ\mathcal S\circ
+  (\mathcal C_\omega+S(F))
+  \]
+
+  とする。BGK collision後にsitewise sourceを加え、periodic streaming、population-wise
+  conservative five-point filterを行う。
+- D2Q9 weights／velocitiesは現行modelを固定し、state-independent rest-linear source
+
+  \[
+  S_q(F)=3w_q(c_{qx}F_x+c_{qy}F_y)
+  \]
+
+  を使う。Guo velocity correction、exact-difference forcing、half-step macroscopic velocityを
+  結果観測後に追加しない。
+- forceは全siteで
+
+  \[
+  F=(3\,2^{-40},0)
+  \]
+
+  と固定する。この選択では全source populationがdyadicとなる。exact source momentは
+
+  \[
+  \sum_qS_q=0,\qquad
+  \sum_qc_qS_q=F
+  \]
+
+  でなければならない。
+- boundary、drag、pressure gradient reset、global momentum projection／repair、Q007y repairは使わない。
+  従ってglobal massは保存され、global momentum increment候補は各stepで
+
+  \[
+  \Delta P=(17^2F_x,17^2F_y)=(867\,2^{-40},0)
+  \]
+
+  と事前登録する。
+
+### exact obstructionとspectrum診断
+
+collisionはlocal mass／momentumを、periodic streamingとfilterはglobal mass／momentumを保存するため、
+exact arithmeticでは任意の定義域内state \(f\) に対し
+
+\[
+\mathcal M(\Phi_F(f))-\mathcal M(f)=(0,867\,2^{-40},0)
+\]
+
+を要求する。従って\(\Phi_F(f)=f\)なら右辺は0でなければならず、登録forceとは矛盾する。
+さらにpopulation \(\ell^1\) residualにはdual moment inequalityから
+
+\[
+\|\Phi_F(f)-f\|_1\ge867\,2^{-40}
+\]
+
+というstate-independent lower boundを登録する。
+
+sourceはstate-independentなので、その微分は0である。rest stateでのforced-map Jacobianは
+unforced filtered symbol
+
+\[
+D\Phi_F(f_{\rm rest};k)=h_\eta(k)A_\omega(k)
+\]
+
+と一致することを診断する。odd grid上のstrict unit-circle countは3を要求するが、rest stateは
+forced mapのfixed pointではないため、これをforced fixed-point spectrumまたはstabilityとは呼ばない。
+
+### finite implementation probe
+
+- rest equilibrium、一様moving equilibrium
+  \((\delta\rho,j_x,j_y)=(2^{-8},2^{-10},-2^{-11})\) 1個を使う。さらにseed `20260809`の
+  standard-normal arrayをfixed global mass／momentum leafへ射影し、maximum absolute componentを1へ
+  normalizeして\(2^{-18}\)倍した8個のpositive rest perturbationを使う。direction hashをartifactへ
+  保存する。
+- forced／unforced mapはcollision結果まで同じ値を共有し、その後の差だけを監査する。
+- source populationのfloat値はexact dyadic値とbitwise一致、local source moment residualは
+  absolute `<=2^-90`とする。
+- forced-minus-unforced outputとuniform streamed／filtered sourceのmaximum component absolute errorを
+  `<=5e-16`、compensated global moment差と登録\(\Delta P\)のmaximum absolute errorを
+  `<=5e-14`とする。
+- 上のseeded directionの先頭4個をrest stateで使い、central difference step
+  `2^-12 / 2^-13 / 2^-14`でforced／unforced derivative actionを比較し、各方向のbest relative
+  discrepancyを`<=1e-9`とする。これはsource微分0の実装回帰であり、
+  fixed-point spectrum検証ではない。
+- rest stateのforced one-step minimum populationを`>0`とし、obstructionが未定義mapや即時negative
+  populationだけに由来しないことを確認する。
+
+### validity gate
+
+1. D2Q9 rational weight／velocity tableからsource populationとmass／momentum momentsをexactに再構成する。
+2. float sourceが登録dyadic vectorとbitwise一致し、local moment residualが閾値内である。
+3. 全10 probeでforced-minus-unforced state／global moment差が登録source／\(\Delta P\)を再現する。
+4. source derivative zeroをfinite differenceで再現し、rest Fourier symbol、odd-grid strict unit count 3を
+   unforced oracleと一致させる。
+5. global momentum identity、非零increment、population \(\ell^1\) fixed-point residual lower boundを
+   exact rationalで再現する。
+6. 全値finiteなstrict JSON、source／probe／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、fixed-point obstructionを解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を独立に要求する。
+
+1. 登録forceのspatial meanが非零である。
+2. exact global momentum increment \(867\,2^{-40}\) がstrict positiveである。
+3. 登録mapにこのincrementを相殺するboundary／drag／repair termがない。
+4. fixed-point仮定とglobal momentum identityの矛盾、およびstrict residual lower boundが成立する。
+
+全て通れば
+`nonzero-mean periodic body force is incompatible with a fixed point of the registered conservative map`
+としてnegative obstructionを`accepted`とする。incrementが0なら
+`registered periodic forcing has zero mean and is not obstructed by the global momentum ledger`
+としてこのnonzero-mean hypothesisを`not_certified`とする。validityは通るが矛盾が閉じなければ
+`global momentum ledger does not exclude a registered forced fixed point`とする。
+
+acceptedなら非零平均periodic fixed-point Newton solveやmanifold continuationを開始しない。次はQ011bで
+zero-mean single-wave periodic forcingを事前登録し、そこで初めてforced fixed point、保存量葉、
+Fourier-sector closure、spectrumを判定する。Poiseuille／Couetteはwall momentum exchangeを明示する
+別gateまで開始しない。
+
+### 主張境界
+
+acceptedでもexact real-arithmetic mapのglobal-ledger obstructionに限る。finite-precision mapの
+bitwise fixed point不存在、Guo／EDM forcingの高次精度、zero-mean forcing、drag、pressure boundary、
+bounce-back、Poiseuille／Couette、forced invariant manifold、normal attraction、他gridを主張しない。
+rest Jacobianはnon-fixed reference-state diagnosticに限り、forced fixed-point spectrumではない。
+Q007apまでのunforced periodic certificateは変更しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
