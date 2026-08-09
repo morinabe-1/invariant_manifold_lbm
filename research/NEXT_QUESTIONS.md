@@ -9194,7 +9194,7 @@ E_z^{\rm rep}=2.2935127565743277\times10^{-20}
 \]
 
 をexact rationalで再構成する。残るheadroomはbase／normalでそれぞれ
-`4.863002361769268e-20 / 9.144950829176811e-13`、margin utilizationは
+`4.863002361769267e-20 / 9.144950829176811e-13`、margin utilizationは
 `0.02326102601246388 / 2.5079552005207522e-08`と事前登録する。
 
 ### fixed leaf、表現可能性、stage positivity
