@@ -12542,6 +12542,206 @@ global uniqueness、basin、raw Q011b exact map、Q011e--Q011h coefficient、区
 normal attractionへ広げない。次はQ011kでcertified box上のrigorous fixed-leaf spectrumと
 selected／external splitを事前登録する。
 
+## Q011k: repaired fixed-point interval spectrum and selected／external split — 事前登録
+
+### 問いと証明対象
+
+Q011jで存在・局所一意性を認証したexact repaired fixed point \(x_\ast\) におけるfull
+\(17^2\) periodic mapのfixed-leaf linearizationはstrictly stableか。またQ011c2から引き継ぐ
+24-dimensional first-shell selected clusterは2574-dimensional external spectrumから交換なく分離され、
+quadratic selected eigenvalue productは対応するexternal sectorとspectrally nonresonantか。
+
+本gateはcluster内部の個別branch labelを要求しない。判定単位はx-Fourier blockごとのselected
+invariant clusterであり、selected／external disc unionの分離とhomotopy eigenvalue countを証明する。
+
+### 封印入力
+
+- Q011j artifact／runner newline-normalized SHA-256:
+  `74a2e084137699739c14d980b05676e14e6802b4018b3893d3d05270850c2c5a` /
+  `23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5`
+- Q011j input／coordinate／oracle／proof／result digest:
+  `a183f4830c757b58122132cf64111fd5375636affdb6c0b31e1cd90e89085799` /
+  `adaef353b8b64509334794c6014dc8b88e81ca2b776c3b65bd4d50911ae9452b` /
+  `177468a48f667ddd922ed4b979d3e7e5d4cc0ed3afffe27a34651060da8e0f5f` /
+  `1080fcea24358422514bba7fb9881928269c853cb4d12b0282e63840c56124c0` /
+  `ddad5beca9693eeab726382ac864d01a27b749d579c2ec8f12dd9f8c499db934`
+- Q011c2 artifact／runner newline-normalized SHA-256:
+  `c1794ca72eebd60c4bc097278495218e9e2d2e84bdacd0f478e510a80fcba42a` /
+  `87bdfc1ed20e6e68e4a395d36399adbab19e82809c626ecefa65a342ce42b9d2`
+- Q011c2 input／path／holdout-spectrum／endpoint／result digest:
+  `de4b0c4d38d0efcff9c7db4bbef66ba6d081a6703c732dbd7116a294020459f2` /
+  `36be8801af32ae178e91e049b2640ed4bb058107abdf2df2af8860930c53c27d` /
+  `d7319399578d3755ee0679122dec5e6b6d3454e394295bd62886920d104b0d72` /
+  `8c78791883b82f4a964d0c102006d9295b7b96733e77dea93249f30dc427b6a8` /
+  `8c23b985d69ffaa980e752e5d262184c0a6d466681d9d44fa4f0e9101df02b0c`
+
+Q011j validity `6 / 6`、hypothesis `4 / 4`、`accepted`、selected radius `1e-8`、
+256／384-bit containmentを再現する。Q011c2 validity／hypothesis、`accepted`、endpoint factor `1`の
+block `0 / 1 / 16` selected dimensions `6 / 9 / 9`と24 selected eigenvalue recordsを再現する。
+Q011c2 projectorや個別eigenvectorは証明入力にせず、selected centerの識別にendpoint eigenvalue setだけを使う。
+
+### Q011j contractionからのroot enclosure
+
+Q011jのselected box \(X=x_0+[-10^{-8},10^{-8}]^{150}\) 上で、Newton-like map
+\(T(x)=x-CG(x)\) は
+
+\[
+\|T(x)-T(y)\|_\infty\le \bar q\|x-y\|_\infty,
+\qquad
+\|T(x_0)-x_0\|_\infty\le \bar z
+\]
+
+を満たす。256-bit primary artifactのexact dyadic upperを変更せず読み、
+
+\[
+\rho_\ast=\frac{\bar z}{1-\bar q}
+\]
+
+をexact `Fraction`で計算する。Q011jの一意なfixed pointについて
+\(\|x_\ast-x_0\|_\infty\le\rho_\ast\) が従う。登録sanity capを
+
+\[
+\rho_\ast\le2\times10^{-15}
+\]
+
+とし、affine liftの登録norm `186`からambient population component radiusを
+\(186\rho_\ast\)で包囲する。384-bit replayから同じ式で得るupperは256-bit upper以下でなければならない。
+元の`1e-8` box全体のspectrumを主張せず、その内部で唯一存在するexact rootを含むこの導出boxを対象にする。
+
+### exact interval block family
+
+x-translation invarianceによりfull linearizationを17個のx-Fourier blockへexactに分解する。
+
+- block `0`: Q011jのexact affine fixed-leaf chartで
+  \(A_0(x)=I+J_G(x)\in\mathbb R^{150\times150}\) とする。
+- block `n=1,...,16`: stripe population全153成分上のcomplex block
+  \(A_n(x)\in\mathbb C^{153\times153}\) とする。global conservation constraintはnonzero x-waveに
+  自動的に直交するため3成分を除去しない。
+- dimension countは`150 + 16 * 153 = 2598`でなければならない。
+
+equilibrium derivativeはQ011jのexact rational式、collisionは\(\omega=3/2\)、y-streamingはexact permutation、
+x-streaming phaseとfilterの`sin/cos(2*pi*n/17)`はQ007hと同じ96-term Machin pi、64-term Taylor、
+degree-127 remainderでrational rectangle enclosureを作る。root coordinate boxをQ011j affine liftで包囲し、
+全block entryを`Fraction` endpointのcomplex rectangleとして構成する。density lowerはstrict positive、
+conjugate block `n`／`17-n`はentrywise conjugate enclosureを持たなければならない。
+
+各blockのbinary64 proposal \(\widehat A_n\)はexact lifted centerをfloatへ変換し、登録analytic block actionから
+一度だけ組み立てる。block `0`はexact rational \(I+J_G(x_0)\)のbinary64 conversionを使う。
+interval familyとproposalの差をentrywise包囲し、
+
+\[
+\delta_n=\sup_{x\in X_\ast}\|A_n(x)-\widehat A_n\|_\infty
+\]
+
+の外向きupperを得る。全proposal entryは対応するfamily rectangleから有限距離にあり、独立binary64
+block actionとのrelative discrepancy `<=1e-12`を要求する。
+
+### dual-precision Bauer--Fike protocol
+
+各代表block `n=0,...,8`で`numpy.linalg.eig`からproposal
+\((\widehat\Lambda_n,V_n)\)を得る。列はeigenvalueのreal／imaginary partでstable sortし、各列の最大絶対値pivotを
+最小index tie-breakで選び、そのpivotがnonnegative realとなるようphase normalizeする。
+\(W_n=V_n^{-1}\)を一度だけbinary64で計算し、全binary64 entryをexact dyadic pointとして扱う。
+block `9,...,16`は対応する代表blockのconjugate proofをtransportし、独立float spectrumとのHausdorff
+discrepancy `<=1e-10`を確認する。
+
+exact dyadic dot productとcomplex absolute row sumはGMPY2／MPFRの外向き丸めで計算する。
+primary `256 bit`、independent replay `384 bit`とし、下端は`RoundDown`、上端は`RoundUp`、
+全endpointを`as_integer_ratio`でexact dyadicへ戻す。各blockで
+
+\[
+\epsilon_n=\|I-W_nV_n\|_\infty,
+\qquad
+\beta_n=\frac{\|W_n\|_\infty}{1-\epsilon_n},
+\]
+
+\[
+r_n=\|\widehat A_nV_n-V_n\widehat\Lambda_n\|_\infty
+      +\delta_n\|V_n\|_\infty,
+\qquad
+R_n=\|V_n\|_\infty\beta_n^2r_n
+\]
+
+のupperを求める。`epsilon_n<=1e-8`を全blockに要求する。すると\(V_n\)はnonsingularで、
+\(\widehat A_n\)のapproximate diagonal formから任意の\(A_n(x_\ast)\)までのhomotopy spectrumは
+center \(\widehat\lambda_{n,j}\)、radius \(R_n\)のdisc unionに入る。384-bitの全upperは対応する
+256-bit upper以下で、全hash／extremal block／判定が一致しなければならない。
+
+### selected／external cluster countとquadratic spectral distance
+
+Q011c2 endpointのblock `0 / 1 / 16` selected eigenvalue setを、同blockのBauer--Fike centerへ
+minimum-total-distance bijectionで対応させる。selected countは`6 / 9 / 9`、maximum matching distance
+`<=1e-10`を要求し、他のcenterは全てexternalとする。他blockは全centerをexternalとする。
+
+各selected blockで
+
+\[
+d_{\mathrm{split},n}
+=\min_{s\in S_n,e\in E_n}|\widehat\lambda_s-\widehat\lambda_e|-2R_n
+\]
+
+をexact outward lowerで評価する。これが正ならhomotopy中にselected disc unionとexternal disc unionは
+交わらず、cluster内部のpermutationを許したままeigenvalue countが保存される。
+
+さらに24 selected centerのunordered pair `24 * 25 / 2 = 300`を全列挙する。x-wave sectorを
+`(n_i+n_j) mod 17`とし、product disc radiusを
+
+\[
+R_{ij}^{\times}=|\widehat\lambda_i|R_j+|\widehat\lambda_j|R_i+R_iR_j
+\]
+
+で包囲する。対応output sectorの全external center \(\widehat\mu_e\)に対し
+
+\[
+d_{ij,e}=|\widehat\lambda_i\widehat\lambda_j-\widehat\mu_e|
+          -R_{ij}^{\times}-R_e
+\]
+
+のminimum lowerを求める。これはeigenvalue-level quadratic external nonresonanceだけを意味し、
+nonnormal homological inverse norm、coefficient bound、SSM存在・一意性を意味しない。
+
+### validity gate
+
+1. Q011j／Q011c2のartifact、runner、全登録digest、outcome、claim boundaryを再現する。
+2. contraction-derived root radius、384-bit containment、affine lift、positive densityをexactに再現する。
+3. 17 block、dimension `2598`、exact interval analytic action、conjugacy、independent block actionを再現する。
+4. 全代表blockのdeterministic eig proposal、phase／sort、inverse、residual、interval-family距離を完了する。
+5. 256／384-bit outward context／flag監査、全Bauer--Fike upper／lower、transport proofを完了する。
+6. Q011c2 selected matching、count `24 / 2574`、300 pairと全external比較を漏れなく完了する。
+7. finite strict JSON、input／root／block／proof／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、spectrum enclosureを解釈しない。
+
+### spectrum／split／nonresonance hypothesis gateと停止規則
+
+validity通過後、次の5項目を全て要求する。
+
+1. 全代表blockで`epsilon<=1e-8`、dual-precision containment、transport conjugacyが通る。
+2. 全2598 eigenvalue discのmodulus upperがQ011b ceiling `0.9999`以下である。
+3. selected／external countが`24 / 2574`で、minimum complex disc-union gapが`>=1e-6`である。
+4. selected minimum modulus lower minus external maximum modulus upperが`>=1e-6`である。
+5. 300 selected quadratic productsに対するminimum external spectral-distance lowerが`>=1e-6`である。
+
+全項目が通れば
+`the exact repaired fixed point has a rigorously stable and quadratically nonresonant selected/external spectral split`
+として`accepted`とする。validityは通るが一項目でも落ちれば
+`the registered Bauer--Fike enclosures do not certify the repaired selected/external spectral split`
+として`rejected`とする。これはstability、split、nonresonanceの数学的不成立を意味せず、最初に落ちた
+block、inverse defect、disc radius、stability margin、split gap、quadratic pairを記録する。結果後にroot bound、
+block coordinate、eig normalization、precision、`1e-8 / 0.9999 / 1e-6` thresholdを変更しない。
+
+acceptedの場合だけ、次のQ011lでinterval Sylvester／homological inverse boundを事前登録する。
+rejectedなら個別eigenvector discをordered Schur cluster／Riesz projector enclosureへ置き換えるか、
+contraction centerを認証付きで更新してroot boxを縮小する。inconclusiveなら最初のprotocol failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17²、固定振幅、periodic repaired exact map、その一意なx-independent fixed point、
+fixed-leaf linear spectrumとeigenvalue-level quadratic external nonresonanceに限る。raw Q011b map、
+Q011e--Q011h raw-map coefficient、rigorous homological inverse、forced SSM存在・一意性、spectral quotient smoothness、
+nonlinear normal attraction、basin、他grid／force／wall、D3Q27は主張しない。selected／external modulus gapを
+非線形normal attractionへ読み替えない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
