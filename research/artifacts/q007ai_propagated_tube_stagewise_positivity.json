@@ -1,0 +1,777 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-09T00:32:33.060279+00:00",
+  "source": {
+    "package_version": "0.1.0",
+    "package_source_sha256": "114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2"
+  },
+  "runner_source": {
+    "filename": "q007ai_propagated_tube_stagewise_positivity.py",
+    "sha256": "3235b2dc31445e5912f2aaf7fc080e8295035801ade9b27d3f683d34da61173d",
+    "sha256_newline_normalization": "UTF-8 text with universal newlines"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.4",
+    "scipy": "1.16.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "mathematical_scope": {
+    "diagnostic": "rational propagated-tube exact stagewise-positivity certificate",
+    "construction_grid": [
+      17,
+      17
+    ],
+    "omega": 1.5,
+    "eta": 0.01,
+    "conservation_treatment": "fixed global mass and momentum leaf",
+    "manifold": "Q007ae exact graph-gauge manifold",
+    "norm": "Q007p Fourier external-coordinate block-sum l1",
+    "base_modal_l1_radius": 9e-17,
+    "normal_coordinate_radius": 5e-11,
+    "stages": [
+      "equilibrium evaluation",
+      "BGK collision output",
+      "periodic streaming output",
+      "five-point filter output"
+    ],
+    "arithmetic_scope": "exact mathematical map; no IEEE-754 intermediate roundoff enclosure",
+    "claim": "strict D2Q9 population positivity at every exact internal one-step stage on the fixed Q007ag selected tube only"
+  },
+  "cycle": {
+    "question": "Is every exact equilibrium, BGK collision, streaming, and filter-stage population positive on the Q007ag propagated tube?",
+    "registered_parameters": {
+      "size": 17,
+      "omega": {
+        "numerator_base16": "0x3",
+        "denominator_base16": "0x2",
+        "float": 1.5
+      },
+      "eta": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x64",
+        "float": 0.01
+      },
+      "base_radius": {
+        "numerator_base16": "0x9",
+        "denominator_base16": "0x16345785d8a0000",
+        "float": 9e-17
+      },
+      "normal_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x4a817c800",
+        "float": 5e-11
+      }
+    },
+    "input_artifacts": {
+      "q007ah": {
+        "filename": "q007ah_propagated_tube_population_positivity.json",
+        "artifact_sha256": "cab5ecc090b794a21a21fded8e5c503eca40be2bbc6502767c29844ba8209fa9",
+        "registered_artifact_sha256": "cab5ecc090b794a21a21fded8e5c503eca40be2bbc6502767c29844ba8209fa9",
+        "artifact_sha256_matches": true,
+        "runner_filename": "q007ah_propagated_tube_population_positivity.py",
+        "runner_sha256": "f29a974f0219af1767140e977775aa95dcf22b41a36de7a97bb553d540968d27",
+        "artifact_runner_sha256": "f29a974f0219af1767140e977775aa95dcf22b41a36de7a97bb553d540968d27",
+        "registered_runner_sha256": "f29a974f0219af1767140e977775aa95dcf22b41a36de7a97bb553d540968d27",
+        "runner_sha256_matches": true,
+        "source_matches": true,
+        "common_scope_matches": true,
+        "diagnostic_matches": true,
+        "schema_version": 1,
+        "study_gate": "passed",
+        "scientific_outcome": "accepted",
+        "scientific_classification": "registered Q007ag propagated tube lies in the strictly positive population cone at every full-map iterate",
+        "classification_matches": true,
+        "validity_gate_count": 6,
+        "registered_validity_gate_count": 6,
+        "all_validity_gates_pass": true,
+        "hypothesis_gate_count": 3,
+        "registered_hypothesis_gate_count": 3,
+        "all_hypothesis_gates_pass": true,
+        "theorem_consequence_count": 4,
+        "registered_theorem_consequence_count": 4,
+        "theorem_flags_match": true,
+        "passed": true
+      },
+      "q007u": {
+        "filename": "q007u_larger_tube_stagewise_positivity.json",
+        "artifact_sha256": "b568fc304fd939121dd52543f316cb571ae6f4be4f4f664c68fe1c749b566c55",
+        "registered_artifact_sha256": "b568fc304fd939121dd52543f316cb571ae6f4be4f4f664c68fe1c749b566c55",
+        "artifact_sha256_matches": true,
+        "runner_filename": "q007u_larger_tube_stagewise_positivity.py",
+        "runner_sha256": "56fc99f1f381e97e70710c7da0cee8d1262d0c10190cf617316f822d1eb29014",
+        "artifact_runner_sha256": "56fc99f1f381e97e70710c7da0cee8d1262d0c10190cf617316f822d1eb29014",
+        "registered_runner_sha256": "56fc99f1f381e97e70710c7da0cee8d1262d0c10190cf617316f822d1eb29014",
+        "runner_sha256_matches": true,
+        "source_matches": true,
+        "common_scope_matches": true,
+        "diagnostic_matches": true,
+        "schema_version": 1,
+        "study_gate": "passed",
+        "scientific_outcome": "accepted",
+        "scientific_classification": "registered Q007s larger tube is population-positive at every exact BGK, streaming, and filter stage",
+        "classification_matches": true,
+        "validity_gate_count": 6,
+        "registered_validity_gate_count": 6,
+        "all_validity_gates_pass": true,
+        "hypothesis_gate_count": 5,
+        "registered_hypothesis_gate_count": 5,
+        "all_hypothesis_gates_pass": true,
+        "theorem_consequence_count": 5,
+        "registered_theorem_consequence_count": 5,
+        "theorem_flags_match": true,
+        "passed": true
+      }
+    },
+    "implementation_source_audit": {
+      "records": {
+        "d2q9": {
+          "path": "src/ttim_lbm/d2q9.py",
+          "sha256": "6e6c5aa6734844d0393eb402e21203831faaf5f325b35249941eaa59145c6f53",
+          "registered_sha256": "6e6c5aa6734844d0393eb402e21203831faaf5f325b35249941eaa59145c6f53",
+          "passed": true
+        },
+        "checkerboard_filter": {
+          "path": "src/ttim_lbm/checkerboard_filter.py",
+          "sha256": "5fb6b67e8527b0b1f5f45511ba7cd5d077ee443220632ba3019b7bf28010a7ea",
+          "registered_sha256": "5fb6b67e8527b0b1f5f45511ba7cd5d077ee443220632ba3019b7bf28010a7ea",
+          "passed": true
+        }
+      },
+      "matching_source_count": 2,
+      "expected_source_count": 2,
+      "all_registered_implementation_sha256_match": true
+    },
+    "q007ah_exact_reproduction": {
+      "stored_cycle_reproduced_exactly": true,
+      "observed_digests": {
+        "input": "6d7bd69b5c90ff7dbabd5193a4536809f4b79eef36a41fb288ab7caec44321b4",
+        "result": "caea5280667e909f17922260ef0d78998b6a8b374cd048b4b3e526185f040921"
+      },
+      "registered_digests": {
+        "input": "6d7bd69b5c90ff7dbabd5193a4536809f4b79eef36a41fb288ab7caec44321b4",
+        "result": "caea5280667e909f17922260ef0d78998b6a8b374cd048b4b3e526185f040921"
+      },
+      "digests_match": true,
+      "base_modal_l1_radius": {
+        "numerator_base16": "0x9",
+        "denominator_base16": "0x16345785d8a0000",
+        "float": 9e-17
+      },
+      "normal_coordinate_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x4a817c800",
+        "float": 5e-11
+      },
+      "chart_radius_at_base_upper": {
+        "numerator_base16": "0x32be93d1b99b7f4a801c9dfd58fcfdcdcc9a5b52799790fff0ece39a944aaca1d06a8ffa2aaf00ebac19fe98b0d39f74d4de1329c918dbd09181da7f80f3b825e8c2df898bc7415da2fbd51abc32838b556b9dc60149bd8d351a142cb07efbd00d584e4048002d2f1b6aacd442786157a78de7f4d797b8e3fcd756f138fdc42632773d8e07a3d9f8907b89e6b5f3c20e6d439eb7f9ed0126e3ab478bb7a4b26ea51315065e571885c3b01e2df791ef0db9b06e30e2e7f5fe789d84e839e6eb73efd219f83f5aedf2eb8e27a5e3d466612b8938b74c09e5de28aa3df2227eed2eec94b00af47c28b91de593de22bd60b4ee018f3f50dd243753b2705c1f2a1fc6855e2f08e4fb22dc91898a4db5a6675da6b08855c14753d502d4f682b45279df9f981b0a17fb5826ab78faba23ca91c0a99f05f37f544328651e5dba0316f0e57adface4b15b947c5bf35ed8b7616d1a39284c13fd3c3c2b81bec82545c6f7aa7a7eb343674d",
+        "denominator_base16": "0x2cec2d9584418bdddeecb24e724dec1c6834c415eddf26127f7b68a7d15bd7a11733b4d86ade144e00c10a62bbe5e8efabba5c5055eb43de6a320f9a3ff1b7a2cf364f0f7f30b6a4187f79ba1aff88c8af49839dd4c73aac4875d2111a1f7ffaf95b1828f0707fc9f39344d5d65b969b4bff79205887b7ddc87980536d981bcddd51a97b63d843bcfc12fe6b1873c0ae0f5a1dc7cee73dbf0ad1f190c5a473719b7d502514ff8cd628340967bd49dbab5dec63a9c8d04e4291df8129fb379378681db4bd3449fc1b8d76329403fd20d3c3889195c2520d3b954b77d6d527047407c3e0e8b3f030dccf9de8ba18f3c13bcf4dc575ccd6219f313498ff5f71cc585adf68bcb9cea448a3f91bd9b0e02a8a25c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 2.508211277254177e-16
+      },
+      "synthesis_to_wiener_l1_upper": {
+        "numerator_base16": "0x2a418bbce9e58a6dbd1c9c7d347131577a18f1373c4e7fea10dc059066708d75896057ee3469d43e5af",
+        "denominator_base16": "0xea1575143cf97226f52d09d71a3293bd833a4e74863bbc1cf3a20253f4000000000000000000000000",
+        "float": 2.888267212368763
+      },
+      "tube_state_wiener_l1_upper": {
+        "numerator_base16": "0x1bdd016414593c9fca22f668956a7992b917fa365090017acd199fa50ca2eebfceb6eaf599924d502aa1f366d25af815f539c9719b8e6a4f5bf44051e4e2782d591334762274aefaeabb0fecc30347d7f1ec3c3d7f720d675435b5f6541228fb45c1d8808c4579b60206c70e5d83b31c33fc02b4f3bd2245fdfbd869783fe2cb8de8f43c077f8d90b167feaeb12258d24250934c86930a57268f99e8de50af57401219d7b097b3bc99b77b36f421296b5e312cf91a0f5f23229c2bbcce6358464894e3828efa838319057a616311ca99879595bb0a96712eefd9aacd488d14c4e3f18ed9baeefa4e27a297ce18beb5fa857a34c3f1b28b6d32d390350ea0874aea1022f95e3c740dca43a21822fef48d8c853bc0637b1a81cdd27a2d4f682b45279df9f981b0a17fb5826ab78faba23ca91c0a99f05f37f544328651e5dba0316f0e57adface4b15b947c5bf35ed8b7616d1a39284c13fd3c3c2b81bec82545c6f7aa7a7eb343674d",
+        "denominator_base16": "0x2cec2d9584418bdddeecb24e724dec1c6834c415eddf26127f7b68a7d15bd7a11733b4d86ade144e00c10a62bbe5e8efabba5c5055eb43de6a320f9a3ff1b7a2cf364f0f7f30b6a4187f79ba1aff88c8af49839dd4c73aac4875d2111a1f7ffaf95b1828f0707fc9f39344d5d65b969b4bff79205887b7ddc87980536d981bcddd51a97b63d843bcfc12fe6b1873c0ae0f5a1dc7cee73dbf0ad1f190c5a473719b7d502514ff8cd628340967bd49dbab5dec63a9c8d04e4291df8129fb379378681db4bd3449fc1b8d76329403fd20d3c3889195c2520d3b954b77d6d527047407c3e0e8b3f030dccf9de8ba18f3c13bcf4dc575ccd6219f313498ff5f71cc585adf68bcb9cea448a3f91bd9b0e02a8a25c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 1.4441361143956586e-10
+      },
+      "q007ah_full_map_population_lower": {
+        "numerator_base16": "0xb3b0b64664b5672c0980af58158d159d94eeadcf99ffd9bcaceccd8be70591ad4128877d64942711a0b8ac72f47eb9e85bbde4e7672bbf9228ac71c54662b07a7d75a2bbe1f5581d005b79c462c52df50b4da4ff3e3b081971afbe250a47a55c9b35534c84b836d8e7389cf6359e625895e924a4245d59ae0782b9eed8b6b3e3d157136dbc57ad2fb88c5848974fc0749a1680d9ee4a1bf07891f53d65cb3ac960929f8049cfaa054b7b0b887df21fc4250a42422797eceb9ed880e47505b3ad88952b6bfd67f6fdc8eed091fcdfac8754204ffac523fbb8608e34f46a2bfe574fb3d4e297e068fa180ad6f21859a10151f0b8ec1e9ad844d063f690e6c61389313188cf3e26e4dd8de327a4fd757c94e7967060f50e63c80ac116fc399b46835567a919b72363a70ca52829e6a3f8bf2f74bde0e03a0968ca708609a39471eeb475e43187eeae22ebf5c3c7c7a0c471aa618d932a13fd95534c18e1e278704af6b08c014b01b18bb2a15e4b",
+        "denominator_base16": "0x1944d9a41a64deaccd65244c204bd4cffa9dae4c55cd856a67b56ade65c3a94a9d0d15b9bc1ceb6be06c95d789b15306d098d3ed3054562d1bbc28c6c3f7f74b948e8c78b78b66bc4dc7b478af2fbcf0e2995a08c7b01100e8c246299eb1b7fd2c433d97073f47e19902d6b8489384b75abfb42231cc576cc0c4582eeda58fa3cc7def556829a61a4dcaaf1c3dc11c61e8a2b0c0646212bb761617e16f2c80efe7767d14dbcfbf38769d454a5a798b9064d4f80f80f52c05720db8a79d4f42f3ba90b5aa6d699dcf7f927c73423e62771dfcd1e43d4e277183fa7368d7e5f281445e2e82e5371b7c34c8d2e8ae091cb1a49bbf12433872e98bad960fa5b002f1b31daaea28843c68dc3c1faa737e17edb53c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.027777777633364167
+      },
+      "state_radius_identity": "x_ag = w(r_ag) + K_s zeta_ag",
+      "state_radius_reproduced_exactly": true,
+      "selected_candidate_gates": {
+        "analytic_base_domain": true,
+        "population_wiener_domain": true,
+        "base_forward_invariance": true,
+        "normal_contraction": true,
+        "tangent_invertibility": true,
+        "strict_normal_domination": true
+      },
+      "all_selected_candidate_gates_pass": true,
+      "q007ag_forward_invariance": true,
+      "theorem_consequence": {
+        "registered_q007ag_tube_population_strictly_positive": true,
+        "registered_q007ag_tube_density_strictly_positive": true,
+        "all_full_map_iterates_population_strictly_positive": true,
+        "registered_q007ag_tube_stagewise_positivity_certified": false
+      },
+      "passed": true
+    },
+    "q007u_oracle_reproduction": {
+      "stored_cycle_reproduced_exactly": true,
+      "validity_gate_count": 6,
+      "all_validity_gates_pass": true,
+      "hypothesis_gate_count": 5,
+      "all_hypothesis_gates_pass": true,
+      "theorem_consequence": {
+        "equilibrium_evaluation_population_strictly_positive": true,
+        "post_collision_population_strictly_positive": true,
+        "post_streaming_population_strictly_positive": true,
+        "post_filter_population_strictly_positive": true,
+        "all_iterates_exact_stagewise_population_strictly_positive": true
+      },
+      "linear_operator_audit_passed": true,
+      "nonlinear_majorant_audit_passed": true,
+      "stage_structure_audit_passed": true,
+      "old_tube_reuse_passed": true,
+      "old_exact_stage_bounds_reproduced": true,
+      "passed": true
+    },
+    "linear_operator_audit": {
+      "moment_matrix_shape": [
+        3,
+        9
+      ],
+      "equilibrium_tangent_shape": [
+        9,
+        3
+      ],
+      "equilibrium_projector_formula": "P = E M",
+      "collision_formula": "C = (1-omega) I + omega E M",
+      "omega": {
+        "numerator_base16": "0x3",
+        "denominator_base16": "0x2",
+        "float": 1.5
+      },
+      "equilibrium_projector_column_l1_sums": [
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x1",
+          "float": 1.0
+        },
+        {
+          "numerator_base16": "0x5",
+          "denominator_base16": "0x3",
+          "float": 1.6666666666666667
+        },
+        {
+          "numerator_base16": "0x5",
+          "denominator_base16": "0x3",
+          "float": 1.6666666666666667
+        },
+        {
+          "numerator_base16": "0x5",
+          "denominator_base16": "0x3",
+          "float": 1.6666666666666667
+        },
+        {
+          "numerator_base16": "0x5",
+          "denominator_base16": "0x3",
+          "float": 1.6666666666666667
+        },
+        {
+          "numerator_base16": "0xd",
+          "denominator_base16": "0x6",
+          "float": 2.1666666666666665
+        },
+        {
+          "numerator_base16": "0xd",
+          "denominator_base16": "0x6",
+          "float": 2.1666666666666665
+        },
+        {
+          "numerator_base16": "0xd",
+          "denominator_base16": "0x6",
+          "float": 2.1666666666666665
+        },
+        {
+          "numerator_base16": "0xd",
+          "denominator_base16": "0x6",
+          "float": 2.1666666666666665
+        }
+      ],
+      "collision_column_l1_sums": [
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x1",
+          "float": 1.0
+        },
+        {
+          "numerator_base16": "0x2",
+          "denominator_base16": "0x1",
+          "float": 2.0
+        },
+        {
+          "numerator_base16": "0x2",
+          "denominator_base16": "0x1",
+          "float": 2.0
+        },
+        {
+          "numerator_base16": "0x2",
+          "denominator_base16": "0x1",
+          "float": 2.0
+        },
+        {
+          "numerator_base16": "0x2",
+          "denominator_base16": "0x1",
+          "float": 2.0
+        },
+        {
+          "numerator_base16": "0x13",
+          "denominator_base16": "0x6",
+          "float": 3.1666666666666665
+        },
+        {
+          "numerator_base16": "0x13",
+          "denominator_base16": "0x6",
+          "float": 3.1666666666666665
+        },
+        {
+          "numerator_base16": "0x13",
+          "denominator_base16": "0x6",
+          "float": 3.1666666666666665
+        },
+        {
+          "numerator_base16": "0x13",
+          "denominator_base16": "0x6",
+          "float": 3.1666666666666665
+        }
+      ],
+      "equilibrium_projector_l1_norm": {
+        "numerator_base16": "0xd",
+        "denominator_base16": "0x6",
+        "float": 2.1666666666666665
+      },
+      "collision_l1_norm": {
+        "numerator_base16": "0x13",
+        "denominator_base16": "0x6",
+        "float": 3.1666666666666665
+      },
+      "registered_equilibrium_projector_l1_norm": {
+        "numerator_base16": "0xd",
+        "denominator_base16": "0x6",
+        "float": 2.1666666666666665
+      },
+      "registered_collision_l1_norm": {
+        "numerator_base16": "0x13",
+        "denominator_base16": "0x6",
+        "float": 3.1666666666666665
+      },
+      "collision_matches_rational_map": true,
+      "passed": true
+    },
+    "nonlinear_majorant_audit": {
+      "cyclic_fourier_convolution_l1_constant": 1,
+      "d2q9_weight_sum": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x1",
+        "float": 1.0
+      },
+      "weighted_absolute_velocity_quadratic": {
+        "numerator_base16": "0x8",
+        "denominator_base16": "0x9",
+        "float": 0.8888888888888888
+      },
+      "momentum_square_component_count": 2,
+      "equilibrium_nonlinear_majorant_constant": {
+        "numerator_base16": "0x7",
+        "denominator_base16": "0x1",
+        "float": 7.0
+      },
+      "collision_nonlinear_majorant_constant": {
+        "numerator_base16": "0x15",
+        "denominator_base16": "0x2",
+        "float": 10.5
+      },
+      "state_wiener_l1_upper": {
+        "numerator_base16": "0x1bdd016414593c9fca22f668956a7992b917fa365090017acd199fa50ca2eebfceb6eaf599924d502aa1f366d25af815f539c9719b8e6a4f5bf44051e4e2782d591334762274aefaeabb0fecc30347d7f1ec3c3d7f720d675435b5f6541228fb45c1d8808c4579b60206c70e5d83b31c33fc02b4f3bd2245fdfbd869783fe2cb8de8f43c077f8d90b167feaeb12258d24250934c86930a57268f99e8de50af57401219d7b097b3bc99b77b36f421296b5e312cf91a0f5f23229c2bbcce6358464894e3828efa838319057a616311ca99879595bb0a96712eefd9aacd488d14c4e3f18ed9baeefa4e27a297ce18beb5fa857a34c3f1b28b6d32d390350ea0874aea1022f95e3c740dca43a21822fef48d8c853bc0637b1a81cdd27a2d4f682b45279df9f981b0a17fb5826ab78faba23ca91c0a99f05f37f544328651e5dba0316f0e57adface4b15b947c5bf35ed8b7616d1a39284c13fd3c3c2b81bec82545c6f7aa7a7eb343674d",
+        "denominator_base16": "0x2cec2d9584418bdddeecb24e724dec1c6834c415eddf26127f7b68a7d15bd7a11733b4d86ade144e00c10a62bbe5e8efabba5c5055eb43de6a320f9a3ff1b7a2cf364f0f7f30b6a4187f79ba1aff88c8af49839dd4c73aac4875d2111a1f7ffaf95b1828f0707fc9f39344d5d65b969b4bff79205887b7ddc87980536d981bcddd51a97b63d843bcfc12fe6b1873c0ae0f5a1dc7cee73dbf0ad1f190c5a473719b7d502514ff8cd628340967bd49dbab5dec63a9c8d04e4291df8129fb379378681db4bd3449fc1b8d76329403fd20d3c3889195c2520d3b954b77d6d527047407c3e0e8b3f030dccf9de8ba18f3c13bcf4dc575ccd6219f313498ff5f71cc585adf68bcb9cea448a3f91bd9b0e02a8a25c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 1.4441361143956586e-10
+      },
+      "density_denominator_lower": {
+        "numerator_base16": "0x2cec2d9568648a79ca9375aea82af5b3d2ca4a8334c72bdc2eeb672d044237fc0a90c6189c272958672ebd129143f588d95f643a60b17a6ccea3a54ae3fd7750ea53d6e2261d822df60acabf304478dbec463bc5e2dafe6ec903c4a9c5e9ca04a548ef2daaaea749674dcb1fd454cf8cee7bc604248bb528d4bc5e0d6f9c43646511c6afd5ef4f80f49370da670bc1ff5e37c4f58c96aa72843ee7399f14d988bd2ca0cdd4ed72fe779c55ab2392607469cb3a3e6a9f214977d02206d89b67bb99ba5c76ebb51898fe7baf10eaf7a6726076c6fc3abc77808ab506a7e54d59a6bf36cc23cffea20314aeee6bf151296db68f0f7b475becdb3f820d922c9e3c234c3ee171cfbe814f45bca7cbe69c887202c10b72737ac43f9c84e57e322d85d2b097d4bad86206067e4f5e804a7d954870545dc356e3f5660fa0c80abbcd79ae1a245fce90f1a8520531b4ea46b83a40ca127489e92e5c6d7b3ec02c3c3d47e4137daba39085585814cbc98b3",
+        "denominator_base16": "0x2cec2d9584418bdddeecb24e724dec1c6834c415eddf26127f7b68a7d15bd7a11733b4d86ade144e00c10a62bbe5e8efabba5c5055eb43de6a320f9a3ff1b7a2cf364f0f7f30b6a4187f79ba1aff88c8af49839dd4c73aac4875d2111a1f7ffaf95b1828f0707fc9f39344d5d65b969b4bff79205887b7ddc87980536d981bcddd51a97b63d843bcfc12fe6b1873c0ae0f5a1dc7cee73dbf0ad1f190c5a473719b7d502514ff8cd628340967bd49dbab5dec63a9c8d04e4291df8129fb379378681db4bd3449fc1b8d76329403fd20d3c3889195c2520d3b954b77d6d527047407c3e0e8b3f030dccf9de8ba18f3c13bcf4dc575ccd6219f313498ff5f71cc585adf68bcb9cea448a3f91bd9b0e02a8a25c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.9999999998555864
+      },
+      "equilibrium_nonlinear_remainder_upper": {
+        "numerator_base16": "0x153a8b9d95a73d02d8535d5914996d9257c120168ccd77c081af29312db6693fd3843059c7f31ba648f9c624fa96a693e765297986a3eca0ab605c6b2b2b2947af427961d07e6a0b01dc93e1ef22a6444c3040ad7ef86f6a1763827ae0eb1e202df0a050464786a0a1b807abc781606e944b51ac40945c6c8500f00c5f8781d02e7dd15630e064e58631c6e843291638c51212c0f5f239086948acdf369111e3e169d84b49aac248fd63ce5cabb47aafd3f11d2225b90836a068f742c197fffae6077b2acfa9b8b02a6807a644200cc35de43a8bfa1d7a813edab8d10d66df647f35060390adbc0651843301f229793457acf6d0dd5b7d2e2d0dddb2a26b14ce9479684bb75bc8a1c2edf3b58e4fe48f4ad9310d8772bae64a700bc06be003b7ce5602ed1998f738c5dd211b77ba5a8db763ed60ae43af42a9bf4a06556f54718f2c4550dce675b5cf2b31018c7d7fd47a60875a1c202e358604c2c7e981b40b3bb0c71339e991af31806c63e286beca89f1c88321b49615e8cf6ea20837e28d65fee3c65f6ddd64a54ef80e264e4ae84db029b0047d7e9a2c7aaff5784de90e4217f9a4190315a1bc24cf64e33adaf584a520e15471aaa45481d3e0a178df00c88bf46945ae853b43f15dc0a57f8782095765b2432b369f0ba4729a34e55b852b9858ec85f82ca113c890e8cc8232c79c8898ef9a47773be4bf6003fcea4bd1d29b3edf0f51bb562c7de54f8009a654ac048cb98326d580ca4e924b138ea0329438dee8dc635ed75ebf863690a5a806a2a60a3a3e4f4b814f4fcf390f8efd5433e9f29414d94ae46fc777e6616f6a3011380e14229b0e129aa7ae220ac091a54a3c585d4f89a101892f7770e03c67082979b12965555f3b47c5fd67122faa5674d70ecb2dd3d44e17831c3627e3e460c4094f4560d6b6038d48e6c41e17b426c394a9d842cf61d6153f689d12be41b01461a439e7f7eba9a73149a46ef2b56f08fca9e802811f36beda38d80665eb5c1f",
+        "denominator_base16": "0x7e2098f745c97cfce7944cc92c3cbf3abe29508ea937b63b0acba44adb69a05c998fe79db676753dc85b9b465561fcd939a8327914d2a1effe5b3550fcab0ec39b7e2598c7ecce837524e42451d75b729727ef3b9b7a39f53cefd1cbe98ba78c3a1c7ee124c4349031a2e5a22e88e57118768bcec12735d769fc816ec0a7a257f680f2182c7b64fe25748f3fd1a783b27c853064c121827dcbbe6231a86abea85a23953b90ed4c13c27d7e5a45bc4f2698fb3872dab49b6bc660bc2eaeb7ea0bd3bded539ef5e4e0a1b67dea7cd61f099b43eaf4e32be28204018e2b95c6d7755f4b3b4c92b1a9c96aa94e8a5e3b149747cb3d07d128817cd570663d5578495b53b6cd152ee021ae5a107840aa099a427a55f59727701b5c3e9c2753eed2ec5d1445305897b1a39b5f505444c77293d98cc279b7a4012ae9824dfe47302b5c3dbe8c8844e18baaeb432df1fc558c92fac299352e4f1d7f5d70167d0898e29d175f1fb18f2502c10c78ff24f2f2fbc7f323120f8e1e44d64e15c8c46bd30b67f1376b1aee23ae87e0cba99798f1c6e8806a409c583a067bea0785dbe0b5070620608622b856cc1df17cde3e762ee07a9e5df1880019638dff12255008c9bf09ce048ab914d6e0eededbd369d18c7739b68ec8271ababfbaa4748e86a39c8e25321177bd9fc011efa3bbf402d27fd8164172dca8ceb4a0f3fe9ca4b4bf92a3c81239538a98a7f4eb3be0eeaf9d8afc65e97c3442dee391093f90c140074fdb0aad914a1ee629446b29f29ca2f1fe4f8de871ac5e9b242ea9242474582d084c8673a83fe964d7b91fc7e1de4fc76c06e9c4689b6884b289fce622db4dc30c9f1d41d9671d5efd222329c4badd97e1384bda2a2e7a6493f3e975cc687e0265400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 1.459870382042079e-19
+      },
+      "collision_nonlinear_remainder_upper": {
+        "numerator_base16": "0x153a8b9d95a73d02d8535d5914996d9257c120168ccd77c081af29312db6693fd3843059c7f31ba648f9c624fa96a693e765297986a3eca0ab605c6b2b2b2947af427961d07e6a0b01dc93e1ef22a6444c3040ad7ef86f6a1763827ae0eb1e202df0a050464786a0a1b807abc781606e944b51ac40945c6c8500f00c5f8781d02e7dd15630e064e58631c6e843291638c51212c0f5f239086948acdf369111e3e169d84b49aac248fd63ce5cabb47aafd3f11d2225b90836a068f742c197fffae6077b2acfa9b8b02a6807a644200cc35de43a8bfa1d7a813edab8d10d66df647f35060390adbc0651843301f229793457acf6d0dd5b7d2e2d0dddb2a26b14ce9479684bb75bc8a1c2edf3b58e4fe48f4ad9310d8772bae64a700bc06be003b7ce5602ed1998f738c5dd211b77ba5a8db763ed60ae43af42a9bf4a06556f54718f2c4550dce675b5cf2b31018c7d7fd47a60875a1c202e358604c2c7e981b40b3bb0c71339e991af31806c63e286beca89f1c88321b49615e8cf6ea20837e28d65fee3c65f6ddd64a54ef80e264e4ae84db029b0047d7e9a2c7aaff5784de90e4217f9a4190315a1bc24cf64e33adaf584a520e15471aaa45481d3e0a178df00c88bf46945ae853b43f15dc0a57f8782095765b2432b369f0ba4729a34e55b852b9858ec85f82ca113c890e8cc8232c79c8898ef9a47773be4bf6003fcea4bd1d29b3edf0f51bb562c7de54f8009a654ac048cb98326d580ca4e924b138ea0329438dee8dc635ed75ebf863690a5a806a2a60a3a3e4f4b814f4fcf390f8efd5433e9f29414d94ae46fc777e6616f6a3011380e14229b0e129aa7ae220ac091a54a3c585d4f89a101892f7770e03c67082979b12965555f3b47c5fd67122faa5674d70ecb2dd3d44e17831c3627e3e460c4094f4560d6b6038d48e6c41e17b426c394a9d842cf61d6153f689d12be41b01461a439e7f7eba9a73149a46ef2b56f08fca9e802811f36beda38d80665eb5c1f",
+        "denominator_base16": "0x5415bb4f83dba8a89a62dddb72d32a272970e05f1b7a797cb1dd1831e79bc03dbbb54513cef9a37e8592678438ebfde6267021a60de1c14aa992238b531cb48267a96e65da9ddf024e189818368f924c64c54a27bcfc26a37df53687f107c50826bda9eb6dd8230acbc1ee6c1f05ee4b65a45d3480c4ce8f9bfdab9f2b1a6c3aa455f6bac852435418f85f7fe11a57cc5303759880c101a9327eec211af1d4703c17b8d2609e32b7d6fe543c2e7d8a19bb5225a1e7231247d995d2c9c9cff15d37d3f38d14a3edeb1679a946fde414b1122d474decc7ec56ad565ec7b92f3a4e3f877cddb7211bdb9c70df06e97cb864da877e05361b00fde3a04428e3a5863ce279de0e1f4016743c0afad5c6b11181a6e3f90f6fa0123d7f12c4e29f37483e0d837590652117bcea358d832fa1b7e65dd6fbcfc2ab71f10189542f75723d7e7f085ad8965d1c9cd773f6a8390861fc81bb78c98a13aa3e4ab9a8b065ec68ba3f6a765f6e01d60850aa18a1f752854cc20c0a5ebed88edeb93082f28cb2454b7a4767496d1f054087c66510a12f45aaf180683ad159a7f15a593d4078af596aeb0417258f32bea0fde97ef97495a7143ea1055566425eaa0c18e005dbd4b1340307260de495f494928cf1365da4d1245f301a11d1d527184db459c2685ec376b64fd3bfd5614a6d27f801e1aa900ed64c931b34786b4d54686dcdd50c6d300c2637b1bb1aa3477d409f1fbe5ca843f0fd782c9497b6062a6080d55a353cb1c90b86bf441b82f21bf713174bfedfb3f04bc83f12181f1b6d6da2e5735addaef7c57ff0ede526152febe98a84f2af4682f0679b0321b15344173cde82086a13813b9a1394a8c16cc683273e6540d032917174519862a29ba3dd9afeac43800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 2.1898055730631184e-19
+      },
+      "equilibrium_formula": "7*x_*^2/(1-x_*)",
+      "collision_formula": "(21/2)*x_*^2/(1-x_*)",
+      "passed": true
+    },
+    "stage_structure_audit": {
+      "stage_order": [
+        "equilibrium evaluation",
+        "BGK collision",
+        "periodic streaming",
+        "five-point filter"
+      ],
+      "streaming_records": [
+        {
+          "population": 0,
+          "velocity": [
+            0,
+            0
+          ],
+          "unique_periodic_target_count": 289,
+          "bijective": true,
+          "implementation_basis_replayed": true
+        },
+        {
+          "population": 1,
+          "velocity": [
+            1,
+            0
+          ],
+          "unique_periodic_target_count": 289,
+          "bijective": true,
+          "implementation_basis_replayed": true
+        },
+        {
+          "population": 2,
+          "velocity": [
+            0,
+            1
+          ],
+          "unique_periodic_target_count": 289,
+          "bijective": true,
+          "implementation_basis_replayed": true
+        },
+        {
+          "population": 3,
+          "velocity": [
+            -1,
+            0
+          ],
+          "unique_periodic_target_count": 289,
+          "bijective": true,
+          "implementation_basis_replayed": true
+        },
+        {
+          "population": 4,
+          "velocity": [
+            0,
+            -1
+          ],
+          "unique_periodic_target_count": 289,
+          "bijective": true,
+          "implementation_basis_replayed": true
+        },
+        {
+          "population": 5,
+          "velocity": [
+            1,
+            1
+          ],
+          "unique_periodic_target_count": 289,
+          "bijective": true,
+          "implementation_basis_replayed": true
+        },
+        {
+          "population": 6,
+          "velocity": [
+            -1,
+            1
+          ],
+          "unique_periodic_target_count": 289,
+          "bijective": true,
+          "implementation_basis_replayed": true
+        },
+        {
+          "population": 7,
+          "velocity": [
+            -1,
+            -1
+          ],
+          "unique_periodic_target_count": 289,
+          "bijective": true,
+          "implementation_basis_replayed": true
+        },
+        {
+          "population": 8,
+          "velocity": [
+            1,
+            -1
+          ],
+          "unique_periodic_target_count": 289,
+          "bijective": true,
+          "implementation_basis_replayed": true
+        }
+      ],
+      "streaming_population_permutation_count": 9,
+      "periodic_site_count": 289,
+      "all_streaming_maps_bijective": true,
+      "all_streaming_implementation_basis_replays": true,
+      "filter_coefficients": [
+        {
+          "numerator_base16": "0x63",
+          "denominator_base16": "0x64",
+          "float": 0.99
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x190",
+          "float": 0.0025
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x190",
+          "float": 0.0025
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x190",
+          "float": 0.0025
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x190",
+          "float": 0.0025
+        }
+      ],
+      "filter_coefficient_sum": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x1",
+        "float": 1.0
+      },
+      "all_filter_coefficients_nonnegative": true,
+      "all_filter_implementation_basis_replays": true,
+      "wrapped_stage_composition_replayed": true,
+      "passed": true
+    },
+    "q007ag_tube_reuse": {
+      "base_modal_l1_radius": {
+        "numerator_base16": "0x9",
+        "denominator_base16": "0x16345785d8a0000",
+        "float": 9e-17
+      },
+      "normal_coordinate_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x4a817c800",
+        "float": 5e-11
+      },
+      "tube_state_wiener_l1_upper": {
+        "numerator_base16": "0x1bdd016414593c9fca22f668956a7992b917fa365090017acd199fa50ca2eebfceb6eaf599924d502aa1f366d25af815f539c9719b8e6a4f5bf44051e4e2782d591334762274aefaeabb0fecc30347d7f1ec3c3d7f720d675435b5f6541228fb45c1d8808c4579b60206c70e5d83b31c33fc02b4f3bd2245fdfbd869783fe2cb8de8f43c077f8d90b167feaeb12258d24250934c86930a57268f99e8de50af57401219d7b097b3bc99b77b36f421296b5e312cf91a0f5f23229c2bbcce6358464894e3828efa838319057a616311ca99879595bb0a96712eefd9aacd488d14c4e3f18ed9baeefa4e27a297ce18beb5fa857a34c3f1b28b6d32d390350ea0874aea1022f95e3c740dca43a21822fef48d8c853bc0637b1a81cdd27a2d4f682b45279df9f981b0a17fb5826ab78faba23ca91c0a99f05f37f544328651e5dba0316f0e57adface4b15b947c5bf35ed8b7616d1a39284c13fd3c3c2b81bec82545c6f7aa7a7eb343674d",
+        "denominator_base16": "0x2cec2d9584418bdddeecb24e724dec1c6834c415eddf26127f7b68a7d15bd7a11733b4d86ade144e00c10a62bbe5e8efabba5c5055eb43de6a320f9a3ff1b7a2cf364f0f7f30b6a4187f79ba1aff88c8af49839dd4c73aac4875d2111a1f7ffaf95b1828f0707fc9f39344d5d65b969b4bff79205887b7ddc87980536d981bcddd51a97b63d843bcfc12fe6b1873c0ae0f5a1dc7cee73dbf0ad1f190c5a473719b7d502514ff8cd628340967bd49dbab5dec63a9c8d04e4291df8129fb379378681db4bd3449fc1b8d76329403fd20d3c3889195c2520d3b954b77d6d527047407c3e0e8b3f030dccf9de8ba18f3c13bcf4dc575ccd6219f313498ff5f71cc585adf68bcb9cea448a3f91bd9b0e02a8a25c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 1.4441361143956586e-10
+      },
+      "q007ah_full_map_population_lower": {
+        "numerator_base16": "0xb3b0b64664b5672c0980af58158d159d94eeadcf99ffd9bcaceccd8be70591ad4128877d64942711a0b8ac72f47eb9e85bbde4e7672bbf9228ac71c54662b07a7d75a2bbe1f5581d005b79c462c52df50b4da4ff3e3b081971afbe250a47a55c9b35534c84b836d8e7389cf6359e625895e924a4245d59ae0782b9eed8b6b3e3d157136dbc57ad2fb88c5848974fc0749a1680d9ee4a1bf07891f53d65cb3ac960929f8049cfaa054b7b0b887df21fc4250a42422797eceb9ed880e47505b3ad88952b6bfd67f6fdc8eed091fcdfac8754204ffac523fbb8608e34f46a2bfe574fb3d4e297e068fa180ad6f21859a10151f0b8ec1e9ad844d063f690e6c61389313188cf3e26e4dd8de327a4fd757c94e7967060f50e63c80ac116fc399b46835567a919b72363a70ca52829e6a3f8bf2f74bde0e03a0968ca708609a39471eeb475e43187eeae22ebf5c3c7c7a0c471aa618d932a13fd95534c18e1e278704af6b08c014b01b18bb2a15e4b",
+        "denominator_base16": "0x1944d9a41a64deaccd65244c204bd4cffa9dae4c55cd856a67b56ade65c3a94a9d0d15b9bc1ceb6be06c95d789b15306d098d3ed3054562d1bbc28c6c3f7f74b948e8c78b78b66bc4dc7b478af2fbcf0e2995a08c7b01100e8c246299eb1b7fd2c433d97073f47e19902d6b8489384b75abfb42231cc576cc0c4582eeda58fa3cc7def556829a61a4dcaaf1c3dc11c61e8a2b0c0646212bb761617e16f2c80efe7767d14dbcfbf38769d454a5a798b9064d4f80f80f52c05720db8a79d4f42f3ba90b5aa6d699dcf7f927c73423e62771dfcd1e43d4e277183fa7368d7e5f281445e2e82e5371b7c34c8d2e8ae091cb1a49bbf12433872e98bad960fa5b002f1b31daaea28843c68dc3c1faa737e17edb53c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.027777777633364167
+      },
+      "selected_candidate_gates": {
+        "analytic_base_domain": true,
+        "population_wiener_domain": true,
+        "base_forward_invariance": true,
+        "normal_contraction": true,
+        "tangent_invertibility": true,
+        "strict_normal_domination": true
+      },
+      "all_selected_candidate_gates_pass": true,
+      "q007ag_forward_invariance": true,
+      "state_radius_reproduced_exactly": true,
+      "passed": true
+    },
+    "stage_bounds": {
+      "input_state_wiener_l1_upper": {
+        "numerator_base16": "0x1bdd016414593c9fca22f668956a7992b917fa365090017acd199fa50ca2eebfceb6eaf599924d502aa1f366d25af815f539c9719b8e6a4f5bf44051e4e2782d591334762274aefaeabb0fecc30347d7f1ec3c3d7f720d675435b5f6541228fb45c1d8808c4579b60206c70e5d83b31c33fc02b4f3bd2245fdfbd869783fe2cb8de8f43c077f8d90b167feaeb12258d24250934c86930a57268f99e8de50af57401219d7b097b3bc99b77b36f421296b5e312cf91a0f5f23229c2bbcce6358464894e3828efa838319057a616311ca99879595bb0a96712eefd9aacd488d14c4e3f18ed9baeefa4e27a297ce18beb5fa857a34c3f1b28b6d32d390350ea0874aea1022f95e3c740dca43a21822fef48d8c853bc0637b1a81cdd27a2d4f682b45279df9f981b0a17fb5826ab78faba23ca91c0a99f05f37f544328651e5dba0316f0e57adface4b15b947c5bf35ed8b7616d1a39284c13fd3c3c2b81bec82545c6f7aa7a7eb343674d",
+        "denominator_base16": "0x2cec2d9584418bdddeecb24e724dec1c6834c415eddf26127f7b68a7d15bd7a11733b4d86ade144e00c10a62bbe5e8efabba5c5055eb43de6a320f9a3ff1b7a2cf364f0f7f30b6a4187f79ba1aff88c8af49839dd4c73aac4875d2111a1f7ffaf95b1828f0707fc9f39344d5d65b969b4bff79205887b7ddc87980536d981bcddd51a97b63d843bcfc12fe6b1873c0ae0f5a1dc7cee73dbf0ad1f190c5a473719b7d502514ff8cd628340967bd49dbab5dec63a9c8d04e4291df8129fb379378681db4bd3449fc1b8d76329403fd20d3c3889195c2520d3b954b77d6d527047407c3e0e8b3f030dccf9de8ba18f3c13bcf4dc575ccd6219f313498ff5f71cc585adf68bcb9cea448a3f91bd9b0e02a8a25c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 1.4441361143956586e-10
+      },
+      "minimum_rest_population": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x24",
+        "float": 0.027777777777777776
+      },
+      "q007ah_input_population_lower": {
+        "numerator_base16": "0xb3b0b64664b5672c0980af58158d159d94eeadcf99ffd9bcaceccd8be70591ad4128877d64942711a0b8ac72f47eb9e85bbde4e7672bbf9228ac71c54662b07a7d75a2bbe1f5581d005b79c462c52df50b4da4ff3e3b081971afbe250a47a55c9b35534c84b836d8e7389cf6359e625895e924a4245d59ae0782b9eed8b6b3e3d157136dbc57ad2fb88c5848974fc0749a1680d9ee4a1bf07891f53d65cb3ac960929f8049cfaa054b7b0b887df21fc4250a42422797eceb9ed880e47505b3ad88952b6bfd67f6fdc8eed091fcdfac8754204ffac523fbb8608e34f46a2bfe574fb3d4e297e068fa180ad6f21859a10151f0b8ec1e9ad844d063f690e6c61389313188cf3e26e4dd8de327a4fd757c94e7967060f50e63c80ac116fc399b46835567a919b72363a70ca52829e6a3f8bf2f74bde0e03a0968ca708609a39471eeb475e43187eeae22ebf5c3c7c7a0c471aa618d932a13fd95534c18e1e278704af6b08c014b01b18bb2a15e4b",
+        "denominator_base16": "0x1944d9a41a64deaccd65244c204bd4cffa9dae4c55cd856a67b56ade65c3a94a9d0d15b9bc1ceb6be06c95d789b15306d098d3ed3054562d1bbc28c6c3f7f74b948e8c78b78b66bc4dc7b478af2fbcf0e2995a08c7b01100e8c246299eb1b7fd2c433d97073f47e19902d6b8489384b75abfb42231cc576cc0c4582eeda58fa3cc7def556829a61a4dcaaf1c3dc11c61e8a2b0c0646212bb761617e16f2c80efe7767d14dbcfbf38769d454a5a798b9064d4f80f80f52c05720db8a79d4f42f3ba90b5aa6d699dcf7f927c73423e62771dfcd1e43d4e277183fa7368d7e5f281445e2e82e5371b7c34c8d2e8ae091cb1a49bbf12433872e98bad960fa5b002f1b31daaea28843c68dc3c1faa737e17edb53c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.027777777633364167
+      },
+      "density_denominator_lower": {
+        "numerator_base16": "0x2cec2d9568648a79ca9375aea82af5b3d2ca4a8334c72bdc2eeb672d044237fc0a90c6189c272958672ebd129143f588d95f643a60b17a6ccea3a54ae3fd7750ea53d6e2261d822df60acabf304478dbec463bc5e2dafe6ec903c4a9c5e9ca04a548ef2daaaea749674dcb1fd454cf8cee7bc604248bb528d4bc5e0d6f9c43646511c6afd5ef4f80f49370da670bc1ff5e37c4f58c96aa72843ee7399f14d988bd2ca0cdd4ed72fe779c55ab2392607469cb3a3e6a9f214977d02206d89b67bb99ba5c76ebb51898fe7baf10eaf7a6726076c6fc3abc77808ab506a7e54d59a6bf36cc23cffea20314aeee6bf151296db68f0f7b475becdb3f820d922c9e3c234c3ee171cfbe814f45bca7cbe69c887202c10b72737ac43f9c84e57e322d85d2b097d4bad86206067e4f5e804a7d954870545dc356e3f5660fa0c80abbcd79ae1a245fce90f1a8520531b4ea46b83a40ca127489e92e5c6d7b3ec02c3c3d47e4137daba39085585814cbc98b3",
+        "denominator_base16": "0x2cec2d9584418bdddeecb24e724dec1c6834c415eddf26127f7b68a7d15bd7a11733b4d86ade144e00c10a62bbe5e8efabba5c5055eb43de6a320f9a3ff1b7a2cf364f0f7f30b6a4187f79ba1aff88c8af49839dd4c73aac4875d2111a1f7ffaf95b1828f0707fc9f39344d5d65b969b4bff79205887b7ddc87980536d981bcddd51a97b63d843bcfc12fe6b1873c0ae0f5a1dc7cee73dbf0ad1f190c5a473719b7d502514ff8cd628340967bd49dbab5dec63a9c8d04e4291df8129fb379378681db4bd3449fc1b8d76329403fd20d3c3889195c2520d3b954b77d6d527047407c3e0e8b3f030dccf9de8ba18f3c13bcf4dc575ccd6219f313498ff5f71cc585adf68bcb9cea448a3f91bd9b0e02a8a25c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.9999999998555864
+      },
+      "equilibrium_nonlinear_remainder_upper": {
+        "numerator_base16": "0x153a8b9d95a73d02d8535d5914996d9257c120168ccd77c081af29312db6693fd3843059c7f31ba648f9c624fa96a693e765297986a3eca0ab605c6b2b2b2947af427961d07e6a0b01dc93e1ef22a6444c3040ad7ef86f6a1763827ae0eb1e202df0a050464786a0a1b807abc781606e944b51ac40945c6c8500f00c5f8781d02e7dd15630e064e58631c6e843291638c51212c0f5f239086948acdf369111e3e169d84b49aac248fd63ce5cabb47aafd3f11d2225b90836a068f742c197fffae6077b2acfa9b8b02a6807a644200cc35de43a8bfa1d7a813edab8d10d66df647f35060390adbc0651843301f229793457acf6d0dd5b7d2e2d0dddb2a26b14ce9479684bb75bc8a1c2edf3b58e4fe48f4ad9310d8772bae64a700bc06be003b7ce5602ed1998f738c5dd211b77ba5a8db763ed60ae43af42a9bf4a06556f54718f2c4550dce675b5cf2b31018c7d7fd47a60875a1c202e358604c2c7e981b40b3bb0c71339e991af31806c63e286beca89f1c88321b49615e8cf6ea20837e28d65fee3c65f6ddd64a54ef80e264e4ae84db029b0047d7e9a2c7aaff5784de90e4217f9a4190315a1bc24cf64e33adaf584a520e15471aaa45481d3e0a178df00c88bf46945ae853b43f15dc0a57f8782095765b2432b369f0ba4729a34e55b852b9858ec85f82ca113c890e8cc8232c79c8898ef9a47773be4bf6003fcea4bd1d29b3edf0f51bb562c7de54f8009a654ac048cb98326d580ca4e924b138ea0329438dee8dc635ed75ebf863690a5a806a2a60a3a3e4f4b814f4fcf390f8efd5433e9f29414d94ae46fc777e6616f6a3011380e14229b0e129aa7ae220ac091a54a3c585d4f89a101892f7770e03c67082979b12965555f3b47c5fd67122faa5674d70ecb2dd3d44e17831c3627e3e460c4094f4560d6b6038d48e6c41e17b426c394a9d842cf61d6153f689d12be41b01461a439e7f7eba9a73149a46ef2b56f08fca9e802811f36beda38d80665eb5c1f",
+        "denominator_base16": "0x7e2098f745c97cfce7944cc92c3cbf3abe29508ea937b63b0acba44adb69a05c998fe79db676753dc85b9b465561fcd939a8327914d2a1effe5b3550fcab0ec39b7e2598c7ecce837524e42451d75b729727ef3b9b7a39f53cefd1cbe98ba78c3a1c7ee124c4349031a2e5a22e88e57118768bcec12735d769fc816ec0a7a257f680f2182c7b64fe25748f3fd1a783b27c853064c121827dcbbe6231a86abea85a23953b90ed4c13c27d7e5a45bc4f2698fb3872dab49b6bc660bc2eaeb7ea0bd3bded539ef5e4e0a1b67dea7cd61f099b43eaf4e32be28204018e2b95c6d7755f4b3b4c92b1a9c96aa94e8a5e3b149747cb3d07d128817cd570663d5578495b53b6cd152ee021ae5a107840aa099a427a55f59727701b5c3e9c2753eed2ec5d1445305897b1a39b5f505444c77293d98cc279b7a4012ae9824dfe47302b5c3dbe8c8844e18baaeb432df1fc558c92fac299352e4f1d7f5d70167d0898e29d175f1fb18f2502c10c78ff24f2f2fbc7f323120f8e1e44d64e15c8c46bd30b67f1376b1aee23ae87e0cba99798f1c6e8806a409c583a067bea0785dbe0b5070620608622b856cc1df17cde3e762ee07a9e5df1880019638dff12255008c9bf09ce048ab914d6e0eededbd369d18c7739b68ec8271ababfbaa4748e86a39c8e25321177bd9fc011efa3bbf402d27fd8164172dca8ceb4a0f3fe9ca4b4bf92a3c81239538a98a7f4eb3be0eeaf9d8afc65e97c3442dee391093f90c140074fdb0aad914a1ee629446b29f29ca2f1fe4f8de871ac5e9b242ea9242474582d084c8673a83fe964d7b91fc7e1de4fc76c06e9c4689b6884b289fce622db4dc30c9f1d41d9671d5efd222329c4badd97e1384bda2a2e7a6493f3e975cc687e0265400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 1.459870382042079e-19
+      },
+      "collision_nonlinear_remainder_upper": {
+        "numerator_base16": "0x153a8b9d95a73d02d8535d5914996d9257c120168ccd77c081af29312db6693fd3843059c7f31ba648f9c624fa96a693e765297986a3eca0ab605c6b2b2b2947af427961d07e6a0b01dc93e1ef22a6444c3040ad7ef86f6a1763827ae0eb1e202df0a050464786a0a1b807abc781606e944b51ac40945c6c8500f00c5f8781d02e7dd15630e064e58631c6e843291638c51212c0f5f239086948acdf369111e3e169d84b49aac248fd63ce5cabb47aafd3f11d2225b90836a068f742c197fffae6077b2acfa9b8b02a6807a644200cc35de43a8bfa1d7a813edab8d10d66df647f35060390adbc0651843301f229793457acf6d0dd5b7d2e2d0dddb2a26b14ce9479684bb75bc8a1c2edf3b58e4fe48f4ad9310d8772bae64a700bc06be003b7ce5602ed1998f738c5dd211b77ba5a8db763ed60ae43af42a9bf4a06556f54718f2c4550dce675b5cf2b31018c7d7fd47a60875a1c202e358604c2c7e981b40b3bb0c71339e991af31806c63e286beca89f1c88321b49615e8cf6ea20837e28d65fee3c65f6ddd64a54ef80e264e4ae84db029b0047d7e9a2c7aaff5784de90e4217f9a4190315a1bc24cf64e33adaf584a520e15471aaa45481d3e0a178df00c88bf46945ae853b43f15dc0a57f8782095765b2432b369f0ba4729a34e55b852b9858ec85f82ca113c890e8cc8232c79c8898ef9a47773be4bf6003fcea4bd1d29b3edf0f51bb562c7de54f8009a654ac048cb98326d580ca4e924b138ea0329438dee8dc635ed75ebf863690a5a806a2a60a3a3e4f4b814f4fcf390f8efd5433e9f29414d94ae46fc777e6616f6a3011380e14229b0e129aa7ae220ac091a54a3c585d4f89a101892f7770e03c67082979b12965555f3b47c5fd67122faa5674d70ecb2dd3d44e17831c3627e3e460c4094f4560d6b6038d48e6c41e17b426c394a9d842cf61d6153f689d12be41b01461a439e7f7eba9a73149a46ef2b56f08fca9e802811f36beda38d80665eb5c1f",
+        "denominator_base16": "0x5415bb4f83dba8a89a62dddb72d32a272970e05f1b7a797cb1dd1831e79bc03dbbb54513cef9a37e8592678438ebfde6267021a60de1c14aa992238b531cb48267a96e65da9ddf024e189818368f924c64c54a27bcfc26a37df53687f107c50826bda9eb6dd8230acbc1ee6c1f05ee4b65a45d3480c4ce8f9bfdab9f2b1a6c3aa455f6bac852435418f85f7fe11a57cc5303759880c101a9327eec211af1d4703c17b8d2609e32b7d6fe543c2e7d8a19bb5225a1e7231247d995d2c9c9cff15d37d3f38d14a3edeb1679a946fde414b1122d474decc7ec56ad565ec7b92f3a4e3f877cddb7211bdb9c70df06e97cb864da877e05361b00fde3a04428e3a5863ce279de0e1f4016743c0afad5c6b11181a6e3f90f6fa0123d7f12c4e29f37483e0d837590652117bcea358d832fa1b7e65dd6fbcfc2ab71f10189542f75723d7e7f085ad8965d1c9cd773f6a8390861fc81bb78c98a13aa3e4ab9a8b065ec68ba3f6a765f6e01d60850aa18a1f752854cc20c0a5ebed88edeb93082f28cb2454b7a4767496d1f054087c66510a12f45aaf180683ad159a7f15a593d4078af596aeb0417258f32bea0fde97ef97495a7143ea1055566425eaa0c18e005dbd4b1340307260de495f494928cf1365da4d1245f301a11d1d527184db459c2685ec376b64fd3bfd5614a6d27f801e1aa900ed64c931b34786b4d54686dcdd50c6d300c2637b1bb1aa3477d409f1fbe5ca843f0fd782c9497b6062a6080d55a353cb1c90b86bf441b82f21bf713174bfedfb3f04bc83f12181f1b6d6da2e5735addaef7c57ff0ede526152febe98a84f2af4682f0679b0321b15344173cde82086a13813b9a1394a8c16cc683273e6540d032917174519862a29ba3dd9afeac43800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 2.1898055730631184e-19
+      },
+      "equilibrium_deviation_wiener_l1_upper": {
+        "numerator_base16": "0x152ffebd67c7104de370afab27e953f4c26d3b32bb0df42f27ee515d6c2a091c28a6c2cb7147d4fb38ad0313e4d0c57debddedab592efb121a06f386f3d96ca4dec25866698ec5fe804ded4fd30bc0ac7cc47925b66a95ee4c3f7bc3350d326fbde3be911b7dabed474c3829d48bf531573df392b72673f25ff3bc76ac90fcb9f7d2dd4ba2c0f6ee49f9bc9bb250b8d8cbc1d57f9f837065b22852a7e6024017073a5b645a4af9716a1fbaa569dc8a0b839c4299496b7da33d44b0055dba7e7df23c2824468ec9aa84d906738b282300369c1e607e331efbae2ba00b5eed420c2a5ce6241a8ba023d392949b3f42eb8e689fa8db21f5f1f4d3eff75ee13f3e82abdef9655945f9538160d999e882a0b826c5afc480da7e0e6f2e3d0cc52d8699783fe7e3355705f3cda587acb4e23a40a5e067ecd437cb6c78111f345c9a3e33591bb87be40466ee40049968f80edcfe49562445991af6a9421ce9a6bdf90e7833fdb7c7da97ea640f79f23984843a676f0712ed061021917ae0efbc9845d4b9f708049d1caa0fc5d339caa656c894f606cfbe7c6de528f5a7781272097696d4fcd0cdd44cfb405e19b874833d788050daf122c13136df301e390db3bc2efb5f9d4b5baab66613464103f35e04f617abbac44dc9acf4191cec97653a951cc918632a75d76e6c1522df0e0a3f6ced979a4c41401c2c5d286c41a8894973debbab0f917d839dbae98592bd1e2b13590f19877d27e4348b3d9ade66d631a2dd08833f11aade4bbe04a6200a897d82884756aae75d463b4eed1991837191b919db2502adfd9bdc0aabab0e02944d1f8df0204d0e643df46ef78637cc8dcbaab0f6fdaa4a9676a8daa10f57b29f21b38bd182290466ac21272df3f209e508b872f03900bbba776465efdba0cf315fa6907c4ac95f4791d1c3b69cc2ae99d424a1a033668241ec636bc5f9e25b5658667c22c087990560df318143c66ebf57ff44105cfabce22b9eb23ff740692b1ad6cbd49808d5e37f37",
+        "denominator_base16": "0xfc4131ee8b92f9f9cf28999258797e757c52a11d526f6c7615974895b6d340b9331fcf3b6cecea7b90b7368caac3f9b2735064f229a543dffcb66aa1f9561d8736fc4b318fd99d06ea49c848a3aeb6e52e4fde7736f473ea79dfa397d3174f187438fdc2498869206345cb445d11cae230ed179d824e6baed3f902dd814f44afed01e43058f6c9fc4ae91e7fa34f0764f90a60c9824304fb977cc46350d57d50b4472a7721da982784fafcb48b789e4d31f670e5b56936d78cc1785d5d6fd417a77bdaa73debc9c1436cfbd4f9ac3e133687d5e9c657c50408031c572b8daeeabe96769925635392d5529d14bc76292e8f967a0fa25102f9aae0cc7aaaf092b6a76d9a2a5dc0435cb420f08154133484f4abeb2e4ee036b87d384ea7dda5d8ba288a60b12f634736bea0a8898ee527b31984f36f480255d3049bfc8e6056b87b7d191089c31755d6865be3f8ab1925f585326a5c9e3afebae02cfa1131c53a2ebe3f631e4a058218f1fe49e5e5f78fe646241f1c3c89ac9c2b9188d7a616cfe26ed635dc475d0fc197532f31e38dd100d48138b0740cf7d40f0bb7c16a0e0c40c10c4570ad983be2f9bc7cec5dc0f53cbbe3100032c71bfe244aa011937e139c09157229adc1ddbdb7a6d3a318ee736d1d904e35757f7548e91d0d47391c4a6422ef7b3f8023df4777e805a4ffb02c82e5b9519d6941e7fd3949697f2547902472a715314fe9d677c1dd5f3b15f8cbd2f86885bdc722127f2182800e9fb6155b22943dcc5288d653e53945e3fc9f1bd0e358bd36485d524848e8b05a10990ce7507fd2c9af723f8fc3bc9f8ed80dd388d136d1096513f9cc45b69b86193e3a83b2ce3abdfa4446538975bb2fc27097b4545cf4c927e7d2eb98d0fc04ca800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 3.1289615826504644e-10
+      },
+      "equilibrium_population_lower": {
+        "numerator_base16": "0x15056ecfe7f726a6b145a8dc3793da724e9c7a33526384dc19d97d34fd37ae8b270b9bfd5479e2ba63ecaac66dca6bbea27700cd49dbe031f195757df37983d2e125fcafb236e48cc8c1064dff07659b86fd32328a685296ab8130f3b05abca81735f58740c24d8d8b603f1da976f3baff2b1e0cc49388218fc9ad75cd1344ce4de61ad03a8b12a6820fcb32197338c1a59e34bfebd8387c63faa7f6df2cf5a0ee99e9e33d3669dd07b0cfcb25ac6382957aa73fcc7c47d4323de616f592fb55bafd4545d9e174ad8ad89a58d6c7cf822d04c1c93dec48fe01bfc881461dcc71c3657cef7c5d2031ecee310a0ee350fd5a15b4cdaf9717291acab3227beaffc4fcc2bf034e01429c51e3ff0d2f837784d13adbbc96d70fb736cd0e83cf225faa8ad7a09d8d4ccb553a3c45aa3cdefd97ad0ad2d4d697601475ec30b55a26b58e42d66d157064afec7509b0fe0d6554d09da56e84a25e1d82dda02a6fb40f4aeaf127e70e1bee000917ae936596f7368a57b80f32de6297468b45d57598ff9df65179f6f409c6e3dac20ea42c8d75d23a76c42bed6d62b2a7bb9ea140b7a860f8f484bdd9fca617d9d05e4e198a8f91298910322c4c5a137148bc5efbcc429a99b7f2a795fb044d22f17f9f2166ab92a829a796516fa6b3f5a5a861043db4b5e1b82e405d5d623a3695ba09ee980217d1269859ded1dece0cc8a3df28f3818e3d4fcabc5bdb614931bd1bfee413b468e89eab365bbe7606c0be04a84cda070323b97017353390b2d8ca23e6acfdbe25739964af847aa649b03c9c44918e12206b3c86e54af8a9f812b8fa328e9c30032ad17ce0b255b989333100ce760bbfeeb04db835553c3424f1f7cb9cb8deb63652b225cbfe67d566a2c00e21edaf050e5d6a72f54fdccd099d2ce306d1d926be10c4e8b1fa3e2294a8ab4dc29b7f43283921b1f65cc793a3ad5bcae1258edfcf6cc8b97be6934efdd626b7c34acb3c1f80233cee90fc9597d23e9401a3ec47eaf7b9c8237e57e55825b",
+        "denominator_base16": "0x2f4c395cba2b8eded6d79ccb7096c7b6074f7e357f74e456240c5d9c12479c22b995f6db246c6bf72b225a3a6004bed1759f12ed67cefcb9ff6233fe5ec025895a4f4e194af8cd714bedd58d9eb0c24af8aef9b65a4dd5bbf6d9eeac77945ed495caaf946dc993b6129d161cd173560a692c746d886eb430c7beb089883edce0fc705ac910ae45df4e0bb5b7ee9ed162eeb1f225c86c90ef2c6764d29f28077f21cd57f65658fc8768ef0f61da269dae795e352b1203ba486a6446918184f7c46f6738ff5b9c35d43ca46f37eed04ba39a39781bd53074f0c1809550582a90cc03bc363cb7029fab87ff7d73e35627b8baec36e2ee6f308ed00a2657000d1b823f648ce7f1940ca161c62d183fc399d8ede03c18aeca0a42977a8ebf798f18a2e799f22138e29d5a43be1f99cacaf77194c8eda4dd80701790dd3f5ab21042972774b319d494601839313abea014b71e08f973f15dab0fc30a086ee33954fae8c3abe295ade10864ad5faddb1b1e6afb2d26c5d54b59d05d482b49a86f2446fa74c82a194d6172f44c5f98d95aaa973027d83aa115c26e77c2d2327443e2a24c24324d05208c8b3a8ed3576c51942dfb633a93000985553fa6cdfe034ba7a3ad41b40567d0945993926f47ae94acb5a4758b0eaa0607e5fdabb5727d5ab54df2c68ce71be806b9dd667b810eeff108588b12bf4d83bc5b7f7abdc3c7d6fd6b06d57f53f93efbd836745981db141ea6378e93991395566377d6487802bdf22401167bcb964f79a82fbafabd1abf5dd5372aa0a37a2d917f6d8daba110e31cb26b5f17f785d0e56beaf4b35deac88297a9a73a4731c2f3bed64d123d2924bbaaf8b186ab039eeccd2fa9c61318f4751c71cfd16de5b77b778c2ca72f40e5f800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.02777777746488162
+      },
+      "post_collision_deviation_wiener_l1_upper": {
+        "numerator_base16": "0xb42aec5562e910bca0adc6234535f911aedc90433be0c851af36616cfe91d4441d9414be507dc2aefcc5f8001ea4e4789bc665476518139c668f3756460c461c8280c5513d40135db075b7edf35974ab7fdf9d91619c5db389b431a2797394eefaff38cad6f1d9ec8fa2c5b2c163e7fb30d457dd2b0805aaaf4ae5b2b8494310e70471de8ce53629ed6315af551e3541f66602feee051be21896899ea63e6732761baeb262e633c978d9562e7a12d1ffbfb013b883fdf55ebe93bc3eeb13d9c8627cdb9a04c18b1c0c6dbd6ec4334d46db2bff123aefad4dd4bed129c0a7a9f1c429276ab9fd461e8dad18dc33af4c57974729d4f9414ec3661deb10830526381e6b3ac6ce2c44b244b85caaf91e614997b692dc942b35c308e5b615e583261b02111b8f8f1ffaa384dee59cbb5ea2dde3149e0b65d50bd3f50cfab1eb0d626355415a3e6cfa96d31275308f50ae5d09651840e4a0d732fb882d6fb3bf548372788ae5177a2a98646b65643b16f76362f7126ab054a69cc82b24de787c6a9dbbb0408ca07588fa62ee6b5ec39e8561b51abad269d400fc6236c7feafd5291f396429b4ba2b4bf91e6fc1390179c5f7ac5e7d825ef521e06d02fd2c4caa11394666f759cfced2f8395493816fb9612c87d5f5d77c5cd92e0714c4ccf7196957751094a23ded0804b4660c0e0656907a57ece99a59051f989a2bc3dfa2aeab8c670051ba71ea48c3096062003d23d98491417d23ec9044fa479de3af13a33a45d55fb7a25355a0c4952453f3174c784f81744850aa88baea203e3d30ed3963d65d3505bbecfe8692eb7783b6e0927d71cfb57be82f16223461b0b025adc5b94ab924d40592b7b40cc1b59d49a0296d35c0696d3683dbeb7560d510b9ae159e5a3dd182041df1dc220e5f6ba231e1ac02942f6c6621b74ceaec3afc7a12eb172de90d51b8b3fae38433f17e904a2797446e9b58761959fba13bceda75cb0258d71179459792b6b2c1e7bd017c82fe3378004dff0463",
+        "denominator_base16": "0x5bba9dcb1b7b43a0a86bdac0da5ab99f15ef8067c0e2b313aac2a607e564178929dd0589f9105544349fb6bec9bba09dfb630d6f54f6473a2d599b23a07c67d413fea6fabff20a8e26a677603b8559c7b3bff3ce42876ff82c5152c2d86591202a434500d4ebc9230cd38fbbc4c0a6dde33ef1508c799b85645a8cada362a49d105dc757662b322d328350e89879d424b7a6aed4e98cbbfe65a1bbc7061f164be476f82b5220f182bbfe2d58ece60b04cc599d6acd9a9f94332f147f0ab44d1fdfcff26b5c55bdbaa427a164b7e18aefb6bd07f7eb08a4bba5d295f1271c3f9b2e082b206aafc14caaa9ad7be770c9283436b805af6346e66caed5fe0f9d4c9f82b37de0dc45e9f32a3a86007ba9e48d703e8410d6dd2b2bd07190f7395394a0c8ec80406e52a5884551b1a66281dfe409479e5702e993928d4ffebf68d9b772b920631ad2941f36bc7e8171b294c7fc306f6c7ec52cb9b85184b80640a4cf56d0d13b50d5194694b516a68225143453bc6a39dbb8ec3ec46cef1a7cf693ee80e27c70ad31391d00941e3fb50cedc05d648c149d4179144d1cbe715d9aedd5e900618d9d5665e73b438a5bf8dc462aa1b8afa8ba410295d0c760f4637b73aa0a31d940c956750ad09fdf92c6f1cb12b3509190cd9f17136054c4bf02a06760de9857158b746a22a59ff747dee89d27756acf0667c92f3d16436083740d8e62f5fb257c11ee8393ce750aae4407fd6163fd3d47e7eb523545808c8ba83a13aaacc6c18ad5ef7793c16aa07681732295c052abe7b6a5f363bd31c8fa4f4bda90541d45c103859de8915e7322bf94621e604c13eeec24c1721bbc4267197d8afe01584afe16898d30d88f1389e2d2577cfbc1962a77b16b92843791d001be00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 4.5730976977760583e-10
+      },
+      "post_collision_population_lower": {
+        "numerator_base16": "0x7a4e2797b1ed5f7e54dcaaf857e3d0e1cdcb4d398d288cd454334e0f0253304727243a9d15a738abd94072d9a7dbab779043e5f73c15619547f3cc319b20d4eda30663f5dd1db9820cda52ef3949fb174ee4ba405ec70a0898703204a413730972adc487615fbb7bc3c1389f6d2677a396edc2a7937c55e4744d00e6a67874a432c0769e8cb993d72db4eeaef363b4a654899768599b15869137bffa169a4ffb5a409c18f2fb2b3bc4d3dc053dc7e5fa2cf01c9a7675222cd9f619905292705e6c07185203b3d017f6956c994b43df257f5d8d56cbcbb2e47ad2f3fefb091cfac89b06d67132f30e040fc1954ecc62ebea154f9b372c8699d4aa58af99e0531172a2d2a61c4232a83aabd13e6cfbd0addff6724a019605894dd2acb7f6b2a210adf985f02fe3b1cadbc3438a44377277954b9ed9700477f5a478714144089de78efe1183c72f3de9e1ac650422cd451bca8dc990bd04ccc244576634230178153693a99fd76c145f5ecc4b2eb918255b578055414dc6fd4b5cac131e8730dcbf2f53030b35871deabbceb7ba07c5e67977b87431feef51e46623ef67de6806e95e218cb9ab60a6bc3bcf1a4186cd8890cbcbc5fbf47b009dbe2731696a773f0309e6ee83cf908cca0d9b8e4966bbd3fc53df1244b6065d2f084db2af9ba368295cb3b6c6d4af17eb0e737e00be8ee8c1a8a7c2b8a0720b6cb93ebd07dd59401c8eb2521d2eb1cfb759145698a2f1cbb94388d9f8f24c3556f3cc7772b2beba8d18bfa11b4cdbaab72ab11760747088a217aba2030fb565029f5567b36454e94ab9a4cfe01669f9a76f5df783b27b33ba433fe79e29c664a629eeb7263107976cb850a56724fb359e4d0253870af6d89d3da379e12815354c6347132fb4dd2f5bf24f1468b79f3a62a6b99d4e1bd196a5afbf84371bacd9ada193f3b4f0a91c73eba7644d80ad5e40f5573642b844f21893a32b42df69db3f20d1c4c93709e9ef8f57acb942f3947dbe7ba48c8fb8a77056597ff1602f2d7",
+        "denominator_base16": "0x1132fd9615271cae1f94390428f102cdd41ce813742a8193b0047f217b02c469b7d97109deb30ffcc9ddf243c5d32e1d9f229284dfee2d5ae880cd16ae175377c3bfbf4f03fd61faa73f36620b2900d571b3fdb6ac7964fe884f3f8488930b3607ec9cf027ec35b69267aaf334e41f499a9bcd3f1a56cd2902d0fa608ea27edd731195606328196879789f2b9c96d7c6e26f40c7ebca633fb30e53355125d42e3ad64e881f662d48833fa880ac6b2210e650cd84068cfdebc998d3d7d201ce75f9f6fd7421501392fec76e42e27a4a0cf243717e7c119ee32f177c1d37554bed18a188161400f43e5fffd0873b6525b789ca428110e29d4b3460c81fa2ed7e5de881a79a294d1bdd97eaf920172fdada850bb8c32849781837154b2e5abfabde25ac580c14af7f098cff514f327859fac1bd6db0508bcbab7a7effc3e3a8d26582b61295077bc5da4357b845517be57f4914e457c4f862d28f48e2812c1ee6e047273b1f27f4bd3be1f43f3866f3c9cfb353ead932ac4bc4d46cd4f76e3bbcb82a775520793ab5701bc5abf1f26c941182da43dd7c46b3ce7563b5418d0c981bb0124a8d80331b5b1ca9f13ea94d27fe52a0efa2ec307c1725622dd2a725afe1e958bc25c035f2071df9eb854d5613819f1b4b268dd453a20fe4e3d07e136229bc90540a25d3e67f0dfe5d79cb9d77660406d13375b8db742ca218a5c28ab28e1f1707435cb8abb6b5f200acc17f8242bf7b7d7b7c1f69fd081a5a2f8ae3b00065444a081ce66bb443fe163845967c140f803b723f1da2b37955aeeede38fb0fc57d1430a90d9b9b41b59683ebd265b20e43bccc46e44565334c7354c78a0fa0408e0fa439ca79289ad3a9da8770676f344c27f671442b78ca6b570053a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.027777777320468006
+      },
+      "post_streaming_population_lower": {
+        "numerator_base16": "0x7a4e2797b1ed5f7e54dcaaf857e3d0e1cdcb4d398d288cd454334e0f0253304727243a9d15a738abd94072d9a7dbab779043e5f73c15619547f3cc319b20d4eda30663f5dd1db9820cda52ef3949fb174ee4ba405ec70a0898703204a413730972adc487615fbb7bc3c1389f6d2677a396edc2a7937c55e4744d00e6a67874a432c0769e8cb993d72db4eeaef363b4a654899768599b15869137bffa169a4ffb5a409c18f2fb2b3bc4d3dc053dc7e5fa2cf01c9a7675222cd9f619905292705e6c07185203b3d017f6956c994b43df257f5d8d56cbcbb2e47ad2f3fefb091cfac89b06d67132f30e040fc1954ecc62ebea154f9b372c8699d4aa58af99e0531172a2d2a61c4232a83aabd13e6cfbd0addff6724a019605894dd2acb7f6b2a210adf985f02fe3b1cadbc3438a44377277954b9ed9700477f5a478714144089de78efe1183c72f3de9e1ac650422cd451bca8dc990bd04ccc244576634230178153693a99fd76c145f5ecc4b2eb918255b578055414dc6fd4b5cac131e8730dcbf2f53030b35871deabbceb7ba07c5e67977b87431feef51e46623ef67de6806e95e218cb9ab60a6bc3bcf1a4186cd8890cbcbc5fbf47b009dbe2731696a773f0309e6ee83cf908cca0d9b8e4966bbd3fc53df1244b6065d2f084db2af9ba368295cb3b6c6d4af17eb0e737e00be8ee8c1a8a7c2b8a0720b6cb93ebd07dd59401c8eb2521d2eb1cfb759145698a2f1cbb94388d9f8f24c3556f3cc7772b2beba8d18bfa11b4cdbaab72ab11760747088a217aba2030fb565029f5567b36454e94ab9a4cfe01669f9a76f5df783b27b33ba433fe79e29c664a629eeb7263107976cb850a56724fb359e4d0253870af6d89d3da379e12815354c6347132fb4dd2f5bf24f1468b79f3a62a6b99d4e1bd196a5afbf84371bacd9ada193f3b4f0a91c73eba7644d80ad5e40f5573642b844f21893a32b42df69db3f20d1c4c93709e9ef8f57acb942f3947dbe7ba48c8fb8a77056597ff1602f2d7",
+        "denominator_base16": "0x1132fd9615271cae1f94390428f102cdd41ce813742a8193b0047f217b02c469b7d97109deb30ffcc9ddf243c5d32e1d9f229284dfee2d5ae880cd16ae175377c3bfbf4f03fd61faa73f36620b2900d571b3fdb6ac7964fe884f3f8488930b3607ec9cf027ec35b69267aaf334e41f499a9bcd3f1a56cd2902d0fa608ea27edd731195606328196879789f2b9c96d7c6e26f40c7ebca633fb30e53355125d42e3ad64e881f662d48833fa880ac6b2210e650cd84068cfdebc998d3d7d201ce75f9f6fd7421501392fec76e42e27a4a0cf243717e7c119ee32f177c1d37554bed18a188161400f43e5fffd0873b6525b789ca428110e29d4b3460c81fa2ed7e5de881a79a294d1bdd97eaf920172fdada850bb8c32849781837154b2e5abfabde25ac580c14af7f098cff514f327859fac1bd6db0508bcbab7a7effc3e3a8d26582b61295077bc5da4357b845517be57f4914e457c4f862d28f48e2812c1ee6e047273b1f27f4bd3be1f43f3866f3c9cfb353ead932ac4bc4d46cd4f76e3bbcb82a775520793ab5701bc5abf1f26c941182da43dd7c46b3ce7563b5418d0c981bb0124a8d80331b5b1ca9f13ea94d27fe52a0efa2ec307c1725622dd2a725afe1e958bc25c035f2071df9eb854d5613819f1b4b268dd453a20fe4e3d07e136229bc90540a25d3e67f0dfe5d79cb9d77660406d13375b8db742ca218a5c28ab28e1f1707435cb8abb6b5f200acc17f8242bf7b7d7b7c1f69fd081a5a2f8ae3b00065444a081ce66bb443fe163845967c140f803b723f1da2b37955aeeede38fb0fc57d1430a90d9b9b41b59683ebd265b20e43bccc46e44565334c7354c78a0fa0408e0fa439ca79289ad3a9da8770676f344c27f671442b78ca6b570053a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.027777777320468006
+      },
+      "post_filter_population_lower": {
+        "numerator_base16": "0x7a4e2797b1ed5f7e54dcaaf857e3d0e1cdcb4d398d288cd454334e0f0253304727243a9d15a738abd94072d9a7dbab779043e5f73c15619547f3cc319b20d4eda30663f5dd1db9820cda52ef3949fb174ee4ba405ec70a0898703204a413730972adc487615fbb7bc3c1389f6d2677a396edc2a7937c55e4744d00e6a67874a432c0769e8cb993d72db4eeaef363b4a654899768599b15869137bffa169a4ffb5a409c18f2fb2b3bc4d3dc053dc7e5fa2cf01c9a7675222cd9f619905292705e6c07185203b3d017f6956c994b43df257f5d8d56cbcbb2e47ad2f3fefb091cfac89b06d67132f30e040fc1954ecc62ebea154f9b372c8699d4aa58af99e0531172a2d2a61c4232a83aabd13e6cfbd0addff6724a019605894dd2acb7f6b2a210adf985f02fe3b1cadbc3438a44377277954b9ed9700477f5a478714144089de78efe1183c72f3de9e1ac650422cd451bca8dc990bd04ccc244576634230178153693a99fd76c145f5ecc4b2eb918255b578055414dc6fd4b5cac131e8730dcbf2f53030b35871deabbceb7ba07c5e67977b87431feef51e46623ef67de6806e95e218cb9ab60a6bc3bcf1a4186cd8890cbcbc5fbf47b009dbe2731696a773f0309e6ee83cf908cca0d9b8e4966bbd3fc53df1244b6065d2f084db2af9ba368295cb3b6c6d4af17eb0e737e00be8ee8c1a8a7c2b8a0720b6cb93ebd07dd59401c8eb2521d2eb1cfb759145698a2f1cbb94388d9f8f24c3556f3cc7772b2beba8d18bfa11b4cdbaab72ab11760747088a217aba2030fb565029f5567b36454e94ab9a4cfe01669f9a76f5df783b27b33ba433fe79e29c664a629eeb7263107976cb850a56724fb359e4d0253870af6d89d3da379e12815354c6347132fb4dd2f5bf24f1468b79f3a62a6b99d4e1bd196a5afbf84371bacd9ada193f3b4f0a91c73eba7644d80ad5e40f5573642b844f21893a32b42df69db3f20d1c4c93709e9ef8f57acb942f3947dbe7ba48c8fb8a77056597ff1602f2d7",
+        "denominator_base16": "0x1132fd9615271cae1f94390428f102cdd41ce813742a8193b0047f217b02c469b7d97109deb30ffcc9ddf243c5d32e1d9f229284dfee2d5ae880cd16ae175377c3bfbf4f03fd61faa73f36620b2900d571b3fdb6ac7964fe884f3f8488930b3607ec9cf027ec35b69267aaf334e41f499a9bcd3f1a56cd2902d0fa608ea27edd731195606328196879789f2b9c96d7c6e26f40c7ebca633fb30e53355125d42e3ad64e881f662d48833fa880ac6b2210e650cd84068cfdebc998d3d7d201ce75f9f6fd7421501392fec76e42e27a4a0cf243717e7c119ee32f177c1d37554bed18a188161400f43e5fffd0873b6525b789ca428110e29d4b3460c81fa2ed7e5de881a79a294d1bdd97eaf920172fdada850bb8c32849781837154b2e5abfabde25ac580c14af7f098cff514f327859fac1bd6db0508bcbab7a7effc3e3a8d26582b61295077bc5da4357b845517be57f4914e457c4f862d28f48e2812c1ee6e047273b1f27f4bd3be1f43f3866f3c9cfb353ead932ac4bc4d46cd4f76e3bbcb82a775520793ab5701bc5abf1f26c941182da43dd7c46b3ce7563b5418d0c981bb0124a8d80331b5b1ca9f13ea94d27fe52a0efa2ec307c1725622dd2a725afe1e958bc25c035f2071df9eb854d5613819f1b4b268dd453a20fe4e3d07e136229bc90540a25d3e67f0dfe5d79cb9d77660406d13375b8db742ca218a5c28ab28e1f1707435cb8abb6b5f200acc17f8242bf7b7d7b7c1f69fd081a5a2f8ae3b00065444a081ce66bb443fe163845967c140f803b723f1da2b37955aeeede38fb0fc57d1430a90d9b9b41b59683ebd265b20e43bccc46e44565334c7354c78a0fa0408e0fa439ca79289ad3a9da8770676f344c27f671442b78ca6b570053a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.027777777320468006
+      },
+      "q007ah_full_map_output_population_lower": {
+        "numerator_base16": "0xb3b0b64664b5672c0980af58158d159d94eeadcf99ffd9bcaceccd8be70591ad4128877d64942711a0b8ac72f47eb9e85bbde4e7672bbf9228ac71c54662b07a7d75a2bbe1f5581d005b79c462c52df50b4da4ff3e3b081971afbe250a47a55c9b35534c84b836d8e7389cf6359e625895e924a4245d59ae0782b9eed8b6b3e3d157136dbc57ad2fb88c5848974fc0749a1680d9ee4a1bf07891f53d65cb3ac960929f8049cfaa054b7b0b887df21fc4250a42422797eceb9ed880e47505b3ad88952b6bfd67f6fdc8eed091fcdfac8754204ffac523fbb8608e34f46a2bfe574fb3d4e297e068fa180ad6f21859a10151f0b8ec1e9ad844d063f690e6c61389313188cf3e26e4dd8de327a4fd757c94e7967060f50e63c80ac116fc399b46835567a919b72363a70ca52829e6a3f8bf2f74bde0e03a0968ca708609a39471eeb475e43187eeae22ebf5c3c7c7a0c471aa618d932a13fd95534c18e1e278704af6b08c014b01b18bb2a15e4b",
+        "denominator_base16": "0x1944d9a41a64deaccd65244c204bd4cffa9dae4c55cd856a67b56ade65c3a94a9d0d15b9bc1ceb6be06c95d789b15306d098d3ed3054562d1bbc28c6c3f7f74b948e8c78b78b66bc4dc7b478af2fbcf0e2995a08c7b01100e8c246299eb1b7fd2c433d97073f47e19902d6b8489384b75abfb42231cc576cc0c4582eeda58fa3cc7def556829a61a4dcaaf1c3dc11c61e8a2b0c0646212bb761617e16f2c80efe7767d14dbcfbf38769d454a5a798b9064d4f80f80f52c05720db8a79d4f42f3ba90b5aa6d699dcf7f927c73423e62771dfcd1e43d4e277183fa7368d7e5f281445e2e82e5371b7c34c8d2e8ae091cb1a49bbf12433872e98bad960fa5b002f1b31daaea28843c68dc3c1faa737e17edb53c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.027777777633364167
+      },
+      "equilibrium_deviation_formula": "(13/6)*x_ag + 7*x_ag^2/(1-x_ag)",
+      "collision_deviation_formula": "(19/6)*x_ag + (21/2)*x_ag^2/(1-x_ag)",
+      "streaming_lower_identity": "p_stream = p_coll",
+      "filter_lower_identity": "p_filter = p_coll",
+      "preregistered_float_values": {
+        "state_radius": 1.4441361143956586e-10,
+        "density_buffer": 0.9999999998555864,
+        "equilibrium_nonlinear": 1.459870382042079e-19,
+        "collision_nonlinear": 2.1898055730631184e-19,
+        "equilibrium_deviation": 3.1289615826504644e-10,
+        "collision_deviation": 4.5730976977760583e-10,
+        "equilibrium_population_lower": 0.02777777746488162,
+        "collision_population_lower": 0.027777777320468006
+      },
+      "preregistered_float_values_match": true
+    },
+    "input_digest_sha256": "0dff47e8b0ed6e9b87cb73e6dea20192088495b51283c57b9d58630b7344c6a3",
+    "result_digest_sha256": "c101313957c738ccee9fd3d7f1ed36b77c6f3dad4e1130651f5be4d8757ef18a",
+    "validity_gates": {
+      "sealed_inputs_and_implementations": {
+        "passed": true,
+        "threshold": "Q007ah/Q007u artifact and runner SHA, source, scope, accepted gates plus D2Q9/filter implementation SHA match",
+        "value": {
+          "artifact_input_count": 2,
+          "artifact_input_expected": 2,
+          "implementation_count": 2,
+          "implementation_expected": 2
+        }
+      },
+      "q007ah_selected_tube_exactly_reproduced": {
+        "passed": true,
+        "threshold": "Q007ah fresh cycle, two digests, selected tube, state identity, positivity bound, and forward invariance reproduce",
+        "value": {
+          "stored_cycle_reproduced_exactly": true,
+          "digests_match": true,
+          "state_radius_reproduced_exactly": true
+        }
+      },
+      "q007u_old_stagewise_oracle_reproduced": {
+        "passed": true,
+        "threshold": "Q007u fresh cycle, six validity gates, five hypothesis gates, five theorem flags, operator/majorant/structure, and old exact stage bounds reproduce",
+        "value": {
+          "stored_cycle_reproduced_exactly": true,
+          "old_exact_stage_bounds_reproduced": true
+        }
+      },
+      "exact_linear_stage_operators": {
+        "passed": true,
+        "threshold": "exact P=EM and C=(1-omega)I+omega EM reproduce the rational map with induced l1 norms 13/6 and 19/6",
+        "value": {
+          "equilibrium_norm": 2.1666666666666665,
+          "collision_norm": 3.1666666666666665
+        }
+      },
+      "nonlinear_majorant_and_stage_structure": {
+        "passed": true,
+        "threshold": "nonlinear constants 7 and 21/2, positive density buffer, nine streaming bijections, exact convex filter, and wrapped composition reproduce",
+        "value": {
+          "nonlinear_majorant": true,
+          "stage_structure": true,
+          "streaming_permutations": 9,
+          "filter_sum": 1.0
+        }
+      },
+      "finite_strict_json_and_deterministic_digests": {
+        "passed": true,
+        "threshold": "all exact bounds are finite strict JSON, preregistered display values match, and canonical input/result digests are emitted",
+        "value": {
+          "finite_strict_json": true,
+          "preregistered_float_values_match": true,
+          "input_digest_sha256": "0dff47e8b0ed6e9b87cb73e6dea20192088495b51283c57b9d58630b7344c6a3",
+          "result_digest_sha256": "c101313957c738ccee9fd3d7f1ed36b77c6f3dad4e1130651f5be4d8757ef18a"
+        }
+      }
+    },
+    "hypothesis_gates": {
+      "equilibrium_evaluation_positive": {
+        "passed": true,
+        "threshold": "p_eq = 1/36 - e_ag > 0",
+        "value": 0.02777777746488162
+      },
+      "post_collision_positive": {
+        "passed": true,
+        "threshold": "p_coll = 1/36 - c_ag > 0",
+        "value": 0.027777777320468006
+      },
+      "post_streaming_positive": {
+        "passed": true,
+        "threshold": "population-wise streaming permutations preserve p_coll",
+        "value": 0.027777777320468006
+      },
+      "post_filter_positive": {
+        "passed": true,
+        "threshold": "the exact five-point convex filter preserves p_coll",
+        "value": 0.027777777320468006
+      },
+      "all_iterate_stagewise_positive": {
+        "passed": true,
+        "threshold": "Q007ag forward invariance reapplies all four exact stage bounds at every one-step iterate",
+        "value": {
+          "forward_invariance": true,
+          "minimum_stage_lower": 0.027777777320468006
+        }
+      }
+    },
+    "study_validity": "passed",
+    "hypothesis_outcome": "accepted",
+    "scientific_classification": "registered Q007ag propagated tube is population-positive at every exact BGK, streaming, and filter stage",
+    "theorem_consequence": {
+      "equilibrium_evaluation_population_strictly_positive": true,
+      "post_collision_population_strictly_positive": true,
+      "post_streaming_population_strictly_positive": true,
+      "post_filter_population_strictly_positive": true,
+      "all_iterates_exact_stagewise_population_strictly_positive": true,
+      "new_tube_binary64_stage_enclosure_certified": false
+    },
+    "claim_boundary": "This certifies strict population positivity for the exact mathematical equilibrium evaluation, BGK collision output, periodic streaming output, and five-point filter output on the fixed Q007ag selected tube at every iterate. It does not enclose NumPy or IEEE-754 intermediate additions, multiplications, divisions, or implementation constants; binary64 remains a separate Q007aj gate. It also does not certify entropy, monotonicity, a maximum principle, Q007v--Q007ab finite-precision induction, a continuously optimal tube, a global basin, grid uniformity, or a continuum limit.",
+    "preserved_prior_outcomes": {
+      "q007ah_full_map_positivity_acceptance_changed": false,
+      "q007ag_normal_attraction_acceptance_changed": false,
+      "q007u_old_tube_stagewise_acceptance_changed": false,
+      "q007c1_finite_amplitude_rejection_changed": false,
+      "q007d_euclidean_rejection_changed": false,
+      "q007af_external_disc_obstruction_changed": false,
+      "q010_tt_cost_rejection_changed": false
+    },
+    "next_change": "If accepted, preregister Q007aj current binary64 one-step stage enclosure on this same Q007ag tube; do not extend all-iterate finite-precision induction yet."
+  },
+  "study_gate": "passed",
+  "scientific_outcome": "accepted",
+  "next_question": "If accepted, preregister Q007aj current binary64 one-step stage enclosure on this same Q007ag tube; do not extend all-iterate finite-precision induction yet."
+}

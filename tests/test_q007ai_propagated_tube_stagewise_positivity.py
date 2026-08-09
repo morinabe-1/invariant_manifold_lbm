@@ -207,3 +207,37 @@ def test_q007ai_records_provenance_and_deterministic_digests(
     assert len(q007ai_cycle["input_digest_sha256"]) == 64
     assert len(q007ai_cycle["result_digest_sha256"]) == 64
     json.dumps(study, allow_nan=False)
+
+
+def test_q007ai_artifact_reproduces_the_accepted_certificate(
+    q007ai_cycle: dict,
+) -> None:
+    runner_path = Path(q007ai.__file__).resolve()
+    artifact_path = (
+        runner_path.parent
+        / "artifacts"
+        / "q007ai_propagated_tube_stagewise_positivity.json"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "3ce5fa6358eaa6f3a64f93fe773e3fbc1990abfb83886aad1a4ade9c82425804"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ai_propagated_tube_stagewise_positivity.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["cycle"] == q007ai_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert q007ai_cycle["input_digest_sha256"] == (
+        "0dff47e8b0ed6e9b87cb73e6dea20192088495b51283c57b9d58630b7344c6a3"
+    )
+    assert q007ai_cycle["result_digest_sha256"] == (
+        "c101313957c738ccee9fd3d7f1ed36b77c6f3dad4e1130651f5be4d8757ef18a"
+    )

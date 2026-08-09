@@ -2666,3 +2666,89 @@ def test_q007ah_artifact_records_propagated_tube_population_positivity() -> None
     assert not consequence[
         "registered_q007ag_tube_stagewise_positivity_certified"
     ]
+
+
+def test_q007ai_artifact_records_propagated_tube_stagewise_positivity() -> None:
+    artifact_path = (
+        ARTIFACT_DIRECTORY
+        / "q007ai_propagated_tube_stagewise_positivity.json"
+    )
+    runner_path = artifact_path.parents[1] / (
+        "q007ai_propagated_tube_stagewise_positivity.py"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ai_propagated_tube_stagewise_positivity.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["mathematical_scope"] == {
+        "diagnostic": (
+            "rational propagated-tube exact stagewise-positivity "
+            "certificate"
+        ),
+        "construction_grid": [17, 17],
+        "omega": 1.5,
+        "eta": 0.01,
+        "conservation_treatment": (
+            "fixed global mass and momentum leaf"
+        ),
+        "manifold": "Q007ae exact graph-gauge manifold",
+        "norm": "Q007p Fourier external-coordinate block-sum l1",
+        "base_modal_l1_radius": 9e-17,
+        "normal_coordinate_radius": 5e-11,
+        "stages": [
+            "equilibrium evaluation",
+            "BGK collision output",
+            "periodic streaming output",
+            "five-point filter output",
+        ],
+        "arithmetic_scope": (
+            "exact mathematical map; no IEEE-754 intermediate roundoff "
+            "enclosure"
+        ),
+        "claim": (
+            "strict D2Q9 population positivity at every exact internal "
+            "one-step stage on the fixed Q007ag selected tube only"
+        ),
+    }
+    cycle = artifact["cycle"]
+    assert cycle["study_validity"] == "passed"
+    assert cycle["hypothesis_outcome"] == "accepted"
+    assert cycle["scientific_classification"] == (
+        "registered Q007ag propagated tube is population-positive at every "
+        "exact BGK, streaming, and filter stage"
+    )
+    assert len(cycle["validity_gates"]) == 6
+    assert all(gate["passed"] for gate in cycle["validity_gates"].values())
+    assert len(cycle["hypothesis_gates"]) == 5
+    assert all(
+        gate["passed"] for gate in cycle["hypothesis_gates"].values()
+    )
+    bounds = cycle["stage_bounds"]
+    assert bounds["equilibrium_population_lower"]["float"] == (
+        0.02777777746488162
+    )
+    assert bounds["post_collision_population_lower"]["float"] == (
+        0.027777777320468006
+    )
+    assert bounds["post_streaming_population_lower"]["float"] == (
+        0.027777777320468006
+    )
+    assert bounds["post_filter_population_lower"]["float"] == (
+        0.027777777320468006
+    )
+    consequence = cycle["theorem_consequence"]
+    assert all(
+        value
+        for name, value in consequence.items()
+        if name != "new_tube_binary64_stage_enclosure_certified"
+    )
+    assert not consequence["new_tube_binary64_stage_enclosure_certified"]
