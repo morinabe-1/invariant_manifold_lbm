@@ -90,7 +90,9 @@ def test_q011x_reproduces_the_complete_degree_five_modulus_inventory(
         audit["eigencenter_reconstruction"]["exact_modulus_interval_digest_sha256"]
         == "120d9214caa90d3eff168fca272ce8da3ee47eb5e11cbd65b0d462139b2d73fb"
     )
-    assert len(audit["exact_inventory_digest_sha256"]) == 64
+    assert audit["exact_inventory_digest_sha256"] == (
+        "077f1ca07017b0f2b21c79ab069a38804b198b1bb4db7bace1b4a572f1a528d5"
+    )
 
 
 def test_q011x_combination_with_replacement_and_sector_filter_are_complete(
@@ -141,7 +143,9 @@ def test_q011x_combination_with_replacement_and_sector_filter_are_complete(
     assert audit["sector_compatible_comparison_count"] == 444
     assert len(audit["monomial_records"]) == 780
     assert len(audit["compatible_pairs"]) == 444
-    assert len(audit["exact_sector_record_digest_sha256"]) == 64
+    assert audit["exact_sector_record_digest_sha256"] == (
+        "6ef11f94af7e07675c2664da98b3df7fce241bbbf40007869c86e0c0fa3d704c"
+    )
 
 
 def test_q011x_framed_digests_cover_every_exact_product_and_comparison(
@@ -164,6 +168,9 @@ def test_q011x_framed_digests_cover_every_exact_product_and_comparison(
     )
     assert "8-byte big-endian" in framed["algorithm"]
     assert len(audit["comparison_records"]) == 444
+    assert audit["compact_product_comparison_digest_sha256"] == (
+        "44ef544447a7ea792bef4119fa40c6fe897f8fad2cc59aa1f0a56e3bbafcf2ad"
+    )
 
 
 def test_q011x_indexed_modulus_and_phase_resolve_both_aggregates(
@@ -285,9 +292,16 @@ def test_q011x_artifact_records_degree_five_nonresonance_if_generated() -> None:
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     cycle = artifact["cycle"]
 
+    assert _file_sha256(artifact_path) == (
+        "11ef4d47f60840c4bc05c4056024e2af14b8339a8983b65dcb878bd355cfc328"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
-    assert artifact["runner_source"]["filename"] == ("q011x_degree5_phase_disks.py")
+    assert artifact["runner_source"] == {
+        "filename": "q011x_degree5_phase_disks.py",
+        "sha256": "62712392faca2c154883edd93792f81e60ff975f6da16010aa3190ee44657a18",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "accepted"
