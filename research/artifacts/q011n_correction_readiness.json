@@ -1,0 +1,1179 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-09T12:57:25.349628+00:00",
+  "source": {
+    "package_version": "0.1.0",
+    "package_source_sha256": "114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2"
+  },
+  "runner_source": {
+    "filename": "q011n_correction_readiness.py",
+    "sha256": "7e526dcf013efce628137023f69de7b929d31e52f19378cb05c483284e36dc57",
+    "sha256_newline_normalization": "UTF-8 text with universal newlines"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.4",
+    "scipy": "1.16.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "arithmetic_runtime": {
+    "proof_scalar_type": "fractions.Fraction",
+    "sealed_inputs": "Q011k--Q011m exact rational records",
+    "scalar_candidate_count": 8,
+    "floating_point_used_for_gate_decisions": false
+  },
+  "mathematical_scope": {
+    "diagnostic": "a posteriori theorem readiness and scalar obstruction",
+    "grid": [
+      17,
+      17
+    ],
+    "fixed_conservation_leaf": true,
+    "exact_rational_repaired_map": true,
+    "degree_two_inverse_only": true,
+    "full_function_space_inverse": false,
+    "exact_invariant_manifold_claim": false
+  },
+  "cycle": {
+    "question": "Do the Q011l degree-two inverse and Q011m finite cubic defect form a type-correct, quantitatively closed a posteriori invariant-manifold proof?",
+    "registered_parameters": {
+      "size": 17,
+      "output_sectors": [
+        0,
+        1,
+        16,
+        2,
+        15
+      ],
+      "expected_sector_pair_counts": {
+        "0": 102,
+        "1": 54,
+        "16": 54,
+        "2": 45,
+        "15": 45
+      },
+      "expected_pair_count": 300,
+      "expected_radius_count": 8,
+      "expected_q011m_selected_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x174876e800",
+        "float": 1e-11
+      },
+      "total_inverse_surrogate": {
+        "numerator_base16": "0x25f894c0",
+        "denominator_base16": "0x1",
+        "float": 637048000.0
+      },
+      "second_derivative_cap": {
+        "numerator_base16": "0x91",
+        "denominator_base16": "0x1",
+        "float": 145.0
+      },
+      "half_third_derivative_cap": {
+        "numerator_base16": "0x7d0",
+        "denominator_base16": "0x1",
+        "float": 2000.0
+      },
+      "formal_contraction_cap": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x2",
+        "float": 0.5
+      },
+      "state_domain_cap": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x2710",
+        "float": 0.0001
+      },
+      "root_population_floor": {
+        "numerator_base16": "0x1b",
+        "denominator_base16": "0x3e8",
+        "float": 0.027
+      },
+      "root_density_floor": {
+        "numerator_base16": "0x3e7",
+        "denominator_base16": "0x3e8",
+        "float": 0.999
+      },
+      "population_threshold": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x32",
+        "float": 0.02
+      },
+      "density_threshold": {
+        "numerator_base16": "0x63",
+        "denominator_base16": "0x64",
+        "float": 0.99
+      },
+      "correction_radius_rule": "tau = 2Y"
+    },
+    "sealed_input_audit": {
+      "q011k": {
+        "artifact_filename": "q011k_interval_spectral_split.json",
+        "artifact_sha256": "8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a",
+        "runner_filename": "q011k_interval_spectral_split.py",
+        "runner_sha256": "d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07",
+        "digests": [
+          "f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2",
+          "f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc",
+          "7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8",
+          "1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4",
+          "2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e"
+        ],
+        "study_validity": "passed",
+        "hypothesis_outcome": "accepted",
+        "scientific_classification": "the exact repaired fixed point has a rigorously stable and quadratically nonresonant selected/external spectral split"
+      },
+      "q011l": {
+        "artifact_filename": "q011l_interval_homological_inverse.json",
+        "artifact_sha256": "2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a",
+        "runner_filename": "q011l_interval_homological_inverse.py",
+        "runner_sha256": "59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7",
+        "digests": [
+          "1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011",
+          "a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3",
+          "694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377",
+          "14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915",
+          "c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45"
+        ],
+        "study_validity": "passed",
+        "hypothesis_outcome": "accepted",
+        "scientific_classification": "the exact repaired selected/external split has a rigorously bounded quadratic homological inverse in the registered quotient norm"
+      },
+      "q011m": {
+        "artifact_filename": "q011m_quadratic_jet_majorant.json",
+        "artifact_sha256": "b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f",
+        "runner_filename": "q011m_quadratic_jet_majorant.py",
+        "runner_sha256": "0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150",
+        "digests": [
+          "dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb",
+          "0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a",
+          "1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514",
+          "bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00",
+          "f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4"
+        ],
+        "study_validity": "passed",
+        "hypothesis_outcome": "accepted",
+        "scientific_classification": "the repaired exact map admits a unique graph-gauge quadratic jet with the registered coefficient and cubic-defect majorants"
+      },
+      "checks": {
+        "q011k_artifact_sha256_matches": true,
+        "q011k_runner_sha256_matches": true,
+        "q011k_digests_match": true,
+        "q011k_accepted_outcome_reproduces": true,
+        "q011k_package_source_metadata_matches": true,
+        "q011l_artifact_sha256_matches": true,
+        "q011l_runner_sha256_matches": true,
+        "q011l_digests_match": true,
+        "q011l_accepted_outcome_reproduces": true,
+        "q011l_package_source_metadata_matches": true,
+        "q011m_artifact_sha256_matches": true,
+        "q011m_runner_sha256_matches": true,
+        "q011m_digests_match": true,
+        "q011m_accepted_outcome_reproduces": true,
+        "q011m_package_source_metadata_matches": true,
+        "q011k_claim_boundary_is_preserved": true,
+        "q011l_claim_boundary_is_preserved": true,
+        "q011m_claim_boundary_is_preserved": true,
+        "q011m_nested_q011k_and_q011l_seals_reproduce": true
+      },
+      "passed": true
+    },
+    "operator_typing_audit": {
+      "q011l_operator": {
+        "name": "H_q^(2)(Z) = E_q Z - Z K_q(S)",
+        "degree": 2,
+        "total_monomial_columns": 300,
+        "sector_pair_dimensions": {
+          "0": 102,
+          "1": 54,
+          "16": 54,
+          "2": 45,
+          "15": 45
+        },
+        "domain": "five external-by-degree-two-monomial matrix spaces",
+        "codomain": "the same five external-by-degree-two-monomial matrix spaces"
+      },
+      "q011m_defect": {
+        "name": "E^[2](a) = Phi(W^[2](a)) - W^[2](R^[2](a))",
+        "minimum_degree": 3,
+        "domain": "the registered 24-coordinate reduced l-infinity ball",
+        "codomain": "full repaired fixed-leaf population state",
+        "bound": "uniform scalar D(r) in physical population l-infinity norm"
+      },
+      "invalid_unregistered_composition": "(H^(2))^(-1) E^[2] is undefined",
+      "acceptable_future_routes": [
+        "full linearized invariance inverse plus analytic coefficient tail",
+        "self-contained selected/external graph-transform contraction"
+      ],
+      "proof_object_matrix": {
+        "exact_repaired_fixed_point": true,
+        "exact_selected_external_spectral_split": true,
+        "exact_selected_linear_invariant_graph": true,
+        "degree_two_homological_inverse": true,
+        "implicit_quadratic_jet": true,
+        "finite_cubic_defect_majorant": true,
+        "specified_a_posteriori_theorem": false,
+        "banach_function_space_and_norm": false,
+        "full_linearized_invariance_inverse": false,
+        "all_degree_or_analytic_tail_bound": false,
+        "self_contained_graph_transform_contraction": false,
+        "typed_defect_to_correction_map": false
+      },
+      "available_proof_objects": [
+        "exact_repaired_fixed_point",
+        "exact_selected_external_spectral_split",
+        "exact_selected_linear_invariant_graph",
+        "degree_two_homological_inverse",
+        "implicit_quadratic_jet",
+        "finite_cubic_defect_majorant"
+      ],
+      "missing_proof_objects": [
+        "specified_a_posteriori_theorem",
+        "banach_function_space_and_norm",
+        "full_linearized_invariance_inverse",
+        "all_degree_or_analytic_tail_bound",
+        "self_contained_graph_transform_contraction",
+        "typed_defect_to_correction_map"
+      ],
+      "first_missing_proof_object": "specified_a_posteriori_theorem",
+      "checks": {
+        "degree_two_pair_and_sector_domains_reproduce": true,
+        "q011l_operator_is_explicitly_degree_two_only": true,
+        "q011m_defect_is_a_function_with_degree_three_remainder": true,
+        "degree_two_inverse_is_not_declared_a_full_function_inverse": true,
+        "both_registered_theorem_routes_are_marked_missing": true
+      },
+      "passed": true
+    },
+    "inverse_surrogate_audit": {
+      "zero_block_population_lift": 186,
+      "sector_envelopes": {
+        "0": {
+          "numerator_base16": "0x33e140",
+          "denominator_base16": "0x1",
+          "float": 3400000.0
+        },
+        "1": {
+          "numerator_base16": "0x5dc0",
+          "denominator_base16": "0x1",
+          "float": 24000.0
+        },
+        "16": {
+          "numerator_base16": "0x5dc0",
+          "denominator_base16": "0x1",
+          "float": 24000.0
+        },
+        "2": {
+          "numerator_base16": "0x231860",
+          "denominator_base16": "0x1",
+          "float": 2300000.0
+        },
+        "15": {
+          "numerator_base16": "0x231860",
+          "denominator_base16": "0x1",
+          "float": 2300000.0
+        }
+      },
+      "formula": "C_I = 186*3.4e6 + 2*2.4e4 + 2*2.3e6",
+      "reconstructed_total_inverse_surrogate": {
+        "numerator_base16": "0x25f894c0",
+        "denominator_base16": "0x1",
+        "float": 637048000.0
+      },
+      "q011m_observed_total_inverse_surrogate": {
+        "numerator_base16": "0x25f894c0",
+        "denominator_base16": "0x1",
+        "float": 637048000.0
+      },
+      "interpretation": "cross-sector scalar triangle surrogate assembled from degree-two output bounds; not a full function-space inverse",
+      "checks": {
+        "five_registered_sector_envelopes_are_present": true,
+        "zero_sector_population_lift_is_included": true,
+        "registered_formula_reproduces": true,
+        "q011m_inverse_sum_reproduces_exactly": true,
+        "surrogate_is_not_typed_as_a_function_inverse": true
+      },
+      "passed": true
+    },
+    "scalar_correction_obstruction_audit": {
+      "scalar_surrogate_only": true,
+      "typed_a_posteriori_theorem_consequence": false,
+      "formulas": {
+        "V": "145 U + 2000 U^2",
+        "Y": "C_I D",
+        "Z": "C_I V",
+        "tau": "2 Y",
+        "radii_margin": "tau - (Y + Z tau)"
+      },
+      "radius_records": [
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x5af3107a4000",
+            "float": 1e-14
+          },
+          "q011m_original_candidate_passed": true,
+          "state_displacement_upper": {
+            "numerator_base16": "0x21bf9e76c8b9c56f17f233",
+            "denominator_base16": "0x96769950b50d88f413144480000000",
+            "float": 5.222329240367342e-11
+          },
+          "cubic_defect_upper": {
+            "numerator_base16": "0x1db313f64d782d4f7d4cd7496a20b7f2965962ef8587f1b8ff5abd56f933ba77e31e0a18deb9",
+            "denominator_base16": "0x6a72f166e0e8f54b364f0c563803e48d2a1ff267ad2da6df745f7f8e542328c1a0000000000000000000000",
+            "float": 1.5859449210967877e-14
+          },
+          "derivative_variation_surrogate": {
+            "numerator_base16": "0x170260a61737a558c2050f114c20f634b699c95cf0e5c4e7629",
+            "denominator_base16": "0xb51d13aea4a488dd6babab6398bdbe414340b3c219400000000000000",
+            "float": 7.57237740398719e-09
+          },
+          "newton_y_surrogate": {
+            "numerator_base16": "0x24164abe638b891638e0b10acd3af7627bdd666dc740f99ee80e3255c0d6718f91efcd06ce07cbd7",
+            "denominator_base16": "0x36807b99069c237a7a039bd20833252575d2eab40ef07634f7ffbe3c9593068800000000000000000000",
+            "float": 1.0103230400948665e-05
+          },
+          "contraction_z_surrogate": {
+            "numerator_base16": "0x1bf53c8d6feff62183e78399e57f810876eb86a2b5193faba24bb67",
+            "denominator_base16": "0x5cbaeb5b771cf21b59f17ea9c70915a27041e54090000000000000",
+            "float": 4.823967880455232
+          },
+          "correction_radius_tau": {
+            "numerator_base16": "0x24164abe638b891638e0b10acd3af7627bdd666dc740f99ee80e3255c0d6718f91efcd06ce07cbd7",
+            "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+            "float": 2.020646080189733e-05
+          },
+          "state_with_correction_upper": {
+            "numerator_base16": "0x241650db2424ecf2a6d9f76bfbe48243f564aa4cda1b548fc5bc0ee206ddfbe19047cd06ce07cbd7",
+            "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+            "float": 2.0206513025189733e-05
+          },
+          "population_with_correction_lower": {
+            "numerator_base16": "0xbc37b1828fabb1d90d24158a7b1b43ce0b8f9138b7ac9be9aa9795e96888b5841e6fb832f931f83429",
+            "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+            "float": 0.02697979348697481
+          },
+          "density_with_correction_lower": {
+            "numerator_base16": "0x1b37ff18b6bbc4be497076f4139a7dcb071a96ffd2f3cd860561893c5cd48283a511ed79cac2c1b9d571",
+            "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+            "float": 0.9988181413827733
+          },
+          "radii_inequality_margin": {
+            "numerator_base16": "-0x38858dee59cd2136f1c6c423897e5313308bb24fa32d844fd6c00b686e7d7b1982a917ccf939398dbfecbb097d4cd7bbc1c40e1aea4bbcd9ae7de63e1e9e6577451081",
+            "denominator_base16": "0x9defbf01b061adab3a0888136afa64a71360aa0f44cd064fc3501fbb08d428ab23217c941e25045452d99b00464999a1321fed64000000000000000000000000000000000",
+            "float": -8.737208748508172e-05
+          },
+          "correction_to_chart_state_utilization": {
+            "numerator_base16": "0x2334f2008426d9a7d8920caafc75da09aaf970dc63efaf82ea2919beacfd761f9000801",
+            "denominator_base16": "0x5f69576f3bb1046139383e3c70aeedbac544feefb14102d99fa968000000000000",
+            "float": 386924.2989451196
+          },
+          "checks": {
+            "q011m_original_candidate_passed": true,
+            "formal_contraction_is_below_one_half": false,
+            "formal_radii_inequality_is_strict": false,
+            "corrected_state_is_in_derivative_domain": true,
+            "corrected_population_and_density_buffers_are_positive": true,
+            "correction_does_not_exceed_chart_state": false
+          },
+          "passed": false
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x3",
+            "denominator_base16": "0x5af3107a4000",
+            "float": 3e-14
+          },
+          "q011m_original_candidate_passed": true,
+          "state_displacement_upper": {
+            "numerator_base16": "0xd0bd69b78018cce053c3cb",
+            "denominator_base16": "0x96769950b50d88f413144480000000",
+            "float": 3.230093412810608e-10
+          },
+          "cubic_defect_upper": {
+            "numerator_base16": "0x3220aba504ae9c1db759c69a773309051f3e876511fbb27140242464ce29474dcad4d0600fcd1",
+            "denominator_base16": "0x6a72f166e0e8f54b364f0c563803e48d2a1ff267ad2da6df745f7f8e542328c1a0000000000000000000000",
+            "float": 4.2828777806091553e-13
+          },
+          "derivative_variation_surrogate": {
+            "numerator_base16": "0x8e50eb39f0935fcdd07239460de7efc80e2d1d7da344360e2f9",
+            "denominator_base16": "0xb51d13aea4a488dd6babab6398bdbe414340b3c219400000000000000",
+            "float": 4.6836354694423885e-08
+          },
+          "newton_y_surrogate": {
+            "numerator_base16": "0x3ce8a06f875b65e33f7bce8849dbfbf2c041cb25b7c4d387098eaa54985c3a0aaef76b9ce8d30b73f",
+            "denominator_base16": "0x36807b99069c237a7a039bd20833252575d2eab40ef07634f7ffbe3c9593068800000000000000000000",
+            "float": 0.0002728398724381501
+          },
+          "contraction_z_surrogate": {
+            "numerator_base16": "0xaceca4812ba82205a549fa4575ff94e315f1a3785bb46eaa669cb97",
+            "denominator_base16": "0x5cbaeb5b771cf21b59f17ea9c70915a27041e54090000000000000",
+            "float": 29.837006085373346
+          },
+          "correction_radius_tau": {
+            "numerator_base16": "0x3ce8a06f875b65e33f7bce8849dbfbf2c041cb25b7c4d387098eaa54985c3a0aaef76b9ce8d30b73f",
+            "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+            "float": 0.0005456797448763002
+          },
+          "state_with_correction_upper": {
+            "numerator_base16": "0x3ce8a2cc6b378f921cc1ae770900a8e59800abf6fa66d0bc2729a0b20a2a7887ee08eb9ce8d30b73f",
+            "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+            "float": 0.0005456800678856414
+          },
+          "population_with_correction_lower": {
+            "numerator_base16": "0xb88d3da6a41c5dccddfed49a76871dc1f604eb2394e04a3277eab7ed29ecebf7811f71463172cf48c1",
+            "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+            "float": 0.02645431993211436
+          },
+          "density_with_correction_lower": {
+            "numerator_base16": "0x1b170105fb73bac9dbc827aba37148749a58b72914ba9ea69499756e7ea1086db38a1afb77bd09498ec9",
+            "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+            "float": 0.9940888793890292
+          },
+          "radii_inequality_margin": {
+            "numerator_base16": "-0x287418cd3885b2584477074bb04e46e2fa052dfe8a63abb98b28d68b117eeb36283608104a4fef2c27c9f7ac9c1936fd5fb164ca92a28042101fcad696939c2eebe20b29",
+            "denominator_base16": "0x9defbf01b061adab3a0888136afa64a71360aa0f44cd064fc3501fbb08d428ab23217c941e25045452d99b00464999a1321fed64000000000000000000000000000000000",
+            "float": -0.016008609996100993
+          },
+          "correction_to_chart_state_utilization": {
+            "numerator_base16": "0x1c7937c85c42fccd1b362932cdd85ded2cc2bfa0e179f61c741529588ecb43814b1687dd5",
+            "denominator_base16": "0x11ac5eab4eb60016af2730b0c74975b81468a02731e677ac162ea908000000000000",
+            "float": 1689362.117863603
+          },
+          "checks": {
+            "q011m_original_candidate_passed": true,
+            "formal_contraction_is_below_one_half": false,
+            "formal_radii_inequality_is_strict": false,
+            "corrected_state_is_in_derivative_domain": false,
+            "corrected_population_and_density_buffers_are_positive": true,
+            "correction_does_not_exceed_chart_state": false
+          },
+          "passed": false
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x9184e72a000",
+            "float": 1e-13
+          },
+          "q011m_original_candidate_passed": true,
+          "state_displacement_upper": {
+            "numerator_base16": "0x137fbecb8cf5e66df76233",
+            "denominator_base16": "0x1812f9cf7920e2b66973e20000000",
+            "float": 3.0173248850873422e-09
+          },
+          "cubic_defect_upper": {
+            "numerator_base16": "0x79c1419c4a41a0b44d662fe91031c6b237922a300e8d9cc690cff61fe742b41f1eb985ab9",
+            "denominator_base16": "0x6f9eaf4de07b29f09794b3db339bf1f6b3dd037d0c29e7d9062456802c2f2800000000000000000000",
+            "float": 1.587322410511325e-11
+          },
+          "derivative_variation_surrogate": {
+            "numerator_base16": "0x2208767ed4bf41ef0fae35cf656c5cad0ecad7a37f0151629",
+            "denominator_base16": "0x4a2f22af927d8e7c47f465549f3a77b5269b1dcd40000000000000",
+            "float": 4.3751212654616355e-07
+          },
+          "newton_y_surrogate": {
+            "numerator_base16": "0x93f0e907b65e14137497ad30f1546b4d25f3d2d0da7ee3c1698f20302dd095ba5c262e4240fd7",
+            "denominator_base16": "0x39263d1570e2e65e82db7ee703e55911c489bc2772c5956d117b0d917f120000000000000000000",
+            "float": 0.010112005669714184
+          },
+          "contraction_z_surrogate": {
+            "numerator_base16": "0x295a467305e2d04e490e8e941b5d95efab1c49da41df0af281b67",
+            "denominator_base16": "0x25fb761c73f68e95a5dd62fc38f2ed6b15d0719000000000000",
+            "float": 278.7162251919804
+          },
+          "correction_radius_tau": {
+            "numerator_base16": "0x93f0e907b65e14137497ad30f1546b4d25f3d2d0da7ee3c1698f20302dd095ba5c262e4240fd7",
+            "denominator_base16": "0x1c931e8ab871732f416dbf7381f2ac88e244de13b962cab688bd86c8bf890000000000000000000",
+            "float": 0.020224011339428367
+          },
+          "state_with_correction_upper": {
+            "numerator_base16": "0x93f0ea7a054758ecc212fce6cbd0b9a5178e8e55610eb872ad406ca771538d9a34262e4240fd7",
+            "denominator_base16": "0x1c931e8ab871732f416dbf7381f2ac88e244de13b962cab688bd86c8bf890000000000000000000",
+            "float": 0.020224014356753254
+          },
+          "population_with_correction_lower": {
+            "numerator_base16": "0x3191304f0e2b1f641ccb0366b249f302cf2aa3dcf033ae45c050454f648c7265cbd9d1bdbf029",
+            "denominator_base16": "0x1c931e8ab871732f416dbf7381f2ac88e244de13b962cab688bd86c8bf890000000000000000000",
+            "float": 0.0067759856432467475
+          },
+          "density_with_correction_lower": {
+            "numerator_base16": "0x175855a0c5a009435d636b27160f846d7684c1404555145c9fbea5e6c9ed7005942aa85fabb7171",
+            "denominator_base16": "0x1c931e8ab871732f416dbf7381f2ac88e244de13b962cab688bd86c8bf890000000000000000000",
+            "float": 0.8169838707892207
+          },
+          "radii_inequality_margin": {
+            "numerator_base16": "-0x17dac728ef3867275c7043a85189cbc6b06f671dc113a09b2578c37a3c64a9c2ddc3e879d7d6ba98b8360bad04ad9b676f1cd72c65a6f2b4299670a4e00ac60c81",
+            "denominator_base16": "0x43d54d7fbc821143487da269782e84217d88c7e4e10bd0e9590259ecb437aadab95ece59b12f78e7e1975d0712f49c73610000000000000000000000000000000",
+            "float": -5.626648093095568
+          },
+          "correction_to_chart_state_utilization": {
+            "numerator_base16": "0xcf7a50a503b938096dc4f4d018cc5038ed572461a03a1ca3f86b217e574ae4d43fc17",
+            "denominator_base16": "0x207555c811a5f216734ed629c70de2a900c653150e8a8cd2ab9d800000000000",
+            "float": 6702629.683459806
+          },
+          "checks": {
+            "q011m_original_candidate_passed": true,
+            "formal_contraction_is_below_one_half": false,
+            "formal_radii_inequality_is_strict": false,
+            "corrected_state_is_in_derivative_domain": false,
+            "corrected_population_and_density_buffers_are_positive": false,
+            "correction_does_not_exceed_chart_state": false
+          },
+          "passed": false
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x3",
+            "denominator_base16": "0x9184e72a000",
+            "float": 3e-13
+          },
+          "q011m_original_candidate_passed": true,
+          "state_displacement_upper": {
+            "numerator_base16": "0xa5fdcab5cccd2fdcf213cb",
+            "denominator_base16": "0x1812f9cf7920e2b66973e20000000",
+            "float": 2.568592106226608e-08
+          },
+          "cubic_defect_upper": {
+            "numerator_base16": "0xcddb8da8c6f3af05733762d1608410f52ae448f9385ec764ead92a1215b5e60ff217bf18d1",
+            "denominator_base16": "0x6f9eaf4de07b29f09794b3db339bf1f6b3dd037d0c29e7d9062456802c2f2800000000000000000000",
+            "float": 4.2940354449649005e-10
+          },
+          "derivative_variation_surrogate": {
+            "numerator_base16": "0x121b79612c441bc4b8d9c92f49bd2314c66d3ee8cd2353c2f9",
+            "denominator_base16": "0x4a2f22af927d8e7c47f465549f3a77b5269b1dcd40000000000000",
+            "float": 3.724459873561663e-06
+          },
+          "newton_y_surrogate": {
+            "numerator_base16": "0xfa21c8f55695b1e6e04a094b26851856d578d8070a1571c9483794d56f6f4025da0a088b585b3f",
+            "denominator_base16": "0x39263d1570e2e65e82db7ee703e55911c489bc2772c5956d117b0d917f120000000000000000000",
+            "float": 0.27355066921439997
+          },
+          "contraction_z_surrogate": {
+            "numerator_base16": "0x16007011297855b99d17682b3c5a17b34b4657d380d9efd3c4eb97",
+            "denominator_base16": "0x25fb761c73f68e95a5dd62fc38f2ed6b15d0719000000000000",
+            "float": 2372.65971353271
+          },
+          "correction_radius_tau": {
+            "numerator_base16": "0xfa21c8f55695b1e6e04a094b26851856d578d8070a1571c9483794d56f6f4025da0a088b585b3f",
+            "denominator_base16": "0x1c931e8ab871732f416dbf7381f2ac88e244de13b962cab688bd86c8bf890000000000000000000",
+            "float": 0.5471013384287999
+          },
+          "state_with_correction_upper": {
+            "numerator_base16": "0xfa21c9ba5c6b6d90c2b83a2758392e776045dcdceaba1be7f0a69e56744e36e3c38a088b585b3f",
+            "denominator_base16": "0x1c931e8ab871732f416dbf7381f2ac88e244de13b962cab688bd86c8bf890000000000000000000",
+            "float": 0.547101364114721
+          },
+          "population_with_correction_lower": {
+            "numerator_base16": "-0xedc9a80dcb34460bb4ca5a22805783ace1da49b9c5a5f57c69cd933706f036e3c38a088b585b3f",
+            "denominator_base16": "0x1c931e8ab871732f416dbf7381f2ac88e244de13b962cab688bd86c8bf890000000000000000000",
+            "float": -0.5201013641147211
+          },
+          "density_with_correction_lower": {
+            "numerator_base16": "-0x70273399c42ce23dbd518aaaee664f2ee1ce87fafe4a16d9cf87cf57f4829ee01dfda4ce61b3537",
+            "denominator_base16": "0x1c931e8ab871732f416dbf7381f2ac88e244de13b962cab688bd86c8bf890000000000000000000",
+            "float": -3.9249122770324893
+          },
+          "radii_inequality_margin": {
+            "numerator_base16": "-0x157e2bdffd889ab8bc47acfd4a9e65a57037074b6a496d06b6d85f28b2d0e1de6e1819f53f8448b43ba64115620ef5b935511ba1799c7e0a2d2c6c785ca0161ca729",
+            "denominator_base16": "0x43d54d7fbc821143487da269782e84217d88c7e4e10bd0e9590259ecb437aadab95ece59b12f78e7e1975d0712f49c73610000000000000000000000000000000",
+            "float": -1297.8117542406246
+          },
+          "correction_to_chart_state_utilization": {
+            "numerator_base16": "0x74ee6b1d180756e11fe3acf83a057128136ce6fbeca17fbc11e487e901971f3e5009d5",
+            "denominator_base16": "0x5c1a9a9a33e0bdb573cc40e604be618a9b96bd91ce12236a72d8800000000000",
+            "float": 21299658.170814812
+          },
+          "checks": {
+            "q011m_original_candidate_passed": true,
+            "formal_contraction_is_below_one_half": false,
+            "formal_radii_inequality_is_strict": false,
+            "corrected_state_is_in_derivative_domain": false,
+            "corrected_population_and_density_buffers_are_positive": false,
+            "correction_does_not_exceed_chart_state": false
+          },
+          "passed": false
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0xe8d4a51000",
+            "float": 1e-12
+          },
+          "q011m_original_candidate_passed": true,
+          "state_displacement_upper": {
+            "numerator_base16": "0x1212f53a6d6250210dba33",
+            "denominator_base16": "0x3da137d5b0f806f1b1cc8000000",
+            "float": 2.796824449559342e-07
+          },
+          "cubic_defect_upper": {
+            "numerator_base16": "0x1f709325b9d31cf82fff09cb43561fa8a70e23266f834069fdf82e25900bd3c02b78db9",
+            "denominator_base16": "0x750aba8a1e7cb9137a9684eb8d1949dec19d273a431dde0e79d10129fa0000000000000000000",
+            "float": 1.6010973060951367e-08
+          },
+          "derivative_variation_surrogate": {
+            "numerator_base16": "0x50c20e6de4b596499c8ae10159f42090f5b36ffba1c2629",
+            "denominator_base16": "0x1e62c4e38ff87211517de8c9c728bdef44a6c14000000000000",
+            "float": 4.055411096315049e-05
+          },
+          "newton_y_surrogate": {
+            "numerator_base16": "0x26339a5b73f55b9034d9a4d781b69281bdd3f687c0b8fbf189be619a5631ceefdd125ed0cd7",
+            "denominator_base16": "0x3beceac5b166c528b173fa53bcfa84078e23680d723c591df08bc740800000000000000000",
+            "float": 10.199758366532947
+          },
+          "contraction_z_surrogate": {
+            "numerator_base16": "0x62207ae6594900373b7ce37bd35bd8de02fb628e4141a020b67",
+            "denominator_base16": "0xf8ebad2b84e0d58bd2e0898765a7deb2532900000000000",
+            "float": 25834.915280853096
+          },
+          "correction_radius_tau": {
+            "numerator_base16": "0x26339a5b73f55b9034d9a4d781b69281bdd3f687c0b8fbf189be619a5631ceefdd125ed0cd7",
+            "denominator_base16": "0x1df67562d8b3629458b9fd29de7d4203c711b406b91e2c8ef845e3a0400000000000000000",
+            "float": 20.399516733065894
+          },
+          "state_with_correction_upper": {
+            "numerator_base16": "0x26339a643d75f45ca65680b587e36bc2c4c3bad1f719239e9a48fb050e357c855d125ed0cd7",
+            "denominator_base16": "0x1df67562d8b3629458b9fd29de7d4203c711b406b91e2c8ef845e3a0400000000000000000",
+            "float": 20.39951701274834
+          },
+          "population_with_correction_lower": {
+            "numerator_base16": "-0x2626a8c0e3a7b327d2cbd227656abac4f86171a2e9f42d1cc2ec100712b57c855d125ed0cd7",
+            "denominator_base16": "0x1df67562d8b3629458b9fd29de7d4203c711b406b91e2c8ef845e3a0400000000000000000",
+            "float": -20.37251701274834
+          },
+          "density_with_correction_lower": {
+            "numerator_base16": "-0x155f180ea2e562a9f45ff4bd6cb8d352a60acfd94c98a9fcf4c22dc78266160b045a5555738f",
+            "denominator_base16": "0x1df67562d8b3629458b9fd29de7d4203c711b406b91e2c8ef845e3a0400000000000000000",
+            "float": -182.59665311473506
+          },
+          "radii_inequality_margin": {
+            "numerator_base16": "-0xea4874eb0b23082cc8df0d21740422121aff822c41be91712458396897cd7245e33c10b53cc61e1020a595abdd5e601750384fae64c191dfd7fbb619b6781",
+            "denominator_base16": "0x1d22573a28f19d62ef46f9aac035570bb3c2d98602d0e5fb742289e1f0d73bc03311cc121252b924302b68eae96a40000000000000000000000000000",
+            "float": -527009.586810736
+          },
+          "correction_to_chart_state_utilization": {
+            "numerator_base16": "0x3593433df3adfe237ce3fadd3cd561604d165b21e09b1a95e98566238ab0603b917",
+            "denominator_base16": "0xc52c830e48b341de62cdc236cbc17d2ca12d98245286a453580000000000",
+            "float": 72938137.8809098
+          },
+          "checks": {
+            "q011m_original_candidate_passed": true,
+            "formal_contraction_is_below_one_half": false,
+            "formal_radii_inequality_is_strict": false,
+            "corrected_state_is_in_derivative_domain": false,
+            "corrected_population_and_density_buffers_are_positive": false,
+            "correction_does_not_exceed_chart_state": false
+          },
+          "passed": false
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x3",
+            "denominator_base16": "0xe8d4a51000",
+            "float": 3e-12
+          },
+          "q011m_original_candidate_passed": true,
+          "state_displacement_upper": {
+            "numerator_base16": "0xa1b76e026e126cf6351bcb",
+            "denominator_base16": "0x3da137d5b0f806f1b1cc8000000",
+            "float": 2.5024419755682078e-06
+          },
+          "cubic_defect_upper": {
+            "numerator_base16": "0x3611a3c2f4e789e5d65a78d785c637d0566334ffb96d15ad56cd4cfc09fc19a561756bd1",
+            "denominator_base16": "0x750aba8a1e7cb9137a9684eb8d1949dec19d273a431dde0e79d10129fa0000000000000000000",
+            "float": 4.405612191754053e-07
+          },
+          "derivative_variation_surrogate": {
+            "numerator_base16": "0x2d2998e58b0387b99f4f1c942e39d1fcdada0dd1e89272f9",
+            "denominator_base16": "0x1e62c4e38ff87211517de8c9c728bdef44a6c14000000000000",
+            "float": 0.00036286661088907234
+          },
+          "newton_y_surrogate": {
+            "numerator_base16": "0x41b298fa6ff1a2174bdf781ae824a46b5e279532c53f62b9d99b7e8db2e5d8ed6a165bdc383f",
+            "denominator_base16": "0x3beceac5b166c528b173fa53bcfa84078e23680d723c591df08bc740800000000000000000",
+            "float": 280.65864355325357
+          },
+          "contraction_z_surrogate": {
+            "numerator_base16": "0x36e02e2ed1546f177469715ab0d6f37d7bafb990d0d68a413b97",
+            "denominator_base16": "0xf8ebad2b84e0d58bd2e0898765a7deb2532900000000000",
+            "float": 231163.44873366173
+          },
+          "correction_radius_tau": {
+            "numerator_base16": "0x41b298fa6ff1a2174bdf781ae824a46b5e279532c53f62b9d99b7e8db2e5d8ed6a165bdc383f",
+            "denominator_base16": "0x1df67562d8b3629458b9fd29de7d4203c711b406b91e2c8ef845e3a0400000000000000000",
+            "float": 561.3172871065071
+          },
+          "state_with_correction_upper": {
+            "numerator_base16": "0x41b298ff59e63cdd9b847332636e8e5e72b81f8cb1456d16fb7fc4838b032b1182165bdc383f",
+            "denominator_base16": "0x1df67562d8b3629458b9fd29de7d4203c711b406b91e2c8ef845e3a0400000000000000000",
+            "float": 561.3172896089491
+          },
+          "population_with_correction_lower": {
+            "numerator_base16": "-0x41b1c9e5244958ca4e4bc8498147034e95f1faf9c0731daede09f5d3ab4b2b1182165bdc383f",
+            "denominator_base16": "0x1df67562d8b3629458b9fd29de7d4203c711b406b91e2c8ef845e3a0400000000000000000",
+            "float": -561.2902896089491
+          },
+          "density_with_correction_lower": {
+            "numerator_base16": "-0x24f297230696b2d004e77591ccf2be8071fd5d2b56d0b5bc2957709348d84839d92c93abdfa37",
+            "denominator_base16": "0x1df67562d8b3629458b9fd29de7d4203c711b406b91e2c8ef845e3a0400000000000000000",
+            "float": -5050.856606480542
+          },
+          "radii_inequality_margin": {
+            "numerator_base16": "-0xe153265be0f3386d7341998024810b2126847069721eb53e1c9575b1f18a3a255dc597f7a568c22cbaf6e521977276329cbdc79fc0311210f7040422ddab229",
+            "denominator_base16": "0x1d22573a28f19d62ef46f9aac035570bb3c2d98602d0e5fb742289e1f0d73bc03311cc121252b924302b68eae96a40000000000000000000000000000",
+            "float": -129755759.2627196
+          },
+          "correction_to_chart_state_utilization": {
+            "numerator_base16": "0x155d72f1a08f16081d8bfd5867f0cd996ffc68c4768bf1b0b616837bd32dc0ea5f3",
+            "denominator_base16": "0x199171716c7e57668f45a1d810ff81c8d278f95371fe1d53380000000000",
+            "float": 224307813.16280216
+          },
+          "checks": {
+            "q011m_original_candidate_passed": true,
+            "formal_contraction_is_below_one_half": false,
+            "formal_radii_inequality_is_strict": false,
+            "corrected_state_is_in_derivative_domain": false,
+            "corrected_population_and_density_buffers_are_positive": false,
+            "correction_does_not_exceed_chart_state": false
+          },
+          "passed": false
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x174876e800",
+            "float": 1e-11
+          },
+          "q011m_original_candidate_passed": true,
+          "state_displacement_upper": {
+            "numerator_base16": "0x11ee7aabea39f44c8ff633",
+            "denominator_base16": "0x9dc5ada82b70b59df02000000",
+            "float": 2.7747744060065423e-05
+          },
+          "cubic_defect_upper": {
+            "numerator_base16": "0x8bdb462a830d52040367db830bd6a41d544f3f5a8f19f71aa9811a8ae0576f35fe79",
+            "denominator_base16": "0x7aba32bbc986b2806547a2763f71b23c8773853a4204cf166784aa800000000000000000",
+            "float": 1.738847670176358e-05
+          },
+          "derivative_variation_surrogate": {
+            "numerator_base16": "0xcd30370aa0a59c6df7bcb6303c808fadbefef2da00e29",
+            "denominator_base16": "0xc722f0ef9d80aad6424d3ad2b7b97ef50f5400000000000",
+            "float": 0.004024962763310332
+          },
+          "newton_y_surrogate": {
+            "numerator_base16": "0xa9ef9416c1b2dc6aae5f5ec2100f72f33f24369bba26edb6de7bc5cf44ad5d3a1c4ee817",
+            "denominator_base16": "0x3ed61e1252b38e97c12ad228101971c8f99335e063566e1ff37720000000000000000",
+            "float": 11077.294305905087
+          },
+          "contraction_z_surrogate": {
+            "numerator_base16": "0xf95198b122c89abdc267c5634653ba147e35e9f711d94a367",
+            "denominator_base16": "0x65f537c675815d9ccdfa7c534fbb2248390000000000",
+            "float": 2564094.4784413204
+          },
+          "correction_radius_tau": {
+            "numerator_base16": "0xa9ef9416c1b2dc6aae5f5ec2100f72f33f24369bba26edb6de7bc5cf44ad5d3a1c4ee817",
+            "denominator_base16": "0x1f6b0f092959c74be0956914080cb8e47cc99af031ab370ff9bb90000000000000000",
+            "float": 22154.588611810173
+          },
+          "state_with_correction_upper": {
+            "numerator_base16": "0xa9ef941a53d4a1192ad1d591bfd529520aaed02f32e9968bc1b5960dcdc20aba1c4ee817",
+            "denominator_base16": "0x1f6b0f092959c74be0956914080cb8e47cc99af031ab370ff9bb90000000000000000",
+            "float": 22154.58863955792
+          },
+          "population_with_correction_lower": {
+            "numerator_base16": "-0xa9ef8687b9e10e35f78a24ad5d30dc1d7114cf862f779591a9ec1fededc20aba1c4ee817",
+            "denominator_base16": "0x1f6b0f092959c74be0956914080cb8e47cc99af031ab370ff9bb90000000000000000",
+            "float": -22154.561639557916
+          },
+          "density_with_correction_lower": {
+            "numerator_base16": "-0x5f96a3ebcb2456f0c1803f11d7cbf4b482ce3393b4abc26c45f4433e0dbd2608afec628cf",
+            "denominator_base16": "0x1f6b0f092959c74be0956914080cb8e47cc99af031ab370ff9bb90000000000000000",
+            "float": -199390.29875602125
+          },
+          "radii_inequality_margin": {
+            "numerator_base16": "-0xa5802f1660de44f5e882043c2d7d81a13657c695d3db7ab5948e76e32ea813fbe93de7710fbb3c74f35c90e09b8ada578f91455bb2a43fbf769d20641",
+            "denominator_base16": "0xc83553c5c8965d3d6f92829494e5acc7698c3946cc750fb78c92f1a849e08188737e654c8d2b85de47b43100000000000000000000000000",
+            "float": -56806447254.387115
+          },
+          "correction_to_chart_state_utilization": {
+            "numerator_base16": "0xee52f6d33b0e7d5e7ebd6c0ebc0534a6968aa5625f9595abad1fda1a09444457",
+            "denominator_base16": "0x50202d54301cdfc827701931da13d09796a461adcfe364d8000000000",
+            "float": 798428461.9265707
+          },
+          "checks": {
+            "q011m_original_candidate_passed": true,
+            "formal_contraction_is_below_one_half": false,
+            "formal_radii_inequality_is_strict": false,
+            "corrected_state_is_in_derivative_domain": false,
+            "corrected_population_and_density_buffers_are_positive": false,
+            "correction_does_not_exceed_chart_state": false
+          },
+          "passed": false
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x3",
+            "denominator_base16": "0x174876e800",
+            "float": 3e-11
+          },
+          "q011m_original_candidate_passed": false,
+          "state_displacement_upper": {
+            "numerator_base16": "0xa149fe56e4995978bbcfcb",
+            "denominator_base16": "0x9dc5ada82b70b59df02000000",
+            "float": 0.0002495826962502368
+          },
+          "cubic_defect_upper": {
+            "numerator_base16": "0x1158f5e538a5f55a962ad4d57cbf0b25bae62ed4a9ac21dc6da647ffbf5f5044bfd091",
+            "denominator_base16": "0x7aba32bbc986b2806547a2763f71b23c8773853a4204cf166784aa800000000000000000",
+            "float": 0.0005521482157488231
+          },
+          "derivative_variation_surrogate": {
+            "numerator_base16": "0x73b40c75619f042b4490e615ef70ec934e4a29d61beaf9",
+            "denominator_base16": "0xc722f0ef9d80aad6424d3ad2b7b97ef50f5400000000000",
+            "float": 0.03631407400081941
+          },
+          "newton_y_surrogate": {
+            "numerator_base16": "0x151416efe03feeca6cbcd511d30e65bc7d43966118960e38c51f6e35e9790119390d9d5f7f",
+            "denominator_base16": "0x3ed61e1252b38e97c12ad228101971c8f99335e063566e1ff37720000000000000000",
+            "float": 351744.9165463563
+          },
+          "contraction_z_surrogate": {
+            "numerator_base16": "0x8c9682af5478e661ced50c02212b3704d0bdaf2b8f76174397",
+            "denominator_base16": "0x65f537c675815d9ccdfa7c534fbb2248390000000000",
+            "float": 23133808.214074004
+          },
+          "correction_radius_tau": {
+            "numerator_base16": "0x151416efe03feeca6cbcd511d30e65bc7d43966118960e38c51f6e35e9790119390d9d5f7f",
+            "denominator_base16": "0x1f6b0f092959c74be0956914080cb8e47cc99af031ab370ff9bb90000000000000000",
+            "float": 703489.8330927126
+          },
+          "state_with_correction_upper": {
+            "numerator_base16": "0x151416f0005e46f0bcdd53031b0dc749dce83fbde6b57b8c7900aad634952f32b90d9d5f7f",
+            "denominator_base16": "0x1f6b0f092959c74be0956914080cb8e47cc99af031ab370ff9bb90000000000000000",
+            "float": 703489.8333422953
+          },
+          "population_with_correction_lower": {
+            "numerator_base16": "-0x151416e26dc4535dd9aa0b5236ab22fca84ea5bd3db2098b7ee8e16014b52f32b90d9d5f7f",
+            "denominator_base16": "0x1f6b0f092959c74be0956914080cb8e47cc99af031ab370ff9bb90000000000000000",
+            "float": -703489.8063422953
+          },
+          "density_with_correction_lower": {
+            "numerator_base16": "-0xbdb4cc79d3104a3bcd5e8e8af13a427029f6fb94aee1ddcc1b95e3753ddea8c8817a885b77",
+            "denominator_base16": "0x1f6b0f092959c74be0956914080cb8e47cc99af031ab370ff9bb90000000000000000",
+            "float": -6331407.501080657
+          },
+          "radii_inequality_margin": {
+            "numerator_base16": "-0xb93610f0ff776b159d6cf1fab142924605a04feafbfa003f717d5f76dcbbb51b93b7d624073297c494a18a108e3ffd535c366e0d4a8ec6c9bd0563a90e9",
+            "denominator_base16": "0xc83553c5c8965d3d6f92829494e5acc7698c3946cc750fb78c92f1a849e08188737e654c8d2b85de47b43100000000000000000000000000",
+            "float": -16274398527572.828
+          },
+          "correction_to_chart_state_utilization": {
+            "numerator_base16": "0x9da8e512d616d64ddb0338e3e7b805bf2914d3a64aabe98c4f437867707cd3095",
+            "denominator_base16": "0xf03c4ef8a09c1809e3a1294013e9b23a50794b4be271ee88000000000",
+            "float": 2818664289.0794764
+          },
+          "checks": {
+            "q011m_original_candidate_passed": false,
+            "formal_contraction_is_below_one_half": false,
+            "formal_radii_inequality_is_strict": false,
+            "corrected_state_is_in_derivative_domain": false,
+            "corrected_population_and_density_buffers_are_positive": false,
+            "correction_does_not_exceed_chart_state": false
+          },
+          "passed": false
+        }
+      ],
+      "exact_scalar_record_digest_sha256": "86f45061f6e5a63914e7100c3e40733f8531dbcb5fd39fb34e128107bb0b21c1",
+      "passing_radius_count": 0,
+      "selected_radius": null,
+      "first_candidate_record": {
+        "radius": {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x5af3107a4000",
+          "float": 1e-14
+        },
+        "q011m_original_candidate_passed": true,
+        "state_displacement_upper": {
+          "numerator_base16": "0x21bf9e76c8b9c56f17f233",
+          "denominator_base16": "0x96769950b50d88f413144480000000",
+          "float": 5.222329240367342e-11
+        },
+        "cubic_defect_upper": {
+          "numerator_base16": "0x1db313f64d782d4f7d4cd7496a20b7f2965962ef8587f1b8ff5abd56f933ba77e31e0a18deb9",
+          "denominator_base16": "0x6a72f166e0e8f54b364f0c563803e48d2a1ff267ad2da6df745f7f8e542328c1a0000000000000000000000",
+          "float": 1.5859449210967877e-14
+        },
+        "derivative_variation_surrogate": {
+          "numerator_base16": "0x170260a61737a558c2050f114c20f634b699c95cf0e5c4e7629",
+          "denominator_base16": "0xb51d13aea4a488dd6babab6398bdbe414340b3c219400000000000000",
+          "float": 7.57237740398719e-09
+        },
+        "newton_y_surrogate": {
+          "numerator_base16": "0x24164abe638b891638e0b10acd3af7627bdd666dc740f99ee80e3255c0d6718f91efcd06ce07cbd7",
+          "denominator_base16": "0x36807b99069c237a7a039bd20833252575d2eab40ef07634f7ffbe3c9593068800000000000000000000",
+          "float": 1.0103230400948665e-05
+        },
+        "contraction_z_surrogate": {
+          "numerator_base16": "0x1bf53c8d6feff62183e78399e57f810876eb86a2b5193faba24bb67",
+          "denominator_base16": "0x5cbaeb5b771cf21b59f17ea9c70915a27041e54090000000000000",
+          "float": 4.823967880455232
+        },
+        "correction_radius_tau": {
+          "numerator_base16": "0x24164abe638b891638e0b10acd3af7627bdd666dc740f99ee80e3255c0d6718f91efcd06ce07cbd7",
+          "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+          "float": 2.020646080189733e-05
+        },
+        "state_with_correction_upper": {
+          "numerator_base16": "0x241650db2424ecf2a6d9f76bfbe48243f564aa4cda1b548fc5bc0ee206ddfbe19047cd06ce07cbd7",
+          "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+          "float": 2.0206513025189733e-05
+        },
+        "population_with_correction_lower": {
+          "numerator_base16": "0xbc37b1828fabb1d90d24158a7b1b43ce0b8f9138b7ac9be9aa9795e96888b5841e6fb832f931f83429",
+          "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+          "float": 0.02697979348697481
+        },
+        "density_with_correction_lower": {
+          "numerator_base16": "0x1b37ff18b6bbc4be497076f4139a7dcb071a96ffd2f3cd860561893c5cd48283a511ed79cac2c1b9d571",
+          "denominator_base16": "0x1b403dcc834e11bd3d01cde904199292bae9755a07783b1a7bffdf1e4ac9834400000000000000000000",
+          "float": 0.9988181413827733
+        },
+        "radii_inequality_margin": {
+          "numerator_base16": "-0x38858dee59cd2136f1c6c423897e5313308bb24fa32d844fd6c00b686e7d7b1982a917ccf939398dbfecbb097d4cd7bbc1c40e1aea4bbcd9ae7de63e1e9e6577451081",
+          "denominator_base16": "0x9defbf01b061adab3a0888136afa64a71360aa0f44cd064fc3501fbb08d428ab23217c941e25045452d99b00464999a1321fed64000000000000000000000000000000000",
+          "float": -8.737208748508172e-05
+        },
+        "correction_to_chart_state_utilization": {
+          "numerator_base16": "0x2334f2008426d9a7d8920caafc75da09aaf970dc63efaf82ea2919beacfd761f9000801",
+          "denominator_base16": "0x5f69576f3bb1046139383e3c70aeedbac544feefb14102d99fa968000000000000",
+          "float": 386924.2989451196
+        },
+        "checks": {
+          "q011m_original_candidate_passed": true,
+          "formal_contraction_is_below_one_half": false,
+          "formal_radii_inequality_is_strict": false,
+          "corrected_state_is_in_derivative_domain": true,
+          "corrected_population_and_density_buffers_are_positive": true,
+          "correction_does_not_exceed_chart_state": false
+        },
+        "passed": false
+      },
+      "first_candidate_failed_constraints": [
+        "formal_contraction_is_below_one_half",
+        "formal_radii_inequality_is_strict",
+        "correction_does_not_exceed_chart_state"
+      ],
+      "minimum_contraction_z": {
+        "numerator_base16": "0x1bf53c8d6feff62183e78399e57f810876eb86a2b5193faba24bb67",
+        "denominator_base16": "0x5cbaeb5b771cf21b59f17ea9c70915a27041e54090000000000000",
+        "float": 4.823967880455232
+      },
+      "minimum_contraction_z_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x5af3107a4000",
+        "float": 1e-14
+      },
+      "minimum_correction_utilization": {
+        "numerator_base16": "0x2334f2008426d9a7d8920caafc75da09aaf970dc63efaf82ea2919beacfd761f9000801",
+        "denominator_base16": "0x5f69576f3bb1046139383e3c70aeedbac544feefb14102d99fa968000000000000",
+        "float": 386924.2989451196
+      },
+      "minimum_correction_utilization_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x5af3107a4000",
+        "float": 1e-14
+      },
+      "constraint_failure_counts": {
+        "corrected_population_and_density_buffers_are_positive": 6,
+        "corrected_state_is_in_derivative_domain": 7,
+        "correction_does_not_exceed_chart_state": 8,
+        "formal_contraction_is_below_one_half": 8,
+        "formal_radii_inequality_is_strict": 8,
+        "q011m_original_candidate_passed": 1
+      },
+      "checks": {
+        "all_eight_q011m_radius_records_are_reused": true,
+        "q011m_radius_order_is_unchanged": true,
+        "q011m_selected_radius_is_unchanged": true,
+        "q011m_exact_radius_digest_is_unchanged": true,
+        "all_surrogate_formulas_are_exact": true,
+        "failure_counts_cover_every_nonpassing_condition": true
+      },
+      "passed": true
+    },
+    "runner_source": {
+      "filename": "q011n_correction_readiness.py",
+      "sha256": "7e526dcf013efce628137023f69de7b929d31e52f19378cb05c483284e36dc57",
+      "sha256_newline_normalization": "UTF-8 text with universal newlines"
+    },
+    "input_digest_sha256": "f916b59d1c9fba0e4ace57b110f4b960d5dce078578a77ac28f8a8d005e1e0d0",
+    "typing_digest_sha256": "e3952e5ac897ba9250f3a77ec5d8760c0f3ee2a3df350ba4451837a46dd91f76",
+    "scalar_digest_sha256": "ee7f21a6075963c510e234a032aa8de40f65989c609d10228aca54f6e371ed8d",
+    "validity_gates": {
+      "q011k_q011l_q011m_inputs_and_claim_boundaries_are_sealed": {
+        "passed": true,
+        "threshold": "three artifact/runner hashes, fifteen digests, accepted outcomes, nested seals and claim boundaries reproduce",
+        "value": {
+          "q011k_artifact_sha256_matches": true,
+          "q011k_runner_sha256_matches": true,
+          "q011k_digests_match": true,
+          "q011k_accepted_outcome_reproduces": true,
+          "q011k_package_source_metadata_matches": true,
+          "q011l_artifact_sha256_matches": true,
+          "q011l_runner_sha256_matches": true,
+          "q011l_digests_match": true,
+          "q011l_accepted_outcome_reproduces": true,
+          "q011l_package_source_metadata_matches": true,
+          "q011m_artifact_sha256_matches": true,
+          "q011m_runner_sha256_matches": true,
+          "q011m_digests_match": true,
+          "q011m_accepted_outcome_reproduces": true,
+          "q011m_package_source_metadata_matches": true,
+          "q011k_claim_boundary_is_preserved": true,
+          "q011l_claim_boundary_is_preserved": true,
+          "q011m_claim_boundary_is_preserved": true,
+          "q011m_nested_q011k_and_q011l_seals_reproduce": true
+        }
+      },
+      "degree_two_operator_and_function_defect_types_are_distinguished": {
+        "passed": true,
+        "threshold": "Q011l degree-two matrix spaces and Q011m degree-three-and-higher function defect have separate domains/codomains",
+        "value": {
+          "degree_two_pair_and_sector_domains_reproduce": true,
+          "q011l_operator_is_explicitly_degree_two_only": true,
+          "q011m_defect_is_a_function_with_degree_three_remainder": true,
+          "degree_two_inverse_is_not_declared_a_full_function_inverse": true,
+          "both_registered_theorem_routes_are_marked_missing": true
+        }
+      },
+      "five_sector_total_inverse_surrogate_reproduces": {
+        "passed": true,
+        "threshold": "registered sector envelopes and zero-wave lift give C_I=637048000 exactly",
+        "value": {
+          "five_registered_sector_envelopes_are_present": true,
+          "zero_sector_population_lift_is_included": true,
+          "registered_formula_reproduces": true,
+          "q011m_inverse_sum_reproduces_exactly": true,
+          "surrogate_is_not_typed_as_a_function_inverse": true
+        }
+      },
+      "all_q011m_radius_records_are_reused_unchanged": {
+        "passed": true,
+        "threshold": "all eight exact radius records, order, selected radius and source digest reproduce",
+        "value": {
+          "all_eight_q011m_radius_records_are_reused": true,
+          "q011m_radius_order_is_unchanged": true,
+          "q011m_selected_radius_is_unchanged": true,
+          "q011m_exact_radius_digest_is_unchanged": true
+        }
+      },
+      "all_scalar_surrogate_records_and_conditions_are_exact": {
+        "passed": true,
+        "threshold": "V, Y, Z, tau, six conditions and failure counts use exact Fraction arithmetic",
+        "value": {
+          "all_eight_q011m_radius_records_are_reused": true,
+          "q011m_radius_order_is_unchanged": true,
+          "q011m_selected_radius_is_unchanged": true,
+          "q011m_exact_radius_digest_is_unchanged": true,
+          "all_surrogate_formulas_are_exact": true,
+          "failure_counts_cover_every_nonpassing_condition": true
+        }
+      },
+      "scalar_surrogate_is_not_promoted_to_a_theorem": {
+        "passed": true,
+        "threshold": "the scalar pass/fail is explicitly neither an existence nor a nonexistence theorem",
+        "value": {
+          "scalar_surrogate_only": true,
+          "typed_theorem_consequence": false
+        }
+      },
+      "strict_serialization_digests_and_runner_reproduce": {
+        "passed": true,
+        "threshold": "finite strict JSON, three section digests and runner provenance reproduce",
+        "value": {
+          "strict_json": true,
+          "digests_reproduce": true,
+          "runner_sha256": "7e526dcf013efce628137023f69de7b929d31e52f19378cb05c483284e36dc57"
+        }
+      }
+    },
+    "hypothesis_gates": {
+      "a_posteriori_theorem_banach_space_norm_domain_and_gauge_are_fixed": {
+        "passed": false,
+        "threshold": "one applicable theorem and its Banach space, norm, domain and graph gauge are explicit",
+        "value": {
+          "specified_theorem": false,
+          "banach_space_and_norm": false
+        }
+      },
+      "typed_full_inverse_with_tail_or_graph_transform_contraction_exists": {
+        "passed": false,
+        "threshold": "either a full invariance inverse plus tail or a self-contained graph transform is rigorous",
+        "value": {
+          "full_inverse": false,
+          "analytic_tail": false,
+          "graph_transform": false
+        }
+      },
+      "at_least_one_registered_radius_passes_all_scalar_conditions": {
+        "passed": false,
+        "threshold": "at least one of the unchanged eight radii passes all six formal scalar conditions",
+        "value": {
+          "passing_radius_count": 0,
+          "selected_radius": null
+        }
+      },
+      "same_candidate_has_strict_chart_and_correction_buffers": {
+        "passed": false,
+        "threshold": "the selected scalar candidate retains state, population, density and relative-correction buffers",
+        "value": null
+      },
+      "defect_derivative_and_arithmetic_map_to_typed_theorem_hypotheses": {
+        "passed": false,
+        "threshold": "defect, derivative variation and exact arithmetic have a type-correct map to every theorem hypothesis",
+        "value": {
+          "theorem_specified": false,
+          "typed_contraction": false,
+          "typed_defect_to_correction_map": false
+        }
+      }
+    },
+    "failed_hypothesis_order": [
+      "a_posteriori_theorem_banach_space_norm_domain_and_gauge_are_fixed",
+      "typed_full_inverse_with_tail_or_graph_transform_contraction_exists",
+      "at_least_one_registered_radius_passes_all_scalar_conditions",
+      "same_candidate_has_strict_chart_and_correction_buffers",
+      "defect_derivative_and_arithmetic_map_to_typed_theorem_hypotheses"
+    ],
+    "first_missing_proof_object": "specified_a_posteriori_theorem",
+    "first_scalar_candidate_failed_constraints": [
+      "formal_contraction_is_below_one_half",
+      "formal_radii_inequality_is_strict",
+      "correction_does_not_exceed_chart_state"
+    ],
+    "study_validity": "passed",
+    "hypothesis_outcome": "not_ready",
+    "scientific_classification": "the registered Q011l/Q011m certificates are not sufficient for an a posteriori invariant-manifold proof",
+    "result_digest_sha256": "9893aed4a7ce4d05cbd21e849de4ddd4f1c9f86c7fcc3fad7a4504b823d6a321",
+    "theorem_consequence": {
+      "q011l_degree_two_inverse_and_q011m_function_defect_are_type_compatible": false,
+      "registered_scalar_surrogate_closes_on_a_q011m_radius": false,
+      "registered_inputs_are_ready_for_an_a_posteriori_manifold_proof": false,
+      "an_exact_local_invariant_manifold_or_ssm_is_certified": false,
+      "an_exact_local_invariant_manifold_or_ssm_is_disproved": false,
+      "q011l_homological_inverse_acceptance_is_changed": false,
+      "q011m_quadratic_majorant_acceptance_is_changed": false,
+      "nonlinear_normal_attraction_or_a_basin_is_certified": false
+    },
+    "claim_boundary": "This audit concerns only theorem readiness of the fixed 17x17 repaired exact map using the Q011k split, Q011l degree-two homological inverse and Q011m quadratic chart/finite defect. The scalar surrogate is neither a full function-space inverse nor an existence or nonexistence theorem. This gate constructs no higher-degree coefficient, analytic tail, graph transform, exact invariant manifold or SSM, smoothness, nonlinear normal attraction, basin, other grid, force, wall boundary or D3Q27 result.",
+    "preserved_prior_outcomes": {
+      "q011k_spectral_acceptance_changed": false,
+      "q011l_homological_inverse_acceptance_changed": false,
+      "q011m_quadratic_majorant_acceptance_changed": false
+    },
+    "next_change": "Preregister Q011o for a type-correct selected/external graph-transform space with coordinate lift/inverse, linear conorm/external norm and cutoff/localization bounds before tightening scalar forcing estimates."
+  },
+  "study_gate": "passed",
+  "scientific_outcome": "not_ready",
+  "next_question": "Preregister Q011o for a type-correct selected/external graph-transform space with coordinate lift/inverse, linear conorm/external norm and cutoff/localization bounds before tightening scalar forcing estimates."
+}
