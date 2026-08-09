@@ -5442,6 +5442,81 @@ external output factorをambient fixed-leaf coordinateへ戻すprojection／lift
 normal attraction、basinを主張しない。次はQ011mでrepaired exact mapのquadratic jetをinterval／analyticに
 構成し、Q011l inverseと合成するcoefficient／residual majorantを独立に事前登録する。
 
+## Q011m: repaired exact quadratic jet and cubic-defect majorant
+
+### 実施内容
+
+Q011j--Q011l artifact／runner／15 digest／accepted claim boundaryを封印し直した。exact root component radius、
+population／density floor、local momentum、eigencolumn、graph radius、inverse-coordinate、5 sector
+ambient inverse、selected dynamicsを、事前登録した単純有理envelopeへexactに包含した。後段の判定には
+artifactの観測floatを使わず、この外側envelopeだけを使った。
+
+repaired exact mapの非線形部
+
+\[
+f_q^{eq}=w_q\left[\rho+3c_q\cdot j+Q_q(j)/\rho\right]
+\]
+
+を二階・三階まで解析微分し、`(rho, jx, jy)`へのpopulation row sum `(9, 6, 6)`とBGK factor `3/2`を
+合成した。登録domainでは`rho >= 0.9981`、`|jx|, |jy| <= 0.00063`である。全9 populationと全tensor
+indexをexact `Fraction`で列挙し、mixed-partial symmetry、equilibrium conserved-moment polynomial identity、
+二階27成分／三階81成分のglobal conserved component zeroを確認した。
+
+Q011l invertibilityにより、全300 unscaled symmetric pairをsector `102 / 54 / 54 / 45 / 45`へ分けた
+graph-gauge external coefficient (Z) の一意解をimplicitに定義した。zero-wave population lift `186`を
+tangentとoutput inverseの両方に含め、係数normをscalar majorantで包んだ。最後に8 radiusで
+(U(r),A_R(r),D(r),D(r)/r^3)をexactに計算した。全係数非負なので、normalized defectの導関数
+
+\[
+\frac{d}{dr}\frac{D(r)}{r^3}
+=c_4+2000K_Z(K_T+K_Zr)^2\ge0
+\]
+
+もexactに閉じ、selected radius以下の全方向・全振幅へcubic boundを一様化した。
+
+### 結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the repaired exact map admits a unique graph-gauge quadratic jet with the registered coefficient and cubic-defect majorants`
+として`accepted`とした。
+
+- exact root population component radius: `2.1020669962448604e-13`
+- root population／density floor:
+  `0.027775908313350292 / 0.999999999999368`
+- center／enclosed-root momentum component upper:
+  `2.202356130560565e-5 / 2.2023562566845846e-5`
+- map (D^2/D^3) norm upper:
+  `144.5474473239429 / 3910.210477654001`
+- (K_T/K_F/K_Z/K_P/K_S):
+  `2450.0048392 / 435182969.1274978 / 2.772324401167342e17 / 23064697363.75738 / 1.24`
+- selected radius／passing count: `1e-11 / 7`
+- selected `U / A_R/r / D / D/U`:
+  `2.7747744060065423e-5 / 1.4706469736375738 / 1.738847670176358e-5 / 0.6266627176653649`
+- first failed larger radius: `3e-11`
+- failed constraints: `state displacement domain / cubic defect / defect-to-displacement utilization`
+- exact signed-tensor／radius-record digest:
+  `f77acf8cff113b906284b077841284de307649e1afc04019b6de7147d0670b08` /
+  `dd14364d4c60d8c47bf593538a414178db440a6a25e226088a69332188618f52`
+- input／derivative／coefficient／majorant／result digest:
+  `dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb` /
+  `0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a` /
+  `1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514` /
+  `bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00` /
+  `f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4`
+- runner／artifact newline-normalized SHA-256:
+  `0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150` /
+  `b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f`
+
+### 解釈と次のbottleneck
+
+Q011lのhomological inverseはrepaired map自身のanalytic forcingへ接続され、graph-gauge quadratic jetの
+一意性と有限半径のuniform cubic defectまで持ち上がった。`3e-11`の失敗も閾値変更で隠さず、最初の
+nonpassing candidateとして残した。
+
+ただし係数はimplicitなnorm ballでありcomponentwise arrayではない。有限cubic defectはexact invariance、
+invariant manifold／SSMの存在・一意性・滑らかさ、normal attraction、basinを意味しない。次はQ011nで
+Q011l inverseとQ011m defectを用いるa posteriori radii-polynomial／graph-transform correctionを事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -5597,6 +5672,8 @@ normal attraction、basinを主張しない。次はQ011mでrepaired exact map�
 [`artifacts/q011k_interval_spectral_split.json`](artifacts/q011k_interval_spectral_split.json)
 
 [`artifacts/q011l_interval_homological_inverse.json`](artifacts/q011l_interval_homological_inverse.json)
+
+[`artifacts/q011m_quadratic_jet_majorant.json`](artifacts/q011m_quadratic_jet_majorant.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

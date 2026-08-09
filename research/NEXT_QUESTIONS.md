@@ -13363,6 +13363,63 @@ componentwise coefficient array、raw Q011b map、Q011e--Q011h coefficientの移
 path、higher-order jet、exact invariant manifold／SSMの存在・一意性・滑らかさ、nonlinear normal attraction、
 basin、他grid／force／wall、D3Q27は主張しない。finite cubic defectをexact invarianceへ読み替えない。
 
+### Q011m 実行結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the repaired exact map admits a unique graph-gauge quadratic jet with the registered coefficient and cubic-defect majorants`
+として`accepted`とした。
+
+exact root enclosureは全simple envelopeに入り、登録domain上のanalytic derivative boundは
+
+\[
+\lVert D^2\Phi\rVert_{\infty,\mathrm{bil}}
+\le144.5474473239429<145,
+\qquad
+\lVert D^3\Phi\rVert_{\infty,\mathrm{tri}}
+\le3910.210477654001<4000
+\]
+
+となった。mixed-partial symmetry、D2Q9 equilibrium moment identity、二階／三階forcingのglobal conserved
+component zeroもexactに通過した。
+
+単純envelopeだけから得た係数boundは
+
+- `K_T = 2450.0048392`
+- `K_F = 435182969.1274978`
+- `K_Z = 2.772324401167342e17`
+- `K_P = 23064697363.75738`
+- `K_S = 1.24`
+
+で、全登録cap内にある。Q011lの5 sector invertibilityによりgraph-gauge quadratic solutionは一意である。
+
+8 radius中7件が通り、最大passing radiusは`1e-11`だった。このradiusで
+
+- `U = 2.7747744060065423e-5`
+- `population lower = 0.026972252255939935`
+- `density lower = 0.9987502703034594`
+- `A_R/r = 1.4706469736375738`
+- `D = 1.738847670176358e-5`
+- `D/U = 0.6266627176653649`
+
+である。次の`3e-11`は`U <= 1e-4`、`D <= 2e-5`、`D/U <= 0.75`の3条件でfailした。
+これはQ011mの棄却ではなく、登録majorantが閉じる最大candidateの局在である。
+
+- exact tensor／radius-record digest:
+  `f77acf8cff113b906284b077841284de307649e1afc04019b6de7147d0670b08` /
+  `dd14364d4c60d8c47bf593538a414178db440a6a25e226088a69332188618f52`
+- input／derivative／coefficient／majorant／result digest:
+  `dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb` /
+  `0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a` /
+  `1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514` /
+  `bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00` /
+  `f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4`
+- runner／artifact newline-normalized SHA-256:
+  `0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150` /
+  `b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f`
+
+componentwise coefficient array、raw-map係数移植、exact invariant manifold／SSM、smoothness、normal
+attraction、basinは認証していない。停止規則どおり、次はQ011nを観測前に事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

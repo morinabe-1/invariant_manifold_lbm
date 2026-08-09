@@ -2310,6 +2310,61 @@ Q011e--Q011hのraw-map coefficient、higher-order nonresonance、forced SSM存�
 attraction、basinへは広げない。次はQ011mでrepaired quadratic jetとcoefficient／residual majorantを
 別gateとして事前登録する。
 
+### Q011m repaired exact quadratic jet and cubic-defect majorant
+
+Q011j--Q011lのexact recordを単純有理envelopeへ包含した後、repaired exact mapのlocal equilibriumを
+exact `Fraction`で二階・三階微分した。population-to-moment row sum `(9, 6, 6)`、BGK factor `3/2`、
+streaming／filter norm `<=1`を合成し、登録domain `U <= 1e-4`で
+
+\[
+\lVert D^2\Phi\rVert_{\infty,\mathrm{bil}}\le144.5474473239429<145,
+\qquad
+\lVert D^3\Phi\rVert_{\infty,\mathrm{tri}}\le3910.210477654001<4000
+\]
+
+を得た。mixed-partial symmetry、D2Q9 quadrature、全二階／三階forcingのglobal conserved moment zeroも
+exactに列挙した。Q011e--Q011hのraw-map Hessian／coefficientは入力に使っていない。
+
+Q011lの5 sector inverseからgraph-gauge quadratic coefficient (Z) の一意解をimplicitに定義し、
+componentwise arrayを保存せず、登録式から
+
+- (K_T=2450.0048392)
+- (K_F=435182969.1274978)
+- (K_Z=2.772324401167342\times10^{17})
+- (K_P=23064697363.75738)
+- (K_S=1.24)
+
+を認証した。8個の事前登録radiusをexactに評価した結果、最大passing radiusは`1e-11`だった。この点で
+`U=2.7747744060065423e-5`、`A_R/r=1.4706469736375738`、
+`D=1.738847670176358e-5`、`D/U=0.6266627176653649`である。次の`3e-11`はdomain、defect、
+utilizationの3条件で失敗した。
+
+- classification:
+  `the repaired exact map admits a unique graph-gauge quadratic jet with the registered coefficient and cubic-defect majorants`
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- exact-root population radius／population floor／density floor:
+  `2.1020669962448604e-13 / 0.027775908313350292 / 0.999999999999368`
+- center／enclosed-root momentum component upper:
+  `2.202356130560565e-5 / 2.2023562566845846e-5`
+- selected radius／passing count／first failed larger radius:
+  `1e-11 / 7 / 3e-11`
+- exact tensor／radius-record digest:
+  `f77acf8cff113b906284b077841284de307649e1afc04019b6de7147d0670b08` /
+  `dd14364d4c60d8c47bf593538a414178db440a6a25e226088a69332188618f52`
+- input／derivative／coefficient／majorant／result digest:
+  `dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb` /
+  `0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a` /
+  `1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514` /
+  `bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00` /
+  `f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4`
+- runner／artifact newline-normalized SHA-256:
+  `0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150` /
+  `b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f`
+
+従ってrepaired mapのquadratic jetと有限radiusのuniform cubic defectまでは認証した。ただしfinite defectを
+exact invarianceへ読み替えず、componentwise coefficient、exact invariant manifold／SSM、smoothness、
+normal attraction、basinはまだ主張しない。次はQ011nでa posteriori correctionを独立gateにする。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2871,6 +2926,7 @@ python -m research.q011i_exact_zero_mean_repair --output research/artifacts/q011
 python -m research.q011j_interval_fixed_point --output research/artifacts/q011j_interval_fixed_point.json
 python -m research.q011k_interval_spectral_split --output research/artifacts/q011k_interval_spectral_split.json
 python -m research.q011l_interval_homological_inverse --output research/artifacts/q011l_interval_homological_inverse.json
+python -m research.q011m_quadratic_jet_majorant --output research/artifacts/q011m_quadratic_jet_majorant.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2958,6 +3014,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011j_interval_fixed_point.json`](research/artifacts/q011j_interval_fixed_point.json)
 - [`research/artifacts/q011k_interval_spectral_split.json`](research/artifacts/q011k_interval_spectral_split.json)
 - [`research/artifacts/q011l_interval_homological_inverse.json`](research/artifacts/q011l_interval_homological_inverse.json)
+- [`research/artifacts/q011m_quadratic_jet_majorant.json`](research/artifacts/q011m_quadratic_jet_majorant.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -3174,4 +3231,6 @@ quadratic productのexternal spectral nonresonanceを認証した。nonnormal ho
 normal attractionはこの段階では未認証だった。Q011lではQ011k eigencoordinate上のselected invariant graphを
 Riccati contractionで認証し、8件のselected-overlap pairを除外せずexternal quotientへ移した。さらに
 unscaled symmetric-product couplingを含む5 sectorのquadratic homological inverse normをexact rational
-Neumann boundで認証した。repaired quadratic jet／coefficient、forced SSM、normal attractionは未認証である。
+Neumann boundで認証した。Q011mではrepaired map自身のanalytic (D^2/D^3) を合成し、5 sectorのunique
+graph-gauge quadratic jet、係数majorant、最大登録半径`1e-11`でのuniform cubic defectを認証した。
+componentwise coefficient、exact invariant manifold／forced SSM、smoothness、normal attractionは未認証である。
