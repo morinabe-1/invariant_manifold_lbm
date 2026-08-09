@@ -80,7 +80,9 @@ def test_q011w_reproduces_the_complete_degree_four_modulus_inventory(
         audit["eigencenter_reconstruction"]["exact_modulus_interval_digest_sha256"]
         == "120d9214caa90d3eff168fca272ce8da3ee47eb5e11cbd65b0d462139b2d73fb"
     )
-    assert len(audit["exact_inventory_digest_sha256"]) == 64
+    assert audit["exact_inventory_digest_sha256"] == (
+        "12fd69ae0d7f290ae7d575ef85448c84b43b21157cb35e991a32cd2a075b0243"
+    )
 
 
 def test_q011w_combination_with_replacement_and_sector_filter_are_complete(
@@ -127,7 +129,9 @@ def test_q011w_combination_with_replacement_and_sector_filter_are_complete(
     assert audit["sector_compatible_comparison_count"] == 1200
     assert len(audit["monomial_records"]) == 810
     assert len(audit["compatible_pairs"]) == 1200
-    assert len(audit["exact_sector_record_digest_sha256"]) == 64
+    assert audit["exact_sector_record_digest_sha256"] == (
+        "bc38352978cafd86b8b9d4b1524997108f1adf96555072bf862e00efc9a03397"
+    )
 
 
 def test_q011w_framed_digests_cover_every_exact_product_and_comparison(
@@ -150,6 +154,9 @@ def test_q011w_framed_digests_cover_every_exact_product_and_comparison(
     )
     assert "8-byte big-endian" in framed["algorithm"]
     assert len(audit["comparison_records"]) == 1200
+    assert audit["compact_product_comparison_digest_sha256"] == (
+        "cbfcc669e638be0211d0ac11e038b2885259deda1f0a9598ab18368f1e3d5ed6"
+    )
 
 
 def test_q011w_phase_resolves_every_individual_modulus_overlap(
@@ -250,7 +257,9 @@ def test_q011w_cycle_has_reproducible_strict_json_digests(
     assert {
         name: q011w_cycle[name] for name in expected_stable_sections
     } == expected_stable_sections
-    assert len(q011w_cycle["result_digest_sha256"]) == 64
+    assert q011w_cycle["result_digest_sha256"] == (
+        "4681053a49eb583faa30d94d44e39d0ebfb1d00091ad7447ae086f21fd5d94d3"
+    )
     assert q011w_cycle["result_digest_sha256"] == (
         q011w.q011v.q011b._canonical_json_sha256(q011w._result_digest_sections(q011w_cycle))
     )
@@ -264,9 +273,16 @@ def test_q011w_artifact_records_degree_four_nonresonance_if_generated() -> None:
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     cycle = artifact["cycle"]
 
+    assert _file_sha256(artifact_path) == (
+        "6e0b0a166b6a5f4f915cf6ba4a46c699a26c63faf92dc92388502a2244fe0b9c"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
-    assert artifact["runner_source"]["filename"] == ("q011w_degree4_phase_disks.py")
+    assert artifact["runner_source"] == {
+        "filename": "q011w_degree4_phase_disks.py",
+        "sha256": "288a12d72f90f6df1f79a8e5f02d527d317f9a4a9828ebbcdf0cc58008b56247",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "accepted"
