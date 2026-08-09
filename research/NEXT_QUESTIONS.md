@@ -9479,6 +9479,208 @@ sampling-time fixed leaf／tube membershipと全内部stage positivityを全iter
 任意Q007ag boundary state、arbitrary exact physical state、same-initial exact軌道とのshadowingは
 証明していない。次はQ007apでshadowingだけを独立gateとして扱う。
 
+## Q007ap: propagated tubeのsame-initial all-iterate forward shadowing — 事前登録
+
+### 問いと固定scope
+
+Q007aoの登録inner exact-state setから同じfixed-leaf state xを選び、
+
+- exact orbit: x_n=Phi^n(x)
+- repaired orbit: y_0=R(E_85(x))、y_(n+1)=Psi_85(y_n)
+
+をsampling timeで比較する。ここでE_85はcomponentwise MPFR-85 round-to-nearest、RはQ007y
+row-major repair、Psi_85はQ007anのrepaired sampling mapである。
+
+Q007abと同じequilibriumで固定した線形座標
+
+\[
+\mathcal Cx=(Lx,JQx),\qquad
+\|\mathcal Cx\|_\oplus=\|Lx\|_1+\|JQx\|_*
+\]
+
+を用い、Q007ag tube全体でexact mapがstrict contractionとなるか、Q007ao initialization defectと
+Q007am one-step local defectを幾何級数へ足し上げられるかを判定する。graph-relative normal coordinateを
+trajectory distanceへ使わず、Q007aoのgraph shiftを初期fixed-coordinate errorへ二重加算しない。
+
+### 封印入力
+
+- Q007ab artifact／runner newline-normalized SHA-256:
+  3770e53e5fd169ea8ba16a568a1a1a3052afdd95d2779ba630c7ba7113bdc7ae /
+  4958e1aa5140bdbd1a32ce074c77ce2739636a34f7da2531c792ec165401c01a
+- Q007ab input／result digest:
+  83c98750b8a18aa98cae710fad0a4d2fa139428d791a085bdd086e39e435225f /
+  268a5e2098011561c3bc521c845e6eb804692713502fbbd54c3b3106b8f9c014
+- Q007ag artifact／runner newline-normalized SHA-256:
+  5783df74abb4b6ec7d658fd7e3dd272cf100cd134783c31863d643fcd17d4200 /
+  bafd9a56d2d2ceb94acb709609bd710c9fff0f6c0bf543202fa411b9456fb6e0
+- Q007ag input／candidate／result digest:
+  262cbeccacf858bd798de06f363635f15c78ff3d361b44bdd5850aeb90679613 /
+  a7a6a8f605339b0e8ffd16a5d3190967cb7329771d322f8edc0a53bc4b45e408 /
+  6f52c6f1cfa618ca881439504f1bd5b46e45eb245670f1a2c6341669aa024f43
+- Q007am artifact／runner newline-normalized SHA-256:
+  3b1b6f3c839cec572d0279f41c158dfafa09088e5f8ee1c3eab84f5bd279b781 /
+  a0bdebc150c4c3ad055e1840b98196dee95bf967c417d17097f7a35579f2aa16
+- Q007am input／probe／finite-result／result digest:
+  f1a0dfd0b90cf354e9847cb076058fd241ab813a90bdee0bfdbafa9dfee17de5 /
+  a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329 /
+  905b65f13ee01711f3b083a0bd93e44b32d0fc5201007fad77e99de03063ab6d /
+  2217172b48bf86b987a316c9b8c14db6aaeceb3e50f304fa7fefb021c2fd5bd2
+- Q007ao artifact／runner newline-normalized SHA-256:
+  c6262043848a479b90634fc8aa82dbd02bfcaea4bcb3467d240b956fd7602b8f /
+  2cd4c852c2855b93efaeb618bc3b1cb488885375c69f11e2c7624f0ea84614f7
+- Q007ao input／bound／result digest:
+  4793702239a7bc6252b71b5fff43cc68e78dcad1d1b9446db94544b85270deb3 /
+  b747e0a635cf4d747728fd5447e613b62a0b951813634f8a98c9e80a17f3308a /
+  6c2a41f2ff2d610d8f542cb132a50a678298098245063d54bcd2a38b6e6a8360
+
+Q007abとQ007aoをそれぞれfresh replayする。Q007ao replay内のQ007anと全transitive upstreamも通す。
+Q007abはold-tube結果を新tubeへ流用せず、fixed-coordinate formulaと、rho／tau変更で不変なlinear
+analysis／synthesis constantsの独立oracleとしてだけ使う。
+
+### Q007ag tube上のfixed-coordinate Lipschitz bound
+
+Q007abで封印したlinear constantsを
+
+\[
+q_s=0.9920954673554099,\qquad q_0=0.981709835832552,
+\]
+
+\[
+c_V=2.7869014191713024,\qquad K_s=2.888267212368763,
+\]
+
+\[
+K_L=1.5106842091904618,\qquad K_a=29.917136268364473
+\]
+
+とする。Q007ag selected candidateから新tubeのphysical Wiener radiusとnonlinear derivativeを
+
+\[
+R_T=1.4441361143956586\times10^{-10},\qquad
+d_N(R_T)=3.032685840887825\times10^{-9}
+\]
+
+と固定する。fixed-coordinate full-map Lipschitz upperを
+
+\[
+L_\oplus=
+\max(q_s,q_0)
++(K_L+K_a)d_N(R_T)\max(c_V,K_s)
+\]
+
+でexact rational評価する。事前登録値は次のとおりとする。
+
+- linear direct-sum contraction: 0.9920954673554099
+- nonlinear coordinate increment: 2.7528278762500916e-7
+- full Lipschitz upper: 0.9920957426381974
+- contraction gap 1-L: 0.007904257361802534
+
+Q007agのgraph-relative normal contraction 0.9817100978829438は比較診断に残すが、このfixed-coordinate
+Lipschitz formulaへ代入しない。
+
+### initial／local defectと幾何級数
+
+Q007aoからinitial fixed-coordinate errorを
+
+\[
+d_0\le
+\epsilon_{a,0}+K_aE_{W,0}
+\]
+
+とする。Q007aoのgraph shiftはencoded stateのgraph-relative tube membershipにだけ必要であり、線形差
+\(\mathcal C(y_0-x)\)には二重加算しない。
+
+- initial selected／physical／external／total coordinate error:
+  3.009718329710275e-23 / 1.9922882038484456e-23 /
+  5.960355768038905e-22 / 6.261327601009932e-22
+
+Q007amのtube-wide repaired-map local defectから
+
+\[
+\epsilon_{\rm step}
+=E_a^{\rm rep}+E_z^{\rm rep}
+\]
+
+とする。
+
+- step selected／external／total coordinate defect:
+  1.1581233824834727e-21 / 2.2935127565743277e-20 / 2.4093250948226748e-20
+
+各sampling timeで
+
+\[
+d_{n+1}\le L_\oplus d_n+\epsilon_{\rm step}
+\]
+
+を用い、
+
+\[
+D_*=\frac{\epsilon_{\rm step}}{1-L_\oplus},\qquad
+D=\max(d_0,D_*)
+\]
+
+をexact rationalで構成する。事前登録値は次のとおりとする。
+
+- stationary／uniform coordinate error: 3.0481359405954845e-18
+- direct-sum synthesis upper: 2.888267212368763
+- uniform physical Wiener error: 8.803831096064757e-18
+- physical error／Q007ag tube state radius: 6.096261293035372e-8
+- registered relative accuracy threshold: 1e-6
+- absolute Wiener threshold: 1.4441361143956587e-16
+
+### validity gate
+
+1. Q007ab／Q007ag／Q007am／Q007ao artifact・runner SHA、schema、source、scope、classification、
+   accepted outcome、gate count、全登録digestが一致する。
+2. Q007abとQ007ao stored cycleをfresh replayし、Q007aoのtransitive upstream reproductionも全て通る。
+3. fixed linear coordinate definition、linear analysis／synthesis constants、fixed leaf、grid、backend、
+   repair、trajectory comparison timeが全入力で一致する。
+4. Q007ag state radius／nonlinear derivativeとQ007ab fixed-coordinate constantsからLipschitz formulaを
+   exact rationalで再構成し、old graph-relative normal contractionを使っていない。
+5. Q007ao initial defectとQ007am one-step local defectをfixed-coordinate normでexactに再構成し、
+   graph shiftを二重加算していない。
+6. stationary／uniform coordinate bound、physical synthesis、tube-relative ratio、recurrence fixed-point identityを
+   exact rationalで再現する。
+7. 全値finiteなstrict JSONを生成し、input／recurrence／result digestを再現する。
+
+一つでも失敗すればinconclusiveとし、shadowing hypothesisを解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を独立に判定する。
+
+1. exact orbitとrepaired MPFR-85 orbitがともにQ007ag tubeに全iterate留まる。
+2. fixed-coordinate exact mapがL_oplus<1でstrict contractionである。
+3. Q007ao initial fixed-coordinate errorがd_0で包囲される。
+4. Q007am repaired-map one-step local defectがepsilon_stepで包囲される。
+5. [0,D]がd -> L_oplus d + epsilon_stepで不変で、d_0を含む。
+6. uniform physical Wiener error／R_T < 1e-6である。
+
+全て通れば
+「propagated-tube fixed-coordinate contraction certifies all-iterate MPFR-85 forward shadowing」
+としてacceptedとする。
+
+L_oplus>=1なら
+「registered propagated-tube fixed-coordinate majorant is not contractive」、
+accuracy gateだけが落ちれば
+「uniform propagated-tube shadow bound exceeds the registered accuracy threshold」
+として有効なnot_certifiedとする。それ以外は
+「registered propagated-tube recurrence does not certify all-iterate forward shadowing」
+とする。
+
+### 主張境界
+
+acceptedでも、Q007ao inner exact-state setから同じstateを初期化したexact／repaired二軌道の
+nonnegative sampling timesにおけるfixed-coordinate forward errorだけを意味する。bi-infinite
+shadowing lemma、backward error、内部stage間距離、componentwise relative error、任意Q007ag boundary
+initialization、性能、他grid／MPFR build、GPU／parallel reduction、grid-uniformity、continuum limit、
+D3Q27は主張しない。Q007ab old-tube shadowing、Q007ao initialization、Q007an conditional inductionは
+それぞれのscopeで保存する。
+
+acceptedならpropagated-tube finite-precision chainを閉じる。Q009 TT-crossはQ008c／Q010の固定経路棄却に
+より保留したままとし、次はQ011 boundary／forcingか、Q007afが残した別norm certificateを別gateとして
+事前登録してから進む。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
