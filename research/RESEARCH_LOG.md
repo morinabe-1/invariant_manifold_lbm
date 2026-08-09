@@ -3932,6 +3932,61 @@ Q007ahで残ったexact内部stageの穴は閉じた。次はQ007ajでcurrent bi
 囲う。stage positivityとroundoff-robust tube re-entryは別のhypothesisとして維持し、後者がfailしても
 前者を有効な結論として残す。
 
+## 2026-08-09: Q007aj Q007ag tubeのcurrent binary64 one-step enclosure
+
+### 問いと事前登録
+
+Q007aiでexact内部stageまで閉じたnew tubeについて、current NumPy binary64演算の一段stageがstrict
+positiveか、さらにpost-filter roundoff error upperがQ007agのbase／normal strict re-entry marginへ
+収まるかを問うた。Q007ag／Q007ai／Q007vとcurrent D2Q9／filter sourceを封印し、stage positivity、
+base re-entry、normal re-entryを独立hypothesisとした。re-entryがfailしてもone-step positivityを残し、
+全iterateへは帰納しない停止規則を先に固定した。
+
+### 実装
+
+- Q007ag stored cycle、3 digest、selected tube、6 candidate gate、strict margin、forward invarianceをfresh replayした。
+- Q007ai stored cycle、2 digest、exact new-tube stage bound、全accepted gate／theoremをfresh replayした。
+- Q007v stored cycle、old one-step acceptance／re-entry rejection、binary64 model、Fraction primitive、固定operation
+  count、source schedule、deterministic NumPy replayをfresh replayした。
+- Q007vのpaired interval engineへnew exact state upperを代入し、全target interval／forward errorを再計算した。
+- post-filter component errorを289-wave Wiener upperへ持ち上げ、Q007p selected／external analysis upperを掛けて
+  Q007agのbase／normal strict marginとexact Fractionで比較した。
+
+### 結果
+
+validity `7/7`が通過した。hypothesisはstage positivity 5件がpassし、base／normal re-entry 2件がfailした。
+従って`one_step_outcome=accepted`、`robust_reentry_outcome=not_certified`、overallは
+`binary64 one-step stages remain positive, but the registered Q007ag tube is not certified roundoff-invariant`
+という有効な`not_certified`とした。
+
+- input state Wiener upper: `1.4441361143956586e-10`
+- equilibrium／collision／streaming／filter population lower:
+  `0.02777777759726066 / 0.027777777145968068 / 0.027777777145968068 / 0.02777777714596806`
+- maximum equilibrium／collision／filter component forward error:
+  `7.154770620135027e-16 / 1.2459169528232512e-15 / 1.350123719783517e-15`
+- post-filter component-error sum／Wiener error upper:
+  `4.036979113491066e-15 / 1.1666869637989181e-12`
+- base coordinate error／margin／utilization:
+  `1.7624955732793895e-12 / 4.978814700017615e-20 / 35399902.97837664`
+- normal coordinate error／margin／utilization:
+  `3.490393287849664e-11 / 9.144951058528087e-13 / 38.16743540245316`
+- input／result digest:
+  `040bf7e2c62094ea66a4cf8a6190ea78e53745e30c70a3b3ce856a7e4d1c5284` /
+  `517846a3a99f1e684f40c2ea6d5a8ae7b3db8c0849dae3097fc7f380f4eca923`
+- runner／artifact SHA-256:
+  `e91cd0740ca9d639f6eaeeea8ed71552a0323897f45eee50070f4c8cdf947ac5` /
+  `29b8cd320f40396cc24ae30b46e46eecc7e23564600284aeb916a90af3a1fd8e`
+
+### 解釈と次のbottleneck
+
+new tubeでもcurrent binary64の一段内部stage positivityは大きな余裕で成立した。しかしroundoff upperは
+base marginを約3540万倍、normal marginを約38.17倍上回る。旧Q007v比ではmargin拡大によりutilizationが
+base約100分の1、normal約10分の1へ改善したが、all-iterate再入にはなお不足する。
+
+これは実際のtrajectory escapeや反例ではなく、component box、Wiener triangle、global analysis norm、
+局所roundoff accumulationをまとめた固定worst-case certificateの失敗である。Q007akでは4因子を分離し、
+どこを改善すれば再入thresholdへ届くかを定量化する。Q007akまではnew-tube MPFR／repair／shadowingへ進まない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4041,6 +4096,8 @@ Q007ahで残ったexact内部stageの穴は閉じた。次はQ007ajでcurrent bi
 [`artifacts/q007ah_propagated_tube_population_positivity.json`](artifacts/q007ah_propagated_tube_population_positivity.json)
 
 [`artifacts/q007ai_propagated_tube_stagewise_positivity.json`](artifacts/q007ai_propagated_tube_stagewise_positivity.json)
+
+[`artifacts/q007aj_propagated_tube_binary64_enclosure.json`](artifacts/q007aj_propagated_tube_binary64_enclosure.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

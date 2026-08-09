@@ -8546,6 +8546,40 @@ maximum principle、continuous optimum、global basin、grid-uniformity、contin
 all-iterate finite-precision positivityは認証しない。既存Q007ag／Q007ai acceptance、Q007v old-tube mixed
 result、Q007c1／Q007d／Q007af／Q010結論は変更しない。
 
+### Q007aj 封印結果
+
+全7 validity gateが通過した。hypothesisはequilibrium／collision／streaming／filter／one-step stage
+positivityの5件がpassし、base／normal roundoff re-entryの2件がfailした。従って
+`one_step_outcome=accepted`、`base_reentry_outcome=not_certified`、
+`normal_reentry_outcome=not_certified`、overallは
+`binary64 one-step stages remain positive, but the registered Q007ag tube is not certified roundoff-invariant`
+という有効な`not_certified`とした。
+
+- sealed Q007ag／Q007ai／Q007v inputs: `3 / 3` pass
+- Q007ag／Q007ai／Q007v stored cycle fresh reproduction: `3 / 3` pass
+- binary64 model／Fraction primitives／registered operation counts: pass
+- current D2Q9／filter source schedule／new-tube rest replay: pass
+- input state Wiener upper: `1.4441361143956586e-10`
+- equilibrium／collision／streaming／filter population lower:
+  `0.02777777759726066 / 0.027777777145968068 / 0.027777777145968068 / 0.02777777714596806`
+- post-filter component-error sum／Wiener error upper:
+  `4.036979113491066e-15 / 1.1666869637989181e-12`
+- base coordinate error／strict margin／utilization:
+  `1.7624955732793895e-12 / 4.978814700017615e-20 / 35399902.97837664`
+- normal coordinate error／strict margin／utilization:
+  `3.490393287849664e-11 / 9.144951058528087e-13 / 38.16743540245316`
+- input／result digest:
+  `040bf7e2c62094ea66a4cf8a6190ea78e53745e30c70a3b3ce856a7e4d1c5284` /
+  `517846a3a99f1e684f40c2ea6d5a8ae7b3db8c0849dae3097fc7f380f4eca923`
+- runner／artifact SHA-256:
+  `e91cd0740ca9d639f6eaeeea8ed71552a0323897f45eee50070f4c8cdf947ac5` /
+  `29b8cd320f40396cc24ae30b46e46eecc7e23564600284aeb916a90af3a1fd8e`
+
+従ってnew tubeでもcurrent binary64一段stage positivityは認証できたが、固定worst-case enclosureでは
+両coordinateのroundoff-robust re-entryを認証できない。これは実際のtube escapeではない。次はQ007akで
+strict margin、analysis norm、289-wave Wiener lifting、local roundoff accumulationを独立因子へ分解し、
+必要改善率を封印する。Q007akまではone-step結果を反復せず、new-tube MPFR／repair／shadowingへ進まない。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
