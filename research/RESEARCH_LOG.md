@@ -6878,6 +6878,70 @@ hypothesis `5 / 5`を通過し、
 all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
 未認証である。停止規則どおり、次はQ011afでdegree 12へ進む。
 
+### Q011af 実行結果
+
+Q011aeまでの10 artifact、runner、53 direct digest、outcome、claim boundaryとQ011l／Q011o sourceを
+照合し、validity `8 / 8`を通過した。degree-12 inventoryは
+
+`455 aggregate / 6188 expanded control / 426 old-separated / 29 overlap`
+
+だった。selected 24／external 36の60 directly relevant identifierを再構成し、Q011aeの84 recordを
+exactに保存する92-record monotone \(\rho=5\times10^{-8}\) envelopeを得た。unique center-modulus
+evaluationは56件だった。
+
+29 overlapの全36596091 commutative monomialを、selected groupごとのexact center-modulus class countと
+17-sector Fourier multiplicityへ分割した。modulus class数は`4 / 2 / 3 / 6`、圧縮後は213618 signature、
+compatible original monomial／product signatureは`6904665 / 184154`だった。weak-composition fiberの
+cardinalityをexactに保持し、同じ圧縮をQ011aeのdegree-11 full-stream oracleへ適用して、全14 aggregateの
+monomial count、wave histogram、compatible count、comparison countを完全再現した。
+
+184154 product signatureに対して1116256 distinct signature／target comparisonを評価し、元の13980960
+weighted comparisonを被覆した。unresolvedはweighted／distinctとも`0`だった。relation countはweightedで
+product below target `7676904`、target below product `6304056`、distinctでproduct below target
+`648656`、target below product `467600`である。完全なoriginal monomial、combined signature、pair、
+product、comparison listは保持せず、現在record、compact histogram、boundary、extrema、witness、digest
+stateと4154件のgroup-signature cacheだけを保持した。
+
+global minimumはaggregate `[0,6,2,4]`のclass count
+`[[0,0,0,0],[0,6],[0,1,1],[0,0,0,4,0,0]]`、source
+
+`(block=16;center=151)^5 × block=1;center=151 × block=0;center=149 × block=1;center=152 × (block=0;center=147)^4`
+
+対target `block=14;center=146`だった。wave multiplicityは`2`、relationは`product_below_target`で、gap
+`5.935468013051209e-6`は登録下限`5e-6`を通過した。
+
+hypothesis `5 / 5`を通過し、
+`degree-12 external nonresonance is certified by exact Fourier-multiplicity compression and the contained uniform refined-envelope products`
+として`accepted`とした。certified degreesは2--12、tail-certifiedは91以降、missing rangeはdegrees 13--90である。
+
+- 92-ID uniform-record digest:
+  `a73207a01651de2d02286653258e1c98e68bce49dec5e0d2f632b3cf47dd7f9a`
+- class-membership／wave-histogram digest:
+  `269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c` /
+  `c40e7b6d9941f7c7c2836b9720c4a577f56d529591c01af3f3c732ba4ed10171`
+- signature／distinct-pair framed digest:
+  `d03f1a33f561698d1fca3ca62e929ffc1cef686ff3838e41359b9adf24471432` /
+  `52cfea7036596c19c400a035228c326d4dcdbaf64e8ad8950db0fb8013915721`
+- compressed-product／comparison framed digest:
+  `f8b44f485d13e00e6972fcbbb3aeb9db10d70f788ebfeb80771941bd6c7929f6` /
+  `4388e28e4ed0b80ca9c02051850051f74c8e7c0cb6f54ff18ee0cb1839cdddba`
+- compact compression／product digest:
+  `43f61e32b7d96cecdff24e1a827292c302cc3b260a7ef075019a8c84e715f53e` /
+  `65d5435a427400488f9c1723c991615efc8401620a82b7419cbe9d8d6b286da4`
+- input／inventory／compression／product／result digest:
+  `14a3b80b475f418cf9963555a4cabcea19875a0f3028ef023961c67081708718` /
+  `39f1a63ca73b22969c150c84224ae94761edc53481d7822f8dc63a7abca7e493` /
+  `b8845507a83e6778f70c192a00ba85a747b28edc9a1235a202d4214e3e66e502` /
+  `16140d16ff621d4915f1571ae535031629bffb4f19d8392c18a4e2ad47e206ab` /
+  `da02c8613dc60079b977ec7d3dedd8545c486c6d401e5d84d77e3df7ff9c8204`
+- runner／artifact newline-normalized SHA-256:
+  `b270b0c4c884d1243e4db55b1dcad57af4c2e72d2143400de9c7c72d263f3293` /
+  `19f2ea8f23e91532ab6acfddc346409800983b17b916b6be0c27699e4b036555`
+
+本certificateは固定17² repaired exact map、fixed conservation leaf、degree 12だけを扱う。degrees 13--90、
+all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
+未認証である。停止規則どおり、次はQ011agでdegree 13へ進む。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7071,6 +7135,8 @@ all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
 [`artifacts/q011ad_degree10_refined_modulus.json`](artifacts/q011ad_degree10_refined_modulus.json)
 
 [`artifacts/q011ae_degree11_streaming_modulus.json`](artifacts/q011ae_degree11_streaming_modulus.json)
+
+[`artifacts/q011af_degree12_compressed_modulus.json`](artifacts/q011af_degree12_compressed_modulus.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

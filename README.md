@@ -3245,6 +3245,67 @@ global minimum witnessは
 all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
 認証していない。次はQ011afでdegree 12を監査する。
 
+### Q011af degree-12 Fourier-multiplicity compressed nonresonance certificate
+
+degree 12で直接必要なselected 24／external 36の60 identifierを再構成し、Q011aeの84 recordをexactに
+保存する92-record monotone uniform envelopeへ拡張した。Q011uのdegree-12 inventory
+`455 = 426 old-separated + 29 overlap`を再構成した。29 overlapの全36596091 commutative monomialを
+exact center-modulus class countと17-sector multiplicityへ分割し、213618 modulus signatureへ圧縮した。
+
+圧縮則はper-identifier weak compositionとのbijectionでfiber cardinalityをexactに保持する。さらに同じ
+圧縮をQ011aeのdegree-11 full-stream oracleへ適用し、全14 aggregateのmonomial count、wave histogram、
+compatible count、comparison countを完全再現した。その上でFourier-compatibleな184154 product
+signatureと1116256 distinct signature／target comparisonだけを評価し、元の13980960 weighted
+comparisonを重複・欠落なく被覆した。
+
+- classification:
+  `degree-12 external nonresonance is certified by exact Fourier-multiplicity compression and the contained uniform refined-envelope products`
+- validity／hypothesis gates: `8 / 8` passed、`5 / 5` passed
+- outcome: `accepted`
+- aggregate／expanded control／old-separated／overlap: `455 / 6188 / 426 / 29`
+- original monomial／modulus signature: `36596091 / 213618`
+- compatible original monomial／product signature: `6904665 / 184154`
+- weighted／distinct comparison: `13980960 / 1116256`
+- weighted／distinct unresolved: `0 / 0`
+- weighted relation: product below target `7676904`、target below product `6304056`
+- distinct relation: product below target `648656`、target below product `467600`
+
+global minimum witnessは
+
+`(block=16;center=151)^5 × block=1;center=151 × block=0;center=149 × block=1;center=152 × (block=0;center=147)^4`
+
+対target `block=14;center=146`で、wave multiplicityは`2`、relationは`product_below_target`だった。
+最小値`5.935468013051209e-6`は登録下限`5e-6`を通過した。従ってcertified degreesは
+`2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 91+`、missing rangeはdegrees 13--90となった。
+
+- 92-ID uniform-record digest:
+  `a73207a01651de2d02286653258e1c98e68bce49dec5e0d2f632b3cf47dd7f9a`
+- class-membership／wave-histogram digest:
+  `269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c` /
+  `c40e7b6d9941f7c7c2836b9720c4a577f56d529591c01af3f3c732ba4ed10171`
+- signature／distinct-pair framed digest:
+  `d03f1a33f561698d1fca3ca62e929ffc1cef686ff3838e41359b9adf24471432` /
+  `52cfea7036596c19c400a035228c326d4dcdbaf64e8ad8950db0fb8013915721`
+- compressed-product／comparison framed digest:
+  `f8b44f485d13e00e6972fcbbb3aeb9db10d70f788ebfeb80771941bd6c7929f6` /
+  `4388e28e4ed0b80ca9c02051850051f74c8e7c0cb6f54ff18ee0cb1839cdddba`
+- compact compression／product digest:
+  `43f61e32b7d96cecdff24e1a827292c302cc3b260a7ef075019a8c84e715f53e` /
+  `65d5435a427400488f9c1723c991615efc8401620a82b7419cbe9d8d6b286da4`
+- input／inventory／compression／product／result digest:
+  `14a3b80b475f418cf9963555a4cabcea19875a0f3028ef023961c67081708718` /
+  `39f1a63ca73b22969c150c84224ae94761edc53481d7822f8dc63a7abca7e493` /
+  `b8845507a83e6778f70c192a00ba85a747b28edc9a1235a202d4214e3e66e502` /
+  `16140d16ff621d4915f1571ae535031629bffb4f19d8392c18a4e2ad47e206ab` /
+  `da02c8613dc60079b977ec7d3dedd8545c486c6d401e5d84d77e3df7ff9c8204`
+- runner／artifact newline-normalized SHA-256:
+  `b270b0c4c884d1243e4db55b1dcad57af4c2e72d2143400de9c7c72d263f3293` /
+  `19f2ea8f23e91532ab6acfddc346409800983b17b916b6be0c27699e4b036555`
+
+これは固定17² repaired exact map、固定保存量葉、degree 12だけのcertificateである。degrees 13--90、
+all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
+認証していない。次はQ011agでdegree 13を監査する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -3920,6 +3981,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011ac_degree9_refined_modulus.json`](research/artifacts/q011ac_degree9_refined_modulus.json)
 - [`research/artifacts/q011ad_degree10_refined_modulus.json`](research/artifacts/q011ad_degree10_refined_modulus.json)
 - [`research/artifacts/q011ae_degree11_streaming_modulus.json`](research/artifacts/q011ae_degree11_streaming_modulus.json)
+- [`research/artifacts/q011af_degree12_compressed_modulus.json`](research/artifacts/q011af_degree12_compressed_modulus.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -4059,6 +4121,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q011ad degree-10 68-record monotone refined envelope、339960 monomial／466872 comparison、degree-10 nonresonance
 - Q011ae degree-11 84-record monotone envelope、2299104 monomialのconstant-memory Fourier監査、
   383062 compatible product／820492 comparison、degree-11 nonresonance
+- Q011af degree-12 92-record monotone envelope、36596091 monomialのexact multiplicity compression、
+  184154 compatible product signature／13980960 weighted comparison、degree-12 nonresonance
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -4069,7 +4133,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 12--90 external
+- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 13--90 external
   nonresonance、spectral-quotient SSM uniqueness（Q011uはmodulus-only routeを棄却）
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
@@ -4211,4 +4275,9 @@ monotone envelopeを構成し、degree 11の14 overlapを2299104 monomialへ展�
 constant-memoryでFourier監査し、383062 compatible product／820492 comparisonだけを積区間評価した。
 11 overlapは全比較がindividual modulusで分離し、3 overlapはexact Fourier structureだけで空となった。
 minimum gapは`6.077884164345725e-6`だった。従ってdegree-11 external nonresonanceを認証し、missing
-rangeはdegrees 12--90へ縮んだ。
+rangeはdegrees 12--90へ縮んだ。Q011afではQ011aeのdegree-11 full-stream結果をoracleとしてexactに
+再現するmodulus-class／Fourier-multiplicity圧縮を導入し、degree 12の29 overlapに含まれる36596091
+monomialを213618 signatureへ重複・欠落なく分割した。Fourier-compatibleな184154 product signatureに
+対する1116256 distinct comparisonが13980960 weighted comparisonを表し、全件がindividual modulusで
+分離した。minimum gapは`5.935468013051209e-6`だった。従ってdegree-12 external nonresonanceを認証し、
+missing rangeはdegrees 13--90へ縮んだ。
