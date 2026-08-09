@@ -8226,6 +8226,39 @@ limitは認証しない。Q007c1 finite-amplitude rejection、Q007d Euclidean re
 external-disc obstruction、Q010 TT cost rejectionは変更しない。acceptedなら次にQ007aiとして、同じ
 Q007ag tube上のexact stagewise positivityを独立に事前登録する。
 
+### Q007ah 封印結果
+
+validity 6件、hypothesis 3件が全て通過し、
+`registered Q007ag propagated tube lies in the strictly positive population cone at every full-map iterate`
+として`accepted`とした。
+
+- sealed Q007ag／Q007t／Q007p inputs: `3 / 3` pass
+- Q007ag stored cycle／3 digest fresh reproduction: pass
+- Q007t old population oracle fresh reproduction: pass
+- D2Q9 weight multiplicities／sum／minimum: `1 / 4 / 4`、`1`、`1/36`
+- Fourier wave count／Q007p norm audit: `289 / pass`
+- selected base／normal radius: `9e-17 / 5e-11`
+- exact tube population deviation upper: `1.4441361143956586e-10`
+- exact population lower／upper:
+  `0.027777777633364167 / 0.44444444458885807`
+- exact density lower: `0.9999999998555864`
+- input／result digest:
+  `6d7bd69b5c90ff7dbabd5193a4536809f4b79eef36a41fb288ab7caec44321b4` /
+  `caea5280667e909f17922260ef0d78998b6a8b374cd048b4b3e526185f040921`
+- runner SHA-256:
+  `f29a974f0219af1767140e977775aa95dcf22b41a36de7a97bb553d540968d27`
+- artifact newline-normalized SHA-256:
+  `cab5ecc090b794a21a21fded8e5c503eca40be2bbc6502767c29844ba8209fa9`
+
+最初のinput-only実装監査ではQ007t artifactのraw-byte SHAを事前登録したためvalidityがfailし、
+hypothesisを採用せず停止した。既存ログに封印済みのnewline-normalized SHAへ訂正した後、全入力、
+fresh replay、exact boundが通過した。科学的入力、数値bound、成功条件は変更していない。
+
+Q007ag forward invarianceにより、population／density lowerはexact full-mapの全入力／出力時刻へ
+帰納できる。しかしequilibrium／collision／streaming／filter stageのpositivityはまだ認証していない。
+次はQ007aiとして同じQ007ag tubeのexact stagewise positivityだけを事前登録する。Q007v--Q007abの
+binary64／MPFR／repair／forward-shadowing再監査はQ007ai通過後まで開始しない。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。

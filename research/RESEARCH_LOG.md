@@ -3837,6 +3837,57 @@ Q007t／Q007u positivityとQ007v--Q007ab finite-precision certificateは旧Q007s
 次は新Q007ag tubeのfull-map population positivityを独立gateで監査し、その後にstagewise positivityを
 別gateとして扱う。有限精度定数は両positivity gateが通るまで拡張しない。
 
+## 2026-08-09: Q007ah Q007ag tubeのfull-map population positivity
+
+### 問いと事前登録
+
+Q007ag selected tubeをfull one-step mapの入力／出力時刻でstrict positive D2Q9 population coneへ
+含められるかを問うた。Q007ag／Q007t／Q007pを封印し、exact Wiener upperから
+\(p_{\rm ag}=1/36-x_{\rm ag}\)、\(d_{\rm ag}=1-x_{\rm ag}\)を`Fraction`で判定するよう登録した。
+内部stageは対象外とし、Q007aiへ分離した。
+
+### provenance訂正
+
+最初のinput-only実装監査は、Q007t artifactにraw-byte SHA
+`de5ee6db33e06459c64e5cea92b206673938d5f8d6fef948e5b4496dcca92283`を登録したためvalidityで停止した。
+既存Q007t／Q007u封印と研究ログにあるnewline-normalized SHA
+`2089d97aa19248cc17689f3e7a01e113540e5afc329ffa5cb3a4c511a43a8529`へ、結果採用前に訂正した。
+artifact内容、runner、数値bound、成功条件は変更していない。
+
+### 実装
+
+- Q007ag stored cycleをfresh replayし、3 digest、selected tube、6 candidate gate、forward invarianceを再現した。
+- Q007t old population oracleをfresh replayし、weight table、Wiener triangle、old exact boundを再現した。
+- 現行D2Q9 weight tableを独立に`Fraction`化し、multiplicity、sum、minimum／maximumを監査した。
+- Q007pの289 wave、block-sum norm definition、real conjugacy constraintを直接照合した。
+- exact state upperからpopulation／density boundsを再構成し、input／result digestを保存した。
+
+### 結果
+
+validity `6/6`、hypothesis `3/3`で、
+`registered Q007ag propagated tube lies in the strictly positive population cone at every full-map iterate`
+として`accepted`とした。
+
+- tube state Wiener upper: `1.4441361143956586e-10`
+- population lower／upper:
+  `0.027777777633364167 / 0.44444444458885807`
+- density lower: `0.9999999998555864`
+- D2Q9 weight multiplicities／minimum: `1 / 4 / 4`、`1/36`
+- Fourier wave count: `289`
+- input／result digest:
+  `6d7bd69b5c90ff7dbabd5193a4536809f4b79eef36a41fb288ab7caec44321b4` /
+  `caea5280667e909f17922260ef0d78998b6a8b374cd048b4b3e526185f040921`
+- runner／artifact SHA-256:
+  `f29a974f0219af1767140e977775aa95dcf22b41a36de7a97bb553d540968d27` /
+  `cab5ecc090b794a21a21fded8e5c503eca40be2bbc6502767c29844ba8209fa9`
+
+### 解釈と次のbottleneck
+
+Q007ag forward invarianceにより、同じstrict lower boundをexact full-mapの全入力／出力時刻へ帰納できる。
+しかしequilibrium evaluation、BGK collision、streaming、filterの各内部stageはこの結論に含まれない。
+次はQ007aiで同じnew tubeのexact stagewise positivityだけを監査する。entropy、maximum principle、
+IEEE-754 roundoff、Q007v--Q007ab finite-precision inductionもまだ拡張しない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3942,6 +3993,8 @@ Q007t／Q007u positivityとQ007v--Q007ab finite-precision certificateは旧Q007s
 [`artifacts/q007af_radius_step_obstruction.json`](artifacts/q007af_radius_step_obstruction.json)
 
 [`artifacts/q007ag_tube_radius_propagation.json`](artifacts/q007ag_tube_radius_propagation.json)
+
+[`artifacts/q007ah_propagated_tube_population_positivity.json`](artifacts/q007ah_propagated_tube_population_positivity.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
