@@ -177,3 +177,38 @@ def test_q011c_records_reproducible_digests_and_runner_provenance(
     }
     assert source_metadata()["package_version"] == "0.1.0"
     json.dumps(q011c_cycle, allow_nan=False)
+
+
+def test_q011c_artifact_reproduces_the_inconclusive_endpoint_audit(
+    q011c_cycle: dict,
+) -> None:
+    runner_path = Path(q011c.__file__).resolve()
+    artifact_path = runner_path.parent / "artifacts" / "q011c_forced_spectral_cluster.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "dbb562dd3628dc7589219baa94ae6791e084847f302c69dbcdc328b94ac6d2b3"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011c_forced_spectral_cluster.py",
+        "sha256": "10222da26fe14b97cd9565c517838d3a03e21f19e605d4a60cb2461e011d1d13",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q011c_cycle
+    assert artifact["study_gate"] == "failed"
+    assert artifact["scientific_outcome"] == "inconclusive"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "7d8d4a593dc29a715c995e237890da4de17314c4feffabe10111b289120435ee"
+    )
+    assert artifact["cycle"]["path_digest_sha256"] == (
+        "06254ea5569d8b0c8c5369477c82ea685284aec9970574c46c24fea749280b92"
+    )
+    assert artifact["cycle"]["spectrum_digest_sha256"] == (
+        "5b1e79280b752268248f5150dd12c73a96719cb20d86cbd34fb3ff1e1b8b472c"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "4b41c4e7bda3a45f1ece871c183d321bed637d255053e22a82e7000dd83f5751"
+    )
