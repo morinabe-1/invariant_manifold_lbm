@@ -254,3 +254,48 @@ def test_q007al_records_provenance_and_deterministic_digests(
         q007al_cycle["backend_campaign"]["result_digest_sha256"]
     )
     json.dumps(q007al_cycle, allow_nan=False)
+
+
+def test_q007al_artifact_reproduces_the_accepted_mpfr85_bridge(
+    q007al_cycle: dict,
+) -> None:
+    runner_path = Path(q007al.__file__).resolve()
+    artifact_path = (
+        runner_path.parent
+        / "artifacts"
+        / "q007al_propagated_tube_mpfr85_bridge.json"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "bf1a2d9959f24cfc83a4efb2926ec76d9ced97755846ee310490585940d8dcf5"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007al_propagated_tube_mpfr85_bridge.py",
+        "sha256": "b82e03145e0c7f1c20b1d1345b87acbae5ce526b732969c391b88141118dfd8e",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q007al_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "e14b6251a0f5da2ad4c73c1b08c5e21205e99749917f3f78228de6bb12b13738"
+    )
+    assert artifact["cycle"]["candidate_digest_sha256"] == (
+        "7b63d94121aea24e589ed3e7b221e154705f42df37c4c603c3f99a4a3b1799c0"
+    )
+    assert artifact["cycle"]["probe_digest_sha256"] == (
+        "a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329"
+    )
+    assert artifact["cycle"]["trace_digest_sha256"] == (
+        "49ce9b304b4b6a07fdf7d7baed6c9118a97c5a08e489e3aa5eacde28662c2351"
+    )
+    assert artifact["cycle"]["campaign_result_digest_sha256"] == (
+        "edbfbe317f2254f3d6a628608a19b4986f7ea308cae889d19ce470f31234dad5"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "a46f4850d57b0e7d503177205c2cb3d1ed91679cc4c13b9ef31382dbd7bdcd06"
+    )
