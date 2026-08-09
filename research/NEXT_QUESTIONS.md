@@ -13420,6 +13420,170 @@ component zeroもexactに通過した。
 componentwise coefficient array、raw-map係数移植、exact invariant manifold／SSM、smoothness、normal
 attraction、basinは認証していない。停止規則どおり、次はQ011nを観測前に事前登録する。
 
+## Q011n: a posteriori correction readiness and scalar obstruction — 事前登録
+
+### 問い
+
+Q011lのquadratic homological inverseとQ011mのfinite cubic defectだけで、repaired exact mapのexact local
+invariant manifoldをa posterioriに認証できるか。認証できない場合、単なる「定理未選定」ではなく、
+operator domainの不一致と、登録scalar majorantが最初に破る十分条件をexactに局在できるか。
+
+本gateはQ011mのfinite defectをexact invarianceへ読み替える前のtheorem-readiness gateである。
+Q011l inverseを次数3以上の関数へ無断で作用させない。scalar productが小さくてもtyped inverseがなければ
+存在証明とはせず、逆にscalar productが大きくてもmanifoldの不存在とは解釈しない。
+
+### 封印入力
+
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011l artifact／runner newline-normalized SHA-256:
+  `2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a` /
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7`
+- Q011l input／graph／pair／homological／result digest:
+  `1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011` /
+  `a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3` /
+  `694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377` /
+  `14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915` /
+  `c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45`
+- Q011m artifact／runner newline-normalized SHA-256:
+  `b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f` /
+  `0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150`
+- Q011m input／derivative／coefficient／majorant／result digest:
+  `dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb` /
+  `0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a` /
+  `1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514` /
+  `bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00` /
+  `f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4`
+
+三artifactのhash、runner、全digest、accepted outcome、theorem consequence、claim boundaryを再現する。
+Q011mがQ011j--Q011lを既に封印している事実も照合するが、nested sealだけで直接hash照合を省略しない。
+
+### operator type audit
+
+Q011lが認証したoperatorは各output sector \(q\) に対する
+
+\[
+\mathcal H_q^{(2)}:
+\mathbb C^{d_q^{ext}\times m_q^{(2)}}
+\longrightarrow
+\mathbb C^{d_q^{ext}\times m_q^{(2)}},
+\qquad
+m_q^{(2)}\in\{102,54,54,45,45\}
+\]
+
+であり、全体でもdegree-2の300 monomial columnに限る。Q011m defectは
+
+\[
+\mathcal E^{[2]}(a)=
+\Phi(W^{[2]}(a))-W^{[2]}(R^{[2]}(a)),
+\qquad
+\lVert\mathcal E^{[2]}(a)\rVert_\infty\le D(r)
+\]
+
+というdegree 3以上を含む関数である。従って
+
+\[
+(\mathcal H^{(2)})^{-1}\mathcal E^{[2]}
+\]
+
+は現状では型が合わず、定義しない。a posteriori theoremに必要なのは、例えば次のどちらかである。
+
+1. 固定したanalytic／coefficient Banach space上のfull linearized invariance operator inverseとtail bound。
+2. selected／external graph space、cutoff／localization、base inverse、operator-norm normal dominanceを含む
+   self-contained graph transform contraction。
+
+Q011kのeigenvalue modulus gap、Q011lのdegree-2 inverse、Q011mのphysical defectを、これらの代用品として
+混同しない。利用可能／不足のproof objectを明示的なboolean matrixとして保存する。
+
+### 登録scalar surrogate
+
+typed theoremが未完成でも、現在のscalar envelopeがどの程度粗いかを局在するため、Q011mと同じ
+cross-sector cancellationなしのtotal inverse envelope
+
+\[
+C_I=186(3.4\times10^6)+2(2.4\times10^4)+2(2.3\times10^6)
+=637048000
+\]
+
+を固定する。これはfull function-space inverseではなく、5個のdegree-2 output boundをtriangle inequalityで
+合計したsurrogateである。
+
+Q011mの8 radius recordを変更せず、各 \(r\) のexact \(U(r),D(r)\) から
+
+\[
+V(r)=145U(r)+2000U(r)^2,
+\qquad
+Y(r)=C_ID(r),
+\qquad
+Z(r)=C_IV(r),
+\qquad
+\tau(r)=2Y(r)
+\]
+
+をexact `Fraction`で評価する。`2000 = 4000/2`はderivative variationの二次Taylor envelopeである。
+これはformal Newton scalar prequalificationにすぎず、\(C_I\)をfull inverseと呼ばない。
+
+各candidateのscalar passを次の全条件で定義する。
+
+1. Q011mでそのradiusがoriginal domain／positivity／defect gateを通っている。
+2. \(Z(r)<1/2\)。
+3. \(Y(r)+Z(r)\tau(r)<\tau(r)\)。
+4. \(U(r)+\tau(r)\le10^{-4}\)。
+5. \(0.027-U(r)-\tau(r)\ge0.02\) かつ
+   \(0.999-9[U(r)+\tau(r)]\ge0.99\)。
+6. \(\tau(r)\le U(r)\)。
+
+最大passing candidateだけを選ぶ。passing candidateがなくてもthresholdやradius gridを変更しない。
+最初のcandidate、最小 \(Z\)、最小correction utilization、各constraintのfailure countを保存する。
+
+### validity gate
+
+1. Q011k／Q011l／Q011m artifact、runner、15 digest、accepted outcome、claim boundaryを再現する。
+2. Q011l degree-2 operatorとQ011m function defectのdomain／codomainを別々に記録する。
+3. 5 sector countと \(C_I=637048000\) を登録式からexactに再現する。
+4. Q011mの8 radius record、順序、selected radius、exact radius digestを変更なく再現する。
+5. 全candidateの \(V,Y,Z,\tau\) と6 scalar conditionをexact `Fraction`で計算する。
+6. scalar surrogateのpass／failをexact-manifold theoremのpass／failへ読み替えていないことを記録する。
+7. finite strict JSON、input／typing／scalar／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、theorem readinessもscalar obstructionも解釈しない。
+
+### a posteriori readiness hypothesis gate と停止規則
+
+validity通過後、次の5項目を別々に要求する。
+
+1. 適用するa posteriori theorem、Banach space、norm、domain、gaugeが固定されている。
+2. full linearized invariance inverse＋tail、またはself-contained graph-transform contractionがrigorousにある。
+3. 少なくとも一つの登録radiusが上の6 scalar conditionを全て通る。
+4. 同じradiusでchart range、density、population、correction ballのstrict bufferがある。
+5. defect、derivative variation、roundoff／exact arithmeticを採用定理の各hypothesisへ型付きで対応できる。
+
+全5項目が通る場合だけ
+`the registered repaired quadratic chart is ready for an a posteriori invariant-manifold proof`
+として`ready`とする。一つでも落ちれば
+`the registered Q011l/Q011m certificates are not sufficient for an a posteriori invariant-manifold proof`
+として有効な`not_ready`とする。これはexact invariant manifold／SSMの不存在、Q011l／Q011mの棄却、
+または別norm・別majorantでの証明不能を意味しない。
+
+`not_ready`の場合は最初のmissing proof objectと、scalar側の最初のfailed constraintを保存する。
+operator typeが未解決なら、scalar boundだけを鋭化する前に、次のQ011oでfixed split上のgraph-transform
+Banach space、coordinate lift／inverse、linear conorm／external norm、cutoff／localizationを事前登録する。
+typed theorem objectが揃ってscalarだけ落ちる場合に限り、componentwise forcing／inverse boundを鋭化する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、Q011k split、Q011l degree-2 inverse、Q011m quadratic chart／finite defectの
+theorem-readiness auditに限る。新しいcoefficient、higher-degree inverse、full analytic tail、graph transform、
+exact invariant manifold／SSM、smoothness、normal attraction、basin、他grid／force／wall、D3Q27を構成・
+認証しない。scalar surrogateは存在定理でも非存在定理でもない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
