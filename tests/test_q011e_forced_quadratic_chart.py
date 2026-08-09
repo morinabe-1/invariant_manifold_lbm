@@ -249,3 +249,41 @@ def test_q011e_records_reproducible_digests_and_provenance(
     }
     assert source_metadata()["package_version"] == "0.1.0"
     json.dumps(q011e_cycle, allow_nan=False)
+
+
+def test_q011e_artifact_reproduces_the_underresolved_window(
+    q011e_cycle: dict,
+) -> None:
+    runner_path = Path(q011e.__file__).resolve()
+    artifact_path = runner_path.parent / "artifacts" / "q011e_forced_quadratic_chart.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "45d563103678d790aa3df4db692bbe781c9c86ed550c7499c61b397688666fca"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011e_forced_quadratic_chart.py",
+        "sha256": ("3aa608852be7a1df7dbe37b4d3c7e1bb3fbf125eae115260fc45a223e0757955"),
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q011e_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "rejected"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "f0bd65361d0cdc39e6499b8b0065ce6d7705945927ed77af5d2b231d0572bc9c"
+    )
+    assert artifact["cycle"]["derivative_digest_sha256"] == (
+        "d017d3ea204ad337f538b6f1819e215b6ab8a69f89090cc51ca9eb4885b75fce"
+    )
+    assert artifact["cycle"]["chart_digest_sha256"] == (
+        "6d4ee0102a6df052fac857890468ed911cff994e07c573dde837eb54a4a22e05"
+    )
+    assert artifact["cycle"]["residual_digest_sha256"] == (
+        "5570cb7acfc465f57850f960c6c9d68770182856b6a9aba62e81256c77e84948"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "89b39a6a6a80452142a2c9288780a08c1b24b49614080b5412fff82171a8188e"
+    )
