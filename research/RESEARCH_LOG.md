@@ -4639,6 +4639,69 @@ clusterを選択したとも、rigorous singular-value enclosureを得たとも�
 最初から採用し、未使用amplitude midpointをheld-out評価するQ011c2を事前登録する。Q011d
 external nonresonanceはその後である。
 
+## 2026-08-09: Q011c2 held-out forced spectral-cluster reissue
+
+### 問いと方法
+
+Q011cの9 training amplitudeの中間に、未使用だった8 midpointをholdoutとして固定した。17-node
+forward／backward Newton pathを新たに解き、同じordered-Schur 24-mode clusterを追跡した。
+training state／cluster、direct endpoint、Q011b stored canonical endpointをcontrolとした。
+
+holdout 8 node全てで3 selected blockの明示的Sylvester operatorと全17 fixed-leaf blockを評価した。
+合計24 Sylvester SVD、20,784 eigenvalueでselected/external separation、global modulus normal
+dominance、strict stabilityを判定した。endpointはQ011c1と同じ共役orbit意味論とFrobenius--Weyl
+intervalを最初から採用し、個別worst indexをgateにしなかった。
+
+### 結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the forced first-shell cluster passes a conjugacy-orbit reissue with eight held-out amplitude nodes`
+として`accepted`とした。
+
+- maximum forward/backward／training state distance:
+  `5.037082596836928e-15 / 4.318359172954769e-15`
+- endpoint absolute／relative distance:
+  `9.417935011590327e-16 / 2.913378288239695e-11`
+- minimum population／density:
+  `0.027775908313351423 / 0.9999999999999997`
+- maximum structural residual／adjacent angle:
+  `7.560599367895308e-14 / 5.2108940113403335e-06`
+- minimum reference alignment／external separation:
+  `0.999999996524363 / 0.02390537858060371`
+- maximum projector norm／reversal angle:
+  `1.5115930042152512 / 2.009181800848714e-13`
+- maximum training cluster／canonical endpoint angle:
+  `1.8103036342337398e-13 / 8.532131573213541e-14`
+- minimum held-out Sylvester separation:
+  `0.019362054855570406`
+- minimum held-out normal gap／maximum fixed-leaf radius:
+  `0.0020611211556098574 / 0.9920954673551043`
+- endpoint resolvent difference／registered bound:
+  `1.1428197375089487e-14 / 2.639179006344862e-13`
+- endpoint minimum-singular／maximum-condition orbit margin:
+  `2.6953366361742725e-10 / 0.5844815592084842`
+- input／path／holdout-spectrum／endpoint／result digest:
+  `de4b0c4d38d0efcff9c7db4bbef66ba6d081a6703c732dbd7116a294020459f2` /
+  `36be8801af32ae178e91e049b2640ed4bb058107abdf2df2af8860930c53c27d` /
+  `d7319399578d3755ee0679122dec5e6b6d3454e394295bd62886920d104b0d72` /
+  `8c78791883b82f4a964d0c102006d9295b7b96733e77dea93249f30dc427b6a8` /
+  `8c23b985d69ffaa980e752e5d262184c0a6d466681d9d44fa4f0e9101df02b0c`
+- runner／artifact newline-normalized SHA-256:
+  `87bdfc1ed20e6e68e4a395d36399adbab19e82809c626ecefa65a342ce42b9d2` /
+  `c1794ca72eebd60c4bc097278495218e9e2d2e84bdacd0f478e510a80fcba42a`
+
+### 解釈と次のbottleneck
+
+Q011c2はQ011cの失敗閾値を緩めた再採点ではなく、未使用8 midpointを持つ別のreissueである。
+training reproductionとheld-out spectrumが同時に通ったため、単一17² grid・登録force・17 nodeの
+finite binary64 prequalificationとしてforced candidate spectral clusterをselectedとする。
+Q011c originalの`inconclusive`とQ011c1のfailure-localization classificationは保持する。
+
+continuous-amplitude continuation、individual mode label、rigorous projector／SVD enclosure、
+external nonresonance、spectral quotient smoothness、forced invariant manifold、nonlinear normal
+attractionは未認証である。次はQ011dでquadratic external nonresonanceとforced homological operatorを
+事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4770,6 +4833,8 @@ external nonresonanceはその後である。
 [`artifacts/q011c_forced_spectral_cluster.json`](artifacts/q011c_forced_spectral_cluster.json)
 
 [`artifacts/q011c1_endpoint_localization.json`](artifacts/q011c1_endpoint_localization.json)
+
+[`artifacts/q011c2_heldout_cluster_reissue.json`](artifacts/q011c2_heldout_cluster_reissue.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

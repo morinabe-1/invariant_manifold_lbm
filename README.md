@@ -246,7 +246,9 @@ Q011cではQ006h first-shell 24-mode subspaceを9点のforce-amplitude pathでor
 \(k_x=1,16\) witnessも交換したため、事前登録どおり`inconclusive`とした。forced slow clusterの
 科学的選択や不変多様体はまだ主張しない。Q011c1では全17 blockのJacobian差からFrobenius--Weyl
 摂動区間を作り、交換が同じ共役orbit`{1,16}`内に限られ、全resolvent metric変化が区間内である
-ことを確認した。これは失敗原因の局在化であり、Q011cの判定は変更していない。
+ことを確認した。これは失敗原因の局在化であり、Q011cの判定は変更していない。Q011c2では元の9点の
+中間に8個の未使用amplitudeを置き、全8点でSylvester familyと2598 spectrumを評価する再発行gateを
+通過したため、この有限数値範囲ではforced candidate spectral clusterをselectedとする。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1681,6 +1683,51 @@ stored／continuedのradius winnerは`{0}`、minimum-singular／maximum-conditio
 同じ観測データを使うlocalizationであるためQ011cを再採点しない。次は共役orbit意味論を最初から
 固定し、未使用のheld-out force-amplitude nodesを加えたQ011c2を通してからQ011dへ進む。
 
+### Q011c2 held-out forced spectral-cluster reissue
+
+Q011cのtraining node \(t=j/8\)の間に、未使用の
+\(t=(2j+1)/16\), \(j=0,\ldots,7\)を置いた。17-node forward／backward fixed-point pathで
+clusterを追跡し、training state／cluster、direct endpoint、Q011b stored canonical endpointをcontrol
+として再現した。8 held-out node全てで3 blockの明示的Sylvester SVDと全2598 fixed-leaf
+eigenvalueを評価した。
+
+- classification:
+  `the forced first-shell cluster passes a conjugacy-orbit reissue with eight held-out amplitude nodes`
+- validity／hypothesis gates: `7 / 7`、`5 / 5` passed
+- maximum forward/backward／training state distance:
+  `5.037082596836928e-15 / 4.318359172954769e-15`
+- endpoint absolute／relative distance:
+  `9.417935011590327e-16 / 2.913378288239695e-11`
+- minimum population／density:
+  `0.027775908313351423 / 0.9999999999999997`
+- maximum adjacent／training／canonical principal angle:
+  `5.2108940113403335e-06 / 1.8103036342337398e-13 / 8.532131573213541e-14`
+- minimum external separation／maximum projector 2-norm:
+  `0.02390537858060371 / 1.5115930042152512`
+- minimum held-out Sylvester separation:
+  `0.019362054855570406`
+- minimum held-out normal gap／maximum held-out fixed-leaf radius:
+  `0.0020611211556098574 / 0.9920954673551043`
+- endpoint resolvent difference／registered perturbation bound:
+  `1.1428197375089487e-14 / 2.639179006344862e-13`
+- endpoint minimum-singular／maximum-condition orbit margin:
+  `2.6953366361742725e-10 / 0.5844815592084842`
+- input／path／holdout-spectrum／endpoint／result digest:
+  `de4b0c4d38d0efcff9c7db4bbef66ba6d081a6703c732dbd7116a294020459f2` /
+  `36be8801af32ae178e91e049b2640ed4bb058107abdf2df2af8860930c53c27d` /
+  `d7319399578d3755ee0679122dec5e6b6d3454e394295bd62886920d104b0d72` /
+  `8c78791883b82f4a964d0c102006d9295b7b96733e77dea93249f30dc427b6a8` /
+  `8c23b985d69ffaa980e752e5d262184c0a6d466681d9d44fa4f0e9101df02b0c`
+- runner／artifact newline-normalized SHA-256:
+  `87bdfc1ed20e6e68e4a395d36399adbab19e82809c626ecefa65a342ce42b9d2` /
+  `c1794ca72eebd60c4bc097278495218e9e2d2e84bdacd0f478e510a80fcba42a`
+
+Q011c2はQ011cを再採点せず、新しいholdoutを持つ別gateとしてacceptedである。従って単一17²
+grid・登録force・17 amplitude nodeのbinary64 prequalificationとしてcandidate forced clusterを
+選択する。continuous-amplitude theorem、rigorous projector／SVD enclosure、individual mode label、
+external nonresonance、forced invariant manifold、nonlinear normal attractionは未認証である。
+次はQ011dでquadratic external nonresonanceとforced homological operatorを事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2230,6 +2277,7 @@ python -m research.q011a_periodic_forcing_compatibility --output research/artifa
 python -m research.q011b_zero_mean_forced_fixed_point --output research/artifacts/q011b_zero_mean_forced_fixed_point.json
 python -m research.q011c_forced_spectral_cluster --output research/artifacts/q011c_forced_spectral_cluster.json
 python -m research.q011c1_endpoint_localization --output research/artifacts/q011c1_endpoint_localization.json
+python -m research.q011c2_heldout_cluster_reissue --output research/artifacts/q011c2_heldout_cluster_reissue.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2305,6 +2353,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011b_zero_mean_forced_fixed_point.json`](research/artifacts/q011b_zero_mean_forced_fixed_point.json)
 - [`research/artifacts/q011c_forced_spectral_cluster.json`](research/artifacts/q011c_forced_spectral_cluster.json)
 - [`research/artifacts/q011c1_endpoint_localization.json`](research/artifacts/q011c1_endpoint_localization.json)
+- [`research/artifacts/q011c2_heldout_cluster_reissue.json`](research/artifacts/q011c2_heldout_cluster_reissue.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2405,6 +2454,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   global normal-dominance診断、endpoint reproduction failureの局在化
 - Q011c1 34 full SVD、共役orbit extrema、Frobenius--Weyl区間によるQ011c endpoint
   witness交換の摂動整合的局在化
+- Q011c2 17-node cluster path、8 held-out midpointの24 Sylvester operator／全spectrum、
+  共役orbit endpoint semanticsによるcandidate forced cluster選択
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2415,7 +2466,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- TT-cross（固定Q007c1係数では保留）、Q011c2 held-out cluster再発行、forced invariant manifold、境界条件、
+- TT-cross（固定Q007c1係数では保留）、forced external nonresonance／invariant manifold、境界条件、
   Poiseuille／Couette、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -2471,4 +2522,6 @@ separation／normal-dominance診断が通ったが、continued endpointとQ011b 
 再現差および共役witness交換によりvalidity 5/6、`inconclusive`となった。従ってforced clusterを
 selectedとはまだ扱わない。Q011c1では全metric変化をJacobian perturbation区間で囲み、extremal
 orbitが`{1,16}`のまま個別witnessだけ交換したことを認証したが、Q011cは再採点していない。
-Q011c2 held-out再発行、nonresonance、normal attraction、不変多様体、wall-bounded flowは未実装である。
+Q011c2では8 held-out midpointを含む別の再発行gateを通し、この有限範囲でcandidate forced spectral
+clusterをselectedとした。external nonresonance、normal attraction、不変多様体、wall-bounded flowは
+未実装である。

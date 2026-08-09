@@ -10665,6 +10665,57 @@ spectral-quotient smoothness、forced SSM existence／uniqueness、quadratic cha
 attraction、basin、他grid／amplitude、wall boundaryは主張しない。acceptedの場合だけQ011dの
 quadratic external nonresonance／homological operatorを事前登録する。
 
+### Q011c2 最終結果
+
+validity `7 / 7`、hypothesis `5 / 5`を通過し、
+`the forced first-shell cluster passes a conjugacy-orbit reissue with eight held-out amplitude nodes`
+として`accepted`とした。
+
+- 17-node forward／backward maximum state distance:
+  `5.037082596836928e-15`
+- 9 training-node maximum state distance:
+  `4.318359172954769e-15`
+- endpoint Q011b stored-state absolute／relative distance:
+  `9.417935011590327e-16 / 2.913378288239695e-11`
+- minimum population／density:
+  `0.027775908313351423 / 0.9999999999999997`
+- maximum structural residual／adjacent principal angle:
+  `7.560599367895308e-14 / 5.2108940113403335e-06`
+- minimum reference alignment／external separation:
+  `0.999999996524363 / 0.02390537858060371`
+- maximum projector norm／reversal angle:
+  `1.5115930042152512 / 2.009181800848714e-13`
+- maximum training／canonical endpoint angle:
+  `1.8103036342337398e-13 / 8.532131573213541e-14`
+- minimum 24 held-out Sylvester separation:
+  `0.019362054855570406`
+- minimum 8 held-out global normal gap:
+  `0.0020611211556098574`
+- maximum 8 held-out full fixed-leaf radius:
+  `0.9920954673551043`
+- endpoint resolvent difference／registered bound:
+  `1.1428197375089487e-14 / 2.639179006344862e-13`
+- endpoint minimum-singular／maximum-condition orbit margin:
+  `2.6953366361742725e-10 / 0.5844815592084842`
+
+8 held-out nodeの全24 Sylvester operator、20,784 fixed-leaf eigenvalue、normal gap、stabilityが
+登録閾値を通過した。training control、direct endpoint、Q011b stored canonical endpoint、
+共役orbit endpoint semanticsも通った。従ってQ011c自体の`inconclusive`は変更しない一方、
+独立holdoutを持つQ011c2としてcandidate forced spectral clusterをselectedとする。
+
+- input／path／holdout-spectrum／endpoint／result digest:
+  `de4b0c4d38d0efcff9c7db4bbef66ba6d081a6703c732dbd7116a294020459f2` /
+  `36be8801af32ae178e91e049b2640ed4bb058107abdf2df2af8860930c53c27d` /
+  `d7319399578d3755ee0679122dec5e6b6d3454e394295bd62886920d104b0d72` /
+  `8c78791883b82f4a964d0c102006d9295b7b96733e77dea93249f30dc427b6a8` /
+  `8c23b985d69ffaa980e752e5d262184c0a6d466681d9d44fa4f0e9101df02b0c`
+- runner／artifact newline-normalized SHA-256:
+  `87bdfc1ed20e6e68e4a395d36399adbab19e82809c626ecefa65a342ce42b9d2` /
+  `c1794ca72eebd60c4bc097278495218e9e2d2e84bdacd0f478e510a80fcba42a`
+
+次はQ011dで、selected 24-dimensional forced clusterに対するquadratic external
+nonresonance、spectral quotient、homological operatorを観測前に事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
