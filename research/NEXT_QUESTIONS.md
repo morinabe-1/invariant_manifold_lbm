@@ -8580,6 +8580,127 @@ positivityの5件がpassし、base／normal roundoff re-entryの2件がfailし�
 strict margin、analysis norm、289-wave Wiener lifting、local roundoff accumulationを独立因子へ分解し、
 必要改善率を封印する。Q007akまではone-step結果を反復せず、new-tube MPFR／repair／shadowingへ進まない。
 
+## Q007ak: Q007ag roundoff re-entry obstructionの因子分解 — 事前登録
+
+### 問いと固定scope
+
+Q007ajでbase／normal re-entryがともにfailした固定worst-case enclosureについて、utilizationを
+
+\[
+U_B=\frac{K_B N E_{53}}{m_B},\qquad
+U_N=\frac{K_N N E_{53}}{m_N}
+\]
+
+へexactに分解し、strict margin \(m\)、analysis upper \(K\)、normalized-DFT Wiener lifting
+\(N=17^2=289\)、post-filter local component-error sum \(E_{53}\)のどの改善率が必要かを定量化する。
+さらにQ007wのideal-binary evaluatorを同じnew-tube入力へ適用し、base、normal、両方をそれぞれ初めて
+通すsignificand precisionを決める。
+
+固定scopeはQ007ajと同じ\(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)、fixed mass／momentum leaf、
+Q007ae exact graph-gauge manifold、Q007p Fourier external-coordinate block-sum \(\ell^1\) norm、
+\((r,\zeta)=(9\times10^{-17},5\times10^{-11})\)とする。precision campaignは全整数
+\(p=53,54,\ldots,128\)、round-to-nearest ties-to-even、minimum normal exponent \(-1022\)、
+\(u_p=2^{-p}\)、subnormal fallback \(h_p=2^{-1075-(p-53)}\)に固定する。
+
+### 封印入力と実装
+
+- Q007aj artifact／runner SHA-256:
+  `29b8cd320f40396cc24ae30b46e46eecc7e23564600284aeb916a90af3a1fd8e` /
+  `e91cd0740ca9d639f6eaeeea8ed71552a0323897f45eee50070f4c8cdf947ac5`
+- Q007w old-tube ideal-precision oracle artifact／runner SHA-256:
+  `bac362d9dca4a681387b986a5f5802278ef61a1a3bcf1a0f8577c7f3ab0a07af` /
+  `86dcc0a507e24216775650d5467d0ebf6e90eac0865190d0d5186e08afb7eac8`
+- current D2Q9／checkerboard-filter source SHA-256:
+  `6e6c5aa6734844d0393eb402e21203831faaf5f325b35249941eaa59145c6f53` /
+  `5fb6b67e8527b0b1f5f45511ba7cd5d077ee443220632ba3019b7bf28010a7ea`
+
+Q007ajはstored cycle、7 validity gate、7 hypothesis gateのうちbase／normal re-entryだけfail、split outcome、
+binary64 stage／re-entry quantities、2 digestをfresh replayする。Q007wはstored cycle、7 validity gate、6
+hypothesis gate、old-tube selected precision `85`、76-candidate digest
+`440a08dc36990d3e34edf1886fd7e47eacb4766c4a42352022897fd79dbb3ce2`、ties-to-even controlと
+\(p=53\) Q007v exact reproductionをfresh replayする。Q007w runnerの`_evaluate_precision`、rounding routine、
+candidate digest、monotonicity checkerを結果後に変更しない。
+
+### exact factor audit
+
+Q007ajから次をexact Fractionとして読む。
+
+- \(E_{53}=4.036979113491066\times10^{-15}\)
+- \(K_B=1.5106842091904618\)、\(K_N=29.917136268364473\)
+- \(m_B=4.978814700017615\times10^{-20}\)、\(m_N=9.144951058528087\times10^{-13}\)
+- \(N=289\)
+
+各coordinate \(X\in\{B,N\}\)について、次をexactに記録する。
+
+\[
+E_X^{\max}=\frac{m_X}{K_XN},\qquad
+K_X^{\max}=\frac{m_X}{NE_{53}},\qquad
+N_X^{\max}=\frac{m_X}{K_XE_{53}},\qquad
+m_X^{\min}=K_XNE_{53}.
+\]
+
+単一因子だけを変える場合のstrict必要改善率はすべて\(U_X\)である。等号は不合格なので、表示値の
+丸めではなくexact `<`だけで判定する。counterfactual \(N=1\)、\(K=1\)も記録するが、これらを実現可能な
+新normやFourier certificateとは主張しない。目的は、wave liftingまたはanalysis factor単独の理論的な
+除去だけで各marginへ届くかを診断することである。
+
+### ideal-precision campaign
+
+各\(p=53,\ldots,128\)でQ007wと同じpaired arithmetic、constant rounding、83 multiplicationを含むoperation
+scheduleを、新しい\(x_{\rm ag},K_B,K_N,m_B,m_N\)へ適用する。各候補についてone-step stage positivity、
+base re-entry、normal re-entryを独立に保存する。selectionを
+
+\[
+p_B=\min\{p:\epsilon_B(p)<m_B\},\quad
+p_N=\min\{p:\epsilon_N(p)<m_N\},\quad
+p_*=\min\{p:\epsilon_B(p)<m_B,\epsilon_N(p)<m_N\}
+\]
+
+とする。候補がなければ対応値は`null`とする。first-passの直前候補は必ず該当gateをfailしなければならない。
+\(p=53\)候補はQ007ajの全stage summary、component-error sum、Wiener／coordinate error、utilization、分離outcomeを
+exact再現しなければならない。
+
+### validity gate
+
+1. Q007aj／Q007w artifactとrunner SHA、source、scope、schema、登録classification／outcomeが一致する。
+2. Q007aj stored cycle、2 digest、7 validity gate、5 pass／2 fail hypothesis、全stage／re-entry quantityをfresh replayする。
+3. Q007w stored cycle、old 85-bit boundary、76候補digest、全gate、ties-to-even、\(p=53\) controlをfresh replayする。
+4. new-tube \(p=53\)候補がQ007ajのtarget／error stage summary、operation counts、re-entry quantityをexact再現する。
+5. \(U_X=K_XNE_{53}/m_X\)と4 single-factor threshold identityを両coordinateでexact再現し、全量が正である。
+6. 53--128の全76整数候補を重複なく評価し、全domain／operation count、error nonincrease、stage-lower
+   nondecreaseを通し、base／normal／joint selection boundaryをexactに再構成する。
+7. 全boundがfinite strict JSONで、canonical input／candidate／result digestを出力する。
+
+一つでも落ちれば`inconclusive`とし、factor診断もprecision thresholdも採用しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を判定する。
+
+1. Q007aj control: \(U_B>1\)、\(U_N>1\)。
+2. factorization: 両coordinateでutilizationと4 threshold identityがexactに閉じる。
+3. base threshold: finite \(p_B\)が存在し、\(p_B\)はpass、\(p_B-1\)はbase fail。
+4. normal threshold: finite \(p_N\)が存在し、\(p_N\)はpass、\(p_N-1\)はnormal fail。
+5. joint threshold: finite \(p_*\)が存在し、\(p_*=\max(p_B,p_N)\)、直前候補はjoint fail、全候補のstage lowerは正。
+6. dominant coordinate: \(U_B>U_N\)、\(p_B>p_N\)、\(p_*=p_B\)、\(p_N\)候補でbaseはfail。
+7. wave-only counterfactual: \(U_B/289>1\)かつ\(U_N/289<1\)。
+
+全て通れば
+`registered factor audit isolates base re-entry as the dominant Q007ag binary64 obstruction`
+として`accepted`とする。validity通過後に一件でも落ちれば
+`registered factor audit did not isolate a finite dominant Q007ag re-entry threshold`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedでも、固定Q007aj component box、Q007w ideal-binary operation model、53--128整数campaign内の十分条件で
+ある。\(p_B,p_N,p_*\)は実装precisionの必要条件でも、actual trajectory escapeの閾値でもない。counterfactual
+\(N=1\)、\(K=1\)は新しいcertificateの存在を示さない。FTZ／DAZ、GPU、compiler、MPFR backend trace、
+fixed-leaf closure、repair、same-initial shadowing、continuous optimum、grid-uniformity、continuum limitは扱わない。
+既存Q007aj mixed result、Q007w old-tube 85-bit threshold、Q007ag／Q007ai acceptance、Q007c1／Q007d／Q007af／
+Q010結論は変更しない。acceptedなら次のgateは結果に従い、new-tube ideal thresholdが85以下ならQ007alで
+既存MPFR-85 backendの一段包囲を再監査する。85を超えるなら先にprecision選択を再登録する。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
