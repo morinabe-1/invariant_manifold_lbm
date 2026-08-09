@@ -14849,6 +14849,223 @@ manifold／SSM、$C^1$以上のsmoothness、normal attraction、basinは未認�
 amplitudeからinner base radiusを構成し、そのgraph patchとone-step imageがcutoff identity regionに留まるか
 だけを判定する。
 
+## Q011s: original-map invariant Lipschitz core — 事前登録
+
+### 問い
+
+Q011rが構成したlocalized mapの一意なbounded Lipschitz fixed graphについて、入力graph patchとそのone-step
+imageがともにradial cutoffのidentity coreへ留まるinner base radiusを認証し、original repaired exact mapの
+fixed-conservation leaf上のforward-invariant Lipschitz graph patchへ移せるか。
+
+本gateはlocalized fixed graphからoriginal mapへの**core transfer**だけを扱う。$C^1$ smoothness、originでの
+tangency、SSMとしてのspectral-quotient uniqueness、normal attraction、basinは判定しない。
+
+### 封印入力
+
+selected operator upperをQ011rのnested sealから推測せず、次の4 artifactを直接照合する。
+
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011l artifact／runner newline-normalized SHA-256:
+  `2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a` /
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7`
+- Q011l input／graph／pair／homological／result digest:
+  `1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011` /
+  `a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3` /
+  `694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377` /
+  `14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915` /
+  `c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45`
+- Q011q artifact／runner newline-normalized SHA-256:
+  `776be2af80fdbb867fd72eb3c0bdfe82ca30f5fa50bc9436818df5c7f87e676d` /
+  `83031650f7ecd54adb048a74ace2df96068317531aeb84fb57b9f797b9e33f67`
+- Q011q input／conjugation／frame／setup／result digest:
+  `c9e57c60fe678901c5502bf163d7317c06fedb35322e8591e741c330969829b5` /
+  `583a28e1453b75700d0674bf090c4f8c0652d7538f84bef7c8ea7e09415db54e` /
+  `1210f4d2c85d4a0cad9978531b297b5e493bac5f8d54d5eafa6ee7a5a68a6d7b` /
+  `ec52daadd80261b9e94672beb979fd5f01e4f1c4bc0e63090a0cccbb90cda26b` /
+  `274ddd32b50000c953c623285993ba533651a720c6dc79ae693a0e24a3f623ae`
+- Q011r artifact／runner newline-normalized SHA-256:
+  `2d45e3c64965ee1e8bc47f1a7d75070fbeabbcb2711a62b1711da92878a58e11` /
+  `8169e2fc7d5f7dccdc424bba31f37d4c03e6a669ab2e3f04d6289f03240b6d09`
+- Q011r input／transport／graph／radius／result digest:
+  `7e9fa7b147ede559cffd117b7a6b8592d2939774f9821494759bbf3d634badd2` /
+  `3b8fba9cd370521880be3d4b77a9e2fc715e67ac22dc78e631f96e0d71317191` /
+  `77f2ac35d83726d0868ab08dd7648aee26bed7b00a40fb1405df1e1f162e023b` /
+  `8d33d01931c42730b18778c674282e6870224336cca72f66e81b447178d32d79` /
+  `b0520673f844d3f94a735c27800ff40d025a9437b01899e3d400b3c3fe0661ea`
+
+4 artifactの`accepted`、theorem consequence、claim boundaryを再現する。Q011rからselected radius
+$\rho_*$、fixed-graph slope upper $\ell_*$、coordinate second derivative $\mu_2$、Q011qからreal coupling
+$b$とphysical lift $K_L$を直接取り出す。
+
+### selected linear operator upperの再構成
+
+Q011kのexact dyadic center、Q011lのselected index／graph radius／same-norm residualを再構成する。
+selected block $n\in\{0,1,16\}$ について、各selected centerのexact rational modulus upperを列挙し、
+
+\[
+p_{S,n}
+=\max_{j\in I_{S,n}}|\lambda_{n,j}|_{\rm upper}
++\theta_n(1+r_{G,n})
+\]
+
+とする。global selected operator upperは
+
+\[
+p_S=\max_{n\in\{0,1,16\}}p_{S,n}
+\]
+
+とする。全24 selected centerを数え、block `1 / 16`のexact conjugacy、Q011oと同じ
+complex absolute row-sum norm、Q011q real restrictionであることを確認する。eigenvalue modulusだけ、selected
+conorm lower、external normをoperator upperの代用にしない。Q011qのzero-block real shearはselected diagonal
+block $S$を変更せず、couplingだけをQ011qのreal bound $b$へ置き換える。
+
+### localized fixed graphのrefined slope
+
+Q011rのcomplete graph spaceでBanach fixed pointを $\psi_*$ とする。Q011r graph transformは任意の入力graphを
+slope upper $\ell_*$ 以下へ写すため、fixed-point identityから
+
+\[
+\psi_*(0)=0,
+\qquad
+\operatorname{Lip}(\psi_*)\le\ell_*<1,
+\qquad
+\lVert\psi_*(s)\rVert\le\ell_*\lVert s\rVert
+\]
+
+を使う。global height cap $\rho_*$だけでlocal heightを評価せず、origin固定とrefined slopeを明示的に使う。
+componentwise fixed graphは構成しない。
+
+### core patchとoriginal mapへのtransfer
+
+scale candidatesを
+
+\[
+1,\frac12,\frac14,\frac18,\frac1{16},\frac1{32},
+\frac1{64},\frac1{128},\frac1{256},\frac1{512},\frac1{1024}
+\]
+
+に固定し、$r=\sigma\rho_*$ とする。graph patchを
+
+\[
+\mathcal M_r
+=\{(s,\psi_*(s)):\lVert s\rVert\le r\}
+\]
+
+と定義する。$\ell_*<1$なので、各入力はfull coordinate normで$r\le\rho_*$に入り、Q011q radial cutoffは
+identityである。従って入力上でlocalized map $F_{\rho_*}$ とoriginal coordinate map $F$ はexactに一致する。
+
+selected image $u=P_{\psi_*}(s)$ には、cutoff factorを重ねず、core Taylor boundを用いて
+
+\[
+\lVert u\rVert
+\le
+\left(p_S+b\ell_*+\frac12\mu_2 r\right)r
+=c_r r
+\]
+
+を登録する。fixed-graph invarianceからexternal imageは $\psi_*(u)$ であり、
+
+\[
+\lVert\psi_*(u)\rVert
+\le\ell_*c_r r.
+\]
+
+$c_r\le1$ならfull imageもradius $r$のcore内にあり、
+
+\[
+F(\mathcal M_r)=F_{\rho_*}(\mathcal M_r)
+\subseteq\mathcal M_r
+\]
+
+が従う。同じ包含を帰納して、全forward iterateがoriginal mapとlocalized mapで一致しcoreに留まることを
+記録する。backward invarianceやpatchへのonto性は主張しない。
+
+### physical fixed-leaf graph patch
+
+Q011qのreal coordinate liftを $L_{\mathbb R}$、exact repaired rootを $x_*$ とし、
+
+\[
+\mathcal W_r
+=x_*+L_{\mathbb R}\mathcal M_r
+\]
+
+とする。Q011q coordinate bijectivityとQ011m conserved-moment identityから、これはfixed conservation leaf内の
+24-real-dimensional Lipschitz graph patchである。input／output physical displacementを
+
+\[
+K_L r,
+\qquad
+K_L c_r r
+\]
+
+で包絡し、population／density floorを再評価する。
+
+### 登録cap
+
+11 scaleをexact `Fraction`で全列挙し、全条件を満たす最大$r$を選ぶ。selected core radiusは少なくとも
+$\rho_*/16$を要求する。candidate間の最適化や事後追加は行わない。
+
+- selected center record count: `24`、selected blocks: `0 / 1 / 16`
+- global selected operator upper $p_S\le0.993$
+- fixed graph slope upper $\ell_*\le0.999$
+- input／output physical displacement upper: 各`1e-11`
+- core selected-image ratio $c_r\le0.999$
+- external image ratio $\ell_*c_r\le0.999$
+- population floor `>=0.02`、density floor `>=0.99`
+- selected core radius $r\ge\rho_*/16$
+
+$c_r$とphysical displacementは$r$に対してnondecreasing、population／density floorはnonincreasingであることを
+exactに確認する。full radiusが通っても、$\rho_*$より大きいradiusやradius最適性は主張しない。
+
+### validity gate
+
+1. Q011k／Q011l／Q011q／Q011rのartifact、runner、20 digest、outcome、claim boundaryを直接再現する。
+2. Q011k／Q011lから全24 selected modulus upper、same-norm residual、3 block operator upperを再構成する。
+3. Q011q real shearがselected diagonalを保ち、real coupling $b$だけがcore boundへ入ることを確認する。
+4. Q011r fixed graphのorigin、height、refined slopeとlocalized invarianceを再現する。
+5. cutoff identity、original/localized equality、selected/external image bound、one-step core containmentを再現する。
+6. 11 scaleのexact record、monotonicity、最大passing candidate、最初のlarger failureを再現する。
+7. finite性、strict JSON、input／linear／core／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、original-map graph patchを解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次の5項目を別々に要求する。
+
+1. 全24 selected centerから得たsame-norm $p_S$が`0.993`以下である。
+2. Q011r fixed graphのradius、origin、refined slopeがcore transferへ使用可能である。
+3. 最大passing core radiusが$\rho_*/16$以上で、input graph patchがcutoff identity coreとphysical bufferに入る。
+4. $c_r\le0.999$、$\ell_*c_r\le0.999$で、one-step full imageが同じcoreとbufferに入る。
+5. exact original mapが24-real-dimensional Lipschitz graph patchをforward invariantに保つ。
+
+全5項目が通る場合だけ
+`the original repaired exact map has a certified forward-invariant Lipschitz graph patch on the fixed conservation leaf`
+として`accepted`とする。一つでも落ちれば
+`the Q011r localized fixed graph does not remain in the cutoff core on the registered inner-radius grid`
+として`rejected`とする。rejectedはoriginal invariant manifold／SSMの不存在を意味せず、最初のfailed
+operator／slope／core／buffer conditionだけを次gateで修正する。
+
+`accepted`なら次のQ011tで、fixed graphの$C^1$ graph-transform space、origin derivative、selected tangent、
+spectral quotient条件を事前登録し、Lipschitz graph patchをsmooth invariant manifold／SSM claimへ強化できるか
+を判定する。`inconclusive`なら最初のseal／linear reconstruction／core formula／serialization failureだけを
+修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed-conservation leaf、Q011r localized fixed graph、登録11 inner scales、
+forward-invariant Lipschitz graph patchに限る。backward invariance、patchへのonto性、$C^1$以上のsmoothness、
+origin tangency、SSM／spectral quotient uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を
+構成・認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
