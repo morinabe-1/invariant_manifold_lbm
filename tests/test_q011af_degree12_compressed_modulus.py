@@ -56,7 +56,9 @@ def test_q011af_reconstructs_the_complete_degree_twelve_inventory(
         == q011af.EXTERNAL_GROUP_INDICES
     )
     assert audit["unique_external_target_count"] == 36
-    assert len(audit["exact_inventory_digest_sha256"]) == 64
+    assert audit["exact_inventory_digest_sha256"] == (
+        "268ed8e93481d203e8e70d58be93891546ecf84bdd5045bd279b9c57b5c21c30"
+    )
 
 
 def test_q011af_extends_the_uniform_envelope_to_92_identifiers(
@@ -72,7 +74,9 @@ def test_q011af_extends_the_uniform_envelope_to_92_identifiers(
     assert q011af.q011z._fraction(audit["uniform_radius"]) == Fraction(
         1, 20_000_000
     )
-    assert len(audit["uniform_record_digest_sha256"]) == 64
+    assert audit["uniform_record_digest_sha256"] == (
+        "a73207a01651de2d02286653258e1c98e68bce49dec5e0d2f632b3cf47dd7f9a"
+    )
 
 
 def test_q011af_compression_reproduces_the_q011ae_full_stream_oracle(
@@ -229,6 +233,7 @@ def test_q011af_separates_all_compressed_products_with_registered_margin(
         "block=0;center=147",
     ]
     assert witness["output_block"] == 14
+    assert witness["wave_multiplicity"] == 2
     assert witness["target_identifier"] == "block=14;center=146"
     assert witness["individual_modulus_relation"] == "product_below_target"
     assert witness["modulus_gap"] == audit["minimum_modulus_gap"]
@@ -242,18 +247,27 @@ def test_q011af_four_compressed_streams_are_complete(
     compressed_framed = compression["framed_exact_record_digests"]
     product_framed = product["framed_exact_record_digests"]
     assert compressed_framed["signature_record_count"] == 213_618
+    assert compressed_framed["signature_record_digest_sha256"] == (
+        "d03f1a33f561698d1fca3ca62e929ffc1cef686ff3838e41359b9adf24471432"
+    )
     assert compressed_framed["distinct_pair_record_count"] == 1_116_256
+    assert compressed_framed["distinct_pair_record_digest_sha256"] == (
+        "52cfea7036596c19c400a035228c326d4dcdbaf64e8ad8950db0fb8013915721"
+    )
     assert product_framed["exact_product_record_count"] == 184_154
+    assert product_framed["exact_product_record_digest_sha256"] == (
+        "f8b44f485d13e00e6972fcbbb3aeb9db10d70f788ebfeb80771941bd6c7929f6"
+    )
     assert product_framed["exact_comparison_record_count"] == 1_116_256
-    for digest in (
-        compressed_framed["signature_record_digest_sha256"],
-        compressed_framed["distinct_pair_record_digest_sha256"],
-        product_framed["exact_product_record_digest_sha256"],
-        product_framed["exact_comparison_record_digest_sha256"],
-        compression["compact_compression_digest_sha256"],
-        product["compact_product_digest_sha256"],
-    ):
-        assert len(digest) == 64
+    assert product_framed["exact_comparison_record_digest_sha256"] == (
+        "4388e28e4ed0b80ca9c02051850051f74c8e7c0cb6f54ff18ee0cb1839cdddba"
+    )
+    assert compression["compact_compression_digest_sha256"] == (
+        "43f61e32b7d96cecdff24e1a827292c302cc3b260a7ef075019a8c84e715f53e"
+    )
+    assert product["compact_product_digest_sha256"] == (
+        "65d5435a427400488f9c1723c991615efc8401620a82b7419cbe9d8d6b286da4"
+    )
     streaming = product["streaming_contract"]
     assert not streaming["full_product_record_list_retained"]
     assert not streaming["full_comparison_record_list_retained"]
@@ -284,14 +298,24 @@ def test_q011af_cycle_has_reproducible_strict_json_digests(
     q011af_cycle: dict[str, Any],
 ) -> None:
     json.dumps(q011af_cycle, allow_nan=False)
-    for name in (
-        "input_digest_sha256",
-        "inventory_digest_sha256",
-        "compression_digest_sha256",
-        "product_digest_sha256",
-        "result_digest_sha256",
-    ):
-        assert len(q011af_cycle[name]) == 64
+    expected = {
+        "input_digest_sha256": (
+            "14a3b80b475f418cf9963555a4cabcea19875a0f3028ef023961c67081708718"
+        ),
+        "inventory_digest_sha256": (
+            "39f1a63ca73b22969c150c84224ae94761edc53481d7822f8dc63a7abca7e493"
+        ),
+        "compression_digest_sha256": (
+            "b8845507a83e6778f70c192a00ba85a747b28edc9a1235a202d4214e3e66e502"
+        ),
+        "product_digest_sha256": (
+            "16140d16ff621d4915f1571ae535031629bffb4f19d8392c18a4e2ad47e206ab"
+        ),
+        "result_digest_sha256": (
+            "da02c8613dc60079b977ec7d3dedd8545c486c6d401e5d84d77e3df7ff9c8204"
+        ),
+    }
+    assert {name: q011af_cycle[name] for name in expected} == expected
     assert q011af_cycle["result_digest_sha256"] == q011af.q011b._canonical_json_sha256(
         q011af._result_digest_sections(q011af_cycle)
     )
@@ -318,11 +342,16 @@ def test_q011af_study_metadata_and_generated_artifact_are_scoped(
     if not artifact_path.exists():
         pytest.skip("Q011af artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert _file_sha256(artifact_path) == (
+        "19f2ea8f23e91532ab6acfddc346409800983b17b916b6be0c27699e4b036555"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
     assert artifact["runner_source"] == {
         "filename": "q011af_degree12_compressed_modulus.py",
-        "sha256": _file_sha256(runner_path),
+        "sha256": (
+            "b270b0c4c884d1243e4db55b1dcad57af4c2e72d2143400de9c7c72d263f3293"
+        ),
         "sha256_newline_normalization": "UTF-8 text with universal newlines",
     }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
