@@ -9098,6 +9098,172 @@ boxではbase marginの約2.326%、normal marginの約\(2.51\times10^{-8}\)だ�
 exactに回復する。ただしQ007ag exact forward invarianceとの自己写像合成、all-iterate induction、
 initialization、same-initial shadowingは未認証である。次はQ007anを事前登録する。
 
+## Q007an: propagated tubeのrepaired MPFR-85 all-iterate induction — 事前登録
+
+### 問いと固定scope
+
+Q007agのexact-map forward invariance、Q007aiのexact stagewise positivity、Q007alのconcrete
+MPFR-85 stage enclosure、Q007amのdistributed fixed-leaf repairと修復込み一段誤差予算を、
+一つのrepaired sampling mapの自己写像定理へ明示的に合成できるか。
+
+Q007yと同じpost-filter repairを\(\mathcal R\)、Q007xと同じ85-bit BGK／streaming／filter mapを
+\(\widetilde\Phi_{85}\)とし、sampling mapを
+
+\[
+\widetilde\Psi_{85}=\mathcal R\circ\widetilde\Phi_{85}
+\]
+
+と固定する。初期条件は`already encoded and repaired MPFR-85 state`であり、exact dyadic stateとして
+
+\[
+M=289,\qquad P_x=P_y=0,
+\]
+
+およびQ007agと同じgraph-gauge／external coordinatesで
+
+\[
+\lVert a\rVert_1\le r=9\times10^{-17},\qquad
+\lVert z\rVert_*\le\zeta=5\times10^{-11}
+\]
+
+を満たすことを仮定する。任意のexact stateを最初にencode／repairした結果がこの集合へ入ることは
+Q007anでは仮定せず、後続のinitialization gateへ残す。
+
+### 封印入力
+
+- Q007ag artifact／runner newline-normalized SHA-256:
+  `5783df74abb4b6ec7d658fd7e3dd272cf100cd134783c31863d643fcd17d4200` /
+  `bafd9a56d2d2ceb94acb709609bd710c9fff0f6c0bf543202fa411b9456fb6e0`
+- Q007ag input／candidate／result digest:
+  `262cbeccacf858bd798de06f363635f15c78ff3d361b44bdd5850aeb90679613` /
+  `a7a6a8f605339b0e8ffd16a5d3190967cb7329771d322f8edc0a53bc4b45e408` /
+  `6f52c6f1cfa618ca881439504f1bd5b46e45eb245670f1a2c6341669aa024f43`
+- Q007ai artifact／runner newline-normalized SHA-256:
+  `3ce5fa6358eaa6f3a64f93fe773e3fbc1990abfb83886aad1a4ade9c82425804` /
+  `3235b2dc31445e5912f2aaf7fc080e8295035801ade9b27d3f683d34da61173d`
+- Q007ai input／result digest:
+  `0dff47e8b0ed6e9b87cb73e6dea20192088495b51283c57b9d58630b7344c6a3` /
+  `c101313957c738ccee9fd3d7f1ed36b77c6f3dad4e1130651f5be4d8757ef18a`
+- Q007al artifact／runner newline-normalized SHA-256:
+  `bf1a2d9959f24cfc83a4efb2926ec76d9ced97755846ee310490585940d8dcf5` /
+  `b82e03145e0c7f1c20b1d1345b87acbae5ce526b732969c391b88141118dfd8e`
+- Q007al result digest:
+  `a46f4850d57b0e7d503177205c2cb3d1ed91679cc4c13b9ef31382dbd7bdcd06`
+- Q007am artifact／runner newline-normalized SHA-256:
+  `3b1b6f3c839cec572d0279f41c158dfafa09088e5f8ee1c3eab84f5bd279b781` /
+  `a0bdebc150c4c3ad055e1840b98196dee95bf967c417d17097f7a35579f2aa16`
+- Q007am input／probe／finite-result／result digest:
+  `f1a0dfd0b90cf354e9847cb076058fd241ab813a90bdee0bfdbafa9dfee17de5` /
+  `a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329` /
+  `905b65f13ee01711f3b083a0bd93e44b32d0fc5201007fad77e99de03063ab6d` /
+  `2217172b48bf86b987a316c9b8c14db6aaeceb3e50f304fa7fefb021c2fd5bd2`
+
+Q007agはvalidity／hypothesis `6 / 5`、Q007aiは`6 / 5`、Q007alは`8 / 5`、
+Q007amは`8 / 7`が全通過したaccepted cycleとしてfresh replayする。Q007am内のQ007al／Q007y
+reproductionも再利用し、同じ85-bit backend、operation order、\(h=2^{-90}\) repair、target、
+row-major balanced distributionから変更しない。
+
+### 一段自己写像の合成
+
+Q007agが与えるexact-map interior marginを
+
+\[
+\Delta_a=4.978814700017615\times10^{-20},\qquad
+\Delta_z=9.144951058528087\times10^{-13}
+\]
+
+とする。Q007ag artifactの`base_forward_invariance`／`normal_tube_forward_invariance` strict marginと、
+Q007amが使用したbase／normal marginがexact rationalで一致することを検証する。
+
+Q007amのraw-map誤差とrepair correctionを含むcoordinate error upperは
+
+\[
+E_a^{\rm rep}=1.1581233824834727\times10^{-21},\qquad
+E_z^{\rm rep}=2.2935127565743277\times10^{-20}
+\]
+
+である。任意の登録tube内fixed-leaf input \(x\)について、Q007agとQ007amを同じexact inputへ適用し、
+
+\[
+\begin{aligned}
+\lVert a(\widetilde\Psi_{85}(x))\rVert_1
+&\le (r-\Delta_a)+E_a^{\rm rep}<r,\\
+\lVert z(\widetilde\Psi_{85}(x))\rVert_*
+&\le (\zeta-\Delta_z)+E_z^{\rm rep}<\zeta
+\end{aligned}
+\]
+
+をexact rationalで再構成する。残るheadroomはbase／normalでそれぞれ
+`4.863002361769268e-20 / 9.144950829176811e-13`、margin utilizationは
+`0.02326102601246388 / 2.5079552005207522e-08`と事前登録する。
+
+### fixed leaf、表現可能性、stage positivity
+
+fixed leaf上ではinput repairのdefect unitsがexactに`(0,0,0)`となり、Hadamard solver、4 diagonal
+unit、289-site balanced distributionが全てzeroになることを確認する。従ってinput repairはこの集合上で
+identityであり、帰納時に誤差を二重加算しない。
+
+raw mapの各内部stageにはQ007alのtube-wide MPFR-85 paired enclosureを用い、最悪population lower
+`0.027777777145968227`がstrict positiveであることを確認する。Q007amのpost-filter repairは
+全tubeでexact／same-binadeであり、対角populationを\([1/64,1/32)\)内に保つ。repair後のglobal
+mass／momentumはexact targetへ戻り、出力は再び85-bit MPFR dyadic stateなので、同じ仮説を次stepへ
+再適用できる。
+
+finite 4-probe campaignはimplementation regressionとしてexact再現するが、自己写像の証明には
+上のtube-wide rational boundsだけを用いる。
+
+### validity gate
+
+1. Q007ag／Q007ai／Q007al／Q007am artifact・runner SHA、schema、source、scope、classification、
+   accepted outcome、gate count、全登録digestが一致する。
+2. Q007ag、Q007ai、Q007am cycleをfresh replayし、Q007am内のQ007al／Q007y reproductionも通る。
+3. \(r,\zeta\)、fixed-leaf target、coordinate norm、MPFR context、operation order、repair source／lattice／
+   distributionが全入力で一致する。
+4. Q007ag strict marginとQ007am登録marginがexactに一致し、二つのtriangle identityとheadroomを
+   exact rationalで再計算できる。
+5. Q007ai exact positivity、Q007al MPFR stage enclosure、Q007am post-repair binade／positivityが
+   同じcomponent box上の連続するstage時刻として整合する。
+6. zero-defect input repairがidentityで、post-filter repairがexact fixed leafと85-bit表現可能性を回復する。
+7. 全値finiteなstrict JSONを生成し、input／composition／result digestを再現する。
+
+一つでも失敗すれば`inconclusive`とし、自己写像仮説を解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を独立に判定する。
+
+1. Q007ag exact mapが登録fixed-leaf tubeを\(\Delta_a,\Delta_z\)だけstrict interiorへ送る。
+2. Q007alのconcrete MPFR-85 raw mapがtube全体で定義され、全内部stage populationがstrict positiveである。
+3. Q007am repairがtube-wideに定義され、exact fixed leaf、same-binade positivity、85-bit表現可能性を回復する。
+4. \(E_a^{\rm rep}<\Delta_a\)でbase coordinateがstrictに再入する。
+5. \(E_z^{\rm rep}<\Delta_z\)でnormal coordinateがstrictに再入する。
+6. 1--5から\(\widetilde\Psi_{85}\)が登録repaired fixed-leaf tubeの一段自己写像となる。
+7. input repairのidentityと6により、全sampling timeのfixed leaf／tube membershipと全内部stageの
+   strict positivityを数学的帰納で閉じる。
+
+全て通れば
+`coarse repair certificate closes the Q007ag repaired MPFR-85 fixed-leaf tube induction`
+として`accepted`とする。
+
+base／normalのいずれかが落ちる場合は
+`Q007am one-step budgets do not compose with the Q007ag exact margins`
+として有効な`not_certified`とする。stage／repair／identityのいずれかが落ちる場合は
+`registered repaired MPFR-85 map does not close the Q007ag tube induction`
+とし、帰納を主張しない。
+
+### 主張境界
+
+acceptedでも、固定17²、固定\((M,P_x,P_y)=(289,0,0)\)葉、封印Q007ae coordinates、
+85-bit MPFR backend、Q007y row-major repairに限り、すでにencode／repairされQ007ag tube内にある
+初期stateを条件とする。sampling-time fixed leaf／tube membershipと各step内部stage positivityを
+全iterateへ帰納するが、任意exact stateのinitial encoding interior、同じinitial stateからのexact軌道との
+shadowing／trajectory error、性能、GPU／parallel reduction、他grid／MPFR build、grid-uniformity、
+continuum limit、D3Q27は主張しない。Q007zのold-tube selected-wave帰納とQ007amの一段限定結果は
+それぞれのscopeで保存する。
+
+acceptedなら次はQ007aoで、事前登録したstrict inner exact-state setのcomponentwise MPFR-85
+encodingとinput repairがQ007ag repaired tubeへ入るinitialization interiorを独立に判定する。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
