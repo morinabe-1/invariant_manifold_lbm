@@ -188,3 +188,38 @@ def test_q011c1_records_reproducible_digests_and_runner_provenance(
     }
     assert source_metadata()["package_version"] == "0.1.0"
     json.dumps(q011c1_cycle, allow_nan=False)
+
+
+def test_q011c1_artifact_reproduces_the_accepted_localization(
+    q011c1_cycle: dict,
+) -> None:
+    runner_path = Path(q011c1.__file__).resolve()
+    artifact_path = runner_path.parent / "artifacts" / "q011c1_endpoint_localization.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "939baa85fa4db1efaf701985d81665f863e5f77f6ec2c95cfc2bacf004c0c45c"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011c1_endpoint_localization.py",
+        "sha256": "1f777dc50c6748cb8d8a64d643822b55733ac247b5de7d08b119d628b63c52a6",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q011c1_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "e9ea01348fe839dd745c3ccb7cf2e622bec3c0a4f080a1ab1c62a92a02ced064"
+    )
+    assert artifact["cycle"]["metric_digest_sha256"] == (
+        "fca5a81f3fc47e24a6f17578065adb527d892400d5d88c8eb18cf7089e234a9e"
+    )
+    assert artifact["cycle"]["enclosure_digest_sha256"] == (
+        "7a6cd761f88b328c2ffa74de5b9fb7952f454b86a99630d6266973e8fa6fea20"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "ad8b47548ebc04595246301864314502158e686520197377b3a33d30db1d4f86"
+    )
