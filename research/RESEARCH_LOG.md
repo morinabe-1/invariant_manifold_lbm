@@ -4274,6 +4274,81 @@ validity 7/7、hypothesis 6/6で、
 またexact軌道とのtrajectory errorもまだ与えない。次はQ007apでQ007abのfixed-coordinate contractionと
 local MPFR defectを新tubeへ移し、same-initial forward shadowingを独立に判定する。
 
+## 2026-08-09: Q007ap propagated-tube same-initial forward shadowing
+
+### 問いと事前登録
+
+Q007ao inner exact-state setの同じfixed-leaf stateから出るexact軌道と、componentwise MPFR-85
+encoding／input repair後のsealed repaired軌道を、各repair後のsampling timeで比較する問題を固定した。
+trajectory distanceにはQ007abと同じ平衡点固定の線形座標
+
+\[
+\mathcal Cx=(Lx,JQx),\qquad
+\|\mathcal Cx\|_\oplus=\|Lx\|_1+\|JQx\|_*
+\]
+
+だけを使う。Q007ag tube上のexact mapがこのnormでstrict contractionか、Q007ao initial defectと
+Q007am one-step local defectを幾何級数で全iterateへ足し上げられるかを判定した。graph-relative
+normal contractionはtrajectory normへ代入せず、Q007ao graph shiftもinitial errorへ二重加算しないと
+事前に固定した。
+
+### 実装
+
+- Q007ab／Q007ag／Q007am／Q007aoのartifact SHA、runner SHA、scope、classification、gate count、
+  全登録digestを封印した。
+- Q007abとQ007ao stored cycleをfresh replayした。Q007ao内ではQ007anとそのtransitive
+  Q007ag／Q007ai／Q007al／Q007am／Q007y reproductionまで通した。
+- Q007abで認証済みのlinear analysis／synthesis constantsと、Q007agの新state radius／nonlinear
+  derivativeからfixed-coordinate full-map Lipschitz upperをexact rationalで再構成した。
+- Q007ao initial encoding／repair errorをselected＋direct external coordinateへ写した。graph shiftは
+  tube membership termとして記録し、線形trajectory errorへは加えなかった。
+- Q007am repair-aware base／normal一段誤差をfixed-coordinate local defectとして合成した。
+- \(d_{n+1}\le L_\oplus d_n+\epsilon_{\rm step}\) のstationary bound、physical synthesis、
+  tube-relative accuracyを全てexact rationalで評価した。
+
+### 結果
+
+validity 7/7、hypothesis 6/6で、
+`propagated-tube fixed-coordinate contraction certifies all-iterate MPFR-85 forward shadowing`
+としてacceptedとした。
+
+- selected／external linear contraction upper:
+  `0.9920954673554099 / 0.981709835832552`
+- nonlinear coordinate Lipschitz increment:
+  `2.7528278762500916e-7`
+- full Lipschitz upper／contraction gap:
+  `0.9920957426381974 / 0.007904257361802534`
+- initial selected／physical／external／total coordinate error:
+  `3.009718329710275e-23 / 1.9922882038484456e-23 /`
+  `5.960355768038905e-22 / 6.261327601009932e-22`
+- step selected／external／total coordinate defect:
+  `1.1581233824834727e-21 / 2.2935127565743277e-20 / 2.4093250948226748e-20`
+- stationary／uniform coordinate error:
+  `3.0481359405954845e-18 / 3.0481359405954845e-18`
+- uniform physical Wiener error／tube-radius ratio:
+  `8.803831096064757e-18 / 6.096261293035372e-8`
+- registered relative／absolute accuracy threshold:
+  `1e-6 / 1.4441361143956587e-16`
+- input／recurrence／result digest:
+  `06692ce9d11691d2a45cd57220ea3e5e201b5c2beb2d0b55776a60f15456830f` /
+  `108cb6d50ecaa2d9ad50c02777f6c0bb03a979903849149e30f686c8004fc1ce` /
+  `1ee4dc09badbba0264ccc05317ba87de68557d5df148cb7085b158097d17a910`
+- runner／artifact newline-normalized SHA-256:
+  `095bd3cf728e916d937df22bf9e6773698801064213cd679af52d39719f94d3d` /
+  `3b35ad0c3f8979f295214ae16c7be09f6a1047b2779f9eeabe3dabec759e49f0`
+
+### 解釈と次のbottleneck
+
+Q007ag拡大tubeに対し、Q007anのrepaired-map全iterate帰納、Q007aoのexact-state initialization、
+Q007apのsame-initial forward-error boundが接続した。従って登録inner exact-state setから始めた
+exact軌道とsealed repaired MPFR-85軌道は、全非負sampling timeで一様Wiener誤差
+\(8.803831096064757\times10^{-18}\)以内に留まる。
+
+これはbi-infinite shadowing lemma、backward error、内部stage間距離、componentwise relative error、
+任意Q007ag boundary initialization、他grid／MPFR build、GPU／parallel reduction、grid-uniformity、
+continuum limit、D3Q27を主張しない。Q009 TT-crossはQ008c／Q010の固定経路棄却により保留する。
+次はQ011 boundary／forcingまたはQ007af後に残る別norm certificateを独立に事前登録してから進む。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4395,6 +4470,8 @@ local MPFR defectを新tubeへ移し、same-initial forward shadowingを独立�
 [`artifacts/q007an_repaired_tube_induction.json`](artifacts/q007an_repaired_tube_induction.json)
 
 [`artifacts/q007ao_initialization_interior.json`](artifacts/q007ao_initialization_interior.json)
+
+[`artifacts/q007ap_forward_shadowing.json`](artifacts/q007ap_forward_shadowing.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

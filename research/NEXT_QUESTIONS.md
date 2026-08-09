@@ -9681,6 +9681,33 @@ acceptedならpropagated-tube finite-precision chainを閉じる。Q009 TT-cross
 より保留したままとし、次はQ011 boundary／forcingか、Q007afが残した別norm certificateを別gateとして
 事前登録してから進む。
 
+### Q007ap 最終結果
+
+validity 7/7、hypothesis 6/6が全て通過し、
+「propagated-tube fixed-coordinate contraction certifies all-iterate MPFR-85 forward shadowing」
+としてacceptedとした。
+
+- fixed-coordinate full Lipschitz upper／gap:
+  `0.9920957426381974 / 0.007904257361802534`
+- initial／one-step coordinate defect upper:
+  `6.261327601009932e-22 / 2.4093250948226748e-20`
+- uniform coordinate／physical Wiener error upper:
+  `3.0481359405954845e-18 / 8.803831096064757e-18`
+- physical error／Q007ag tube state radius:
+  `6.096261293035372e-8 < 1e-6`
+- input／recurrence／result digest:
+  `06692ce9d11691d2a45cd57220ea3e5e201b5c2beb2d0b55776a60f15456830f` /
+  `108cb6d50ecaa2d9ad50c02777f6c0bb03a979903849149e30f686c8004fc1ce` /
+  `1ee4dc09badbba0264ccc05317ba87de68557d5df148cb7085b158097d17a910`
+- runner／artifact newline-normalized SHA-256:
+  `095bd3cf728e916d937df22bf9e6773698801064213cd679af52d39719f94d3d` /
+  `3b35ad0c3f8979f295214ae16c7be09f6a1047b2779f9eeabe3dabec759e49f0`
+
+これでQ007ag拡大tubeについて、exact-state initialization、repaired-map tube induction、
+内部stage positivity、same-initial sampling-time forward errorが一つの有限精度証明鎖として閉じた。
+bi-infinite／backward shadowing、内部stage間距離、任意boundary初期化、他gridは未解決のままである。
+Q009は再開せず、次の実験はQ011または別norm certificateを観測前に事前登録してから行う。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
@@ -9693,7 +9720,7 @@ D2Q9 で次を全て満たして初めて進む。
 - branch/cluster tracking
 - Q005 sector-aware nonresonance
 - fixed-leaf nonzero-mode quadratic residual order
-- same-initial repaired-MPFR all-iterate forward shadowing（Q007ab通過）
+- same-initial repaired-MPFR all-iterate forward shadowing（Q007ap拡大tube通過）
 - TT-SVD preservation
 - TT-cross independent validation
 - positivity/conservation
