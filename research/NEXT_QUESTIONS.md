@@ -9954,6 +9954,8 @@ Frobenius normで`<=1e-12 / <=1e-12 / 150`とする。
 一段mapのanalytic Jacobianは、各siteのdensity／momentumに関するD2Q9 equilibrium derivative、
 BGK、streaming、filterをchainして構成する。seed `20260812`の4 fixed-leaf direction、
 central step `2e-5 / 1e-5 / 5e-6`で、best action relative errorを各方向`<=2e-8`とする。
+有限差分は後述のrest linear-response stateで評価する。linear-response equationのrelative residualは
+`<=1e-12`とする。
 
 Newton法はanalytic reduced Jacobian
 
@@ -9974,7 +9976,14 @@ Dr(z)=B^T(D\Phi_F(f(z))-I)B
 
 各solveでprojected residual \(\ell^2\)`<=5e-13`、full residual \(\ell^2\)`<=5e-12`、
 maximum component residual `<=5e-13`を要求する。二解のpopulation \(\ell^2\) distanceを
-`<=1e-11`、relative distanceを`<=1e-9`とする。結果観測後にmethod、start、toleranceを変えない。
+`<=1e-11`、relative distanceを`<=1e-9`とする。各runはstep開始時のprojected residualが閾値内なら
+停止し、そうでなければ最大12 Newton stepを試す。二startを同じprocess内でもう一度ずつ再実行し、
+terminal coordinateとline-search traceのbitwise／exact JSON一致を要求する。結果観測後にmethod、
+start、toleranceを変えない。
+
+物理・spectrum診断のrepresentative stateはzero-start第1 runのterminal iterateとする。未収束でも同じ
+有限stateで実装validity診断を完走するが、fixed-point／spectrumの科学的解釈はsolver hypothesis通過時
+だけ行う。
 
 ### fixed pointの物理・Fourier gate
 
