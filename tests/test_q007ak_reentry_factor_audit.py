@@ -214,3 +214,28 @@ def test_q007ak_records_provenance_and_deterministic_digests(
         "a4d10df4c1d6edd83488115d501af21ad6727dd6321e159e37b2b0e434858644"
     )
     json.dumps(q007ak_cycle, allow_nan=False)
+
+
+def test_q007ak_artifact_reproduces_the_accepted_factor_certificate(
+    q007ak_cycle: dict,
+) -> None:
+    runner_path = Path(q007ak.__file__).resolve()
+    artifact_path = runner_path.parent / "artifacts" / "q007ak_reentry_factor_audit.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "aae6b560125cd29dad5b87bf20e9806ae26a5b1b6ae2ee9c055580042561cf7c"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ak_reentry_factor_audit.py",
+        "sha256": _file_sha256(runner_path),
+        "sha256_newline_normalization": ("UTF-8 text with universal newlines"),
+    }
+    assert artifact["cycle"] == q007ak_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["selection"]["base"]["selected_precision_bits"] == 79
+    assert artifact["cycle"]["selection"]["normal"]["selected_precision_bits"] == 59
+    assert artifact["cycle"]["selection"]["joint"]["selected_precision_bits"] == 79
