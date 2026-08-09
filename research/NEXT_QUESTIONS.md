@@ -10286,6 +10286,46 @@ external nonresonance、spectral quotient smoothness、forced SSM existence／un
 normal attraction、basin、他grid／amplitude、wall boundaryを主張しない。acceptedなら次はQ011dで
 forced selected clusterに対するquadratic external nonresonance／homological operatorを別途事前登録する。
 
+### Q011c 最終結果
+
+validity gateは`5 / 6`で、`checkpoint_spectrum_and_q011b_endpoint_reproduce`だけが失敗した。
+停止規則どおりhypothesisは解釈せず、
+`registered forced spectral-cluster audit is invalid`として`inconclusive`とした。
+
+- forward／backward fixed-point 9 node、unforced `6 / 9 / 9` reference、27 ordered-Schur
+  selection、path reversal、direct endpoint、共役projector診断は全てvalid。
+- maximum adjacent principal angle／minimum reference alignment:
+  `1.0421788015551248e-05 / 0.9999999965243628`
+- minimum external eigenvalue separation／maximum projector 2-norm:
+  `0.023905378580598713 / 1.5115930042152532`
+- minimum 9-block Sylvester separation:
+  `0.019362054767979874`
+- minimum global modulus normal gap／maximum full fixed-leaf radius:
+  `0.002061121154971146 / 0.9920954673551043`
+- Q011b stored endpointとのstate absolute／relative distance:
+  `3.2437399411382716e-15 / 1.0034303173230714e-10`
+- spectral radius／minimum \(\sigma(I-J)\)のartifactとの差:
+  `1.6653345369377348e-15 / 1.231653667943533e-16`（通過）
+- maximum \(\kappa_2(I-J)\)のartifactとの差:
+  `7.048583938740194e-12`（登録`1e-12`を超過）
+- minimum-singular／maximum-condition witness index:
+  Q011b stored `16`、continued endpoint `1`。両者は実写像の共役blockである。
+
+従ってraw cluster／checkpoint hypothesis checkは全てtrueだが、これをacceptedへ読み替えない。
+閾値やamplitude pathも変更しない。次はQ011cのartifactを封印し、(i) stored endpointのexact replay、
+(ii) continued endpointのstate perturbation、(iii) \(k_x=\pm1\)共役orbit上のset-valued extrema、
+(iv) resolvent metricの局所感度を分離する修復gateを観測前に事前登録する。これを通すまでQ011dへ
+進まない。
+
+- input／path／spectrum／result digest:
+  `7d8d4a593dc29a715c995e237890da4de17314c4feffabe10111b289120435ee` /
+  `06254ea5569d8b0c8c5369477c82ea685284aec9970574c46c24fea749280b92` /
+  `5b1e79280b752268248f5150dd12c73a96719cb20d86cbd34fb3ff1e1b8b472c` /
+  `4b41c4e7bda3a45f1ece871c183d321bed637d255053e22a82e7000dd83f5751`
+- runner／artifact newline-normalized SHA-256:
+  `10222da26fe14b97cd9565c517838d3a03e21f19e605d4a60cb2461e011d1d13` /
+  `dbb562dd3628dc7589219baa94ae6791e084847f302c69dbcdc328b94ac6d2b3`
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

@@ -240,7 +240,11 @@ Q011bでは零平均cosine force \(F_x(y)=3\,2^{-24}\cos(2\pi y/17)\)へ切り�
 x-independent fixed pointを二つのNewton startから同一解として数値的に解いた。全17個の
 \(k_x\) block、合計2598 fixed-leaf eigenvalueを監査し、spectral radius
 `0.9920954673551019`、\(\min\sigma(I-J)=0.00649328212134047\)でstable prequalificationを通過した。
-これは単一grid・単一amplitudeのbinary64結果であり、forced slow clusterや不変多様体はまだ構成していない。
+Q011cではQ006h first-shell 24-mode subspaceを9点のforce-amplitude pathでordered-Schur clusterとして
+追跡した。全cluster分離・projector・Sylvester・normal-dominance診断は登録閾値を通ったが、Q011b
+終点のcondition-number再現差が\(7.05\times10^{-12}>10^{-12}\)となり、共役な
+\(k_x=1,16\) witnessも交換したため、事前登録どおり`inconclusive`とした。forced slow clusterの
+科学的選択や不変多様体はまだ主張しない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1590,6 +1594,49 @@ prequalificationである。rigorous existence／uniqueness、basin、forced slo
 nonresonance、normal attraction、forced invariant manifold、他grid／amplitude、wall boundaryは
 主張しない。次はQ011cでこのfixed pointのcandidate slow spectral clusterと外部gapを事前登録する。
 
+### Q011c forced slow spectral-cluster continuation
+
+Q006hのfirst-shell 8 wave × 3 hydrodynamic modeを、Q011b forceの
+\(t=j/8\), \(j=0,\ldots,8\)に沿って追跡した。\(k_x=0,1,16\) blockでselected complex
+dimensionを`6 / 9 / 9`に固定し、個別固有ベクトルではなくordered complex Schur range、
+Riesz projector、cluster eigenvalue setを比較した。forward／backward fixed-point path、
+unforced-targetからのdirect endpoint control、共役block closureも独立に監査した。
+
+- outcome／classification: `inconclusive / registered forced spectral-cluster audit is invalid`
+- validity gate: `5 / 6` passed；raw cluster／checkpoint hypothesis diagnostics: all passed
+- maximum forward/backward state distance:
+  `3.2722439815434854e-15`
+- maximum adjacent angle／minimum reference alignment:
+  `1.0421788015551248e-05 / 0.9999999965243628`
+- minimum selected/excluded eigenvalue separation／maximum projector 2-norm:
+  `0.023905378580598713 / 1.5115930042152532`
+- minimum checkpoint Sylvester separation:
+  `0.019362054767979874`
+- minimum global modulus normal gap／maximum full fixed-leaf radius:
+  `0.002061121154971146 / 0.9920954673551043`
+- endpoint state distance／relative distance from Q011b stored state:
+  `3.2437399411382716e-15 / 1.0034303173230714e-10`
+- endpoint radius／minimum-resolvent-singular-value absolute difference:
+  `1.6653345369377348e-15 / 1.231653667943533e-16`
+- endpoint maximum-condition absolute difference:
+  `7.048583938740194e-12`（登録上限`1e-12`）
+- Q011b stored／continued minimum-singular and maximum-condition witness:
+  `16 / 1`（共役blockの交換）
+- input／path／spectrum／result digest:
+  `7d8d4a593dc29a715c995e237890da4de17314c4feffabe10111b289120435ee` /
+  `06254ea5569d8b0c8c5369477c82ea685284aec9970574c46c24fea749280b92` /
+  `5b1e79280b752268248f5150dd12c73a96719cb20d86cbd34fb3ff1e1b8b472c` /
+  `4b41c4e7bda3a45f1ece871c183d321bed637d255053e22a82e7000dd83f5751`
+- runner／artifact newline-normalized SHA-256:
+  `10222da26fe14b97cd9565c517838d3a03e21f19e605d4a60cb2461e011d1d13` /
+  `dbb562dd3628dc7589219baa94ae6791e084847f302c69dbcdc328b94ac6d2b3`
+
+唯一のvalidity failureは、許容された微小なstate差に対してpointwise worst-indexとcondition numberを
+absolute `1e-12`で一致させる再現規則に局在した。閾値を観測後に緩めず、Q011cの
+`inconclusive`判定と全raw診断を保存する。次は、封印済みQ011cを入力として共役orbit単位の
+set-valued witnessとstate-to-spectrum感度を事前登録する修復監査を行う。これを通すまではQ011dの
+external nonresonanceやforced invariant manifold構築へ進まない。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2137,6 +2184,7 @@ python -m research.q007ao_initialization_interior --output research/artifacts/q0
 python -m research.q007ap_forward_shadowing --output research/artifacts/q007ap_forward_shadowing.json
 python -m research.q011a_periodic_forcing_compatibility --output research/artifacts/q011a_periodic_forcing_compatibility.json
 python -m research.q011b_zero_mean_forced_fixed_point --output research/artifacts/q011b_zero_mean_forced_fixed_point.json
+python -m research.q011c_forced_spectral_cluster --output research/artifacts/q011c_forced_spectral_cluster.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2210,6 +2258,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007ap_forward_shadowing.json`](research/artifacts/q007ap_forward_shadowing.json)
 - [`research/artifacts/q011a_periodic_forcing_compatibility.json`](research/artifacts/q011a_periodic_forcing_compatibility.json)
 - [`research/artifacts/q011b_zero_mean_forced_fixed_point.json`](research/artifacts/q011b_zero_mean_forced_fixed_point.json)
+- [`research/artifacts/q011c_forced_spectral_cluster.json`](research/artifacts/q011c_forced_spectral_cluster.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2306,6 +2355,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   non-fixed rest reference-spectrum診断
 - Q011b zero-mean single-wave periodic sourceのfixed-leaf Newton fixed point、全x-Fourier
   block spectrum、resolvent isolation診断
+- Q011c 9-node force-amplitude pathのordered-Schur 24-mode cluster、Riesz／Sylvester／
+  global normal-dominance診断、endpoint reproduction failureの局在化
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2316,7 +2367,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- TT-cross（固定Q007c1係数では保留）、forced slow spectral cluster／invariant manifold、境界条件、
+- TT-cross（固定Q007c1係数では保留）、Q011c endpoint witness修復、forced invariant manifold、境界条件、
   Poiseuille／Couette、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -2367,6 +2418,8 @@ Q011aでは一様非零平均sourceのexact global momentum ledgerを閉じ、si
 fixed pointが不可能と認証した。rest reference Jacobianはsource微分0によりunforced symbolと一致するが、
 forced fixed-point stabilityとは解釈しない。Q011bでは零平均single-wave sourceへ切り替え、
 固定保存量葉上のpositive fixed pointを二Newton startから同一解として解き、全x-Fourier fixed-leaf
-spectrumが登録radius／resolvent gateを通ることを確認した。ただしこれはbinary64 numerical
-prequalificationであり、forced slow spectral cluster、nonresonance、normal attraction、不変多様体、
+spectrumが登録radius／resolvent gateを通ることを確認した。Q011cでは24-mode clusterの全raw
+separation／normal-dominance診断が通ったが、continued endpointとQ011b artifactのcondition-number
+再現差および共役witness交換によりvalidity 5/6、`inconclusive`となった。従ってforced clusterを
+selectedとはまだ扱わず、endpoint witness修復、nonresonance、normal attraction、不変多様体、
 wall-bounded flowは未実装である。

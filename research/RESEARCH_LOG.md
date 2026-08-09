@@ -4518,6 +4518,72 @@ external gap／spectral quotient、nonresonance、normal attraction、forced inv
 finite-precision all-iterate shadowing、他grid／amplitude、boundary、Poiseuille／Couetteは主張しない。
 次はQ011cでcandidate slow spectral clusterと外部gapを独立に事前登録する。
 
+## 2026-08-09: Q011c forced slow spectral-cluster continuation
+
+### 問いと方法
+
+Q006hで選んだfirst-shell 24-mode hydrodynamic subspaceを、Q011b零平均forceの
+\(t=j/8\), \(j=0,\ldots,8\)に沿ってfixed pointと同時に継続できるかを判定した。
+\(k_x=0,1,16\) blockのselected dimensionを`6 / 9 / 9`に固定し、Hungarian set matchingから
+ordered complex Schur range、Riesz projector、selected eigenvalue setを構成した。個別の
+forced shear／acoustic labelやcluster内部permutationはgateに使っていない。
+
+Q011b stored endpointからのbackward path、unforced targetからのdirect endpoint control、
+\(k_x=\pm1\) conjugacy、\(k_x=0\) real closureを監査した。\(t=0,1/2,1\)では全2598 fixed-leaf
+eigenvalueを再列挙し、selected/external global modulus gapと全9個の明示的Sylvester operator
+minimum singular valueを計算した。
+
+### 結果
+
+validityは`5 / 6`で、Q011b endpoint spectrum reproductionだけが失敗したため、
+`registered forced spectral-cluster audit is invalid`として`inconclusive`とした。
+事前登録の`1e-12`閾値、witness一致、amplitude pathは観測後に変更していない。
+
+- maximum forward/backward state distance:
+  `3.2722439815434854e-15`
+- endpoint stored-state absolute／relative distance:
+  `3.2437399411382716e-15 / 1.0034303173230714e-10`
+- maximum structural residual／adjacent principal angle:
+  `7.476245086769142e-14 / 1.0421788015551248e-05`
+- minimum reference alignment／external eigenvalue separation:
+  `0.9999999965243628 / 0.023905378580598713`
+- maximum projector 2-norm:
+  `1.5115930042152532`
+- maximum reversal／direct endpoint angle:
+  `1.3633376718264379e-13 / 1.8516964947723607e-15`
+- maximum projector／spectrum conjugacy error:
+  `7.01708059108712e-14 / 1.6543129169796175e-14`
+- minimum checkpoint Sylvester separation:
+  `0.019362054767979874`
+- minimum global normal gap／maximum full fixed-leaf radius:
+  `0.002061121154971146 / 0.9920954673551043`
+- endpoint radius／minimum-singular／maximum-condition absolute difference:
+  `1.6653345369377348e-15 / 1.231653667943533e-16 / 7.048583938740194e-12`
+- stored／continued worst resolvent witness index:
+  `16 / 1`
+- input／path／spectrum／result digest:
+  `7d8d4a593dc29a715c995e237890da4de17314c4feffabe10111b289120435ee` /
+  `06254ea5569d8b0c8c5369477c82ea685284aec9970574c46c24fea749280b92` /
+  `5b1e79280b752268248f5150dd12c73a96719cb20d86cbd34fb3ff1e1b8b472c` /
+  `4b41c4e7bda3a45f1ece871c183d321bed637d255053e22a82e7000dd83f5751`
+- runner／artifact newline-normalized SHA-256:
+  `10222da26fe14b97cd9565c517838d3a03e21f19e605d4a60cb2461e011d1d13` /
+  `dbb562dd3628dc7589219baa94ae6791e084847f302c69dbcdc328b94ac6d2b3`
+
+### 解釈と次のbottleneck
+
+cluster pathそのもののraw hypothesis checkは全て通った。特にselected/external gap、
+projector conditioning、Sylvester separation、global modulus normal dominance、fixed-leaf stabilityには
+十分な数値marginがある。しかしvalidity停止規則により、これをforced spectral clusterのaccepted
+selectionとは解釈しない。
+
+失敗は、Q011b stored stateから\(3.24\times10^{-15}\)だけ異なるcontinued endpointで、
+ほぼ同値な共役\(k_x=1,16\) blockのworst witnessが交換し、maximum condition numberが
+\(7.05\times10^{-12}\)だけ変化したことに局在する。次はQ011c artifactをsealed inputとし、
+stored exact replay、continued-state perturbation、共役orbit上のset-valued extrema、局所感度を
+別々に判定する修復gateを事前登録する。Q011cの`inconclusive`を変更せず、そのgateを通るまで
+Q011d external nonresonanceへ進まない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4645,6 +4711,8 @@ finite-precision all-iterate shadowing、他grid／amplitude、boundary、Poiseu
 [`artifacts/q011a_periodic_forcing_compatibility.json`](artifacts/q011a_periodic_forcing_compatibility.json)
 
 [`artifacts/q011b_zero_mean_forced_fixed_point.json`](artifacts/q011b_zero_mean_forced_fixed_point.json)
+
+[`artifacts/q011c_forced_spectral_cluster.json`](artifacts/q011c_forced_spectral_cluster.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
