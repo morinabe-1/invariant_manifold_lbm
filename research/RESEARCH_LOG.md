@@ -6752,6 +6752,59 @@ hypothesis `5 / 5`を通過し、
 all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
 未認証である。停止規則どおり、次はQ011adでdegree 10へ進む。
 
+### Q011ad 実行結果
+
+Q011acまでの7 artifact／38 digest封印にQ011acの5 digestを加え、8 artifact、runner、43 direct digest、
+outcome、claim boundaryとQ011l／Q011o sourceを照合した。validity `7 / 7`を通過した。
+
+degree-10 inventoryは`286 aggregate / 3003 expanded control / 281 old-separated / 5 overlap`だった。
+selected group 0／1／2／3の24 identifierとexternal group 167／165／164の32 unique targetを合わせた
+56 directly relevant identifierを再構成した。新external group 165の4 recordを加え、Q011acの64
+uniform recordを全件exactに保存した68-record monotone \(\rho=5\times10^{-8}\) envelopeとなった。
+
+5 overlapのmonomialは`27720 / 40320 / 1650 / 205920 / 64350`、合計`339960`だった。
+Fourier sectorで`18112 / 25760 / 360 / 321240 / 101400`、合計`466872` comparisonへ絞った。
+compatible／incompatible monomialは`125512 / 214448`である。
+
+全466872 comparisonがindividual modulusで分離し、unresolvedは`0`だった。relation countはproduct below
+target `44232`、target below product `422640`である。aggregate別minimum exact gapは
+
+- `7.647290131921562e-4`
+- `8.247499097190439e-4`
+- `6.220305127304349e-6`
+- `7.611385436459371e-4`
+- `7.02298069679118e-4`
+
+だった。global minimum witnessは
+`(block=16;center=151)^6 × (block=1;center=151)^2 × block=0;center=149 × block=1;center=152`
+対target `block=14;center=146`で、relationは`product_below_target`だった。登録下限`5e-6`を通過した。
+
+hypothesis `5 / 5`を通過し、
+`degree-10 external nonresonance is certified by the contained uniform transformed-residual envelope and exact Fourier-sector indexed-modulus products`
+として`accepted`とした。certified degreesは2--10、tail-certifiedは91以降、missing rangeはdegrees 11--90である。
+
+- 68-ID uniform-record digest:
+  `ee182424edacab1b422588245109036bbf522c210a05df978d2fc397b5cb317b`
+- monomial／compatible-pair framed digest:
+  `2da222f1c15b482ff80805ba1b14ddd0d6d1a2bceb7d3929eb46e82ac11d42c3` /
+  `930937d748264d0026cab92dfa1df9898cc6c039e7b16814eaecd279d336cf3e`
+- exact-product／comparison framed digest:
+  `722500d189481311cfdd28edf8b17f2a1dc27754969a905d143009d57bbc583d` /
+  `142087f4ef4024aa5fa1adb6423719c1dfc98b3d38cd1e026d710d66cb15db55`
+- input／inventory／sector／product／result digest:
+  `7dd67186b06547d59e08f531192d3c1a58183a5f92121f9567f9aca5ce28303f` /
+  `bd9537e8b182fde2ccbd3ff3ae347d85eba673ed93c3e21451069ff1f8b9cac1` /
+  `440afad1b33c896451a458b62855a71269c1cbef728ea3ecb5b9a75a3fa71d6f` /
+  `29fea1d86fdd06b124df677e3b4cf02a4828355e63e91a7cc14ece63c03c524d` /
+  `e3618fed4c565e76e59653b7affc86c045a617fc463666c7dc468aba302a05f9`
+- runner／artifact newline-normalized SHA-256:
+  `666b33f38e773efda70d498c7e4068d108630be31f4be52a64f0640122f95d3b` /
+  `dfdee641924a9e3cb6cbea57c23e54a9438f86aa3fc6c540f0d613ff1add340c`
+
+本certificateは固定17² repaired exact map、fixed conservation leaf、degree 10だけを扱う。degrees 11--90、
+all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
+未認証である。停止規則どおり、次はQ011aeでdegree 11へ進む。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6941,6 +6994,8 @@ all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
 [`artifacts/q011ab_degree8_refined_modulus.json`](artifacts/q011ab_degree8_refined_modulus.json)
 
 [`artifacts/q011ac_degree9_refined_modulus.json`](artifacts/q011ac_degree9_refined_modulus.json)
+
+[`artifacts/q011ad_degree10_refined_modulus.json`](artifacts/q011ad_degree10_refined_modulus.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

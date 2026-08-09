@@ -17674,6 +17674,53 @@ Q011y transformed-residual enclosure、uniform \(\rho\)-disc、x-Fourier sector�
 formulaに限る。degrees 11--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ad 実行結果
+
+8 artifact、runner、43 direct digest、outcome、claim boundaryとQ011l／Q011o sourceを照合し、
+validity `7 / 7`を通過した。degree-10 inventoryは
+`286 aggregate / 3003 expanded control / 281 old-separated / 5 overlap`で事前登録どおりだった。
+
+56 directly relevant identifierに新external group 165とQ011ac carry-overを統合した68-record monotone
+uniform envelopeを再構成し、Q011acの既存64 recordがexactに保存されることを確認した。`339960`
+monomialを列挙し、Fourier sectorで`466872` comparisonへ絞った。全比較がindividual modulusで分離し、
+unresolvedは`0`だった。relation countはproduct below target `44232`、target below product `422640`である。
+
+aggregate別minimum exact gapは
+
+- `7.647290131921562e-4`
+- `8.247499097190439e-4`
+- `6.220305127304349e-6`
+- `7.611385436459371e-4`
+- `7.02298069679118e-4`
+
+で、global minimumは登録下限`5e-6`を通過した。minimum witnessは
+`(block=16;center=151)^6 × (block=1;center=151)^2 × block=0;center=149 × block=1;center=152`
+対target `block=14;center=146`だった。
+
+hypothesis `5 / 5`を通過し、
+`degree-10 external nonresonance is certified by the contained uniform transformed-residual envelope and exact Fourier-sector indexed-modulus products`
+として`accepted`とした。certified degreesは2--10、tail-certifiedは91以降、missing rangeはdegrees 11--90である。
+
+- monomial／compatible-pair framed digest:
+  `2da222f1c15b482ff80805ba1b14ddd0d6d1a2bceb7d3929eb46e82ac11d42c3` /
+  `930937d748264d0026cab92dfa1df9898cc6c039e7b16814eaecd279d336cf3e`
+- exact-product／comparison framed digest:
+  `722500d189481311cfdd28edf8b17f2a1dc27754969a905d143009d57bbc583d` /
+  `142087f4ef4024aa5fa1adb6423719c1dfc98b3d38cd1e026d710d66cb15db55`
+- input／inventory／sector／product／result digest:
+  `7dd67186b06547d59e08f531192d3c1a58183a5f92121f9567f9aca5ce28303f` /
+  `bd9537e8b182fde2ccbd3ff3ae347d85eba673ed93c3e21451069ff1f8b9cac1` /
+  `440afad1b33c896451a458b62855a71269c1cbef728ea3ecb5b9a75a3fa71d6f` /
+  `29fea1d86fdd06b124df677e3b4cf02a4828355e63e91a7cc14ece63c03c524d` /
+  `e3618fed4c565e76e59653b7affc86c045a617fc463666c7dc468aba302a05f9`
+- runner／artifact newline-normalized SHA-256:
+  `666b33f38e773efda70d498c7e4068d108630be31f4be52a64f0640122f95d3b` /
+  `dfdee641924a9e3cb6cbea57c23e54a9438f86aa3fc6c540f0d613ff1add340c`
+
+この結果はdegree 10だけのcertificateであり、degrees 11--90、all-order nonresonance、higher graph
+smoothness、SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、
+次はQ011aeでdegree 11を監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
