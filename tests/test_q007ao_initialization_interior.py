@@ -264,3 +264,39 @@ def test_q007ao_records_provenance_and_deterministic_digests(
         )
     )
     json.dumps(q007ao_cycle, allow_nan=False)
+
+
+def test_q007ao_artifact_reproduces_the_accepted_initialization(
+    q007ao_cycle: dict,
+) -> None:
+    runner_path = Path(q007ao.__file__).resolve()
+    artifact_path = (
+        runner_path.parent / "artifacts" / "q007ao_initialization_interior.json"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "c6262043848a479b90634fc8aa82dbd02bfcaea4bcb3467d240b956fd7602b8f"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q007ao_initialization_interior.py",
+        "sha256": "2cd4c852c2855b93efaeb618bc3b1cb488885375c69f11e2c7624f0ea84614f7",
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q007ao_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "4793702239a7bc6252b71b5fff43cc68e78dcad1d1b9446db94544b85270deb3"
+    )
+    assert artifact["cycle"]["bound_digest_sha256"] == (
+        "b747e0a635cf4d747728fd5447e613b62a0b951813634f8a98c9e80a17f3308a"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "6c2a41f2ff2d610d8f542cb132a50a678298098245063d54bcd2a38b6e6a8360"
+    )
