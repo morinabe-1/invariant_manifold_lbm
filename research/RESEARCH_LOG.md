@@ -6110,14 +6110,14 @@ c_{91}=\frac{183!}{(91!)^2},
 S_{91}(y)=c_{91}\int_0^y u^{91}(1-u)^{91}\,du
 \]
 
-を92個のexact rational coefficientとして展開し、(S_{91}(0)=0)、(S_{91}(1)=1)、derivatives
+を92個のexact rational coefficientとして展開し、\(S_{91}(0)=0\)、\(S_{91}(1)=1\)、derivatives
 1--91の両endpoint valueが0であることをexactに確認した。従ってQ011tと同じ
-(t_r(z)=\sum_j(|z_j|/(2r))^{16})を用いるpiecewise scalar cutoffは(C^{91})で、radius (r) ball上の
-identity、radius (4r) ball内のsupport、conjugacy-fixed selected／external real-space preservationを持つ。
+\(t_r(z)=\sum_j(|z_j|/(2r))^{16}\)を用いるpiecewise scalar cutoffは\(C^{91}\)で、radius \(r\) ball上の
+identity、radius \(4r\) ball内のsupport、conjugacy-fixed selected／external real-space preservationを持つ。
 high-derivative graph-transform boundとQ011t graph equalityはこのgateへ含めていない。
 
 Q011kの2598 eigencenterと17 Bauer--Fike radiusを直接再構成した。個別modulus intervalはすべて
-(0<\rho^-\le\rho^+<1)で、overlap連結成分は
+\(0<\rho^-\le\rho^+<1\)で、overlap連結成分は
 
 - selected: `24 -> 4`、multiplicity `8 / 4 / 4 / 8`
 - external: `2574 -> 186`

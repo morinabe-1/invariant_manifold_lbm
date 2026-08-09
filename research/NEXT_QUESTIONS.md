@@ -15643,9 +15643,9 @@ radius、normal attraction、basin、他grid／force／wall、D3Q27を構成・�
 
 Q011j／Q011k／Q011m／Q011tの4 artifact、runner、21 digestとQ007i rational-log sourceを直接照合し、
 validity `8 / 8`を通過した。登録したbeta polynomialは92個のexact coefficientを持ち、
-(S_{91}(0)=0)、(S_{91}(1)=1)、derivatives 1--91の両endpoint flatnessをexact combinatoricsで再現した。
-従ってQ011tと同じscalar power (t_r)を用いるcutoffは、origin近傍でoriginal mapと一致する
-(C^{91}) real localizationである。ただしhigh-derivative graph-transform capやQ011t graphとの一致は
+\(S_{91}(0)=0\)、\(S_{91}(1)=1\)、derivatives 1--91の両endpoint flatnessをexact combinatoricsで再現した。
+従ってQ011tと同じscalar power \(t_r\)を用いるcutoffは、origin近傍でoriginal mapと一致する
+\(C^{91}\) real localizationである。ただしhigh-derivative graph-transform capやQ011t graphとの一致は
 主張していない。
 
 全2598 eigendisc modulus intervalを再構成し、selected `24 -> 4`、multiplicity `8 / 4 / 4 / 8`、
