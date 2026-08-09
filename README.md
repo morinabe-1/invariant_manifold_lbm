@@ -2646,6 +2646,82 @@ graph patchをoriginal repaired exact mapへ移す証明である。
 spectral-quotient SSM uniqueness、normal attraction、basin、\(\rho_*\)より大きいradiusの最適性は未認証である。
 次はQ011tで\(C^1\) graph-transform spaceとorigin derivative／tangencyだけを事前登録して判定する。
 
+### Q011t C1-localized tangent original-map graph certificate
+
+Q011k／Q011m／Q011q／Q011r／Q011sの5 artifactと25 digestを直接封印した。Q011rの境界で
+非滑らかなradial retractionからsmoothnessを推論せず、2598-slot real coordinate上に別のscalar
+\(C^1\) cutoff
+
+\[
+C_r^{(1)}(z)=\chi\!\left(\sum_j(|z_j|/(2r))^{16}\right)z
+\]
+
+を構成した。このcutoffはradius \(r\) ballでidentity、supportはradius \(4r\) ball内、
+\(\|DC_r^{(1)}\|\le129\)であり、conjugacy-fixed selected／external real spaceを保つ。これにより
+
+\[
+n_r=8\mu_2r^2,
+\qquad
+\delta_r=516\mu_2r
+\]
+
+をglobal nonlinear amplitude／derivative upperとして用い、\(C_b^1(S_{\mathbb R},E_{\mathbb R})\)上の
+C0 graph-transform contractionとuniform derivative-fiber contractionを別々に閉じた。
+
+- classification:
+  `the original repaired exact map has a certified C1 forward-invariant graph patch tangent to the selected real spectral subspace`
+- validity／hypothesis gates: `8 / 8` passed、`6 / 6` passed
+- outcome: `accepted`
+- registered／passing scale count: `11 / 9`
+- selected scale／radius／first failed larger radius:
+  `1/256 / 1.171875e-18 / 2.34375e-18`
+- first larger failure:
+  `localized derivative / C1 slope / derivative fiber / identity-core input`
+- localized amplitude／derivative upper:
+  `9.399481923008373e-24 / 0.0005173474850423809`
+- base conorm／inverse utilization／height ratio:
+  `0.9832535876408784 / 0.0005259031911287972 / 0.9817178770237405`
+- C1 graph slope／C0 contraction／derivative-fiber contraction:
+  `0.9989561349826355 / 0.9827440318399493 / 0.9994817656326567`
+- original selected／external image ratio:
+  `0.9920960097390545 / 0.991060395420621`
+- smooth-cutoff support／output physical displacement:
+  `1.2080567910398319e-14 / 2.9962708048219603e-15`
+- output population／density floor:
+  `0.027775908313347298 / 0.999999999999341`
+
+originでは\(DN_r^{(1)}(0)=0\)かつlinear lower-left blockが0なので、derivative fiberの\(H=0\)は
+fixed pointである。fiber contractionの一意性から\(D\psi_*(0)=0\)を得るため、physical tangentは
+Q011q lift of selected real spectral subspaceに一致する。selected patchと像はsmooth-cutoff identity coreへ
+留まり、original repaired exact mapでforward invariantである。
+
+全2598 eigendiscから
+
+\[
+\rho_S\in[0.9920950744174255,0.9921085054987441],
+\qquad
+\rho_{E,\min}\in[0.4900847455855686,0.4900855234175915]
+\]
+
+を再構成し、spectral quotientをexact power comparisonで\([89,90]\)に囲んだ。Q011kが直接認証した
+external nonresonanceはdegree 2だけで、degrees 3--90の88個はmissingのままである。
+
+- input／cutoff／graph／radius／spectral／result digest:
+  `79864489c522a7d50e7534091c283167de3b11d9af58365164b7084095a972eb` /
+  `5c194baab4c8be74cba91c398037839c6b313f80123416819cc6aedf7bf027d2` /
+  `6d7e09295d3b60d07d4abe9d658fea506752e20300e87e8d1c4158f5f0772bec` /
+  `ba1cf6a77e95a52cba33d360632bfae0967a4d8b947daf04761dbfbd7926fcb9` /
+  `d899cf7872d69b5adf75cddc9c0dafe42930ff53130099a8bdb5b7cb1b04559c` /
+  `ac1019fd526cd4f21caddfb27d4cd8e0c4f7b312a742b84dbc3b3605ee827231`
+- runner／artifact newline-normalized SHA-256:
+  `b6eff63f29a4274502923a31b98fd774b89d1f21512c5e181c124f493efc8f10` /
+  `7848a915f384a4b51c93fa8201bf357b01cedcec52590defacd15ba22bf99fe2`
+
+これは別構成のsmooth localized mapから得たoriginal-map \(C^1\) graph patchの証明であり、Q011sの
+Lipschitz fixed graphと集合として同じとは示していない。backward invariance、onto性、\(C^2\)以上、
+degrees 3--90のnonresonance、spectral-quotient SSM uniqueness、normal attraction、basinは未認証である。
+次はQ011uでhigher-smoothness localizationとmissing degreesのevidenceを判定する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -3214,6 +3290,7 @@ python -m research.q011p_zero_block_reality --output research/artifacts/q011p_ze
 python -m research.q011q_real_frame_setup --output research/artifacts/q011q_real_frame_setup.json
 python -m research.q011r_nonlinear_graph_transform --output research/artifacts/q011r_nonlinear_graph_transform.json
 python -m research.q011s_original_map_invariant_core --output research/artifacts/q011s_original_map_invariant_core.json
+python -m research.q011t_c1_tangent_graph --output research/artifacts/q011t_c1_tangent_graph.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -3308,6 +3385,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011q_real_frame_setup.json`](research/artifacts/q011q_real_frame_setup.json)
 - [`research/artifacts/q011r_nonlinear_graph_transform.json`](research/artifacts/q011r_nonlinear_graph_transform.json)
 - [`research/artifacts/q011s_original_map_invariant_core.json`](research/artifacts/q011s_original_map_invariant_core.json)
+- [`research/artifacts/q011t_c1_tangent_graph.json`](research/artifacts/q011t_c1_tangent_graph.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -3433,6 +3511,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q011q explicit real frame／external section、fixed-leaf real coordinate、same-norm linear domination
 - Q011r global bounded real graph space、localized nonlinear graph-transform self-map／strict contraction
 - Q011s original-map cutoff-core transfer、24-real-dimensional forward-invariant Lipschitz graph patch
+- Q011t scalar C1 localization、derivative-fiber contraction、selected tangency、spectral quotient `[89,90]`
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -3443,7 +3522,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapのLipschitz graph patchに対する\(C^1\) graph transform、origin tangency、
+- repaired exact mapの\(C^2\)以上のsmoothness、degrees 3--90 external nonresonance、
   spectral-quotient SSM uniqueness
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
@@ -3548,3 +3627,8 @@ selected operator upperを再構成し、同じ最大radiusでfixed graph patch�
 留まることを認証した。従ってoriginal repaired exact mapにはfixed conservation leaf上の24-real-dimensional
 forward-invariant Lipschitz graph patchが存在し、全forward iterateがcore内に留まる。backward invariance、
 \(C^1\) smoothness、origin tangency、spectral-quotient SSM uniqueness、normal attraction、basinは未認証である。
+Q011tではQ011r cutoffとは別のscalar \(C^1\) localizationを構成し、C0 graph contractionと
+derivative-fiber contractionを合成した。selected scale `1/256`、radius `1.171875e-18`でoriginal mapへ
+transferできる24-real-dimensional \(C^1\) graph patchとorigin tangencyを認証し、全2598 eigendiscから
+spectral quotientを`[89,90]`に囲んだ。ただしQ011s graphとの一致、\(C^2\)以上、degrees 3--90の
+external nonresonance、SSM uniqueness、normal attraction、basinは未認証である。

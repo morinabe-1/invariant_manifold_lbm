@@ -15421,6 +15421,32 @@ Q011s fixed graphとの一致、backward invariance、patchへのonto性、\(C^2
 spectral-quotient SSM uniqueness、normal attraction、basin、optimal radius、他grid／force／wall、D3Q27を
 構成・認証しない。
 
+### Q011t 実行結果
+
+5 direct artifact／25 digest、scalar \(C^1\) cutoff、\(C_b^1\) graph／derivative fiber、11 exact scale、
+original-map transfer、2598 modulus interval、strict serializationのvalidity `8 / 8`を通過した。
+
+- outcome: `accepted`
+- hypothesis gates: `6 / 6` passed
+- selected scale／radius: `1/256 / 1.171875e-18`
+- first failed larger radius: `2.34375e-18`
+- selected \(\delta_r/u_r/h_r\):
+  `0.0005173474850423809 / 0.0005259031911287972 / 0.9817178770237405`
+- selected \(\ell_r/\kappa_r/\chi_r\):
+  `0.9989561349826355 / 0.9827440318399493 / 0.9994817656326567`
+- original selected／external image ratio:
+  `0.9920960097390545 / 0.991060395420621`
+- spectral-radius／external-minimum enclosures:
+  `[0.9920950744174255, 0.9921085054987441] / [0.4900847455855686, 0.4900855234175915]`
+- rigorous spectral-quotient bracket: `[89,90]`
+- directly certified／missing external nonresonance degrees: `{2} / {3,...,90}`
+
+従ってoriginal repaired exact mapにはfixed conservation leaf上の24-real-dimensional forward-invariant
+\(C^1\) graph patchがあり、originでselected real spectral subspaceに接する。ただしこれはQ011s graphとの
+一致を示さず、\(C^2\)以上、degrees 3--90のexternal nonresonance、spectral-quotient SSM uniqueness、
+normal attraction、basinも示さない。停止規則どおり、次はQ011uでhigher-smoothness localizationと
+missing degrees 3--90のevidenceを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

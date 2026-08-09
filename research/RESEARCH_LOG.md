@@ -6004,6 +6004,101 @@ cutoff identity core内に留まる。
 normal attraction、basin、登録radiusより大きい最適radiusは未認証である。次はQ011tを事前登録し、
 \(C^1\) graph-transform space、origin derivative equation、tangency、spectral quotientだけを判定する。
 
+### Q011t 実行結果
+
+Q011k／Q011m／Q011q／Q011r／Q011sの5 artifact、runner、25 digestを直接照合し、validity `8 / 8`を
+通過した。Q011rのnonsmooth radial retractionからsmoothnessを推論せず、2598-slot real coordinate上に
+別のscalar \(C^1\) cutoffを構成した。exact auditでidentity ratio `2598/2^16 < 1`、support factor `4`、
+global derivative upper `129`、selected／external real-space preservationを再現した。これをQ011mの
+real-norm \(\mu_2\)へ合成し、global majorant
+
+\[
+n_r=8\mu_2r^2,
+\qquad
+\delta_r=516\mu_2r
+\]
+
+を得た。
+
+\(C_b^1(S_{\mathbb R},E_{\mathbb R})\)のclosed graph space、global \(C^1\) base inverse、C0 graph
+transform、derivative-fiber transformを別々に型付けし、11 scale \(r_j=2^{-j}\rho_*\)、
+\(j=6,\ldots,16\)をexact `Fraction`で全評価した。passing patternは
+`fail, fail, pass, pass, pass, pass, pass, pass, pass, pass, pass`で、最大passing candidateは
+
+\[
+r/\rho_*=1/256,
+\qquad
+r=1.171875\times10^{-18}
+\]
+
+だった。selected recordは
+
+- nonlinear amplitude／derivative:
+  `9.399481923008373e-24 / 0.0005173474850423809`
+- base conorm／inverse utilization／height:
+  `0.9832535876408784 / 0.0005259031911287972 / 0.9817178770237405`
+- \(C^1\) slope／C0 contraction／derivative-fiber contraction:
+  `0.9989561349826355 / 0.9827440318399493 / 0.9994817656326567`
+- original selected／external image ratio:
+  `0.9920960097390545 / 0.991060395420621`
+- support／output physical displacement:
+  `1.2080567910398319e-14 / 2.9962708048219603e-15`
+- output population／density floor:
+  `0.027775908313347298 / 0.999999999999341`
+
+となり、全capを通過した。直上のlarger candidate \(r=2.34375\times10^{-18}\)はlocalized derivative、
+\(C^1\) slope、derivative-fiber contraction、input identity-core conditionでfailした。
+
+originではlocalized nonlinear derivativeが0、linear lower-left blockが0なので、derivative fiberは
+\(H=0\)を固定する。uniform fiber contractionによる一意性から\(D\psi_*(0)=0\)を得て、physical tangentを
+Q011q lift of selected real spectral subspaceと同定した。selected graph patchと像はsmooth-cutoff identity
+coreとphysical buffer内に留まり、original repaired exact mapでforward invariantである。
+
+Q011kの全2598 eigencenterと17 blockのBauer--Fike radiusから
+
+\[
+\rho_S\in[0.9920950744174255,0.9921085054987441],
+\qquad
+\rho_{E,\min}\in[0.4900847455855686,0.4900855234175915]
+\]
+
+を再構成した。exact power comparisonは
+
+\[
+(\rho_S^+)^{91}/\rho_E^-=0.9922327356143813<1,
+\qquad
+(\rho_S^+)^{90}/\rho_E^-=1.0001252182749656\ge1,
+\]
+
+\[
+(\rho_S^-)^{89}/\rho_E^+=1.0068649945640036\ge1,
+\qquad
+(\rho_S^-)^{90}/\rho_E^+=0.9989058017102758<1
+\]
+
+を与え、rigorous spectral-quotient bracketを`[89,90]`とした。Q011kが直接認証済みなのはdegree 2の
+300 quadratic pairだけであり、degrees 3--90の88個はmissingとして残した。
+
+hypothesis `6 / 6`を通過し、
+`the original repaired exact map has a certified C1 forward-invariant graph patch tangent to the selected real spectral subspace`
+として`accepted`とした。
+
+- input／cutoff／graph／radius／spectral／result digest:
+  `79864489c522a7d50e7534091c283167de3b11d9af58365164b7084095a972eb` /
+  `5c194baab4c8be74cba91c398037839c6b313f80123416819cc6aedf7bf027d2` /
+  `6d7e09295d3b60d07d4abe9d658fea506752e20300e87e8d1c4158f5f0772bec` /
+  `ba1cf6a77e95a52cba33d360632bfae0967a4d8b947daf04761dbfbd7926fcb9` /
+  `d899cf7872d69b5adf75cddc9c0dafe42930ff53130099a8bdb5b7cb1b04559c` /
+  `ac1019fd526cd4f21caddfb27d4cd8e0c4f7b312a742b84dbc3b3605ee827231`
+- runner／artifact newline-normalized SHA-256:
+  `b6eff63f29a4274502923a31b98fd774b89d1f21512c5e181c124f493efc8f10` /
+  `7848a915f384a4b51c93fa8201bf357b01cedcec52590defacd15ba22bf99fe2`
+
+これはQ011s fixed graphとの集合としての一致、backward invariance、patchへのonto性、\(C^2\)以上の
+smoothness、degrees 3--90のexternal nonresonance、spectral-quotient SSM uniqueness、normal attraction、
+basin、optimal radiusを示さない。停止規則どおり、次はQ011uでhigher-smoothness localizationとmissing
+degree evidenceだけを事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6173,6 +6268,8 @@ normal attraction、basin、登録radiusより大きい最適radiusは未認証�
 [`artifacts/q011r_nonlinear_graph_transform.json`](artifacts/q011r_nonlinear_graph_transform.json)
 
 [`artifacts/q011s_original_map_invariant_core.json`](artifacts/q011s_original_map_invariant_core.json)
+
+[`artifacts/q011t_c1_tangent_graph.json`](artifacts/q011t_c1_tangent_graph.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
