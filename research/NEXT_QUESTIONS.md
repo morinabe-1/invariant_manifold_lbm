@@ -16175,6 +16175,183 @@ degrees 5--90となる。
 higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、
 次はQ011xでdegree 5に残る2 modulus-overlap aggregateへ同じ監査を拡張する。
 
+## Q011x: degree-5 phase-sensitive output-sector product disks — 事前登録
+
+### 問い
+
+Q011uでdegree 5に残った2 modulus-overlap aggregateを可換coordinate monomialへ展開し、indexed
+individual modulus、Fourier output sector、exact complex product discを順に適用して全external eigendiscから
+strictに分離できるか。Q011uがmodulus aggregateだけで分離した残り54件と合成し、degree-5 external
+nonresonance全体を認証できるか。
+
+本gateはdegrees 6--90へ外挿せず、all-order nonresonance、higher graph smoothness、SSM uniquenessを主張しない。
+
+### 封印入力
+
+Q011k／Q011u／Q011v／Q011wの4 artifactを直接照合する。
+
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011u artifact／runner newline-normalized SHA-256:
+  `4e0a74cffaeb6781b85621362d4463ac8d9ab98ee14bcf3b5764642b5a15d5e4` /
+  `fa3c7c01355c0b3c19b58618fe97edc5863dc2d0fa02c4f810ddbc57053a419e`
+- Q011u input／cutoff／spectrum／log／enumeration／tail／result digest:
+  `ba768da7be5663c607a24fa4a399bae06a8d8b4128a45ab9bb2b57f8a12461f4` /
+  `55a374a5d91d2c88e5e34be2173f9861ee14915daaee55efd8848f0cd7ebaf94` /
+  `a514c3a13142d379886c56b08109f28b69aee4cbcef2d4c5c9bed8d29182e89d` /
+  `10f9aa954446e1e7d8095488ef82abc48fcc99fde3ddabd93a1a188b17ea51b5` /
+  `5c94deb8acd69b1346e6d46af829804b401027ecea48caf7e5ce2d9b22d6631c` /
+  `307ca2762bb5aecb626983acb8d38eb5728e2a8eb9e64769cc0b632b40da66c6` /
+  `b005bb622e7f3abad98a1ef6875af289fa2dccdc16911faf11e7ee04b822722c`
+- Q011v artifact／runner newline-normalized SHA-256:
+  `639afa89ccecadb428c4cb1c16a60ad7f788cc4786cdbb0ac2a5e681744bc663` /
+  `f9e7b0ffb353bc9f462616b42943860ecc4431b15176be7ca405c894d4d4a8cd`
+- Q011v input／inventory／sector／product／result digest:
+  `10153049ce3cc7f50aa5a57ca6f4e8f92556bbefb3980e1d4c7dd61164aab470` /
+  `591e6261238ac2253b0e0f11aaa13ce8a0c78948780633ea890a824ea9c5ccba` /
+  `8988ade3f1fc974423040a2fe168904eb6610897f281e681387da7e3e2d3e919` /
+  `a93737bcf662b154fcbea83905d733628e1ae397f4f70265d811e7ce657665db` /
+  `1a2a83c6ae0d6f512a48f5f6d20e869abd0b69126504adbf5ba50054e1b749fc`
+- Q011w artifact／runner newline-normalized SHA-256:
+  `6e0b0a166b6a5f4f915cf6ba4a46c699a26c63faf92dc92388502a2244fe0b9c` /
+  `288a12d72f90f6df1f79a8e5f02d527d317f9a4a9828ebbcdf0cc58008b56247`
+- Q011w input／inventory／sector／product／result digest:
+  `ed3eea9c2a0f5c07de59dbddb0579b2dbb36e15409c3372729efc1e0d65c7a8d` /
+  `51c97d78b13ba2d9e787f833fe0f3c805848723710096da566f569c2fd301416` /
+  `369ef47a86630f84d96033539d3a7a7e94b34a45a95a15cef6bde71174eaa455` /
+  `182672f831dd715402b4f52ab9aa2628ff9eba09a3c4a8de07d32a10bf736476` /
+  `4681053a49eb583faa30d94d44e39d0ebfb1d00091ad7447ae086f21fd5d94d3`
+
+Q011l／Q011o helper sourceも直接照合する。
+
+- Q011l source SHA-256:
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7`
+- Q011o source SHA-256:
+  `60d9c445dace16d114e46263f2b47fe2db993b894337cdd462f204da09543f1f`
+
+direct digest countは`22`とする。
+
+### degree-5 modulus inventoryと可換monomial
+
+Q011u degree-5 recordを全tupleについて再現する。
+
+- modulus-type aggregate count: \(\binom83=56\)
+- expanded-product control count: \(\binom{10}5=252\)
+- modulus-separated／overlap aggregate: `54 / 2`
+- overlap 0: `[0,3,1,1]`、external group `178`
+- overlap 1: `[0,4,1,0]`、external group `177`
+
+selected group size `8 / 4 / 4 / 8`にcombination with replacementを適用する。monomial countは
+
+\[
+\binom{4+3-1}{3}\binom41\binom81=20\times4\times8=640
+\]
+
+および
+
+\[
+\binom{4+4-1}{4}\binom41=35\times4=140
+\]
+
+で、合計`780`とする。ordered tupleは使わず、座標高べきを含むdegree-5 multi-indexを各1回だけ列挙する。
+
+### Fourier output-sector filter
+
+\[
+b_{\mathrm{out}}=(b_1+b_2+b_3+b_4+b_5)\bmod17
+\]
+
+を使う。aggregate別monomial sector histogramを
+
+- `[0,3,1,1]`:
+  `0:96 / 1:92 / 2:80 / 3:60 / 4:32 / 5:8 / 12:8 / 13:32 / 14:60 / 15:80 / 16:92`
+- `[0,4,1,0]`:
+  `0:18 / 1:17 / 2:16 / 3:13 / 4:10 / 5:5 / 12:5 / 13:10 / 14:13 / 15:16 / 16:17`
+
+とする。external group 178は4 target、histogram `2:2 / 15:2`で、compatible comparisonは`320`。
+external group 177は8 target、histogram `0:4 / 3:2 / 14:2`で、compatible comparisonは`124`。
+合計`444`だけをexactに比較する。
+
+### indexed modulusとphase-sensitive product disk
+
+各degree-5 monomialについて
+
+\[
+C=\prod_{i=1}^{5}c_i,
+\qquad
+R=\prod_{i=1}^{5}(u_i+r_i)-\prod_{i=1}^{5}u_i
+\]
+
+をexactに構成し、
+
+\[
+\Delta^- = |C-c_e|^- - R-r_e
+\]
+
+を評価する。comparisonをindividual indexed modulus separation、complex phase separation、unresolved
+product-disc overlapへ分割する。category 3が0、category 2が1件以上であることを要求する。merged modulus
+aggregateがoverlapしていても、その全indexed monomialがindividual modulusで分離すれば正当な解消と数える。
+
+exact product 780件／comparison 444件はQ011wと同じ8-byte length-framed canonical JSONの逐次SHA-256へ
+封印し、artifactにはcompact recordとexact minimum witnessを保存する。
+
+### design-only pilotの扱い
+
+事前登録前のexact-rational pilotでは、
+
+- `[0,3,1,1]`／group 178: `320 modulus / 0 phase / 0 unresolved`
+- `[0,4,1,0]`／group 177: `52 modulus / 72 phase / 0 unresolved`
+- total: `372 modulus / 72 phase / 0 unresolved`
+
+だった。global minimum complex separation lowerは約`0.1992163`、phase-only minimumは約`0.5682244`だった。
+pilotは証明digestやexact witnessへ使わない。registered minimum thresholdを`>=0.1`とする。
+
+### validity gate
+
+1. Q011k／Q011u／Q011v／Q011w artifact、runner、22 digest、outcome、claim boundaryとQ011l／Q011o sourceを再現する。
+2. degree-5の56 aggregate、54 separation、2 overlap tuple／external groupを全log intervalから再現する。
+3. group membership、640／140可換monomial、external target `4 / 8`を再構成する。
+4. quintic wave-sum law、sector histogram、`320 / 124 / 444` comparisonを再現する。
+5. 全780 productと444 comparisonのcenter、radius、modulus、complex distance lowerをexactに再現する。
+6. partition、minimum witness、first unresolved、framed exact-record digestを再現する。
+7. compact strict JSON、section／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とする。
+
+### hypothesis gateと停止規則
+
+1. quintic Fourier sum lawがexactに成り立つ。
+2. 56 aggregateと2 overlap内の780 monomial／444 comparisonがdegree 5を完全被覆する。
+3. unresolved product-disc overlapが0である。
+4. global minimum complex separation lowerが`>=0.1`である。
+5. complex phase separationが1件以上ある。
+
+全5項目が通る場合だけ
+`degree-5 external nonresonance is certified by indexed modulus refinement and Fourier-sector phase-sensitive product disks for both overlap aggregates`
+として`accepted`とする。certified degreesを2／3／4／5、tail-certifiedを91以降、missing rangeを
+degrees 6--90へ更新する。
+
+unresolvedが残れば
+`at least one degree-5 modulus aggregate retains a phase-sensitive product-disc overlap`
+として`rejected`とする。actual resonanceの証明とは解釈しない。
+
+`accepted`ならQ011yでdegree 6の3 modulus-overlap aggregateへ進む。`rejected`なら最初のunresolvedだけを
+tightened enclosureまたはfull homological operatorへ送る。`inconclusive`なら最初のvalidity failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 5、Q011uの2 overlap aggregate、
+Q011k eigendisc、x-Fourier sector、registered product-disc formulaに限る。degrees 6--90、all-order
+nonresonance、Q011t graphとの一致、\(C^2\)以上のgraph smoothness、SSM existence／uniqueness、explicit radius、
+normal attraction、basin、他grid／force／wall、D3Q27を構成・認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
