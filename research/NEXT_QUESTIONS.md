@@ -18775,6 +18775,62 @@ modulus-class fiber、outward-rounded dyadic product enclosureに限る。legacy
 degree-15のこの固定envelopeに限る。degrees 16--90、all-order nonresonance、higher graph smoothness、
 SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ai 実行結果
+
+Q011ahまでの13 artifact、runner、68 direct digestとsourceを再照合し、validity `9 / 9`を通過した。
+degree-15 inventory `816 / 15504 / 713 / 103`、直接必要な104 identifier、Q011ahの112 recordをexactに
+保存して32 recordだけを加えた144-record monotone envelopeを再現した。
+
+103 overlapの2813485588 commutative monomialを12188436 exact modulus signatureへ圧縮した。
+Fourier-compatibleな10399739 signatureは529597352 original monomialを表す。383 exact `int64`
+coefficient matrix、103 outward bound matrix、816 classification matrixにより、61611952 distinct comparison、
+元の1103228296 weighted comparisonを重複・欠落なく被覆した。unresolvedは双方`0`であり、weighted
+relationはproduct below target `669413248`、target below product `433815048`、distinct relationは
+`37189092 / 24422860`だった。Q011ah degree-14 certificateも同じ実装で完全再現した。
+
+outward global lower boundは`4.680108781629499e-6`、16候補のexact refinementによるglobal minimumは
+`4.68010878881232e-6`で、2件がtieした。canonical witnessはaggregate `[3,3,9,0]`、source
+
+`block=16;center=142 × (block=1;center=142)^2 × (block=1;center=151)^3 × (block=1;center=152)^9`
+
+対target `block=13;center=1`、wave multiplicity `3`、relation `product_below_target`だった。
+
+- primary hypothesis gate: `6 / 6` passed
+- primary outcome: `accepted`
+- legacy `5e-6` margin outcome: `rejected`
+- certified degrees: `2--15`および`91+`
+- missing range: degrees `16--90`
+- inventory／uniform-record digest:
+  `b9689962ea60817e439df5010316829ac11e1aa35be2a2c772cc8c3bc3593683` /
+  `8b831db61f0fe21988bdcdc5efe0c19d0b176aaa3a4acf8c214bae2050359ae0`
+- count-vector／aggregate-record digest:
+  `827f22787b76507f734f578a34cefb6d697aa8ec4b534a59e24529435473c4a5` /
+  `7e9ac281c20ba8f2f98a48f95219d7b1a80e9a7cfaa66d1deea1bb33b23863cf`
+- factorization／wave-histogram digest:
+  `8a5389a579b55e86c7587fb7b7d8bd47d12eb815181d3a5c49324615ef47e559` /
+  `bf96f1ac176f2f80416a1557a00c439e80cdf7ba5f55d633231e36571b5ab12b`
+- coefficient／bound／classification matrix digest:
+  `9800aa1785efe3f08787070bee633a2790cc0bf46ae10a6bf6b995254c41bac8` /
+  `a72ba6becfe0c66e54099e9fd292a2c6eb47326f8ac7d09e92e4e810475d0ab3` /
+  `13f31639cb94b045eb21d83f969d4d24799d9f3f4e5371fa5efd098f467bf157`
+- candidate-record／exact-minimum digest:
+  `94c950b8e748257792fe14563ea29b4c5e42eece2262374fb67b15076febd5dd` /
+  `3b4297b1c4892d5f0699ad8382a514d5121410b6ba41905084849c6f03118dee`
+- input／inventory／compression／product／result section digest:
+  `54f599a25c3bde94887c47f93f926e79798151877548f0ea98c29d73d0c67c0e` /
+  `14b04d7d05d719e112661f69009224169e9722626991f11ebd43aa456c2043a5` /
+  `7d74819f4cfcd5a00ce04e3e55c086dd7a88035ca2ba7b09a387988514b89225` /
+  `2b4fd586a9f478df3e9f4f007badceca293b0658388e9cde2a2d60e2a8d3adcf` /
+  `7981bff291a3aa5b5c518b189047c80fb73711bb2c6dd23aad55668ef96eda91`
+- runner／artifact newline-normalized SHA-256:
+  `48fb083497a50b6ba6e3e3de1557a231bb53901acaec25b17806c0c96404187b` /
+  `3df99d9517f25730ca00d4fc1c500a4b0fe1dd03c7812477463f9d6d19ced3e3`
+
+従って主結果`degree-15 external nonresonance is certified by strict outward-dyadic separation`を
+`accepted`とした。一方、旧来の`5e-6`余裕基準は初めて`rejected`となり、小さい代替thresholdは導入して
+いない。これは固定17² repaired exact map、固定保存量葉、degree 15だけのcertificateである。次は
+Q011ajでdegree 16を監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

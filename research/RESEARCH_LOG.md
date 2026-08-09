@@ -7076,6 +7076,74 @@ hypothesis `6 / 6`を通過し、
 all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは
 未認証である。停止規則どおり、次はQ011aiでdegree 15へ進む。
 
+### Q011ai 実行結果
+
+Q011ahまでの13 artifact、runner、68 direct digest、outcome、claim boundaryとQ011l／Q011o sourceを
+照合し、validity `9 / 9`を通過した。degree-15 inventoryは
+
+`816 aggregate / 15504 expanded control / 713 old-separated / 103 overlap`
+
+だった。selected 24／external 80の104 directly relevant identifierを再構成し、Q011ahの112 recordを
+exactに保存してexternal group 152／153／154から32 recordだけを加えた144-record monotone
+\(\rho=5\times10^{-8}\) envelopeを得た。unique center-modulus evaluationは83件だった。
+
+103 overlapの全2813485588 commutative monomialを12188436 exact modulus signatureへ分割した。
+Fourier-compatible signatureは10399739、元monomialへ戻したcompatible multiplicityは529597352である。
+6本の103要素count vectorをcanonical digestで封印した。pair-factorized exact cyclic convolutionは42095
+group-signature recordと383 `int64` coefficient matrixを使った。最大wave coefficientは839、最大live
+aggregateは532224 signature、crude integer dot-product boundは6528だった。
+
+103 outward-dyadic product-bound matrixと816 classification matrixが表す61611952 distinct comparisonは、
+元の1103228296 weighted comparisonを被覆した。unresolvedはweighted／distinctとも`0`だった。
+relation countはweightedでproduct below target `669413248`、target below product `433815048`、distinctで
+product below target `37189092`、target below product `24422860`である。Q011ahのdegree-14 count、
+relation、minimum、witnessも同じ実装で完全再現した。
+
+全比較のoutward global lower boundは`4.680108781629499e-6`だった。最小近傍16 comparisonのexact
+Fraction refinementはexact global minimum `4.68010878881232e-6`と2件のtieを得た。canonical witnessは
+aggregate `[3,3,9,0]`、class count `[[3,0,0,0],[0,3],[0,0,9],[0,0,0,0,0,0]]`、source
+
+`block=16;center=142 × (block=1;center=142)^2 × (block=1;center=151)^3 × (block=1;center=152)^9`
+
+対target `block=13;center=1`だった。wave multiplicityは`3`、relationは`product_below_target`である。
+
+ここで主nonresonanceとlegacy marginを分離した。primary hypothesis `6 / 6`を通過したため、
+`degree-15 external nonresonance is certified by strict outward-dyadic separation`
+を`accepted`とした。一方、outward lowerとexact minimumはいずれも`5e-6`未満なので、
+`the legacy 5e-6 certified-margin benchmark is rejected at degree 15`
+を`rejected`とした。小さい代替margin thresholdは導入していない。certified degreesは2--15、
+tail-certifiedは91以降、missing rangeはdegrees 16--90である。
+
+- inventory／144-ID uniform-record digest:
+  `b9689962ea60817e439df5010316829ac11e1aa35be2a2c772cc8c3bc3593683` /
+  `8b831db61f0fe21988bdcdc5efe0c19d0b176aaa3a4acf8c214bae2050359ae0`
+- count-vector／aggregate-record digest:
+  `827f22787b76507f734f578a34cefb6d697aa8ec4b534a59e24529435473c4a5` /
+  `7e9ac281c20ba8f2f98a48f95219d7b1a80e9a7cfaa66d1deea1bb33b23863cf`
+- factorization／wave-histogram digest:
+  `8a5389a579b55e86c7587fb7b7d8bd47d12eb815181d3a5c49324615ef47e559` /
+  `bf96f1ac176f2f80416a1557a00c439e80cdf7ba5f55d633231e36571b5ab12b`
+- coefficient／bound／classification matrix digest:
+  `9800aa1785efe3f08787070bee633a2790cc0bf46ae10a6bf6b995254c41bac8` /
+  `a72ba6becfe0c66e54099e9fd292a2c6eb47326f8ac7d09e92e4e810475d0ab3` /
+  `13f31639cb94b045eb21d83f969d4d24799d9f3f4e5371fa5efd098f467bf157`
+- candidate-record／exact-minimum digest:
+  `94c950b8e748257792fe14563ea29b4c5e42eece2262374fb67b15076febd5dd` /
+  `3b4297b1c4892d5f0699ad8382a514d5121410b6ba41905084849c6f03118dee`
+- input／inventory-section／compression／product／result digest:
+  `54f599a25c3bde94887c47f93f926e79798151877548f0ea98c29d73d0c67c0e` /
+  `14b04d7d05d719e112661f69009224169e9722626991f11ebd43aa456c2043a5` /
+  `7d74819f4cfcd5a00ce04e3e55c086dd7a88035ca2ba7b09a387988514b89225` /
+  `2b4fd586a9f478df3e9f4f007badceca293b0658388e9cde2a2d60e2a8d3adcf` /
+  `7981bff291a3aa5b5c518b189047c80fb73711bb2c6dd23aad55668ef96eda91`
+- runner／artifact newline-normalized SHA-256:
+  `48fb083497a50b6ba6e3e3de1557a231bb53901acaec25b17806c0c96404187b` /
+  `3df99d9517f25730ca00d4fc1c500a4b0fe1dd03c7812477463f9d6d19ced3e3`
+
+本certificateは固定17² repaired exact map、fixed conservation leaf、degree 15だけを扱う。legacy marginの
+棄却もこの固定envelopeに限る。degrees 16--90、all-order nonresonance、higher graph smoothness、SSM
+existence／uniqueness、normal attraction、basinは未認証である。次はQ011ajでdegree 16へ進む。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7275,6 +7343,8 @@ all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
 [`artifacts/q011ag_degree13_batched_dyadic.json`](artifacts/q011ag_degree13_batched_dyadic.json)
 
 [`artifacts/q011ah_degree14_batched_dyadic.json`](artifacts/q011ah_degree14_batched_dyadic.json)
+
+[`artifacts/q011ai_degree15_dual_outcome.json`](artifacts/q011ai_degree15_dual_outcome.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
