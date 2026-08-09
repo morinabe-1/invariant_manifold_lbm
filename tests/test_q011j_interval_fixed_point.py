@@ -238,6 +238,9 @@ def test_q011j_artifact_records_the_interval_fixed_point_proof() -> None:
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     cycle = artifact["cycle"]
 
+    assert _file_sha256(artifact_path) == (
+        "74a2e084137699739c14d980b05676e14e6802b4018b3893d3d05270850c2c5a"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
     assert artifact["runner_source"] == {

@@ -1,0 +1,2112 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-09T10:48:49.000727+00:00",
+  "source": {
+    "package_version": "0.1.0",
+    "package_source_sha256": "114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2"
+  },
+  "runner_source": {
+    "filename": "q011j_interval_fixed_point.py",
+    "sha256": "23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5",
+    "sha256_newline_normalization": "UTF-8 text with universal newlines"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.4",
+    "scipy": "1.16.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "interval_runtime": {
+    "gmpy2_version": "2.3.1",
+    "mpfr_version": "MPFR 4.2.2",
+    "gmp_version": "GMP 6.3.0",
+    "primary_precision_bits": 256,
+    "replay_precision_bits": 384
+  },
+  "mathematical_scope": {
+    "diagnostic": "outward interval Krawczyk existence and local-uniqueness proof",
+    "grid": [
+      17,
+      17
+    ],
+    "x_independent_stripe": true,
+    "fixed_conservation_leaf": true,
+    "exact_rational_repaired_map": true,
+    "claim": "fixed-point existence and local uniqueness in the registered affine box only"
+  },
+  "cycle": {
+    "question": "Does the exact-rational repaired periodic stripe map admit a fixed point that is locally unique in one of the preregistered affine fixed-leaf boxes?",
+    "registered_parameters": {
+      "size": 17,
+      "stripe_dimension": 153,
+      "coordinate_dimension": 150,
+      "omega": {
+        "numerator_base16": "0x3",
+        "denominator_base16": "0x2",
+        "float": 1.5
+      },
+      "eta": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x64",
+        "float": 0.01
+      },
+      "target_stripe_moments": [
+        {
+          "numerator_base16": "0x11",
+          "denominator_base16": "0x1",
+          "float": 17.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "pivot_indices": [
+        0,
+        1,
+        2
+      ],
+      "free_index_order": "ascending site-major D2Q9 order excluding pivots",
+      "radius_candidates": [
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0xe8d4a51000",
+          "float": 1e-12
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x174876e800",
+          "float": 1e-11
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x2540be400",
+          "float": 1e-10
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x3b9aca00",
+          "float": 1e-09
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x5f5e100",
+          "float": 1e-08
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x989680",
+          "float": 1e-07
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0xf4240",
+          "float": 1e-06
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x186a0",
+          "float": 1e-05
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x2710",
+          "float": 0.0001
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x3e8",
+          "float": 0.001
+        }
+      ],
+      "primary_precision_bits": 256,
+      "replay_precision_bits": 384,
+      "krawczyk_cap": {
+        "numerator_base16": "0x9",
+        "denominator_base16": "0xa",
+        "float": 0.9
+      },
+      "maximum_point_inverse_defect": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x5f5e100",
+        "float": 1e-08
+      },
+      "maximum_center_pivot_correction": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x5af3107a4000",
+        "float": 1e-14
+      },
+      "maximum_map_relative_discrepancy": 1e-12,
+      "maximum_jacobian_relative_discrepancy": 1e-12
+    },
+    "sealed_q011i_artifact_audit": {
+      "artifact": {
+        "filename": "q011i_exact_zero_mean_repair.json",
+        "sha256": "1c8b11a3ae47895a79639a5cfe901ec936fbdde8d10273c56c1578b9a88780ea",
+        "runner_filename": "q011i_exact_zero_mean_repair.py",
+        "runner_sha256": "2cec0472422ba02bb925e8c90336000058def7c36303479a4037405f873b9b88",
+        "input_digest_sha256": "81a1dc3f9fe934d8e9391dbfe6b80701d68c04b7db954da2f62e92b581dd5b51",
+        "repair_digest_sha256": "910a82fa1485ce8ad6b488c5bb71ad0c8bcb12b98b6202ebc3805caa8f4a3239",
+        "fixed_point_digest_sha256": "3adfbcfc7d5e9c3396bbfb60b8d10dce6ff080b90097b82f40b4c057b8518f1e",
+        "spectrum_digest_sha256": "5e63b9cc22a662238391dc83b8de1a81eb259af25b3ad2335e481bb0cf83466d",
+        "result_digest_sha256": "ac94658b95d2ae1f190fab57af3bd80dbf50a4addd37f6bb7bee27d6aa1d2398",
+        "study_validity": "passed",
+        "hypothesis_outcome": "accepted",
+        "scientific_classification": "the exact-dyadic zero-mean repair preserves the numerical forced fixed-point and linear-spectrum baseline"
+      },
+      "checks": {
+        "artifact_sha256_matches": true,
+        "runner_sha256_matches": true,
+        "package_source_matches": true,
+        "five_digests_match": true,
+        "valid_accepted_outcome_reproduces": true,
+        "registered_hashes_match": true,
+        "claim_boundary_and_nontransfer_reproduce": true,
+        "artifact_is_strict_finite_json": true
+      },
+      "passed": true
+    },
+    "repaired_source_audit": {
+      "waveform_sha256": "025d6122db8e0d3512224ce4a2af82d57b5728ce0c7450425436218dd561bcbf",
+      "source_sha256": "24bb558464cce4ac154b3f2574bd1fe816d11d58c9365e8312f12b0a389df490",
+      "waveform_exact_sum": {
+        "numerator_base16": "0x0",
+        "denominator_base16": "0x1",
+        "float": 0.0
+      },
+      "source_global_exact_moment_ledger": [
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "checks": {
+        "waveform_repair_reproduces": true,
+        "source_repair_reproduces": true,
+        "global_exact_ledger_is_zero": true
+      },
+      "passed": true
+    },
+    "exact_affine_coordinate_audit": {
+      "pivot_indices": [
+        0,
+        1,
+        2
+      ],
+      "pivot_velocities": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "free_index_count": 150,
+      "free_index_sha256": "b56405afb053a191ba2d92e5b3680f4f683fb356c8080c88f515976fcae79d58",
+      "pivot_moment_matrix": [
+        [
+          {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x1",
+            "float": 1.0
+          },
+          {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x1",
+            "float": 1.0
+          },
+          {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x1",
+            "float": 1.0
+          }
+        ],
+        [
+          {
+            "numerator_base16": "0x0",
+            "denominator_base16": "0x1",
+            "float": 0.0
+          },
+          {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x1",
+            "float": 1.0
+          },
+          {
+            "numerator_base16": "0x0",
+            "denominator_base16": "0x1",
+            "float": 0.0
+          }
+        ],
+        [
+          {
+            "numerator_base16": "0x0",
+            "denominator_base16": "0x1",
+            "float": 0.0
+          },
+          {
+            "numerator_base16": "0x0",
+            "denominator_base16": "0x1",
+            "float": 0.0
+          },
+          {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x1",
+            "float": 1.0
+          }
+        ]
+      ],
+      "pivot_moment_determinant": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x1",
+        "float": 1.0
+      },
+      "lift_matrix_shape": [
+        153,
+        150
+      ],
+      "lift_matrix_rank": 150,
+      "lift_infinity_operator_norm": 186,
+      "lift_one_operator_norm": 6,
+      "lift_matrix_sha256": "29fa38981648d04b9bb3e58106303ce4f741400761744080c8258e04f328baeb",
+      "sealed_state_sha256": "612ef4aca91a5c0100286988e0e7979342a9046c3c78fe60ee59ca4e232a7613",
+      "coordinate_exact_sha256": "508f175fc7d1d62d253b5e34877a25fded6f4d207ef26f281a01d10eb5571ed8",
+      "lifted_center_exact_sha256": "c85cddc2072cb2e86d1a73024da97828d4a7f21f10b631c86a5d9ee0297c72dd",
+      "pivot_corrections": [
+        {
+          "numerator_base16": "0x9f",
+          "denominator_base16": "0x200000000000000",
+          "float": 1.1032841307212493e-15
+        },
+        {
+          "numerator_base16": "-0x5",
+          "denominator_base16": "0x200000000000000",
+          "float": -3.469446951953614e-17
+        },
+        {
+          "numerator_base16": "-0x1",
+          "denominator_base16": "0x100000000000000",
+          "float": -1.3877787807814457e-17
+        }
+      ],
+      "maximum_pivot_correction": {
+        "numerator_base16": "0x9f",
+        "denominator_base16": "0x200000000000000",
+        "float": 1.1032841307212493e-15
+      },
+      "lifted_center_moments": [
+        {
+          "numerator_base16": "0x11",
+          "denominator_base16": "0x1",
+          "float": 17.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "checks": {
+        "sealed_state_hash_matches": true,
+        "dimensions_are_registered": true,
+        "pivot_matrix_determinant_is_one": true,
+        "lift_rank_is_registered": true,
+        "lift_infinity_norm_is_registered": true,
+        "extraction_roundtrip_is_exact": true,
+        "lifted_center_moments_are_exact": true,
+        "free_entries_match_sealed_state": true,
+        "only_pivots_change": true,
+        "pivot_correction_within_registered_bound": true
+      },
+      "passed": true
+    },
+    "exact_map_and_jacobian_oracle_audit": {
+      "exact_output_sha256": "c8e2c66ee6923defbf920840a5673da03e9a023cdb8b35b62fca8362376667d9",
+      "exact_full_residual_sha256": "7fb248e3002a713e48c33e472ac8939097ec2a97861a71bb71ec4655e6402036",
+      "exact_reduced_residual_sha256": "e715de2f18545e856cd42949c2b5387eae9a7a4cfc57a7979163f4e3601dfc2d",
+      "exact_reduced_jacobian_sha256": "236083b8ad6f5f8426deb3371df3043bd9a8ee50071a90f466659173fe1dc504",
+      "exact_sparse_factor_sha256": "f3ba6477c726f89592c45a5797ea3bf62c832071e0b6da92784286f64ee566cc",
+      "exact_pivot_factor_sha256": "5822ef0d8dd0840bbdd27f3e562eebc1c5ab17faa0a7a52782f02c5e91dc594e",
+      "maximum_exact_reduced_residual_absolute_value": {
+        "numerator_base16": "0x5504f32dc29ed76cb5c1e91480dfbf28d1f8d97e66c1a6a0ab3",
+        "denominator_base16": "0x55b6db6db6db7c87b6db6db6da1bd66db6db6dbca1b500000000000000000000",
+        "float": 2.2024432251775355e-16
+      },
+      "binary64_map_relative_l2_discrepancy": 1.994466096750315e-16,
+      "analytic_jacobian_relative_frobenius_discrepancy": 1.4468366996163912e-16,
+      "analytic_jacobian_maximum_absolute_discrepancy": 3.3306690738754696e-16,
+      "minimum_point_density": {
+        "numerator_base16": "0xfffffffffffff5",
+        "denominator_base16": "0x100000000000000",
+        "float": 0.9999999999999999
+      },
+      "input_moments": [
+        {
+          "numerator_base16": "0x11",
+          "denominator_base16": "0x1",
+          "float": 17.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "output_moments": [
+        {
+          "numerator_base16": "0x11",
+          "denominator_base16": "0x1",
+          "float": 17.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "residual_moments": [
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "pivot_residual_at_center": [
+        {
+          "numerator_base16": "-0x54c4cce66a7405e6be82e1b5ad75bcb178f2602fed3a36d",
+          "denominator_base16": "0x156db6db6db6df21edb6db6db686f59b6db6db6f286d4000000000000000",
+          "float": -8.783807173288682e-16
+        },
+        {
+          "numerator_base16": "0x4aeed2b50bc367f78737549da599cac62419cbc6dd5f12ff54d",
+          "denominator_base16": "0x55b6db6db6db7c87b6db6db6da1bd66db6db6dbca1b500000000000000000000",
+          "float": 1.941152122220785e-16
+        },
+        {
+          "numerator_base16": "0xc9d1705c52866ff55e8610cb0cd4289275d2474128d95",
+          "denominator_base16": "0x4e0c7ce0c7ce1af831f3831f3735092bb512bb54e014000000000000000",
+          "float": 3.588510977183805e-17
+        }
+      ],
+      "quadrature_audit": {
+        "zeroth_moment": {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x1",
+          "float": 1.0
+        },
+        "first_moments": [
+          {
+            "numerator_base16": "0x0",
+            "denominator_base16": "0x1",
+            "float": 0.0
+          },
+          {
+            "numerator_base16": "0x0",
+            "denominator_base16": "0x1",
+            "float": 0.0
+          }
+        ],
+        "second_moments": [
+          [
+            {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x3",
+              "float": 0.3333333333333333
+            },
+            {
+              "numerator_base16": "0x0",
+              "denominator_base16": "0x1",
+              "float": 0.0
+            }
+          ],
+          [
+            {
+              "numerator_base16": "0x0",
+              "denominator_base16": "0x1",
+              "float": 0.0
+            },
+            {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x3",
+              "float": 0.3333333333333333
+            }
+          ]
+        ],
+        "third_moments": [
+          [
+            [
+              {
+                "numerator_base16": "0x0",
+                "denominator_base16": "0x1",
+                "float": 0.0
+              },
+              {
+                "numerator_base16": "0x0",
+                "denominator_base16": "0x1",
+                "float": 0.0
+              }
+            ],
+            [
+              {
+                "numerator_base16": "0x0",
+                "denominator_base16": "0x1",
+                "float": 0.0
+              },
+              {
+                "numerator_base16": "0x0",
+                "denominator_base16": "0x1",
+                "float": 0.0
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "numerator_base16": "0x0",
+                "denominator_base16": "0x1",
+                "float": 0.0
+              },
+              {
+                "numerator_base16": "0x0",
+                "denominator_base16": "0x1",
+                "float": 0.0
+              }
+            ],
+            [
+              {
+                "numerator_base16": "0x0",
+                "denominator_base16": "0x1",
+                "float": 0.0
+              },
+              {
+                "numerator_base16": "0x0",
+                "denominator_base16": "0x1",
+                "float": 0.0
+              }
+            ]
+          ]
+        ],
+        "filter_center": {
+          "numerator_base16": "0xc7",
+          "denominator_base16": "0xc8",
+          "float": 0.995
+        },
+        "filter_neighbour": {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x190",
+          "float": 0.0025
+        },
+        "checks": {
+          "zeroth_moment_is_one": true,
+          "first_moments_are_zero": true,
+          "second_moments_are_isotropic": true,
+          "third_moments_are_zero": true,
+          "filter_weights_sum_to_one": true
+        },
+        "passed": true
+      },
+      "checks": {
+        "quadrature_and_filter_identities_are_exact": true,
+        "source_global_moments_are_exact_zero": true,
+        "center_map_preserves_exact_moments": true,
+        "reduced_zero_implies_full_zero_structurally": true,
+        "x_independent_filter_reduction_is_exact": true,
+        "binary64_map_comparison_within_tolerance": true,
+        "analytic_jacobian_comparison_within_tolerance": true,
+        "point_density_is_strictly_positive": true,
+        "all_exact_objects_have_registered_dimensions": true
+      },
+      "passed": true
+    },
+    "interval_krawczyk_proof_audit": {
+      "radius_candidates": [
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0xe8d4a51000",
+          "float": 1e-12
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x174876e800",
+          "float": 1e-11
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x2540be400",
+          "float": 1e-10
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x3b9aca00",
+          "float": 1e-09
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x5f5e100",
+          "float": 1e-08
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x989680",
+          "float": 1e-07
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0xf4240",
+          "float": 1e-06
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x186a0",
+          "float": 1e-05
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x2710",
+          "float": 0.0001
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x3e8",
+          "float": 0.001
+        }
+      ],
+      "radius_interval_records": [
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0xe8d4a51000",
+            "float": 1e-12
+          },
+          "minimum_population_lower": {
+            "numerator_base16": "0xcef2573b0b3edbb7bf21",
+            "denominator_base16": "0x1d1a94a200000000000000",
+            "float": 0.027775908312351424
+          },
+          "minimum_density_lower": {
+            "numerator_base16": "0xba43b73e40002cedd573b",
+            "denominator_base16": "0xba43b7400000000000000",
+            "float": 0.9999999994400008
+          },
+          "maximum_ambient_coordinate_radius": {
+            "numerator_base16": "0x5d",
+            "denominator_base16": "0x746a528800",
+            "float": 1.86e-10
+          },
+          "jacobian_variation_infinity_norm_upper": {
+            "numerator_base16": "0xab770340f0c6106549873d325b7db47db24127b332592689b446a18f1d6f0766e909dfafcc7f04321607201f353f56b2aa7b70de3735fe50b09c48cab73e3543b8cc6e54068fe6e903e2c58c7330438b929d9819369b11adbd7b35d4843dd97d9e7a6ffa880fe857aa3a9f08ea7bae8ca61c21408ea80d1aa1052f166055833e32f2613bda8529f7d476991760dbc3ecfe3f784a5df0f39a46c09b95ff876cca1e000000000",
+            "denominator_base16": "0x16d994462b71a8c82c0d9e3e8c3e41dc80cecee060d1fd0910f33dd8f5eaaab2a14841d1b74d92050d4e78d9c991495f3d73fd15af614c02780dce08568d8337aa9b4b572f4075946f7741091066df4ad977a53b668a00b0bf2a93d860d46a5f9f66a21aabebbce9a58420f5a685624beea2bd0b963ec368d0f6861441731d9eb8889ecb6f32ce5e4ab46bfd1122689422bee5994ec4cf727a91de2cfd3ad711ab9c3e7541244846c3",
+            "float": 2.795443219543817e-08
+          },
+          "checks": {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          "passed": true
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x174876e800",
+            "float": 1e-11
+          },
+          "minimum_population_lower": {
+            "numerator_base16": "0x2963ab0b9572f8be596d",
+            "denominator_base16": "0x5d21dba00000000000000",
+            "float": 0.027775908303351422
+          },
+          "minimum_density_lower": {
+            "numerator_base16": "0x2540be3c800008fc5de3f",
+            "denominator_base16": "0x2540be400000000000000",
+            "float": 0.9999999944000009
+          },
+          "maximum_ambient_coordinate_radius": {
+            "numerator_base16": "0x5d",
+            "denominator_base16": "0xba43b7400",
+            "float": 1.86e-09
+          },
+          "jacobian_variation_infinity_norm_upper": {
+            "numerator_base16": "0x122a497d86cf15bbbbfda29086fefb639fdaae49d2cf96b8af281bedb5273f1d06c93d53339586bdc5a146b0e8b643080cdbddef1b5cbdcb0485c1b5b096a95a025212fae74388a97744f0620ef3d9c11291aff56197a41123b243c1da4dfb00d3e5c75dfef6bbb8484d652fde40b3315414c609d925f23bbaacbd035d703e471db045ff66d459eb7eaa09c73e74298ff1c649ddb8dc0b5350c7a4e0c000000000",
+            "denominator_base16": "0x3df89a0a0572badd1c2edda274719ef1cff3d507b2128b375edd40c49a7215c261cc5ae1d7b710a0f0807bef8f740b7b57bb6858f3cdb94c4d407151be502c3326310aee60ce731b0e5bca06f2346d368603facd9a4af66eda61b238d4c0c8c955497d0dc69d729e5249ddbd752242eed0209029e52fe9b7f7668d16c6841c5faf1865c09ced08e2981e9d0bd2f1b51ee56f1644f76c951f460d35257eb9891c8371fbb",
+            "float": 2.795443228697473e-07
+          },
+          "checks": {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          "passed": true
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2540be400",
+            "float": 1e-10
+          },
+          "minimum_population_lower": {
+            "numerator_base16": "0x84722351116fe8c7849",
+            "denominator_base16": "0x12a05f200000000000000",
+            "float": 0.027775908213351422
+          },
+          "minimum_density_lower": {
+            "numerator_base16": "0x7735939000001cc12c73",
+            "denominator_base16": "0x77359400000000000000",
+            "float": 0.9999999440000008
+          },
+          "maximum_ambient_coordinate_radius": {
+            "numerator_base16": "0x5d",
+            "denominator_base16": "0x12a05f200",
+            "float": 1.86e-08
+          },
+          "jacobian_variation_infinity_norm_upper": {
+            "numerator_base16": "0x50f8d59ce33d533f4909049daf8e87c670f85aa43fe47f1fc8ed90605fef664f8169e234665a4a43de7e7388b41b027ec4ec3f95d9dc8886a67cc1de56c2870596ccdedda6dc7dfda5db1fce950041c6656db234a3eff301d0471e1f5f4317f9ea68baece821075addea7dca3c2b99ef507c9d9d49bc5635b91f4b3dff64f518bd6a382fefcdb1125e3888bf33647d7ac6f12d7d8ff1c1873328b8000000000",
+            "denominator_base16": "0x1b9fb5132847fe66e8f273954592076dc83e10290efd574b11c0e0e94d5a4319f665057115638c786283e3e4742b1a577e180d34560ab61934ccf1c00262c91c1aff644cacd5dff35afce83aac40e28ac3361cb1df27238c90a34a250bca43f0db72c996c3049e1b878299cd0447d550b6d6008abcf550ec31c259aaa134664d772e415a19c509f8cd7a2f78b6afb8266e27c986e8f04671aa868c7ccb2bc9bdf1e3",
+            "float": 2.7954433202340445e-06
+          },
+          "checks": {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          "passed": true
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x3b9aca00",
+            "float": 1e-09
+          },
+          "minimum_population_lower": {
+            "numerator_base16": "0x1a7d3a35037cc827e75",
+            "denominator_base16": "0x3b9aca00000000000000",
+            "float": 0.027775907313351424
+          },
+          "minimum_density_lower": {
+            "numerator_base16": "0x17d78320000005c03c17",
+            "denominator_base16": "0x17d78400000000000000",
+            "float": 0.9999994400000008
+          },
+          "maximum_ambient_coordinate_radius": {
+            "numerator_base16": "0x5d",
+            "denominator_base16": "0x1dcd6500",
+            "float": 1.86e-07
+          },
+          "jacobian_variation_infinity_norm_upper": {
+            "numerator_base16": "0x447c0061fdc9fab3a99e820dac4eb539f0c919edc7c966108b94c9de33b870131e8569de3902ef4c0bd3c09b977b12143cc909cb134717f318b435923bf10774e5918ac456865bb7a7af96ea23fecfa84c778d354ef91f789a4c5ba808c6552821d7ee4bbe9b056a9dbfc7430fb0937e7aca924f3ad959e1b8a48ab9e578bad6b17afc9a8a9be062f5db23db0be6f5e122bb67271068cf0000000000",
+            "denominator_base16": "0x2561c0ce1ff1998775e9c5da5a7bed4832a0f4876878f9ab57d71543b022c15bafd5c2b2c7cc6c97cbdbcf62d714b73ddb2ccb6803b1bcbab20568a0e4ed86f08eb2f067a5c48809c1e873e600f318b7ab9cf8e315413e7b93868913493e59748d3c8a519ab75f3d31d943c2990fbe52785691da54531ed4daa98914363598e6d43dc374d78358579f566bf653d95a6c153e2564072b189974d0963817ff",
+            "float": 2.795444235600967e-05
+          },
+          "checks": {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          "passed": true
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x5f5e100",
+            "float": 1e-08
+          },
+          "minimum_population_lower": {
+            "numerator_base16": "0x54c3eba9a4c2807fb1",
+            "denominator_base16": "0xbebc200000000000000",
+            "float": 0.02777589831335142
+          },
+          "minimum_density_lower": {
+            "numerator_base16": "0x4c4b24000000126726b",
+            "denominator_base16": "0x4c4b400000000000000",
+            "float": 0.9999944000000008
+          },
+          "maximum_ambient_coordinate_radius": {
+            "numerator_base16": "0x5d",
+            "denominator_base16": "0x2faf080",
+            "float": 1.86e-06
+          },
+          "jacobian_variation_infinity_norm_upper": {
+            "numerator_base16": "0x263cf3574be9cd1129e57e3b6307024527da5248d2cc7cd1f1f4adcc47e7582ab50f30a090320e22d5135f364d76796a14ba014fcfdd21feaf04097202ecd46ce3ab3812087c126c331789a0775a45754bd5fd9cfa495a67c5f18471114fc5623c598b337ee4b26affee2ce0eb37f35b5ecae4a85aae3e60f7f380ac2b0b197edfceba7fd6ede2a4d8866f2e7125ad6bcf021c1be0000000000",
+            "denominator_base16": "0x21652b690cbf9ce3b28dca9c4751fc714d8fb7d6ea51e750d8cc232709888ed27016591c62752f4573eac03f98e166a08d35149c2aa05aa2d0b9639d4cd9e53891cff491a96b3bfd928c8571a52a4c78779bdbbfad17b0ccd9438c99329b177693c9cc27b4bfdb56f6e0a08c2a3572b0c5a316693ed7abed1e0c2948d2c63cf23c58e40560a00678313fd6421a3a81a0fbb779886e647ccaac8903",
+            "float": 0.00027954533893909296
+          },
+          "checks": {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          "passed": true
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x989680",
+            "float": 1e-07
+          },
+          "minimum_population_lower": {
+            "numerator_base16": "0x10f3f85520f3b34cbd",
+            "denominator_base16": "0x2625a00000000000000",
+            "float": 0.027775808313351424
+          },
+          "minimum_density_lower": {
+            "numerator_base16": "0xf420800000003ae3af",
+            "denominator_base16": "0xf42400000000000000",
+            "float": 0.9999440000000008
+          },
+          "maximum_ambient_coordinate_radius": {
+            "numerator_base16": "0x5d",
+            "denominator_base16": "0x4c4b40",
+            "float": 1.86e-05
+          },
+          "jacobian_variation_infinity_norm_upper": {
+            "numerator_base16": "0x113f0dadcb20261244dde297d6666ff0f620a959b71d88bd7536e6e1427075bd75851d200e74d9b4ee9a2cd0951efe96328bf329e2b056cfb61c0dc025ec0031388b7ab7db40c18f106c69997b03b51e971ea1666665db52159b12aa3c44bf21be348587ea3861eb6d3f9e4f6d87271688fac8e886638c24bef347cc765dba63f7a1d36e0e2118aa6474e8743e6c632c0000000000",
+            "denominator_base16": "0x181935a39028b6a6b3c907d6283a343b80f1aa65508edf7acb11674563a7e9ce5f2742f929d1c03e2310462af868b139f32b7cc380580434e7ee954633b1fa6e98750b733efc6ab6b187beb514c49f4729a9813a91732902f97891f0f2d8db18c539383dded4672276d618674cbe1179b62b000b698164fc1402fb1b627156d63e6b27e7116198d5457b1d5ced7c4de0819a81bff1f3",
+            "float": 0.0027955449393646226
+          },
+          "checks": {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          "passed": true
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0xf4240",
+            "float": 1e-06
+          },
+          "minimum_population_lower": {
+            "numerator_base16": "0x363f74439ca570f59",
+            "denominator_base16": "0x7a1200000000000000",
+            "float": 0.027774908313351422
+          },
+          "minimum_density_lower": {
+            "numerator_base16": "0x30cd000000000bc723",
+            "denominator_base16": "0x30d400000000000000",
+            "float": 0.9994400000000009
+          },
+          "maximum_ambient_coordinate_radius": {
+            "numerator_base16": "0x5d",
+            "denominator_base16": "0x7a120",
+            "float": 0.000186
+          },
+          "jacobian_variation_infinity_norm_upper": {
+            "numerator_base16": "0xa560f5bfb67fbea9d3a79a3bee8aeaff8c005bcddc1210ff4b96a1b7a1a1aea4aede222f684bde86918a433c4f0157d1307ddf9b4b3d1d6c3c36b2f38724c89fbbe68fe4fe99e396cd0f7f93c001c99f93a2cdb4e8ba4878bccd7bc2e1a5ad232270573de27af6cf938b14999e045b173dcef5bd6bd6366d32a3097280000000000",
+            "denominator_base16": "0x17180438273a98957ab3a876b35b65a0113caeb30e0dbe7d2fce90d8a407ada2b97e6460bed32747acac9adf9e4a036d5ec499e35e5d649c5e39b412ce3e71337efbb18c45d87cc07666cadc0551fd62175ba0d6b835cbd3ece8c996ae40eb5bfc559aeecb1563b3faf296769ec0647d907645fc19db679d2f3b1bd27012fd99be9d9",
+            "float": 0.027973323541732775
+          },
+          "checks": {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          "passed": true
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x186a0",
+            "float": 1e-05
+          },
+          "minimum_population_lower": {
+            "numerator_base16": "0xad89740b8ede3645",
+            "denominator_base16": "0x186a00000000000000",
+            "float": 0.027765908313351424
+          },
+          "minimum_density_lower": {
+            "numerator_base16": "0x9b600000000025b07",
+            "denominator_base16": "0x9c400000000000000",
+            "float": 0.9944000000000008
+          },
+          "maximum_ambient_coordinate_radius": {
+            "numerator_base16": "0x5d",
+            "denominator_base16": "0xc350",
+            "float": 0.00186
+          },
+          "jacobian_variation_infinity_norm_upper": {
+            "numerator_base16": "0x828d227c3674f711b69945eda3bde82f5fbc53ccb144bbceff427535d4e37d934f8bc1c553ac672d0d72887398a76badc011ccf2fb9f2415e6c5db7f4fe9802505f4e1b0f1dc8c18a722dba0cc9b210d80d8764337361cb00000000000",
+            "denominator_base16": "0x1cf84e46a7cb285ea3dc2937e789ed34baf04eedb6a6b6d21552d00f4b1c881ca6995a329e23375f65de86cb571090d7dc3541fbce50a1f665a91c93a76f34ef2cf8b2f7eeb77812944441808f7e9a0b7191139a057bbe628b62b4708d1",
+            "float": 0.2816524810673163
+          },
+          "checks": {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          "passed": true
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x2710",
+            "float": 0.0001
+          },
+          "minimum_population_lower": {
+            "numerator_base16": "0x22984a68b62c7141",
+            "denominator_base16": "0x4e200000000000000",
+            "float": 0.027675908313351424
+          },
+          "minimum_density_lower": {
+            "numerator_base16": "0x1d80000000000789b",
+            "denominator_base16": "0x1f400000000000000",
+            "float": 0.9440000000000008
+          },
+          "maximum_ambient_coordinate_radius": {
+            "numerator_base16": "0x5d",
+            "denominator_base16": "0x1388",
+            "float": 0.0186
+          },
+          "jacobian_variation_infinity_norm_upper": {
+            "numerator_base16": "0x149f080991bc2c04d9cae27a8c882a51a2ed61099a2401fa203dec67bb6cecfdbce8d4e98eb7b8a9bde67e03abbf7708ce939471578cbfec0edc55adb5e1a3af8571255c1d8c7e2fc0696a4383a3fa9917dab85ceebfe00000000000",
+            "denominator_base16": "0x6d2641b5e7954e1956418369b60446b9d8de340f2775333baf71ef8d95f2731d5f88a7988977207eb9bce65b85f7b59d7c1033efc701719b1c62dc98eb2471ac7582cfea5130b2769974e85879fed77f1a45a9c25be4a95238a2789",
+            "float": 3.022823220680664
+          },
+          "checks": {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          "passed": true
+        },
+        {
+          "radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x3e8",
+            "float": 0.001
+          },
+          "minimum_population_lower": {
+            "numerator_base16": "0xa1c71c5cccbc6b",
+            "denominator_base16": "0x3e80000000000000",
+            "float": 0.010111111032961868
+          },
+          "minimum_density_lower": {
+            "numerator_base16": "0x2c0000000000181f",
+            "denominator_base16": "0x6400000000000000",
+            "float": 0.44000000000000083
+          },
+          "maximum_ambient_coordinate_radius": {
+            "numerator_base16": "0x5d",
+            "denominator_base16": "0x1f4",
+            "float": 0.186
+          },
+          "jacobian_variation_infinity_norm_upper": {
+            "numerator_base16": "0x22963132e2eb5c6f0a84266315f1bbf8f93a494b96776d6ed3cd6682d1bda67f2aea548d21824129aee0efa53a124bf5248a06d4ac88412155d339dd4546bb163dd9faf8000fe3ed444b584b90a25eecfe39c1df8c00000000000",
+            "denominator_base16": "0x6045b897871fdfa891ec1b678d701f40f2c8855ee9a328d30705614f08d569698f4d9fadf740b54eb2b790484104319f0d2bbb7f27265500b5c2633c18823c95a8f2c77aa8893dd1ed73b581c31874b3802f141da73e08fb681",
+            "float": 91.97025289139616
+          },
+          "checks": {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          "passed": true
+        }
+      ],
+      "preconditioner_shape": [
+        150,
+        150
+      ],
+      "preconditioner_sha256": "1d157cd3ef26ae109f45698dd049e50677f6ec6432be0d17b8a09b6d41152035",
+      "point_jacobian_condition_number": 1672.0533600047117,
+      "primary_precision_audit": {
+        "precision_bits": 256,
+        "preconditioner_infinity_norm": {
+          "numerator_base16": "0x59527ec9944c2c7b",
+          "denominator_base16": "0x20000000000000",
+          "float": 714.5779769798695
+        },
+        "point_inverse_defect_infinity_norm_upper": {
+          "numerator_base16": "0xe53f307e0b02d88927063821f269cb0bed8806d6688c0d738b014f",
+          "denominator_base16": "0x40000000000000000000000000000000000000000000000000000000000000000",
+          "float": 2.0361209046326675e-13
+        },
+        "center_correction_infinity_norm_upper": {
+          "numerator_base16": "0x412b0ac9c1c3eb2b4dda9cf728d9ae1c4524e9daada2b7d358a9fca04e0e0aaf",
+          "denominator_base16": "0x10000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "float": 9.043895266505443e-16
+        },
+        "point_inverse_defect_interval_sha256": "02ba2a1e7557fec434ed4f743622ca335b4d7ec50aafb10438df6b21c682bddc",
+        "center_correction_interval_sha256": "1105728b0c4cdc3737d01d9afa76d90fc26f4d515480b7f49774301a87f341ab",
+        "mpfr_context": {
+          "gmpy2_version": "2.3.1",
+          "mpfr_version": "MPFR 4.2.2",
+          "precision_bits": 256,
+          "rounding_modes": [
+            "RoundDown",
+            "RoundUp"
+          ],
+          "emin": -10000,
+          "emax": 10000
+        },
+        "mpfr_flag_groups": {
+          "preconditioner_endpoint_round_down": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "preconditioner_endpoint_round_up": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "sparse_endpoint_round_down": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "sparse_endpoint_round_up": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "pivot_endpoint_round_down": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "pivot_endpoint_round_up": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "residual_endpoint_round_down": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "residual_endpoint_round_up": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "dot_round_down": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "dot_round_up": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          }
+        },
+        "checks": {
+          "preconditioner_converts_exactly": true,
+          "all_dot_intervals_are_ordered": true,
+          "no_forbidden_mpfr_flags": true,
+          "caller_context_is_unchanged": true
+        },
+        "passed": true,
+        "radius_records": [
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0xe8d4a51000",
+              "float": 1e-12
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0xab770340f0c6106549873d325b7db47db24127b332592689b446a18f1d6f0766e909dfafcc7f04321607201f353f56b2aa7b70de3735fe50b09c48cab73e3543b8cc6e54068fe6e903e2c58c7330438b929d9819369b11adbd7b35d4843dd97d9e7a6ffa880fe857aa3a9f08ea7bae8ca61c21408ea80d1aa1052f166055833e32f2613bda8529f7d476991760dbc3ecfe3f784a5df0f39a46c09b95ff876cca1e000000000",
+              "denominator_base16": "0x16d994462b71a8c82c0d9e3e8c3e41dc80cecee060d1fd0910f33dd8f5eaaab2a14841d1b74d92050d4e78d9c991495f3d73fd15af614c02780dce08568d8337aa9b4b572f4075946f7741091066df4ad977a53b668a00b0bf2a93d860d46a5f9f66a21aabebbce9a58420f5a685624beea2bd0b963ec368d0f6861441731d9eb8889ecb6f32ce5e4ab46bfd1122689422bee5994ec4cf727a91de2cfd3ad711ab9c3e7541244846c3",
+              "float": 2.795443219543817e-08
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x1509b7489844f344b15b158ff75574301388b034a733c8d35c9a5a2b7faf054f73ea8d276aea4bcc320d891269bc4165efd2daa0c52ff0ce9043240a27350333f348f62d2345b2bbb1720299444c531531a69a4d0f43329acdd958517f221afbf901584b0f22ce3aa2ed0ecf57f573f94eeb4ffb966f7e85e09de35f3d082a3cdcfeec83a1cd32003c623d7c749eb892e245ac4ec6793fea77edeb9645910a85c70790120e84671b8c7adbff5de7caea447e393c0dcf767ebf1f4d02c2fd6e54ebc08f0858317",
+              "denominator_base16": "0x1011fd612c9eb498087a1ae5a8f655b465d7c6f23336d957f56a5e226f0ff104a9b1695e0ac336defb4ae1a73c2dea759e8f76eaadfb49264ecea1c7f95b15f4833d64cf9a32f5dbbc1b9b7416c9c19cbab3cb6a7ac0b4878ee2de220635be271e86125be6a02ad6f5d04430fc258b761b2c1fae208629c84f724d6b14b63c375d35e3053a836150618cf4bd3bdfef8720e0477442a68c454282b863283fe336a013dd284451c7ee40000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.997562180944923e-05
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0xf3618be005343624fbc272de552e730c61472d4a7473f0b0328b1bd193926eac9c8996cdaee6732ffa97fb7f31d8e30f2f590f4a56ad86cf8c47bc24c4008453831a9464a28dc7af0de3e5e91d8b214129422b50b110b2a0ae223ada3eb422b4b87a10940d9f5bec3eeeb7568f3acc185b4b45af063f9612049b554bdaae896a41cb34c7f75a698e341c2f1b5aacd239304de273a6097a9c8430b69859db526326ed87414f4f4282fa9fa563e47c32f65bcc595e0f437909c30195074975b64eac5dd02a3564ab551a44a7",
+              "denominator_base16": "0x4047f584b27ad26021e86b96a3d956d1975f1bc8ccdb655fd5a97889bc3fc412a6c5a5782b0cdb7bed2b869cf0b7a9d67a3ddbaab7ed24993b3a871fe56c57d20cf5933e68cbd76ef06e6dd05b270672eacf2da9eb02d21e3b8b788818d6f89c7a18496f9a80ab5bd74110c3f0962dd86cb07eb88218a7213dc935ac52d8f0dd74d78c14ea0d85418633d2f4ef7fbe1c83811dd10a9a31150a0ae18ca0ff8cda804f74a111471fb90000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.0009243651484599934
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0xf3618be005343624fbc272de552e730c61472d4a7473f0b0328b1bd193926eac9c8996cdaee6732ffa97fb7f31d8e30f2f590f4a56ad86cf8c47bc24c4008453831a9464a28dc7af0de3e5e91d8b214129422b50b110b2a0ae223ada3eb422b4b87a10940d9f5bec3eeeb7568f3acc185b4b45af063f9612049b554bdaae896a41cb34c7f75a698e341c2f1b5aacd239304de273a6097a9c8430b69859db526326ed87414f4f4282fa9fa563e47c32f65bcc595e0f437909c30195074975b64eac5dd02a3564ab551a44a7",
+              "denominator_base16": "0x3a769b89f960fbb1a79bd1d6891b77af294a0f9abecaa225030ba04839f1fd7023f18049be8818d00bd471a594995af87057247e2281fcc483fb23ad3b142e2c4111284995e7f17ce05b26ddf6d501ef558ead7a03128bd8e89a52ffc49ea3d7cbe783233d4a1367b99e208dd82aac39eea95094b366eb428cc8622b29f4a21b2a15e3993030501f139da9b0761727bf944e2c7c93021d11c1cbce33de6aa7d56efbe5d9c82dddd9d9183890000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 9.243651484599934e-16
+            },
+            "passed": true
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x174876e800",
+              "float": 1e-11
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x122a497d86cf15bbbbfda29086fefb639fdaae49d2cf96b8af281bedb5273f1d06c93d53339586bdc5a146b0e8b643080cdbddef1b5cbdcb0485c1b5b096a95a025212fae74388a97744f0620ef3d9c11291aff56197a41123b243c1da4dfb00d3e5c75dfef6bbb8484d652fde40b3315414c609d925f23bbaacbd035d703e471db045ff66d459eb7eaa09c73e74298ff1c649ddb8dc0b5350c7a4e0c000000000",
+              "denominator_base16": "0x3df89a0a0572badd1c2edda274719ef1cff3d507b2128b375edd40c49a7215c261cc5ae1d7b710a0f0807bef8f740b7b57bb6858f3cdb94c4d407151be502c3326310aee60ce731b0e5bca06f2346d368603facd9a4af66eda61b238d4c0c8c955497d0dc69d729e5249ddbd752242eed0209029e52fe9b7f7668d16c6841c5faf1865c09ced08e2981e9d0bd2f1b51ee56f1644f76c951f460d35257eb9891c8371fbb",
+              "float": 2.795443228697473e-07
+            },
+            "contraction_upper": {
+              "numerator_base16": "0xf99fb4d4e1353522b362988561b43fbf1f8b2213e46763d2f787e83b0f139f0d70916d9c190484f76c0782b8578b52e890035473d06169617cf222b98044672af5d6294abe3d1d8c95273582759a90b55d72a03606f382c98e3c3014896616b134b1b3f8ee5a2b5142a14470f1f9ada1de9fb6408ed9b9330bc35e7d2235e000bfcd546d21d115063ae9f48f32de0b96ff6bd1678a1379acfa430a2e2b75f0d7eeb74f42517d81bdb007bfc08608a311a64dfc0d1fa8b171556d6bb627f04970a49",
+              "denominator_base16": "0x13116a793cc0d708f4faba595ee7e22304e89051231965e9a709003c7e4a7cd9592b2fa7f39aca0a229daffaf110038869c382918617ea3edcb15df1c467700fbcfb65d3317a99922bcd793d36d50de9644ffe66a5a0e95d2f80859b5527a03df2db88f08be1ad1d05a092ff37bbc5d353bb400ce40ebe11386e52cbee5008bafacc6e13e18402bbe0096b66198572ce6dfacbc67383df1d50a19a32ebea51929e9939c0000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.00019975621691608358
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0xb551f262d89fdbf3607d43e859db01f9a3473b75b5f75c24bddb89c2f507cc53c47c94fb931c4b9ba2ad0935de72c5305bc1f54fcfd3a871d1ddb39a29d28c6ab4a134be1ef66c90fb2104cec9b383c68ed8ce04d347c86a97060bab15f9d4a1c271782fc88081c21ce3bac34ed0aeba3d90b7d058c8961a40a626f1d4582da09b5c8353887db87d64e8f65f7128377a60df6c17b74b8ae57ce036e0ab306dcf7b7f218527d821aec29ea3305d948feb2983154c2df9eefba4bd8772bcfc71c7229d8e95aa25",
+              "denominator_base16": "0x988b53c9e606b847a7d5d2caf73f11182744828918cb2f4d384801e3f253e6cac9597d3f9cd6505114ed7fd788801c434e1c148c30bf51f6e58aef8e233b807de7db2e998bd4cc915e6bc9e9b6a86f4b227ff3352d074ae97c042cdaa93d01ef96dc47845f0d68e82d0497f9bdde2e9a9dda00672075f089c372965f728045d7d663709f0c2015df004b5b30cc2b96736fd65e339c1ef8ea850cd1975f528c94f4c9ce0000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.000290195169581138
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0xb551f262d89fdbf3607d43e859db01f9a3473b75b5f75c24bddb89c2f507cc53c47c94fb931c4b9ba2ad0935de72c5305bc1f54fcfd3a871d1ddb39a29d28c6ab4a134be1ef66c90fb2104cec9b383c68ed8ce04d347c86a97060bab15f9d4a1c271782fc88081c21ce3bac34ed0aeba3d90b7d058c8961a40a626f1d4582da09b5c8353887db87d64e8f65f7128377a60df6c17b74b8ae57ce036e0ab306dcf7b7f218527d821aec29ea3305d948feb2983154c2df9eefba4bd8772bcfc71c7229d8e95aa25",
+              "denominator_base16": "0xddfb2912b564b71d34372602e3cca2d1d5ad2fc320ab8115db6c2583502799b698a4c01a9d0316ecaed6268c20b1ad0c01320be1aba23b0993a20273578de54ce6461ce0cdc73d56782a2b809e5375e392cb0d46c0f3cba36f2c3f693298480901e690b425cc3f8afda2a1b188334857a807c3aeaaba033cf0fc0accf49ffa0ed68038216d9aab6f6e7769e0864791bce5d44eb4b3bd9ced6b7404c085cf0f75b7f0a16cbd6b0000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 2.90195169581138e-15
+            },
+            "passed": true
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x2540be400",
+              "float": 1e-10
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x50f8d59ce33d533f4909049daf8e87c670f85aa43fe47f1fc8ed90605fef664f8169e234665a4a43de7e7388b41b027ec4ec3f95d9dc8886a67cc1de56c2870596ccdedda6dc7dfda5db1fce950041c6656db234a3eff301d0471e1f5f4317f9ea68baece821075addea7dca3c2b99ef507c9d9d49bc5635b91f4b3dff64f518bd6a382fefcdb1125e3888bf33647d7ac6f12d7d8ff1c1873328b8000000000",
+              "denominator_base16": "0x1b9fb5132847fe66e8f273954592076dc83e10290efd574b11c0e0e94d5a4319f665057115638c786283e3e4742b1a577e180d34560ab61934ccf1c00262c91c1aff644cacd5dff35afce83aac40e28ac3361cb1df27238c90a34a250bca43f0db72c996c3049e1b878299cd0447d550b6d6008abcf550ec31c259aaa134664d772e415a19c509f8cd7a2f78b6afb8266e27c986e8f04671aa868c7ccb2bc9bdf1e3",
+              "float": 2.7954433202340445e-06
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x388134247e14ac9b5c814e75fc89c642d8eaf453fea1303e5892df01bd2693aa6244cba2db66cf1c9dc76d14be3a9feacf0648e6037947aa6c1fcd149fb31520e7329166f110de599a3a5b983d453005ab3b423fe09c68bf97fc472ca2e6542d89175d3a65701b2ee1be0d1d62ac26c1074f985f1482497cbca8cb7a185ad32b0c15a1dae4b128192789100d1f3b0a7537f0b28e0e00964601d9c12dac328f5afd8b3b8eb9910f9358e347895d0d816f51fc42a2630fe4c155f8da289f4ed0880d",
+              "denominator_base16": "0x6e7ed44ca11ff99ba3c9ce5516481db720f840a43bf55d2c470383a535690c67d99415c4558e31e18a0f8f91d0ac695df86034d1582ad864d333c700098b24706bfd9132b3577fcd6bf3a0eab1038a2b0cd872c77c9c8e32428d28942f290fc36dcb265b0c12786e1e0a6734111f5542db58022af3d543b0c70966aa84d19935dcb90568671427e335e8bde2dabee099b89f261ba3c119c6aa1a31f32caf26f7c78c0000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.001997562232738345
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x38c2b1c442bca6a503fa54592f3b5472687557f2e9fa55f5c0e7821098bbf310103b11e2151ccbf52e5f6bb527675967699ba85f72e0b3cbc7778d2a631f7b217cd593987b0584332c362d7d5e03942d8a579d7df21e4362f2799ff884e1c1dd78c25beea70983377cc794e7ba632ccf28515ee1577a407e22152e3f9682509f716842e58d7264cddffb68df8338342ad14d4002cd934991b8f1e9fb3abff23e4f00cc364ff0596b34a8c15bd4116362fdaffb2cec9fab0ea59074035ed849a6304c4e4fdc5",
+              "denominator_base16": "0x6e7ed44ca11ff99ba3c9ce5516481db720f840a43bf55d2c470383a535690c67d99415c4558e31e18a0f8f91d0ac695df86034d1582ad864d333c700098b24706bfd9132b3577fcd6bf3a0eab1038a2b0cd872c77c9c8e32428d28942f290fc36dcb265b0c12786e1e0a6734111f5542db58022af3d543b0c70966aa84d19935dcb90568671427e335e8bde2dabee099b89f261ba3c119c6aa1a31f32caf26f7c78c0000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.0020066061280048504
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x38c2b1c442bca6a503fa54592f3b5472687557f2e9fa55f5c0e7821098bbf310103b11e2151ccbf52e5f6bb527675967699ba85f72e0b3cbc7778d2a631f7b217cd593987b0584332c362d7d5e03942d8a579d7df21e4362f2799ff884e1c1dd78c25beea70983377cc794e7ba632ccf28515ee1577a407e22152e3f9682509f716842e58d7264cddffb68df8338342ad14d4002cd934991b8f1e9fb3abff23e4f00cc364ff0596b34a8c15bd4116362fdaffb2cec9fab0ea59074035ed849a6304c4e4fdc5",
+              "denominator_base16": "0x10144681e7b7d9cfe8d507be9b14ba21fda177a863c3815dc9d36aae269b0fff6de0f99d1ea01956fde8a07e080f33a90db21584f554cfc2830c36a9fc074625038b31a1d1c069206aaf9ca3f4982de7a50cfcff622e880c28dbe41cf744d99773b0cbacf8c2d9bebfded9578eb040e183877dd2e79733ceb6843e1b0c5fb8bfda7a3351f14485688a3cb87179721d3eb88765bfcba5e37269a833ae99df7460b87ec30bcb0000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 2.0066061280048505e-13
+            },
+            "passed": true
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x3b9aca00",
+              "float": 1e-09
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x447c0061fdc9fab3a99e820dac4eb539f0c919edc7c966108b94c9de33b870131e8569de3902ef4c0bd3c09b977b12143cc909cb134717f318b435923bf10774e5918ac456865bb7a7af96ea23fecfa84c778d354ef91f789a4c5ba808c6552821d7ee4bbe9b056a9dbfc7430fb0937e7aca924f3ad959e1b8a48ab9e578bad6b17afc9a8a9be062f5db23db0be6f5e122bb67271068cf0000000000",
+              "denominator_base16": "0x2561c0ce1ff1998775e9c5da5a7bed4832a0f4876878f9ab57d71543b022c15bafd5c2b2c7cc6c97cbdbcf62d714b73ddb2ccb6803b1bcbab20568a0e4ed86f08eb2f067a5c48809c1e873e600f318b7ab9cf8e315413e7b93868913493e59748d3c8a519ab75f3d31d943c2990fbe52785691da54531ed4daa98914363598e6d43dc374d78358579f566bf653d95a6c153e2564072b189974d0963817ff",
+              "float": 2.795444235600967e-05
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x8671888d839497eb1671c92e81c8ef287d8d92847068f96539469a92c6a520ecffff4a30a93bcc0c13c97fad44480a463891d183f014ecd472c1f3d42999d37bd61ce7bbbb147f03b0b222841c638ab711387ba1b23186b374bb7414aa263deae6aba176a2bf4ea6d67ff5579018c3466ddccbc10fa31ff9396952903470899f96a4d293baa76793d34ce4c378037eae5808a64529a50e05ebd8f6c8052ea7fb8c3404b62406c0f2fbd4a98d017157e4750a47d892bb45dac007022e3",
+              "denominator_base16": "0x1a4a6036f1e4fe43231a90c69408635cf968c27b5d2ae23a9d6d11c4b423b22f9a9bf6a51ecda9354eab788907cb0d8856a0e913b3d435f6a49616f2902004e1726cf7d85e1410e7ead61edfa6a557b6a0146045af4cd4bc2f7d903a932909768ab73cb52c1bb0b2122de6833bd2cefeec8ba747f7c9ee4c8e881ce4045df561a355a2c8540d9af74b7d7bc0ef03c3d03bf371816d211f5ddc0069a60b40000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.01997562886656138
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x10ce62eece06a9de388f9252569ec5cfa4d6c2eb78cfcd7ce27adcd569f16a8515b1bd7de6a705da1a2d3d57f3831eed00df5a5383aa8631070a259eb6bf90202cd764c4f4f82a8d2f48160962c5c1ed2c7fb8dd56fb81df95407c19a24d0528912edcf09e024ea409901b56d5f050597ec675f1e04e30c82d46bc5fdd357b647c271c196107a1b0c90f413cca526e1ad130b472f48e95e78def8595ef57d01da619de7c25f528f57d3b8430ec0c03b7d4af243098536c7d37f725da67067f75bef",
+              "denominator_base16": "0x3494c06de3c9fc864635218d2810c6b9f2d184f6ba55c4753ada23896847645f3537ed4a3d9b526a9d56f1120f961b10ad41d22767a86bed492c2de5204009c2e4d9efb0bc2821cfd5ac3dbf4d4aaf6d4028c08b5e99a9785efb2075265212ed156e796a58376164245bcd0677a59dfdd9174e8fef93dc991d1039c808bbeac346ab4590a81b35ee96faf781de0787a077e6e302da423ebbb800d34c1680000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.01997653325608803
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x10ce62eece06a9de388f9252569ec5cfa4d6c2eb78cfcd7ce27adcd569f16a8515b1bd7de6a705da1a2d3d57f3831eed00df5a5383aa8631070a259eb6bf90202cd764c4f4f82a8d2f48160962c5c1ed2c7fb8dd56fb81df95407c19a24d0528912edcf09e024ea409901b56d5f050597ec675f1e04e30c82d46bc5fdd357b647c271c196107a1b0c90f413cca526e1ad130b472f48e95e78def8595ef57d01da619de7c25f528f57d3b8430ec0c03b7d4af243098536c7d37f725da67067f75bef",
+              "denominator_base16": "0xc3e135275714a723c366e17a39f5981a3a115482c488ae6e01a2dda2bbb9b5ca7bd0752fc18700ab56dd002c8ad38d591518dbd706b43fb81c46ee4467af43851afadebe2cfe466e7f33a72249da858a3ee31841a924b23f005fe7eadea67f8c97e6d59b81bbe5e5d780c2a433e3f733a67446cd2cac5d4a9df0a02a9f0670a820011d354a78a71e6e0ed25d997c5fb832ef5d26724d08745d500624baf12c10000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.997653325608803e-11
+            },
+            "passed": true
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x5f5e100",
+              "float": 1e-08
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x263cf3574be9cd1129e57e3b6307024527da5248d2cc7cd1f1f4adcc47e7582ab50f30a090320e22d5135f364d76796a14ba014fcfdd21feaf04097202ecd46ce3ab3812087c126c331789a0775a45754bd5fd9cfa495a67c5f18471114fc5623c598b337ee4b26affee2ce0eb37f35b5ecae4a85aae3e60f7f380ac2b0b197edfceba7fd6ede2a4d8866f2e7125ad6bcf021c1be0000000000",
+              "denominator_base16": "0x21652b690cbf9ce3b28dca9c4751fc714d8fb7d6ea51e750d8cc232709888ed27016591c62752f4573eac03f98e166a08d35149c2aa05aa2d0b9639d4cd9e53891cff491a96b3bfd928c8571a52a4c78779bdbbfad17b0ccd9438c99329b177693c9cc27b4bfdb56f6e0a08c2a3572b0c5a316693ed7abed1e0c2948d2c63cf23c58e40560a00678313fd6421a3a81a0fbb779886e647ccaac8903",
+              "float": 0.00027954533893909296
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x20d769fe87d91715f27c8dcddfe9b6311ef325e28b097869e253cc786bbb08ac0b635e0c3e0a83f11bf9650695093d832f7b1f136763f7f20014e4b58d58995dc073286c41acd22054324d2ea03bf271202148f8449ca790bcbf6b135c88db22744fdb786f5d09503df135e837f254c390f37b9a2c101c3d7f50868f26bc83762bfc8546410f56bf6e95feda1bf1a2d95b48787f96edbc297c772ebd4145e0a98ad662eb86971d89e598001a9c6fefa12e213758d34212691de61",
+              "denominator_base16": "0xa468382c8d87f0afbdcdbe1510588c066a25ff35bca6e8f07a145e4a078c97bd3b81b6b31fcac155ebe6289b8e2e4802b72cb43be58b96d2c87cfe1a17e1f25192c4b4082e5eb12f203da4a5a34664c73926affe67d717a1b773ef40f922e9aa3a08d96103b0869870a0a03be37d485291e7d0cb0dfe62193176f2a197812c0b01b59da451d8bd63689cbc591ea9e0a261111b3d3329c8d21653c0000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.1997569427734526
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x835dabdff38b44e6eb01211fdefa8144abb03f4a9766e23e9dd923cca3c5c21491b837b59cc2a906d662a70f85c4a566e10819bd8f436729266ddc79c7d1deb0cc2deb1169e06fe9d11f50514dd191c35595232ad5b121e1c0122c0a795cd695c790ed58c97fd165ecbc0f06d2f3f6ee60f51b625e0d2b1bc6b0a669c888ae97b2e221f18ea6df41e6356a5a5b58400f0f9dffc9c067b9d83e95b341dbd38d8ca61402946e8c669ad69bfe1d0bb9fc49261416c1fc23218aceb36a4667b8e1",
+              "denominator_base16": "0x291a0e0b2361fc2bef736f85441623019a897fcd6f29ba3c1e85179281e325ef4ee06dacc7f2b0557af98a26e38b9200adcb2d0ef962e5b4b21f3f8685f87c9464b12d020b97ac4bc80f692968d19931ce49abff99f5c5e86ddcfbd03e48ba6a8e82365840ec21a61c28280ef8df5214a479f432c37f98864c5dbca865e04b02c06d676914762f58da272f1647aa7828984446cf4cca72348594f00000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.19975703321240526
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x835dabdff38b44e6eb01211fdefa8144abb03f4a9766e23e9dd923cca3c5c21491b837b59cc2a906d662a70f85c4a566e10819bd8f436729266ddc79c7d1deb0cc2deb1169e06fe9d11f50514dd191c35595232ad5b121e1c0122c0a795cd695c790ed58c97fd165ecbc0f06d2f3f6ee60f51b625e0d2b1bc6b0a669c888ae97b2e221f18ea6df41e6356a5a5b58400f0f9dffc9c067b9d83e95b341dbd38d8ca61402946e8c669ad69bfe1d0bb9fc49261416c1fc23218aceb36a4667b8e1",
+              "denominator_base16": "0xf4fc558eb190cc505c081bc9e2b8b5fd51fde92c1ac24614d0a5a8657782499ee8334096a7f470ba30b1994c15ac6a695de412fccdc352494ce4b2e3314cfd857a3ff0d5bddab5addd5ea2ff1acdb5cd56a32c59cbcb64f487bdf748d50dfc689a94ee2d7e4fb3fc18b9f5ec65b3103c1bef0ae20734eabd12f38339f6e2a8f951b6d92cda3f03ebe8a327f01b7f7a9d6ebc8dd320a478413fe9a196f0000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.9975703321240528e-09
+            },
+            "passed": true
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x989680",
+              "float": 1e-07
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x113f0dadcb20261244dde297d6666ff0f620a959b71d88bd7536e6e1427075bd75851d200e74d9b4ee9a2cd0951efe96328bf329e2b056cfb61c0dc025ec0031388b7ab7db40c18f106c69997b03b51e971ea1666665db52159b12aa3c44bf21be348587ea3861eb6d3f9e4f6d87271688fac8e886638c24bef347cc765dba63f7a1d36e0e2118aa6474e8743e6c632c0000000000",
+              "denominator_base16": "0x181935a39028b6a6b3c907d6283a343b80f1aa65508edf7acb11674563a7e9ce5f2742f929d1c03e2310462af868b139f32b7cc380580434e7ee954633b1fa6e98750b733efc6ab6b187beb514c49f4729a9813a91732902f97891f0f2d8db18c539383dded4672276d618674cbe1179b62b000b698164fc1402fb1b627156d63e6b27e7116198d5457b1d5ced7c4de0819a81bff1f3",
+              "float": 0.0027955449393646226
+            },
+            "contraction_upper": {
+              "numerator_base16": "0xc08f4fcd5098e7502e67f72517cbc5d2ba1853b9b39024f761c24a35f7ee07255de2af00295ac61677299c1abf8c052035edf1bdf1afc8e9994e3e9c2ba210079bac229047952d8654415487137f3e4d739091b054808222532fe2f01af669377daac1ae667f978be3148cdacb512da29474789fbf37ff882366268ca4215d210b2d7d955e8a28da20e92be972692c87a76d4e4aa6b1d3f418dd09fd3d3bd14f588357d2828a1a32f9083296ea83abbf736f521e9cfd",
+              "denominator_base16": "0x6064d68e40a2da9acf241f58a0e8d0ee03c6a995423b7deb2c459d158e9fa7397c9d0be4a74700f88c4118abe1a2c4e7ccadf30e016010d39fba5518cec7e9ba61d42dccfbf1aadac61efad453127d1ca6a604ea45cca40be5e247c3cb636c6314e4e0f77b519c89db58619d32f845e6d8ac002da60593f0500bec6d89c55b58f9ac9f9c4586635515ec7573b5f13782066a06ffc7cc0000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.9976348473276877
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x6047a7edf86c8e21b6fef5c1e5f7b069175a4490d822a78d6c23b4e3ee1dd7c784c2453ae27fa9cd83a90eab9e1b705c98f593e79b6ac4f7422f1e6f675df836058f0d6299741216bf24f662664bdba12bfe227cd9c2d6182e720315721ce05e48fb5da5d7d21d25abb974b00ff8dab83a4897d342df4cd7fa48042a1c8800f1179e1f5062a1136bfcc473cc81721b5476283ab47db3788f69346ea40da8b7e756b9c5fcccb43dc97afeffd26bdbdddb485552ff2693487a747919",
+              "denominator_base16": "0x30326b4720516d4d67920fac5074687701e354caa11dbef59622ce8ac74fd39cbe4e85f253a3807c46208c55f0d16273e656f98700b00869cfdd2a8c6763f4dd30ea16e67df8d56d630f7d6a29893e8e5353027522e65205f2f123e1e5b1b6318a72707bbda8ce44edac30ce997c22f36c560016d302c9f82805f636c4e2adac7cd64fce22c331aa8af63ab9daf89bc10335037fe3e600000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.997634856371583
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x6047a7edf86c8e21b6fef5c1e5f7b069175a4490d822a78d6c23b4e3ee1dd7c784c2453ae27fa9cd83a90eab9e1b705c98f593e79b6ac4f7422f1e6f675df836058f0d6299741216bf24f662664bdba12bfe227cd9c2d6182e720315721ce05e48fb5da5d7d21d25abb974b00ff8dab83a4897d342df4cd7fa48042a1c8800f1179e1f5062a1136bfcc473cc81721b5476283ab47db3788f69346ea40da8b7e756b9c5fcccb43dc97afeffd26bdbdddb485552ff2693487a747919",
+              "denominator_base16": "0x1cba45564c80d8c4b7801cac86926a761315967da8c9615e94856e18d2ed9212f8a480b1a09f3fe8d2b28d758782658d31e68e49da466c7bc5a004c8e0ee21a6c9143f37514ccd826b9fef124392e853c82545c27e95c51ac0be8011b8af0d270653d710995b3a3630a3f6b55c96f03b146e409c9ab4b50f142711b1c41956618406a3604f53553df544e49fe046d7a22adfdcbe7e000ab70000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.997634856371583e-07
+            },
+            "passed": false
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0xf4240",
+              "float": 1e-06
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0xa560f5bfb67fbea9d3a79a3bee8aeaff8c005bcddc1210ff4b96a1b7a1a1aea4aede222f684bde86918a433c4f0157d1307ddf9b4b3d1d6c3c36b2f38724c89fbbe68fe4fe99e396cd0f7f93c001c99f93a2cdb4e8ba4878bccd7bc2e1a5ad232270573de27af6cf938b14999e045b173dcef5bd6bd6366d32a3097280000000000",
+              "denominator_base16": "0x17180438273a98957ab3a876b35b65a0113caeb30e0dbe7d2fce90d8a407ada2b97e6460bed32747acac9adf9e4a036d5ec499e35e5d649c5e39b412ce3e71337efbb18c45d87cc07666cadc0551fd62175ba0d6b835cbd3ece8c996ae40eb5bfc559aeecb1563b3faf296769ec0647d907645fc19db679d2f3b1bd27012fd99be9d9",
+              "float": 0.027973323541732775
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x144a8cccc4d521430be685d40fd4bb12704df3e3095696eef067a803baabf3b45fe96d4395af377087355e88c502629a6ee59fc28c770cd257c3499b5480e5fb840063e43d4ea6be855b602cb4f0df5a501be8cbafca28130dba90e6a7059a302f09f4e308161239eca0510553beeb68c4cd6f660990aa822796d1e98ed9cd15c932ba4f106a8825cb00db04734f2840b3d5ea0096eba80af37d79bc9ce30c856ca95",
+              "denominator_base16": "0x103de6d5e8f3c285429a7c1b37cfc0709327dd53bb1d5bc5c1f95d6e2a38099703dd1c65cc894032688fe5e39985a2c312d3696a7500facd9f1a84457d5bbd540a89a170b827ba32f66fad9d8d967f90f17b84cf467a3af4b1decbaaad30788435af8be8a5555f70837ac977ff1f389bd3505e3b25e0a2e4b380c79c70946396536c0000000000000000000000000000000000000000000000000000000000000000",
+              "float": 19.989120945854967
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x144a8cccc8c68b6c2b2b5064a12abbb35eb18e92b959f05313068fe2290810b3bc9ec38bb0e42f96046bc0ab2c579df24e37db441267d643383d9ae73a0c9fa5e3976648bc514f33c0e5adbe5e1e76af8f520d3f320b9e048f44360567fd5eb10b114036acc87456fad5d00fa2adcc206d1df9f0fc0463ca9f37c36d6261d980ca9b9cd787b0cbfa67d64b330be3add32cc57dab8cc877b2a9f46345c05f639e6da382b5293ee5d",
+              "denominator_base16": "0x103de6d5e8f3c285429a7c1b37cfc0709327dd53bb1d5bc5c1f95d6e2a38099703dd1c65cc894032688fe5e39985a2c312d3696a7500facd9f1a84457d5bbd540a89a170b827ba32f66fad9d8d967f90f17b84cf467a3af4b1decbaaad30788435af8be8a5555f70837ac977ff1f389bd3505e3b25e0a2e4b380c79c70946396536c00000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 19.989120946759357
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x144a8cccc8c68b6c2b2b5064a12abbb35eb18e92b959f05313068fe2290810b3bc9ec38bb0e42f96046bc0ab2c579df24e37db441267d643383d9ae73a0c9fa5e3976648bc514f33c0e5adbe5e1e76af8f520d3f320b9e048f44360567fd5eb10b114036acc87456fad5d00fa2adcc206d1df9f0fc0463ca9f37c36d6261d980ca9b9cd787b0cbfa67d64b330be3add32cc57dab8cc877b2a9f46345c05f639e6da382b5293ee5d",
+              "denominator_base16": "0xf7d48b8581d17ae5e389c036505dca25c16b08eee1e4b9964b0f41e23bb590548eb4a290543947d12bfdb594254f5ecd16026344a7d632f408fa5ccd541115ab9dca93a235fc30ec20d192e951b5ac0168baff43c52696183f15d7351128daef5c2de096a4c9ef8a923854ab409a2587b52511da06b6ed8e33ffc5d2d4d43c948a6ab30000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.9989120946759357e-05
+            },
+            "passed": false
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x186a0",
+              "float": 1e-05
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x828d227c3674f711b69945eda3bde82f5fbc53ccb144bbceff427535d4e37d934f8bc1c553ac672d0d72887398a76badc011ccf2fb9f2415e6c5db7f4fe9802505f4e1b0f1dc8c18a722dba0cc9b210d80d8764337361cb00000000000",
+              "denominator_base16": "0x1cf84e46a7cb285ea3dc2937e789ed34baf04eedb6a6b6d21552d00f4b1c881ca6995a329e23375f65de86cb571090d7dc3541fbce50a1f665a91c93a76f34ef2cf8b2f7eeb77812944441808f7e9a0b7191139a057bbe628b62b4708d1",
+              "float": 0.2816524810673163
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x5b1a45b4fc439e5c93ffa93226bcc5a32698a1b871bb8ea7d1b0bde670d69cef96932c1080f2054b9103ae14b1313cac9233ded1932f471c50f37b3d14463ad3649e9204082ae74546cbfac509c9869fa91aa41973ed4cbb079f9887a852057edaa44e72e1480109d5f4c5b4b10fc31084200236d211c28df6d874e6f897f",
+              "denominator_base16": "0x73e1391a9f2ca17a8f70a4df9e27b4d2ebc13bb6da9adb48554b403d2c7220729a6568ca788cdd7d977a1b2d5c42435f70d507ef394287d996a4724e9dbcd3bcb3e2cbdfbadde04a511106023dfa682dc6444e6815eef98a2d8ad1c23440000000000000000000000000000000000000000000000000000000000000000",
+              "float": 201.26266013244407
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0xb6348b69f8e1429667fe1aaf340f94e5f9b82cff386e10f86ebec3db4fcc4ce637e8cecb12b06970e5057462697c74499bd157eb1a194a839e0f2134c9f5219e7a106327f58cb6d62c71d9d70b05e25edb04ae016cce1e12e164a5ff4d3ea86cb197f5b898c6fb6356fc9cb1a0f60b793eefb0824e23a2b888f2e8b01f1a14d98ed922b",
+              "denominator_base16": "0xe7c272353e5942f51ee149bf3c4f69a5d782776db535b690aa96807a58e440e534cad194f119bafb2ef4365ab88486bee1aa0fde72850fb32d48e49d3b79a77967c597bf75bbc094a2220c047bf4d05b8c889cd02bddf3145b15a38468800000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 201.2626601325345
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0xb6348b69f8e1429667fe1aaf340f94e5f9b82cff386e10f86ebec3db4fcc4ce637e8cecb12b06970e5057462697c74499bd157eb1a194a839e0f2134c9f5219e7a106327f58cb6d62c71d9d70b05e25edb04ae016cce1e12e164a5ff4d3ea86cb197f5b898c6fb6356fc9cb1a0f60b793eefb0824e23a2b888f2e8b01f1a14d98ed922b",
+              "denominator_base16": "0x161a313847e42f3cb463e83276d66ac94adf7737bc6a115b27e4be5caafe34985bdadfa0be463e2ef868563702dcd381b03161e76cd7e4914c6f959d66ae0812b9ff7e0ac85059cbacbe5339657a46e6db14ff44724ef8b08ef7be4a1e9f450000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.002012626601325345
+            },
+            "passed": false
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x2710",
+              "float": 0.0001
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x149f080991bc2c04d9cae27a8c882a51a2ed61099a2401fa203dec67bb6cecfdbce8d4e98eb7b8a9bde67e03abbf7708ce939471578cbfec0edc55adb5e1a3af8571255c1d8c7e2fc0696a4383a3fa9917dab85ceebfe00000000000",
+              "denominator_base16": "0x6d2641b5e7954e1956418369b60446b9d8de340f2775333baf71ef8d95f2731d5f88a7988977207eb9bce65b85f7b59d7c1033efc701719b1c62dc98eb2471ac7582cfea5130b2769974e85879fed77f1a45a9c25be4a95238a2789",
+              "float": 3.022823220680664
+            },
+            "contraction_upper": {
+              "numerator_base16": "0xe63dde4d2fe64e7b74b7a2c4143da3c3c804f4f5a58686ddbaca059ba26136d196b107547059a7dfb02786cd131b867c464b2a968b0d7819aa52cba2245f62d5f314d4f2f39af784ad6891ad31f99ac33c9dd0a971585f2ac1b2bdd2417e73afd360e5b348702b71b88260379619cb8abc38a1878dd33fe2e4842cbc47",
+              "denominator_base16": "0x1b49906d79e55386559060da6d8111ae76378d03c9dd4cceebdc7be3657c9cc757e229e6225dc81fae6f3996e17ded675f040cfbf1c05c66c718b7263ac91c6b1d60b3fa944c2c9da65d3a161e7fb5dfc6916a7096f92a548e289e240000000000000000000000000000000000000000000000000000000000000000",
+              "float": 2160.0429018017626
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x398f77934bf9d774bef99c849e267a76db27c68e4cfd80ddc664674dd9ba72277c624cb32626de66501813669f70c2cec3bf115d939ed63a35ca4e31c4f0b8890cba9f44daf8c724bae0ef4526589599f999325f40a8dc780043d9edc782ba13744ac1ba52de63015c12af2f56d55ad63ced2edbb15c3f7548b229634470442c5f7b7",
+              "denominator_base16": "0x6d2641b5e7954e1956418369b60446b9d8de340f2775333baf71ef8d95f2731d5f88a7988977207eb9bce65b85f7b59d7c1033efc701719b1c62dc98eb2471ac7582cfea5130b2769974e85879fed77f1a45a9c25be4a95238a2789000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 2160.0429018017717
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x398f77934bf9d774bef99c849e267a76db27c68e4cfd80ddc664674dd9ba72277c624cb32626de66501813669f70c2cec3bf115d939ed63a35ca4e31c4f0b8890cba9f44daf8c724bae0ef4526589599f999325f40a8dc780043d9edc782ba13744ac1ba52de63015c12af2f56d55ad63ced2edbb15c3f7548b229634470442c5f7b7",
+              "denominator_base16": "0x10a7a666d1a6383abdb95f1d5156070abba767d18ff552214b75529d8ab14eb0ab63ca12b679bd65563762e657211c2657be38ecc64da865bb04d5c915613f9860ae45d9b1037e3b38ca66b4001d72c1d4f24137382594161bc44a85790000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.21600429018017717
+            },
+            "passed": false
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x3e8",
+              "float": 0.001
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x22963132e2eb5c6f0a84266315f1bbf8f93a494b96776d6ed3cd6682d1bda67f2aea548d21824129aee0efa53a124bf5248a06d4ac88412155d339dd4546bb163dd9faf8000fe3ed444b584b90a25eecfe39c1df8c00000000000",
+              "denominator_base16": "0x6045b897871fdfa891ec1b678d701f40f2c8855ee9a328d30705614f08d569698f4d9fadf740b54eb2b790484104319f0d2bbb7f27265500b5c2633c18823c95a8f2c77aa8893dd1ed73b581c31874b3802f141da73e08fb681",
+              "float": 91.97025289139616
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x1822b8af36ba9c6ebe3ccfdf75c389b79dad2a9d619e81c669788b5cffbc249d1251d52056c1b52af229eabe01d2fa9caf35018e998c95c8f5f2d9c6631d3d024776e8a18f6b9be8ac542a4e51997327728a4f86f207b495161d510eab86e059200d9cbe741b0f2e2f46153875930976c4c28266597b2b33e71ad2cf",
+              "denominator_base16": "0x18116e25e1c7f7ea247b06d9e35c07d03cb22157ba68ca34c1c15853c2355a5a63d367eb7dd02d53acade41210410c67c34aeedfc9c995402d7098cf06208f256a3cb1deaa224f747b5ced6070c61d2ce00bc50769cf823eda040000000000000000000000000000000000000000000000000000000000000000",
+              "float": 65719.91725346087
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0xc115c579b5d4e43568a8e904a942bf6b83564031bf5d3635edfa7fb9cbf7ab977215fee5646fc665a4a1daea07971c930526f51ed98bd9095a5f17a39c32ffad4edb5fd3389c83c7ba6603b71ec797069978bbd58d2e25fb1c5cd4b11da33329cf3e59f42be11493b6f6fd4ebc54c4fcbfcc6795ed9ffefbe6a3409379fd1fb2f3",
+              "denominator_base16": "0xc08b712f0e3fbf5123d836cf1ae03e81e5910abdd34651a60e0ac29e11aad2d31e9b3f5bee816a9d656f20908208633e1a5776fe4e4caa016b84c6783104792b51e58ef551127ba3dae76b038630e967005e283b4e7c11f6d02000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 65719.91725346087
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0xc115c579b5d4e43568a8e904a942bf6b83564031bf5d3635edfa7fb9cbf7ab977215fee5646fc665a4a1daea07971c930526f51ed98bd9095a5f17a39c32ffad4edb5fd3389c83c7ba6603b71ec797069978bbd58d2e25fb1c5cd4b11da33329cf3e59f42be11493b6f6fd4ebc54c4fcbfcc6795ed9ffefbe6a3409379fd1fb2f3",
+              "denominator_base16": "0x2f020b21fcfa90354f404961900fbf42b68be91f5814aaef0a6da083975034788af8e6f7f1ba98876d43a17347bf0c3aa96e5a8d161db78158bfea7457f79795137e8b66e44b032f80f17fa05c42f0fba596fcd27aa94a62c1cfd0000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 65.71991725346086
+            },
+            "passed": false
+          }
+        ],
+        "passing_radius_count": 5,
+        "selected_radius": {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x5f5e100",
+          "float": 1e-08
+        },
+        "protocol_checks": {
+          "directed_protocol_passes": true,
+          "registered_radius_count_is_complete": true
+        },
+        "hypothesis_checks": {
+          "point_inverse_defect_within_registered_bound": true,
+          "at_least_one_radius_passes": true,
+          "selected_radius_is_maximum_pass": true
+        },
+        "protocol_passed": true,
+        "hypothesis_passed": true
+      },
+      "replay_precision_audit": {
+        "precision_bits": 384,
+        "preconditioner_infinity_norm": {
+          "numerator_base16": "0x59527ec9944c2c7b",
+          "denominator_base16": "0x20000000000000",
+          "float": 714.5779769798695
+        },
+        "point_inverse_defect_infinity_norm_upper": {
+          "numerator_base16": "0x729f983f05816c4493831c10f934e585f6c4036b344606b9c55048dce18d8dea004d5f24ec02b182825b73",
+          "denominator_base16": "0x2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "float": 2.0361209046326675e-13
+        },
+        "center_correction_infinity_norm_upper": {
+          "numerator_base16": "0x825615938387d6569bb539ee51b35c388a49d3b55b456fa6b153f9409c1c1536861d291fb9b77607f0b49c4cf7859b01",
+          "denominator_base16": "0x2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "float": 9.043895266505443e-16
+        },
+        "point_inverse_defect_interval_sha256": "4c15d9fdcdf165e57d90a1b23b81476b6a65304944367a3810d821aa2bba96d3",
+        "center_correction_interval_sha256": "5dbaa69163b15dd88b1a1f2ac422ae635bfc6624b29dab412e60396122500dd1",
+        "mpfr_context": {
+          "gmpy2_version": "2.3.1",
+          "mpfr_version": "MPFR 4.2.2",
+          "precision_bits": 384,
+          "rounding_modes": [
+            "RoundDown",
+            "RoundUp"
+          ],
+          "emin": -10000,
+          "emax": 10000
+        },
+        "mpfr_flag_groups": {
+          "preconditioner_endpoint_round_down": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "preconditioner_endpoint_round_up": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "sparse_endpoint_round_down": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "sparse_endpoint_round_up": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "pivot_endpoint_round_down": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "pivot_endpoint_round_up": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "residual_endpoint_round_down": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "residual_endpoint_round_up": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "dot_round_down": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          },
+          "dot_round_up": {
+            "underflow": false,
+            "overflow": false,
+            "invalid": false,
+            "division_by_zero": false,
+            "erange": false,
+            "inexact": false
+          }
+        },
+        "checks": {
+          "preconditioner_converts_exactly": true,
+          "all_dot_intervals_are_ordered": true,
+          "no_forbidden_mpfr_flags": true,
+          "caller_context_is_unchanged": true
+        },
+        "passed": true,
+        "radius_records": [
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0xe8d4a51000",
+              "float": 1e-12
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0xab770340f0c6106549873d325b7db47db24127b332592689b446a18f1d6f0766e909dfafcc7f04321607201f353f56b2aa7b70de3735fe50b09c48cab73e3543b8cc6e54068fe6e903e2c58c7330438b929d9819369b11adbd7b35d4843dd97d9e7a6ffa880fe857aa3a9f08ea7bae8ca61c21408ea80d1aa1052f166055833e32f2613bda8529f7d476991760dbc3ecfe3f784a5df0f39a46c09b95ff876cca1e000000000",
+              "denominator_base16": "0x16d994462b71a8c82c0d9e3e8c3e41dc80cecee060d1fd0910f33dd8f5eaaab2a14841d1b74d92050d4e78d9c991495f3d73fd15af614c02780dce08568d8337aa9b4b572f4075946f7741091066df4ad977a53b668a00b0bf2a93d860d46a5f9f66a21aabebbce9a58420f5a685624beea2bd0b963ec368d0f6861441731d9eb8889ecb6f32ce5e4ab46bfd1122689422bee5994ec4cf727a91de2cfd3ad711ab9c3e7541244846c3",
+              "float": 2.795443219543817e-08
+            },
+            "contraction_upper": {
+              "numerator_base16": "0xa84dba44c2279a258ad8ac7fbaaba1809c4581a5399e469ae4d2d15bf152e91120a4e4986b146f1e36204aea6e8223c485f8e0f6a92a785c8c44053b17d75262ece76cf852753bd80948503529eb230553e252905d377639d6d421c3e096e3526f606442eb3fa3652c91cc896a1107607c03e83726ed453db2b724b86f79cb56bfde40b472556197485c4bbc20b85a0f87f5aa0303498a0792e3e9cd42d96b0551c33378c3373f4dc42568f678071191bb572f24d99e301f85826b9cf50d3bc40067cb3d2a4883197f490eadb184a9afeaa2192c031b",
+              "denominator_base16": "0x808feb0964f5a4c043d0d72d47b2ada32ebe379199b6cabfab52f113787f88254d8b4af05619b6f7da570d39e16f53acf47bb7556fda493276750e3fcad8afa419eb267cd197aedde0dcdba0b64e0ce5d59e5b53d605a43c7716f11031adf138f43092df350156b7ae822187e12c5bb0d960fd7104314e427b926b58a5b1e1bae9af1829d41b0a830c67a5e9deff7c3907023ba21534622a1415c31941ff19b5009ee942228e3f72000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.997562180944923e-05
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x1e6c317c00a686c49f784e5bcaa5ce618c28e5a94e8e7e160651637a3266288b252af40430a2cb3a284a099d87b95f1e58e4be45d7cd9285bd1fd6f9b4aa68cd39261f8ba6162d1ae4bc90af2655ce402601f2d4c379a365bdcfeb6b83788430fc91dc6016346fd4c2d9cad2c3ac8e2d621108154a23e32b35ae403e95b2cb0db72bd16610bd896b6db89c1ee188c9bd3bbb3e7e19450b866ad003ab356cd461a6a250fd5fd7261cce77829bbd1809945fbcf2073c7e1d146b2f10ec9e16cef5b6a08adfadb2c8d1d9d0b61310c4e2db5f8887fe27109233d627689",
+              "denominator_base16": "0x808feb0964f5a4c043d0d72d47b2ada32ebe379199b6cabfab52f113787f88254d8b4af05619b6f7da570d39e16f53acf47bb7556fda493276750e3fcad8afa419eb267cd197aedde0dcdba0b64e0ce5d59e5b53d605a43c7716f11031adf138f43092df350156b7ae822187e12c5bb0d960fd7104314e427b926b58a5b1e1bae9af1829d41b0a830c67a5e9deff7c3907023ba21534622a1415c31941ff19b5009ee942228e3f72000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.0009243651484599934
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x1e6c317c00a686c49f784e5bcaa5ce618c28e5a94e8e7e160651637a3266288b252af40430a2cb3a284a099d87b95f1e58e4be45d7cd9285bd1fd6f9b4aa68cd39261f8ba6162d1ae4bc90af2655ce402601f2d4c379a365bdcfeb6b83788430fc91dc6016346fd4c2d9cad2c3ac8e2d621108154a23e32b35ae403e95b2cb0db72bd16610bd896b6db89c1ee188c9bd3bbb3e7e19450b866ad003ab356cd461a6a250fd5fd7261cce77829bbd1809945fbcf2073c7e1d146b2f10ec9e16cef5b6a08adfadb2c8d1d9d0b61310c4e2db5f8887fe27109233d627689",
+              "denominator_base16": "0x74ed3713f2c1f7634f37a3ad1236ef5e52941f357d95444a0617409073e3fae047e300937d1031a017a8e34b2932b5f0e0ae48fc4503f98907f6475a76285c58822250932bcfe2f9c0b64dbbedaa03deab1d5af4062517b1d134a5ff893d47af97cf06467a9426cf733c411bb0555873dd52a12966cdd6851990c45653e94436542bc7326060a03e273b5360ec2e4f7f289c58f926043a2383979c67bcd54faaddf7cbb3905bbbb3b230712000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 9.243651484599934e-16
+            },
+            "passed": true
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x174876e800",
+              "float": 1e-11
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x122a497d86cf15bbbbfda29086fefb639fdaae49d2cf96b8af281bedb5273f1d06c93d53339586bdc5a146b0e8b643080cdbddef1b5cbdcb0485c1b5b096a95a025212fae74388a97744f0620ef3d9c11291aff56197a41123b243c1da4dfb00d3e5c75dfef6bbb8484d652fde40b3315414c609d925f23bbaacbd035d703e471db045ff66d459eb7eaa09c73e74298ff1c649ddb8dc0b5350c7a4e0c000000000",
+              "denominator_base16": "0x3df89a0a0572badd1c2edda274719ef1cff3d507b2128b375edd40c49a7215c261cc5ae1d7b710a0f0807bef8f740b7b57bb6858f3cdb94c4d407151be502c3326310aee60ce731b0e5bca06f2346d368603facd9a4af66eda61b238d4c0c8c955497d0dc69d729e5249ddbd752242eed0209029e52fe9b7f7668d16c6841c5faf1865c09ced08e2981e9d0bd2f1b51ee56f1644f76c951f460d35257eb9891c8371fbb",
+              "float": 2.795443228697473e-07
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x7ccfda6a709a9a9159b14c42b0da1fdf8fc59109f233b1e97bc3f41d86a33b662c779dd931b78991ffd6231cae47bd7aa828fb3f950ffd8c77abbb121b60eac85a791dc102aa2c7714215e42c76db3ff7f18f62d828844d02a126f7de9ef15a81d13e4d36c32dacb5bfe81fa9d65535209c8a88bbb3637993e20f5d8539f986996ca1654940612b6880caa384ab3df4355f37ffa9d965aa4b90e877ac1fbf9bcbbc143d6bbe6259afc5abd7a3b99a69041ac8aae90a6281728a06e4102f17d763e7734f645d8821a6918cf69228822770c5",
+              "denominator_base16": "0x988b53c9e606b847a7d5d2caf73f11182744828918cb2f4d384801e3f253e6cac9597d3f9cd6505114ed7fd788801c434e1c148c30bf51f6e58aef8e233b807de7db2e998bd4cc915e6bc9e9b6a86f4b227ff3352d074ae97c042cdaa93d01ef96dc47845f0d68e82d0497f9bdde2e9a9dda00672075f089c372965f728045d7d663709f0c2015df004b5b30cc2b96736fd65e339c1ef8ea850cd1975f528c94f4c9ce000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.00019975621691608358
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x16aa3e4c5b13fb7e6c0fa87d0b3b603f3468e76eb6beeb8497bb71385e842704436634dbd46ff5af85984cc98bb78a0bc8281d642276e17d9c6338074bb2c233c24cf68d8798db04b986e4dcbf46d123280bed2d5418cd66d8194baced0e02f1673562be3e2bbb5a8ab26ade73e3517137b96dd4615d4d5d1a1bdb3765920719e7308d32ca25db63ac35cfbf13fcebb490172bb9f836b6a25489b2565f8c7114be93d8bd13f77d51e54cd09b4be3dff32121c2efe1eb0549711add31c97134f138f3a9c260e839220d651046af5a20577ba521db3866b",
+              "denominator_base16": "0x13116a793cc0d708f4faba595ee7e22304e89051231965e9a709003c7e4a7cd9592b2fa7f39aca0a229daffaf110038869c382918617ea3edcb15df1c467700fbcfb65d3317a99922bcd793d36d50de9644ffe66a5a0e95d2f80859b5527a03df2db88f08be1ad1d05a092ff37bbc5d353bb400ce40ebe11386e52cbee5008bafacc6e13e18402bbe0096b66198572ce6dfacbc67383df1d50a19a32ebea51929e9939c000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.000290195169581138
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x16aa3e4c5b13fb7e6c0fa87d0b3b603f3468e76eb6beeb8497bb71385e842704436634dbd46ff5af85984cc98bb78a0bc8281d642276e17d9c6338074bb2c233c24cf68d8798db04b986e4dcbf46d123280bed2d5418cd66d8194baced0e02f1673562be3e2bbb5a8ab26ade73e3517137b96dd4615d4d5d1a1bdb3765920719e7308d32ca25db63ac35cfbf13fcebb490172bb9f836b6a25489b2565f8c7114be93d8bd13f77d51e54cd09b4be3dff32121c2efe1eb0549711add31c97134f138f3a9c260e839220d651046af5a20577ba521db3866b",
+              "denominator_base16": "0x1bbf652256ac96e3a686e4c05c79945a3ab5a5f864157022bb6d84b06a04f336d314980353a062dd95dac4d1841635a18026417c357447613274404e6af1bca99cc8c39c19b8e7aacf05457013ca6ebc725961a8d81e79746de587ed26530901203cd21684b987f15fb454363106690af500f875d55740679e1f81599e93ff41dad007042db3556dedceed3c10c8f2379cba89d69677b39dad6e809810b9e1eeb6fe142d97ad6000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 2.90195169581138e-15
+            },
+            "passed": true
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x2540be400",
+              "float": 1e-10
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x50f8d59ce33d533f4909049daf8e87c670f85aa43fe47f1fc8ed90605fef664f8169e234665a4a43de7e7388b41b027ec4ec3f95d9dc8886a67cc1de56c2870596ccdedda6dc7dfda5db1fce950041c6656db234a3eff301d0471e1f5f4317f9ea68baece821075addea7dca3c2b99ef507c9d9d49bc5635b91f4b3dff64f518bd6a382fefcdb1125e3888bf33647d7ac6f12d7d8ff1c1873328b8000000000",
+              "denominator_base16": "0x1b9fb5132847fe66e8f273954592076dc83e10290efd574b11c0e0e94d5a4319f665057115638c786283e3e4742b1a577e180d34560ab61934ccf1c00262c91c1aff644cacd5dff35afce83aac40e28ac3361cb1df27238c90a34a250bca43f0db72c996c3049e1b878299cd0447d550b6d6008abcf550ec31c259aaa134664d772e415a19c509f8cd7a2f78b6afb8266e27c986e8f04671aa868c7ccb2bc9bdf1e3",
+              "float": 2.7954433202340445e-06
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x1c409a123f0a564dae40a73afe44e3216c757a29ff50981f2c496f80de8e11acff1473ae4592d6e2225ea31b98061bd454a6b989e5895cee8ce7801c5ca8961c8b2f789fd7edcc54136cc7fbfa7172d9ee3c522a290d96bbf0eeda06e0166ef9f9bb419c2a23da37ff029179e8c06d78ade369f898a0f570a67c456582fafe679900fdf15a64c992126316fc85b708721c0d06e1f19de57d9a722c30c4667b615c97bf4caba387b63bcd62dd0468793eb6236493dfed3b6cb4152c38b35a8baf8a9c1700170631b122c272c09f409559f9",
+              "denominator_base16": "0x373f6a26508ffccdd1e4e72a8b240edb907c20521dfaae962381c1d29ab48633ecca0ae22ac718f0c507c7c8e85634aefc301a68ac156c326999e38004c5923835fec89959abbfe6b5f9d0755881c515866c3963be4e47192146944a179487e1b6e5932d86093c370f05339a088faaa16dac011579eaa1d86384b3554268cc9aee5c82b4338a13f19af45ef16d5f704cdc4f930dd1e08ce3550d18f99657937be3c6000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.001997562232738345
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x7185638885794d4a07f4a8b25e76a8e4d0eaafe5d3f4abeb81cf04213163057f3092720f5a0264ba86a6e9d2e76187376de613f27764f8a3610f0c1428ae462e47712e12f56a34160c7b89fb587fb65eefada8c58f203f3c6eccde0b450fd74c343b01bcf34e7ed25d1dc2eef904991069b76021561eb5bf30c64726fe39f23631e9f573ce48cc7f9dd786ce066bab77adb2faf5db69a3a1c97a56eaf46dcc0b5c8f9ef0085a7f4c5f629f79a2e24dbaaaa8f02742bf502b2b473f151f024eb5e5b06df2b7724f1f79d76146641d555d3b2945df4cb",
+              "denominator_base16": "0xdcfda899423ff33747939caa2c903b6e41f0814877eaba588e07074a6ad218cfb3282b88ab1c63c3141f1f23a158d2bbf0c069a2b055b0c9a6678e00131648e0d7fb226566aeff9ad7e741d56207145619b0e58ef9391c64851a51285e521f86db964cb61824f0dc3c14ce68223eaa85b6b00455e7aa87618e12cd5509a3326bb9720ad0ce284fc66bd17bc5b57dc133713e4c374782338d543463e6595e4def8f18000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.0020066061280048504
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x7185638885794d4a07f4a8b25e76a8e4d0eaafe5d3f4abeb81cf04213163057f3092720f5a0264ba86a6e9d2e76187376de613f27764f8a3610f0c1428ae462e47712e12f56a34160c7b89fb587fb65eefada8c58f203f3c6eccde0b450fd74c343b01bcf34e7ed25d1dc2eef904991069b76021561eb5bf30c64726fe39f23631e9f573ce48cc7f9dd786ce066bab77adb2faf5db69a3a1c97a56eaf46dcc0b5c8f9ef0085a7f4c5f629f79a2e24dbaaaa8f02742bf502b2b473f151f024eb5e5b06df2b7724f1f79d76146641d555d3b2945df4cb",
+              "denominator_base16": "0x20288d03cf6fb39fd1aa0f7d36297443fb42ef50c78702bb93a6d55c4d361ffedbc1f33a3d4032adfbd140fc101e67521b642b09eaa99f8506186d53f80e8c4a07166343a380d240d55f3947e9305bcf4a19f9fec45d101851b7c839ee89b32ee7619759f185b37d7fbdb2af1d6081c3070efba5cf2e679d6d087c3618bf717fb4f466a3e2890ad1147970e2f2e43a7d710ecb7f974bc6e4d350675d33bee8c170fd861796000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 2.0066061280048505e-13
+            },
+            "passed": true
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x3b9aca00",
+              "float": 1e-09
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x447c0061fdc9fab3a99e820dac4eb539f0c919edc7c966108b94c9de33b870131e8569de3902ef4c0bd3c09b977b12143cc909cb134717f318b435923bf10774e5918ac456865bb7a7af96ea23fecfa84c778d354ef91f789a4c5ba808c6552821d7ee4bbe9b056a9dbfc7430fb0937e7aca924f3ad959e1b8a48ab9e578bad6b17afc9a8a9be062f5db23db0be6f5e122bb67271068cf0000000000",
+              "denominator_base16": "0x2561c0ce1ff1998775e9c5da5a7bed4832a0f4876878f9ab57d71543b022c15bafd5c2b2c7cc6c97cbdbcf62d714b73ddb2ccb6803b1bcbab20568a0e4ed86f08eb2f067a5c48809c1e873e600f318b7ab9cf8e315413e7b93868913493e59748d3c8a519ab75f3d31d943c2990fbe52785691da54531ed4daa98914363598e6d43dc374d78358579f566bf653d95a6c153e2564072b189974d0963817ff",
+              "float": 2.795444235600967e-05
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x4338c446c1ca4bf58b38e49740e477943ec6c94238347cb29ca34d496351528bf9785461b86c47da1851caeaaba8576a8042e59572b7fb872d466a536f6643ccfe44398ec876684d15c0de41799063227bbb9eaa62f9d09c5ab727fac18d6706fcbf628b1158439402d4c621a5667489d0c170138e4ec6d92fd899db9fae522eb770a216f4396b0ffdfcfb3335fa271b90e75b88e70bd56df0247f49b4aaae8d44b88dd284d96b5117ea69cd4f5fbb2dffc348b27ccbc3b5455ff49c8c6537e93b0b222afb46478e416c85b37",
+              "denominator_base16": "0xd25301b78f27f21918d48634a0431ae7cb4613dae95711d4eb688e25a11d917cd4dfb528f66d49aa755bc4483e586c42b507489d9ea1afb524b0b7948100270b9367bec2f0a0873f56b0f6fd352abdb500a3022d7a66a5e17bec81d499484bb455b9e5a960dd8590916f3419de9677f7645d3a3fbe4f72647440e72022efab0d1aad1642a06cd7ba5bebde07781e1e81df9b8c0b6908faeee0034d305a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.01997562886656138
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x219cc5dd9c0d53bc711f24a4ad3d8b9f49ad85d6f19f9af9c4f5b9aad3e23614e8019e0e62dc9650a73a48a3bb869cb0e18963a9b2bc6a0d0c36cd8eabd7abaea9fcbe51421d40eb1ad064f090bb233370d534a49570b61ae6ec5ac08dfe03f226dc841aeca45f28408971ad764e21c1f9a637acb2e401b874fa5ed0283454fa9da5a9eb9f4480cc63f51aeb98739a496ae64df0027b48b99f94f4a2c93ac05cbda93b84698a6622b9a876b035c6258b150013f14d0c30603f696ee6735c14cba5741870cef5739ca24f2708a0e414eedc1",
+              "denominator_base16": "0x692980dbc793f90c8c6a431a50218d73e5a309ed74ab88ea75b44712d08ec8be6a6fda947b36a4d53aade2241f2c36215a83a44ecf50d7da92585bca40801385c9b3df617850439fab587b7e9a955eda80518116bd3352f0bdf640ea4ca425da2adcf2d4b06ec2c848b79a0cef4b3bfbb22e9d1fdf27b9323a2073901177d5868d568b2150366bdd2df5ef03bc0f0f40efcdc605b4847d777001a6982d0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.01997653325608803
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x219cc5dd9c0d53bc711f24a4ad3d8b9f49ad85d6f19f9af9c4f5b9aad3e23614e8019e0e62dc9650a73a48a3bb869cb0e18963a9b2bc6a0d0c36cd8eabd7abaea9fcbe51421d40eb1ad064f090bb233370d534a49570b61ae6ec5ac08dfe03f226dc841aeca45f28408971ad764e21c1f9a637acb2e401b874fa5ed0283454fa9da5a9eb9f4480cc63f51aeb98739a496ae64df0027b48b99f94f4a2c93ac05cbda93b84698a6622b9a876b035c6258b150013f14d0c30603f696ee6735c14cba5741870cef5739ca24f2708a0e414eedc1",
+              "denominator_base16": "0x187c26a4eae294e4786cdc2f473eb30347422a90589115cdc0345bb4577736b94f7a0ea5f830e0156adba005915a71ab22a31b7ae0d687f70388ddc88cf5e870a35f5bd7c59fc8cdcfe674e4493b50b147dc630835249647e00bfcfd5bd4cff192fcdab370377cbcbaf01854867c7ee674ce88d9a5958ba953be140553e0ce15040023a6a94f14e3cdc1da4bb32f8bf7065deba4ce49a10e8baa00c4975e2582000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.997653325608803e-11
+            },
+            "passed": true
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x5f5e100",
+              "float": 1e-08
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x263cf3574be9cd1129e57e3b6307024527da5248d2cc7cd1f1f4adcc47e7582ab50f30a090320e22d5135f364d76796a14ba014fcfdd21feaf04097202ecd46ce3ab3812087c126c331789a0775a45754bd5fd9cfa495a67c5f18471114fc5623c598b337ee4b26affee2ce0eb37f35b5ecae4a85aae3e60f7f380ac2b0b197edfceba7fd6ede2a4d8866f2e7125ad6bcf021c1be0000000000",
+              "denominator_base16": "0x21652b690cbf9ce3b28dca9c4751fc714d8fb7d6ea51e750d8cc232709888ed27016591c62752f4573eac03f98e166a08d35149c2aa05aa2d0b9639d4cd9e53891cff491a96b3bfd928c8571a52a4c78779bdbbfad17b0ccd9438c99329b177693c9cc27b4bfdb56f6e0a08c2a3572b0c5a316693ed7abed1e0c2948d2c63cf23c58e40560a00678313fd6421a3a81a0fbb779886e647ccaac8903",
+              "float": 0.00027954533893909296
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x106bb4ff43ec8b8af93e46e6eff4db188f7992f14584bc34f129e63c35dd7c91f14df5ee19897c6539ee099d39be9d33490062e91e9922ec5a353b08e6289392a23fc40193c0e87c895167b52d785502580eb75e8aa114f850cc68cb09c7ff47b98cca4a6165f585160e637c00aef14aa97fd120df464054a5f997e01b9ed0a45e2ba2d30187a8d089c430aea8545fef73b5638ab486ddf079b619a6bf8b22cf8e1af816a68921c6972d18e2398515b65e76a01a2ef8bdfc26c3ce4b9ab0bea79ca1d2a0e5e56095d337d",
+              "denominator_base16": "0x52341c1646c3f857dee6df0a882c46033512ff9ade5374783d0a2f2503c64bde9dc0db598fe560aaf5f3144dc71724015b965a1df2c5cb69643e7f0d0bf0f928c9625a04172f5897901ed252d1a332639c9357ff33eb8bd0dbb9f7a07c9174d51d046cb081d8434c3850501df1bea42948f3e86586ff310c98bb7950cbc0960580daced228ec5eb1b44e5e2c8f54f05130888d9e9994e4690b29e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.1997569427734526
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x106bb57bfe71689cdd602423fbdf5028957607e952ecdc47d3bb24799478b07e7dd3281798bafcf6fedb57b125f91409799198da462d015f2ad3f47847fb7a820c82e5634cf8da195310216557e2d84ad965394d266fc39675e75f77ce0e950aae7625831038d19ae26e97b8789a28592013e3f2635394c4cefe22ade7a3e3653e4c05d4c252d5d03b7f7fb5c744c828f1d895977cdc3039d69274520cf617e1bd2c6bc0c24a7441126e3872963c3dea5e027be3f63147516220b352211e9fe3169afa56cbe945c0cc841c89bab4e6f",
+              "denominator_base16": "0x52341c1646c3f857dee6df0a882c46033512ff9ade5374783d0a2f2503c64bde9dc0db598fe560aaf5f3144dc71724015b965a1df2c5cb69643e7f0d0bf0f928c9625a04172f5897901ed252d1a332639c9357ff33eb8bd0dbb9f7a07c9174d51d046cb081d8434c3850501df1bea42948f3e86586ff310c98bb7950cbc0960580daced228ec5eb1b44e5e2c8f54f05130888d9e9994e4690b29e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.19975703321240526
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x106bb57bfe71689cdd602423fbdf5028957607e952ecdc47d3bb24799478b07e7dd3281798bafcf6fedb57b125f91409799198da462d015f2ad3f47847fb7a820c82e5634cf8da195310216557e2d84ad965394d266fc39675e75f77ce0e950aae7625831038d19ae26e97b8789a28592013e3f2635394c4cefe22ade7a3e3653e4c05d4c252d5d03b7f7fb5c744c828f1d895977cdc3039d69274520cf617e1bd2c6bc0c24a7441126e3872963c3dea5e027be3f63147516220b352211e9fe3169afa56cbe945c0cc841c89bab4e6f",
+              "denominator_base16": "0x1e9f8ab1d632198a0b8103793c5716bfaa3fbd25835848c29a14b50caef04933dd066812d4fe8e174616332982b58d4d2bbc825f99b86a49299c965c66299fb0af47fe1ab7bb56b5bbabd45fe359b6b9aad4658b39796c9e90f7bee91aa1bf8d13529dc5afc9f67f83173ebd8cb66207837de15c40e69d57a25e70673edc551f2a36db259b47e07d7d1464fe036fef53add791ba64148f0827fd3432de000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.9975703321240528e-09
+            },
+            "passed": true
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x989680",
+              "float": 1e-07
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x113f0dadcb20261244dde297d6666ff0f620a959b71d88bd7536e6e1427075bd75851d200e74d9b4ee9a2cd0951efe96328bf329e2b056cfb61c0dc025ec0031388b7ab7db40c18f106c69997b03b51e971ea1666665db52159b12aa3c44bf21be348587ea3861eb6d3f9e4f6d87271688fac8e886638c24bef347cc765dba63f7a1d36e0e2118aa6474e8743e6c632c0000000000",
+              "denominator_base16": "0x181935a39028b6a6b3c907d6283a343b80f1aa65508edf7acb11674563a7e9ce5f2742f929d1c03e2310462af868b139f32b7cc380580434e7ee954633b1fa6e98750b733efc6ab6b187beb514c49f4729a9813a91732902f97891f0f2d8db18c539383dded4672276d618674cbe1179b62b000b698164fc1402fb1b627156d63e6b27e7116198d5457b1d5ced7c4de0819a81bff1f3",
+              "float": 0.0027955449393646226
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x6047a7e6a84c73a81733fb928be5e2e95d0c29dcd9c8127bb0e1251afbf6ff050c460f881e5762b222657f6d9aacbf8648b8b4274359f7bbacfd9b56bc5826fa16ee804e2bf9014fb06b4e3260ef1b7658004ad6191da43b584c5d4fbe91a233a581b73fdfc90cd2e694117841f581579840f31832df5c3f0e85c02d4956afc560a3df8c6cfe2f65fafc282200fecdf5b2da177e4e83eaa0dcef3bac2e5936272bc4c7135943b9011f25a868ba5c69d635711fcdbdb90708baa2bfc1b8557de3afe0c7a11129",
+              "denominator_base16": "0x30326b4720516d4d67920fac5074687701e354caa11dbef59622ce8ac74fd39cbe4e85f253a3807c46208c55f0d16273e656f98700b00869cfdd2a8c6763f4dd30ea16e67df8d56d630f7d6a29893e8e5353027522e65205f2f123e1e5b1b6318a72707bbda8ce44edac30ce997c22f36c560016d302c9f82805f636c4e2adac7cd64fce22c331aa8af63ab9daf89bc10335037fe3e6000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.9976348473276877
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0xc08f4fdbf0d91c436dfdeb83cbef60d22eb48921b0454f1ad84769c7dc3ba673c42df617ca43d960059b08865f820550299d4f7deadae67b59b6be2f0b61ba735343a0c4c9cc801b8a38022934c0160719762fbc03f1e37cdf3cc6c3ddf6ec833bdc98ee4dd2780ab02c17340ef814cea6c09e8d3ab4f005d30ee64d7e1e0d120a924bab34f99fc59c79d91b12e15592167a472700a122698318f2b145c6acd2811cbef878d475bd1073e4e7593ab4ae17ac76b7735e0f7bcf4bedb3c9a2195a9ff1d9f969b7b8a68fd7b7",
+              "denominator_base16": "0x6064d68e40a2da9acf241f58a0e8d0ee03c6a995423b7deb2c459d158e9fa7397c9d0be4a74700f88c4118abe1a2c4e7ccadf30e016010d39fba5518cec7e9ba61d42dccfbf1aadac61efad453127d1ca6a604ea45cca40be5e247c3cb636c6314e4e0f77b519c89db58619d32f845e6d8ac002da60593f0500bec6d89c55b58f9ac9f9c4586635515ec7573b5f13782066a06ffc7cc0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.997634856371583
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0xc08f4fdbf0d91c436dfdeb83cbef60d22eb48921b0454f1ad84769c7dc3ba673c42df617ca43d960059b08865f820550299d4f7deadae67b59b6be2f0b61ba735343a0c4c9cc801b8a38022934c0160719762fbc03f1e37cdf3cc6c3ddf6ec833bdc98ee4dd2780ab02c17340ef814cea6c09e8d3ab4f005d30ee64d7e1e0d120a924bab34f99fc59c79d91b12e15592167a472700a122698318f2b145c6acd2811cbef878d475bd1073e4e7593ab4ae17ac76b7735e0f7bcf4bedb3c9a2195a9ff1d9f969b7b8a68fd7b7",
+              "denominator_base16": "0x39748aac9901b1896f0039590d24d4ec262b2cfb5192c2bd290adc31a5db2425f1490163413e7fd1a5651aeb0f04cb1a63cd1c93b48cd8f78b400991c1dc434d92287e6ea2999b04d73fde248725d0a7904a8b84fd2b8a35817d0023715e1a4e0ca7ae2132b6746c6147ed6ab92de07628dc813935696a1e284e23638832acc3080d46c09ea6aa7bea89c93fc08daf4455bfb97cfc00156e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.997634856371583e-07
+            },
+            "passed": false
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0xf4240",
+              "float": 1e-06
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0xa560f5bfb67fbea9d3a79a3bee8aeaff8c005bcddc1210ff4b96a1b7a1a1aea4aede222f684bde86918a433c4f0157d1307ddf9b4b3d1d6c3c36b2f38724c89fbbe68fe4fe99e396cd0f7f93c001c99f93a2cdb4e8ba4878bccd7bc2e1a5ad232270573de27af6cf938b14999e045b173dcef5bd6bd6366d32a3097280000000000",
+              "denominator_base16": "0x17180438273a98957ab3a876b35b65a0113caeb30e0dbe7d2fce90d8a407ada2b97e6460bed32747acac9adf9e4a036d5ec499e35e5d649c5e39b412ce3e71337efbb18c45d87cc07666cadc0551fd62175ba0d6b835cbd3ece8c996ae40eb5bfc559aeecb1563b3faf296769ec0647d907645fc19db679d2f3b1bd27012fd99be9d9",
+              "float": 0.027973323541732775
+            },
+            "contraction_upper": {
+              "numerator_base16": "0xa254666626a90a185f342ea07ea5d893826f9f184ab4b777833d401dd55f9cde98345c6eda71aa53748d2f7c32ce9665f1d89a24a534baac1cd243e07f22de1193f8cd200fb6581d625ff836f835fa7e428a9dd4b267a3c0005a7b92124471f446c38e57f163e50af9e2686c7457578c53384bf09b0589a77a9913064644769499052777c01dcca9967521a5638d549b16e3998c26ced41abdf82a54e8a9343a6a424d7046a0b301a6cbbb17b01b9841b761",
+              "denominator_base16": "0x81ef36af479e142a14d3e0d9be7e0384993eea9dd8eade2e0fcaeb7151c04cb81ee8e32e644a0193447f2f1ccc2d1618969b4b53a807d66cf8d4222beaddeaa0544d0b85c13dd197b37d6cec6cb3fc878bdc267a33d1d7a58ef65d556983c421ad7c5f452aaafb841bd64bbff8f9c4de9a82f1d92f0517259c063ce384a31cb29b6000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 19.989120945854967
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x28951999918d16d85656a0c942557766bd631d2572b3e0a6260d1fc4521021365f77c3a9899055d0ca138a45d8df2f5315727d0a2f7ad52f89acbcf115efdc846a81ae303eeea377563bc352bfb28825a2c7a2f0718efc0ae2547bd2dd89d7edc3a5579a5954b1a435cfcb5fd832a0590e4fcb68fa8289cc4ab2aa96e9f94e61a454101c42568e0396712e23fa15854824192ec288e6f39b25656c435625b5a35f8e79f0cb294e7af7b8e6bf54da4e6b4f6802c8723cbb3",
+              "denominator_base16": "0x207bcdabd1e7850a8534f8366f9f80e1264fbaa7763ab78b83f2badc5470132e07ba38cb99128064d11fcbc7330b458625a6d2d4ea01f59b3e35088afab77aa8151342e1704f7465ecdf5b3b1b2cff21e2f7099e8cf475e963bd97555a60f1086b5f17d14aaabee106f592effe3e7137a6a0bc764bc145c967018f38e128c72ca6d80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 19.989120946759357
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x28951999918d16d85656a0c942557766bd631d2572b3e0a6260d1fc4521021365f77c3a9899055d0ca138a45d8df2f5315727d0a2f7ad52f89acbcf115efdc846a81ae303eeea377563bc352bfb28825a2c7a2f0718efc0ae2547bd2dd89d7edc3a5579a5954b1a435cfcb5fd832a0590e4fcb68fa8289cc4ab2aa96e9f94e61a454101c42568e0396712e23fa15854824192ec288e6f39b25656c435625b5a35f8e79f0cb294e7af7b8e6bf54da4e6b4f6802c8723cbb3",
+              "denominator_base16": "0x1efa9170b03a2f5cbc713806ca0bb944b82d611ddc3c9732c961e83c4776b20a91d694520a8728fa257fb6b284a9ebd9a2c04c6894fac65e811f4b99aa8222b573b9527446bf861d841a325d2a36b5802d175fe878a4d2c307e2bae6a2251b5deb85bc12d4993df152470a95681344b0f6a4a23b40d6ddb1c67ff8ba5a9a8792914d566000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 1.9989120946759357e-05
+            },
+            "passed": false
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x186a0",
+              "float": 1e-05
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x828d227c3674f711b69945eda3bde82f5fbc53ccb144bbceff427535d4e37d934f8bc1c553ac672d0d72887398a76badc011ccf2fb9f2415e6c5db7f4fe9802505f4e1b0f1dc8c18a722dba0cc9b210d80d8764337361cb00000000000",
+              "denominator_base16": "0x1cf84e46a7cb285ea3dc2937e789ed34baf04eedb6a6b6d21552d00f4b1c881ca6995a329e23375f65de86cb571090d7dc3541fbce50a1f665a91c93a76f34ef2cf8b2f7eeb77812944441808f7e9a0b7191139a057bbe628b62b4708d1",
+              "float": 0.2816524810673163
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x2d8d22da7e21cf2e49ffd499135e62d1934c50dc38ddc753e8d85ef3386b4e725205467ef51fce6fa442d962afa55e71dac25d68a34dd1475c05542d852d9310996801ef3b4f349e6ba2c5aeb76117be8156a8f52523c6a87f017cba649b10084cf8f60d566f4e021b5c250f134b85bb773a5d1dd1fea728fce9963051565170b1ae486571a546633d2454d2d40e3",
+              "denominator_base16": "0x39f09c8d4f9650bd47b8526fcf13da6975e09ddb6d4d6da42aa5a01e963910394d32b4653c466ebecbbd0d96ae2121afb86a83f79ca143eccb5239274ede69de59f165efdd6ef025288883011efd3416e32227340af77cc516c568e11a2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 201.26266013244407
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x16c6916d3f1c2852ccffc355e681f29cbf37059fe70dc21f0dd7d87b69f9899a0a5af214b940ef9c873da0aa5f8430352f0ef6cef061f0f9c81169f873d2561d5a68e65a2631fca3740667866e98eb06ba23defaafb02286cf6efb48772bf8b35840fff90cb81a2b1bfd14c49c62fc25e607d5cbf5ffe4adb079f71b3933cd665aa46af380383a210ea834fc509fa8af26666645",
+              "denominator_base16": "0x1cf84e46a7cb285ea3dc2937e789ed34baf04eedb6a6b6d21552d00f4b1c881ca6995a329e23375f65de86cb571090d7dc3541fbce50a1f665a91c93a76f34ef2cf8b2f7eeb77812944441808f7e9a0b7191139a057bbe628b62b4708d100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 201.2626601325345
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x16c6916d3f1c2852ccffc355e681f29cbf37059fe70dc21f0dd7d87b69f9899a0a5af214b940ef9c873da0aa5f8430352f0ef6cef061f0f9c81169f873d2561d5a68e65a2631fca3740667866e98eb06ba23defaafb02286cf6efb48772bf8b35840fff90cb81a2b1bfd14c49c62fc25e607d5cbf5ffe4adb079f71b3933cd665aa46af380383a210ea834fc509fa8af26666645",
+              "denominator_base16": "0x2c3462708fc85e7968c7d064edacd59295beee6f78d422b64fc97cb955fc6930b7b5bf417c8c7c5df0d0ac6e05b9a7036062c3ced9afc92298df2b3acd5c102573fefc1590a0b397597ca672caf48dcdb629fe88e49df1611def7c943d3e8a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.002012626601325345
+            },
+            "passed": false
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x2710",
+              "float": 0.0001
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x149f080991bc2c04d9cae27a8c882a51a2ed61099a2401fa203dec67bb6cecfdbce8d4e98eb7b8a9bde67e03abbf7708ce939471578cbfec0edc55adb5e1a3af8571255c1d8c7e2fc0696a4383a3fa9917dab85ceebfe00000000000",
+              "denominator_base16": "0x6d2641b5e7954e1956418369b60446b9d8de340f2775333baf71ef8d95f2731d5f88a7988977207eb9bce65b85f7b59d7c1033efc701719b1c62dc98eb2471ac7582cfea5130b2769974e85879fed77f1a45a9c25be4a95238a2789",
+              "float": 3.022823220680664
+            },
+            "contraction_upper": {
+              "numerator_base16": "0x731eef2697f3273dba5bd1620a1ed1e1e4027a7ad2c3436edd6502cdd1309b678160250102d9254ef03d229b9b6bdbfbdac52c25157562cea00b6379a2a84f32e95962f86f491eafcf20418df200120ad6881de307af73bfa3fc4e183f8c8bbe2062f8ac15e74f78d39d5569d13a1e58d9226384569e758774736f7830d548f40c8f4bcf3891e72095b8af758b",
+              "denominator_base16": "0xda4c836bcf2a9c32ac8306d36c088d73b1bc681e4eea66775ee3df1b2be4e63abf114f3112ee40fd7379ccb70bef6b3af82067df8e02e33638c5b931d648e358eb059fd4a26164ed32e9d0b0f3fdaefe348b5384b7c952a47144f12000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 2160.0429018017626
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x731eef2697f3aee97df339093c4cf4edb64f8d1c99fb01bb8cc8ce9bb374e44daecc3abd16d0f6a62396bd2d1ee80fa6e997d689bafaa8eebb4924b2fad81517ad7bb04972a16bafa37c989bd57fcc4c77c7891711e69c3cc920ddc44e4e27333542419784dc3892cd3a3c196170dcc072ec323e22545208320d4ca72cd62a5ef1435efe4fbd24830c27a05a9d35ff9f7c879",
+              "denominator_base16": "0xda4c836bcf2a9c32ac8306d36c088d73b1bc681e4eea66775ee3df1b2be4e63abf114f3112ee40fd7379ccb70bef6b3af82067df8e02e33638c5b931d648e358eb059fd4a26164ed32e9d0b0f3fdaefe348b5384b7c952a47144f1200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 2160.0429018017717
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x731eef2697f3aee97df339093c4cf4edb64f8d1c99fb01bb8cc8ce9bb374e44daecc3abd16d0f6a62396bd2d1ee80fa6e997d689bafaa8eebb4924b2fad81517ad7bb04972a16bafa37c989bd57fcc4c77c7891711e69c3cc920ddc44e4e27333542419784dc3892cd3a3c196170dcc072ec323e22545208320d4ca72cd62a5ef1435efe4fbd24830c27a05a9d35ff9f7c879",
+              "denominator_base16": "0x214f4ccda34c70757b72be3aa2ac0e15774ecfa31feaa44296eaa53b15629d6156c794256cf37acaac6ec5ccae42384caf7c71d98c9b50cb7609ab922ac27f30c15c8bb36206fc767194cd68003ae583a9e4826e704b282c3788950af2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 0.21600429018017717
+            },
+            "passed": false
+          },
+          {
+            "radius": {
+              "numerator_base16": "0x1",
+              "denominator_base16": "0x3e8",
+              "float": 0.001
+            },
+            "jacobian_variation_infinity_norm_upper": {
+              "numerator_base16": "0x22963132e2eb5c6f0a84266315f1bbf8f93a494b96776d6ed3cd6682d1bda67f2aea548d21824129aee0efa53a124bf5248a06d4ac88412155d339dd4546bb163dd9faf8000fe3ed444b584b90a25eecfe39c1df8c00000000000",
+              "denominator_base16": "0x6045b897871fdfa891ec1b678d701f40f2c8855ee9a328d30705614f08d569698f4d9fadf740b54eb2b790484104319f0d2bbb7f27265500b5c2633c18823c95a8f2c77aa8893dd1ed73b581c31874b3802f141da73e08fb681",
+              "float": 91.97025289139616
+            },
+            "contraction_upper": {
+              "numerator_base16": "0xc115c579b5d4e375f1e67efbae1c4dbced6954eb0cf40e334bc45ae7fde124e8805dff74ad560163267e4e5060c8a14f3d6eecb103a23aa068e637632d8d0355f9866281dc570cba33e4fe7ad613787edd05ee500167ce3af87322386ea408c7d5bfde5288104cfbe7096639c72e9e36c73b1a87475b7fba4f9f1a2fc0071beed92dc5955d387ba25f0d6f3",
+              "denominator_base16": "0xc08b712f0e3fbf5123d836cf1ae03e81e5910abdd34651a60e0ac29e11aad2d31e9b3f5bee816a9d656f20908208633e1a5776fe4e4caa016b84c6783104792b51e58ef551127ba3dae76b038630e967005e283b4e7c11f6d02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 65719.91725346087
+            },
+            "krawczyk_utilization_upper": {
+              "numerator_base16": "0x1822b8af36ba9c86ad151d20952857ed706ac80637eba6c6bdbf4ff7397ef572ebfcaaaaeb76fc8e75e967168b7556aa033dc386873664a0033a619d465b19db641edb5a43c1971db45602fe10229c52399ed53e20b355e03dc189e22e8a39302c2d52d4af6442a716c748e126dfe97aa4f64ec788cc7c4a04f7bb3b4389de820483c7164567952ff16c083b730862a4bfd",
+              "denominator_base16": "0x18116e25e1c7f7ea247b06d9e35c07d03cb22157ba68ca34c1c15853c2355a5a63d367eb7dd02d53acade41210410c67c34aeedfc9c995402d7098cf06208f256a3cb1deaa224f747b5ced6070c61d2ce00bc50769cf823eda0400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 65719.91725346087
+            },
+            "krawczyk_image_radius_upper": {
+              "numerator_base16": "0x1822b8af36ba9c86ad151d20952857ed706ac80637eba6c6bdbf4ff7397ef572ebfcaaaaeb76fc8e75e967168b7556aa033dc386873664a0033a619d465b19db641edb5a43c1971db45602fe10229c52399ed53e20b355e03dc189e22e8a39302c2d52d4af6442a716c748e126dfe97aa4f64ec788cc7c4a04f7bb3b4389de820483c7164567952ff16c083b730862a4bfd",
+              "denominator_base16": "0x5e041643f9f5206a9e8092c3201f7e856d17d23eb02955de14db41072ea068f115f1cdefe375310eda8742e68f7e187552dcb51a2c3b6f02b17fd4e8afef2f2a26fd16cdc896065f01e2ff40b885e1f74b2df9a4f55294c5839fa000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "float": 65.71991725346086
+            },
+            "passed": false
+          }
+        ],
+        "passing_radius_count": 5,
+        "selected_radius": {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x5f5e100",
+          "float": 1e-08
+        },
+        "protocol_checks": {
+          "directed_protocol_passes": true,
+          "registered_radius_count_is_complete": true
+        },
+        "hypothesis_checks": {
+          "point_inverse_defect_within_registered_bound": true,
+          "at_least_one_radius_passes": true,
+          "selected_radius_is_maximum_pass": true
+        },
+        "protocol_passed": true,
+        "hypothesis_passed": true
+      },
+      "higher_precision_uppers_are_contained": true,
+      "selected_radius_matches_between_precisions": true,
+      "selected_radius": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x5f5e100",
+        "float": 1e-08
+      },
+      "selected_primary_contraction_upper": {
+        "numerator_base16": "0x20d769fe87d91715f27c8dcddfe9b6311ef325e28b097869e253cc786bbb08ac0b635e0c3e0a83f11bf9650695093d832f7b1f136763f7f20014e4b58d58995dc073286c41acd22054324d2ea03bf271202148f8449ca790bcbf6b135c88db22744fdb786f5d09503df135e837f254c390f37b9a2c101c3d7f50868f26bc83762bfc8546410f56bf6e95feda1bf1a2d95b48787f96edbc297c772ebd4145e0a98ad662eb86971d89e598001a9c6fefa12e213758d34212691de61",
+        "denominator_base16": "0xa468382c8d87f0afbdcdbe1510588c066a25ff35bca6e8f07a145e4a078c97bd3b81b6b31fcac155ebe6289b8e2e4802b72cb43be58b96d2c87cfe1a17e1f25192c4b4082e5eb12f203da4a5a34664c73926affe67d717a1b773ef40f922e9aa3a08d96103b0869870a0a03be37d485291e7d0cb0dfe62193176f2a197812c0b01b59da451d8bd63689cbc591ea9e0a261111b3d3329c8d21653c0000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.1997569427734526
+      },
+      "selected_primary_utilization_upper": {
+        "numerator_base16": "0x835dabdff38b44e6eb01211fdefa8144abb03f4a9766e23e9dd923cca3c5c21491b837b59cc2a906d662a70f85c4a566e10819bd8f436729266ddc79c7d1deb0cc2deb1169e06fe9d11f50514dd191c35595232ad5b121e1c0122c0a795cd695c790ed58c97fd165ecbc0f06d2f3f6ee60f51b625e0d2b1bc6b0a669c888ae97b2e221f18ea6df41e6356a5a5b58400f0f9dffc9c067b9d83e95b341dbd38d8ca61402946e8c669ad69bfe1d0bb9fc49261416c1fc23218aceb36a4667b8e1",
+        "denominator_base16": "0x291a0e0b2361fc2bef736f85441623019a897fcd6f29ba3c1e85179281e325ef4ee06dacc7f2b0557af98a26e38b9200adcb2d0ef962e5b4b21f3f8685f87c9464b12d020b97ac4bc80f692968d19931ce49abff99f5c5e86ddcfbd03e48ba6a8e82365840ec21a61c28280ef8df5214a479f432c37f98864c5dbca865e04b02c06d676914762f58da272f1647aa7828984446cf4cca72348594f00000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.19975703321240526
+      },
+      "selected_replay_contraction_upper": {
+        "numerator_base16": "0x106bb4ff43ec8b8af93e46e6eff4db188f7992f14584bc34f129e63c35dd7c91f14df5ee19897c6539ee099d39be9d33490062e91e9922ec5a353b08e6289392a23fc40193c0e87c895167b52d785502580eb75e8aa114f850cc68cb09c7ff47b98cca4a6165f585160e637c00aef14aa97fd120df464054a5f997e01b9ed0a45e2ba2d30187a8d089c430aea8545fef73b5638ab486ddf079b619a6bf8b22cf8e1af816a68921c6972d18e2398515b65e76a01a2ef8bdfc26c3ce4b9ab0bea79ca1d2a0e5e56095d337d",
+        "denominator_base16": "0x52341c1646c3f857dee6df0a882c46033512ff9ade5374783d0a2f2503c64bde9dc0db598fe560aaf5f3144dc71724015b965a1df2c5cb69643e7f0d0bf0f928c9625a04172f5897901ed252d1a332639c9357ff33eb8bd0dbb9f7a07c9174d51d046cb081d8434c3850501df1bea42948f3e86586ff310c98bb7950cbc0960580daced228ec5eb1b44e5e2c8f54f05130888d9e9994e4690b29e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.1997569427734526
+      },
+      "selected_replay_utilization_upper": {
+        "numerator_base16": "0x106bb57bfe71689cdd602423fbdf5028957607e952ecdc47d3bb24799478b07e7dd3281798bafcf6fedb57b125f91409799198da462d015f2ad3f47847fb7a820c82e5634cf8da195310216557e2d84ad965394d266fc39675e75f77ce0e950aae7625831038d19ae26e97b8789a28592013e3f2635394c4cefe22ade7a3e3653e4c05d4c252d5d03b7f7fb5c744c828f1d895977cdc3039d69274520cf617e1bd2c6bc0c24a7441126e3872963c3dea5e027be3f63147516220b352211e9fe3169afa56cbe945c0cc841c89bab4e6f",
+        "denominator_base16": "0x52341c1646c3f857dee6df0a882c46033512ff9ade5374783d0a2f2503c64bde9dc0db598fe560aaf5f3144dc71724015b965a1df2c5cb69643e7f0d0bf0f928c9625a04172f5897901ed252d1a332639c9357ff33eb8bd0dbb9f7a07c9174d51d046cb081d8434c3850501df1bea42948f3e86586ff310c98bb7950cbc0960580daced228ec5eb1b44e5e2c8f54f05130888d9e9994e4690b29e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "float": 0.19975703321240526
+      },
+      "preconditioner_is_nonsingular_by_neumann": true,
+      "point_jacobian_is_nonsingular_by_neumann": true,
+      "strict_krawczyk_inclusion": true,
+      "strict_interval_contraction": true,
+      "protocol_checks": {
+        "all_radius_interval_protocols_complete": true,
+        "both_directed_precision_protocols_pass": true,
+        "higher_precision_uppers_are_contained": true,
+        "selected_radius_matches_between_precisions": true
+      },
+      "proof_checks": {
+        "both_precision_hypothesis_protocols_pass": true,
+        "selected_box_is_strictly_positive": true,
+        "selected_krawczyk_image_is_strictly_interior": true,
+        "selected_interval_derivative_is_a_strict_contraction": true
+      },
+      "protocol_passed": true,
+      "proof_passed": true,
+      "passed": true
+    },
+    "runner_source": {
+      "filename": "q011j_interval_fixed_point.py",
+      "sha256": "23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5",
+      "sha256_newline_normalization": "UTF-8 text with universal newlines"
+    },
+    "input_digest_sha256": "a183f4830c757b58122132cf64111fd5375636affdb6c0b31e1cd90e89085799",
+    "coordinate_digest_sha256": "adaef353b8b64509334794c6014dc8b88e81ca2b776c3b65bd4d50911ae9452b",
+    "oracle_digest_sha256": "177468a48f667ddd922ed4b979d3e7e5d4cc0ed3afffe27a34651060da8e0f5f",
+    "proof_digest_sha256": "1080fcea24358422514bba7fb9881928269c853cb4d12b0282e63840c56124c0",
+    "validity_gates": {
+      "q011i_and_prior_claim_boundaries_are_sealed": {
+        "passed": true,
+        "threshold": "Q011i artifact, runner, package source, five digests, three hashes and outcome reproduce",
+        "value": {
+          "artifact_sha256_matches": true,
+          "runner_sha256_matches": true,
+          "package_source_matches": true,
+          "five_digests_match": true,
+          "valid_accepted_outcome_reproduces": true,
+          "registered_hashes_match": true,
+          "claim_boundary_and_nontransfer_reproduce": true,
+          "artifact_is_strict_finite_json": true
+        }
+      },
+      "exact_affine_fixed_leaf_coordinate_is_complete": {
+        "passed": true,
+        "threshold": "registered pivots, determinant, 153x150 rank, norm, exact moments, center and repaired source reproduce",
+        "value": {
+          "coordinate_checks": {
+            "sealed_state_hash_matches": true,
+            "dimensions_are_registered": true,
+            "pivot_matrix_determinant_is_one": true,
+            "lift_rank_is_registered": true,
+            "lift_infinity_norm_is_registered": true,
+            "extraction_roundtrip_is_exact": true,
+            "lifted_center_moments_are_exact": true,
+            "free_entries_match_sealed_state": true,
+            "only_pivots_change": true,
+            "pivot_correction_within_registered_bound": true
+          },
+          "source_checks": {
+            "waveform_repair_reproduces": true,
+            "source_repair_reproduces": true,
+            "global_exact_ledger_is_zero": true
+          }
+        }
+      },
+      "exact_map_and_jacobian_oracle_is_valid": {
+        "passed": true,
+        "threshold": "exact structural identities and independent map/Jacobian comparisons pass registered thresholds",
+        "value": {
+          "quadrature_and_filter_identities_are_exact": true,
+          "source_global_moments_are_exact_zero": true,
+          "center_map_preserves_exact_moments": true,
+          "reduced_zero_implies_full_zero_structurally": true,
+          "x_independent_filter_reduction_is_exact": true,
+          "binary64_map_comparison_within_tolerance": true,
+          "analytic_jacobian_comparison_within_tolerance": true,
+          "point_density_is_strictly_positive": true,
+          "all_exact_objects_have_registered_dimensions": true
+        }
+      },
+      "all_registered_interval_boxes_are_complete": {
+        "passed": true,
+        "threshold": "all ten boxes have positive density and population and contain the point Jacobian",
+        "value": [
+          {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          },
+          {
+            "population_box_is_strictly_positive": true,
+            "density_box_is_strictly_positive": true,
+            "point_jacobian_is_entrywise_contained": true,
+            "variation_is_nonnegative": true
+          }
+        ]
+      },
+      "dual_precision_outward_protocol_is_complete": {
+        "passed": true,
+        "threshold": "256/384-bit directed MPFR protocols, upper containment and deterministic radius selection complete",
+        "value": {
+          "all_radius_interval_protocols_complete": true,
+          "both_directed_precision_protocols_pass": true,
+          "higher_precision_uppers_are_contained": true,
+          "selected_radius_matches_between_precisions": true
+        }
+      },
+      "strict_serialization_digests_and_runner_reproduce": {
+        "passed": true,
+        "threshold": "finite strict JSON, four section digests and runner provenance reproduce",
+        "value": {
+          "strict_json": true,
+          "digests_reproduce": true,
+          "runner_sha256": "23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5"
+        }
+      }
+    },
+    "hypothesis_gates": {
+      "repaired_exact_map_preserves_the_fixed_leaf_and_replication": {
+        "passed": true,
+        "threshold": "exact repaired source and map preserve the global fixed leaf and stripe replication, with reduced zero implying full zero",
+        "value": {
+          "quadrature_and_filter_identities_are_exact": true,
+          "source_global_moments_are_exact_zero": true,
+          "center_map_preserves_exact_moments": true,
+          "reduced_zero_implies_full_zero_structurally": true,
+          "x_independent_filter_reduction_is_exact": true,
+          "binary64_map_comparison_within_tolerance": true,
+          "analytic_jacobian_comparison_within_tolerance": true,
+          "point_density_is_strictly_positive": true,
+          "all_exact_objects_have_registered_dimensions": true
+        }
+      },
+      "registered_boxes_are_in_the_analytic_domain_and_point_inverse_is_regular": {
+        "passed": true,
+        "threshold": "selected box has positive population/density and both point inverse defects are <=1e-8",
+        "value": {
+          "selected_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x5f5e100",
+            "float": 1e-08
+          },
+          "primary_point_inverse_defect": {
+            "numerator_base16": "0xe53f307e0b02d88927063821f269cb0bed8806d6688c0d738b014f",
+            "denominator_base16": "0x40000000000000000000000000000000000000000000000000000000000000000",
+            "float": 2.0361209046326675e-13
+          },
+          "replay_point_inverse_defect": {
+            "numerator_base16": "0x729f983f05816c4493831c10f934e585f6c4036b344606b9c55048dce18d8dea004d5f24ec02b182825b73",
+            "denominator_base16": "0x2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 2.0361209046326675e-13
+          }
+        }
+      },
+      "a_common_maximum_registered_radius_passes_both_precisions": {
+        "passed": true,
+        "threshold": "at least one radius passes q,u<=0.9 in both precisions and the maximum common radius agrees",
+        "value": {
+          "selected_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x5f5e100",
+            "float": 1e-08
+          },
+          "primary_passing_count": 5,
+          "replay_passing_count": 5
+        }
+      },
+      "selected_krawczyk_image_certifies_existence_and_local_uniqueness": {
+        "passed": true,
+        "threshold": "selected Krawczyk image is strictly interior and interval derivative contracts with nonsingular preconditioner",
+        "value": {
+          "selected_radius": {
+            "numerator_base16": "0x1",
+            "denominator_base16": "0x5f5e100",
+            "float": 1e-08
+          },
+          "primary_contraction_upper": {
+            "numerator_base16": "0x20d769fe87d91715f27c8dcddfe9b6311ef325e28b097869e253cc786bbb08ac0b635e0c3e0a83f11bf9650695093d832f7b1f136763f7f20014e4b58d58995dc073286c41acd22054324d2ea03bf271202148f8449ca790bcbf6b135c88db22744fdb786f5d09503df135e837f254c390f37b9a2c101c3d7f50868f26bc83762bfc8546410f56bf6e95feda1bf1a2d95b48787f96edbc297c772ebd4145e0a98ad662eb86971d89e598001a9c6fefa12e213758d34212691de61",
+            "denominator_base16": "0xa468382c8d87f0afbdcdbe1510588c066a25ff35bca6e8f07a145e4a078c97bd3b81b6b31fcac155ebe6289b8e2e4802b72cb43be58b96d2c87cfe1a17e1f25192c4b4082e5eb12f203da4a5a34664c73926affe67d717a1b773ef40f922e9aa3a08d96103b0869870a0a03be37d485291e7d0cb0dfe62193176f2a197812c0b01b59da451d8bd63689cbc591ea9e0a261111b3d3329c8d21653c0000000000000000000000000000000000000000000000000000000000000000",
+            "float": 0.1997569427734526
+          },
+          "primary_utilization_upper": {
+            "numerator_base16": "0x835dabdff38b44e6eb01211fdefa8144abb03f4a9766e23e9dd923cca3c5c21491b837b59cc2a906d662a70f85c4a566e10819bd8f436729266ddc79c7d1deb0cc2deb1169e06fe9d11f50514dd191c35595232ad5b121e1c0122c0a795cd695c790ed58c97fd165ecbc0f06d2f3f6ee60f51b625e0d2b1bc6b0a669c888ae97b2e221f18ea6df41e6356a5a5b58400f0f9dffc9c067b9d83e95b341dbd38d8ca61402946e8c669ad69bfe1d0bb9fc49261416c1fc23218aceb36a4667b8e1",
+            "denominator_base16": "0x291a0e0b2361fc2bef736f85441623019a897fcd6f29ba3c1e85179281e325ef4ee06dacc7f2b0557af98a26e38b9200adcb2d0ef962e5b4b21f3f8685f87c9464b12d020b97ac4bc80f692968d19931ce49abff99f5c5e86ddcfbd03e48ba6a8e82365840ec21a61c28280ef8df5214a479f432c37f98864c5dbca865e04b02c06d676914762f58da272f1647aa7828984446cf4cca72348594f00000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 0.19975703321240526
+          },
+          "replay_contraction_upper": {
+            "numerator_base16": "0x106bb4ff43ec8b8af93e46e6eff4db188f7992f14584bc34f129e63c35dd7c91f14df5ee19897c6539ee099d39be9d33490062e91e9922ec5a353b08e6289392a23fc40193c0e87c895167b52d785502580eb75e8aa114f850cc68cb09c7ff47b98cca4a6165f585160e637c00aef14aa97fd120df464054a5f997e01b9ed0a45e2ba2d30187a8d089c430aea8545fef73b5638ab486ddf079b619a6bf8b22cf8e1af816a68921c6972d18e2398515b65e76a01a2ef8bdfc26c3ce4b9ab0bea79ca1d2a0e5e56095d337d",
+            "denominator_base16": "0x52341c1646c3f857dee6df0a882c46033512ff9ade5374783d0a2f2503c64bde9dc0db598fe560aaf5f3144dc71724015b965a1df2c5cb69643e7f0d0bf0f928c9625a04172f5897901ed252d1a332639c9357ff33eb8bd0dbb9f7a07c9174d51d046cb081d8434c3850501df1bea42948f3e86586ff310c98bb7950cbc0960580daced228ec5eb1b44e5e2c8f54f05130888d9e9994e4690b29e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 0.1997569427734526
+          },
+          "replay_utilization_upper": {
+            "numerator_base16": "0x106bb57bfe71689cdd602423fbdf5028957607e952ecdc47d3bb24799478b07e7dd3281798bafcf6fedb57b125f91409799198da462d015f2ad3f47847fb7a820c82e5634cf8da195310216557e2d84ad965394d266fc39675e75f77ce0e950aae7625831038d19ae26e97b8789a28592013e3f2635394c4cefe22ade7a3e3653e4c05d4c252d5d03b7f7fb5c744c828f1d895977cdc3039d69274520cf617e1bd2c6bc0c24a7441126e3872963c3dea5e027be3f63147516220b352211e9fe3169afa56cbe945c0cc841c89bab4e6f",
+            "denominator_base16": "0x52341c1646c3f857dee6df0a882c46033512ff9ade5374783d0a2f2503c64bde9dc0db598fe560aaf5f3144dc71724015b965a1df2c5cb69643e7f0d0bf0f928c9625a04172f5897901ed252d1a332639c9357ff33eb8bd0dbb9f7a07c9174d51d046cb081d8434c3850501df1bea42948f3e86586ff310c98bb7950cbc0960580daced228ec5eb1b44e5e2c8f54f05130888d9e9994e4690b29e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "float": 0.19975703321240526
+          }
+        }
+      }
+    },
+    "study_validity": "passed",
+    "hypothesis_outcome": "accepted",
+    "scientific_classification": "the repaired periodic forcing admits a locally unique exact fixed-leaf fixed point in the registered rational box",
+    "result_digest_sha256": "ddad5beca9693eeab726382ac864d01a27b749d579c2ec8f12dd9f8c499db934",
+    "theorem_consequence": {
+      "repaired_exact_stripe_fixed_point_exists": true,
+      "repaired_exact_full_17x17_x_independent_fixed_point_exists": true,
+      "fixed_point_is_unique_within_the_selected_affine_box": true,
+      "raw_q011b_exact_map_fixed_point_is_certified": false,
+      "q011b_numerical_outcome_is_changed": false,
+      "q011e_through_q011h_coefficients_transfer_to_repaired_map": false,
+      "rigorous_fixed_leaf_spectrum_is_certified": false,
+      "forced_ssm_exists_or_is_unique": false,
+      "normal_attraction_is_certified": false
+    },
+    "claim_boundary": "This computer-assisted proof concerns the fixed 17x17 periodic repaired exact-rational map, its x-independent fixed-conservation leaf, and local uniqueness inside the selected affine box. It does not certify the raw Q011b exact map, transfer Q011e--Q011h coefficients, enclose the spectrum, prove a forced SSM or normal attraction, establish a basin or global uniqueness, or cover another grid, force, wall boundary, or D3Q27.",
+    "preserved_prior_outcomes": {
+      "q011i_acceptance_changed": false,
+      "q011b_numerical_acceptance_changed": false,
+      "q011h_sparse_equivalence_acceptance_changed": false,
+      "q011g_tt_rejection_changed": false
+    },
+    "next_change": "Preregister a rigorous interval fixed-leaf spectrum and selected/external split over the certified repaired fixed-point box."
+  },
+  "study_gate": "passed",
+  "scientific_outcome": "accepted",
+  "next_question": "Preregister a rigorous interval fixed-leaf spectrum and selected/external split over the certified repaired fixed-point box."
+}
