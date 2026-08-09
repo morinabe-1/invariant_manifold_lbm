@@ -236,6 +236,11 @@ Q011aでは次に、一様非零平均body forceをperiodic filtered BGKへ加�
 exact global momentum incrementが\(867\,2^{-40}>0\)で、boundary／drag／repair sinkがないため、
 このforced mapにはfixed pointが存在しない。従って非零平均periodic Newton solveは開始せず、
 zero-mean forcingとwall-bounded flowを別問題として扱う。
+Q011bでは零平均cosine force \(F_x(y)=3\,2^{-24}\cos(2\pi y/17)\)へ切り替え、固定mass／momentum葉上の
+x-independent fixed pointを二つのNewton startから同一解として数値的に解いた。全17個の
+\(k_x\) block、合計2598 fixed-leaf eigenvalueを監査し、spectral radius
+`0.9920954673551019`、\(\min\sigma(I-J)=0.00649328212134047\)でstable prequalificationを通過した。
+これは単一grid・単一amplitudeのbinary64結果であり、forced slow clusterや不変多様体はまだ構成していない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1536,6 +1541,55 @@ symbolと一致することはsource微分0のreference-state診断であり、r
 finite-precision bitwise fixed point、Guo／EDM精度、zero-mean forcing、drag、Poiseuille／Couette、
 forced manifoldは主張しない。次はQ011bでzero-mean single-wave periodic forcingを事前登録する。
 
+### Q011b zero-mean periodic forced fixed point and full fixed-leaf spectrum
+
+Q011aと同じodd periodic \(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)のmapに
+
+\[
+F_x(y)=3\,2^{-24}\cos(2\pi y/17),\qquad
+S_q(y)=3w_qc_{qx}F_x(y)
+\]
+
+をcollision後に加えた。全mass \(289\)、全momentum 0の葉を153×150 orthonormal nullspace basisで
+表し、x-independent stripe fixed pointをzero coordinateとrest linear responseの二初期値から解いた。
+任意状態BGK Jacobian、full-grid action、x-Fourier block actionを独立に照合した。
+
+- classification:
+  `zero-mean single-wave periodic forcing yields a numerically resolved stable fixed-leaf fixed point`
+- validity／hypothesis gates: `6 / 6`、`4 / 4` passed
+- Newton accepted steps（zero／linear-response start）: `2 / 1`
+- maximum terminal projected／full／component residual:
+  `3.4838391155252677e-16 / 4.088062755440557e-16 / 1.6653345369377348e-16`
+- two-solution absolute／forced-departure-relative distance:
+  `7.901660672580398e-16 / 2.444328466505941e-11`
+- minimum population／density: `0.027775908313351423 / 0.9999999999999997`
+- first-harmonic \(j_x\) amplitude／registered force amplitude:
+  `2.202356130540601e-05 / 1.7881393432617188e-07`
+- departure Fourier leakage outside \(k_y=0,\pm1,\pm2\):
+  `9.755400055442727e-12`
+- unrestricted \(k_x=0\) unit count／fixed-leaf eigenvalue count:
+  `3 / 2598`
+- maximum fixed-leaf eigenvalue modulus（\(k_x\) index）:
+  `0.9920954673551019 (0)`
+- minimum \(\sigma_{\min}(I-J)\)／maximum \(\kappa_2(I-J)\):
+  `0.00649328212134047 / 360.53472657220163`
+- maximum Schur reconstruction／unitarity／conjugate-spectrum Hausdorff／block-action error:
+  `9.580660157280466e-15 / 8.02559073515726e-14 /`
+  `1.3286214932264194e-14 / 1.129993555579798e-15`
+- input／fixed-point／spectrum／result digest:
+  `53dea81353ed4bcd77ab0c06533528f6d867d8b1bfa80d3d2ac3eddd7cf7dfbb` /
+  `8db05ad1e7ae7806b70b6330d798f6dad05bc8718027ba13cb315116b021b17c` /
+  `3ab8866e141b64a4d1d81bdfae1a70c61d8e7964d8480e2bd7ec7c7e174850fc` /
+  `66c4b579dbd7d7c391fd2017f165c2de251ecf850b7c485cb936b9742c8addf6`
+- runner／artifact newline-normalized SHA-256:
+  `bac9448f280ce2dfb2e1627ce1558b792cb53e05746b94246baa6c329b8c8ef0` /
+  `477202184694da1386c6b5bc0f0441e004a7a44f7a7b064f1d060d50adc66c27`
+
+このaccepted結果はfloating-point Newton／Schurによる単一grid・単一amplitudeのnumerical
+prequalificationである。rigorous existence／uniqueness、basin、forced slow-subspace selection、
+nonresonance、normal attraction、forced invariant manifold、他grid／amplitude、wall boundaryは
+主張しない。次はQ011cでこのfixed pointのcandidate slow spectral clusterと外部gapを事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2082,6 +2136,7 @@ python -m research.q007an_repaired_tube_induction --output research/artifacts/q0
 python -m research.q007ao_initialization_interior --output research/artifacts/q007ao_initialization_interior.json
 python -m research.q007ap_forward_shadowing --output research/artifacts/q007ap_forward_shadowing.json
 python -m research.q011a_periodic_forcing_compatibility --output research/artifacts/q011a_periodic_forcing_compatibility.json
+python -m research.q011b_zero_mean_forced_fixed_point --output research/artifacts/q011b_zero_mean_forced_fixed_point.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2154,6 +2209,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007ao_initialization_interior.json`](research/artifacts/q007ao_initialization_interior.json)
 - [`research/artifacts/q007ap_forward_shadowing.json`](research/artifacts/q007ap_forward_shadowing.json)
 - [`research/artifacts/q011a_periodic_forcing_compatibility.json`](research/artifacts/q011a_periodic_forcing_compatibility.json)
+- [`research/artifacts/q011b_zero_mean_forced_fixed_point.json`](research/artifacts/q011b_zero_mean_forced_fixed_point.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2248,6 +2304,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   same-initial repaired-MPFR-85 all-iterate forward-error認証
 - Q011a nonzero-mean periodic sourceのexact global momentum ledger、fixed-point obstruction、
   non-fixed rest reference-spectrum診断
+- Q011b zero-mean single-wave periodic sourceのfixed-leaf Newton fixed point、全x-Fourier
+  block spectrum、resolvent isolation診断
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2258,7 +2316,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- TT-cross（固定Q007c1係数では保留）、zero-mean forced fixed point、境界条件、
+- TT-cross（固定Q007c1係数では保留）、forced slow spectral cluster／invariant manifold、境界条件、
   Poiseuille／Couette、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -2307,4 +2365,8 @@ same-initial sampling-time forward shadowingまで新tubeへ移した。arbitrar
 initialization、bi-infinite shadowing、内部stage間距離、他grid／MPFR buildへは主張を広げない。
 Q011aでは一様非零平均sourceのexact global momentum ledgerを閉じ、sinkのないperiodic mapでは
 fixed pointが不可能と認証した。rest reference Jacobianはsource微分0によりunforced symbolと一致するが、
-forced fixed-point stabilityとは解釈しない。zero-mean periodic forcingとwall-bounded flowは未実装である。
+forced fixed-point stabilityとは解釈しない。Q011bでは零平均single-wave sourceへ切り替え、
+固定保存量葉上のpositive fixed pointを二Newton startから同一解として解き、全x-Fourier fixed-leaf
+spectrumが登録radius／resolvent gateを通ることを確認した。ただしこれはbinary64 numerical
+prequalificationであり、forced slow spectral cluster、nonresonance、normal attraction、不変多様体、
+wall-bounded flowは未実装である。

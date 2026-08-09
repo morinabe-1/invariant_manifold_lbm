@@ -10057,6 +10057,54 @@ Poiseuille／Couetteを主張しない。acceptedなら次はQ011cでforced fixe
 spectral clusterと外部gapを別途事前登録する。rejected／not_certifiedなら原因をfixed-point solveと
 spectrumに分離し、同じ結果からamplitudeやthresholdを変更しない。
 
+### Q011b 最終結果
+
+validity 6/6、hypothesis 4/4を通過し、
+`zero-mean single-wave periodic forcing yields a numerically resolved stable fixed-leaf fixed point`
+として`accepted`とした。
+
+- float force sum／FFT leakage:
+  `-2.3822801641527197e-22 / 3.7252978093103943e-16`
+- maximum source moment／stage replay discrepancy:
+  `2.6469779601696886e-23 / 0.0`
+- basis orthogonality／moment-annihilation residual:
+  `1.259169632432682e-14 / 1.4118649012697392e-14`
+- linear-response residual／maximum best Jacobian action error:
+  `4.779732994797796e-14 / 3.105943967977383e-11`
+- Newton accepted steps（zero／linear-response start）:
+  `2 / 1`
+- maximum terminal projected／full／component residual:
+  `3.4838391155252677e-16 / 4.088062755440557e-16 / 1.6653345369377348e-16`
+- two-solution absolute／forced-departure-relative distance:
+  `7.901660672580398e-16 / 2.444328466505941e-11`
+- minimum population／density:
+  `0.027775908313351423 / 0.9999999999999997`
+- compensated target residual／first-harmonic \(j_x\) amplitude／sector leakage:
+  `5.898059818321144e-16 / 2.202356130540601e-05 / 9.755400055442727e-12`
+- unrestricted zero-block unit count／fixed-leaf eigenvalue count:
+  `3 / 2598`
+- maximum fixed-leaf eigenvalue modulus:
+  `0.9920954673551019` at \(k_x\) index 0
+- minimum \(\sigma_{\min}(I-J)\)／maximum condition:
+  `0.00649328212134047 / 360.53472657220163`
+- maximum Schur reconstruction／unitarity／conjugate Hausdorff／block-action error:
+  `9.580660157280466e-15 / 8.02559073515726e-14 /`
+  `1.3286214932264194e-14 / 1.129993555579798e-15`
+- input／fixed-point／spectrum／result digest:
+  `53dea81353ed4bcd77ab0c06533528f6d867d8b1bfa80d3d2ac3eddd7cf7dfbb` /
+  `8db05ad1e7ae7806b70b6330d798f6dad05bc8718027ba13cb315116b021b17c` /
+  `3ab8866e141b64a4d1d81bdfae1a70c61d8e7964d8480e2bd7ec7c7e174850fc` /
+  `66c4b579dbd7d7c391fd2017f165c2de251ecf850b7c485cb936b9742c8addf6`
+- runner／artifact newline-normalized SHA-256:
+  `bac9448f280ce2dfb2e1627ce1558b792cb53e05746b94246baa6c329b8c8ef0` /
+  `477202184694da1386c6b5bc0f0441e004a7a44f7a7b064f1d060d50adc66c27`
+
+従って、零平均sourceではQ011aのglobal-ledger obstructionを回避し、登録fixed leaf上のpositive
+fixed pointとstrictly stableな全x-Fourier spectrumを数値的に得た。ただし単一grid／amplitudeの
+binary64 prequalificationであり、rigorous existence／uniqueness、forced slow cluster、
+external gap、nonresonance、normal attraction、不変多様体は未認証である。次はQ011cでslow
+spectral clusterと外部gapを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

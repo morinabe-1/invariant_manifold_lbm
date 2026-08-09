@@ -4423,6 +4423,101 @@ Guo／EDM高次精度、zero-mean forcing、drag、pressure boundary、bounce-ba
 forced invariant manifold、normal attraction、他gridは未評価である。次はQ011bでzero-mean
 single-wave periodic sourceを事前登録し、そこでforced fixed pointとspectrumを判定する。
 
+## 2026-08-09: Q011b zero-mean periodic forced fixed point
+
+### 問いと事前登録
+
+Q011aと同じodd periodic \(17^2\)、\(\omega=3/2\)、\(\eta=1/100\)のfiltered BGK mapで、
+
+\[
+F_x(y)=3\,2^{-24}\cos(2\pi y/17),\qquad F_y(y)=0
+\]
+
+という零平均single-wave sourceをcollision後へ加えた。全mass／momentumを
+\((289,0,0)\)へ固定し、x-independent stripe上では\((17,0,0)\)とした。153次元stripeの
+global-moment nullspace \(B\in\mathbb R^{153\times150}\)を使い、zero coordinateとrest linear
+responseの二初期値から同じfixed pointへ到達するかを判定した。
+
+結果を見る前に、Newton最大12 step、line-search列、三つのfixed-point residual閾値、解一致閾値、
+full x-Fourier 17 block、Schur／conjugacy／block-action閾値、spectral radius `0.9999`、全
+\(I-J(k_x)\)のsingular-value／condition gateを固定した。未収束時にもzero-start terminal iterateで
+validity診断を完走する一方、科学的解釈はsolver hypothesis通過時だけ行う規則とした。
+
+### 実装
+
+- Q011a artifact／runner／三digest／6+4 gateをread-only fresh replayした。
+- unmodified binary64 cosineのmeanとFFT support、各site source moment、Q011a sourceとのbitwise一致、
+  collision→source→streaming→filter stage orderを照合した。
+- `scipy.linalg.null_space`による固定葉basisを一度だけ構成し、orthogonalityとmoment annihilationを
+  Frobenius normで監査した。
+- density／momentum座標でD2Q9 equilibriumを微分し、任意rectangular stateへ作用するanalytic
+  collide-stream-filter Jacobianを実装した。rest linear-response stateの4方向central differenceで
+  検証した。
+- analytic reduced Jacobianを使うNewtonを二startから各2回実行し、terminal coordinateのbitwise一致と
+  traceのexact JSON一致を確認した。
+- fixed pointがx-translation invariantであることを使い、各\(k_x\)で153次元complex blockを構成した。
+  \(k_x=0\)だけ150次元固定葉へ制限し、他16 blockは全153次元を用いた。
+- 全2598 fixed-leaf eigenvalue、complex Schur reconstruction／unitarity、共役block spectrum、
+  \(I-J\) singular valuesを計算した。4登録complex directionではfull \(17^2\) analytic actionと
+  block actionを直接比較した。
+
+### 結果
+
+validity 6/6、hypothesis 4/4で、
+`zero-mean single-wave periodic forcing yields a numerically resolved stable fixed-leaf fixed point`
+としてacceptedとした。
+
+- float force sum／FFT leakage:
+  `-2.3822801641527197e-22 / 3.7252978093103943e-16`
+- maximum source moment／stage replay discrepancy:
+  `2.6469779601696886e-23 / 0.0`
+- basis orthogonality／moment-annihilation residual:
+  `1.259169632432682e-14 / 1.4118649012697392e-14`
+- linear-response equation residual／maximum best Jacobian error:
+  `4.779732994797796e-14 / 3.105943967977383e-11`
+- Newton accepted steps（zero／linear-response）: `2 / 1`
+- maximum terminal projected／full／component residual:
+  `3.4838391155252677e-16 / 4.088062755440557e-16 / 1.6653345369377348e-16`
+- two-solution absolute／forced-departure-relative distance:
+  `7.901660672580398e-16 / 2.444328466505941e-11`
+- minimum population／density:
+  `0.027775908313351423 / 0.9999999999999997`
+- maximum compensated target residual:
+  `5.898059818321144e-16`
+- first-harmonic \(j_x\) amplitude／force amplitude:
+  `2.202356130540601e-05 / 1.7881393432617188e-07`
+- departure leakage outside \(k_y=0,\pm1,\pm2\):
+  `9.755400055442727e-12`
+- unrestricted \(k_x=0\) unit count／fixed-leaf eigenvalue count:
+  `3 / 2598`
+- maximum fixed-leaf modulus（wave index）:
+  `0.9920954673551019 (0)`
+- minimum \(\sigma_{\min}(I-J)\)／maximum \(\kappa_2(I-J)\)（両witness index）:
+  `0.00649328212134047 / 360.53472657220163 (16)`
+- maximum Schur reconstruction／unitarity／conjugate Hausdorff／block-action error:
+  `9.580660157280466e-15 / 8.02559073515726e-14 /`
+  `1.3286214932264194e-14 / 1.129993555579798e-15`
+- input／fixed-point／spectrum／result digest:
+  `53dea81353ed4bcd77ab0c06533528f6d867d8b1bfa80d3d2ac3eddd7cf7dfbb` /
+  `8db05ad1e7ae7806b70b6330d798f6dad05bc8718027ba13cb315116b021b17c` /
+  `3ab8866e141b64a4d1d81bdfae1a70c61d8e7964d8480e2bd7ec7c7e174850fc` /
+  `66c4b579dbd7d7c391fd2017f165c2de251ecf850b7c485cb936b9742c8addf6`
+- runner／artifact newline-normalized SHA-256:
+  `bac9448f280ce2dfb2e1627ce1558b792cb53e05746b94246baa6c329b8c8ef0` /
+  `477202184694da1386c6b5bc0f0441e004a7a44f7a7b064f1d060d50adc66c27`
+
+### 解釈と次のbottleneck
+
+Q011aのglobal momentum obstructionは零平均sourceでは消え、登録固定葉上にpositiveなfixed pointを
+高精度で数値的に解けた。さらに、そのfixed pointの全x-Fourier fixed-leaf spectrumは登録上限より
+strictに内側にあり、全\(I-J(k_x)\)も登録isolation gateを通る。従ってforced問題の次段へ進める。
+
+ただしこれは一つのgrid／amplitudeにおけるbinary64 Newton／Schur prequalificationである。rigorous
+existence／uniqueness、basin、individual shear／acoustic labels、forced slow spectral subspace、
+external gap／spectral quotient、nonresonance、normal attraction、forced invariant manifold、
+finite-precision all-iterate shadowing、他grid／amplitude、boundary、Poiseuille／Couetteは主張しない。
+次はQ011cでcandidate slow spectral clusterと外部gapを独立に事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4548,6 +4643,8 @@ single-wave periodic sourceを事前登録し、そこでforced fixed pointとsp
 [`artifacts/q007ap_forward_shadowing.json`](artifacts/q007ap_forward_shadowing.json)
 
 [`artifacts/q011a_periodic_forcing_compatibility.json`](artifacts/q011a_periodic_forcing_compatibility.json)
+
+[`artifacts/q011b_zero_mean_forced_fixed_point.json`](artifacts/q011b_zero_mean_forced_fixed_point.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
