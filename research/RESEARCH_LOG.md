@@ -6337,6 +6337,89 @@ missing rangeをdegrees 5--90とした。
 \(C^2\)以上のgraph smoothness、SSM existence／uniqueness、normal attraction、basinを示さない。停止規則
 どおり、次はQ011xでdegree 5の2 modulus-overlap aggregateへ同じsector／phase auditを拡張する。
 
+### Q011x 実行結果
+
+Q011k／Q011u／Q011v／Q011wの4 artifact、runner、22 digest、outcome、claim boundary、Q011l／Q011o
+sourceを直接照合し、validity `7 / 7`を通過した。Q011uのdegree-5 recordは56 modulus aggregate中54件を
+分離していた。全scaled log intervalを再評価し、残る2件を
+
+- `[0,3,1,1]`、external group `178`
+- `[0,4,1,0]`、external group `177`
+
+として再現した。
+
+selected source group size `8 / 4 / 4 / 8`へcombination with replacementを適用した。可換monomial countは
+
+\[
+\binom63\binom41\binom81=640,
+\qquad
+\binom74\binom41=140
+\]
+
+で、合計780だった。group 178は4 target、sector histogram `2:2 / 15:2`、group 177は8 target、
+`0:4 / 3:2 / 14:2`だった。monomial sector histogramと
+
+\[
+b_{\mathrm{out}}=(b_1+b_2+b_3+b_4+b_5)\bmod17
+\]
+
+を合わせ、compatible comparisonを`320 / 124`、合計444件に固定した。
+
+各monomialのexact centerと
+
+\[
+R=\prod_{i=1}^{5}(u_i+r_i)-\prod_{i=1}^{5}u_i
+\]
+
+を構成し、全compatible targetへ\(\Delta^-=|C-c_e|^- -R-r_e\)を評価した。partitionは
+
+- `[0,3,1,1]`／group 178: `320 individual modulus / 0 complex phase / 0 unresolved`
+- `[0,4,1,0]`／group 177: `52 individual modulus / 72 complex phase / 0 unresolved`
+- total: `372 / 72 / 0`
+
+となった。最初のmerged modulus overlapは全indexed monomialがindividual modulusで分離し、2番目では
+complex phaseが72比較を追加で分離した。
+
+global minimum complex separation lowerは`0.19921630498069512`で、登録threshold `0.1`を通過した。
+minimum witnessは
+
+`block=16;center=150`の3乗、`block=0;center=148`、`block=1;center=149`
+
+のproductとtarget `block=15;center=148`で、individual modulus separationだった。phase-only minimumは
+`0.5682244044808002`で、minimum phase witnessのtargetは`block=0;center=130`だった。
+
+product 780件／comparison 444件のexact fraction recordはQ011wと同じframed canonical-JSON SHA-256へ
+封印した。
+
+- product framed digest:
+  `c8bf3fa77eea40b0f2384a543cb56d6b2f1b1f714b72cee7d3fd664648f4967f`
+- comparison framed digest:
+  `ae94f63d4b8ea7217e60c39c2aed7626436f0b136c7baabffba76bb1a410e62a`
+
+hypothesis `5 / 5`を通過し、
+`degree-5 external nonresonance is certified by indexed modulus refinement and Fourier-sector phase-sensitive product disks for both overlap aggregates`
+として`accepted`とした。Q011uの54 modulus-separated aggregateと2 overlapのfull indexed auditを合わせ、
+degree 5全体がcompleteである。evidence inventoryはdegree 2／3／4／5をcertified、degree 91以降を
+tail-certified、missing rangeをdegrees 6--90とした。
+
+- inventory／sector／compact-product digest:
+  `077f1ca07017b0f2b21c79ab069a38804b198b1bb4db7bace1b4a572f1a528d5` /
+  `6ef11f94af7e07675c2664da98b3df7fce241bbbf40007869c86e0c0fa3d704c` /
+  `44ef544447a7ea792bef4119fa40c6fe897f8fad2cc59aa1f0a56e3bbafcf2ad`
+- input／inventory／sector／product／result digest:
+  `9d13fa470f4c0bd8efa13868af90c6931025d7f3007e600c66af05bd0037a7ed` /
+  `717c4eadbd0e5f160a87de8846968933b8c5fbe604d769f215b6dcc65dacc955` /
+  `d31b7ea3cfcd7eca9d936cded13a1dc316e64dc2fc088bda745ea927d15ce52c` /
+  `add9d07725802c5fba84b68a207d5adc6f3f405a152a22f88059259f9a255222` /
+  `608bb3a7aee34a833e7980dbd18f4a3e641426966352126833f298e282437b31`
+- runner／artifact newline-normalized SHA-256:
+  `62712392faca2c154883edd93792f81e60ff975f6da16010aa3190ee44657a18` /
+  `11ef4d47f60840c4bc05c4056024e2af14b8339a8983b65dcb878bd355cfc328`
+
+これはdegree 5だけのcertificateであり、degrees 6--90、all-order nonresonance、Q011t graphとの一致、
+\(C^2\)以上のgraph smoothness、SSM existence／uniqueness、normal attraction、basinを示さない。停止規則
+どおり、次はQ011yでdegree 6の3 modulus-overlap aggregateへ進む。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -6514,6 +6597,8 @@ missing rangeをdegrees 5--90とした。
 [`artifacts/q011v_degree3_phase_disks.json`](artifacts/q011v_degree3_phase_disks.json)
 
 [`artifacts/q011w_degree4_phase_disks.json`](artifacts/q011w_degree4_phase_disks.json)
+
+[`artifacts/q011x_degree5_phase_disks.json`](artifacts/q011x_degree5_phase_disks.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

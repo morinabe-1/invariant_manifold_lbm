@@ -16352,6 +16352,55 @@ Q011k eigendisc、x-Fourier sector、registered product-disc formulaに限る。
 nonresonance、Q011t graphとの一致、\(C^2\)以上のgraph smoothness、SSM existence／uniqueness、explicit radius、
 normal attraction、basin、他grid／force／wall、D3Q27を構成・認証しない。
 
+### Q011x 実行結果
+
+Q011k／Q011u／Q011v／Q011wの4 artifact、runner、22 digest、outcome、claim boundaryとQ011l／Q011o
+sourceを照合し、validity `7 / 7`を通過した。degree 5の56 modulus aggregate、54 separation、
+`[0,3,1,1]`／external 178と`[0,4,1,0]`／external 177の2 overlapを再現した。
+
+selected group size `8 / 4 / 4 / 8`から`640 / 140`、合計780の可換monomialを列挙した。external
+target countはgroup 178が4、group 177が8で、quintic Fourier sum lawによりcompatible comparisonは
+`320 / 124`、合計`444`だった。
+
+全780 product discと444 comparisonをexactに評価し、
+
+- `[0,3,1,1]`／group 178: `320 modulus / 0 phase / 0 unresolved`
+- `[0,4,1,0]`／group 177: `52 modulus / 72 phase / 0 unresolved`
+- total: `372 modulus / 72 phase / 0 unresolved`
+
+を得た。global minimum complex separation lowerは`0.19921630498069512`で、登録threshold `0.1`を通過した。
+minimum witnessは
+`(block=16;center=150)^3 × block=0;center=148 × block=1;center=149`
+とtarget `block=15;center=148`で、individual modulus separationだった。phase-only minimumは
+`0.5682244044808002`で、target `block=0;center=130`だった。
+
+product／comparison framed digestは
+`c8bf3fa77eea40b0f2384a543cb56d6b2f1b1f714b72cee7d3fd664648f4967f` /
+`ae94f63d4b8ea7217e60c39c2aed7626436f0b136c7baabffba76bb1a410e62a`である。
+
+hypothesis `5 / 5`を通過し、
+`degree-5 external nonresonance is certified by indexed modulus refinement and Fourier-sector phase-sensitive product disks for both overlap aggregates`
+として`accepted`とした。certified degreesは2／3／4／5、degree 91以降はtail-certified、missing rangeは
+degrees 6--90となる。
+
+- inventory／sector／compact-product digest:
+  `077f1ca07017b0f2b21c79ab069a38804b198b1bb4db7bace1b4a572f1a528d5` /
+  `6ef11f94af7e07675c2664da98b3df7fce241bbbf40007869c86e0c0fa3d704c` /
+  `44ef544447a7ea792bef4119fa40c6fe897f8fad2cc59aa1f0a56e3bbafcf2ad`
+- input／inventory／sector／product／result digest:
+  `9d13fa470f4c0bd8efa13868af90c6931025d7f3007e600c66af05bd0037a7ed` /
+  `717c4eadbd0e5f160a87de8846968933b8c5fbe604d769f215b6dcc65dacc955` /
+  `d31b7ea3cfcd7eca9d936cded13a1dc316e64dc2fc088bda745ea927d15ce52c` /
+  `add9d07725802c5fba84b68a207d5adc6f3f405a152a22f88059259f9a255222` /
+  `608bb3a7aee34a833e7980dbd18f4a3e641426966352126833f298e282437b31`
+- runner／artifact newline-normalized SHA-256:
+  `62712392faca2c154883edd93792f81e60ff975f6da16010aa3190ee44657a18` /
+  `11ef4d47f60840c4bc05c4056024e2af14b8339a8983b65dcb878bd355cfc328`
+
+これはdegree 5だけのcertificateである。degrees 6--90、all-order nonresonance、higher graph smoothness、
+SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、次はQ011yでdegree 6の
+3 modulus-overlap aggregateへ進む。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
