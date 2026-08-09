@@ -10326,6 +10326,144 @@ validity gateは`5 / 6`で、`checkpoint_spectrum_and_q011b_endpoint_reproduce`�
   `10222da26fe14b97cd9565c517838d3a03e21f19e605d4a60cb2461e011d1d13` /
   `dbb562dd3628dc7589219baa94ae6791e084847f302c69dbcdc328b94ac6d2b3`
 
+## Q011c1: conjugacy-orbit endpoint reproducibility localization — 事前登録
+
+### 問いと停止規則
+
+Q011cの唯一のvalidity failureは、Q011b stored endpointと許容誤差内のcontinued endpointの間で、
+\(k_x=16\)から\(k_x=1\)へworst resolvent witnessが交換し、maximum condition numberの
+absolute differenceが登録`1e-12`を超えたことで説明できるか。具体的には、これは
+
+\[
+\{1,16\}
+\]
+
+という同じcomplex-conjugacy orbit内の数値tie交換であり、continued block singular valuesの変化は
+実測Jacobian perturbationから得る行列摂動区間内に収まるか。
+
+Q011cのthreshold、gate、`inconclusive` classificationは変更しない。このgateもQ011cを再採点せず、
+失敗原因だけを`conjugate-witness tie instability`または`unexplained endpoint discrepancy`に
+分類する。validity failureなら`inconclusive`とする。
+
+### 封印入力
+
+- Q011c artifact／runner newline-normalized SHA-256:
+  `dbb562dd3628dc7589219baa94ae6791e084847f302c69dbcdc328b94ac6d2b3` /
+  `10222da26fe14b97cd9565c517838d3a03e21f19e605d4a60cb2461e011d1d13`
+- Q011c input／path／spectrum／result digest:
+  `7d8d4a593dc29a715c995e237890da4de17314c4feffabe10111b289120435ee` /
+  `06254ea5569d8b0c8c5369477c82ea685284aec9970574c46c24fea749280b92` /
+  `5b1e79280b752268248f5150dd12c73a96719cb20d86cbd34fb3ff1e1b8b472c` /
+  `4b41c4e7bda3a45f1ece871c183d321bed637d255053e22a82e7000dd83f5751`
+- Q011b stored／Q011c forward endpoint state SHA-256:
+  `612ef4aca91a5c0100286988e0e7979342a9046c3c78fe60ee59ca4e232a7613` /
+  `275726b73e03e9d5cb8300b672233f7497abc6b607c1f76c2ef4b176e3788be7`
+- sealed package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+
+Q011c cycleをfresh replayし、artifactとのexact JSON一致、validity `5 / 6`、唯一のfailed gate、
+`inconclusive` classification、全raw cluster／checkpoint hypothesis checkを再現する。
+stored stateとforward endpointもsealed hashから一意に再構築する。
+
+### block metricと共役orbit
+
+両endpointについてQ011cと同じ17個のfixed-leaf block \(J_k\) を構成し、
+
+\[
+A_k=I-J_k,\qquad
+m_k=\sigma_{\min}(A_k),\quad
+M_k=\sigma_{\max}(A_k),\quad
+\kappa_k=M_k/m_k
+\]
+
+をfull SVDで計算する。各SVDのreconstruction relative residualと左右unitarity Frobenius residualを
+`<=1e-10`とする。block matrix、singular spectrum、metricのhashを保存する。
+
+判定単位は
+
+\[
+\{0\},\{1,16\},\{2,15\},\ldots,\{8,9\}
+\]
+
+の9 conjugacy orbitとする。各endpoint、各非零orbitで
+\(J_k=\overline{J_{17-k}}\)のrelative Frobenius residualを`<=1e-12`とする。
+個別indexの一致は要求しない。
+
+stored endpointではQ011b artifactのunit count、spectral radius、minimum \(m_k\)、maximum
+\(\kappa_k\)をabsolute `1e-12`以内で再現し、original witness index `0 / 16 / 16`もそのまま
+controlとして記録する。continued endpointではQ011c artifactの対応値・index・failure booleanを
+exact JSONで再現する。
+
+### perturbation enclosure
+
+stored／continuedの対応block差に対し、binary64丸めpaddingを
+
+\[
+p_k=64\,\epsilon_{\rm mach}
+\max\!\left(1,\|A_k^{s}\|_F,\|A_k^{c}\|_F\right),
+\qquad
+d_k=\|A_k^{c}-A_k^{s}\|_F+p_k
+\]
+
+と固定する。\(d_k<m_k^s\)を要求し、Weyl boundから
+
+\[
+\begin{aligned}
+m_k^c&\in[\max(0,m_k^s-d_k),\,m_k^s+d_k],\\
+M_k^c&\in[\max(0,M_k^s-d_k),\,M_k^s+d_k],\\
+\kappa_k^c&\in
+\left[
+\frac{\max(0,M_k^s-d_k)}{m_k^s+d_k},
+\frac{M_k^s+d_k}{m_k^s-d_k}
+\right]
+\end{aligned}
+\]
+
+を全17 blockで満たすことを要求する。2-normをFrobenius normで上から置いた保守的区間であり、
+観測後に係数64を変更しない。
+
+さらに上の区間だけを使い、
+
+- spectral-radius actual witness orbitは両stateで`{0}`のまま、
+- minimum-\(m_k\) orbitは`{1,16}`で、そのorbitのupper boundが全外部orbitのlower boundより小さい、
+- maximum-\(\kappa_k\) orbitは`{1,16}`で、そのorbitのlower boundが全外部orbitのupper boundより大きい、
+
+ことを要求する。これにより個別indexが交換しても、extremal orbitが外部orbitと交換していないことを
+摂動区間込みで判定する。stored／continued exact witnessが異なり、双方`{1,16}`に属することも
+localization hypothesisに含める。
+
+### validity gate
+
+1. Q011c artifact／runner／四digest／cycle、Q011b input、package sourceを封印どおり再現する。
+2. stored／continued endpoint hash、Q011c path distance、Q011c endpoint failure recordをexactに再現する。
+3. 34 block SVDがfiniteに完走し、dimension、reconstruction、unitarity、matrix conjugacyを満たす。
+4. stored endpointでQ011b spectrum／resolvent controlを元の`1e-12`以内に再現する。
+5. 全値finiteなstrict JSON、input／metric／enclosure／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、localization hypothesisを解釈しない。
+
+### hypothesis gate
+
+validity通過時だけ次を全て要求する。
+
+1. 全17 blockのcontinued \(m_k,M_k,\kappa_k\)が登録perturbation enclosure内にある。
+2. radius witness orbit`{0}`、minimum-singular／maximum-condition orbit`{1,16}`が両endpointで一致する。
+3. minimum-singular／maximum-condition winning orbitはenclosure込みで全外部orbitからstrictに分離する。
+4. exact witness交換は`16 -> 1`で同じ共役orbit内に限られ、Q011cのraw cluster／normal-dominance
+   diagnosticsは全てtrueのままである。
+
+全て通れば
+`the Q011c endpoint failure is localized to perturbation-consistent conjugate-witness tie instability`
+として`accepted`とする。一つでもvalidに失敗すれば
+`the Q011c endpoint discrepancy is not explained by conjugate-witness tie instability`として
+`rejected`とする。
+
+acceptedでもQ011c自体は`inconclusive`のままで、forced cluster selection、individual mode label、
+continuous-amplitude theorem、rigorous SVD enclosure、external nonresonance、forced invariant manifold、
+normal attractionは主張しない。acceptedなら次は、共役orbit意味論を最初から採用し、Q011cで使って
+いないheld-out amplitude nodesを含むQ011c2 reissued cluster gateを別途事前登録する。rejectedなら
+Q011c endpoint Jacobian差のblock／state component原因をさらに分解し、Q011dへは進まない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
