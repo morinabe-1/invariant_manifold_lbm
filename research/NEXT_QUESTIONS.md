@@ -13617,6 +13617,277 @@ candidateも`0 / 8`だった。最小radius `1e-14`で既に
 停止規則どおり、次はQ011oでtype-correct graph-transform setupを観測前に事前登録する。scalar forcing／
 inverse envelopeの鋭化は、Banach spaceとoperator mappingを固定した後に行う。
 
+## Q011o: type-correct localized graph-transform setup — 事前登録
+
+### 問い
+
+Q011kのrepaired fixed-leaf spectral splitとQ011lのselected invariant graphを、一つの明示的な
+Banach coordinate normへ持ち上げ、selected base inverse、external linear norm、coordinate lift／inverse、
+およびlocal nonlinear mapを扱うcutoffを同じ型で定義できるか。そのnormでlinear normal domination
+
+\[
+q_E<m_S
+\]
+
+をrigorousに閉じられるか。
+
+本gateはQ011nで不足したproof objectのうち、graph-transformの**空間・座標・線形部・局所化**だけを
+構成する。nonlinear graph transformのself-map、base-map inverse、contraction、fixed graphは次の独立gateへ
+残す。従ってlinear setupが通ってもexact invariant manifold／SSMの存在とは呼ばない。
+
+### 封印入力
+
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011l artifact／runner newline-normalized SHA-256:
+  `2878d8ebaaedc29990700ccac25b78185e0b6139dd371521f14602caf4514c0a` /
+  `59234badf8c490b36f32ea79f2e3cc4c8399eadd4b5e7f35b9993fa1ba9dceb7`
+- Q011l input／graph／pair／homological／result digest:
+  `1810f989a0328521e8b6d6ccbc2153cb9a945bb2c129c70d7b25a0c227fc7011` /
+  `a7d0f320fa7391c506f42853a94ede66fc73e81b004dfccda144028082cb8db3` /
+  `694cc2955bcef05df13ad30582f46f84bb627aaa7b336b5278e9b5139e29d377` /
+  `14d67f1d915aa3bd6bc34117562da4908e19036943e60fb638eddf6a42b20915` /
+  `c372aa5962a7f3d0c83a126303a9e36e4f0830d113f9c49b922d03beb2f09a45`
+- Q011m artifact／runner newline-normalized SHA-256:
+  `b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f` /
+  `0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150`
+- Q011m input／derivative／coefficient／majorant／result digest:
+  `dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb` /
+  `0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a` /
+  `1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514` /
+  `bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00` /
+  `f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4`
+- Q011n artifact／runner newline-normalized SHA-256:
+  `1277170b85d2f515a5b9dabbc1cf23cfdf36e109c5ab212e3a123ee07a50683b` /
+  `7e526dcf013efce628137023f69de7b929d31e52f19378cb05c483284e36dc57`
+- Q011n input／typing／scalar／result digest:
+  `f916b59d1c9fba0e4ace57b110f4b960d5dce078578a77ac28f8a8d005e1e0d0` /
+  `e3952e5ac897ba9250f3a77ec5d8760c0f3ee2a3df350ba4451837a46dd91f76` /
+  `ee7f21a6075963c510e234a032aa8de40f65989c609d10228aca54f6e371ed8d` /
+  `9893aed4a7ce4d05cbd21e849de4ddd4f1c9f86c7fcc3fad7a4504b823d6a321`
+
+Q011k--Q011mの`accepted`、Q011nのvalid `not_ready`、全19 digest、runner／artifact hash、
+theorem consequence、claim boundaryを直接再現する。Q011nのnested sealだけで直接照合を省略しない。
+
+### fixed-leaf Fourier／eigencoordinate space
+
+physical perturbation \(x\) にはx方向の正規化forward DFT
+
+\[
+\widehat x_k=\frac1{17}\sum_{n=0}^{16}e^{-2\pi i kn/17}x_n,
+\qquad
+x_n=\sum_{k=0}^{16}e^{2\pi i kn/17}\widehat x_k
+\]
+
+を使う。zero blockはQ011jの150次元fixed-conservation-leaf coordinate、非零16 blockは各153次元で、
+合計2598実次元である。Q011lのcertified eigencolumn matrix \(V_k\) により
+
+\[
+y_k=V_k^{-1}\widehat x_k
+\]
+
+とする。real stateには \(y_{17-k}=\overline{y_k}\) を課し、complex coordinateを独立な実自由度として
+二重計数しない。
+
+selected block \(k\in\{0,1,16\}\) では \(y_k=(s_k,y_{E,k})\) と分け、Q011lのcertified invariant graph
+\(G_k\) を用いて
+
+\[
+e_k=y_{E,k}-G_ks_k,
+\qquad
+y_k=(s_k,e_k+G_ks_k)
+\]
+
+とする。他の14 blockは全成分をexternal coordinateとする。selected／external実次元は`24 / 2574`、
+全次元は`2598`でなければならない。
+
+Banach normはcomplex modulusを用いるglobal block-sup norm
+
+\[
+\lVert(s,e)\rVert_{\mathcal X}
+=\max\left\{\max_i|s_i|,\max_j|e_j|\right\}
+\]
+
+に固定する。固有値centerには有理sqrt enclosure、matrix perturbationにはcomplex absolute row-sum normを
+用いる。componentwise `|Re|+|Im|`を線形dominationの代用にせず、eigenvalue modulus gapとoperator normを
+混同しない。
+
+### coordinate lift／inverse bound
+
+Q011k primary 256-bit proofの
+
+\[
+v_k\ge\lVert V_k\rVert_\infty,
+\qquad
+\beta_k\ge\lVert V_k^{-1}\rVert_\infty
+\]
+
+とQ011l graph radius \(r_{G,k}\) を使う。nonselected blockでは \(r_{G,k}=0\) とし、
+
+\[
+K_L=\sum_{k=0}^{16}v_k(1+r_{G,k}),
+\qquad
+K_P=\max_{0\le k\le16}\beta_k(1+r_{G,k})
+\]
+
+をexact `Fraction`で評価する。DFT conventionから
+
+\[
+\lVert x\rVert_\infty\le K_L\lVert(s,e)\rVert_{\mathcal X},
+\qquad
+\lVert(s,e)\rVert_{\mathcal X}\le K_P\lVert x\rVert_\infty
+\]
+
+となる。登録capは \(K_L\le300\)、\(K_P\le900\) とする。cross-block cancellationは使わない。
+
+### 同一norm上のlinear triangular split
+
+Q011lのtransformed residual upperを \(\theta_k\)、graph radiusを \(r_{G,k}\) とし、selected blockで
+
+\[
+\eta_k=\theta_k(1+r_{G,k})
+\]
+
+を固定する。invariant-graph coordinateでlinear mapは
+
+\[
+\begin{pmatrix}s'_k\\e'_k\end{pmatrix}
+=
+\begin{pmatrix}S_k&B_k\\0&E_k\end{pmatrix}
+\begin{pmatrix}s_k\\e_k\end{pmatrix}
+\]
+
+となる。各selected blockについて
+
+\[
+m_k=\min_{i\in S_k}|\lambda_{k,i}|_{\rm lower}-\eta_k,
+\quad
+q_k=\max_{j\in E_k}|\lambda_{k,j}|_{\rm upper}+\eta_k,
+\quad
+\lVert B_k\rVert\le\theta_k
+\]
+
+をexactに計算する。nonselected blockでは
+
+\[
+q_k=\max_j|\lambda_{k,j}|_{\rm upper}+\theta_k
+\]
+
+とする。global constantsは
+
+\[
+m_S=\min_{k\in\{0,1,16\}}m_k,
+\qquad
+q_E=\max_{0\le k\le16}q_k,
+\qquad
+\gamma_0=\frac{q_E}{m_S}
+\]
+
+である。登録閾値は次に固定する。
+
+- \(m_S\ge0.983\)
+- \(q_E\le0.982\)
+- \(m_S-q_E\ge10^{-3}\)
+- \(\gamma_0\le0.999\)
+- \(1/m_S\le1.02\)
+- \(\max_k\lVert B_k\rVert\le10^{-6}\)
+
+Q011kのeigenvalue-level normal gapだけではpassにしない。Q011lのsame-norm residualとgraph transformを
+必ず含める。
+
+### cutoff／graph Banach space
+
+localization radiusを観測前に
+
+\[
+\rho=10^{-11}
+\]
+
+へ固定する。\(C_\rho:\mathcal X\to\mathcal X\) は各complex coordinateを閉円板
+\(\{|z_j|\le\rho\}\)へmetric projectionするcomponentwise radial clampとする。これは
+
+- \(C_\rho z=z\) on \(\lVert z\rVert_{\mathcal X}\le\rho\)
+- \(C_\rho(0)=0\)
+- \(1\)-Lipschitz in \(\lVert\cdot\rVert_{\mathcal X}\)
+- complex conjugacy preserving
+
+を満たす。coordinate mapを \(F(z)=Az+N(z)\) と書き、localized mapを
+
+\[
+F_\rho(z)=Az+N(C_\rho z)
+\]
+
+と定義する。これはcore ball上で元のrepaired exact mapと一致する。
+
+physical localization upper \(K_L\rho\) は`<=1e-8`を要求する。Q011mのexact-root population／density floorから
+
+\[
+f_{\min}\ge f_{*,\min}-K_L\rho\ge0.02,
+\qquad
+\rho_{\min}\ge\rho_*-9K_L\rho\ge0.99
+\]
+
+を確認し、Q011m derivative domain `1e-4`内に含める。
+
+selected／external closed ballsを \(B_S(\rho),B_E(\rho)\) とし、
+
+\[
+\mathcal G_{\rho,1}
+=\{h:B_S(\rho)\to B_E(\rho):h(0)=0,
+h(\overline s)=\overline{h(s)},\operatorname{Lip}(h)\le1\}
+\]
+
+をuniform metricで扱う。これはclosed complete graph spaceである。ただし本gateでは、\(F_\rho\) が誘導する
+graph transformのwell-definedness、self-map、base inverse、contractionは判定しない。
+
+### validity gate
+
+1. Q011k--Q011nのartifact／runner、19 digest、outcome、claim boundaryを直接再現する。
+2. 17 Fourier block、zero／nonzero dimension、conjugacy、`24 + 2574 = 2598`を再現する。
+3. \(V_k,V_k^{-1},G_k\) の型とsame-norm boundをQ011k／Q011l recordから再構成する。
+4. 全17 blockのmodulus interval、\(\theta_k,\eta_k,m_k,q_k,B_k\)をexact arithmeticで評価する。
+5. \(K_L,K_P,m_S,q_E,\gamma_0\)の式とwitness block／centerを保存する。
+6. cutoff、localized map、graph spaceのdomain／codomain、conjugacy、core一致を明示する。
+7. finite strict JSON、input／coordinate／linear／localization／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、linear dominationもgraph-transform readinessも解釈しない。
+
+### hypothesis gate と停止規則
+
+validity通過後、次の5項目を別々に要求する。
+
+1. fixed-leaf Fourier／eigencoordinate／graph triangular mapがbijectiveで、全dimensionとconjugacyが閉じる。
+2. \(K_L\le300\)、\(K_P\le900\)、cutoff physical upperとpopulation／density／derivative-domain bufferが通る。
+3. same normで \(m_S\ge0.983\)、\(q_E\le0.982\)、\(m_S-q_E\ge10^{-3}\) が通る。
+4. \(\gamma_0\le0.999\)、\(1/m_S\le1.02\)、selected-external coupling upper `<=1e-6`が通る。
+5. \(C_\rho,F_\rho,\mathcal G_{\rho,1}\) のdomain／codomainが型付きで固定され、scalar surrogateを
+   operator theoremへ読み替えていない。
+
+全5項目が通る場合だけ
+`the repaired fixed-leaf split admits a type-correct localized graph-transform setup with rigorous linear domination`
+として`accepted`とする。一つでも落ちれば
+`the registered block-sup norm does not support the localized graph-transform setup`
+として`rejected`とする。これはinvariant manifold／SSMの不存在を意味しない。
+
+`accepted`なら次のQ011pで、Q011mのanalytic \(D^2/D^3\) boundをcoordinate normへ変換し、
+\(F_\rho\) が \(\mathcal G_{\rho,1}\) 上でbase inverse、self-map、strict contractionを持つかを
+事前登録する。`rejected`なら最初のfailed block／constantだけを用いてblock weightまたはgraph slope capを
+再設計する。`inconclusive`なら最初のprotocol failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17²、固定保存量葉、repaired exact map、Q011k split、Q011l linear invariant graph、
+complex block-sup norm、radius`1e-11`のcutoff setupに限る。nonlinear graph-transform self-map／contraction、
+fixed graph、exact invariant manifold／SSM、smoothness／一意性、normal attraction、basin、componentwise
+quadratic coefficient、raw Q011b map、他grid／force／wall、D3Q27を構成・認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
