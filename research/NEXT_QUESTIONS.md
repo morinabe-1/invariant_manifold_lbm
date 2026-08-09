@@ -11206,6 +11206,99 @@ constructionではなく残差窓の未解像だったことを正確に表す�
 slope区間、最低eligible方向数を固定し、別seedと拡大振幅窓で三次残差を再測定する。Q011e artifactは
 再採点せず、Q011e1が通るまでforced quadratic residual orderを確認済みとは扱わない。
 
+## Q011e1: independent enlarged residual-window reissue — 事前登録
+
+### 問いと修復範囲
+
+Q011eで構築・封印した同一のforced fixed-leaf quadratic chartを変更せず、独立方向と拡大振幅窓で
+一段不変性残差を再測定すると、linear chartの二次とquadratic chartの三次を登録noise floor上で
+判定できるか。
+
+これはQ011eの再採点ではない。Q011eの`rejected`、元seed `20260824`、元振幅、noise floor、slope
+interval、最低eligible方向数を変更しない。Q011e1はmeasurement-window underresolutionだけを扱う
+独立再発行gateであり、Hessianやhomological coefficientを再fitしない。
+
+### 封印入力とchart再構築
+
+- Q011e artifact／runner newline-normalized SHA-256:
+  `45d563103678d790aa3df4db692bbe781c9c86ed550c7499c61b397688666fca` /
+  `3aa608852be7a1df7dbe37b4d3c7e1bb3fbf125eae115260fc45a223e0757955`
+- Q011e input／derivative／chart／residual／result digest:
+  `f0bd65361d0cdc39e6499b8b0065ce6d7705945927ed77af5d2b231d0572bc9c` /
+  `d017d3ea204ad337f538b6f1819e215b6ab8a69f89090cc51ca9eb4885b75fce` /
+  `6d4ee0102a6df052fac857890468ed911cff994e07c573dde837eb54a4a22e05` /
+  `5570cb7acfc465f57850f960c6c9d68770182856b6a9aba62e81256c77e84948` /
+  `89b39a6a6a80452142a2c9288780a08c1b24b49614080b5412fff82171a8188e`
+- real tangent／extractor／linear dynamics SHA-256:
+  `e0b6fb929d49a1371d1eebf836308a795a7f0e9dbad44f55b2386add9f3d0628` /
+  `e77d149787d187ca756a23efcf6b833cfd6ab15b5fd617b5d3ae3ba5c0859f6f` /
+  `b6521e3090b61c72d0689b765e1fad0a0318029a0ab5767bd3c7679d4ce2c525`
+- analytic second derivative／real \(W_2\)／real \(R_2\) SHA-256:
+  `6bfea17a7bbfa1dcdded5dadec15296ec2f478aefe7984dd1e4885498a186221` /
+  `ab55a8b50f2565be494fcf3d5f140f93fc0112484da56e1333ce58dfd220a6c2` /
+  `7ae45cbabda8da17ec73d6779761077a67e19fae4dc53ca11fe98b78bcf074e2`
+- sealed package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+
+Q011e artifactのvalidity `7 / 7`、hypothesis `5 / 6`、`rejected` outcome、唯一の失敗gate、
+全5 digestをexactに照合する。次にQ011eと同じ解析手順を一度だけfresh実行してreal tangent、extractor、
+linear dynamics、analytic second derivative、\(W_2\)、\(R_2\)を再構築し、上記array hashとQ011eの
+全construction thresholdを再現する。Q011eの元residual campaignはartifactから封印し、再採点しない。
+
+### 独立方向と拡大振幅窓
+
+未使用seed `20260825`から32本の標準正規real coordinate vectorを生成し、それぞれEuclidean norm 1へ
+正規化する。Q011e1の振幅は観測前に
+
+\[
+(1.6\times10^{-4},\ 3.2\times10^{-4},\ 6.4\times10^{-4},\
+1.28\times10^{-3},\ 2.56\times10^{-3})
+\]
+
+と固定する。最小振幅`1.6e-4`はQ011e窓とのbridgeで、残る4点は未観測の拡大窓である。方向seedは
+全て未使用なので、bridge amplitudeもQ011eとは独立方向上のholdoutである。
+
+linear／quadratic chartの一段不変性残差を同じfull forced mapで測定する。各chart state、reduced image、
+mapped state、global mass／momentum drift、minimum populationを全160 sampleで保存する。fitにはQ011eと
+同じくresidual `>=1e-13`の点だけを使い、4点未満の方向はdegenerateとしてslope判定から除く。
+
+主fitに加え、5点全てがeligibleな方向では最小bridge点を除いた上位4点のsecondary slopeも保存する。
+primary slopeとの絶対差をlinear／quadraticとも`<=0.15`とし、単一の低振幅点だけに依存した次数判定を
+避ける。4点だけeligibleな方向ではprimary fit自体が上位4点なので差を0とする。
+
+### validity gate
+
+1. Q011e artifact／runner／package source、5 digest、validity／outcome／唯一の失敗gateを封印どおり再現する。
+2. Q011e constructionを一度だけfresh再構築し、6 array hashと全construction thresholdを再現する。
+3. seed `20260825`、32 unit direction、登録5 amplitude、合計160 sampleを完全列挙する。
+4. linear／quadratic residual、eligible mask、primary／secondary fit、positivity／conservationを全方向で保存する。
+5. 全値finiteなstrict JSON、input／chart／residual／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、残差次数を解釈しない。
+
+### hypothesis gateと判定
+
+validity通過時だけ次を全て要求する。
+
+1. slope-eligible direction count: `>=28 / 32`。
+2. eligible linear primary／secondary slope: each `1.85 <= slope <= 2.15`。
+3. eligible quadratic primary／secondary slope: each `2.70 <= slope <= 3.30`。
+4. eligible方向のprimary／secondary slope差: linear／quadratic each `<=0.15`。
+5. largest-amplitude quadratic／linear residual ratio: every direction `<=0.25`。
+6. chart／mapped state minimum population: `>0`、maximum global conservation drift: `<=1e-10`。
+
+全て通れば
+`the independent enlarged window resolves second- and third-order forced chart residuals`
+として`accepted`とする。validだが一つでも落ちれば
+`the enlarged residual window does not confirm the registered forced chart orders`
+として`rejected`とする。
+
+acceptedでも、これは単一17² grid、単一forced endpoint、32方向、登録5振幅のbinary64 holdoutである。
+uniform Taylor remainder、continuous-amplitude family、forced SSM existence／uniqueness、nonlinear normal
+attraction、basin、他grid／force／wall boundaryを主張しない。acceptedの場合だけ次のQ011fで
+multi-step shadowing windowを事前登録し、その後にnatural Fourier-sparse baselineを保った
+TT／sparse費用評価へ進む。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
