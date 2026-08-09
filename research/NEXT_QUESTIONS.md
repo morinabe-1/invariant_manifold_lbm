@@ -12084,6 +12084,202 @@ natural Fourier-sparseを採用する。ただし本campaignは縮約経路とch
 full LBM orbitの64-step shadowingを新たに実行していない。all-time equivalence、uniform remainder、
 forced SSM存在・一意性、normal attraction、basinは未認証である。
 
+## Q011i: exact-dyadic zero-mean forcing compatibility repair — 事前登録
+
+### 問いと先行するobstruction
+
+Q011bの`zero-mean` waveformはbinary64 cosine値の和をtoleranceで判定している。しかし、
+その17個のbinary64をexact dyadic rationalとして足すと
+
+\[
+\sum_{y=0}^{16}f_y
+=-\frac{71}{302231454903657293676544}
+=-\frac{71}{2^{78}}\ne0
+\]
+
+である。従ってこのraw sourceをexact-real mapの定数として読むと、Q011aと同じglobal
+運動量ledgerによりexact fixed pointは存在できない。Q011bの結果はあくまbinary64数値解であり、
+rigorous existence／uniquenessを主張していないため、Q011bの`accepted`を変更しない。
+
+Q011iの問いは、このexact obstructionを除くreflection-symmetric binary64 waveformと、
+local／global conserved momentがexact dyadic arithmeticで一致するbinary64 source tableを一意に作り、
+Q011bの数値fixed-point／linear-spectrum baselineを登録摂動範囲で保てるか、である。
+
+この修復mapはQ011b--Q011hのraw mapと数学的には別のmapである。通過してもQ011e--Q011hの
+chart coefficientやshadowing outcomeを自動的に移さない。後続のfixed-point interval proofの対象を
+厳密に定義するcompatibility gateである。
+
+### 封印入力
+
+- Q011b artifact／runner newline-normalized SHA-256:
+  `477202184694da1386c6b5bc0f0441e004a7a44f7a7b064f1d060d50adc66c27` /
+  `bac9448f280ce2dfb2e1627ce1558b792cb53e05746b94246baa6c329b8c8ef0`
+- Q011b input／fixed-point／spectrum／result digest:
+  `53dea81353ed4bcd77ab0c06533528f6d867d8b1bfa80d3d2ac3eddd7cf7dfbb` /
+  `8db05ad1e7ae7806b70b6330d798f6dad05bc8718027ba13cb315116b021b17c` /
+  `3ab8866e141b64a4d1d81bdfae1a70c61d8e7964d8480e2bd7ec7c7e174850fc` /
+  `66c4b579dbd7d7c391fd2017f165c2de251ecf850b7c485cb936b9742c8addf6`
+- Q011b raw waveform／source／stripe-state SHA-256:
+  `0c1d55dfbd0611f7dcc3413ecde839e01487d6317e232c9362aad984e5bab162` /
+  `7d69bfc45429c43e8094e03565fd71c83e5f48d3077437949b38d185d5fe7972` /
+  `612ef4aca91a5c0100286988e0e7979342a9046c3c78fe60ee59ca4e232a7613`
+- Q011h artifact／runner newline-normalized SHA-256:
+  `2cfcf5cb76698ae8e451f448a3048e3d29a1b8aed034d3afa5c25f7fd66038f5` /
+  `1e6848e572137d019531514235741b18ca10644dd7d14e304dc26d92d81cda9e`
+- Q011h input／coefficient／campaign／result digest:
+  `c9ea06c8961940f54dd3c02e3d68d7ba777e77fc9be2f0a7c3eecab5ab257b83` /
+  `2ab44a23811ef9f7e1975fb27561dd92660938778bf73ef149e46ed04f399669` /
+  `bbb6a489fc76af150a3a162f585b0b2e1a65d0445d5eb14ab11b280bc492a035` /
+  `a78812d93063ed7deeaca09dad5feb2cf018fb1bec315dab94b4f02d27f75864`
+- package-source SHA-256:
+  `114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2`
+
+Q011bのvalidity `6 / 6`、hypothesis `4 / 4`、numerical `accepted`、rigorous existence／uniqueness
+`false`を再現する。Q011hのvalidity `5 / 5`、hypothesis `4 / 4`、`accepted`、Q011g
+`rejected`とTT-cross非許可も再現する。
+
+### reflection-symmetric exact-zero-sum waveform
+
+`Fraction.from_float`を使い、入力binary64を最初からexact dyadicとして扱う。
+nearest-even binary64への一回丸めを`RN`と書く。
+
+1. \(g_0=f_0=3/2^{24}\) は変更しない。
+2. \(i=1,\ldots,8\) で
+   \[
+   m_i=\operatorname{RN}\!\left(\frac{f_i+f_{17-i}}2\right),\qquad
+   g_i=g_{17-i}=m_i
+   \]
+   とする。
+3. 一つのpairだけを同じ向きにULP shiftする候補
+   \(s=0,+1,-1,+2,-2,\ldots,+128,-128\) を各pairで列挙し、exact dyadic sumが0になる
+   候補を探す。選択順は \((|s|,i,s)\) の辞書順とする。
+
+この登録searchは pair `(3,14)`、`+7 ULP`を一意に選ぶ。修復後waveform SHA-256を
+`025d6122db8e0d3512224ce4a2af82d57b5728ce0c7450425436218dd561bcbf`と登録する。
+次を要求する。
+
+- exact dyadic sum: `0`
+- \(g_i=g_{17-i}\): bitwise exact for all 8 pairs
+- \(g_0=f_0\): bitwise exact
+- changed entry count: `<=11`
+- maximum component perturbation: `<=5e-22`
+- relative ℓ2 perturbation: `<=1e-14`
+- FFT leakage outside \(k_y=\pm1\): `<=1e-14`
+- zero modeとfirst-harmonic imaginary part: bitwise zero
+
+raw exact sum nonzero、reflection-symmetrization直後のexact sum
+`-7 / 37778931862957161709568`、selected pair／ULP countもartifactに保存する。
+
+### exact-moment binary64 source table
+
+各 \(g_y\) に対し、axis source amplitude \(c_y\)とdiagonal source amplitude \(d_y\)を次で決める。
+
+1. \(d_y^{(0)}=\operatorname{RN}(g_y/12)\)。
+2. \(d_y^{(0)}\)から `0,+1,-1,...,+8,-8 ULP` の順でcandidateを調べ、
+   \[
+   c_y=\frac{g_y}{2}-2d_y
+   \]
+   がexact binary64で表せる最初の \(d_y\) を選ぶ。
+3. D2Q9 velocity \(q=(c_{qx},c_{qy})\) に対し
+   \[
+   S_q(y)=
+   \begin{cases}
+   0,&c_{qx}=0,\\
+   c_{qx}c_y,&c_{qy}=0,\\
+   c_{qx}d_y,&|c_{qy}|=1
+   \end{cases}
+   \]
+   とする。
+
+これによりexact dyadic arithmeticで各siteの
+
+\[
+\sum_q S_q=0,\qquad
+\sum_q c_{qx}S_q=g_y,\qquad
+\sum_q c_{qy}S_q=0
+\]
+
+が成り立つ。さらに \(\sum_y g_y=0\) なのでglobal 3-momentもexact zeroである。
+登録source shapeは`(17,1,9)`、nonzero count `102`、SHA-256は
+`24bb558464cce4ac154b3f2574bd1fe816d11d58c9365e8312f12b0a389df490`とする。
+
+- all 17 local exact-moment identities: exact pass
+- global mass／x-momentum／y-momentum source: exact `0 / 0 / 0`
+- \(d_y\) search maximum shift: `<=1 ULP`
+- raw Q011b sourceに対するmaximum component perturbation: `<=1e-22`
+- raw Q011b sourceに対するrelative ℓ2 perturbation: `<=1e-14`
+
+各加減算の中間binary64値ではなく、保存した各source entryをexact dyadicに変換した後の
+ledgerをgateに使う。
+
+### repaired numerical fixed-point／spectrum bridge
+
+修復sourceを加える以外はQ011bと同じBGK collision、periodic streaming、conservative filter、
+\((\omega,\eta)=(1.5,0.01)\)を使う。Q011bと150-dimensional fixed-leaf basisは数値bridgeにのみ
+再利用する。このbasisをrigorous coordinateとは呼ばない。
+
+Newtonはstart `zero / sealed-Q011b-coordinate`、maximum 12 step、line search
+`1,1/2,...,1/64`とし、次を要求する。
+
+- projected／full／maximum-component residual:
+  `<=5e-13 / 5e-12 / 5e-13`
+- two-start solution distance／relative distance:
+  `<=1e-11 / <=1e-9`
+- repaired／sealed-Q011b stripe-state ℓ2 distance:
+  `<=1e-11`
+- same distance / sealed-state departure from rest:
+  `<=1e-6`
+- minimum population／density: strict positive
+
+修復stateでQ011bの17 \(k_x\)-block spectrumをfresh再計算し、
+
+- fixed-leaf eigenvalue count: `2,598`
+- maximum block-matrix relative perturbation vs sealed Q011b state: `<=1e-10`
+- maximum blockwise spectrum absolute Hausdorff distance: `<=1e-9`
+- full fixed-leaf spectral radius: `<=0.9999`
+- minimum σmin(I-J): `>=1e-4`
+- maximum condition(I-J): `<=1e6`
+- conjugate-spectrum／Schur／block-action gate: Q011bと同じ閾値を通過
+
+を要求する。これはnumerical stability bridgeであり、区間固有値包含や厳密fixed-point proofではない。
+
+### validity gate
+
+1. Q011b／Q011h artifact、runner、package source、登録digest、outcomeとclaim boundaryを再現する。
+2. raw waveform／source／state hash、raw exact dyadic sum、Q011a型global-momentum obstructionを再現する。
+3. waveform repair searchを全候補で完了し、選択順、pair／ULP witness、hash、exact symmetry／sumを再現する。
+4. source constructionを17 siteで完了し、shape／count／hash／search trace／local／global exact ledgerを再現する。
+5. repaired Newtonと2 start、17 spectrum blockを登録protocolで完了し、全値がfiniteである。
+6. finite strict JSON、input／repair／fixed-point／spectrum／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、repaired mapのcompatibilityを解釈しない。
+
+### compatibility hypothesis gateと停止規則
+
+validity通過後、次の4項目を全て要求する。
+
+1. raw exact-momentum obstructionがnonzeroで、repaired waveform／sourceのexact local／global ledgerが0。
+2. waveform／source摂動、reflection symmetry、Fourier leakageが登録閾値内。
+3. repaired two-start Newton、sealed-Q011b-state bridge、positivityが登録閾値内。
+4. repaired full fixed-leaf spectrumとsealed Q011b spectrumの差、stability、resolventが登録閾値内。
+
+全項目が通れば
+`the exact-dyadic zero-mean repair preserves the numerical forced fixed-point and linear-spectrum baseline`
+として`accepted`とする。validityは通るが一つでも落ちれば
+`the exact-dyadic zero-mean repair does not preserve the registered numerical baseline`
+として`rejected`とする。結果後にpair、ULP search、source allocation、Newton start、閾値を変更しない。
+
+acceptedの場合だけ、次のQ011jでexact affine fixed-leaf coordinateとinterval Newton／Krawczykによる
+repaired fixed pointの存在・局所一意性認証を事前登録する。それまでforced SSM existence／
+uniqueness、rigorous spectrum、full external nonresonance、normal attractionへ進まない。
+
+### 主張境界
+
+本gateは固定17²、固定振幅、periodic repaired source、fixed-leaf numerical Newton、binary64 linear
+spectrumに限る。Q011b--Q011hのraw-map outcomeを変更せず、repaired mapへのchart coefficient、
+residual order、shadowingを移さない。区間fixed-point存在・一意性、区間spectrum、external nonresonance、
+forced SSM、normal attraction、basin、他grid／force／wall、D3Q27は主張しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
