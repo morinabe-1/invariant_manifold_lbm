@@ -18831,6 +18831,156 @@ outward global lower boundは`4.680108781629499e-6`、16候補のexact refinemen
 いない。これは固定17² repaired exact map、固定保存量葉、degree 15だけのcertificateである。次は
 Q011ajでdegree 16を監査する。
 
+## Q011aj: degree-16 first uniform-envelope obstruction audit — 事前登録
+
+### 問いと判定境界
+
+Q011uでdegree 16に残った154 modulus-overlap aggregateについて、Q011aiまでのuniform
+\(\rho=5\times10^{-8}\) eigendiscとexact Fourier multiplicityを用いたoutward-dyadic certificateを継続
+できるか。design-only pilotでは、辞書順index 99のaggregateでFourier-compatibleな全comparisonが
+outward interval overlapとなった。一方、同じ比較からdisc radiusを除いたcenter-only intervalは全て
+strictに分離した。
+
+従って本gateは、degree-16 external nonresonanceそのものを棄却するgateではない。次の二つを分ける。
+
+1. `the degree-16 uniform-rho external nonresonance certificate is rejected at the first fully unresolved aggregate`
+2. `an actual degree-16 complex resonance is not established; all center-only comparisons at the obstruction are separated`
+
+登録した最初のobstructionが再現すれば1を`rejected`、2を`not_established`として報告する。exact center
+separationをdegree-16 nonresonance certificateへ昇格させてはならない。actual spectrumはQ011y eigendisc
+の内部にあり、centerだけとの一致は未証明だからである。
+
+### degree-16 inventoryとmulti-target規則
+
+Q011uの登録degree recordは
+
+`969 aggregate / 20349 expanded control / 815 old-separated / 154 overlap`
+
+とする。154 overlapを辞書順に再構成し、external log intervalとmembershipを封印する。index 73、
+selected-type count `[4,6,2,4]`だけはexternal group 156と157の両方に重なる。従ってdegree 15までの
+「各aggregateにexactly one external group」という仮定を廃止する。各aggregateのtarget集合は、重なる
+全external groupのidentifier和集合とし、index 73では両groupを欠落なく監査する。
+
+- unique external group index:
+  `148 / 151 / 152 / 153 / 154 / 155 / 156 / 157 / 159 / 162 / 165 / 166 / 167`
+- unique external target: `136`
+- exact inventory digest:
+  `63d3e8edb49292d7674037800525c53f590ec78cfc9163acb09bb91c0fc108c1`
+
+selected 24とexternal 136の160 directly relevant identifierを再構成する。Q011aiの144 uniform
+recordをexactに保存し、new external group 148／151／155／166の60 identifierだけを加える204-record
+monotone envelopeとする。unique center-modulus evaluationは114件とする。
+
+- 204-record uniform-envelope digest:
+  `bad945dbf84eeba3d5f54f9fa4938c7b15c1d918f83ffdc7252e7a6b8267c204`
+
+### sealed input
+
+Q011aiまでの14 artifact、runner、73 direct digest、outcome、claim boundaryとQ011l／Q011o sourceを
+再照合する。Q011aiを直接封印する。
+
+- Q011ai artifact／runner newline-normalized SHA-256:
+  `3df99d9517f25730ca00d4fc1c500a4b0fe1dd03c7812477463f9d6d19ced3e3` /
+  `48fb083497a50b6ba6e3e3de1557a231bb53901acaec25b17806c0c96404187b`
+- Q011ai input／inventory／compression／product／result digest:
+  `54f599a25c3bde94887c47f93f926e79798151877548f0ea98c29d73d0c67c0e` /
+  `14b04d7d05d719e112661f69009224169e9722626991f11ebd43aa456c2043a5` /
+  `7d74819f4cfcd5a00ce04e3e55c086dd7a88035ca2ba7b09a387988514b89225` /
+  `2b4fd586a9f478df3e9f4f007badceca293b0658388e9cde2a2d60e2a8d3adcf` /
+  `7981bff291a3aa5b5c518b189047c80fb73711bb2c6dd23aad55668ef96eda91`
+
+### first-obstruction stopping scan
+
+154 overlapを辞書順に走査し、各aggregateについてexact modulus-class fiber、Fourier coefficient、全target
+とのoutward-dyadic relationを計算する。`product_below_target`または`target_below_product`が1件でもある
+間は次へ進み、分離済みcomparisonが0件となる最初のaggregateで停止する。pilot後に後続aggregateの結果を
+使って停止位置を変更しない。
+
+登録prefixはindex 0--99の100 aggregateで、digestは
+`2ae58d4e4bb63a68733c23beae78037faa3aaf3f57549028a76808183e35ed91`
+とする。prefix中のmaximum wave coefficient／crude `int64` bound／live signatureは
+`1142 / 7140 / 900900`とする。
+
+最初のobstruction recordは次に固定する。
+
+- aggregate index／selected-type count／external group: `99 / [5,6,4,1] / 155`
+- target:
+  `block=11;center=3 / block=11;center=4 / block=6;center=3 / block=6;center=4`
+- modulus／compatible signature: `35280 / 35280`
+- compatible original monomial: `1732864`
+- weighted／distinct comparison: `3465728 / 141120`
+- weighted relation: overlap `3465728`、両separated relation `0`
+- distinct relation: overlap `141120`、両separated relation `0`
+- obstruction-record digest:
+  `448da50fd34eae26d2b1e01c753af0cd901bb2a849ccfca2a05ab73f564a3cd6`
+
+### center-only counterdiagnosticとexact witness
+
+obstruction aggregateだけについて、同じcenter-modulus rational intervalからdisc radiusを除き、全
+141120 comparisonをcounterdiagnosticとして評価する。4 targetの各35280 comparisonは全て
+`product_below_target`で、center overlapは0とする。
+
+- target center 3のminimum outward gap:
+  `0x1.1894daaffffffp-25`
+- target center 4のminimum outward gap:
+  `0x1.1894d72ffffffp-25`
+- four-target center-record digest:
+  `da33cde69a774719bed414e8b79b1f3ffd2c6086e96e0ae770cba52000854b4b`
+
+outward minimumから得たcutoff以下の28 comparisonをexact Fractionでrefineする。candidate digestは
+`7abedfc2fbd68b92baf6df17427e19846d608289974dafb972ce2b664427950b`とする。exact center minimumは
+`0x1.1894d8f4a9740p-25`で2件がtieする。canonical witnessはclass count
+
+`[[5,0,0,0],[0,6],[0,0,4],[0,0,0,1,0,0]]`
+
+およびsource
+
+`(block=16;center=142)^2 × (block=1;center=142)^3 × (block=1;center=151)^6 × (block=1;center=152)^4 × block=0;center=147`
+
+対target `block=11;center=4`、wave multiplicity `6`、relation `product_below_target`とする。同じsource／
+targetのuniform exact product intervalはtarget interval全体を含み、intersection widthはexactly
+`1e-7`、binary64 hexは`0x1.ad7f29abcaf48p-24`である。center minimumとuniform intersectionをまとめた
+witness digestは`c570b77d2ce20ea1057f36e59e5e1152982af74aaef2f984f85495003e61f57a`とする。
+
+### validity gate
+
+1. Q011kからQ011aiまでの14 artifact、runner、73 direct digest、outcome、claim boundaryとsourceを再現する。
+2. degree-16の969 aggregate、20349 control、815 separation、154 overlapとinventory digestを再現する。
+3. index 73の二重external overlapを再現し、全target groupの和集合を使う。
+4. 160 direct／204 monotone identifier、Q011ai 144 recordのexact preservation、uniform digestを再現する。
+5. exact modulus classes、weak-composition fiber、outward containment、finite ordered array、`int64`非overflowを再現する。
+6. index 0--99 prefix、prefix digest、registered resource maximaを再現する。
+7. index 99の全relation countとobstruction-record digestを再現する。
+8. center-only 141120 separation、28 exact candidate、2 tie、registered exact center minimumを再現する。
+9. canonical uniform exact intersection、strict JSON、section digest、runner provenanceを再現する。
+
+### hypothesis gateと停止規則
+
+1. uniform \(\rho\)-discが全Q011y transformed-residual eigendiscを含み、Q011k旧discに含まれる。
+2. multi-target inventoryとFourier multiplicityが重複・欠落なく再構成される。
+3. index 0--98には分離済みcomparisonが少なくとも1件あり、index 99が最初のfully unresolved aggregateである。
+4. index 99の全141120 distinct comparisonがoutward overlapである。
+5. canonical exact uniform product／target intervalの交差幅がstrictly positiveである。
+6. center-only全141120 comparisonはstrictに分離し、exact positive minimumを再現する。
+
+全6項目が通る場合、本uniform-envelope certificateを`rejected`、actual resonanceを`not_established`とする。
+certified degreesは2--15および91以降のまま、missing rangeも16--90のまま維持する。center-only separationを
+degree 16のcertificateとして数えてはならない。
+
+封印、inventory、multi-target union、Fourier exactness、outward containmentのいずれかが失敗すれば
+`inconclusive`とする。index 99より前にfully unresolved aggregateが出る、またはindex 99にseparated
+comparisonが出る場合も登録pilot不一致として`inconclusive`とする。登録どおりrejectedならQ011akで
+uniform radiusをQ011yのblockwise transformed-residual radiusへ置き換え、同じobstructionを最初に再監査する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 16、Q011uの154 overlap、Q011y
+transformed-residual enclosure、uniform \(\rho=5\times10^{-8}\) disc、exact x-Fourier multiplicity、
+outward-rounded dyadic product enclosureに限る。center-only counterdiagnosticはactual spectrumの
+nonresonanceを認証しない。actual complex resonance、degree-16 external nonresonance、degrees 17--90、
+all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basin、
+他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
