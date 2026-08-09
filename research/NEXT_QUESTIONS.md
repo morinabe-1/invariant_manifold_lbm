@@ -8916,6 +8916,157 @@ actual rounded stateのtube re-entry、all-iterate invariance、same-initial sha
 次はQ007amでnew tubeのfixed-leaf repairとその追加算術誤差を別途事前登録し、
 all-iterate／shadowingへはまだ帰納しない。
 
+## Q007am: propagated tubeのdistributed fixed-leaf repair — 事前登録
+
+### 問いと固定scope
+
+Q007alで一段MPFR-85 stage包囲とbase／normal complement-coordinate error budgetは
+new Q007ag tube上で通過したが、componentwise encoding、collision、filterはexact fixed leafを
+保たない。Q007amではQ007yと同一のdistributed diagonal dyadic repairを変更せず、
+
+1. componentwise encoded inputとraw post-filter outputの全保存量欠陥をexactに修正できるか。
+2. repairがtube全体のbinade／integer lattice／parity条件上でwell-definedか。
+3. raw MPFR-85 errorとrepair correctionのcoarse Wiener triangle boundを合成しても、
+   Q007agのbase／normal strict marginに収まるか。
+
+を別々に判定する。固定scopeは$17^2$、D2Q9、$\omega=3/2$、$\eta=1/100$、
+Q007agの$(r,\zeta)=(9\times10^{-17},5\times10^{-11})$、Q007p external-coordinate
+block-sum $\ell^1$ norm、MPFR precision 85 bitsとする。
+
+repair quantumは$h=2^{-90}$、repair populationsは対角速度$q=5,6,7,8$、targetは
+$(M,P_x,P_y)=(289,0,0)$に固定する。Hadamard integer systemのobjectiveは
+`sum_abs_diagonal_units / max_abs_diagonal_units / abs_free_unit / free_unit`の辞書式順序、
+各対角populationのunitsは289 siteへPython `divmod`でrow-major balanced distributionする。
+Q007y repair sourceとQ007x backendは一切変更しない。
+
+Q007amはrepairのfixed-leaf closureと追加誤差budgetのみを判定する。このgate内では
+Q007ag exact forward invarianceと合成したall-iterate induction、arbitrary exact boundary stateからの
+initial encoding／repair interior、same-initial shadowingを主張しない。
+
+### 封印入力とrepair implementation
+
+- Q007al artifact／runner SHA-256:
+  `bf1a2d9959f24cfc83a4efb2926ec76d9ced97755846ee310490585940d8dcf5` /
+  `b82e03145e0c7f1c20b1d1345b87acbae5ce526b732969c391b88141118dfd8e`
+- Q007y old-tube repair artifact／runner SHA-256:
+  `a3afa87c4ee3f5d45e667eac9a6a89a1726f1d4bad0a9f90a624c562fb598648` /
+  `ba757030c852b68d5a4c643ec150422c0a7b4c3ba125211d2715ba1445e89811`
+- Q007x concrete backend SHA-256:
+  `25ad43629e2487c5c062920cbb5319dac4e8fbded339dc856548bfab7f18a0dc`
+- `pyproject.toml` SHA-256:
+  `97e8ed6af7906243a656191f96c80b8f7c1ef4b737587c888092c476be508d94`
+- current D2Q9／checkerboard-filter source SHA-256:
+  `6e6c5aa6734844d0393eb402e21203831faaf5f325b35249941eaa59145c6f53` /
+  `5fb6b67e8527b0b1f5f45511ba7cd5d077ee443220632ba3019b7bf28010a7ea`
+
+Q007alはstored cycle、6 digest、8 validity／5 hypothesis gate、MPFR context／source／trace、
+85-bit candidate、conservation nonclosureをfresh replayする。Q007yはstored cycle、8 validity gate、
+5-pass／2-fail hypothesis、old coarse base utilization `2.326054260951996`、normal utilization
+`2.507922842743146e-7`、probe digest
+`a7c4581ce3ac19b2de47f87a79e0eda8177bb7f6124b79254bf3c230ece5c329`、finite result digest
+`f47bb30b0e2280d339a40b196d1ca3dcb84f94b9e8de087bbff215d07a220fe6`をfresh replayする。
+
+### tube-wide repair bound
+
+Q007alのfresh 85-bit paired quantitiesにQ007yの同一`_tube_stage_repair_bound`を適用する。
+各population error upperを$e_q$とし、
+
+$$
+E_{\rm raw}=289\sum_q e_q,
+$$
+
+$$
+E_{\rm rep}=D_M+D_{P_x}+D_{P_y}+2h,
+\qquad E_{\rm total}=E_{\rm raw}+E_{\rm rep}
+$$
+
+をexact Fractionで記録する。$D_M,D_{P_x},D_{P_y}$はpopulation-wise errorとinteger velocityから
+Q007yと同じabsolute triangle boundで作る。center cancellation、spatial Fourier phase、Q007z selected-wave
+certificateは使わない。
+
+事前固定するnew-tube値は次である。判定は表示floatではなくexact `<`で行う。
+
+- input-encoding repair $\ell^1$ upper: `1.2452407121655381e-23`
+- input maximum-site correction upper: `4.362085261510107e-26`
+- post-filter $E_{\rm raw}$: `2.7067398403858536e-22`
+- post-filter $E_{\rm rep}$: `4.959477728036884e-22`
+- post-filter $E_{\rm total}$: `7.666217568422737e-22`
+- total／raw ratio: `2.8322698229209555`
+- base coordinate error／margin／utilization:
+  `1.1581233824834727e-21 / 4.978814700017615e-20 / 0.02326102601246388`
+- normal coordinate error／margin／utilization:
+  `2.2935127565743277e-20 / 9.144951058528087e-13 / 2.5079552005207522e-08`
+
+Q007y old-tube coarse base failureがnew marginでpassに変わることは新しいhypothesisである。
+Q007zのphase-aware boundを後付けで追加せず、上のcoarse boundだけで判定する。
+
+### finite concrete campaign
+
+Q007x／Q007alと同じ`rest`、`axial_x_pair`、`axial_y_pair`、
+`all_populations_paired`を使う。各exact inputをcomponentwise MPFR-85へencodeし、input repair、
+raw MPFR map、output repairの順に実行する。次をtoleranceではなくexact rational／bitwiseに比較する。
+
+- repaired inputとrepaired post-filter outputの$(M,P_x,P_y)$がtargetに一致する。
+- Hadamard integer solution、balanced distribution、repair additionがexactである。
+- repair前後populationがpositiveで、registered binade内に留まる。
+- backend operation count／domainが通る。
+- raw各stageとrepaired outputのexact Fraction mapに対するdiscrepancyが、Q007al
+  85-bit component upper以下である。
+
+finite probeはconcrete implementation regressionであり、tube全体のsampling proofとは扱わない。
+
+### validity gate
+
+1. Q007al／Q007y artifactとrunner SHA、source、scope、schema、登録classification／outcomeが一致する。
+2. Q007al stored cycle、6 digest、8 validity／5 hypothesis gate、85-bit candidate、trace／context／
+   conservation diagnosticをfresh replayする。
+3. Q007y stored cycle、8 validity、5-pass／2-fail hypothesis、old tube bound、probe／finite digest、
+   solver／distribution／conservationをfresh replayする。
+4. backend／Q007y repair／`pyproject.toml`／D2Q9／filter source、MPFR context、probe recipeが登録と一致する。
+5. fresh 85-bit candidateとnew tubeのrepair boundが事前固定値、binade／lattice／parity、
+   $E_{\rm total}=E_{\rm raw}+E_{\rm rep}$をexact再現する。
+6. 全4 probeのinteger solver、balanced distribution、exact repair operation、operation domainが通る。
+7. 全4 probeのrepaired input／outputがtarget保存量にexact一致し、全raw／repaired stage boundと
+   positivityが通る。
+8. 全値がfinite strict JSONで、canonical input／probe／result digestを出力する。
+
+一つでも落ちれば`inconclusive`とし、repair closureもerror budgetも採用しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を独立に判定する。
+
+1. repaired componentwise encodingが全4 probeでtarget fixed leafをexactに回復する。
+2. repaired post-filter outputが全4 probeでtarget fixed leafをexactに回復する。
+3. 全finite repairがexact、positive、binade内、Q007al component bound内である。
+4. repair mapがnew registered component tube全体でwell-definedである。
+5. repair-aware normal error upperがQ007ag normal strict margin未満である。
+6. repair-aware base error upperがQ007ag base strict margin未満である。
+7. 1--6が同時に通り、distributed repairがfixed-leaf closureと両一段error budgetを共存させる。
+
+全て通れば
+`distributed MPFR-85 repair restores the Q007ag fixed leaf and fits both registered one-step budgets`
+として`accepted`とする。validityと1--5が通り6だけ落ちれば
+`distributed MPFR-85 repair restores the Q007ag fixed leaf but not its base budget`
+という有効な`not_certified`とする。その他のhypothesis failureは
+`registered distributed MPFR-85 repair does not close the Q007ag one-step budgets`
+とする。
+
+### 主張境界
+
+acceptedでも、封印MPFR-85 backend、Q007yのdistributed repair、Q007ag component boxと
+Q007al 85-bit paired error modelに対するfixed-leaf repair feasibilityと一段誤差予算だけを意味する。
+finite probeは実装回帰であり、tube sampling proofではない。coarse repair boundはcenter
+cancellationやspatial phaseを使わず、Q007z selected-wave結論をnew tubeへ移さない。
+
+Q007amでは、repair-aware budgetをQ007ag exact forward invarianceと合成したtube self-map定理、
+all-iterate induction、exact-state initialization interior、same-initial shadowingをまだ主張しない。
+arbitrary target conserved values、他のrepair lattice／distribution、parallel reduction、性能、他MPFR版、
+GPU／compiler、grid-uniformity、continuum limitも扱わない。Q007y／Q007z old-tube結論、
+Q007al acceptance、Q007ag／Q007ai exact結論、Q007c1／Q007d／Q007af／Q010結論は変更しない。
+acceptedなら次はQ007anでexact tube invariance、stage positivity、repair-aware budgetを明示的に合成し、
+already-repaired MPFR-85 stateのall-iterate inductionを別途事前登録する。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
