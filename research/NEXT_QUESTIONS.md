@@ -8069,6 +8069,51 @@ exact positivity、Q007v--Q007abのbinary64／MPFR／repair／forward-shadowing�
 positivityは次の別gateとする。Q007c1 finite-amplitude rejection、Q007d Euclidean rejection、
 Q007af external-disc obstruction、Q010 TT cost rejectionは変更しない。
 
+### Q007ag 封印結果
+
+validity 6件、hypothesis 5件が全て通過し、
+`Q007ae analytic radius enlarges the registered external-coordinate tube`
+として`accepted`とした。
+
+- sealed artifact／runner input: Q007p／Q007s／Q007ae／Q007af `4 / 4` pass
+- sealed implementation source: Q007n／Q007o／Q007p／Q007s／Q007ae／Q007af
+  `6 / 6` pass
+- Q007s old candidate／pass reproduction: `891 / 676`
+- Q007ae radius records exact reproduction: `119 / 119`
+- new candidate／passing count: `891 / 757`
+- selected base／normal radius:
+  `9e-17 / 5e-11`
+- Q007s selectedからのbase／normal improvement: `100 / 10`
+- selected state Wiener upper: `1.4441361143956586e-10`
+- selected base image／forward margin:
+  `8.995021185299983e-17 / 4.978814700017615e-20`
+- selected normal contraction／tangent conorm／domination ratio:
+  `0.9817100978829438 / 0.9837709569923392 / 0.9979051433722989`
+- selected strict analytic／population-domain margins:
+  `1e-17 / 0.9999999998555864`
+- selected normal-cap／domination-cap margins:
+  `0.008289902117056176 / 0.001094856627701151`
+- first larger normal `6e-11`のbase forward margin:
+  `-2.4132428529856413e-19`（`base_forward_invariance`だけfail）
+- input／candidate／result digest:
+  `262cbeccacf858bd798de06f363635f15c78ff3d361b44bdd5850aeb90679613` /
+  `a7a6a8f605339b0e8ffd16a5d3190967cb7329771d322f8edc0a53bc4b45e408` /
+  `6f52c6f1cfa618ca881439504f1bd5b46e45eb245670f1a2c6341669aa024f43`
+- runner SHA-256:
+  `bafd9a56d2d2ceb94acb709609bd710c9fff0f6c0bf543202fa411b9456fb6e0`
+- artifact newline-normalized SHA-256:
+  `5783df74abb4b6ec7d658fd7e3dd272cf100cd134783c31863d643fcd17d4200`
+
+Q007aeの`1e-16` boundaryへ更新したのは\(\rho,\tau\)だけであり、他のQ007p／Q007s
+majorant定数はbitwiseに維持した。固定scaled grid上ではbase半径を100倍、normal半径を10倍に
+同時拡大できた。選択base sliceの次のnormal候補はbase forward invarianceだけをfailした。
+
+これはcontinuous optimum、maximum tube、Euclidean／grid-uniform attraction、global basin、
+continuum limitの主張ではない。Q007t／Q007uのexact positivityとQ007v--Q007abの
+binary64／MPFR／repair／forward-shadowingは旧Q007s tubeに封印されている。次はQ007ag selected
+tubeのfull-map population positivityを一つの独立gateとして事前登録し、その後にstagewise
+positivityを別gateで扱う。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。

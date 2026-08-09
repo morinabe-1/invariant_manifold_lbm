@@ -170,7 +170,11 @@ Q007afではQ007n scalar majorantから`1e-15` candidateに許されるinverse�
 sqrt-upper gapは`2.4028364427409988e-8`に留まる。従って同じoriginal-disc
 certificate familyでは次の10進radiusへ届かないというnegative obstructionを`accepted`とした。
 これは真のanalytic radiusの上限ではなく、別norm・wave-sum・blockwise certificateを排除しない。
-Q007p--Q007abの有限tube／MPFR定数は`1e-18`のまま据え置く。
+Q007agではQ007aeの`1e-16` chart radiusと対応するcorrection boundだけをQ007p／Q007s
+majorantへ伝播し、固定9×99格子上で
+\(r=9\times10^{-17}\)、\(\zeta=5\times10^{-11}\)を認証した。これはQ007s比でbase 100倍、
+normal 10倍である。ただしQ007t／Q007uのexact positivityとQ007v--Q007abの
+binary64／MPFR／repair／shadowing certificateは旧Q007s tubeに封印されたままである。
 Q007pではQ007o当時の半径`1e-18`を固定し、全289 Fourier blockをexternal coordinate normで
 厳密に覆った。
 登録tube \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)に対し、base forward invariance、
@@ -1116,6 +1120,42 @@ Q007n scalar majorant、Q007ad original asymmetric discs、Q007ad norm formula�
 Q007p--Q007abのtube／MPFR constantsは変更しない。次は同じgapのmicro-sharpeningではなく、
 認証済み`1e-16` chart domainを使う下流tube再監査を別gateにする。
 
+### Q007ag Q007ae analytic radiusのfinite-tube伝播
+
+Q007aeで認証したanalytic radius \(\rho=10^{-16}\)と対応する
+\(\tau=2.186110822784426\times10^{-60}\)だけをQ007p／Q007s majorantへ代入し、
+Q007sのbase gridをexactに100倍、normal gridを不変にした9×99候補を全評価した。
+
+- classification:
+  `Q007ae analytic radius enlarges the registered external-coordinate tube`
+- validity／hypothesis gates: `6 / 6`、`5 / 5` passed
+- Q007s old candidates／passing candidates: `891 / 676` exact reproduction
+- Q007ae radius records: `119 / 119` exact reproduction
+- new candidates／passing candidates: `891 / 757`
+- selected base／normal radius:
+  `9e-17 / 5e-11`
+- Q007s selectedからのimprovement: `100 / 10`
+- selected state Wiener upper: `1.4441361143956586e-10`
+- base image／strict forward margin:
+  `8.995021185299983e-17 / 4.978814700017615e-20`
+- normal contraction／tangent conorm／domination ratio:
+  `0.9817100978829438 / 0.9837709569923392 / 0.9979051433722989`
+- first larger normal `6e-11`のbase forward margin:
+  `-2.4132428529856413e-19`（このgateだけfail）
+- input／candidate／result digest:
+  `262cbeccacf858bd798de06f363635f15c78ff3d361b44bdd5850aeb90679613` /
+  `a7a6a8f605339b0e8ffd16a5d3190967cb7329771d322f8edc0a53bc4b45e408` /
+  `6f52c6f1cfa618ca881439504f1bd5b46e45eb245670f1a2c6341669aa024f43`
+- runner／artifact SHA-256:
+  `bafd9a56d2d2ceb94acb709609bd710c9fff0f6c0bf543202fa411b9456fb6e0` /
+  `5783df74abb4b6ec7d658fd7e3dd272cf100cd134783c31863d643fcd17d4200`
+
+選択点は全6 candidate gateをstrictに通り、selected base sliceのより大きいnormal候補は全て
+failした。従って固定scaled grid上では両tube半径が拡大した。ただしbase grid上端を選んだだけなので、
+continuous optimumやmaximum tubeを意味しない。Euclidean／grid-uniform attraction、global basin、
+continuum limitも示さない。Q007t／Q007uのpopulation／stagewise positivityと
+Q007v--Q007abの有限精度certificateは旧tubeに封印され、新tubeへは自動的に移らない。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -1651,6 +1691,7 @@ python -m research.q007ac_phase_aware_resolvent --output research/artifacts/q007
 python -m research.q007ad_asymmetric_phase_resolvent --output research/artifacts/q007ad_asymmetric_phase_resolvent.json
 python -m research.q007ae_internal_phase_resolvent --output research/artifacts/q007ae_internal_phase_resolvent.json
 python -m research.q007af_radius_step_obstruction --output research/artifacts/q007af_radius_step_obstruction.json
+python -m research.q007ag_tube_radius_propagation --output research/artifacts/q007ag_tube_radius_propagation.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -1712,6 +1753,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007ad_asymmetric_phase_resolvent.json`](research/artifacts/q007ad_asymmetric_phase_resolvent.json)
 - [`research/artifacts/q007ae_internal_phase_resolvent.json`](research/artifacts/q007ae_internal_phase_resolvent.json)
 - [`research/artifacts/q007af_radius_step_obstruction.json`](research/artifacts/q007af_radius_step_obstruction.json)
+- [`research/artifacts/q007ag_tube_radius_propagation.json`](research/artifacts/q007ag_tube_radius_propagation.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -1788,6 +1830,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q007ae selected-output 12 point centers／19,870位相比較によるinternal resolvent bottleneck除去
 - Q007af `1e-15` inverse thresholdのexact bracketとsealed Q007ad witnessによる
   external-disc certificate family obstruction
+- Q007ag Q007ae `1e-16` radius／correctionのQ007p majorantへの伝播、9×99候補上の
+  base 100倍／normal 10倍tube認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -1797,7 +1841,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
-  `1e-16` analytic radiusでの下流tube再監査
+  Q007ag新tube上のpopulation／stagewise positivityと有限精度certificate再監査
 - TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -1829,3 +1873,6 @@ exact mapのQ007s tube-wide contractionを認証し、initial／local MPFR defec
 sampling-time forward errorを全iterateで一様に抑えた。Q007c1の有限振幅性能棄却とQ007dの
 Euclidean棄却を変更せず、任意Q007s boundary state、bi-infinite shadowing、連続最適性、
 grid-uniform性へは主張を広げない。
+Q007agではQ007aeのanalytic radiusとcorrectionだけを同じmajorantへ伝播し、固定scaled grid上で
+\(r=9\times10^{-17}\)、\(\zeta=5\times10^{-11}\)まで拡大した。ただしこの新tubeには
+Q007t--Q007abのpositivity／有限精度結論をまだ移していない。

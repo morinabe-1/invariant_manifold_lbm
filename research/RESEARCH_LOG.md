@@ -3777,6 +3777,66 @@ Q007aeの`1e-16` analytic radiusとQ007p--Q007abの`1e-18` tube／MPFR定数は
 ともに維持する。次はexternal certificateを同じ形でsharp化せず、認証済み`1e-16` chart
 domainをQ007p-style finite-tube boundへ渡す下流再監査を別gateとして事前登録する。
 
+## 2026-08-09: Q007ag Q007ae analytic radiusのfinite-tube伝播
+
+### 問いと事前登録
+
+Q007aeのaccepted \(10^{-16}\) chart radiusをQ007p／Q007s finite-tube majorantへ伝播したとき、
+旧Q007s tubeのbase／normal両半径をstrictに拡大できるかを問うた。変更を\(\rho,\tau\)の2定数に
+限定し、base gridだけをexactに100倍、normal gridを不変にした9×99候補と選択境界を事前登録した。
+
+1. Q007p／Q007s／Q007ae／Q007af artifactと6 runner／implementation SHAを封印する。
+2. Q007s old 891 candidate、676 pass、digest、selected boundaryをexact再現する。
+3. Q007aeの119 radius recordと`1e-16 pass / 1e-15 fail`をexact再現する。
+4. \(\rho=10^{-16}\)、\(\tau=2.186110822784426\times10^{-60}\)だけを更新する。
+5. 予備exact evaluationで得た757 pass、selected
+   \((r,\zeta)=(9\times10^{-17},5\times10^{-11})\)を結果前に固定する。
+
+### 実装
+
+- Q007s `_evaluate_candidate`を変更せず再利用し、全候補を`Fraction` signsで判定した。
+- Q007s old cycleをfresh replayし、候補数、pass数、candidate digest、selected点、全gateと
+  selection boundaryをartifactへ照合した。
+- Q007ae radius searchをfresh replayし、119 records、boundary、\(\rho,\tau\)を照合した。
+- Q007p／Q007s定数の差分を監査し、変更名がexactに`rho / tau`だけであることを確認した。
+- scaled 9×99 Cartesian gridの一意性、全6 gate、lexicographic selectionを完走した。
+- input／candidate／resultをcanonical digest化し、全出力をfinite strict JSONとして保存した。
+
+### 結果
+
+validity `6/6`、hypothesis `5/5`で、
+`Q007ae analytic radius enlarges the registered external-coordinate tube`
+として`accepted`とした。
+
+1. Q007s old 891 candidate／676 passとQ007ae 119 radius recordをexact再現した。
+2. new gridでは891候補中757個がpassした。
+3. selected tubeは
+   \((r,\zeta)=(9\times10^{-17},5\times10^{-11})\)で、Q007s比`100 / 10`だった。
+4. selected state Wiener upperは`1.4441361143956586e-10`、base imageは
+   `8.995021185299983e-17`、base forward marginは`4.978814700017615e-20`だった。
+5. normal contraction／tangent conorm／domination ratioは
+   `0.9817100978829438 / 0.9837709569923392 / 0.9979051433722989`だった。
+6. first larger normal `6e-11`はbase forward margin
+   `-2.4132428529856413e-19`で、`base_forward_invariance`だけをfailした。
+
+- input／candidate／result digest:
+  `262cbeccacf858bd798de06f363635f15c78ff3d361b44bdd5850aeb90679613` /
+  `a7a6a8f605339b0e8ffd16a5d3190967cb7329771d322f8edc0a53bc4b45e408` /
+  `6f52c6f1cfa618ca881439504f1bd5b46e45eb245670f1a2c6341669aa024f43`
+- runner／artifact SHA-256:
+  `bafd9a56d2d2ceb94acb709609bd710c9fff0f6c0bf543202fa411b9456fb6e0` /
+  `5783df74abb4b6ec7d658fd7e3dd272cf100cd134783c31863d643fcd17d4200`
+
+### 解釈と次のbottleneck
+
+認証済みanalytic chart domainの拡大は、同じexternal-coordinate majorant上で有限tubeの両半径へ
+実際に伝播した。ただしbase grid上端を選んだためcontinuous maximumではなく、Euclidean／grid-uniform
+attraction、global basin、continuum limitも示さない。
+
+Q007t／Q007u positivityとQ007v--Q007ab finite-precision certificateは旧Q007s tubeに封印されている。
+次は新Q007ag tubeのfull-map population positivityを独立gateで監査し、その後にstagewise positivityを
+別gateとして扱う。有限精度定数は両positivity gateが通るまで拡張しない。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3880,6 +3940,8 @@ domainをQ007p-style finite-tube boundへ渡す下流再監査を別gateとし�
 [`artifacts/q007ae_internal_phase_resolvent.json`](artifacts/q007ae_internal_phase_resolvent.json)
 
 [`artifacts/q007af_radius_step_obstruction.json`](artifacts/q007af_radius_step_obstruction.json)
+
+[`artifacts/q007ag_tube_radius_propagation.json`](artifacts/q007ag_tube_radius_propagation.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
