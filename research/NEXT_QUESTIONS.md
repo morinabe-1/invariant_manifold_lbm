@@ -8380,6 +8380,42 @@ principle、Q007v--Q007ab有限精度帰納、continuous optimum、global basin�
 limitは認証しない。既存のQ007c1／Q007d／Q007af／Q010結論も変更しない。acceptedなら次はQ007ajで、
 このnew tubeに対する現行binary64 one-step stage enclosureを独立に事前登録する。
 
+### Q007ai 封印結果
+
+validity 6件、hypothesis 5件が全て通過し、
+`registered Q007ag propagated tube is population-positive at every exact BGK, streaming, and filter stage`
+として`accepted`とした。
+
+- sealed Q007ah／Q007u inputs: `2 / 2` pass
+- D2Q9／checkerboard-filter implementation SHA: `2 / 2` pass
+- Q007ah stored cycle／2 digest fresh reproduction: pass
+- Q007u old stagewise oracle fresh reproduction: pass
+- exact equilibrium／collision induced \(\ell^1\) norm: `13/6 / 19/6`
+- exact equilibrium／collision nonlinear constant: `7 / 21/2`
+- input state Wiener upper: `1.4441361143956586e-10`
+- density denominator lower: `0.9999999998555864`
+- equilibrium nonlinear／deviation／population lower:
+  `1.459870382042079e-19 / 3.1289615826504644e-10 / 0.02777777746488162`
+- collision nonlinear／deviation／population lower:
+  `2.1898055730631184e-19 / 4.5730976977760583e-10 / 0.027777777320468006`
+- post-streaming／post-filter lower:
+  `0.027777777320468006 / 0.027777777320468006`
+- input／result digest:
+  `0dff47e8b0ed6e9b87cb73e6dea20192088495b51283c57b9d58630b7344c6a3` /
+  `c101313957c738ccee9fd3d7f1ed36b77c6f3dad4e1130651f5be4d8757ef18a`
+- runner SHA-256:
+  `3235b2dc31445e5912f2aaf7fc080e8295035801ade9b27d3f683d34da61173d`
+- artifact newline-normalized SHA-256:
+  `3ce5fa6358eaa6f3a64f93fe773e3fbc1990abfb83886aad1a4ade9c82425804`
+
+従って固定Q007ag tube内の全real stateについて、exact equilibrium evaluation、BGK collision、
+periodic streaming、five-point filterの各出力で全9 populationがstrict positiveである。Q007ag forward
+invarianceにより同じstage boundを全iterateへ再適用できる。
+
+これはexact mathematical mapの結論であり、NumPy／IEEE-754中間演算を外向きroundoff intervalで
+囲っていない。次はQ007ajで同じnew tubeに対するcurrent binary64 one-step stage enclosureを独立に
+監査する。all-iterate finite-precision re-entryは同じgate内でもstage positivityと分けて判定する。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。

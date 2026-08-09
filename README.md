@@ -178,6 +178,9 @@ binary64／MPFR／repair／shadowing certificateは旧Q007s tubeに封印され�
 Q007ahでは同じ新tubeのWiener upperをexactに再利用し、population lower
 `0.027777777633364167`とdensity lower`0.9999999998555864`を得た。従ってfull-mapの
 入力／出力時刻では全iterateのstrict positivityを認証したが、内部stageと有限精度帰納はまだ拡張しない。
+Q007aiではexact equilibrium／collision／streaming／filterへ拡張し、最悪stage lower
+`0.027777777320468006`を認証した。これでexact stagewise positivityは新tubeへ移ったが、
+binary64／MPFR／repair／shadowingは引き続き旧tubeに封印されている。
 Q007pではQ007o当時の半径`1e-18`を固定し、全289 Fourier blockをexternal coordinate normで
 厳密に覆った。
 登録tube \(\|a\|_1\le10^{-19}\)、\(\|z\|_*\le10^{-20}\)に対し、base forward invariance、
@@ -1187,6 +1190,35 @@ Q007ag forward invarianceにより、同じlower boundをfull one-step mapの全
 一方、equilibrium evaluation、BGK collision、streaming、filterの内部stageはこのgateの対象外である。
 entropy、maximum principle、IEEE-754 roundoff、Q007v--Q007ab有限精度帰納も示さない。
 
+### Q007ai Q007ag tubeのexact stagewise positivity
+
+Q007ahのexact state upperをQ007uと同じD2Q9 stage majorantへ代入した。Q007ah／Q007uをfresh replayし、
+現行D2Q9／checkerboard-filter sourceをSHA固定して、linear operator、nonlinear remainder、17² periodic
+streaming、five-point convex filterを再構成した。
+
+- classification:
+  `registered Q007ag propagated tube is population-positive at every exact BGK, streaming, and filter stage`
+- validity／hypothesis gates: `6 / 6`、`5 / 5` passed
+- equilibrium／collision induced \(\ell^1\) norm: `13/6 / 19/6`
+- equilibrium／collision nonlinear constant: `7 / 21/2`
+- equilibrium deviation／population lower:
+  `3.1289615826504644e-10 / 0.02777777746488162`
+- collision deviation／population lower:
+  `4.5730976977760583e-10 / 0.027777777320468006`
+- streaming／filter population lower:
+  `0.027777777320468006 / 0.027777777320468006`
+- streaming bijections／convex filter／wrapped composition: pass
+- input／result digest:
+  `0dff47e8b0ed6e9b87cb73e6dea20192088495b51283c57b9d58630b7344c6a3` /
+  `c101313957c738ccee9fd3d7f1ed36b77c6f3dad4e1130651f5be4d8757ef18a`
+- runner／artifact SHA-256:
+  `3235b2dc31445e5912f2aaf7fc080e8295035801ade9b27d3f683d34da61173d` /
+  `3ce5fa6358eaa6f3a64f93fe773e3fbc1990abfb83886aad1a4ade9c82425804`
+
+Q007ag forward invarianceにより、同じ4 stage lowerをexact mapの全iterateへ再適用できる。ただし
+NumPy／IEEE-754の中間演算は囲っておらず、binary64 one-step enclosureとroundoff-robust tube re-entryは
+別問題である。entropy、monotonicity、maximum principle、finite-precision all-iterate帰納も示さない。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -1724,6 +1756,7 @@ python -m research.q007ae_internal_phase_resolvent --output research/artifacts/q
 python -m research.q007af_radius_step_obstruction --output research/artifacts/q007af_radius_step_obstruction.json
 python -m research.q007ag_tube_radius_propagation --output research/artifacts/q007ag_tube_radius_propagation.json
 python -m research.q007ah_propagated_tube_population_positivity --output research/artifacts/q007ah_propagated_tube_population_positivity.json
+python -m research.q007ai_propagated_tube_stagewise_positivity --output research/artifacts/q007ai_propagated_tube_stagewise_positivity.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -1787,6 +1820,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q007af_radius_step_obstruction.json`](research/artifacts/q007af_radius_step_obstruction.json)
 - [`research/artifacts/q007ag_tube_radius_propagation.json`](research/artifacts/q007ag_tube_radius_propagation.json)
 - [`research/artifacts/q007ah_propagated_tube_population_positivity.json`](research/artifacts/q007ah_propagated_tube_population_positivity.json)
+- [`research/artifacts/q007ai_propagated_tube_stagewise_positivity.json`](research/artifacts/q007ai_propagated_tube_stagewise_positivity.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -1866,6 +1900,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - Q007ag Q007ae `1e-16` radius／correctionのQ007p majorantへの伝播、9×99候補上の
   base 100倍／normal 10倍tube認証
 - Q007ah Q007ag tubeのexact Wiener bound、full-map時刻でのpopulation／density strict positivity認証
+- Q007ai Q007ag tubeのexact equilibrium／BGK／streaming／convex-filter全iterate strict positivity認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -1875,7 +1910,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
-  Q007ag新tube上のstagewise positivityと有限精度certificate再監査
+  Q007ag新tube上の有限精度certificate再監査
 - TT-cross（固定Q007c1係数では保留）、境界条件、外力、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -1910,4 +1945,5 @@ grid-uniform性へは主張を広げない。
 Q007agではQ007aeのanalytic radiusとcorrectionだけを同じmajorantへ伝播し、固定scaled grid上で
 \(r=9\times10^{-17}\)、\(\zeta=5\times10^{-11}\)まで拡大した。ただしこの新tubeには
 Q007t--Q007abのpositivity／有限精度結論を自動的には移していない。Q007ahでは新tubeを
-full-map時刻のstrict positive population coneへ含めたが、内部stageと有限精度結論はまだ移していない。
+full-map時刻のstrict positive population coneへ含め、Q007aiではexact内部stageへ拡張した。
+finite-precision結論はまだ移していない。

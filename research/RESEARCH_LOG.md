@@ -3888,6 +3888,50 @@ Q007ag forward invarianceにより、同じstrict lower boundをexact full-map�
 次はQ007aiで同じnew tubeのexact stagewise positivityだけを監査する。entropy、maximum principle、
 IEEE-754 roundoff、Q007v--Q007ab finite-precision inductionもまだ拡張しない。
 
+## 2026-08-09: Q007ai Q007ag tubeのexact stagewise positivity
+
+### 問いと事前登録
+
+Q007ahでfull-map時刻のpositivityを認証したnew tubeについて、exact equilibrium／collision／streaming／
+filter各stageでもstrict positivityを維持できるかを問うた。Q007ah／Q007uと現行D2Q9／filter sourceを
+封印し、Q007uと同じoperator norm、nonlinear majorant、stage structureを新しい\(x_{\rm ag}\)へ評価した。
+
+### 実装
+
+- Q007ah stored cycle、2 digest、tube state identity、forward invarianceをfresh replayした。
+- Q007u old stagewise cycle、全gate、operator／majorant／structure、old boundsをfresh replayした。
+- current D2Q9／checkerboard-filter source SHAを照合した。
+- exact \(M,E,EM,C\)、nonlinear constants、9 streaming bijection、convex filterを再構成した。
+- 全stage boundを`Fraction`で計算し、事前登録float表示とinput／result digestを照合した。
+
+### 結果
+
+validity `6/6`、hypothesis `5/5`で、
+`registered Q007ag propagated tube is population-positive at every exact BGK, streaming, and filter stage`
+として`accepted`とした。
+
+- state upper／density buffer:
+  `1.4441361143956586e-10 / 0.9999999998555864`
+- equilibrium nonlinear／deviation／population lower:
+  `1.459870382042079e-19 / 3.1289615826504644e-10 / 0.02777777746488162`
+- collision nonlinear／deviation／population lower:
+  `2.1898055730631184e-19 / 4.5730976977760583e-10 / 0.027777777320468006`
+- streaming／filter population lower:
+  `0.027777777320468006 / 0.027777777320468006`
+- input／result digest:
+  `0dff47e8b0ed6e9b87cb73e6dea20192088495b51283c57b9d58630b7344c6a3` /
+  `c101313957c738ccee9fd3d7f1ed36b77c6f3dad4e1130651f5be4d8757ef18a`
+- runner／artifact SHA-256:
+  `3235b2dc31445e5912f2aaf7fc080e8295035801ade9b27d3f683d34da61173d` /
+  `3ce5fa6358eaa6f3a64f93fe773e3fbc1990abfb83886aad1a4ade9c82425804`
+
+### 解釈と次のbottleneck
+
+Q007ag forward invarianceにより、4 stageのstrict lowerをexact mapの全iterateへ再適用できる。
+Q007ahで残ったexact内部stageの穴は閉じた。次はQ007ajでcurrent binary64 one-step演算を同じnew tube上で
+囲う。stage positivityとroundoff-robust tube re-entryは別のhypothesisとして維持し、後者がfailしても
+前者を有効な結論として残す。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -3995,6 +4039,8 @@ IEEE-754 roundoff、Q007v--Q007ab finite-precision inductionもまだ拡張し�
 [`artifacts/q007ag_tube_radius_propagation.json`](artifacts/q007ag_tube_radius_propagation.json)
 
 [`artifacts/q007ah_propagated_tube_population_positivity.json`](artifacts/q007ah_propagated_tube_population_positivity.json)
+
+[`artifacts/q007ai_propagated_tube_stagewise_positivity.json`](artifacts/q007ai_propagated_tube_stagewise_positivity.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
