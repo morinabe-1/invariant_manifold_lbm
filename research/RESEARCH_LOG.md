@@ -4584,6 +4584,61 @@ stored exact replay、continued-state perturbation、共役orbit上のset-valued
 別々に判定する修復gateを事前登録する。Q011cの`inconclusive`を変更せず、そのgateを通るまで
 Q011d external nonresonanceへ進まない。
 
+## 2026-08-09: Q011c1 conjugacy-orbit endpoint localization
+
+### 問いと方法
+
+Q011cの唯一のvalidity failureが、許容されたstate perturbationに対する
+\(k_x=1,16\)共役blockの個別witness交換だけで説明できるかを独立に判定した。Q011c artifact／runner／
+四digest／exact cycleをsealed inputとし、Q011cの`inconclusive`を変更しない停止規則を置いた。
+
+stored Q011b endpointとcontinued Q011c endpointの各17 fixed-leaf blockで\(A_k=I-J_k\)のfull SVDを
+実行した。各block差にはFrobenius normと固定係数64のbinary64 paddingを使うWeyl区間を構成し、
+\(\sigma_{\min}\)、\(\sigma_{\max}\)、\(\kappa_2\)のcontinued値を囲んだ。extremal witnessは
+個別indexではなく9個のcomplex-conjugacy orbitで比較した。
+
+### 結果
+
+validity `5 / 5`、hypothesis `4 / 4`を通過し、
+`the Q011c endpoint failure is localized to perturbation-consistent conjugate-witness tie instability`
+として`accepted`とした。
+
+- maximum stored／continued SVD reconstruction residual:
+  `2.889692747875842e-15 / 2.94286841789878e-15`
+- maximum stored／continued SVD unitarity residual:
+  `2.5479952376461563e-14 / 2.480871382499916e-14`
+- maximum stored／continued matrix-conjugacy residual:
+  `6.570605272701854e-16 / 6.577836273397531e-16`
+- maximum resolvent Frobenius difference／registered bound:
+  `4.2352782748696136e-14 / 2.9468087840500247e-13`
+- maximum minimum／maximum singular-value bound utilization:
+  `0.0009382376259671139 / 0.010647618003265125`
+- minimum-singular／maximum-condition winning-orbit interval margin:
+  `2.694725883406468e-10 / 0.5844815558106689`
+- stored／continued extremal orbit:
+  radius`{0}`、minimum singular／maximum condition`{1,16}`
+- exact individual witness exchange:
+  minimum singular、maximum conditionとも`16 -> 1`
+- input／metric／enclosure／result digest:
+  `e9ea01348fe839dd745c3ccb7cf2e622bec3c0a4f080a1ab1c62a92a02ced064` /
+  `fca5a81f3fc47e24a6f17578065adb527d892400d5d88c8eb18cf7089e234a9e` /
+  `7a6cd761f88b328c2ffa74de5b9fb7952f454b86a99630d6266973e8fa6fea20` /
+  `ad8b47548ebc04595246301864314502158e686520197377b3a33d30db1d4f86`
+- runner／artifact newline-normalized SHA-256:
+  `1f777dc50c6748cb8d8a64d643822b55733ac247b5de7d08b119d628b63c52a6` /
+  `939baa85fa4db1efaf701985d81665f863e5f77f6ec2c95cfc2bacf004c0c45c`
+
+### 解釈と次のbottleneck
+
+continued endpointの全resolvent metric変化は登録上界の約1.1%以下であり、winning orbitと外部orbitの
+順序は摂動区間込みで変わらない。従ってQ011cの失敗原因は、ほぼ同値な共役block間でのpointwise
+tie-breakingと、state perturbationを無視したabsolute condition-number再現規則に局在した。
+
+ただし同じQ011cデータを使う診断なので、Q011cの`inconclusive`をacceptedへ変更しない。forced
+clusterを選択したとも、rigorous singular-value enclosureを得たとも主張しない。次は共役orbit意味論を
+最初から採用し、未使用amplitude midpointをheld-out評価するQ011c2を事前登録する。Q011d
+external nonresonanceはその後である。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4713,6 +4768,8 @@ Q011d external nonresonanceへ進まない。
 [`artifacts/q011b_zero_mean_forced_fixed_point.json`](artifacts/q011b_zero_mean_forced_fixed_point.json)
 
 [`artifacts/q011c_forced_spectral_cluster.json`](artifacts/q011c_forced_spectral_cluster.json)
+
+[`artifacts/q011c1_endpoint_localization.json`](artifacts/q011c1_endpoint_localization.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

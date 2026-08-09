@@ -244,7 +244,9 @@ Q011cではQ006h first-shell 24-mode subspaceを9点のforce-amplitude pathでor
 追跡した。全cluster分離・projector・Sylvester・normal-dominance診断は登録閾値を通ったが、Q011b
 終点のcondition-number再現差が\(7.05\times10^{-12}>10^{-12}\)となり、共役な
 \(k_x=1,16\) witnessも交換したため、事前登録どおり`inconclusive`とした。forced slow clusterの
-科学的選択や不変多様体はまだ主張しない。
+科学的選択や不変多様体はまだ主張しない。Q011c1では全17 blockのJacobian差からFrobenius--Weyl
+摂動区間を作り、交換が同じ共役orbit`{1,16}`内に限られ、全resolvent metric変化が区間内である
+ことを確認した。これは失敗原因の局在化であり、Q011cの判定は変更していない。
 
 - 奇数幅の有限周期 D2Q9 で物理的に \(|\lambda|=1\) となるのは、通常 \(k=0\) の
   質量と二成分運動量の3モードである。
@@ -1637,6 +1639,48 @@ absolute `1e-12`で一致させる再現規則に局在した。閾値を観測�
 set-valued witnessとstate-to-spectrum感度を事前登録する修復監査を行う。これを通すまではQ011dの
 external nonresonanceやforced invariant manifold構築へ進まない。
 
+### Q011c1 conjugacy-orbit endpoint localization
+
+Q011cのstored／continued endpointを再構築し、各17 blockで
+\(A_k=I-J_k\)のfull SVDを実行した。実測差へ
+
+\[
+d_k=\|A_k^c-A_k^s\|_F+
+64\epsilon_{\rm mach}\max(1,\|A_k^s\|_F,\|A_k^c\|_F)
+\]
+
+を加えた保守的Weyl区間で、continued \(\sigma_{\min}\)、\(\sigma_{\max}\)、\(\kappa_2\)を
+全blockについて囲んだ。
+
+- classification:
+  `the Q011c endpoint failure is localized to perturbation-consistent conjugate-witness tie instability`
+- validity／hypothesis gates: `5 / 5`、`4 / 4` passed
+- maximum resolvent Frobenius difference／registered bound:
+  `4.2352782748696136e-14 / 2.9468087840500247e-13`
+- maximum minimum／maximum singular-value bound utilization:
+  `0.0009382376259671139 / 0.010647618003265125`
+- minimum-singular／maximum-condition winning-orbit separation margin:
+  `2.694725883406468e-10 / 0.5844815558106689`
+- maximum stored／continued SVD reconstruction residual:
+  `2.889692747875842e-15 / 2.94286841789878e-15`
+- maximum stored／continued SVD unitarity residual:
+  `2.5479952376461563e-14 / 2.480871382499916e-14`
+- maximum stored／continued matrix-conjugacy residual:
+  `6.570605272701854e-16 / 6.577836273397531e-16`
+- input／metric／enclosure／result digest:
+  `e9ea01348fe839dd745c3ccb7cf2e622bec3c0a4f080a1ab1c62a92a02ced064` /
+  `fca5a81f3fc47e24a6f17578065adb527d892400d5d88c8eb18cf7089e234a9e` /
+  `7a6cd761f88b328c2ffa74de5b9fb7952f454b86a99630d6266973e8fa6fea20` /
+  `ad8b47548ebc04595246301864314502158e686520197377b3a33d30db1d4f86`
+- runner／artifact newline-normalized SHA-256:
+  `1f777dc50c6748cb8d8a64d643822b55733ac247b5de7d08b119d628b63c52a6` /
+  `939baa85fa4db1efaf701985d81665f863e5f77f6ec2c95cfc2bacf004c0c45c`
+
+stored／continuedのradius winnerは`{0}`、minimum-singular／maximum-condition winnerは
+ともに`{1,16}`で、個別witnessだけが`16 -> 1`へ交換した。Q011c1はこの失敗を説明したが、
+同じ観測データを使うlocalizationであるためQ011cを再採点しない。次は共役orbit意味論を最初から
+固定し、未使用のheld-out force-amplitude nodesを加えたQ011c2を通してからQ011dへ進む。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -2185,6 +2229,7 @@ python -m research.q007ap_forward_shadowing --output research/artifacts/q007ap_f
 python -m research.q011a_periodic_forcing_compatibility --output research/artifacts/q011a_periodic_forcing_compatibility.json
 python -m research.q011b_zero_mean_forced_fixed_point --output research/artifacts/q011b_zero_mean_forced_fixed_point.json
 python -m research.q011c_forced_spectral_cluster --output research/artifacts/q011c_forced_spectral_cluster.json
+python -m research.q011c1_endpoint_localization --output research/artifacts/q011c1_endpoint_localization.json
 python -m ttim_lbm --study q008a --output research/artifacts/q008a_tt_storage_prequalification.json
 python -m ttim_lbm --study q008c --output research/artifacts/q008c_wave_qtt_prequalification.json
 python -m research.q010_representation_cost --output research/artifacts/q010_representation_cost.json
@@ -2259,6 +2304,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011a_periodic_forcing_compatibility.json`](research/artifacts/q011a_periodic_forcing_compatibility.json)
 - [`research/artifacts/q011b_zero_mean_forced_fixed_point.json`](research/artifacts/q011b_zero_mean_forced_fixed_point.json)
 - [`research/artifacts/q011c_forced_spectral_cluster.json`](research/artifacts/q011c_forced_spectral_cluster.json)
+- [`research/artifacts/q011c1_endpoint_localization.json`](research/artifacts/q011c1_endpoint_localization.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -2357,6 +2403,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   block spectrum、resolvent isolation診断
 - Q011c 9-node force-amplitude pathのordered-Schur 24-mode cluster、Riesz／Sylvester／
   global normal-dominance診断、endpoint reproduction failureの局在化
+- Q011c1 34 full SVD、共役orbit extrema、Frobenius--Weyl区間によるQ011c endpoint
+  witness交換の摂動整合的局在化
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -2367,7 +2415,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- TT-cross（固定Q007c1係数では保留）、Q011c endpoint witness修復、forced invariant manifold、境界条件、
+- TT-cross（固定Q007c1係数では保留）、Q011c2 held-out cluster再発行、forced invariant manifold、境界条件、
   Poiseuille／Couette、D3Q27
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
@@ -2421,5 +2469,6 @@ forced fixed-point stabilityとは解釈しない。Q011bでは零平均single-w
 spectrumが登録radius／resolvent gateを通ることを確認した。Q011cでは24-mode clusterの全raw
 separation／normal-dominance診断が通ったが、continued endpointとQ011b artifactのcondition-number
 再現差および共役witness交換によりvalidity 5/6、`inconclusive`となった。従ってforced clusterを
-selectedとはまだ扱わず、endpoint witness修復、nonresonance、normal attraction、不変多様体、
-wall-bounded flowは未実装である。
+selectedとはまだ扱わない。Q011c1では全metric変化をJacobian perturbation区間で囲み、extremal
+orbitが`{1,16}`のまま個別witnessだけ交換したことを認証したが、Q011cは再採点していない。
+Q011c2 held-out再発行、nonresonance、normal attraction、不変多様体、wall-bounded flowは未実装である。

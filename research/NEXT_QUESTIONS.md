@@ -10464,6 +10464,48 @@ normal attractionは主張しない。acceptedなら次は、共役orbit意味�
 いないheld-out amplitude nodesを含むQ011c2 reissued cluster gateを別途事前登録する。rejectedなら
 Q011c endpoint Jacobian差のblock／state component原因をさらに分解し、Q011dへは進まない。
 
+### Q011c1 最終結果
+
+validity `5 / 5`、hypothesis `4 / 4`を通過し、
+`the Q011c endpoint failure is localized to perturbation-consistent conjugate-witness tie instability`
+として`accepted`とした。
+
+- 34 full SVDのmaximum reconstruction／unitarity residual:
+  `2.94286841789878e-15 / 2.5479952376461563e-14`
+- maximum matrix-conjugacy relative residual:
+  `6.577836273397531e-16`
+- maximum resolvent Frobenius difference／registered perturbation bound:
+  `4.2352782748696136e-14 / 2.9468087840500247e-13`
+- maximum minimum／maximum singular-value change utilization:
+  `0.0009382376259671139 / 0.010647618003265125`
+- minimum-singular winning-orbit interval margin:
+  `2.694725883406468e-10`
+- maximum-condition winning-orbit interval margin:
+  `0.5844815558106689`
+- stored／continued radius orbit:
+  `{0} / {0}`
+- stored／continued minimum-singular and maximum-condition orbit:
+  `{1,16} / {1,16}`
+- exact individual witness exchange:
+  minimum singular、maximum conditionとも`16 -> 1`
+
+従ってQ011c endpoint差は全17 blockで登録摂動区間内にあり、extremal orbitは外部orbitから
+区間込みでstrictに分離した。個別index交換は同じreal-map conjugacy orbit内のtie-breakingである。
+ただしQ011c1は同じ二endpointを使うfailure-localization gateなので、Q011cの`inconclusive`、
+validity `5 / 6`、失敗閾値`1e-12`を変更していない。forced clusterもまだselectedと呼ばない。
+
+- input／metric／enclosure／result digest:
+  `e9ea01348fe839dd745c3ccb7cf2e622bec3c0a4f080a1ab1c62a92a02ced064` /
+  `fca5a81f3fc47e24a6f17578065adb527d892400d5d88c8eb18cf7089e234a9e` /
+  `7a6cd761f88b328c2ffa74de5b9fb7952f454b86a99630d6266973e8fa6fea20` /
+  `ad8b47548ebc04595246301864314502158e686520197377b3a33d30db1d4f86`
+- runner／artifact newline-normalized SHA-256:
+  `1f777dc50c6748cb8d8a64d643822b55733ac247b5de7d08b119d628b63c52a6` /
+  `939baa85fa4db1efaf701985d81665f863e5f77f6ec2c95cfc2bacf004c0c45c`
+
+次は共役orbit endpoint semanticsを最初から固定し、Q011cで未使用のforce-amplitude midpointを
+holdoutにするQ011c2を観測前に事前登録する。それを通るまでQ011dへ進まない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
