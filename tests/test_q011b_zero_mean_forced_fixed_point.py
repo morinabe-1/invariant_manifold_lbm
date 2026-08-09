@@ -238,3 +238,38 @@ def test_q011b_records_reproducible_digests_and_runner_provenance(
     }
     assert source_metadata()["package_version"] == "0.1.0"
     json.dumps(q011b_cycle, allow_nan=False)
+
+
+def test_q011b_artifact_reproduces_the_accepted_fixed_point(
+    q011b_cycle: dict,
+) -> None:
+    runner_path = Path(q011b.__file__).resolve()
+    artifact_path = runner_path.parent / "artifacts" / "q011b_zero_mean_forced_fixed_point.json"
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "477202184694da1386c6b5bc0f0441e004a7a44f7a7b064f1d060d50adc66c27"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011b_zero_mean_forced_fixed_point.py",
+        "sha256": ("bac9448f280ce2dfb2e1627ce1558b792cb53e05746b94246baa6c329b8c8ef0"),
+        "sha256_newline_normalization": ("UTF-8 text with universal newlines"),
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q011b_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["input_digest_sha256"] == (
+        "53dea81353ed4bcd77ab0c06533528f6d867d8b1bfa80d3d2ac3eddd7cf7dfbb"
+    )
+    assert artifact["cycle"]["fixed_point_digest_sha256"] == (
+        "8db05ad1e7ae7806b70b6330d798f6dad05bc8718027ba13cb315116b021b17c"
+    )
+    assert artifact["cycle"]["spectrum_digest_sha256"] == (
+        "3ab8866e141b64a4d1d81bdfae1a70c61d8e7964d8480e2bd7ec7c7e174850fc"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "66c4b579dbd7d7c391fd2017f165c2de251ecf850b7c485cb936b9742c8addf6"
+    )
