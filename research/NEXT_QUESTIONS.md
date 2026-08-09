@@ -17519,6 +17519,161 @@ hypothesis `5 / 5`を通過し、
 smoothness、SSM existence／uniqueness、normal attraction、basinは未認証である。停止規則どおり、
 次はQ011adでdegree 10を監査する。
 
+## Q011ad: degree-10 uniform refined-envelope indexed-modulus audit — 事前登録
+
+### 問い
+
+Q011uでdegree 10に残った5 modulus-overlap aggregateについて、uniform transformed-residual envelopeを
+external group 165まで拡張し、全可換coordinate monomialとFourier-sector-compatible targetをexact
+indexed modulusだけで分離できるか。
+
+Q011uのdegree-10 inventoryは
+
+- aggregate: `286 = 281 old-modulus-separated + 5 overlap`
+- expanded product control: `3003`
+- overlap／external group:
+  - `[0,6,0,4] / 167`
+  - `[0,6,1,3] / 167`
+  - `[0,8,2,0] / 165`
+  - `[8,0,1,1] / 164`
+  - `[8,0,2,0] / 164`
+
+である。Q011adは5 overlapを個別indexへ展開し、Q011uの281 separationと合わせてdegree 10全体を判定する。
+
+### uniform refined envelopeと新external group
+
+半径は従来と同じ
+
+\[
+\rho=\frac{1}{20{,}000{,}000}=5\times10^{-8}
+\]
+
+とする。全blockで\(\theta_b\le\rho\le r_{\mathrm{old},b}\)を再確認する。今回直接必要な集合はselected
+group 0／1／2／3の24 identifierと、external group 167／165／164の`8 / 4 / 20` identifierである。
+3 external groupは互いにdisjointなので、unique externalは`32`、直接必要なidentifierは`56`である。
+
+Q011acの64 uniform recordをexactに保存する。新しいexternal group 165の4 recordだけが追加されるため、
+uniform envelope全体は`68` identifierとなる。group 165のsector histogramは`3:2 / 14:2`である。
+
+### sealed input
+
+Q011acで直接照合した7 artifact、runner、38 digest、outcome、claim boundaryとQ011l／Q011o sourceを
+同じ固定値で再照合し、Q011acも直接封印する。
+
+- Q011ac artifact／runner newline-normalized SHA-256:
+  `018fab41465f4fefcd3df03a05bcd7ad2445f2e840eae66cd8ff0f1d4522f773` /
+  `d028f83bf45c18977fccd58091007507a69a0c725a6f4f22d3527246d8344277`
+- Q011ac input／inventory／sector／product／result digest:
+  `9736be0479a5bea455a48fc1723eb92400a34c332c0484f6eb5ee8f01cf1de83` /
+  `0c54f22e4907d676d014a8b512a4eff07d55adc5b9a20905b085a8548158f15e` /
+  `b877b5db479071043c52605725e44a350efdf402ff70795c9bcf9cf664cdb02a` /
+  `29fe385171af17292a0afa303e0bf406b678a02f41367932a12395948e9b47b7` /
+  `7fd97a88d2fb3d0c20098cca73702b376493bd5635b98f7cb17494c518dd7173`
+
+direct digest countは`43`とする。
+
+### monomialとFourier sector
+
+selected modulus group size`8 / 4 / 4 / 8`から、5 aggregateの可換monomial数を
+
+\[
+27720,\ 40320,\ 1650,\ 205920,\ 64350,
+\qquad\text{total }339960
+\]
+
+へ固定する。output wave histogramは次とする。
+
+- `[0,6,0,4]`:
+  `0:2604 / 1:2416 / 2:2434 / 3:2096 / 4:1924 / 5:1456 / 6:1119 / 7:675 / 8:438 / 9:438 / 10:675 / 11:1119 / 12:1456 / 13:1924 / 14:2096 / 15:2434 / 16:2416`
+- `[0,6,1,3]`:
+  `0:3700 / 1:3640 / 2:3460 / 3:3160 / 4:2740 / 5:2200 / 6:1576 / 7:968 / 8:566 / 9:566 / 10:968 / 11:1576 / 12:2200 / 13:2740 / 14:3160 / 15:3460 / 16:3640`
+- `[0,8,2,0]`:
+  `0:148 / 1:98 / 2:142 / 3:90 / 4:124 / 5:74 / 6:94 / 7:59 / 8:70 / 9:70 / 10:59 / 11:94 / 12:74 / 13:124 / 14:90 / 15:142 / 16:98`
+- `[8,0,1,1]`:
+  `0:19180 / 1:18760 / 2:17570 / 3:15680 / 4:13280 / 5:10560 / 6:7770 / 7:5490 / 8:4260 / 9:4260 / 10:5490 / 11:7770 / 12:10560 / 13:13280 / 14:15680 / 15:17570 / 16:18760`
+- `[8,0,2,0]`:
+  `0:7140 / 1:4690 / 2:6545 / 3:3920 / 4:4960 / 5:2640 / 6:2925 / 7:1455 / 8:1470 / 9:1470 / 10:1455 / 11:2925 / 12:2640 / 13:4960 / 14:3920 / 15:6545 / 16:4690`
+
+external group 167のsectorは`0:4 / 4:2 / 13:2`、165は`3:2 / 14:2`、164は
+`0:2 / 1:4 / 4:5 / 13:5 / 16:4`である。exact Fourier law
+
+\[
+b_{\mathrm{out}}=(b_1+\cdots+b_{10})\bmod17
+\]
+
+によりcompatible comparisonを`18112 / 25760 / 360 / 321240 / 101400`、合計`466872`へ固定する。
+compatible／incompatible monomialは`125512 / 214448`である。
+
+### indexed modulus product enclosure
+
+各source centerのexact rational modulus区間から
+
+\[
+R=\prod_{i=1}^{10}(u_i+\rho)-\prod_{i=1}^{10}u_i,
+\qquad
+I_p=\left[\max\left(0,\prod_i\ell_i-R\right),\prod_i u_i+R\right]
+\]
+
+を作り、target \(I_e=[\max(0,\ell_e-\rho),u_e+\rho]\)と比較する。
+
+### design-only pilotの開示
+
+事前登録用のexact-rational pilotでは全466872 comparisonがindividual modulusで分離し、unresolvedは0だった。
+relation countはproduct below target `44232`、target below product `422640`である。aggregate別minimum gapは
+
+- `[0,6,0,4]`: `7.647290131921562e-4`
+- `[0,6,1,3]`: `8.247499097190439e-4`
+- `[0,8,2,0]`: `6.220305127304349e-6`
+- `[8,0,1,1]`: `7.611385436459371e-4`
+- `[8,0,2,0]`: `7.02298069679118e-4`
+
+だった。global witnessは
+
+`(block=16;center=151)^6 × (block=1;center=151)^2 × block=0;center=149 × block=1;center=152`
+
+対target `block=14;center=146`で、relationは`product_below_target`である。登録minimum gapは`5e-6`とする。
+pilotの一時計算とstream digestはproofへ流用せず、独立runnerが全recordを再構成する。
+
+### validity gate
+
+1. Q011k／Q011u／Q011x／Q011y／Q011z／Q011aa／Q011ab／Q011ac artifact、runner、43 digest、
+   outcome、claim boundaryとQ011l／Q011o sourceを再現する。
+2. degree-10の286 aggregate、3003 expanded control、281 separation、5 overlap tuple／external groupを再現する。
+3. 全\(\theta_b\le\rho\le r_{\mathrm{old},b}\)、56 directly relevant interval、68-record monotone
+   envelope、Q011ac 64 recordのexact preservationを再現する。
+4. group membership、339960 monomial、wave／target histogram、466872 compatible comparisonを再現する。
+5. 全product interval、target interval、strict gap、framed exact-record digestを再現する。
+6. Q011uの281 separationと5 refined full auditが286 aggregateを重複なく被覆することを再現する。
+7. finite strict JSON、input／inventory／sector／product／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、degree-10 nonresonanceを主張しない。
+
+### hypothesis gateと停止規則
+
+1. uniform \(\rho\)-discが全Q011y enclosureを含み、全Q011k旧discに含まれる。
+2. 286 aggregate、339960 monomial、466872 comparisonがdegree 10を完全被覆する。
+3. 全466872 comparisonがindividual modulus separationで、unresolvedが0である。
+4. global minimum exact modulus gapが`>=5e-6`である。
+5. Q011uの281 old separationと5 refined full auditからdegree-10 external nonresonanceが従う。
+
+全5項目が通る場合だけ
+`degree-10 external nonresonance is certified by the contained uniform transformed-residual envelope and exact Fourier-sector indexed-modulus products`
+として`accepted`とする。certified degreesを2--10、tail-certifiedを91以降、missing rangeをdegrees 11--90へ更新する。
+
+1件でもinterval overlapが残れば
+`at least one degree-10 refined indexed-modulus product remains inseparable from an external target`
+として`rejected`とし、最初のoverlapだけをexact complex phaseへ送る。
+
+`accepted`ならQ011aeでdegree 11へ進む。`rejected`ならQ011aeで最初のremaining productをphase-sensitive
+complex discへ送る。`inconclusive`なら最初のvalidity failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 10、Q011uの5 overlap aggregate、
+Q011y transformed-residual enclosure、uniform \(\rho\)-disc、x-Fourier sector、indexed modulus product
+formulaに限る。degrees 11--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
+normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
