@@ -8737,6 +8737,140 @@ validity 7件、hypothesis 7件が全て通過し、
 次はQ007alで既存Q007x concrete MPFR-85 backendの一段stage／re-entry包囲をnew tube上へ再監査する。
 fixed-leaf closure、repair、all-iterate induction、same-initial shadowingはまだ開始しない。
 
+## Q007al: propagated tubeとconcrete MPFR-85 backendの一段bridge — 事前登録
+
+### 問いと固定scope
+
+Q007akでnew-tube joint ideal sufficient thresholdが79 bitsとなり、既存Q007x backendの85 bitsを
+下回った。ここではQ007xで固定した`gmpy2`／MPFR-85 backendを変更せず、Q007ag selected
+tubeのcomponent box上で次を別々に問う。
+
+1. registered operation scheduleの全primitiveがideal $p=85$ ties-to-even演算と一致するか。
+2. concrete equilibrium／collision／streaming／filter stageの観測誤差がQ007ak $p=85$
+   component forward-error upperに収まり、各stage populationがstrict positiveか。
+3. Q007akのideal $p=85$ Wiener lifting後のbase／normal complement-coordinate error upperが、
+   Q007agの対応するstrict forward-invariance marginに収まるか。
+
+固定scopeは$17^2$、D2Q9、$\omega=3/2$、$\eta=1/100$、Q007agの
+$(r,\zeta)=(9\times10^{-17},5\times10^{-11})$、Q007p Fourier external-coordinate block-sum
+$\ell^1$ normとする。backend、context、constant construction、operation order、4 exact probeは
+Q007xから変更しない。
+
+ただしQ007xではcomponentwise encoding、collision、filterが固定質量／運動量葉をexactに
+保たないことが既に封印されている。従ってQ007alは、一段算術包囲とcomplement-coordinate
+誤差予算の実装bridgeだけを判定する。丸め後stateのactual fixed-leaf tube membership、
+one-step re-entry、all-iterate invarianceは判定しない。
+
+### 封印入力とbackend
+
+- Q007ak artifact／runner SHA-256:
+  `aae6b560125cd29dad5b87bf20e9806ae26a5b1b6ae2ee9c055580042561cf7c` /
+  `c8bb3f7a84d19d9ab2794d9a1c27334ecd53e62dabce7862343b51ef30cd29b1`
+- Q007x artifact／runner SHA-256:
+  `20ba483c4c627de015673a2f8873cc020a5c1a43ee48c7715121a00330e13566` /
+  `de16e86ab365e6e64b15fd62ebdb442a54e05d4e4e529ae1e018299983d7491b`
+- Q007x concrete backend SHA-256:
+  `25ad43629e2487c5c062920cbb5319dac4e8fbded339dc856548bfab7f18a0dc`
+- `pyproject.toml` SHA-256:
+  `97e8ed6af7906243a656191f96c80b8f7c1ef4b737587c888092c476be508d94`
+- current D2Q9／checkerboard-filter source SHA-256:
+  `6e6c5aa6734844d0393eb402e21203831faaf5f325b35249941eaa59145c6f53` /
+  `5fb6b67e8527b0b1f5f45511ba7cd5d077ee443220632ba3019b7bf28010a7ea`
+
+Q007akはstored cycle、7 validity gate、7 hypothesis gate、79／59／79-bit selection boundary、
+$p=85$ candidateとinput／candidate／result digestをfresh replayする。Q007xはstored cycle、8 validity
+gate、2 pass／4 fail hypothesis、runtime／context／source／probe／trace登録、mixed classification、
+probe／trace／result digestをfresh replayする。両runnerとbackendはQ007al結果後も変更しない。
+
+concrete backendはQ007xと同じ`gmpy2==2.3.1`、MPFR `4.2.2`、GMP `6.3.0`、
+precision `85`、`RoundToNearest`、`emin=-1105`、`emax=1024`、`subnormalize=True`、
+dangerous trap enabledとする。constant construction traceは19 operations、map traceは245 operations/site、
+$17^2$ full map traceは70,805 operations、constructionを含む各probeのtraceは70,824 operationsに固定する。
+
+### new-tube ideal $p=85$ certificate
+
+Q007ak artifactから85-bit candidateを読み、Q007wの封印済み`_evaluate_precision`を同じ
+state radius、analysis upper、strict marginでfreshに評価する。stored candidateとの比較は
+display floatではなくexact rational recordとcanonical digestで行う。封印値は次である。
+
+- post-filter local component-error sum:
+  `9.365881800643092e-25`
+- Wiener error upper:
+  `2.7067398403858536e-22`
+- base error／margin／utilization:
+  `4.08902913525762e-22 / 4.978814700017615e-20 / 0.008212856636827946`
+- normal error／margin／utilization:
+  `8.097790464783468e-21 / 9.144951058528087e-13 / 8.8549303467643e-09`
+- equilibrium／collision-stream／filter error upper:
+  `1.637128299597522e-25 / 2.8577941370245856e-25 / 3.1286383452856557e-25`
+- minimum stage population lower:
+  `0.027777777145968227`
+
+判定は全てexact `<`と`>`で行い、丸めた表示値は判定に使わない。
+
+### concrete campaign
+
+Q007x登録済みの`rest`、`axial_x_pair`、`axial_y_pair`、
+`all_populations_paired`をexact Fractionから再構成する。各probeはQ007agのnew component box、
+exact fixed-leaf cancellation、input positivityを満たさなければならない。各probeに対し、
+
+- constant／encoding／mapの全operation traceをQ007w ties-to-even oracleと照合する。
+- exact Fraction mapに対するequilibrium／collision／streaming／filterのcomponent discrepancyを
+  Q007ak 85-bit candidateの各stage boundと比較する。
+- 各concrete stage populationがstrict positiveであることを比較する。
+- Q007xと同じglobal mass／momentum defectをexact rationalで再計測する。
+
+最後のconservation auditは既知のfixed-leaf障害を回帰検証する診断であり、Q007alの
+acceptance hypothesisにはしない。同じsource／probeでQ007xと異なるconservation結果になれば
+validity failureとする。
+
+### validity gate
+
+1. Q007ak／Q007x artifactとrunner SHA、source、scope、schema、登録classification／outcomeが一致する。
+2. Q007ak stored cycle、3 digest、7 validity／7 hypothesis gate、79／59／79-bit boundary、
+   85-bit candidateをfresh replayする。
+3. Q007x stored cycle、3 digest、8 validity gate、2 pass／4 fail hypothesis、runtime／context／source／
+   probe／trace登録、mixed classificationをfresh replayする。
+4. fresh $p=85$ ideal evaluationがQ007ak stored candidateとexact一致し、85がjoint threshold 79より大きい。
+5. package／runtime／context、backend／`pyproject.toml`／D2Q9／filter source SHA、constant algebra、
+   operation orderが登録と一致する。
+6. 4 exact probeが登録recipe、new component box、exact fixed-leaf cancellation、input positivityを満たし、
+   全trace／operation count／domain／context restorationが通る。
+7. 全probe／全stageのconcrete discrepancyがQ007ak 85-bit component-error upper以下で、
+   concrete population lowerがstrict positiveであり、Q007x conservation diagnosticをexact再現する。
+8. 全値がfinite strict JSONで、canonical input／probe／trace／result digestを出力する。
+
+一つでも落ちれば`inconclusive`とし、一段bridgeも後続gateも採用しない。
+
+### hypothesis gateと停止規則
+
+validity通過時だけ次を独立に判定する。
+
+1. registered MPFR-85 backendがQ007akで使ったideal 85-bit operation semanticsを実現する。
+2. 全4 probeのconstant／encoding／map operation trace、count、domain gateが通る。
+3. 全4 probeの全stage discrepancyが85-bit upper以下で、全concrete stage populationがstrict positiveである。
+4. ideal 85-bit base complement-coordinate error upperがQ007ag base strict margin未満である。
+5. ideal 85-bit normal complement-coordinate error upperがQ007ag normal strict margin未満である。
+
+全て通れば
+`registered MPFR-85 backend realizes the Q007ag one-step arithmetic and complement-coordinate error budgets`
+として`accepted`とする。validity通過後に一件でも落ちれば
+`registered MPFR-85 backend does not realize the Q007ag one-step arithmetic budget`
+という有効な`not_certified`とする。
+
+### 主張境界
+
+acceptedでも、固定source／context／operation scheduleに対するMPFR semantic bridge、Q007ag component
+boxを用いたQ007akの一段worst-case forward-error budget、登録した4 finite probeのconcrete stage
+checkだけを意味する。finite probeは全tubeのsampling proofではない。base／normal margin比較は
+ideal exact-map outputに対する算術誤差予算であり、fixed-leaf defectを吸収も修復もしない。
+
+従ってactual rounded stateのfixed-leaf membership、Q007ag tube re-entry、all-iterate induction、
+same-initial shadowing、repair map、multi-step trajectory、性能、他のgmpy2／MPFR版、FTZ／DAZ、
+GPU／threaded reduction／compiler変更、grid-uniformity、continuum limitは扱わない。
+Q007x mixed result、Q007ak threshold、Q007ag／Q007ai acceptance、Q007c1／Q007d／Q007af／Q010結論は
+変更しない。acceptedなら次はfixed-leaf defectを修正するnew-tube repair gateを別途事前登録する。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。
