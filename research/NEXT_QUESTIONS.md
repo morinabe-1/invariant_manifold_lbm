@@ -15447,6 +15447,198 @@ original-map transfer、2598 modulus interval、strict serializationのvalidity 
 normal attraction、basinも示さない。停止規則どおり、次はQ011uでhigher-smoothness localizationと
 missing degrees 3--90のevidenceを事前登録する。
 
+## Q011u: C91 localization and modulus-only degree-90 nonresonance — 事前登録
+
+### 問い
+
+Q011tのspectral-quotient upper `90`に対し、original repaired exact mapのanalyticity、登録した
+\(C^{91}\) scalar localization、全selected／external eigendiscのrational log-modulusを用いて、degrees
+3--90のexternal nonresonanceを組合せ完全に認証できるか。認証できる場合に限り、nonresonant spectral
+subspace theoremからanalytic invariant manifoldと\(C^{91}\)-class uniquenessを結論できるか。
+
+Q011tが与えた\(C^1\) graph patchを自動的に\(C^{91}\)へupgradeしたとは仮定しない。本gateで得る可能性が
+あるhigher-smooth manifoldは、theoremが与える別のlocal germである。Q011t graphとの一致には、両者が同じ
+uniqueness classに属する追加証明が必要である。
+
+### 封印入力
+
+次の4 artifactを直接照合し、nested sealだけで代用しない。
+
+- Q011j artifact／runner newline-normalized SHA-256:
+  `74a2e084137699739c14d980b05676e14e6802b4018b3893d3d05270850c2c5a` /
+  `23a7a3a272264be3eb5330b2456192bd797aa968c4f795e2cbe8e337fc8fe4b5`
+- Q011j input／coordinate／oracle／proof／result digest:
+  `a183f4830c757b58122132cf64111fd5375636affdb6c0b31e1cd90e89085799` /
+  `adaef353b8b64509334794c6014dc8b88e81ca2b776c3b65bd4d50911ae9452b` /
+  `177468a48f667ddd922ed4b979d3e7e5d4cc0ed3afffe27a34651060da8e0f5f` /
+  `1080fcea24358422514bba7fb9881928269c853cb4d12b0282e63840c56124c0` /
+  `ddad5beca9693eeab726382ac864d01a27b749d579c2ec8f12dd9f8c499db934`
+- Q011k artifact／runner newline-normalized SHA-256:
+  `8fa95cc1368e2321b9b1697c794926358257fc23cdb6bf7260364f3368129e3a` /
+  `d95a41c1ad42bf388f36840e47dc02e7f385b2a402abbc72fcdbff093a601a07`
+- Q011k input／root／block／proof／result digest:
+  `f6351c136e08dc9f55dba2260ebae00f12abb9b24a6e339729dde51d475489c2` /
+  `f5631d2e018f56a4e357a12b552d41d82d61946e6b40675641b754be58c758cc` /
+  `7849ff7417ff73d0c6891235675ee541159941d8ea422adb7fd5cbe0447af3d8` /
+  `1f6fca551d0360798ed185ac8b4140ace1678fec2e6765e7530705e7d7bba4a4` /
+  `2c6c6de5713aea5588297048f8c313acaf4f261f364a9e7e6487c588dab4ce5e`
+- Q011m artifact／runner newline-normalized SHA-256:
+  `b76b0ec1a1436aa3c2b48fcc29485e60e03675bf9a1f4f85ac3106d30687da3f` /
+  `0cdc6ec9697d25bea3b28cf90f01f3f639062b3c04a64c4a88e6bd7221163150`
+- Q011m input／derivative／coefficient／majorant／result digest:
+  `dd30ead5c7c6081502bc34a6163ce64321dd4f9a339c7f24959dfc76891591cb` /
+  `0b8f345fdf2bda5b95f2c1624920968f1ad499f4d5e765c0b8305e2045ac7e3a` /
+  `1d708042f97c8c42164b07ff7104a68bdef95c14faf90dcb0171749d92b8a514` /
+  `bf7144f407dd3e6aabf2161bf3d8c48dbb2e6c89a48cde9cfccf1cff60455e00` /
+  `f47a1a4c1712fcff129c3840d7e64dfe1bbbe4bdacc049e28be6f868dbfc9cd4`
+- Q011t artifact／runner newline-normalized SHA-256:
+  `7848a915f384a4b51c93fa8201bf357b01cedcec52590defacd15ba22bf99fe2` /
+  `b6eff63f29a4274502923a31b98fd774b89d1f21512c5e181c124f493efc8f10`
+- Q011t input／cutoff／graph／radius／spectral／result digest:
+  `79864489c522a7d50e7534091c283167de3b11d9af58365164b7084095a972eb` /
+  `5c194baab4c8be74cba91c398037839c6b313f80123416819cc6aedf7bf027d2` /
+  `6d7e09295d3b60d07d4abe9d658fea506752e20300e87e8d1c4158f5f0772bec` /
+  `ba1cf6a77e95a52cba33d360632bfae0967a4d8b947daf04761dbfbd7926fcb9` /
+  `d899cf7872d69b5adf75cddc9c0dafe42930ff53130099a8bdb5b7cb1b04559c` /
+  `ac1019fd526cd4f21caddfb27d4cd8e0c4f7b312a742b84dbc3b3605ee827231`
+
+Q007i rational-log algorithmのsource newline-normalized SHA-256
+`22209c56184eff9556db13b553cb89644eea11ffd77a3af69d0316a747118294`
+も直接封印する。Q011jのexact fixed point／map identity、Q011kのstrict stable invertible split、Q011mの
+analytic density-positive map、Q011tのreal selected tangentとquotient bracketを再現する。
+
+### C91 scalar localization
+
+\(p=91\)とし、normalizing constant
+
+\[
+c_p=\frac{(2p+1)!}{(p!)^2}
+\]
+
+および
+
+\[
+S_p(y)=c_p\int_0^y u^p(1-u)^p\,du
+=c_p\sum_{k=0}^{p}
+\frac{(-1)^k\binom pk}{p+k+1}y^{p+k+1}
+\]
+
+をexact rational polynomialとして構成する。Q011tと同じ\(t_r(z)\)を用い、transition上で
+
+\[
+\chi_{91}(t)=1-S_{91}((t-1)/3)
+\]
+
+とする。\(S_p'(y)=c_py^p(1-y)^p\)なので、\(S_p(0)=0\)、\(S_p(1)=1\)、endpoint derivatives
+1--91が0、\(0\le S_p\le1\)をexact combinatoricsで確認する。従ってpiecewise constant extensionは
+\(C^{91}\)で、radius \(r\) ball上のidentity、radius \(4r\) ball内のsupport、conjugacy／selected／external
+real-space preservationを持つ。高階derivativeのquantitative graph-transform capは本gateでは主張しない。
+
+### exact modulus compression
+
+Q011kの全2598 eigencenterとblockwise Bauer--Fike radiusからmodulus intervalを再構成する。selected 24
+intervalをoverlap連結成分でmergeし、4 type、multiplicity `8 / 4 / 4 / 8`になることを要求する。external
+2574 intervalもoverlap連結成分へmergeし、登録count `186`を要求する。mergeはinterval unionの連結成分を
+取るだけであり、gapを埋めたりcenterを平均したりしない。
+
+各selected typeの積について、type multiplicityの上限は使わない。同じeigenvalueの反復を許すTaylor
+monomialを完全被覆するため、degree \(d\)のcount tuple
+
+\[
+(n_1,n_2,n_3,n_4),
+\qquad
+n_1+n_2+n_3+n_4=d
+\]
+
+を全列挙する。
+
+### rational log enclosureと完全列挙
+
+Q007iと同じ
+
+- atanh series terms: `96`
+- internal／final outward decimal grid: `110 / 60`
+- maximum endpoint tail: `<=1e-90`
+
+を固定し、selected product modulusをlog intervalのMinkowski sumとして評価する。external merged intervalも
+logへ単調輸送し、binary searchで全overlapを数える。
+
+degrees 3--90の88 degreeについて
+
+\[
+\sum_{d=3}^{90}\binom{d+3}{3}=3{,}049{,}486
+\]
+
+aggregateを全列挙する。sign／degeneracyまで展開したmonomial countのcontrol値は
+
+\[
+\sum_{d=3}^{90}\binom{d+5}{5}=927{,}048{,}276
+\]
+
+とする。各degreeのaggregate count、expanded count、overlap count、最小非overlap log gap、最初のoverlap
+witnessを記録する。zero overlapの場合だけdegrees 3--90 external nonresonanceを認証する。interval overlapは
+actual resonanceを意味せず、modulus-only certificateの失敗だけを意味する。
+
+### degree-91 tail
+
+Q011tのexact enclosureから
+
+\[
+(\rho_S^+)^{91}<\rho_E^-
+\]
+
+を直接再評価する。さらに\(\rho_S^+<1\)から全degree \(d\ge91\)のproduct modulusがexternal minimumより
+小さいことを帰納する。tail ratio capは`<=0.999`とする。degree 2はQ011kの300 phase-sensitive pair
+certificateをそのまま使う。
+
+### design-only pilotの扱い
+
+事前登録前のbinary64設計pilotではselected／external merge count `4 / 186`を得たが、degrees 3--90に
+modulus overlapが観測された。このpilotは成功判定、overlap count、witness、gapには使わない。exact rational
+log auditがzero overlapを示さなければ、本gateは予定どおりmodulus-only routeを棄却する。
+
+### validity gate
+
+1. Q011j／Q011k／Q011m／Q011tのartifact、runner、21 digest、outcome、claim boundaryとQ007i log sourceを直接再現する。
+2. 92 coefficientの\(S_{91}\) polynomial、normalization、endpoint flatness、\(C^{91}\) real typingをexactに再現する。
+3. 2598 modulus interval、selected `24 -> 4`、external `2574 -> 186` compressionを再現する。
+4. 96-term rational log、110／60-digit outward grid、tail boundを再現する。
+5. degrees 3--90の88 records、3,049,486 aggregate、927,048,276 expanded countを完全再現する。
+6. overlap／nonoverlap classification、first witness、per-degree sum、record digestを再現する。
+7. Q011k degree-2 evidenceとdegree-91 exact tailを再現する。
+8. finite性、strict JSON、input／cutoff／spectrum／log／enumeration／tail／result digest、runner provenanceを再現する。
+
+一つでも落ちれば`inconclusive`とし、overlapもnonresonanceも解釈しない。
+
+### hypothesis gateと停止規則
+
+validity通過後、次を別々に判定する。
+
+1. scalar localizationがoriginal mapとorigin近傍で一致する\(C^{91}\) real localizationである。
+2. selected／external modulus compressionが登録countとstrict interval gapsを持つ。
+3. degrees 3--90の全3,049,486 aggregateについてexternal merged intervalとのoverlapが0である。
+4. zero-overlap aggregateのglobal minimum rational log gapが`>=1e-12`である。
+5. degree 2 certificate、degrees 3--90 certificate、degree-91 tail、analytic local-diffeomorphism assumptionsが揃う。
+
+全5項目が通る場合だけ
+`the repaired exact map satisfies the registered C91 spectral-subspace nonresonance certificate`
+として`accepted`とし、analytic local invariant manifoldの存在と\(C^{91}\)-class uniquenessをtheorem consequenceへ
+記録する。
+
+validityは通るが一つでもmodulus overlapがあれば
+`the C91 localization and degree-91 tail are certified, but modulus-only nonresonance through degree 90 is obstructed`
+として`rejected`とする。これはactual resonance、analytic manifoldの不存在、Q011t graphの非滑らかさを意味しない。
+最初のoverlapをQ011vのphase-sensitive output-sector product auditへ渡す。
+
+`inconclusive`なら最初のseal／polynomial／compression／log／count／tail／serialization failureだけを修復する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、登録\(C^{91}\) scalar localization、Q011k
+eigendisc modulus、degrees 3--90のmodulus-only aggregate、degree-91 tailに限る。complex phase、Fourier output
+sector、phase-sensitive product disk、homological inverse norm、Q011t graphとの一致、explicit higher-smoothness
+radius、normal attraction、basin、他grid／force／wall、D3Q27を構成・認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
