@@ -9264,6 +9264,37 @@ continuum limit、D3Q27は主張しない。Q007zのold-tube selected-wave帰納
 acceptedなら次はQ007aoで、事前登録したstrict inner exact-state setのcomponentwise MPFR-85
 encodingとinput repairがQ007ag repaired tubeへ入るinitialization interiorを独立に判定する。
 
+### Q007an 最終結果
+
+validity `7/7`、hypothesis `7/7`が全て通過し、
+`coarse repair certificate closes the Q007ag repaired MPFR-85 fixed-leaf tube induction`
+として`accepted`とした。
+
+- Q007ag exact base／normal margin:
+  `4.978814700017615e-20 / 9.144951058528087e-13`
+- Q007am repair-aware base／normal error:
+  `1.1581233824834727e-21 / 2.2935127565743277e-20`
+- repaired-map base／normal headroom:
+  `4.863002361769267e-20 / 9.144950829176811e-13`
+- exact／MPFR-85 minimum internal-stage lower:
+  `0.027777777320468006 / 0.027777777145968227`
+- post-repair diagonal lower: `0.015625`
+- input／composition／result digest:
+  `7d93718b4e8375ea3983c37042d0aaedc98f4a16a329687afa69f75511e29657` /
+  `7ce1bde2ddc99ace52610c1a814a65dada1711baf048ec5410241ce497f809d7` /
+  `80bae2065ec27d22c7e5a392f764e422ef57d521e0848d6c9eae3e0ed07e8bf7`
+- runner／artifact newline-normalized SHA-256:
+  `bacf2eca47348ebbb5f5fbfe739f3239ebdb49eedc0d615efc144eb113b5f1bf` /
+  `dd28dc89f2096252db80e2ad7461ebdf71bb757e879b8657df01da766849ebdb`
+
+zero-defect input repairがfixed leaf上でidentityであること、raw MPFR-85 mapのtube-wide stage positivity、
+post-filter repairのexact fixed-leaf回復と85-bit表現可能性を合成したため、同じ仮説を次stepへ再適用できる。
+従ってalready encoded and repaired MPFR-85 stateが登録tube内にあるという条件のもとで、sampling-time
+fixed leaf／tube membershipと全内部stage positivityを全iterateへ帰納できる。
+
+任意exact stateのinitial encoding／repairがこの条件付き初期集合へ入ることと、same-initial exact軌道との
+shadowingは証明していない。Q007aoで前者だけを次の独立gateとして扱う。
+
 ## Q011: boundary/forcing で candidate manifold は維持されるか
 
 periodic forcing → Poiseuille → Couette の順に fixed point と spectrum を作り直す。

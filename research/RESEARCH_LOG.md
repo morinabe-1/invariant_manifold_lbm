@@ -4155,6 +4155,66 @@ MPFR error budget、repairを一つのrepaired-map tube self-mapへまだ合成�
 already-repaired MPFR-85 statesに対するall-iterate inductionを事前登録し、initializationと
 same-initial shadowingは別gateに残す。
 
+## 2026-08-09: Q007an repaired MPFR-85 fixed-leaf tube induction
+
+### 問いと事前登録
+
+Q007ag exact forward invariance、Q007ai exact stagewise positivity、Q007al MPFR-85一段包囲、
+Q007am distributed repairと修復込み誤差予算を、一つのrepaired sampling map
+
+\[
+\widetilde\Psi_{85}=\mathcal R\circ\widetilde\Phi_{85}
+\]
+
+のQ007ag tube自己写像へ合成できるかを判定した。初期条件はすでにMPFR-85へencode・repairされ、
+fixed leafと登録tubeに属するstateに限定した。任意exact stateからのinitializationとsame-initial
+shadowingはこのgateへ含めないと事前登録した。
+
+### 実装
+
+- Q007ag／Q007ai／Q007al／Q007amのartifact・runner SHA、scope、classification、gate count、digestを
+  封印し、Q007ag／Q007ai／Q007am cycleとQ007am内のQ007al／Q007yをfresh replayした。
+- Q007ag exact strict marginとQ007am登録marginをexact rationalで同定し、raw-map誤差とrepair correctionを
+  含むbase／normal誤差を引いた自己写像headroomを再構成した。
+- Q007ai exact stage lower、Q007al MPFR-85 stage lower、Q007am post-repair same-binade positivityを
+  同じcomponent box上の連続stageとして照合した。
+- fixed leaf上のzero-defect repairが289-site distributionを含めてidentityであることを一般に示し、
+  `rest` probeではrepairの冪等性もexactに回帰した。
+- finite 4-probeは実装回帰だけに使い、自己写像と帰納はtube-wide exact-rational boundから導いた。
+
+### 結果
+
+validity `7/7`、hypothesis `7/7`で、
+`coarse repair certificate closes the Q007ag repaired MPFR-85 fixed-leaf tube induction`
+として`accepted`とした。
+
+- exact base／normal strict margin:
+  `4.978814700017615e-20 / 9.144951058528087e-13`
+- repair-aware base／normal error:
+  `1.1581233824834727e-21 / 2.2935127565743277e-20`
+- repaired-map base／normal headroom:
+  `4.863002361769267e-20 / 9.144950829176811e-13`
+- exact／MPFR-85 minimum internal-stage population lower:
+  `0.027777777320468006 / 0.027777777145968227`
+- repaired diagonal population lower: `0.015625`
+- input／composition／result digest:
+  `7d93718b4e8375ea3983c37042d0aaedc98f4a16a329687afa69f75511e29657` /
+  `7ce1bde2ddc99ace52610c1a814a65dada1711baf048ec5410241ce497f809d7` /
+  `80bae2065ec27d22c7e5a392f764e422ef57d521e0848d6c9eae3e0ed07e8bf7`
+- runner／artifact newline-normalized SHA-256:
+  `bacf2eca47348ebbb5f5fbfe739f3239ebdb49eedc0d615efc144eb113b5f1bf` /
+  `dd28dc89f2096252db80e2ad7461ebdf71bb757e879b8657df01da766849ebdb`
+
+### 解釈と次のbottleneck
+
+already encoded and repaired MPFR-85 stateがQ007ag fixed-leaf tube内にあるなら、各sampling timeで
+fixed leafとtube membershipを保ち、各stepの内部stage population positivityも全iterateへ帰納できる。
+これはQ007amの一段予算をexact-map invariant tubeへ初めて閉じた結果である。
+
+一方、任意exact stateのcomponentwise encoding／input repairがこの初期集合へ入ることは未認証であり、
+same-initial exact軌道とのshadowingも主張しない。次はQ007aoでstrict inner exact-state setからの
+initialization interiorだけを独立に事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -4272,6 +4332,8 @@ same-initial shadowingは別gateに残す。
 [`artifacts/q007al_propagated_tube_mpfr85_bridge.json`](artifacts/q007al_propagated_tube_mpfr85_bridge.json)
 
 [`artifacts/q007am_propagated_tube_distributed_repair.json`](artifacts/q007am_propagated_tube_distributed_repair.json)
+
+[`artifacts/q007an_repaired_tube_induction.json`](artifacts/q007an_repaired_tube_induction.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
