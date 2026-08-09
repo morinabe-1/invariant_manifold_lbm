@@ -56,7 +56,9 @@ def test_q011ae_reconstructs_the_complete_degree_eleven_inventory(
         == q011ae.EXTERNAL_GROUP_INDICES
     )
     assert audit["unique_external_target_count"] == 28
-    assert len(audit["exact_inventory_digest_sha256"]) == 64
+    assert audit["exact_inventory_digest_sha256"] == (
+        "a42cb2a862f2c33db629374e5ad479ddf33275a3fbbc5cb392a8d2d830408f6a"
+    )
 
 
 def test_q011ae_extends_the_uniform_envelope_to_84_identifiers(
@@ -70,7 +72,9 @@ def test_q011ae_extends_the_uniform_envelope_to_84_identifiers(
     assert audit["relevant_identifier_count"] == 84
     assert audit["unique_center_modulus_evaluation_count"] == 50
     assert q011ae.q011z._fraction(audit["uniform_radius"]) == Fraction(1, 20_000_000)
-    assert len(audit["uniform_record_digest_sha256"]) == 64
+    assert audit["uniform_record_digest_sha256"] == (
+        "b099c8294d2ff14bbf36886f085e39cddffaaf2220b9c0e47206404cee023391"
+    )
 
 
 def test_q011ae_streams_all_undecic_fourier_records(
@@ -179,18 +183,27 @@ def test_q011ae_four_exact_streams_are_complete_and_constant_memory(
     sector_framed = sector["framed_exact_record_digests"]
     product_framed = product["framed_exact_record_digests"]
     assert sector_framed["monomial_record_count"] == 2_299_104
+    assert sector_framed["monomial_record_digest_sha256"] == (
+        "34be940e350535f5e8461033e9fda32f5c065c8545f561f1652c10af26e473c9"
+    )
     assert sector_framed["compatible_pair_record_count"] == 820_492
+    assert sector_framed["compatible_pair_record_digest_sha256"] == (
+        "314a2408cc7719b64a8d452a54b45020b50b1ff08731b0140dc1bbb30a24d9df"
+    )
     assert product_framed["exact_product_record_count"] == 383_062
+    assert product_framed["exact_product_record_digest_sha256"] == (
+        "2260b7904ec46a76f4da0e7ec83e0af84d763adb28c2985f3ca4140915015fe3"
+    )
     assert product_framed["exact_comparison_record_count"] == 820_492
-    for digest in (
-        sector_framed["monomial_record_digest_sha256"],
-        sector_framed["compatible_pair_record_digest_sha256"],
-        product_framed["exact_product_record_digest_sha256"],
-        product_framed["exact_comparison_record_digest_sha256"],
-        sector["compact_sector_digest_sha256"],
-        product["compact_product_digest_sha256"],
-    ):
-        assert len(digest) == 64
+    assert product_framed["exact_comparison_record_digest_sha256"] == (
+        "cdca67557036eddb40900058d0501cf622cfd811e7bbf80cb972997395edcbaa"
+    )
+    assert sector["compact_sector_digest_sha256"] == (
+        "832b9c3035f0cc28cfed683b6f779f04fe85693c7d137d64b287ec1dac69d077"
+    )
+    assert product["compact_product_digest_sha256"] == (
+        "0cd3f3a92881776baf5d298f282985fee66d0f26d8221373db10ca3dfbd34029"
+    )
     streaming = product["streaming_contract"]
     assert not streaming["full_product_record_list_retained"]
     assert not streaming["full_comparison_record_list_retained"]
@@ -222,14 +235,24 @@ def test_q011ae_cycle_has_reproducible_strict_json_digests(
     q011ae_cycle: dict[str, Any],
 ) -> None:
     json.dumps(q011ae_cycle, allow_nan=False)
-    for name in (
-        "input_digest_sha256",
-        "inventory_digest_sha256",
-        "sector_digest_sha256",
-        "product_digest_sha256",
-        "result_digest_sha256",
-    ):
-        assert len(q011ae_cycle[name]) == 64
+    expected = {
+        "input_digest_sha256": (
+            "c3a18a891f037c01134871aa876441df4c56bb6ce2b1657420b54fa0ae72fc99"
+        ),
+        "inventory_digest_sha256": (
+            "261284bc4cd18048228af34a1897ba00b89b930fd118afc3f7ce4dba77bf380d"
+        ),
+        "sector_digest_sha256": (
+            "afeea956028309574d5f23c5a8da10c427b981bf7d54c8194265f75de8370d11"
+        ),
+        "product_digest_sha256": (
+            "40024743d9a6e193461dc5a7eb7821356b14da2a54793d126afe9b8ec2e58921"
+        ),
+        "result_digest_sha256": (
+            "90223809a06a85733d36c53b7278c9ba36e83ce2bc49a87b090945b26a638560"
+        ),
+    }
+    assert {name: q011ae_cycle[name] for name in expected} == expected
     assert q011ae_cycle["result_digest_sha256"] == q011ae.q011b._canonical_json_sha256(
         q011ae._result_digest_sections(q011ae_cycle)
     )
@@ -254,11 +277,16 @@ def test_q011ae_study_metadata_and_generated_artifact_are_scoped(
     if not artifact_path.exists():
         pytest.skip("Q011ae artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert _file_sha256(artifact_path) == (
+        "7da61f31c9a00017c2ab0665bb58b75b157f4b7f0ffad1194f07cac4ed51ff71"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
     assert artifact["runner_source"] == {
         "filename": "q011ae_degree11_streaming_modulus.py",
-        "sha256": _file_sha256(runner_path),
+        "sha256": (
+            "2bc97a29a1ae73924a61059c7f1de7b96e35b325479874cf28325946aa7e4286"
+        ),
         "sha256_newline_normalization": "UTF-8 text with universal newlines",
     }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
