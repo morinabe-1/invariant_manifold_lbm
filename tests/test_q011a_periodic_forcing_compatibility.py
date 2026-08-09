@@ -266,3 +266,43 @@ def test_q011a_records_provenance_and_deterministic_digests(
         )
     )
     json.dumps(q011a_cycle, allow_nan=False)
+
+
+def test_q011a_artifact_reproduces_the_accepted_obstruction(
+    q011a_cycle: dict,
+) -> None:
+    runner_path = Path(q011a.__file__).resolve()
+    artifact_path = (
+        runner_path.parent
+        / "artifacts"
+        / "q011a_periodic_forcing_compatibility.json"
+    )
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert _file_sha256(artifact_path) == (
+        "31c427660b10771af7756c249408606578a9b7a02d756bc77b918b56e7a5b14a"
+    )
+    assert artifact["schema_version"] == 1
+    assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011a_periodic_forcing_compatibility.py",
+        "sha256": (
+            "41e45565066fd4c96c2ae927bc8cc6a1218377f67b711f6cc312ecbf0d1c68de"
+        ),
+        "sha256_newline_normalization": (
+            "UTF-8 text with universal newlines"
+        ),
+    }
+    assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["cycle"] == q011a_cycle
+    assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["cycle"]["source_digest_sha256"] == (
+        "75fd3fe1050b39a333f483375969a67c79ab9ec75009a2048359d0f0dabb7492"
+    )
+    assert artifact["cycle"]["probe_digest_sha256"] == (
+        "43d0b722ba63a45ccf6b5a41cffaef387448fcc2cd9324538887fd3169571001"
+    )
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        "9b1f0c1516a365481c72617957b30424a7873136d221bd164b6d0617c4c3d958"
+    )

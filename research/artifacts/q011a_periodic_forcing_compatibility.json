@@ -1,0 +1,889 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-09T03:42:26.209935+00:00",
+  "source": {
+    "package_version": "0.1.0",
+    "package_source_sha256": "114228341b120021f1269ca22ff2503165a0c13dc4f146b8308e94298630f4c2"
+  },
+  "runner_source": {
+    "filename": "q011a_periodic_forcing_compatibility.py",
+    "sha256": "41e45565066fd4c96c2ae927bc8cc6a1218377f67b711f6cc312ecbf0d1c68de",
+    "sha256_newline_normalization": "UTF-8 text with universal newlines"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.4",
+    "scipy": "1.16.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "mathematical_scope": {
+    "diagnostic": "exact global-momentum fixed-point compatibility audit for nonzero-mean periodic forcing",
+    "construction_grid": [
+      17,
+      17
+    ],
+    "omega": 1.5,
+    "eta": 0.01,
+    "force": [
+      2.7284841053187847e-12,
+      0.0
+    ],
+    "boundary": "periodic",
+    "forcing": "state-independent rest-linear additive source after collision",
+    "momentum_sink": "none",
+    "reference_spectrum": "rest-state diagnostic only; rest is not a forced fixed point",
+    "claim": "fixed-point obstruction from exact global momentum ledger; no forced manifold or wall-bounded claim"
+  },
+  "cycle": {
+    "question": "Can a nonzero-mean uniform body force on the registered periodic conservative D2Q9 map be compatible with a fixed point?",
+    "registered_parameters": {
+      "size": 17,
+      "site_count": 289,
+      "omega": {
+        "numerator_base16": "0x3",
+        "denominator_base16": "0x2",
+        "float": 1.5
+      },
+      "eta": {
+        "numerator_base16": "0x1",
+        "denominator_base16": "0x64",
+        "float": 0.01
+      },
+      "force": [
+        {
+          "numerator_base16": "0x3",
+          "denominator_base16": "0x10000000000",
+          "float": 2.7284841053187847e-12
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "source": "S_q(F)=3*w_q*(c_q dot F)",
+      "stage_order": "BGK collision, uniform additive source, periodic streaming, populationwise conservative five-point filter",
+      "boundary": "periodic",
+      "momentum_sink": "none",
+      "probe_seed": 20260809,
+      "seeded_probe_count": 8,
+      "probe_scale": 3.814697265625e-06,
+      "derivative_steps": [
+        0.000244140625,
+        0.0001220703125,
+        6.103515625e-05
+      ],
+      "unit_circle_tolerance": 1e-10
+    },
+    "exact_source_audit": {
+      "exact_velocities": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          1,
+          -1
+        ]
+      ],
+      "exact_weights": [
+        {
+          "numerator_base16": "0x4",
+          "denominator_base16": "0x9",
+          "float": 0.4444444444444444
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x9",
+          "float": 0.1111111111111111
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x9",
+          "float": 0.1111111111111111
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x9",
+          "float": 0.1111111111111111
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x9",
+          "float": 0.1111111111111111
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x24",
+          "float": 0.027777777777777776
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x24",
+          "float": 0.027777777777777776
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x24",
+          "float": 0.027777777777777776
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x24",
+          "float": 0.027777777777777776
+        }
+      ],
+      "exact_force": [
+        {
+          "numerator_base16": "0x3",
+          "denominator_base16": "0x10000000000",
+          "float": 2.7284841053187847e-12
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "exact_source_populations": [
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x10000000000",
+          "float": 9.094947017729282e-13
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "-0x1",
+          "denominator_base16": "0x10000000000",
+          "float": -9.094947017729282e-13
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x40000000000",
+          "float": 2.2737367544323206e-13
+        },
+        {
+          "numerator_base16": "-0x1",
+          "denominator_base16": "0x40000000000",
+          "float": -2.2737367544323206e-13
+        },
+        {
+          "numerator_base16": "-0x1",
+          "denominator_base16": "0x40000000000",
+          "float": -2.2737367544323206e-13
+        },
+        {
+          "numerator_base16": "0x1",
+          "denominator_base16": "0x40000000000",
+          "float": 2.2737367544323206e-13
+        }
+      ],
+      "exact_source_moments": [
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x3",
+          "denominator_base16": "0x10000000000",
+          "float": 2.7284841053187847e-12
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "exact_global_moment_increment": [
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x363",
+          "denominator_base16": "0x10000000000",
+          "float": 7.885319064371288e-10
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "observed_source_populations": [
+        0.0,
+        9.094947017729282e-13,
+        0.0,
+        -9.094947017729282e-13,
+        0.0,
+        2.2737367544323206e-13,
+        -2.2737367544323206e-13,
+        -2.2737367544323206e-13,
+        2.2737367544323206e-13
+      ],
+      "observed_source_population_hex": [
+        "0x0.0p+0",
+        "0x1.0000000000000p-40",
+        "0x0.0p+0",
+        "-0x1.0000000000000p-40",
+        "0x0.0p+0",
+        "0x1.0000000000000p-42",
+        "-0x1.0000000000000p-42",
+        "-0x1.0000000000000p-42",
+        "0x1.0000000000000p-42"
+      ],
+      "observed_source_moments": [
+        0.0,
+        2.7284841053187847e-12,
+        0.0
+      ],
+      "source_moment_residual": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "maximum_source_moment_residual": 0.0,
+      "source_moment_tolerance": 8.077935669463161e-28,
+      "velocity_table_matches": true,
+      "weight_table_matches": true,
+      "source_population_bitwise_matches_exact_dyadics": true,
+      "exact_identities": {
+        "source_mass_is_zero": true,
+        "source_momentum_x_is_registered_force": true,
+        "source_momentum_y_is_registered_force": true,
+        "global_increment_is_site_count_times_force": true
+      },
+      "all_exact_identities_pass": true,
+      "passed": true
+    },
+    "finite_probe_audit": {
+      "probe_seed": 20260809,
+      "seeded_probe_count": 8,
+      "probe_count": 10,
+      "probe_scale": 3.814697265625e-06,
+      "moving_equilibrium_coordinates": [
+        0.00390625,
+        0.0009765625,
+        -0.00048828125
+      ],
+      "direction_sha256": "6dbe9348ef90a73006319b366923706082faf69eda4dcf0295e5ea1e35720c32",
+      "maximum_direction_fixed_leaf_residual": 1.3322676295501878e-14,
+      "transported_uniform_source_matches_source": true,
+      "registered_global_increment": [
+        0.0,
+        7.885319064371288e-10,
+        0.0
+      ],
+      "state_difference_tolerance": 5e-16,
+      "global_moment_tolerance": 5e-14,
+      "maximum_state_difference_error": 1.3877787807814457e-17,
+      "maximum_compensated_global_difference_error": 1.2032042029375134e-14,
+      "all_probe_states_and_outputs_positive": true,
+      "all_helpers_match_shared_collision_path": true,
+      "records": [
+        {
+          "name": "uniform_rest",
+          "minimum_input_population": 0.027777777777777776,
+          "minimum_forced_output_population": 0.027777777777550403,
+          "helper_matches_shared_collision_path": true,
+          "maximum_state_difference_error": 1.3877787807814457e-17,
+          "faithful_global_difference": [
+            1.2032042029375134e-14,
+            7.885319064371288e-10,
+            0.0
+          ],
+          "neumaier_global_difference": [
+            1.2032042029375134e-14,
+            7.885319064371288e-10,
+            0.0
+          ],
+          "maximum_faithful_global_difference_error": 1.2032042029375134e-14,
+          "maximum_neumaier_global_difference_error": 1.2032042029375134e-14,
+          "full_step_population_l1_residual": 7.885559705211875e-10,
+          "full_step_numpy_moment_increment": [
+            -5.684341886080802e-14,
+            7.885319064371288e-10,
+            0.0
+          ]
+        },
+        {
+          "name": "uniform_moving",
+          "minimum_input_population": 0.027764432109695876,
+          "minimum_forced_output_population": 0.027764432109468495,
+          "helper_matches_shared_collision_path": true,
+          "maximum_state_difference_error": 1.3877787807814457e-17,
+          "faithful_global_difference": [
+            4.010680676458378e-15,
+            7.885359171178052e-10,
+            0.0
+          ],
+          "neumaier_global_difference": [
+            4.010680676458378e-15,
+            7.885359171178052e-10,
+            0.0
+          ],
+          "maximum_faithful_global_difference_error": 4.010680676458378e-15,
+          "maximum_neumaier_global_difference_error": 4.010680676458378e-15,
+          "full_step_population_l1_residual": 7.88533911777467e-10,
+          "full_step_numpy_moment_increment": [
+            0.0,
+            7.885339048385731e-10,
+            -2.0261570199409107e-15
+          ]
+        },
+        {
+          "name": "seeded_fixed_leaf_0",
+          "minimum_input_population": 0.027774806390424556,
+          "minimum_forced_output_population": 0.027776515342094566,
+          "helper_matches_shared_collision_path": true,
+          "maximum_state_difference_error": 1.3877787807814457e-17,
+          "faithful_global_difference": [
+            -2.1510571102112408e-16,
+            7.885325656320497e-10,
+            -1.942890293094024e-16
+          ],
+          "neumaier_global_difference": [
+            -2.1510571102112408e-16,
+            7.885325656320497e-10,
+            -1.942890293094024e-16
+          ],
+          "maximum_faithful_global_difference_error": 6.591949208711867e-16,
+          "maximum_neumaier_global_difference_error": 6.591949208711867e-16,
+          "full_step_population_l1_residual": 0.0029675702331749924,
+          "full_step_numpy_moment_increment": [
+            0.0,
+            7.885316670452891e-10,
+            -6.002143226879753e-16
+          ]
+        },
+        {
+          "name": "seeded_fixed_leaf_1",
+          "minimum_input_population": 0.027774107206374188,
+          "minimum_forced_output_population": 0.02777622895464073,
+          "helper_matches_shared_collision_path": true,
+          "maximum_state_difference_error": 1.3877787807814457e-17,
+          "faithful_global_difference": [
+            -1.4224732503009818e-16,
+            7.885316323508196e-10,
+            1.0408340855860843e-17
+          ],
+          "neumaier_global_difference": [
+            -1.4224732503009818e-16,
+            7.885316323508196e-10,
+            1.0408340855860843e-17
+          ],
+          "maximum_faithful_global_difference_error": 2.740863092043355e-16,
+          "maximum_neumaier_global_difference_error": 2.740863092043355e-16,
+          "full_step_population_l1_residual": 0.0033986924331897705,
+          "full_step_numpy_moment_increment": [
+            -5.684341886080802e-14,
+            7.885324407319594e-10,
+            8.847089727481716e-16
+          ]
+        },
+        {
+          "name": "seeded_fixed_leaf_2",
+          "minimum_input_population": 0.027774247845634082,
+          "minimum_forced_output_population": 0.02777632222638635,
+          "helper_matches_shared_collision_path": true,
+          "maximum_state_difference_error": 1.3877787807814457e-17,
+          "faithful_global_difference": [
+            3.8510861166685117e-16,
+            7.885319237843635e-10,
+            7.28583859910259e-17
+          ],
+          "neumaier_global_difference": [
+            3.8510861166685117e-16,
+            7.885319237843635e-10,
+            7.28583859910259e-17
+          ],
+          "maximum_faithful_global_difference_error": 3.8510861166685117e-16,
+          "maximum_neumaier_global_difference_error": 3.8510861166685117e-16,
+          "full_step_population_l1_residual": 0.003170716244363485,
+          "full_step_numpy_moment_increment": [
+            -5.684341886080802e-14,
+            7.885322672596118e-10,
+            2.393918396847994e-16
+          ]
+        },
+        {
+          "name": "seeded_fixed_leaf_3",
+          "minimum_input_population": 0.0277745282099066,
+          "minimum_forced_output_population": 0.027776536787865357,
+          "helper_matches_shared_collision_path": true,
+          "maximum_state_difference_error": 1.3877787807814457e-17,
+          "faithful_global_difference": [
+            -3.122502256758253e-17,
+            7.885321319511807e-10,
+            1.8388068845354155e-16
+          ],
+          "neumaier_global_difference": [
+            -3.122502256758253e-17,
+            7.885321319511807e-10,
+            1.8388068845354155e-16
+          ],
+          "maximum_faithful_global_difference_error": 2.255140518769849e-16,
+          "maximum_neumaier_global_difference_error": 2.255140518769849e-16,
+          "full_step_population_l1_residual": 0.0028627640447182467,
+          "full_step_numpy_moment_increment": [
+            5.684341886080802e-14,
+            7.885317399036751e-10,
+            9.124645483638005e-16
+          ]
+        },
+        {
+          "name": "seeded_fixed_leaf_4",
+          "minimum_input_population": 0.02777396308051215,
+          "minimum_forced_output_population": 0.027776801768510988,
+          "helper_matches_shared_collision_path": true,
+          "maximum_state_difference_error": 1.3877787807814457e-17,
+          "faithful_global_difference": [
+            2.983724378680108e-16,
+            7.885321146039459e-10,
+            6.938893903907228e-17
+          ],
+          "neumaier_global_difference": [
+            2.983724378680108e-16,
+            7.885321146039459e-10,
+            6.938893903907228e-17
+          ],
+          "maximum_faithful_global_difference_error": 2.983724378680108e-16,
+          "maximum_neumaier_global_difference_error": 2.983724378680108e-16,
+          "full_step_population_l1_residual": 0.002518745047538986,
+          "full_step_numpy_moment_increment": [
+            0.0,
+            7.885317086786525e-10,
+            -3.122502256758253e-16
+          ]
+        },
+        {
+          "name": "seeded_fixed_leaf_5",
+          "minimum_input_population": 0.027774342510590314,
+          "minimum_forced_output_population": 0.02777601926673301,
+          "helper_matches_shared_collision_path": true,
+          "maximum_state_difference_error": 1.3877787807814457e-17,
+          "faithful_global_difference": [
+            -1.0408340855860843e-16,
+            7.885320243983251e-10,
+            -4.163336342344337e-17
+          ],
+          "neumaier_global_difference": [
+            -1.0408340855860843e-16,
+            7.885320243983251e-10,
+            -4.163336342344337e-17
+          ],
+          "maximum_faithful_global_difference_error": 1.1796119636642288e-16,
+          "maximum_neumaier_global_difference_error": 1.1796119636642288e-16,
+          "full_step_population_l1_residual": 0.003146869632660306,
+          "full_step_numpy_moment_increment": [
+            -5.684341886080802e-14,
+            7.885323470568917e-10,
+            9.020562075079397e-16
+          ]
+        },
+        {
+          "name": "seeded_fixed_leaf_6",
+          "minimum_input_population": 0.027774100881418528,
+          "minimum_forced_output_population": 0.027776234403321755,
+          "helper_matches_shared_collision_path": true,
+          "maximum_state_difference_error": 1.3877787807814457e-17,
+          "faithful_global_difference": [
+            -9.71445146547012e-17,
+            7.885319133760227e-10,
+            -6.245004513516506e-17
+          ],
+          "neumaier_global_difference": [
+            -9.71445146547012e-17,
+            7.885319133760227e-10,
+            -6.245004513516506e-17
+          ],
+          "maximum_faithful_global_difference_error": 9.71445146547012e-17,
+          "maximum_neumaier_global_difference_error": 9.71445146547012e-17,
+          "full_step_population_l1_residual": 0.0035229789647119557,
+          "full_step_numpy_moment_increment": [
+            0.0,
+            7.885325274681332e-10,
+            6.938893903907228e-18
+          ]
+        },
+        {
+          "name": "seeded_fixed_leaf_7",
+          "minimum_input_population": 0.02777431154063004,
+          "minimum_forced_output_population": 0.027776551457136523,
+          "helper_matches_shared_collision_path": true,
+          "maximum_state_difference_error": 1.3877787807814457e-17,
+          "faithful_global_difference": [
+            -7.632783294297951e-17,
+            7.885318648037654e-10,
+            1.0408340855860843e-16
+          ],
+          "neumaier_global_difference": [
+            -7.632783294297951e-17,
+            7.885318648037654e-10,
+            1.0408340855860843e-16
+          ],
+          "maximum_faithful_global_difference_error": 1.0408340855860843e-16,
+          "maximum_neumaier_global_difference_error": 1.0408340855860843e-16,
+          "full_step_population_l1_residual": 0.0029573274041553195,
+          "full_step_numpy_moment_increment": [
+            0.0,
+            7.885312645894427e-10,
+            1.214306433183765e-16
+          ]
+        }
+      ],
+      "passed": true
+    },
+    "derivative_and_spectrum_audit": {
+      "derivative_direction_count": 4,
+      "derivative_steps": [
+        0.000244140625,
+        0.0001220703125,
+        6.103515625e-05
+      ],
+      "derivative_relative_tolerance": 1e-09,
+      "derivative_records": [
+        {
+          "direction_index": 0,
+          "steps": [
+            {
+              "step": 0.000244140625,
+              "forced_unforced_relative_discrepancy": 4.988856026977786e-14,
+              "forced_analytic_relative_error": 7.620177958295425e-08,
+              "unforced_analytic_relative_error": 7.620177972580667e-08
+            },
+            {
+              "step": 0.0001220703125,
+              "forced_unforced_relative_discrepancy": 9.157349661371292e-14,
+              "forced_analytic_relative_error": 1.9050407486906778e-08,
+              "unforced_analytic_relative_error": 1.905040677214863e-08
+            },
+            {
+              "step": 6.103515625e-05,
+              "forced_unforced_relative_discrepancy": 2.0249040262459302e-13,
+              "forced_analytic_relative_error": 4.762641164228689e-09,
+              "unforced_analytic_relative_error": 4.7626385051924046e-09
+            }
+          ],
+          "best_forced_unforced_relative_discrepancy": 4.988856026977786e-14,
+          "passed": true
+        },
+        {
+          "direction_index": 1,
+          "steps": [
+            {
+              "step": 0.000244140625,
+              "forced_unforced_relative_discrepancy": 4.5403035014354634e-14,
+              "forced_analytic_relative_error": 1.053512173063131e-07,
+              "unforced_analytic_relative_error": 1.0535121772077134e-07
+            },
+            {
+              "step": 0.0001220703125,
+              "forced_unforced_relative_discrepancy": 8.96048931553838e-14,
+              "forced_analytic_relative_error": 2.6337845134751194e-08,
+              "unforced_analytic_relative_error": 2.633784391089919e-08
+            },
+            {
+              "step": 6.103515625e-05,
+              "forced_unforced_relative_discrepancy": 1.7251359750737478e-13,
+              "forced_analytic_relative_error": 6.584526106462976e-09,
+              "unforced_analytic_relative_error": 6.58452609754716e-09
+            }
+          ],
+          "best_forced_unforced_relative_discrepancy": 4.5403035014354634e-14,
+          "passed": true
+        },
+        {
+          "direction_index": 2,
+          "steps": [
+            {
+              "step": 0.000244140625,
+              "forced_unforced_relative_discrepancy": 4.4359553646305597e-14,
+              "forced_analytic_relative_error": 1.0598710309578002e-07,
+              "unforced_analytic_relative_error": 1.059871030238109e-07
+            },
+            {
+              "step": 0.0001220703125,
+              "forced_unforced_relative_discrepancy": 9.103587401426295e-14,
+              "forced_analytic_relative_error": 2.6496772393660854e-08,
+              "unforced_analytic_relative_error": 2.6496772122471338e-08
+            },
+            {
+              "step": 6.103515625e-05,
+              "forced_unforced_relative_discrepancy": 1.810707333317394e-13,
+              "forced_analytic_relative_error": 6.624232530661946e-09,
+              "unforced_analytic_relative_error": 6.624232012628137e-09
+            }
+          ],
+          "best_forced_unforced_relative_discrepancy": 4.4359553646305597e-14,
+          "passed": true
+        },
+        {
+          "direction_index": 3,
+          "steps": [
+            {
+              "step": 0.000244140625,
+              "forced_unforced_relative_discrepancy": 5.062223386808321e-14,
+              "forced_analytic_relative_error": 8.966962894806993e-08,
+              "unforced_analytic_relative_error": 8.966962928549456e-08
+            },
+            {
+              "step": 0.0001220703125,
+              "forced_unforced_relative_discrepancy": 9.852064390712317e-14,
+              "forced_analytic_relative_error": 2.241738507219942e-08,
+              "unforced_analytic_relative_error": 2.2417382562660774e-08
+            },
+            {
+              "step": 6.103515625e-05,
+              "forced_unforced_relative_discrepancy": 2.0398174732753543e-13,
+              "forced_analytic_relative_error": 5.604374936200657e-09,
+              "unforced_analytic_relative_error": 5.604375786921476e-09
+            }
+          ],
+          "best_forced_unforced_relative_discrepancy": 5.062223386808321e-14,
+          "passed": true
+        }
+      ],
+      "maximum_best_forced_unforced_relative_discrepancy": 5.062223386808321e-14,
+      "all_source_derivative_zero_checks_pass": true,
+      "forced_reference_symbol_definition": "state-independent source derivative is zero; use the unforced filtered reference-state symbol",
+      "maximum_forced_unforced_symbol_entry_difference": 0.0,
+      "unit_circle_tolerance": 1e-10,
+      "strict_unit_circle_count": 3,
+      "strict_unit_circle_records": [
+        {
+          "wave_index": [
+            0,
+            0
+          ],
+          "eigenvalue": [
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "wave_index": [
+            0,
+            0
+          ],
+          "eigenvalue": [
+            0.9999999999999999,
+            0.0
+          ]
+        },
+        {
+          "wave_index": [
+            0,
+            0
+          ],
+          "eigenvalue": [
+            1.0000000000000004,
+            0.0
+          ]
+        }
+      ],
+      "largest_nonunit_modulus": 0.9920954673551,
+      "symbol_eigenvalue_digest_sha256": "e402291edccddbcfad43aef9ee8344ab3ac220b2324c66951e4b5ee88013f293",
+      "rest_is_not_a_forced_fixed_point": true,
+      "spectrum_is_reference_state_not_fixed_point_stability": true,
+      "spectrum_passed": true,
+      "passed": true
+    },
+    "fixed_point_obstruction_audit": {
+      "exact_global_mass_momentum_increment": [
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        },
+        {
+          "numerator_base16": "0x363",
+          "denominator_base16": "0x10000000000",
+          "float": 7.885319064371288e-10
+        },
+        {
+          "numerator_base16": "0x0",
+          "denominator_base16": "0x1",
+          "float": 0.0
+        }
+      ],
+      "exact_population_l1_fixed_point_residual_lower": {
+        "numerator_base16": "0x363",
+        "denominator_base16": "0x10000000000",
+        "float": 7.885319064371288e-10
+      },
+      "global_momentum_ledger": "M(Phi_F(f))-M(f)=(0,site_count*F_x,site_count*F_y)",
+      "fixed_point_contradiction": "Phi_F(f)=f implies zero global moment increment, but the registered exact increment is strictly positive",
+      "dual_residual_inequality": "||Phi_F(f)-f||_population_l1 >= |Delta P_x|",
+      "minimum_finite_probe_population_l1_residual": 7.88533911777467e-10,
+      "finite_probe_residuals_exceed_exact_lower_float": true,
+      "no_momentum_sink_audit": {
+        "periodic_streaming_only": true,
+        "populationwise_conservative_filter_only": true,
+        "boundary_momentum_exchange_absent": true,
+        "drag_absent": true,
+        "global_momentum_projection_or_repair_absent": true
+      },
+      "all_no_momentum_sink_checks_pass": true,
+      "exact_identities": {
+        "registered_spatial_mean_force_is_nonzero": true,
+        "global_momentum_increment_is_nonzero": true,
+        "fixed_point_would_require_zero_increment": true,
+        "registered_increment_contradicts_fixed_point": true,
+        "dual_momentum_functional_norm_is_one": true,
+        "population_l1_residual_lower_equals_increment": true
+      },
+      "all_exact_identities_pass": true,
+      "passed": true
+    },
+    "source_digest_sha256": "75fd3fe1050b39a333f483375969a67c79ab9ec75009a2048359d0f0dabb7492",
+    "probe_digest_sha256": "43d0b722ba63a45ccf6b5a41cffaef387448fcc2cd9324538887fd3169571001",
+    "result_digest_sha256": "9b1f0c1516a365481c72617957b30424a7873136d221bd164b6d0617c4c3d958",
+    "validity_gates": {
+      "exact_d2q9_source_moment_reconstruction": {
+        "passed": true,
+        "threshold": "exact D2Q9 rational table gives zero source mass and registered source momentum",
+        "value": {
+          "source_mass_is_zero": true,
+          "source_momentum_x_is_registered_force": true,
+          "source_momentum_y_is_registered_force": true,
+          "global_increment_is_site_count_times_force": true
+        }
+      },
+      "dyadic_float_source_and_local_moment_reproduction": {
+        "passed": true,
+        "threshold": "float source is bitwise exact dyadic and local moment residual <=2^-90",
+        "value": {
+          "bitwise": true,
+          "maximum_moment_residual": 0.0
+        }
+      },
+      "ten_probe_forced_unforced_source_and_ledger_reproduction": {
+        "passed": true,
+        "threshold": "10 positive probes reproduce the transported source within 5e-16 and compensated global increment within 5e-14",
+        "value": {
+          "probe_count": 10,
+          "maximum_state_error": 1.3877787807814457e-17,
+          "maximum_global_error": 1.2032042029375134e-14
+        }
+      },
+      "zero_source_derivative_and_reference_spectrum": {
+        "passed": true,
+        "threshold": "best forced/unforced derivative discrepancy <=1e-9, symbol equality, and odd-grid strict unit count 3",
+        "value": {
+          "maximum_best_derivative_discrepancy": 5.062223386808321e-14,
+          "strict_unit_circle_count": 3
+        }
+      },
+      "exact_global_ledger_and_dual_residual_lower_bound": {
+        "passed": true,
+        "threshold": "nonzero exact global increment and population-l1 fixed-point residual lower bound reproduce",
+        "value": {
+          "numerator_base16": "0x363",
+          "denominator_base16": "0x10000000000",
+          "float": 7.885319064371288e-10
+        }
+      },
+      "finite_strict_json_and_reproducible_digests": {
+        "passed": true,
+        "threshold": "all values are finite strict JSON and source/probe digests reproduce",
+        "value": {
+          "strict_json": true,
+          "digests_reproduce": true
+        }
+      }
+    },
+    "hypothesis_gates": {
+      "registered_spatial_mean_force_is_nonzero": {
+        "passed": true,
+        "threshold": "spatial mean force is nonzero",
+        "value": true
+      },
+      "exact_global_momentum_increment_is_strictly_positive": {
+        "passed": true,
+        "threshold": "867*2^-40>0",
+        "value": {
+          "numerator_base16": "0x363",
+          "denominator_base16": "0x10000000000",
+          "float": 7.885319064371288e-10
+        }
+      },
+      "registered_periodic_map_has_no_momentum_sink": {
+        "passed": true,
+        "threshold": "no boundary, drag, or momentum repair cancels the source",
+        "value": true
+      },
+      "fixed_point_contradiction_and_residual_lower_bound_close": {
+        "passed": true,
+        "threshold": "fixed point requires zero increment while exact increment and population-l1 lower bound are positive",
+        "value": true
+      }
+    },
+    "study_validity": "passed",
+    "hypothesis_outcome": "accepted",
+    "scientific_classification": "nonzero-mean periodic body force is incompatible with a fixed point of the registered conservative map",
+    "theorem_consequence": {
+      "registered_exact_periodic_map_has_no_fixed_point": true,
+      "registered_fixed_point_newton_solve_should_start": false,
+      "rest_reference_jacobian_is_unchanged_by_additive_source": true,
+      "rest_reference_spectrum_is_forced_fixed_point_stability": false,
+      "zero_mean_periodic_forcing_is_obstructed": false,
+      "wall_bounded_forcing_is_obstructed": false
+    },
+    "claim_boundary": "An accepted result is an exact real-arithmetic global-momentum ledger obstruction for one state-independent rest-linear nonzero-mean source on the 17x17 periodic filtered BGK map. It is not a bitwise finite-precision fixed-point theorem, a Guo or exact-difference accuracy result, a zero-mean, drag, pressure-boundary, bounce-back, Poiseuille, or Couette result, or a forced invariant-manifold, normal-attraction, other-grid, grid-uniform, continuum, or D3Q27 result. The rest Jacobian is only a non-fixed reference-state diagnostic.",
+    "preserved_prior_outcomes": {
+      "q007ap_unforced_shadowing_changed": false,
+      "q007ag_unforced_tube_changed": false,
+      "q008c_tt_rejection_changed": false,
+      "q010_tt_cost_rejection_changed": false
+    },
+    "next_change": "Do not run a fixed-point Newton solve for nonzero-mean periodic forcing. Preregister Q011b with a zero-mean single-wave periodic source before constructing a forced fixed point or spectrum; keep wall-bounded Poiseuille and Couette separate."
+  },
+  "study_gate": "passed",
+  "scientific_outcome": "accepted",
+  "next_question": "Do not run a fixed-point Newton solve for nonzero-mean periodic forcing. Preregister Q011b with a zero-mean single-wave periodic source before constructing a forced fixed point or spectrum; keep wall-bounded Poiseuille and Couette separate."
+}
