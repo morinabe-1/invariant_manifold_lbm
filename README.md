@@ -3695,6 +3695,50 @@ certified degreesは2--15および91以降、missing rangeは16--90のままで�
 実際のwitnessに現れるblock 1／13／16をrow-specific contained eigendiscへ精密化する。block 0だけを
 さらに精密化しても、このwitnessは変わらない。
 
+### Q011an degree-16 conjugacy-closed active-block certificate
+
+Q011amまでの18 artifactと93 direct digestを封印し、block 1／4のexact interval matrix familyから
+153本ずつのstructured transformed-matrix row boundを256／384 bitの独立なRoundUp計算で再構成した。
+全replay radiusは対応するprimary radiusへstrictly containedだった。共役transportを含む24 active
+identifierを、inactive discから分離したGershgorin componentのcommon modulus hullへ置換した。さらに
+Q011al block-0の6 identifierも3個のoverlap componentごとのcommon hullへ再ラベルし、残る174 intervalは
+Q011amとbitwise同一に保った。全204 final intervalはQ011ak blockwise intervalに含まれた。
+
+重なったdisc component内の個別ラベルは仮定していない。source factorは認証済みdiscから反復を許して
+独立に選ぶ全weak compositionを列挙し、全target discと比較するため、unchanged componentではdisc unionの
+被覆だけで十分である。active componentとQ011al componentには、さらに保守的なcommon hullを用いた。
+
+aggregate 55の37440 distinct／602720 weighted comparisonは全てstrictに分離し、global minimumの
+outward／exact gapは`0x1.3a6e2ffffffffp-33 / 0x1.3a73831f778dap-33`だった。同じcomponent-safe
+envelopeで154 overlap-inventory aggregateを全件再走査し、`136891880` distinct／`3521974412`
+weighted comparisonを全分離した。Q011uから保存される815 old-modulus aggregateと合わせ、degree 16の
+全969 aggregateが分離した。
+
+- validity／hypothesis gates: `8 / 8` passed、`7 / 7` passed
+- classification:
+  `the conjugacy-closed active-block refinement certifies degree-16 external nonresonance`
+- actual resonance outcome: `ruled_out_within_registered_degree_sixteen_scope`
+- active／block-0 relabel／unchanged identifier: `24 / 6 / 174`
+- fully separated／remaining degree-16 aggregate: `969 / 0`
+- distinct relation:
+  `product_below_target 72338736 / target_below_product 64553144 / overlap 0`
+- weighted relation:
+  `product_below_target 1901835848 / target_below_product 1620138564 / overlap 0`
+- input／row／envelope／sweep／result digest:
+  `d617a48bdca98ff949645394948527573b6574176eadcb15eab7de7feda60dfd` /
+  `5c558564ec862d621a75bff1cc6882c4ead98910b67f02559d1f8bec537e0c13` /
+  `b3a40b84b19d69adabea11a53963a47584f361c96abf91224f6c4fe9e41b5a9f` /
+  `db38109e4a83209a28a8f982f88b9eec6c3b8a9f07c0b3a13be3592db2a91e53` /
+  `263a56ba3b426376f3e82d29c7815f6338063e3f682d68ee995f5c129a721309`
+- runner／artifact newline-normalized SHA-256:
+  `02c0a5722add2d4e979c78806bfe4d0e7c503a547dc200ad0bc375c86ee28a6a` /
+  `229dddbb885803b24ed61c35a95cb87bcfa6c692f6bb6c30d20529d3be687b31`
+
+従ってcertified degreesは2--16および91以降となり、missing rangeは17--90へ縮んだ。これは固定17²
+repaired exact map、fixed conservation leaf、登録degree-16 external relationだけの結論である。
+degrees 17--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal
+attraction、basinは認証していない。次はQ011aoでdegree 17の階層列挙資源をdesign-onlyに見積もる。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -4378,6 +4422,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011ak_degree16_blockwise_obstruction.json`](research/artifacts/q011ak_degree16_blockwise_obstruction.json)
 - [`research/artifacts/q011al_block_zero_structured_rows.json`](research/artifacts/q011al_block_zero_structured_rows.json)
 - [`research/artifacts/q011am_degree16_hybrid_sweep.json`](research/artifacts/q011am_degree16_hybrid_sweep.json)
+- [`research/artifacts/q011an_active_block_structured_rows.json`](research/artifacts/q011an_active_block_structured_rows.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -4533,6 +4578,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   登録degree-16 obstruction clearance
 - Q011am 154 degree-16 overlap aggregateの階層exact-multiplicity sweep、153件の全分離、
   sole aggregate-55 six-source certificate棄却／actual-resonance未確立
+- Q011an 共役閉24-identifier structured-row component hull、block-0 component-safe relabelling、
+  154 overlap aggregateの直接再走査、degree-16 external nonresonance認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -4543,7 +4590,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 16--90 external
+- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 17--90 external
   nonresonance、spectral-quotient SSM uniqueness（Q011uはmodulus-only routeを棄却）
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
@@ -4717,4 +4764,9 @@ row-specific eigendiscへ精密化し、登録obstructionの141120 distinct comp
 残る153 aggregateを未監査のため、degree-16 nonresonanceはまだ認証していない。Q011amでは同じhybrid
 envelopeで154 overlap aggregate全体を監査し、153 aggregateを全分離したが、index 55だけに24960
 distinct overlapが残った。従ってsix-source certificateを棄却し、degree-16 nonresonanceとactual complex
-resonanceはともに未確立のまま保持した。
+resonanceはともに未確立のまま保持した。Q011anでは共役閉な24 active identifierとQ011al block-0の
+6 identifierをcomponent-safe common hullへ置換し、154 overlap aggregateを全件直接再走査した。
+`136891880` distinct／`3521974412` weighted comparisonは全てstrictに分離し、815 old-modulus
+aggregateとの和でdegree 16の969 aggregateを全分離した。従ってdegree-16 external nonresonanceを認証し、
+missing rangeをdegrees 17--90へ縮めた。actual resonanceをrule outする範囲は登録degree-16 external
+relationだけであり、all-order resultへは外挿しない。

@@ -7360,6 +7360,50 @@ resonanceは未確立である。degree-16 nonresonance、higher graph smoothnes
 missing rangeは16--90のままとする。次はQ011anでwitnessに現れるblock 1／13／16をrow-specific
 contained eigendiscへ精密化する。
 
+### Q011an 実行結果
+
+Q011amまでの18 artifact、runner、93 direct digest、outcome、claim boundaryを再照合し、validity
+`8 / 8`を通過した。block 1／4のexact familyに対する153 structured-row boundを256／384 bitの
+RoundUpで独立再計算し、全replay radiusがprimary radiusへstrictly containedであることを確認した。
+共役transportを含む24 active identifierをisolated Gershgorin componentのcommon modulus hullへ置換し、
+Q011al block-0の6 identifierも3 componentのcommon hullへ再ラベルした。残る174 intervalはQ011amと
+bitwise同一で、全204 final intervalはQ011ak blockwise intervalへcontainedだった。
+
+overlap component内の個別discラベルは用いない。各source factorが認証済みdiscを反復付きで独立に選ぶ
+全weak compositionと全target discを列挙するため、disc union coverageがnonresonance判定を尽くす。
+active／block-0 componentには追加の保守性としてcommon hullを用いた。
+
+aggregate 55の37440 distinct／602720 weighted comparisonは全分離し、minimum outward／exact gapは
+`0x1.3a6e2ffffffffp-33 / 0x1.3a73831f778dap-33`だった。component-safe final envelopeで154
+overlap-inventory aggregateを直接再走査し、全`136891880` distinct／`3521974412` weighted
+comparisonを分離した。Q011uから保存される815 old-modulus aggregateと合わせ、degree 16の969
+aggregateは全分離、remaining indexは空集合となった。
+
+- hypothesis gate: `7 / 7` passed
+- classification:
+  `the conjugacy-closed active-block refinement certifies degree-16 external nonresonance`
+- actual resonance outcome: `ruled_out_within_registered_degree_sixteen_scope`
+- active／block-0 relabel／unchanged identifier: `24 / 6 / 174`
+- directly separated overlap inventory／preserved old aggregate: `154 / 815`
+- distinct relation:
+  `product_below_target 72338736 / target_below_product 64553144 / overlap 0`
+- weighted relation:
+  `product_below_target 1901835848 / target_below_product 1620138564 / overlap 0`
+- input／row／envelope／sweep／result digest:
+  `d617a48bdca98ff949645394948527573b6574176eadcb15eab7de7feda60dfd` /
+  `5c558564ec862d621a75bff1cc6882c4ead98910b67f02559d1f8bec537e0c13` /
+  `b3a40b84b19d69adabea11a53963a47584f361c96abf91224f6c4fe9e41b5a9f` /
+  `db38109e4a83209a28a8f982f88b9eec6c3b8a9f07c0b3a13be3592db2a91e53` /
+  `263a56ba3b426376f3e82d29c7815f6338063e3f682d68ee995f5c129a721309`
+- runner／artifact newline-normalized SHA-256:
+  `02c0a5722add2d4e979c78806bfe4d0e7c503a547dc200ad0bc375c86ee28a6a` /
+  `229dddbb885803b24ed61c35a95cb87bcfa6c692f6bb6c30d20529d3be687b31`
+
+従ってcertified degreesは2--16、tail-certifiedは91以降、missing rangeはdegrees 17--90である。
+本certificateは固定17² repaired exact map、fixed conservation leaf、登録degree-16 external relationに
+限る。degrees 17--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
+normal attraction、basinは未認証である。次はQ011aoでdegree 17の資源量をdesign-onlyに見積もる。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7569,6 +7613,8 @@ contained eigendiscへ精密化する。
 [`artifacts/q011al_block_zero_structured_rows.json`](artifacts/q011al_block_zero_structured_rows.json)
 
 [`artifacts/q011am_degree16_hybrid_sweep.json`](artifacts/q011am_degree16_hybrid_sweep.json)
+
+[`artifacts/q011an_active_block_structured_rows.json`](artifacts/q011an_active_block_structured_rows.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

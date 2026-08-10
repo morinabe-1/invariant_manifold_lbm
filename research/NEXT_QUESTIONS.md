@@ -19897,6 +19897,33 @@ enclosureに限る。degree-16 external resonanceはこの登録範囲でruled o
 all-order nonresonance、Q011t graphとのhigher-order一致、higher graph
 smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011an 封印結果
+
+全8 validity gateと全7 hypothesis gateが通過した。24 active identifierとQ011al block-0の6 identifierを
+component-safe common hullへ置換し、残る174 intervalを保存した。source discを反復付きで独立に選ぶ
+全weak compositionと全target discを列挙するlabel-safeな規則で、154 overlap-inventory aggregateの
+`136891880` distinct／`3521974412` weighted comparisonを全分離した。Q011uの815 old-modulus
+aggregateと合わせ、degree 16の969 aggregateは全分離した。
+
+- scientific outcome: `accepted`
+- actual resonance outcome: `ruled_out_within_registered_degree_sixteen_scope`
+- minimum outward／exact gap:
+  `0x1.3a6e2ffffffffp-33 / 0x1.3a73831f778dap-33`
+- input／row／envelope／sweep／result digest:
+  `d617a48bdca98ff949645394948527573b6574176eadcb15eab7de7feda60dfd` /
+  `5c558564ec862d621a75bff1cc6882c4ead98910b67f02559d1f8bec537e0c13` /
+  `b3a40b84b19d69adabea11a53963a47584f361c96abf91224f6c4fe9e41b5a9f` /
+  `db38109e4a83209a28a8f982f88b9eec6c3b8a9f07c0b3a13be3592db2a91e53` /
+  `263a56ba3b426376f3e82d29c7815f6338063e3f682d68ee995f5c129a721309`
+- runner／artifact newline-normalized SHA-256:
+  `02c0a5722add2d4e979c78806bfe4d0e7c503a547dc200ad0bc375c86ee28a6a` /
+  `229dddbb885803b24ed61c35a95cb87bcfa6c692f6bb6c30d20529d3be687b31`
+
+certified degreesは2--16および91以降、missing rangeは17--90へ縮んだ。次はQ011aoとしてdegree 17の
+aggregate数、signature数、peak live memory、convolution call、wall timeをdesign-onlyに見積もる。
+Q011amの階層exact-multiplicity表現を安全に再利用でき、登録資源上限内に収まる場合だけ正式full sweepを
+事前登録する。ここではdegree 17 nonresonanceをまだ主張しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
