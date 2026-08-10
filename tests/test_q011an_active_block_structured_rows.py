@@ -262,9 +262,16 @@ def test_q011an_study_metadata_and_generated_artifact_are_scoped(
     if not artifact_path.exists():
         pytest.skip("Q011an artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert _file_sha256(artifact_path) == (
+        "229dddbb885803b24ed61c35a95cb87bcfa6c692f6bb6c30d20529d3be687b31"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
-    assert artifact["runner_source"]["filename"] == runner_path.name
+    assert artifact["runner_source"] == {
+        "filename": "q011an_active_block_structured_rows.py",
+        "sha256": "02c0a5722add2d4e979c78806bfe4d0e7c503a547dc200ad0bc375c86ee28a6a",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "accepted"
@@ -272,5 +279,4 @@ def test_q011an_study_metadata_and_generated_artifact_are_scoped(
     assert artifact["cycle"]["result_digest_sha256"] == (
         q011an.q011b._canonical_json_sha256(q011an._result_digest_sections(artifact["cycle"]))
     )
-    assert len(_file_sha256(artifact_path)) == 64
     json.dumps(artifact, allow_nan=False)
