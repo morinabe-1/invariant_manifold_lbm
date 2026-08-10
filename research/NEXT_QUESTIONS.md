@@ -20783,6 +20783,128 @@ certified degreesは2--18および91以降、missing rangeは19--90のままで�
 285 aggregate、160 target、exact Fourier multiplicity、outward interval、success／rejection条件を固定し、
 その後に初めてdegree-19 full sweepを実行する。
 
+## Q011at: degree-19 block-support-coalesced full sweep — 事前登録
+
+### 問い
+
+Q011asで固定した285 modulus-overlap aggregateを、6 block-support hull source class、全160 target disc、
+exact 17-point Fourier multiplicity、outward-rounded binary64 product intervalで全件直接走査したとき、全relationを
+strictに分離できるか。さらにQ011uで既に分離した1255 aggregateをcontainmentで保存し、degree 19の全1540
+external aggregateを分離できるか。
+
+Q011asはdegree-19 relationを一件も評価していない。Q011atでは以下を固定してから初めて正式full sweepを
+実行する。未観測のrelation count、matrix digest、minimum witnessは事前のacceptance thresholdにせず、最初の
+正式artifactでoutcomeとして封印する。
+
+### sealed input
+
+Q011asまでの24 artifact、runner、122 direct digest、resource Go、degree-18 regression、scientific boundaryを
+再照合し、Q011asを直接封印する。
+
+- Q011as artifact／runner newline-normalized SHA-256:
+  `b54088036e0be6bc354f457cb5acf4835afb53cae6737716cd5d8ffb5e5a5810` /
+  `e01c7a44f21750e02a904aa219e0d6bcd9662f35500a14dc46114963ef3de952`
+- Q011as input／coalescing／regression／resource／result digest:
+  `21e921cd07e0ec7434ee6705c40b94d10eac85387eb913c306b5478c42fadb34` /
+  `15e31e76eb2453d5650a07e545f4c03827c92fd6126c40593f7d7844b2bbf3de` /
+  `fdd309bda8dd1d532ef850ef4c7f8293ec85b8f08d8b7ab0cbfa0a3131aa6224` /
+  `a94054a2e1d677983b75bd67e852d7ba3833a023489635e61c4a60da6a7317bc` /
+  `cd16031617e20b95ae141fa22d878cd2b6de243d14db26bf69ee5475ca6fc892`
+
+Q011asの`study_gate=passed`、resource decision
+`go_for_degree_nineteen_coalesced_preregistration`、scientific／actual-resonance outcome
+`not_evaluated / not_evaluated`を要求する。
+
+### fixed inventory, hull, and targets
+
+Q011ar／Q011as artifactから次を再構成し、stored recordとexactに一致させる。
+
+- degree aggregate／old separated／direct overlap: `1540 / 1255 / 285`
+- overlap count first／last: `[0,2,14,3] / [19,0,0,0]`
+- count／external-index／inventory digest:
+  `a4bf39f39306cd8832546d1745488c0346170d44a6bc182d614cf36e6a465ff7` /
+  `c0007260259ef5c77b3cbc0d707e4cbf1f35fc71ff2dd9d65f62f1e6d7a5639c` /
+  `0a43e3e4ac5fc0683e85cfa88ee2bdc801643be23c8ededd20ea077d3f7c55b0`
+- selected／target／final identifier: `24 / 160 / 184`
+- old／merged class count: `[4,2,3,6] / [1,1,2,2]`
+- hull／merged-membership digest:
+  `f54f1a1f70d953b4c1255e9f9627d7ca43229a3d1e26c11b716d23fd56ea1eb6` /
+  `975ebf1077279cbfcc6fd46e5a34fcd67260ff953a718eb51985794314fcd8b8`
+
+各selected identifierは所属merged hullにcontainedし、wave blockとcenter indexを保持する。target lookupは
+Q011arからbitwiseに不変とし、全160 targetを個別比較する。target merge、共役folding、per-eigenvalue label
+correspondenceを導入しない。
+
+### fixed hierarchical arithmetic
+
+Q011an／Q011aqと同じoutward protocolを、merged classへ適用する。
+
+1. 4 selected groupのmerged-class weak compositionをexactに列挙する。
+2. group `0,1`と`2,3`のpair poolをcacheし、17-point cyclic convolutionを`numpy.int64`で行う。
+3. 各convolutionで非負性、fiber sum、crude `int64` upperを検査する。
+4. product modulusはbinary64のdownward／upward rounded interval productで囲う。
+5. output blockごとのexact integer Fourier multiplicityが正のentryだけをcompatibleとする。
+6. compatible entryを全target discに対して`product_below_target`、`target_below_product`、`overlap`へ
+   排他的に分類する。
+7. full monomial listとfull classification matrixは保持せず、aggregate summary、matrix hash、最初の
+   overlap、global minimum separated witnessだけを保持する。
+
+resource identityとして次をexactに要求する。
+
+- class-power／group-signature／pair-key: `102 / 372 / 140`
+- cached pair-signature entry／convolution: `3163 / 3877`
+- original monomial／modulus signature: `107797786672 / 8056`
+- peak live signature／two product-array bytes: `90 / 1440`
+- distinct／weighted comparison upper bound: `80256 / 1124800752224`
+- safe convolution crude upper: `34656336000`
+
+wall time、tracemalloc、process memoryの実測値はdiagnosticとして記録してよいが、accepted／rejectedを変更しない。
+
+### validity gate
+
+1. Q011asまでの24 artifact、runner、122 direct digest、outcome、boundaryが再現する。
+2. Q011ar inventory／target envelopeとQ011as hull membership／resource contractがexactに再現する。
+3. 285 aggregateを欠落・重複なく辞書順で処理し、全integer／outward interval invariantが通る。
+4. original monomial、signature、convolution、peak、comparison upper countが登録値と一致する。
+5. aggregate／bound／coefficient／classification summaryがstrict finite JSONとdigestへ封印される。
+6. first overlapがある場合は辞書順最初のwitness、separated relationがある場合はglobal minimum witnessを
+   exact rational reconstructionで封印する。
+7. Q011asのdegree-18 regressionとsection digest、runner provenanceが再現する。
+
+一つでも失敗すれば`inconclusive`とし、degree 19をcertified setへ追加しない。
+
+### hypothesis gate and stopping rule
+
+validity通過後、次を順に判定する。
+
+1. 6 merged hullがselected 24 sourceを包含し、160 target discがbitwiseに保存される。
+2. 285 direct overlap-inventory aggregateの全compatible comparisonに`overlap=0`である。
+3. 1255 old-modulus aggregateと285 direct aggregateの和がdegree-19全1540 aggregateを覆う。
+4. global minimumのoutward gapとexact rational gapがともにstrictly positiveである。
+5. claimを登録degree-19 external nonresonanceだけに限定する。
+
+全5項目が通ればclassificationを
+`the block-support-coalesced component-safe sweep certifies degree-19 external nonresonance`、scientific outcomeを
+`accepted`、actual resonance outcomeを
+`ruled_out_within_registered_degree_nineteen_scope`とする。certified degreesは2--19および91以降、missing
+rangeは20--90へ縮む。
+
+validな計算で一つでもoverlapが残ればclassificationを
+`the block-support-coalesced degree-19 sufficient certificate is rejected`、scientific outcomeを`rejected`、
+actual resonance outcomeを`not_established`とする。最初のoverlap witnessだけを次の精密化候補にし、
+後付けthreshold、class split、target foldingで結果を変更しない。
+
+### 主張境界と次の変更
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 19、Q011uの1540 external aggregate、
+Q011asの6 block-support source hull、Q011arの160 target disc、exact x-Fourier multiplicity、hierarchical
+outward-dyadic product protocolに限る。degrees 20--90、all-order nonresonance、Q011t graphとのhigher-order
+一致、higher graph smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、
+D3Q27を認証しない。
+
+acceptedなら次はQ011auでdegree 20をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
+inconclusiveなら最初のvalidity failureだけを修正する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
