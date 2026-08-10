@@ -208,9 +208,16 @@ def test_q011ap_study_metadata_and_generated_artifact_are_scoped(
     if not artifact_path.exists():
         pytest.skip("Q011ap artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert _file_sha256(artifact_path) == (
+        "e0e50ce2ffbfd94389d7e446948fe4a04b7a9aac47213ba8a5ec0717aa78317b"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
-    assert artifact["runner_source"]["filename"] == "q011ap_degree18_resource_estimate.py"
+    assert artifact["runner_source"] == {
+        "filename": "q011ap_degree18_resource_estimate.py",
+        "sha256": "1a3049db74228754189b8abaf7514ac28780260e9e5d18629589d415628ab313",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["resource_decision"] == q011ap.GO_DECISION
