@@ -3558,6 +3558,53 @@ exact product intervalはtarget interval全体を含む。intersection widthは
 91以降、missing rangeは16--90のままである。次はQ011akでuniform radiusをQ011yのblockwise
 transformed-residual radiusへ置き換え、まず同じobstructionを再監査する。
 
+### Q011ak degree-16 blockwise-radius obstruction re-audit
+
+Q011ajの登録obstruction index 99に限定し、uniform \(\rho=5\times10^{-8}\)をQ011yのexact
+blockwise transformed-residual radiusに置き換えた。全17 blockのradiusと共役transportを再現し、
+Q011ajの204 identifierに対するblockwise intervalが全てuniform intervalおよびQ011k旧discに含まれる
+ことを確認した。modulus classは`4 / 2 / 3 / 6`のままで、各class内のblockwise radiusも
+exactに一致した。
+
+35280 signature、1732864 compatible monomialが表す141120 distinct／3465728 weighted comparisonの
+Fourier係数はQ011ajから変えていない。blockwise radiusにより15680 distinct／664288 weighted
+comparisonは`product_below_target`へstrictに分離したが、125440 distinct／2801440 weighted
+comparisonはなおoverlapした。
+
+sourceのblock-0 multiplicityで分解すると、0／1では全件分離、2--5では全件overlapという
+明確な境界を得た。minimum separated outward gapは`0x1.0c512ffffffffp-29`である。
+first unresolved exact witnessはblock-0 multiplicity 2、target `block=11;center=3`、left／right index
+`0 / 8`、wave multiplicity `14`で、center gapは`0x1.192690bd0e92ap-25` > 0だが、blockwise
+product／target intervalは`0x1.55edd7894e3b9p-29`の幅で交差した。
+
+- validity／hypothesis gates: `7 / 7` passed、`6 / 6` passed
+- blockwise-radius certificate outcome: `rejected`
+- actual complex resonance outcome: `not_established`
+- blockwise separated／overlap distinct comparison: `15680 / 125440`
+- blockwise separated／overlap weighted comparison: `664288 / 2801440`
+- radius／204-record digest:
+  `7f84ce4de99178837aaba056d2307db67836892da1af1adc71684df4d5f1a657` /
+  `e68a8508c788f89507e9a2561e553273f1a204afc3525eb09b9288b2511b3bc3`
+- histogram／minimum-separated／first-unresolved／aggregate digest:
+  `991722ecf3c09311416490d62fbb83e2dc7b59b755df8c5ae9816627435adb10` /
+  `789780dd85bbfec2d8bc9e45848f77052537450c734ac7583fca6abc973daa01` /
+  `11dcbfc6e4481ee8faf680cacbb49ac7383904e262b2d74728b86cb2620c94da` /
+  `e618ddd470f114bcb4e7d6744c45d56b14b46b3a4b135cb1a2452afe9cf33dfc`
+- input／radius／interval／obstruction／result digest:
+  `710bcb6b724112bcf8f7c6cc166009accb176d325c5f6b2b911621d6a4b0ff42` /
+  `2c6fc37c40262ba5b76121ca1e3655e1ecd760b88ad27063f932bda532ff62ab` /
+  `25174294bfe13f1de5124793594bb14702617337d41f69e8ff9b43afd3c12386` /
+  `984f9cd6c4d2db107385e500f64f89e242f2764a826d44f78bb56cbd283e3ec4` /
+  `e95e11a93a688170e0538d16d9956e487dbd5a1e7a9262b823cb60d0e1b0166a`
+- runner／artifact newline-normalized SHA-256:
+  `140a4631da777450fbbe5eb3462579c9d2f5b64f3970eeda26511502ea1302f4` /
+  `21d99ca113c5c71b573134d075dc0f01bdc03f0eeea4157dd1a62b1689e7ae59`
+
+従ってblockwise radiusはuniform routeより明らかに鋭いが、登録obstructionを解消しない。
+remaining overlapは現在のenclosure failureであり、actual resonanceの証拠ではない。certified degreesは
+2--15および91以降、missing rangeは16--90のままである。次はQ011alでblock-0因子を含む
+未分離fiberに絞り、identifier／eigenpair-specificなcontained eigendiscを監査する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -4238,6 +4285,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011ah_degree14_batched_dyadic.json`](research/artifacts/q011ah_degree14_batched_dyadic.json)
 - [`research/artifacts/q011ai_degree15_dual_outcome.json`](research/artifacts/q011ai_degree15_dual_outcome.json)
 - [`research/artifacts/q011aj_degree16_uniform_obstruction.json`](research/artifacts/q011aj_degree16_uniform_obstruction.json)
+- [`research/artifacts/q011ak_degree16_blockwise_obstruction.json`](research/artifacts/q011ak_degree16_blockwise_obstruction.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -4387,6 +4435,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   degree-15 nonresonance認証／legacy `5e-6` margin benchmark棄却
 - Q011aj degree-16 multi-target inventory、204-record monotone envelope、first fully-unresolved aggregate、
   uniform-radius certificate棄却／center-only actual-resonance未確立
+- Q011ak Q011y blockwise-radius obstruction再監査、block-0 multiplicity境界、
+  blockwise-radius certificate棄却／actual-resonance未確立
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -4563,4 +4613,7 @@ Q011ajではdegree 16の154 overlapをmulti-target規則で再構成し、辞書
 fully unresolved uniform-envelope obstructionであることを認証した。141120 distinct comparisonは全て
 uniform \(\rho\)-discでoverlapした一方、center-only intervalでは全てstrictに分離した。従ってuniform
 radius certificateだけを棄却し、degree-16 nonresonanceとactual complex resonanceはともに未確立のまま
-保持した。
+保持した。Q011akでは同じobstructionをQ011y blockwise radiusで再監査し、15680 distinct
+comparisonを新たに分離したが、125440 comparisonは残存overlapとなった。block-0 source
+multiplicity 0／1は全分離、2--5は全overlapだったため、blockwise-radius certificateも棄却し、
+actual resonanceは未確立のまま保持した。

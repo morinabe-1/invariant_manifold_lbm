@@ -19179,6 +19179,51 @@ remaining overlapは現在のenclosureの不足だけを示し、actual complex 
 degree-16 external nonresonance、degrees 17--90、all-order nonresonance、higher graph smoothness、SSM
 existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ak 実行結果
+
+Q011ajまでの15 artifact、runner、78 direct digestを再照合し、validity `7 / 7`を通過した。
+Q011yの17 exact block radiusと共役transportを再現し、Q011ajの204 identifierをblockwise
+intervalへ更新した。全blockwise intervalはuniform \(\rho\)-intervalに含まれ、Q011k旧discへの
+containmentも保存した。
+
+登録obstruction index 99の35280 signature、1732864 compatible monomial、3465728 weighted／141120
+distinct comparisonを同じFourier係数で再評価した。uniform radiusでは全件overlapだったが、
+blockwise radiusでは15680 distinct／664288 weighted comparisonが`product_below_target`へ分離した。
+しかし、125440 distinct／2801440 weighted comparisonはなおoverlapした。
+
+block-0 source multiplicityで分解すると、multiplicity 0／1の15680 distinct comparisonは全て分離し、
+multiplicity 2--5の125440 comparisonは全てoverlapした。minimum separated outward gapは
+`0x1.0c512ffffffffp-29`だった。登録順のfirst unresolved witnessはblock-0 multiplicity 2、
+target `block=11;center=3`、left／right index `0 / 8`、wave multiplicity `14`である。center gapは
+`0x1.192690bd0e92ap-25` > 0だが、blockwise exact intervalは
+`0x1.55edd7894e3b9p-29`の幅で交差した。
+
+- hypothesis gate: `6 / 6` passed
+- blockwise-radius certificate outcome: `rejected`
+- actual complex resonance outcome: `not_established`
+- radius／204-record digest:
+  `7f84ce4de99178837aaba056d2307db67836892da1af1adc71684df4d5f1a657` /
+  `e68a8508c788f89507e9a2561e553273f1a204afc3525eb09b9288b2511b3bc3`
+- block-0 histogram／minimum-separated／first-unresolved／aggregate digest:
+  `991722ecf3c09311416490d62fbb83e2dc7b59b755df8c5ae9816627435adb10` /
+  `789780dd85bbfec2d8bc9e45848f77052537450c734ac7583fca6abc973daa01` /
+  `11dcbfc6e4481ee8faf680cacbb49ac7383904e262b2d74728b86cb2620c94da` /
+  `e618ddd470f114bcb4e7d6744c45d56b14b46b3a4b135cb1a2452afe9cf33dfc`
+- input／radius-section／interval／obstruction／result digest:
+  `710bcb6b724112bcf8f7c6cc166009accb176d325c5f6b2b911621d6a4b0ff42` /
+  `2c6fc37c40262ba5b76121ca1e3655e1ecd760b88ad27063f932bda532ff62ab` /
+  `25174294bfe13f1de5124793594bb14702617337d41f69e8ff9b43afd3c12386` /
+  `984f9cd6c4d2db107385e500f64f89e242f2764a826d44f78bb56cbd283e3ec4` /
+  `e95e11a93a688170e0538d16d9956e487dbd5a1e7a9262b823cb60d0e1b0166a`
+- runner／artifact newline-normalized SHA-256:
+  `140a4631da777450fbbe5eb3462579c9d2f5b64f3970eeda26511502ea1302f4` /
+  `21d99ca113c5c71b573134d075dc0f01bdc03f0eeea4157dd1a62b1689e7ae59`
+
+従ってblockwise radiusはuniform obstructionを部分的に改善したが、degree-16 certificateには不十分
+だった。remaining overlapは実在resonanceではなく現在のenclosure failureである。certified degreesは
+2--15および91以降、missing rangeは16--90のままである。次はQ011alでblock-0因子を含む
+未分離fiberに絞り、identifier／eigenpair-specificなcontained eigendiscを監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

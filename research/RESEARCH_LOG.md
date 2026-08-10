@@ -7207,6 +7207,73 @@ hypothesis `6 / 6`を通過したため、
 actual resonance、degree-16 nonresonance、degrees 17--90、all-order result、higher smoothness、SSM
 existence／uniqueness、normal attraction、basinは未認証である。次はQ011akでblockwise radiusを監査する。
 
+### Q011ak 実行結果
+
+Q011ajまでの15 artifact、runner、78 direct digest、outcome、claim boundaryとsourceを再照合し、
+validity `7 / 7`を通過した。Q011lからQ011yの17 exact block radius
+
+\[
+\theta_b=\beta_b\lVert A_bV_b-V_bD_b\rVert_\infty
+\]
+
+を再構成した。登録obstructionのactive radiusはblock 0が`0x1.5cbff506e79d2p-26`、block 1／16が
+`0x1.23ce0990a1325p-30`、block 6／11が`0x1.55edd7894e3b9p-30`である。Q011ajの204
+identifierすべてにblockwise intervalを構成し、uniform \(\rho\)-intervalおよびQ011k旧discへのcontainmentを
+保存した。modulus classは`4 / 2 / 3 / 6`のままで、各class内のradiusもexactに一定だった。
+
+Q011aj aggregate index 99の35280 signature、1732864 compatible original monomial、3465728 weighted／
+141120 distinct comparisonを同じexact Fourier multiplicityで再評価した。結果は
+
+- weighted: `product_below_target 664288 / target_below_product 0 / overlap 2801440`
+- distinct: `product_below_target 15680 / target_below_product 0 / overlap 125440`
+
+だった。uniform radiusの全件overlapより改善したが、certificateに必要な全comparison分離には至らない。
+
+source monomialのblock-0 multiplicityで分解すると、multiplicity 0の3136件と1の12544件は全て分離し、
+multiplicity 2の21952件、3の31360件、4の40768件、5の31360件は全てoverlapした。
+minimum separated outward gapは`0x1.0c512ffffffffp-29`だった。first unresolved witnessは
+block-0 multiplicity 2、class count `[[0,0,0,5],[0,6],[0,1,3],[0,0,0,1,0,0]]`、source
+
+`(block=16;center=145)^5 × (block=16;center=151)^5 × block=1;center=151 × block=0;center=149 × (block=1;center=152)^3 × block=0;center=147`
+
+対target `block=11;center=3`、wave multiplicity `14`だった。exact center gapは
+`0x1.192690bd0e92ap-25` > 0である一方、blockwise product／target intervalは
+`0x1.55edd7894e3b9p-29`のpositive widthで交差した。
+
+hypothesis `6 / 6`を通過したため、
+
+`the Q011y blockwise-radius degree-16 certificate remains unresolved at the registered obstruction`
+
+を`rejected`とした。同時に、
+
+`an actual degree-16 complex resonance is not established; the remaining blockwise eigendisc overlaps are enclosure failures only`
+
+を`not_established`とした。certified degreesは2--15および91以降、missing rangeは16--90のままである。
+
+- radius／204-ID blockwise-record digest:
+  `7f84ce4de99178837aaba056d2307db67836892da1af1adc71684df4d5f1a657` /
+  `e68a8508c788f89507e9a2561e553273f1a204afc3525eb09b9288b2511b3bc3`
+- histogram／minimum-separated／first-unresolved／aggregate digest:
+  `991722ecf3c09311416490d62fbb83e2dc7b59b755df8c5ae9816627435adb10` /
+  `789780dd85bbfec2d8bc9e45848f77052537450c734ac7583fca6abc973daa01` /
+  `11dcbfc6e4481ee8faf680cacbb49ac7383904e262b2d74728b86cb2620c94da` /
+  `e618ddd470f114bcb4e7d6744c45d56b14b46b3a4b135cb1a2452afe9cf33dfc`
+- input／radius／interval／obstruction／result digest:
+  `710bcb6b724112bcf8f7c6cc166009accb176d325c5f6b2b911621d6a4b0ff42` /
+  `2c6fc37c40262ba5b76121ca1e3655e1ecd760b88ad27063f932bda532ff62ab` /
+  `25174294bfe13f1de5124793594bb14702617337d41f69e8ff9b43afd3c12386` /
+  `984f9cd6c4d2db107385e500f64f89e242f2764a826d44f78bb56cbd283e3ec4` /
+  `e95e11a93a688170e0538d16d9956e487dbd5a1e7a9262b823cb60d0e1b0166a`
+- runner／artifact newline-normalized SHA-256:
+  `140a4631da777450fbbe5eb3462579c9d2f5b64f3970eeda26511502ea1302f4` /
+  `21d99ca113c5c71b573134d075dc0f01bdc03f0eeea4157dd1a62b1689e7ae59`
+
+本certificateは固定17² repaired exact map、fixed conservation leaf、degree 16、Q011aj aggregate index 99、
+Q011y blockwise radius routeに限る。remaining overlapはactual resonanceではない。他のdegree-16 aggregate、
+degree-16 nonresonance、degrees 17--90、all-order result、higher smoothness、SSM existence／uniqueness、
+normal attraction、basinは未認証である。次はQ011alでblock-0-containing fiberのidentifier／eigenpair-specific
+eigendisc精密化を監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7410,6 +7477,8 @@ existence／uniqueness、normal attraction、basinは未認証である。次は
 [`artifacts/q011ai_degree15_dual_outcome.json`](artifacts/q011ai_degree15_dual_outcome.json)
 
 [`artifacts/q011aj_degree16_uniform_obstruction.json`](artifacts/q011aj_degree16_uniform_obstruction.json)
+
+[`artifacts/q011ak_degree16_blockwise_obstruction.json`](artifacts/q011ak_degree16_blockwise_obstruction.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
