@@ -7497,6 +7497,52 @@ limitを通過した。
 resonance、minimum gapは未評価なので、certified degreesは2--17、tail-certifiedは91以降、missing
 rangeは18--90のままである。
 
+### Q011aq 実行結果
+
+Q011apまでの21 artifact、runner、108 direct digest、outcome、claim boundaryを再照合し、validity
+`7 / 7`を通過した。Q011apのinventory、188-identifier envelope、class membership、resource contractは
+bitwiseに再現した。252 overlap aggregateを辞書順で処理し、`2277951` convolutionの非負性、fiber sum、
+crude int64 bound、全outward product array invariantが通過した。
+
+元のmonomialは50931347136、modulus／compatible signatureは`112289821 / 105895597`、compatible
+original monomialは12958923958だった。全`694302588` distinct／`29855319268` weighted comparisonを
+strictに分離し、252 direct aggregateのremaining overlapは0となった。1078 old-modulus aggregateとの和で
+degree 18の全1330 aggregateを分離した。
+
+global minimumはaggregate 135、count tuple `[5,4,4,5]`、target `block=11;center=3`、left／right
+index `9 / 251`、wave multiplicity 4、relation `target_below_product`だった。outward／exact gapは
+`0x1.39a9cf37fffffp-23 / 0x1.39a9d05be5218p-23`である。
+
+- hypothesis gate: `5 / 5` passed
+- classification:
+  `the component-safe hierarchical sweep certifies degree-18 external nonresonance`
+- actual resonance outcome: `ruled_out_within_registered_degree_eighteen_scope`
+- directly separated overlap inventory／preserved old aggregate: `252 / 1078`
+- distinct relation:
+  `product_below_target 286270668 / target_below_product 408031920 / overlap 0`
+- weighted relation:
+  `product_below_target 13265995204 / target_below_product 16589324064 / overlap 0`
+- bound／coefficient／classification matrix record: `252 / 1132 / 2728`
+- bound／coefficient／classification digest:
+  `7c5c0f4827d6eb278c9cfeaa4282579bd43a52b1383163fecfcb61926297f402` /
+  `99052decb2790d3bc14b4f159e85c094074bf8d61219d0632392292c26e80169` /
+  `4d29dce45467d9b5f50102a77b43b553343a7a76fc85b8fea1ca3b643cdf9dc4`
+- minimum witness digest:
+  `efe0b2b3ea7635ac39197bbfb8be7bcb1e2d5bfb811ecbdb3214532b8419e8a5`
+- input／preparation／sweep／result digest:
+  `b872654abf4e29b9c6d4fb40c6bf9e7ba5d1a05589f443b72a63bc37e338a501` /
+  `063d871e07ce95e0bd66219544e6406a0869074e18cd3ac8e6bbb44f65208d3c` /
+  `86ac41c9499150e6c9fa26a24924b7db71a48b8a05ade2f90c2d74ba83078d34` /
+  `0011b3f04770f7b2ff4528b2db9e2c71c3455dee9db23f378a3f699b78e697d4`
+- runner／artifact newline-normalized SHA-256:
+  `358c89e86f8e6b5bb82cc47cafe553bee4549a197af57648b6e698e49d6dd52f` /
+  `246540feb2733de13f7a5a982c609aaca6188982d927d6a2f82aa50cc35f157a`
+
+従ってcertified degreesは2--18、tail-certifiedは91以降、missing rangeはdegrees 19--90である。
+本certificateは固定17² repaired exact map、fixed conservation leaf、登録degree-18 external relationに
+限る。degrees 19--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
+normal attraction、basinは未認証である。次はQ011arでdegree 19の資源量をdesign-onlyに見積もる。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7712,6 +7758,8 @@ rangeは18--90のままである。
 [`artifacts/q011ao_degree17_hierarchical_sweep.json`](artifacts/q011ao_degree17_hierarchical_sweep.json)
 
 [`artifacts/q011ap_degree18_resource_estimate.json`](artifacts/q011ap_degree18_resource_estimate.json)
+
+[`artifacts/q011aq_degree18_hierarchical_sweep.json`](artifacts/q011aq_degree18_hierarchical_sweep.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

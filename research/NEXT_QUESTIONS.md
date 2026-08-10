@@ -20409,6 +20409,37 @@ uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証
 acceptedなら次はQ011arでdegree 19をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011aq 封印結果
+
+全7 validity gateと全5 hypothesis gateが通過した。252 overlap aggregateの`694302588` distinct／
+`29855319268` weighted comparisonを全てstrictに分離し、overlapは0だった。1078 old-modulus aggregateと
+合わせ、degree 18の全1330 aggregateを分離した。
+
+- scientific outcome: `accepted`
+- classification:
+  `the component-safe hierarchical sweep certifies degree-18 external nonresonance`
+- actual resonance outcome: `ruled_out_within_registered_degree_eighteen_scope`
+- distinct relation:
+  `product_below_target 286270668 / target_below_product 408031920 / overlap 0`
+- weighted relation:
+  `product_below_target 13265995204 / target_below_product 16589324064 / overlap 0`
+- minimum outward／exact gap:
+  `0x1.39a9cf37fffffp-23 / 0x1.39a9d05be5218p-23`
+- minimum witness digest:
+  `efe0b2b3ea7635ac39197bbfb8be7bcb1e2d5bfb811ecbdb3214532b8419e8a5`
+- input／preparation／sweep／result digest:
+  `b872654abf4e29b9c6d4fb40c6bf9e7ba5d1a05589f443b72a63bc37e338a501` /
+  `063d871e07ce95e0bd66219544e6406a0869074e18cd3ac8e6bbb44f65208d3c` /
+  `86ac41c9499150e6c9fa26a24924b7db71a48b8a05ade2f90c2d74ba83078d34` /
+  `0011b3f04770f7b2ff4528b2db9e2c71c3455dee9db23f378a3f699b78e697d4`
+- runner／artifact newline-normalized SHA-256:
+  `358c89e86f8e6b5bb82cc47cafe553bee4549a197af57648b6e698e49d6dd52f` /
+  `246540feb2733de13f7a5a982c609aaca6188982d927d6a2f82aa50cc35f157a`
+
+certified degreesは2--18および91以降、missing rangeは19--90へ縮んだ。次はQ011arでdegree 19の
+aggregate数、signature数、peak live memory、convolution call、wall timeをdesign-onlyに見積もる。
+degree 19のrelationはまだ評価しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
