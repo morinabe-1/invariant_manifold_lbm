@@ -222,12 +222,14 @@ def test_q011am_study_metadata_and_generated_artifact_are_scoped(
     if not artifact_path.exists():
         pytest.skip("Q011am artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
-    assert _file_sha256(artifact_path) == "PENDING_Q011AM_ARTIFACT_SHA256"
+    assert _file_sha256(artifact_path) == (
+        "c4808edd49dec80cb613834d829b6f411c516838f7183c13f6a1e01371cf8f51"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
     assert artifact["runner_source"] == {
         "filename": "q011am_degree16_hybrid_sweep.py",
-        "sha256": "PENDING_Q011AM_RUNNER_SHA256",
+        "sha256": "c703511110165f66ebcc24ddb93b309c94a2e7b8e7e7372d4fa492e54ee25e53",
         "sha256_newline_normalization": "UTF-8 text with universal newlines",
     }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
