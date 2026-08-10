@@ -20603,6 +20603,154 @@ degree-19 relationは未評価なので、certified degreesは2--18および91�
 ある。次はQ011asとして、同じdisc coverage、exact Fourier multiplicity、outward relation semanticsを保ち、
 peak memoryとcomparison workloadを固定上限内へ下げるrepresentation redesignを事前登録する。
 
+## Q011as: block-support hull coalescing resource redesign — 事前登録
+
+### 問いと禁止事項
+
+Q011arでStopとなったdegree-19 hierarchyについて、selected source group内のmodulus classを、各classの
+identifierが持つwave-block多重集合だけでcoalesceし、全構成discを含むexact rational hullへ置き換えたとき、
+Q011apから維持したabsolute resource limitを全て満たせるか。
+
+Q011asはsource class partition、hull containment、既知degree-18 certificateの回帰、degree-19の組合せ資源
+countだけを扱う。degree-19 product--target relation、minimum gap、actual resonanceは一件も評価しない。
+target 160 identifierは一つもmerge／削除せず、共役block foldingも用いない。resource limitを変更しない。
+
+### sealed input
+
+Q011arまでの23 artifact、runner、117 direct digest、resource Stop、scientific boundaryを再照合し、Q011arを
+直接封印する。
+
+- Q011ar artifact／runner newline-normalized SHA-256:
+  `8e0f2cca4c4db357587595ba315aa4fa84121c358e988f4cdcadc8720621e67a` /
+  `4a3faebafd0404f449e1410e98a25bce659a2c4c80c641bdbd642bbd487443aa`
+- Q011ar input／inventory／envelope／resource／result digest:
+  `2be0835736f234a9df83af63fd836aca5196eb6b4e8c54dc86d72723b7b995f6` /
+  `9fd64f430ca0f5231e97ec13338aaaf037909d35c2e5a294ed6246d4f87f8848` /
+  `b33a4d036c244ed17fb5b708307759883439eef6172e473303fc4ea726c0a70c` /
+  `c93fb9cb96a91474cbba67aad1b12ad699fd189c537a4ac54305a1b3daf0f328` /
+  `2823bb2101e57bfd277e18e621c17ef850488ec5743083a10f8246e5e61d8f27`
+
+Q011arの`study_gate=passed`、resource decision `stop_before_degree_nineteen_full_sweep`、
+scientific／actual-resonance outcome `not_evaluated / not_evaluated`を要求する。
+
+### deterministic coalescing rule
+
+Q011arのselected source 4 groupとold class count `[4,2,3,6]`を再構成する。各old classについて、identifierの
+wave block indexを数えたsorted tuple
+
+\[
+((b_1,m_1),\ldots,(b_s,m_s))
+\]
+
+をsupport keyとする。同じselected groupかつ同じsupport keyのold classだけを辞書順でunionする。閾値、
+距離cluster、relation outcomeによるmergeは導入しない。
+
+各merged classのcenter／full modulus intervalは、構成identifier discのexact rational endpointのmin／max
+hullとする。各identifierのwave blockとcenter indexは保持し、Fourier multiplicityはmerged identifier集合の
+weak compositionからexactに再構成する。得られるclass countを`[1,1,2,2]`と固定する。
+
+- merged class／selected identifier record: `6 / 24`
+- hull record digest:
+  `f54f1a1f70d953b4c1255e9f9627d7ca43229a3d1e26c11b716d23fd56ea1eb6`
+- merged membership digest:
+  `975ebf1077279cbfcc6fd46e5a34fcd67260ff953a718eb51985794314fcd8b8`
+- maximum hull-width inflation ratio: `1.195361864035176`
+
+全old selected discのcenter／full interval containment、identifierの欠落・重複なし、target lookupのbitwise
+不変、degree 18／19で同一のmerged membershipとhull recordを要求する。
+
+### degree-18 sealed regression oracle
+
+未知のdegree-19 relationへ進む前に、Q011aqで既に認証済みのdegree 18だけを、merged class、全164 target、
+exact Fourier multiplicity、同じoutward product protocolで再走査する。252 direct aggregateを全分離し、1078
+old aggregateと合わせて1330全体を保つことを要求する。
+
+- original monomial／modulus／compatible signature:
+  `50931347136 / 6075 / 5624`
+- compatible original monomial: `12958923958`
+- weighted／distinct comparison: `29855319268 / 43852`
+- weighted relation:
+  `product_below_target 13265995204 / target_below_product 16589324064 / overlap 0`
+- distinct relation:
+  `product_below_target 16052 / target_below_product 27800 / overlap 0`
+- peak signature／convolution: `84 / 3001`
+- aggregate／power／group／pair digest:
+  `4271488242a182334f98b4feb09e1412713188a4d33eeec2b96affab872fd25f` /
+  `cf851eb0cac9980e2b16492eae42b76b60ba20cddbbc2b768b182bc604f5add7` /
+  `fde3cced34e80b67ae59000672277a76d61ddd1162f9e42d3efc28cf9f992645` /
+  `9cd018d7219fb1c277a84f59a81041ff14e5a393defc834283b02254bfe7c163`
+- bound／coefficient／classification digest:
+  `74fc0328e9b81323cbf198cf8f28e4b537061f1280c938e8dc0242d51caecd61` /
+  `cbfce79b2fa3a8e7122b0d78d79e30a8546dd0b5fb7a9eb04eb35b174eccfdd6` /
+  `dbe334676778f799ac428cffd40ab16dc1a510e311d9f8d20725035edb4beded`
+- minimum outward／exact gap:
+  `0x1.39c56bbbfffffp-23 / 0x1.39c56ce0be4a4p-23`
+- minimum witness digest:
+  `9e7f6b4014a2082bf716ffe6b20b20311f50e079625d235ab73f879a6337bb28`
+
+degree-18 regressionが一つでもoverlapを残す場合、Q011asはinconclusiveとしdegree-19資源Goを出さない。
+
+### degree-19 design-only resource contract
+
+Q011arの285 overlap aggregate、160 target identifier、original monomial multiplicityを変えず、merged class
+count `[1,1,2,2]`から資源量だけをexactに数える。product bound、Fourier matrix、classification matrix、
+degree-19 relationは構築しない。
+
+- class-power／group-key／pair-key: `102 / 66 / 140`
+- class-power／group-key／pair-key digest:
+  `2c68abef66862131e1c334bd36f6354a82ea36a6027faba4c2274fd2409d450c` /
+  `8749302ce7d5e76cf4f6e2080f18b8747c74c4c5c336d33fd4d163fb101dc1d1` /
+  `343b3ff58a70c485ce89830ff12f4a501ca8c122525f8a25b5bbe0e2531b0d68`
+- group-signature／cached pair-signature entry: `372 / 3163`
+- exact convolution call: `3877`
+- modulus signature／peak live signature: `8056 / 90`
+- two product-bound array bytes: `1440`
+- original monomial／maximum aggregate monomial: `107797786672 / 2038608000`
+- safe `int64` crude convolution upper: `34656336000`
+- distinct／weighted comparison upper bound: `80256 / 1124800752224`
+- per-aggregate resource record digest:
+  `aea8bd1f3bf0dceabb1cf4ba020a066e7d85fb4ae8f8c3857d3b69abac729233`
+
+Q011ao baselineからのvariable-work projectionは、2倍wall safety `0.07437891084327201`秒、1.5倍
+process-memory safety `183970` bytesを与える。これはimport、sealed-input replay、Python overheadを含まない
+ため実時間・実メモリ予測とは呼ばず、旧resource contractとの同一式による比較値だけとする。degree-18
+sealed regressionの完走を別のpractical guardとし、timing自体はacceptance thresholdに用いない。
+
+### validity／Go／Stop gate
+
+validityは次を全て要求する。
+
+1. Q011arまでの23 artifact、runner、117 direct digest、outcome、boundaryが再現する。
+2. deterministic support key、6 merged class、24 selected identifier、全hull containmentと登録digestが再現する。
+3. degree-18 regressionが252/252 direct aggregateを分離し、全integer／outward invariantが通る。
+4. degree-19 countがclosed-formと一致し、full expansion／relationを構築しない。
+5. strict finite JSON、section digest、runner provenanceが再現する。
+
+validity通過後、Q011apから維持した次のabsolute limitを全て満たせば
+`go_for_degree_nineteen_coalesced_preregistration`とする。
+
+- modulus signature `<= 125000000`
+- peak live signature `<= 2500000`
+- two product-bound array `<= 41943040` bytes
+- exact convolution call `<= 2500000`
+- distinct-comparison upper bound `<= 1100000000`
+- 同一式2倍wall-work projection `<= 1200`秒
+- 同一式1.5倍process-memory variable projection `<= 6442450944` bytes
+
+一つでも超えれば`stop_before_degree_nineteen_coalesced_full_sweep`、validity failureなら
+`inconclusive_resource_redesign`とする。target folding、limit変更、degree-19 relationの先行確認で判定を変えない。
+
+### 主張境界と次の変更
+
+Q011asは固定17² repaired exact map、fixed conservation leaf、selected-source block-support hull coalescing、
+既知degree-18 regression、degree-19 design-only resource countに限る。degree-19 external nonresonance、actual
+resonance、minimum gap、degrees 20--90、all-order result、SSM existence／uniqueness、normal attraction、
+basinを認証しない。certified degreesは2--18および91以降、missing rangeは19--90のままである。
+
+GoならQ011atで、merged hull、全285 aggregate、全160 target、exact Fourier multiplicity、outward arithmetic、
+success／rejection条件を固定してからdegree-19 full sweepを正式実行する。Stopなら最初のresource failure、
+inconclusiveなら最初のvalidity failureだけを修正する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
