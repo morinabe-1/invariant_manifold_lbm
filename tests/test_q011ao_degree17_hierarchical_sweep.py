@@ -242,9 +242,16 @@ def test_q011ao_study_metadata_and_generated_artifact_are_scoped(
     if not artifact_path.exists():
         pytest.skip("Q011ao artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert _file_sha256(artifact_path) == (
+        "7b439a9d4634f895a0cbd98660da7147237f6cc026531e700597bab04f8fc81a"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
-    assert artifact["runner_source"]["filename"] == runner_path.name
+    assert artifact["runner_source"] == {
+        "filename": "q011ao_degree17_hierarchical_sweep.py",
+        "sha256": "0fbf8f9bad5217ff0a61d0b76255d283d2845816321207382d35fc69d3753cc1",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "accepted"
@@ -252,5 +259,4 @@ def test_q011ao_study_metadata_and_generated_artifact_are_scoped(
     assert artifact["cycle"]["result_digest_sha256"] == (
         q011ao.q011b._canonical_json_sha256(q011ao._result_digest_sections(artifact["cycle"]))
     )
-    assert len(_file_sha256(artifact_path)) == 64
     json.dumps(artifact, allow_nan=False)
