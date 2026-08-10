@@ -3739,6 +3739,51 @@ repaired exact map、fixed conservation leaf、登録degree-16 external relation
 degrees 17--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal
 attraction、basinは認証していない。次はQ011aoでdegree 17の階層列挙資源をdesign-onlyに見積もる。
 
+### Q011ao degree-17 component-safe hierarchical certificate
+
+Q011anまでの19 artifactと98 direct digestを封印し、Q011uのdegree-17 exact inventoryを再構成した。
+全1140 aggregateのうち941件はold modulus separationで保存され、残る199件を直接走査した。selected
+source groupのidentifier数は`8 / 4 / 4 / 8`、modulus class数は`4 / 2 / 3 / 6`である。
+
+Q011anからselected source 24 identifierとtarget 128 identifierをbitwiseに再利用し、Q011anにないtarget
+24 identifierだけをQ011k exact center modulusとQ011ak blockwise transformed-residual radiusから追加した。
+従ってdegree-17 sweepのfinal envelopeは176 identifierである。Q011ak式は既存204 record全件でもexactに
+replayした。component内部の個別固有値ラベルは仮定せず、各source discを反復付きで独立に選び、全target
+discと比較するlabel-safeな規則を用いた。
+
+階層exact-multiplicity sweepは`1339913` convolution、最大`1201200` live signatureで完走した。
+元の`20467791608` monomialは`55452003` modulus signatureへ集約され、Fourier-compatibleな
+`49831491` signature、`4949877042` weighted monomialから`301592258` distinct／`10786916138`
+weighted comparisonを構成した。199 direct aggregateは全てstrictに分離し、941 preserved aggregateと
+合わせてdegree 17の全1140 aggregateを分離した。
+
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- classification:
+  `the component-safe hierarchical sweep certifies degree-17 external nonresonance`
+- actual resonance outcome: `ruled_out_within_registered_degree_seventeen_scope`
+- directly separated overlap inventory／preserved old aggregate: `199 / 941`
+- distinct relation:
+  `product_below_target 135864646 / target_below_product 165727612 / overlap 0`
+- weighted relation:
+  `product_below_target 5313413298 / target_below_product 5473502840 / overlap 0`
+- minimum witness: aggregate `113`、count `5 / 5 / 4 / 3`、target block `11`
+- minimum outward／exact gap:
+  `0x1.d0afe9cffffffp-25 / 0x1.d0afedf6fcdf8p-25`
+- input／inventory／envelope／sweep／result digest:
+  `8a893e802bc4b93cd2f9be5da7e872b5a79a2e956a1b445386a63cd97aed9aad` /
+  `4806963b4e1cc0ace653881e6102dd055220b95d9d5157f1a4699f71cd85f02c` /
+  `8eebcf226ffb9ad38d0d14f2ae42c4b89cea37c553a1b88d72dfc1ce6a4c5f50` /
+  `e046e2d7675155aba98b97266dda283e4cfd3b3a22698a7e6edbad6e2dcfa9a8` /
+  `f76db860a63b31c3152ddbe8ef6ce1ea6ee58e2d62b3554895bce4a25834b746`
+- runner／artifact newline-normalized SHA-256:
+  `0fbf8f9bad5217ff0a61d0b76255d283d2845816321207382d35fc69d3753cc1` /
+  `7b439a9d4634f895a0cbd98660da7147237f6cc026531e700597bab04f8fc81a`
+
+従ってcertified degreesは2--17および91以降となり、missing rangeは18--90へ縮んだ。これは固定17²
+repaired exact map、fixed conservation leaf、登録degree-17 external relationだけの結論である。
+degrees 18--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal
+attraction、basinは認証していない。次はQ011apでdegree 18の階層列挙資源をdesign-onlyに見積もる。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -4423,6 +4468,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011al_block_zero_structured_rows.json`](research/artifacts/q011al_block_zero_structured_rows.json)
 - [`research/artifacts/q011am_degree16_hybrid_sweep.json`](research/artifacts/q011am_degree16_hybrid_sweep.json)
 - [`research/artifacts/q011an_active_block_structured_rows.json`](research/artifacts/q011an_active_block_structured_rows.json)
+- [`research/artifacts/q011ao_degree17_hierarchical_sweep.json`](research/artifacts/q011ao_degree17_hierarchical_sweep.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -4580,6 +4626,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   sole aggregate-55 six-source certificate棄却／actual-resonance未確立
 - Q011an 共役閉24-identifier structured-row component hull、block-0 component-safe relabelling、
   154 overlap aggregateの直接再走査、degree-16 external nonresonance認証
+- Q011ao 176-identifier component-safe envelope、199 degree-17 overlap aggregateの階層exact-multiplicity
+  sweep、1140 aggregateの全分離、degree-17 external nonresonance認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -4590,7 +4638,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 17--90 external
+- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 18--90 external
   nonresonance、spectral-quotient SSM uniqueness（Q011uはmodulus-only routeを棄却）
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
@@ -4769,4 +4817,9 @@ resonanceはともに未確立のまま保持した。Q011anでは共役閉な24
 `136891880` distinct／`3521974412` weighted comparisonは全てstrictに分離し、815 old-modulus
 aggregateとの和でdegree 16の969 aggregateを全分離した。従ってdegree-16 external nonresonanceを認証し、
 missing rangeをdegrees 17--90へ縮めた。actual resonanceをrule outする範囲は登録degree-16 external
-relationだけであり、all-order resultへは外挿しない。
+relationだけであり、all-order resultへは外挿しない。Q011aoではQ011anの24 selected-source identifierと
+128 target identifierを再利用し、24 targetをQ011ak blockwise式から追加した176-identifier envelopeで
+degree 17の199 overlap aggregateを階層exact-multiplicity走査した。`301592258` distinct／
+`10786916138` weighted comparisonを全てstrictに分離し、941 old-modulus aggregateとの和でdegree 17の
+1140 aggregateを全分離した。従ってdegree-17 external nonresonanceを認証し、missing rangeをdegrees
+18--90へ縮めた。この結論も登録degree-17 external relationだけに限り、all-order resultへは外挿しない。

@@ -20103,6 +20103,40 @@ Q011an component-safe selected-source envelope、24 Q011ak blockwise target exte
 限る。degrees 18--90、all-order nonresonance、Q011t graphとのhigher-order一致、higher graph smoothness、
 SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ao 封印結果
+
+全7 validity gateと全5 hypothesis gateが通過した。Q011uのdegree-17全1140 aggregateを941 preserved
+old-modulus aggregateと199 direct-overlap aggregateへexactに分けた。Q011anからselected source 24と
+target 128、計152 identifierをbitwiseに再利用し、24 targetだけをQ011ak blockwise式で追加した。
+176-identifier final envelopeはQ011akの204-record exact replayにも通過した。
+
+component内部の個別ラベルを仮定しない独立source-disc反復選択と全target-disc比較により、`1339913`
+convolution、最大`1201200` live signatureで199 aggregateを全分離した。`301592258` distinct／
+`10786916138` weighted comparisonにoverlapはなく、941 preserved aggregateとの和でdegree 17の1140
+aggregateは全分離した。
+
+- scientific outcome: `accepted`
+- classification:
+  `the component-safe hierarchical sweep certifies degree-17 external nonresonance`
+- actual resonance outcome: `ruled_out_within_registered_degree_seventeen_scope`
+- minimum outward／exact gap:
+  `0x1.d0afe9cffffffp-25 / 0x1.d0afedf6fcdf8p-25`
+- input／inventory／envelope／sweep／result digest:
+  `8a893e802bc4b93cd2f9be5da7e872b5a79a2e956a1b445386a63cd97aed9aad` /
+  `4806963b4e1cc0ace653881e6102dd055220b95d9d5157f1a4699f71cd85f02c` /
+  `8eebcf226ffb9ad38d0d14f2ae42c4b89cea37c553a1b88d72dfc1ce6a4c5f50` /
+  `e046e2d7675155aba98b97266dda283e4cfd3b3a22698a7e6edbad6e2dcfa9a8` /
+  `f76db860a63b31c3152ddbe8ef6ce1ea6ee58e2d62b3554895bce4a25834b746`
+- runner newline-normalized SHA-256:
+  `0fbf8f9bad5217ff0a61d0b76255d283d2845816321207382d35fc69d3753cc1`
+- artifact newline-normalized SHA-256:
+  `7b439a9d4634f895a0cbd98660da7147237f6cc026531e700597bab04f8fc81a`
+
+certified degreesは2--17および91以降、missing rangeは18--90へ縮んだ。次はQ011apとしてdegree 18の
+aggregate数、signature数、peak live memory、convolution call、wall timeをdesign-onlyに見積もる。
+同じ階層streaming表現を安全に再利用でき、登録資源上限内に収まる場合だけ正式full sweepを事前登録する。
+ここではdegree 18 nonresonanceをまだ主張しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

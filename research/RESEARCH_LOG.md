@@ -7404,6 +7404,59 @@ aggregateは全分離、remaining indexは空集合となった。
 限る。degrees 17--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
 normal attraction、basinは未認証である。次はQ011aoでdegree 17の資源量をdesign-onlyに見積もる。
 
+### Q011ao 実行結果
+
+Q011anまでの19 artifact、runner、98 direct digest、outcome、claim boundaryを再照合し、validity
+`7 / 7`を通過した。Q011uのdegree-17 inventoryは全1140 aggregateで、941 old-modulus nonoverlapと
+199 overlapをexactに再構成した。selected source groupのidentifier数は`8 / 4 / 4 / 8`、modulus
+class数は`4 / 2 / 3 / 6`、external targetは152 identifierだった。
+
+selected source 24 identifierとtarget 128 identifier、計152 identifierをQ011anからbitwiseに再利用した。
+不足するtarget 24 identifierだけをQ011k exact center modulusとQ011ak blockwise transformed-residual
+radiusから追加し、176-identifier final envelopeを構成した。新規24件を含む同じ式をQ011akの204 record
+全件でexact replayした。source discは反復付きで独立に選び、全target discを調べるため、component内部の
+個別固有値ラベルを仮定していない。
+
+元のdegree-17 monomial数は`20467791608`、modulus signatureは`55452003`、Fourier-compatible
+signatureは`49831491`、compatible weighted monomialは`4949877042`だった。238 class-power、
+104672 group signature、101 pair-pool keyを用いるstreaming sweepは`1339913` convolution、最大
+`1201200` live signatureで完走した。全`301592258` distinct／`10786916138` weighted comparisonを
+strictに分離したため、199 direct aggregateは全分離、941 preserved aggregateとの和でdegree 17の
+1140 aggregateは全分離した。
+
+global minimumはaggregate 113、count tuple `[5, 5, 4, 3]`、target block 11の
+`target_below_product` relationで、outward／exact gapは
+`0x1.d0afe9cffffffp-25 / 0x1.d0afedf6fcdf8p-25`だった。
+
+- hypothesis gate: `5 / 5` passed
+- classification:
+  `the component-safe hierarchical sweep certifies degree-17 external nonresonance`
+- actual resonance outcome: `ruled_out_within_registered_degree_seventeen_scope`
+- directly separated overlap inventory／preserved old aggregate: `199 / 941`
+- distinct relation:
+  `product_below_target 135864646 / target_below_product 165727612 / overlap 0`
+- weighted relation:
+  `product_below_target 5313413298 / target_below_product 5473502840 / overlap 0`
+- aggregate／resource／witness digest:
+  `5ac4782b4279a5b36d42dd1e7eb9082d3e427b6bfd1d1ac7570c1d9d54af44ce` /
+  `93fb938a4d2e4fd8a092c9eadec57ea06061aa663267a95dc324d4bf839bf440` /
+  `02b8f2278d327e8284690f28c936fb24e3ef2134b7259d7fe252aba45ba0d336`
+- input／inventory／envelope／sweep／result digest:
+  `8a893e802bc4b93cd2f9be5da7e872b5a79a2e956a1b445386a63cd97aed9aad` /
+  `4806963b4e1cc0ace653881e6102dd055220b95d9d5157f1a4699f71cd85f02c` /
+  `8eebcf226ffb9ad38d0d14f2ae42c4b89cea37c553a1b88d72dfc1ce6a4c5f50` /
+  `e046e2d7675155aba98b97266dda283e4cfd3b3a22698a7e6edbad6e2dcfa9a8` /
+  `f76db860a63b31c3152ddbe8ef6ce1ea6ee58e2d62b3554895bce4a25834b746`
+- runner／artifact newline-normalized SHA-256:
+  `0fbf8f9bad5217ff0a61d0b76255d283d2845816321207382d35fc69d3753cc1` /
+  `7b439a9d4634f895a0cbd98660da7147237f6cc026531e700597bab04f8fc81a`
+
+従ってcertified degreesは2--17、tail-certifiedは91以降、missing rangeはdegrees 18--90である。
+本certificateは固定17² repaired exact map、fixed conservation leaf、登録degree-17 external relationに
+限る。degrees 18--90、all-order nonresonance、Q011t graphとのhigher-order一致、higher graph smoothness、
+SSM existence／uniqueness、normal attraction、basinは未認証である。次はQ011apでdegree 18の資源量を
+design-onlyに見積もる。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7615,6 +7668,8 @@ normal attraction、basinは未認証である。次はQ011aoでdegree 17の資�
 [`artifacts/q011am_degree16_hybrid_sweep.json`](artifacts/q011am_degree16_hybrid_sweep.json)
 
 [`artifacts/q011an_active_block_structured_rows.json`](artifacts/q011an_active_block_structured_rows.json)
+
+[`artifacts/q011ao_degree17_hierarchical_sweep.json`](artifacts/q011ao_degree17_hierarchical_sweep.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
