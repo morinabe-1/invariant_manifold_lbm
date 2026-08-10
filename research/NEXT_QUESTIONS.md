@@ -21061,6 +21061,33 @@ GoならQ011avで入力、全321 aggregate、全220 target、outward arithmetic�
 degree-20 full sweepを事前登録する。Stopなら最初のfailed resource dimensionだけを改善し、inconclusiveなら
 最初のvalidity failureだけを修正する。
 
+### Q011au 封印結果
+
+全6 validity gateと、Q011apから変更しなかった全7 resource gateが通過した。degree 20の1771 aggregateは
+1450 old nonoverlapと321 overlapへ分かれ、Q011arの184 discを全てbitwiseに保存して60 targetだけを追加した
+244-disc inventoryを得た。Q011asの6 source hullと全220 target個別比較semanticsも保存した。
+
+- modulus signature／peak／two-array bytes: `10287 / 110 / 1760`
+- convolution／distinct／weighted comparison upper: `5211 / 109992 / 2182943190492`
+- original／maximum aggregate monomial: `184398553391 / 4122518400`
+- relation evaluation count: `0`
+- resource record digest:
+  `497fd8296c55360e944004c86b5bae12b698dc44f5f63c8253f4601998ff3421`
+- input／inventory／envelope／resource／result digest:
+  `1da477970508fec8465b8982c2465a837ae686cce262f5ee3aedbd431bdc75e6` /
+  `3ff79ea56b49a1d16886582c7d661edbfed49474fee6300c51133b9af7b2f47b` /
+  `64ead411e78c0993380f7ab3d05772adc4b8658d2e905a4fce3cc744dc6c87c7` /
+  `eaf79c72235430d1996f4318b2815929f57267ae8f3867da1bc2f06a9a0c473e` /
+  `bac8c480dd06fe03971aad75f6866210b13c109fe2ef6aece4cc86fecfe04c7b`
+- runner／artifact newline-normalized SHA-256:
+  `0d393a9a04ac034f4e714b6dee2b71d817cdb3605feeaebdad65bfcbe7098032` /
+  `029229b9e02584ac2000e50aab8a7ac36a19e16099effb97223c04f79d44327a`
+
+resource decisionは`go_for_degree_twenty_coalesced_preregistration`、scientific／actual resonance outcomeは
+`not_evaluated / not_evaluated`である。certified degreesは2--19および91以降、missing rangeは20--90の
+ままである。次はQ011avで、Q011auの固定inventory、全321 aggregate、全220 target、exact Fourier
+multiplicity、outward arithmetic、success／rejection条件を封印してからdegree-20 relationを評価する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

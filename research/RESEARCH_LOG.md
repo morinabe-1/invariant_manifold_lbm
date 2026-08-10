@@ -7659,6 +7659,40 @@ rangeは20--90へ縮んだ。本certificateは固定17² repaired exact map、fi
 external relationだけに限る。degrees 20--90、all-order nonresonance、higher smoothness、SSM existence／
 uniqueness、normal attraction、basinは未認証である。次はQ011auでdegree 20をdesign-onlyに資源監査する。
 
+### Q011au 実行結果
+
+Q011atまでの25 artifact、runner、126 direct digest、accepted outcome、claim boundaryを再照合し、6 validity
+gateを全て通過した。degree 20の全1771 aggregateを1450 old-modulus nonoverlapと321 overlapへexactに
+分け、19 external componentから全220 target identifierを復元した。
+
+Q011arの184 final disc recordは全件bitwiseに再利用され、60 targetだけをQ011ak blockwise式から追加した。
+final inventoryはselected 24とtarget 220の計244 recordで、Q011asの6 source hullとmembershipもbitwiseに
+保存された。target merge、共役foldingは用いていない。
+
+relationを評価しない組合せcountは、`10287` modulus signature、最大`110` live signature、`5211` exact
+convolution、2 product-bound array `1760` bytesを与えた。original monomialは`184398553391`、
+distinct／weighted comparison upperは`109992 / 2182943190492`だった。
+
+- projected wall／2倍safety seconds: `0.05096868247528642 / 0.10193736495057285`
+- 1.5倍tracemalloc／process-memory safety bytes: `81476 / 224852`
+- resource record digest:
+  `497fd8296c55360e944004c86b5bae12b698dc44f5f63c8253f4601998ff3421`
+- scientific／actual degree-20 resonance outcome: `not_evaluated / not_evaluated`
+- input／inventory／envelope／resource／result digest:
+  `1da477970508fec8465b8982c2465a837ae686cce262f5ee3aedbd431bdc75e6` /
+  `3ff79ea56b49a1d16886582c7d661edbfed49474fee6300c51133b9af7b2f47b` /
+  `64ead411e78c0993380f7ab3d05772adc4b8658d2e905a4fce3cc744dc6c87c7` /
+  `eaf79c72235430d1996f4318b2815929f57267ae8f3867da1bc2f06a9a0c473e` /
+  `bac8c480dd06fe03971aad75f6866210b13c109fe2ef6aece4cc86fecfe04c7b`
+- runner／artifact newline-normalized SHA-256:
+  `0d393a9a04ac034f4e714b6dee2b71d817cdb3605feeaebdad65bfcbe7098032` /
+  `029229b9e02584ac2000e50aab8a7ac36a19e16099effb97223c04f79d44327a`
+
+Q011apから変更しなかった7 absolute resource limitを全て通過し、resource decisionは
+`go_for_degree_twenty_coalesced_preregistration`となった。これはdegree-20 full sweepの資源適格性だけを示す。
+degree-20 relation、actual resonance、minimum gapは未評価なので、certified degreesは2--19、tail-certifiedは
+91以降、missing rangeは20--90のままである。次はQ011av full sweepの成功・棄却条件を事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7882,6 +7916,8 @@ uniqueness、normal attraction、basinは未認証である。次はQ011auでdeg
 [`artifacts/q011as_block_support_resource_redesign.json`](artifacts/q011as_block_support_resource_redesign.json)
 
 [`artifacts/q011at_degree19_coalesced_sweep.json`](artifacts/q011at_degree19_coalesced_sweep.json)
+
+[`artifacts/q011au_degree20_resource_estimate.json`](artifacts/q011au_degree20_resource_estimate.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
