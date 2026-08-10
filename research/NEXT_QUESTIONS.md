@@ -20905,6 +20905,42 @@ D3Q27を認証しない。
 acceptedなら次はQ011auでdegree 20をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011at 封印結果
+
+全7 validity gateと全5 hypothesis gateが通過した。Q011asまでの24 artifact／122 direct digest、
+Q011ar inventory、Q011asの6 source hullとdegree-18 regression、全160 target、登録resource identityは全て
+再現した。degree 19の285 direct aggregateを正式走査し、1255 old-modulus aggregateと合わせて全1540
+aggregateをstrictに分離した。
+
+- original monomial／modulus signature／peak: `107797786672 / 8056 / 90`
+- convolution／distinct／weighted comparison: `3877 / 65684 / 68598231900`
+- distinct product-below／target-below／overlap: `21836 / 43848 / 0`
+- weighted product-below／target-below／overlap: `28355744700 / 40242487200 / 0`
+- minimum outward／exact gap:
+  `0x1.ff396c4ffffffp-23 / 0x1.ff396d82ff905p-23`
+- minimum witness digest:
+  `bd68862054dca834add7da9bc1faea2152e34a33ccccb59b2c01903249cdc4bd`
+- aggregate／bound／coefficient／classification digest:
+  `5de5e2a3c130dd494cd36def553daef0b711d8171166935d3fb8a23fb4d29d16` /
+  `8bda81b92335e77a975e6cdb0ac803909f25025bd5fdd3272069db207688b4b2` /
+  `0a4113554b5dc800b73751cf2afe6d9df4f9083658d384f30b2ef3ab81ff9463` /
+  `0d23600e95f0b0c8d73a0ccf345cc5507247ee39f2e3ed35ff9141a7e4d9be7b`
+- input／preparation／sweep／result digest:
+  `ded7430633a2c2fbbd95c4e9342ad1f3fcaeb4afdc8bf14dda7dc3d09f9e177b` /
+  `3525d4893b78d8ba0c6d5cf979b3e15f47ade979c3835c051af5489f339de47a` /
+  `4b93500bfcfdb90e52f0f807c2d2ceb1b44d61f11cbbc4208e84b111dc3b4352` /
+  `3d148b680a877b06c30301c7c2f88f0bae696bb6128363daa8e783e394998ace`
+- runner／artifact newline-normalized SHA-256:
+  `e9ab6411173392658d19592687677b6bc77d645ed6850b5675abbf89e1fc2212` /
+  `21a93ebdbccb8a1ebebbe75622296088b18fd384c80922479029652ae6f474fb`
+
+classificationは
+`the block-support-coalesced component-safe sweep certifies degree-19 external nonresonance`、scientific outcomeは
+`accepted`、actual resonance outcomeは`ruled_out_within_registered_degree_nineteen_scope`である。
+certified degreesは2--19および91以降、missing rangeは20--90へ縮んだ。主張は固定17² repaired exact map、
+fixed conservation leaf、登録degree-19 external relationに限定する。次はQ011auとして、relationを評価せず、
+同じcoalesced semanticsをdegree 20へ拡張した資源量だけを事前登録して監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
