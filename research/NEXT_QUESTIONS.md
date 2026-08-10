@@ -19394,6 +19394,45 @@ multiplicity、outward-rounded dyadic product enclosureに限る。block-0 exter
 nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、
 D3Q27を認証しない。
 
+### Q011al 実行結果
+
+Q011akまでの16 artifact、runner、83 direct digestを再照合し、validity `8 / 8`を通過した。
+block-0 exact familyとQ011k eigenbasis／inverseから150本のrow-specific radiusを構成し、384-bit replayの
+全radiusが256-bit primaryへstrictに含まれることを確認した。primary maximumはcenter 34の
+`0x1.331a87c57c090p-31`で、Q011y block-common radiusにも含まれた。
+
+150 eigendiscは73 componentとなり、selected／external mixed componentは0だった。selected componentは
+`[144,146] / [145,147] / [148,149]`で、exactly 6個のselected eigenvalueを覆う。204 identifierのうち
+この6件だけを精密化したhybrid envelopeはQ011ak envelopeへ含まれ、modulus class `4 / 2 / 3 / 6`も
+保存した。
+
+登録index 99の141120 distinct／3465728 weighted comparisonは全件`product_below_target`となり、overlapは
+0だった。minimum outward／exact gapは
+`0x1.2de9e9dffffffp-26 / 0x1.2de9f1c1d911ep-26`である。
+
+- hypothesis gate: `6 / 6` passed
+- registered obstruction clearance: `accepted`
+- actual complex resonance outcome: `not_established`
+- family／primary-row／replay-row／hybrid／clearance-record digest:
+  `8271e94081187efb1b864e43cd2425255217e3ac77238804b839bb44dd26b491` /
+  `f298ebda4edf3f47226c6a3dc5c5c37d7e8e8da82f92c91e44af607e495db1f6` /
+  `1eb0794a1063c488cd86eea08a6a8a05711c3cd11a82f063b384e242bde93fb9` /
+  `a7d56141743bc62f3684d54975ad7d74f6274b3a3da7078d6ce1ce7a31f8092e` /
+  `93d6bb29d30ac44364e021f84b3f8b82ce98c68a36106d9c55dc59f915a86ac6`
+- input／family-section／row-section／clearance-section／result digest:
+  `97bfc790c2a761d63678b3396e2f1f6ba1b28be1605d0e0b9dae6b63f2f57a93` /
+  `79f442ff7bbb874c79f7692b58f3986a34a6df0f0ee9ffc618fa21608ef6e41c` /
+  `6d4a96cb71535048f34e6a3e1cb9c1afe895cc87558bb98cb791288336aa5816` /
+  `708e866d675f2328cca388191c35062f1dd0f7dbee46aa7355976bb31461db31` /
+  `9befdd9e0b81914e1f18c7b7aff772471b17d1454d81725f44d3736625f8c7c1`
+- runner／artifact newline-normalized SHA-256:
+  `72211072fdc657ba1931dda983b167d2ac44a8f71e18aa016b22ea3f7a7cedf2` /
+  `b0fe7be52da885e28b9e29d580a187d232ef6fe4c233be2db3cf7a18974420dc`
+
+従って登録obstructionは解消したが、degree-16 certificateにはまだ昇格しない。certified degreesは
+2--15および91以降、missing rangeは16--90のままである。次はQ011amで同じhybrid envelopeを
+degree 16の154 overlap aggregate全体へ適用する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

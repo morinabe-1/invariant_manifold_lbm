@@ -7274,6 +7274,50 @@ degree-16 nonresonance、degrees 17--90、all-order result、higher smoothness�
 normal attraction、basinは未認証である。次はQ011alでblock-0-containing fiberのidentifier／eigenpair-specific
 eigendisc精密化を監査する。
 
+### Q011al 実行結果
+
+Q011akまでの16 artifact、runner、83 direct digest、outcome、claim boundaryとsourceを再照合し、validity
+`8 / 8`を通過した。block-0 exact familyとQ011kの決定的eigenbasis／inverseから150本のrow-specific
+Gershgorin radiusを構成した。256-bit primaryと384-bit replayはいずれも禁止MPFR flagなしで完了し、
+replayの全150 radiusが対応するprimary radiusへstrictに含まれた。primary maximumはcenter 34の
+`0x1.331a87c57c090p-31`で、Q011y common radius `0x1.5cbff506e79d2p-26`にも含まれた。
+
+150 eigendiscは73 componentを作り、selected／externalを混ぜるcomponentは0だった。selected center
+144--149は`[144,146] / [145,147] / [148,149]`の3 componentに分かれ、Gershgorin component theoremで
+exactly 6 selected eigenvalueを覆う。selected／external minimum coordinate-gap lower boundはcenter
+`149 / 143`の`0x1.900710b9c775fp-6`だった。
+
+Q011akの204 identifier中、selected block-0 6件だけをrow radiusへ置き換え、残る198件を変更しない
+hybrid envelopeを構成した。全refined intervalはQ011ak intervalへ含まれ、modulus class
+`4 / 2 / 3 / 6`とmembershipも保存された。登録index 99の35280 signature、1732864 compatible monomial、
+3465728 weighted／141120 distinct comparisonを再評価すると、全件が`product_below_target`へ分離し、
+overlapは0だった。minimum outward gapは`0x1.2de9e9dffffffp-26`、canonical exact gapは
+`0x1.2de9f1c1d911ep-26`だった。
+
+- hypothesis gate: `6 / 6` passed
+- registered obstruction clearance: `accepted`
+- actual complex resonance outcome: `not_established`
+- family／primary-row／replay-row／hybrid／clearance-record digest:
+  `8271e94081187efb1b864e43cd2425255217e3ac77238804b839bb44dd26b491` /
+  `f298ebda4edf3f47226c6a3dc5c5c37d7e8e8da82f92c91e44af607e495db1f6` /
+  `1eb0794a1063c488cd86eea08a6a8a05711c3cd11a82f063b384e242bde93fb9` /
+  `a7d56141743bc62f3684d54975ad7d74f6274b3a3da7078d6ce1ce7a31f8092e` /
+  `93d6bb29d30ac44364e021f84b3f8b82ce98c68a36106d9c55dc59f915a86ac6`
+- input／family-section／row-section／clearance-section／result digest:
+  `97bfc790c2a761d63678b3396e2f1f6ba1b28be1605d0e0b9dae6b63f2f57a93` /
+  `79f442ff7bbb874c79f7692b58f3986a34a6df0f0ee9ffc618fa21608ef6e41c` /
+  `6d4a96cb71535048f34e6a3e1cb9c1afe895cc87558bb98cb791288336aa5816` /
+  `708e866d675f2328cca388191c35062f1dd0f7dbee46aa7355976bb31461db31` /
+  `9befdd9e0b81914e1f18c7b7aff772471b17d1454d81725f44d3736625f8c7c1`
+- runner／artifact newline-normalized SHA-256:
+  `72211072fdc657ba1931dda983b167d2ac44a8f71e18aa016b22ea3f7a7cedf2` /
+  `b0fe7be52da885e28b9e29d580a187d232ef6fe4c233be2db3cf7a18974420dc`
+
+従ってQ011akの登録obstructionは厳密に解消した。ただし本certificateはindex 99だけに限られ、残る153
+aggregate、degree-16 external nonresonance、degrees 17--90、higher graph smoothness、SSM existence／
+uniqueness、normal attraction、basinは未認証である。certified degreesは2--15および91以降、missing
+rangeは16--90のままとする。次はQ011amでhybrid envelopeをdegree-16 overlap inventory全体へ適用する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7479,6 +7523,8 @@ eigendisc精密化を監査する。
 [`artifacts/q011aj_degree16_uniform_obstruction.json`](artifacts/q011aj_degree16_uniform_obstruction.json)
 
 [`artifacts/q011ak_degree16_blockwise_obstruction.json`](artifacts/q011ak_degree16_blockwise_obstruction.json)
+
+[`artifacts/q011al_block_zero_structured_rows.json`](artifacts/q011al_block_zero_structured_rows.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
