@@ -19654,8 +19654,8 @@ multiplicityが0なので、block 0単独の追加精密化は行わない。
 
 Q011amで唯一残ったaggregate 55に対し、実際に比較へ現れる識別子だけをblock-specific
 structured-row eigendiscへ置換すると、残る24960 distinct／388480 weighted interval overlapを全て
-strict separationへ変えられるか。さらに、新intervalがQ011am intervalに含まれることを使い、Q011amで
-既に分離した153 aggregateとQ011uの815 old-modulus separationを保存して、degree-16 external
+strict separationへ変えられるか。さらに、component-safe final envelopeで154 aggregateを直接再走査し、
+Q011ak containment chainで保存される815 old-modulus separationと合わせて、degree-16 external
 nonresonanceを認証できるか。
 
 Q011amのcanonical witnessだけから始めたdesign-only pilotでは、block 1／13／16の20 identifierを
@@ -19667,8 +19667,31 @@ identifierへ固定する。
 - block 1／16: center `142,143,144,145,148,149,150,151`
 - block 4／13: center `114,115,116,117`
 
-representative blockは1と4、共役transport先はそれぞれ16と13とする。これ以外の180 identifierは
-Q011am hybrid intervalを変更しない。block 0は追加精密化しない。
+representative blockは1と4、共役transport先はそれぞれ16と13とする。active-block row計算はこの24
+identifierだけに行い、block 0のrow計算は追加しない。component-label補正後の最終的な変更集合は次節で
+固定する。
+
+### 正式実行前のcomponent-label補正
+
+実装前のproof auditで、重なったGershgorin discのcomponent内では、個別固有値と個別discのラベルを
+一意に対応させられないことを確認した。isolated \(k\)-disc componentがexactly \(k\) eigenvalueを含む
+ことは言えるが、各eigenvalueが同じindexのdiscへ入るとは限らない。従って、component内で異なる
+row radiusを各identifierへ個別割当する初期事前登録は、安全なenclosureとして不十分である。
+
+正式certificateを実行する前に、次の補正を事前登録する。
+
+1. 各active componentに属する全identifierへ、そのcomponentの全row discをmodulus軸へ射影した
+   common hullを割り当てる。singletonでも同じ規則を用いる。
+2. Q011alのblock-0 selected component `[144,146] / [145,147] / [148,149]`にも同じcommon-hull
+   relabellingを適用する。これは新しいrow計算ではなく、Q011alの6 row discのlabel-safeな包絡である。
+3. block 0の6 intervalは対応するQ011am個別intervalより広がり得るため、「Q011amで分離した153件は
+   pointwise containmentだけで保存される」というbridgeは用いない。component-safe final envelopeで
+   154件を全て直接再走査する。
+4. 24 active-block intervalはQ011am intervalに含まれ、block-0 relabel hullを含む全204 final intervalは
+   Q011ak blockwise intervalに含まれることを要求する。従って815 old-modulus separationの保存には
+   Q011ak containment chainを用いる。
+
+以下のprotocol、digest、gateはこのcomponent-safe補正後の値であり、初期の個別row-label値を置き換える。
 
 登録classificationは
 
@@ -19696,14 +19719,14 @@ Q011amまでの18 artifact、runner、93 direct digest、outcome、claim boundar
 ### exact-family structured-row protocol
 
 Q011kのfixed root enclosureからblock 1と4のexact interval matrix familyを再構成し、同じbinary64
-proposal、canonical eigenbasis (V)、inverse proposal (W)、point residual、inverse defectを再現する。
-各row (j)、column (k)について、family entryとproposal entryのcomplex rectangle差の
+proposal、canonical eigenbasis \(V\)、inverse proposal \(W\)、point residual、inverse defectを再現する。
+各row \(j\)、column \(k\)について、family entryとproposal entryのcomplex rectangle差の
 
 \[
 \Delta_{jk}=|\Re(E_{jk})|_{\rm up}+|\Im(E_{jk})|_{\rm up}
 \]
 
-をexact Fractionで作る。各eigenvalue row (i)のpre-Neumann boundを
+をexact Fractionで作る。各eigenvalue row \(i\)のpre-Neumann boundを
 
 \[
 p_i=\|W_{i,:}\|_1\,\varepsilon_{\rm point}
@@ -19762,13 +19785,16 @@ discを一つも含まず、Gershgorin separation theoremにより各active unio
 transported centerとrepresentative centerがcomplex conjugateであり、24 active modulus intervalも対応する
 共役block間でexactly equalであることを要求する。
 
-### 24-identifier hybrid envelope
+### component-safe hybrid envelope
 
-24 active identifierだけをstructured-row radiusへ置換する。全24 refined intervalは対応Q011am intervalに
-含まれ、残る180 intervalはbitwise同一でなければならない。204-record／24-active-record digestを
+24 active identifierをactive-component common hullへ置換し、Q011al block-0の6 identifierを既存row-disc
+component common hullへrelabellingする。残る174 intervalはQ011amとbitwise同一でなければならない。
+全24 active intervalはQ011am intervalに含まれ、全204 final intervalはQ011ak blockwise intervalに
+含まれなければならない。204-record／24-active-record／6-relabel-record digestを
 
-- `5a658d1bab3ab8bdd774272befd6abed21a7269650ae29359422be24f05e1003`
-- `73e5fbffd3c96ca02db693a456875f6b0c4361aaa11aa73d1618d864c63f8cd2`
+- `53f84832595e7fd46c88778c35389bf2ce530d3b5e2d37a5f72deeb74ad65ad9`
+- `18703d817246c705fbfdc6b195ba306f9b06c879f5642f793fe834b97c907acc`
+- `7fc8e285c0f737b0f154ee854c08b77976ad7d589c7c65e5d3b5ed763aa67fee`
 
 とする。modulus class countは`4 / 2 / 3 / 6`、membership digestはQ011amと同じ
 `269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c`とし、各class内intervalの一致を
@@ -19787,24 +19813,46 @@ group pool sizeは`20 / 13 / 1 / 6`、left／right pool sizeは`260 / 6`とす�
 
 とする。aggregate／bound／coefficient／classification digestは
 
-- `ad536cf5b59874b5a925cfed4f46a5c849e33dc802a22792866babcb0773dc0c`
-- `9236fcf7ce80c356fb033cf52f9c12ec91596a12f02313362a43e4f3bb0adb71`
+- `37d0eddaa8e56a7e4424a8d687fc2d2323c5a10afa1794afc1a14e42fdd7cfc7`
+- `4f7d8b87a62834291441090752638a31e12193459786eb7d9691b91d19b800a2`
 - `30c3ce2f5dceb8c466fb851a948fd1f39f0e2794be7b7b5d190e3c3d9b1f0487`
 - `fbbd943591a15c93ce4f9ba550a4e08deaa95fde4ecde6f496b18f289793909e`
 
 とする。global minimum separated witnessはtarget `block=15;center=112`、selected-type count
-`[3,12,0,1]`、left／right `247 / 3`、wave multiplicity 1、relation `product_below_target`、source
-`(block=1;center=142)^3 × (block=1;center=151)^12 × block=0;center=146`とする。outward／exact gapは
-`0x1.3a6e4ffffffffp-33 / 0x1.3a73831f778dap-33`、witness digestは
-`6b05296604d9e2826ae21352d6db43c71cbbbbb34d57c61b8b84a594117d2123`とする。
+`[3,12,0,1]`、left／right `248 / 3`、wave multiplicity 1、relation `product_below_target`、source
+`(block=1;center=142)^3 × block=1;center=150 × (block=1;center=151)^11 ×`
+`block=0;center=146`とする。outward／exact gapは
+`0x1.3a6e2ffffffffp-33 / 0x1.3a73831f778dap-33`、witness digestは
+`203d5b2e200f65fb27daed6053f6b44f5ec5bc6d0bab3870a3f20f0f8609d9cb`とする。
 
-24 refined intervalはQ011am intervalに含まれるため、Q011amで既に全分離した153 aggregateとQ011uの
-815 old-modulus aggregateは再びoverlapへ戻らない。このmonotone-containment bridgeとaggregate 55の
-直接再計算を合わせ、degree 16の969 aggregateを全分離とする。全154 overlap-inventory aggregateを
-refined envelopeで数え直したrelation総数は次と登録する。
+component-safe final envelopeで154 overlap-inventory aggregateを全て直接再走査する。登録resource値は
+
+- class-power record: `228`、digest
+  `485cae3e7851912f0eb974ff4f061847c8b8cc085eb1d49be4e62e3b6b6e6c0d`
+- group-signature record: `77927`、digest
+  `995779c85370afe55b2e44fc1c6dd952410d32d0eecf676959bc99f5a60f31ff`
+- pair-pool record: `85`、digest
+  `af927b867976521fd1827e509821bc03a399d52f8fce3f32642b1ebccea8773c`
+- convolution call／maximum crude `int64` bound: `973967 / 1734`
+- peak live signature／maximum coefficient／crude Fourier bound: `900900 / 1142 / 8330`
+
+とする。154件全てをfully separated、remaining indexを空集合とし、relation総数を次と登録する。
 
 - distinct: `product_below_target 72338736 / target_below_product 64553144 / overlap 0`
 - weighted: `product_below_target 1901835848 / target_below_product 1620138564 / overlap 0`
+
+original monomial `7593735887`、modulus signature `27206049`、compatible signature
+`23173623`、compatible monomial `1649206077`、distinct comparison `136891880`、weighted comparison
+`3521974412`はQ011amと同じとする。full-sweep aggregate／bound／coefficient／classification digestは
+
+- `d4982c1aac88d02db6adf03796280739e9505c66d2e9ac278034506274a836e1`
+- `2fb019ed012cdd18fe43e8be54d4707fde95cca8d30f3a5d532e88787035c223`
+- `ea542f6e28fef27ed8da24bcb02af28eab59190dac4ba41c40bf8a8c7682edd9`
+- `ec967923474b9d434592207247c642ce798dd942b5f8221573476f3f062bec39`
+
+とする。全204 final intervalがQ011ak blockwise intervalに含まれるため、Q011uの815 old-modulus
+separationも保存される。従って815 old-separatedと154 direct-separatedを合わせ、degree 16の969
+aggregateを全分離とする。
 
 ### validity gate
 
@@ -19813,19 +19861,22 @@ refined envelopeで数え直したrelation総数は次と登録する。
 3. 256／384-bit RoundUp、各23409 family entry、各46818 basis absolute、153 row digest、全row replay
    strict containment、禁止MPFR flag非発生が再現する。
 4. representative／transportedのcomponent、active membership、mixed count 0、positive external gapが再現する。
-5. 共役閉な24 identifier、204 hybrid record、Q011am containment、共役一致、class membershipが再現する。
-6. aggregate 55のpool、monomial、comparison、relation、4 matrix digest、positive minimum witnessが再現する。
-7. Q011amの153 separationとQ011uの815 separationを保存するcontainment bridge、および全154 relation総数が
-   再現する。
+5. 共役閉な24 active identifier、6 block-0 component relabel、204 final record、Q011am／Q011ak containment、
+   共役一致、class membershipが再現する。
+6. aggregate 55のpool、monomial、comparison、relation、4 local matrix digest、positive minimum witnessが再現する。
+7. component-safe envelopeで154 aggregateを欠落・重複なく直接走査し、resource値、全relation総数、
+   4 full-sweep digest、remaining index空集合が再現する。
 8. strict JSON、section digest、runner provenanceが再現する。
 
 ### hypothesis gateと停止規則
 
 1. exact-family structured-row formulaが各representative transformed-matrix row sumを上から囲む。
 2. active Gershgorin componentはinactive componentから分離し、24 active eigenvalueを過不足なく含む。
-3. 24 refined intervalはQ011am intervalに含まれ、共役transportとmodulus classを保存する。
+3. component common hullがラベル置換を安全に包み、24 active intervalはQ011amに、全204 final intervalは
+   Q011akに含まれ、共役transportとmodulus classを保存する。
 4. aggregate 55の全37440 distinct／602720 weighted comparisonがstrictに分離する。
-5. Q011amの153とQ011uの815 separationがcontainmentで保存され、degree-16の969 aggregateが全分離する。
+5. component-safe full sweepの154 separationとQ011uの815 separationが成立し、degree-16の969 aggregateが
+   全分離する。
 6. minimum outward gapとcanonical exact gapがともにstrictly positiveである。
 7. degree-16 external nonresonanceだけを認証し、degrees 17--90やall-order resultへ外挿しない。
 
@@ -19840,9 +19891,10 @@ Q011amの階層exact-multiplicity表現をそのまま再利用できる場合�
 ### 主張境界
 
 本gateは固定17² repaired exact map、fixed conservation leaf、degree 16、Q011uの969 external aggregate、
-Q011am hybrid envelopeを含む共役閉24-identifier structured-row refinement、exact x-Fourier multiplicity、
-hierarchical outward-rounded dyadic product enclosureに限る。degree-16 external resonanceはこの登録範囲で
-ruled outするが、degrees 17--90、all-order nonresonance、Q011t graphとのhigher-order一致、higher graph
+Q011al block-0 component relabellingと共役閉24-identifier active-block component-hull refinementを含む
+component-safe envelope、exact x-Fourier multiplicity、hierarchical outward-rounded dyadic product
+enclosureに限る。degree-16 external resonanceはこの登録範囲でruled outするが、degrees 17--90、
+all-order nonresonance、Q011t graphとのhigher-order一致、higher graph
 smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
 ## Q012: D3Q27 へ移してよいか
