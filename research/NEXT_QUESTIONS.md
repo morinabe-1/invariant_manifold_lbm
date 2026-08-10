@@ -20751,6 +20751,38 @@ GoならQ011atで、merged hull、全285 aggregate、全160 target、exact Fouri
 success／rejection条件を固定してからdegree-19 full sweepを正式実行する。Stopなら最初のresource failure、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011as 封印結果
+
+全5 validity gateと全7 resource feasibility gateが通過し、resource decisionは
+`go_for_degree_nineteen_coalesced_preregistration`となった。support-keyだけでold class `[4,2,3,6]`を
+6 merged hull class `[1,1,2,2]`へcoalesceし、全24 selected discを包含した。target 160 identifierは変更せず、
+degree-19 relationは一件も評価していない。
+
+既知degree 18の252 direct aggregateは全て再分離し、overlapは0だった。degree-19 design countは次となり、
+全固定limit内に入った。
+
+- degree-19 modulus signature／limit: `8056 / 125000000`
+- peak live signature／limit: `90 / 2500000`
+- two product array bytes／limit: `1440 / 41943040`
+- exact convolution／limit: `3877 / 2500000`
+- distinct comparison upper／limit: `80256 / 1100000000`
+- variable wall-work double safety／limit: `0.07437891084327201 / 1200`
+- variable process-memory safety／limit: `183970 / 6442450944`
+- scientific／actual degree-19 resonance outcome: `not_evaluated / not_evaluated`
+- input／coalescing／regression／resource／result digest:
+  `21e921cd07e0ec7434ee6705c40b94d10eac85387eb913c306b5478c42fadb34` /
+  `15e31e76eb2453d5650a07e545f4c03827c92fd6126c40593f7d7844b2bbf3de` /
+  `fdd309bda8dd1d532ef850ef4c7f8293ec85b8f08d8b7ab0cbfa0a3131aa6224` /
+  `a94054a2e1d677983b75bd67e852d7ba3833a023489635e61c4a60da6a7317bc` /
+  `cd16031617e20b95ae141fa22d878cd2b6de243d14db26bf69ee5475ca6fc892`
+- runner／artifact newline-normalized SHA-256:
+  `e01c7a44f21750e02a904aa219e0d6bcd9662f35500a14dc46114963ef3de952` /
+  `b54088036e0be6bc354f457cb5acf4835afb53cae6737716cd5d8ffb5e5a5810`
+
+certified degreesは2--18および91以降、missing rangeは19--90のままである。次はQ011atでmerged hull、
+285 aggregate、160 target、exact Fourier multiplicity、outward interval、success／rejection条件を固定し、
+その後に初めてdegree-19 full sweepを実行する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

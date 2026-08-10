@@ -7577,6 +7577,48 @@ modulus signature、peak live signature、2 product array、distinct comparison�
 resonance、minimum gapは未評価である。certified degreesは2--18、tail-certifiedは91以降、missing
 rangeは19--90のままである。次はQ011asでdiscとrelation semanticsを保存するresource redesignを行う。
 
+### Q011as 実行結果
+
+Q011arまでの23 artifact、runner、117 direct digest、resource Stop、claim boundaryを再照合し、validity
+`5 / 5`を通過した。old selected class `[4,2,3,6]`を、各classのwave-block多重集合だけで
+`[1,1,2,2]`へcoalesceした。6 exact rational hullは全24 selected discを包含し、target lookupはbitwiseに
+不変だった。hull-width inflationの最大値は`1.195361864035176`である。
+
+既知degree 18の252 direct aggregateをmerged hullで独立再走査し、252全てをstrictに分離した。original
+monomial `50931347136`とweighted comparison `29855319268`は保存され、modulus／compatible signatureは
+`6075 / 5624`、distinct comparisonは`43852`となった。weighted relation countはQ011aqと同じ
+`13265995204 / 16589324064 / 0`、distinct relationは`16052 / 27800 / 0`だった。
+
+degree 19はrelationを評価せず資源だけを再計数した。modulus signature／peak live signatureは
+`8056 / 90`、two product arrayは`1440` bytes、convolutionは`3877`、distinct-comparison upperは
+`80256`だった。Q011apから維持した7 absolute limitを全て通過し、resource decisionは
+`go_for_degree_nineteen_coalesced_preregistration`となった。
+
+- hull／membership digest:
+  `f54f1a1f70d953b4c1255e9f9627d7ca43229a3d1e26c11b716d23fd56ea1eb6` /
+  `975ebf1077279cbfcc6fd46e5a34fcd67260ff953a718eb51985794314fcd8b8`
+- degree-18 aggregate／bound／coefficient／classification digest:
+  `4271488242a182334f98b4feb09e1412713188a4d33eeec2b96affab872fd25f` /
+  `74fc0328e9b81323cbf198cf8f28e4b537061f1280c938e8dc0242d51caecd61` /
+  `cbfce79b2fa3a8e7122b0d78d79e30a8546dd0b5fb7a9eb04eb35b174eccfdd6` /
+  `dbe334676778f799ac428cffd40ab16dc1a510e311d9f8d20725035edb4beded`
+- degree-18 minimum outward／exact gap:
+  `0x1.39c56bbbfffffp-23 / 0x1.39c56ce0be4a4p-23`
+- scientific／actual degree-19 resonance outcome: `not_evaluated / not_evaluated`
+- input／coalescing／regression／resource／result digest:
+  `21e921cd07e0ec7434ee6705c40b94d10eac85387eb913c306b5478c42fadb34` /
+  `15e31e76eb2453d5650a07e545f4c03827c92fd6126c40593f7d7844b2bbf3de` /
+  `fdd309bda8dd1d532ef850ef4c7f8293ec85b8f08d8b7ab0cbfa0a3131aa6224` /
+  `a94054a2e1d677983b75bd67e852d7ba3833a023489635e61c4a60da6a7317bc` /
+  `cd16031617e20b95ae141fa22d878cd2b6de243d14db26bf69ee5475ca6fc892`
+- runner／artifact newline-normalized SHA-256:
+  `e01c7a44f21750e02a904aa219e0d6bcd9662f35500a14dc46114963ef3de952` /
+  `b54088036e0be6bc354f457cb5acf4835afb53cae6737716cd5d8ffb5e5a5810`
+
+Q011asは既知degree-18 certificateとdegree-19資源適格性だけを示す。degree-19 relation、actual resonance、
+minimum gapは未評価なので、certified degreesは2--18、tail-certifiedは91以降、missing rangeは19--90の
+ままである。次はQ011at full sweepの成功・棄却条件を事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7796,6 +7838,8 @@ rangeは19--90のままである。次はQ011asでdiscとrelation semanticsを�
 [`artifacts/q011aq_degree18_hierarchical_sweep.json`](artifacts/q011aq_degree18_hierarchical_sweep.json)
 
 [`artifacts/q011ar_degree19_resource_estimate.json`](artifacts/q011ar_degree19_resource_estimate.json)
+
+[`artifacts/q011as_block_support_resource_redesign.json`](artifacts/q011as_block_support_resource_redesign.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

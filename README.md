@@ -3896,6 +3896,45 @@ convolution countだけが通過し、残る6項目が超過した。このた�
 degreesは2--18および91以降、missing rangeは19--90のままである。次はQ011asでdiscとrelation semanticsを
 変えず、peak memoryとcomparison workloadを固定上限内へ下げるrepresentation redesignを事前登録する。
 
+### Q011as block-support hull coalescing resource Go
+
+Q011arまでの23 artifactと117 direct digestを封印し、selected source classを各old classのwave-block
+多重集合だけでdeterministicにcoalesceした。old class count `[4,2,3,6]`は`[1,1,2,2]`へ減り、6 merged
+classのexact rational hullは全24 selected discを包含した。target identifierは変更・削除せず、共役foldingも
+用いていない。最大hull-width inflationは`1.195361864035176`だった。
+
+この表現で既知degree 18を独立再走査し、252/252 direct aggregateを再び全分離した。weighted relation countは
+Q011aqと一致したまま、distinct comparisonは`694302588`から`43852`へ減った。degree 19についてはrelationを
+一件も評価せず資源だけを数え、modulus signature `8056`、peak `90`、distinct-comparison upper `80256`を
+得た。Q011apから維持した7 absolute limitを全て通過したため、resource decisionは
+`go_for_degree_nineteen_coalesced_preregistration`である。
+
+- validity／resource gates: `5 / 5` passed、`7 / 7` passed
+- merged class／selected identifier: `6 / 24`
+- hull／membership digest:
+  `f54f1a1f70d953b4c1255e9f9627d7ca43229a3d1e26c11b716d23fd56ea1eb6` /
+  `975ebf1077279cbfcc6fd46e5a34fcd67260ff953a718eb51985794314fcd8b8`
+- degree-18 modulus／compatible signature: `6075 / 5624`
+- degree-18 weighted／distinct comparison: `29855319268 / 43852`
+- degree-18 minimum outward／exact gap:
+  `0x1.39c56bbbfffffp-23 / 0x1.39c56ce0be4a4p-23`
+- degree-19 modulus signature／peak／two-array bytes: `8056 / 90 / 1440`
+- degree-19 convolution／distinct upper: `3877 / 80256`
+- scientific／actual degree-19 resonance outcome: `not_evaluated / not_evaluated`
+- input／coalescing／regression／resource／result digest:
+  `21e921cd07e0ec7434ee6705c40b94d10eac85387eb913c306b5478c42fadb34` /
+  `15e31e76eb2453d5650a07e545f4c03827c92fd6126c40593f7d7844b2bbf3de` /
+  `fdd309bda8dd1d532ef850ef4c7f8293ec85b8f08d8b7ab0cbfa0a3131aa6224` /
+  `a94054a2e1d677983b75bd67e852d7ba3833a023489635e61c4a60da6a7317bc` /
+  `cd16031617e20b95ae141fa22d878cd2b6de243d14db26bf69ee5475ca6fc892`
+- runner／artifact newline-normalized SHA-256:
+  `e01c7a44f21750e02a904aa219e0d6bcd9662f35500a14dc46114963ef3de952` /
+  `b54088036e0be6bc354f457cb5acf4835afb53cae6737716cd5d8ffb5e5a5810`
+
+これはcoalesced表現でdegree-19 full sweepを事前登録してよいという資源判定だけである。certified degreesは
+2--18および91以降、missing rangeは19--90のままである。次はQ011atで入力、outward arithmetic、全target
+比較、success／rejection条件を固定してから、初めてdegree-19 relationを評価する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -4584,6 +4623,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011ap_degree18_resource_estimate.json`](research/artifacts/q011ap_degree18_resource_estimate.json)
 - [`research/artifacts/q011aq_degree18_hierarchical_sweep.json`](research/artifacts/q011aq_degree18_hierarchical_sweep.json)
 - [`research/artifacts/q011ar_degree19_resource_estimate.json`](research/artifacts/q011ar_degree19_resource_estimate.json)
+- [`research/artifacts/q011as_block_support_resource_redesign.json`](research/artifacts/q011as_block_support_resource_redesign.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -4749,6 +4789,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   degree-18 external nonresonance認証
 - Q011ar degree-19 exact inventory／184-identifier disc inventory／階層resource count、
   relation未評価のまま固定resource上限6項目超過によるfull-sweep Stop判定
+- Q011as support-keyによる6 source-hull class、既知degree-18 certificate回帰、
+  degree-19 relation未評価のまま全7固定resource上限を通過するcoalesced-sweep Go判定
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -4955,3 +4997,6 @@ weighted comparisonを全分離した。1078 old-modulus aggregateとの和でde
 Q011arではdegree 19の全1540 aggregateを1255 old nonoverlapと285 overlapへ分け、relationを評価せず
 現行hierarchyの資源量を再構成した。Q011apのabsolute limitを維持した結果、convolution以外の6項目が超過し、
 degree-19 full sweepをStopとした。これは表現の資源判定であり、degree-19 nonresonanceの棄却ではない。
+Q011asではselected classをwave-block support keyで6 exact hullへcoalesceした。既知degree 18の252 aggregateは
+再び全分離し、degree-19 design countはsignature `8056`、peak `90`まで減って全固定limitを通過した。
+degree-19 relationは未評価であり、certified setとmissing rangeは変更していない。
