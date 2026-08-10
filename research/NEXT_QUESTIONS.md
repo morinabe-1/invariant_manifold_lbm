@@ -19433,6 +19433,181 @@ block-0 exact familyとQ011k eigenbasis／inverseから150本のrow-specific rad
 2--15および91以降、missing rangeは16--90のままである。次はQ011amで同じhybrid envelopeを
 degree 16の154 overlap aggregate全体へ適用する。
 
+## Q011am: degree-16 six-source hybrid full sweep — 事前登録
+
+### 問いと判定境界
+
+Q011alで構成した204 identifierのhybrid envelopeを、Q011u／Q011ajのdegree-16 modulus-overlap
+154 aggregate全体へ適用すると、815 old-modulus separationと合わせてdegree-16 external
+nonresonanceを認証できるか。
+
+design-only pilotでは153 aggregateが全comparison分離となったが、aggregate index 55だけに
+24960 distinct／388480 weighted overlapが残った。従って登録classificationは
+
+`the six-source hybrid degree-16 certificate is rejected at the sole remaining overlap aggregate 55`
+
+とし、scientific outcomeを`rejected`、actual complex resonanceを`not_established`とする。これは
+degree-16 certificate全体の棄却ではなく、Q011alの6-source hybrid envelopeという十分条件の棄却である。
+
+### sealed input
+
+Q011alまでの17 artifact、runner、88 direct digest、outcome、claim boundaryを再照合する。Q011alは
+直接封印する。
+
+- Q011al artifact／runner newline-normalized SHA-256:
+  `b0fe7be52da885e28b9e29d580a187d232ef6fe4c233be2db3cf7a18974420dc` /
+  `72211072fdc657ba1931dda983b167d2ac44a8f71e18aa016b22ea3f7a7cedf2`
+- Q011al input／family／row／clearance／result digest:
+  `97bfc790c2a761d63678b3396e2f1f6ba1b28be1605d0e0b9dae6b63f2f57a93` /
+  `79f442ff7bbb874c79f7692b58f3986a34a6df0f0ee9ffc618fa21608ef6e41c` /
+  `6d4a96cb71535048f34e6a3e1cb9c1afe895cc87558bb98cb791288336aa5816` /
+  `708e866d675f2328cca388191c35062f1dd0f7dbee46aa7355976bb31461db31` /
+  `9befdd9e0b81914e1f18c7b7aff772471b17d1454d81725f44d3736625f8c7c1`
+- Q011aj degree-16 overlap-inventory digest:
+  `63d3e8edb49292d7674037800525c53f590ec78cfc9163acb09bb91c0fc108c1`
+- Q011al hybrid-envelope／class-membership digest:
+  `a7d56141743bc62f3684d54975ad7d74f6274b3a3da7078d6ce1ce7a31f8092e` /
+  `269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c`
+
+### hierarchical exact-multiplicity protocol
+
+Q011afのweak-composition順序とexact x-Fourier arithmeticを保存する。ただし、count 16の同一class内
+multisetをsignatureごとに再列挙せず、各selected group \(g\)、modulus class \(c\)、multiplicity \(m\)に
+対して次を一度だけ作る。
+
+1. class内identifierへの全weak compositionを列挙し、17成分のexact `int64` wave counterを作る。
+2. center lower、center upperの下側／上側、hybrid full upperの4 positive factorを、各乗算後に
+   `nextafter`で外向き丸めして\(m\)乗する。
+3. class-powerを17点巡回畳み込みと外向き乗算でgroup signatureへ結合する。
+4. group 0／1とgroup 2／3をpair signatureへ結合し、各aggregateだけproduct-bound matrixを保持する。
+
+巡回畳み込みはFFTを用いず、固定17×17の整数行列積
+
+\[
+c_k=\sum_{j=0}^{16}a_jb_{k-j\bmod17}
+\]
+
+として計算する。各呼出し前に\(17\max a\max b<2^{63}-1\)を検証し、非負性と
+\(\sum c=(\sum a)(\sum b)\)を全件確認する。class-powerの4 boundはexact Fraction冪を包含することを
+全件確認する。この階層化はQ011akの一因子ずつの外向き積より高々保守的であり、計算順序の変更で
+偽の分離を作らない。
+
+登録resource／factorization値は次とする。
+
+- class-power record: `228`、digest
+  `20865e41cb0341d21ee6bb9eaba49bf4565dd44a34a9ed6ebbf14624efc3c2ce`
+- group-signature record: `77927`、digest
+  `ceee86d86e7250a806b296673f282b0c596d3b56db83f0a585efe70d8f2abe26`
+- pair-pool record: `85`、digest
+  `af927b867976521fd1827e509821bc03a399d52f8fce3f32642b1ebccea8773c`
+- convolution call／maximum crude `int64` bound: `973967 / 1734`
+- peak live combined signature: `900900`
+- maximum Fourier coefficient／crude dot-product bound: `1142 / 8330`
+
+### 全154 aggregateの登録集計
+
+full monomial listとclassification matrixは保持せず、154 aggregate summaryとmatrix hashだけを保持する。
+
+- original monomial: `7593735887`
+- modulus signature: `27206049`
+- compatible modulus signature: `23173623`
+- compatible original monomial: `1649206077`
+- distinct comparison: `136891880`
+- weighted comparison: `3521974412`
+- distinct relation:
+  `product_below_target 72313776 / target_below_product 64553144 / overlap 24960`
+- weighted relation:
+  `product_below_target 1901447368 / target_below_product 1620138564 / overlap 388480`
+- fully separated／remaining-overlap aggregate: `153 / 1`
+- remaining index: `[55]`
+
+登録digestは次とする。
+
+- aggregate-record:
+  `295f5eb4a8e3d794d09bef8d552f92bca6b96a3db51749b51b355c05f1e40415`
+- 154 bound-matrix record:
+  `2d1b0ce829e42f87b96793d0f1a4208be1cb2a8215989b4d5485873725b544a6`
+- 643 coefficient-matrix record:
+  `ea542f6e28fef27ed8da24bcb02af28eab59190dac4ba41c40bf8a8c7682edd9`
+- 1464 classification-matrix record:
+  `db97ba016821788462c728153a7603272a8d97cc0c45f88582ca13a360b12fba`
+
+### positive global minimumとremaining obstruction
+
+全separated comparisonのglobal minimumはQ011al index 99のwitnessを再現する。
+
+- selected-type count: `[5,6,4,1]`
+- target: `block=11;center=4`
+- left／right index: `385 / 0`
+- wave multiplicity: `35`
+- relation: `product_below_target`
+- hierarchical outward gap: `0x1.2de9e89ffffffp-26`
+- exact gap: `0x1.2de9f1c1d911ep-26`
+- witness digest:
+  `8e3dfea54c4a6b486a05a58e48ceb1fccbf48197a6e96ca3d91cdcb39fcabc9f`
+
+sole remaining aggregate 55はselected-type count `[3,12,0,1]`、24 target、1560 signature、
+1560 compatible signature、204240 compatible monomial、37440 distinct／602720 weighted comparisonを持つ。
+relation countは
+
+- distinct: `product_below_target 0 / target_below_product 12480 / overlap 24960`
+- weighted: `product_below_target 0 / target_below_product 214240 / overlap 388480`
+
+とする。canonical first unresolved witnessは
+
+- target: `block=13;center=114`
+- left／right index: `0 / 0`
+- wave multiplicity: `8`
+- block-zero multiplicity: `0`
+- class count: `[[0,0,0,3],[0,12],[0,0,0],[0,0,0,0,0,1]]`
+- source:
+  `(block=16;center=145)^3 × (block=16;center=151)^7 ×`
+  `(block=1;center=151)^5 × block=1;center=149`
+- hybrid product／target intersection-width: `0x1.cec36b55f92c1p-26` > 0
+- center-only relation: `product_below_target`
+- center-only exact gap: `0x1.4739f17e09ca8p-29` > 0
+- witness digest:
+  `f73644b63995be065528cd9a16ea1044036491d3f3a23ae61f233058b3f58576`
+
+とする。従ってremaining overlapはeigendisc enclosureの不足であり、actual complex resonanceの証拠ではない。
+
+### validity gate
+
+1. Q011alまでの17 artifact、runner、88 direct digest、outcome、boundaryが再現する。
+2. Q011ajの154 overlap inventory、Q011alの204 hybrid intervalとclass membershipが再現する。
+3. 228 class-powerのexact containment、全`int64` bound、973967 convolutionの非負性／fiber sumが再現する。
+4. 154 aggregateを欠落・重複なく走査し、monomial／signature／comparison総数と4 matrix digestが再現する。
+5. Q011aj prefix index 0--99のrelation非依存countと、Q011al index 99の全分離・exact witnessが再現する。
+6. 153 fully-separated aggregate、sole index 55、relation count、positive global minimumとfirst overlap witnessが
+   再現する。
+7. strict JSON、section digest、runner provenanceが再現する。
+
+### hypothesis gateと停止規則
+
+1. 815 old-modulus separationはhybrid containmentにより保存される。
+2. 154 old-overlap aggregateの全compatible comparisonがexact Fourier multiplicityで分類される。
+3. 153 aggregateは全comparisonがstrictに分離する。
+4. aggregate 55だけに24960 distinct／388480 weighted overlapが残る。
+5. first overlapのhybrid intersection widthとcenter-only exact separation gapがともにstrictly positiveである。
+6. interval overlapをactual complex resonanceへ昇格しない。
+
+全6項目が通る場合、6-source hybrid degree-16 certificateを`rejected`、actual resonanceを
+`not_established`とする。certified degreesは2--15および91以降、missing rangeは16--90のままとする。
+登録値のいずれかが失敗した場合は`inconclusive`とし、後付けthresholdで結果を変更しない。
+
+登録どおりrejectedなら、Q011anでaggregate 55のcanonical witnessが使うblock 1／13／16に対し、
+row-specific contained eigendiscを構成する。first witnessのblock-zero multiplicityは0なので、block 0だけを
+さらに精密化しない。identifier-specific refinementでなおoverlapする場合にphase-sensitive complex-product
+diskへ進む。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 16、Q011ajの154 modulus-overlap
+aggregate、Q011al six-source hybrid envelope、exact x-Fourier multiplicity、hierarchical outward-rounded
+dyadic product enclosureに限る。aggregate 55のoverlapはactual resonanceを示さない。degree-16 external
+nonresonance、degrees 17--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
+normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
