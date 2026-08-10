@@ -255,8 +255,16 @@ def test_q011al_study_metadata_and_generated_artifact_are_scoped(
     if not artifact_path.exists():
         pytest.skip("Q011al artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert _file_sha256(artifact_path) == (
+        "b0fe7be52da885e28b9e29d580a187d232ef6fe4c233be2db3cf7a18974420dc"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011al_block_zero_structured_rows.py",
+        "sha256": "72211072fdc657ba1931dda983b167d2ac44a8f71e18aa016b22ea3f7a7cedf2",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "accepted"
