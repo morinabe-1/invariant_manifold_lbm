@@ -20440,6 +20440,137 @@ certified degreesは2--18および91以降、missing rangeは19--90へ縮んだ�
 aggregate数、signature数、peak live memory、convolution call、wall timeをdesign-onlyに見積もる。
 degree 19のrelationはまだ評価しない。
 
+## Q011ar: degree-19 hierarchical resource feasibility — 事前登録
+
+### 問いとdesign-only境界
+
+Q011aqと同じcomponent-safe hierarchyをdegree 19へ拡張したとき、full monomial listとfull
+classification matrixを保持しないstreaming表現が、Q011apで固定したabsolute resource limitを変更せずに
+満たすか。Q011arはinventory、disc envelope、組合せcount、calibrated wall-time／memory projectionだけを
+扱い、product bound、Fourier coefficient matrix、product--target relationを一件も構築・評価しない。
+従ってdegree-19 external nonresonance、actual resonance、minimum gapを判定しない。
+
+正式runner前のdesign-only count explorationでは、285 overlap aggregate、`204937508` modulus
+signature、最大`3363360` live signature、`2270568` exact cyclic convolutionを得た。この探索値を
+scientific resultへ流用せず、以下のsealed reconstructionで独立に再現する。探索値が旧上限を超えていても
+上限を後付け変更しない。
+
+### sealed input
+
+Q011aqまでの22 artifact、runner、112 direct digest、accepted outcome、claim boundaryを再照合し、Q011aqを
+直接封印する。
+
+- Q011aq artifact／runner newline-normalized SHA-256:
+  `246540feb2733de13f7a5a982c609aaca6188982d927d6a2f82aa50cc35f157a` /
+  `358c89e86f8e6b5bb82cc47cafe553bee4549a197af57648b6e698e49d6dd52f`
+- Q011aq input／preparation／sweep／result digest:
+  `b872654abf4e29b9c6d4fb40c6bf9e7ba5d1a05589f443b72a63bc37e338a501` /
+  `063d871e07ce95e0bd66219544e6406a0869074e18cd3ac8e6bbb44f65208d3c` /
+  `86ac41c9499150e6c9fa26a24924b7db71a48b8a05ade2f90c2d74ba83078d34` /
+  `0011b3f04770f7b2ff4528b2db9e2c71c3455dee9db23f378a3f699b78e697d4`
+
+Q011aqの`study_gate=passed`、scientific outcome `accepted`、actual resonance outcome
+`ruled_out_within_registered_degree_eighteen_scope`、degree-18 certificateを要求する。
+
+### degree-19 exact inventory
+
+Q011uの同じ4 selected log-modulus typeと186 external componentを再構成し、degree 19の全
+\(\binom{22}{3}=1540\) count tupleを辞書順で列挙する。285 overlap／1255 old nonoverlap、expanded
+control count `42504`を要求する。
+
+- overlap count tuple first／last: `[0,2,14,3] / [19,0,0,0]`
+- overlap count tuple digest:
+  `a4bf39f39306cd8832546d1745488c0346170d44a6bc182d614cf36e6a465ff7`
+- unique external component／target identifier: `17 / 160`
+- multi-target external-component aggregate／maximum component count: `8 / 2`
+- external-component index tuple digest:
+  `c0007260259ef5c77b3cbc0d707e4cbf1f35fc71ff2dd9d65f62f1e6d7a5639c`
+- overlap／target／full inventory digest:
+  `b89ecea6ccca6aa3e7c5563ab258a0d3d1a8c57d28fd25df6bc578f6301a929b` /
+  `a234f6b0d6e02eb363a366839696b065a6977272c5c736bf0ff3e456bdaebf14` /
+  `0a43e3e4ac5fc0683e85cfa88ee2bdc801643be23c8ededd20ea077d3f7c55b0`
+
+target identifierのblock countは
+`[6,8,8,6,16,19,10,6,4,4,6,10,19,16,6,8,8]`とする。
+
+### degree-19 envelope inventory
+
+selected source 24 identifierとtarget 160 identifierは互いに素である。selected 24とtargetのうち132、
+計156 identifierをQ011ao final recordからbitwiseに再利用する。残る28 targetだけをQ011akで封印した
+blockwise transformed-residual radiusとQ011k exact center modulusから構成し、184 final identifierとする。
+
+- new／final identifier count: `28 / 184`
+- new identifier digest:
+  `67d7684d8ea1575255e4f7aa2e7798f141859df6d2433ce00bc08cebbc1e5473`
+- new exact extension／final record digest:
+  `56ee3a6f8a241a718a67849ed31059cb213c36ba5047972cb28d7d3a67c2ba75` /
+  `7e5cd881925e6e2c6a60a4124cabb7d844c4cd305d7be0a5ad10c2402e9abdd2`
+- selected class count／membership digest:
+  `4 / 2 / 3 / 6` /
+  `269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c`
+
+### deterministic resource contract
+
+285 overlap aggregateの全source weak compositionと全target identifierを数えるが、product bound、Fourier
+matrix、relation classificationは構築しない。登録値は次とする。
+
+- class-power／group-key／pair-key record: `276 / 66 / 140`
+- class-power／group-key／pair-key digest:
+  `b336dbfdc4ccc76a14145f6074a1bf08a1177bf563a52bd078e1ec350caaf452` /
+  `8749302ce7d5e76cf4f6e2080f18b8747c74c4c5c336d33fd4d163fb101dc1d1` /
+  `343b3ff58a70c485ce89830ff12f4a501ca8c122525f8a25b5bbe0e2531b0d68`
+- group-signature／cached pair-signature entry: `105979 / 1646172`
+- exact convolution call: `2270568`
+- modulus signature／peak live signature: `204937508 / 3363360`
+- two product-bound array bytes: `53813760`
+- original monomial／maximum aggregate monomial: `107797786672 / 2038608000`
+- safe `int64` crude convolution upper: `34656336000`
+- distinct／weighted comparison upper bound: `1974912192 / 1124800752224`
+- per-aggregate resource record digest:
+  `97fd2f23c9b03f50071e9daec5dab48c9f1813a708ea878bd278cb417daf6642`
+
+Q011ao design-only full pilotの`214.0647`秒、`593140005` byte tracemalloc peak、`1636917248`
+byte process peak working setを同じcalibration baselineとして保持する。distinct-comparison比によるwall-time
+projectionは`915.145396307185`秒、2倍safety upperは`1830.29079261437`秒である。peak-live-signature比
+`2.8`による1.5倍safety upperはtracemalloc `2491188021` byte、process working set
+`6875052442` byteである。これは環境依存projectionであり、scientific acceptance thresholdではない。
+
+### fixed Go／Stop gate
+
+validityは次を全て要求する。
+
+1. Q011aqまでの22 artifact、runner、112 direct digest、outcome、boundaryが再現する。
+2. degree-19 inventory、envelope partition、全登録digestが再現する。
+3. 全組合せcountがclosed-form multiset countと一致し、整数overflow boundを破らない。
+4. full monomial list、product matrix、classification matrix、relation outcomeを保持・評価しない。
+5. strict finite JSON、section digest、runner provenanceが再現する。
+
+validity通過後、Q011apで固定した次のabsolute design limitを変更せず全て満たせば
+`go_for_degree_nineteen_preregistration`とする。
+
+- modulus signature `<= 125000000`
+- peak live signature `<= 2500000`
+- two product-bound array `<= 41943040` bytes
+- exact convolution call `<= 2500000`
+- distinct-comparison upper bound `<= 1100000000`
+- 2倍wall-time safety upper `<= 1200`秒
+- 1.5倍process-memory safety upper `<= 6442450944` bytes
+
+一つでも超えれば`stop_before_degree_nineteen_full_sweep`とし、full sweepを事前登録せず、階層分割または
+別のstreaming表現を先に設計する。validity failureは`inconclusive_resource_audit`とし、最初のfailureだけを
+修正する。探索結果に合わせたlimit変更は行わない。
+
+### 主張境界と次の変更
+
+Q011arは固定17² repaired exact map、fixed conservation leaf、degree-19 modulus-overlap inventory、
+component-safe disc inventory、組合せresource countとcalibrated projectionだけを扱う。degree-19 relationを
+計算しないため、certified degreesは2--18および91以降、missing rangeは19--90のままである。
+
+GoならQ011asでdegree-19 full sweepを事前登録する。StopならQ011asで、同じdiscとrelation semanticsを
+保ったままpeak memoryとcomparison workloadを固定上限内へ下げるrepresentation redesignを事前登録する。
+inconclusiveなら最初のQ011ar validity failureだけを修正する。いずれもQ011arをdegree-19
+nonresonanceへ外挿しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
