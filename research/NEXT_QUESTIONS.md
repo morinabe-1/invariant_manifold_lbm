@@ -20571,6 +20571,38 @@ GoならQ011asでdegree-19 full sweepを事前登録する。StopならQ011asで
 inconclusiveなら最初のQ011ar validity failureだけを修正する。いずれもQ011arをdegree-19
 nonresonanceへ外挿しない。
 
+### Q011ar 封印結果
+
+全5 validity gateが通過した。degree 19の全1540 aggregateを1255 old nonoverlapと285 overlapへ分け、
+24 selected、160 target、184 final identifierのdisc inventoryと、relation評価ゼロのdeterministic
+resource contractを再構成した。
+
+Q011apから変更しなかった7 absolute resource limitのうち、exact convolution countだけが通過し、残る
+6項目が超過した。
+
+- resource decision: `stop_before_degree_nineteen_full_sweep`
+- scientific／actual resonance outcome: `not_evaluated / not_evaluated`
+- modulus signature／limit: `204937508 / 125000000`
+- peak live signature／limit: `3363360 / 2500000`
+- two product array bytes／limit: `53813760 / 41943040`
+- exact convolution／limit: `2270568 / 2500000`（唯一のpass）
+- distinct comparison upper／limit: `1974912192 / 1100000000`
+- 2倍wall safety seconds／limit: `1830.29079261437 / 1200`
+- 1.5倍process-memory safety bytes／limit: `6875052442 / 6442450944`
+- input／inventory／envelope／resource／result digest:
+  `2be0835736f234a9df83af63fd836aca5196eb6b4e8c54dc86d72723b7b995f6` /
+  `9fd64f430ca0f5231e97ec13338aaaf037909d35c2e5a294ed6246d4f87f8848` /
+  `b33a4d036c244ed17fb5b708307759883439eef6172e473303fc4ea726c0a70c` /
+  `c93fb9cb96a91474cbba67aad1b12ad699fd189c537a4ac54305a1b3daf0f328` /
+  `2823bb2101e57bfd277e18e621c17ef850488ec5743083a10f8246e5e61d8f27`
+- runner／artifact newline-normalized SHA-256:
+  `4a3faebafd0404f449e1410e98a25bce659a2c4c80c641bdbd642bbd487443aa` /
+  `8e0f2cca4c4db357587595ba315aa4fa84121c358e988f4cdcadc8720621e67a`
+
+degree-19 relationは未評価なので、certified degreesは2--18および91以降、missing rangeは19--90のままで
+ある。次はQ011asとして、同じdisc coverage、exact Fourier multiplicity、outward relation semanticsを保ち、
+peak memoryとcomparison workloadを固定上限内へ下げるrepresentation redesignを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

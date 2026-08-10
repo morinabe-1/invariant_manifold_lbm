@@ -7543,6 +7543,40 @@ index `9 / 251`、wave multiplicity 4、relation `target_below_product`だった
 限る。degrees 19--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
 normal attraction、basinは未認証である。次はQ011arでdegree 19の資源量をdesign-onlyに見積もる。
 
+### Q011ar 実行結果
+
+Q011aqまでの22 artifact、runner、112 direct digest、accepted outcome、claim boundaryを再照合し、validity
+`5 / 5`を通過した。degree 19の全1540 aggregateを1255 old-modulus nonoverlapと285 overlapへexactに
+分け、selected 24 identifierとtarget 160 identifierを被覆する184-disc envelopeを構成した。156 identifierは
+Q011aoからbitwiseに再利用し、28 targetだけをQ011ak blockwise式から追加した。
+
+relationを一件も評価しない組合せcountは、`204937508` modulus signature、最大`3363360` live
+signature、`2270568` exact convolution、2 product-bound array `53813760` bytesを与えた。original
+monomialは107797786672、distinct／weighted comparison upper boundは
+`1974912192 / 1124800752224`だった。
+
+Q011apから変更しなかった7 absolute resource limitに対し、exact convolution countだけが通過した。
+modulus signature、peak live signature、2 product array、distinct comparison、2倍wall-time safety、
+1.5倍process-memory safetyの6項目が超過したため、resource decisionは
+`stop_before_degree_nineteen_full_sweep`となった。
+
+- projected wall／2倍safety seconds: `915.145396307185 / 1830.29079261437`
+- 1.5倍tracemalloc／process-memory safety bytes: `2491188021 / 6875052442`
+- scientific／actual resonance outcome: `not_evaluated / not_evaluated`
+- input／inventory／envelope／resource／result digest:
+  `2be0835736f234a9df83af63fd836aca5196eb6b4e8c54dc86d72723b7b995f6` /
+  `9fd64f430ca0f5231e97ec13338aaaf037909d35c2e5a294ed6246d4f87f8848` /
+  `b33a4d036c244ed17fb5b708307759883439eef6172e473303fc4ea726c0a70c` /
+  `c93fb9cb96a91474cbba67aad1b12ad699fd189c537a4ac54305a1b3daf0f328` /
+  `2823bb2101e57bfd277e18e621c17ef850488ec5743083a10f8246e5e61d8f27`
+- runner／artifact newline-normalized SHA-256:
+  `4a3faebafd0404f449e1410e98a25bce659a2c4c80c641bdbd642bbd487443aa` /
+  `8e0f2cca4c4db357587595ba315aa4fa84121c358e988f4cdcadc8720621e67a`
+
+このStopは現行hierarchical representationの資源適格性を棄却するだけであり、degree-19 relation、actual
+resonance、minimum gapは未評価である。certified degreesは2--18、tail-certifiedは91以降、missing
+rangeは19--90のままである。次はQ011asでdiscとrelation semanticsを保存するresource redesignを行う。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7760,6 +7794,8 @@ normal attraction、basinは未認証である。次はQ011arでdegree 19の資�
 [`artifacts/q011ap_degree18_resource_estimate.json`](artifacts/q011ap_degree18_resource_estimate.json)
 
 [`artifacts/q011aq_degree18_hierarchical_sweep.json`](artifacts/q011aq_degree18_hierarchical_sweep.json)
+
+[`artifacts/q011ar_degree19_resource_estimate.json`](artifacts/q011ar_degree19_resource_estimate.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

@@ -3861,6 +3861,41 @@ repaired exact map、fixed conservation leaf、登録degree-18 external relation
 degrees 19--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal
 attraction、basinは認証していない。次はQ011arでdegree 19の資源量をdesign-onlyに見積もる。
 
+### Q011ar degree-19 hierarchical resource stop
+
+Q011aqまでの22 artifactと112 direct digestを封印し、degree 19の全1540 aggregateを1255
+old-modulus nonoverlapと285 overlapへexactに分けた。selected 24 identifierとtarget 160 identifierを
+被覆する184-disc envelopeを構成し、relationを一件も評価せず、現行hierarchical streaming表現の資源量だけを
+再構成した。
+
+validityは全5項目を通過した。一方、Q011apから変更しなかった7 absolute resource limitのうち、exact
+convolution countだけが通過し、残る6項目が超過した。このためresource decisionは
+`stop_before_degree_nineteen_full_sweep`であり、degree-19 full sweepは事前登録しない。
+
+- degree aggregate／old separated／direct overlap: `1540 / 1255 / 285`
+- selected／target／reused／new／final identifier: `24 / 160 / 156 / 28 / 184`
+- modulus signature／peak live signature: `204937508 / 3363360`
+- two product-bound array bytes／exact convolution: `53813760 / 2270568`
+- original monomial／maximum aggregate monomial: `107797786672 / 2038608000`
+- distinct／weighted comparison upper bound: `1974912192 / 1124800752224`
+- projected wall／2倍safety seconds: `915.145396307185 / 1830.29079261437`
+- 1.5倍tracemalloc／process-memory safety bytes: `2491188021 / 6875052442`
+- passed／failed resource limit: `1 / 6`
+- scientific／actual resonance outcome: `not_evaluated / not_evaluated`
+- input／inventory／envelope／resource／result digest:
+  `2be0835736f234a9df83af63fd836aca5196eb6b4e8c54dc86d72723b7b995f6` /
+  `9fd64f430ca0f5231e97ec13338aaaf037909d35c2e5a294ed6246d4f87f8848` /
+  `b33a4d036c244ed17fb5b708307759883439eef6172e473303fc4ea726c0a70c` /
+  `c93fb9cb96a91474cbba67aad1b12ad699fd189c537a4ac54305a1b3daf0f328` /
+  `2823bb2101e57bfd277e18e621c17ef850488ec5743083a10f8246e5e61d8f27`
+- runner／artifact newline-normalized SHA-256:
+  `4a3faebafd0404f449e1410e98a25bce659a2c4c80c641bdbd642bbd487443aa` /
+  `8e0f2cca4c4db357587595ba315aa4fa84121c358e988f4cdcadc8720621e67a`
+
+このStopは現行表現の資源適格性だけを棄却する。degree-19 resonance relationは未評価なので、certified
+degreesは2--18および91以降、missing rangeは19--90のままである。次はQ011asでdiscとrelation semanticsを
+変えず、peak memoryとcomparison workloadを固定上限内へ下げるrepresentation redesignを事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -4548,6 +4583,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011ao_degree17_hierarchical_sweep.json`](research/artifacts/q011ao_degree17_hierarchical_sweep.json)
 - [`research/artifacts/q011ap_degree18_resource_estimate.json`](research/artifacts/q011ap_degree18_resource_estimate.json)
 - [`research/artifacts/q011aq_degree18_hierarchical_sweep.json`](research/artifacts/q011aq_degree18_hierarchical_sweep.json)
+- [`research/artifacts/q011ar_degree19_resource_estimate.json`](research/artifacts/q011ar_degree19_resource_estimate.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -4711,6 +4747,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   relation未評価のままfull-sweep preregistration資源Go判定
 - Q011aq 252 degree-18 overlap aggregateの正式階層full sweep、1330 aggregateの全分離、
   degree-18 external nonresonance認証
+- Q011ar degree-19 exact inventory／184-identifier disc inventory／階層resource count、
+  relation未評価のまま固定resource上限6項目超過によるfull-sweep Stop判定
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -4914,3 +4952,6 @@ Q011aqでは固定済み252 overlap aggregateを初めて正式走査し、`6943
 weighted comparisonを全分離した。1078 old-modulus aggregateとの和でdegree 18の全1330 aggregateを
 分離したため、degree-18 external nonresonanceを認証し、missing rangeをdegrees 19--90へ縮めた。
 この結論も登録degree-18 external relationだけに限り、all-order resultへは外挿しない。
+Q011arではdegree 19の全1540 aggregateを1255 old nonoverlapと285 overlapへ分け、relationを評価せず
+現行hierarchyの資源量を再構成した。Q011apのabsolute limitを維持した結果、convolution以外の6項目が超過し、
+degree-19 full sweepをStopとした。これは表現の資源判定であり、degree-19 nonresonanceの棄却ではない。
