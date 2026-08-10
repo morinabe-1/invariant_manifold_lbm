@@ -234,8 +234,16 @@ def test_q011ak_study_metadata_and_generated_artifact_are_scoped(
     if not artifact_path.exists():
         pytest.skip("Q011ak artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert _file_sha256(artifact_path) == (
+        "21d99ca113c5c71b573134d075dc0f01bdc03f0eeea4157dd1a62b1689e7ae59"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
+    assert artifact["runner_source"] == {
+        "filename": "q011ak_degree16_blockwise_obstruction.py",
+        "sha256": "140a4631da777450fbbe5eb3462579c9d2f5b64f3970eeda26511502ea1302f4",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == "rejected"
