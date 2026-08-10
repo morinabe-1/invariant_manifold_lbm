@@ -20137,6 +20137,130 @@ aggregate数、signature数、peak live memory、convolution call、wall timeを
 同じ階層streaming表現を安全に再利用でき、登録資源上限内に収まる場合だけ正式full sweepを事前登録する。
 ここではdegree 18 nonresonanceをまだ主張しない。
 
+## Q011ap: degree-18 hierarchical resource feasibility — 事前登録
+
+### 問いと非科学的design audit
+
+Q011aoと同じcomponent-safe hierarchyをdegree 18へ拡張したとき、full monomial listとfull classification
+matrixを保持しないstreaming表現が、以下で固定する資源上限内に収まるか。Q011apはinventory、envelope、
+組合せcount、calibrated wall-time／memory projectionだけを扱い、product--target relationを一件も分類しない。
+従ってdegree-18 external nonresonance、actual resonance、minimum gapを判定しない。
+
+正式runner前のdesign-only count explorationでは、252 overlap aggregate、`112289821` modulus
+signature、最大`2102100` live signature、`2277951` exact cyclic convolutionを得た。これらはQ011aoの
+対応値に対して約`2.025 / 1.75 / 1.700`倍である。この探索値を科学的結果へ流用せず、以下のsealed
+reconstructionで独立に再現する。
+
+### sealed input
+
+Q011aoまでの20 artifact、runner、103 direct digest、outcome、claim boundaryを再照合し、Q011aoを直接
+封印する。
+
+- Q011ao artifact／runner newline-normalized SHA-256:
+  `7b439a9d4634f895a0cbd98660da7147237f6cc026531e700597bab04f8fc81a` /
+  `0fbf8f9bad5217ff0a61d0b76255d283d2845816321207382d35fc69d3753cc1`
+- Q011ao input／inventory／envelope／sweep／result digest:
+  `8a893e802bc4b93cd2f9be5da7e872b5a79a2e956a1b445386a63cd97aed9aad` /
+  `4806963b4e1cc0ace653881e6102dd055220b95d9d5157f1a4699f71cd85f02c` /
+  `8eebcf226ffb9ad38d0d14f2ae42c4b89cea37c553a1b88d72dfc1ce6a4c5f50` /
+  `e046e2d7675155aba98b97266dda283e4cfd3b3a22698a7e6edbad6e2dcfa9a8` /
+  `f76db860a63b31c3152ddbe8ef6ce1ea6ee58e2d62b3554895bce4a25834b746`
+
+### degree-18 exact inventory
+
+Q011uの同じ4 selected log-modulus typeと186 external componentを再構成し、degree 18の全
+\(\binom{21}{3}=1330\) count tupleを辞書順で列挙する。252 overlap／1078 nonoverlap、expanded
+control count `33649`を要求する。
+
+- overlap count tuple first／last: `[0,0,0,18] / [18,0,0,0]`
+- overlap count tuple digest:
+  `ab1d05431038fd8e1331106f83beb3e26477f489b2e537dde3a29c28a4e99d1f`
+- unique external component／target identifier: `18 / 164`
+- multi-target external-component aggregate／maximum component count: `4 / 2`
+- external-component index tuple digest:
+  `86cd7247a3db94d6be1e9fe49a9868415f3aae37b4e1e84af3a23691d51e9277`
+- overlap／target／full inventory digest:
+  `68d98874e2268a2b32db780e7cc24e7fc604b2da97daf763d160a9cb3a0eef00` /
+  `e3b90982a4bac3b3617ed7c02cd04c2e7dcf8df62556d4cdbc222cb316879cbf` /
+  `9f052dc63d04fab009e2bef1dca55c171294a808dc572d5e2348e95c3ed8b0f8`
+
+target identifierのblock countは
+`[10,8,6,8,16,17,12,6,4,4,6,12,17,16,8,6,8]`とする。
+
+### degree-18 envelope inventory
+
+selected source 24 identifierとtarget 164 identifierは互いに素である。selected 24とtargetのうち136、
+計160 identifierをQ011ao final recordからbitwiseに再利用する。残る28 targetだけをQ011akで封印した
+blockwise transformed-residual radiusとQ011k exact center modulusから構成し、188 final identifierとする。
+
+- new／final identifier count: `28 / 188`
+- new identifier digest:
+  `fa8d902e6ef56d10f23ee96f3b887c27006363185dfcabac877912a2b2a0b64b`
+- new exact extension／final record digest:
+  `a4a3cd788af254ee03a594e539387916582b713d5f76ae738a60dcd7319ec7b8` /
+  `177bf6efc8f75a8a3fe4de1a08caf642aeb108fabd9ba325a7b1d1fdf31bea1b`
+- selected class count／membership digest:
+  `4 / 2 / 3 / 6` /
+  `269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c`
+
+### deterministic resource contract
+
+252 overlap aggregateの全source weak compositionと全target identifierを数えるが、product bound、Fourier
+matrix、relation classificationは構築しない。登録値は次とする。
+
+- class-power／group-key／pair-key record: `268 / 66 / 125`
+- class-power／group-key／pair-key digest:
+  `d279d6ae3ec1e2cfce1db59b02538ac3d53a9f630ae5dc24210745b35a101de2` /
+  `28f7bb6aff77e6ceb9f6612ac9564715bcb892d04ab2be3d69f64ebc34f73d65` /
+  `d2ef4192f7d6b50bf3433b4b5c70c721c6ccb0b30962129bdbc000446248219b`
+- group-signature／cached pair-signature entry: `139922 / 1450127`
+- exact convolution call: `2277951`
+- modulus signature／peak live signature: `112289821 / 2102100`
+- two product-bound array bytes: `33633600`
+- original monomial: `50931347136`
+- distinct／weighted comparison upper bound: `996565068 / 485076664408`
+- per-aggregate resource record digest:
+  `dc111aed9decab559e698958995121b4044980f4236f189bf47cf323bd8641fe`
+
+Q011ao design-only full pilotの`214.0647`秒、`593140005` byte tracemalloc peak、`1636917248`
+byte process peak working setをcalibration baselineとする。wall timeはdistinct-comparison upper-bound比
+`2.1572620914`で線形外挿し、`461.794`秒、2倍safety upperを`923.588`秒とする。memoryはpeak-live
+signature比`1.75`で外挿し、1.5倍safety upperをtracemalloc `1556992514` byte、process working set
+`4296907776` byteとする。これは環境依存projectionであり、科学的acceptance thresholdではない。
+
+### Go／Stop gate
+
+validityは次を全て要求する。
+
+1. Q011aoまでの20 artifact、runner、103 direct digest、outcome、boundaryが再現する。
+2. degree-18 inventory、envelope partition、全登録digestが再現する。
+3. 全組合せcountがclosed-form multiset countと一致し、整数overflow boundを破らない。
+4. full monomial list、product matrix、classification matrix、relation outcomeを保持・評価しない。
+5. strict finite JSON、section digest、runner provenanceが再現する。
+
+validity通過後、次のabsolute design limitを全て満たせば`go_for_degree_eighteen_preregistration`とする。
+
+- modulus signature `<= 125000000`
+- peak live signature `<= 2500000`
+- two product-bound array `<= 41943040` bytes
+- exact convolution call `<= 2500000`
+- distinct-comparison upper bound `<= 1100000000`
+- 2倍wall-time safety upper `<= 1200`秒
+- 1.5倍process-memory safety upper `<= 6442450944` bytes
+
+一つでも超えれば`stop_before_degree_eighteen_full_sweep`とし、階層分割または別表現を先に設計する。
+後付けでlimitを変更しない。
+
+### 主張境界と次の変更
+
+Q011apは固定17² repaired exact map、fixed conservation leaf、degree-18 modulus-overlap inventory、
+component-safe disc inventory、組合せresource countとcalibrated projectionだけを扱う。degree-18 relationを
+計算しないため、certified degreesは2--17および91以降、missing rangeは18--90のままである。
+
+`go_for_degree_eighteen_preregistration`なら、次はQ011aqで入力、列挙順、outward arithmetic、停止規則、
+success／rejection条件を事前登録してからdegree-18 full sweepを一度だけ正式実行する。Q011apの結果を
+degree-18 nonresonanceへ外挿しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
