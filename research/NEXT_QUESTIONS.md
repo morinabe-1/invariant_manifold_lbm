@@ -20261,6 +20261,32 @@ component-safe disc inventory、組合せresource countとcalibrated projection�
 success／rejection条件を事前登録してからdegree-18 full sweepを一度だけ正式実行する。Q011apの結果を
 degree-18 nonresonanceへ外挿しない。
 
+### Q011ap 封印結果
+
+全5 validity gateと全7 resource feasibility gateが通過し、resource decisionは
+`go_for_degree_eighteen_preregistration`となった。degree-18全1330 aggregateを1078 old-modulus
+nonoverlapと252 overlapへexactに分け、Q011aoから160 identifierを再利用し、28 targetを追加した
+188-identifier disc inventoryを構成した。
+
+relationを評価しない組合せcountは、`112289821` modulus signature、最大`2102100` live signature、
+`2277951` convolution、2 product-bound array `33633600` bytes、distinct-comparison upper
+`996565068`を与え、全登録limit内だった。2倍wall-time safety upperは`923.587324839156`秒、1.5倍
+process-memory safety upperは`4296907776` bytesである。
+
+- scientific／actual resonance outcome: `not_evaluated / not_evaluated`
+- input／inventory／envelope／resource／result digest:
+  `e39b183a97916bb1c108a23ea6cf9ae3328f7423c8d83199154f37e4e1dc306c` /
+  `ffc0d158333068d535a71f2dbb1cfaec3d495c7a2ee169dda9aff5cf07727141` /
+  `9cdc661ff2354b1dfb7655c5819ec7ecdb655dd8369886af0609cc7df3b68379` /
+  `87679bf4427084316b0686cf362c03e25fdb0b7f57be01f9fd34d310381c386b` /
+  `90139ef58140152924ba0629094dd21099ef0d4df05f26651a719d1877c181d4`
+- runner／artifact newline-normalized SHA-256:
+  `1a3049db74228754189b8abaf7514ac28780260e9e5d18629589d415628ab313` /
+  `e0e50ce2ffbfd94389d7e446948fe4a04b7a9aac47213ba8a5ec0717aa78317b`
+
+degree-18 relation、minimum gap、actual resonanceは未評価である。certified degreesは2--17および91
+以降、missing rangeは18--90のままとする。次は登録どおりQ011aq full sweepを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

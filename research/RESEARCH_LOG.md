@@ -7457,6 +7457,46 @@ global minimumはaggregate 113、count tuple `[5, 5, 4, 3]`、target block 11の
 SSM existence／uniqueness、normal attraction、basinは未認証である。次はQ011apでdegree 18の資源量を
 design-onlyに見積もる。
 
+### Q011ap 実行結果
+
+Q011aoまでの20 artifact、runner、103 direct digest、outcome、claim boundaryを再照合し、validity
+`5 / 5`を通過した。Q011uのdegree-18 inventoryは全1330 aggregateで、1078 old-modulus nonoverlapと
+252 overlapをexactに再構成した。unique external componentは18、target identifierは164だった。
+
+selected source 24とtarget 136、計160 identifierをQ011ao final recordからbitwiseに再利用し、残る28
+targetだけをQ011ak blockwise式で追加した。188 final intervalはQ011u componentへcontainedで、selected
+class count `4 / 2 / 3 / 6`を保った。
+
+Q011apはrelationを評価していない。252 aggregateのweak-composition countだけから、class-power 268、
+group-signature 139922、cached pair-signature entry 1450127、full sweep時のconvolution 2277951、
+modulus signature 112289821、peak live signature 2102100を得た。元のmonomialは50931347136、
+distinct／weighted comparison upper boundは`996565068 / 485076664408`だった。full monomial list、
+product bound、Fourier coefficient matrix、classification matrixは構築していない。
+
+Q011ao design-only pilotからのcalibrated wall timeは461.794秒、2倍safety upperは923.588秒、
+1.5倍tracemalloc／process-memory safety upperは`1556992514 / 4296907776` bytesだった。全7 resource
+limitを通過した。
+
+- resource decision: `go_for_degree_eighteen_preregistration`
+- scientific outcome: `not_evaluated`
+- actual resonance outcome: `not_evaluated`
+- old-modulus／direct-overlap aggregate: `1078 / 252`
+- reused／new／final identifier: `160 / 28 / 188`
+- two product-bound array bytes／safe int64 crude bound: `33633600 / 20023660800`
+- input／inventory／envelope／resource／result digest:
+  `e39b183a97916bb1c108a23ea6cf9ae3328f7423c8d83199154f37e4e1dc306c` /
+  `ffc0d158333068d535a71f2dbb1cfaec3d495c7a2ee169dda9aff5cf07727141` /
+  `9cdc661ff2354b1dfb7655c5819ec7ecdb655dd8369886af0609cc7df3b68379` /
+  `87679bf4427084316b0686cf362c03e25fdb0b7f57be01f9fd34d310381c386b` /
+  `90139ef58140152924ba0629094dd21099ef0d4df05f26651a719d1877c181d4`
+- runner／artifact newline-normalized SHA-256:
+  `1a3049db74228754189b8abaf7514ac28780260e9e5d18629589d415628ab313` /
+  `e0e50ce2ffbfd94389d7e446948fe4a04b7a9aac47213ba8a5ec0717aa78317b`
+
+これはQ011aq full sweepの事前登録を資源面で支持するだけである。degree-18 nonresonance、actual
+resonance、minimum gapは未評価なので、certified degreesは2--17、tail-certifiedは91以降、missing
+rangeは18--90のままである。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7670,6 +7710,8 @@ design-onlyに見積もる。
 [`artifacts/q011an_active_block_structured_rows.json`](artifacts/q011an_active_block_structured_rows.json)
 
 [`artifacts/q011ao_degree17_hierarchical_sweep.json`](artifacts/q011ao_degree17_hierarchical_sweep.json)
+
+[`artifacts/q011ap_degree18_resource_estimate.json`](artifacts/q011ap_degree18_resource_estimate.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
