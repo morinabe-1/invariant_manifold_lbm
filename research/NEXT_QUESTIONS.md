@@ -19924,6 +19924,185 @@ aggregate数、signature数、peak live memory、convolution call、wall timeを
 Q011amの階層exact-multiplicity表現を安全に再利用でき、登録資源上限内に収まる場合だけ正式full sweepを
 事前登録する。ここではdegree 17 nonresonanceをまだ主張しない。
 
+## Q011ao: degree-17 component-safe hierarchical full sweep — 事前登録
+
+### 問いとdesign-only resource audit
+
+Q011uでmodulus overlapとなったdegree 17の199 aggregateを、Q011anのcomponent-safe selected-source
+envelopeと、必要な24 targetだけをQ011ak blockwise式で追加したenvelopeに対して全件直接走査できるか。
+さらにQ011uで既に分離した941 aggregateをcontainmentで保存し、degree 17の全1140 external aggregateを
+分離できるか。
+
+正式実装前のdesign-only count auditでは、199 overlap aggregate、`1339913` exact cyclic convolution、
+最大`1201200` live signatureを得た。上下限product matrix 2枚だけなら最大`19219200` bytesであり、
+degree 16の`973967` convolution／`900900` signatureに対してそれぞれ約1.38倍／1.33倍なので、同じ
+streaming表現で実行可能と判断した。その後のdesign-only full pilotは214.0647秒で完走し、199件を全分離
+した。`tracemalloc` peakは`593140005` bytes、process peak working setは`1636917248` bytesだった。
+これらの時間・実測memoryは環境依存なのでacceptance gateには使わず、pilotの開示にだけ用いる。
+
+pilot成功を正式結果へ流用しない。以下の入力、列挙順、count、digest、停止規則を先に固定し、正式runnerで
+全計算を再実行する。
+
+### sealed input
+
+Q011anまでの19 artifact、runner、98 direct digest、outcome、claim boundaryを再照合する。Q011anを直接
+封印する。
+
+- Q011an artifact／runner newline-normalized SHA-256:
+  `229dddbb885803b24ed61c35a95cb87bcfa6c692f6bb6c30d20529d3be687b31` /
+  `02c0a5722add2d4e979c78806bfe4d0e7c503a547dc200ad0bc375c86ee28a6a`
+- Q011an input／row／envelope／sweep／result digest:
+  `d617a48bdca98ff949645394948527573b6574176eadcb15eab7de7feda60dfd` /
+  `5c558564ec862d621a75bff1cc6882c4ead98910b67f02559d1f8bec537e0c13` /
+  `b3a40b84b19d69adabea11a53963a47584f361c96abf91224f6c4fe9e41b5a9f` /
+  `db38109e4a83209a28a8f982f88b9eec6c3b8a9f07c0b3a13be3592db2a91e53` /
+  `263a56ba3b426376f3e82d29c7815f6338063e3f682d68ee995f5c129a721309`
+
+### degree-17 exact inventory
+
+Q011uの4 selected log-modulus typeと186 external componentを再構成し、degree 17の全
+\(\binom{20}{3}=1140\) count tupleを同じ辞書順で列挙する。各selected aggregateとclosed log intervalが
+交差する全external componentを集める。199 overlap／941 nonoverlap、expanded control count `26334`を
+要求する。
+
+- selected source group size: `8 / 4 / 4 / 8`
+- overlap count tuple first／last: `[0,0,0,17] / [14,0,3,0]`
+- overlap count tuple digest:
+  `cf03ad31a7ebe127461320242010ad226c466eec1fa003adfb3624368c119695`
+- unique external component／target identifier: `15 / 152`
+- multi-target external-component aggregate／maximum component count: `2 / 2`
+- external-component index tuple digest:
+  `8bbe171b29ce286f17a2f6b7760d1ffabbcec00586948944b42eea5f2ab4a1c9`
+- overlap／target／full inventory digest:
+  `af1083d0956542e765fd5cb4009ac1271d1225323859e96dc23076a50f5d32ab` /
+  `9453379d890ce3282a7b5294967ed6e9e9bc4898ddf11f4d51786b4712715c90` /
+  `9f81d354538ddcd835d7e06e9183263714a56acf4de3fce7156cf8686f6a2e92`
+
+target identifierのblock countは
+`[6,8,8,12,12,15,8,6,4,4,6,8,15,12,12,8,8]`とする。
+
+### component-safe degree-17 envelope
+
+selected source 24 identifierとdegree-17 target 152 identifierは互いに素である。selected 24とtargetの
+うち128、合計152 identifierはQ011an component-safe recordをbitwiseに再利用する。Q011anに存在しない
+次の24 targetだけ、Q011akで封印した各blockのtransformed-residual radiusとQ011k exact center modulusを
+用いて
+
+\[
+[\max(0,m^-_j-r_b),\ m^+_j+r_b]
+\]
+
+を構成する。
+
+- block 1／16: center `132,133`
+- block 3／14: center `112,113,114,115`
+- block 5／12: center `150,151`
+- block 6／11: center `7,8`
+- block 7／10: center `11,12`
+
+24 identifier list digestは
+`68fd926ac22cf9fdbb272b5f4316da6136aaf4b6ca94ab2632149dade7bac8dc`、
+24 exact extension record digestは
+`b85b0320d3378adfbe184c34a380d88ea60261067c3edac15f0387279eb7f27b`とする。
+152 reused＋24 extensionからなる176 final record digestは
+`9a4a5eca990b90744e40076706f090d7e7f9336481a27a82f3e9d1ee6df628df`とする。
+
+Q011akの既存204 record全件で同じcenter＋block-radius式をexactに再現し、新規24 intervalもQ011uの対応
+external componentへcontainedであることを要求する。selected sourceのmodulus class countは
+`4 / 2 / 3 / 6`、membership digestは
+`269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c`とする。
+
+重なったdisc component内の個別固有値ラベルは仮定しない。各source factorがselected discを反復付きで
+独立に選ぶ全weak compositionを列挙し、各external target discを全て比較する。従ってsource／targetの
+disc union coverageで十分であり、component内部のpermutationは判定を変えない。
+
+### hierarchical exact-multiplicity sweep
+
+selected modulus class count `4 / 2 / 3 / 6`を、group `0,1`と`2,3`のpair poolへ分ける。
+full degree-17 monomial listやfull classification matrixは保持せず、17-point exact integer Fourier counter、
+outward-rounded binary64 product bound、aggregate summaryとmatrix digestだけをstreamする。
+
+登録resource値は次とする。
+
+- class-power record: `238`、digest
+  `505796aa76169a763a11ce08e2b017898e23311b4df98b23ff468e5515e9b12e`
+- group-signature record: `104672`、digest
+  `7a400cc0b59d7bac73aa8837af3e4f6b738fbed6863a285cfc9b83532b99c770`
+- pair-pool cache key／cached pair-signature entry: `101 / 720101`
+- pair-pool digest:
+  `dd59bcc7ffeeeb4798bc8c26b8b4c1857c06288af0e4ac92b90260712c68634f`
+- convolution call／maximum crude `int64` bound: `1339913 / 1700`
+- peak live signature／maximum coefficient／crude Fourier bound:
+  `1201200 / 1422 / 10132`
+- bound／coefficient／classification matrix record: `199 / 889 / 2084`
+- bound／coefficient／classification digest:
+  `18c3d7cdd1d53d9b95d6d1c8aaa7b3162aa2fa51fe912c118d660ff13894aca5` /
+  `9bea6d491f17faa5ae88cf4adb30c675c6f13ff69028a4c31ab169e4365b9026` /
+  `fcf407a94677b27f327676881e81c8b220db764a973d32b35feb62ae6f6652f6`
+
+199 overlap-inventory aggregateについて次を登録する。
+
+- original monomial: `20467791608`
+- modulus／compatible signature: `55452003 / 49831491`
+- compatible original monomial: `4949877042`
+- distinct／weighted comparison: `301592258 / 10786916138`
+- distinct relation:
+  `product_below_target 135864646 / target_below_product 165727612 / overlap 0`
+- weighted relation:
+  `product_below_target 5313413298 / target_below_product 5473502840 / overlap 0`
+- aggregate record digest:
+  `5ac4782b4279a5b36d42dd1e7eb9082d3e427b6bfd1d1ac7570c1d9d54af44ce`
+
+global minimum separated witnessはaggregate index `113`、selected count `[5,5,4,3]`、target
+`block=11;center=3`、left／right index `5 / 55`、wave multiplicity `15`、relation
+`target_below_product`とする。sourceは
+`(block=16;center=145)^5 × (block=16;center=150)^5 ×`
+`(block=1;center=152)^4 × (block=0;center=144)^3`である。outward／exact gapは
+`0x1.d0afe9cffffffp-25 / 0x1.d0afedf6fcdf8p-25`、witness digestは
+`02b8f2278d327e8284690f28c936fb24e3ef2134b7259d7fe252aba45ba0d336`とする。
+
+### validity gate
+
+1. Q011anまでの19 artifact、runner、98 direct digest、outcome、boundaryが再現する。
+2. Q011u degree-17全1140 count tuple、199 overlap、941 nonoverlap、15 external component、152 target、
+   exact inventoryと3 digestが再現する。
+3. Q011an reuse 152、新規Q011ak extension 24、全176 final record、Q011ak式の204-record exact replay、
+   Q011u containment、selected class membershipが再現する。
+4. 238 class-power、104672 group signature、101 pair-pool、1339913 convolutionを欠落・重複なく再現し、
+   全integer counterが非負、fiber sum exact、`int64` crude bound内である。
+5. 全count、relation、resource値、aggregate／bound／coefficient／classification digestが再現する。
+6. global minimum witness、outward／exact positive gap、witness digestが再現する。
+7. strict finite JSON、section digest、runner provenanceが再現する。
+
+一つでも失敗すれば`inconclusive`とし、degree 17をcertified setへ追加しない。
+
+### hypothesis gateと停止規則
+
+1. 176 final discがselected source 24とexternal target 152をlabel-safeに包む。
+2. 199 overlap-inventory aggregateの全`301592258` distinct／`10786916138` weighted comparisonが
+   strictに分離する。
+3. Q011uの941 nonoverlapがcontainmentで保存され、degree 17の1140 aggregateが全分離する。
+4. minimum outward gapとexact gapがともにstrictly positiveである。
+5. claimをdegree-17 external nonresonanceだけに限定する。
+
+validity通過後、全5項目が通れば
+`the component-safe hierarchical sweep certifies degree-17 external nonresonance`
+として`accepted`、actual resonance outcomeを
+`ruled_out_within_registered_degree_seventeen_scope`とする。validな計算で一つでもoverlapが残れば、
+このsufficient certificateを`rejected`、actual resonanceを`not_established`とし、最初のoverlapだけを次の
+精密化候補にする。後付けthresholdで結果を変更しない。
+
+acceptedならcertified degreesは2--17および91以降、missing rangeは18--90へ縮む。次はQ011apで
+degree 18のresourceをdesign-onlyに監査し、同じstreaming表現が登録上限内の場合だけ正式事前登録する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 17、Q011uの1140 external aggregate、
+Q011an component-safe selected-source envelope、24 Q011ak blockwise target extension、独立なsource-disc
+反復選択、全target disc、exact x-Fourier multiplicity、hierarchical outward-rounded dyadic product protocolに
+限る。degrees 18--90、all-order nonresonance、Q011t graphとのhigher-order一致、higher graph smoothness、
+SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
