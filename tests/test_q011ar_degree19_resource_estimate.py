@@ -180,14 +180,24 @@ def test_q011ar_cycle_has_strict_reproducible_digests(
     q011ar_cycle: dict[str, Any],
 ) -> None:
     json.dumps(q011ar_cycle, allow_nan=False)
-    for name in (
-        "input_digest_sha256",
-        "inventory_digest_sha256",
-        "envelope_digest_sha256",
-        "resource_digest_sha256",
-        "result_digest_sha256",
-    ):
-        assert len(q011ar_cycle[name]) == 64
+    expected = {
+        "input_digest_sha256": (
+            "2be0835736f234a9df83af63fd836aca5196eb6b4e8c54dc86d72723b7b995f6"
+        ),
+        "inventory_digest_sha256": (
+            "9fd64f430ca0f5231e97ec13338aaaf037909d35c2e5a294ed6246d4f87f8848"
+        ),
+        "envelope_digest_sha256": (
+            "b33a4d036c244ed17fb5b708307759883439eef6172e473303fc4ea726c0a70c"
+        ),
+        "resource_digest_sha256": (
+            "c93fb9cb96a91474cbba67aad1b12ad699fd189c537a4ac54305a1b3daf0f328"
+        ),
+        "result_digest_sha256": (
+            "2823bb2101e57bfd277e18e621c17ef850488ec5743083a10f8246e5e61d8f27"
+        ),
+    }
+    assert {name: q011ar_cycle[name] for name in expected} == expected
     assert q011ar_cycle["result_digest_sha256"] == q011ar.q011b._canonical_json_sha256(
         q011ar._result_digest_sections(q011ar_cycle)
     )
@@ -215,9 +225,16 @@ def test_q011ar_study_metadata_and_optional_artifact_are_scoped(
     if not artifact_path.exists():
         pytest.skip("Q011ar artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert _file_sha256(artifact_path) == (
+        "8e0f2cca4c4db357587595ba315aa4fa84121c358e988f4cdcadc8720621e67a"
+    )
     assert artifact["schema_version"] == 1
     assert artifact["source"] == source_metadata()
-    assert artifact["runner_source"]["filename"] == "q011ar_degree19_resource_estimate.py"
+    assert artifact["runner_source"] == {
+        "filename": "q011ar_degree19_resource_estimate.py",
+        "sha256": "4a3faebafd0404f449e1410e98a25bce659a2c4c80c641bdbd642bbd487443aa",
+        "sha256_newline_normalization": "UTF-8 text with universal newlines",
+    }
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
     assert artifact["study_gate"] == "passed"
     assert artifact["resource_decision"] == q011ar.STOP_DECISION
