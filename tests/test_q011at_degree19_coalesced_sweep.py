@@ -10,6 +10,17 @@ import research.q011at_degree19_coalesced_sweep as q011at
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
+EXPECTED_RUNNER_SHA256 = "e9ab6411173392658d19592687677b6bc77d645ed6850b5675abbf89e1fc2212"
+EXPECTED_ARTIFACT_SHA256 = "21a93ebdbccb8a1ebebbe75622296088b18fd384c80922479029652ae6f474fb"
+EXPECTED_SECTION_DIGESTS = {
+    "input_digest_sha256": "ded7430633a2c2fbbd95c4e9342ad1f3fcaeb4afdc8bf14dda7dc3d09f9e177b",
+    "preparation_digest_sha256": (
+        "3525d4893b78d8ba0c6d5cf979b3e15f47ade979c3835c051af5489f339de47a"
+    ),
+    "sweep_digest_sha256": "4b93500bfcfdb90e52f0f807c2d2ceb1b44d61f11cbbc4208e84b111dc3b4352",
+    "result_digest_sha256": "3d148b680a877b06c30301c7c2f88f0bae696bb6128363daa8e783e394998ace",
+}
+
 
 @pytest.fixture(scope="module")
 def q011at_study() -> dict[str, Any]:
@@ -73,25 +84,45 @@ def test_q011at_full_sweep_reproduces_registered_resources(
     assert sweep["bound_matrix_record_count"] == 285
     assert sweep["coefficient_matrix_record_count"] > 0
     assert sweep["classification_matrix_record_count"] > 0
+    assert sweep["distinct_comparison_count"] == 65_684
+    assert sweep["weighted_comparison_count"] == 68_598_231_900
+    assert sweep["distinct_relation_counts"] == {
+        "overlap": 0,
+        "product_below_target": 21_836,
+        "target_below_product": 43_848,
+    }
+    assert sweep["weighted_relation_counts"] == {
+        "overlap": 0,
+        "product_below_target": 28_355_744_700,
+        "target_below_product": 40_242_487_200,
+    }
+    assert sweep["aggregate_record_digest_sha256"] == (
+        "5de5e2a3c130dd494cd36def553daef0b711d8171166935d3fb8a23fb4d29d16"
+    )
+    assert sweep["bound_matrix_digest_sha256"] == (
+        "8bda81b92335e77a975e6cdb0ac803909f25025bd5fdd3272069db207688b4b2"
+    )
+    assert sweep["coefficient_matrix_digest_sha256"] == (
+        "0a4113554b5dc800b73751cf2afe6d9df4f9083658d384f30b2ef3ab81ff9463"
+    )
+    assert sweep["classification_matrix_digest_sha256"] == (
+        "0d23600e95f0b0c8d73a0ccf345cc5507247ee39f2e3ed35ff9141a7e4d9be7b"
+    )
 
 
 def test_q011at_registered_outcome_logic_is_consistent(q011at_cycle: dict[str, Any]) -> None:
     assert q011at_cycle["study_validity"] == "passed"
     assert all(gate["passed"] for gate in q011at_cycle["validity_gates"].values())
     sweep = q011at_cycle["degree_nineteen_block_support_coalesced_sweep"]
-    overlap = sweep["distinct_relation_counts"]["overlap"]
-    if overlap == 0:
-        assert q011at_cycle["scientific_outcome"] == "accepted"
-        assert q011at_cycle["scientific_classification"] == q011at.ACCEPTED_CLASSIFICATION
-        assert q011at_cycle["actual_resonance_outcome"] == (
-            q011at.ACCEPTED_ACTUAL_RESONANCE_OUTCOME
-        )
-        assert all(gate["passed"] for gate in q011at_cycle["hypothesis_gates"].values())
-    else:
-        assert q011at_cycle["scientific_outcome"] == "rejected"
-        assert q011at_cycle["scientific_classification"] == q011at.REJECTED_CLASSIFICATION
-        assert q011at_cycle["actual_resonance_outcome"] == "not_established"
-        assert sweep["first_unresolved_witness"] is not None
+    assert sweep["distinct_relation_counts"]["overlap"] == 0
+    assert sweep["fully_separated_overlap_aggregate_count"] == 285
+    assert sweep["first_unresolved_witness"] is None
+    assert q011at_cycle["scientific_outcome"] == "accepted"
+    assert q011at_cycle["scientific_classification"] == q011at.ACCEPTED_CLASSIFICATION
+    assert q011at_cycle["actual_resonance_outcome"] == (
+        q011at.ACCEPTED_ACTUAL_RESONANCE_OUTCOME
+    )
+    assert all(gate["passed"] for gate in q011at_cycle["hypothesis_gates"].values())
 
 
 def test_q011at_witnesses_and_claim_boundary_are_scoped(q011at_cycle: dict[str, Any]) -> None:
@@ -99,17 +130,16 @@ def test_q011at_witnesses_and_claim_boundary_are_scoped(q011at_cycle: dict[str, 
     minimum = sweep["global_minimum_separated_witness"]
     assert minimum["relation"] in {"product_below_target", "target_below_product"}
     assert minimum["outward_gap_lower"]["float"] > 0
+    assert minimum["outward_gap_lower"]["binary64_hex"] == "0x1.ff396c4ffffffp-23"
+    assert minimum["exact_gap_hex"] == "0x1.ff396d82ff905p-23"
     assert q011at.q011z._fraction(minimum["exact_gap"]) > 0
-    assert len(minimum["witness_digest_sha256"]) == 64
+    assert minimum["witness_digest_sha256"] == (
+        "bd68862054dca834add7da9bc1faea2152e34a33ccccb59b2c01903249cdc4bd"
+    )
     theorem = q011at_cycle["theorem_consequence"]
-    if q011at_cycle["scientific_outcome"] == "accepted":
-        assert theorem["degree_nineteen_external_nonresonance_is_certified"]
-        assert theorem["certified_external_nonresonance_degrees"] == list(range(2, 20))
-        assert theorem["missing_external_nonresonance_degrees"] == list(range(20, 91))
-    else:
-        assert not theorem["degree_nineteen_external_nonresonance_is_certified"]
-        assert theorem["certified_external_nonresonance_degrees"] == list(range(2, 19))
-        assert theorem["missing_external_nonresonance_degrees"] == list(range(19, 91))
+    assert theorem["degree_nineteen_external_nonresonance_is_certified"]
+    assert theorem["certified_external_nonresonance_degrees"] == list(range(2, 20))
+    assert theorem["missing_external_nonresonance_degrees"] == list(range(20, 91))
     assert not theorem["all_spectral_quotient_nonresonances_are_certified"]
     assert not theorem["ssm_existence_or_uniqueness_is_certified"]
     assert "degrees 20--90" in q011at_cycle["claim_boundary"]
@@ -117,13 +147,8 @@ def test_q011at_witnesses_and_claim_boundary_are_scoped(q011at_cycle: dict[str, 
 
 def test_q011at_cycle_has_strict_reproducible_digests(q011at_cycle: dict[str, Any]) -> None:
     json.dumps(q011at_cycle, allow_nan=False)
-    for name in (
-        "input_digest_sha256",
-        "preparation_digest_sha256",
-        "sweep_digest_sha256",
-        "result_digest_sha256",
-    ):
-        assert len(q011at_cycle[name]) == 64
+    for name, digest in EXPECTED_SECTION_DIGESTS.items():
+        assert q011at_cycle[name] == digest
     assert q011at_cycle["result_digest_sha256"] == q011at.q011b._canonical_json_sha256(
         q011at._result_digest_sections(q011at_cycle)
     )
@@ -152,9 +177,14 @@ def test_q011at_study_metadata_and_optional_artifact_are_scoped(
     assert artifact["source"] == source_metadata()
     assert artifact["runner_source"]["filename"] == "q011at_degree19_coalesced_sweep.py"
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["runner_source"]["sha256"] == EXPECTED_RUNNER_SHA256
     assert artifact["study_gate"] == "passed"
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["actual_resonance_outcome"] == (
+        q011at.ACCEPTED_ACTUAL_RESONANCE_OUTCOME
+    )
     assert artifact["cycle"]["result_digest_sha256"] == q011at.q011b._canonical_json_sha256(
         q011at._result_digest_sections(artifact["cycle"])
     )
-    assert len(_file_sha256(artifact_path)) == 64
+    assert _file_sha256(artifact_path) == EXPECTED_ARTIFACT_SHA256
     json.dumps(artifact, allow_nan=False)
