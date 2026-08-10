@@ -19608,6 +19608,46 @@ dyadic product enclosureに限る。aggregate 55のoverlapはactual resonanceを
 nonresonance、degrees 17--90、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011am 実行結果
+
+Q011alまでの17 artifact、runner、88 direct digestを再照合し、validity `7 / 7`を通過した。登録した
+階層exact-multiplicity protocolは228 class-power、77927 group signature、85 pair poolを構成した。
+`973967`回の17点整数巡回畳み込みは全件で非負かつfiber-sum exactで、最大crude `int64` boundは
+`1734`だった。
+
+154 aggregateを全走査し、`7593735887` original monomial、`27206049` modulus signature、
+`23173623` compatible signature、`1649206077` compatible monomialを再現した。分類した
+`136891880` distinct／`3521974412` weighted comparisonのrelation総数は次だった。
+
+- distinct: `product_below_target 72313776 / target_below_product 64553144 / overlap 24960`
+- weighted: `product_below_target 1901447368 / target_below_product 1620138564 / overlap 388480`
+
+153 aggregateは全比較がstrictに分離し、sole remaining indexは`55`だった。index 55のfirst unresolved
+witnessは登録どおりtarget `block=13;center=114`、block-zero multiplicity `0`、hybrid intersection
+width `0x1.cec36b55f92c1p-26`だった。同じwitnessのcenter-only relationは
+`product_below_target`、exact gapは`0x1.4739f17e09ca8p-29`である。従ってenclosure overlapをactual
+complex resonanceへ昇格していない。
+
+- hypothesis gate: `6 / 6` passed
+- six-source hybrid degree-16 certificate: `rejected`
+- actual complex resonance outcome: `not_established`
+- first unresolved／global-minimum witness digest:
+  `f73644b63995be065528cd9a16ea1044036491d3f3a23ae61f233058b3f58576` /
+  `8e3dfea54c4a6b486a05a58e48ceb1fccbf48197a6e96ca3d91cdcb39fcabc9f`
+- input／factorization／enumeration／obstruction／result digest:
+  `5378793ad9b9f0f681fbcf145e10a32ec217939ab4daa5f5014b1ba0d7b465ba` /
+  `894ad9beb5d5bbd6bf72d3f82b8c303d669d7dc344ce044c4651af20e499d5f1` /
+  `24a2c1bd3efd8a9d82c25323c4c379b727c022dc2af084cf1e949bd1bade614c` /
+  `ce39bfbc7ef0de8320782de9b8108408cac5359524d9b3ab8339d3be9518dc6d` /
+  `1daa072b1a92ed2582a44cde106fa9dc06697d39b6985f99ca9643409d1285a8`
+- runner／artifact newline-normalized SHA-256:
+  `c703511110165f66ebcc24ddb93b309c94a2e7b8e7e7372d4fa492e54ee25e53` /
+  `c4808edd49dec80cb613834d829b6f411c516838f7183c13f6a1e01371cf8f51`
+
+certified degreesは2--15および91以降、missing rangeは16--90のままである。次は登録どおりQ011anで
+aggregate 55に実際に現れるblock 1／13／16をrow-specificに精密化する。first witnessのblock-zero
+multiplicityが0なので、block 0単独の追加精密化は行わない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

@@ -7318,6 +7318,48 @@ aggregate、degree-16 external nonresonance、degrees 17--90、higher graph smoo
 uniqueness、normal attraction、basinは未認証である。certified degreesは2--15および91以降、missing
 rangeは16--90のままとする。次はQ011amでhybrid envelopeをdegree-16 overlap inventory全体へ適用する。
 
+### Q011am 実行結果
+
+Q011alまでの17 artifact、runner、88 direct digest、outcome、claim boundaryとsourceを再照合し、validity
+`7 / 7`を通過した。Q011alの204-identifier hybrid envelopeを154 degree-16 modulus-overlap aggregateへ
+適用した。階層列挙では228 class-power、77927 group signature、85 pair poolを構成し、`973967`回の
+exact `int64` cyclic convolutionで非負性とfiber-sum恒等式を全件確認した。
+
+`7593735887` original monomialを`27206049` modulus signatureへ圧縮し、`23173623` compatible
+signature、`1649206077` compatible monomial、`136891880` distinct／`3521974412` weighted
+comparisonを分類した。153 aggregateは全比較がstrictに分離し、index 55だけに`24960` distinct／
+`388480` weighted overlapが残った。
+
+first unresolved witnessはtarget `block=13;center=114`、source
+`(block=16;center=145)^3 × (block=16;center=151)^7 ×`
+`(block=1;center=151)^5 × block=1;center=149`、block-zero multiplicity `0`だった。hybrid
+intersection widthは`0x1.cec36b55f92c1p-26` > 0だが、center-only exact gapも
+`0x1.4739f17e09ca8p-29` > 0だった。
+
+- hypothesis gate: `6 / 6` passed
+- six-source hybrid degree-16 certificate: `rejected`
+- actual complex resonance outcome: `not_established`
+- fully separated／remaining-overlap aggregate: `153 / 1`、remaining index `[55]`
+- aggregate／bound／coefficient／classification digest:
+  `295f5eb4a8e3d794d09bef8d552f92bca6b96a3db51749b51b355c05f1e40415` /
+  `2d1b0ce829e42f87b96793d0f1a4208be1cb2a8215989b4d5485873725b544a6` /
+  `ea542f6e28fef27ed8da24bcb02af28eab59190dac4ba41c40bf8a8c7682edd9` /
+  `db97ba016821788462c728153a7603272a8d97cc0c45f88582ca13a360b12fba`
+- input／factorization／enumeration／obstruction／result digest:
+  `5378793ad9b9f0f681fbcf145e10a32ec217939ab4daa5f5014b1ba0d7b465ba` /
+  `894ad9beb5d5bbd6bf72d3f82b8c303d669d7dc344ce044c4651af20e499d5f1` /
+  `24a2c1bd3efd8a9d82c25323c4c379b727c022dc2af084cf1e949bd1bade614c` /
+  `ce39bfbc7ef0de8320782de9b8108408cac5359524d9b3ab8339d3be9518dc6d` /
+  `1daa072b1a92ed2582a44cde106fa9dc06697d39b6985f99ca9643409d1285a8`
+- runner／artifact newline-normalized SHA-256:
+  `c703511110165f66ebcc24ddb93b309c94a2e7b8e7e7372d4fa492e54ee25e53` /
+  `c4808edd49dec80cb613834d829b6f411c516838f7183c13f6a1e01371cf8f51`
+
+従って登録したsix-source sufficient certificateはsole aggregate 55で棄却したが、actual complex
+resonanceは未確立である。degree-16 nonresonance、higher graph smoothness、SSM uniquenessは認証せず、
+missing rangeは16--90のままとする。次はQ011anでwitnessに現れるblock 1／13／16をrow-specific
+contained eigendiscへ精密化する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7525,6 +7567,8 @@ rangeは16--90のままとする。次はQ011amでhybrid envelopeをdegree-16 ov
 [`artifacts/q011ak_degree16_blockwise_obstruction.json`](artifacts/q011ak_degree16_blockwise_obstruction.json)
 
 [`artifacts/q011al_block_zero_structured_rows.json`](artifacts/q011al_block_zero_structured_rows.json)
+
+[`artifacts/q011am_degree16_hybrid_sweep.json`](artifacts/q011am_degree16_hybrid_sweep.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

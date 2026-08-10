@@ -3651,6 +3651,50 @@ minimum coordinate-gap lower boundはcenter `149 / 143`の`0x1.900710b9c775fp-6`
 missing rangeは16--90のままである。次はQ011amで同じhybrid envelopeをdegree 16の154 overlap
 aggregate全体へ適用する。
 
+### Q011am degree-16 six-source hybrid full sweep
+
+Q011alの204-identifier hybrid envelopeを、Q011ajで残ったdegree-16の154 modulus-overlap
+aggregate全体へ適用した。count-16の巨大なmultisetを直接保持せず、modulus classごとの冪、selected
+group、group pairの順にexact 17-point Fourier counterを巡回畳み込みし、積区間だけを外向きbinary64で
+評価した。`973967`回の整数畳み込みは全件で非負性とfiber-sum恒等式を満たし、最大crude `int64`
+boundは`1734`だった。
+
+この階層列挙は`7593735887` original monomialを`27206049` modulus signatureへ圧縮し、
+`23173623` compatible signature、`1649206077` compatible monomial、`136891880` distinct／
+`3521974412` weighted comparisonを欠落・重複なく分類した。154 aggregateのうち153件は全比較が
+strictに分離したが、index 55だけに`24960` distinct／`388480` weighted overlapが残った。
+
+index 55のcanonical first overlapはtarget `block=13;center=114`、source
+`(block=16;center=145)^3 × (block=16;center=151)^7 ×`
+`(block=1;center=151)^5 × block=1;center=149`で、block-zero multiplicityは0だった。hybrid intervalの
+intersection widthは`0x1.cec36b55f92c1p-26`とstrictly positiveだが、center-only exact gapも
+`0x1.4739f17e09ca8p-29`とstrictly positiveである。従ってこれはactual complex resonanceではなく、
+登録したsix-source sufficient certificateの限界である。
+
+- validity／hypothesis gates: `7 / 7` passed、`6 / 6` passed
+- six-source hybrid degree-16 certificate: `rejected`
+- actual complex resonance outcome: `not_established`
+- fully separated／remaining aggregate: `153 / 1`、remaining index `[55]`
+- class-power／group-signature／pair-pool record: `228 / 77927 / 85`
+- aggregate／bound／coefficient／classification digest:
+  `295f5eb4a8e3d794d09bef8d552f92bca6b96a3db51749b51b355c05f1e40415` /
+  `2d1b0ce829e42f87b96793d0f1a4208be1cb2a8215989b4d5485873725b544a6` /
+  `ea542f6e28fef27ed8da24bcb02af28eab59190dac4ba41c40bf8a8c7682edd9` /
+  `db97ba016821788462c728153a7603272a8d97cc0c45f88582ca13a360b12fba`
+- input／factorization／enumeration／obstruction／result digest:
+  `5378793ad9b9f0f681fbcf145e10a32ec217939ab4daa5f5014b1ba0d7b465ba` /
+  `894ad9beb5d5bbd6bf72d3f82b8c303d669d7dc344ce044c4651af20e499d5f1` /
+  `24a2c1bd3efd8a9d82c25323c4c379b727c022dc2af084cf1e949bd1bade614c` /
+  `ce39bfbc7ef0de8320782de9b8108408cac5359524d9b3ab8339d3be9518dc6d` /
+  `1daa072b1a92ed2582a44cde106fa9dc06697d39b6985f99ca9643409d1285a8`
+- runner／artifact newline-normalized SHA-256:
+  `c703511110165f66ebcc24ddb93b309c94a2e7b8e7e7372d4fa492e54ee25e53` /
+  `c4808edd49dec80cb613834d829b6f411c516838f7183c13f6a1e01371cf8f51`
+
+certified degreesは2--15および91以降、missing rangeは16--90のままである。次はQ011anでindex 55の
+実際のwitnessに現れるblock 1／13／16をrow-specific contained eigendiscへ精密化する。block 0だけを
+さらに精密化しても、このwitnessは変わらない。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -4333,6 +4377,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011aj_degree16_uniform_obstruction.json`](research/artifacts/q011aj_degree16_uniform_obstruction.json)
 - [`research/artifacts/q011ak_degree16_blockwise_obstruction.json`](research/artifacts/q011ak_degree16_blockwise_obstruction.json)
 - [`research/artifacts/q011al_block_zero_structured_rows.json`](research/artifacts/q011al_block_zero_structured_rows.json)
+- [`research/artifacts/q011am_degree16_hybrid_sweep.json`](research/artifacts/q011am_degree16_hybrid_sweep.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -4486,6 +4531,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   blockwise-radius certificate棄却／actual-resonance未確立
 - Q011al block-zero structured-row eigendisc、selected-component multiplicity、
   登録degree-16 obstruction clearance
+- Q011am 154 degree-16 overlap aggregateの階層exact-multiplicity sweep、153件の全分離、
+  sole aggregate-55 six-source certificate棄却／actual-resonance未確立
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -4667,4 +4714,7 @@ comparisonを新たに分離したが、125440 comparisonは残存overlapとな�
 multiplicity 0／1は全分離、2--5は全overlapだったため、blockwise-radius certificateも棄却し、
 actual resonanceは未確立のまま保持した。Q011alではselected block-0 6 identifierだけをrigorous
 row-specific eigendiscへ精密化し、登録obstructionの141120 distinct comparisonを全件分離した。ただし
-残る153 aggregateを未監査のため、degree-16 nonresonanceはまだ認証していない。
+残る153 aggregateを未監査のため、degree-16 nonresonanceはまだ認証していない。Q011amでは同じhybrid
+envelopeで154 overlap aggregate全体を監査し、153 aggregateを全分離したが、index 55だけに24960
+distinct overlapが残った。従ってsix-source certificateを棄却し、degree-16 nonresonanceとactual complex
+resonanceはともに未確立のまま保持した。
