@@ -19224,6 +19224,176 @@ target `block=11;center=3`、left／right index `0 / 8`、wave multiplicity `14`
 2--15および91以降、missing rangeは16--90のままである。次はQ011alでblock-0因子を含む
 未分離fiberに絞り、identifier／eigenpair-specificなcontained eigendiscを監査する。
 
+## Q011al: block-zero structured-row eigendisc clearance — 事前登録
+
+### 問いと判定境界
+
+Q011akで残った125440 comparisonは、source monomialがblock-0 identifierを2個以上含む場合に
+限られた。この局在化を用い、block-common \(\theta_0\)の代わりにblock 0のeigenbasisと
+entrywise exact family uncertaintyからrow-specific Gershgorin radiusを構成すると、Q011aj aggregate
+index 99の全comparisonを分離できるか。
+
+design-only pilotでは全141120 distinct comparisonがstrictに分離した。ただし、この成功は登録
+obstructionだけを解消するもので、残り153 overlap aggregateを監査するまでdegree-16
+external nonresonanceに昇格しない。登録結果が再現した場合のclassificationは
+
+`the registered degree-16 obstruction is cleared by rigorously contained block-zero structured-row eigendiscs`
+
+とし、scientific outcomeを`accepted`とする。Q011akのblock-common certificate棄却はそのまま保存する。
+
+### sealed input
+
+Q011akまでの16 artifact、runner、83 direct digest、outcome、claim boundaryとQ011l／Q011o sourceを
+再照合する。Q011akは直接封印する。
+
+- Q011ak artifact／runner newline-normalized SHA-256:
+  `21d99ca113c5c71b573134d075dc0f01bdc03f0eeea4157dd1a62b1689e7ae59` /
+  `140a4631da777450fbbe5eb3462579c9d2f5b64f3970eeda26511502ea1302f4`
+- Q011ak input／radius／interval／obstruction／result digest:
+  `710bcb6b724112bcf8f7c6cc166009accb176d325c5f6b2b911621d6a4b0ff42` /
+  `2c6fc37c40262ba5b76121ca1e3655e1ecd760b88ad27063f932bda532ff62ab` /
+  `25174294bfe13f1de5124793594bb14702617337d41f69e8ff9b43afd3c12386` /
+  `984f9cd6c4d2db107385e500f64f89e242f2764a826d44f78bb56cbd283e3ec4` /
+  `e95e11a93a688170e0538d16d9956e487dbd5a1e7a9262b823cb60d0e1b0166a`
+
+### structured-row radiusの証明式
+
+block-0 exact familyを\(A\)、Q011kのbinary64 proposalを\(A_0\)、同じ決定的eigenbasisを
+\(V\)、inverse candidateを\(W\)、diagonal centerを\(D\)とする。
+
+\[
+E=WV-I,\qquad R_0=A_0V-VD,\qquad
+F=V^{-1}AV-D=(I+E)^{-1}W\{R_0+(A-A_0)V\}.
+\]
+
+Q011kの\(\varepsilon\ge\lVert E\rVert_\infty<1\)と
+\(p\ge\lVert R_0\rVert_\infty\)を保存する。entrywise family radius
+\(\Delta_{pq}\ge |(A-A_0)_{pq}|\)、directed-MPFRで上から評価した
+\(|V_{qj}|\)と\(|W_{ip}|\)を用い、
+
+\[
+u_q=\sum_j|V_{qj}|,　
+s_i=\sum_p|W_{ip}|\sum_q\Delta_{pq}u_q,　
+b_i=\left(\sum_p|W_{ip}|\right)p+s_i,
+\]
+
+\[
+\boxed{r_i=b_i+\frac{\varepsilon}{1-\varepsilon}\max_\ell b_\ell}
+\]
+
+とする。これは\(\sum_j|F_{ij}|\le r_i\)を上から抑えるため、actual block-0 spectrumは
+\(\bigcup_iD(D_{ii},r_i)\)に含まれる。point residualのcancellationを用いず、Q011kの全体norm
+\(p\)を各inverse row sumへ掛ける。
+
+primary 256-bit／replay 384-bitのRoundUp protocolを使い、全binary64 inputをexactに変換する。
+45000個の\(V/W\) absolute upperと22500個のentrywise family radiusを全件ハッシュする。
+
+- primary／replay eigenbasis-absolute stream digest:
+  `b8001ad3de3b7b0ef129559e97be9e175c2196547e781d9c3c18e111e55afac4` /
+  `7813ce8790beb47b159116b472c809af4429e5688bc7bd6ce8914488082fea02`
+- entrywise-family stream digest:
+  `8271e94081187efb1b864e43cd2425255217e3ac77238804b839bb44dd26b491`
+- primary／replay 150-row record digest:
+  `f298ebda4edf3f47226c6a3dc5c5c37d7e8e8da82f92c91e44af607e495db1f6` /
+  `1eb0794a1063c488cd86eea08a6a8a05711c3cd11a82f063b384e242bde93fb9`
+
+replayの150 radiusはprimaryにcoordinatewise strictly containedすることを登録する。primaryのNeumann
+correction hexは`0x1.0a55a6c03e205p-71`、maximum row radiusはcenter index 34の
+`0x1.331a87c57c090p-31`で、Q011y common \(\theta_0=\mathtt{0x1.5cbff506e79d2p-26}\)に含まれる。
+
+selected center 144--149のprimary radius hexは順に
+
+`0x1.ce2c730243e12p-35 / 0x1.d3b4549712506p-35 / 0x1.14c4118741b29p-34 /`
+`0x1.087daaa7f30b9p-34 / 0x1.12db20142d612p-36 / 0x1.384c1f0aea1b4p-35`
+
+とし、6 selected-row digestは
+`247b63924428434d2f73ec7d8a74955126845e29678082e95f9f7a77b3e2bfed`とする。
+
+### Gershgorin componentとselected clusterの個数
+
+exact center distanceとprimary radiusから、2円板の非交差がexact squared-distanceで証明できない場合に
+edgeを置く。150円板は73 componentとなり、selectedとexternalを混ぜるcomponentは0とする。
+selected componentは
+
+- component 70: `[144,146]`
+- component 71: `[145,147]`
+- component 72: `[148,149]`
+
+の3個である。component-record digestは
+`afd18241199f27fd43eaae643ed4c64b3d76e9ffad880a502fc9cf84354a4d5f`とする。selected／external間の
+maximum-coordinate lower gapのminimumはcenter `149 / 143`の`0x1.900710b9c775fp-6` > 0、
+gap-record digestは`ac6dd0cedd3230e10a9e0b054eeb354f3d7c239ca2dae974927a0dbd5c651bcc`とする。
+
+Gershgorinのsecond theoremにより、他の円板componentから分離した\(k\)個の円板の和はexactly
+\(k\)個の固有値を含む。従って上記3 componentは全selected block-0固有値を過不足なく含む。
+
+### hybrid envelopeと登録obstruction
+
+Q011akの204 identifierのうち、selected `block=0;center=144--149`の6件だけをprimary row radiusへ
+置き換える。残り198件はQ011y blockwise radiusを保存する。全hybrid intervalは対応する
+Q011ak blockwise intervalに含まれ、204-record digestは
+`a7d56141743bc62f3684d54975ad7d74f6274b3a3da7078d6ce1ce7a31f8092e`とする。modulus classは
+`4 / 2 / 3 / 6`のまま、membership digestも
+`269187f8489521c7e37ae8a91669b9dc020ac10d4ef1d42272bb636fa7bc9b8c`のままとする。
+
+aggregate index 99の35280 signature、1732864 compatible monomial、3465728 weighted／141120 distinct
+comparisonを同じexact Fourier multiplicityで評価する。登録relationはweightedもdistinctも
+
+`product_below_target = all / target_below_product = 0 / overlap = 0`
+
+とする。minimum outward gapは`0x1.2de9e9dffffffp-26` > 0である。canonical witnessは
+target `block=11;center=4`、left／right index `385 / 0`、wave multiplicity `35`、block-0 multiplicity
+`0`、class count
+
+`[[5,0,0,0],[0,6],[0,0,4],[0,0,0,0,0,1]]`
+
+とする。sourceは
+
+`(block=16;center=142)^5 × (block=16;center=151)^6 × (block=1;center=152)^4 × block=1;center=149`
+
+で、exact interval gap hexは`0x1.2de9f1c1d911ep-26`とする。witness／aggregate-record digestは
+
+`6349dc3528e2081b202100712fae40b43fd36792c1867818d2f0cd9ddc0a1096 /`
+`93d6bb29d30ac44364e021f84b3f8b82ce98c68a36106d9c55dc59f915a86ac6`
+
+とする。
+
+### validity gate
+
+1. Q011akまでの16 artifact、runner、83 direct digest、outcome、boundaryとsourceが再現する。
+2. Q011kと同じblock-0 exact family、proposal、eigenbasis／inverse、selected indicesが再現する。
+3. 256／384-bit RoundUp、45000 basis absolute、22500 family entry、全stream digest、禁止MPFR flag非発生が
+   再現する。
+4. 150 row formula、primary／replay digest、coordinatewise strict containment、Q011y \(\theta_0\)への包含が
+   再現する。
+5. 73 Gershgorin component、0 mixed component、3 selected component、positive selected／external gapが再現する。
+6. 6 selected-rowのみを置き換えた204 hybrid interval、Q011ak containment、modulus classが再現する。
+7. index 99のsignature／monomial／comparison数、all-separated relation、positive witnessとdigestが再現する。
+8. strict JSON、section digest、runner provenanceが再現する。
+
+### hypothesis gateと停止規則
+
+1. structured-row formulaがactual block-0 transformed matrixの全row sumを上から抑える。
+2. selected Gershgorin componentはexternal componentから分離し、exactly 6 selected eigenvalueを含む。
+3. 6 refined source intervalはQ011ak intervalに含まれ、残り198 intervalは変更されない。
+4. 141120 distinct／3465728 weighted comparisonが重複・欠落なく分類される。
+5. 全comparisonが`product_below_target`となり、overlapが0である。
+6. minimum outward gapおよびcanonical exact gapがstrictly positiveである。
+
+全6項目が通る場合、登録obstruction clearanceを`accepted`とする。ただしdegree-16 certificateへは
+昇格せず、certified degreesは2--15および91以降、missing rangeは16--90のままとする。事前登録値の
+いずれかが失敗した場合は`inconclusive`とする。登録どおりacceptedなら、Q011amでこのhybrid
+envelopeをdegree 16の154 overlap aggregate全体へ適用する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、block 0のQ011k exact root family、selected
+center 144--149、degree 16、Q011aj aggregate index 99、Q011yの非零block radius、exact x-Fourier
+multiplicity、outward-rounded dyadic product enclosureに限る。block-0 external componentのQ011u modulus-groupへの
+再同定、他の153 overlap aggregate、degree-16 external nonresonance、degrees 17--90、all-order
+nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、
+D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
