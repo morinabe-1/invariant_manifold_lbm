@@ -21815,6 +21815,36 @@ D3Q27を認証しない。
 acceptedなら次はQ011baでdegree 23をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011az 封印結果
+
+全7 validity gateと全5 hypothesis gateが通過した。Q011ayまでの30 artifactと149 direct digest、degree-22
+inventory、308-record monotone envelope、6 source hull、全268 current target、固定resource identityを再現し、
+16 inactive monotone proof recordを比較対象から除外した。399/399 direct aggregateがstrictに分離した。
+
+- original monomial／modulus signature／peak live signature: `508134615924 / 14686 / 121`
+- convolution／distinct／weighted comparison: `7438 / 166542 / 483294136022`
+- distinct product-below／target-below／overlap: `62360 / 104182 / 0`
+- weighted product-below／target-below／overlap: `283722068460 / 199572067562 / 0`
+- minimum outward／exact gap:
+  `0x1.13e7d9c1fffffp-21 / 0x1.13e7da1c6ee42p-21`
+- minimum witness digest:
+  `f6e5e73e18074d527863d9679221d8eaf0f714b5ea416f58fa53af216d060526`
+- input／preparation／sweep／result digest:
+  `80958bc98451a43248ee3ac246360ae6cfc42ff336a38c3291192a953f950c48` /
+  `0b8625ae85fed8309ef566eb2f56d79df5f81c527e6a5017f6bc7af509e6e1fb` /
+  `3d69c53a16a88efd68c79399cc453912273d03277fe8e9ce05b113c21d5bf9d0` /
+  `43a425e1d41535a3347d1ed88c40ddf281d35713b45ecf32ec6d64fafa03437f`
+- runner／artifact newline-normalized SHA-256:
+  `d956b43019ff8067440db23c22bd1be689b588ded2281a09e0430b441a9a4b53` /
+  `ca8dd35c73afc60f8aa66a7c9a57c17595c13123a3e613b6ab4125d55ee85c19`
+
+classificationは
+`the block-support-coalesced component-safe sweep certifies degree-22 external nonresonance`、scientific outcomeは
+`accepted`、actual resonance outcomeは`ruled_out_within_registered_degree_twenty_two_scope`となった。
+certified degreesは2--22および91以降、missing rangeは23--90へ縮んだ。主張は固定17² repaired exact map、
+fixed conservation leaf、登録degree-22 external relationに限定する。次はQ011baとしてdegree 23をdesign-onlyに
+資源監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
