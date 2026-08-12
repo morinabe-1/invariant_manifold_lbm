@@ -10,6 +10,31 @@ import research.q011az_degree22_coalesced_sweep as q011az
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
+EXPECTED_RUNNER_SHA256 = "d956b43019ff8067440db23c22bd1be689b588ded2281a09e0430b441a9a4b53"
+EXPECTED_ARTIFACT_SHA256 = "ca8dd35c73afc60f8aa66a7c9a57c17595c13123a3e613b6ab4125d55ee85c19"
+EXPECTED_SECTION_DIGESTS = {
+    "input_digest_sha256": "80958bc98451a43248ee3ac246360ae6cfc42ff336a38c3291192a953f950c48",
+    "preparation_digest_sha256": (
+        "0b8625ae85fed8309ef566eb2f56d79df5f81c527e6a5017f6bc7af509e6e1fb"
+    ),
+    "sweep_digest_sha256": "3d69c53a16a88efd68c79399cc453912273d03277fe8e9ce05b113c21d5bf9d0",
+    "result_digest_sha256": "43a425e1d41535a3347d1ed88c40ddf281d35713b45ecf32ec6d64fafa03437f",
+}
+EXPECTED_SWEEP_DIGESTS = {
+    "aggregate_record_digest_sha256": (
+        "670b7a729eb3d9210c2c86c490edba25670c0dbaa3ed844a4052eeb52a9d5fbb"
+    ),
+    "bound_matrix_digest_sha256": (
+        "b63d8fdad92f59093daecfbab0a4baaeea094debd96cd09ac3e0285087b66919"
+    ),
+    "coefficient_matrix_digest_sha256": (
+        "76d119904eb9907164d345af06b24722af6be7f35b52a57a78be577be45cb767"
+    ),
+    "classification_matrix_digest_sha256": (
+        "a78c7ecc5332ba711f853c8443b346c8376fb43eeb54d94cae63a98e325b2942"
+    ),
+}
+
 
 @pytest.fixture(scope="module")
 def q011az_study() -> dict[str, Any]:
@@ -100,22 +125,40 @@ def test_q011az_validity_and_preregistered_stopping_rule(
     assert q011az_cycle["study_validity"] == "passed"
     assert q011az_cycle["failed_validity_order"] == []
     assert all(gate["passed"] for gate in q011az_cycle["validity_gates"].values())
-    assert q011az_cycle["scientific_outcome"] in {"accepted", "rejected"}
+    assert q011az_cycle["scientific_outcome"] == "accepted"
     sweep = q011az_cycle["degree_twenty_two_block_support_coalesced_sweep"]
-    if q011az_cycle["scientific_outcome"] == "accepted":
-        assert q011az_cycle["failed_hypothesis_order"] == []
-        assert all(gate["passed"] for gate in q011az_cycle["hypothesis_gates"].values())
-        assert sweep["distinct_relation_counts"]["overlap"] == 0
-        assert sweep["fully_separated_overlap_aggregate_count"] == 399
-        assert q011az_cycle["scientific_classification"] == q011az.ACCEPTED_CLASSIFICATION
-        assert q011az_cycle["actual_resonance_outcome"] == (
-            q011az.ACCEPTED_ACTUAL_RESONANCE_OUTCOME
-        )
-    else:
-        assert q011az_cycle["failed_hypothesis_order"]
-        assert sweep["distinct_relation_counts"]["overlap"] > 0
-        assert q011az_cycle["scientific_classification"] == q011az.REJECTED_CLASSIFICATION
-        assert q011az_cycle["actual_resonance_outcome"] == "not_established"
+    assert q011az_cycle["failed_hypothesis_order"] == []
+    assert all(gate["passed"] for gate in q011az_cycle["hypothesis_gates"].values())
+    assert sweep["fully_separated_overlap_aggregate_count"] == 399
+    assert sweep["distinct_comparison_count"] == 166_542
+    assert sweep["distinct_relation_counts"] == {
+        "product_below_target": 62_360,
+        "target_below_product": 104_182,
+        "overlap": 0,
+    }
+    assert sweep["weighted_comparison_count"] == 483_294_136_022
+    assert sweep["weighted_relation_counts"] == {
+        "product_below_target": 283_722_068_460,
+        "target_below_product": 199_572_067_562,
+        "overlap": 0,
+    }
+    assert sweep["first_unresolved_witness"] is None
+    for name, digest in EXPECTED_SWEEP_DIGESTS.items():
+        assert sweep[name] == digest
+    minimum = sweep["global_minimum_separated_witness"]
+    assert minimum["aggregate_index"] == 246
+    assert minimum["selected_type_counts"] == [5, 0, 4, 13]
+    assert minimum["target_identifier"] == "block=11;center=3"
+    assert minimum["relation"] == "target_below_product"
+    assert minimum["outward_gap_lower"]["binary64_hex"] == "0x1.13e7d9c1fffffp-21"
+    assert minimum["exact_gap_hex"] == "0x1.13e7da1c6ee42p-21"
+    assert minimum["witness_digest_sha256"] == (
+        "f6e5e73e18074d527863d9679221d8eaf0f714b5ea416f58fa53af216d060526"
+    )
+    assert q011az_cycle["scientific_classification"] == q011az.ACCEPTED_CLASSIFICATION
+    assert q011az_cycle["actual_resonance_outcome"] == (
+        q011az.ACCEPTED_ACTUAL_RESONANCE_OUTCOME
+    )
 
 
 def test_q011az_preserves_the_scientific_boundary(q011az_cycle: dict[str, Any]) -> None:
@@ -145,13 +188,8 @@ def test_q011az_preserves_the_scientific_boundary(q011az_cycle: dict[str, Any]) 
 
 def test_q011az_cycle_has_strict_reproducible_digests(q011az_cycle: dict[str, Any]) -> None:
     json.dumps(q011az_cycle, allow_nan=False)
-    for name in (
-        "input_digest_sha256",
-        "preparation_digest_sha256",
-        "sweep_digest_sha256",
-        "result_digest_sha256",
-    ):
-        assert len(q011az_cycle[name]) == 64
+    for name, digest in EXPECTED_SECTION_DIGESTS.items():
+        assert q011az_cycle[name] == digest
     assert q011az_cycle["result_digest_sha256"] == q011az.q011b._canonical_json_sha256(
         q011az._result_digest_sections(q011az_cycle)
     )
@@ -181,10 +219,14 @@ def test_q011az_study_metadata_and_optional_artifact_are_scoped(
     assert artifact["source"] == source_metadata()
     assert artifact["runner_source"]["filename"] == "q011az_degree22_coalesced_sweep.py"
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["runner_source"]["sha256"] == EXPECTED_RUNNER_SHA256
     assert artifact["study_gate"] == "passed"
-    assert artifact["scientific_outcome"] in {"accepted", "rejected"}
+    assert artifact["scientific_outcome"] == "accepted"
+    assert artifact["actual_resonance_outcome"] == (
+        q011az.ACCEPTED_ACTUAL_RESONANCE_OUTCOME
+    )
     assert artifact["cycle"]["result_digest_sha256"] == q011az.q011b._canonical_json_sha256(
         q011az._result_digest_sections(artifact["cycle"])
     )
-    assert len(_file_sha256(artifact_path)) == 64
+    assert _file_sha256(artifact_path) == EXPECTED_ARTIFACT_SHA256
     json.dumps(artifact, allow_nan=False)
