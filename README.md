@@ -4694,6 +4694,47 @@ exact map、fixed conservation leaf、登録degree-29 external relationだけに
 nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは認証しない。
 次はQ011boでdegree 30をdesign-onlyに資源監査する。
 
+### Q011bo degree-30 block-support-coalesced resource Go
+
+Q011bnまでの45 artifactと216 direct digestを封印し、degree 30の全5456 aggregateを3781 old-modulus
+nonoverlapと1675 overlapへexactに分けた。56 external componentから全772 current targetを復元した。
+1675 overlap aggregateのうち2件は複数external componentに接し、最大component数は3である。接触componentの
+identifier和集合を保持し、target folding、共役folding、label collapseは用いていない。
+
+Q011bmの808-record monotone proof inventoryを全て保持し、116 inactive recordと104 new targetを明示した
+912-record monotone proof inventoryを構成した。current active inventoryはselected 24とtarget 772の計796件である。
+relationを一件も評価せず組合せ資源だけを再構成し、Q011apから変更しなかった7 absolute resource limitを
+全て通過した。resource decisionは`go_for_degree_thirty_coalesced_preregistration`である。
+
+- validity／resource gates: `6 / 6` passed、`7 / 7` passed
+- aggregate／old separated／overlap: `5456 / 3781 / 1675`
+- selected／target／prior／inactive retained／added／active／final:
+  `24 / 772 / 808 / 116 / 104 / 796 / 912`
+- multi-component aggregate／maximum component: `2 / 3`
+- modulus signature／peak／two-array bytes: `97583 / 240 / 3840`
+- convolution／distinct／weighted comparison upper:
+  `24223 / 1552420 / 3078782483959528`
+- original／maximum aggregate monomial: `199600479347738 / 1213069777920`
+- projected wall／2倍safety seconds:
+  `166159160787/230979136000 / 166159160787/115489568000`
+- 1.5倍tracemalloc／process-memory safety bytes: `177765 / 490585`
+- scientific／actual degree-30 resonance outcome: `not_evaluated / not_evaluated`
+- input／inventory／envelope／resource／result digest:
+  `6d059005add7ffdae3058b68d11a5cb634a8501d3b0e93f7e7c5d7ce73cebf65` /
+  `8f2369710e8bff52cb5e87a8723520f15067f8bbdfb0717007a2c7b60d5dfa81` /
+  `06a302d69314b7e08eed3d3e2bdfd5b64ca245dcd5f27ce0981513286ff2c6ce` /
+  `7d8a8f29eb4b24a64afcd610ddf164552d8c64d7352b0f26e3677af368f49430` /
+  `96fa4e27b6c0e005040b06641d9bf693b56120ee2ffacabd406e589532230264`
+- runner／artifact newline-normalized SHA-256:
+  `6af80ea8a7957ceff8cb6fe3705296b3685d36e70bab007053bf0c42d43e6ee0` /
+  `31cfae714f2a367ee3c1e4da92a644428618bf81d959dbdfa77bf542b3527dab`
+
+これはdegree-30 full sweepの資源適格性だけを示す。inventory／envelope／resourceのrelation evaluation countは
+全て0であり、certified degreesは2--29および91以降、missing rangeは30--90のままである。degree-30
+relation、actual resonance、minimum gap、all-order nonresonance、higher smoothness、SSM
+existence／uniqueness、normal attraction、basinは認証しない。次はQ011bpで全1675 aggregateと全772
+current targetの正式full sweepを事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -5404,6 +5445,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011bl_degree28_coalesced_sweep.json`](research/artifacts/q011bl_degree28_coalesced_sweep.json)
 - [`research/artifacts/q011bm_degree29_resource_estimate.json`](research/artifacts/q011bm_degree29_resource_estimate.json)
 - [`research/artifacts/q011bn_degree29_coalesced_sweep.json`](research/artifacts/q011bn_degree29_coalesced_sweep.json)
+- [`research/artifacts/q011bo_degree30_resource_estimate.json`](research/artifacts/q011bo_degree30_resource_estimate.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -5613,6 +5655,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   relation未評価のまま全7固定resource上限を通過するfull-sweep Go判定
 - Q011bn 1397 degree-29 overlap aggregateのcomponent-safe block-support-coalesced正式full sweep、
   4960 aggregateの全分離、degree-29 external nonresonance認証
+- Q011bo degree-30 exact inventory／912-disc monotone inventory／multi-component対応resource count、
+  relation未評価のまま全7固定resource上限を通過するfull-sweep Go判定
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -5908,3 +5952,8 @@ Q011bnでは固定済み1397 aggregateをmulti-component membershipを保った�
 分離したため、degree-29 external nonresonanceを認証し、missing rangeをdegrees 30--90へ縮めた。100 inactive
 proof recordは保持したが比較には用いていない。この結論も登録degree-29 external relationだけに限り、all-order
 resultへは外挿しない。
+Q011boではdegree 30の全5456 aggregateを3781 old nonoverlapと1675 overlapへ分け、relationを評価せず
+coalesced資源を再構成した。2 multi-component aggregateをidentifier和集合として保持し、前段proof inventoryの
+116 inactive recordを削除しない912-record monotone inventoryを導入した。signature `97583`、peak `240`、
+distinct upper `1552420`で全固定limitを通過した。degree-30 relationは未評価なのでcertified setとmissing range
+30--90は変更していない。
