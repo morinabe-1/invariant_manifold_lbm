@@ -7732,6 +7732,41 @@ degree 20の全1771 aggregateを被覆する。従ってcertified degreesは2--2
 rangeは21--90へ縮んだ。本certificateは固定17² repaired exact map、fixed conservation leaf、登録degree-20
 external relationだけに限る。次はQ011awでdegree 21をdesign-onlyに資源監査する。
 
+### Q011aw 実行結果
+
+Q011avまでの27 artifact、runner、135 direct digest、accepted outcome、claim boundaryを再照合し、6 validity
+gateを全て通過した。degree 21の全2024 aggregateを1660 old-modulus nonoverlapと364 overlapへexactに
+分け、20 external componentから全228 target identifierを復元した。
+
+Q011auの244 final disc recordは全件bitwiseに再利用され、8 targetだけをQ011ak blockwise式から追加した。
+final inventoryはselected 24とtarget 228の計252 recordで、Q011asの6 source hullとmembershipもbitwiseに
+保存された。target merge、共役folding、label collapseは用いていない。
+
+relationを評価しない組合せcountは、`12458` modulus signature、最大`126` live signature、`6448` exact
+convolution、2 product-bound array `2016` bytesを与えた。original monomialは`294674427372`、
+distinct／weighted comparison upperは`146928 / 3951865509552`だった。
+
+- projected wall／2倍safety seconds:
+  `19657561401/288723920000 / 19657561401/144361960000`
+- 1.5倍tracemalloc／process-memory safety bytes: `93327 / 257557`
+- resource record digest:
+  `ccc41225d257c605e651b77a2f65149bf6350d3a67637a5374074b5d29845f6a`
+- scientific／actual degree-21 resonance outcome: `not_evaluated / not_evaluated`
+- input／inventory／envelope／resource／result digest:
+  `9e76ca9a07ca6eb442a9fdb397f72ace03084f7e3f2c0b30fa312660c49455c2` /
+  `2d1cdd3aaff4b3b224b212b8baf719293ce4595552a2da40da54d7e3592af0ce` /
+  `e4e7435a47e12a262a7ca6f2fc56125d4d18cbf3f0c0b348f3ff6cbee3c2ad49` /
+  `16ae0966509a3f9d4a608b025dfac11de996f9613e1a2f8f198a41e495d5f488` /
+  `599143be7991dbebfe6f2da0cc1d3883d5a83985e02fd3685a71cca82aae3f71`
+- runner／artifact newline-normalized SHA-256:
+  `ece845c00b7a49bd9bd12e7c30b763150d18b64fa68539b03c43c3748ca827cc` /
+  `0228b387f0308e98051085bdf68e16c7baef4326467c102e152e7ae3f189425e`
+
+Q011apから変更しなかった7 absolute resource limitを全て通過し、resource decisionは
+`go_for_degree_twenty_one_coalesced_preregistration`となった。これはdegree-21 full sweepの資源適格性だけを
+示す。relation evaluation countは0であるため、certified degreesは2--20、tail-certifiedは91以降、missing
+rangeは21--90のままである。次はQ011ax full sweepの成功・棄却条件を事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -7959,6 +7994,8 @@ external relationだけに限る。次はQ011awでdegree 21をdesign-onlyに資�
 [`artifacts/q011au_degree20_resource_estimate.json`](artifacts/q011au_degree20_resource_estimate.json)
 
 [`artifacts/q011av_degree20_coalesced_sweep.json`](artifacts/q011av_degree20_coalesced_sweep.json)
+
+[`artifacts/q011aw_degree21_resource_estimate.json`](artifacts/q011aw_degree21_resource_estimate.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

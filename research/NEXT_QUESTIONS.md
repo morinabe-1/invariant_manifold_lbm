@@ -21360,6 +21360,34 @@ GoならQ011axで入力、全364 aggregate、全228 target、outward arithmetic�
 degree-21 full sweepを事前登録する。Stopなら最初のfailed resource dimensionだけを改善し、inconclusiveなら
 最初のvalidity failureだけを修正する。
 
+### Q011aw 封印結果
+
+全6 validity gateと全7 resource gateが通過した。Q011avまでの27 artifact、135 direct digest、degree-21
+inventory、252-disc envelope、6 source hull、resource identityは全て再現した。product--target relationは
+一件も評価しておらず、relation evaluation countは0である。
+
+- resource decision: `go_for_degree_twenty_one_coalesced_preregistration`
+- aggregate／old separated／overlap: `2024 / 1660 / 364`
+- selected／target／prior reused／added／final identifier: `24 / 228 / 244 / 8 / 252`
+- modulus signature／peak／two-array bytes: `12458 / 126 / 2016`
+- convolution／distinct／weighted comparison upper: `6448 / 146928 / 3951865509552`
+- original／maximum aggregate monomial: `294674427372 / 7852416000`
+- scientific／actual degree-21 resonance outcome: `not_evaluated / not_evaluated`
+- input／inventory／envelope／resource／result digest:
+  `9e76ca9a07ca6eb442a9fdb397f72ace03084f7e3f2c0b30fa312660c49455c2` /
+  `2d1cdd3aaff4b3b224b212b8baf719293ce4595552a2da40da54d7e3592af0ce` /
+  `e4e7435a47e12a262a7ca6f2fc56125d4d18cbf3f0c0b348f3ff6cbee3c2ad49` /
+  `16ae0966509a3f9d4a608b025dfac11de996f9613e1a2f8f198a41e495d5f488` /
+  `599143be7991dbebfe6f2da0cc1d3883d5a83985e02fd3685a71cca82aae3f71`
+- runner／artifact newline-normalized SHA-256:
+  `ece845c00b7a49bd9bd12e7c30b763150d18b64fa68539b03c43c3748ca827cc` /
+  `0228b387f0308e98051085bdf68e16c7baef4326467c102e152e7ae3f189425e`
+
+certified degreesは2--20および91以降、missing rangeは21--90のままである。本結果は固定17² repaired
+exact map、fixed conservation leaf、degree-21 full sweepの設計資源に限定され、degree-21 external
+nonresonance、actual resonance、minimum gap、all-order result、SSM existence／uniquenessを認証しない。
+次はQ011axとして全364 overlap aggregateの正式full sweepを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
