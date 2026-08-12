@@ -21388,6 +21388,123 @@ exact map、fixed conservation leaf、degree-21 full sweepの設計資源に限�
 nonresonance、actual resonance、minimum gap、all-order result、SSM existence／uniquenessを認証しない。
 次はQ011axとして全364 overlap aggregateの正式full sweepを事前登録する。
 
+## Q011ax: degree-21 block-support-coalesced full sweep — 事前登録
+
+### 問い
+
+Q011awで固定した6 source hull、364 overlap aggregate、全228 targetを、exact 17-point Fourier multiplicityと
+outward-rounded hierarchical product intervalで全件走査したとき、全compatible product--target relationを
+strictに分離できるか。さらにQ011uで既に分離した1660 aggregateを保存し、degree 21の全2024 external
+aggregateを分離できるか。
+
+Q011awはdegree-21 relationを一件も評価していない。Q011axでは以下を固定してから初めて正式full sweepを
+実行する。未観測のrelation count、matrix digest、minimum witnessはacceptance thresholdへ使わず、最初の
+正式artifactでoutcomeとして封印する。
+
+### sealed input
+
+Q011awまでの28 artifact、runner、140 direct digest、resource Go、Q011av accepted certificate、scientific
+boundaryを再照合し、Q011awを直接封印する。
+
+- Q011aw artifact／runner newline-normalized SHA-256:
+  `0228b387f0308e98051085bdf68e16c7baef4326467c102e152e7ae3f189425e` /
+  `ece845c00b7a49bd9bd12e7c30b763150d18b64fa68539b03c43c3748ca827cc`
+- Q011aw input／inventory／envelope／resource／result digest:
+  `9e76ca9a07ca6eb442a9fdb397f72ace03084f7e3f2c0b30fa312660c49455c2` /
+  `2d1cdd3aaff4b3b224b212b8baf719293ce4595552a2da40da54d7e3592af0ce` /
+  `e4e7435a47e12a262a7ca6f2fc56125d4d18cbf3f0c0b348f3ff6cbee3c2ad49` /
+  `16ae0966509a3f9d4a608b025dfac11de996f9613e1a2f8f198a41e495d5f488` /
+  `599143be7991dbebfe6f2da0cc1d3883d5a83985e02fd3685a71cca82aae3f71`
+
+Q011awの`study_gate=passed`、resource decision
+`go_for_degree_twenty_one_coalesced_preregistration`、relation evaluation count 0、Q011av degree-20 accepted
+certificate、certified degrees 2--20と91以降を要求する。
+
+### fixed inventory, hull, and targets
+
+Q011aw artifactから次をexactに再構成する。
+
+- degree aggregate／old separated／direct overlap: `2024 / 1660 / 364`
+- overlap count first／last: `[0,0,13,8] / [19,0,2,0]`
+- selected／target／final identifier: `24 / 228 / 252`
+- old／merged source class count: `[4,2,3,6] / [1,1,2,2]`
+- inventory／final-disc／hull／merged-membership digest:
+  `1999df10bd6342c60c2dee30f1597c0e993225431792464ee866d5c94c1ccbe3` /
+  `1dac3d5c4a74e297af45d07c63b4317ef9e54f02ada9fbbcf1375c84c84ce8a2` /
+  `f54f1a1f70d953b4c1255e9f9627d7ca43229a3d1e26c11b716d23fd56ea1eb6` /
+  `975ebf1077279cbfcc6fd46e5a34fcd67260ff953a718eb51985794314fcd8b8`
+
+各selected identifierは登録merged hullにcontainedし、wave blockとcenter indexを保持する。全228 targetは
+個別比較し、target merge、共役folding、per-eigenvalue label collapseを禁止する。
+
+### fixed hierarchical arithmetic
+
+Q011avと同じcomponent-safe outward protocolをdegree 21へ適用する。
+
+1. 4 selected groupのmerged-class weak compositionをexactに列挙する。
+2. group `0,1`と`2,3`のpair poolをcacheし、17-point cyclic convolutionを`numpy.int64`で行う。
+3. 各convolutionで非負性、fiber sum、crude `int64` upperを検査する。
+4. product modulusをbinary64のdownward／upward rounded interval productで囲う。
+5. output blockごとのexact integer Fourier multiplicityが正のentryだけをcompatibleとする。
+6. compatible entryを全target discに対して`product_below_target`、`target_below_product`、`overlap`へ
+   排他的に分類する。
+7. full monomial listとfull classification matrixは保持せず、aggregate summary、matrix hash、最初の
+   overlap、global minimum separated witnessだけを保持する。
+
+次のresource identityをexactに要求する。
+
+- class-power／group-signature／pair-key: `121 / 482 / 192`
+- cached pair-signature entry／convolution: `5523 / 6448`
+- original monomial／modulus signature: `294674427372 / 12458`
+- peak live signature／two product-array bytes: `126 / 2016`
+- distinct／weighted comparison upper: `146928 / 3951865509552`
+- safe convolution crude upper: `133491072000`
+
+wall time、tracemalloc、process memoryの実測値はdiagnosticとして記録してよいが、accepted／rejectedを変更しない。
+
+### validity gate
+
+1. Q011awまでの28 artifact、runner、140 direct digest、outcome、boundaryが再現する。
+2. Q011aw inventory、target envelope、source hull、resource contractがexactに再現する。
+3. 364 aggregateを欠落・重複なく辞書順で処理し、全integer／outward interval invariantが通る。
+4. original monomial、signature、convolution、peak、comparison upper countが登録値と一致する。
+5. aggregate／bound／coefficient／classification summaryがstrict finite JSONとdigestへ封印される。
+6. first overlapがある場合は辞書順最初のwitness、separated relationがある場合はglobal minimum witnessを
+   exact rational reconstructionで封印する。
+7. Q011av degree-20 accepted certificate、Q011aw section digest、runner provenanceが再現する。
+
+一つでも失敗すれば`inconclusive`とし、degree 21をcertified setへ追加しない。
+
+### hypothesis gate and stopping rule
+
+validity通過後、次を順に判定する。
+
+1. 6 merged hullがselected 24 sourceを包含し、228 target discが個別に保存される。
+2. 364 direct aggregateの全compatible comparisonに`overlap=0`である。
+3. 1660 old-modulus aggregateと364 direct aggregateの和がdegree-21全2024 aggregateを覆う。
+4. global minimumのoutward gapとexact rational gapがともにstrictly positiveである。
+5. claimを登録degree-21 external nonresonanceだけに限定する。
+
+全5項目が通ればclassificationを
+`the block-support-coalesced component-safe sweep certifies degree-21 external nonresonance`、scientific outcomeを
+`accepted`、actual resonance outcomeを`ruled_out_within_registered_degree_twenty_one_scope`とする。
+certified degreesは2--21および91以降、missing rangeは22--90へ縮める。
+
+validな計算で一つでもoverlapが残ればclassificationを
+`the block-support-coalesced degree-21 sufficient certificate is rejected`、scientific outcomeを`rejected`、
+actual resonance outcomeを`not_established`とする。最初のoverlap witnessだけを次の精密化候補にし、後付けの
+threshold、class split、target foldingで結果を変更しない。
+
+### 主張境界と次の変更
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 21、Q011uの2024 external aggregate、
+Q011asの6 source hull、Q011awの228 target disc、exact x-Fourier multiplicity、hierarchical outward-dyadic
+product protocolに限る。degrees 22--90、all-order nonresonance、Q011t graphとのhigher-order一致、higher
+graph smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
+acceptedなら次はQ011ayでdegree 22をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
+inconclusiveなら最初のvalidity failureだけを修正する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
