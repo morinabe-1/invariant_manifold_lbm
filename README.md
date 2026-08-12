@@ -4881,6 +4881,41 @@ monotone proof inventoryを作った。relationは一件も評価していない
 scientific／actual degree-32 outcomeは`not_evaluated / not_evaluated`なので、certified degreesは2--31および
 91以降、missing rangeは32--90のままである。次はQ011btでdegree-32 full sweepを事前登録する。
 
+### Q011bt degree-32 block-support-coalesced full sweep accepted
+
+Q011bsまでの50 artifact、runner、239 direct digestを再照合し、登録済み2307 overlap aggregateを欠落・重複なく
+exactに再構成した。13 multi-component aggregateでは接触する最大3 external componentのidentifier和集合を
+target groupとして保持し、全1024 current targetだけを比較した。140 inactive monotone proof recordは保持したが、
+degree-32 relationには使っていない。
+
+全2307 aggregateがcomponent-safe outward intervalでstrictに分離され、4238 old-modulus aggregateとの和で
+degree 32の全6545 aggregateを覆った。従ってscientific outcomeは`accepted`、actual resonance outcomeは
+`ruled_out_within_registered_degree_thirty_two_scope`である。
+
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- fully separated／unresolved aggregate: `2307 / 0`
+- distinct comparison: `2123656`
+  (`product_below_target=936268`, `target_below_product=1187388`, `overlap=0`)
+- weighted comparison: `532138097562518`
+  (`product_below_target=298056268376626`, `target_below_product=234081829185892`, `overlap=0`)
+- minimum separated witness: aggregate `1796`、selected counts `[13, 11, 5, 3]`、
+  target `block=10;center=44`、relation `product_below_target`
+- minimum outward／exact gap hex:
+  `0x1.23a2d2bffffffp-23 / 0x1.23a2d48c417bbp-23`
+- input／preparation／sweep／result digest:
+  `a253dd46a214fbf54600c6faca342b64064742f38c42bec0c2aeb34c9d28a180` /
+  `aafa61683eeab80e96cb0dfcba1b0ea57355f14da501fdb8242e2a10f09e1642` /
+  `f5388a8f724fde95698ee993c0454c44f1e23004cdb5d122a84707c053aa5c81` /
+  `abc989675e3509881b312415c402a3efd958b098bedaa440c520c16275fb2c67`
+- runner／artifact newline-normalized SHA-256:
+  `a19c79c4e36b6114567c2c7c3db26c20372b5114dd5e932e1f48252433b8f7a5` /
+  `d48b4f965586299462df4fb3cc0361c7bd6b47b18533f6980f234c26b3ff65fb`
+
+certified degreesは2--32および91以降、missing rangeは33--90へ縮んだ。このcertificateは固定17² repaired
+exact map、fixed conservation leaf、登録degree-32 external relationだけに限る。degrees 33--90、all-order
+nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは認証しない。
+次はQ011buでdegree 33をdesign-onlyに資源監査する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -5812,6 +5847,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   5984 aggregateの全分離、degree-31 external nonresonance認証
 - Q011bs degree-32 exact inventory／1188-disc monotone inventory／multi-component対応resource count、
   relation未評価のまま全7固定resource上限を通過するfull-sweep Go判定
+- Q011bt 2307 degree-32 overlap aggregateのcomponent-safe block-support-coalesced正式full sweep、
+  6545 aggregateの全分離、degree-32 external nonresonance認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -5822,7 +5859,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 32--90 external
+- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 33--90 external
   nonresonance、spectral-quotient SSM uniqueness（Q011uはmodulus-only routeを棄却）
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
@@ -6132,3 +6169,8 @@ coalesced資源を再構成した。13 multi-component aggregateをidentifier和
 140 inactive recordを削除しない1188-record monotone inventoryを導入した。signature `147064`、peak `240`、
 distinct upper `2197696`で全固定limitを通過した。degree-32 relationは未評価なのでcertified setとmissing range
 32--90は変更していない。
+Q011btでは固定済み2307 aggregateをmulti-component membershipを保ったまま正式走査し、`2123656` distinct／
+`532138097562518` weighted comparisonを全分離した。4238 old aggregateとの和でdegree 32の全6545 aggregateを
+分離したため、degree-32 external nonresonanceを認証し、missing rangeをdegrees 33--90へ縮めた。140 inactive
+proof recordは保持したが比較には用いていない。この結論も登録degree-32 external relationだけに限り、all-order
+resultへは外挿しない。
