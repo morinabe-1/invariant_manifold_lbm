@@ -25677,6 +25677,129 @@ aggregate `972`／target `block=12;center=124`の単一relationだけを評価�
 certified degrees 2--33および91以降、missing 34--90は不変である。次はQ011bzとして、このfirst refined witnessの
 34 source factorだけをindividual discへ分割する。
 
+## Q011bz: first persistent witness individual-disc partition audit — 事前登録
+
+### 問いと変更範囲
+
+Q011byの辞書順first persistent class signature
+`[[0,0,0,4],[0,27],[0,0,3],[0,0,0,0,0,0]]`だけについて、occupiedな3個の2-member
+block-symmetry classを6 singleton identifierへ分割すると、output block 12にcompatibleなindividual allocationの
+product intervalまたはtarget classificationが変化するか。
+
+Q011bzはQ011by parent aggregate `972`、target `block=12;center=124`、この1 class signatureだけを扱う。他の
+9,799 class signature、他23 target、Q011bx aggregate `2340`、degree-34 full sweepは再評価しない。complex phase
+disc、center／radius formula、target disc、rounding policyを変更しない。
+
+### sealed Q011by input
+
+Q011byまでの56 artifact、runner、265 direct digest、validity passed、refinement outcome `persistent`、scientific
+outcome `not_evaluated`、actual outcome `not_established`、claim boundaryを再照合する。
+
+- Q011by artifact／runner newline-normalized SHA-256:
+  `f3bae947808b5417ca784d29a457697e25c2f06216887e2396828bea8fb66064` /
+  `34c251bb967561ab48f301df5ff872962c5cac8ac670b80595d3a5f60e4bb9cd`
+- Q011by input／refinement／sweep／result digest:
+  `9b44a32d229109b82f988030c9deaaa47c306ec8464fe9e920bf241b64bfdd05` /
+  `45438704eb7c67a2f532507b17642a7d9e4a35e2313f2eace27fee647c52a22c` /
+  `17a7eb73c45a30f9bd7bc4e4c00306483934000e1a0ac402e1dec481d2fb0b30` /
+  `81b6ad97a518722a9cc139d64d8938439470d98e14856df1873c6b45176b7fc1`
+- parent witness intersection width／center gap／digest:
+  `0x1.3a21ae03356a4p-28 / 0x1.b808da9a742c2p-27 /`
+  `8137019a4a58e788c37a789b4e69533eef687941ac14ac8f8bb58acf568d9f69`
+
+Q011by sealed chainは55 prior artifactと261 direct digestを持つため、Q011byの4 section digestを加えたQ011bz
+direct sealは56 artifact／265 digestとする。
+
+### fixed occupied classes and singleton ordering
+
+occupied classを次の順序に固定する。
+
+1. group 0／class 3／count 4:
+   `[block=16;center=145, block=1;center=145]`
+2. group 1／class 1／count 27:
+   `[block=16;center=151, block=1;center=151]`
+3. group 2／class 2／count 3:
+   `[block=16;center=152, block=1;center=152]`
+
+- common center／modulus interval digest:
+  `53f9a306265ffcbfa83c64089e6418ab895037a3dad6a6fe85ba15dab18c8825` /
+  `2761f9c8d8e92b66d0c8a3e85affc78cda4e1ac98c2beeed7705224145571402` /
+  `39747a3474ada699010196f508500971e97451f666025e46bbbc68233ef1d86a`
+- occupied-class record digest:
+  `87f8ae203a204ffc825fee77ebaf24df993a7e50ac10886aa907322591f33a57`
+- singleton identifier-order digest:
+  `56c6c30ea98827b3c8f8f71454333e46856e37546fe3b280e314ab646c13c143`
+
+各2-member classではidentifier fieldだけが異なり、center intervalとmodulus intervalはexactに等しいことを
+validity条件とする。post-observationでclass member、順序、intervalを変更しない。
+
+### exact individual-allocation inventory
+
+singleton count vectorを
+`[n16,145,n1,145,n16,151,n1,151,n16,152,n1,152]`の順にし、最初、3番目、5番目の成分を
+それぞれ`0..4`、`0..27`、`0..3`の昇順で列挙する。相補成分は`4-n16,145`、`27-n16,151`、
+`3-n16,152`とする。
+
+- full allocation count／digest:
+  `5 * 28 * 4 = 560` /
+  `dff3c7109b0970d2628a74fb13c6ec0fb9eb243d569f83f6403219cec8be2eba`
+- output block 12 compatible allocation count／digest:
+  `39` /
+  `6bfa283ad5e2195ded454e0406203060aa968ec9a1a03b2e4d07a7b1f9fe9465`
+- first compatible count vector: `[0,4,8,19,3,0]`
+- last compatible count vector: `[4,0,24,3,0,3]`
+- Q011by source witness allocation index／count vector: `544 / [4,0,24,3,0,3]`
+
+compatibilityはidentifier block indexのexact和mod 17が12であることだけで判定する。39 allocationをtarget 1個と
+比較し、full 560×target matrixや他class signatureを保持しない。
+
+### interval-invariance audit
+
+各compatible allocationについて、singleton identifierごとのexact center／modulus intervalをcount乗して
+Q011byと同じblockwise product intervalを再構成する。次を全39 allocationで検査する。
+
+1. singleton product intervalがQ011by first persistent witnessのproduct intervalとexactに等しい。
+2. target intervalがQ011byからbitwiseに変化しない。
+3. product／target intersection intervalとwidthがQ011by witnessとexactに等しい。
+4. center-only relationは`target_below_product`でgapがexactに等しい。
+5. 39 classificationがすべて`overlap`で、allocation countとrelation countが閉じる。
+
+binary64 outward classificationも併記するが、stopping ruleはexact rational interval equalityで決める。
+
+### validity gate
+
+1. Q011byまでの56 artifact、runner、265 direct digest、outcome、boundaryが再現する。
+2. parent witnessのclass counts、34 source identifier、target、intersection、digestが再現する。
+3. occupied 3 class、6 singleton identifier、各common intervalと全digestが再現する。
+4. 560 allocation、39 Fourier-compatible allocation、first／last／parent allocationが再現する。
+5. 全count非負、各class count和、degree 34、output block 12がexactに閉じる。
+6. target不変、全39 exact product／intersection／center diagnostic equalityが通る。
+7. strict finite JSON、section digest、runner provenanceが再現する。
+
+一つでも失敗すれば`inconclusive`とし、最初のvalidity failureだけを修正する。
+
+### diagnostic stopping rule
+
+validity通過かつ全39 exact interval／classificationがparentと同一ならclassificationを
+`the individual-disc partition is interval-inert for the first Q011by witness`、refinement outcomeを
+`partition_inert_persistent`とする。これは個別identifierへの再ラベルでは現行modulus certificateを改善できない
+ことを意味する。
+
+予期せずexact intervalが狭まり、全39 comparisonがstrictなら`resolved_by_individual_partition`、一部だけが変化して
+overlapが残れば`partition_effective_but_persistent`とする。ただし登録pair interval equalityが破れた場合はvalidity
+failureなので、観測後に成功扱いへ切り替えない。
+
+いずれのdiagnostic outcomeでもQ011bxの`rejected`、Q011byの`persistent`、actual outcome `not_established`、
+certified degrees 2--33と91以降、missing 34--90を変更しない。`partition_inert_persistent`なら次はQ011caで、この
+39 allocationだけにcomplex phase eigendisc productを導入する。inconclusiveなら最初のvalidity failureだけを直す。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 parent aggregate 972、target
+`block=12;center=124`、Q011by first class signature、登録39 singleton allocationだけを扱う。complex phase separation、
+degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
+attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
