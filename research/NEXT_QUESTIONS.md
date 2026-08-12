@@ -25195,6 +25195,45 @@ D3Q27を認証しない。
 acceptedなら次はQ011bwでdegree 34をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011bv 封印結果（accepted）
+
+Q011buまでの52 artifact、runner、248 direct digestを再照合し、登録済み2686 overlap aggregateを欠落・重複なく
+exactに再構成した。25 multi-component aggregateでは最大3 external componentのidentifier和集合を保持し、140
+inactive monotone proof recordをdegree-33 relationから除外した。全7 validity gateと全5 hypothesis gateが通過した。
+
+- fully separated／unresolved aggregate: `2686 / 0`
+- distinct relation count:
+  `product_below_target=1182232 / target_below_product=1478948 / overlap=0`
+- weighted relation count:
+  `product_below_target=557876114806544 / target_below_product=402576847263830 / overlap=0`
+- distinct／weighted comparison: `2661180 / 960452962070374`
+- minimum witness: aggregate `2058`、counts `[13,10,5,5]`、target `block=10;center=44`、
+  relation `product_below_target`、output `10`、left／right `0 / 5`、multiplicity `370946240`
+- minimum outward／exact gap hex:
+  `0x1.0e46abe7fffffp-24 / 0x1.0e46af95a5480p-24`
+- aggregate／bound／coefficient／classification digest:
+  `598e7e583fb280e00dbfcfa6bc5ec97655ebd23b2f560298d345242dcc81baff` /
+  `2fd889128e3fb4c32b041321c07bdbaf07636c1a94e666c108b7f8addc33cc84` /
+  `29101a3316b4d90aaf0a0b418fa9016d07feabdc34893282ea0bd3dabc3f5f71` /
+  `eb9c7989c9abfeb9d7c8f785a697576630bd52cd96555d86aa9cbff718550e08`
+- input／preparation／sweep／result digest:
+  `31a5668eac97a7426b3a9cc349a0e2fabbb76efd5ff2e9136184db3de73a8708` /
+  `3fc7c55a006d9e3c1e19ff8689819a22b23ff7c853821c4a364d6831fdeb7d43` /
+  `5b3d2e15da883ef298f634cb3e9d1828e3c61f0f3d628b4e5eed7121b8a0a8a1` /
+  `f083727b3d749d215f21bd43a56cc521680d35581c5a1fcd4d696f9dc6f0ffc5`
+- runner／artifact newline-normalized SHA-256:
+  `4892919530f53036cb208917ba6459fdf8737666255677908aff76dfc301d531` /
+  `c6f8ed59698b9652a51e706d935fef42f3602dfa21902ff8aa424a129296f50b`
+
+4454 old-modulus aggregateとの和でdegree 33の全7140 aggregateを覆ったため、classificationは
+`the block-support-coalesced component-safe sweep certifies degree-33 external nonresonance`、scientific outcomeは
+`accepted`、actual resonance outcomeは`ruled_out_within_registered_degree_thirty_three_scope`である。
+certified degreesは2--33および91以降、missing rangeは34--90へ縮んだ。
+
+この結果は固定17² repaired exact map、fixed conservation leaf、登録degree-33 external relationだけに限る。
+all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは認証しない。
+次はQ011bwでdegree 34のdesign-only resource gateを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

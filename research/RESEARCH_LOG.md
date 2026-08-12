@@ -8726,6 +8726,48 @@ countは全て0であるため、certified degreesは2--32、tail-certifiedは91
 主張は固定17² repaired exact map、fixed conservation leaf、degree-33 design-only resource feasibilityだけに限る。
 次はQ011bvでdegree-33 full sweepの成功・棄却条件を事前登録する。
 
+### Q011bv 実行結果
+
+Q011buまでの52 artifact、runner、248 direct digest、resource Go、degree-32 accepted certificate、claim boundaryを
+再照合し、全7 validity gateを通過した。登録済み2686 overlap aggregateを欠落・重複なくexactに再構成し、25
+multi-component aggregateでは最大3 external componentのidentifier和集合をtarget groupとして保持した。140
+inactive monotone proof recordは保存したが、degree-33 relationには使用していない。
+
+全2686 aggregate、全1128 current targetに対するcomponent-safe outward sweepは、`2661180` distinct comparisonと
+`960452962070374` weighted comparisonを全てstrictに分離した。
+
+- distinct relation count:
+  `product_below_target=1182232 / target_below_product=1478948 / overlap=0`
+- weighted relation count:
+  `product_below_target=557876114806544 / target_below_product=402576847263830 / overlap=0`
+- fully separated／unresolved aggregate: `2686 / 0`
+- minimum witness: aggregate `2058`、selected counts `[13,10,5,5]`、target `block=10;center=44`、
+  relation `product_below_target`、output block `10`、left／right pair `0 / 5`、multiplicity `370946240`
+- minimum outward／exact gap hex:
+  `0x1.0e46abe7fffffp-24 / 0x1.0e46af95a5480p-24`
+- minimum witness digest:
+  `e8ad410989a56a9f82844639974c041c016fc8a180278624c4907001e056da6b`
+- aggregate／bound／coefficient／classification digest:
+  `598e7e583fb280e00dbfcfa6bc5ec97655ebd23b2f560298d345242dcc81baff` /
+  `2fd889128e3fb4c32b041321c07bdbaf07636c1a94e666c108b7f8addc33cc84` /
+  `29101a3316b4d90aaf0a0b418fa9016d07feabdc34893282ea0bd3dabc3f5f71` /
+  `eb9c7989c9abfeb9d7c8f785a697576630bd52cd96555d86aa9cbff718550e08`
+- input／preparation／sweep／result digest:
+  `31a5668eac97a7426b3a9cc349a0e2fabbb76efd5ff2e9136184db3de73a8708` /
+  `3fc7c55a006d9e3c1e19ff8689819a22b23ff7c853821c4a364d6831fdeb7d43` /
+  `5b3d2e15da883ef298f634cb3e9d1828e3c61f0f3d628b4e5eed7121b8a0a8a1` /
+  `f083727b3d749d215f21bd43a56cc521680d35581c5a1fcd4d696f9dc6f0ffc5`
+- runner／artifact newline-normalized SHA-256:
+  `4892919530f53036cb208917ba6459fdf8737666255677908aff76dfc301d531` /
+  `c6f8ed59698b9652a51e706d935fef42f3602dfa21902ff8aa424a129296f50b`
+
+4454 old-modulus aggregateとの和でdegree 33の全7140 aggregateを覆い、全5 hypothesis gateも通過した。
+scientific outcomeは`accepted`、actual resonance outcomeは
+`ruled_out_within_registered_degree_thirty_three_scope`である。従ってcertified degreesは2--33、tail-certifiedは
+91以降、missing rangeは34--90へ縮んだ。本certificateは固定17² repaired exact map、fixed conservation leaf、
+登録degree-33 external relationだけに限り、all-order nonresonance、higher graph smoothness、SSM
+existence／uniqueness、normal attraction、basinへは外挿しない。次はQ011bwでdegree 34をdesign-onlyに資源監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9003,6 +9045,8 @@ countは全て0であるため、certified degreesは2--32、tail-certifiedは91
 [`artifacts/q011bt_degree32_coalesced_sweep.json`](artifacts/q011bt_degree32_coalesced_sweep.json)
 
 [`artifacts/q011bu_degree33_resource_estimate.json`](artifacts/q011bu_degree33_resource_estimate.json)
+
+[`artifacts/q011bv_degree33_coalesced_sweep.json`](artifacts/q011bv_degree33_coalesced_sweep.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
