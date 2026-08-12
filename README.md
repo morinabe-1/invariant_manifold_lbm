@@ -5180,6 +5180,45 @@ distance lowerから全5,140件がstrictに分離し、unresolved product-disc o
 degree-34全分離、actual resonanceは判定していない。Q011bx／Q011by／Q011bzの過去の診断結果、certified degrees
 2--33および91以降、missing 34--90は不変である。次はQ011cbで第2未解決aggregate `2340`を監査する。
 
+### Q011cb second-aggregate first-overlap blockwise refinement persists
+
+Q011caまでの58 artifact、runner、274 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを
+通過した。Q011bx aggregate `2340`の48 coalesced signature、16 target、32 overlapから、辞書順最初のwitness
+`block=7;center=44`だけを固定した。その占有merged classを9 original blockwise classへ戻し、44,800 refined
+signatureをexact Fourier convolutionとoutward modulus intervalで全走査した。
+
+全44,800 signatureがoverlapで、strict relationは0だった。一方、compatible multiplicity和はparent witnessの
+`629841280`とexactに一致し、分類は排他的かつ完全だった。従ってclassificationは
+`the second Q011bx aggregate first overlap persists under the registered blockwise partition`、outcomeは
+`persistent`である。
+
+- original monomial／refined／compatible signature: `12279168000 / 44800 / 44800`
+- exact compatible／parent multiplicity: `629841280 / 629841280`
+- distinct／weighted relation: `overlap=44800 / 629841280`、strict `0 / 0`
+- class-power／group-signature／pair-pool／convolution: `93 / 579 / 2 / 7885`
+- first persistent witness index／multiplicity／counts:
+  `0 / 382 / [[0,0,0,13],[0,9],[5],[0,7]]`
+- first intersection width／center-only gap／witness digest:
+  `0x1.9d49c4083b31ep-32 / 0x1.3aa0404d55937p-28 /`
+  `de9435001e9603c4488945d9077e45abfa30e1c267271a27ae41d01b84993442`
+- aggregate／bound／coefficient／classification digest:
+  `5163889870c144df4cea0f5ff232db156d4920bba80bb7220241e7663580b0aa` /
+  `6faeb3b928d2d825afb4422ced9a8ca6fda187f661cd23122139932015eb2060` /
+  `140768950c770970b6c8295fd3159a6e70aff122b3383d0d9e2dad0a2abb82d8` /
+  `63f916d5a53585ec8830f7a54b40396172c192febd5c83548f94f36e1c8c57dd`
+- input／refinement／sweep／result digest:
+  `cee7e83699027ea5d12ba79b05e06d19c1a8bff5400d06807d52b1f4ac9f4f1e` /
+  `bdd175e1b065849077bcb15ab16f2cb2dd0011308a4a8c7748ba7c10d88278cc` /
+  `0dd5d08276fd5f4246a912ace617e4b6ec72007e3994b508d13d875917a40924` /
+  `eb5011b3a2767f9618bc71c31c1cb889a0a108f819592a6a8addc169abe855e5`
+- runner／artifact newline-normalized SHA-256:
+  `d7828cb2aef583ff82bd421212837534169ba42ad1962961cf0003e9f812b085` /
+  `9e191ead642e398ccd013c783b0ddeae78e6e7e4c3bf443e08bd64c9e826aa5b`
+
+これはaggregate `2340`の最初のcoalesced overlap familyだけの診断である。他31 overlap、他15 target、aggregate
+全体、degree-34 nonresonance、actual resonanceは未判定で、既存の認証範囲は不変である。次はQ011ccで、この
+辞書順最初のpersistent refined witnessだけをindividual source discへ分割する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -5903,6 +5942,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011by_degree34_first_overlap_refinement.json`](research/artifacts/q011by_degree34_first_overlap_refinement.json)
 - [`research/artifacts/q011bz_degree34_individual_partition_audit.json`](research/artifacts/q011bz_degree34_individual_partition_audit.json)
 - [`research/artifacts/q011ca_degree34_component_safe_phase_discs.json`](research/artifacts/q011ca_degree34_component_safe_phase_discs.json)
+- [`research/artifacts/q011cb_degree34_second_overlap_refinement.json`](research/artifacts/q011cb_degree34_second_overlap_refinement.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -6138,6 +6178,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   exact intervalが全て親と同一となるpartition-inert診断
 - Q011ca Q011bzの39 wave allocationを5,140 component-safe phase allocationへ展開し、
   modulus-overlap全件をexact complex phaseで分離したfirst-family resolution
+- Q011cb Q011bx第2aggregateのfirst overlapを9 blockwise class／44,800 signatureへ戻し、
+  exact parent multiplicity分割の下で全件overlapとなるpersistent診断
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -6491,4 +6533,8 @@ compatible allocationの全product／intersectionが親と同一だった。従�
 Q011caではこの39 wave allocationをcomponent-safeな5,140 phase allocationへ展開した。全件でindividual modulusは
 overlapしたままだったが、exact complex phase product-discでは5,140件すべてがstrictに分離した。これは最初の
 Q011by class-signature familyだけを解消する結果であり、degree-34全体の認証ではない。次は第2未解決aggregate
-`2340`を監査する。
+`2340`を監査した。
+Q011cbではaggregate `2340`の辞書順最初のcoalesced overlapだけを9 blockwise classへ戻した。44,800 refined
+signatureはparent multiplicityをexactに分割したが、全件がoverlapした。これはblockwise interval certificateの
+限界を示す診断であり、actual resonanceやaggregate全体を判定しない。次は最初のpersistent refined witnessを
+individual source discへ分ける。

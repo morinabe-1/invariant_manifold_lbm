@@ -26158,6 +26158,50 @@ coalesced overlap signature、固定target `block=7;center=44`だけを扱う。
 2340全体、aggregate 972の他signature、degree-34全分離、actual resonance、all-order nonresonance、higher
 smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011cb 封印結果（blockwise persistent）
+
+Q011caまでの58 artifact、runner、274 direct digestを再照合し、全7 validity gateと全4 diagnostic gateが通過した。
+Q011bx aggregate `2340`の辞書順最初のcoalesced overlap witnessだけを9 original blockwise classへ戻し、44,800
+refined signatureを全走査した。compatible multiplicity和はparentの`629841280`とexactに一致した。
+
+全44,800 signatureでmodulus intervalはoverlapし、strict relationは0だった。classificationは
+`the second Q011bx aggregate first overlap persists under the registered blockwise partition`、outcomeは
+`persistent`である。
+
+- original monomial／refined／compatible signature: `12279168000 / 44800 / 44800`
+- exact compatible／parent multiplicity: `629841280 / 629841280`
+- distinct／weighted relation: `overlap=44800 / 629841280`、strict `0 / 0`
+- class-power／group-signature／pair-pool／convolution: `93 / 579 / 2 / 7885`
+- first persistent witness index／multiplicity／counts:
+  `0 / 382 / [[0,0,0,13],[0,9],[5],[0,7]]`
+- first intersection width／center-only relation／gap:
+  `0x1.9d49c4083b31ep-32 / target_below_product / 0x1.3aa0404d55937p-28`
+- first witness digest:
+  `de9435001e9603c4488945d9077e45abfa30e1c267271a27ae41d01b84993442`
+- class-power／group-signature／pair-pool digest:
+  `4f3f082ab45e8b743a22d9315a472a6a11bfe4504e569d8743117e7dff49e438` /
+  `f5477dcb209f78f4614867753385d89fc96ea921e39f91b5d9faa7268c0f8ef9` /
+  `dbdffe49d1db1768ba071671e0469ec4efa0246cfa5f6047849b7099ae2cae62`
+- aggregate／bound／coefficient／classification digest:
+  `5163889870c144df4cea0f5ff232db156d4920bba80bb7220241e7663580b0aa` /
+  `6faeb3b928d2d825afb4422ced9a8ca6fda187f661cd23122139932015eb2060` /
+  `140768950c770970b6c8295fd3159a6e70aff122b3383d0d9e2dad0a2abb82d8` /
+  `63f916d5a53585ec8830f7a54b40396172c192febd5c83548f94f36e1c8c57dd`
+- input／refinement／sweep／result digest:
+  `cee7e83699027ea5d12ba79b05e06d19c1a8bff5400d06807d52b1f4ac9f4f1e` /
+  `bdd175e1b065849077bcb15ab16f2cb2dd0011308a4a8c7748ba7c10d88278cc` /
+  `0dd5d08276fd5f4246a912ace617e4b6ec72007e3994b508d13d875917a40924` /
+  `eb5011b3a2767f9618bc71c31c1cb889a0a108f819592a6a8addc169abe855e5`
+- runner／artifact newline-normalized SHA-256:
+  `d7828cb2aef583ff82bd421212837534169ba42ad1962961cf0003e9f812b085` /
+  `9e191ead642e398ccd013c783b0ddeae78e6e7e4c3bf443e08bd64c9e826aa5b`
+
+これはaggregate `2340`の最初のcoalesced overlap familyだけの診断である。他31 overlap、他15 target、aggregate
+全体、degree-34全分離、actual resonanceは未評価である。Q011bxの`rejected`、Q011byの`persistent`、Q011bzの
+`partition_inert_persistent`、Q011caの`component_safe_phase_resolved`、certified degrees 2--33および91以降、
+missing 34--90は変更しない。停止規則どおり、次はQ011ccでfirst persistent refined witnessだけをindividual source
+discへ分割する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
