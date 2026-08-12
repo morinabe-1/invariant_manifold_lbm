@@ -24332,6 +24332,32 @@ D3Q27を認証しない。
 acceptedなら次はQ011bqでdegree 31をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011bp 封印結果（accepted）
+
+全7 validity gateと全5 hypothesis gateが通過した。Q011boまでの46 artifact、runner、221 direct digestを
+再照合し、1675 overlap aggregateを欠落・重複なく一度ずつ処理した。2 multi-component aggregateは接触する
+全external componentのidentifier和集合をtarget groupとして保持し、全772 current targetだけを比較した。
+
+- fully separated／unresolved aggregate: `1675 / 0`
+- distinct relation count: `617492 / 852552 / 0`
+- weighted relation count: `86848258700160 / 94344080720948 / 0`
+- minimum witness: aggregate `1474`、selected counts `[15, 8, 7, 0]`、
+  target `block=13;center=11`、relation `product_below_target`
+- minimum outward／exact gap hex:
+  `0x1.51b8c20bfffffp-22 / 0x1.51b8c2e3fc8b8p-22`
+- result digest:
+  `bba3191ef8d864f5393e4c3aefd7f17dd4b89c8497c40160d928f59dd7ec6bdd`
+- runner／artifact newline-normalized SHA-256:
+  `a1d6478ccecd8a3d00e3ca98a5a2544ae4d6a13ca40bac8d8e35ff3f69fdac3e` /
+  `f7198b0c295ee44a0c72d272de1a427bac10bc9201bb41b41ec5cd5acf785509`
+
+scientific outcomeは`accepted`、actual resonance outcomeは
+`ruled_out_within_registered_degree_thirty_scope`である。3781 old-modulus aggregateとの和でdegree 30の
+全5456 aggregateを分離したため、certified degreesは2--30および91以降、missing rangeは31--90へ縮んだ。
+116 inactive monotone proof recordは保持したが比較には用いていない。主張は固定17² repaired exact map、fixed
+conservation leaf、登録degree-30 external relationだけに限り、all-order resultやSSM uniquenessへは外挿しない。
+次はQ011bqとしてdegree 31をdesign-onlyに資源監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
