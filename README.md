@@ -4583,6 +4583,41 @@ relation、actual resonance、minimum gap、all-order nonresonance、higher smoo
 existence／uniqueness、normal attraction、basinは認証しない。次はQ011blで全1170 aggregateと全612
 current targetの正式full sweepを事前登録する。
 
+### Q011bl degree-28 block-support-coalesced full sweep accepted
+
+Q011bkまでの42 artifact、runner、203 direct digestを再照合し、登録済み1170 overlap aggregateを欠落・重複なく
+exactに再構成した。2 multi-component aggregateでは、接触する最大3 external componentのidentifier和集合を
+target groupとして保持し、全612 current targetだけを比較した。92 inactive monotone proof recordは証明資産として
+保持したが、degree-28 relationには使っていない。
+
+全1170 aggregateがcomponent-safe outward intervalでstrictに分離され、3325 old-modulus aggregateとの和で
+degree 28の全4495 aggregateを覆った。従ってscientific outcomeは`accepted`、actual resonance outcomeは
+`ruled_out_within_registered_degree_twenty_eight_scope`である。
+
+- validity／hypothesis gates: `7 / 7` passed、`5 / 5` passed
+- fully separated／unresolved aggregate: `1170 / 0`
+- distinct comparison: `929344`
+  (`product_below_target=418956`, `target_below_product=510388`, `overlap=0`)
+- weighted comparison: `57716604325850`
+  (`product_below_target=26932451117752`, `target_below_product=30784153208098`, `overlap=0`)
+- minimum separated witness: aggregate `956`、selected counts `[12, 15, 1, 0]`、
+  target `block=12;center=143`、relation `target_below_product`
+- minimum outward／exact gap hex:
+  `0x1.2b0b5984fffffp-21 / 0x1.2b0b59e145674p-21`
+- input／preparation／sweep／result digest:
+  `fe73db0266b94fe46cc01792da8243aefd0d207ef91943d8e774d42d3fc0055c` /
+  `fb0b8b3b793ca3e33f8582c43c532b9139770f40302c91dd9ba2615e34a14256` /
+  `05a33a4427dfca5ddd5bca3fecbbcd3338d90634be9fd2e81136fbe666274a34` /
+  `8b8e5492af4d50b2be22af8b43ebb3449131f03a26c22203a3895708e65548e3`
+- runner／artifact newline-normalized SHA-256:
+  `d42a801207a8dcc5b76c5fd39f1f3ac8c041d2a438a4e4b4f05f8396a415c450` /
+  `e33843ffbda88cd41ad82147b6206352f4b0bb1f76b4c95b74f5111918843861`
+
+certified degreesは2--28および91以降、missing rangeは29--90へ縮んだ。このcertificateは固定17² repaired
+exact map、fixed conservation leaf、登録degree-28 external relationだけに限る。degrees 29--90、all-order
+nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは認証しない。
+次はQ011bmでdegree 29をdesign-onlyに資源監査する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -5290,6 +5325,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011bi_degree27_resource_estimate.json`](research/artifacts/q011bi_degree27_resource_estimate.json)
 - [`research/artifacts/q011bj_degree27_coalesced_sweep.json`](research/artifacts/q011bj_degree27_coalesced_sweep.json)
 - [`research/artifacts/q011bk_degree28_resource_estimate.json`](research/artifacts/q011bk_degree28_resource_estimate.json)
+- [`research/artifacts/q011bl_degree28_coalesced_sweep.json`](research/artifacts/q011bl_degree28_coalesced_sweep.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -5493,6 +5529,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   4060 aggregateの全分離、degree-27 external nonresonance認証
 - Q011bk degree-28 exact inventory／728-disc monotone inventory／multi-component対応resource count、
   relation未評価のまま全7固定resource上限を通過するfull-sweep Go判定
+- Q011bl 1170 degree-28 overlap aggregateのcomponent-safe block-support-coalesced正式full sweep、
+  4495 aggregateの全分離、degree-28 external nonresonance認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -5503,7 +5541,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 28--90 external
+- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 29--90 external
   nonresonance、spectral-quotient SSM uniqueness（Q011uはmodulus-only routeを棄却）
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
@@ -5773,3 +5811,8 @@ coalesced資源を再構成した。2 multi-component aggregateをidentifier和�
 92 inactive recordを削除しない728-record monotone inventoryを導入した。signature `57529`、peak `182`、
 distinct upper `995152`で全固定limitを通過した。degree-28 relationは未評価なのでcertified setとmissing range
 28--90は変更していない。
+Q011blでは固定済み1170 aggregateをmulti-component membershipを保ったまま正式走査し、`929344` distinct／
+`57716604325850` weighted comparisonを全分離した。3325 old aggregateとの和でdegree 28の全4495 aggregateを
+分離したため、degree-28 external nonresonanceを認証し、missing rangeをdegrees 29--90へ縮めた。92 inactive
+proof recordは保持したが比較には用いていない。この結論も登録degree-28 external relationだけに限り、all-order
+resultへは外挿しない。
