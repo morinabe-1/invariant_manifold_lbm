@@ -4072,6 +4072,41 @@ relationを一件も評価せず組合せ資源だけを再構成し、Q011apか
 gap、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは
 認証しない。次はQ011axで全364 aggregateと全228 targetの正式full sweepを事前登録する。
 
+### Q011ax degree-21 block-support-coalesced certificate
+
+Q011awまでの28 artifactと140 direct digestを封印し、6 source hull、364 overlap aggregate、全228 target、
+exact 17-point Fourier multiplicity、outward-rounded hierarchical product intervalを事前登録どおり再構成した。
+validity `7 / 7`、hypothesis `5 / 5`が通過し、364/364 direct aggregateの全compatible relationがstrictに
+分離した。1660 old aggregateと合わせてdegree 21の全2024 aggregateを被覆する。
+
+- original monomial／modulus signature／peak live signature: `294674427372 / 12458 / 126`
+- convolution／distinct／weighted comparison: `6448 / 123690 / 242133612486`
+- distinct product-below／target-below／overlap: `42998 / 80692 / 0`
+- weighted product-below／target-below／overlap: `128472523232 / 113661089254 / 0`
+- minimum outward／exact gap:
+  `0x1.c510b8f1fffffp-22 / 0x1.c510b99b5cafep-22`
+- minimum witness digest:
+  `7439d084e1d5ace037acc0b81b17a87b5efbe544561c52429f6ebb4548478dfc`
+- aggregate／bound／coefficient／classification digest:
+  `444a9f0603b6fd608fa44571eda8b26ca4fb0e97639c61b0ace537ba3593c4f3` /
+  `1b5d67bba1b8dd46f3ebcd6248660cad5edac9922ae975728c125ada89b2590e` /
+  `093d132560102afdadd6d77baa4ba09370d87df220af96b30cffe422e6d574c5` /
+  `d28efdc3ff55a69dedeaaecf946d8bec61a579aad0cafcad01df58050e5bfc52`
+- input／preparation／sweep／result digest:
+  `ae807c1263b3eca590f364a692d3e2b3f7b7fd4439e495c43394b032b06ff7dd` /
+  `dbc04b7b5a74cc09aed1dbcc7dd23777e6abe7ce549f7e28b19f023dc5c1844f` /
+  `2f01475c317e70c9153b7d0a9dfe0d3d2e594e0baf784b4f1c4b39d732213b78` /
+  `f6e10009cb266cc0a99cdbdcafd6c38f8864bc21c2adbfd58585865115c88da2`
+- runner／artifact newline-normalized SHA-256:
+  `f66825a7da2875ba913378b51424cbffa2b8ffbf925f03ed0f15885621bebb1b` /
+  `9491de98d4e598290d18cab3397ca33c77d9a657b41c9ef2e92d720202a656f6`
+
+scientific outcomeは`accepted`、actual resonance outcomeは
+`ruled_out_within_registered_degree_twenty_one_scope`である。従ってcertified degreesは2--21および91以降、
+missing rangeは22--90へ縮んだ。これは固定17² repaired exact map、fixed conservation leaf、登録degree-21
+external relationだけの結論であり、degrees 22--90、all-order nonresonance、higher graph smoothness、SSM
+existence／uniqueness、normal attraction、basinは認証しない。次はQ011ayでdegree 22をdesign-onlyに資源監査する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -4765,6 +4800,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011au_degree20_resource_estimate.json`](research/artifacts/q011au_degree20_resource_estimate.json)
 - [`research/artifacts/q011av_degree20_coalesced_sweep.json`](research/artifacts/q011av_degree20_coalesced_sweep.json)
 - [`research/artifacts/q011aw_degree21_resource_estimate.json`](research/artifacts/q011aw_degree21_resource_estimate.json)
+- [`research/artifacts/q011ax_degree21_coalesced_sweep.json`](research/artifacts/q011ax_degree21_coalesced_sweep.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -4940,6 +4976,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   1771 aggregateの全分離、degree-20 external nonresonance認証
 - Q011aw degree-21 exact inventory／252-disc inventory／coalesced resource count、
   relation未評価のまま全7固定resource上限を通過するfull-sweep Go判定
+- Q011ax 364 degree-21 overlap aggregateのblock-support-coalesced正式full sweep、
+  2024 aggregateの全分離、degree-21 external nonresonance認証
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -4950,7 +4988,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - 連続最適化、Euclidean／grid-uniform normal attraction、global basin
 - Q007afが排除していないwave-sum／blockwise／別norm external certificate、
   Q007ag新tubeのarbitrary boundary-state initialization
-- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 21--90 external
+- repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 22--90 external
   nonresonance、spectral-quotient SSM uniqueness（Q011uはmodulus-only routeを棄却）
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
   Poiseuille／Couette、D3Q27
@@ -5163,3 +5201,7 @@ nonresonanceを認証し、missing rangeをdegrees 21--90へ縮めた。この�
 Q011awではdegree 21の全2024 aggregateを1660 old nonoverlapと364 overlapへ分け、relationを評価せず
 coalesced資源を再構成した。signature `12458`、peak `126`、distinct upper `146928`で全固定limitを通過し、
 degree-21 full sweepの資源Goとした。degree-21 relationは未評価なのでcertified setは変更していない。
+Q011axでは固定済み364 aggregateを正式走査し、`123690` distinct／`242133612486` weighted comparisonを
+全分離した。1660 old aggregateとの和でdegree 21の全2024 aggregateを分離したため、degree-21 external
+nonresonanceを認証し、missing rangeをdegrees 22--90へ縮めた。この結論も登録degree-21 external relation
+だけに限り、all-order resultへは外挿しない。
