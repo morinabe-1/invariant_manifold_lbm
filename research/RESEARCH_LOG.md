@@ -8857,6 +8857,50 @@ repaired exact map、fixed conservation leaf、登録degree-34 sufficient certif
 resonance、all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinへ
 は外挿しない。事前登録どおり、次はQ011byで辞書順最初のoverlap witnessだけを精密監査する。
 
+### Q011by 実行結果
+
+Q011bxまでの55 artifact、runner、261 direct digest、rejected outcome、claim boundary、辞書順最初のexact witnessを
+再照合し、全7 validity gateを通過した。aggregate `972`、selected counts `[4,27,3,0]`、target
+`block=12;center=124`だけを固定し、source partitionを6 merged hullから事前登録済み15 blockwise class
+`[4,2,3,6]`へ戻した。他23 target、2番目のunresolved aggregate `2340`、degree-34 full sweepは再評価していない。
+
+登録9,800 class signatureはすべてoutput block 12でcompatibleとなり、全9,800 comparisonがoverlapした。weighted
+comparisonも全1,570,380がoverlapで、strict separated comparisonは存在しなかった。従ってclassificationは
+`the first Q011bx overlap persists under the registered uncoalesced blockwise partition`、refinement outcomeは
+`persistent`となった。scientific outcomeは`not_evaluated`、actual resonance outcomeは`not_established`である。
+
+- distinct relation count:
+  `product_below_target=0 / target_below_product=0 / overlap=9800`
+- weighted relation count:
+  `product_below_target=0 / target_below_product=0 / overlap=1570380`
+- original monomial／signature／compatible signature: `26796000 / 9800 / 9800`
+- class-power／group-signature／pair-pool／convolution: `94 / 74 / 2 / 1222`
+- first persistent witness: local aggregate `0`（Q011bx parent `972`）、left／right `0 / 0`、
+  multiplicity `39`
+- first witness class counts:
+  `[[0,0,0,4],[0,27],[0,0,3],[0,0,0,0,0,0]]`
+- intersection width／center-only relation／gap:
+  `0x1.3a21ae03356a4p-28 / target_below_product / 0x1.b808da9a742c2p-27`
+- witness digest:
+  `8137019a4a58e788c37a789b4e69533eef687941ac14ac8f8bb58acf568d9f69`
+- aggregate／bound／coefficient／classification digest:
+  `54a6b854a22b2030db3c90e2d2bf53091eb098fdfee3c508f4d18cfe2e9f912c` /
+  `d403cfe8ca6d0f79495288b74c5eea8ec9af629188c99b9cef532654ff637b85` /
+  `6fe198aa1ab2cc70f9aa7abcf772fbe9272a22dd61d45f408b9a247f07c89767` /
+  `a65dd041ff135fcb2b15de896b19ee5cc07e198ab9bd1919315782d3e31a09e9`
+- input／refinement／sweep／result digest:
+  `9b44a32d229109b82f988030c9deaaa47c306ec8464fe9e920bf241b64bfdd05` /
+  `45438704eb7c67a2f532507b17642a7d9e4a35e2313f2eace27fee647c52a22c` /
+  `17a7eb73c45a30f9bd7bc4e4c00306483934000e1a0ac402e1dec481d2fb0b30` /
+  `81b6ad97a518722a9cc139d64d8938439470d98e14856df1873c6b45176b7fc1`
+- runner／artifact newline-normalized SHA-256:
+  `34c251bb967561ab48f301df5ff872962c5cac8ac670b80595d3a5f60e4bb9cd` /
+  `f3bae947808b5417ca784d29a457697e25c2f06216887e2396828bea8fb66064`
+
+このpersistent判定は15-class interval certificateの限界だけを示し、individual source discでの未分離やactual
+degree-34 resonanceを確立しない。Q011bxのrejected outcome、certified degrees 2--33と91以降、missing 34--90は
+変更しない。事前登録どおり、次はQ011bzで最初のpersistent witnessだけをindividual-disc partitionへ分ける。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9140,6 +9184,8 @@ resonance、all-order nonresonance、higher graph smoothness、SSM existence／u
 [`artifacts/q011bw_degree34_resource_estimate.json`](artifacts/q011bw_degree34_resource_estimate.json)
 
 [`artifacts/q011bx_degree34_coalesced_sweep.json`](artifacts/q011bx_degree34_coalesced_sweep.json)
+
+[`artifacts/q011by_degree34_first_overlap_refinement.json`](artifacts/q011by_degree34_first_overlap_refinement.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

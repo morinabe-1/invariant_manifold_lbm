@@ -5067,6 +5067,42 @@ fixed conservation leaf、登録degree-34 sufficient certificateだけに限り�
 nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinを認証しない。
 次はQ011byで最初のoverlap witnessだけを精密監査する。
 
+### Q011by degree-34 first-overlap refinement persistent
+
+Q011bxまでの55 artifact、runner、261 direct digestと最初の未分離witnessを再照合し、全7 validity gateを通過した。
+aggregate `972`、counts `[4,27,3,0]`、target `block=12;center=124`だけを固定し、6 merged source hullを
+Q011as以前の15 blockwise class `[4,2,3,6]`へ戻した。他23 target、aggregate `2340`、degree-34 full sweepは
+再評価していない。
+
+登録9,800 class signatureはすべてFourier-compatibleで、すべてtarget intervalとoverlapした。従って
+classificationは`the first Q011bx overlap persists under the registered uncoalesced blockwise partition`である。
+これはindividual discでの未分離やactual resonanceを意味せず、15-class interval certificateがこのrelationを
+分離できないという診断に限る。
+
+- distinct relation count:
+  `product_below_target=0 / target_below_product=0 / overlap=9800`
+- weighted relation count:
+  `product_below_target=0 / target_below_product=0 / overlap=1570380`
+- original monomial／class signature／compatible signature: `26796000 / 9800 / 9800`
+- class-power／group-signature／pair-pool／convolution: `94 / 74 / 2 / 1222`
+- first persistent witness: local aggregate `0`（Q011bx parent `972`）、left／right `0 / 0`、
+  multiplicity `39`
+- first intersection width／center-only gap／witness digest:
+  `0x1.3a21ae03356a4p-28 / 0x1.b808da9a742c2p-27 /`
+  `8137019a4a58e788c37a789b4e69533eef687941ac14ac8f8bb58acf568d9f69`
+- input／refinement／sweep／result digest:
+  `9b44a32d229109b82f988030c9deaaa47c306ec8464fe9e920bf241b64bfdd05` /
+  `45438704eb7c67a2f532507b17642a7d9e4a35e2313f2eace27fee647c52a22c` /
+  `17a7eb73c45a30f9bd7bc4e4c00306483934000e1a0ac402e1dec481d2fb0b30` /
+  `81b6ad97a518722a9cc139d64d8938439470d98e14856df1873c6b45176b7fc1`
+- runner／artifact newline-normalized SHA-256:
+  `34c251bb967561ab48f301df5ff872962c5cac8ac670b80595d3a5f60e4bb9cd` /
+  `f3bae947808b5417ca784d29a457697e25c2f06216887e2396828bea8fb66064`
+
+Q011bxの`rejected`、actual outcome `not_established`、certified degrees 2--33および91以降、missing range
+34--90は変更しない。次はQ011bzで、この辞書順最初のpersistent witnessだけをindividual-disc partitionへ
+分割する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -6008,6 +6044,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   relation未評価のまま全7固定resource上限を通過するfull-sweep Go判定
 - Q011bx 3138 degree-34 overlap aggregateの正式full sweep、3136分離／2未分離、
   現行degree-34 sufficient certificateの棄却（actual resonanceは未確立）
+- Q011by Q011bx最初の未分離relationを15 blockwise classへ戻したtargeted refinement、
+  9800／9800 signatureでoverlapが持続（actual resonanceは未確立）
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -6352,3 +6390,6 @@ Q011bxでは固定済み3138 aggregateを正式走査し、3136 aggregateを分�
 残った。従ってdegree-34 sufficient certificateを棄却し、actual resonanceは`not_established`とした。certified
 degrees 2--33および91以降、missing 34--90は変更していない。次は辞書順最初のaggregate `972`、counts
 `[4,27,3,0]`、target `block=12;center=124`だけを精密監査する。
+Q011byではこの単一relationだけを15 blockwise classへ戻したが、全9800 compatible signatureがoverlapしたため
+`persistent`と判定した。これは15-class interval certificateの限界であり、actual resonanceの証明ではない。
+次は最初のpersistent witnessだけをindividual discへ分割する。

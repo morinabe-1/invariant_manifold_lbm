@@ -25649,6 +25649,34 @@ uncoalesced witnessだけを次の精密化候補にする。
 all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、
 D3Q27を認証しない。
 
+### Q011by 封印結果（persistent）
+
+Q011bxまでの55 artifact、runner、261 direct digestと登録first witnessを再照合し、全7 validity gateを通過した。
+固定15-class partition `[4,2,3,6]`、9,800 signature、26,796,000 individual-source monomial upperを再現し、
+aggregate `972`／target `block=12;center=124`の単一relationだけを評価した。
+
+全9,800 signatureがFourier-compatibleかつoverlapで、weighted overlapは1,570,380、strict separated comparisonは
+0だった。classificationは
+`the first Q011bx overlap persists under the registered uncoalesced blockwise partition`である。
+
+- first refined witness: local aggregate `0`、left／right `0 / 0`、multiplicity `39`
+- class counts: `[[0,0,0,4],[0,27],[0,0,3],[0,0,0,0,0,0]]`
+- intersection width／center-only gap／witness digest:
+  `0x1.3a21ae03356a4p-28 / 0x1.b808da9a742c2p-27 /`
+  `8137019a4a58e788c37a789b4e69533eef687941ac14ac8f8bb58acf568d9f69`
+- input／refinement／sweep／result digest:
+  `9b44a32d229109b82f988030c9deaaa47c306ec8464fe9e920bf241b64bfdd05` /
+  `45438704eb7c67a2f532507b17642a7d9e4a35e2313f2eace27fee647c52a22c` /
+  `17a7eb73c45a30f9bd7bc4e4c00306483934000e1a0ac402e1dec481d2fb0b30` /
+  `81b6ad97a518722a9cc139d64d8938439470d98e14856df1873c6b45176b7fc1`
+- runner／artifact newline-normalized SHA-256:
+  `34c251bb967561ab48f301df5ff872962c5cac8ac670b80595d3a5f60e4bb9cd` /
+  `f3bae947808b5417ca784d29a457697e25c2f06216887e2396828bea8fb66064`
+
+これは15-class interval certificateの持続だけを示し、actual resonanceを確立しない。Q011bxのrejected outcome、
+certified degrees 2--33および91以降、missing 34--90は不変である。次はQ011bzとして、このfirst refined witnessの
+34 source factorだけをindividual discへ分割する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
