@@ -22320,6 +22320,127 @@ leaf、degree-24 full sweepの設計資源に限定され、degree-24 external n
 gap、all-order result、SSM existence／uniquenessを認証しない。次はQ011bdとして全524 overlap aggregateの
 正式full sweepを事前登録する。
 
+## Q011bd: degree-24 block-support-coalesced full sweep — 事前登録
+
+### 問い
+
+Q011bcで固定した6 source hull、524 overlap aggregate、全372 current targetを、exact 17-point Fourier
+multiplicityとoutward-rounded hierarchical product intervalで全件走査したとき、全compatible
+product--target relationをstrictに分離できるか。さらにQ011uで既に分離した2401 aggregateを保存し、
+degree 24の全2925 external aggregateを分離できるか。
+
+Q011bcはdegree-24 relationを一件も評価していない。Q011bdでは以下を固定してから初めて正式full sweepを
+実行する。未観測のrelation count、matrix digest、minimum witnessはacceptance thresholdへ使わず、最初の
+正式artifactでoutcomeとして封印する。
+
+### sealed input
+
+Q011bcまでの34 artifact、runner、167 direct digest、resource Go、Q011bb accepted certificate、scientific
+boundaryを再照合し、Q011bcを直接封印する。
+
+- Q011bc artifact／runner newline-normalized SHA-256:
+  `a6e0ab8762fecc9ed006a1692b634cc5ad6937a3fcb909554ab8e352c0a74a2e` /
+  `f34211ca52a08845a7453737b1c29c63ee0b5ba9d540b7c47e04c6308ba650a6`
+- Q011bc input／inventory／envelope／resource／result digest:
+  `0109bd6dcac3685c4a414d4018779b1f013472fbb44b444eb33edab4a73bb358` /
+  `41ee0d1a6e37236f920436fce19dc4a32db1f112afe7ed3ad33d2c83a596171f` /
+  `8391403853a090ed93999aedc337dd6f6904db548679cf03f88b07c956e2c3a1` /
+  `3d7c25527cd76b4b3d69ad50a800b5cd6dcd3dcdfa68df5b2e0a91ce45d4ea92` /
+  `ad9f3e0286ef977602ce8472ab9ed3a6970f8d4b1932cee3403095990c6be289`
+
+Q011bcの`study_gate=passed`、resource decision
+`go_for_degree_twenty_four_coalesced_preregistration`、relation evaluation count 0、Q011bb degree-23 accepted
+certificate、certified degrees 2--23と91以降を要求する。
+
+### fixed inventory, monotone envelope, hull, and active targets
+
+Q011bc artifactから次をexactに再構成する。
+
+- degree aggregate／old separated／direct overlap: `2925 / 2401 / 524`
+- overlap count first／last: `[0,0,16,8] / [24,0,0,0]`
+- selected／current target／active／monotone final identifier: `24 / 372 / 396 / 444`
+- prior／inactive retained／added／removed identifier: `356 / 48 / 88 / 0`
+- old／merged source class count: `[4,2,3,6] / [1,1,2,2]`
+- inventory／active-disc／monotone-final／hull／merged-membership digest:
+  `8b173d8399cd2258cfc7cbb5f5939ef5682841c646819e1669cf3d7337822477` /
+  `537e3eb54d25dd8be80b49450226e5978c18d2cb490e31345c0e67228222d5d9` /
+  `efa60dc94609adf881016585bf7df04e8cb12ea23f35d03a908508a4f5018c8f` /
+  `f54f1a1f70d953b4c1255e9f9627d7ca43229a3d1e26c11b716d23fd56ea1eb6` /
+  `975ebf1077279cbfcc6fd46e5a34fcd67260ff953a718eb51985794314fcd8b8`
+
+各selected identifierは登録merged hullにcontainedし、wave blockとcenter indexを保持する。比較対象は全372
+current targetだけとし、48 inactive retained discをdegree-24 relationへ混入させない。target merge、共役
+folding、per-eigenvalue label collapseを禁止する。
+
+### fixed hierarchical arithmetic
+
+Q011bbと同じcomponent-safe outward protocolをdegree 24へ適用する。
+
+1. 4 selected groupのmerged-class weak compositionをexactに列挙する。
+2. group `0,1`と`2,3`のpair poolをcacheし、17-point cyclic convolutionを`numpy.int64`で行う。
+3. 各convolutionで非負性、fiber sum、crude `int64` upperを検査する。
+4. product modulusをbinary64のdownward／upward rounded interval productで囲う。
+5. output blockごとのexact integer Fourier multiplicityが正のentryだけをcompatibleとする。
+6. compatible entryを全372 current target discに対して`product_below_target`、`target_below_product`、
+   `overlap`へ排他的に分類する。
+7. full monomial listとfull classification matrixは保持せず、aggregate summary、matrix hash、最初の
+   overlap、global minimum separated witnessだけを保持する。
+
+次のresource identityをexactに要求する。
+
+- class-power／group-signature／pair-key: `135 / 580 / 230`
+- cached pair-signature entry／convolution: `6939 / 8054`
+- original monomial／modulus signature: `2246535043109 / 19942`
+- peak live signature／two product-array bytes: `153 / 2448`
+- distinct／weighted comparison upper: `331524 / 46505597729848`
+- safe convolution crude upper: `654106252800`
+
+wall time、tracemalloc、process memoryの実測値はdiagnosticとして記録してよいが、accepted／rejectedを変更しない。
+
+### validity gate
+
+1. Q011bcまでの34 artifact、runner、167 direct digest、outcome、boundaryが再現する。
+2. Q011bc inventory、monotone envelope、active target set、source hull、resource contractがexactに再現する。
+3. 524 aggregateを欠落・重複なく辞書順で処理し、全integer／outward interval invariantが通る。
+4. original monomial、signature、convolution、peak、comparison upper countが登録値と一致する。
+5. aggregate／bound／coefficient／classification summaryがstrict finite JSONとdigestへ封印される。
+6. first overlapがある場合は辞書順最初のwitness、separated relationがある場合はglobal minimum witnessを
+   exact rational reconstructionで封印する。
+7. Q011bb degree-23 accepted certificate、Q011bc section digest、runner provenanceが再現する。
+
+一つでも失敗すれば`inconclusive`とし、degree 24をcertified setへ追加しない。
+
+### hypothesis gate and stopping rule
+
+validity通過後、次を順に判定する。
+
+1. 6 merged hullがselected 24 sourceを包含し、372 current target discだけが個別比較される。
+2. 524 direct aggregateの全compatible comparisonに`overlap=0`である。
+3. 2401 old-modulus aggregateと524 direct aggregateの和がdegree-24全2925 aggregateを覆う。
+4. global minimumのoutward gapとexact rational gapがともにstrictly positiveである。
+5. claimを登録degree-24 external nonresonanceだけに限定する。
+
+全5項目が通ればclassificationを
+`the block-support-coalesced component-safe sweep certifies degree-24 external nonresonance`、scientific outcomeを
+`accepted`、actual resonance outcomeを`ruled_out_within_registered_degree_twenty_four_scope`とする。
+certified degreesは2--24および91以降、missing rangeは25--90へ縮める。
+
+validな計算で一つでもoverlapが残ればclassificationを
+`the block-support-coalesced degree-24 sufficient certificate is rejected`、scientific outcomeを`rejected`、
+actual resonance outcomeを`not_established`とする。最初のoverlap witnessだけを次の精密化候補にし、後付けの
+threshold、class split、target foldingで結果を変更しない。
+
+### 主張境界と次の変更
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree 24、Q011uの2925 external aggregate、
+Q011asの6 source hull、Q011bcの372 current target disc、exact x-Fourier multiplicity、hierarchical
+outward-dyadic product protocolに限る。degrees 25--90、all-order nonresonance、Q011t graphとのhigher-order
+一致、higher graph smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、
+D3Q27を認証しない。
+
+acceptedなら次はQ011beでdegree 25をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
+inconclusiveなら最初のvalidity failureだけを修正する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
