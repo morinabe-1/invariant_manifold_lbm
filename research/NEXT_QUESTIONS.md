@@ -24611,6 +24611,39 @@ D3Q27を認証しない。
 acceptedなら次はQ011bsでdegree 32をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011br 封印結果（accepted）
+
+Q011bqまでの48 artifact、runner、230 direct digestを再照合し、登録済み1989 overlap aggregateを欠落・重複なく
+exactに再構成した。8 multi-component aggregateでは最大3 external componentのidentifier和集合を保持し、116
+inactive monotone proof recordをdegree-31 relationから除外した。全7 validity gateと全5 hypothesis gateが通過した。
+
+- fully separated／unresolved aggregate: `1989 / 0`
+- distinct comparison: `1785782`
+  (`product_below_target=748956`, `target_below_product=1036826`, `overlap=0`)
+- weighted comparison: `307717456383684`
+  (`product_below_target=159451554446488`, `target_below_product=148265901937196`, `overlap=0`)
+- minimum separated witness: aggregate `1585`、selected counts `[13,12,5,1]`、
+  target `block=8;center=41`、relation `target_below_product`
+- minimum outward／exact gap hex:
+  `0x1.aeb65657fffffp-24 / 0x1.aeb65961f1c07p-24`
+- input／preparation／sweep／result digest:
+  `323340a53f85746834f68825a3725eaa525c68aafe2f71c6ba7c87e89a2d2d9b` /
+  `351c05f98a9eedcd03af8ded5e5dccf4def334c0f6ded7374f6d64a53160514f` /
+  `0e4ff2b20ccff36016e289be3eefdc0cd8c7f3e1d711c1189a65e973711c2116` /
+  `165f85fff115e56a5f3bfc3b2fe0661b09620d6394267720a165302b38aef5e0`
+- runner／artifact newline-normalized SHA-256:
+  `c6e3e6db74ee71421938bf3fd3df760f22480bde6f5d589c576acd634d9b9d02` /
+  `63a5a3cc5076edef2dfeb5e8f0d82cb588b9de4436fbebc57e0e39349b9e1cfe`
+
+3995 old-modulus aggregateとの和でdegree 31の全5984 aggregateを覆ったため、classificationは
+`the block-support-coalesced component-safe sweep certifies degree-31 external nonresonance`、scientific outcomeは
+`accepted`、actual resonance outcomeは`ruled_out_within_registered_degree_thirty_one_scope`である。certified
+degreesは2--31および91以降、missing rangeは32--90へ縮んだ。
+
+この結果は固定17² repaired exact map、fixed conservation leaf、登録degree-31 external relationだけに限る。
+all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは認証しない。
+次はQ011bsでdegree 32のdesign-only resource gateを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
