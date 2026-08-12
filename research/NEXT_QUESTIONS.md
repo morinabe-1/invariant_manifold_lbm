@@ -22936,6 +22936,38 @@ GoならQ011bhで入力、全779 aggregate、全460 current target、outward ari
 固定して正式full sweepを事前登録する。Stopなら最初のfailed resource dimensionだけを改善し、inconclusiveなら
 最初のvalidity failureだけを修正する。
 
+### Q011bg 封印結果
+
+全6 validity gateと全7 resource gateが通過した。Q011bfまでの37 artifactと180 direct digest、degree-26
+inventory、568-record monotone envelope、6 source hull、全460 current target、固定resource identityを再現した。
+relation object、product-bound matrix、Fourier coefficient matrix、classification matrixは構築していない。
+
+- aggregate／old separated／overlap: `3654 / 2875 / 779`
+- prior／active reused／inactive retained／added／active／final:
+  `484 / 400 / 84 / 84 / 484 / 568`
+- class-power／group-key／group-signature: `150 / 99 / 632`
+- pair-key／cached pair-signature entry／convolution: `290 / 8262 / 9474`
+- modulus signature／peak live signature／two-array bytes: `32455 / 156 / 2496`
+- original／maximum aggregate monomial: `11279576045274 / 160320160000`
+- distinct／weighted comparison upper: `576636 / 241078715222912`
+- projected wall／2倍safety seconds:
+  `308593530873/1154895680000 / 308593530873/577447840000`
+- 1.5倍tracemalloc／process-memory safety bytes: `115547 / 318880`
+- input／inventory／envelope／resource／result digest:
+  `00f8d11b7ff9ab7acc90ca5c8611d9eb3ed2b72ccdd98eec88564b1e7fb882be` /
+  `9946663f12a1edec3469799102bde0424606d3e0c981677bedbd71a9fb7b9a60` /
+  `5a6fdb92df21d64cc1e29b4500ffff85e396a26771ba859f57e2280842a20c28` /
+  `7949f6adb8226fe5d19f189978912b562ddff07fb4b091d915c12d68a5f20d78` /
+  `fffce6dd6ed9beacaa22199f3d83cf3037ceb83f8142e3e9eccfdf1620f18d82`
+- runner／artifact newline-normalized SHA-256:
+  `d67038df358cf636011d85d58fe1f5fd7541008443904f7019aca6e74622d857` /
+  `c0501905dcd50807492e99a4ecac25520209aad10a15e0f253c80508613f2b68`
+
+resource decisionは`go_for_degree_twenty_six_coalesced_preregistration`、scientific outcomeとactual resonance
+outcomeはいずれも`not_evaluated`となった。従ってcertified degreesは2--25および91以降、missing rangeは
+26--90のままである。主張は固定17² repaired exact map、fixed conservation leaf、degree-26 design-only
+resource feasibilityに限定する。次はQ011bhとしてdegree-26 full sweepを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
