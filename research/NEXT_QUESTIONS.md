@@ -25039,6 +25039,38 @@ all-order result、higher smoothness、SSM、normal attraction、basin、他grid
 GoならQ011bvで全2686 aggregateと全1128 targetの正式full sweepを事前登録する。Stopなら最初の超過だけを
 再設計し、inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011bu 封印結果（Go）
+
+Q011btまでの51 artifact、runner、243 direct digestとaccepted degree-32 certificateを再照合した。degree 33の
+全7140 aggregateを`4454 / 2686` old nonoverlap／overlapへexactに分け、25 multi-component aggregateでは
+接触する最大3 componentのidentifier和集合を保存して全1128 current targetを再構成した。
+
+Q011bsの1188 prior recordを全て保持し、1048 common、140 inactive、104 added、1152 active、1292 final
+recordのmonotone proof inventoryを作った。relation評価数は全sectionで0、3 relation matrixは全て未構築だった。
+
+- validity／resource gate: `6 / 6` passed、`7 / 7` passed
+- class-power／group-signature／pair-key: `193 / 1121 / 771`
+- convolution／modulus signature／peak／two-array bytes: `41820 / 181711 / 272 / 4352`
+- original／maximum aggregate monomial: `1182191544739044 / 4835313100800`
+- distinct／weighted comparison upper: `2754464 / 16429979607740272`
+- resource record digest:
+  `03849dc4d825d7d19ab2d87e0bf8dfb37a36d5b583259a21ac0ccab49656e85e`
+- input／inventory／envelope／resource／result digest:
+  `c7c1f68706bdb00723ffdf35ba31edb185b4032c57400536dca8e53eaeedb13c` /
+  `8f6070b00f376c6372545f0cdde892ff2f86edbf069642a854a2e2798f9b3c69` /
+  `4aadbc1eeb9e96414d562420a60d5694d22801ddc974ccdc86ccb05be8474726` /
+  `4b3df14371829e2127ca4a2bbde0a05cc2936d9cd236d3ff155afb4b221a5634` /
+  `a217bd08728f6ec2f37dcb626bcdf0eb19e76e66e44dc536afac47650e180657`
+- runner／artifact newline-normalized SHA-256:
+  `8dcdcc8cf0604c479389bfcb45b5b19f043cc40c365b4d92f526a4078bd141c8` /
+  `e3228fa06b67266c0f8d37ea78487d781d43f5aa1a99d38965027a7006b8dd86`
+
+decisionは`go_for_degree_thirty_three_coalesced_preregistration`、scientific／actual outcomeは
+`not_evaluated / not_evaluated`である。従ってcertified degreesは2--32および91以降、missing rangeは33--90の
+ままであり、degree-33 nonresonance、actual resonance、minimum gap、all-order result、higher smoothness、SSM、
+normal attraction、basinは認証しない。次はQ011bvとして全2686 aggregateと全1128 targetの正式full sweepを
+事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
