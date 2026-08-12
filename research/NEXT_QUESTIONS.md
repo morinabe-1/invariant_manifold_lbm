@@ -22441,6 +22441,42 @@ D3Q27を認証しない。
 acceptedなら次はQ011beでdegree 25をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011bd 封印結果
+
+全7 validity gateと全5 hypothesis gateが通過した。Q011bcまでの34 artifactと167 direct digest、degree-24
+inventory、444-record monotone envelope、6 source hull、全372 current target、固定resource identityを再現し、
+48 inactive monotone proof recordを比較対象から除外した。524/524 direct aggregateがstrictに分離した。
+
+- convolution／distinct／weighted comparison: `8054 / 296172 / 2783425959332`
+- distinct product-below／target-below／overlap: `120644 / 175528 / 0`
+- weighted product-below／target-below／overlap: `1497104851540 / 1286321107792 / 0`
+- minimum witness: aggregate `514`、counts `[19,2,3,0]`、target `block=12;center=146`、
+  relation `product_below_target`
+- minimum outward／exact gap:
+  `0x1.e1ff5e91fffffp-22 / 0x1.e1ff5f4e05562p-22`
+- minimum witness digest:
+  `276e8ce1dcf2ddc0e696ea512fb40d1b91de3adb96ba9139ee65221ccf464a11`
+- aggregate／bound／coefficient／classification digest:
+  `92efc194f617ef9e71e16e9e9fd4702cb5f381b2dac39d411f85c3293d94a95d` /
+  `950c109f9ef0e6d36e7de56e621ff1d0fe9249d42dae6ae41ebfa2a432c166ff` /
+  `4ffe7f0035ff6a5e9b048b5b03a904c0d3459bddbcc7892ce15479672302a013` /
+  `ddd81bd74b7e597608d1a24a571d23d9eaca2f3d2fa10d59f44634088c108585`
+- input／preparation／sweep／result digest:
+  `7f2453b7a26d40c7539210fe4b62b396b15a0e8cc31277d8066270624d4a8ecd` /
+  `1183aebb6c8425735d266582ae793cb259fa1378914e2a98c661373888765df0` /
+  `9256b47555a2f86a5a3040a5f1885bfdc64e34c7d5e3156eae7956da57eb6e99` /
+  `d93d7d2c96d5498c5b188062564c64b7f9d3be6b947e5029e1006d0f1116ec1b`
+- runner／artifact newline-normalized SHA-256:
+  `6730702dfb449a20374a849b4120a3e25bd6d4841736879dcfb095590edf63f5` /
+  `ea93ccb0c6e1827656b1f2de440b09253ad764342a117dcda2f369f97afbb348`
+
+classificationは
+`the block-support-coalesced component-safe sweep certifies degree-24 external nonresonance`、scientific outcomeは
+`accepted`、actual resonance outcomeは`ruled_out_within_registered_degree_twenty_four_scope`となった。
+certified degreesは2--24および91以降、missing rangeは25--90へ縮んだ。主張は固定17² repaired exact map、
+fixed conservation leaf、登録degree-24 external relationに限定する。次はQ011beとしてdegree 25をdesign-onlyに
+資源監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
