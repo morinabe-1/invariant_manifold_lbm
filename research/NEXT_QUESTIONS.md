@@ -24460,6 +24460,33 @@ all-order result、higher smoothness、SSM、normal attraction、basin、他grid
 GoならQ011brで全1989 aggregateと全892 targetの正式full sweepを事前登録する。Stopなら最初の超過だけを
 再設計し、inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011bq 封印結果（Go）
+
+全6 validity gateと全7 resource gateが通過した。Q011bpまでの47 artifact、runner、225 direct digestを
+再照合し、degree 31の全5984 aggregateを`3995 / 1989` old nonoverlap／overlapへexactに分けた。8件の
+multi-component aggregateは接触する全external componentのidentifier和集合を保持し、全892 current targetを
+復元した。
+
+Q011boの912 prior recordを全て保持し、796 common、116 inactive、120 added、916 active、1032 final recordと
+全digestを再現した。relationを一件も評価せず、組合せ資源は次の値となった。
+
+- modulus signature／peak／two-array bytes: `121932 / 272 / 4352`
+- convolution／distinct／weighted comparison upper:
+  `31408 / 1869852 / 5248950250612032`
+- projected wall／2倍safety seconds:
+  `1000673268561/1154895680000 / 1000673268561/577447840000`
+- 1.5倍tracemalloc／process-memory safety bytes: `201467 / 555996`
+- result digest:
+  `b422627e8d8f442fb8dd305e5e9b4a6b59155d5c0b370e70c5464d3e16d738b5`
+- runner／artifact newline-normalized SHA-256:
+  `1f59385b474114a511d889a20a326fdeb0f028b74ee7584f682a565f1b69ef6c` /
+  `de1366f80aa8ac41f8d11684e2930722fa6de0a4f31501e25975f7c26df35d20`
+
+resource decisionは`go_for_degree_thirty_one_coalesced_preregistration`、scientific／actual outcomeは
+`not_evaluated / not_evaluated`である。certified degreesは2--30および91以降、missing rangeは31--90のままで、
+degree-31 nonresonanceやSSM uniquenessはまだ認証していない。次はQ011brとして全1989 aggregateと全892 targetの
+正式full sweepを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

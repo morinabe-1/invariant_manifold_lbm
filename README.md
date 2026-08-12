@@ -4770,6 +4770,47 @@ exact map、fixed conservation leaf、登録degree-30 external relationだけに
 nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは認証しない。
 次はQ011bqでdegree 31をdesign-onlyに資源監査する。
 
+### Q011bq degree-31 block-support-coalesced resource Go
+
+Q011bpまでの47 artifactと225 direct digestを封印し、degree 31の全5984 aggregateを3995 old-modulus
+nonoverlapと1989 overlapへexactに分けた。66 external componentから全892 current targetを復元した。
+1989 overlap aggregateのうち8件は複数external componentに接し、最大component数は3である。接触componentの
+identifier和集合を保持し、target folding、共役folding、label collapseは用いていない。
+
+Q011boの912-record monotone proof inventoryを全て保持し、116 inactive recordと120 new targetを明示した
+1032-record monotone proof inventoryを構成した。current active inventoryはselected 24とtarget 892の計916件である。
+relationを一件も評価せず組合せ資源だけを再構成し、Q011apから変更しなかった7 absolute resource limitを
+全て通過した。resource decisionは`go_for_degree_thirty_one_coalesced_preregistration`である。
+
+- validity／resource gates: `6 / 6` passed、`7 / 7` passed
+- aggregate／old separated／overlap: `5984 / 3995 / 1989`
+- selected／target／prior／inactive retained／added／active／final:
+  `24 / 892 / 912 / 116 / 120 / 916 / 1032`
+- multi-component aggregate／maximum component: `8 / 3`
+- modulus signature／peak／two-array bytes: `121932 / 272 / 4352`
+- convolution／distinct／weighted comparison upper:
+  `31408 / 1869852 / 5248950250612032`
+- original／maximum aggregate monomial: `364024527216492 / 1985023272960`
+- projected wall／2倍safety seconds:
+  `1000673268561/1154895680000 / 1000673268561/577447840000`
+- 1.5倍tracemalloc／process-memory safety bytes: `201467 / 555996`
+- scientific／actual degree-31 resonance outcome: `not_evaluated / not_evaluated`
+- input／inventory／envelope／resource／result digest:
+  `25662eaa6bb80aeb7cdfd8521806222009145e4ccc6916c56bfbc9dc1fa93575` /
+  `ce19ffe267e34b55ce6e3ad8b874b05b0ca034a256dfb6cfd81fd114950880b5` /
+  `2e69d53e722f78510b71df91f71e991aa0f03385b8714f0679ece9765c938327` /
+  `dd50b7f149517ccd45774358240b96a13300c78639065c774211d8a48e987796` /
+  `b422627e8d8f442fb8dd305e5e9b4a6b59155d5c0b370e70c5464d3e16d738b5`
+- runner／artifact newline-normalized SHA-256:
+  `1f59385b474114a511d889a20a326fdeb0f028b74ee7584f682a565f1b69ef6c` /
+  `de1366f80aa8ac41f8d11684e2930722fa6de0a4f31501e25975f7c26df35d20`
+
+これはdegree-31 full sweepの資源適格性だけを示す。inventory／envelope／resourceのrelation evaluation countは
+全て0であり、certified degreesは2--30および91以降、missing rangeは31--90のままである。degree-31
+relation、actual resonance、minimum gap、all-order nonresonance、higher smoothness、SSM
+existence／uniqueness、normal attraction、basinは認証しない。次はQ011brで全1989 aggregateと全892
+current targetの正式full sweepを事前登録する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -5695,6 +5736,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   relation未評価のまま全7固定resource上限を通過するfull-sweep Go判定
 - Q011bp 1675 degree-30 overlap aggregateのcomponent-safe block-support-coalesced正式full sweep、
   5456 aggregateの全分離、degree-30 external nonresonance認証
+- Q011bq degree-31 exact inventory／1032-disc monotone inventory／multi-component対応resource count、
+  relation未評価のまま全7固定resource上限を通過するfull-sweep Go判定
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -6000,3 +6043,8 @@ Q011bpでは固定済み1675 aggregateをmulti-component membershipを保った�
 分離したため、degree-30 external nonresonanceを認証し、missing rangeをdegrees 31--90へ縮めた。116 inactive
 proof recordは保持したが比較には用いていない。この結論も登録degree-30 external relationだけに限り、all-order
 resultへは外挿しない。
+Q011bqではdegree 31の全5984 aggregateを3995 old nonoverlapと1989 overlapへ分け、relationを評価せず
+coalesced資源を再構成した。8 multi-component aggregateをidentifier和集合として保持し、前段proof inventoryの
+116 inactive recordを削除しない1032-record monotone inventoryを導入した。signature `121932`、peak `272`、
+distinct upper `1869852`で全固定limitを通過した。degree-31 relationは未評価なのでcertified setとmissing range
+31--90は変更していない。
