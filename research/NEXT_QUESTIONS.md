@@ -21845,6 +21845,141 @@ certified degreesは2--22および91以降、missing rangeは23--90へ縮んだ�
 fixed conservation leaf、登録degree-22 external relationに限定する。次はQ011baとしてdegree 23をdesign-onlyに
 資源監査する。
 
+## Q011ba: degree-23 block-support-coalesced resource feasibility — 事前登録
+
+### 問い
+
+Q011azでdegree 22を認証した同じ6 source hull、exact Fourier multiplicity、全target個別比較、hierarchical
+outward product protocolをdegree 23へ拡張したとき、relationを一件も評価せず、Q011apから変更しないabsolute
+resource limit内で正式full sweepを事前登録できるか。Q011baはdesign-only監査であり、degree-23
+product--target relation、actual resonance、minimum gapを評価しない。
+
+### sealed input
+
+Q011azまでの31 artifact、runner、153 direct digest、accepted outcome、Q011ax／Q011az certificate、resource
+semantics、claim boundaryを再照合し、Q011azを直接封印する。
+
+- Q011az artifact／runner newline-normalized SHA-256:
+  `ca8dd35c73afc60f8aa66a7c9a57c17595c13123a3e613b6ab4125d55ee85c19` /
+  `d956b43019ff8067440db23c22bd1be689b588ded2281a09e0430b441a9a4b53`
+- Q011az input／preparation／sweep／result digest:
+  `80958bc98451a43248ee3ac246360ae6cfc42ff336a38c3291192a953f950c48` /
+  `0b8625ae85fed8309ef566eb2f56d79df5f81c527e6a5017f6bc7af509e6e1fb` /
+  `3d69c53a16a88efd68c79399cc453912273d03277fe8e9ce05b113c21d5bf9d0` /
+  `43a425e1d41535a3347d1ed88c40ddf281d35713b45ecf32ec6d64fafa03437f`
+
+Q011azの`study_gate=passed`、scientific outcome `accepted`、actual resonance outcome
+`ruled_out_within_registered_degree_twenty_two_scope`、certified degrees 2--22と91以降を要求する。
+
+### degree-23 exact inventory
+
+Q011uのexact rational-log intervalを変更せず再構成し、4 selected merged groupのweak compositionを辞書順に
+全列挙する。degree 23の全2600 aggregateをold modulusだけで分離できる2161件とoverlap 439件へexactに
+分け、残るaggregateと対応target componentだけをQ011baへ渡す。
+
+- degree aggregate／expanded control／old separated／overlap:
+  `2600 / 98280 / 2161 / 439`
+- overlap count first／last: `[0,1,16,6] / [23,0,0,0]`
+- selected group size: `[8,4,4,8]`
+- unique external component／target／multi-component aggregate／maximum component:
+  `26 / 300 / 14 / 2`
+- target block count:
+  `[20,12,12,18,26,38,20,4,10,10,4,20,38,26,18,12,12]`
+- count／external-group／overlap-record／target-record／inventory digest:
+  `831c1a4148af3de8f54b970bf69332d479881fb73841cab2ac69ce21a88cb011` /
+  `0d8b457f374f84f88000983085236cfcdf1a6714cef633ebcf4ab338b9efaf25` /
+  `e54fb4a6ba3212ec816dd204a0b83dc94a72d2fb284754691ef6e725feaea983` /
+  `968c2a14ceb7ec2d24240e68308b6f0d84599ca492d3f114b3a8ffbb875d3ab4` /
+  `b19f8d2abbd7d8e6e56e48991dee9c4154a4521455ef1a9939a545e893a87a79`
+
+target folding、共役folding、per-eigenvalue label collapse、relation evaluationを禁止する。
+
+### monotone envelope and source hull
+
+Q011ayの308-record monotone proof inventoryをpriorとする。degree-23 current active inventoryはselected 24と
+target 300の計324件である。priorとの共通276 recordをbitwiseに再利用し、32 inactive prior recordを削除せず
+保持し、48 new target recordだけを追加した356-record monotone inventoryを作る。
+
+- prior／active reused／inactive retained／added／active／final:
+  `308 / 276 / 32 / 48 / 324 / 356`
+- prior／active-reused／inactive-identifier digest:
+  `b987d5025f745a441d274e32f0823f05ca5be2522a6ec0762aae412e2277aacc` /
+  `89741ab7484386648defa718b846def1753b5285021a459c9c042b973246561a` /
+  `7cbf8c5fab33c81ea357b6836bd5d77ce2c5a4aac89492488e26de4ba6a63040`
+- added-identifier／added-record／active-record／final-record digest:
+  `1e2e35f8d3d23295e04b9ce13279777d1c206e276ad2fcc2349bd97acc57e80d` /
+  `771be5b30f8d56ad42d3914b3f75177e3f382b12183727ceb12f17c0f81b5cd2` /
+  `9b48dde5243efe3b14588e346804f587e083121f4a84badaa0869faa9b87b0d3` /
+  `ce14eaf3da422fdd4f3e46d41777eba079d1d6d929203941602621252feec2f9`
+- old／merged source class count: `[4,2,3,6] / [1,1,2,2]`
+- source-hull／merged-membership digest:
+  `f54f1a1f70d953b4c1255e9f9627d7ca43229a3d1e26c11b716d23fd56ea1eb6` /
+  `975ebf1077279cbfcc6fd46e5a34fcd67260ff953a718eb51985794314fcd8b8`
+
+inactive 32 recordはmonotone proof assetに限り、degree-23 full sweepのtarget比較には使わない。
+
+### design-only resource arithmetic
+
+Q011asの6 block-support hullを用い、class power、group pool、pair pool、cyclic convolutionの組合せ資源だけを
+exact integerで数える。product-bound matrix、Fourier coefficient matrix、classification matrixを構築せず、
+product--target relation evaluation countを0に固定する。
+
+- class-power／group-key／group-signature: `124 / 83 / 489`
+- pair-key／cached pair-signature entry／convolution: `208 / 7149 / 8085`
+- original monomial／maximum aggregate monomial: `1010254243160 / 18688750080`
+- modulus signature／peak live signature／two-array bytes: `16792 / 144 / 2304`
+- safe `int64` convolution crude upper: `317708751360`
+- distinct／weighted comparison upper: `252396 / 18941796258208`
+- class-power／group-key／pair-key／resource-record digest:
+  `5868262796bba44f50f33f4153cf34a4d9e931a6d8d2f1da417adc7882a831f3` /
+  `a53c5f4ef4308ff7fe563becd6177a47b80c4dfa488b6d5314fca90f3d3c4a99` /
+  `99a2ee6c6f84c366550734d95bf108a604c55bcea168cfe0cdf9746774baa351` /
+  `2103204df867eae169a40da6ae782898a78cbeb41968714ba74b9e0057fab2f8`
+- projected wall／2倍safety seconds:
+  `135072685053/1154895680000 / 135072685053/577447840000`
+- 1.5倍tracemalloc／process-memory safety bytes: `106659 / 294351`
+
+projectionはQ011ao design-only pilotから同じ式で外挿するdiagnosticであり、科学的acceptance thresholdではない。
+
+### validity gate
+
+1. Q011azまでの31 artifact、runner、153 direct digest、outcome、boundaryが再現する。
+2. degree-23 inventoryの全count、順序、target membership、5 digestが再現する。
+3. Q011ayの308 prior recordを一件も削除せず、276 common recordをbitwiseに再利用し、32 inactiveと48 addedを
+   明示した356-record monotone inventoryが再現する。
+4. Q011asの6 source hullとmembershipがbitwiseに再現する。
+5. class power、group／pair pool、convolution、signature、memory、comparison upperの全countとdigestが再現する。
+6. relation objectを構築せず、全section、runner provenance、strict finite JSONがdigestへ封印される。
+
+一つでも失敗すれば`inconclusive_resource_audit`とし、resource Go／Stopを判定しない。
+
+### resource gate and stopping rule
+
+validity通過後、Q011apから変更しない次のabsolute limitを順に評価する。
+
+1. modulus signature `<= 125000000`
+2. peak live signature `<= 2500000`
+3. two product-array bytes `<= 41943040`
+4. exact convolution `<= 2500000`
+5. distinct comparison upper `<= 1100000000`
+6. 2倍safety wall time `<= 1200 s`
+7. 1.5倍process-memory safety `<= 6442450944 bytes`
+
+全て通れば`go_for_degree_twenty_three_coalesced_preregistration`、一つでも超えれば
+`stop_before_degree_twenty_three_coalesced_full_sweep`とする。観測後のlimit変更、target folding、degree-23
+relationの試し打ちで判定を変更しない。
+
+### 主張境界と次の変更
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-23 modulus-overlap inventory、Q011asの
+6 source hull、Q011ayから単調拡張した356-record proof inventory、exact combinatorial resource countだけを扱う。
+degree-23 external nonresonance、actual resonance、minimum gap、all-order result、higher smoothness、SSM
+existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
+GoならQ011bbで入力、全439 aggregate、全300 current target、outward arithmetic、success／rejection条件を
+固定して正式full sweepを事前登録する。Stopなら最初のfailed resource dimensionだけを改善し、inconclusiveなら
+最初のvalidity failureだけを修正する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
