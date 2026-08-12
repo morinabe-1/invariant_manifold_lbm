@@ -13,7 +13,9 @@ from ttim_lbm.rational_spectrum import _file_sha256
 EXPECTED_RUNNER_SHA256: str | None = (
     "cfae443c9934a202c34e9455aaf6499d1bff636d3b45e617245426e9449e221d"
 )
-EXPECTED_ARTIFACT_SHA256: str | None = None
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "01307870ef93c219009b56a77cff58ecf55fe32f987cd9365dc43122b04eb9e2"
+)
 EXPECTED_SECTION_DIGESTS = {
     "input_digest_sha256": "e69981e0c318bcc0f29f25a7c0e568db2f088841949b5a3a008ccabdc9f705a6",
     "preparation_digest_sha256": (
@@ -154,7 +156,18 @@ def test_q011bx_applies_the_preregistered_stopping_rule(
         "overlap": 82_525_807_200,
     }
     assert sweep["first_unresolved_witness"] is not None
-    assert sweep["first_unresolved_witness"]["relation"] == "overlap"
+    first_overlap = sweep["first_unresolved_witness"]
+    assert first_overlap["aggregate_index"] == 972
+    assert first_overlap["selected_type_counts"] == [4, 27, 3, 0]
+    assert first_overlap["target_identifier"] == "block=12;center=124"
+    assert first_overlap["output_block"] == 12
+    assert first_overlap["left_index"] == first_overlap["right_index"] == 0
+    assert first_overlap["wave_multiplicity"] == 341_000
+    assert first_overlap["relation"] == "overlap"
+    assert first_overlap["intersection_interval"]["width_hex"] == "0x1.570c9fb70fc7dp-28"
+    assert first_overlap["witness_digest_sha256"] == (
+        "ad3f2cb8d8ad0f75eacaec10b8ff606e709bc5ff037542ca612ecc97a40d8ce5"
+    )
     for name, digest in EXPECTED_SWEEP_DIGESTS.items():
         assert sweep[name] == digest
     minimum = sweep["global_minimum_separated_witness"]
@@ -162,7 +175,11 @@ def test_q011bx_applies_the_preregistered_stopping_rule(
     assert minimum["selected_type_counts"] == [13, 9, 5, 7]
     assert minimum["target_identifier"] == "block=10;center=45"
     assert minimum["relation"] == "target_below_product"
-    assert minimum["outward_gap_lower"]["float"] > 0.0
+    assert minimum["outward_gap_lower"]["binary64_hex"] == "0x1.4fc7fffffffffp-37"
+    assert minimum["exact_gap_hex"] == "0x1.5031e5ffb89ebp-37"
+    assert minimum["witness_digest_sha256"] == (
+        "ef82f39ac2982ec7206b48875f467b05c355333b98ab48e092d74af864122dfd"
+    )
     assert q011bx_cycle["scientific_classification"] == q011bx.REJECTED_CLASSIFICATION
     assert q011bx_cycle["actual_resonance_outcome"] == "not_established"
 
