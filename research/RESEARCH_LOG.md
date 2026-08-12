@@ -8768,6 +8768,46 @@ scientific outcomeは`accepted`、actual resonance outcomeは
 登録degree-33 external relationだけに限り、all-order nonresonance、higher graph smoothness、SSM
 existence／uniqueness、normal attraction、basinへは外挿しない。次はQ011bwでdegree 34をdesign-onlyに資源監査する。
 
+### Q011bw 実行結果
+
+Q011bvまでの53 artifact、runner、252 direct digest、degree-33 accepted certificate、claim boundaryを再照合し、
+全6 validity gateを通過した。degree 34の全7770 aggregateを4632 old nonoverlapと3138 overlapへexactに分け、
+48 multi-component aggregateでは最大3 external componentのidentifier和集合をtarget groupとして保持した。
+current targetは1300である。
+
+Q011buの1292 prior proof recordを削除せず、1152 common、140 inactive、172 added、1324 active、1464 final
+recordのmonotone envelopeを再構成した。6 source hullとmembershipもbitwiseに保存した。全sectionで
+product--target relation evaluation countは0で、full monomial listと3 relation matrixは構築していない。
+
+- validity／resource gates: `6 / 6` passed、`7 / 7` passed
+- degree aggregate／old separated／overlap: `7770 / 4632 / 3138`
+- external component／target／multi-component／maximum component: `81 / 1300 / 48 / 3`
+- class-power／group-key／group-signature: `200 / 134 / 1191`
+- pair-key／cached entry／convolution: `885 / 50282 / 52596`
+- modulus signature／peak live signature／two-array bytes: `221676 / 306 / 4896`
+- original／maximum aggregate monomial: `2119833971218270 / 7252969651200`
+- safe `int64` convolution crude upper: `123300484070400`
+- distinct／weighted comparison upper: `3448960 / 30455371778893216`
+- resource record digest:
+  `b0346ae59133ba76f9e4fab636e17e4522018e5522d2fcddbe1b2fec72e46d75`
+- input／inventory／envelope／resource／result digest:
+  `bb76ff53530570648869b03373ef228708e2a93e7c57d870b890bbc1f2ed9ef9` /
+  `774063733994c32575aefae52b534970e7d52678d545a104ca6b82678f1c87dd` /
+  `85c25d7adb8b032a3031584d255be91ec698df77d186e4ea37f4692890f445db` /
+  `a8080e0de14dd55cb797c11fb2ecaf60eaa60ed2fdb26d263a489dfacf846bbd` /
+  `f2e37f874fbc9219aa6a6c0ba7d1f7284de7a87d3a328eb9681c28787f4e727c`
+- runner／artifact newline-normalized SHA-256:
+  `d47f9646896fe3ccee6652f9243f14de106321d084a8050492c057cbc8b986c7` /
+  `d4f3f836e4dd2f89a22895768a0fba3b384e9d6dbcba0ac200cd3bc77f42baf4`
+
+Q011apから変更しなかった全7 absolute resource limitを通過し、resource decisionは
+`go_for_degree_thirty_four_coalesced_preregistration`となった。scientific／actual degree-34 outcomeは
+`not_evaluated / not_evaluated`であるため、certified degreesは2--33、tail-certifiedは91以降、missing rangeは
+34--90のままである。主張は固定17² repaired exact map、fixed conservation leaf、degree-34 design-only resource
+feasibilityだけに限り、degree-34 nonresonance、actual resonance、minimum gap、all-order nonresonance、higher
+graph smoothness、SSM existence／uniqueness、normal attraction、basinは認証しない。次はQ011bxでdegree-34
+full sweepの成功・棄却条件を事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9047,6 +9087,8 @@ existence／uniqueness、normal attraction、basinへは外挿しない。次は
 [`artifacts/q011bu_degree33_resource_estimate.json`](artifacts/q011bu_degree33_resource_estimate.json)
 
 [`artifacts/q011bv_degree33_coalesced_sweep.json`](artifacts/q011bv_degree33_coalesced_sweep.json)
+
+[`artifacts/q011bw_degree34_resource_estimate.json`](artifacts/q011bw_degree34_resource_estimate.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
