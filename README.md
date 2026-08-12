@@ -5103,6 +5103,43 @@ Q011bxの`rejected`、actual outcome `not_established`、certified degrees 2--33
 34--90は変更しない。次はQ011bzで、この辞書順最初のpersistent witnessだけをindividual-disc partitionへ
 分割する。
 
+### Q011bz first-witness individual partition is interval-inert
+
+Q011byまでの56 artifact、runner、265 direct digestとfirst persistent witnessを再照合し、全7 validity gateと
+全4 diagnostic gateを通過した。occupiedな3個の2-member block-symmetry classを6 singleton identifierへ分け、
+560 individual allocationをexactに列挙した。このうちoutput block 12にcompatibleな39 allocationだけを固定target
+`block=12;center=124`と比較した。
+
+各2-member classではblock 16/1のcenter／modulus intervalがexactに同一だった。このため39 allocationすべてで
+product interval、target interval、intersection、center-only diagnosticがQ011by parent witnessとexactに一致し、
+exact rational／binary64 outward classificationはいずれも39 overlap、strict 0だった。classificationは
+`the individual-disc partition is interval-inert for the first Q011by witness`、outcomeは
+`partition_inert_persistent`である。
+
+- full／compatible allocation: `560 / 39`
+- exact／binary64 relation: `overlap=39 / 39`、strict `0 / 0`
+- first／last compatible counts: `[0,4,8,19,3,0] / [4,0,24,3,0,3]`
+- occupied class／identifier order digest:
+  `87f8ae203a204ffc825fee77ebaf24df993a7e50ac10886aa907322591f33a57` /
+  `56c6c30ea98827b3c8f8f71454333e46856e37546fe3b280e314ab646c13c143`
+- full／compatible allocation digest:
+  `dff3c7109b0970d2628a74fb13c6ec0fb9eb243d569f83f6403219cec8be2eba` /
+  `6bfa283ad5e2195ded454e0406203060aa968ec9a1a03b2e4d07a7b1f9fe9465`
+- allocation classification record digest:
+  `1807f40743fe6d9be351c2dfa878889222e8a9608f17b5c273e21f2b59a2f18d`
+- input／partition／allocation／result digest:
+  `ad62c8a085db60925b250d81a212bd9ee66792d539522ee1e5edb4dec45196ae` /
+  `758844d52532616264901f6fe07d9c7e12bf836337c98c80539ea9a41f11b2f2` /
+  `d0df75d838daf7f9822bb98486184544cc660120cea3645f7d9b3f0b869dc551` /
+  `56102d2a66116d06614698771689760507f6bf2f23f98410a1f592442a2c76a2`
+- runner／artifact newline-normalized SHA-256:
+  `dbb1c3157e774e337b59b86c7d26997095e4d0deae70bef4f01fd2c94f3b27b5` /
+  `8da2a7b86599b5a287a92dd62804d46665c4fa2a1416a11b04ebe43c27efa569`
+
+これは個別identifierへの再ラベルだけでは現行modulus certificateを改善できないことを示す。actual resonance、
+degree-34 nonresonance、他9,799 signatureは判定しておらず、Q011bx／Q011byの結論と認証範囲は不変である。
+次はQ011caで登録39 allocationだけにcomplex phase eigendisc productを導入する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -6046,6 +6083,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   現行degree-34 sufficient certificateの棄却（actual resonanceは未確立）
 - Q011by Q011bx最初の未分離relationを15 blockwise classへ戻したtargeted refinement、
   9800／9800 signatureでoverlapが持続（actual resonanceは未確立）
+- Q011bz Q011by first witnessの560 individual allocation列挙、39 compatible allocationで
+  exact intervalが全て親と同一となるpartition-inert診断
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -6393,3 +6432,6 @@ degrees 2--33および91以降、missing 34--90は変更していない。次は
 Q011byではこの単一relationだけを15 blockwise classへ戻したが、全9800 compatible signatureがoverlapしたため
 `persistent`と判定した。これは15-class interval certificateの限界であり、actual resonanceの証明ではない。
 次は最初のpersistent witnessだけをindividual discへ分割する。
+Q011bzではそのwitnessを6 singleton identifierへ分けたが、block 16/1 pairのintervalがexactに同一なため、39
+compatible allocationの全product／intersectionが親と同一だった。従ってpartitionはinterval-inertであり、次は
+同じ39 allocationにcomplex phase情報を導入する。

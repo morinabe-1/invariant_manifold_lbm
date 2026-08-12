@@ -8901,6 +8901,51 @@ comparisonも全1,570,380がoverlapで、strict separated comparisonは存在し
 degree-34 resonanceを確立しない。Q011bxのrejected outcome、certified degrees 2--33と91以降、missing 34--90は
 変更しない。事前登録どおり、次はQ011bzで最初のpersistent witnessだけをindividual-disc partitionへ分ける。
 
+### Q011bz 実行結果
+
+Q011byまでの56 artifact、runner、265 direct digest、persistent outcome、claim boundary、parent witnessを再照合し、
+全7 validity gateと全4 diagnostic gateを通過した。occupiedな3個の2-member classを登録順の6 singleton
+identifierへ分け、560 allocationをexactに列挙した。output block 12にcompatibleな39 allocationだけを固定target
+`block=12;center=124`と比較し、他9,799 class signature、他target、aggregate `2340`は再評価していない。
+
+各occupied pairではblock 16/1のcenter／modulus intervalがexactに等しかった。従って39 allocationすべてでexact
+product interval、center product、target、intersection、center-only gapがQ011by parent witnessと一致した。exact
+rationalとbinary64 outwardのrelation countはいずれも`overlap=39`、strict relationは0である。classificationは
+`the individual-disc partition is interval-inert for the first Q011by witness`、refinement outcomeは
+`partition_inert_persistent`となった。
+
+- full／compatible allocation: `560 / 39`
+- first／last compatible counts: `[0,4,8,19,3,0] / [4,0,24,3,0,3]`
+- Q011by witness allocation index／counts: `544 / [4,0,24,3,0,3]`
+- occupied common-interval digest:
+  `53f9a306265ffcbfa83c64089e6418ab895037a3dad6a6fe85ba15dab18c8825` /
+  `2761f9c8d8e92b66d0c8a3e85affc78cda4e1ac98c2beeed7705224145571402` /
+  `39747a3474ada699010196f508500971e97451f666025e46bbbc68233ef1d86a`
+- occupied class／identifier order digest:
+  `87f8ae203a204ffc825fee77ebaf24df993a7e50ac10886aa907322591f33a57` /
+  `56c6c30ea98827b3c8f8f71454333e46856e37546fe3b280e314ab646c13c143`
+- full／compatible allocation digest:
+  `dff3c7109b0970d2628a74fb13c6ec0fb9eb243d569f83f6403219cec8be2eba` /
+  `6bfa283ad5e2195ded454e0406203060aa968ec9a1a03b2e4d07a7b1f9fe9465`
+- parent product／target／intersection digest:
+  `8321b06eb574dca32c1a0861dcc8c2fbcf2dd0034e0216bf1b0bcf7b8bd254cc` /
+  `b35461ebf211bc7e539bb7171a1f0a448cdfb47327edb1f064b03739ed22c35a` /
+  `c8aea46a677f6476c322d602b2256e7be67e5a57d860996f446879b6272cef35`
+- allocation classification record digest:
+  `1807f40743fe6d9be351c2dfa878889222e8a9608f17b5c273e21f2b59a2f18d`
+- input／partition／allocation／result digest:
+  `ad62c8a085db60925b250d81a212bd9ee66792d539522ee1e5edb4dec45196ae` /
+  `758844d52532616264901f6fe07d9c7e12bf836337c98c80539ea9a41f11b2f2` /
+  `d0df75d838daf7f9822bb98486184544cc660120cea3645f7d9b3f0b869dc551` /
+  `56102d2a66116d06614698771689760507f6bf2f23f98410a1f592442a2c76a2`
+- runner／artifact newline-normalized SHA-256:
+  `dbb1c3157e774e337b59b86c7d26997095e4d0deae70bef4f01fd2c94f3b27b5` /
+  `8da2a7b86599b5a287a92dd62804d46665c4fa2a1416a11b04ebe43c27efa569`
+
+これはidentifier partitionだけがinterval-inertであるという診断であり、complex phaseやactual resonanceを判定しない。
+Q011bx rejection、Q011by persistence、certified degrees 2--33と91以降、missing 34--90を変更しない。次は
+Q011caでこの39 allocationだけにcomplex phase eigendisc productを導入する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9186,6 +9231,8 @@ degree-34 resonanceを確立しない。Q011bxのrejected outcome、certified de
 [`artifacts/q011bx_degree34_coalesced_sweep.json`](artifacts/q011bx_degree34_coalesced_sweep.json)
 
 [`artifacts/q011by_degree34_first_overlap_refinement.json`](artifacts/q011by_degree34_first_overlap_refinement.json)
+
+[`artifacts/q011bz_degree34_individual_partition_audit.json`](artifacts/q011bz_degree34_individual_partition_audit.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

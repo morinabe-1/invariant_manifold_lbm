@@ -25800,6 +25800,37 @@ certified degrees 2--33と91以降、missing 34--90を変更しない。`partiti
 degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011bz 封印結果（partition-inert persistent）
+
+Q011byまでの56 artifact、runner、265 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+560 singleton allocationのうちoutput block 12にcompatibleな39件をexactに評価した。
+
+各occupied block 16/1 pairのcenter／modulus intervalがexactに同一だったため、全39 allocationのproduct、target、
+intersection、center diagnosticはQ011by parentとexactに一致した。exact／binary64 relationはともに39 overlap、strict
+0で、classificationは`the individual-disc partition is interval-inert for the first Q011by witness`、outcomeは
+`partition_inert_persistent`である。
+
+- occupied class／identifier order digest:
+  `87f8ae203a204ffc825fee77ebaf24df993a7e50ac10886aa907322591f33a57` /
+  `56c6c30ea98827b3c8f8f71454333e46856e37546fe3b280e314ab646c13c143`
+- full／compatible allocation digest:
+  `dff3c7109b0970d2628a74fb13c6ec0fb9eb243d569f83f6403219cec8be2eba` /
+  `6bfa283ad5e2195ded454e0406203060aa968ec9a1a03b2e4d07a7b1f9fe9465`
+- allocation record digest:
+  `1807f40743fe6d9be351c2dfa878889222e8a9608f17b5c273e21f2b59a2f18d`
+- input／partition／allocation／result digest:
+  `ad62c8a085db60925b250d81a212bd9ee66792d539522ee1e5edb4dec45196ae` /
+  `758844d52532616264901f6fe07d9c7e12bf836337c98c80539ea9a41f11b2f2` /
+  `d0df75d838daf7f9822bb98486184544cc660120cea3645f7d9b3f0b869dc551` /
+  `56102d2a66116d06614698771689760507f6bf2f23f98410a1f592442a2c76a2`
+- runner／artifact newline-normalized SHA-256:
+  `dbb1c3157e774e337b59b86c7d26997095e4d0deae70bef4f01fd2c94f3b27b5` /
+  `8da2a7b86599b5a287a92dd62804d46665c4fa2a1416a11b04ebe43c27efa569`
+
+個別identifierへの再ラベルだけでは現行modulus certificateを改善できない。actual resonance、degree-34
+nonresonance、他9,799 signatureは未評価で、Q011bx／Q011byの結論と認証範囲は不変である。次はQ011caで
+登録39 allocationだけにcomplex phase eigendisc productを導入する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
