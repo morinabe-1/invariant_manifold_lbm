@@ -10,6 +10,31 @@ import research.q011bd_degree24_coalesced_sweep as q011bd
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
+EXPECTED_RUNNER_SHA256 = "6730702dfb449a20374a849b4120a3e25bd6d4841736879dcfb095590edf63f5"
+EXPECTED_ARTIFACT_SHA256 = "ea93ccb0c6e1827656b1f2de440b09253ad764342a117dcda2f369f97afbb348"
+EXPECTED_SECTION_DIGESTS = {
+    "input_digest_sha256": "7f2453b7a26d40c7539210fe4b62b396b15a0e8cc31277d8066270624d4a8ecd",
+    "preparation_digest_sha256": (
+        "1183aebb6c8425735d266582ae793cb259fa1378914e2a98c661373888765df0"
+    ),
+    "sweep_digest_sha256": "9256b47555a2f86a5a3040a5f1885bfdc64e34c7d5e3156eae7956da57eb6e99",
+    "result_digest_sha256": "d93d7d2c96d5498c5b188062564c64b7f9d3be6b947e5029e1006d0f1116ec1b",
+}
+EXPECTED_SWEEP_DIGESTS = {
+    "aggregate_record_digest_sha256": (
+        "92efc194f617ef9e71e16e9e9fd4702cb5f381b2dac39d411f85c3293d94a95d"
+    ),
+    "bound_matrix_digest_sha256": (
+        "950c109f9ef0e6d36e7de56e621ff1d0fe9249d42dae6ae41ebfa2a432c166ff"
+    ),
+    "coefficient_matrix_digest_sha256": (
+        "4ffe7f0035ff6a5e9b048b5b03a904c0d3459bddbcc7892ce15479672302a013"
+    ),
+    "classification_matrix_digest_sha256": (
+        "ddd81bd74b7e597608d1a24a571d23d9eaca2f3d2fa10d59f44634088c108585"
+    ),
+}
+
 
 @pytest.fixture(scope="module")
 def q011bd_study() -> dict[str, Any]:
@@ -102,34 +127,39 @@ def test_q011bd_validity_and_preregistered_stopping_rule(
     assert all(gate["passed"] for gate in q011bd_cycle["validity_gates"].values())
     sweep = q011bd_cycle["degree_twenty_four_block_support_coalesced_sweep"]
     accepted = q011bd_cycle["scientific_outcome"] == "accepted"
-    assert q011bd_cycle["scientific_outcome"] in {"accepted", "rejected"}
-    assert (q011bd_cycle["failed_hypothesis_order"] == []) is accepted
-    assert all(gate["passed"] for gate in q011bd_cycle["hypothesis_gates"].values()) is accepted
-    assert (sweep["fully_separated_overlap_aggregate_count"] == 524) is accepted
-    assert sum(sweep["distinct_relation_counts"].values()) == sweep[
-        "distinct_comparison_count"
-    ]
-    assert sum(sweep["weighted_relation_counts"].values()) == sweep[
-        "weighted_comparison_count"
-    ]
-    assert (sweep["distinct_relation_counts"]["overlap"] == 0) is accepted
-    assert (sweep["first_unresolved_witness"] is None) is accepted
-    for name in (
-        "aggregate_record_digest_sha256",
-        "bound_matrix_digest_sha256",
-        "coefficient_matrix_digest_sha256",
-        "classification_matrix_digest_sha256",
-    ):
-        assert len(sweep[name]) == 64
+    assert accepted
+    assert q011bd_cycle["failed_hypothesis_order"] == []
+    assert all(gate["passed"] for gate in q011bd_cycle["hypothesis_gates"].values())
+    assert sweep["fully_separated_overlap_aggregate_count"] == 524
+    assert sweep["distinct_comparison_count"] == 296_172
+    assert sweep["distinct_relation_counts"] == {
+        "product_below_target": 120_644,
+        "target_below_product": 175_528,
+        "overlap": 0,
+    }
+    assert sweep["weighted_comparison_count"] == 2_783_425_959_332
+    assert sweep["weighted_relation_counts"] == {
+        "product_below_target": 1_497_104_851_540,
+        "target_below_product": 1_286_321_107_792,
+        "overlap": 0,
+    }
+    assert sweep["first_unresolved_witness"] is None
+    for name, digest in EXPECTED_SWEEP_DIGESTS.items():
+        assert sweep[name] == digest
     minimum = sweep["global_minimum_separated_witness"]
-    assert minimum["relation"] in {"product_below_target", "target_below_product"}
-    assert minimum["outward_gap_lower"]["float"] > 0
-    assert len(minimum["witness_digest_sha256"]) == 64
-    assert q011bd_cycle["scientific_classification"] == (
-        q011bd.ACCEPTED_CLASSIFICATION if accepted else q011bd.REJECTED_CLASSIFICATION
+    assert minimum["aggregate_index"] == 514
+    assert minimum["selected_type_counts"] == [19, 2, 3, 0]
+    assert minimum["target_identifier"] == "block=12;center=146"
+    assert minimum["relation"] == "product_below_target"
+    assert minimum["outward_gap_lower"]["binary64_hex"] == "0x1.e1ff5e91fffffp-22"
+    assert minimum["exact_gap_hex"] == "0x1.e1ff5f4e05562p-22"
+    assert minimum["witness_digest_sha256"] == (
+        "276e8ce1dcf2ddc0e696ea512fb40d1b91de3adb96ba9139ee65221ccf464a11"
     )
-    assert q011bd_cycle["actual_resonance_outcome"] == (
-        q011bd.ACCEPTED_ACTUAL_RESONANCE_OUTCOME if accepted else "not_established"
+    assert q011bd_cycle["scientific_classification"] == q011bd.ACCEPTED_CLASSIFICATION
+    assert (
+        q011bd_cycle["actual_resonance_outcome"]
+        == q011bd.ACCEPTED_ACTUAL_RESONANCE_OUTCOME
     )
 
 
@@ -160,13 +190,8 @@ def test_q011bd_preserves_the_scientific_boundary(q011bd_cycle: dict[str, Any]) 
 
 def test_q011bd_cycle_has_strict_reproducible_digests(q011bd_cycle: dict[str, Any]) -> None:
     json.dumps(q011bd_cycle, allow_nan=False)
-    for name in (
-        "input_digest_sha256",
-        "preparation_digest_sha256",
-        "sweep_digest_sha256",
-        "result_digest_sha256",
-    ):
-        assert len(q011bd_cycle[name]) == 64
+    for name, digest in EXPECTED_SECTION_DIGESTS.items():
+        assert q011bd_cycle[name] == digest
     assert q011bd_cycle["result_digest_sha256"] == q011bd.q011b._canonical_json_sha256(
         q011bd._result_digest_sections(q011bd_cycle)
     )
@@ -196,10 +221,12 @@ def test_q011bd_study_metadata_and_optional_artifact_are_scoped(
     assert artifact["source"] == source_metadata()
     assert artifact["runner_source"]["filename"] == "q011bd_degree24_coalesced_sweep.py"
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["runner_source"]["sha256"] == EXPECTED_RUNNER_SHA256
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == q011bd_study["scientific_outcome"]
     assert artifact["actual_resonance_outcome"] == q011bd_study["actual_resonance_outcome"]
     assert artifact["cycle"]["result_digest_sha256"] == q011bd.q011b._canonical_json_sha256(
         q011bd._result_digest_sections(artifact["cycle"])
     )
+    assert _file_sha256(artifact_path) == EXPECTED_ARTIFACT_SHA256
     json.dumps(artifact, allow_nan=False)
