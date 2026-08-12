@@ -5022,6 +5022,51 @@ resource feasibilityだけに限り、degree-34 nonresonance、actual resonance�
 higher smoothness、SSM existence／uniqueness、normal attraction、basinは認証しない。次はQ011bxで
 全3138 overlap aggregateと全1300 targetの正式full sweepを事前登録する。
 
+### Q011bx degree-34 block-support-coalesced full sweep rejected
+
+Q011bwまでの54 artifact、runner、257 direct digestを再照合し、登録済み3138 overlap aggregateを欠落・重複なく
+exactに再構成した。48 multi-component aggregateでは最大3 external componentのidentifier和集合を保持し、140
+inactive monotone proof recordは保存したがdegree-34 relationには使っていない。全7 validity gateは通過した。
+
+3138 aggregate中3136はstrictに分離されたが、2 aggregateに64 distinct overlapが残った。従ってscientific
+outcomeは`rejected`、actual resonance outcomeは`not_established`である。これは現行の十分certificateの棄却であり、
+actual degree-34 resonanceの証明ではない。
+
+- validity／hypothesis gates: `7 / 7` passed、`3 / 5` passed
+- fully separated／unresolved aggregate: `3136 / 2`
+- distinct comparison: `3338044`
+  (`product_below_target=1548122`, `target_below_product=1789858`, `overlap=64`)
+- weighted comparison: `1781675618428090`
+  (`product_below_target=1050468146510558`, `target_below_product=731124946110332`,
+  `overlap=82525807200`)
+- first overlap: aggregate `972`、selected counts `[4,27,3,0]`、target `block=12;center=124`、
+  output `12`、left／right `0 / 0`、multiplicity `341000`
+- first intersection width／witness digest:
+  `0x1.570c9fb70fc7dp-28` /
+  `ad3f2cb8d8ad0f75eacaec10b8ff606e709bc5ff037542ca612ecc97a40d8ce5`
+- minimum separated witness: aggregate `2340`、counts `[13,9,5,7]`、target `block=10;center=45`、
+  relation `target_below_product`
+- minimum outward／exact gap hex:
+  `0x1.4fc7fffffffffp-37 / 0x1.5031e5ffb89ebp-37`
+- aggregate／bound／coefficient／classification digest:
+  `65b9e54c79a3cd19e46b8294ac91aee7ec7ad1ffee82171cfc95356284d35421` /
+  `e296f3d09bb544857306b7e42e8df6f844fa3485ea2cbe7ce2c7ebe4188a603a` /
+  `3288acbee533599f41e662f9065d9a68ef8d7a77a2884fa6e3a5fa1da2a3aadd` /
+  `718cd6281e6a0dce3ca6c3700f7975ec5d87a32636450c047fc83e7f48f7673a`
+- input／preparation／sweep／result digest:
+  `e69981e0c318bcc0f29f25a7c0e568db2f088841949b5a3a008ccabdc9f705a6` /
+  `7ea445c2c4d8297dc523e4543b37caba35daafc8cddb4625e39b4039d0cf467f` /
+  `4741be104eefef8eafc43ea13e221e23521dec80adf51969cc7d7a112241f9b9` /
+  `595044021e943ee98cdf00e6413da53a47db3e6ebb6aa823a03cf4069278170f`
+- runner／artifact newline-normalized SHA-256:
+  `cfae443c9934a202c34e9455aaf6499d1bff636d3b45e617245426e9449e221d` /
+  `01307870ef93c219009b56a77cff58ecf55fe32f987cd9365dc43122b04eb9e2`
+
+certified degreesは2--33および91以降、missing rangeは34--90のままである。本結果は固定17² repaired exact map、
+fixed conservation leaf、登録degree-34 sufficient certificateだけに限り、actual resonance、all-order
+nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinを認証しない。
+次はQ011byで最初のoverlap witnessだけを精密監査する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -5961,6 +6006,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   7140 aggregateの全分離、degree-33 external nonresonance認証
 - Q011bw degree-34 exact inventory／1464-record monotone inventory／multi-component対応resource count、
   relation未評価のまま全7固定resource上限を通過するfull-sweep Go判定
+- Q011bx 3138 degree-34 overlap aggregateの正式full sweep、3136分離／2未分離、
+  現行degree-34 sufficient certificateの棄却（actual resonanceは未確立）
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -6301,3 +6348,7 @@ coalesced資源を再構成した。48 multi-component aggregateをidentifier和
 140 inactive recordを削除しない1464-record monotone inventoryを導入した。signature `221676`、peak `306`、
 distinct upper `3448960`で全固定limitを通過した。degree-34 relationは未評価なのでcertified setとmissing range
 34--90は変更していない。
+Q011bxでは固定済み3138 aggregateを正式走査し、3136 aggregateを分離したが、2 aggregateに64 distinct overlapが
+残った。従ってdegree-34 sufficient certificateを棄却し、actual resonanceは`not_established`とした。certified
+degrees 2--33および91以降、missing 34--90は変更していない。次は辞書順最初のaggregate `972`、counts
+`[4,27,3,0]`、target `block=12;center=124`だけを精密監査する。

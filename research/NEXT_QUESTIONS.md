@@ -25492,6 +25492,51 @@ D3Q27を認証しない。
 acceptedなら次はQ011byでdegree 35をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011bx 封印結果（rejected）
+
+Q011bwまでの54 artifact、runner、257 direct digestを再照合し、登録済み3138 overlap aggregateを欠落・重複なく
+辞書順で正式走査した。48 multi-component aggregateの全component membershipを保持し、140 inactive proof
+recordはdegree-34 comparisonから除外した。全7 validity gateは通過した。
+
+3138 aggregateのうち3136はstrictに分離されたが、2 aggregateに64 distinct overlapが残った。このため
+direct全分離とdegree-34全coverageの2 hypothesis gateが失敗し、scientific outcomeは`rejected`、actual resonance
+outcomeは`not_established`となった。
+
+- distinct relation count:
+  `product_below_target=1548122 / target_below_product=1789858 / overlap=64`
+- weighted relation count:
+  `product_below_target=1050468146510558 / target_below_product=731124946110332` /
+  `overlap=82525807200`
+- distinct／weighted comparison: `3338044 / 1781675618428090`
+- fully separated／unresolved aggregate: `3136 / 2`
+- first overlap: aggregate `972`、counts `[4,27,3,0]`、target `block=12;center=124`、
+  output `12`、left／right `0 / 0`、multiplicity `341000`
+- first intersection width／witness digest:
+  `0x1.570c9fb70fc7dp-28` /
+  `ad3f2cb8d8ad0f75eacaec10b8ff606e709bc5ff037542ca612ecc97a40d8ce5`
+- global minimum separated witness: aggregate `2340`、counts `[13,9,5,7]`、target
+  `block=10;center=45`、relation `target_below_product`
+- minimum outward／exact gap hex:
+  `0x1.4fc7fffffffffp-37 / 0x1.5031e5ffb89ebp-37`
+- aggregate／bound／coefficient／classification digest:
+  `65b9e54c79a3cd19e46b8294ac91aee7ec7ad1ffee82171cfc95356284d35421` /
+  `e296f3d09bb544857306b7e42e8df6f844fa3485ea2cbe7ce2c7ebe4188a603a` /
+  `3288acbee533599f41e662f9065d9a68ef8d7a77a2884fa6e3a5fa1da2a3aadd` /
+  `718cd6281e6a0dce3ca6c3700f7975ec5d87a32636450c047fc83e7f48f7673a`
+- input／preparation／sweep／result digest:
+  `e69981e0c318bcc0f29f25a7c0e568db2f088841949b5a3a008ccabdc9f705a6` /
+  `7ea445c2c4d8297dc523e4543b37caba35daafc8cddb4625e39b4039d0cf467f` /
+  `4741be104eefef8eafc43ea13e221e23521dec80adf51969cc7d7a112241f9b9` /
+  `595044021e943ee98cdf00e6413da53a47db3e6ebb6aa823a03cf4069278170f`
+- runner／artifact newline-normalized SHA-256:
+  `cfae443c9934a202c34e9455aaf6499d1bff636d3b45e617245426e9449e221d` /
+  `01307870ef93c219009b56a77cff58ecf55fe32f987cd9365dc43122b04eb9e2`
+
+classificationは`the block-support-coalesced degree-34 sufficient certificate is rejected`である。これは
+actual degree-34 resonanceの証明ではない。certified degreesは2--33および91以降、missing rangeは34--90の
+ままである。次はQ011byとして最初のoverlap witnessだけを精密監査し、後付けのthreshold、全体hull再分割、target
+foldingでQ011bxの判定を変更しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
