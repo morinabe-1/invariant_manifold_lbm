@@ -10,6 +10,31 @@ import research.q011bl_degree28_coalesced_sweep as q011bl
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
+EXPECTED_RUNNER_SHA256 = "d42a801207a8dcc5b76c5fd39f1f3ac8c041d2a438a4e4b4f05f8396a415c450"
+EXPECTED_ARTIFACT_SHA256 = "e33843ffbda88cd41ad82147b6206352f4b0bb1f76b4c95b74f5111918843861"
+EXPECTED_SECTION_DIGESTS = {
+    "input_digest_sha256": "fe73db0266b94fe46cc01792da8243aefd0d207ef91943d8e774d42d3fc0055c",
+    "preparation_digest_sha256": (
+        "fb0b8b3b793ca3e33f8582c43c532b9139770f40302c91dd9ba2615e34a14256"
+    ),
+    "sweep_digest_sha256": "05a33a4427dfca5ddd5bca3fecbbcd3338d90634be9fd2e81136fbe666274a34",
+    "result_digest_sha256": "8b8e5492af4d50b2be22af8b43ebb3449131f03a26c22203a3895708e65548e3",
+}
+EXPECTED_SWEEP_DIGESTS = {
+    "aggregate_record_digest_sha256": (
+        "68e6078552ccd179b4d9183b95093b7ef71cc128d755d6982af60c45d9acb76f"
+    ),
+    "bound_matrix_digest_sha256": (
+        "9193747e93acc6999ff55501dcdc0bbfe30ed992edb02bc072537303bb502022"
+    ),
+    "coefficient_matrix_digest_sha256": (
+        "3310cc32c60fa5ad60429194bd8716be6e13a76824ab60cef9f80647a07ac0f6"
+    ),
+    "classification_matrix_digest_sha256": (
+        "255d3d6364e2b9473e815f64cff74d317a2e38bce130c9f61a196f89ac98ef44"
+    ),
+}
+
 
 @pytest.fixture(scope="module")
 def q011bl_study() -> dict[str, Any]:
@@ -104,54 +129,50 @@ def test_q011bl_applies_the_preregistered_stopping_rule(
     assert q011bl_cycle["study_validity"] == "passed"
     assert q011bl_cycle["failed_validity_order"] == []
     assert all(gate["passed"] for gate in q011bl_cycle["validity_gates"].values())
-    assert q011bl_cycle["scientific_outcome"] in {"accepted", "rejected"}
+    assert q011bl_cycle["scientific_outcome"] == "accepted"
+    assert q011bl_cycle["failed_hypothesis_order"] == []
+    assert all(gate["passed"] for gate in q011bl_cycle["hypothesis_gates"].values())
     sweep = q011bl_cycle["degree_twenty_eight_block_support_coalesced_sweep"]
-    assert sweep["distinct_comparison_count"] == sum(
-        sweep["distinct_relation_counts"].values()
-    )
-    assert sweep["weighted_comparison_count"] == sum(
-        sweep["weighted_relation_counts"].values()
-    )
-    assert sweep["distinct_comparison_count"] <= sweep["distinct_comparison_upper_bound"]
-    assert sweep["weighted_comparison_count"] <= sweep["weighted_comparison_upper_bound"]
+    assert sweep["fully_separated_overlap_aggregate_count"] == 1_170
+    assert sweep["distinct_comparison_count"] == 929_344
+    assert sweep["distinct_relation_counts"] == {
+        "product_below_target": 418_956,
+        "target_below_product": 510_388,
+        "overlap": 0,
+    }
+    assert sweep["weighted_comparison_count"] == 57_716_604_325_850
+    assert sweep["weighted_relation_counts"] == {
+        "product_below_target": 26_932_451_117_752,
+        "target_below_product": 30_784_153_208_098,
+        "overlap": 0,
+    }
+    assert sweep["first_unresolved_witness"] is None
+    for name, digest in EXPECTED_SWEEP_DIGESTS.items():
+        assert sweep[name] == digest
     minimum = sweep["global_minimum_separated_witness"]
-    assert minimum is not None
-    assert len(minimum["witness_digest_sha256"]) == 64
-    if q011bl_cycle["scientific_outcome"] == "accepted":
-        assert q011bl_cycle["failed_hypothesis_order"] == []
-        assert all(gate["passed"] for gate in q011bl_cycle["hypothesis_gates"].values())
-        assert sweep["fully_separated_overlap_aggregate_count"] == 1_170
-        assert sweep["distinct_relation_counts"]["overlap"] == 0
-        assert sweep["weighted_relation_counts"]["overlap"] == 0
-        assert sweep["first_unresolved_witness"] is None
-        assert minimum["relation"] != "overlap"
-        assert minimum["outward_gap_lower"]["float"] > 0
-        assert q011bl_cycle["scientific_classification"] == q011bl.ACCEPTED_CLASSIFICATION
-        assert (
-            q011bl_cycle["actual_resonance_outcome"]
-            == q011bl.ACCEPTED_ACTUAL_RESONANCE_OUTCOME
-        )
-    else:
-        assert q011bl_cycle["failed_hypothesis_order"]
-        assert not all(gate["passed"] for gate in q011bl_cycle["hypothesis_gates"].values())
-        assert q011bl_cycle["scientific_classification"] == q011bl.REJECTED_CLASSIFICATION
-        assert q011bl_cycle["actual_resonance_outcome"] == "not_established"
+    assert minimum["aggregate_index"] == 956
+    assert minimum["selected_type_counts"] == [12, 15, 1, 0]
+    assert minimum["target_identifier"] == "block=12;center=143"
+    assert minimum["relation"] == "target_below_product"
+    assert minimum["outward_gap_lower"]["binary64_hex"] == "0x1.2b0b5984fffffp-21"
+    assert minimum["exact_gap_hex"] == "0x1.2b0b59e145674p-21"
+    assert minimum["witness_digest_sha256"] == (
+        "f455a3882a86972703f13bae000dced5bf47c39702edff57c6d8dbfc09f41f30"
+    )
+    assert q011bl_cycle["scientific_classification"] == q011bl.ACCEPTED_CLASSIFICATION
+    assert (
+        q011bl_cycle["actual_resonance_outcome"]
+        == q011bl.ACCEPTED_ACTUAL_RESONANCE_OUTCOME
+    )
 
 
 def test_q011bl_preserves_the_scientific_boundary(q011bl_cycle: dict[str, Any]) -> None:
     theorem = q011bl_cycle["theorem_consequence"]
-    accepted = q011bl_cycle["scientific_outcome"] == "accepted"
-    assert theorem["degree_twenty_eight_external_nonresonance_is_certified"] is accepted
-    assert theorem["an_actual_degree_twenty_eight_external_resonance_is_ruled_out"] is accepted
-    assert theorem["registered_degree_twenty_eight_sufficient_certificate_is_rejected"] is (
-        not accepted
-    )
-    assert theorem["certified_external_nonresonance_degrees"] == list(
-        range(2, 29 if accepted else 28)
-    )
-    assert theorem["missing_external_nonresonance_degrees"] == list(
-        range(29 if accepted else 28, 91)
-    )
+    assert theorem["degree_twenty_eight_external_nonresonance_is_certified"]
+    assert theorem["an_actual_degree_twenty_eight_external_resonance_is_ruled_out"]
+    assert not theorem["registered_degree_twenty_eight_sufficient_certificate_is_rejected"]
+    assert theorem["certified_external_nonresonance_degrees"] == list(range(2, 29))
+    assert theorem["missing_external_nonresonance_degrees"] == list(range(29, 91))
     assert theorem["q011bj_degree_twenty_seven_certificate_is_preserved"]
     assert not theorem["all_spectral_quotient_nonresonances_are_certified"]
     assert not theorem["ssm_existence_or_uniqueness_is_certified"]
@@ -163,21 +184,11 @@ def test_q011bl_preserves_the_scientific_boundary(q011bl_cycle: dict[str, Any]) 
 
 def test_q011bl_cycle_has_strict_reproducible_digests(q011bl_cycle: dict[str, Any]) -> None:
     json.dumps(q011bl_cycle, allow_nan=False)
-    for name in (
-        "input_digest_sha256",
-        "preparation_digest_sha256",
-        "sweep_digest_sha256",
-        "result_digest_sha256",
-    ):
-        assert len(q011bl_cycle[name]) == 64
+    assert {
+        name: q011bl_cycle[name] for name in EXPECTED_SECTION_DIGESTS
+    } == EXPECTED_SECTION_DIGESTS
     sweep = q011bl_cycle["degree_twenty_eight_block_support_coalesced_sweep"]
-    for name in (
-        "aggregate_record_digest_sha256",
-        "bound_matrix_digest_sha256",
-        "coefficient_matrix_digest_sha256",
-        "classification_matrix_digest_sha256",
-    ):
-        assert len(sweep[name]) == 64
+    assert {name: sweep[name] for name in EXPECTED_SWEEP_DIGESTS} == EXPECTED_SWEEP_DIGESTS
     assert q011bl_cycle["result_digest_sha256"] == q011bl.q011b._canonical_json_sha256(
         q011bl._result_digest_sections(q011bl_cycle)
     )
@@ -189,7 +200,7 @@ def test_q011bl_study_metadata_and_optional_artifact_are_scoped(
     assert q011bl_study["schema_version"] == 1
     assert q011bl_study["source"] == source_metadata()
     assert q011bl_study["study_gate"] == "passed"
-    assert q011bl_study["scientific_outcome"] in {"accepted", "rejected"}
+    assert q011bl_study["scientific_outcome"] == "accepted"
     assert q011bl_study["arithmetic_runtime"]["inactive_monotone_records_compared"] is False
     scope = q011bl_study["mathematical_scope"]
     assert scope["degree"] == 28
@@ -207,6 +218,7 @@ def test_q011bl_study_metadata_and_optional_artifact_are_scoped(
     assert artifact["source"] == source_metadata()
     assert artifact["runner_source"]["filename"] == "q011bl_degree28_coalesced_sweep.py"
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["runner_source"]["sha256"] == EXPECTED_RUNNER_SHA256
     assert artifact["study_gate"] == "passed"
     assert artifact["scientific_outcome"] == q011bl_study["scientific_outcome"]
     assert artifact["actual_resonance_outcome"] == q011bl_study[
@@ -215,4 +227,5 @@ def test_q011bl_study_metadata_and_optional_artifact_are_scoped(
     assert artifact["cycle"]["result_digest_sha256"] == q011bl.q011b._canonical_json_sha256(
         q011bl._result_digest_sections(artifact["cycle"])
     )
+    assert _file_sha256(artifact_path) == EXPECTED_ARTIFACT_SHA256
     json.dumps(artifact, allow_nan=False)
