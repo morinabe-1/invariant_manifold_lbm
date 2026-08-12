@@ -14,7 +14,9 @@ from ttim_lbm.rational_spectrum import _file_sha256
 EXPECTED_RUNNER_SHA256 = (
     "d7828cb2aef583ff82bd421212837534169ba42ad1962961cf0003e9f812b085"
 )
-EXPECTED_ARTIFACT_SHA256: str | None = None
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "9e191ead642e398ccd013c783b0ddeae78e6e7e4c3bf443e08bd64c9e826aa5b"
+)
 EXPECTED_SECTION_DIGESTS = {
     "input_digest_sha256": "cee7e83699027ea5d12ba79b05e06d19c1a8bff5400d06807d52b1f4ac9f4f1e",
     "refinement_input_digest_sha256": (
