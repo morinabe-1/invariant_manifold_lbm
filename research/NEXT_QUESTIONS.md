@@ -23415,6 +23415,26 @@ D3Q27を認証しない。
 acceptedなら次はQ011bkでdegree 28をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011bj 実行結果（accepted）
+
+事前登録どおりQ011biまでの40 artifactと194 direct digestを封印し、全7 validity gateを通過した。959
+overlap aggregateを欠落・重複なく走査し、`707186` distinct comparisonをproduct below `316264`、target
+below `390922`、overlap `0`へ分類した。weighted comparisonも
+`14443886576412 / 15550017125406 / 0`であり、959 aggregateは全てstrictに分離した。3101 old aggregateと
+合わせてdegree 27の全4060 aggregateを被覆する。
+
+global minimumはaggregate `272`、counts `[3,1,0,23]`、target `block=15;center=114`、relation
+`target_below_product`で、outward／exact gapは
+`0x1.066c1647fffffp-20 / 0x1.066c167e0f62bp-20`と、ともにstrictly positiveだった。従って全5 hypothesis
+gateも通過し、classificationは
+`the block-support-coalesced component-safe sweep certifies degree-27 external nonresonance`、scientific
+outcomeは`accepted`、actual resonance outcomeは
+`ruled_out_within_registered_degree_twenty_seven_scope`となった。
+
+certified degreesは2--27および91以降、missing rangeは28--90へ縮んだ。92 inactive monotone proof recordは
+保持したが比較せず、主張は固定17² repaired exact map、fixed conservation leaf、登録degree-27 external
+relationだけに限る。次はQ011bkとしてdegree 28をdesign-onlyに資源監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
