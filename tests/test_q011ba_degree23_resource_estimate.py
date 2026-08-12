@@ -10,6 +10,22 @@ import research.q011ba_degree23_resource_estimate as q011ba
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
+EXPECTED_RUNNER_SHA256 = "ef5a20f3db4172a8f5e8791c8bff60d5c519d3d809fcc1df5a3ea64e329820fb"
+EXPECTED_ARTIFACT_SHA256 = "b4069be49ec744e17eaa83eadde5947ead58c4e9dc52f812a8d3c90ab6f4ec28"
+EXPECTED_SECTION_DIGESTS = {
+    "input_digest_sha256": "2afe9132fb5f1e2b635c30a0f88be6fcfb218fdc163ff4f140d6ea40d6f4b7da",
+    "inventory_digest_sha256": (
+        "27863d434c9a9a970e1e0de1bebce046fae1d9d217453974013585ecba433b36"
+    ),
+    "envelope_digest_sha256": (
+        "e0496aefd2de7a18ee62809f2bc38cf79d43ba31a4f489d161a989a36606203f"
+    ),
+    "resource_digest_sha256": (
+        "a3e48adcca7d4d8f86e1f0d166334b0cd76f72d83d112ace56dcaef0fa05d224"
+    ),
+    "result_digest_sha256": "b060fe612a3e7bc36df532642ee703cff5e4ffbe2cdc05e7727de2e31c6a7d2b",
+}
+
 
 @pytest.fixture(scope="module")
 def q011ba_study() -> dict[str, Any]:
@@ -166,14 +182,8 @@ def test_q011ba_preserves_the_scientific_boundary(q011ba_cycle: dict[str, Any]) 
 
 def test_q011ba_cycle_has_strict_reproducible_digests(q011ba_cycle: dict[str, Any]) -> None:
     json.dumps(q011ba_cycle, allow_nan=False)
-    for name in (
-        "input_digest_sha256",
-        "inventory_digest_sha256",
-        "envelope_digest_sha256",
-        "resource_digest_sha256",
-        "result_digest_sha256",
-    ):
-        assert len(q011ba_cycle[name]) == 64
+    for name, digest in EXPECTED_SECTION_DIGESTS.items():
+        assert q011ba_cycle[name] == digest
     assert q011ba_cycle["result_digest_sha256"] == q011ba.q011b._canonical_json_sha256(
         q011ba._result_digest_sections(q011ba_cycle)
     )
@@ -204,6 +214,7 @@ def test_q011ba_study_metadata_and_optional_artifact_are_scoped(
     assert artifact["source"] == source_metadata()
     assert artifact["runner_source"]["filename"] == "q011ba_degree23_resource_estimate.py"
     assert artifact["runner_source"]["sha256"] == _file_sha256(runner_path)
+    assert artifact["runner_source"]["sha256"] == EXPECTED_RUNNER_SHA256
     assert artifact["study_gate"] == "passed"
     assert artifact["resource_decision"] == q011ba.GO_DECISION
     assert artifact["scientific_outcome"] == "not_evaluated"
@@ -211,5 +222,5 @@ def test_q011ba_study_metadata_and_optional_artifact_are_scoped(
     assert artifact["cycle"]["result_digest_sha256"] == q011ba.q011b._canonical_json_sha256(
         q011ba._result_digest_sections(artifact["cycle"])
     )
-    assert len(_file_sha256(artifact_path)) == 64
+    assert _file_sha256(artifact_path) == EXPECTED_ARTIFACT_SHA256
     json.dumps(artifact, allow_nan=False)
