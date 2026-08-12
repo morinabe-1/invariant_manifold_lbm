@@ -24644,6 +24644,108 @@ degreesは2--31および91以降、missing rangeは32--90へ縮んだ。
 all-order nonresonance、higher graph smoothness、SSM existence／uniqueness、normal attraction、basinは認証しない。
 次はQ011bsでdegree 32のdesign-only resource gateを事前登録する。
 
+## Q011bs: degree-32 block-support-coalesced resource feasibility — 事前登録
+
+### 問いと封印入力
+
+Q011brでdegree 31を認証した固定17² repaired exact map／fixed conservation leafについて、relationを一件も
+評価せず、Q011apから変更しないabsolute resource limit内でdegree-32 full sweepを事前登録できるか。
+Q011bsはdesign-only監査であり、degree-32 nonresonanceやminimum gapを判定しない。
+
+Q011brまでの49 artifact、runner、234 direct digest、accepted certificate、scientific boundaryを再照合する。
+
+- Q011br artifact／runner newline-normalized SHA-256:
+  `63a5a3cc5076edef2dfeb5e8f0d82cb588b9de4436fbebc57e0e39349b9e1cfe` /
+  `c6e3e6db74ee71421938bf3fd3df760f22480bde6f5d589c576acd634d9b9d02`
+- Q011br input／preparation／sweep／result digest:
+  `323340a53f85746834f68825a3725eaa525c68aafe2f71c6ba7c87e89a2d2d9b` /
+  `351c05f98a9eedcd03af8ded5e5dccf4def334c0f6ded7374f6d64a53160514f` /
+  `0e4ff2b20ccff36016e289be3eefdc0cd8c7f3e1d711c1189a65e973711c2116` /
+  `165f85fff115e56a5f3bfc3b2fe0661b09620d6394267720a165302b38aef5e0`
+
+`study_gate=passed`、scientific outcome `accepted`、actual outcome
+`ruled_out_within_registered_degree_thirty_one_scope`、certified degrees 2--31、missing 32--90を要求する。
+
+### degree-32 exact inventory
+
+\(c_0+c_1+c_2+c_3=32\)を満たす全`6545` count tupleを辞書順に列挙し、`4238` old-modulus
+nonoverlapと`2307` overlapへexactに分ける。expanded control countは`435897`である。
+
+- selected source sizes: `[8,4,4,8]`
+- first／last overlap counts: `[0,3,11,18] / [32,0,0,0]`
+- external component／target identifier: `71 / 1024`
+- multi-component aggregate／maximum component: `13 / 3`
+- target block counts:
+  `[22,26,36,54,57,85,83,82,78,78,82,83,85,57,54,36,26]`
+- count／external-group／overlap／target／inventory digest:
+  `d648cd59c455a743db0548afd8b7cc478e33c1f1e57b10f4d5209d26ee6fc299` /
+  `8a07693f5eed3e4c208bbad98a465625cfeac7e33bb74954a38331b06943472b` /
+  `139872625b1999804dbe13cac61b2ff17242ed8e1573ddcd5ba185d2d58b5436` /
+  `59e242e396998aabed2417faf204a190e2b6632840c59d5807f505830c6f056a` /
+  `21e031c48c326f82af26f8e0aa403d3e17a6837beb40472d96554e6f91aac20a`
+
+各multi-component aggregateは全接触componentのidentifier和集合をtarget groupとし、target merge、共役folding、
+label collapseを用いない。
+
+### monotone envelopeとsource hull
+
+Q011bqの1032 prior recordとcurrent active 1048 record（selected 24＋target 1024）の共通892 recordをbitwiseに再利用し、
+140 inactive recordを削除せず、156 new recordだけを加えた1188-record monotone inventoryを作る。
+
+- prior／common／inactive／added／active／final: `1032 / 892 / 140 / 156 / 1048 / 1188`
+- prior／common／inactive digest:
+  `9a7db3a67d90687cc6a5aa84bd6fb329a8d09355f610513fc5be68c18d59b5ac` /
+  `b321e05b5da183cb3ac29457b02c2c35685d1c7da4c3434c173339e8fb7f9e1b` /
+  `f423ba54a62919598cf3a2c585c31ffd1a61b8e6add7c9cfa398ccb07f3d9482`
+- added identifier／record digest:
+  `81c12da81bb56a27d0b478db565e60329b1b277b903095c1b348653d4c611a35` /
+  `d854109ec11d012de7058440d9491d0b903c6512c14b76596b9fd5cf0de55ad6`
+- active／final record digest:
+  `40ea81a4de49dd0a4b30b9d87b1643a0a9f5f96229fea2cd94d524e4f951f0ca` /
+  `818f1af5c2f40ae728e5fc89d57e19c2d71028e1868e50612582c50d834af345`
+
+Q011asのclass counts `[4,2,3,6] / [1,1,2,2]`、6 source hull、membershipをbitwiseに保存する。
+140 inactive recordは証明資産に限り、degree-32 relationには使わない。
+
+### design-only resource contract
+
+full monomial listと3 relation matrixを構築せず、relation評価数を0に保つ。
+
+- class-power record／digest:
+  `186 / c3558afcfc74b38323b08ba4a4b8d836fdfd03b698d65d8f94ae8dd1f2cd7102`
+- group key／signature／digest:
+  `126 / 996 / fb3d46c5dfd162f078557ecf9f9df1f050ca431f7a7cff751b8ee78786fe9860`
+- pair key／entry／digest:
+  `691 / 30749 / b5538eebc1fe95f701e55e2f41a5b893289ac4152e08e62ba0595617622ef95d`
+- convolution／signature／peak／two-array bytes: `32675 / 147064 / 240 / 3840`
+- original／maximum aggregate monomial: `652055297357287 / 3073110104064`
+- safe int64 crude bound: `52242871769088`
+- distinct／weighted comparison upper: `2197696 / 9099502713798428`
+- resource digest:
+  `a8dc85c92f46d4634c562c277d7ef411baa4d8fbd45fd0d01cc2ce092fcd2a55`
+- projected wall／2倍safety seconds:
+  `73507677333/72180980000 / 73507677333/36090490000`
+- 1.5倍tracemalloc／process-memory safety bytes: `177765 / 490585`
+
+### gateと停止規則
+
+validityは、(1)49 artifact／234 digest、(2)inventoryと5 digest、(3)1188-record monotone envelope、
+(4)6 source hullと全resource identity、(5)全sectionでrelation 0／matrix不在、(6)section digest／runner／strict JSONを
+順に要求する。一つでも失敗すれば`inconclusive_resource_audit`とする。
+
+validity通過後、Q011apから変更しない7 limit（signature `125000000`、peak `2500000`、array `41943040` bytes、
+convolution `2500000`、distinct `1100000000`、2倍時間`1200`秒、1.5倍memory `6442450944` bytes）を判定する。
+全通過なら`go_for_degree_thirty_two_coalesced_preregistration`、超過があれば
+`stop_before_degree_thirty_two_coalesced_full_sweep`とする。limit変更やrelation先行評価で結果を変えない。
+
+scientific／actual degree-32 outcomeは`not_evaluated / not_evaluated`とし、Goでもcertified degreesは2--31および
+91以降、missing rangeは32--90のままである。本gateは固定map／leaf、degree-32 inventory、1024 active target、
+1188-record proof inventory、design-only資源だけに限り、degree-32 nonresonance、actual resonance、minimum gap、
+all-order result、higher smoothness、SSM、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
+GoならQ011btで全2307 aggregateと全1024 targetの正式full sweepを事前登録する。Stopなら最初の超過だけを
+再設計し、inconclusiveなら最初のvalidity failureだけを修正する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
