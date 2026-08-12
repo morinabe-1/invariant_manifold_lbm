@@ -24746,6 +24746,40 @@ all-order result、higher smoothness、SSM、normal attraction、basin、他grid
 GoならQ011btで全2307 aggregateと全1024 targetの正式full sweepを事前登録する。Stopなら最初の超過だけを
 再設計し、inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011bs 封印結果（Go）
+
+全6 validity gateと全7 resource gateが通過した。Q011brまでの49 artifact、runner、234 direct digestを
+再照合し、degree 32の全6545 aggregateを`4238 / 2307` old nonoverlap／overlapへexactに分けた。13件の
+multi-component aggregateは接触する全external componentのidentifier和集合を保持し、全1024 current targetを
+復元した。
+
+Q011bqの1032 prior recordを全て保持し、892 common、140 inactive、156 added、1048 active、1188 final recordと
+全digestを再現した。relationを一件も評価せず、組合せ資源は次の値となった。
+
+- class-power／group-signature／pair-key: `186 / 996 / 691`
+- convolution／modulus signature／peak live signature: `32675 / 147064 / 240`
+- original／maximum aggregate monomial:
+  `652055297357287 / 3073110104064`
+- distinct／weighted comparison upper:
+  `2197696 / 9099502713798428`
+- projected wall／2倍safety seconds:
+  `73507677333/72180980000 / 73507677333/36090490000`
+- 1.5倍tracemalloc／process-memory safety bytes: `177765 / 490585`
+- input／inventory／envelope／resource／result digest:
+  `34e0b713ad0867929277aeb9a93ed105881cef02c7e83ee440ef4b4945031aef` /
+  `0afd42a9908c0837f7a7b4fec3717696d0d7e0393e77965fa51c8e78f67ac0d0` /
+  `a01c77f6c21dae7324bbc9c0c2e40aa02f2f53a10ee566bc74eb9973900842ff` /
+  `f115e235d3fce9c9d07866f7d29b41b36ee5fea0adb17468723f6e4138a13516` /
+  `33f1eccaf1f3ac12138d39bfeb498b0540c8892977ee2c011e4706b7c9455e20`
+- runner／artifact newline-normalized SHA-256:
+  `29762a6340bab65a7529be5e9a7daa2551d2dd7f9e7cb2de0ba7c380686dc915` /
+  `4ad7d33e537ab02b8804f73dbd7e4fa8ca244b38445acd9adc5214e6b87551cc`
+
+resource decisionは`go_for_degree_thirty_two_coalesced_preregistration`、scientific／actual outcomeは
+`not_evaluated / not_evaluated`である。certified degreesは2--31および91以降、missing rangeは32--90のままで、
+degree-32 nonresonanceやSSM uniquenessはまだ認証していない。次はQ011btとして全2307 aggregateと全1024 targetの
+正式full sweepを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
