@@ -25537,6 +25537,118 @@ actual degree-34 resonanceの証明ではない。certified degreesは2--33お�
 ままである。次はQ011byとして最初のoverlap witnessだけを精密監査し、後付けのthreshold、全体hull再分割、target
 foldingでQ011bxの判定を変更しない。
 
+## Q011by: degree-34 first-overlap uncoalesced blockwise refinement — 事前登録
+
+### 問いと変更範囲
+
+Q011bxで辞書順最初に残ったaggregate `972`、selected counts `[4,27,3,0]`、target
+`block=12;center=124`の単一relationについて、6 merged source hullをQ011as以前の15 blockwise source classへ
+戻すと、全compatible subclass signatureをstrictに分離できるか。
+
+Q011byはQ011bxのrejected判定を変更せず、残る2 aggregateのうち最初のwitnessだけを診断する。もう一方の
+unresolved aggregate、他23 target、degree-34 full sweep、degree 35へは進まない。観測後のclass split、target
+folding、threshold変更を禁止する。
+
+### sealed Q011bx witness
+
+Q011bxまでの55 artifact、runner、261 direct digest、validity passed、scientific outcome `rejected`、actual outcome
+`not_established`、certified degrees 2--33と91以降、missing 34--90を再照合する。
+
+- Q011bx artifact／runner newline-normalized SHA-256:
+  `01307870ef93c219009b56a77cff58ecf55fe32f987cd9365dc43122b04eb9e2` /
+  `cfae443c9934a202c34e9455aaf6499d1bff636d3b45e617245426e9449e221d`
+- Q011bx input／preparation／sweep／result digest:
+  `e69981e0c318bcc0f29f25a7c0e568db2f088841949b5a3a008ccabdc9f705a6` /
+  `7ea445c2c4d8297dc523e4543b37caba35daafc8cddb4625e39b4039d0cf467f` /
+  `4741be104eefef8eafc43ea13e221e23521dec80adf51969cc7d7a112241f9b9` /
+  `595044021e943ee98cdf00e6413da53a47db3e6ebb6aa823a03cf4069278170f`
+- first witness index／counts／target／output／left／right／multiplicity:
+  `972 / [4,27,3,0] / block=12;center=124 / 12 / 0 / 0 / 341000`
+- intersection width／center-only relation／center gap:
+  `0x1.570c9fb70fc7dp-28 / target_below_product / 0x1.abbf5bfb5e7ccp-27`
+- witness digest:
+  `ad3f2cb8d8ad0f75eacaec10b8ff606e709bc5ff037542ca612ecc97a40d8ce5`
+
+exact rational hybrid intervalにもstrict positive intersectionがあるため、binary64 outward roundingだけを原因とは
+しない。一方、center-only relationはpositive gapを持つので、登録disc／hull幅が未分離に関与するという診断に限る。
+
+### fixed 15-class refinement input
+
+Q011bwのexact inventoryとactive disc recordを再構成し、selected group sizes `[8,4,4,8]`を次のQ011as以前の
+blockwise classへ固定する。
+
+1. group 0: `{block=16/1;center=142}`, `{block=16/1;center=143}`,
+   `{block=16/1;center=144}`, `{block=16/1;center=145}`
+2. group 1: `{block=16/1;center=150}`, `{block=16/1;center=151}`
+3. group 2: `{block=0;center=148}`, `{block=0;center=149}`,
+   `{block=16/1;center=152}`
+4. group 3: `{block=0;center=144}`, `{block=0;center=145}`, `{block=0;center=146}`,
+   `{block=0;center=147}`, `{block=16/1;center=148}`, `{block=16/1;center=149}`
+
+ここで`block=16/1`は同じcenterを持つblock 16と1の2 identifierを同一classに保持することを表す。
+
+- class counts／class-membership digest: `[4,2,3,6]` /
+  `18076020b56f23f6a7a8c80411c7927e941fe2a15ef1f1c9ff708ec350196217`
+- selected identifier／record digest:
+  `53d431c0dfab5fa5a8f2769d450a18223a2d9a15640462e58b9c175cf53d58d6` /
+  `08f743e4d676429c3c7b3f1685d5d8faa93c524a827d09ac9e52649d64318377`
+- target record digest:
+  `6f76020e786af37cdac5aaf16d92617d36da55cceda814baaef6e0b9ababfc86`
+- parent external group index／target-group count／target-group digest:
+  `71 / 24 / 000442ccf61d32032eec57cc430dc374dd0c89286edab9f773652ff170d9e1e7`
+
+targetは24 identifierの親groupから`block=12;center=124`だけを選ぶ。他23 targetはcoarser Q011bx intervalですでに
+strictに分離され、source interval refinementでその分離は失われないため、再評価しない。
+
+### fixed arithmetic and resource bound
+
+Q011bxと同じexact 17-point Fourier convolution、component-safe target comparison、outward-rounded hierarchical
+product protocolを使う。変更はsource partition `6 -> 15`だけである。
+
+- uncoalesced class signature upper:
+  `C(7,4) C(28,27) C(5,3) C(5,0) = 9800`
+- individual-source monomial upper:
+  `C(11,4) C(30,27) C(6,3) C(7,0) = 26796000`
+- target count: `1`
+- full monomial list／full classification matrix retained: `false / false`
+
+各convolutionの非負性、fiber sum、`int64` crude bound、product intervalの有限性・順序、original monomial count、
+class signature countを検査する。全compatible signatureを`product_below_target`、`target_below_product`、`overlap`へ
+排他的に分類し、最初のoverlapまたはglobal minimum separated witnessをexact rational reconstructionで封印する。
+
+### validity gate
+
+1. Q011bxまでの55 artifact、runner、261 direct digest、rejected outcome、boundaryが再現する。
+2. first witnessの全登録field、exact intersection、center-only diagnostic、digestが再現する。
+3. 24 selected record、target record、15 class membershipと全digestが再現する。
+4. original 15 classが対応する6 merged hullにcontainedし、target recordを変更しない。
+5. counts `[4,27,3,0]`、target 1、signature upper 9800、monomial upper 26796000が再現する。
+6. 全integer／outward interval invariant、exclusive classification、strict finite JSONが通る。
+7. section digest、runner provenance、first overlapまたはminimum witness digestが再現する。
+
+一つでも失敗すれば`inconclusive`とし、原因となる最初のvalidity failureだけを修正する。
+
+### diagnostic stopping rule
+
+validity通過後、全compatible subclass comparisonの`overlap=0`かつglobal minimum outward／exact gapがともに
+strictly positiveならclassificationを
+`the first Q011bx overlap is resolved by the registered uncoalesced blockwise partition`とする。
+
+一つでもoverlapが残ればclassificationを
+`the first Q011bx overlap persists under the registered uncoalesced blockwise partition`とし、辞書順最初の
+uncoalesced witnessだけを次の精密化候補にする。
+
+どちらの場合もQ011bxのscientific outcome `rejected`、actual outcome `not_established`、certified degrees 2--33と
+91以降、missing 34--90を変更しない。resolvedなら次はQ011bzでQ011bxの2番目のunresolved aggregateを同じ順序で
+監査する。persistentならQ011bzで最初のuncoalesced witnessだけをindividual-disc partitionへ分割する。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate 972、target
+`block=12;center=124`、登録15-class partitionだけを扱う。degree-34全分離、actual resonanceの存在／不存在、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、
+D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
