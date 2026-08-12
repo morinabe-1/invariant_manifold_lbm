@@ -23571,6 +23571,39 @@ GoならQ011blで入力、全1170 aggregate、全612 current target、multi-comp
 arithmetic、success／rejection条件を固定して正式full sweepを事前登録する。Stopなら最初のfailed resource
 dimensionだけを改善し、inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011bk 封印結果（Go）
+
+全6 validity gateと全7 resource gateが通過した。Q011bjまでの41 artifactと198 direct digest、degree-28
+inventory、Q011biの604 prior record、6 source hull、全612 current target、固定resource identityを再現した。
+relation object、product-bound matrix、Fourier coefficient matrix、classification matrixは構築していない。
+
+- aggregate／old separated／overlap: `4495 / 3325 / 1170`
+- external component／target／multi-component aggregate／maximum component: `49 / 612 / 2 / 3`
+- prior／active reused／inactive retained／added／active／final:
+  `604 / 512 / 92 / 124 / 636 / 728`
+- class-power／group-key／group-signature: `161 / 107 / 810`
+- pair-key／cached pair-signature entry／convolution: `398 / 12938 / 14505`
+- modulus signature／peak live signature／two-array bytes: `57529 / 182 / 2912`
+- original／maximum aggregate monomial: `53517100201931 / 445981536000`
+- distinct／weighted comparison upper: `995152 / 971674189747228`
+- projected wall／2倍safety seconds:
+  `133141821459/288723920000 / 133141821459/144361960000`
+- 1.5倍tracemalloc／process-memory safety bytes: `134805 / 372027`
+- input／inventory／envelope／resource／result digest:
+  `93b5e34ef4203e7f80dd3dee04863ad6c194b4f5e92ff401b0de3a058855f75c` /
+  `beef4f6d0a325dd6c191e51787349f8f2534100a9997ac048ebf2d14ca1d789b` /
+  `cbc61f563f2e44219d998e6ab6f5c51096143997dc02e8782b304f2b54557053` /
+  `57c947604d892000ab4a0fe1e66efad1c129d09caf9ccb8054602f745da8dbca` /
+  `aa3482ce5b2730c9fe641fd7a42d1c060f39965dc10258e253539b6999a296d3`
+- runner／artifact newline-normalized SHA-256:
+  `571969fc442b000e319d7e8f12be75a1d60bbd6cccb0cbff3b6c822b8cfbf0a6` /
+  `bcd6f8608368637075be06c517ca31cf207d522175d10f726e91c534d582749c`
+
+resource decisionは`go_for_degree_twenty_eight_coalesced_preregistration`、scientific outcomeとactual resonance
+outcomeはいずれも`not_evaluated`である。従ってcertified degreesは2--27および91以降、missing rangeは
+28--90のままである。主張は固定17² repaired exact map、fixed conservation leaf、degree-28 design-only
+resource feasibilityに限定する。次はQ011blとしてdegree-28 full sweepを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
