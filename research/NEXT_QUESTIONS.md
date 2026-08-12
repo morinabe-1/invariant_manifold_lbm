@@ -21240,6 +21240,126 @@ certified degreesは2--20および91以降、missing rangeは21--90へ縮んだ�
 fixed conservation leaf、登録degree-20 external relationに限定する。次はQ011awとしてdegree 21を
 design-onlyに資源監査し、relationはまだ評価しない。
 
+## Q011aw: degree-21 block-support-coalesced resource feasibility — 事前登録
+
+### 問い
+
+Q011avでdegree 20を認証した同じ6 source hull、exact Fourier multiplicity、全target個別比較、hierarchical
+outward protocolをdegree 21へ拡張するとき、relationを評価する前のinventoryと組合せ資源が、Q011apから
+変更しないabsolute limitを満たすか。Q011awはdesign-only監査であり、degree-21 product--target relation、
+minimum gap、actual resonanceを一件も評価しない。
+
+### sealed input
+
+Q011avまでの27 artifact、runner、135 direct digest、accepted outcome、Q011at／Q011av certificate、resource
+semantics、claim boundaryを再照合し、Q011avを直接封印する。
+
+- Q011av artifact／runner newline-normalized SHA-256:
+  `0a82b7ebbc7f7d38906b8e91f445d923f4fa98d1261c341fbd786fb1850bb8cf` /
+  `daf65af217125539633d3972467ee402cf3ee2db32163ef41ed4d31f62354e67`
+- Q011av input／preparation／sweep／result digest:
+  `e3fe2f688046b7d650cc319837985940d1b1968bc5231e43187409df844e2c4c` /
+  `b99e726f99312c1f6a42255fa6d3e4def4d8018baed195769911bf65267603ff` /
+  `4289b44ea45494c6defb0463f261374c9f348d8a0d77e0305a957b09f2be3924` /
+  `d7e3e0e23b9c13c1ab6627e4f6d247b972b833fd223fcd9836911ea5bba6a0df`
+
+Q011avの`study_gate=passed`、scientific outcome `accepted`、actual resonance outcome
+`ruled_out_within_registered_degree_twenty_scope`、certified degrees 2--20と91以降を要求する。
+
+### degree-21 exact inventory
+
+Q011uの4 selected log-modulus typeと186 external componentをexactに再構成し、degree 21の全
+\(\binom{24}{3}=2024\) count tupleを辞書順で再評価する。old modulus intervalだけで1660 aggregateを
+分離し、残る364 aggregateと対応target componentだけをQ011awへ渡す。
+
+- expanded control／old separated／overlap: `65780 / 1660 / 364`
+- overlap count first／last: `[0,0,13,8] / [19,0,2,0]`
+- unique external component／multi-target／maximum component count: `20 / 12 / 2`
+- target identifier／block counts:
+  `228 / [8,8,8,16,26,28,14,6,4,4,6,14,28,26,16,8,8]`
+- count／external-index／overlap／target／inventory digest:
+  `96a88efb02edb6d4069919440922dba26dc4fc67da64ae041120a365f69be651` /
+  `5ad686a811a45a49a1851bf80ac709b10d862aff1eef91da78f64770a23f7030` /
+  `12b50244fcad0792cd8f0c67eb52ca4da9d9fae5e908292f7c2ced0dbd3f7efb` /
+  `943c8b6078c63b079bcb752a7b0f4929d6133d9d9849ab303f7d9132a0be669d` /
+  `1999df10bd6342c60c2dee30f1597c0e993225431792464ee866d5c94c1ccbe3`
+
+### envelope and source coalescing
+
+selected source 24 identifierはQ011asの6 hullに同じmembershipで置く。全228 targetを個別に保持し、Q011auの
+244 final disc recordは全件bitwiseに再利用する。degree 21で初めて必要な8 targetだけをQ011ak blockwise
+formulaで追加し、final inventoryを252 recordとする。target merge、共役folding、label collapseは用いない。
+
+- prior reused／added／removed／final identifier: `244 / 8 / 0 / 252`
+- prior-record／added-identifier／added-record／final-record digest:
+  `149fce2623b188288f872594edba6f34465044ac9a36a7adbe4981b978230abc` /
+  `0cabb9dd8ec8e092a732a84c027128016b5f8c573f0c5bdf1d7bee0e871801b6` /
+  `7c39398c079ecfbab64450c0488047f342f3b691aff0a5a27e77a627fd4acc18` /
+  `1dac3d5c4a74e297af45d07c63b4317ef9e54f02ada9fbbcf1375c84c84ce8a2`
+- old／merged source class count: `[4,2,3,6] / [1,1,2,2]`
+- source hull／merged-membership digest:
+  `f54f1a1f70d953b4c1255e9f9627d7ca43229a3d1e26c11b716d23fd56ea1eb6` /
+  `975ebf1077279cbfcc6fd46e5a34fcd67260ff953a718eb51985794314fcd8b8`
+
+### design-only resource contract
+
+Q011asと同じweak-composition／pair-pool cache designで、full monomial list、product-bound matrix、Fourier
+coefficient matrix、classification matrixを構築しない。relation evaluation countはexactに0とする。
+
+- class-power／group-key／group-signature: `121 / 80 / 482`
+- pair-key／cached pair-signature entry／convolution: `192 / 5523 / 6448`
+- modulus signature／peak live signature／two-array bytes: `12458 / 126 / 2016`
+- original／maximum aggregate monomial: `294674427372 / 7852416000`
+- safe `int64` convolution crude upper: `133491072000`
+- distinct／weighted comparison upper: `146928 / 3951865509552`
+- class-power／group-key／pair-key／resource-record digest:
+  `a5755d61ae6f03805b74656e3a24517931d3abcff5ce0f879e345bad3e3a9036` /
+  `f04466bd4319249471ee22afdcc1b45d409b58d38401e8b8c67545d7739677a7` /
+  `0226c254ce3beb9977058b313849f095f26e2f034beb40d2dd69c27986f08c16` /
+  `ccc41225d257c605e651b77a2f65149bf6350d3a67637a5374074b5d29845f6a`
+- projected wall／2倍safety seconds:
+  `19657561401/288723920000 / 19657561401/144361960000`
+- 1.5倍tracemalloc／process-memory safety bytes: `93327 / 257557`
+
+### validity gate
+
+1. Q011avまでの27 artifact、runner、135 direct digest、outcome、boundaryが再現する。
+2. degree-21 inventoryの全count、順序、target membership、5 digestが再現する。
+3. Q011auの244 recordを全てbitwiseに保存し、8追加recordとfinal 252 recordのdigestが再現する。
+4. Q011asの6 source hullとmembershipがbitwiseに再現する。
+5. 全resource count、projection、integer safety、非構築フラグ、relation count 0が再現する。
+6. 全sectionがstrict finite JSON、section digest、runner provenanceへ封印される。
+
+一つでも失敗すれば`inconclusive_resource_audit`とし、resource Go／Stopを出さない。
+
+### resource gate and stopping rule
+
+Q011apから次の7 absolute limitを変更しない。
+
+- modulus signature: `125000000`
+- peak live signature: `2500000`
+- two product arrays: `41943040` bytes
+- exact convolution: `2500000`
+- distinct comparison upper: `1100000000`
+- double-safety wall time: `1200` seconds
+- 1.5倍process-memory safety: `6442450944` bytes
+
+validity通過後に全7 limitを満たせばresource decisionを
+`go_for_degree_twenty_one_coalesced_preregistration`とする。一つでも超えれば
+`stop_before_degree_twenty_one_coalesced_full_sweep`とする。観測後のlimit変更、target folding、degree-21
+relationの先行確認で判定を変えない。
+
+### 主張境界と次の変更
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-21 modulus-overlap inventory、Q011asの
+6 source hull、全228 target disc、組合せ資源とcalibrated projectionだけを扱う。degree-21 external
+nonresonance、actual resonance、minimum gap、all-order result、higher smoothness、SSM existence／uniqueness、
+normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
+GoならQ011axで入力、全364 aggregate、全228 target、outward arithmetic、success／rejection条件を固定して
+degree-21 full sweepを事前登録する。Stopなら最初のfailed resource dimensionだけを改善し、inconclusiveなら
+最初のvalidity failureだけを修正する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
