@@ -23089,6 +23089,44 @@ D3Q27を認証しない。
 acceptedなら次はQ011biでdegree 27をdesign-onlyに資源監査する。rejectedなら最初のoverlapだけを監査し、
 inconclusiveなら最初のvalidity failureだけを修正する。
 
+### Q011bh 封印結果
+
+全7 validity gateと全5 hypothesis gateが通過した。Q011bgまでの38 artifactと185 direct digest、degree-26
+inventory、568-record monotone envelope、6 source hull、全460 current target、固定resource identityを再現し、
+779 overlap aggregateを欠落・重複なく一度ずつ走査した。84 inactive monotone proof recordは保持したが比較せず、
+target merge、共役folding、label collapseは用いていない。
+
+- fully separated overlap aggregate: `779 / 779`
+- distinct comparison／product below／target below／overlap:
+  `530266 / 227952 / 302314 / 0`
+- weighted comparison／product below／target below／overlap:
+  `14415713946704 / 7310145276356 / 7105568670348 / 0`
+- minimum witness: aggregate `745`、counts `[19,0,3,4]`、target `block=12;center=146`、
+  relation `product_below_target`
+- minimum outward／exact gap:
+  `0x1.37b3c41bfffffp-22 / 0x1.37b3c4df5b7b2p-22`
+- minimum witness digest:
+  `6aeb6451b7007926cef4a25f7f5014504f80c22d7c0d0fe77b34e0692ac09c6a`
+- aggregate／bound／coefficient／classification digest:
+  `301806ea34bdd8e24d444b1ad8064e9cae55ae7bef824e6de64b25e40bddd80d` /
+  `963b5c735035a1d26f4b23fc6b82e16573fad1580792240020ade99eec814a1d` /
+  `3123b9b702fa23dba3fdbc6fe5a82568796e994d0aa62c9e57a9fff76f95d356` /
+  `6708141594e652e8f0e74af67098993dfd595c6324be2b05eeef428b9ec3657c`
+- input／preparation／sweep／result digest:
+  `895a724a63a66c04929fbaaf95149b93444f8199f78a8494e2ae835bc800877a` /
+  `8d61ae48890284651ca81e458478f1716a64f28f64149daf92aa0936ddf08b9f` /
+  `d8b4ca8a9dfdc34b8fd4cb4574f0b0c54fdb158c3cd8b2a6ecf6fe06dfb3c333` /
+  `86269e13f502c70439a1381edf2f532c50491a5c313ce974307db623a4ae9db4`
+- runner／artifact newline-normalized SHA-256:
+  `b934c50138890dd329d2d0dc75c78f98df9540d3e9b5eb3a463347f2c1a9b192` /
+  `34294fc77fd5ade05ab61812088fdee6d8cec63a5e22c0eac555c3647b073349`
+
+scientific outcomeは`accepted`、actual resonance outcomeは
+`ruled_out_within_registered_degree_twenty_six_scope`となった。2875 old aggregateと779 direct aggregateの和で
+degree 26の全3654 aggregateを分離したため、certified degreesは2--26、tail-certifiedは91以降、missing
+rangeは27--90へ縮んだ。本certificateは固定17² repaired exact map、fixed conservation leaf、登録degree-26
+external relationだけに限る。次はQ011biでdegree 27をdesign-onlyに資源監査し、relationは評価しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

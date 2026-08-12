@@ -8162,6 +8162,46 @@ Q011apから変更しなかった7 absolute resource limitを全て通過し、r
 示す。relation evaluation countは0であるため、certified degreesは2--25、tail-certifiedは91以降、missing
 rangeは26--90のままである。次はQ011bh full sweepの成功・棄却条件を事前登録する。
 
+### Q011bh 実行結果
+
+Q011bgまでの38 artifact、runner、185 direct digest、resource Go、Q011bf accepted certificate、claim boundaryを
+再照合し、全7 validity gateを通過した。Q011bgのdegree-26 inventory、568-record monotone envelope、Q011asの
+6 source hull、全460 current target、固定resource identityをbitwiseに再構成した。84 inactive monotone proof
+recordは履歴に保持したがdegree-26 relationには比較せず、target merge、共役folding、label collapseも用いていない。
+
+固定済み779 overlap aggregateをexact 17-point Fourier multiplicityとcomponent-safe outward product intervalで
+欠落・重複なく一度ずつ走査した。`530266` distinct comparisonの内訳はproduct below `227952`、target below
+`302314`、overlap `0`だった。multiset係数で重み付けした`14415713946704` comparisonの内訳は
+`7310145276356 / 7105568670348 / 0`だった。全779 overlap aggregateがstrictに分離し、2875 old aggregateと
+合わせてdegree 26の全3654 aggregateを被覆した。
+
+global minimum witnessはaggregate `745`、selected counts `[19,0,3,4]`、target
+`block=12;center=146`、relation `product_below_target`である。outward gap lowerは
+`0x1.37b3c41bfffffp-22`、exact rational gapは`0x1.37b3c4df5b7b2p-22`で、ともにstrictly positiveだった。
+
+- minimum witness digest:
+  `6aeb6451b7007926cef4a25f7f5014504f80c22d7c0d0fe77b34e0692ac09c6a`
+- aggregate／bound／coefficient／classification digest:
+  `301806ea34bdd8e24d444b1ad8064e9cae55ae7bef824e6de64b25e40bddd80d` /
+  `963b5c735035a1d26f4b23fc6b82e16573fad1580792240020ade99eec814a1d` /
+  `3123b9b702fa23dba3fdbc6fe5a82568796e994d0aa62c9e57a9fff76f95d356` /
+  `6708141594e652e8f0e74af67098993dfd595c6324be2b05eeef428b9ec3657c`
+- input／preparation／sweep／result digest:
+  `895a724a63a66c04929fbaaf95149b93444f8199f78a8494e2ae835bc800877a` /
+  `8d61ae48890284651ca81e458478f1716a64f28f64149daf92aa0936ddf08b9f` /
+  `d8b4ca8a9dfdc34b8fd4cb4574f0b0c54fdb158c3cd8b2a6ecf6fe06dfb3c333` /
+  `86269e13f502c70439a1381edf2f532c50491a5c313ce974307db623a4ae9db4`
+- runner／artifact newline-normalized SHA-256:
+  `b934c50138890dd329d2d0dc75c78f98df9540d3e9b5eb3a463347f2c1a9b192` /
+  `34294fc77fd5ade05ab61812088fdee6d8cec63a5e22c0eac555c3647b073349`
+
+全5 hypothesis gateも通過し、scientific outcomeは`accepted`、actual resonance outcomeは
+`ruled_out_within_registered_degree_twenty_six_scope`となった。従ってcertified degreesは2--26、
+tail-certifiedは91以降、missing rangeは27--90へ縮んだ。本certificateは固定17² repaired exact map、fixed
+conservation leaf、登録degree-26 external relationだけに限り、all-order nonresonance、higher graph
+smoothness、SSM existence／uniqueness、normal attraction、basinへは外挿しない。次はQ011biでdegree 27を
+design-onlyに資源監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -8411,6 +8451,8 @@ rangeは26--90のままである。次はQ011bh full sweepの成功・棄却条�
 [`artifacts/q011bf_degree25_coalesced_sweep.json`](artifacts/q011bf_degree25_coalesced_sweep.json)
 
 [`artifacts/q011bg_degree26_resource_estimate.json`](artifacts/q011bg_degree26_resource_estimate.json)
+
+[`artifacts/q011bh_degree26_coalesced_sweep.json`](artifacts/q011bh_degree26_coalesced_sweep.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
