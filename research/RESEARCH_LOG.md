@@ -7965,6 +7965,45 @@ aggregateと合わせてdegree 23の全2600 aggregateを被覆する。full mono
 tail-certifiedは91以降、missing rangeは24--90へ縮んだ。本certificateは固定17² repaired exact map、fixed
 conservation leaf、登録degree-23 external relationだけに限る。次はQ011bcでdegree 24をdesign-onlyに資源監査する。
 
+### Q011bc 実行結果
+
+Q011bbまでの33 artifact、runner、162 direct digest、accepted outcome、claim boundaryを再照合し、6 validity
+gateを全て通過した。degree 24の全2925 aggregateを2401 old-modulus nonoverlapと524 overlapへexactに
+分け、31 external componentから全372 current target identifierを復元した。
+
+current active setはselected 24とtarget 372の計396 recordである。Q011baの356-record monotone inventoryの
+うち308件はcurrent active setでもbitwiseに再利用され、48件は非アクティブになった。証明資産を単調に保つため
+48件も削除せず、88 new recordだけを追加した444-record monotone inventoryを構成した。Q011asの6 source
+hullとmembershipもbitwiseに保存され、target merge、共役folding、label collapseは用いていない。
+
+relationを評価しない組合せcountは、`19942` modulus signature、最大`153` live signature、`8054` exact
+convolution、2 product-bound array `2448` bytesを与えた。original monomialは`2246535043109`、
+distinct／weighted comparison upperは`331524 / 46505597729848`だった。
+
+- projected wall／2倍safety seconds:
+  `177418964007/1154895680000 / 177418964007/577447840000`
+- 1.5倍tracemalloc／process-memory safety bytes: `113325 / 312748`
+- resource record digest:
+  `5fbf0c72d6aa8b468f140a7173538977237e4590de18e94fc35b53e5dbde7f0a`
+- active／monotone final record digest:
+  `537e3eb54d25dd8be80b49450226e5978c18d2cb490e31345c0e67228222d5d9` /
+  `efa60dc94609adf881016585bf7df04e8cb12ea23f35d03a908508a4f5018c8f`
+- scientific／actual degree-24 resonance outcome: `not_evaluated / not_evaluated`
+- input／inventory／envelope／resource／result digest:
+  `0109bd6dcac3685c4a414d4018779b1f013472fbb44b444eb33edab4a73bb358` /
+  `41ee0d1a6e37236f920436fce19dc4a32db1f112afe7ed3ad33d2c83a596171f` /
+  `8391403853a090ed93999aedc337dd6f6904db548679cf03f88b07c956e2c3a1` /
+  `3d7c25527cd76b4b3d69ad50a800b5cd6dcd3dcdfa68df5b2e0a91ce45d4ea92` /
+  `ad9f3e0286ef977602ce8472ab9ed3a6970f8d4b1932cee3403095990c6be289`
+- runner／artifact newline-normalized SHA-256:
+  `f34211ca52a08845a7453737b1c29c63ee0b5ba9d540b7c47e04c6308ba650a6` /
+  `a6e0ab8762fecc9ed006a1692b634cc5ad6937a3fcb909554ab8e352c0a74a2e`
+
+Q011apから変更しなかった7 absolute resource limitを全て通過し、resource decisionは
+`go_for_degree_twenty_four_coalesced_preregistration`となった。これはdegree-24 full sweepの資源適格性だけを
+示す。relation evaluation countは0であるため、certified degreesは2--23、tail-certifiedは91以降、missing
+rangeは24--90のままである。次はQ011bd full sweepの成功・棄却条件を事前登録する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -8204,6 +8243,8 @@ conservation leaf、登録degree-23 external relationだけに限る。次はQ01
 [`artifacts/q011ba_degree23_resource_estimate.json`](artifacts/q011ba_degree23_resource_estimate.json)
 
 [`artifacts/q011bb_degree23_coalesced_sweep.json`](artifacts/q011bb_degree23_coalesced_sweep.json)
+
+[`artifacts/q011bc_degree24_resource_estimate.json`](artifacts/q011bc_degree24_resource_estimate.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

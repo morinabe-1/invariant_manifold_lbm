@@ -22293,6 +22293,33 @@ GoならQ011bdで入力、全524 aggregate、全372 current target、outward ari
 固定して正式full sweepを事前登録する。Stopなら最初のfailed resource dimensionだけを改善し、inconclusiveなら
 最初のvalidity failureだけを修正する。
 
+### Q011bc 封印結果
+
+全6 validity gateと全7 resource gateが通過した。Q011bbまでの33 artifact、162 direct digest、degree-24
+inventory、444-record monotone inventory、6 source hull、全固定resource countを再現した。relation evaluation
+countは0である。
+
+- aggregate／old separated／overlap: `2925 / 2401 / 524`
+- selected／target／prior／inactive retained／added／final: `24 / 372 / 356 / 48 / 88 / 444`
+- modulus signature／peak／two-array bytes: `19942 / 153 / 2448`
+- convolution／distinct／weighted comparison upper: `8054 / 331524 / 46505597729848`
+- scientific／actual degree-24 resonance outcome: `not_evaluated / not_evaluated`
+- input／inventory／envelope／resource／result digest:
+  `0109bd6dcac3685c4a414d4018779b1f013472fbb44b444eb33edab4a73bb358` /
+  `41ee0d1a6e37236f920436fce19dc4a32db1f112afe7ed3ad33d2c83a596171f` /
+  `8391403853a090ed93999aedc337dd6f6904db548679cf03f88b07c956e2c3a1` /
+  `3d7c25527cd76b4b3d69ad50a800b5cd6dcd3dcdfa68df5b2e0a91ce45d4ea92` /
+  `ad9f3e0286ef977602ce8472ab9ed3a6970f8d4b1932cee3403095990c6be289`
+- runner／artifact newline-normalized SHA-256:
+  `f34211ca52a08845a7453737b1c29c63ee0b5ba9d540b7c47e04c6308ba650a6` /
+  `a6e0ab8762fecc9ed006a1692b634cc5ad6937a3fcb909554ab8e352c0a74a2e`
+
+resource decisionは`go_for_degree_twenty_four_coalesced_preregistration`となった。certified degreesは2--23
+および91以降、missing rangeは24--90のままである。本結果は固定17² repaired exact map、fixed conservation
+leaf、degree-24 full sweepの設計資源に限定され、degree-24 external nonresonance、actual resonance、minimum
+gap、all-order result、SSM existence／uniquenessを認証しない。次はQ011bdとして全524 overlap aggregateの
+正式full sweepを事前登録する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
