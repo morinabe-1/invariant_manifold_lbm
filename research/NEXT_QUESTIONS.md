@@ -26028,6 +26028,136 @@ degree-34全分離、actual resonanceは未評価である。Q011bxの`rejected`
 `partition_inert_persistent`、certified degrees 2--33および91以降、missing 34--90は変更しない。
 停止規則どおり、次はQ011cbでQ011bxの第2未解決aggregate `2340`を監査する。
 
+## Q011cb: second-aggregate first-overlap blockwise refinement — 事前登録
+
+### 問い
+
+Q011bxの第2未解決aggregate `2340`には48 coalesced signatureと16 targetの768 comparisonがあり、736 strict、
+32 overlapだった。このaggregate全体を15 original blockwise classへ直接展開すると93,139,200 signatureになる。
+Q011cbでは事後的なclass選択を避けつつresource contractを守るため、Q011bx順序でこのaggregate内の辞書順最初の
+coalesced overlap witnessだけを固定し、そのcoalesced signatureが占有する9 original blockwise classへ戻す。
+
+問いは、この1 parent witness familyの全compatible refined signatureが、targetを変更せずstrict modulus intervalで
+分離するかである。これはaggregate `2340`全体、残る31 coalesced overlap、degree-34全体を判定するgateではない。
+
+### sealed Q011ca input
+
+Q011caまでの58 artifact、runner、274 direct digest、validity passed、outcome
+`component_safe_phase_resolved`を固定する。
+
+- Q011ca artifact／runner newline-normalized SHA-256:
+  `df97cbade918c7b71fee33be97779b4615982c13a8f3fbd7715255ba8ee1b1ae` /
+  `a4fc7f9bbcee84b587cd57721636e826070ae8a0ec1237c7e2a29f1bc11cc253`
+- Q011ca input／phase-input／allocation／comparison／result digest:
+  `f404ad913fd8b46298b70a6e333489ad0cd2d1a7b7ee42789dc943facf761251` /
+  `88b59df6111f44524da55737bccfa3675ac1f8a24b77e56e7406f58bd8e95fa4` /
+  `323f5249f5c2b827bf125ef74af9a9dd67c6eae2afd41213d8e28f1e426d8cc4` /
+  `e56d72fef79d91f307173985b322d52c0f4152be4ac20ed949f03ca99c720193` /
+  `8b0e9c1b02231c950ef117b6517ffce97dbd1383617d84ad8d79e3a92febca2c`
+
+Q011ca sealed chainは57 prior artifactと269 direct digestを持つため、Q011caの5 section digestを加えたQ011cb
+inputは58 artifact／274 direct digestでなければならない。
+
+### 固定parent witness
+
+- parent aggregate index: `2340`
+- selected type counts: `[13,9,5,7]`
+- external group index: `[97]`
+- parent target count／target-group digest:
+  `16 / 3ba064cd1fb2cfb330e31b18b8cfffbd64da7ed60e03a529ab8b3b9d6693266e`
+- parent aggregate record digest:
+  `89fc350db6a53cb9dfb4ae76159ec2b4c2cdb38836e42211f2b8a98f9d04341c`
+- parent coalesced signature／comparison／relation counts:
+  `48 / 768 / overlap=32, target_below_product=736, product_below_target=0`
+- parent original／compatible original monomial:
+  `3277719244800 / 768495398240`
+- fixed target／output block: `block=7;center=44 / 7`
+- parent left／right index、wave multiplicity、block-zero multiplicity:
+  `0 / 0 / 629841280 / 0`
+- parent merged-class counts: `[[13],[9],[0,5],[0,7]]`
+- parent intersection width／center-only relation／gap:
+  `0x1.2ce2f11752629p-31 / target_below_product / 0x1.31de02af5b67ap-28`
+- parent exact witness digest:
+  `5adbaf7e28575c5dc1bda880244b3399f0d65479bb10ba6b46e511df9ea14a58`
+
+### 固定refinement
+
+parent witnessが占有するmerged classだけを、次のoriginal blockwise classへ戻す。
+
+1. group 0、degree 13: centers `142,143,144,145`の4個の`block=16/1` pair
+2. group 1、degree 9: centers `150,151`の2個の`block=16/1` pair
+3. group 2、degree 5: center `152`の1個の`block=16/1` pair
+4. group 3、degree 7: centers `148,149`の2個の`block=16/1` pair
+
+class countは`[4,2,1,2]`、selected identifierは18個である。
+
+- refined class-membership digest:
+  `2a474335f20f4923ff147d831062f57145828216010bad67e5f15ed0ca31133f`
+- selected identifier／record digest:
+  `77ec8c096490621edbee63e73c18044cd8220953030119a00dbc360c873735ac` /
+  `616221535afe55a8c5074848d659ffb7bf0a4499404185c8006946abd488d819`
+- unchanged target record digest:
+  `8fead9d0902e3aa3cf2ad0c5b8eb3996a58ce6614f2e76176f21f2c1b5797c71`
+- class-signature／individual-source monomial upper:
+  `44800 / 12279168000`
+- left／right／combined signature size: `5600 / 8 / 44800`
+- class-power／group-signature／pair-pool／convolution count:
+  `93 / 579 / 2 / 7885`
+- class-power／group-signature／pair-pool digest:
+  `4f3f082ab45e8b743a22d9315a472a6a11bfe4504e569d8743117e7dff49e438` /
+  `f5477dcb209f78f4614867753385d89fc96ea921e39f91b5d9faa7268c0f8ef9` /
+  `dbdffe49d1db1768ba071671e0469ec4efa0246cfa5f6047849b7099ae2cae62`
+
+full aggregateの93,139,200 signature、他15 target、他31 coalesced overlapは走査しない。target folding、complex
+phase、事後的class splitも使わない。
+
+### 算術・resource contract
+
+各classのQ011z exact modulus intervalとFourier multiplicityを用い、Q011byと同じhierarchical productを
+outward-rounded binary64で評価する。output blockは7、targetは1個に固定し、wave multiplicityはexact int64 cyclic
+convolutionで求める。全compatible refined signatureのmultiplicity和がparent `629841280`とexactに一致することを
+validity条件とする。
+
+product lower／upper配列は各44,800 float64、合計`716800` byte以下とする。full individual monomial listとfull
+classification matrixはartifactへ保持せず、bound／coefficient／classificationのframed digest、global minimum
+separated witness、辞書順first unresolved witnessだけを保存する。全integer crude boundは`2^63`未満、全分類は
+`product_below_target`、`target_below_product`、`overlap`の排他的3分類とする。
+
+### validity gate
+
+1. Q011caまでの58 artifact、runner、274 direct digest、outcome、claim boundaryが再現する。
+2. Q011bx aggregate `2340`のrecord、32 overlap、固定parent witnessと全digestが再現する。
+3. Q011bw inventory、9 refined class、18 selected record、target record、hull containmentが再現する。
+4. 44,800 class signature、12,279,168,000 individual upper、factorization resourceとdigestが再現する。
+5. exact convolutionが非負でfiber sumを保存し、compatible multiplicity和が629,841,280に一致する。
+6. outward product interval、exclusive classification、exact witness、finite strict JSONが通る。
+7. input／refinement／sweep／result digestとrunner provenanceが再現する。
+
+一つでも失敗すれば`inconclusive`とし、最初のvalidity failureだけを修正する。
+
+### diagnostic stopping rule
+
+validity通過後、全compatible refined signatureがstrictで、global minimum outward／exact gapがともにpositiveなら
+classificationを`the second Q011bx aggregate first overlap is resolved by the registered blockwise partition`、outcomeを
+`resolved`とする。これはparent witness familyの解消であってaggregate `2340`全体の解消ではない。次はQ011ccで
+同aggregateの辞書順next coalesced overlap witnessを監査する。
+
+一つでもoverlapが残ればclassificationを
+`the second Q011bx aggregate first overlap persists under the registered blockwise partition`、outcomeを
+`persistent`とする。次はQ011ccで辞書順first persistent refined witnessだけをindividual-disc partitionへ分ける。
+interval overlapはactual resonanceの証明ではない。
+
+どちらでもQ011bxの`rejected`、Q011byの`persistent`、Q011bzの`partition_inert_persistent`、Q011caの
+`component_safe_phase_resolved`、actual outcome `not_established`、certified degrees 2--33と91以降、missing
+34--90を変更しない。
+
+### 主張境界
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 parent aggregate `2340`、その辞書順最初の
+coalesced overlap signature、固定target `block=7;center=44`だけを扱う。他31 parent overlap、他15 target、aggregate
+2340全体、aggregate 972の他signature、degree-34全分離、actual resonance、all-order nonresonance、higher
+smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
