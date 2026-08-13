@@ -9548,6 +9548,37 @@ gateとtestで確認した。これはordinal 6だけのresolutionである。or
 後続44,793 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011cqで登録順のordinal 7を
 監査する。
 
+### Q011cq 実行結果
+
+Q011cpまでの73 artifact／341 direct digestを封印し、Q011cb C-order flatten ordinal 7、`(left,right)=(0,7)`を
+再構成した。class counts `[[0,0,0,13],[0,9],[5],[7,0]]`のpositive-count classを8 singletonへ分け、full 6,720
+allocation中output block 7にcompatibleな382件を監査した。全382件でexact／outward relationはoverlap、product、center
+product、target、intersection、center-only diagnosticはparentとexactに同一だった。全7 validity gateと全4 diagnostic
+gateを通過し、outcomeは`partition_inert_persistent`となった。
+
+- full／compatible allocation: `6720 / 382`
+- parent width／center relation／gap:
+  `0x1.9d49030f29fb8p-32 / target_below_product / 0x1.3aa02fcb43b19p-28`
+- parent witness／allocation record digest:
+  `ec8ac7bf477b2456b75cd671ad2c26f02fc08686425d83ddcc211000c3a180f8` /
+  `21e135468c9c03c73927cdb423dfbd258ad15a54b56cd2a589da723fbd53b855`
+- full／compatible allocation digest:
+  `44ba5fda9f1d5c7512d2008e655865d4b2e8f04698e196093067d887952d110f` /
+  `ddb8dd5db8780f285cca94fbc0c1b57f540259841a03631b211d8605becc5b60`
+- input／partition／allocation／result digest:
+  `bc327d381eee5a285d5fc35b0543e16050c65e57dcd4e43a405c97edab3732e3` /
+  `c42fa3b0729531f0123498591ae56ded15526347a3ae680d59486d10929bc4b7` /
+  `d24be289597289e30edc367825e37b89526659aebe9c055e10139aef94b8d7f9` /
+  `72c1bb458bb8ce2b77f152922e9c96a69de33ffc2df30948ed6a1a56ee73aff2`
+- runner／artifact newline-normalized SHA-256:
+  `db9be5e8652b16ebe42ff8d46e9b7f4703ca4cdf4ae93d98d6eaf138cb0a0595` /
+  `7f07489552736b5c5105aa64929870f5cf22bdd430be012ced1acb8eb0282e0b`
+
+Q011ckのpartition protocolには登録定数と8-identifier順序を一時差替えして再利用し、呼出し後のglobal復元をgateとtestで
+確認した。これはordinal 7だけのpartition診断である。ordinal 0--6のphase resolutionと既存認証範囲は不変で、後続
+44,792 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011crで登録382 wave allocation
+だけをcomponent-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9867,6 +9898,8 @@ gateとtestで確認した。これはordinal 6だけのresolutionである。or
 [`artifacts/q011co_degree34_seventh_individual_partition_audit.json`](artifacts/q011co_degree34_seventh_individual_partition_audit.json)
 
 [`artifacts/q011cp_degree34_seventh_component_safe_phase_discs.json`](artifacts/q011cp_degree34_seventh_component_safe_phase_discs.json)
+
+[`artifacts/q011cq_degree34_eighth_individual_partition_audit.json`](artifacts/q011cq_degree34_eighth_individual_partition_audit.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
