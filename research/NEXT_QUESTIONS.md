@@ -28757,6 +28757,35 @@ relation、strict JSON、section／runner digest、protocol global復元を検�
 他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、
 SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011cs 封印結果（partition inert persistent）
+
+Q011crまでの75 artifact／350 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。登録flatten
+ordinal 8のpositive-count classを10 singletonへ分け、full 12,096 allocation中output block 7にcompatibleな685件を
+全数監査した。全685件でexact／binary64 outward relationはoverlapで、product、center product、target、intersection、
+center-only diagnosticはparentとexactに同一だった。従ってoutcomeは`partition_inert_persistent`となった。
+
+- full／compatible allocation: `12096 / 685`
+- parent width／center relation／gap:
+  `0x1.bc6d604faf855p-32 / target_below_product / 0x1.39a7236b19f0dp-28`
+- parent witness／allocation record digest:
+  `224d86c6a608ee1de359b9474b3286aeb756c5615d33e9779556dacd52928513` /
+  `f8451f0ea15a7b4280b88bebdce76c40722af5f094b058a7c40d8d52c4bed8a7`
+- full／compatible allocation digest:
+  `adf3f42b70e0f8889cf71e43c59892849ecd7910b0f5581efc8ca68270d25998` /
+  `834ed5804493c9ebc814629020e61b5f216d6192048533bc51d5ea0f606b5947`
+- input／partition／allocation／result digest:
+  `8eb02dd122b16ffdd812bc0a7a0596a34dda00b9df10ee1a161de83290ecf9e4` /
+  `7ea731075f2bb4697425a85cf1356e59caaf425a4cb0ce471f1503be9f7b2ee2` /
+  `f55170c64af0d81e80063adae0005038d83c3bcba16b7ae10d1a1838dc7fb855` /
+  `fbb1707d8f0cb382754be45fa950ae3ce288e6946d891c3682b5f194691d667c`
+- runner／artifact newline-normalized SHA-256:
+  `a2e7490202164704574d29ead3567765ac6da90d50ff0d0a8439a4a707a6f47f` /
+  `49545c7750f0fc79725f5b3f95c709c429bcbd4c24ddbc2afeb068ee517d2a5f`
+
+これはordinal 8だけのmodulus partition診断であり、ordinal 0--7のphase resolutionと既存認証範囲は不変である。
+後続44,791 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011ctで
+登録685 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
