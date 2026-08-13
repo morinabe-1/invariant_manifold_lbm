@@ -26696,6 +26696,50 @@ sealed resolutionとして選択確認にだけ使う。後続44,798 refined sig
 aggregate全体、aggregate 972、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM
 existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ce 封印結果（partition-inert persistent）
+
+Q011cdまでの61 artifact、runner、287 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+Q011cbのC-order flatten ordinal 1、`(left,right)=(0,1)`をexactに再構成した。class countsは
+`[[0,0,0,13],[0,9],[5],[1,6]]`、wave multiplicityは665、parent witness digestは
+`415e3a2a6d2fbf7d2cab5e40cdfb52e587f82a4e581ed4e10e53b18c840b88d3`である。ordinal 0がQ011cdで解消済みであることも
+sealed artifactから再確認した。
+
+5 occupied `block=16/1` pairを10 singleton identifierへ戻し、full 11,760 allocationのうちoutput block 7にcompatibleな
+665件をexact rational modulus intervalで監査した。665件はparent wave multiplicity 665を一対一に分割した。pair内の
+center／modulus intervalは全てexactに同一だったため、全product、target、intersection、center-only diagnosticは
+parentと完全に同一であり、exact／outward relationはどちらも全件overlapだった。classificationは
+`the individual-disc partition is interval-inert for the next Q011cb witness`、outcomeは
+`partition_inert_persistent`である。
+
+- full／compatible allocation: `11760 / 665`
+- exact／outward relation: `overlap=665`、strict `0`
+- first／last count vector:
+  `[0,13,0,9,0,5,0,1,5,1] / [13,0,9,0,0,5,0,1,0,6]`
+- parent allocation full／compatible index: `11676 / 664`
+- full／compatible allocation digest:
+  `46735be8f587d5ae465e9dee830a4337c09c4566f42ec87973499d57d172c46e` /
+  `700afe176e8a13cdf4230dba288e2aa6b9db6aae9db24c5629d0dca4ff9c875e`
+- parent product／target／intersection digest:
+  `d183ec7ddab4a55e3a9d87c7aa8f900be9e71f23b9cc932dcbf174582a7e7fc4` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `d2efd6ea013adda44df2a43f4bd9c84f9cbe789e663e8d1e362d84399ee8732c`
+- allocation record digest:
+  `1b3dc935769d19e24be10148b435a20ce83b2165580f0bd8263d5d39f10378a4`
+- input／partition／allocation／result digest:
+  `92c443100511d6a9667709a846fcafd5e1749b11fafb46f9e944f88aad22c332` /
+  `63b40ea5b2b91dd30a70f8c284b903e9eaa6a2215ebce72bcf70df6eb1676da7` /
+  `aee34dfd055179c84ea99610ce7d3127daa151fb4d4715ff73dfd67268857f7e` /
+  `d0b90c1b41384ed7200871c727238e1056d5615de65ae1c063d469b7a6bb0e4b`
+- runner／artifact newline-normalized SHA-256:
+  `732cec8806d444105dbab7f58822a062e4d60d52571319492c232fb5b39e0674` /
+  `c7114c1e1b087878c4324edd14a0be54d12b195e7b8324d8d4e13db5ef0d44a3`
+
+これはordinal 1のidentifier relabelingが現行modulus certificateを改善しないという診断であり、actual resonanceを
+確立しない。Q011cd ordinal-0 resolution、Q011cb aggregate-level persistence、certified degrees 2--33と91以降、
+missing 34--90は不変である。後続44,798 signature、他31 parent overlap、他15 target、aggregate `2340`全体、
+degree-34全体は未判定である。停止規則どおり、次はQ011cfで登録665 wave allocationだけをcomponent-safe
+complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
