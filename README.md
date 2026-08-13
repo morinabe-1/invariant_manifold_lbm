@@ -5571,6 +5571,32 @@ positiveだった。従って`complex_phase_separation=20786`、`unresolved_prod
 overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonanceは未判定である。次はQ011cmで
 登録順のordinal 5を監査する。
 
+### Q011cm second-family sixth-witness individual partition audit
+
+Q011clまでの69 artifact／323 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。Q011cb
+flatten ordinal 5、class counts `[[0,0,0,13],[0,9],[5],[5,2]]`を10 singletonへ戻した。full 15,120 allocation中
+852件がoutput block 7にcompatibleで、parent wave multiplicity 852をexactに分割した。全852件のexact／outward
+relationはoverlapで、product、center product、target、intersection、center-only diagnosticもparentとexactに同一だった。
+従ってoutcomeは`partition_inert_persistent`である。
+
+- parent width／center relation／gap:
+  `0x1.9d493a31c12fap-32 / target_below_product / 0x1.3aa03482b6846p-28`
+- parent witness／allocation record digest:
+  `7800af5426475e0b7daed7d321668193f63aa0693c8ec430f6b7c0c0c00ab6a5` /
+  `c6d0506868264b9de7ac784730f02bd09f61c57b1bacd4cccbdc4dac1c9c3dff`
+- input／partition／allocation／result digest:
+  `5e960b6377a50e0ac609372810d46b4886b7476963b6fd2ce5d5054f9c1c3601` /
+  `e54bbb6e88d032d6c0c3a5c18ad4ae6cd746eaa0f9fcb8ab5cafa516b8b6c902` /
+  `b2e446405ccef8db32dbcc60f55d229527ba8bf9575b44d801ac847afdefb2f2` /
+  `7a743070e57327e82b72bc74b10a8b59ded71dd7e73a19507777fad7325383c5`
+- runner／artifact newline-normalized SHA-256:
+  `47e81246cc6e091a7a173e7142629cfda81e6366d180d65aa9f18810e13bdbfa` /
+  `7539aafb65655c245c30bf6a89d312c4f89bcfac42addbeb80b42409aca6efef`
+
+これはordinal 5だけのpartition診断である。ordinal 0--4のphase resolution、aggregate-level `persistent`、certified
+degrees 2--33と91以降、missing 34--90は不変である。後続44,794 signature、aggregate `2340`全体、degree-34
+nonresonance、actual resonanceは未判定である。次はQ011cnで登録852 wave allocationだけをcomplex phaseへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -6305,6 +6331,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011cj_degree34_fourth_component_safe_phase_discs.json`](research/artifacts/q011cj_degree34_fourth_component_safe_phase_discs.json)
 - [`research/artifacts/q011ck_degree34_fifth_individual_partition_audit.json`](research/artifacts/q011ck_degree34_fifth_individual_partition_audit.json)
 - [`research/artifacts/q011cl_degree34_fifth_component_safe_phase_discs.json`](research/artifacts/q011cl_degree34_fifth_component_safe_phase_discs.json)
+- [`research/artifacts/q011cm_degree34_sixth_individual_partition_audit.json`](research/artifacts/q011cm_degree34_sixth_individual_partition_audit.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -6562,6 +6589,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   exact intervalが全て親と同一となるpartition-inert診断
 - Q011cl Q011ckの945 wave allocationを20,786 component-safe phase allocationへ展開し、
   modulus-overlap全件をexact complex phaseで分離したordinal-4 resolution
+- Q011cm Q011cb flatten ordinal 5を10 singleton／852 compatible allocationへ戻し、
+  exact intervalが全て親と同一となるpartition-inert診断
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -6941,4 +6970,6 @@ phaseで全件を分離した。これはordinal 3だけの解消であり、deg
 parentとexact同一でoverlapした。これはordinal 4だけのpartition診断であり、次はこの945 wave allocationだけを
 component-safe complex phase discへ展開する。Q011clで20,786 phase allocationを全件監査し、modulusではoverlapのまま、
 exact complex phaseで全件を分離した。これはordinal 4だけの解消であり、degree-34全体の認証ではない。次はQ011cb
-登録順のordinal 5を監査する。
+登録順のordinal 5を監査する。Q011cmでは852 compatible allocationを全件監査したが、全intervalがparentとexact同一で
+overlapした。これはordinal 5だけのpartition診断であり、次はこの852 wave allocationだけをcomponent-safe complex
+phase discへ展開する。
