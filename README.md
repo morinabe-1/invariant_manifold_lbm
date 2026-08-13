@@ -5626,6 +5626,32 @@ positiveだった。従って`complex_phase_separation=18718`、`unresolved_prod
 overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonanceは未判定である。次はQ011coで
 登録順のordinal 6を監査する。
 
+### Q011co second-family seventh-witness individual partition audit
+
+Q011cnまでの71 artifact／332 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。Q011cb
+flatten ordinal 6、class counts `[[0,0,0,13],[0,9],[5],[6,1]]`を10 singletonへ戻した。full 11,760 allocation中
+665件がoutput block 7にcompatibleで、parent wave multiplicity 665をexactに分割した。全665件のexact／outward
+relationはoverlapで、product、center product、target、intersection、center-only diagnosticもparentとexactに同一だった。
+従ってoutcomeは`partition_inert_persistent`である。
+
+- parent width／center relation／gap:
+  `0x1.9d491ea075959p-32 / target_below_product / 0x1.3aa03226fd1afp-28`
+- parent witness／allocation record digest:
+  `691a3a4253ad8a448c49ee75c6c23b89d5e50a373443ed4d913693a48cde04ea` /
+  `f88afc7a2ae3f395ab86e294cd5add020004ff753c6d4385f9a8d1e0186bd0b7`
+- input／partition／allocation／result digest:
+  `115fe27f40ab005b028229b5e17462bcd8e4813ad9afc0fe7568ea5382840ef2` /
+  `02bab6d3f596dfe6ad3ca14cc8cce593c19f8348dcc91a0614bf6479335b32f7` /
+  `c5f9e0feeb15bc7518318a5b947c72f36b712e952c175c12026eb987eb97ec9b` /
+  `8a21404d10845e139ca457fabaa96df347ea4c2a5cb66bf72d4fcafe66071690`
+- runner／artifact newline-normalized SHA-256:
+  `a4de9650b41b0eb9668abd52cd87fe4fe1ffd7ef361a4667ac1c0210bc053f71` /
+  `46acbd33138d694c655bba86056e096def9fcd0585a958051440a9393b0bb201`
+
+これはordinal 6だけのpartition診断である。ordinal 0--5のphase resolution、aggregate-level `persistent`、certified
+degrees 2--33と91以降、missing 34--90は不変である。後続44,793 signature、aggregate `2340`全体、degree-34
+nonresonance、actual resonanceは未判定である。次はQ011cpで登録665 wave allocationだけをcomplex phaseへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -6362,6 +6388,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011cl_degree34_fifth_component_safe_phase_discs.json`](research/artifacts/q011cl_degree34_fifth_component_safe_phase_discs.json)
 - [`research/artifacts/q011cm_degree34_sixth_individual_partition_audit.json`](research/artifacts/q011cm_degree34_sixth_individual_partition_audit.json)
 - [`research/artifacts/q011cn_degree34_sixth_component_safe_phase_discs.json`](research/artifacts/q011cn_degree34_sixth_component_safe_phase_discs.json)
+- [`research/artifacts/q011co_degree34_seventh_individual_partition_audit.json`](research/artifacts/q011co_degree34_seventh_individual_partition_audit.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -6623,6 +6650,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   exact intervalが全て親と同一となるpartition-inert診断
 - Q011cn Q011cmの852 wave allocationを18,718 component-safe phase allocationへ展開し、
   modulus-overlap全件をexact complex phaseで分離したordinal-5 resolution
+- Q011co Q011cb flatten ordinal 6を10 singleton／665 compatible allocationへ戻し、
+  exact intervalが全て親と同一となるpartition-inert診断
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -7006,3 +7035,5 @@ exact complex phaseで全件を分離した。これはordinal 4だけの解消�
 overlapした。これはordinal 5だけのpartition診断であり、次はこの852 wave allocationだけをcomponent-safe complex
 phase discへ展開する。Q011cnで18,718 phase allocationを全件監査し、modulusではoverlapのまま、exact complex phaseで
 全件を分離した。これはordinal 5だけの解消であり、degree-34全体の認証ではない。次はQ011cb登録順のordinal 6を監査する。
+Q011coでは665 compatible allocationを全件監査したが、全intervalがparentとexact同一でoverlapした。これはordinal 6
+だけのpartition診断であり、次はこの665 wave allocationだけをcomponent-safe complex phase discへ展開する。

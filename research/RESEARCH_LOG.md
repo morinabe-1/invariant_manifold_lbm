@@ -9485,6 +9485,37 @@ gateとtestで確認した。これはordinal 5だけのresolutionである。or
 後続44,794 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011coで登録順のordinal 6を
 監査する。
 
+### Q011co 実行結果
+
+Q011cnまでの71 artifact／332 direct digestを封印し、Q011cb C-order flatten ordinal 6、`(left,right)=(0,6)`を
+再構成した。class counts `[[0,0,0,13],[0,9],[5],[6,1]]`を10 singletonへ分け、full 11,760 allocation中
+output block 7にcompatibleな665件を監査した。全665件でexact／outward relationはoverlap、product、center product、
+target、intersection、center-only diagnosticはparentとexactに同一だった。全7 validity gateと全4 diagnostic gateを
+通過し、outcomeは`partition_inert_persistent`となった。
+
+- full／compatible allocation: `11760 / 665`
+- parent width／center relation／gap:
+  `0x1.9d491ea075959p-32 / target_below_product / 0x1.3aa03226fd1afp-28`
+- parent witness／allocation record digest:
+  `691a3a4253ad8a448c49ee75c6c23b89d5e50a373443ed4d913693a48cde04ea` /
+  `f88afc7a2ae3f395ab86e294cd5add020004ff753c6d4385f9a8d1e0186bd0b7`
+- full／compatible allocation digest:
+  `8eb0864c845e98bc78a17228c12c6c073605d470ada26caa4f673f3782c640fb` /
+  `ddb902ffaa442c353438962da8b25bcecc34bf8d8ebafc097a260a26579746bb`
+- input／partition／allocation／result digest:
+  `115fe27f40ab005b028229b5e17462bcd8e4813ad9afc0fe7568ea5382840ef2` /
+  `02bab6d3f596dfe6ad3ca14cc8cce593c19f8348dcc91a0614bf6479335b32f7` /
+  `c5f9e0feeb15bc7518318a5b947c72f36b712e952c175c12026eb987eb97ec9b` /
+  `8a21404d10845e139ca457fabaa96df347ea4c2a5cb66bf72d4fcafe66071690`
+- runner／artifact newline-normalized SHA-256:
+  `a4de9650b41b0eb9668abd52cd87fe4fe1ffd7ef361a4667ac1c0210bc053f71` /
+  `46acbd33138d694c655bba86056e096def9fcd0585a958051440a9393b0bb201`
+
+Q011ckのpartition protocolを登録定数だけ一時差替えして再利用し、呼出し後のglobal復元をgateとtestで確認した。これは
+ordinal 6だけのpartition診断である。ordinal 0--5のphase resolutionと既存認証範囲は不変で、後続44,793 signature、
+aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011cpで登録665 wave allocationだけを
+component-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9800,6 +9831,8 @@ gateとtestで確認した。これはordinal 5だけのresolutionである。or
 [`artifacts/q011cm_degree34_sixth_individual_partition_audit.json`](artifacts/q011cm_degree34_sixth_individual_partition_audit.json)
 
 [`artifacts/q011cn_degree34_sixth_component_safe_phase_discs.json`](artifacts/q011cn_degree34_sixth_component_safe_phase_discs.json)
+
+[`artifacts/q011co_degree34_seventh_individual_partition_audit.json`](artifacts/q011co_degree34_seventh_individual_partition_audit.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
