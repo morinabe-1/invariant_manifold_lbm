@@ -9149,6 +9149,49 @@ outcomeは`partition_inert_persistent`である。
 後続44,798 signature、他31 parent overlap、他15 target、aggregate `2340`全体、degree-34全体は未判定で、
 次はQ011cfで登録665 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+### Q011cf 実行結果
+
+Q011ceまでの62 artifact、runner、291 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+Q011an isolated singleton／2-row componentとQ011ak block discから12 source variantとtarget
+`block=7;center=44`を再構成した。full 258,720 allocationのうちoutput block 7にcompatibleな14,578件をexact
+complex product-discで監査した。Q011ceの665 wave allocationへのprojectionはexactに一致した。
+
+individual modulus relationは14,578件全てoverlapだった。一方、complex center distanceからproduct radiusとtarget
+radiusを差し引いたexact marginは全件strict positiveで、categoryは`complex_phase_separation=14578`、unresolved 0
+だった。従ってclassificationは
+`the component-safe complex phase discs resolve the next Q011cb persistent refined witness`、refinement outcomeは
+`component_safe_phase_resolved`となった。
+
+- full／compatible／wave-projection allocation: `258720 / 14578 / 665`
+- phase-fiber min／max／histogram: `10 / 30 / {10:136,18:133,24:132,28:132,30:132}`
+- unique product-radius signature: `10`
+- minimum margin index／counts／binary64 hex:
+  `9298 / [11,2,0,8,0,1,0,5,1,0,2,4] / 0x1.a8f10a6dc84e1p-6`
+- minimum witness／comparison-stream digest:
+  `57badc5d7675b78362958718cfc68036f87a34d11f88fe4cdd88c7c264932e3c` /
+  `e96de25a6f164de2af6b78be68217dfb33deba343594621d550a0ec6dd2a24eb`
+- full／compatible／wave-projection allocation digest:
+  `090de6a137c4cf2261d18899a0110c080dbdfffa3906da2c018e1c8453519412` /
+  `92ff284505c3deec0d3ef2e9e4766b137462e8e892c49a5ace1e2923cbe6bce1` /
+  `2bce224b8a062486a9ad4b826bccd09d4d1138aefe012bd014daa71ebd1c5133`
+- source／target record digest:
+  `1645c135887e33404974cf0fce47701c752eede5cb99d1643bc8d7d6d97846a7` /
+  `1d57fd229e0e60be3c14669cdd3d32fd7410f1037b548b3c338e28c0efd4ed78`
+- input／phase-input／allocation／comparison／result digest:
+  `9f6817900b519a4c4305ca4e5f8cdedf1dfc7900532588f245907378e84c2c60` /
+  `7ffe9b7e9f4a0364aecec556249dad7ae91607c1f37a5d7cfa67d6fbefa1cb41` /
+  `b6791697c4f0e6d0b6a966c01e35ae89ae0afd71e1cc07917358e0adae6cd267` /
+  `5242d2d9696585e2754013b14b5583f22c0f00d80503dbf8aa380a4ec07e94f9` /
+  `d7724710c591f1c63abec70cb7e9e37bfc1f45d3a4f1165b3f7b3ec6eed5c490`
+- runner／artifact newline-normalized SHA-256:
+  `d6c7af8fa781d80ac0dfc5a446a810ed45c5d6981b64a9aa0eb33d0d6efdb94b` /
+  `e12fd42292a42bb3203884fdedfacc8ac2a9027f3b621665573c74af77431806`
+
+これはQ011cb flatten ordinal 1の1 refined witnessだけのresolutionであり、ordinal 0のQ011cd resolution、Q011cb
+aggregate-level persistence、既存の認証範囲は不変である。後続44,798 signature、他31 parent overlap、他15 target、
+aggregate `2340`全体、degree-34全体は未判定で、次はQ011cgでQ011cb登録順のさらにnext refined
+overlapを監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9446,6 +9489,8 @@ outcomeは`partition_inert_persistent`である。
 [`artifacts/q011cd_degree34_second_component_safe_phase_discs.json`](artifacts/q011cd_degree34_second_component_safe_phase_discs.json)
 
 [`artifacts/q011ce_degree34_next_individual_partition_audit.json`](artifacts/q011ce_degree34_next_individual_partition_audit.json)
+
+[`artifacts/q011cf_degree34_next_component_safe_phase_discs.json`](artifacts/q011cf_degree34_next_component_safe_phase_discs.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
