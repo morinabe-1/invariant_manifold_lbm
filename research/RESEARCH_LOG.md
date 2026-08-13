@@ -9270,6 +9270,45 @@ radiusを差し引いたexact marginは全件strict positiveで、categoryは`co
 aggregate-level persistence、既存の認証範囲は不変である。後続44,797 signature、他31 parent overlap、他15 target、
 aggregate `2340`全体、degree-34全体は未判定で、次はQ011ciでQ011cb登録順のさらにnext refined overlapを監査する。
 
+### Q011ci 実行結果
+
+Q011chまでの65 artifact、runner、305 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+Q011cb C-order flatten ordinal 3、`(left,right)=(0,3)`のexact parent witnessを再構成した。class counts
+`[[0,0,0,13],[0,9],[5],[3,4]]`を10 singleton identifierへ戻し、full 16,800 allocationのうちoutput
+block 7にcompatibleな945件をexact rational modulus intervalで監査した。
+
+945件のexact relationとoutward binary64 relationは全てoverlapだった。product、center product、target、
+intersection、center-only diagnosticは全件parentとexactに同一である。従ってclassificationは
+`the individual-disc partition is interval-inert for the fourth Q011cb witness`、refinement outcomeは
+`partition_inert_persistent`となった。
+
+- parent class counts／wave multiplicity: `[[0,0,0,13],[0,9],[5],[3,4]] / 945`
+- parent intersection width／center-only relation／gap:
+  `0x1.9d4971545863bp-32 / target_below_product / 0x1.3aa0393a29573p-28`
+- full／compatible allocation count: `16800 / 945`
+- full／compatible allocation digest:
+  `2ca0da1bc360abb84f6f6062059e22c14dd7f232a774e9731755fb8b984f6202` /
+  `2dbdedc591941d50bc3029fae69135bce675da8b74f369e7c2228ed7f12ca3ca`
+- first／last compatible counts:
+  `[0,13,0,9,0,5,1,2,4,0] / [13,0,9,0,0,5,0,3,0,4]`
+- parent witness／allocation-classification digest:
+  `20896b071ab67e2be3f8c214727a0600ddb45987dcee0da4fdd3edf64d84bd14` /
+  `834f09c5c4c7c16166436dbf97770ba841599f7a98845134f0c2ce952ce8a990`
+- input／partition-input／allocation-audit／result digest:
+  `23c31f9aff320c06a988495ae9f0dc1da15b7f161527c8a775a0c260d92b0244` /
+  `cf0ee6a1dee99ed05810f4dd9c715e8618e17edfcdfaf06f0f97230cf3382518` /
+  `71dbd6ebd367cf015c54cf21b036e9fb48b152e145e81210f658715eaeae11be` /
+  `6fded001843d7bb729f40fab35d59b4c9b231c814a244b8585b1e8c9ced8cd97`
+- runner／artifact newline-normalized SHA-256:
+  `059c5cf346e74357b44d1da0bc198ce62b91618e8fe8a5e39412697a2bee2873` /
+  `e81f2cdc9b90d46a68fa005310a8a68d72365fe7d353ff88459e3073aa438093`
+
+Q011cgのexact partition protocolは登録定数を一時的に差し替えるadapterで再利用し、各呼出し後に全globalがbaselineへ
+復元したこともgateとtestで確認した。これはQ011cb flatten ordinal 3の1 refined witnessだけのpartition診断である。
+ordinal 0--2のphase resolution、Q011cb aggregate-level persistence、既存の認証範囲は不変である。後続44,796
+signature、他31 parent overlap、他15 target、aggregate `2340`全体、degree-34全体は未判定で、次はQ011cjで
+登録945 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9573,6 +9612,8 @@ aggregate `2340`全体、degree-34全体は未判定で、次はQ011ciでQ011cb�
 [`artifacts/q011cg_degree34_third_individual_partition_audit.json`](artifacts/q011cg_degree34_third_individual_partition_audit.json)
 
 [`artifacts/q011ch_degree34_third_component_safe_phase_discs.json`](artifacts/q011ch_degree34_third_component_safe_phase_discs.json)
+
+[`artifacts/q011ci_degree34_fourth_individual_partition_audit.json`](artifacts/q011ci_degree34_fourth_individual_partition_audit.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

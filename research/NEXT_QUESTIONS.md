@@ -27436,6 +27436,32 @@ sealed resolutionとして選択確認にだけ使う。後続44,796 refined sig
 aggregate全体、aggregate 972、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM
 existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### 実行結果
+
+Q011ciは全7 validity gateと全4 diagnostic gateを通過した。登録16,800 allocationのうちFourier-compatibleな
+945件はparent wave multiplicity 945をexactに分割したが、exact／outward relationは全件overlapだった。product、
+center product、target、intersection、center-only diagnosticも全945件でparentとexactに同一だった。
+
+- classification: `the individual-disc partition is interval-inert for the fourth Q011cb witness`
+- refinement outcome: `partition_inert_persistent`
+- exact／outward relation counts: `product_below_target=0 / target_below_product=0 / overlap=945`
+- full／compatible allocation: `16800 / 945`
+- parent witness／allocation record digest:
+  `20896b071ab67e2be3f8c214727a0600ddb45987dcee0da4fdd3edf64d84bd14` /
+  `834f09c5c4c7c16166436dbf97770ba841599f7a98845134f0c2ce952ce8a990`
+- input／partition-input／allocation-audit／result digest:
+  `23c31f9aff320c06a988495ae9f0dc1da15b7f161527c8a775a0c260d92b0244` /
+  `cf0ee6a1dee99ed05810f4dd9c715e8618e17edfcdfaf06f0f97230cf3382518` /
+  `71dbd6ebd367cf015c54cf21b036e9fb48b152e145e81210f658715eaeae11be` /
+  `6fded001843d7bb729f40fab35d59b4c9b231c814a244b8585b1e8c9ced8cd97`
+- runner／artifact newline-normalized SHA-256:
+  `059c5cf346e74357b44d1da0bc198ce62b91618e8fe8a5e39412697a2bee2873` /
+  `e81f2cdc9b90d46a68fa005310a8a68d72365fe7d353ff88459e3073aa438093`
+
+この結果はordinal 3のmodulus partitionだけに限られ、complex phase、後続44,796 signature、aggregate全体、
+degree-34全分離、actual resonanceを判定しない。登録停止規則に従い、次はQ011cjでこの945 wave allocationだけを
+component-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
