@@ -9309,6 +9309,47 @@ ordinal 0--2のphase resolution、Q011cb aggregate-level persistence、既存の
 signature、他31 parent overlap、他15 target、aggregate `2340`全体、degree-34全体は未判定で、次はQ011cjで
 登録945 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+### Q011cj 実行結果
+
+Q011ciまでの66 artifact、runner、309 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+Q011an isolated singleton／2-row componentとQ011ak block discから12 source variantとtarget
+`block=7;center=44`を再構成した。full 369,600 allocationのうちoutput block 7にcompatibleな20,786件をexact
+complex product-discで監査した。Q011ciの945 wave allocationへのprojectionはexactに一致した。
+
+individual modulus relationは20,786件全てoverlapだった。一方、complex center distanceからproduct radiusとtarget
+radiusを差し引いたexact marginは全件strict positiveで、categoryは`complex_phase_separation=20786`、unresolved 0
+だった。従ってclassificationは
+`the component-safe complex phase discs resolve the fourth Q011cb persistent refined witness`、refinement outcomeは
+`component_safe_phase_resolved`となった。
+
+- full／compatible／wave-projection allocation: `369600 / 20786 / 945`
+- phase-fiber min／max／histogram: `10 / 30 / {10:191,18:187,24:187,28:189,30:191}`
+- unique product-radius signature: `10`
+- minimum margin index／counts／binary64 hex:
+  `12816 / [11,2,0,6,0,3,0,5,3,0,2,2] / 0x1.a8f10a6dc85dep-6`
+- minimum witness／comparison-stream digest:
+  `4d81a833f38342bf959039d0b9e3f85fd2fc2edae6f7fde6aa7fe9f8f46e3a71` /
+  `161e3be5a8ffa0a8b0dcc74a5c28ac0a56162769dcb25b70bd0af45682d4a7e0`
+- full／compatible／wave-projection allocation digest:
+  `4eb0ee79fc33d41d36d7faa2385129adcbab79f8aace27c62dadf656af351ebb` /
+  `bf11be19ca0483b657e5e3e57e51a9a4171e6cfc51308d3a2722770a03a3ecc4` /
+  `efa34de86cb75d0cd08c3bb9a6232d67404c416145cf83fb4a30d83f15f8b1b0`
+- input／phase-input／allocation／comparison／result digest:
+  `d3ab02eba750af162063bf965070c507f91b935c6b75cc1c43aac0931219b229` /
+  `d4c887f40b560777b01d138bce3c00ead60c5bc95f96c951ceb37240f52205dc` /
+  `054c4afbeb381805643a423e5fd076f03860e03e6baa4f6da9eb168532374b51` /
+  `393299a9d43545eedbb5466b4114094d50a6c9440d63db4d9e3177409480e17a` /
+  `ffc6753ac0bdca0caf08200e14dd3ae03f631de57746a38aee0f3b887120baa4`
+- runner／artifact newline-normalized SHA-256:
+  `28ec0986f7960a1f1fc200b2637d1a7fb6f4fbf6418655127df4d4a7e276eff5` /
+  `05144319c3da7bd30e222097c117c76d14df204674c423d7ca85f9434fcd8892`
+
+Q011chのphase protocolは登録定数、power-table上限、stream domainを一時的に差し替えるadapterで再利用し、各呼出し後に
+全globalがbaselineへ復元したこともgateとtestで確認した。これはQ011cb flatten ordinal 3の1 refined witnessだけの
+resolutionである。ordinal 0--2のresolution、Q011cb aggregate-level persistence、既存の認証範囲は不変である。
+後続44,796 signature、他31 parent overlap、他15 target、aggregate `2340`全体、degree-34全体は未判定で、次は
+Q011ckでQ011cb登録順のさらにnext refined overlapを監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9614,6 +9655,8 @@ signature、他31 parent overlap、他15 target、aggregate `2340`全体、degre
 [`artifacts/q011ch_degree34_third_component_safe_phase_discs.json`](artifacts/q011ch_degree34_third_component_safe_phase_discs.json)
 
 [`artifacts/q011ci_degree34_fourth_individual_partition_audit.json`](artifacts/q011ci_degree34_fourth_individual_partition_audit.json)
+
+[`artifacts/q011cj_degree34_fourth_component_safe_phase_discs.json`](artifacts/q011cj_degree34_fourth_component_safe_phase_discs.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
