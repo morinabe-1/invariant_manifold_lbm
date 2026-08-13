@@ -28381,6 +28381,34 @@ unresolved 0かつglobal minimum marginがpositiveならclassificationを
 全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basin、
 他grid／force／wall、D3Q27を認証しない。
 
+### Q011cp 封印結果（component-safe phase resolved）
+
+Q011coまでの72 artifact／336 direct digestを再照合し、flatten ordinal 6の登録665 wave allocationをfull 258,720
+phase allocationへ展開して、output block 7にcompatibleな14,578件を全数監査した。665 wave projectionはexactに一致し、
+fiber sizeは10--30、和は14,578だった。全14,578件でmodulus relationはoverlapだったが、exact complex phase marginは
+全件strict positiveで、unresolvedは0件だった。全7 validity gateと全4 diagnostic gateを通過し、outcomeを
+`component_safe_phase_resolved`とした。
+
+- category counts: `0 / 14578 / 0`
+  (`individual_modulus_separation / complex_phase_separation / unresolved_product_disk_overlap`)
+- minimum margin／compatible index／counts:
+  `0x1.a8f10a6dc8860p-6 / 9166 / [11,2,0,5,0,4,0,5,5,1,1,0]`
+- minimum witness／comparison stream digest:
+  `1b7f6cc19a74cdefa602f28a6251f0c9b874cdd0a3a9b6f7ee438ea4618fea8d` /
+  `a4f98b1f04ba8060597dcf31fbce4d5408304082a77020744cb59cb1807aed21`
+- input／phase-input／allocation／comparison／result digest:
+  `d9c6a7d5b041b7bd6d9450909057c661953cbb34d601f9f877608b64e2eae5d1` /
+  `cfa6cfacbf58246791fdf7cbc89b3b05ec0a261bd226c4adce08105688a3280e` /
+  `1e5ca23bb127c01ec823f65012d05821ff3de229289155d4f4ec89d062a82075` /
+  `eaaac30c1fc4ba318ef0c6fd9ec2241a2b517934af8c29eebf4cd7b247864dc6` /
+  `66205c3fe78eb873817cfcbd3c06ed3e1f15aae8f2a668791523402deb59b301`
+- runner／artifact newline-normalized SHA-256:
+  `5b678936cc1095faa7cb43d8e66900d0698a59cf317d12ddce55d37b5fb3ab18` /
+  `06dc34b9f2aaf8fc1b6d41a6d55905056886fa3f8a1149b52d10203b7d381e96`
+
+これはflatten ordinal 6だけのresolutionであり、ordinal 0--5と既存認証範囲は不変である。後続44,793 signature、
+aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011cqで登録順のordinal 7を監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

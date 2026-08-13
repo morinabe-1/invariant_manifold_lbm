@@ -9516,6 +9516,38 @@ ordinal 6だけのpartition診断である。ordinal 0--5のphase resolutionと�
 aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011cpで登録665 wave allocationだけを
 component-safe complex phase discへ展開する。
 
+### Q011cp 実行結果
+
+Q011coまでの72 artifact／336 direct digestを封印し、Q011cb flatten ordinal 6の665 wave allocationをQ011an
+singleton／2-row componentとQ011ak block discに基づく12個のlabel-free source phase discへ展開した。full 258,720
+allocationのうちoutput block 7にcompatibleな14,578件をexact arithmeticで全数監査した。665 wave projectionはexactに
+一致し、fiber sizeは10--30、和は14,578だった。
+
+individual modulus relationは14,578件全てoverlapだった。一方、complex center distanceからproduct radiusとtarget
+radiusを引いたexact marginは全件strict positiveとなり、`complex_phase_separation=14578`、unresolved 0だった。global
+minimumはcompatible index 9166、counts `[11,2,0,5,0,4,0,5,5,1,1,0]`で、marginは
+`0x1.a8f10a6dc8860p-6`だった。全7 validity gateと全4 diagnostic gateを通過し、outcomeは
+`component_safe_phase_resolved`となった。
+
+- minimum witness digest:
+  `1b7f6cc19a74cdefa602f28a6251f0c9b874cdd0a3a9b6f7ee438ea4618fea8d`
+- comparison stream digest:
+  `a4f98b1f04ba8060597dcf31fbce4d5408304082a77020744cb59cb1807aed21`
+- input／phase-input／allocation／comparison／result digest:
+  `d9c6a7d5b041b7bd6d9450909057c661953cbb34d601f9f877608b64e2eae5d1` /
+  `cfa6cfacbf58246791fdf7cbc89b3b05ec0a261bd226c4adce08105688a3280e` /
+  `1e5ca23bb127c01ec823f65012d05821ff3de229289155d4f4ec89d062a82075` /
+  `eaaac30c1fc4ba318ef0c6fd9ec2241a2b517934af8c29eebf4cd7b247864dc6` /
+  `66205c3fe78eb873817cfcbd3c06ed3e1f15aae8f2a668791523402deb59b301`
+- runner／artifact newline-normalized SHA-256:
+  `5b678936cc1095faa7cb43d8e66900d0698a59cf317d12ddce55d37b5fb3ab18` /
+  `06dc34b9f2aaf8fc1b6d41a6d55905056886fa3f8a1149b52d10203b7d381e96`
+
+Q011clのphase protocolは登録定数、power-table上限、stream domainだけ一時差替えして再利用し、呼出し後のglobal復元を
+gateとtestで確認した。これはordinal 6だけのresolutionである。ordinal 0--5のresolutionと既存認証範囲は不変で、
+後続44,793 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011cqで登録順のordinal 7を
+監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9833,6 +9865,8 @@ component-safe complex phase discへ展開する。
 [`artifacts/q011cn_degree34_sixth_component_safe_phase_discs.json`](artifacts/q011cn_degree34_sixth_component_safe_phase_discs.json)
 
 [`artifacts/q011co_degree34_seventh_individual_partition_audit.json`](artifacts/q011co_degree34_seventh_individual_partition_audit.json)
+
+[`artifacts/q011cp_degree34_seventh_component_safe_phase_discs.json`](artifacts/q011cp_degree34_seventh_component_safe_phase_discs.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
