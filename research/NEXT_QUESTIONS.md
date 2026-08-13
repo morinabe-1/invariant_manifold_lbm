@@ -27072,6 +27072,44 @@ sealed resolutionとして選択確認にだけ使う。後続44,797 refined sig
 aggregate全体、aggregate 972、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM
 existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011cg 封印結果（partition inert persistent）
+
+Q011cfまでの63 artifact、runner、296 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+Q011cb C-order flatten ordinal 2のparent witness、5 occupied pair、10 singleton identifier、full 15,120 allocation、
+output block 7 compatible 852 allocationを事前登録どおり再構成した。
+
+852件のexact／outward relationは全てoverlapだった。product、center product、target、intersection、center-only
+diagnosticは全件parentとexactに同一である。従ってclassificationは
+`the individual-disc partition is interval-inert for the third Q011cb witness`、outcomeは
+`partition_inert_persistent`となった。
+
+- parent class counts／wave multiplicity: `[[0,0,0,13],[0,9],[5],[2,5]] / 852`
+- parent intersection width／center-only relation／gap:
+  `0x1.9d498ce5a3fdcp-32 / target_below_product / 0x1.3aa03b95e2c0ap-28`
+- full／compatible allocation count:
+  `15120 / 852`
+- full／compatible allocation digest:
+  `229ff8402ad43d0d2946e54ded87389038802c24bbb4d05d5accc1ba258933c0` /
+  `b302c4801c68fa26270fbc695d0bfc5a2668c6d22108327275ac91d6c5e756b7`
+- first／last compatible counts:
+  `[0,13,0,9,0,5,0,2,5,0] / [13,0,9,0,0,5,0,2,0,5]`
+- parent witness／allocation-classification digest:
+  `148699414f36e9ddba09cfb5daea3c5b89e5957319915f868eb864630c27ef2f` /
+  `b3b578822153dac0f180c7a341aeb744bcd054ac680de3cac336a19c03fedc87`
+- input／partition-input／allocation-audit／result digest:
+  `3a9bf134093d72dfa3a9fce972eea9213f5d2221c8a96796849dc714efd16e04` /
+  `b675a240f2d7d8ec553ba905dc69104d1ab580cd7ad582044e62be4bc31bee38` /
+  `30167e3024dc9dd61b70a72bc45426cc702ac47d251954ecf68f8a19532a0f88` /
+  `f99176bee9bec4e82530ce33227a1950949986f83112f5eca9cd917b03af1d15`
+- runner／artifact newline-normalized SHA-256:
+  `2b3891a48840d62fa227a95aa6ed13e102056751d59ac969bc9e5a73d9e98600` /
+  `ba8189bc52e59644298b9e9587d7468c5035f861667b9e2847522b9e4ce4d32e`
+
+これはQ011cb flatten ordinal 2の1 refined witnessだけのpartition診断である。ordinal 0、1のphase resolution、
+Q011cb aggregate-level persistence、certified degrees 2--33と91以降、missing 34--90は不変である。後続44,797
+signature、他31 parent overlap、他15 target、aggregate `2340`全体、degree-34全分離、actual resonanceは未評価である。
+停止規則どおり、次はQ011chで登録852 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
