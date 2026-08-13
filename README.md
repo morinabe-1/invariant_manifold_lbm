@@ -5219,6 +5219,43 @@ signatureをexact Fourier convolutionとoutward modulus intervalで全走査し�
 全体、degree-34 nonresonance、actual resonanceは未判定で、既存の認証範囲は不変である。次はQ011ccで、この
 辞書順最初のpersistent refined witnessだけをindividual source discへ分割する。
 
+### Q011cc second-family individual partition is interval-inert
+
+Q011cbまでの59 artifact、runner、278 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+Q011cbの辞書順最初のpersistent refined witnessが占有する4個の`block=16/1` pairを8 singleton identifierへ戻した。
+full 6,720 allocationのうち、output block 7にcompatibleな382 allocationを固定target
+`block=7;center=44`とexact rational modulus intervalで比較した。
+
+382 allocationはparent wave multiplicity 382を一対一に分割した。各pair内のcenter／modulus intervalがexactに同一
+だったため、全382件のproduct、target、intersection、center-only diagnosticはQ011cb parentと完全に同一で、exact／
+outward relationはいずれも全件overlapだった。従ってclassificationは
+`the individual-disc partition is interval-inert for the first Q011cb witness`、outcomeは
+`partition_inert_persistent`である。
+
+- full／compatible allocation: `6720 / 382`
+- exact／outward relation: `overlap=382`、strict `0`
+- first／last count vector:
+  `[0,13,0,9,0,5,5,2] / [13,0,9,0,0,5,0,7]`
+- parent allocation full／compatible index: `6672 / 381`
+- parent product／target／intersection digest:
+  `8a9c1583fe51e24292e65211b7d53099b2f7e724b93cdadcac61f916dd479a58` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `cc5ca69070a20623c45139bc596262504c3e726986d4220f39082ef0d13abdfc`
+- allocation record digest:
+  `d7fbc193a8cf9c3f62fa1871df8afefbcee11bb2710a0cd780d7102959149f6b`
+- input／partition／allocation／result digest:
+  `3fd7d65bbd0afc7facf4104c62087eec59a8ad5b7cdb589121a28cf7eec0edac` /
+  `93718c41e0fe0fdd9c5ca40823be13fcb98ab444fedbc3993ce9dda89f9dc81a` /
+  `b584ec6a2f1e4bf3b96318ba6ad46b9b544d722c80d3773e74d34c7d3e0ab7bf` /
+  `7701d380b4ea8640c4bb142cc2aee45c002aadb48d02d902629da500c7a3fc5d`
+- runner／artifact newline-normalized SHA-256:
+  `20d5a741d100649927053314cf1e6347972568b444db7ed0ed4c793fa9296c30` /
+  `84043cf3a41cb479a35da321b03df1fa09f04aede305215f3c582875ba7c555a`
+
+これは個別identifierへの再ラベルでは現行modulus certificateを改善できないという診断であり、actual resonanceを
+確立しない。他44,799 Q011cb signature、他31 parent overlap、他15 target、aggregate `2340`全体、degree-34全分離は
+未判定である。次はQ011cdで、この382 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -5943,6 +5980,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011bz_degree34_individual_partition_audit.json`](research/artifacts/q011bz_degree34_individual_partition_audit.json)
 - [`research/artifacts/q011ca_degree34_component_safe_phase_discs.json`](research/artifacts/q011ca_degree34_component_safe_phase_discs.json)
 - [`research/artifacts/q011cb_degree34_second_overlap_refinement.json`](research/artifacts/q011cb_degree34_second_overlap_refinement.json)
+- [`research/artifacts/q011cc_degree34_second_individual_partition_audit.json`](research/artifacts/q011cc_degree34_second_individual_partition_audit.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -6180,6 +6218,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   modulus-overlap全件をexact complex phaseで分離したfirst-family resolution
 - Q011cb Q011bx第2aggregateのfirst overlapを9 blockwise class／44,800 signatureへ戻し、
   exact parent multiplicity分割の下で全件overlapとなるpersistent診断
+- Q011cc Q011cbのfirst persistent witnessを8 singleton／382 compatible allocationへ戻し、
+  exact intervalが全て親と同一となるpartition-inert診断
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -6537,4 +6577,7 @@ Q011by class-signature familyだけを解消する結果であり、degree-34全
 Q011cbではaggregate `2340`の辞書順最初のcoalesced overlapだけを9 blockwise classへ戻した。44,800 refined
 signatureはparent multiplicityをexactに分割したが、全件がoverlapした。これはblockwise interval certificateの
 限界を示す診断であり、actual resonanceやaggregate全体を判定しない。次は最初のpersistent refined witnessを
-individual source discへ分ける。
+individual source discへ分けた。
+Q011ccでは4個の`block=16/1` pairを8 singletonへ分割し、382 compatible allocationを全て比較した。pair内intervalが
+exactに同一なので、全product／intersectionは親と同一であり、382件全てがoverlapした。従ってこの再ラベルは
+interval-inertである。次は登録382 wave allocationだけにcomponent-safe complex phase discを導入する。
