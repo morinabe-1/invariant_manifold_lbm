@@ -5517,6 +5517,31 @@ aggregate-level `persistent`と既存の認証範囲は不変である。後続4
 target、aggregate `2340`全体、degree-34 nonresonance、actual resonanceは未判定である。次はQ011ckでQ011cb
 登録順のさらにnext refined overlapを監査する。
 
+### Q011ck second-family fifth-witness individual partition audit
+
+Q011cjまでの67 artifact／314 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+Q011cb flatten ordinal 4、class counts `[[0,0,0,13],[0,9],[5],[4,3]]`を10 singletonへ戻した。full
+16,800 allocation中945件がoutput block 7にcompatibleで、parent wave multiplicity 945をexactに分割した。
+全945件のexact／outward relationはoverlapで、product、center product、target、intersection、center-only
+diagnosticもparentとexactに同一だった。従ってoutcomeは`partition_inert_persistent`である。
+
+- parent width／center relation／gap:
+  `0x1.9d4955c30cc9bp-32 / target_below_product / 0x1.3aa036de6feddp-28`
+- parent witness／allocation record digest:
+  `8ed0d8b8586a141829b591cfccf5598a9db7538bf3009b1708fbadb3f50656c8` /
+  `848069f29045bc56bf2f6cc2c8246b8a86ec5d52891fadf949ffab638fa9e6c1`
+- input／partition／allocation／result digest:
+  `675f2f5f690320a0760d51a30063766cff760f51ddb3db8d44896c295e674588` /
+  `701272e5b15409ec797e851275fa7e03f8ee457da6acc97033ef4382a9c75e23` /
+  `38d186f7ec6b72249aae97e384d6c2d4f9878597bcc2a1a7f298f61a7d340fb3` /
+  `b474e9870de508954bb4cc5e7c3df147bdbbce1bac633e07ec624193e147075c`
+- runner／artifact SHA-256:
+  `0a43924bc024efaf42c851672f149c4d19ef27ebaff0bfb5fde3effe188afa2c` /
+  `c068a2aeb99a862b19b4e5295f6a8be3675679b163778948378cce744a71d317`
+
+これはordinal 4だけのpartition診断であり、後続44,795 signature、aggregate `2340`全体、degree-34
+nonresonance、actual resonanceは未判定である。次はQ011clで登録945 wave allocationだけをcomplex phaseへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -6249,6 +6274,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011ch_degree34_third_component_safe_phase_discs.json`](research/artifacts/q011ch_degree34_third_component_safe_phase_discs.json)
 - [`research/artifacts/q011ci_degree34_fourth_individual_partition_audit.json`](research/artifacts/q011ci_degree34_fourth_individual_partition_audit.json)
 - [`research/artifacts/q011cj_degree34_fourth_component_safe_phase_discs.json`](research/artifacts/q011cj_degree34_fourth_component_safe_phase_discs.json)
+- [`research/artifacts/q011ck_degree34_fifth_individual_partition_audit.json`](research/artifacts/q011ck_degree34_fifth_individual_partition_audit.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -6502,6 +6528,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   exact intervalが全て親と同一となるpartition-inert診断
 - Q011cj Q011ciの945 wave allocationを20,786 component-safe phase allocationへ展開し、
   modulus-overlap全件をexact complex phaseで分離したordinal-3 resolution
+- Q011ck Q011cb flatten ordinal 4を10 singleton／945 compatible allocationへ戻し、
+  exact intervalが全て親と同一となるpartition-inert診断
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -6877,4 +6905,6 @@ Q011ciでは次のflatten ordinal 3を10 singletonへ戻し、945 compatible all
 parentとexact同一でoverlapした。これはordinal 3だけのpartition診断であり、degree-34全体の認証ではない。
 Q011cjでこの945 wave allocationを20,786 phase allocationへ展開し、modulusでは全件overlapのまま、exact complex
 phaseで全件を分離した。これはordinal 3だけの解消であり、degree-34全体の認証ではない。次はQ011cb登録順の
-さらにnext refined overlapを監査する。
+さらにnext refined overlapを監査する。Q011ckではordinal 4の945 compatible allocationを全件監査したが、全intervalが
+parentとexact同一でoverlapした。これはordinal 4だけのpartition診断であり、次はこの945 wave allocationだけを
+component-safe complex phase discへ展開する。

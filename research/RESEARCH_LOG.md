@@ -9350,6 +9350,36 @@ resolutionである。ordinal 0--2のresolution、Q011cb aggregate-level persist
 後続44,796 signature、他31 parent overlap、他15 target、aggregate `2340`全体、degree-34全体は未判定で、次は
 Q011ckでQ011cb登録順のさらにnext refined overlapを監査する。
 
+### Q011ck 実行結果
+
+Q011cjまでの67 artifact／314 direct digestを封印し、Q011cb C-order flatten ordinal 4、`(left,right)=(0,4)`を
+再構成した。class counts `[[0,0,0,13],[0,9],[5],[4,3]]`を10 singletonへ分け、full 16,800 allocation中
+output block 7にcompatibleな945件を監査した。全945件でexact／outward relationはoverlap、product、center
+product、target、intersection、center-only diagnosticはparentとexactに同一だった。全7 validity gateと全4
+diagnostic gateを通過し、outcomeは`partition_inert_persistent`となった。
+
+- full／compatible allocation: `16800 / 945`
+- parent width／center relation／gap:
+  `0x1.9d4955c30cc9bp-32 / target_below_product / 0x1.3aa036de6feddp-28`
+- parent witness／allocation record digest:
+  `8ed0d8b8586a141829b591cfccf5598a9db7538bf3009b1708fbadb3f50656c8` /
+  `848069f29045bc56bf2f6cc2c8246b8a86ec5d52891fadf949ffab638fa9e6c1`
+- full／compatible allocation digest:
+  `20bf1f702d36fce952f3e824ba5c37a3d20f9e2267c9ab8273fa39adea5a1fcc` /
+  `2ca5cc429f3b0c17c9c638f7387e40977a4a0a588fcdc4905bfff7c6728308f3`
+- input／partition／allocation／result digest:
+  `675f2f5f690320a0760d51a30063766cff760f51ddb3db8d44896c295e674588` /
+  `701272e5b15409ec797e851275fa7e03f8ee457da6acc97033ef4382a9c75e23` /
+  `38d186f7ec6b72249aae97e384d6c2d4f9878597bcc2a1a7f298f61a7d340fb3` /
+  `b474e9870de508954bb4cc5e7c3df147bdbbce1bac633e07ec624193e147075c`
+- runner／artifact SHA-256:
+  `0a43924bc024efaf42c851672f149c4d19ef27ebaff0bfb5fde3effe188afa2c` /
+  `c068a2aeb99a862b19b4e5295f6a8be3675679b163778948378cce744a71d317`
+
+これはordinal 4だけのpartition診断である。ordinal 0--3のphase resolutionと既存認証範囲は不変で、後続44,795
+signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011clで登録945 wave allocationだけを
+component-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9657,6 +9687,8 @@ Q011ckでQ011cb登録順のさらにnext refined overlapを監査する。
 [`artifacts/q011ci_degree34_fourth_individual_partition_audit.json`](artifacts/q011ci_degree34_fourth_individual_partition_audit.json)
 
 [`artifacts/q011cj_degree34_fourth_component_safe_phase_discs.json`](artifacts/q011cj_degree34_fourth_component_safe_phase_discs.json)
+
+[`artifacts/q011ck_degree34_fifth_individual_partition_audit.json`](artifacts/q011ck_degree34_fifth_individual_partition_audit.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 

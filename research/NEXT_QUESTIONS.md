@@ -27792,6 +27792,29 @@ sealed resolutionとして選択確認にだけ使う。後続44,795 refined sig
 aggregate全体、aggregate 972、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM
 existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ck 封印結果（partition inert persistent）
+
+Q011cjまでの67 artifact／314 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。登録
+16,800 allocation中945件がFourier-compatibleで、全件のexact／outward relationはoverlapだった。product、center
+product、target、intersection、center-only diagnosticもparentとexactに同一である。
+
+- classification: `the individual-disc partition is interval-inert for the fifth Q011cb witness`
+- outcome: `partition_inert_persistent`
+- parent witness／allocation record digest:
+  `8ed0d8b8586a141829b591cfccf5598a9db7538bf3009b1708fbadb3f50656c8` /
+  `848069f29045bc56bf2f6cc2c8246b8a86ec5d52891fadf949ffab638fa9e6c1`
+- input／partition／allocation／result digest:
+  `675f2f5f690320a0760d51a30063766cff760f51ddb3db8d44896c295e674588` /
+  `701272e5b15409ec797e851275fa7e03f8ee457da6acc97033ef4382a9c75e23` /
+  `38d186f7ec6b72249aae97e384d6c2d4f9878597bcc2a1a7f298f61a7d340fb3` /
+  `b474e9870de508954bb4cc5e7c3df147bdbbce1bac633e07ec624193e147075c`
+- runner／artifact SHA-256:
+  `0a43924bc024efaf42c851672f149c4d19ef27ebaff0bfb5fde3effe188afa2c` /
+  `c068a2aeb99a862b19b4e5295f6a8be3675679b163778948378cce744a71d317`
+
+これはordinal 4だけのmodulus partition診断であり、degree-34全体を認証しない。停止規則どおり、次はQ011clで
+この945 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
