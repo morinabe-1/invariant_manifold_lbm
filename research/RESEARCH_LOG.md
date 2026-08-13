@@ -9380,6 +9380,43 @@ diagnostic gateを通過し、outcomeは`partition_inert_persistent`となった
 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011clで登録945 wave allocationだけを
 component-safe complex phase discへ展開する。
 
+### Q011cl 実行結果
+
+Q011ckまでの68 artifact／318 direct digestを封印し、Q011cb flatten ordinal 4の945 wave allocationをQ011an
+singleton／2-row componentとQ011ak block discに基づく12 source phase discへ展開した。full 369,600 allocation中
+output block 7にcompatibleな20,786件を全数監査した。945 wave projectionはexactに一致し、fiber sizeは10--30、
+和は20,786だった。
+
+individual modulus relationは20,786件全てoverlapだった。一方、complex center distanceからproduct radiusとtarget
+radiusを差し引いたexact marginは全件strict positiveで、categoryは`complex_phase_separation=20786`、unresolved 0
+だった。全7 validity gateと全4 diagnostic gateを通過し、outcomeは`component_safe_phase_resolved`となった。
+
+- full／compatible／wave-projection allocation: `369600 / 20786 / 945`
+- phase-fiber min／max／histogram: `10 / 30 / {10:191,18:187,24:187,28:189,30:191}`
+- minimum margin index／counts／binary64 hex:
+  `12725 / [11,2,0,5,0,4,0,5,4,0,2,1] / 0x1.a8f10a6dc865cp-6`
+- minimum witness／comparison-stream digest:
+  `8c8cf6e53c96a08c4f432a201d6736541e31ce7940c2070ae4edcd68d8b31342` /
+  `8a6cd202ffe5da5f7772f719334fd8ee2534b7b1faeae600741e2b229d9c1dd8`
+- full／compatible／wave-projection allocation digest:
+  `469ac40e8855a6a650ce2429c6c3c50003653736290198d7158cb68993ddf0c8` /
+  `55b2a688d44eebb2688b7637ed0a2b419b9c82311f6a422d03811dacd4f97f81` /
+  `63a7ade77c1682484cc08042c29a88a75bc38a0fd25471593f9376a150653866`
+- input／phase-input／allocation／comparison／result digest:
+  `a6111160ec484b3972f986c61919f9dafca3ce9fcc005519f0c162e0969f5c90` /
+  `9fada30c264e1d870bafba8552ba68db53be851372b22866660298fdb41587a7` /
+  `72b676d115e406b1d5a4967e2493cb081e3c1dc4d3820bd32cc77b2a79bcedbd` /
+  `a77bf440bac5fec33ddf802937606e6f475d4fdfe105ed68100b41656191440f` /
+  `f7ec8f05dd83772b0421783ecb6fa19253449f7f247551a582959063fd207465`
+- runner／artifact newline-normalized SHA-256:
+  `d82f88eef4270e35a6afafbd1f807ba162cc7ecf539151d370d3d2791412ef4b` /
+  `14c11b8d29b0d1116678ec5abebf8cc68f00d0f48415f4b9ccc33ae6e662d98b`
+
+Q011cjのphase protocolは登録定数、power-table上限、stream domainだけ一時差替えして再利用し、呼出し後のglobal復元を
+gateとtestで確認した。これはordinal 4だけのresolutionである。ordinal 0--3のresolutionと既存認証範囲は不変で、
+後続44,795 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011cmで登録順のordinal 5を
+監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -9689,6 +9726,8 @@ component-safe complex phase discへ展開する。
 [`artifacts/q011cj_degree34_fourth_component_safe_phase_discs.json`](artifacts/q011cj_degree34_fourth_component_safe_phase_discs.json)
 
 [`artifacts/q011ck_degree34_fifth_individual_partition_audit.json`](artifacts/q011ck_degree34_fifth_individual_partition_audit.json)
+
+[`artifacts/q011cl_degree34_fifth_component_safe_phase_discs.json`](artifacts/q011cl_degree34_fifth_component_safe_phase_discs.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
