@@ -9678,6 +9678,37 @@ Q011ch／Q011cjのphase protocolは登録定数、power-table上限、stream dom
 呼出し後のglobal復元をgateとtestで確認した。これはordinal 8だけのresolutionである。ordinal 0--7と既存認証範囲は不変で、
 後続44,791 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011cuで登録順のordinal 9を監査する。
 
+### Q011cu 実行結果
+
+Q011ctまでの77 artifact／359 direct digestを封印し、Q011cb C-order flatten ordinal 9、`(left,right)=(1,1)`を
+再構成した。class counts `[[0,0,0,13],[1,8],[5],[1,6]]`のpositive-count classを12 singletonへ分け、full 21,168
+allocation中output block 7にcompatibleな1,194件を監査した。全1,194件でexact／outward relationはoverlap、product、center
+product、target、intersection、center-only diagnosticはparentとexactに同一だった。全7 validity gateと全4 diagnostic
+gateを通過し、outcomeは`partition_inert_persistent`となった。
+
+- full／compatible allocation: `21168 / 1194`
+- parent width／center relation／gap:
+  `0x1.bc6d44be63eb4p-32 / target_below_product / 0x1.39a7210f60877p-28`
+- parent witness／allocation record digest:
+  `0002d8da38698f70e5f5fbca9fb5804438ba02d24fabb9e2ab3cf735b6e1e0ef` /
+  `023d95194355d1fbc112571b3349bb32ecd61842f8f3fda56546fb7b19889357`
+- full／compatible allocation digest:
+  `371924daafdad0fc0f3b800200eaacae5f10ab0b5ef1451008cecdb8d520e1ee` /
+  `daa865024aff9eb7b9cdc923b2f032954b0e8065cff860bad8ab437bbedce81b`
+- input／partition／allocation／result digest:
+  `faa189a62c5bc6f72725351d63ab116ab56124efd3425fce93f5b5c9dc78e524` /
+  `7f2886dec624a101845736154f308c7daf733c1a336f96f696c723b68fc8a4ff` /
+  `f0efb18ad8dffd86e15c1f521f02ce1f63de631d347fb04dae951c05ae6a13ee` /
+  `b478dacccdf0eb40cb16bda7c8c3dabb13e58ce09075a14d7825c2c5bf05e68c`
+- runner／artifact newline-normalized SHA-256:
+  `14c443c2af74eac1d4a4a150f1cdb3cc5b3f880deb0560c9a1fcf7edaecf5519` /
+  `3d23713704c5f504bb7603fa6ebedb5562e0613da00557c2ea2d2953d29d712c`
+
+Q011ckのpartition protocolには登録定数と12-identifier順序を一時差替えして再利用し、呼出し後のglobal復元をgateとtestで
+確認した。これはordinal 9だけのpartition診断である。ordinal 0--8のphase resolutionと既存認証範囲は不変で、後続
+44,790 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011cvで登録1,194 wave allocation
+だけをcomponent-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -10005,6 +10036,8 @@ Q011ch／Q011cjのphase protocolは登録定数、power-table上限、stream dom
 [`artifacts/q011cs_degree34_ninth_individual_partition_audit.json`](artifacts/q011cs_degree34_ninth_individual_partition_audit.json)
 
 [`artifacts/q011ct_degree34_ninth_component_safe_phase_discs.json`](artifacts/q011ct_degree34_ninth_component_safe_phase_discs.json)
+
+[`artifacts/q011cu_degree34_tenth_individual_partition_audit.json`](artifacts/q011cu_degree34_tenth_individual_partition_audit.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
