@@ -31570,6 +31570,40 @@ relation、strict JSON、section／runner digest、protocol global復元を検�
 他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、
 SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011dm 封印結果（partition inert persistent）
+
+Q011dlまでの95 artifact／440 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal 18の
+6 occupied classを12 singleton identifierへ戻し、36,288 full allocation中、output block 7にcompatibleな2,041件を
+全数監査した。exact／binary64 outward relationは全件overlapで、product、center product、target、intersection、
+center-only diagnosticも全件parentとexactに同一だった。outcomeは`partition_inert_persistent`となった。
+
+- flatten ordinal／left／right: `18 / 2 / 2`
+- parent class counts／wave multiplicity: `[[0,0,0,13],[2,7],[5],[2,5]] / 2041`
+- full／compatible allocation: `36288 / 2041`
+- exact／binary64 outward relation count:
+  `product below / target below / overlap = 0 / 0 / 2041`（双方同一）
+- parent width／center relation／gap:
+  `0x1.db90c57489ab4p-32 / target_below_product / 0x1.38ae01d16b933p-28`
+- parent witness／occupied record／allocation record digest:
+  `e8e28ddc117425fcf96b1d8c5c37901dda438ed4c7925371e066b29620285de5` /
+  `64b10a9ed131b294e3450d11c8b3e05df02103ed4e046bf2afe6f90a210b3325` /
+  `bfa43d12ef238851729ef57dfb4a316885a4c5a17f892b473858406385a84702`
+- full／compatible allocation digest:
+  `0a5a97f52b4f5199185c292eba022cc95598834ee4b5860c8c36f2b3b599737f` /
+  `81c09e167ea2c491f444f7592872fdbd15e650bc826a43a3d15c34009db1474d`
+- input／partition／allocation／result digest:
+  `9792f887398d82ecc307d2d87e5be94189fc0f8c56640d5de6d2b02c61c995e4` /
+  `630c2778a3d839e9d730143847d730e933fee39583cfa92f6169649c1df91d4c` /
+  `ab04a5a386d9811f32afcb0343252e39cbf0d0eb47192441c1d5b660ca124a0a` /
+  `c4587bf8d083d8a3281966fe2cdc92b8fbb0739b9d9ba8e2b364d5010c187f63`
+- runner／artifact newline-normalized SHA-256:
+  `06ec727ff92ee07bd2a8ada0fcad625076414932d64449a4355b92d0c15cb46e` /
+  `8b425aa0395d5351e75e77973855d7dc576fce24e151367aa46ef2ae0c33c838`
+
+これはflatten ordinal 18だけのpartition診断であり、ordinal 0--17と既存認証範囲は不変である。後続44,781 signature、
+aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011dnで登録2,041 wave
+allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。

@@ -10304,6 +10304,41 @@ interval-inert resultを追加で封印した。呼出し後のglobal復元もga
 である。ordinal 0--16と既存認証範囲は不変で、後続44,782 signature、aggregate全体、degree-34全体、actual resonanceは
 未判定である。次はQ011dmで登録順のordinal 18を監査する。
 
+### Q011dm 実行結果
+
+Q011dlまでの95 artifact／440 direct digestを封印し、ordinal 18の6 occupied classを12 singleton identifierへ戻した。
+36,288 full allocation中、output block 7にcompatibleな2,041件を全数監査したところ、exact／binary64 outward relationは
+全件overlapし、product、center product、target、intersection、center-only diagnosticも全件parentとexactに同一だった。
+全7 validity gateと全4 diagnostic gateを通過し、outcome `partition_inert_persistent`となった。
+
+- flatten ordinal／left／right: `18 / 2 / 2`
+- parent class counts／wave multiplicity: `[[0,0,0,13],[2,7],[5],[2,5]] / 2041`
+- full／compatible allocation: `36288 / 2041`
+- exact／binary64 outward relation count:
+  `product below / target below / overlap = 0 / 0 / 2041`（双方同一）
+- parent width／center relation／gap:
+  `0x1.db90c57489ab4p-32 / target_below_product / 0x1.38ae01d16b933p-28`
+- parent witness／occupied record／allocation record digest:
+  `e8e28ddc117425fcf96b1d8c5c37901dda438ed4c7925371e066b29620285de5` /
+  `64b10a9ed131b294e3450d11c8b3e05df02103ed4e046bf2afe6f90a210b3325` /
+  `bfa43d12ef238851729ef57dfb4a316885a4c5a17f892b473858406385a84702`
+- full／compatible allocation digest:
+  `0a5a97f52b4f5199185c292eba022cc95598834ee4b5860c8c36f2b3b599737f` /
+  `81c09e167ea2c491f444f7592872fdbd15e650bc826a43a3d15c34009db1474d`
+- input／partition／allocation／result digest:
+  `9792f887398d82ecc307d2d87e5be94189fc0f8c56640d5de6d2b02c61c995e4` /
+  `630c2778a3d839e9d730143847d730e933fee39583cfa92f6169649c1df91d4c` /
+  `ab04a5a386d9811f32afcb0343252e39cbf0d0eb47192441c1d5b660ca124a0a` /
+  `c4587bf8d083d8a3281966fe2cdc92b8fbb0739b9d9ba8e2b364d5010c187f63`
+- runner／artifact newline-normalized SHA-256:
+  `06ec727ff92ee07bd2a8ada0fcad625076414932d64449a4355b92d0c15cb46e` /
+  `8b425aa0395d5351e75e77973855d7dc576fce24e151367aa46ef2ae0c33c838`
+
+Q011daのpartition protocolにはordinal 18の登録定数を一時差替えし、Q011dl artifactとordinal 17 phase resolutionを
+追加で封印した。呼出し後のglobal復元もgateとtestで確認した。これはordinal 18だけのpartition診断である。
+ordinal 0--17と既存認証範囲は不変で、後続44,781 signature、aggregate全体、degree-34全体、actual resonanceは
+未判定である。次はQ011dnで登録2,041 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
