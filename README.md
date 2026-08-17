@@ -5983,6 +5983,34 @@ modulus relationは全件overlapだったが、exact complex center distanceに�
 overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonanceは未判定である。次はQ011daで
 登録順のordinal 12を監査する。
 
+### Q011da second-family thirteenth-witness individual partition audit
+
+Q011czまでの83 artifact／386 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。Q011cb
+C-order flatten ordinal 12、`(left,right)=(1,4)`、class counts `[[0,0,0,13],[1,8],[5],[4,3]]`だけを12 singleton
+identifierへ戻した。30,240 full allocation中、output block 7にcompatibleな1,699件はparent wave multiplicityをexactに
+分割した。全件のexact／binary64 outward relationはoverlapで、product、center product、target、intersection、
+center-only diagnosticもparentとexactに同一だった。従ってoutcomeは`partition_inert_persistent`である。
+
+- full／compatible allocation: `30240 / 1699`
+- parent intersection width／center relation／gap:
+  `0x1.bc6cf20a811cfp-32 / target_below_product / 0x1.39a719fc344b3p-28`
+- parent witness／occupied record／allocation record digest:
+  `b49f75f9a988841494ed9b7c7e334ceb246cf92d23dda1d35e3c7e561c53e04f` /
+  `de324adc9cc67170f3c47bd16ca55b68f0e842d885d561785a966db55f28350d` /
+  `eb46ca3d8139968e6d3a0488388bd33a05c573d5720d2625ffda1bd0e73f44e8`
+- input／partition／allocation／result digest:
+  `aa5a25299fcdb9cc467b57750bfb07b0da411d1aec11eb9d7c575203b6933a38` /
+  `6967ff08a45132db85d51b787268bc65b9cb26ca7bec92448b4b064a8b71337b` /
+  `ace3073578b6a8aeec052627a56e71c012981eb4d6d9bd28bf9c6d51f7ba037c` /
+  `69113d36717eced2218319d93b1f95e5b446c8d9a8987563cf4bf8a404e75027`
+- runner／artifact newline-normalized SHA-256:
+  `825e494e0a12ebba9ae0d6806fec153012fd612389fd914c9514b9f75bad6d1f` /
+  `cbc87836bbaade43a1bf24ce38ac8608abea5e66da475a04969a41f119e35751`
+
+これはflatten ordinal 12だけのpartition診断である。ordinal 0--11のphase resolution、aggregate-level `persistent`、
+certified degrees 2--33と91以降、missing 34--90は不変である。後続44,787 signature、aggregate `2340`全体、degree-34
+nonresonance、actual resonanceは未判定である。次はQ011dbで登録1,699 wave allocationだけをcomplex phaseへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -6731,6 +6759,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011cx_degree34_eleventh_component_safe_phase_discs.json`](research/artifacts/q011cx_degree34_eleventh_component_safe_phase_discs.json)
 - [`research/artifacts/q011cy_degree34_twelfth_individual_partition_audit.json`](research/artifacts/q011cy_degree34_twelfth_individual_partition_audit.json)
 - [`research/artifacts/q011cz_degree34_twelfth_component_safe_phase_discs.json`](research/artifacts/q011cz_degree34_twelfth_component_safe_phase_discs.json)
+- [`research/artifacts/q011da_degree34_thirteenth_individual_partition_audit.json`](research/artifacts/q011da_degree34_thirteenth_individual_partition_audit.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -7016,6 +7045,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   exact intervalが全て親と同一となるpartition-inert診断
 - Q011cz Q011cyの1,699 individual wave allocationを945 label-free component waveへexactに商写像してから20,786
   component-safe phase allocationへ展開し、modulus-overlap全件をexact complex phaseで分離したordinal-11 resolution
+- Q011da Q011cb flatten ordinal 12をpositive-count 12 singleton／1,699 compatible allocationへ戻し、
+  exact intervalが全て親と同一となるpartition-inert診断
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -7424,4 +7455,6 @@ component waveへ商写像し、18,718 phase allocationを全件監査してmodu
 partition診断であり、次はこの1,699 wave allocationだけをcomponent-safe complex phase discへ展開する。Q011czでは
 150／151の内部labelを仮定せず1,699 individual waveを945 component waveへ商写像し、20,786 phase allocationを全件
 監査してmodulus-overlap全件をexact complex phaseで分離した。これはordinal 11だけの解消であり、degree-34全体の認証では
-ない。次はQ011cb登録順のordinal 12を監査する。
+ない。次はQ011cb登録順のordinal 12を監査する。Q011daでは1,699 compatible allocationを全件監査したが、全intervalが
+parentとexact同一でoverlapした。これはordinal 12だけのpartition診断であり、次はこの1,699 wave allocationだけを
+component-safe complex phase discへ展開する。
