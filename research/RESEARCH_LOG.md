@@ -9990,6 +9990,41 @@ Q011daのpartition protocolにはordinal 13の登録定数を一時差替えし�
 既存認証範囲は不変で、後続44,786 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011ddで
 登録1,531 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+### Q011dd 実行結果
+
+Q011dcまでの86 artifact／399 direct digestを封印し、Q011cb C-order flatten ordinal 13だけをcomponent-safe complex phase
+discへ展開した。1,531 individual wave allocationを、150／151の内部固有値labelを仮定せず852 component waveへexactに
+商写像した。332,640 full allocation中、output block 7にcompatibleな18,718件を全数監査したところ、modulus intervalは
+全件overlapしたが、全18,718 product discがtargetからexact complex phaseでstrictに分離した。全7 validity gateと全4
+diagnostic gateを通過し、未分離0件、outcome `component_safe_phase_resolved`となった。
+
+- individual／component wave: `1531 / 852`
+- full／compatible phase allocation: `332640 / 18718`
+- category count: `individual modulus / complex phase / unresolved = 0 / 18718 / 0`
+- global minimum compatible index／counts／margin:
+  `11474 / [11,2,0,4,0,5,0,5,5,0,2,0] / 0x1.a8f10a6dc86dap-6`
+- minimum witness digest:
+  `514c3194347c4be6775cc7a53518fbee0c3d97586a962c6e2b63378ce8a8614f`
+- comparison stream digest:
+  `2b2b4bc2a0b9c291a252b843191c859f90f094568e284e50ab4f1f66429b89f7`
+- input／phase-input／allocation／comparison／result digest:
+  `68e8d939eb7a7e1efab290a9ae3f2cb40d73036aef08077d18bb92432c79f293` /
+  `7a777e58b0ea2671a621441992329494cdd51cb172f1f6204397e259688277c4` /
+  `28e1189c65762a9bdd09eb6733fc39757f9085ccf5d8c371812dceeeff6ea266` /
+  `92234116e4a0d814bc8461c07fffd3d3d3a6b03881a8008304b8e6169770f684` /
+  `3014ca05a316033a72078d9db372818e0f4dc787a968f7dd89ecd563b8cf0e1c`
+- runner／artifact newline-normalized SHA-256:
+  `55e39c277d12fcefd6487cdea530718e802a3459e1e4f050a782551e0ccf3d0b` /
+  `b12258d7cbf719177130652a89b0674dde8d8322f12028a0cb73adf947af2368`
+
+最初の全試行では数値分類は同じだったが、親Q011dc再生のnested protocol restoration flagがfalseとなり、validity gateが
+結果を棄却した。原因はQ011ddの復元adapterが、Q011dcに登録された一時overrideをnested呼出し中に許容していなかったことだった。
+許容対象をその登録済みoverride identityだけへ限定して修正し、親fixed inputとpartitionが保存artifactにbitwise一致すること、
+呼出し後に全globalがbaselineへ戻ることを確認してから再実行した。棄却試行の科学的分類は採用していない。
+
+これはordinal 13だけのresolutionである。ordinal 0--12と既存認証範囲は不変で、後続44,786 signature、aggregate全体、
+degree-34全体、actual resonanceは未判定である。次はQ011deで登録順のordinal 14を監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -10335,6 +10370,8 @@ Q011daのpartition protocolにはordinal 13の登録定数を一時差替えし�
 [`artifacts/q011db_degree34_thirteenth_component_safe_phase_discs.json`](artifacts/q011db_degree34_thirteenth_component_safe_phase_discs.json)
 
 [`artifacts/q011dc_degree34_fourteenth_individual_partition_audit.json`](artifacts/q011dc_degree34_fourteenth_individual_partition_audit.json)
+
+[`artifacts/q011dd_degree34_fourteenth_component_safe_phase_discs.json`](artifacts/q011dd_degree34_fourteenth_component_safe_phase_discs.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
