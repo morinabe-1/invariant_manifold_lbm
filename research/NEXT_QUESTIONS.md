@@ -30159,6 +30159,36 @@ relation、strict JSON、section／runner digest、protocol global復元を検�
 他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、
 SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011dc 封印結果（partition inert persistent）
+
+Q011dbまでの85 artifact／395 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。登録
+27,216 full allocation中、output block 7にcompatibleな1,531件はparent wave multiplicityをexactに分割した。全件の
+exact／binary64 outward relationはoverlapで、product、center product、target、intersection、center-only diagnosticも
+parentとexactに同一だった。従ってoutcomeは`partition_inert_persistent`となった。
+
+- full／compatible allocation: `27216 / 1531`
+- parent width／center relation／gap:
+  `0x1.bc6cd6793582ep-32 / target_below_product / 0x1.39a717a07ae1cp-28`
+- parent witness／occupied record／allocation record digest:
+  `7b21c651877f71e0e1d1c05d651cbc11549bd3e84f9599ef396ed134ecd9fbff` /
+  `09e66f90ab66e8d14831911b555f1c59d75bb372ec93961a8fe54114353ebb46` /
+  `8253f54f0bf026832b2afa3d7ce31b4a9645cc7aa44d0f88db8b95d78ccf3081`
+- full／compatible allocation digest:
+  `318f4f177a4e617f4edb2cde15f95676a383f2a55f4624610c1522c1e8516037` /
+  `feea24f0104a9f9a2d2feb2f18db32805c93531f3f7798f8dd5220ee815060dc`
+- input／partition／allocation／result digest:
+  `8abc214ada1d1dc3d3edf54b0ae16409366d7266ce8effde6049599e7db61450` /
+  `d107dd6a3b0b3d4abee3737c9e640ff915e25f0d3b2f8efd530d689c691c8594` /
+  `b5b5ba2b3e2d19ae316cb4177d08f565b4e8287ebda227474e132c0400bdf5fc` /
+  `3fb836e8fe50670ab0ce285ffdfb2eae537a1d0a4b291f36e2f97fa5b519bb9e`
+- runner／artifact newline-normalized SHA-256:
+  `c24467858a54434fc54c863acb32a2d043ab2c701ee8457ba18df532f4786102` /
+  `d95aba258f042e42d6b68ce8d7380eeddba8d3acb616581d0bc544e0afffab3f`
+
+これはflatten ordinal 13だけのpartition診断であり、ordinal 0--12と既存認証範囲は不変である。後続44,786 signature、
+aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011ddで登録1,531 wave allocation
+だけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
