@@ -10059,6 +10059,36 @@ Q011daのpartition protocolにはordinal 14の登録定数を一時差替えし�
 既存認証範囲は不変で、後続44,785 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011dfで
 登録1,194 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+### Q011df 実行結果
+
+Q011deまでの88 artifact／408 direct digestを封印し、Q011cb C-order flatten ordinal 14だけをcomponent-safe complex phase
+discへ展開した。1,194 individual wave allocationを、150／151の内部固有値labelを仮定せず665 component waveへexactに
+商写像した。258,720 full allocation中、output block 7にcompatibleな14,578件を全数監査したところ、modulus intervalは
+全件overlapしたが、全14,578 product discがtargetからexact complex phaseでstrictに分離した。全7 validity gateと全4
+diagnostic gateを通過し、未分離0件、outcome `component_safe_phase_resolved`となった。
+
+- individual／component wave: `1194 / 665`
+- full／compatible phase allocation: `258720 / 14578`
+- category count: `individual modulus / complex phase / unresolved = 0 / 14578 / 0`
+- global minimum compatible index／counts／margin:
+  `9166 / [11,2,0,5,0,4,0,5,5,1,1,0] / 0x1.a8f10a6dc8860p-6`
+- minimum witness digest:
+  `1b7f6cc19a74cdefa602f28a6251f0c9b874cdd0a3a9b6f7ee438ea4618fea8d`
+- comparison stream digest:
+  `293d6e0e309cc6f0af82494af56890d7f78baf8c97f30f5ef1d7e08bc705b0f3`
+- input／phase-input／allocation／comparison／result digest:
+  `7d148dba55f0579f18f5a497f1c362c6f92e9361b153596bff811f13366b829c` /
+  `d1ce2186292a85d48b6b2892d2616ed23ed5f46474626785a5d16830e5ac1c83` /
+  `e38218885f9b6ab6e50c8237606020aa8d78567c3d4809b6e119e36ff2c6146a` /
+  `b69f85a87b9c97778511e96528775ad188070b6a881f8b55bffc92fa44c17b92` /
+  `7d72070108c2225780c59ef2076f68344ba4e2e2ca134ece4cf19a8d91f6c41d`
+- runner／artifact newline-normalized SHA-256:
+  `a197268699d2eab6bb5e0cc77f0d8cd43db30cdc31e1b115c10818906321509b` /
+  `f7729394914efb5c94f2ddb0b19383f3c59fc0f99111647782918826330d1365`
+
+これはordinal 14だけのresolutionである。ordinal 0--13と既存認証範囲は不変で、後続44,785 signature、aggregate全体、
+degree-34全体、actual resonanceは未判定である。次はQ011dgで登録順のordinal 15を監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -10408,6 +10438,8 @@ Q011daのpartition protocolにはordinal 14の登録定数を一時差替えし�
 [`artifacts/q011dd_degree34_fourteenth_component_safe_phase_discs.json`](artifacts/q011dd_degree34_fourteenth_component_safe_phase_discs.json)
 
 [`artifacts/q011de_degree34_fifteenth_individual_partition_audit.json`](artifacts/q011de_degree34_fifteenth_individual_partition_audit.json)
+
+[`artifacts/q011df_degree34_fifteenth_component_safe_phase_discs.json`](artifacts/q011df_degree34_fifteenth_component_safe_phase_discs.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
