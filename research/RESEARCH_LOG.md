@@ -9814,6 +9814,38 @@ component-wave recordだけを渡した。親Q011cw partitionはprotocol差替�
 gateで確認した。これはordinal 10だけのresolutionである。ordinal 0--9と既存認証範囲は不変で、後続44,789 signature、
 aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011cyで登録順のordinal 11を監査する。
 
+### Q011cy 実行結果
+
+Q011cxまでの81 artifact／377 direct digestを封印し、Q011cb flatten ordinal 11、`(left,right)=(1,3)`の登録parentを
+12 singleton identifierへ戻した。6 occupied classから30,240 full allocationを辞書順に構成し、output block 7にcompatibleな
+1,699件を全数監査した。この1,699件はparent wave multiplicityをexactに分割したが、全exact／binary64 outward relationは
+overlapで、product、center product、target、intersection、center-only diagnosticもparentとexactに同一だった。全7 validity
+gateと全4 diagnostic gateを通過し、outcomeは`partition_inert_persistent`となった。
+
+- full／compatible allocation: `30240 / 1699`
+- parent width／center relation／gap:
+  `0x1.bc6d0d9bccb71p-32 / target_below_product / 0x1.39a71c57edb49p-28`
+- parent witness／occupied record／allocation record digest:
+  `66692c24fa69380e1a47af6eef7e5b964a5f6479982f6a25feb62a3eb1851f90` /
+  `69136bc4836114e56d60a96c099cd7d5be374fc749326438b2ae6242a0866bec` /
+  `b7f9d0b612dc0965d2f61ede6d6f428727f5a82f59325c2d3d1bc21742211585`
+- full／compatible allocation digest:
+  `726cc53b8d64ef1bc9aa3abdbd0febe07acf29591a067b416d348b1b7f485993` /
+  `9589fc30bff53304106998ca010f2d5ff5bbcf4c6cccbca944ca71a01b16f4ae`
+- input／partition／allocation／result digest:
+  `7b30b02ebc84df1774ef4e357f9607013aa518063e8e14490fa36cd229dbfae8` /
+  `9526fcb859eeb26b688315d9a82e49c4cd18d097e706330e8be96effc190f15a` /
+  `075de2aa3118a803af3aa9e9991205f2d07bf52a4155af60554df751ceff4ed0` /
+  `2dabbfd5238f5b1aac2fb40f67be7f1944dfa286e5385f27a4a091f4b2694ed8`
+- runner／artifact newline-normalized SHA-256:
+  `4bb5f856813e30ea56a5c260c3103fdf12ac24bd1fd81bf2fc64de41d9ba2b16` /
+  `f6582ea856e2db0a70a1715b7fd2a7d51e3d43d6808a9cfc1fbbb6efc0861940`
+
+Q011cwのpartition protocolにはordinal 11の登録定数を一時差替えし、呼出し後のglobal復元をgateとtestで確認した。これは
+ordinal 11だけのpartition診断である。ordinal 0--10のphase resolutionと既存認証範囲は不変で、後続44,788 signature、
+aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011czで登録1,699 wave allocationだけを
+component-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -10149,6 +10181,8 @@ aggregate全体、degree-34全体、actual resonanceは未判定である。次�
 [`artifacts/q011cw_degree34_eleventh_individual_partition_audit.json`](artifacts/q011cw_degree34_eleventh_individual_partition_audit.json)
 
 [`artifacts/q011cx_degree34_eleventh_component_safe_phase_discs.json`](artifacts/q011cx_degree34_eleventh_component_safe_phase_discs.json)
+
+[`artifacts/q011cy_degree34_twelfth_individual_partition_audit.json`](artifacts/q011cy_degree34_twelfth_individual_partition_audit.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
