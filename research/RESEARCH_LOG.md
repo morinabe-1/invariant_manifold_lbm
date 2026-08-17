@@ -9745,6 +9745,38 @@ Q011ch／Q011cjのphase protocolは登録定数、power-table上限、stream dom
 呼出し後のglobal復元をgateとtestで確認した。これはordinal 9だけのresolutionである。ordinal 0--8と既存認証範囲は不変で、
 後続44,790 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011cwで登録順のordinal 10を監査する。
 
+### Q011cw 実行結果
+
+Q011cvまでの79 artifact／368 direct digestを封印し、Q011cb flatten ordinal 10、`(left,right)=(1,2)`の登録parentを
+12 singleton identifierへ戻した。6 occupied classから27,216 full allocationを辞書順に構成し、output block 7にcompatibleな
+1,531件を全数監査した。この1,531件はparent wave multiplicityをexactに分割したが、全exact／binary64 outward relationは
+overlapで、product、center product、target、intersection、center-only diagnosticもparentとexactに同一だった。全6 validity
+gateと全4 diagnostic gateを通過し、outcomeは`partition_inert_persistent`となった。
+
+- full／compatible allocation: `27216 / 1531`
+- parent width／center relation／gap:
+  `0x1.bc6d292d18512p-32 / target_below_product / 0x1.39a71eb3a71e0p-28`
+- parent witness／occupied record／allocation record digest:
+  `d3d2234117c942b3deb1dba73c13ea3ee25a19384337a0963e908a387824b859` /
+  `48b66c29a263281a2b78ca245bf8d53ed0f372b77f6b81bbf47ffc96890bd14c` /
+  `4998d8e6dc452f53f25b80ef8484d0326e02e20de22550891ae2ff924375fa95`
+- full／compatible allocation digest:
+  `513d827075fa3f491e793ec066bb1fc47cf2df9b5b2b6218377386cd3dd6e207` /
+  `f0167293612cf6936c97a1aca6fb4112c1124edbd0b6d78410a1f4b86ee7d08a`
+- input／partition／allocation／result digest:
+  `6a59a48d974eb6d42af91ee12bfe9b927b4d7ce477340748bc85ca805233882d` /
+  `53acd6d0d2638c5939ee367de45d3e4a260346e4f9edde4f2ae5a362389f44c8` /
+  `023b5b1c20f87a84eb63ac43b5ebe47cb3a62e05adbb31a0d46d6add5ddee66b` /
+  `5b34510714ab89816f2f1e1830f2b4fa4d91c678b0401821aa11baff31da4da5`
+- runner／artifact newline-normalized SHA-256:
+  `4053f6f3738331414e2b1620a7892b1cadfbbdd98f104c3bb52a676e3291093e` /
+  `88f4f7b05675c58c523f58910b1c795507c92cceea89006658862722be7be355`
+
+Q011cg／Q011ckのpartition protocolには登録定数と12-identifier順序を一時差替えして再利用し、呼出し後のglobal復元をgateと
+testで確認した。これはordinal 10だけのpartition診断である。ordinal 0--9のphase resolutionと既存認証範囲は不変で、
+後続44,789 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011cxで登録1,531 wave
+allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
@@ -10076,6 +10108,8 @@ Q011ch／Q011cjのphase protocolは登録定数、power-table上限、stream dom
 [`artifacts/q011cu_degree34_tenth_individual_partition_audit.json`](artifacts/q011cu_degree34_tenth_individual_partition_audit.json)
 
 [`artifacts/q011cv_degree34_tenth_component_safe_phase_discs.json`](artifacts/q011cv_degree34_tenth_component_safe_phase_discs.json)
+
+[`artifacts/q011cw_degree34_eleventh_individual_partition_audit.json`](artifacts/q011cw_degree34_eleventh_individual_partition_audit.json)
 
 [`artifacts/q008a_tt_storage_prequalification.json`](artifacts/q008a_tt_storage_prequalification.json)
 
