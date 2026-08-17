@@ -11,7 +11,9 @@ from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
 EXPECTED_RUNNER_SHA256 = "c24467858a54434fc54c863acb32a2d043ab2c701ee8457ba18df532f4786102"
-EXPECTED_ARTIFACT_SHA256: str | None = None
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "d95aba258f042e42d6b68ce8d7380eeddba8d3acb616581d0bc544e0afffab3f"
+)
 EXPECTED_SECTION_DIGESTS = {
     "input_digest_sha256": "8abc214ada1d1dc3d3edf54b0ae16409366d7266ce8effde6049599e7db61450",
     "partition_input_digest_sha256": (
