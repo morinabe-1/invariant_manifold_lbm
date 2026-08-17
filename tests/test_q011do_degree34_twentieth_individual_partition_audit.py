@@ -1,0 +1,256 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
+
+import pytest
+
+import research.q011do_degree34_twentieth_individual_partition_audit as q011do
+from ttim_lbm.provenance import source_metadata
+from ttim_lbm.rational_spectrum import _file_sha256
+
+EXPECTED_RUNNER_SHA256 = "e80ffd7cce7ea0ef1031cdef77659f9df7a9028153b8956edf33b1de96e16971"
+EXPECTED_ARTIFACT_SHA256: str | None = None
+EXPECTED_SECTION_DIGESTS = {
+    "input_digest_sha256": "239b8924d665ec3f9fa7ca8c0497f050a94c9d9f46e01403880d419f6d74ffa5",
+    "partition_input_digest_sha256": "ab6e049a7a2598016162aa260c5cf1ef8ae8f72405c1cb9f707955fcdb33b5e8",
+    "allocation_audit_digest_sha256": "78a7aa6ca4df043f2ca26922943792ef625698255f6bef51258e96410845389c",
+    "result_digest_sha256": "a97ffbdcd04da4ae0c40270b905f8605937e6350f3cf121ea856c6bd251513ce",
+}
+EXPECTED_PARTITION_DIGESTS = {
+    "parent_product_interval_digest_sha256": (
+        "46c75213d5d7e10cb758a8bec724bb5526992a0d0383cf89ec4a2c7376393d98"
+    ),
+    "parent_center_product_interval_digest_sha256": (
+        "6dd42d59aeef42680f2b737820902953d5715d2b6102bbf00e3d3a1a7efd6ed5"
+    ),
+    "parent_target_interval_digest_sha256": (
+        "64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679"
+    ),
+    "parent_intersection_interval_digest_sha256": (
+        "2a5ff678d2d57bd119de260f63fd422d12f441eaadac357deaa32d1f266ac682"
+    ),
+    "allocation_classification_record_digest_sha256": (
+        "701c4515dec3b779aef84ba242134bc27a3221d2739f026629e6c94534595212"
+    ),
+}
+
+
+@pytest.fixture(scope="module")
+def q011do_study() -> dict[str, Any]:
+    return q011do.run_q011do_study()
+
+
+@pytest.fixture(scope="module")
+def q011do_cycle(q011do_study: dict[str, Any]) -> dict[str, Any]:
+    return q011do_study["cycle"]
+
+
+def test_q011do_seals_q011dn_and_all_prior_inputs(
+    q011do_cycle: dict[str, Any],
+) -> None:
+    sealed = q011do_cycle["sealed_input_audit"]
+    assert sealed["passed"]
+    assert sealed["artifact_count"] == 97
+    assert sealed["direct_digest_count"] == 449
+    assert all(sealed["checks"].values())
+    assert tuple(sealed["q011dn"]["digests"]) == q011do.Q011DN_DIGESTS
+    assert sealed["q011dn"]["artifact_sha256"] == q011do.Q011DN_ARTIFACT_SHA256
+    assert sealed["q011dn"]["runner_sha256"] == q011do.Q011DN_RUNNER_SHA256
+    assert sealed["q011dn"]["resolved_witness_digest_sha256"] == (
+        q011do.EXPECTED_ORDINAL_EIGHTEEN_RESOLUTION_DIGEST
+    )
+
+
+def test_q011do_selects_exactly_flatten_ordinal_nineteen(
+    q011do_cycle: dict[str, Any],
+) -> None:
+    fixed = q011do_cycle["fixed_individual_partition_input_audit"]
+    selection = fixed["twentieth_parent_witness_selection_audit"]
+    assert selection["passed"]
+    assert all(selection["checks"].values())
+    assert selection["flatten_shape"] == [5600, 8]
+    assert selection["selected_flat_ordinal"] == 19
+    assert selection["selected_left_index"] == 2
+    assert selection["selected_right_index"] == 3
+    assert selection["previous_phase_resolved_ordinals"] == list(range(19))
+    assert selection["ordinal_eighteen_resolution_digest_sha256"] == (
+        q011do.EXPECTED_ORDINAL_EIGHTEEN_RESOLUTION_DIGEST
+    )
+    parent = selection["twentieth_parent_witness"]
+    assert parent["class_counts"] == [[0, 0, 0, 13], [2, 7], [5], [3, 4]]
+    assert parent["wave_multiplicity"] == 2_266
+    assert parent["block_zero_multiplicity"] == 0
+    assert parent["intersection_interval"]["width_hex"] == (
+        q011do.EXPECTED_PARENT_INTERSECTION_WIDTH_HEX
+    )
+    assert parent["center_only_diagnostic"]["relation"] == "target_below_product"
+    assert parent["center_only_diagnostic"]["gap_hex"] == (q011do.EXPECTED_PARENT_CENTER_GAP_HEX)
+    assert parent["witness_digest_sha256"] == q011do.EXPECTED_PARENT_WITNESS_DIGEST
+
+
+def test_q011do_reconstructs_registered_partition_and_inventory(
+    q011do_cycle: dict[str, Any],
+) -> None:
+    fixed = q011do_cycle["fixed_individual_partition_input_audit"]
+    assert fixed["passed"]
+    assert all(fixed["checks"].values())
+    assert fixed["parent_class_counts"] == [
+        [0, 0, 0, 13],
+        [2, 7],
+        [5],
+        [3, 4],
+    ]
+    occupied = fixed["occupied_class_records"]
+    assert [record["source_count"] for record in occupied] == [13, 2, 7, 5, 3, 4]
+    assert all(record["all_member_intervals_equal"] for record in occupied)
+    assert fixed["occupied_class_record_digest_sha256"] == (q011do.EXPECTED_OCCUPIED_RECORD_DIGEST)
+    assert tuple(fixed["singleton_identifier_order"]) == q011do.EXPECTED_IDENTIFIER_ORDER
+    assert fixed["full_allocation_count"] == 40_320
+    assert fixed["full_allocation_digest_sha256"] == q011do.EXPECTED_ALLOCATION_DIGEST
+    assert fixed["compatible_allocation_count"] == 2_266
+    assert fixed["compatible_allocation_digest_sha256"] == (q011do.EXPECTED_COMPATIBLE_DIGEST)
+    assert fixed["first_compatible_counts"] == [0, 13, 0, 2, 0, 7, 0, 5, 1, 2, 4, 0]
+    assert fixed["last_compatible_counts"] == [13, 0, 2, 0, 7, 0, 0, 5, 0, 3, 0, 4]
+    assert fixed["parent_witness_allocation_index"] == 40_200
+    assert fixed["parent_witness_compatible_index"] == 2_265
+    assert fixed["compatible_allocations_exactly_partition_parent_wave_multiplicity"]
+
+
+def test_q011do_all_exact_intervals_are_parent_identical(
+    q011do_cycle: dict[str, Any],
+) -> None:
+    partition = q011do_cycle["individual_allocation_interval_audit"]
+    assert partition["passed"]
+    assert all(partition["checks"].values())
+    assert partition["compatible_allocation_count"] == 2_266
+    assert partition["all_product_target_intersection_and_center_records_equal_parent"]
+    records = partition["allocation_classification_records"]
+    assert len(records) == 2_266
+    assert [record["compatible_allocation_index"] for record in records] == list(range(2_266))
+    for record in records:
+        assert record["degree"] == 34
+        assert record["output_block"] == 7
+        assert record["exact_relation"] == "overlap"
+        assert record["binary64_outward_relation"] == "overlap"
+        assert not record["exact_gap_positive"]
+        assert not record["binary64_outward_gap_positive"]
+        assert record["product_equals_parent"]
+        assert record["center_product_equals_parent"]
+        assert record["target_equals_parent"]
+        assert record["intersection_equals_parent"]
+        assert record["center_diagnostic_equals_parent"]
+        assert record["intersection_width_hex"] == (q011do.EXPECTED_PARENT_INTERSECTION_WIDTH_HEX)
+        assert record["center_only_gap_hex"] == q011do.EXPECTED_PARENT_CENTER_GAP_HEX
+    assert {name: partition[name] for name in EXPECTED_PARTITION_DIGESTS} == (
+        EXPECTED_PARTITION_DIGESTS
+    )
+
+
+def test_q011do_records_interval_inert_persistence(
+    q011do_cycle: dict[str, Any],
+) -> None:
+    assert q011do_cycle["study_validity"] == "passed"
+    assert q011do_cycle["failed_validity_order"] == []
+    assert q011do_cycle["failed_diagnostic_order"] == []
+    assert all(gate["passed"] for gate in q011do_cycle["validity_gates"].values())
+    assert all(gate["passed"] for gate in q011do_cycle["diagnostic_gates"].values())
+    assert q011do_cycle["refinement_outcome"] == "partition_inert_persistent"
+    assert q011do_cycle["diagnostic_classification"] == q011do.INERT_CLASSIFICATION
+    assert q011do_cycle["scientific_outcome"] == "not_evaluated"
+    assert q011do_cycle["actual_resonance_outcome"] == "not_established"
+    expected_relations = {
+        "product_below_target": 0,
+        "target_below_product": 0,
+        "overlap": 2_266,
+    }
+    partition = q011do_cycle["individual_allocation_interval_audit"]
+    assert partition["exact_relation_counts"] == expected_relations
+    assert partition["binary64_outward_relation_counts"] == expected_relations
+    assert not partition["complex_phase_product_evaluated"]
+
+
+def test_q011do_preserves_boundary_and_reproducible_digests(
+    q011do_cycle: dict[str, Any],
+) -> None:
+    theorem = q011do_cycle["theorem_consequence"]
+    assert theorem["individual_partition_is_interval_inert_for_twentieth_q011cb_witness"]
+    assert not theorem["twentieth_q011cb_witness_is_resolved_by_individual_partition"]
+    assert theorem["q011dn_ordinal_eighteen_phase_resolution_is_preserved"]
+    assert theorem["q011dm_ordinal_eighteen_interval_inert_diagnostic_is_preserved"]
+    assert theorem["q011dl_ordinal_seventeen_phase_resolution_is_preserved"]
+    assert theorem["q011dk_ordinal_seventeen_interval_inert_diagnostic_is_preserved"]
+    assert theorem["q011dj_ordinal_sixteen_phase_resolution_is_preserved"]
+    assert theorem["q011di_ordinal_sixteen_interval_inert_diagnostic_is_preserved"]
+    assert theorem["q011dh_ordinal_fifteen_phase_resolution_is_preserved"]
+    assert theorem["q011dg_ordinal_fifteen_interval_inert_diagnostic_is_preserved"]
+    assert theorem["q011df_ordinal_fourteen_phase_resolution_is_preserved"]
+    assert theorem["q011dd_ordinal_thirteen_phase_resolution_is_preserved"]
+    assert theorem["q011db_ordinal_twelve_phase_resolution_is_preserved"]
+    assert theorem["q011da_ordinal_twelve_interval_inert_diagnostic_is_preserved"]
+    assert theorem["q011cx_ordinal_ten_phase_resolution_is_preserved"]
+    assert theorem["q011cv_ordinal_nine_phase_resolution_is_preserved"]
+    assert theorem["q011ct_ordinal_eight_phase_resolution_is_preserved"]
+    assert theorem["q011cr_ordinal_seven_phase_resolution_is_preserved"]
+    assert theorem["q011cp_ordinal_six_phase_resolution_is_preserved"]
+    assert theorem["q011cn_ordinal_five_phase_resolution_is_preserved"]
+    assert theorem["q011cl_ordinal_four_phase_resolution_is_preserved"]
+    assert theorem["q011cj_ordinal_three_phase_resolution_is_preserved"]
+    assert not theorem["degree_thirty_four_external_nonresonance_is_certified"]
+    assert not theorem["an_actual_degree_thirty_four_external_resonance_is_established"]
+    assert theorem["certified_external_nonresonance_degrees"] == list(range(2, 34))
+    assert theorem["missing_external_nonresonance_degrees"] == list(range(34, 91))
+    assert not theorem["complex_phase_product_is_audited"]
+    assert "flatten ordinal 19" in q011do_cycle["claim_boundary"]
+    assert "later 44780 Q011cb refined signatures" in q011do_cycle["claim_boundary"]
+    assert "Q011dp" in q011do_cycle["next_change"]
+    json.dumps(q011do_cycle, allow_nan=False)
+    assert {name: q011do_cycle[name] for name in EXPECTED_SECTION_DIGESTS} == (
+        EXPECTED_SECTION_DIGESTS
+    )
+    assert q011do_cycle["result_digest_sha256"] == (
+        q011do.q011b._canonical_json_sha256(q011do._result_digest_sections(q011do_cycle))
+    )
+    assert q011do._protocol_globals_are_restored()
+
+
+def test_q011do_study_metadata_and_optional_artifact_are_scoped(
+    q011do_study: dict[str, Any],
+) -> None:
+    assert q011do_study["schema_version"] == 1
+    assert q011do_study["source"] == source_metadata()
+    assert q011do_study["study_gate"] == "passed"
+    assert q011do_study["refinement_outcome"] == "partition_inert_persistent"
+    runtime = q011do_study["arithmetic_runtime"]
+    assert runtime["target_comparisons"] == 2_266
+    assert runtime["complex_phase_product_evaluated"] is False
+    assert runtime["protocol_globals_restored_after_use"] is True
+    scope = q011do_study["mathematical_scope"]
+    assert scope["degree"] == 34
+    assert scope["parent_aggregate_index"] == 2340
+    assert scope["parent_flat_ordinal"] == 19
+    assert scope["target_identifier"] == "block=7;center=44"
+    assert scope["degree_thirty_four_nonresonance_claim"] is False
+    assert scope["actual_resonance_claim"] is False
+    json.dumps(q011do_study, allow_nan=False)
+
+    runner_path = Path(q011do.__file__).resolve()
+    assert _file_sha256(runner_path) == EXPECTED_RUNNER_SHA256
+    artifact_path = (
+        runner_path.parent
+        / "artifacts"
+        / "q011do_degree34_twentieth_individual_partition_audit.json"
+    )
+    if not artifact_path.exists():
+        pytest.skip("Q011do artifact has not been generated yet")
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert artifact["runner_source"]["sha256"] == EXPECTED_RUNNER_SHA256
+    assert artifact["study_gate"] == "passed"
+    assert artifact["refinement_outcome"] == "partition_inert_persistent"
+    assert artifact["cycle"]["result_digest_sha256"] == (
+        q011do.q011b._canonical_json_sha256(q011do._result_digest_sections(artifact["cycle"]))
+    )
+    assert EXPECTED_ARTIFACT_SHA256 is not None
+    assert _file_sha256(artifact_path) == EXPECTED_ARTIFACT_SHA256
+    json.dumps(artifact, allow_nan=False)
