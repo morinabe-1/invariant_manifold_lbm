@@ -10123,6 +10123,39 @@ Q011daのpartition protocolにはordinal 15の登録定数を一時差替えし�
 既存認証範囲は不変で、後続44,784 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011dhで
 登録685 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+### Q011dh 実行結果
+
+Q011dgまでの90 artifact／417 direct digestを封印し、Q011cb C-order flatten ordinal 15だけをcomponent-safe complex phase
+discへ展開した。685 individual wave allocationを、150／151の内部固有値labelを仮定せず382 component waveへexactに商写像した。
+center 149 pairはzero multiplicityのcanonical座標として0固定し、147,840 full allocation中、output block 7にcompatibleな
+8,350件を全数監査した。modulus intervalは全件overlapしたが、全8,350 product discがtargetからexact complex phaseで
+strictに分離した。全7 validity gateと全4 diagnostic gateを通過し、未分離0件、outcome
+`component_safe_phase_resolved`となった。
+
+- individual／component wave: `685 / 382`
+- full／compatible phase allocation: `147840 / 8350`
+- category count: `individual modulus / complex phase / unresolved = 0 / 8350 / 0`
+- global minimum compatible index／counts／margin:
+  `5408 / [11,2,0,6,0,3,0,5,5,2,0,0] / 0x1.a8f10a6dc89e6p-6`
+- minimum witness digest:
+  `df9e0c42e0cdb8d82a309c61e2bf95d5d6369af757654dbbf5ad38e822695d1a`
+- comparison stream digest:
+  `3da49026d58bfd6da80988513c6e72081911858a4069a8027bcea0a48091e68d`
+- input／phase-input／allocation／comparison／result digest:
+  `9c5756a0a9142c2478ee658cc0205ebf8076d720e53f893ab685777ec34acc08` /
+  `71de032f75bb67f20f3fdead3574b097fd000d51edc69b00f893bf4862b16a17` /
+  `56580fec2215bc4ee2f6145a7e2176cf8ea1b71becb40135a84c7a4f95745bae` /
+  `37027683c5b138d3aed58bdfe9c6027adecd036b3c0c38088587486bf3c027f1` /
+  `31c79cacb96f81ee358d543ac2afef8a0230b3573504f1088178c27f23589d64`
+- runner／artifact newline-normalized SHA-256:
+  `27faed8e98268e1fcd8e2ad24d93e5647f698573d8091253320f6cede80281a8` /
+  `7aeb8778277fbb59cef3fb8c5796a9f43be6866aba561e388c0e0c1225d578bf`
+
+zero-multiplicityの149 pairを含むcanonical 12-disc order、685-to-382 bridge、147,840／8,350 inventoryをmargin計算前に
+固定し、Q011cxのphase protocolへ一時適用した。呼出し後のglobal復元もgateとtestで確認した。これはordinal 15だけの
+resolutionである。ordinal 0--14と既存認証範囲は不変で、後続44,784 signature、aggregate全体、degree-34全体、actual
+resonanceは未判定である。次はQ011diで登録順のordinal 16を監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
