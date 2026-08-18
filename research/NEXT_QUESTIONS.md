@@ -35493,6 +35493,109 @@ interval-inert resultを一時差替えした。呼出し後のglobal復元もga
 ある。ordinal 0--30と既存認証範囲は不変で、後続44,768 signature、aggregate全体、degree-34全体、actual resonanceは
 未判定である。停止規則どおり、次はQ011eoで登録順のordinal 32を監査する。
 
+## Q011eo: second-family thirty-third-witness individual-disc partition audit — 事前登録
+
+### 問いとsealed input
+
+Q011cbの未解決signatureを固定C-order flattenで並べた登録順ordinal 32だけについて、occupied classをsingleton
+identifierへ戻したexact product intervalがparent intervalから変化し、固定target `block=7;center=44`からstrictに分離するかを
+問う。ordinal 0--31を再評価せず、ordinal 33以降、他target、aggregate全体も走査しない。
+
+Q011enまでの123 artifact／566 direct digest、outcome `component_safe_phase_resolved`、scientific outcome
+`not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011en artifact／runner newline-normalized SHA-256:
+  `1d11f487c9ee18e019326148fb843f8af7767333e926e1e2d7226b220d64e643` /
+  `838d88be7552ef760fde341ae669cbf0d8c59055188f131cb5715a59a8c1e6b2`
+- Q011en input／phase-input／allocation／comparison／result digest:
+  `485bbd72df406ba755696dce5fa68748b69665bb063c3d1ed83df22c9f2e36c4` /
+  `1dc895a9c22b684f1f4a24a15335fd6911d480a85d37cdf71a09a066d0fbf676` /
+  `0b271fc76320ac9cae51a31c5e65c5daf5e7235ebf1a9b86612197f7d090bc57` /
+  `af95eec2b5fbfc2a758cddc2805e104251d6b2e0bb603fa48b07921776d0aff6` /
+  `ab223b2a9085c515033b3707b795d3a97f457b69d8facd701f261282d7eabc31`
+- Q011en ordinal-31 resolution witness／comparison stream digest:
+  `df9e0c42e0cdb8d82a309c61e2bf95d5d6369af757654dbbf5ad38e822695d1a` /
+  `caee2ffe432f47a170dbaa839106179a22af80d932bf99d8ba42a21042bf75a5`
+
+Q011en sealed inputは122 artifact／561 direct digestを持つため、Q011enの5 section digestを加えたQ011eo inputは
+123 artifact／566 direct digestでなければならない。
+
+### flatten選択とparent oracle
+
+Q011cbのleft pool shape `(5600,)`、right pool shape `(8,)`をC-orderでflattenする。ordinal 32は商と余りから
+`left index 4 / right index 0`と一意に決まり、class countsを
+
+`[[0,0,0,13],[4,5],[5],[0,7]]`
+
+に固定する。occupied classは
+`(group,class,count) = (0,3,13),(1,0,4),(1,1,5),(2,0,5),(3,1,7)`である。
+singleton allocationのtarget relationを見る前にrepaired exact oracleから得たparent recordを次で固定する。
+
+- wave／block-zero multiplicity: `1136 / 0`
+- intersection width: `0x1.0cec1a92fd542p-31`
+- center-only relation／gap: `target_below_product / 0x1.36bbccc46797cp-28`
+- parent witness digest:
+  `6761da7e82478d7aa1c0948c4e4b45e3df5db317280a642d97a984b3120de59c`
+- product／center-product／target／intersection digest:
+  `0ac45c95ff6acee7359ab7f24fa5bdc7664aee375ab2117c2bd9d0c95ce7d9dd` /
+  `4750cc56979e965720a510b97370da24f17f83044fd4a6f3477aac34982ce6e1` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `b413e782cbde5e4f8e4ecf6d2f20544590b1e4277de6dd6c7483214c2ee4e195`
+
+### singleton partition inventory
+
+各occupied classはblock 16／1の共通intervalを持つ。ordered interval digestを
+
+`[53f9a306265ffcbfa83c64089e6418ab895037a3dad6a6fe85ba15dab18c8825,`
+`e5b5ce415bac811880fc0ccaa97743c37d7e2510a679d48e627a6eaad2c05399,`
+`2761f9c8d8e92b66d0c8a3e85affc78cda4e1ac98c2beeed7705224145571402,`
+`39747a3474ada699010196f508500971e97451f666025e46bbbc68233ef1d86a,`
+`66a6c269ac137479694f186884d49ca3a4d11070e69132bab822391a557075d8]`
+
+に、occupied record digestを
+`fd29a22954c694d58dac04fad9104e6f94ec3b48f5e9f9de4e1baa3ed5b28936`に固定する。
+singleton identifier順は
+
+`[145_16,145_1,150_16,150_1,151_16,151_1,152_16,152_1,149_16,149_1]`
+
+とし、identifier-order digestを
+`8598b6dda2c8443dd227747f4def129423cefd04e17d3637853a3e5bfac5e026`に固定する。parent individual countは
+`[13,0,4,0,5,0,0,5,0,7]`である。
+
+各occupied classのblock-16 countを0からclass totalまで辞書順に動かし、block-1 countを差として決める。target relationを
+計算する前に次のinventoryを固定する。
+
+- full／compatible allocation count: `20160 / 1136`
+- full／compatible allocation digest:
+  `b718610c7629b121e47bd05aad0b708157ff026aeb792d4072847f331fa598d6` /
+  `3fcce6c888033d862d2fb3124b32b985c8b31049a0e44e1ce44c074cc2fe655d`
+- first／last compatible counts:
+  `[0,13,0,4,0,5,0,5,5,2] / [13,0,4,0,5,0,0,5,0,7]`
+- parent allocation／compatible index: `20112 / 1135`
+
+### exact contract、validity、停止規則
+
+各compatible allocationについて、singleton intervalからexact product intervalとbinary64 outward intervalを再構成し、
+固定targetとのrelationを`product_below_target`、`target_below_product`、`overlap`の排他的3分類にする。product、center
+product、target、intersection、center-only diagnosticをordinal 32 parent witnessと比較する。full comparison recordは1,136件
+全て保持し、順序付きrecord digest、first／last record、section digest、runner hashを固定する。
+
+validity gateは、123 artifact／566 digest、Q011enまでのordinal 0--31 resolution、Q011cb shape／flatten rule／parent witness、
+occupied interval／10-identifier order、20,160 full／1,136 compatible allocation、degree／output-block制約、exact／outward
+relation、strict JSON、section／runner digest、protocol global復元を検査する。一つでも失敗すれば`inconclusive`とする。
+
+1. 全1,136件がparentとexact同一かつoverlapなら`partition_inert_persistent`。次はQ011epでこの1,136 wave allocationだけを
+   component-safe complex phase discへ展開する。
+2. 全1,136件がstrict separationなら`resolved_by_individual_partition`。次はQ011epで登録順のordinal 33を監査する。
+3. intervalは変わるがoverlapが残れば`partition_effective_but_persistent`。次はQ011epで辞書順first remaining overlapだけを
+   component-safe complex phaseへ進める。
+4. validity failureなら原因を修復し、科学的分類は行わない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、Q011cb flatten ordinal 32の
+1,136 singleton allocation、固定target `block=7;center=44`だけを扱う。後続44,767 signature、他31 parent overlap、
+他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、
+SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
