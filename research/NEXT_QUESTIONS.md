@@ -35054,6 +35054,120 @@ ordinal 30の6 occupied classを12 singleton identifierへ戻し、32,928 full a
 全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011elで登録1,854 wave allocationだけを
 component-safe complex phase discへ展開する。
 
+## Q011el: second-family thirty-first-witness component-safe complex phase discs — 事前登録
+
+### 問いとsealed input
+
+Q011ekでinterval-inertだったflatten ordinal 30の登録1,854 individual wave allocationだけを、Q011an singleton／2-row
+componentとQ011ak block discに基づくlabel-freeなcomplex eigendisc allocationへ展開し、固定target
+`block=7;center=44`から全件strictに分離するかを問う。ordinal 0--29、ordinal 31以降、他target、aggregate全体は走査しない。
+
+Q011ekまでの120 artifact／552 direct digest、outcome `partition_inert_persistent`、scientific outcome
+`not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011ek artifact／runner newline-normalized SHA-256:
+  `5802ffa515c52f4a1467e69bbc60725ae788be224eb6348eaddac8666f3a7cb2` /
+  `4c1fdf4f978350c98648af2772eaad36b794bb3276973f042a1887f771c95212`
+- Q011ek input／partition／allocation／result digest:
+  `6e4bd6d04ea757a7e845900c0c90c45592389f6d3903535a7df2310e514370ae` /
+  `9468a01ef21f3d29aa3ecfdf099e2a6bd95281a502a9f7ffda565547fc717ebb` /
+  `af3bb6b42f3c9370430393960fd00f0fc70a4241e20c8cc7694a41da8ee30adf` /
+  `d3b9141d9f2d9a638b94ba5a32422786ea9c583fdaf5225d9296d1045760b434`
+- Q011ek compatible wave／record digest:
+  `1854 / e8aa05a3d9e492c445ed00b9b10a630d85d180f6d8ea104ad1738d4ee9fe6d9c /`
+  `ed0b2b6876e220abdbb6d1da9c9f78cfc2ead9381371ff3f6e2d80e4a70e5c5a`
+
+Q011ek sealed inputは119 artifact／548 direct digestを持つため、Q011ekの4 section digestを加えたQ011el inputは
+120 artifact／552 direct digestでなければならない。
+
+### component-label coalescing bridge
+
+ordinal 30ではQ011ek individual partitionの`center=150` class count 3と`center=151` class count 6がともにpositiveである。
+Q011anで150／151を内部labelを割り当てない同一2-row componentとして囲うため、1,854 individual allocationを各blockで
+150／151 countを加えたcomponent-wave座標へ射影する。center 148はtotal 6、center 149はtotal 1で、ともにsingleton
+row discとしてactiveに保持する。
+
+具体的にはQ011ekの12-count vectorを
+
+`[145_16,145_1,150_16,150_1,151_16,151_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+から
+
+`[145_16,145_1,(150+151)_16,(150+151)_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+へ射影する。complex marginを見る前に事前計算したbridge inventoryを次で固定する。
+
+- individual／distinct component-wave count: `1854 / 665`
+- bridge fiber min／max／histogram: `1 / 4 / {1:136,2:133,3:132,4:264}`
+- ordered bridge record digest:
+  `b1029e0d6cc0de3010419ca721b0e779ca9a78f7c5d5a60db6d1cf1597bcfd5c`
+
+bridgeは全1,854 individual allocationをちょうど一度数え、degree、Fourier output block、component totalを保存しなければ
+ならない。phase allocationのcomponent-wave射影集合がこの665 recordとexactに一致しない場合はvalidity failureとする。
+
+### component-safe inputとlabel-free inventory
+
+source variant、radius、component semantics、targetはQ011ejと同じ12 source／1 targetを固定する。center 145、148、149は
+Q011an singleton row disc、150／151はlabelを割り当てない2-row component union、152とtargetはQ011ak block discとする。
+12-count vectorのtotalは145で13、150／151 componentで9、152で5、148で6、149で1とする。
+
+- source／target exact record digest:
+  `1645c135887e33404974cf0fce47701c752eede5cb99d1643bc8d7d6d97846a7` /
+  `1d57fd229e0e60be3c14669cdd3d32fd7410f1037b548b3c338e28c0efd4ed78`
+- source radius binary64 hex:
+  `0x1.7961e9d97b02ep-36`×2、`0x1.3f712af66bee8p-36`、`0x1.59d0855a75677p-36`、
+  `0x1.3f712af66bee8p-36`、`0x1.59d0855a75677p-36`、`0x1.23ce0990a1325p-30`×2、
+  `0x1.bcf34ab668670p-36`×2、`0x1.bcf9a62d1b2e2p-36`×2
+- target radius binary64 hex: `0x1.38c03374a5bcap-30`
+
+phase count順を
+
+`[145_16,145_1,150_16,151_16,150_1,151_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+に固定し、辞書順nested enumerationとFourier block和mod 17だけを使う。complex marginを見る前に構造inventoryを次で固定した。
+
+- full allocation count／digest:
+  `258720 / ea794d73e7642022f1181eebd452a8bbdf2ee26b34cbcbfae94071745718d001`
+- compatible allocation count／digest:
+  `14578 / ae348d96557174de8e77d0dfff1344858d4a512176a3c5a8f034bb10dbf56ff7`
+- first／last compatible counts:
+  `[0,13,0,0,0,9,0,5,4,2,1,0] / [13,0,9,0,0,0,0,5,0,6,0,1]`
+- component-wave projection count／digest:
+  `665 / 74a1dfba6783917cdcaec661e9c8b92b68e7faee358f82ebd2fa1ebdcf18a079`
+- phase fiber min／max／histogram: `10 / 30 / {10:136,18:133,24:132,28:132,30:132}`
+- bridge／phase paired record digest:
+  `c7c42a32da2c85a446608e3017a7c9fd5ff16fc2e298f00b173d8820af799f50`
+- registered unique product-radius count: `10`
+
+source別power-table上限は
+`[13,13,9,9,9,9,5,5,6,6,1,1]`に固定する。以上のinventory計算ではcomplex center-distance、margin、
+classificationを評価していない。
+
+### exact contract、validity、停止規則
+
+各allocationでexact product center `C`とdisc radius
+`R=prod(upper(|c_i|)+r_i)^n_i-prod upper(|c_i|)^n_i`を構成し、Q011oのexact square-root enclosureで分類する。
+
+1. modulus strictなら`individual_modulus_separation`。
+2. modulus overlapかつ`lower(|C-c_t|)-R-r_t>0`なら`complex_phase_separation`。
+3. それ以外は`unresolved_product_disk_overlap`。
+
+validity gateは、120 artifact／552 digest、Q011ekの1,854 wave／interval-inert result、1,854-to-665 component quotient、
+12 source／targetとcontainment／conjugacy、258,720／14,578 allocationと665-component-wave projection、power recurrence／
+10 radius signature／sqrt enclosure／exclusive分類、section／stream／runner digest、protocol global復元を検査する。一つでも
+失敗すれば`inconclusive`とする。comparison stream domainは`q011el-component-safe-phase-comparisons-v1`、margin digest
+domainは`q011el-complex-margin-expression-v1`に固定する。
+
+unresolved 0かつglobal minimum marginがpositiveならclassificationを
+`the component-safe complex phase discs resolve the thirty-first Q011cb persistent refined witness`、outcomeを
+`component_safe_phase_resolved`とし、次はQ011emでordinal 31を監査する。unresolvedが残れば
+`component_safe_phase_persistent`とし、Q011emでfirst unresolvedだけを精密化する。disc overlapはactual resonanceを示さない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 30、登録
+14,578 phase allocationだけを扱う。ordinal 0--29を再評価せず、後続44,769 signature、他31 parent overlap、他15 target、
+aggregate全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
+normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
