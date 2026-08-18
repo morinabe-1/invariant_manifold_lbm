@@ -6842,6 +6842,45 @@ certified degrees 2--33と91以降、missing 34--90は不変である。後続44
 degree-34 nonresonance、actual resonanceは未判定である。次はQ011dzで登録1,061 wave allocationだけをcomponent-safe
 complex phase discへ展開する。
 
+### Q011dz second-family twenty-fifth-witness component-safe phase audit
+
+Q011dyまでの108 artifact／498 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。Q011dyの
+1,061 individual wave allocationを、150／151の内部固有値labelを仮定せず382 label-free component waveへexactに
+商写像した。center 148 pairをzero multiplicity、center 149 singleton pairをtotal 7でactiveとして、147,840 full
+allocation中、output block 7にcompatibleな8,350件を全数監査した。modulus intervalは全件overlapしたが、全8,350
+product discがtargetからexact complex phaseでstrictに分離した。未分離は0件で、outcomeは
+`component_safe_phase_resolved`である。
+
+- individual／component wave: `1061 / 382`
+- bridge fiber histogram／record digest:
+  `{1:79,2:77,3:76,4:150} / 64d889ce335824c4856b757b13e22a9e7b241447f1cfe736080a9fd47912ffb4`
+- full／compatible phase allocation: `147840 / 8350`
+- full／compatible allocation digest:
+  `adfa4524f802479c9e5d022058ff4d8692e710db899e3e73f5d86d49a9ebb02b` /
+  `a9e224dcd0cbe32697eb370e9949350b7ce7e894a58adadda52a9e66aa1afabd`
+- component-wave projection／paired phase digest:
+  `382 / dfb9c92a146a91f0d5452bb2f73c3ce35d45dd5c73cf3539ba50cf35ae010d61` /
+  `d78ace19373c096bfe6fff17bea11b92f929d6096c547b26c4c8dac17e39d4ef`
+- category count: `individual modulus / complex phase / unresolved = 0 / 8350 / 0`
+- global minimum compatible index／counts／margin:
+  `5455 / [11,2,0,9,0,0,0,5,0,0,2,5] / 0x1.a8f10a6dc8463p-6`
+- minimum witness／comparison stream digest:
+  `0608c0d35f60903eea1f58ee9ea5f3f8fef345e97babcf53abee39f14fa1aa0d` /
+  `f52202a2ca770f0eb89148d6468c1aaa3a9e79a039af2cece5c6faaa39c217d0`
+- input／phase-input／allocation／comparison／result digest:
+  `0ed79c2ceaea369a3583ada6f3d016cc5d3fb15c4cc41655722a49e2dc98a6ec` /
+  `9d724622303028bbcebd1dd46bdf619d7f92ac1633a7a26ee839bc5584045d57` /
+  `a184330c67820dbf4cbbd6b9ddc6377b2e841cb26378c3074b854f39902a3c0f` /
+  `9e675472c48393a58153866b38deeb095265e985bb97a18ecea0a76e6906e1a8` /
+  `dcc3c4a5297015f76a414aae72925d7353429a9dc5579fe8729c33e3cd3a9696`
+- runner／artifact newline-normalized SHA-256:
+  `fdf8238a5215edd278ff910aa0f39173ebf62ff7f58959a8dbf7de948baa91a2` /
+  `dc96fcc57e79780133c9ad44d2be9950f9e7cbe33c16534422f4d5b70e4fb17c`
+
+これはflatten ordinal 24だけの解消である。ordinal 0--23のresolution、aggregate-level `persistent`、certified degrees
+2--33と91以降、missing 34--90は不変である。後続44,775 signature、他31 parent overlap、他15 target、aggregate `2340`
+全体、degree-34 nonresonance、actual resonanceは未判定である。次はQ011eaで登録順のordinal 25を監査する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -7615,6 +7654,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011dw_degree34_twenty_fourth_individual_partition_audit.json`](research/artifacts/q011dw_degree34_twenty_fourth_individual_partition_audit.json)
 - [`research/artifacts/q011dx_degree34_twenty_fourth_component_safe_phase_discs.json`](research/artifacts/q011dx_degree34_twenty_fourth_component_safe_phase_discs.json)
 - [`research/artifacts/q011dy_degree34_twenty_fifth_individual_partition_audit.json`](research/artifacts/q011dy_degree34_twenty_fifth_individual_partition_audit.json)
+- [`research/artifacts/q011dz_degree34_twenty_fifth_component_safe_phase_discs.json`](research/artifacts/q011dz_degree34_twenty_fifth_component_safe_phase_discs.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
@@ -7950,6 +7990,8 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
   component-safe phase allocationへ展開し、modulus-overlap全件をexact complex phaseで分離したordinal-23 resolution
 - Q011dy Q011cb flatten ordinal 24をpositive-count 10 singleton／1,061 compatible allocationへ戻し、
   exact intervalが全て親と同一となるpartition-inert診断
+- Q011dz Q011dyの1,061 individual wave allocationを382 label-free component waveへexactに商写像してから8,350
+  component-safe phase allocationへ展開し、modulus-overlap全件をexact complex phaseで分離したordinal-24 resolution
 - Q008a degree 2／3／4 local Fourier係数、4 TT配置、sparse格納・忠実度・timing診断
 - Q008c wave／branch・3-bit wave QTTの4配置、一般TT作用、格納・忠実度・timing診断
 - Q010 固定8 TT-SVD候補の独立offline／online cost envelope、sparse-baseline break-even棄却
@@ -8414,4 +8456,7 @@ component-safe complex phase discへ展開する。Q011dxでは150／151の内�
 component waveへ商写像し、8,350 phase allocationを全件監査してmodulus-overlap全件をexact complex phaseで分離した。
 これはordinal 23だけの解消であり、degree-34全体の認証ではない。次にQ011cb登録順のordinal 24を監査した。Q011dyでは
 1,061 compatible allocationを全件監査したが、全intervalがparentとexact同一でoverlapした。これはordinal 24だけの
-partition診断であり、次はこの1,061 wave allocationだけをcomponent-safe complex phase discへ展開する。
+partition診断であり、次にこの1,061 wave allocationだけをcomponent-safe complex phase discへ展開した。Q011dzでは
+150／151の内部labelを仮定せず1,061 individual waveを382 component waveへ商写像し、8,350 phase allocationを全件
+監査してmodulus-overlap全件をexact complex phaseで分離した。これはordinal 24だけの解消であり、degree-34全体の
+認証ではない。次はQ011cb登録順のordinal 25を監査する。
