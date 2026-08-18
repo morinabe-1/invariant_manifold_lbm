@@ -11395,6 +11395,37 @@ interval-inert resultを一時差替えした。呼出し後のglobal復元もga
 ある。ordinal 0--31と既存認証範囲は不変で、後続44,767 signature、aggregate全体、degree-34全体、actual resonanceは
 未判定である。次はQ011eqで登録順のordinal 33を監査する。
 
+### Q011eq 実行結果
+
+Q011epまでの125 artifact／575 direct digestを封印し、flatten ordinal 33の6 occupied classを12 singleton identifierへ
+戻した。35,280 full allocation中、output block 7にcompatibleな1,986件を全数監査した。exact rationalとbinary64 outwardの
+双方で`product_below_target / target_below_product / overlap`は`0 / 0 / 1986`となり、product、center-product、target、
+intersection、center-only diagnosticは全件parent recordと同一だった。全7 validity gateと全4 diagnostic gateを通過し、
+outcomeは`partition_inert_persistent`となった。
+
+- full／compatible allocation: `35280 / 1986`
+- full／compatible allocation digest:
+  `ac68044737c1b13eda7fc25746e080eb65e4e331b9d6a2fe2a2a2f89be03bc51` /
+  `e01027eb225f5a71db902819f765a7687480cac3040b58d528ac479859264a4e`
+- occupied-record／identifier-order digest:
+  `1aaf83f6fab32af354f41d1fddca96d6d1d85fbad5a8e4654cb9d951d5b7f749` /
+  `ff33e554ab95aad7ae696a37e1eeb5812b602f126e9697ccfdca46d21fc4f8f6`
+- allocation classification record digest:
+  `0dc620408d34946749e70e9c42142a66f6e0514323190840a17286cc4df36cd4`
+- input／partition-input／allocation／result digest:
+  `175f2cdf23caaf13ddcf01f9c0b49dee7188f73d824960625836d7c121cf4ea8` /
+  `03af0604db08ebc10653064ccf97fd9312d68b619509736f2313e4b1e942cfd1` /
+  `cdf2f796346166e9a05869cc83439c666c5f206b45c9106baf2426468a79a482` /
+  `1f0bf41d4d9f32cbf6b1306bebc811d1297266e4595f95060a77c9f262cb4f88`
+- runner／artifact newline-normalized SHA-256:
+  `95854f9450577db3104e491ed40df940c2474e2bde96a87f6f8c92c3cd7b6fa4` /
+  `8e3cd9dd82d4f437be1a27247395e9cb8c79ab582215ff40386534e9b1c07d15`
+
+Q011daのpartition protocolにはordinal 33の登録定数を一時差替えし、Q011ep artifactとordinal 32 phase resolutionを追加で
+封印した。呼出し後のglobal復元もgateとtestで確認した。これはordinal 33だけのpartition診断である。ordinal 0--32と
+既存認証範囲は不変で、後続44,766 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011erで
+登録1,986 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
