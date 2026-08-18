@@ -11115,6 +11115,38 @@ interval-inert resultを一時差替えした。呼出し後のglobal復元もga
 ある。ordinal 0--27と既存認証範囲は不変で、後続44,771 signature、aggregate全体、degree-34全体、actual resonanceは
 未判定である。次はQ011eiで登録順のordinal 29を監査する。
 
+### Q011ei 実行結果
+
+Q011ehまでの117 artifact／539 direct digestを封印し、flatten ordinal 29の6 occupied classを12 singleton identifierへ
+戻した。42,336 full allocation中、output block 7にcompatibleな2,382件を全数監査したところ、exact rationalとbinary64
+outwardの双方で全件overlapし、product、center-product、target、intersection、center-only diagnosticは全てparent
+recordと同一だった。全7 validity gateと全4 diagnostic gateを通過し、outcome `partition_inert_persistent`となった。
+
+- parent wave／block-zero multiplicity: `2382 / 0`
+- full／compatible allocation digest:
+  `3d561c58b26f2c7a40703eeb71c76cad6b7c7d7e55fbbeddd57a6981754b9e62` /
+  `182d7567c426f5fe78f913fe91bd297c5e819c2fcccf12f464baf54baf068d4c`
+- occupied-record／identifier-order digest:
+  `1d4aacea72ce0163bad34eebcc2e4ce2247bd28ab70923f21cf773f8580b8aa5` /
+  `ff33e554ab95aad7ae696a37e1eeb5812b602f126e9697ccfdca46d21fc4f8f6`
+- exact／outward category count (`product below / target below / overlap`):
+  `0 / 0 / 2382` / `0 / 0 / 2382`
+- allocation classification record digest:
+  `12ce88dd94366a1caa4b3a032c7910d91bb3369d20730bdeca5bf05081f80bd3`
+- input／partition-input／allocation／result digest:
+  `badd184241abf8a65b1d4eda3e6bb6db28aebccf808a93c1a9363e82fdac2ea4` /
+  `d62ae9a02d2baa507b4f5d2f90bcd22389f75e8ab5f16510c05ebbf9af283f0b` /
+  `2989e090053f6f7bc05a9f7d0e145683731a317a22eb0df5dde3714d197e632f` /
+  `dd5b7f66f60c3380524e04c2c314d999088cb9f891ad11ec32fcdb27a44a47c4`
+- runner／artifact newline-normalized SHA-256:
+  `411c2747dd9ab211be6f2edb0101751dfae74899be6507c8576db691e81fc207` /
+  `dab9d2b83c6e362fb9a59fea1aaac9d6e8782e555adcb320afe52afec292516d`
+
+Q011daのpartition protocolにはordinal 29の登録定数を一時差替えし、Q011eh artifactとordinal 28 phase resolutionを追加で
+封印した。呼出し後のglobal復元もgateとtestで確認した。これはordinal 29だけのpartition診断である。ordinal 0--28と
+既存認証範囲は不変で、後続44,770 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011ejで
+登録2,382 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
