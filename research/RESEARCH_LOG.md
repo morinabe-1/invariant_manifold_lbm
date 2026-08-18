@@ -11044,6 +11044,38 @@ interval-inert resultを一時差替えした。呼出し後のglobal復元もga
 ある。ordinal 0--26と既存認証範囲は不変で、後続44,772 signature、aggregate全体、degree-34全体、actual resonanceは
 未判定である。次はQ011egで登録順のordinal 28を監査する。
 
+### Q011eg 実行結果
+
+Q011efまでの115 artifact／530 direct digestを封印し、flatten ordinal 28の6 occupied classを12 singleton identifierへ
+戻した。47,040 full allocation中、output block 7にcompatibleな2,646件を全数監査したところ、exact rationalとbinary64
+outwardの双方で全件overlapし、product、center-product、target、intersection、center-only diagnosticは全件parent recordと
+exactに同一だった。全7 validity gateと全4 diagnostic gateを通過し、outcomeは`partition_inert_persistent`となった。
+
+- occupied class／singleton identifier／compatible allocation: `6 / 12 / 2646`
+- full／compatible allocation: `47040 / 2646`
+- exact／outward relation count（product below／target below／overlap）: `0 / 0 / 2646`
+- occupied／identifier-order digest:
+  `4495af94fbb348377eeb375937b631f5d74eeb92f2107b999f04d46a8977f0d2` /
+  `ff33e554ab95aad7ae696a37e1eeb5812b602f126e9697ccfdca46d21fc4f8f6`
+- full／compatible allocation digest:
+  `4dff9fcef600b6941298dafc1125db4e90f9341dc785301a9eeab96c8f3c601d` /
+  `1a309827dc69dc79bf57ef7e0a5c5a58a4fc28a210eb4535ad05465b03b2108d`
+- allocation classification record digest:
+  `21431e2c651015cf178cd5e51c494d5533866a766260e8b37aaf11ffffe8fb66`
+- input／partition-input／allocation／result digest:
+  `65bf1b5198d8d208dd1eb7085bda171c1136a30a6516aa63c4b7fe5ca14c769a` /
+  `0d423a4e0dcc08a63ffe35f08ff282e612e2c523feac56c1432af24b3e9fc6b8` /
+  `5f1419a2ff88954f2a06d833ff4ce11767dea3fe7211810994f7a25fcbfe7656` /
+  `1770f6b5f969de9154702b329cd57bcf225fbe147866fc16995532062ab7e85a`
+- runner／artifact newline-normalized SHA-256:
+  `f9bee3d60d2671b1b8475c981e378f338b4ab60cc1486800d64c2b89ca49b72b` /
+  `546a08dd99e56c096d708883e84dd3cdfa7924e0509d3903e8c8ef1b27fef9b8`
+
+Q011daのpartition protocolにはordinal 28の登録定数を一時差替えし、Q011ef artifactとordinal 27 phase resolutionを追加で
+封印した。呼出し後のglobal復元もgateとtestで確認した。これはordinal 28だけのpartition診断である。ordinal 0--27と
+既存認証範囲は不変で、後続44,771 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011ehで
+登録2,646 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
