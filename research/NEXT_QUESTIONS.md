@@ -32151,6 +32151,45 @@ relation、strict JSON、section／runner digest、protocol global復元を検�
 他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、
 SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011dq 封印結果（partition inert persistent）
+
+Q011dpまでの99 artifact／458 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal 20の
+6 occupied classを12 singleton identifierへ戻し、40,320 full allocation中、output block 7にcompatibleな2,266件を
+全数監査した。exact／binary64 outward relationは全件overlapし、product、center product、target、intersection、
+center-only diagnosticも全件parentとexactに同一だった。outcomeは`partition_inert_persistent`となった。
+
+- flatten ordinal／left／right: `20 / 2 / 4`
+- parent class counts／wave multiplicity: `[[0,0,0,13],[2,7],[5],[4,3]] / 2266`
+- occupied source counts: `[13,2,7,5,4,3]`
+- full／compatible allocation: `40320 / 2266`
+- first／last compatible counts:
+  `[0,13,0,2,0,7,0,5,2,2,3,0] / [13,0,2,0,7,0,0,5,0,4,0,3]`
+- parent allocation／compatible index: `40200 / 2265`
+- exact／binary64 outward relation count:
+  `product below / target below / overlap = 0 / 0 / 2266`（双方同一）
+- parent width／center relation／gap:
+  `0x1.db908e51f2771p-32 / target_below_product / 0x1.38adfd19f8c06p-28`
+- parent witness／occupied record／allocation record digest:
+  `be04ecb93748d76ad982e0b9009e0d0b6d30444bc71599419da1acab4d994736` /
+  `c95540e225b6bf1a480a29292218524bf70c35ce71f84e5fd2e7e2ba93cb8ac7` /
+  `06714821b56544c1f1d3ee59be2511464faedd1895e86365ed66adb8b94840fa`
+- full／compatible allocation digest:
+  `fa54bb6402699aeb80ba8b3a1035766c7cb2cc83a877b0c1ce46fcb8d3dfcb98` /
+  `ef537f57de529612510cec9c0132014e2c0bb0c3695cec14fb99c7c832bf9efd`
+- input／partition／allocation／result digest:
+  `d9c7309eea2a8f98545d6766f4735465453b86cdbf10315c1a3d98b5c60688f9` /
+  `a18084acfb2136d82030029941a212cd45bbd6c33fd896061581ec7d132b405b` /
+  `b0dd901688d59add15cd6c4864a73265923e6b8e2819bff05a33d27b03978633` /
+  `5b3835a3ffde2ff43814644b010a739fa7dc8a3cca3408759f80c42ada38d8f7`
+- runner／artifact newline-normalized SHA-256:
+  `0fe8f9d99572c1c1406e796877f39084a7a3276bfdf5d027a821361cf7b8a043` /
+  `1bd0fdc5bd0e0439280546c9174b09616413c38c8447622c57b176e6428695fb`
+
+Q011daのpartition protocolにはordinal 20の登録定数を一時差替えし、Q011dp artifactとordinal 19 phase resolutionを
+追加で封印した。呼出し後のglobal復元もgateとtestで確認した。これはordinal 20だけのpartition診断である。ordinal
+0--19と既存認証範囲は不変で、後続44,779 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。
+停止規則どおり、次はQ011drで登録2,266 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
