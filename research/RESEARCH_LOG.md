@@ -10831,6 +10831,38 @@ Q011dy artifactとinterval-inert resultを追加で封印した。呼出し後�
 resolutionである。ordinal 0--23と既存認証範囲は不変で、後続44,775 signature、aggregate全体、degree-34全体、actual
 resonanceは未判定である。次はQ011eaで登録順のordinal 25を監査する。
 
+### Q011ea 実行結果
+
+Q011dzまでの109 artifact／503 direct digestを封印し、flatten ordinal 25の6 occupied classを12 singleton identifierへ
+戻した。32,928 full allocation中、output block 7にcompatibleな1,854件を全数監査したところ、exact rationalとbinary64
+outwardの双方で全件overlapし、product、center-product、target、intersection、center-only diagnosticは全件parent recordと
+exactに同一だった。全7 validity gateと全4 diagnostic gateを通過し、outcomeは`partition_inert_persistent`となった。
+
+- occupied class／singleton identifier／compatible allocation: `6 / 12 / 1854`
+- full／compatible allocation: `32928 / 1854`
+- exact／outward relation count（product below／target below／overlap）: `0 / 0 / 1854`
+- occupied／identifier-order digest:
+  `d376918aff9c95c7bf11160e61a6e9cf995932ca58fc2b22b0946717bdd7982f` /
+  `ff33e554ab95aad7ae696a37e1eeb5812b602f126e9697ccfdca46d21fc4f8f6`
+- full／compatible allocation digest:
+  `1362fc59de3909a9103afe6ae890916a08bd3a5bc6d2f42b26d18cf0667da2f6` /
+  `0d256c8821715c4a16915e10aba56513b698bfb842816872f5afeca87dd196a6`
+- allocation classification record digest:
+  `5f7690a09840838846e924c2eae00ddc7677afcffb0b15c5d45af8b922357ce4`
+- input／partition-input／allocation／result digest:
+  `ce603076aea464b94ed0bee5391ec62f249206abf26336b7e4c8396f7ab993c3` /
+  `6ced61538e5ffb7929185c8b89f0983d3e2f8a9ec5d49cdf5f54b7807f6d98ad` /
+  `14fc3b4ed4368948cfc0f1bdbb82d7f51daa50ae6071ee724ee50164789111da` /
+  `66569dd2e073cd2f174818a38d710933da8f9b4f328661af484ef0e34e4a8a72`
+- runner／artifact newline-normalized SHA-256:
+  `a47d9798e87f1ab06aa9772e0830ae7cb2ecc2f1126628882c13a4f423cdca79` /
+  `feaad408e56e6b338c8188ee99600d03e96a291a38f92e2c3ef804be516ddbc9`
+
+Q011daのpartition protocolにはordinal 25の登録定数を一時差替えし、Q011dz artifactとordinal 24 phase resolutionを追加で
+封印した。呼出し後のglobal復元もgateとtestで確認した。これはordinal 25だけのpartition診断である。ordinal 0--24と
+既存認証範囲は不変で、後続44,774 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011ebで
+登録1,854 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
