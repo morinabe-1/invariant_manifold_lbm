@@ -10,20 +10,24 @@ import research.q011ep_degree34_thirty_third_component_safe_phase_discs as q011e
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "9aa0d0f38060bb9a7e1479105179d5a9c384a06f95fb6792bbfa3b446b09db64"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "fdbb72a412b312f29a76001fadef8e1842fbf5927f6ed45dbc01cfca85cd0846"
+)
 EXPECTED_SECTION_DIGESTS = {
-    "input_digest_sha256": "",
-    "phase_input_digest_sha256": "",
-    "allocation_digest_sha256": "",
-    "phase_comparison_digest_sha256": "",
-    "result_digest_sha256": "",
+    "input_digest_sha256": "959928bfc1c256b5b10a72e0001783a4f623d63cd9f8c556cd71c4c20f047b7b",
+    "phase_input_digest_sha256": "6a069ccfc34608033e9c86b7fb2659fc40e686d537a4c8ab4b7ebb6bca822f30",
+    "allocation_digest_sha256": "319c0aa97c592e6e363c234d1d73f53cfe1d5e72b9c81c137240fba97ad362aa",
+    "phase_comparison_digest_sha256": "597748fe387d8ea771cdf5373910d7c83485edbef3634dbfb49c4697c03fbff8",
+    "result_digest_sha256": "83a0050d13e11eefcdfaa358b76f50acac5c7deda95db576296ade5a97d54372",
 }
-EXPECTED_STREAM_DIGEST = ""
-EXPECTED_MINIMUM_WITNESS_DIGEST = ""
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX = ""
+EXPECTED_STREAM_DIGEST = "88e4aa8188c98eec04aa38be9feaf313bb3585b35357fc12f008e8df4cc40833"
+EXPECTED_MINIMUM_WITNESS_DIGEST = "0608c0d35f60903eea1f58ee9ea5f3f8fef345e97babcf53abee39f14fa1aa0d"
+EXPECTED_MINIMUM_INDEX: int | None = 5_455
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [11, 2, 0, 9, 0, 0, 0, 5, 0, 0, 2, 5]
+EXPECTED_MINIMUM_MARGIN_HEX = "0x1.a8f10a6dc8463p-6"
 
 
 @pytest.fixture(scope="module")
