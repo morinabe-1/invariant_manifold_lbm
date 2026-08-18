@@ -35596,6 +35596,36 @@ relation、strict JSON、section／runner digest、protocol global復元を検�
 他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、
 SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011eo 封印結果（partition inert persistent）
+
+Q011enまでの123 artifact／566 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。flatten
+ordinal 32の5 occupied classを10 singleton identifierへ戻し、20,160 full allocation中、output block 7にcompatibleな
+1,136件を全数監査した。exact rationalとbinary64 outwardの双方で`product_below_target / target_below_product / overlap`
+は`0 / 0 / 1136`となり、product、center-product、target、intersection、center-only diagnosticは全件parent recordと
+同一だった。outcomeは`partition_inert_persistent`である。
+
+- full／compatible allocation digest:
+  `b718610c7629b121e47bd05aad0b708157ff026aeb792d4072847f331fa598d6` /
+  `3fcce6c888033d862d2fb3124b32b985c8b31049a0e44e1ce44c074cc2fe655d`
+- occupied-record／identifier-order digest:
+  `fd29a22954c694d58dac04fad9104e6f94ec3b48f5e9f9de4e1baa3ed5b28936` /
+  `8598b6dda2c8443dd227747f4def129423cefd04e17d3637853a3e5bfac5e026`
+- allocation classification record digest:
+  `71cd748ee0afa6b141f8fe1ff56160f33ee04eb07b79ffcdb6d6b784f9512706`
+- input／partition-input／allocation／result digest:
+  `9e180f055cfb2f3247125532cef09baae0c35358387fb5a1a20272010e639be6` /
+  `2bfb8ef52e807a79ed8913c76d633d994f384d99671eb44d6671bad3c7c79d58` /
+  `3d274df285550505e24dc33775a3b4f92f42764b07c8dda237eeea615485757e` /
+  `c98b1dc3e6a79ee53cbb09e23019e3c5501262badc1ffdc37cb7dc6ba060e273`
+- runner／artifact newline-normalized SHA-256:
+  `a99f29cd0c78bbd9e27d58830ce372c4dd497db8c7357edc2d7cc9f80e85ef50` /
+  `443c2945ac3e9d14a693813b46013ade5f8d48d8af1cd8009ce367be9a029783`
+
+Q011daのpartition protocolにはordinal 32の登録定数を一時差替えし、Q011en artifactとordinal 31 phase resolutionを追加で
+封印した。呼出し後のglobal復元もgateとtestで確認した。これはordinal 32だけのpartition診断である。ordinal 0--31と
+既存認証範囲は不変で、後続44,767 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則
+どおり、次はQ011epで登録1,136 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
