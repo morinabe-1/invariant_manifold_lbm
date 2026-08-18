@@ -34159,6 +34159,39 @@ relation、strict JSON、section／runner digest、protocol global復元を検�
 他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、
 SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ee 封印結果（partition inert persistent）
+
+Q011edまでの113 artifact／521 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。flatten
+ordinal 27の6 occupied classを12 singleton identifierへ戻し、47,040 full allocation中、output block 7にcompatibleな
+2,646件を全数監査した。exact rationalとbinary64 outwardの双方で全件overlapし、product、center-product、target、
+intersection、center-only diagnosticは全件parent recordとexactに同一だった。outcomeは
+`partition_inert_persistent`となった。
+
+- occupied class／singleton identifier／compatible allocation: `6 / 12 / 2646`
+- full／compatible allocation: `47040 / 2646`
+- exact／outward relation count（product below／target below／overlap）: `0 / 0 / 2646`
+- occupied／identifier-order digest:
+  `608268cd17ef4a37f3e2e81833b137da09722aa16a317a20077880501b937846` /
+  `ff33e554ab95aad7ae696a37e1eeb5812b602f126e9697ccfdca46d21fc4f8f6`
+- full／compatible allocation digest:
+  `0a29c9b705e034707b3577bb461607fe587eb7fad44377318315698813955a89` /
+  `662f583594330a844352bdf1b8dffb3bc4bcabbc64e96ec41195f6fcc5c7bcb2`
+- allocation classification record digest:
+  `c98bea97f9adeb28fe5b60965717a0dc2d20554b2c8b4d0d6126b144844a3da8`
+- input／partition-input／allocation／result digest:
+  `ff8c10647fe2e563d4e14a7b6741af6775e86582c7a248b4c239e3c32bd59b41` /
+  `cca2bbc68896d25be9576fd79458d702fb8124d790370d68c6975e8d6b2149f5` /
+  `cb1bb1bb029792d6d775b7567fddb5f2e3fbd91e6baea34758bc45d7badc9761` /
+  `1bdd5fea7fa022509aba04f623f762773515cfd8fa7f08f5a26a9ed0e24ac70d`
+- runner／artifact newline-normalized SHA-256:
+  `0eb6caf90c258f3930b1acc586be975c17843dee42a3b62037bc10388139de40` /
+  `ebcfa1fc22c39a1730dd62ca0a966bb9a2ec3743d772e486cc0e7f2a302ec738`
+
+Q011daのpartition protocolにはordinal 27の登録定数を一時差替えし、Q011ed artifactとordinal 26 phase resolutionを追加で
+封印した。呼出し後のglobal復元もgateとtestで確認した。これはordinal 27だけのpartition診断である。ordinal 0--26と
+既存認証範囲は不変で、後続44,772 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則
+どおり、次はQ011efで登録2,646 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
