@@ -40015,6 +40015,41 @@ multiplicity、exact／outward分類、section／runner digest、protocol global
 他31 parent overlap、他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、
 higher smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011fu 封印結果（partition inert persistent）
+
+Q011ftまでの155 artifact／710 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal 48を
+5 positive-count modulus class／10 singleton identifierへ戻し、18,816 full allocation中、output block 7にcompatibleな
+1,061件を全数監査した。exact rationalとbinary64 outwardの双方で全件overlapし、product、center-product、target、
+intersection、center-only diagnosticも全件parentとexact同一だった。事前登録した停止規則に従いoutcomeを
+`partition_inert_persistent`とした。
+
+- left／right index、class counts: `6 / 0`、`[[0,0,0,13],[6,3],[5],[0,7]]`
+- full／compatible allocation count: `18816 / 1061`
+- exact／binary64 outward relation counts:
+  `{product_below_target:0,target_below_product:0,overlap:1061}`
+- full／compatible allocation digest:
+  `022f20081fe852814a0fa10da30687a519bf29af7131f0472c87316d54e1f22b` /
+  `78a5a7d73fc26fe8fa9993b4b7ac7c1f7fc68632d0564e4a2f47d822c31e1dbf`
+- parent product／center-product／target／intersection digest:
+  `342ef0b04f75ef4c6e6bb4b310e77dc5072e9439fcf49ca81f7a7625c6154924` /
+  `a43aef66f2208dc3fd982cc01a4fe4a685bb40c4ae7fea6b8c3ede0e8d373ebe` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `244c31855c303e640da19d214e5bef19d958b4d110225cbbc0e367c646d1d653`
+- allocation-classification record digest:
+  `8f11701e583f904831bc3d0851be3fc04353d6140c52bb2aa5e3819a9359b1a5`
+- input／partition-input／allocation-audit／result digest:
+  `2e36523ae1aa961df0ccbb39115c8f30202610dcde6ebf5d629a172184b259f8` /
+  `8ca66f02ec69130e50fd6cb26e8c1ac36502aa3a0bb29310802fafdec6053f3c` /
+  `737eff556877b1ba21a7d1be4d7ee507f28feaf2f7c79478c507c758ec2632e8` /
+  `df0f882d647c770d4972fc3eab56221a2c2037c5f37aea35a97398e88d439d99`
+- runner／artifact newline-normalized SHA-256:
+  `9d08289cd4c9c8cf5912c817a06d7c19318f2109d01b3fdcd27318bc7466094a` /
+  `36056dd08c8270deac15f122fb5b577bb97c7d47f5b3f61f76fa7d7c01c57538`
+
+これはordinal 48だけのpartition診断であり、ordinal 0--47のresolutionと既存認証範囲は不変である。後続44,751
+signature、aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011fvで登録1,061
+wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
