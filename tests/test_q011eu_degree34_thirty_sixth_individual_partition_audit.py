@@ -10,13 +10,17 @@ import research.q011eu_degree34_thirty_sixth_individual_partition_audit as q011e
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "01e998707d8874efb51902e7b4cb34355eea6849634dbc8e38b57f66f35b55d2"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "112f14757a3e6a0303c26449668a179dc9ef6453fbd3f7f467234f66c3620028"
+)
 EXPECTED_SECTION_DIGESTS = {
-    "input_digest_sha256": "",
-    "partition_input_digest_sha256": "",
-    "allocation_audit_digest_sha256": "",
-    "result_digest_sha256": "",
+    "input_digest_sha256": "2eaba4c85aece1b6c2f2882fd409b49528f436d12c49b6cb2740871988912139",
+    "partition_input_digest_sha256": "53a3e47f27a1eba7615f6a8f4204e14271f9a411c62d0ae118fdd317e43ca864",
+    "allocation_audit_digest_sha256": "9c7dd6f80bc80211d496449a3dcedb4b83002fc89aa332425efbfabea6137649",
+    "result_digest_sha256": "a38ba75f6aab2e2a734b3da9b867b80b0d068ea9c65d36f26cabbb35f12b1141",
 }
 EXPECTED_PARTITION_DIGESTS = {
     "parent_product_interval_digest_sha256": (
@@ -31,7 +35,9 @@ EXPECTED_PARTITION_DIGESTS = {
     "parent_intersection_interval_digest_sha256": (
         "b771967506f64580b4fc006aa340c93578b96fb092643aa1483c947c4c9ed131"
     ),
-    "allocation_classification_record_digest_sha256": "",
+    "allocation_classification_record_digest_sha256": (
+        "bbf44cf42dd0081ae206ebb4ef2c17fe703ed2196ce9bb993cd07b59ba68b785"
+    ),
 }
 
 
@@ -123,20 +129,24 @@ def test_q011eu_classifies_every_registered_exact_interval(
     assert partition["passed"]
     assert all(partition["checks"].values())
     assert partition["compatible_allocation_count"] == 2_837
+    assert partition["all_product_target_intersection_and_center_records_equal_parent"]
     records = partition["allocation_classification_records"]
     assert len(records) == 2_837
     assert [record["compatible_allocation_index"] for record in records] == list(range(2_837))
     for record in records:
         assert record["degree"] == 34
         assert record["output_block"] == 7
-        assert record["exact_relation"] in {
-            "product_below_target",
-            "target_below_product",
-            "overlap",
-        }
-        assert record["binary64_outward_relation"] == record["exact_relation"]
-        assert isinstance(record["product_equals_parent"], bool)
-        assert isinstance(record["intersection_equals_parent"], bool)
+        assert record["exact_relation"] == "overlap"
+        assert record["binary64_outward_relation"] == "overlap"
+        assert not record["exact_gap_positive"]
+        assert not record["binary64_outward_gap_positive"]
+        assert record["product_equals_parent"]
+        assert record["center_product_equals_parent"]
+        assert record["target_equals_parent"]
+        assert record["intersection_equals_parent"]
+        assert record["center_diagnostic_equals_parent"]
+        assert record["intersection_width_hex"] == (q011eu.EXPECTED_PARENT_INTERSECTION_WIDTH_HEX)
+        assert record["center_only_gap_hex"] == q011eu.EXPECTED_PARENT_CENTER_GAP_HEX
     if not EXPECTED_PARTITION_DIGESTS["allocation_classification_record_digest_sha256"]:
         pytest.skip("Q011eu partition record digest has not been sealed yet")
     assert {name: partition[name] for name in EXPECTED_PARTITION_DIGESTS} == (
@@ -154,9 +164,16 @@ def test_q011eu_applies_the_registered_exclusive_stopping_rule(
     assert all(gate["passed"] for gate in q011eu_cycle["diagnostic_gates"].values())
     assert q011eu_cycle["scientific_outcome"] == "not_evaluated"
     assert q011eu_cycle["actual_resonance_outcome"] == "not_established"
+    assert q011eu_cycle["refinement_outcome"] == "partition_inert_persistent"
+    assert q011eu_cycle["diagnostic_classification"] == q011eu.INERT_CLASSIFICATION
     partition = q011eu_cycle["individual_allocation_interval_audit"]
-    assert sum(partition["exact_relation_counts"].values()) == 2_837
-    assert partition["binary64_outward_relation_counts"] == partition["exact_relation_counts"]
+    expected_relations = {
+        "product_below_target": 0,
+        "target_below_product": 0,
+        "overlap": 2_837,
+    }
+    assert partition["exact_relation_counts"] == expected_relations
+    assert partition["binary64_outward_relation_counts"] == expected_relations
     assert not partition["complex_phase_product_evaluated"]
     theorem = q011eu_cycle["theorem_consequence"]
     flags = (
@@ -166,18 +183,18 @@ def test_q011eu_applies_the_registered_exclusive_stopping_rule(
             "individual_partition_changes_intervals_but_thirty_sixth_q011cb_witness_persists"
         ],
     )
-    assert sum(flags) == 1
-    assert q011eu_cycle["refinement_outcome"] in {
-        "partition_inert_persistent",
-        "resolved_by_individual_partition",
-        "partition_effective_but_persistent",
-    }
+    assert flags == (True, False, False)
 
 
 def test_q011eu_preserves_boundary_and_reproducible_digests(
     q011eu_cycle: dict[str, Any],
 ) -> None:
     theorem = q011eu_cycle["theorem_consequence"]
+    assert theorem["individual_partition_is_interval_inert_for_thirty_sixth_q011cb_witness"]
+    assert not theorem["thirty_sixth_q011cb_witness_is_resolved_by_individual_partition"]
+    assert not theorem[
+        "individual_partition_changes_intervals_but_thirty_sixth_q011cb_witness_persists"
+    ]
     assert theorem["q011et_ordinal_thirty_four_phase_resolution_is_preserved"]
     assert theorem["q011es_ordinal_thirty_four_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011er_ordinal_thirty_three_phase_resolution_is_preserved"]
@@ -225,11 +242,7 @@ def test_q011eu_study_metadata_and_optional_artifact_are_scoped(
     assert q011eu_study["schema_version"] == 1
     assert q011eu_study["source"] == source_metadata()
     assert q011eu_study["study_gate"] == "passed"
-    assert q011eu_study["refinement_outcome"] in {
-        "partition_inert_persistent",
-        "resolved_by_individual_partition",
-        "partition_effective_but_persistent",
-    }
+    assert q011eu_study["refinement_outcome"] == "partition_inert_persistent"
     runtime = q011eu_study["arithmetic_runtime"]
     assert runtime["target_comparisons"] == 2_837
     assert runtime["complex_phase_product_evaluated"] is False
@@ -257,7 +270,7 @@ def test_q011eu_study_metadata_and_optional_artifact_are_scoped(
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     assert artifact["runner_source"]["sha256"] == EXPECTED_RUNNER_SHA256
     assert artifact["study_gate"] == "passed"
-    assert artifact["refinement_outcome"] == q011eu_study["refinement_outcome"]
+    assert artifact["refinement_outcome"] == "partition_inert_persistent"
     assert artifact["cycle"]["result_digest_sha256"] == (
         q011eu.q011b._canonical_json_sha256(q011eu._result_digest_sections(artifact["cycle"]))
     )
