@@ -10,27 +10,40 @@ import research.q011ff_degree34_forty_first_component_safe_phase_discs as q011ff
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_STREAM_DIGEST: str | None = None
-EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = None
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "d23f687858dd35824c9f516da4c97dffd256f85a5042a66ebea87d60573786a3"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "382defe5dc094ca811ebf42e31acc7bfd8bfdc490d5b93c509960e7bdf128c68"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "5a42100b653ed03cf177b35d6e13660c0be9bf5d9d7413715b9a79c96de5e186",
+    "phase_input_digest_sha256": "731867fe950ace6f55a5a6bf9b88d62356f4b16687dacb80bcb0b49c2b4ba7d2",
+    "allocation_digest_sha256": "595be6c5a5cc7a2df346efaf40acee92110885a60b70f451ff226464a68159c8",
+    "phase_comparison_digest_sha256": "208ee6447a5792b6560e8f62aac29a28aa85d73054c10ed9bc8cdd39c4fcb1d8",
+    "result_digest_sha256": "fa0b8377bf4b975254c8861bf5005539772d6b1f8a0d19ad7a6a93d3a670cbbd",
+}
+EXPECTED_STREAM_DIGEST: str | None = (
+    "1a9b5534db03bfea3ea0d1b342de8312e5d53cf3702a2200cd7a40bdcba4ec11"
+)
+EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = (
+    "0608c0d35f60903eea1f58ee9ea5f3f8fef345e97babcf53abee39f14fa1aa0d"
+)
+EXPECTED_MINIMUM_INDEX: int | None = 5_455
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [11, 2, 0, 9, 0, 0, 0, 5, 0, 0, 2, 5]
+EXPECTED_MINIMUM_MARGIN_HEX: str | None = "0x1.a8f10a6dc8463p-6"
 RESULT_EXPECTATIONS_FIXED = EXPECTED_SECTION_DIGESTS is not None
 
 
 @pytest.fixture(scope="module")
-def q011ff_structure() -> dict[str, Any]:
-    sealed, artifacts = q011ff._sealed_input_audit()
-    fixed, sources, _target, waves = q011ff._fixed_phase_input_audit(artifacts)
-    allocation, compatible = q011ff._allocation_inventory(sources, waves)
+def q011ff_structure(q011ff_study: dict[str, Any]) -> dict[str, Any]:
+    cycle = q011ff_study["cycle"]
+    allocation = cycle["component_safe_phase_allocation_audit"]
     return {
-        "sealed": sealed,
-        "fixed": fixed,
+        "sealed": cycle["sealed_input_audit"],
+        "fixed": cycle["fixed_component_safe_phase_input_audit"],
         "allocation": allocation,
-        "compatible_count": len(compatible),
+        "compatible_count": allocation["compatible_allocation_count"],
     }
 
 
@@ -192,7 +205,7 @@ def test_q011ff_certifies_all_complex_phase_product_discs(
     comparison = q011ff_cycle["complex_phase_product_disc_audit"]
     assert comparison["passed"]
     assert all(comparison["checks"].values())
-    assert comparison["parent_flat_ordinal"] == 39
+    assert comparison["parent_flat_ordinal"] == 40
     assert comparison["compatible_phase_allocation_count"] == 8_350
     assert comparison["category_counts"] == {
         "individual_modulus_separation": 0,
@@ -249,7 +262,7 @@ def test_q011ff_records_scoped_resolution(
     assert q011ff_cycle["diagnostic_classification"] == q011ff.RESOLVED_CLASSIFICATION
     assert q011ff_cycle["scientific_outcome"] == "not_evaluated"
     assert q011ff_cycle["actual_resonance_outcome"] == "not_established"
-    assert "Q011fe" in q011ff_cycle["next_change"]
+    assert "Q011fg" in q011ff_cycle["next_change"]
     assert "next Q011cb refined overlap" in q011ff_cycle["next_change"]
 
 
@@ -257,12 +270,14 @@ def test_q011ff_records_scoped_resolution(
 def test_q011ff_preserves_scientific_boundary(q011ff_cycle: dict[str, Any]) -> None:
     theorem = q011ff_cycle["theorem_consequence"]
     flags = (
-        theorem["component_safe_complex_phase_discs_resolve_fortieth_q011cb_witness"],
-        theorem["fortieth_q011cb_witness_persists_under_component_safe_phase_discs"],
+        theorem["component_safe_complex_phase_discs_resolve_forty_first_q011cb_witness"],
+        theorem["forty_first_q011cb_witness_persists_under_component_safe_phase_discs"],
     )
     assert flags == (True, False)
     assert theorem["q011an_component_internal_eigenvalue_labels_are_assumed"] is False
     assert theorem["q011fe_interval_inert_diagnostic_is_preserved"]
+    assert theorem["q011fd_ordinal_thirty_nine_phase_resolution_is_preserved"]
+    assert theorem["q011fc_ordinal_thirty_nine_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011fb_ordinal_thirty_eight_phase_resolution_is_preserved"]
     assert theorem["q011fa_ordinal_thirty_eight_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011ez_ordinal_thirty_seven_phase_resolution_is_preserved"]
@@ -296,9 +311,9 @@ def test_q011ff_preserves_scientific_boundary(q011ff_cycle: dict[str, Any]) -> N
     assert not theorem["an_actual_degree_thirty_four_external_resonance_is_established"]
     assert theorem["certified_external_nonresonance_degrees"] == list(range(2, 34))
     assert theorem["missing_external_nonresonance_degrees"] == list(range(34, 91))
-    assert "flatten ordinal 39" in q011ff_cycle["claim_boundary"]
-    assert "reevaluate ordinals 0 through 38" in q011ff_cycle["claim_boundary"]
-    assert "later 44760 Q011cb refined signatures" in q011ff_cycle["claim_boundary"]
+    assert "flatten ordinal 40" in q011ff_cycle["claim_boundary"]
+    assert "reevaluate ordinals 0 through 39" in q011ff_cycle["claim_boundary"]
+    assert "later 44759 Q011cb refined signatures" in q011ff_cycle["claim_boundary"]
     assert "does not establish an actual resonance" in q011ff_cycle["claim_boundary"]
 
 
@@ -334,7 +349,7 @@ def test_q011ff_study_metadata_and_optional_artifact_are_scoped(
     scope = q011ff_study["mathematical_scope"]
     assert scope["degree"] == 34
     assert scope["parent_aggregate_index"] == 2340
-    assert scope["parent_flat_ordinal"] == 39
+    assert scope["parent_flat_ordinal"] == 40
     assert scope["target_identifier"] == "block=7;center=44"
     assert scope["component_internal_eigenvalue_labels_assumed"] is False
     assert scope["degree_thirty_four_nonresonance_claim"] is False
@@ -347,10 +362,10 @@ def test_q011ff_study_metadata_and_optional_artifact_are_scoped(
     artifact_path = (
         runner_path.parent
         / "artifacts"
-        / "q011ff_degree34_fortieth_component_safe_phase_discs.json"
+        / "q011ff_degree34_forty_first_component_safe_phase_discs.json"
     )
     if not artifact_path.exists():
-        pytest.skip("Q011fd artifact has not been generated yet")
+        pytest.skip("Q011ff artifact has not been generated yet")
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     if EXPECTED_RUNNER_SHA256 is not None:
         assert artifact["runner_source"]["sha256"] == EXPECTED_RUNNER_SHA256
