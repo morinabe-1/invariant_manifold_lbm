@@ -10,27 +10,40 @@ import research.q011fd_degree34_fortieth_component_safe_phase_discs as q011fd
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_STREAM_DIGEST: str | None = None
-EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = None
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "19e4966a27beb1d156d6c429f94e5ffc08672cdd721ec70d206b9ef9b2944b19"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "dbd8905d5a2d2197ad27f5d1c5f0ea0443b80ae0ff6ffea2c4f1872e79353d1e"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "c94f097c3f346b542ceb0ae0136935261a5aec3a5059317ed5fbf22ed7b5e781",
+    "phase_input_digest_sha256": "b221bf19e1db3cdcacaeac73887f253e891c7d637af2f2e715c263b032b50e35",
+    "allocation_digest_sha256": "e588e41dc4a0aa86f9286a8703982529459d2da34dbe9d047c756723f9cec4aa",
+    "phase_comparison_digest_sha256": "c333e30eb0225b2b5e339579decd2de9f4a9d4e01a616f1bbc82e73d53c2ec04",
+    "result_digest_sha256": "1dc07c70683d17935c7674c6a405b9b485d1baedb0c04501a4325d8bc1d494cb",
+}
+EXPECTED_STREAM_DIGEST: str | None = (
+    "00b0bd6eb5878b7eb4bd604fa2a502f0c727d0fc0d7b7f3fad4f3136bed9eaa4"
+)
+EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = (
+    "df9e0c42e0cdb8d82a309c61e2bf95d5d6369af757654dbbf5ad38e822695d1a"
+)
+EXPECTED_MINIMUM_INDEX: int | None = 5_408
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [11, 2, 0, 6, 0, 3, 0, 5, 5, 2, 0, 0]
+EXPECTED_MINIMUM_MARGIN_HEX: str | None = "0x1.a8f10a6dc89e6p-6"
 RESULT_EXPECTATIONS_FIXED = EXPECTED_SECTION_DIGESTS is not None
 
 
 @pytest.fixture(scope="module")
-def q011fd_structure() -> dict[str, Any]:
-    sealed, artifacts = q011fd._sealed_input_audit()
-    fixed, sources, _target, waves = q011fd._fixed_phase_input_audit(artifacts)
-    allocation, compatible = q011fd._allocation_inventory(sources, waves)
+def q011fd_structure(q011fd_study: dict[str, Any]) -> dict[str, Any]:
+    cycle = q011fd_study["cycle"]
+    allocation = cycle["component_safe_phase_allocation_audit"]
     return {
-        "sealed": sealed,
-        "fixed": fixed,
+        "sealed": cycle["sealed_input_audit"],
+        "fixed": cycle["fixed_component_safe_phase_input_audit"],
         "allocation": allocation,
-        "compatible_count": len(compatible),
+        "compatible_count": allocation["compatible_allocation_count"],
     }
 
 
@@ -192,20 +205,20 @@ def test_q011fd_certifies_all_complex_phase_product_discs(
     comparison = q011fd_cycle["complex_phase_product_disc_audit"]
     assert comparison["passed"]
     assert all(comparison["checks"].values())
-    assert comparison["parent_flat_ordinal"] == 38
-    assert comparison["compatible_phase_allocation_count"] == 14_578
+    assert comparison["parent_flat_ordinal"] == 39
+    assert comparison["compatible_phase_allocation_count"] == 8_350
     assert comparison["category_counts"] == {
         "individual_modulus_separation": 0,
-        "complex_phase_separation": 14_578,
+        "complex_phase_separation": 8_350,
         "unresolved_product_disk_overlap": 0,
     }
     assert comparison["individual_modulus_relation_counts"] == {
         "product_below_target": 0,
         "target_below_product": 0,
-        "overlap": 14_578,
+        "overlap": 8_350,
     }
     assert comparison["unique_product_radius_count"] == 10
-    assert comparison["comparison_stream_count"] == 14_578
+    assert comparison["comparison_stream_count"] == 8_350
     assert comparison["comparison_stream_domain"] == ("q011fd-component-safe-phase-comparisons-v1")
     assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
     assert comparison["first_unresolved_witness"] is None
@@ -249,7 +262,7 @@ def test_q011fd_records_scoped_resolution(
     assert q011fd_cycle["diagnostic_classification"] == q011fd.RESOLVED_CLASSIFICATION
     assert q011fd_cycle["scientific_outcome"] == "not_evaluated"
     assert q011fd_cycle["actual_resonance_outcome"] == "not_established"
-    assert "Q011fc" in q011fd_cycle["next_change"]
+    assert "Q011fe" in q011fd_cycle["next_change"]
     assert "next Q011cb refined overlap" in q011fd_cycle["next_change"]
 
 
@@ -263,6 +276,8 @@ def test_q011fd_preserves_scientific_boundary(q011fd_cycle: dict[str, Any]) -> N
     assert flags == (True, False)
     assert theorem["q011an_component_internal_eigenvalue_labels_are_assumed"] is False
     assert theorem["q011fc_interval_inert_diagnostic_is_preserved"]
+    assert theorem["q011fb_ordinal_thirty_eight_phase_resolution_is_preserved"]
+    assert theorem["q011fa_ordinal_thirty_eight_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011ez_ordinal_thirty_seven_phase_resolution_is_preserved"]
     assert theorem["q011ey_ordinal_thirty_seven_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011ex_ordinal_thirty_six_phase_resolution_is_preserved"]
@@ -295,8 +310,8 @@ def test_q011fd_preserves_scientific_boundary(q011fd_cycle: dict[str, Any]) -> N
     assert theorem["certified_external_nonresonance_degrees"] == list(range(2, 34))
     assert theorem["missing_external_nonresonance_degrees"] == list(range(34, 91))
     assert "flatten ordinal 39" in q011fd_cycle["claim_boundary"]
-    assert "reevaluate ordinals 0 through 37" in q011fd_cycle["claim_boundary"]
-    assert "later 44761 Q011cb refined signatures" in q011fd_cycle["claim_boundary"]
+    assert "reevaluate ordinals 0 through 38" in q011fd_cycle["claim_boundary"]
+    assert "later 44760 Q011cb refined signatures" in q011fd_cycle["claim_boundary"]
     assert "does not establish an actual resonance" in q011fd_cycle["claim_boundary"]
 
 
@@ -325,14 +340,14 @@ def test_q011fd_study_metadata_and_optional_artifact_are_scoped(
     assert q011fd_study["study_gate"] == "passed"
     assert q011fd_study["refinement_outcome"] == "component_safe_phase_resolved"
     runtime = q011fd_study["arithmetic_runtime"]
-    assert runtime["target_comparisons"] == 14_578
+    assert runtime["target_comparisons"] == 8_350
     assert runtime["full_comparison_records_retained"] is False
     assert runtime["floating_point_used_for_gate_decisions"] is False
     assert runtime["protocol_globals_restored_after_use"] is True
     scope = q011fd_study["mathematical_scope"]
     assert scope["degree"] == 34
     assert scope["parent_aggregate_index"] == 2340
-    assert scope["parent_flat_ordinal"] == 38
+    assert scope["parent_flat_ordinal"] == 39
     assert scope["target_identifier"] == "block=7;center=44"
     assert scope["component_internal_eigenvalue_labels_assumed"] is False
     assert scope["degree_thirty_four_nonresonance_claim"] is False
