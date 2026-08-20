@@ -38499,6 +38499,37 @@ phase allocationだけを扱う。ordinal 0--41を再評価せず、後続44,757
 全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011fj 封印結果（component-safe phase resolved）
+
+Q011fiまでの144 artifact／660 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal 42の
+登録2,553 individual wave allocationを852 label-free component waveへexactに商写像した。332,640 full phase allocation中、
+output block 7にcompatibleな18,718件を全数監査したところ、individual modulusでは全件overlap、exact complex phaseでは
+全件strict separationだった。unresolvedは0、global minimum marginもpositiveなので、事前登録した停止規則に従いoutcomeを
+`component_safe_phase_resolved`とした。
+
+- bridge／projection／paired-record digest:
+  `82c7c3d7a9b2038b8b936ed4228a17f1eb31bc5820404efc69d2fab4aac828a4` /
+  `629cf594b5adbb8f10c66daf11f6bff80d91c667a7d4f641f164a804ca96e5e2` /
+  `8e5811a56e99a5d41b8e3041f576434cf7a7f42c2a34615d9a2e176eccb9bfb6`
+- category counts `individual-modulus / complex-phase / unresolved`: `0 / 18718 / 0`
+- global minimum exact phase-margin witness:
+  index `11706`、counts `[11,2,0,7,0,2,0,5,2,0,2,3]`、binary64 hex `0x1.a8f10a6dc8560p-6`
+- minimum-witness／comparison-stream digest:
+  `fcbac38dd950f2aedb42ca9b4f2543d54616a5938c7f645e2a2437c3ad04e645` /
+  `11a2d02869d5f08b673d4d2e4bc64a19b67ca9e2f4308ef2d070c87d13b920a0`
+- input／phase-input／allocation／comparison／result digest:
+  `db19b53f69e9e24e20dc9e212608762fef2e09a5b500fc0ddadf3046f1231436` /
+  `c424b21f6948e37d6048029201001f3e3e6070c399b99435d8ac5312a2adeb85` /
+  `4e85dea854f01f222ff61e32f74aa70bbdff3af67209f6f5b7995d045f7afdf1` /
+  `fe19fd0827a5fdd2ceec77064d5f5a21e3037505c1e155206cb5b5a05e2d4f33` /
+  `fa79eb13a290d7aa196e8dae8d6468eeb4548475347f7adf193ec4394afda5e8`
+- runner／artifact newline-normalized SHA-256:
+  `d9a45be85a9c18f150ad4d91376759063b0ac1b58634865dd0bde3a3ee13909a` /
+  `233eda62aaaedf792ab6116024dca0b3a6f6ad22441798c893da6c70d7bb55c3`
+
+これはordinal 42だけのresolutionであり、ordinal 0--41のresolutionと既存認証範囲は不変である。後続44,757 signature、
+aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011fkで登録順のordinal 43を監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
