@@ -37953,6 +37953,37 @@ phase allocationだけを扱う。ordinal 0--39を再評価せず、後続44,759
 全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ff 封印結果（component-safe phase resolved）
+
+Q011feまでの140 artifact／642 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal 40の
+登録1,136 individual wave allocationを382 label-free component waveへexactに商写像した。center 148 pairは多重度0で
+固定し、center 149 pairを多重度7として列挙した。147,840 full phase allocation中、output block 7にcompatibleな8,350件を
+全数監査したところ、individual modulusでは全件overlap、exact complex phaseでは全件strict separationだった。unresolvedは0、
+global minimum marginもpositiveなので、事前登録した停止規則に従いoutcomeを`component_safe_phase_resolved`とした。
+
+- bridge／projection／paired-record digest:
+  `795df7cf0720da090bd568d6ebeff031b712380b4e1d54508ef6c9e9e1f7519c` /
+  `dfb9c92a146a91f0d5452bb2f73c3ce35d45dd5c73cf3539ba50cf35ae010d61` /
+  `77836846fd43d5ac79d3801255a79489fffaea02d01f1ed09f201b7f718313b8`
+- category counts `individual-modulus / complex-phase / unresolved`: `0 / 8350 / 0`
+- global minimum exact phase-margin witness:
+  index `5455`、counts `[11,2,0,9,0,0,0,5,0,0,2,5]`、binary64 hex `0x1.a8f10a6dc8463p-6`
+- minimum-witness／comparison-stream digest:
+  `0608c0d35f60903eea1f58ee9ea5f3f8fef345e97babcf53abee39f14fa1aa0d` /
+  `1a9b5534db03bfea3ea0d1b342de8312e5d53cf3702a2200cd7a40bdcba4ec11`
+- input／phase-input／allocation／comparison／result digest:
+  `5a42100b653ed03cf177b35d6e13660c0be9bf5d9d7413715b9a79c96de5e186` /
+  `731867fe950ace6f55a5a6bf9b88d62356f4b16687dacb80bcb0b49c2b4ba7d2` /
+  `595be6c5a5cc7a2df346efaf40acee92110885a60b70f451ff226464a68159c8` /
+  `208ee6447a5792b6560e8f62aac29a28aa85d73054c10ed9bc8cdd39c4fcb1d8` /
+  `fa0b8377bf4b975254c8861bf5005539772d6b1f8a0d19ad7a6a93d3a670cbbd`
+- runner／artifact newline-normalized SHA-256:
+  `d23f687858dd35824c9f516da4c97dffd256f85a5042a66ebea87d60573786a3` /
+  `382defe5dc094ca811ebf42e31acc7bfd8bfdc490d5b93c509960e7bdf128c68`
+
+これはordinal 40だけのresolutionであり、ordinal 0--39のresolutionと既存認証範囲は不変である。後続44,759 signature、
+aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011fgで登録順のordinal 41を監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
