@@ -12760,6 +12760,44 @@ parentとexact同一だった。全7 validity gateと全4 diagnostic gateを通�
 aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011gdで登録2,646 wave allocationだけを
 component-safe complex phase discへ展開する。
 
+### Q011gd 実行結果
+
+Q011gcまでの164 artifact／750 direct digestを封印し、ordinal 52の2,646 individual wave allocationを、150／151
+component内部のeigenvalue labelを仮定せず945 label-free component waveへexactに商写像した。369,600 full phase
+allocation中、output block 7にcompatibleな20,786件を全数監査した。individual modulusでは全件overlapしたが、
+exact complex phaseでは全件strict separationとなった。全7 validity gateと全4 diagnostic gateを通過し、outcomeは
+`component_safe_phase_resolved`となった。
+
+- individual／component wave allocation: `2646 / 945`
+- bridge fiber histogram: `{1:191,2:187,3:187,4:380}`
+- full／compatible allocation count: `369600 / 20786`
+- full／compatible allocation digest:
+  `469ac40e8855a6a650ce2429c6c3c50003653736290198d7158cb68993ddf0c8` /
+  `55b2a688d44eebb2688b7637ed0a2b419b9c82311f6a422d03811dacd4f97f81`
+- bridge／projection／paired-record digest:
+  `3f3bd16a239e81d0fc5777847fab01710a76025a640eb5cb76d7f8f4b9bae7b9` /
+  `63a7ade77c1682484cc08042c29a88a75bc38a0fd25471593f9376a150653866` /
+  `69f9b09d0162977cca5db2d76ff9955cf886c3edef0a646e2a36ec7a3a89c18f`
+- category counts `individual-modulus / complex-phase / unresolved`: `0 / 20786 / 0`
+- global minimum exact phase-margin witness:
+  index `12725`、counts `[11,2,0,5,0,4,0,5,4,0,2,1]`、binary64 hex `0x1.a8f10a6dc865cp-6`
+- minimum-witness／comparison-stream digest:
+  `8c8cf6e53c96a08c4f432a201d6736541e31ce7940c2070ae4edcd68d8b31342` /
+  `9da14922eb831c023db89622d6f5529985d39265f7dc13b01308eb8f298bdf5a`
+- input／phase-input／allocation／comparison／result digest:
+  `09cf1865fd16f691c3db31b5009e9c0de330d548ea7e9ccd300bda4ed6851705` /
+  `12f490d0d61531d5c5e6e90b15b0dea970479d4aa669412a5d8af0685858736f` /
+  `8b7ee5dac8a442c1b38b086f3c7a31c251f0c19b05e33005f240d109cd36cd14` /
+  `6fbcd162e8e0623cb1e2804e3ed294a122835735dbc50d7e6ca207e899f682f4` /
+  `549292ba84fb6cb4984c9abe06915a55466dbf4698239e1d59760467457baf0b`
+- runner／artifact newline-normalized SHA-256:
+  `c19c65111255cef59ef0d0d368c82003b18aba2f420ee28f6eeaa475100aff8a` /
+  `6179e13fa37e905a178074fe74d291e3758753f9ec3fe73d5688c2a7f34a8fe3`
+
+これはordinal 52だけのphase resolutionである。ordinal 0--51と既存認証範囲は不変で、後続44,747 signature、
+aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011geで登録順のordinal 53を
+監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
