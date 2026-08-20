@@ -11426,6 +11426,46 @@ Q011daのpartition protocolにはordinal 33の登録定数を一時差替えし�
 既存認証範囲は不変で、後続44,766 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。次はQ011erで
 登録1,986 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+### Q011er 実行結果
+
+Q011eqまでの126 artifact／579 direct digestを封印し、Q011eqの1,986 individual wave allocationを150／151の内部固有値
+labelを仮定しない665 component waveへexactに商写像した。258,720 full phase allocation中、output block 7にcompatibleな
+14,578件を全数監査した。`individual_modulus_separation / complex_phase_separation /
+unresolved_product_disk_overlap`は`0 / 14578 / 0`となり、modulus intervalでは全件overlapしたが、exact complex
+center-distanceでは全件strictに分離した。全7 validity gateと全4 diagnostic gateを通過し、outcomeは
+`component_safe_phase_resolved`となった。
+
+- individual／component wave: `1986 / 665`
+- bridge fiber histogram／record digest:
+  `{1:136,2:133,3:132,4:132,5:132}` /
+  `d6d50d9249ec1bf94b41c1efef5aeb99f51429e60cb7a8246bf694f06f5caa46`
+- full／compatible phase allocation: `258720 / 14578`
+- full／compatible phase allocation digest:
+  `090de6a137c4cf2261d18899a0110c080dbdfffa3906da2c018e1c8453519412` /
+  `92ff284505c3deec0d3ef2e9e4766b137462e8e892c49a5ace1e2923cbe6bce1`
+- component projection／bridge-phase paired digest:
+  `2bce224b8a062486a9ad4b826bccd09d4d1138aefe012bd014daa71ebd1c5133` /
+  `b9e6a67ea8bc9acf83e7af5fa7fbfc9b36851a61b6e0cdf8174ada8281816a72`
+- global minimum compatible index／counts／margin:
+  `9298 / [11,2,0,8,0,1,0,5,1,0,2,4] / 0x1.a8f10a6dc84e1p-6`
+- minimum witness／comparison stream digest:
+  `57badc5d7675b78362958718cfc68036f87a34d11f88fe4cdd88c7c264932e3c` /
+  `ed93343a036c0c37991d4e36986bde98cde6d960b68c0ce3dc636b4f81fd0187`
+- input／phase-input／allocation／comparison／result digest:
+  `1545503d51bb3d379b73473a315469b1b1074acd4cc387411f340e3499b2849a` /
+  `e22d92dc366ce9b8749ca60b71f003bf2df6cb72b9524170fc0a2174d746a087` /
+  `013a5d6e374e841adae9f2e6535b8bc024b983d662cdb4a855d163c6e94354c4` /
+  `f31d1abd2794e9f9fb0be10364bed7a5f72fe7b04cb5570c9f5539740fcac83f` /
+  `6f63c6f26580ae7f39a77d919c09b7c43ae2cfe56dcbfe2aee878107de644dcb`
+- runner／artifact newline-normalized SHA-256:
+  `3790a4d010f60ec1d03b29da86339f1198c929da846a6ac6dd471b9225e36b71` /
+  `8c2b2a6a885880af84df0c85e7c449a89285b53300b9f47276638537067a4f23`
+
+Q011ch／Q011cj／Q011cxのphase protocolにはordinal 33の登録定数、source別power-table上限、Q011eq artifactと
+interval-inert resultを一時差替えした。呼出し後のglobal復元もgateとtestで確認した。これはordinal 33だけのresolutionで
+ある。ordinal 0--32と既存認証範囲は不変で、後続44,766 signature、aggregate全体、degree-34全体、actual resonanceは
+未判定である。次はQ011esで登録順のordinal 34を監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
