@@ -39051,6 +39051,43 @@ phase allocationだけを扱う。ordinal 0--43を再評価せず、後続44,755
 全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011fn 封印結果（component-safe phase resolved）
+
+Q011fmまでの148 artifact／678 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal 44の
+登録2,837 individual wave allocationを945 label-free component waveへexactに商写像した。369,600 full phase allocation中、
+output block 7にcompatibleな20,786件を全数監査したところ、individual modulusでは全件overlap、exact complex phaseでは
+全件strict separationだった。unresolvedは0で、事前登録した停止規則に従いoutcomeを
+`component_safe_phase_resolved`とした。
+
+- individual／component wave allocation: `2837 / 945`
+- bridge fiber histogram: `{1:191,2:187,3:187,4:189,5:191}`
+- full／compatible allocation digest:
+  `469ac40e8855a6a650ce2429c6c3c50003653736290198d7158cb68993ddf0c8` /
+  `55b2a688d44eebb2688b7637ed0a2b419b9c82311f6a422d03811dacd4f97f81`
+- bridge／projection／paired-record digest:
+  `e6dd92eb78e5c8804b10a16ca9a4283938783fb3935cdf280522f10c3881f9ec` /
+  `63a7ade77c1682484cc08042c29a88a75bc38a0fd25471593f9376a150653866` /
+  `7510318313be3bf43fc4e6aa78ae41c99ac643a77ee9cb20cac33ed8b889c2ec`
+- category counts `individual-modulus / complex-phase / unresolved`: `0 / 20786 / 0`
+- global minimum exact phase-margin witness:
+  index `12725`、counts `[11,2,0,5,0,4,0,5,4,0,2,1]`、binary64 hex `0x1.a8f10a6dc865cp-6`
+- minimum-witness／comparison-stream digest:
+  `8c8cf6e53c96a08c4f432a201d6736541e31ce7940c2070ae4edcd68d8b31342` /
+  `065eaffd6bd46c6890abe64104d11dbda42a911e2a7a62fded881e1303b7137e`
+- input／phase-input／allocation／comparison／result digest:
+  `f7de611741e0af2efe9e4fb013e5cf5b51a71814a40a8b8ae3ba152ed82089da` /
+  `7bd9fd868e76f91fa13337d0cd8293908c43fe8ec8e374bf46a9797f62e2a037` /
+  `c87f7d726dfe7d9a9598385d91b26ca2c72b48655ead2c25f9423f12dfff3594` /
+  `df204ff635cb5c2acff4d327e8188d1696cc9124835896f7d38252081e4275e8` /
+  `b1ae3bc65e106c4f312302087724f254149a0bb59f906d92098caa034df125d4`
+- runner／artifact newline-normalized SHA-256:
+  `69bb381a12a9329702ff2c3016439aa78535ae0238bd3f88ca30a6895e90dbe4` /
+  `193e9336063937f63d350b1e2abdabab95a098ac1f6ed5272989195f33512926`
+
+これはordinal 44だけのresolutionであり、ordinal 0--43のresolutionと既存認証範囲は不変である。後続44,755
+signature、aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011foで登録順の
+ordinal 45を監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
