@@ -10,20 +10,24 @@ import research.q011ex_degree34_thirty_seventh_component_safe_phase_discs as q01
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "ad8230519a1038fb811dd960c47c962eb9a645e02553cf6e5f3717746c44564f"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "df0e896e0a94f294625ffa691a2ee348f2a227b8bd34e35476be13a987ae1b82"
+)
 EXPECTED_SECTION_DIGESTS = {
-    "input_digest_sha256": "",
-    "phase_input_digest_sha256": "",
-    "allocation_digest_sha256": "",
-    "phase_comparison_digest_sha256": "",
-    "result_digest_sha256": "",
+    "input_digest_sha256": "c5e36927392513a4b0b8213a8403f24f02b40eba7c4ef9f64a2d37714f7cefac",
+    "phase_input_digest_sha256": "c3a83195eaf1244d972c8664ae39bddfc366503c4217f2bb4bc28441d1910e1f",
+    "allocation_digest_sha256": "b01655ec0171593fc33fc485b34295bb9e93340d6eca0a3e1289fccb7c9af06c",
+    "phase_comparison_digest_sha256": "1bd5709a7f8ff86bb612b4573202c67b6d28fea4025d44409c755fe38df54444",
+    "result_digest_sha256": "9ae086e18f5d714bee3ef5b8d99973552d9a4d4d438d60bf48279276cf24c1a9",
 }
-EXPECTED_STREAM_DIGEST = ""
-EXPECTED_MINIMUM_WITNESS_DIGEST = ""
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX = ""
+EXPECTED_STREAM_DIGEST = "ffc5d8c1e1b1fe9f5f3c488b1098163a62124a86bb783b6ac37440be2b33358f"
+EXPECTED_MINIMUM_WITNESS_DIGEST = "8c8cf6e53c96a08c4f432a201d6736541e31ce7940c2070ae4edcd68d8b31342"
+EXPECTED_MINIMUM_INDEX: int | None = 12_725
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [11, 2, 0, 5, 0, 4, 0, 5, 4, 0, 2, 1]
+EXPECTED_MINIMUM_MARGIN_HEX = "0x1.a8f10a6dc865cp-6"
 
 
 @pytest.fixture(scope="module")
@@ -183,27 +187,21 @@ def test_q011ex_certifies_all_complex_phase_product_discs(
     assert all(comparison["checks"].values())
     assert comparison["parent_flat_ordinal"] == 36
     assert comparison["compatible_phase_allocation_count"] == 20_786
-    assert set(comparison["category_counts"]) == {
-        "individual_modulus_separation",
-        "complex_phase_separation",
-        "unresolved_product_disk_overlap",
+    assert comparison["category_counts"] == {
+        "individual_modulus_separation": 0,
+        "complex_phase_separation": 20_786,
+        "unresolved_product_disk_overlap": 0,
     }
-    assert sum(comparison["category_counts"].values()) == 20_786
-    assert set(comparison["individual_modulus_relation_counts"]) == {
-        "product_below_target",
-        "target_below_product",
-        "overlap",
+    assert comparison["individual_modulus_relation_counts"] == {
+        "product_below_target": 0,
+        "target_below_product": 0,
+        "overlap": 20_786,
     }
-    assert sum(comparison["individual_modulus_relation_counts"].values()) == 20_786
     assert comparison["unique_product_radius_count"] == 10
     assert comparison["comparison_stream_count"] == 20_786
     assert comparison["comparison_stream_domain"] == ("q011ex-component-safe-phase-comparisons-v1")
-    if not EXPECTED_STREAM_DIGEST:
-        pytest.skip("Q011ex comparison stream digest has not been sealed yet")
     assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
-    assert comparison["first_unresolved_witness"] is None or isinstance(
-        comparison["first_unresolved_witness"], dict
-    )
+    assert comparison["first_unresolved_witness"] is None
     assert comparison["full_comparison_records_retained"] is False
     assert comparison["previous_q011cb_refined_signatures_recomputed"] is False
     assert comparison["later_q011cb_refined_signatures_recomputed"] is False
@@ -215,8 +213,6 @@ def test_q011ex_minimum_exact_phase_margin_is_fixed(
     comparison = q011ex_cycle["complex_phase_product_disc_audit"]
     witness = comparison["global_minimum_margin_witness"]
     assert witness == comparison["minimum_separated_witness"]
-    if EXPECTED_MINIMUM_INDEX is None or EXPECTED_MINIMUM_COUNTS is None:
-        pytest.skip("Q011ex minimum phase witness has not been sealed yet")
     assert witness["compatible_allocation_index"] == EXPECTED_MINIMUM_INDEX
     assert witness["counts"] == EXPECTED_MINIMUM_COUNTS
     assert witness["degree"] == 34
@@ -238,26 +234,18 @@ def test_q011ex_records_scoped_resolution(q011ex_cycle: dict[str, Any]) -> None:
     assert len(q011ex_cycle["diagnostic_gates"]) == 4
     assert all(gate["passed"] for gate in q011ex_cycle["validity_gates"].values())
     assert all(gate["passed"] for gate in q011ex_cycle["diagnostic_gates"].values())
-    assert q011ex_cycle["refinement_outcome"] in {
-        "component_safe_phase_resolved",
-        "component_safe_phase_persistent",
-    }
-    assert q011ex_cycle["diagnostic_classification"] in {
-        q011ex.RESOLVED_CLASSIFICATION,
-        q011ex.PERSISTENT_CLASSIFICATION,
-    }
+    assert q011ex_cycle["refinement_outcome"] == "component_safe_phase_resolved"
+    assert q011ex_cycle["diagnostic_classification"] == q011ex.RESOLVED_CLASSIFICATION
     assert q011ex_cycle["scientific_outcome"] == "not_evaluated"
     assert q011ex_cycle["actual_resonance_outcome"] == "not_established"
     assert "Q011ey" in q011ex_cycle["next_change"]
+    assert "next Q011cb refined overlap" in q011ex_cycle["next_change"]
 
 
 def test_q011ex_preserves_scientific_boundary(q011ex_cycle: dict[str, Any]) -> None:
     theorem = q011ex_cycle["theorem_consequence"]
-    flags = (
-        theorem["component_safe_complex_phase_discs_resolve_thirty_seventh_q011cb_witness"],
-        theorem["thirty_seventh_q011cb_witness_persists_under_component_safe_phase_discs"],
-    )
-    assert sum(flags) == 1
+    assert theorem["component_safe_complex_phase_discs_resolve_thirty_seventh_q011cb_witness"]
+    assert not theorem["thirty_seventh_q011cb_witness_persists_under_component_safe_phase_discs"]
     assert theorem["q011an_component_internal_eigenvalue_labels_are_assumed"] is False
     assert theorem["q011ew_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011ev_ordinal_thirty_five_phase_resolution_is_preserved"]
@@ -323,8 +311,6 @@ def test_q011ex_cycle_has_strict_reproducible_digests(
     q011ex_cycle: dict[str, Any],
 ) -> None:
     json.dumps(q011ex_cycle, allow_nan=False)
-    if not all(EXPECTED_SECTION_DIGESTS.values()):
-        pytest.skip("Q011ex section digests have not been sealed yet")
     assert {name: q011ex_cycle[name] for name in EXPECTED_SECTION_DIGESTS} == (
         EXPECTED_SECTION_DIGESTS
     )
@@ -342,10 +328,7 @@ def test_q011ex_study_metadata_and_optional_artifact_are_scoped(
     assert q011ex_study["schema_version"] == 1
     assert q011ex_study["source"] == source_metadata()
     assert q011ex_study["study_gate"] == "passed"
-    assert q011ex_study["refinement_outcome"] in {
-        "component_safe_phase_resolved",
-        "component_safe_phase_persistent",
-    }
+    assert q011ex_study["refinement_outcome"] == "component_safe_phase_resolved"
     runtime = q011ex_study["arithmetic_runtime"]
     assert runtime["target_comparisons"] == 20_786
     assert runtime["full_comparison_records_retained"] is False
@@ -361,8 +344,6 @@ def test_q011ex_study_metadata_and_optional_artifact_are_scoped(
     assert scope["actual_resonance_claim"] is False
     json.dumps(q011ex_study, allow_nan=False)
 
-    if EXPECTED_RUNNER_SHA256 is None:
-        pytest.skip("Q011ex runner hash has not been sealed yet")
     runner_path = Path(q011ex.__file__).resolve()
     assert _file_sha256(runner_path) == EXPECTED_RUNNER_SHA256
     artifact_path = (
