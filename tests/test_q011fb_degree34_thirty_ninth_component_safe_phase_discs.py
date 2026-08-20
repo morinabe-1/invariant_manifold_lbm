@@ -10,20 +10,24 @@ import research.q011fb_degree34_thirty_ninth_component_safe_phase_discs as q011f
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "358eed677418c8ae5f21a252ba8f025d42fd27a59f79d035e59c744a5b0c4956"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "7342d46986747f45bd339f606c0af0f58aed5c19fd7193941fca3999c9ded683"
+)
 EXPECTED_SECTION_DIGESTS = {
-    "input_digest_sha256": "",
-    "phase_input_digest_sha256": "",
-    "allocation_digest_sha256": "",
-    "phase_comparison_digest_sha256": "",
-    "result_digest_sha256": "",
+    "input_digest_sha256": "da9579270464b27b097e0df2428ffff1838ca5ba7c8fe246440a7bce300fd814",
+    "phase_input_digest_sha256": "81238b5a58917f52ca83bc8feef9c28b60c7ccca7e8308c9d729f091c708bdda",
+    "allocation_digest_sha256": "c88cfd856b401cf103248bf95686a5f6f2729d28c9abf0b6f546bf20e5e8cf18",
+    "phase_comparison_digest_sha256": "a9c89a178d2d40f9df9a07014d69783c4042b0d09a14c91affe212080472f5df",
+    "result_digest_sha256": "2264aa299b81dfdefe268f2d9905da33117993a1acdc8f0ef199a8d72bf8e512",
 }
-EXPECTED_STREAM_DIGEST = ""
-EXPECTED_MINIMUM_WITNESS_DIGEST = ""
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX = ""
+EXPECTED_STREAM_DIGEST = "b7ad30855763291f369f570771962a2117274142b23a990487e42522d378ad17"
+EXPECTED_MINIMUM_WITNESS_DIGEST = "1b7f6cc19a74cdefa602f28a6251f0c9b874cdd0a3a9b6f7ee438ea4618fea8d"
+EXPECTED_MINIMUM_INDEX: int | None = 9_166
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [11, 2, 0, 5, 0, 4, 0, 5, 5, 1, 1, 0]
+EXPECTED_MINIMUM_MARGIN_HEX = "0x1.a8f10a6dc8860p-6"
 
 
 @pytest.fixture(scope="module")
@@ -175,7 +179,7 @@ def test_q011fb_enumerates_registered_label_free_phase_inventory(
     assert adapter["protocol_globals_modified"] is False
 
 
-def test_q011fb_classifies_all_complex_phase_product_discs(
+def test_q011fb_certifies_all_complex_phase_product_discs(
     q011fb_cycle: dict[str, Any],
 ) -> None:
     comparison = q011fb_cycle["complex_phase_product_disc_audit"]
@@ -183,62 +187,46 @@ def test_q011fb_classifies_all_complex_phase_product_discs(
     assert all(comparison["checks"].values())
     assert comparison["parent_flat_ordinal"] == 38
     assert comparison["compatible_phase_allocation_count"] == 14_578
-    assert set(comparison["category_counts"]) == {
-        "individual_modulus_separation",
-        "complex_phase_separation",
-        "unresolved_product_disk_overlap",
+    assert comparison["category_counts"] == {
+        "individual_modulus_separation": 0,
+        "complex_phase_separation": 14_578,
+        "unresolved_product_disk_overlap": 0,
     }
-    assert sum(comparison["category_counts"].values()) == 14_578
-    assert set(comparison["individual_modulus_relation_counts"]) == {
-        "product_below_target",
-        "target_below_product",
-        "overlap",
+    assert comparison["individual_modulus_relation_counts"] == {
+        "product_below_target": 0,
+        "target_below_product": 0,
+        "overlap": 14_578,
     }
-    assert sum(comparison["individual_modulus_relation_counts"].values()) == 14_578
     assert comparison["unique_product_radius_count"] == 10
     assert comparison["comparison_stream_count"] == 14_578
     assert comparison["comparison_stream_domain"] == ("q011fb-component-safe-phase-comparisons-v1")
-    assert len(comparison["comparison_stream_digest_sha256"]) == 64
-    if EXPECTED_STREAM_DIGEST:
-        assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
+    assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
+    assert comparison["first_unresolved_witness"] is None
     assert comparison["full_comparison_records_retained"] is False
     assert comparison["previous_q011cb_refined_signatures_recomputed"] is False
     assert comparison["later_q011cb_refined_signatures_recomputed"] is False
 
 
-def test_q011fb_minimum_exact_phase_margin_is_well_formed(
+def test_q011fb_minimum_exact_phase_margin_is_fixed(
     q011fb_cycle: dict[str, Any],
 ) -> None:
     comparison = q011fb_cycle["complex_phase_product_disc_audit"]
     witness = comparison["global_minimum_margin_witness"]
-    assert 0 <= witness["compatible_allocation_index"] < 14_578
-    assert len(witness["counts"]) == 12
-    assert sum(witness["counts"]) == 34
+    assert witness == comparison["minimum_separated_witness"]
+    assert witness["compatible_allocation_index"] == EXPECTED_MINIMUM_INDEX
+    assert witness["counts"] == EXPECTED_MINIMUM_COUNTS
     assert witness["degree"] == 34
     assert witness["output_block"] == 7
-    assert witness["individual_modulus_relation"] in {
-        "product_below_target",
-        "target_below_product",
-        "overlap",
-    }
-    assert witness["classification"] in {
-        "individual_modulus_separation",
-        "complex_phase_separation",
-        "unresolved_product_disk_overlap",
-    }
-    assert len(witness["witness_digest_sha256"]) == 64
-    if EXPECTED_MINIMUM_INDEX is not None and EXPECTED_MINIMUM_COUNTS is not None:
-        assert witness["compatible_allocation_index"] == EXPECTED_MINIMUM_INDEX
-        assert witness["counts"] == EXPECTED_MINIMUM_COUNTS
-    if EXPECTED_MINIMUM_MARGIN_HEX:
-        assert witness["complex_separation_margin_lower"]["binary64_hex"] == (
-            EXPECTED_MINIMUM_MARGIN_HEX
-        )
-    if EXPECTED_MINIMUM_WITNESS_DIGEST:
-        assert witness["witness_digest_sha256"] == EXPECTED_MINIMUM_WITNESS_DIGEST
+    assert witness["individual_modulus_relation"] == "overlap"
+    assert witness["classification"] == "complex_phase_separation"
+    assert witness["complex_separation_margin_lower"]["binary64_hex"] == (
+        EXPECTED_MINIMUM_MARGIN_HEX
+    )
+    assert q011fb.q011z._fraction(witness["complex_separation_margin_lower"]["exact"]) > 0
+    assert witness["witness_digest_sha256"] == EXPECTED_MINIMUM_WITNESS_DIGEST
 
 
-def test_q011fb_applies_registered_scoped_stopping_rule(
+def test_q011fb_records_scoped_resolution(
     q011fb_cycle: dict[str, Any],
 ) -> None:
     assert q011fb_cycle["study_validity"] == "passed"
@@ -248,13 +236,12 @@ def test_q011fb_applies_registered_scoped_stopping_rule(
     assert len(q011fb_cycle["diagnostic_gates"]) == 4
     assert all(gate["passed"] for gate in q011fb_cycle["validity_gates"].values())
     assert all(gate["passed"] for gate in q011fb_cycle["diagnostic_gates"].values())
-    assert q011fb_cycle["refinement_outcome"] in {
-        "component_safe_phase_resolved",
-        "component_safe_phase_persistent",
-    }
+    assert q011fb_cycle["refinement_outcome"] == "component_safe_phase_resolved"
+    assert q011fb_cycle["diagnostic_classification"] == q011fb.RESOLVED_CLASSIFICATION
     assert q011fb_cycle["scientific_outcome"] == "not_evaluated"
     assert q011fb_cycle["actual_resonance_outcome"] == "not_established"
     assert "Q011fc" in q011fb_cycle["next_change"]
+    assert "next Q011cb refined overlap" in q011fb_cycle["next_change"]
 
 
 def test_q011fb_preserves_scientific_boundary(q011fb_cycle: dict[str, Any]) -> None:
@@ -263,7 +250,7 @@ def test_q011fb_preserves_scientific_boundary(q011fb_cycle: dict[str, Any]) -> N
         theorem["component_safe_complex_phase_discs_resolve_thirty_ninth_q011cb_witness"],
         theorem["thirty_ninth_q011cb_witness_persists_under_component_safe_phase_discs"],
     )
-    assert sum(flags) == 1
+    assert flags == (True, False)
     assert theorem["q011an_component_internal_eigenvalue_labels_are_assumed"] is False
     assert theorem["q011fa_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011ez_ordinal_thirty_seven_phase_resolution_is_preserved"]
@@ -307,12 +294,11 @@ def test_q011fb_cycle_has_strict_reproducible_digests(
     q011fb_cycle: dict[str, Any],
 ) -> None:
     json.dumps(q011fb_cycle, allow_nan=False)
-    for name, expected in EXPECTED_SECTION_DIGESTS.items():
-        if expected:
-            assert q011fb_cycle[name] == expected
+    assert {name: q011fb_cycle[name] for name in EXPECTED_SECTION_DIGESTS} == (
+        EXPECTED_SECTION_DIGESTS
+    )
     comparison = q011fb_cycle["complex_phase_product_disc_audit"]
-    if EXPECTED_STREAM_DIGEST:
-        assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
+    assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
     assert q011fb_cycle["result_digest_sha256"] == (
         q011fb.q011b._canonical_json_sha256(q011fb._result_digest_sections(q011fb_cycle))
     )
@@ -325,10 +311,7 @@ def test_q011fb_study_metadata_and_optional_artifact_are_scoped(
     assert q011fb_study["schema_version"] == 1
     assert q011fb_study["source"] == source_metadata()
     assert q011fb_study["study_gate"] == "passed"
-    assert q011fb_study["refinement_outcome"] in {
-        "component_safe_phase_resolved",
-        "component_safe_phase_persistent",
-    }
+    assert q011fb_study["refinement_outcome"] == "component_safe_phase_resolved"
     runtime = q011fb_study["arithmetic_runtime"]
     assert runtime["target_comparisons"] == 14_578
     assert runtime["full_comparison_records_retained"] is False
@@ -359,6 +342,10 @@ def test_q011fb_study_metadata_and_optional_artifact_are_scoped(
         assert artifact["runner_source"]["sha256"] == EXPECTED_RUNNER_SHA256
     assert artifact["study_gate"] == "passed"
     assert artifact["refinement_outcome"] == q011fb_study["refinement_outcome"]
+    assert (
+        artifact["cycle"]["complex_phase_product_disc_audit"]["comparison_stream_digest_sha256"]
+        == EXPECTED_STREAM_DIGEST
+    )
     assert artifact["cycle"]["result_digest_sha256"] == (
         q011fb.q011b._canonical_json_sha256(q011fb._result_digest_sections(artifact["cycle"]))
     )
