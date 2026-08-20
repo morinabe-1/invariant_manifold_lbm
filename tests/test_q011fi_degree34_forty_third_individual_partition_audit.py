@@ -10,10 +10,35 @@ import research.q011fi_degree34_forty_third_individual_partition_audit as q011fi
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "01c4adfa9fbb4c8bceab2b7565a39051bd03f18abbfc6289fdb9a77154c646ac"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "c2ea4d33ecabb1b9997c33cd521046a6c3f304161e36fde3385d546681f783f3"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "0c127965dbbdd8bfbe3cec68bcbff6d44dcf8bc9a7d8ef9abfd6abf87b3337e9",
+    "partition_input_digest_sha256": "6464f953f8a459e45f143edc40c37d67e3afe72d92dd75f0162283521e817ad7",
+    "allocation_audit_digest_sha256": "7c6ce89361136c904acf3564a713817d4af5d8fa649ad30942b4480ee0433fa9",
+    "result_digest_sha256": "708275e4c34e2c6c818f7c945c3e8cda15d0c6be0e2474660b2e86890f182453",
+}
+EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = {
+    "parent_product_interval_digest_sha256": (
+        "09676abfc4c27aa18fb2ab0e9d9a76a8582a34dd992c5e99236a37ad491166f0"
+    ),
+    "parent_center_product_interval_digest_sha256": (
+        "b8bd53f203d4bae560d68d5d76d4f07355688b13a99f5d37f64ef503a0e848d0"
+    ),
+    "parent_target_interval_digest_sha256": (
+        "64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679"
+    ),
+    "parent_intersection_interval_digest_sha256": (
+        "2a7d88c28609ae1048a8725bbd3daa649c25a8b89c65def54695e468585f4c45"
+    ),
+    "allocation_classification_record_digest_sha256": (
+        "9216c50b1678158d0e7cc47663397845380996ad2542f67f73ecace30e8a862e"
+    ),
+}
 RESULT_EXPECTATIONS_FIXED = (
     EXPECTED_SECTION_DIGESTS is not None and EXPECTED_PARTITION_DIGESTS is not None
 )
@@ -120,11 +145,11 @@ def test_q011fi_classifies_every_registered_exact_interval(
     partition = q011fi_cycle["individual_allocation_interval_audit"]
     assert partition["passed"]
     assert all(partition["checks"].values())
-    assert partition["compatible_allocation_count"] == 1_986
+    assert partition["compatible_allocation_count"] == 2_553
     assert partition["all_product_target_intersection_and_center_records_equal_parent"]
     records = partition["allocation_classification_records"]
-    assert len(records) == 1_986
-    assert [record["compatible_allocation_index"] for record in records] == list(range(1_986))
+    assert len(records) == 2_553
+    assert [record["compatible_allocation_index"] for record in records] == list(range(2_553))
     for record in records:
         assert record["degree"] == 34
         assert record["output_block"] == 7
@@ -142,7 +167,7 @@ def test_q011fi_classifies_every_registered_exact_interval(
     expected_relations = {
         "product_below_target": 0,
         "target_below_product": 0,
-        "overlap": 1_986,
+        "overlap": 2_553,
     }
     assert partition["exact_relation_counts"] == expected_relations
     assert partition["binary64_outward_relation_counts"] == expected_relations
@@ -187,6 +212,8 @@ def test_q011fi_preserves_boundary_and_reproducible_digests(
         theorem["individual_partition_changes_intervals_but_forty_third_q011cb_witness_persists"],
     )
     assert flags == (True, False, False)
+    assert theorem["q011fh_ordinal_forty_one_phase_resolution_is_preserved"]
+    assert theorem["q011fg_ordinal_forty_one_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011ff_ordinal_forty_phase_resolution_is_preserved"]
     assert theorem["q011fe_ordinal_forty_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011fd_ordinal_thirty_nine_phase_resolution_is_preserved"]
@@ -208,10 +235,10 @@ def test_q011fi_preserves_boundary_and_reproducible_digests(
     assert theorem["certified_external_nonresonance_degrees"] == list(range(2, 34))
     assert theorem["missing_external_nonresonance_degrees"] == list(range(34, 91))
     assert not theorem["complex_phase_product_is_audited"]
-    assert "flatten ordinal 41" in q011fi_cycle["claim_boundary"]
-    assert "ordinals 0 through 40" in q011fi_cycle["claim_boundary"]
-    assert "later 44758 Q011cb refined signatures" in q011fi_cycle["claim_boundary"]
-    assert "Q011fh" in q011fi_cycle["next_change"]
+    assert "flatten ordinal 42" in q011fi_cycle["claim_boundary"]
+    assert "ordinals 0 through 41" in q011fi_cycle["claim_boundary"]
+    assert "later 44757 Q011cb refined signatures" in q011fi_cycle["claim_boundary"]
+    assert "Q011fj" in q011fi_cycle["next_change"]
     json.dumps(q011fi_cycle, allow_nan=False)
     assert {name: q011fi_cycle[name] for name in EXPECTED_SECTION_DIGESTS} == (
         EXPECTED_SECTION_DIGESTS
@@ -231,13 +258,13 @@ def test_q011fi_study_metadata_and_optional_artifact_are_scoped(
     assert q011fi_study["study_gate"] == "passed"
     assert q011fi_study["refinement_outcome"] == "partition_inert_persistent"
     runtime = q011fi_study["arithmetic_runtime"]
-    assert runtime["target_comparisons"] == 1_986
+    assert runtime["target_comparisons"] == 2_553
     assert runtime["complex_phase_product_evaluated"] is False
     assert runtime["protocol_globals_restored_after_use"] is True
     scope = q011fi_study["mathematical_scope"]
     assert scope["degree"] == 34
     assert scope["parent_aggregate_index"] == 2340
-    assert scope["parent_flat_ordinal"] == 41
+    assert scope["parent_flat_ordinal"] == 42
     assert scope["target_identifier"] == "block=7;center=44"
     assert scope["degree_thirty_four_nonresonance_claim"] is False
     assert scope["actual_resonance_claim"] is False
