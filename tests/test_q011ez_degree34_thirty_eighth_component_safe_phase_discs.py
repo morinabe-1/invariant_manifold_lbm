@@ -10,20 +10,24 @@ import research.q011ez_degree34_thirty_eighth_component_safe_phase_discs as q011
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "175e9813034286faeb506f0b6a2e53501dd3129e1f2468afcf091fe344cb6c20"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "6b8f0f5f787b79aacffad7295497e3b4441a1892f9828f75f96c1c79c3b479c8"
+)
 EXPECTED_SECTION_DIGESTS = {
-    "input_digest_sha256": "",
-    "phase_input_digest_sha256": "",
-    "allocation_digest_sha256": "",
-    "phase_comparison_digest_sha256": "",
-    "result_digest_sha256": "",
+    "input_digest_sha256": "54caf476f36291da64d9849680ebb4621420c9427b208d7bf63102d406cd2249",
+    "phase_input_digest_sha256": "9ce7b5489e53442355e0c396f8f03a65a71d002d5705617e1b0a08ceaa1f615e",
+    "allocation_digest_sha256": "26170c8323f3a4b5f2ec499f75b00bc5e3a84199e2d74990f340a65af0f6ba68",
+    "phase_comparison_digest_sha256": "524ac5d27846f54c6f82017887fa0a81da740bfee792d103e3c3531b06497bb3",
+    "result_digest_sha256": "a19a8cd95774b1d3ae0557a7a2bf88e5717a0414266e18f2e5c33701593e07ca",
 }
-EXPECTED_STREAM_DIGEST = ""
-EXPECTED_MINIMUM_WITNESS_DIGEST = ""
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX = ""
+EXPECTED_STREAM_DIGEST = "fb269a5c1b4d56f246f20a2dcaffbfd41ef774ee4ec739b00ad9bad48cecb3f2"
+EXPECTED_MINIMUM_WITNESS_DIGEST = "514c3194347c4be6775cc7a53518fbee0c3d97586a962c6e2b63378ce8a8614f"
+EXPECTED_MINIMUM_INDEX: int | None = 11_474
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [11, 2, 0, 4, 0, 5, 0, 5, 5, 0, 2, 0]
+EXPECTED_MINIMUM_MARGIN_HEX = "0x1.a8f10a6dc86dap-6"
 
 
 @pytest.fixture(scope="module")
@@ -175,7 +179,7 @@ def test_q011ez_enumerates_registered_label_free_phase_inventory(
     assert adapter["protocol_globals_modified"] is False
 
 
-def test_q011ez_classifies_all_complex_phase_product_discs(
+def test_q011ez_certifies_all_complex_phase_product_discs(
     q011ez_cycle: dict[str, Any],
 ) -> None:
     comparison = q011ez_cycle["complex_phase_product_disc_audit"]
@@ -183,59 +187,43 @@ def test_q011ez_classifies_all_complex_phase_product_discs(
     assert all(comparison["checks"].values())
     assert comparison["parent_flat_ordinal"] == 37
     assert comparison["compatible_phase_allocation_count"] == 18_718
-    assert set(comparison["category_counts"]) == {
-        "individual_modulus_separation",
-        "complex_phase_separation",
-        "unresolved_product_disk_overlap",
+    assert comparison["category_counts"] == {
+        "individual_modulus_separation": 0,
+        "complex_phase_separation": 18_718,
+        "unresolved_product_disk_overlap": 0,
     }
-    assert sum(comparison["category_counts"].values()) == 18_718
-    assert set(comparison["individual_modulus_relation_counts"]) == {
-        "product_below_target",
-        "target_below_product",
-        "overlap",
+    assert comparison["individual_modulus_relation_counts"] == {
+        "product_below_target": 0,
+        "target_below_product": 0,
+        "overlap": 18_718,
     }
-    assert sum(comparison["individual_modulus_relation_counts"].values()) == 18_718
     assert comparison["unique_product_radius_count"] == 10
     assert comparison["comparison_stream_count"] == 18_718
     assert comparison["comparison_stream_domain"] == ("q011ez-component-safe-phase-comparisons-v1")
-    assert len(comparison["comparison_stream_digest_sha256"]) == 64
-    if EXPECTED_STREAM_DIGEST:
-        assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
+    assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
+    assert comparison["first_unresolved_witness"] is None
     assert comparison["full_comparison_records_retained"] is False
     assert comparison["previous_q011cb_refined_signatures_recomputed"] is False
     assert comparison["later_q011cb_refined_signatures_recomputed"] is False
 
 
-def test_q011ez_minimum_exact_phase_margin_is_well_formed(
+def test_q011ez_minimum_exact_phase_margin_is_fixed(
     q011ez_cycle: dict[str, Any],
 ) -> None:
     comparison = q011ez_cycle["complex_phase_product_disc_audit"]
     witness = comparison["global_minimum_margin_witness"]
-    assert 0 <= witness["compatible_allocation_index"] < 18_718
-    assert len(witness["counts"]) == 12
-    assert sum(witness["counts"]) == 34
+    assert witness == comparison["minimum_separated_witness"]
+    assert witness["compatible_allocation_index"] == EXPECTED_MINIMUM_INDEX
+    assert witness["counts"] == EXPECTED_MINIMUM_COUNTS
     assert witness["degree"] == 34
     assert witness["output_block"] == 7
-    assert witness["individual_modulus_relation"] in {
-        "product_below_target",
-        "target_below_product",
-        "overlap",
-    }
-    assert witness["classification"] in {
-        "individual_modulus_separation",
-        "complex_phase_separation",
-        "unresolved_product_disk_overlap",
-    }
-    assert len(witness["witness_digest_sha256"]) == 64
-    if EXPECTED_MINIMUM_INDEX is not None and EXPECTED_MINIMUM_COUNTS is not None:
-        assert witness["compatible_allocation_index"] == EXPECTED_MINIMUM_INDEX
-        assert witness["counts"] == EXPECTED_MINIMUM_COUNTS
-    if EXPECTED_MINIMUM_MARGIN_HEX:
-        assert witness["complex_separation_margin_lower"]["binary64_hex"] == (
-            EXPECTED_MINIMUM_MARGIN_HEX
-        )
-    if EXPECTED_MINIMUM_WITNESS_DIGEST:
-        assert witness["witness_digest_sha256"] == EXPECTED_MINIMUM_WITNESS_DIGEST
+    assert witness["individual_modulus_relation"] == "overlap"
+    assert witness["classification"] == "complex_phase_separation"
+    assert witness["complex_separation_margin_lower"]["binary64_hex"] == (
+        EXPECTED_MINIMUM_MARGIN_HEX
+    )
+    assert q011ez.q011z._fraction(witness["complex_separation_margin_lower"]["exact"]) > 0
+    assert witness["witness_digest_sha256"] == EXPECTED_MINIMUM_WITNESS_DIGEST
 
 
 def test_q011ez_records_scoped_resolution(q011ez_cycle: dict[str, Any]) -> None:
@@ -246,20 +234,12 @@ def test_q011ez_records_scoped_resolution(q011ez_cycle: dict[str, Any]) -> None:
     assert len(q011ez_cycle["diagnostic_gates"]) == 4
     assert all(gate["passed"] for gate in q011ez_cycle["validity_gates"].values())
     assert all(gate["passed"] for gate in q011ez_cycle["diagnostic_gates"].values())
-    assert q011ez_cycle["refinement_outcome"] in {
-        "component_safe_phase_resolved",
-        "component_safe_phase_persistent",
-    }
+    assert q011ez_cycle["refinement_outcome"] == "component_safe_phase_resolved"
+    assert q011ez_cycle["diagnostic_classification"] == q011ez.RESOLVED_CLASSIFICATION
     assert q011ez_cycle["scientific_outcome"] == "not_evaluated"
     assert q011ez_cycle["actual_resonance_outcome"] == "not_established"
     assert "Q011fa" in q011ez_cycle["next_change"]
-    theorem = q011ez_cycle["theorem_consequence"]
-    resolved = theorem["component_safe_complex_phase_discs_resolve_thirty_eighth_q011cb_witness"]
-    persistent = theorem["thirty_eighth_q011cb_witness_persists_under_component_safe_phase_discs"]
-    assert resolved != persistent
-    assert q011ez_cycle["diagnostic_classification"] == (
-        q011ez.RESOLVED_CLASSIFICATION if resolved else q011ez.PERSISTENT_CLASSIFICATION
-    )
+    assert "next Q011cb refined overlap" in q011ez_cycle["next_change"]
 
 
 def test_q011ez_preserves_scientific_boundary(q011ez_cycle: dict[str, Any]) -> None:
@@ -268,7 +248,7 @@ def test_q011ez_preserves_scientific_boundary(q011ez_cycle: dict[str, Any]) -> N
         theorem["component_safe_complex_phase_discs_resolve_thirty_eighth_q011cb_witness"],
         theorem["thirty_eighth_q011cb_witness_persists_under_component_safe_phase_discs"],
     )
-    assert sum(flags) == 1
+    assert flags == (True, False)
     assert theorem["q011an_component_internal_eigenvalue_labels_are_assumed"] is False
     assert theorem["q011ey_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011ex_ordinal_thirty_six_phase_resolution_is_preserved"]
@@ -336,12 +316,11 @@ def test_q011ez_cycle_has_strict_reproducible_digests(
     q011ez_cycle: dict[str, Any],
 ) -> None:
     json.dumps(q011ez_cycle, allow_nan=False)
-    for name, expected in EXPECTED_SECTION_DIGESTS.items():
-        if expected:
-            assert q011ez_cycle[name] == expected
+    assert {name: q011ez_cycle[name] for name in EXPECTED_SECTION_DIGESTS} == (
+        EXPECTED_SECTION_DIGESTS
+    )
     comparison = q011ez_cycle["complex_phase_product_disc_audit"]
-    if EXPECTED_STREAM_DIGEST:
-        assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
+    assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
     assert q011ez_cycle["result_digest_sha256"] == (
         q011ez.q011b._canonical_json_sha256(q011ez._result_digest_sections(q011ez_cycle))
     )
@@ -354,10 +333,7 @@ def test_q011ez_study_metadata_and_optional_artifact_are_scoped(
     assert q011ez_study["schema_version"] == 1
     assert q011ez_study["source"] == source_metadata()
     assert q011ez_study["study_gate"] == "passed"
-    assert q011ez_study["refinement_outcome"] in {
-        "component_safe_phase_resolved",
-        "component_safe_phase_persistent",
-    }
+    assert q011ez_study["refinement_outcome"] == "component_safe_phase_resolved"
     runtime = q011ez_study["arithmetic_runtime"]
     assert runtime["target_comparisons"] == 18_718
     assert runtime["full_comparison_records_retained"] is False
@@ -390,9 +366,7 @@ def test_q011ez_study_metadata_and_optional_artifact_are_scoped(
     assert artifact["refinement_outcome"] == q011ez_study["refinement_outcome"]
     assert (
         artifact["cycle"]["complex_phase_product_disc_audit"]["comparison_stream_digest_sha256"]
-        == q011ez_study["cycle"]["complex_phase_product_disc_audit"][
-            "comparison_stream_digest_sha256"
-        ]
+        == EXPECTED_STREAM_DIGEST
     )
     assert artifact["cycle"]["result_digest_sha256"] == (
         q011ez.q011b._canonical_json_sha256(q011ez._result_digest_sections(artifact["cycle"]))
