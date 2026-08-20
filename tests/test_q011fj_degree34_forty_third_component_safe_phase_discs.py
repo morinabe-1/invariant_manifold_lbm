@@ -10,14 +10,28 @@ import research.q011fj_degree34_forty_third_component_safe_phase_discs as q011fj
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_STREAM_DIGEST: str | None = None
-EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = None
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "d9a45be85a9c18f150ad4d91376759063b0ac1b58634865dd0bde3a3ee13909a"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "233eda62aaaedf792ab6116024dca0b3a6f6ad22441798c893da6c70d7bb55c3"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "db19b53f69e9e24e20dc9e212608762fef2e09a5b500fc0ddadf3046f1231436",
+    "phase_input_digest_sha256": "c424b21f6948e37d6048029201001f3e3e6070c399b99435d8ac5312a2adeb85",
+    "allocation_digest_sha256": "4e85dea854f01f222ff61e32f74aa70bbdff3af67209f6f5b7995d045f7afdf1",
+    "phase_comparison_digest_sha256": "fe19fd0827a5fdd2ceec77064d5f5a21e3037505c1e155206cb5b5a05e2d4f33",
+    "result_digest_sha256": "fa79eb13a290d7aa196e8dae8d6468eeb4548475347f7adf193ec4394afda5e8",
+}
+EXPECTED_STREAM_DIGEST: str | None = (
+    "11a2d02869d5f08b673d4d2e4bc64a19b67ca9e2f4308ef2d070c87d13b920a0"
+)
+EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = (
+    "fcbac38dd950f2aedb42ca9b4f2543d54616a5938c7f645e2a2437c3ad04e645"
+)
+EXPECTED_MINIMUM_INDEX: int | None = 11_706
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [11, 2, 0, 7, 0, 2, 0, 5, 2, 0, 2, 3]
+EXPECTED_MINIMUM_MARGIN_HEX: str | None = "0x1.a8f10a6dc8560p-6"
 RESULT_EXPECTATIONS_FIXED = all(
     value is not None
     for value in (
@@ -203,20 +217,20 @@ def test_q011fj_certifies_all_complex_phase_product_discs(
     comparison = q011fj_cycle["complex_phase_product_disc_audit"]
     assert comparison["passed"]
     assert all(comparison["checks"].values())
-    assert comparison["parent_flat_ordinal"] == 41
-    assert comparison["compatible_phase_allocation_count"] == 14_578
+    assert comparison["parent_flat_ordinal"] == 42
+    assert comparison["compatible_phase_allocation_count"] == 18_718
     assert comparison["category_counts"] == {
         "individual_modulus_separation": 0,
-        "complex_phase_separation": 14_578,
+        "complex_phase_separation": 18_718,
         "unresolved_product_disk_overlap": 0,
     }
     assert comparison["individual_modulus_relation_counts"] == {
         "product_below_target": 0,
         "target_below_product": 0,
-        "overlap": 14_578,
+        "overlap": 18_718,
     }
     assert comparison["unique_product_radius_count"] == 10
-    assert comparison["comparison_stream_count"] == 14_578
+    assert comparison["comparison_stream_count"] == 18_718
     assert comparison["comparison_stream_domain"] == ("q011fj-component-safe-phase-comparisons-v1")
     if not EXPECTED_STREAM_DIGEST:
         pytest.skip("Q011fj comparison stream digest has not been sealed yet")
@@ -262,7 +276,7 @@ def test_q011fj_records_scoped_resolution(q011fj_cycle: dict[str, Any]) -> None:
     assert q011fj_cycle["diagnostic_classification"] == q011fj.RESOLVED_CLASSIFICATION
     assert q011fj_cycle["scientific_outcome"] == "not_evaluated"
     assert q011fj_cycle["actual_resonance_outcome"] == "not_established"
-    assert "Q011fi" in q011fj_cycle["next_change"]
+    assert "Q011fk" in q011fj_cycle["next_change"]
     assert "next Q011cb refined overlap" in q011fj_cycle["next_change"]
 
 
@@ -273,6 +287,8 @@ def test_q011fj_preserves_scientific_boundary(q011fj_cycle: dict[str, Any]) -> N
     assert not theorem["forty_third_q011cb_witness_persists_under_component_safe_phase_discs"]
     assert theorem["q011an_component_internal_eigenvalue_labels_are_assumed"] is False
     assert theorem["q011fi_interval_inert_diagnostic_is_preserved"]
+    assert theorem["q011fh_ordinal_forty_one_phase_resolution_is_preserved"]
+    assert theorem["q011fg_ordinal_forty_one_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011ff_ordinal_forty_phase_resolution_is_preserved"]
     assert theorem["q011fe_ordinal_forty_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011fd_ordinal_thirty_nine_phase_resolution_is_preserved"]
@@ -330,9 +346,9 @@ def test_q011fj_preserves_scientific_boundary(q011fj_cycle: dict[str, Any]) -> N
     assert not theorem["an_actual_degree_thirty_four_external_resonance_is_established"]
     assert theorem["certified_external_nonresonance_degrees"] == list(range(2, 34))
     assert theorem["missing_external_nonresonance_degrees"] == list(range(34, 91))
-    assert "flatten ordinal 41" in q011fj_cycle["claim_boundary"]
-    assert "does not reevaluate ordinals 0 through 40" in q011fj_cycle["claim_boundary"]
-    assert "later 44758 Q011cb refined signatures" in q011fj_cycle["claim_boundary"]
+    assert "flatten ordinal 42" in q011fj_cycle["claim_boundary"]
+    assert "does not reevaluate ordinals 0 through 41" in q011fj_cycle["claim_boundary"]
+    assert "later 44757 Q011cb refined signatures" in q011fj_cycle["claim_boundary"]
     assert "does not establish an actual resonance" in q011fj_cycle["claim_boundary"]
 
 
@@ -362,14 +378,14 @@ def test_q011fj_study_metadata_and_optional_artifact_are_scoped(
     assert q011fj_study["study_gate"] == "passed"
     assert q011fj_study["refinement_outcome"] == "component_safe_phase_resolved"
     runtime = q011fj_study["arithmetic_runtime"]
-    assert runtime["target_comparisons"] == 14_578
+    assert runtime["target_comparisons"] == 18_718
     assert runtime["full_comparison_records_retained"] is False
     assert runtime["floating_point_used_for_gate_decisions"] is False
     assert runtime["protocol_globals_restored_after_use"] is True
     scope = q011fj_study["mathematical_scope"]
     assert scope["degree"] == 34
     assert scope["parent_aggregate_index"] == 2340
-    assert scope["parent_flat_ordinal"] == 41
+    assert scope["parent_flat_ordinal"] == 42
     assert scope["target_identifier"] == "block=7;center=44"
     assert scope["component_internal_eigenvalue_labels_assumed"] is False
     assert scope["degree_thirty_four_nonresonance_claim"] is False
