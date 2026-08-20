@@ -40849,6 +40849,120 @@ intersection、center-only diagnosticも全件parentとexact同一だった。�
 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011gbで登録2,646
 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+## Q011gb: second-family fifty-second-witness component-safe complex phase discs — 事前登録
+
+### 問いとsealed input
+
+Q011gaでinterval-inertだったflatten ordinal 51の登録2,646 individual wave allocationだけを、Q011an singleton／2-row
+componentとQ011ak block discに基づくlabel-freeなcomplex eigendisc allocationへ展開し、固定target
+`block=7;center=44`から全件strictに分離するかを問う。ordinal 0--50、ordinal 52以降、他target、aggregate全体は走査しない。
+
+Q011gaまでの162 artifact／741 direct digest、outcome `partition_inert_persistent`、scientific outcome
+`not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011ga artifact／runner newline-normalized SHA-256:
+  `84e026f73e5a08614c98b1ae079eb63ca7565400865f0d57d69f51e31bcba8c2` /
+  `fa75225ce33fa9cc18e96747f9cc323c66c7e76b3810a499d41781f6efbba645`
+- Q011ga input／partition-input／allocation-audit／result digest:
+  `5e2ba9882c4356d54def17071be79113b3007f509427d56401f357ae04fa1002` /
+  `545f9e8b781589eaf8ac0f7488e4a8e6b505176c2b79a89c72f67d11d079c5cb` /
+  `123adc6439ed88c9fdd8713bf04d22d09b0f39a3c2b5bfd43c5b2be3dfeb5ca9` /
+  `324fc9d667c695b905db03dfad8e5254808fe5daab36b04b9c93822d0d6270f8`
+- Q011ga compatible wave／record digest:
+  `2646 / 9608c294ae7fbc0c897cf0058b3e7dde1582dec07355fe8ecdbd1324a4aab531 /`
+  `b48557b9730380798ffdc20186728ada3a555d5ee2fba6bf969bef3bf813a14f`
+
+Q011ga sealed inputは161 artifact／737 direct digestを持つため、Q011gaの4 section digestを加えたQ011gb inputは
+162 artifact／741 direct digestでなければならない。
+
+### component-label coalescing bridge
+
+ordinal 51ではQ011ga individual partitionの`center=150` class count 6と`center=151` class count 3がともにpositiveである。
+Q011anで150／151を内部labelを割り当てない同一2-row componentとして囲うため、2,646 individual allocationを各blockで
+150／151 countを加えたcomponent-wave座標へ射影する。center 148はtotal 3、center 149はtotal 4で、ともにsingleton
+row discとしてactiveに保持する。
+
+具体的にはQ011gaの12-count vectorを
+
+`[145_16,145_1,150_16,150_1,151_16,151_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+から
+
+`[145_16,145_1,(150+151)_16,(150+151)_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+へ射影する。complex marginを見る前に事前計算したbridge inventoryを次で固定する。
+
+- individual／distinct component-wave count: `2646 / 945`
+- bridge fiber min／max／histogram: `1 / 4 / {1:191,2:187,3:187,4:380}`
+- ordered bridge record digest:
+  `105ffa3017895ecceb6b62572acd3fac045e9595fc4cbfd59db456ff03551bed`
+
+bridgeは全2,646 individual allocationをちょうど一度数え、degree、Fourier output block、component totalを保存しなければ
+ならない。phase allocationのcomponent-wave射影集合がこの945 recordとexactに一致しない場合はvalidity failureとする。
+
+### component-safe inputとlabel-free inventory
+
+source variant、radius、component semantics、targetはQ011fzと同じ12 source／1 targetを固定する。center 145、148、149は
+Q011an singleton row disc、150／151はlabelを割り当てない2-row component union、152とtargetはQ011ak block discとする。
+12-count vectorのtotalは145で13、150／151 componentで9、152で5、148で3、149で4とする。
+
+- source／target exact record digest:
+  `1645c135887e33404974cf0fce47701c752eede5cb99d1643bc8d7d6d97846a7` /
+  `1d57fd229e0e60be3c14669cdd3d32fd7410f1037b548b3c338e28c0efd4ed78`
+- source radius binary64 hex:
+  `0x1.7961e9d97b02ep-36`×2、`0x1.3f712af66bee8p-36`×2、
+  `0x1.59d0855a75677p-36`×2、`0x1.23ce0990a1325p-30`×2、
+  `0x1.bcf34ab668670p-36`×2、`0x1.bcf9a62d1b2e2p-36`×2
+- target radius binary64 hex: `0x1.38c03374a5bcap-30`
+
+phase count順を
+
+`[145_16,145_1,150_16,151_16,150_1,151_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+に固定し、辞書順nested enumerationとFourier block和mod 17だけを使う。complex marginを見る前に構造inventoryを次で固定した。
+
+- full allocation count／digest:
+  `369600 / 4eb0ee79fc33d41d36d7faa2385129adcbab79f8aace27c62dadf656af351ebb`
+- compatible allocation count／digest:
+  `20786 / bf11be19ca0483b657e5e3e57e51a9a4171e6cfc51308d3a2722770a03a3ecc4`
+- first／last compatible counts:
+  `[0,13,0,0,0,9,0,5,1,2,4,0] / [13,0,9,0,0,0,0,5,0,3,0,4]`
+- component-wave projection count／digest:
+  `945 / efa34de86cb75d0cd08c3bb9a6232d67404c416145cf83fb4a30d83f15f8b1b0`
+- phase fiber min／max／histogram: `10 / 30 / {10:191,18:187,24:187,28:189,30:191}`
+- bridge／phase paired record digest:
+  `1c8be0ae41b0f594f4fcfac6ec54d99e18ffcfbe2a9c6e5b01cd1cec5f094536`
+- registered unique product-radius count: `10`
+
+source別power-table上限は
+`[13,13,9,9,9,9,5,5,3,3,4,4]`に固定する。以上のinventory計算ではcomplex center-distance、margin、
+classificationを評価していない。
+
+### exact contract、validity、停止規則
+
+各allocationでexact product center `C`とdisc radius
+`R=prod(upper(|c_i|)+r_i)^n_i-prod upper(|c_i|)^n_i`を構成し、Q011oのexact square-root enclosureで分類する。
+
+1. modulus strictなら`individual_modulus_separation`。
+2. modulus overlapかつ`lower(|C-c_t|)-R-r_t>0`なら`complex_phase_separation`。
+3. それ以外は`unresolved_product_disk_overlap`。
+
+validity gateは、162 artifact／741 digest、Q011gaの2,646 wave／interval-inert result、2,646-to-945 component quotient、
+12 source／targetとcontainment／conjugacy、369,600／20,786 allocationと945-component-wave projection、power recurrence／
+10 radius signature／sqrt enclosure／exclusive分類、section／stream／runner digest、protocol global復元を検査する。一つでも
+失敗すれば`inconclusive`とする。comparison stream domainは`q011gb-component-safe-phase-comparisons-v1`、margin digest
+domainは`q011gb-complex-margin-expression-v1`に固定する。
+
+unresolved 0かつglobal minimum marginがpositiveならclassificationを
+`the component-safe complex phase discs resolve the fifty-second Q011cb persistent refined witness`、outcomeを
+`component_safe_phase_resolved`とし、次はQ011gcでordinal 52を監査する。unresolvedが残れば
+`component_safe_phase_persistent`とし、Q011gcでfirst unresolvedだけを精密化する。disc overlapはactual resonanceを示さない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 51、登録
+20,786 phase allocationだけを扱う。ordinal 0--50を再評価せず、後続44,748 signature、他31 parent overlap、他15 target、
+aggregate全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
+normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
