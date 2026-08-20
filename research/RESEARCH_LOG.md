@@ -11944,6 +11944,41 @@ gateと全4 diagnostic gateを通過し、unresolvedは0、outcomeは`component_
 これはordinal 40だけのphase resolutionである。ordinal 0--39と既存認証範囲は不変で、後続44,759 signature、aggregate
 全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011fgで登録順のordinal 41を監査する。
 
+### Q011fg 実行結果
+
+Q011ffまでの141 artifact／647 direct digestを封印し、ordinal 41の6 positive-count classを12 singleton identifierへ戻した。
+35,280 full allocation中、output block 7にcompatibleな1,986件を全数監査した。exact relationとbinary64 outward relationは
+ともに`overlap 1986`で、product、center-product、target、intersection、center-only diagnosticも全件parent recordと
+exact同一だった。全7 validity gateと全4 diagnostic gateを通過し、事前登録した停止規則1に従ってoutcomeを
+`partition_inert_persistent`とした。complex phaseは評価していない。
+
+- class counts: `[[0,0,0,13],[5,4],[5],[1,6]]`
+- occupied class／singleton identifier／compatible allocation: `6 / 12 / 1986`
+- full／compatible allocation digest:
+  `68848063d90fc36aefdb7006e44dfe76c8fd922bffa9fdf46aff2165439e712e` /
+  `8bfbab5a4bb62a1695e1233f276f03496f6bf95db943c3d6a5cd4a20bb6b1858`
+- exact／binary64 outward relation counts:
+  `{product_below_target:0,target_below_product:0,overlap:1986}` / 同一
+- parent product／center-product／target／intersection digest:
+  `4f696f0542d226184333042f0a8066cf563ea107836b393a8d8edb9c73148edd` /
+  `98b58163fb2ab04c44695928bd4de5768ba9889db65c7b0a1d316714980a05b9` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `2869ad7192d32680a923c02471072851d7dcf524657b9d1d32743fc9981c179a`
+- allocation-classification record digest:
+  `12796f5a3eb588ae3d35636073df6284ee932daf736a832b39de9f426cdb68a8`
+- input／partition-input／allocation／result digest:
+  `c23c3f126aed8a746ee2aafaa469f921ab56552e8d9b8d95a3b5c4c526915a76` /
+  `34a70da5afb398fd9be3b7fa0e3e6525cd100f563598860fba60f8f29c425cb5` /
+  `d0648a0509c85c0700c8bca1387f28b6edc40800aed5e20a37fb90ac385406ac` /
+  `aa82106a5b10c5e19b688893138abaa9cfe7248a4dcd0a3a32c6b7a0e2175607`
+- runner／artifact newline-normalized SHA-256:
+  `e24ae3d78ad3ea30b5d8dbefe0d7a5f6bbf8c64e9aa68fb84e0cfb20188cab7e` /
+  `079aed9a5bc166a5d6dfce13351c395a2ed64672238a20cd2f025df1cadfd7e5`
+
+これはordinal 41だけのpartition診断である。ordinal 0--40と既存認証範囲は不変で、後続44,758 signature、aggregate
+全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011fhで登録1,986 wave allocationだけを
+component-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
