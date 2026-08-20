@@ -36990,6 +36990,36 @@ relation、strict JSON、section／runner digest、protocol global復元を検�
 他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、
 SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ey 封印結果（partition inert persistent）
+
+Q011exまでの133 artifact／611 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal 37の
+6 occupied classを登録順の12 singleton identifierへ戻し、45,360 full allocation中、output block 7にcompatibleな2,553件を
+全数監査した。exact rationalとbinary64 outwardの双方で`product_below_target / target_below_product / overlap`は
+`0 / 0 / 2553`だった。product、center-product、target、intersection、center-only diagnosticも全件parent recordとexact
+同一であり、事前登録した第1分岐`partition_inert_persistent`へ入った。
+
+- full／compatible allocation digest:
+  `1a6f2e966cccc68adec20094ac0372ad81bbba0b719df647d2ca49fc48d999f0` /
+  `07ca1fde86274d3acf5d7e9db2c19a2aef348ec49e089ff32e75c1d06c15d6a2`
+- occupied-record／identifier-order digest:
+  `d8f839e2af6048c042edb529a1a2c0081f926a93fdbd26ac085739885c5382e3` /
+  `ff33e554ab95aad7ae696a37e1eeb5812b602f126e9697ccfdca46d21fc4f8f6`
+- allocation-classification record digest:
+  `2ef05b13ff6094aadfa68a21ea3b3adc8e7b628fbab7a4060872508902cdac08`
+- input／partition-input／allocation／result digest:
+  `eaf5423709731ae0d59abcb2f0bee2dfcd56b3ac0d34041ab5ba9252ec379789` /
+  `59a1018cb675a4395bececb2c9d5d0dd4a472b1423170c6462f4fb72deedd4b6` /
+  `2f99538a87ad53480e3865f4d03d5064856bb535516494611f8021e8b64adaca` /
+  `aeaee268ac9eaa4d175a13a4437596eeff23f5db8cc5ed9c36f8d86f84cf2f9a`
+- runner／artifact newline-normalized SHA-256:
+  `0861c122814c6cd7399ce92c3d2e3e6134df3e52b1d44f0e975ed711eb309514` /
+  `90080ab0eb1482445c72d9ddb491f22a13f7fe91991b6276973f48df26acbc7a`
+
+Q011daのpartition protocolにはordinal 37の登録定数を一時差替えし、Q011ex artifactとordinal 36 phase resolutionを追加で
+封印した。呼出し後のglobal復元もgateとtestで確認した。これはordinal 37だけのpartition診断であり、ordinal 0--36の
+resolutionと既存認証範囲は不変である。後続44,762 signature、aggregate全体、degree-34全体、actual resonanceは未判定で
+ある。停止規則どおり、次はQ011ezで登録2,553 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
