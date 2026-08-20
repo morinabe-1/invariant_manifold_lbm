@@ -10,13 +10,17 @@ import research.q011ey_degree34_thirty_eighth_individual_partition_audit as q011
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "0861c122814c6cd7399ce92c3d2e3e6134df3e52b1d44f0e975ed711eb309514"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "90080ab0eb1482445c72d9ddb491f22a13f7fe91991b6276973f48df26acbc7a"
+)
 EXPECTED_SECTION_DIGESTS = {
-    "input_digest_sha256": "",
-    "partition_input_digest_sha256": "",
-    "allocation_audit_digest_sha256": "",
-    "result_digest_sha256": "",
+    "input_digest_sha256": "eaf5423709731ae0d59abcb2f0bee2dfcd56b3ac0d34041ab5ba9252ec379789",
+    "partition_input_digest_sha256": "59a1018cb675a4395bececb2c9d5d0dd4a472b1423170c6462f4fb72deedd4b6",
+    "allocation_audit_digest_sha256": "2f99538a87ad53480e3865f4d03d5064856bb535516494611f8021e8b64adaca",
+    "result_digest_sha256": "aeaee268ac9eaa4d175a13a4437596eeff23f5db8cc5ed9c36f8d86f84cf2f9a",
 }
 EXPECTED_PARTITION_DIGESTS = {
     "parent_product_interval_digest_sha256": (
@@ -31,7 +35,9 @@ EXPECTED_PARTITION_DIGESTS = {
     "parent_intersection_interval_digest_sha256": (
         "9ac1b9ce084fdcc5f99cc5cf9211c41992f47a0985cd8109746b4460e517fb80"
     ),
-    "allocation_classification_record_digest_sha256": "",
+    "allocation_classification_record_digest_sha256": (
+        "2ef05b13ff6094aadfa68a21ea3b3adc8e7b628fbab7a4060872508902cdac08"
+    ),
 }
 
 
@@ -123,33 +129,27 @@ def test_q011ey_classifies_every_registered_exact_interval(
     assert partition["passed"]
     assert all(partition["checks"].values())
     assert partition["compatible_allocation_count"] == 2_553
+    assert partition["all_product_target_intersection_and_center_records_equal_parent"]
     records = partition["allocation_classification_records"]
     assert len(records) == 2_553
     assert [record["compatible_allocation_index"] for record in records] == list(range(2_553))
     for record in records:
         assert record["degree"] == 34
         assert record["output_block"] == 7
-        assert record["exact_relation"] in {
-            "product_below_target",
-            "target_below_product",
-            "overlap",
-        }
-        assert record["binary64_outward_relation"] == record["exact_relation"]
-        assert record["exact_gap_positive"] == (record["exact_relation"] != "overlap")
-        assert record["binary64_outward_gap_positive"] == (
-            record["binary64_outward_relation"] != "overlap"
-        )
-        for key in (
-            "product_equals_parent",
-            "center_product_equals_parent",
-            "target_equals_parent",
-            "intersection_equals_parent",
-            "center_diagnostic_equals_parent",
-        ):
-            assert isinstance(record[key], bool)
-    for name, expected in EXPECTED_PARTITION_DIGESTS.items():
-        if expected:
-            assert partition[name] == expected
+        assert record["exact_relation"] == "overlap"
+        assert record["binary64_outward_relation"] == "overlap"
+        assert not record["exact_gap_positive"]
+        assert not record["binary64_outward_gap_positive"]
+        assert record["product_equals_parent"]
+        assert record["center_product_equals_parent"]
+        assert record["target_equals_parent"]
+        assert record["intersection_equals_parent"]
+        assert record["center_diagnostic_equals_parent"]
+        assert record["intersection_width_hex"] == q011ey.EXPECTED_PARENT_INTERSECTION_WIDTH_HEX
+        assert record["center_only_gap_hex"] == q011ey.EXPECTED_PARENT_CENTER_GAP_HEX
+    assert {name: partition[name] for name in EXPECTED_PARTITION_DIGESTS} == (
+        EXPECTED_PARTITION_DIGESTS
+    )
 
 
 def test_q011ey_applies_the_registered_exclusive_stopping_rule(
@@ -162,14 +162,16 @@ def test_q011ey_applies_the_registered_exclusive_stopping_rule(
     assert all(gate["passed"] for gate in q011ey_cycle["diagnostic_gates"].values())
     assert q011ey_cycle["scientific_outcome"] == "not_evaluated"
     assert q011ey_cycle["actual_resonance_outcome"] == "not_established"
-    assert q011ey_cycle["refinement_outcome"] in {
-        "partition_inert_persistent",
-        "resolved_by_individual_partition",
-        "partition_effective_but_persistent",
-    }
+    assert q011ey_cycle["refinement_outcome"] == "partition_inert_persistent"
+    assert q011ey_cycle["diagnostic_classification"] == q011ey.INERT_CLASSIFICATION
     partition = q011ey_cycle["individual_allocation_interval_audit"]
-    assert sum(partition["exact_relation_counts"].values()) == 2_553
-    assert partition["binary64_outward_relation_counts"] == partition["exact_relation_counts"]
+    expected_relations = {
+        "product_below_target": 0,
+        "target_below_product": 0,
+        "overlap": 2_553,
+    }
+    assert partition["exact_relation_counts"] == expected_relations
+    assert partition["binary64_outward_relation_counts"] == expected_relations
     assert not partition["complex_phase_product_evaluated"]
     theorem = q011ey_cycle["theorem_consequence"]
     flags = (
@@ -177,23 +179,7 @@ def test_q011ey_applies_the_registered_exclusive_stopping_rule(
         theorem["thirty_eighth_q011cb_witness_is_resolved_by_individual_partition"],
         theorem["individual_partition_changes_intervals_but_thirty_eighth_q011cb_witness_persists"],
     )
-    assert sum(flags) == 1
-    expected_outcome = (
-        "partition_inert_persistent"
-        if flags[0]
-        else "resolved_by_individual_partition"
-        if flags[1]
-        else "partition_effective_but_persistent"
-    )
-    expected_classification = (
-        q011ey.INERT_CLASSIFICATION
-        if flags[0]
-        else q011ey.RESOLVED_CLASSIFICATION
-        if flags[1]
-        else q011ey.EFFECTIVE_PERSISTENT_CLASSIFICATION
-    )
-    assert q011ey_cycle["refinement_outcome"] == expected_outcome
-    assert q011ey_cycle["diagnostic_classification"] == expected_classification
+    assert flags == (True, False, False)
 
 
 def test_q011ey_preserves_boundary_and_reproducible_digests(
@@ -205,7 +191,7 @@ def test_q011ey_preserves_boundary_and_reproducible_digests(
         theorem["thirty_eighth_q011cb_witness_is_resolved_by_individual_partition"],
         theorem["individual_partition_changes_intervals_but_thirty_eighth_q011cb_witness_persists"],
     )
-    assert sum(flags) == 1
+    assert flags == (True, False, False)
     assert theorem["q011ex_ordinal_thirty_six_phase_resolution_is_preserved"]
     assert theorem["q011ew_ordinal_thirty_six_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011ev_ordinal_thirty_five_phase_resolution_is_preserved"]
@@ -240,9 +226,9 @@ def test_q011ey_preserves_boundary_and_reproducible_digests(
     assert "later 44762 Q011cb refined signatures" in q011ey_cycle["claim_boundary"]
     assert "Q011ez" in q011ey_cycle["next_change"]
     json.dumps(q011ey_cycle, allow_nan=False)
-    for name, expected in EXPECTED_SECTION_DIGESTS.items():
-        if expected:
-            assert q011ey_cycle[name] == expected
+    assert {name: q011ey_cycle[name] for name in EXPECTED_SECTION_DIGESTS} == (
+        EXPECTED_SECTION_DIGESTS
+    )
     assert q011ey_cycle["result_digest_sha256"] == (
         q011ey.q011b._canonical_json_sha256(q011ey._result_digest_sections(q011ey_cycle))
     )
@@ -255,11 +241,7 @@ def test_q011ey_study_metadata_and_optional_artifact_are_scoped(
     assert q011ey_study["schema_version"] == 1
     assert q011ey_study["source"] == source_metadata()
     assert q011ey_study["study_gate"] == "passed"
-    assert q011ey_study["refinement_outcome"] in {
-        "partition_inert_persistent",
-        "resolved_by_individual_partition",
-        "partition_effective_but_persistent",
-    }
+    assert q011ey_study["refinement_outcome"] == "partition_inert_persistent"
     runtime = q011ey_study["arithmetic_runtime"]
     assert runtime["target_comparisons"] == 2_553
     assert runtime["complex_phase_product_evaluated"] is False
