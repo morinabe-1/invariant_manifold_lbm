@@ -12404,6 +12404,42 @@ outwardの双方で全件overlapし、product、center-product、target、inters
 全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011ftで登録1,136 wave allocationだけを
 component-safe complex phase discへ展開する。
 
+### Q011ft 実行結果
+
+Q011fsまでの154 artifact／705 direct digestを封印し、ordinal 47の登録1,136 individual wave allocationを、150／151の
+内部labelを仮定せず382 label-free component waveへexactに商写像した。147,840 full phase allocation中、output block 7に
+compatibleな8,350件を全数監査したところ、individual modulusでは全件overlap、exact complex phaseでは全件strict
+separationとなった。全7 validity gateと全4 diagnostic gateを通過し、unresolvedは0、outcomeは
+`component_safe_phase_resolved`となった。
+
+- individual／component wave allocation: `1136 / 382`
+- bridge fiber histogram: `{1:79,2:77,3:76,4:75,5:75}`
+- full／compatible allocation digest:
+  `f140b67195a9935eacee5db2ab43e9bc0f07ac5dfb4856bed3aeedbf84756b1d` /
+  `8293e5ae53c2bb28cae1a2cf51b26653c4c87e7f631c5702c2a3d2a625f8367a`
+- bridge／projection／paired-record digest:
+  `04c001c4f768268b25b0652c37212608950f734d3b360d46e2582cb4958f3028` /
+  `3fd02255f0f521e20198719fe532e0442fd2370654054f8939bdbe07cf1dd52f` /
+  `163de755e5fa62d1ae1d509e6ed227ae3e7fe54209b56a203776b4088abbaed4`
+- category counts `individual-modulus / complex-phase / unresolved`: `0 / 8350 / 0`
+- global minimum exact phase-margin witness:
+  index `5408`、counts `[11,2,0,6,0,3,0,5,5,2,0,0]`、binary64 hex `0x1.a8f10a6dc89e6p-6`
+- minimum-witness／comparison-stream digest:
+  `df9e0c42e0cdb8d82a309c61e2bf95d5d6369af757654dbbf5ad38e822695d1a` /
+  `70784e360e727e9b3ff74054842fc95e282c1ca5b5b03188a0e0cb19c14e210f`
+- input／phase-input／allocation／comparison／result digest:
+  `367d530a438985e773c4478b04caaff586615952570c7772bdde741cb2c11a40` /
+  `c45abeea2f6021d03ca582a28c50e0a156660c5375399ea269046828431dc433` /
+  `fa87a49fd2a8bbb069bf6d83be2d26e88a8ac27c7ae196abb040cfb3b9333d82` /
+  `0cd0914189e020cdd89752a47dbadcf4c4b59ea1063bee37249a89a85e7e9d48` /
+  `9025e08c21ef91535e2015cbfd97fb3c89ea5a43ddd66878ab0f3522c5590eb6`
+- runner／artifact newline-normalized SHA-256:
+  `1df071cc78c757b48a6bf78b0504c25cb1b3526f79a5df33c43949f834757a95` /
+  `aa492c22e91b54760d695615d50f250a8a1340f93acaabff0eb78efaa0fda12c`
+
+これはordinal 47だけのphase resolutionである。ordinal 0--46と既存認証範囲は不変で、後続44,752 signature、aggregate
+全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011fuで登録順のordinal 48を監査する。
+
 ## 再現 artifact
 
 数値の完全な記録:
