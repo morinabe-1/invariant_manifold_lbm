@@ -37266,6 +37266,36 @@ multiplicity、exact／outward分類、section／runner digest、protocol global
 他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、
 SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011fa 封印結果（partition inert persistent）
+
+Q011ezまでの135 artifact／620 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal 38の
+6 occupied classを登録順の12 singleton identifierへ戻し、35,280 full allocation中、output block 7にcompatibleな1,986件を
+全数監査した。exact rationalとbinary64 outwardの双方で`product_below_target / target_below_product / overlap`は
+`0 / 0 / 1986`だった。product、center-product、target、intersection、center-only diagnosticも全件parent recordとexact
+同一であり、事前登録した第1分岐`partition_inert_persistent`へ入った。
+
+- full／compatible allocation digest:
+  `59616ee1873a75bc1bb21179453db0223654ae0c8cb66ae08a4763f347743e44` /
+  `75e9f4192fc409780dd01c280a1a66bdafbf0a78566d8eaeeb5700867a3bca21`
+- occupied-record／identifier-order digest:
+  `69d196219133dad7cac1c445c0d168a0f390399fd05d064d85eff731de92e969` /
+  `ff33e554ab95aad7ae696a37e1eeb5812b602f126e9697ccfdca46d21fc4f8f6`
+- allocation-classification record digest:
+  `01f33fc65ae1d4202dc276c1024291b8951fcdfdb831d39f1190caea372bf252`
+- input／partition-input／allocation／result digest:
+  `cde531cef0a4c58cc5965aa03f05fd0d19c6fefccbc21c356548d572dc770d6d` /
+  `6aa5bbac2497b3c802d868b8b41af747141c47f29e290036ba1c3b1ec5e00d70` /
+  `8e866b739a9a5ab9b9d754c7872f9aefb1d555b6e37938d599999152c94c86a8` /
+  `1581afb48418ff65e9eb4170e042af356d36a9d19e7f0044aa6770cc3a222070`
+- runner／artifact newline-normalized SHA-256:
+  `263cc17faf6ac14d0d88038e2400369c54c6c92ca112a9fe7fd07bce4c97616b` /
+  `5b450638493cb6eebf80d56a5a76b9bffb4faae30d607ee26e8cccf22621f881`
+
+Q011daのpartition protocolにはordinal 38の登録定数を一時差替えし、Q011ez artifactとordinal 37 phase resolutionを追加で
+封印した。呼出し後のglobal復元も確認した。これはordinal 38だけのpartition診断であり、ordinal 0--37のresolutionと
+既存認証範囲は不変である。後続44,761 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則
+どおり、次はQ011fbで登録1,986 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
