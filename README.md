@@ -9810,6 +9810,35 @@ output block 7にcompatibleな14,578件を全数監査した。individual modulu
 degrees 2--33と91以降、missing 34--90は不変である。後続44,734 signature、他のparent overlap、他15 target、aggregate
 `2340`全体、degree-34 nonresonance、actual resonanceは未判定である。次はQ011heで登録順のordinal 66を監査する。
 
+### Q011he second-family sixty-seventh-witness individual-disc partition audit
+
+Q011hdまでの191 artifact／872 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。flatten
+ordinal 66、すなわち`(left,right)=(8,2)`の6 positive-count modulus classを12 singleton identifierへ戻し、27,216
+full allocation中、output block 7にcompatibleな1,531件を全数監査した。exact／binary64 outward relationはいずれも全件
+overlapで、product、center-product、target、intersection、center-only diagnosticも全件parent recordと同一だった。
+outcomeは`partition_inert_persistent`である。
+
+- parent class counts: `[[0,0,0,13],[8,1],[5],[2,5]]`
+- full／compatible allocation count: `27216 / 1531`
+- exact／binary64 outward relation counts: `{below:0,above:0,overlap:1531}` / `{below:0,above:0,overlap:1531}`
+- parent intersection width／center-only gap:
+  `0x1.4b33379079ab6p-31` / `0x1.32d754840845dp-28`
+- allocation-classification record digest:
+  `7695dbd014489081987dbd84d1fc6cffd1d7ac3028d085c34db7473ec9a3f835`
+- input／partition-input／allocation-audit／result digest:
+  `7edc539e417e42df75cc8ae1f01c21b5cdf31a1982d1f24c583da6a745e803a2` /
+  `e399866821c874da1491c2bbe0465d37016995d64bcd667f7a3ce756b43a6cf9` /
+  `05976de961bd74f9209c83b05cd9212dcd6cc328d6ba593e21e76257f13aeee1` /
+  `07ee464c1147d6807ccfc562f2d98fbb427c782cdba45e549ed0fd4d2cc91a28`
+- runner／artifact newline-normalized SHA-256:
+  `ebd97d6661d36d8d728370c8d837e9c4e37623cd82b5a119c242983fceefe186` /
+  `c6e723b0d4f80d43755cfb542aad5631362818db9549151f45d739ce03477c43`
+
+これはflatten ordinal 66だけのpartition診断である。ordinal 0--65のresolution、aggregate-level `persistent`、certified
+degrees 2--33と91以降、missing 34--90は不変である。後続44,733 signature、他のparent overlap、他15 target、aggregate
+`2340`全体、degree-34 nonresonance、actual resonanceは未判定である。complex phaseは本gateでは評価していない。次は
+Q011hfで登録1,531 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -10666,6 +10695,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011hb_degree34_sixty_fifth_component_safe_phase_discs.json`](research/artifacts/q011hb_degree34_sixty_fifth_component_safe_phase_discs.json)
 - [`research/artifacts/q011hc_degree34_sixty_sixth_individual_partition_audit.json`](research/artifacts/q011hc_degree34_sixty_sixth_individual_partition_audit.json)
 - [`research/artifacts/q011hd_degree34_sixty_sixth_component_safe_phase_discs.json`](research/artifacts/q011hd_degree34_sixty_sixth_component_safe_phase_discs.json)
+- [`research/artifacts/q011he_degree34_sixty_seventh_individual_partition_audit.json`](research/artifacts/q011he_degree34_sixty_seventh_individual_partition_audit.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
