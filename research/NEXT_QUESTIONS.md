@@ -46386,6 +46386,34 @@ multiplicity、exact／outward分類、section／runner digest、protocol global
 他のparent overlap、他15 target、aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、
 higher smoothness、SSM existence／uniqueness、normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011hq 封印結果（partition inert persistent）
+
+Q011hpまでの203 artifact／926 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。flatten
+ordinal 72、すなわち`(left,right)=(9,0)`の4 positive-count modulus classを8 singleton identifierへ戻した。6,720
+full allocation中、output block 7にcompatibleな382件を全数監査した。exact／binary64 outward relationはいずれも全件
+overlapで、product、center-product、target、intersection、center-only diagnosticも全件parent recordと同一だった。
+outcomeは`partition_inert_persistent`である。
+
+- parent class counts: `[[0,0,0,13],[9,0],[5],[0,7]]`
+- full／compatible allocation count: `6720 / 382`
+- exact／binary64 outward relation counts: `{below:0,above:0,overlap:382}` / `{below:0,above:0,overlap:382}`
+- parent intersection width／center-only gap:
+  `0x1.5ac52145738a8p-31` / `0x1.31de3c5940345p-28`
+- allocation-classification record digest:
+  `9a7d5bdcfd9f083a2f135d892ff3d87f2a203d32034ff84ae489d6ccb99524cb`
+- input／partition-input／allocation-audit／result digest:
+  `1881a25e663b25e0a2d63c20ab500aeead7f610332d52b3fd177e9c98428ae1e` /
+  `1f97fbf828bebea7534c6abe116a27fb2b5e74b6e80b48f9fccad673824b6a06` /
+  `689b7f49d889ac17b3fc39ced0b1720a4e44fa4316924e22a0d8c9ef9ee737c3` /
+  `6f67e90258278ab9ed4be49501af46eab6e6a3e2be506cf27a25891564b77774`
+- runner／artifact newline-normalized SHA-256:
+  `b5b7c824988d388c63addc483e69e47e54fb634d7ebeb5f4f4cd0b21b7192590` /
+  `5bf4274d9d0ed211371873dd151dc25561a4b8dfc0e20bd55ddd56ac59792021`
+
+これはordinal 72だけのpartition診断であり、complex phaseは評価していない。ordinal 0--71と既存認証範囲は不変で、
+後続44,727 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011hrで
+この382 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
