@@ -10,16 +10,34 @@ import research.q011gp_degree34_fifty_ninth_component_safe_phase_discs as q011gp
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_STREAM_DIGEST: str | None = None
-EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = None
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX: str | None = None
-EXPECTED_CATEGORY_COUNTS: dict[str, int] | None = None
-EXPECTED_REFINEMENT_OUTCOME: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "ec113e98a2ffd7de0db7ffc340855c6a5b292c7dd516a3f3c470c0b93a8dfd2d"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "c73a77505b04f67b3a662d492a846fcff7072ec2e205a37a652516e2ce4cbc67"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "6a2c0b331dcb6f92a1c106f904d161a8418db005dc991b2897ad0cd6fb6b442a",
+    "phase_input_digest_sha256": "6c7b2b36cc11a2c4732affb05abe8c458b68f2b52044db1961db2511cdac9bf2",
+    "allocation_digest_sha256": "c2397923fb683095b3057b53ee8604627a801672d404571c3128c2948af5b528",
+    "phase_comparison_digest_sha256": "64e2de80c0c8b3316f3ce31b5b49e1dea7850b42c414c5afdbe1ab3681114444",
+    "result_digest_sha256": "ddc75d55a793973b7372210572d7b8c221ca12008635481eaddae5559d3930ee",
+}
+EXPECTED_STREAM_DIGEST: str | None = (
+    "f8a6a360aadbcbf5cf64c6de2435591c5fe395c251d316a2882661c097123812"
+)
+EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = (
+    "fcbac38dd950f2aedb42ca9b4f2543d54616a5938c7f645e2a2437c3ad04e645"
+)
+EXPECTED_MINIMUM_INDEX: int | None = 11_706
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [11, 2, 0, 7, 0, 2, 0, 5, 2, 0, 2, 3]
+EXPECTED_MINIMUM_MARGIN_HEX: str | None = "0x1.a8f10a6dc8560p-6"
+EXPECTED_CATEGORY_COUNTS: dict[str, int] | None = {
+    "individual_modulus_separation": 0,
+    "complex_phase_separation": 18_718,
+    "unresolved_product_disk_overlap": 0,
+}
+EXPECTED_REFINEMENT_OUTCOME: str | None = "component_safe_phase_resolved"
 RESULT_EXPECTATIONS_FIXED = all(
     value is not None
     for value in (
@@ -185,6 +203,13 @@ def test_q011gp_classifies_all_complex_phase_product_discs(
     assert comparison["comparison_stream_count"] == 18_718
     assert comparison["comparison_stream_domain"] == "q011gp-component-safe-phase-comparisons-v1"
     assert comparison["comparison_stream_digest_sha256"] == EXPECTED_STREAM_DIGEST
+    assert comparison["individual_modulus_relation_counts"] == {
+        "product_below_target": 0,
+        "target_below_product": 0,
+        "overlap": 18_718,
+    }
+    assert comparison["unique_product_radius_count"] == 10
+    assert comparison["first_unresolved_witness"] is None
 
 
 @pytest.mark.skipif(not RESULT_EXPECTATIONS_FIXED, reason="Q011gp result is not sealed")
@@ -199,6 +224,7 @@ def test_q011gp_minimum_exact_phase_margin_is_fixed(
         EXPECTED_MINIMUM_MARGIN_HEX
     )
     assert witness["witness_digest_sha256"] == EXPECTED_MINIMUM_WITNESS_DIGEST
+    assert q011gp.q011z._fraction(witness["complex_separation_margin_lower"]["exact"]) > 0
 
 
 @pytest.mark.skipif(not RESULT_EXPECTATIONS_FIXED, reason="Q011gp result is not sealed")
@@ -211,14 +237,18 @@ def test_q011gp_records_scoped_outcome(q011gp_cycle: dict[str, Any]) -> None:
     assert all(gate["passed"] for gate in q011gp_cycle["validity_gates"].values())
     assert all(gate["passed"] for gate in q011gp_cycle["diagnostic_gates"].values())
     assert q011gp_cycle["refinement_outcome"] == EXPECTED_REFINEMENT_OUTCOME
+    assert q011gp_cycle["diagnostic_classification"] == q011gp.RESOLVED_CLASSIFICATION
     assert q011gp_cycle["scientific_outcome"] == "not_evaluated"
     assert q011gp_cycle["actual_resonance_outcome"] == "not_established"
     assert "Q011gq" in q011gp_cycle["next_change"]
+    assert "next Q011cb refined overlap" in q011gp_cycle["next_change"]
 
 
 @pytest.mark.skipif(not RESULT_EXPECTATIONS_FIXED, reason="Q011gp result is not sealed")
 def test_q011gp_preserves_scientific_boundary(q011gp_cycle: dict[str, Any]) -> None:
     theorem = q011gp_cycle["theorem_consequence"]
+    assert theorem["component_safe_complex_phase_discs_resolve_fifty_ninth_q011cb_witness"]
+    assert not theorem["fifty_ninth_q011cb_witness_persists_under_component_safe_phase_discs"]
     assert not theorem["q011an_component_internal_eigenvalue_labels_are_assumed"]
     assert theorem["q011go_ordinal_fifty_eight_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011gn_ordinal_fifty_seven_phase_resolution_is_preserved"]
