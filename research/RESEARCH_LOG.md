@@ -13017,6 +13017,41 @@ active、center 149はtotal 0のzero pairとして保持した。147,840 full ph
 aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011gkで登録順のordinal 56を
 監査する。
 
+### Q011gk 実行結果
+
+Q011gjまでの171 artifact／782 direct digestを封印し、ordinal 56を5 positive-count modulus class／10 singleton
+identifierへ戻した。16,128 full allocation中、output block 7にcompatibleな911件を全数監査した。exact rationalと
+binary64 outwardの双方で全件overlapし、product、center-product、target、intersection、center-only diagnosticも全件
+parentとexact同一だった。全7 validity gateと全4 diagnostic gateを通過し、outcomeは
+`partition_inert_persistent`となった。
+
+- left／right index、class counts: `7 / 0`、`[[0,0,0,13],[7,2],[5],[0,7]]`
+- full／compatible allocation count: `16128 / 911`
+- exact／binary64 outward relation counts:
+  `{product_below_target:0,target_below_product:0,overlap:911}`
+- full／compatible allocation digest:
+  `e3041f8450ddb6cee371f37d1fa4b1c0e9bac09f7b11eebb97ef8f1a95db30e8` /
+  `32921c9bbeca225a8a725a7148758c6767f0ed22832423693802087ac6463ffb`
+- parent product／center-product／target／intersection digest:
+  `8a1f2b85179c2e455fa956598a462b7546798317b914860bb56e1bd7605ba324` /
+  `d960df98f3609c68280b3be1426955d5fa454879ddc22b0d82a615cc71129911` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `a985233b5d1b2e5d1dcb03275c82daef8d22e84b002bff058aadaaf9864de348`
+- allocation-classification record digest:
+  `92be3469b86ef0dedc63f22b5c940f929bc254e06780bfc1d0b5dc248d2a1879`
+- input／partition-input／allocation-audit／result digest:
+  `761c3c5f5f492c304ce1fc1ed94682b13a631f6cf5e72a9e4bbe44f1f1c3d28d` /
+  `1948dcb528794ef06465dec8be95d75e8082ceb6f91648394b43f9c05d78b678` /
+  `12cd1a04cc13e43988e1437ea0763a225aa73c44074fa7e78ff2a0012f563c76` /
+  `3858ef03b9fc30dfe2d5726632e0c8800190fa5c1f0a57f3ac8d03271290ba3d`
+- runner／artifact newline-normalized SHA-256:
+  `b4481d55ef6857d23676a76b171abf701add0995530394069fd08d54d65982ad` /
+  `c112b9d9dbe96ac70d163202ed0c006806b87ef6d6a7830ee7d8400b40fce50e`
+
+これはordinal 56だけのpartition診断である。ordinal 0--55と既存認証範囲は不変で、後続44,743 signature、aggregate全体、
+degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011glで登録911 wave allocationだけを
+component-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
