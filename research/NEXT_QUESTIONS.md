@@ -43398,6 +43398,120 @@ intersection、center-only diagnosticも全件parent recordと同一だった。
 全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011gtで登録2,266 wave allocationだけを
 component-safe complex phase discへ展開する。
 
+## Q011gt: second-family sixty-first-witness component-safe complex phase discs — 事前登録
+
+### 問いとsealed input
+
+Q011gsでinterval-inertだったflatten ordinal 60の登録2,266 individual wave allocationだけを、Q011an singleton／2-row
+componentとQ011ak block discに基づくlabel-freeなcomplex eigendisc allocationへ展開し、固定target
+`block=7;center=44`から全件strictに分離するかを問う。ordinal 0--59、ordinal 61以降、他target、aggregate全体は走査しない。
+
+Q011gsまでの180 artifact／822 direct digest、outcome `partition_inert_persistent`、scientific outcome
+`not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011gs artifact／runner newline-normalized SHA-256:
+  `bb9842899415182b79c860393d3814c57274b108e53cabb47b0c062d6401e8c9` /
+  `958ce4daaeaed447807b52477171db322fd77149d4fbcdbd3833434aecea0c67`
+- Q011gs input／partition-input／allocation-audit／result digest:
+  `488a9e7f9919ac6e872351a6999b850173200ad63183d93f1bb81967d9027a55` /
+  `2944ed4de87ad59d33c11562e31bec13cd02a2e73783a6640a6209a355b2155c` /
+  `44a783bf60bccc24c095b2efb2203c040c5de816037da5274038501972dce666` /
+  `6ef48e6cbea1a145abcd62f142a4c3303ff677436f5b123b1fed429b27df2772`
+- Q011gs compatible wave／record digest:
+  `2266 / 88f6c8b9521acf0d4e9178e10278343db4fb4d2edf952d32888a254f332a2253 /`
+  `807e717780e477f852d3e578c0a8e0268ac72fab2a1c77c8ba2ce96d6a57374f`
+
+Q011gs sealed inputは179 artifact／818 direct digestを持つため、Q011gsの4 section digestを加えたQ011gt inputは
+180 artifact／822 direct digestでなければならない。
+
+### component-label coalescing bridge
+
+ordinal 60ではQ011gs individual partitionの`center=150` class count 7と`center=151` class count 2がともにpositiveである。
+Q011anで150／151を内部labelを割り当てない同一2-row componentとして囲うため、2,266 individual allocationを各blockで
+150／151 countを加えたcomponent-wave座標へ射影する。`center=148` singleton pairはtotal 4、`center=149` singleton pairは
+total 3で、今回も両方をactiveに保持する。150／151 component内部の固有値labelは推論しない。
+
+具体的にはQ011gsの12-count vectorを
+
+`[145_16,145_1,150_16,150_1,151_16,151_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+から
+
+`[145_16,145_1,(150+151)_16,(150+151)_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+へ射影する。complex center-distanceを見る前に事前計算したbridge inventoryを次で固定する。
+
+- individual／distinct component-wave count: `2266 / 945`
+- bridge fiber min／max／histogram: `1 / 3 / {1:191,2:187,3:567}`
+- ordered bridge record digest:
+  `03cae3e65fd5a7b0cc6e6f71fec4c88cca86afdf2716754f30ac715663960949`
+
+bridgeは全2,266 individual allocationをちょうど一度数え、degree、Fourier output block、component totalを保存しなければ
+ならない。phase allocationのcomponent-wave射影集合がこの945 recordとexactに一致しない場合はvalidity failureとする。
+
+### component-safe inputとlabel-free inventory
+
+source variant、radius、component semantics、targetはQ011cxおよびQ011grと同じ12 source／1 targetを固定する。center 145、
+148、149はQ011an singleton row disc、150／151は内部labelを割り当てない2-row component union、152とtargetはQ011ak block
+discとする。12-count vectorのtotalは145で13、150／151 componentで9、152で5、148で4、149で3とする。
+
+- source／target exact record digest:
+  `1645c135887e33404974cf0fce47701c752eede5cb99d1643bc8d7d6d97846a7` /
+  `1d57fd229e0e60be3c14669cdd3d32fd7410f1037b548b3c338e28c0efd4ed78`
+- source radius binary64 hex:
+  `0x1.7961e9d97b02ep-36`×2、`0x1.3f712af66bee8p-36`×2、
+  `0x1.59d0855a75677p-36`×2、`0x1.23ce0990a1325p-30`×2、
+  `0x1.bcf34ab668670p-36`×2、`0x1.bcf9a62d1b2e2p-36`×2
+- target radius binary64 hex: `0x1.38c03374a5bcap-30`
+
+phase count順を
+
+`[145_16,145_1,150_16,151_16,150_1,151_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+に固定し、辞書順nested enumerationとFourier block和mod 17だけを使う。complex center-distance、margin、classificationを
+見る前に構造inventoryを次で固定した。
+
+- full allocation count／digest:
+  `369600 / 469ac40e8855a6a650ce2429c6c3c50003653736290198d7158cb68993ddf0c8`
+- compatible allocation count／digest:
+  `20786 / 55b2a688d44eebb2688b7637ed0a2b419b9c82311f6a422d03811dacd4f97f81`
+- first／last compatible counts:
+  `[0,13,0,0,0,9,0,5,2,2,3,0] / [13,0,9,0,0,0,0,5,0,4,0,3]`
+- component-wave projection count／digest:
+  `945 / 63a7ade77c1682484cc08042c29a88a75bc38a0fd25471593f9376a150653866`
+- phase fiber min／max／histogram: `10 / 30 / {10:191,18:187,24:187,28:189,30:191}`
+- bridge／phase paired record digest:
+  `52425d963e410953d51ed5efd4403ad12d06303dcf7a3bc5b0d8172f4d95832d`
+- registered unique product-radius count: `10`
+
+source別power-table上限は`[13,13,9,9,9,9,5,5,4,4,3,3]`に固定する。以上のinventory計算ではcomplex
+center-distance、margin、classificationを評価していない。
+
+### exact contract、validity、停止規則
+
+各allocationでexact product center `C`とdisc radius
+`R=prod(upper(|c_i|)+r_i)^n_i-prod upper(|c_i|)^n_i`を構成し、Q011oのexact square-root enclosureで分類する。
+
+1. modulus strictなら`individual_modulus_separation`。
+2. modulus overlapかつ`lower(|C-c_t|)-R-r_t>0`なら`complex_phase_separation`。
+3. それ以外は`unresolved_product_disk_overlap`。
+
+validity gateは、180 artifact／822 digest、Q011gsの2,266 wave／interval-inert result、2,266-to-945 component quotient、
+12 source／targetとcontainment／conjugacy、369,600／20,786 allocationと945-component-wave projection、power recurrence／
+10 radius signature／sqrt enclosure／exclusive分類、section／stream／runner digest、protocol global復元を検査する。一つでも
+失敗すれば`inconclusive`とする。comparison stream domainは`q011gt-component-safe-phase-comparisons-v1`、margin digest
+domainは`q011gt-complex-margin-expression-v1`に固定する。
+
+unresolved 0かつglobal minimum marginがpositiveならclassificationを
+`the component-safe complex phase discs resolve the sixty-first Q011cb persistent refined witness`、outcomeを
+`component_safe_phase_resolved`とし、次はQ011guでordinal 61を監査する。unresolvedが残れば
+`component_safe_phase_persistent`とし、Q011guでfirst unresolvedだけを精密化する。disc overlapはactual resonanceを示さない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 60、登録20,786
+phase allocationだけを扱う。ordinal 0--59を再評価せず、後続44,739 signature、他31 parent overlap、他15 target、aggregate
+全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
+attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
