@@ -10480,6 +10480,35 @@ separationとなり、outcomeは`component_safe_phase_resolved`である。
 degrees 2--33と91以降、missing 34--90は不変である。後続44,724 signature、他のparent overlap、他15 target、aggregate
 `2340`全体、degree-34 nonresonance、actual resonanceは未判定である。次はQ011hyで登録順のordinal 76を監査する。
 
+### Q011hy second-family seventy-seventh-witness individual-disc partition audit
+
+Q011hxまでの211 artifact／962 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。flatten
+ordinal 76、すなわち`(left,right)=(9,4)`の5 positive-count modulus classを10 singleton identifierへ戻し、16,800
+full allocation中、output block 7にcompatibleな945件を全数監査した。exact／binary64 outward relationはいずれも全件
+overlapで、product、center-product、target、intersection、center-only diagnosticも全件parent recordと同一だった。
+outcomeは`partition_inert_persistent`である。
+
+- parent class counts: `[[0,0,0,13],[9,0],[5],[4,3]]`
+- full／compatible allocation count: `16800 / 945`
+- exact／binary64 outward relation counts: `{below:0,above:0,overlap:945}` / `{below:0,above:0,overlap:945}`
+- parent intersection width／center-only gap:
+  `0x1.5ac4ea22dc55ep-31` / `0x1.31de32ea5a8ebp-28`
+- allocation-classification record digest:
+  `dc68f0778cfca4b6bd7c5ee87003b5d3f0f9dd816e29954c7f1e3d2ebd4e0d31`
+- input／partition-input／allocation-audit／result digest:
+  `6b24866f6aff79bd7d0c972aaae502866c0fff00b17cba716419a40566d54312` /
+  `c68754b2f560f515ad5edf735e2eb8e172c7fd57570a4b60324bec538f815682` /
+  `72d45f2ce45b13c55838ebcb706815f5d0c4c7715a76df19b7355cda80ced709` /
+  `595e38bf5e856d357bc7d96d0a401eac129d25b2412a2491b1425b986a28ee00`
+- runner／artifact newline-normalized SHA-256:
+  `07a095c112833b39226022512325eac5d7b376239b26e3e71f0a66ab80b8abfd` /
+  `08c62964ad4e398279c7637910d739890193859513992499c8f1428ea00e540e`
+
+これはflatten ordinal 76だけのpartition診断である。ordinal 0--75のresolution、aggregate-level `persistent`、certified
+degrees 2--33と91以降、missing 34--90は不変である。後続44,723 signature、他のparent overlap、他15 target、aggregate
+`2340`全体、degree-34 nonresonance、actual resonanceは未判定である。complex phaseは本gateでは評価していない。次は
+Q011hzで登録945 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
