@@ -9291,6 +9291,45 @@ block 7にcompatibleな18,718件を全数監査した。individual modulusでは
 degrees 2--33と91以降、missing 34--90は不変である。後続44,741 signature、他31 parent overlap、他15 target、aggregate
 `2340`全体、degree-34 nonresonance、actual resonanceは未判定である。次はQ011gqで登録順のordinal 59を監査する。
 
+### Q011gq second-family sixtieth-witness individual-disc partition audit
+
+Q011gpまでの177 artifact／809 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal 59を
+6 positive-count modulus class／12 singleton identifierへ戻し、40,320 full allocation中、output block 7にcompatibleな
+2,266件を全数監査した。exact／binary64 outward relationはいずれも全件overlapで、product、center-product、target、
+intersection、center-only diagnosticも全件parent recordと同一だった。outcomeは`partition_inert_persistent`である。
+
+- parent ordinal／`(left,right)`: `59 / (7,3)`
+- class counts／occupied singleton counts:
+  `[[0,0,0,13],[7,2],[5],[3,4]] / [13,7,2,5,3,4]`
+- full／compatible allocation count: `40320 / 2266`
+- full／compatible allocation digest:
+  `325b8a77ceb29dd7d8d432e86c7e38949d4236270997e57b8fe7a4eba6dc9919` /
+  `a0b4fd997ba7610474c034acb4905262e11148526165c7d75475542cf89e0a8e`
+- parent full／compatible index: `40200 / 2265`
+- exact／outward relation counts: `{product_below_target:0,target_below_product:0,overlap:2266}`
+- parent intersection width／center-only relation／gap:
+  `0x1.3ba15ba4241cdp-31 / target_below_product / 0x1.33d06f0a89d88p-28`
+- parent product／center-product／target／intersection digest:
+  `5b83c4c7a311698babf99d4218cc9b1ed1d3f59c5d889299080e8f758b4676ea` /
+  `0a27a6bad9f03e63f792ecd176c3d09537bd451350caa4c326c5a4131b445391` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `f5d747a8d954dbac14723ad65759672c11736f52ea16c5dbd3d394391cb81ae7`
+- allocation-classification record digest:
+  `3f1ce5a78547b8c080af2ffece698b2576013f29ceabc5c5bcadb1f488fdf741`
+- input／partition-input／allocation-audit／result digest:
+  `49a46d7e30ce981e8a14c6f6217c862228df32da741814bf0cecca28fdb550ba` /
+  `1ddfe93002ce7f1805bea309c78aa7da392e736d51f20e7c1f240d0a1f08dfbc` /
+  `7968974690e875385c77e6a819bcf5947c7d03536987bd15bad4f61dc3e6ba44` /
+  `e3fe63976c5a0caa13d3c57895ed597b9439c7605fd83c4684cd11f744089d65`
+- runner／artifact newline-normalized SHA-256:
+  `95cb8e3fd8076aaf424fee98047a4411fdefd038e147202183190192c3edc1a7` /
+  `c25865eec2b07f8587171b6a22b4d1a1f8b317c58bcf9bc4385070e9e76d7ef3`
+
+これはflatten ordinal 59だけのpartition診断である。ordinal 0--58のresolution、aggregate-level `persistent`、certified
+degrees 2--33と91以降、missing 34--90は不変である。後続44,740 signature、他のparent overlap、他15 target、aggregate
+`2340`全体、degree-34 nonresonance、actual resonanceは未判定である。次はQ011grで登録2,266 wave allocationだけを
+component-safe complex phase discへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
@@ -10133,6 +10172,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - [`research/artifacts/q011gn_degree34_fifty_eighth_component_safe_phase_discs.json`](research/artifacts/q011gn_degree34_fifty_eighth_component_safe_phase_discs.json)
 - [`research/artifacts/q011go_degree34_fifty_ninth_individual_partition_audit.json`](research/artifacts/q011go_degree34_fifty_ninth_individual_partition_audit.json)
 - [`research/artifacts/q011gp_degree34_fifty_ninth_component_safe_phase_discs.json`](research/artifacts/q011gp_degree34_fifty_ninth_component_safe_phase_discs.json)
+- [`research/artifacts/q011gq_degree34_sixtieth_individual_partition_audit.json`](research/artifacts/q011gq_degree34_sixtieth_individual_partition_audit.json)
 - [`research/artifacts/q008a_tt_storage_prequalification.json`](research/artifacts/q008a_tt_storage_prequalification.json)
 - [`research/artifacts/q008c_wave_qtt_prequalification.json`](research/artifacts/q008c_wave_qtt_prequalification.json)
 - [`research/artifacts/q010_representation_cost.json`](research/artifacts/q010_representation_cost.json)
