@@ -10,10 +10,25 @@ import research.q011go_degree34_fifty_ninth_individual_partition_audit as q011go
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "303fa473482e335a3913276304416096516c5b4bc12225d263584849692d680f"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "9ae2c196ca74319c96d0030b410d98dafb8012806c2e6b65e3f9e1d8952e90c1"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "1469645c4021c082e4e87b63675f040df3988de5683cc972ed5873d05b8c3405",
+    "partition_input_digest_sha256": "86aa22ef19d00b458fd15ec19bdbd51dbcc0e0e81cb33bb312d09280dc902808",
+    "allocation_audit_digest_sha256": "9d95d80b0186d1740075f29d3a617333c70a4d1d4866ebf86b7f844fa594798b",
+    "result_digest_sha256": "09cc13bbea2d8bb6e961cf152de45a291f18df2bb672d7400ca49e8867ecc56c",
+}
+EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = {
+    "parent_product_interval_digest_sha256": "69be97c85b396a22af0763921ddefcfbda40bcca2ca0a15f0e186b20a414e9a4",
+    "parent_center_product_interval_digest_sha256": "00440703df9ef1d41c5b1613f014c199a89897669e6a687c5d52474d30cb460e",
+    "parent_target_interval_digest_sha256": "64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679",
+    "parent_intersection_interval_digest_sha256": "86bfec87014158cb112ec405452befcb37836dbf948ae92ddaea9440a81809bf",
+    "allocation_classification_record_digest_sha256": "d786457684d074566ec4f8a62414eae3a26065bb2ad790469c1617e0290a6326",
+}
 RESULT_EXPECTATIONS_FIXED = (
     EXPECTED_SECTION_DIGESTS is not None and EXPECTED_PARTITION_DIGESTS is not None
 )
@@ -121,7 +136,31 @@ def test_q011go_classifies_every_registered_exact_interval(
     assert partition["passed"]
     assert all(partition["checks"].values())
     assert partition["compatible_allocation_count"] == 2_041
-    assert len(partition["allocation_classification_records"]) == 2_041
+    assert partition["all_product_target_intersection_and_center_records_equal_parent"]
+    records = partition["allocation_classification_records"]
+    assert len(records) == 2_041
+    assert [record["compatible_allocation_index"] for record in records] == list(range(2_041))
+    for record in records:
+        assert record["degree"] == 34
+        assert record["output_block"] == 7
+        assert record["exact_relation"] == "overlap"
+        assert record["binary64_outward_relation"] == "overlap"
+        assert not record["exact_gap_positive"]
+        assert not record["binary64_outward_gap_positive"]
+        assert record["product_equals_parent"]
+        assert record["center_product_equals_parent"]
+        assert record["target_equals_parent"]
+        assert record["intersection_equals_parent"]
+        assert record["center_diagnostic_equals_parent"]
+        assert record["intersection_width_hex"] == q011go.EXPECTED_PARENT_INTERSECTION_WIDTH_HEX
+        assert record["center_only_gap_hex"] == q011go.EXPECTED_PARENT_CENTER_GAP_HEX
+    expected_relations = {
+        "product_below_target": 0,
+        "target_below_product": 0,
+        "overlap": 2_041,
+    }
+    assert partition["exact_relation_counts"] == expected_relations
+    assert partition["binary64_outward_relation_counts"] == expected_relations
     assert {name: partition[name] for name in EXPECTED_PARTITION_DIGESTS} == (
         EXPECTED_PARTITION_DIGESTS
     )
@@ -138,9 +177,18 @@ def test_q011go_applies_the_registered_exclusive_stopping_rule(
     assert all(gate["passed"] for gate in q011go_cycle["diagnostic_gates"].values())
     assert q011go_cycle["scientific_outcome"] == "not_evaluated"
     assert q011go_cycle["actual_resonance_outcome"] == "not_established"
+    assert q011go_cycle["refinement_outcome"] == "partition_inert_persistent"
+    assert q011go_cycle["diagnostic_classification"] == q011go.INERT_CLASSIFICATION
     assert not q011go_cycle["individual_allocation_interval_audit"][
         "complex_phase_product_evaluated"
     ]
+    theorem = q011go_cycle["theorem_consequence"]
+    flags = (
+        theorem["individual_partition_is_interval_inert_for_fifty_ninth_q011cb_witness"],
+        theorem["fifty_ninth_q011cb_witness_is_resolved_by_individual_partition"],
+        theorem["individual_partition_changes_intervals_but_fifty_ninth_q011cb_witness_persists"],
+    )
+    assert flags == (True, False, False)
 
 
 @pytest.mark.skipif(not RESULT_EXPECTATIONS_FIXED, reason="Q011go result is not sealed")
@@ -148,6 +196,12 @@ def test_q011go_preserves_boundary_and_reproducible_digests(
     q011go_cycle: dict[str, Any],
 ) -> None:
     theorem = q011go_cycle["theorem_consequence"]
+    flags = (
+        theorem["individual_partition_is_interval_inert_for_fifty_ninth_q011cb_witness"],
+        theorem["fifty_ninth_q011cb_witness_is_resolved_by_individual_partition"],
+        theorem["individual_partition_changes_intervals_but_fifty_ninth_q011cb_witness_persists"],
+    )
+    assert flags == (True, False, False)
     assert theorem["q011gn_ordinal_fifty_seven_phase_resolution_is_preserved"]
     assert theorem["q011gm_ordinal_fifty_seven_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011gl_ordinal_fifty_six_phase_resolution_is_preserved"]
@@ -180,6 +234,7 @@ def test_q011go_study_metadata_and_optional_artifact_are_scoped(
     assert q011go_study["schema_version"] == 1
     assert q011go_study["source"] == source_metadata()
     assert q011go_study["study_gate"] == "passed"
+    assert q011go_study["refinement_outcome"] == "partition_inert_persistent"
     runtime = q011go_study["arithmetic_runtime"]
     assert runtime["target_comparisons"] == 2_041
     assert runtime["complex_phase_product_evaluated"] is False
