@@ -37647,7 +37647,7 @@ phase count順を
   `163de755e5fa62d1ae1d509e6ed227ae3e7fe54209b56a203776b4088abbaed4`
 - registered unique product-radius count: `10`
 
-source別power-table上限は`[13,13,9,9,9,9,5,5,0,0,7,7]`に固定する。以上のinventory計算ではcomplex
+source別power-table上限は`[13,13,9,9,9,9,5,5,7,7,0,0]`に固定する。以上のinventory計算ではcomplex
 center-distance、margin、classificationを評価していない。
 
 ### exact contract、validity、停止規則
@@ -42349,7 +42349,7 @@ phase count順を
   `bba00e9e83a4c3e2e2dc6967fdc96677a4c9ccfe34975b52aaecbef703603a70`
 - registered unique product-radius count: `10`
 
-source別power-table上限は`[13,13,9,9,9,9,5,5,7,7,0,0]`に固定する。以上のinventory計算ではcomplex
+source別power-table上限は`[13,13,9,9,9,9,5,5,0,0,7,7]`に固定する。以上のinventory計算ではcomplex
 center-distance、margin、classificationを評価していない。
 
 ### exact contract、validity、停止規則
