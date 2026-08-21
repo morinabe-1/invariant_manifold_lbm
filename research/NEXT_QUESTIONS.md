@@ -41698,6 +41698,121 @@ intersection、center-only diagnosticも全件parentとexact同一だった。�
 signature、aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011ghで登録1,854
 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+## Q011gh: second-family fifty-fifth-witness component-safe complex phase discs — 事前登録
+
+### 問いとsealed input
+
+Q011ggでinterval-inertだったflatten ordinal 54の登録1,854 individual wave allocationだけを、Q011an singleton／2-row
+componentとQ011ak block discに基づくlabel-freeなcomplex eigendisc allocationへ展開し、固定target
+`block=7;center=44`から全件strictに分離するかを問う。ordinal 0--53、ordinal 55以降、他target、aggregate全体は走査しない。
+
+Q011ggまでの168 artifact／768 direct digest、outcome `partition_inert_persistent`、scientific outcome
+`not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011gg artifact／runner newline-normalized SHA-256:
+  `5b0995958bd80ad41eaafb655e1548f6776b35cf66bcd73911924ea382973904` /
+  `ed53cd6a116f9b36e75f77acbabeb65aaf7bb6dc651422cb6205ac5dd7636bb1`
+- Q011gg input／partition-input／allocation-audit／result digest:
+  `7a6045452885f67ed2cafeeb54a0833ac30fc969bae666361a5bf5a633b13f2c` /
+  `481cd7dfacf59d3bb7f265e1f8287648dc04f95508a2b375ddb1cf901cacc720` /
+  `fe7a783f07041d4b2278fd9141b071ed4f63aa6cd3339c1732440f74de01501f` /
+  `2ed7553bc589999d0b8cabbd0b3435c09f84ff7f18a4c43f496937eea9c04c40`
+- Q011gg compatible wave／record digest:
+  `1854 / 5013b40a83b21ffa9b665c5612371936689a3f0cd656002f311bb4ead923a7b1 /`
+  `720d3fff4d03411ae445361afec31525b1a8aa548cbeac132b93387c655bccef`
+
+Q011gg sealed inputは167 artifact／764 direct digestを持つため、Q011ggの4 section digestを加えたQ011gh inputは
+168 artifact／768 direct digestでなければならない。
+
+### component-label coalescing bridge
+
+ordinal 54ではQ011gg individual partitionの`center=150` class count 6と`center=151` class count 3がともにpositiveである。
+Q011anで150／151を内部labelを割り当てない同一2-row componentとして囲うため、1,854 individual allocationを各blockで
+150／151 countを加えたcomponent-wave座標へ射影する。center 148はtotal 6、center 149はtotal 1で、ともにsingleton
+row discとしてactiveに保持する。
+
+具体的にはQ011ggの12-count vectorを
+
+`[145_16,145_1,150_16,150_1,151_16,151_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+から
+
+`[145_16,145_1,(150+151)_16,(150+151)_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+へ射影する。center-distanceを見る前に事前計算したbridge inventoryを次で固定する。
+
+- individual／distinct component-wave count: `1854 / 665`
+- bridge fiber min／max／histogram: `1 / 4 / {1:136,2:133,3:132,4:264}`
+- ordered bridge record digest:
+  `b1029e0d6cc0de3010419ca721b0e779ca9a78f7c5d5a60db6d1cf1597bcfd5c`
+
+bridgeは全1,854 individual allocationをちょうど一度数え、degree、Fourier output block、component totalを保存しなければ
+ならない。phase allocationのcomponent-wave射影集合がこの665 recordとexactに一致しない場合はvalidity failureとする。
+
+### component-safe inputとlabel-free inventory
+
+source variant、radius、component semantics、targetはQ011gfと同じ12 source／1 targetを固定する。center 145、148、149は
+Q011an singleton row disc、150／151はlabelを割り当てない2-row component union、152とtargetはQ011ak block discとする。
+12-count vectorのtotalは145で13、150／151 componentで9、152で5、148で6、149で1とする。
+
+- source／target exact record digest:
+  `1645c135887e33404974cf0fce47701c752eede5cb99d1643bc8d7d6d97846a7` /
+  `1d57fd229e0e60be3c14669cdd3d32fd7410f1037b548b3c338e28c0efd4ed78`
+- source radius binary64 hex:
+  `0x1.7961e9d97b02ep-36`×2、`0x1.3f712af66bee8p-36`×2、
+  `0x1.59d0855a75677p-36`×2、`0x1.23ce0990a1325p-30`×2、
+  `0x1.bcf34ab668670p-36`×2、`0x1.bcf9a62d1b2e2p-36`×2
+- target radius binary64 hex: `0x1.38c03374a5bcap-30`
+
+phase count順を
+
+`[145_16,145_1,150_16,151_16,150_1,151_1,152_16,152_1,148_16,148_1,149_16,149_1]`
+
+に固定し、辞書順nested enumerationとFourier block和mod 17だけを使う。complex center-distance、margin、classificationを
+見る前に構造inventoryを次で固定した。
+
+- full allocation count／digest:
+  `258720 / ea794d73e7642022f1181eebd452a8bbdf2ee26b34cbcbfae94071745718d001`
+- compatible allocation count／digest:
+  `14578 / ae348d96557174de8e77d0dfff1344858d4a512176a3c5a8f034bb10dbf56ff7`
+- first／last compatible counts:
+  `[0,13,0,0,0,9,0,5,4,2,1,0] / [13,0,9,0,0,0,0,5,0,6,0,1]`
+- component-wave projection count／digest:
+  `665 / 74a1dfba6783917cdcaec661e9c8b92b68e7faee358f82ebd2fa1ebdcf18a079`
+- phase fiber min／max／histogram: `10 / 30 / {10:136,18:133,24:132,28:132,30:132}`
+- bridge／phase paired record digest:
+  `c7c42a32da2c85a446608e3017a7c9fd5ff16fc2e298f00b173d8820af799f50`
+- registered unique product-radius count: `10`
+
+source別power-table上限は
+`[13,13,9,9,9,9,5,5,6,6,1,1]`に固定する。以上のinventory計算ではcomplex center-distance、margin、
+classificationを評価していない。
+
+### exact contract、validity、停止規則
+
+各allocationでexact product center `C`とdisc radius
+`R=prod(upper(|c_i|)+r_i)^n_i-prod upper(|c_i|)^n_i`を構成し、Q011oのexact square-root enclosureで分類する。
+
+1. modulus strictなら`individual_modulus_separation`。
+2. modulus overlapかつ`lower(|C-c_t|)-R-r_t>0`なら`complex_phase_separation`。
+3. それ以外は`unresolved_product_disk_overlap`。
+
+validity gateは、168 artifact／768 digest、Q011ggの1,854 wave／interval-inert result、1,854-to-665 component quotient、
+12 source／targetとcontainment／conjugacy、258,720／14,578 allocationと665-component-wave projection、power recurrence／
+10 radius signature／sqrt enclosure／exclusive分類、section／stream／runner digest、protocol global復元を検査する。一つでも
+失敗すれば`inconclusive`とする。comparison stream domainは`q011gh-component-safe-phase-comparisons-v1`、margin digest
+domainは`q011gh-complex-margin-expression-v1`に固定する。
+
+unresolved 0かつglobal minimum marginがpositiveならclassificationを
+`the component-safe complex phase discs resolve the fifty-fifth Q011cb persistent refined witness`、outcomeを
+`component_safe_phase_resolved`とし、次はQ011giでordinal 55を監査する。unresolvedが残れば
+`component_safe_phase_persistent`とし、Q011giでfirst unresolvedだけを精密化する。disc overlapはactual resonanceを示さない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 54、登録
+14,578 phase allocationだけを扱う。ordinal 0--53を再評価せず、後続44,745 signature、他31 parent overlap、他15 target、
+aggregate全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
+normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
