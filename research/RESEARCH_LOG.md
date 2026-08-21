@@ -13614,6 +13614,34 @@ output block 7にcompatibleな8,350件を全数監査した。individual modulus
 これはordinal 63だけのphase resolutionである。ordinal 0--62と既存認証範囲は不変で、後続44,736 signature、aggregate
 全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、次はQ011haで登録順のordinal 64を監査する。
 
+### Q011ha 実行結果
+
+Q011gzまでの187 artifact／854 direct digestを封印し、flatten ordinal 64、すなわち`(left,right)=(8,0)`の5
+positive-count modulus classを10 singleton identifierへ戻した。12,096 full allocation中、output block 7にcompatibleな
+685件を全数監査した。exact／binary64 outward relationはいずれも全件overlapで、product、center-product、target、
+intersection、center-only diagnosticも全件parent recordと同一だった。全7 validity gateと全4 diagnostic gateを通過し、
+outcomeは`partition_inert_persistent`となった。
+
+- parent class counts: `[[0,0,0,13],[8,1],[5],[0,7]]`
+- full／compatible allocation count: `12096 / 685`
+- exact／binary64 outward relation counts: `{below:0,above:0,overlap:685}` / `{below:0,above:0,overlap:685}`
+- parent intersection width／center-only gap:
+  `0x1.4b335321c545ap-31` / `0x1.32d7593b7b18ap-28`
+- allocation-classification record digest:
+  `9ba9bf72caebe74a68fca4217d8feaa5b3d596b07d95e55d4fdcf965a811a887`
+- input／partition-input／allocation-audit／result digest:
+  `312e5ed870fc653084d112636331644b1f58912d26b7bcb99cd2aefcf850b6bf` /
+  `5836d19da38995c5ed9aeb8f63daf1f3e575d628aac482f83fc031e914ebdf59` /
+  `8c3764ae66759c51f636a6daa7f811e35444b7a47f893098732846703def65f5` /
+  `13080758ecbdef26411148e4b5d58e572f0b96b53556772a50e4efe978614dc5`
+- runner／artifact newline-normalized SHA-256:
+  `a060b398e755cea3d88ce1fe9b2aae71b88168ef1df0732fbc27bd440cc06c47` /
+  `73726a4c1842088df719f0120f1002de9c452669cb93141cb1e15d0d96fc494f`
+
+これはordinal 64だけのpartition診断である。ordinal 0--63と既存認証範囲は不変で、後続44,735 signature、aggregate
+全体、degree-34全体、actual resonanceは未判定である。complex phaseは本gateでは評価していない。停止規則どおり、次は
+Q011hbで登録685 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## 再現 artifact
 
 数値の完全な記録:
