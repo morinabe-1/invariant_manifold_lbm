@@ -10,10 +10,25 @@ import research.q011gg_degree34_fifty_fifth_individual_partition_audit as q011gg
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "ed53cd6a116f9b36e75f77acbabeb65aaf7bb6dc651422cb6205ac5dd7636bb1"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "5b0995958bd80ad41eaafb655e1548f6776b35cf66bcd73911924ea382973904"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "7a6045452885f67ed2cafeeb54a0833ac30fc969bae666361a5bf5a633b13f2c",
+    "partition_input_digest_sha256": "481cd7dfacf59d3bb7f265e1f8287648dc04f95508a2b375ddb1cf901cacc720",
+    "allocation_audit_digest_sha256": "fe7a783f07041d4b2278fd9141b071ed4f63aa6cd3339c1732440f74de01501f",
+    "result_digest_sha256": "2ed7553bc589999d0b8cabbd0b3435c09f84ff7f18a4c43f496937eea9c04c40",
+}
+EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = {
+    "parent_product_interval_digest_sha256": "c16a4497dd941c36156b968a62fefe8b47854ca35a727ae3559ae3330ee1ddf0",
+    "parent_center_product_interval_digest_sha256": "b5a58584e9bd457de4069b6aee1bbba37de6892d15e53edaf777e5b63abd8cfa",
+    "parent_target_interval_digest_sha256": "64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679",
+    "parent_intersection_interval_digest_sha256": "767d5f56644945a78f1e3fcffcc44c29c1304894e3664321d794d11443200208",
+    "allocation_classification_record_digest_sha256": "720d3fff4d03411ae445361afec31525b1a8aa548cbeac132b93387c655bccef",
+}
 RESULT_EXPECTATIONS_FIXED = (
     EXPECTED_SECTION_DIGESTS is not None and EXPECTED_PARTITION_DIGESTS is not None
 )
