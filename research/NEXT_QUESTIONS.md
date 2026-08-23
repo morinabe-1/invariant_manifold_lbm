@@ -48580,6 +48580,36 @@ multiplicity、exact／outward分類、section／runner digest、protocol global
 aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ii 封印結果（individual partition inert）
+
+Q011ihまでの221 artifact／1007 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。flatten
+ordinal 81の6 positive-count parent classを12 singleton identifierへexactに戻した。21,840 full allocation中、output
+block 7にcompatibleな1,219件を全数監査した。exact relationとbinary64 outward relationはともに全件`overlap`であり、
+product、center-product、target、intersection、center-only diagnosticも全件parent recordと一致した。停止規則を適用して
+outcomeを`partition_inert_persistent`とした。
+
+- parent class counts: `[[0,0,1,12],[0,9],[5],[1,6]]`
+- full／compatible allocation count: `21840 / 1219`
+- exact relation counts: `{product_below_target:0,target_below_product:0,overlap:1219}`
+- binary64 outward relation counts: `{product_below_target:0,target_below_product:0,overlap:1219}`
+- all product／target／intersection／center records equal parent: `true`
+- parent intersection width／center-only relation／gap:
+  `0x1.9d498d181f37cp-32` / `target_below_product` / `0x1.3aa03ac7297a7p-28`
+- allocation-classification record digest:
+  `c803ed69d0ce9262e0f03d0fa75207e77f29b5d37696222cb40d7c15074878fb`
+- input／partition-input／allocation-audit／result digest:
+  `c7bb9bf4ffa7941cd3b10a8b758c1069c0910cf2493b217ff4e676a952f298a3` /
+  `4b28cf6e90de9f377bd59be68384e40e3e4d6bdac38776c01ecaaa29615d648e` /
+  `6c6e6bf40f7cfc65290cdc6ef85f4a0c1da17cc657b14e4779ab4007501af2f3` /
+  `bdcb77053a96d3bd276b5028e700268249436fe0d20e0289b997a8258f0d1f81`
+- runner／artifact newline-normalized SHA-256:
+  `251b8ff10047ce09f533b48496f84cb1e144ab3eeb101fd8ee3ea5fb6b6c80cb` /
+  `2e366f7486600ecdf967c74b34700d1b8867940c6dfb66cf81e5a3e42bf161c0`
+
+これはflatten ordinal 81だけのpartition診断であり、complex phaseは評価していない。ordinal 0--80と既存認証範囲は
+不変で、後続44,718 signature、他の31 parent overlap、他15 target、aggregate全体、degree-34全体、actual resonanceは
+未判定である。停止規則どおり、次はQ011ijで登録1,219 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
