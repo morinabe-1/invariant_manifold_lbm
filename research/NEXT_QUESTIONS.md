@@ -50666,6 +50666,85 @@ center-product、target、intersection、center-only diagnosticも全件parent r
 未判定である。complex phaseは評価していない。停止規則どおり、次はQ011izで登録2,185 wave allocationだけを
 component-safe complex phase discへ展開する。
 
+## Q011iz: second-family ninetieth-witness component-safe complex phase discs — 事前登録
+
+### 問いとsealed input
+
+Q011iyでmodulus intervalがparentと同一だったordinal 89の2,185 individual wave allocationだけを、150／151の内部
+eigenvalue labelを仮定しないcomponent waveへexactに商写像する。その各phase allocationについて、exact complex centerと
+rigorous product-disc radiusを用い、固定target `block=7;center=44`からstrictに分離できるかを問う。
+
+Q011iyまでの238 artifact／1083 direct digest、ordinal 0--88のcomponent-safe phase resolution、Q011iy outcome
+`partition_inert_persistent`、scientific outcome `not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011iy artifact／runner newline-normalized SHA-256:
+  `056001d024c4fbc2177bb7e525a54694e088818be8fcb6ad46fac52ac9b4f12b` /
+  `8011d7573c61fc8b1b71a6982323c7885c13fb5ecab37d2f01ec583bcb9f6503`
+- Q011iy input／partition-input／allocation-audit／result digest:
+  `0a54275db985b269181add21a3141e646d5f84bea1b697b16847fa081370d4c0` /
+  `cc8f301a84f4251490783319b0d0d864da612920b256c5cd25f2c071e91ac99f` /
+  `de46a956bd3c438c802a60686bc13a05bcf8be675154e32d683aaa781c2d7569` /
+  `527ec5d3894eed2e027b25e1ebb6d11fc625a8ed0a603d03e6e7110a431fccd3`
+- Q011iy allocation-classification record digest:
+  `c18e1481b3173f00be6f6b53d374da6a97b4adcc74250dfac1debb00d7c3fa18`
+
+Q011iy sealed inputは237 artifact／1079 direct digestを持つため、Q011iyの4 section digestを加えたQ011iz inputは
+238 artifact／1083 direct digestでなければならない。
+
+### component quotientとphase allocation inventory
+
+phase source orderはQ011ihと同じ14 source、
+`[16:144,1:144,16:145,1:145,16:150,16:151,1:150,1:151,16:152,1:152,16:148,1:148,16:149,1:149]`
+とする。source power maximum countsは`[1,1,12,12,9,9,9,9,5,5,1,1,6,6]`、component-wave totalsは
+`[1,12,9,5,1,6]`に固定する。phase valueを評価せず、整数countとFourier block和だけから次を事前登録する。
+
+- individual／component wave allocation count: `2185 / 1219`
+- bridge fiber histogram: `{1:253,2:966}`
+- bridge-record digest:
+  `1510a71792258382a6be7c8a23ed983a27879d606d883baf888659e3adf953a7`
+- full／compatible phase allocation count: `480480 / 26644`
+- first／last compatible phase counts:
+  `[0,1,0,12,0,0,0,9,0,5,0,1,5,1] / [1,0,12,0,9,0,0,0,0,5,0,1,0,6]`
+- full／compatible phase-allocation digest:
+  `dd1e3ddd0747d5ea814aae5901c3c3c31efc192ecbf080c3630cfa051357a80e` /
+  `36645d02cb16c1a1b0be833f6d0cb2e5ad6c70e3d13e7b47bcf7189c67e310c8`
+- component-wave projection count／digest:
+  `1219 / a5a54526f4ca21d688c4f6797e8949caabc1614314dd7cb8aa499a1dea60b42a`
+- phase fiber histogram: `{10:253,18:245,24:241,28:240,30:240}`
+- bridge／phase paired-record digest:
+  `3fa87390738e30c3ebaf7cbff13f1332d54c494e508448ec588ae023eab6d04f`
+
+bridgeではQ011iy count orderの`16:150 / 1:150 / 16:151 / 1:151`をblockごとに加算してlabel-free
+150／151 component countへ写す。148／149は異なるsingleton componentとして保持する。このため150／151の分配が同じ
+component countへ入る内部waveではfiber 2、端点ではfiber 1となる。以上はQ011iy artifactの2,185 individual count record、
+固定source order、degree constraint、Fourier block和mod 17、Q011an／Q011akのsealed radiusだけから、complex center-distance、
+margin、classificationを評価せずに再構成したinventoryである。
+
+### exact contract、validity、停止規則
+
+各compatible allocationについてQ011ihと同じexact rational recurrenceでcenter productとproduct radiusを作る。固定targetとの
+分類は排他的に次とする。
+
+1. modulus strictなら`individual_modulus_separation`。
+2. modulus overlapかつ`lower(|C-c_t|)-R-r_t>0`なら`complex_phase_separation`。
+3. それ以外は`unresolved_product_disk_overlap`。
+
+validity gateは、238 artifact／1083 digest、Q011iyの2,185 wave／interval-inert result、2,185-to-1,219 component quotient、
+14 phase source／targetとcontainment／conjugacy／active pair、480,480／26,644 allocationと1,219-component-wave projection、
+power recurrence／10 radius signature／sqrt enclosure／exclusive分類、section／stream／runner digest、protocol global復元を検査する。
+一つでも失敗すれば`inconclusive`とする。comparison stream domainは
+`q011iz-component-safe-phase-comparisons-v1`、margin digest domainは`q011iz-complex-margin-expression-v1`に固定する。
+
+unresolved 0かつglobal minimum marginがpositiveならclassificationを
+`the component-safe complex phase discs resolve the ninetieth Q011cb persistent refined witness`、outcomeを
+`component_safe_phase_resolved`とし、次はQ011jaでordinal 90を監査する。unresolvedが残れば
+`component_safe_phase_persistent`とし、Q011jaでfirst unresolvedだけを精密化する。disc overlapはactual resonanceを示さない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 89、登録26,644
+phase allocationだけを扱う。ordinal 0--88を再評価せず、後続44,710 signature、他の31 parent overlap、他15 target、aggregate
+全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
+attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
