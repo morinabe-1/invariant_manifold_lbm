@@ -49091,6 +49091,34 @@ multiplicity、exact／outward分類、section／runner digest、protocol global
 aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011im 封印結果（partition inert persistent）
+
+Q011ilまでの225 artifact／1025 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。flatten
+ordinal 83、`(left,right)=(10,3)`の6 positive-count classを12 singleton identifierへ戻した。31,200 full allocation中、
+output block 7にcompatibleな1,729件を全数監査した。exact／binary64 outward relationはいずれも全件`overlap`で、product、
+center-product、target、intersection、center-only diagnosticも全件parent recordと同一だった。停止規則1によりoutcomeは
+`partition_inert_persistent`となった。
+
+- parent class counts: `[[0,0,1,12],[0,9],[5],[3,4]]`
+- full／compatible allocation count: `31200 / 1729`
+- exact／binary64 outward relation counts: `{below:0,above:0,overlap:1729}` / `{below:0,above:0,overlap:1729}`
+- parent intersection width／center-only relation／gap:
+  `0x1.9d4955f58803ap-32` / `target_below_product` / `0x1.3aa0360fb6a79p-28`
+- allocation-classification record digest:
+  `1916fbd0a75258eda4abed853fc0a2b32428b40c59c14e79abc125a8daed77c2`
+- input／partition-input／allocation-audit／result digest:
+  `4339f92276d5d346fd93deae6a211920d4ba2e9e9e0ffcfbf9d48325aeb5525c` /
+  `ac086f5e50f4b5fcb6d5440b38954062bde6702474f5fe78b483935ef6d0afa7` /
+  `2bb2d86dd821a68c2e4fdcde9141ade3f91f9e7c852a03792f41321ce2a983f2` /
+  `40b936c7d368101c26e5b9aca609f9cedc66fd6718ef8117e5de8f1998129f99`
+- runner／artifact newline-normalized SHA-256:
+  `66d3c572836bfe701a3f61d38e63fc9b86e710bdcb489e9e31749de1766aed63` /
+  `62318986b95a56d7478d6975e1357cce66b625dc93589421ccbbba8f462bd735`
+
+これはflatten ordinal 83だけのpartition診断であり、complex phaseは評価していない。ordinal 0--82と既存認証範囲は
+不変で、後続44,716 signature、他の31 parent overlap、他15 target、aggregate全体、degree-34全体、actual resonanceは
+未判定である。停止規則どおり、次はQ011inで登録1,729 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
