@@ -10,16 +10,55 @@ import research.q011iz_degree34_ninetieth_component_safe_phase_discs as q011iz
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_STREAM_DIGEST: str | None = None
-EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = None
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX: str | None = None
-EXPECTED_CATEGORY_COUNTS: dict[str, int] | None = None
-EXPECTED_REFINEMENT_OUTCOME: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "2b0789888deaf5b7b1231d816e97c36d8e8cd2c950139ec98cb3cf543d187b4c"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "7698434e211659e4e2a93b3b889dfb67a471d67477b40207570aa08681b799f5"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "96b9f6e60cf0c8560f3d658352ccb6372d557ada6848db34a63e927011ff670f",
+    "phase_input_digest_sha256": (
+        "1272ef5cdcd80795f1bd50a7ff874d20acea1374f5ed5f9a4b662a1467998dd1"
+    ),
+    "allocation_digest_sha256": (
+        "cb88b4393d96bd27b9f5703ec4730994ae93a4aeaa9b2b776cabe42789f735f7"
+    ),
+    "phase_comparison_digest_sha256": (
+        "221230683914dfebb1fae8681c38358b4a24e1bc31b361100abf8e1362ad3cde"
+    ),
+    "result_digest_sha256": "638acb72c647b1eb8eb10575d0990675c2465f3039b9170f1af68cf4a4012a06",
+}
+EXPECTED_STREAM_DIGEST: str | None = (
+    "3d4ac781ada291330a2c907bc3d23d4da83b7c8fc7b39b4a842e4984eb2f6b27"
+)
+EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = (
+    "9d542b49c39fd1540ca85a454354fb568fed3d9fabd5fb55e44188171d03875d"
+)
+EXPECTED_MINIMUM_INDEX: int | None = 7_429
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [
+    0,
+    1,
+    10,
+    2,
+    0,
+    9,
+    0,
+    0,
+    0,
+    5,
+    1,
+    0,
+    2,
+    4,
+]
+EXPECTED_MINIMUM_MARGIN_HEX: str | None = "0x1.a8f10a6dc856fp-6"
+EXPECTED_CATEGORY_COUNTS: dict[str, int] | None = {
+    "individual_modulus_separation": 0,
+    "complex_phase_separation": 26_644,
+    "unresolved_product_disk_overlap": 0,
+}
+EXPECTED_REFINEMENT_OUTCOME: str | None = "component_safe_phase_resolved"
 RESULT_EXPECTATIONS_FIXED = all(
     value is not None
     for value in (
