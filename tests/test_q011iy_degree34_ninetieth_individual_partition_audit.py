@@ -10,11 +10,40 @@ import research.q011iy_degree34_ninetieth_individual_partition_audit as q011iy
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = None
-EXPECTED_REFINEMENT_OUTCOME: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "8011d7573c61fc8b1b71a6982323c7885c13fb5ecab37d2f01ec583bcb9f6503"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "056001d024c4fbc2177bb7e525a54694e088818be8fcb6ad46fac52ac9b4f12b"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "0a54275db985b269181add21a3141e646d5f84bea1b697b16847fa081370d4c0",
+    "partition_input_digest_sha256": (
+        "cc8f301a84f4251490783319b0d0d864da612920b256c5cd25f2c071e91ac99f"
+    ),
+    "allocation_audit_digest_sha256": (
+        "de46a956bd3c438c802a60686bc13a05bcf8be675154e32d683aaa781c2d7569"
+    ),
+    "result_digest_sha256": "527ec5d3894eed2e027b25e1ebb6d11fc625a8ed0a603d03e6e7110a431fccd3",
+}
+EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = {
+    "parent_product_interval_digest_sha256": (
+        "51edd24550c16a9f3ab61675ab55e78faea66d9e579a17f50006f5625d5fac7d"
+    ),
+    "parent_center_product_interval_digest_sha256": (
+        "6e56e96e451ca7afb743079bcba97a04d43b8dfd055294d5bdd877addd223c0a"
+    ),
+    "parent_target_interval_digest_sha256": (
+        "64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679"
+    ),
+    "parent_intersection_interval_digest_sha256": (
+        "79ec3645af349629a88cbc2057e1df0a00cc160c1bdc1c85303c26df1c10dd17"
+    ),
+    "allocation_classification_record_digest_sha256": (
+        "c18e1481b3173f00be6f6b53d374da6a97b4adcc74250dfac1debb00d7c3fa18"
+    ),
+}
+EXPECTED_REFINEMENT_OUTCOME: str | None = "partition_inert_persistent"
 RESULT_EXPECTATIONS_FIXED = all(
     value is not None
     for value in (
