@@ -50372,6 +50372,38 @@ multiplicity、exact／outward分類、section／runner digest、protocol global
 aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011iw 封印結果（individual partition inert）
+
+Q011ivまでの235 artifact／1070 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。flatten
+ordinal 88の6 positive-count modulus classを12 singleton identifierへ戻し、22,464 full allocation中、output block 7に
+compatibleな1,255件を全数監査した。exact／binary64 outward relationはいずれも全件`overlap`で、product、
+center-product、target、intersection、center-only diagnosticも全件parent recordと同一だった。停止規則を適用してoutcomeを
+`partition_inert_persistent`とした。
+
+- parent class counts: `[[0,0,1,12],[1,8],[5],[0,7]]`
+- full／compatible allocation count: `22464 / 1255`
+- exact／binary64 outward relation counts:
+  `{product_below_target:0,target_below_product:0,overlap:1255}` /
+  `{product_below_target:0,target_below_product:0,overlap:1255}`
+- all product／center-product／target／intersection／center-only records equal parent: `true`
+- parent intersection width／center-only relation／gap:
+  `0x1.bc6d44f0df253p-32` / `target_below_product` / `0x1.39a72040a7413p-28`
+- allocation-classification record digest:
+  `a1d72a6624fd366426eb30b9bcbcfe012910966f1f1c4ff2c40bb467f7dc778c`
+- input／partition-input／allocation-audit／result digest:
+  `c37de0bfd22becfc7ac226ac5d7b9076e336033bf9cc176661c25859f9597ed9` /
+  `93b0ad9d7d378c883a33cc1c3a439229742de7a0a321a00ecc8e79d14950e2e6` /
+  `a37ac1b4cfa7b717ef8bf5ad855658fe9be7baaf87ab75b7584ed8ba9a56000f` /
+  `2aff90fd2c1b7b4adba668cdd79005a69b97e4f0fbe3a902f7ac813e4aa6dda8`
+- runner／artifact newline-normalized SHA-256:
+  `be135232531195a2c9a3b37df1bd12e931548a8261f3718f97652193e9bc4318` /
+  `8be53639e5b2c57c31877c296d20761503e993faf1f2d0c83f77c957e1576861`
+
+これはflatten ordinal 88だけのpartition診断である。ordinal 0--87と既存認証範囲は不変で、後続44,711 signature、
+他の31 parent overlap、他15 target、aggregate全体、degree-34全体、actual resonance、SSM existence／uniquenessは
+未判定である。complex phaseは評価していない。停止規則どおり、次はQ011ixで登録1,255 wave allocationだけを
+component-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
