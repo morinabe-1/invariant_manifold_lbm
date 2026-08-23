@@ -49345,6 +49345,35 @@ multiplicity、exact／outward分類、section／runner digest、protocol global
 aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011io 封印結果（partition inert persistent）
+
+Q011inまでの227 artifact／1034 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。flatten
+ordinal 84、`(left,right)=(10,4)`の6 positive-count classを12 singleton identifierへ戻した。31,200 full allocation中、
+output block 7にcompatibleな1,729件を全数監査した。exact rational／binary64 outwardの双方で全件が`overlap`となり、
+product、center-product、target、intersection、center-only diagnosticも全件parent recordと一致したため、停止規則を適用して
+outcomeを`partition_inert_persistent`とした。
+
+- parent class counts: `[[0,0,1,12],[0,9],[5],[4,3]]`
+- full／compatible allocation count: `31200 / 1729`
+- exact／binary64 outward relation counts: `{below:0,above:0,overlap:1729}` / `{below:0,above:0,overlap:1729}`
+- parent intersection width／center-only relation／gap:
+  `0x1.9d493a643c699p-32` / `target_below_product` / `0x1.3aa033b3fd3e3p-28`
+- allocation-classification record digest:
+  `7b6e88437787617548e248798c80d0464f4798321e737772488dfb79c20f8847`
+- input／partition-input／allocation-audit／result digest:
+  `53aad13f7c8aa16f113b222173d494dc8315fe84c615fefbabad6f747d1bc318` /
+  `e4af20130302c90854044d8ad3bf0b17e6d5046b0787a0f003e30b2c31f7af5e` /
+  `a7efd19aa33ccdf41525c518ee2369a3fed946cedecd8218eb2092d92ee3dd8c` /
+  `d845580c872bb37f9d1b8496fb47f2bde0b3bd90f099bd523ce075d3d9710d3b`
+- runner／artifact newline-normalized SHA-256:
+  `34993565687f7d555243d0e1671fc27fc78432514206b8e2b513f6b571a80e63` /
+  `0f08971f75fcd67724e179cb9689156c7e3b575603873c82ad9abfd6a81415a4`
+
+これはflatten ordinal 84だけのpartition診断であり、complex phaseは評価していない。ordinal 0--83と既存認証範囲は
+不変で、後続44,715 signature、他の31 parent overlap、他15 target、aggregate全体、degree-34全体、actual resonance、
+SSM existence／uniquenessは未判定である。停止規則どおり、次はQ011ipで登録1,729 wave allocationだけをcomponent-safe
+complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
