@@ -49600,6 +49600,35 @@ multiplicity、exact／outward分類、section／runner digest、protocol global
 aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011iq 封印結果（partition inert persistent）
+
+Q011ipまでの229 artifact／1043 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。flatten
+ordinal 85、`(left,right)=(10,5)`の6 positive-count classを12 singleton identifierへ戻した。28,080 full allocation中、
+output block 7にcompatibleな1,560件を全数監査し、exact／binary64 outward relationはいずれも全件overlapだった。
+product、center-product、target、intersection、center-only diagnosticも全件parent recordと同一であり、停止規則1により
+outcomeを`partition_inert_persistent`とした。
+
+- parent class counts: `[[0,0,1,12],[0,9],[5],[5,2]]`
+- full／compatible allocation count: `28080 / 1560`
+- exact／binary64 outward relation counts: `{below:0,above:0,overlap:1560}` / `{below:0,above:0,overlap:1560}`
+- parent intersection width／center-only gap:
+  `0x1.9d491ed2f0cf8p-32` / `0x1.3aa0315843d4cp-28`
+- allocation-classification record digest:
+  `d02b33143dc0e2b06b14787f4346a92ca75ecd832533d762631dd82a60714e22`
+- input／partition-input／allocation-audit／result digest:
+  `381005c9d5ef19621000cc0d4ddb00cd1bfbd2412e92408e353f8619f4b3203a` /
+  `f3da74a6a2d222665e8c957415d867f754c37db1b0f43ae2801f5f80d04c6e88` /
+  `72e9496da8412092e784374aa447d39c77f1f0ad213fa45c30e2b0d009e9fbd8` /
+  `1e337708e40dee20c0344d477e5b152260762805f65d5344215fdc84b8c8ce78`
+- runner／artifact newline-normalized SHA-256:
+  `d14104b992859852944754fcffeb45c6c3b787a2f54875c617c1a424c513edb7` /
+  `fb875fcc66e372b646f6418461f9f35a5435c42142a1d5d3fca3935e9a3132f9`
+
+これはflatten ordinal 85だけのpartition診断であり、complex phaseは評価していない。ordinal 0--84と既存認証範囲は
+不変で、後続44,714 signature、他の31 parent overlap、他15 target、aggregate全体、degree-34全体、actual resonance、
+SSM existence／uniquenessは未判定である。停止規則どおり、次はQ011irで登録1,560 wave allocationだけをcomponent-safe
+complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
