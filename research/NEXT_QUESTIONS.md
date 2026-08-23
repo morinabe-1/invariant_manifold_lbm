@@ -49247,6 +49247,104 @@ Q011imまでの226 artifact／1029 direct digestを再照合し、全7 validity 
 他の31 parent overlap、他15 target、aggregate全体、degree-34全体、actual resonanceは未判定である。停止規則どおり、
 次はQ011ioで登録順のordinal 84を監査する。
 
+## Q011io: second-family eighty-fifth-witness individual-disc partition — 事前登録
+
+### 問いとsealed input
+
+Q011inでordinal 83がcomponent-safe complex phaseによりstrict separationしたため、Q011cbの登録順で次のflatten ordinal
+84だけを選ぶ。parent modulus classをsingleton identifierへ戻したとき、parent overlapが消えるか、intervalが変わるか、
+またはparentと同一のままかを問う。complex phaseは本gateでは計算しない。
+
+Q011inまでの227 artifact／1034 direct digest、ordinal 0--83のcomponent-safe phase resolution、Q011in outcome
+`component_safe_phase_resolved`、scientific outcome `not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011in artifact／runner newline-normalized SHA-256:
+  `d3eac1faf19fcbcadddae9f640f62d2fe18785d6186aa90349dc61a9f77b99cc` /
+  `75fcde1def155945ecf2be79621db30b229c0095cc7e2b18bfe6d4025d7c5b5d`
+- Q011in input／phase-input／allocation／comparison／result digest:
+  `c3e3200d765dcb432f28bd490ae11836f01ca13cddb4518ae8a20d77d04eeeeb` /
+  `b5fdf6b8428267e0de1c3dc847fd9a9706046479a0919ce53f51a46b9e00c8f5` /
+  `e120f834501817bce5f78cb7b7c0956588a16ef122acf2a4c06d1dad2c8cdb19` /
+  `7266c948770f8a01aabc4bb7de0087419b5c960a804e77c32d401ca14d554266` /
+  `be3dc75e5cc746322de81875be1b2da46174e954a9b3d05188e999db6ac7e222`
+- Q011in comparison-stream／minimum-witness digest:
+  `a8cdc7b5f81dece8765b936e81201b7b1d93217864de706d954425d8983c1ba7` /
+  `5230fd7936461e9a4b0c7c22bece80b21c02827e9ec05805b4ac2135b88fa34e`
+
+Q011in sealed inputは226 artifact／1029 direct digestを持つため、Q011inの5 section digestを加えたQ011io inputは
+227 artifact／1034 direct digestでなければならない。
+
+### ordinal 84 parentとsingleton inventory
+
+Q011cbのactive maskはshape `(5600,8)`、全44,800 entryがoverlapであり、C-order flatten ordinal 84を
+`(left_index,right_index)=(10,4)`へ一意に戻す。parent class countsとoccupied classは次に固定する。
+
+- parent class counts: `[[0,0,1,12],[0,9],[5],[4,3]]`
+- occupied spec: `[(0,2,1),(0,3,12),(1,1,9),(2,0,5),(3,0,4),(3,1,3)]`
+- occupied interval digest order:
+  `8c192189449f149db3b3786d791a4fc262ff9ff3c89d831307cbab2faa614734` /
+  `53f9a306265ffcbfa83c64089e6418ab895037a3dad6a6fe85ba15dab18c8825` /
+  `2761f9c8d8e92b66d0c8a3e85affc78cda4e1ac98c2beeed7705224145571402` /
+  `39747a3474ada699010196f508500971e97451f666025e46bbbc68233ef1d86a` /
+  `aea681cab5d2a0c4176e23896038ecfc3433ebb73dfc9ecd3567248e73d989db` /
+  `66a6c269ac137479694f186884d49ca3a4d11070e69132bab822391a557075d8`
+- occupied-class record digest:
+  `e8dda8927c69b9ff0a1a665886e7896e0e16b227a6df912f59a99d20e0401feb`
+- singleton identifier order:
+  `[16:144,1:144,16:145,1:145,16:151,1:151,16:152,1:152,16:148,1:148,16:149,1:149]`
+- identifier-order digest:
+  `06b2de2a5767bd6159a2d3d0f9e425494d0d80bd2aa017053368544a9f8b8fa8`
+
+各occupied classの2 identifierへcountを全分配する辞書順を固定する。
+
+- parent source counts: `[1,0,12,0,9,0,0,5,0,4,0,3]`
+- first／last compatible counts:
+  `[0,1,0,12,0,9,0,5,2,2,3,0] / [1,0,12,0,9,0,0,5,0,4,0,3]`
+- full／compatible allocation count: `31200 / 1729`
+- full／compatible allocation digest:
+  `d5f0629ebad07d47a8f8842898a13f193194df2a88b1c82ee197ae86afca0aad` /
+  `06fc484453b3115524b906b0ac2784f68388bc61e495d45a71f511ab0aa29a80`
+- parent full／compatible index: `31080 / 1728`
+- parent wave／block-zero multiplicity: `1729 / 0`
+- parent intersection width／center-only relation／gap:
+  `0x1.9d493a643c699p-32` / `target_below_product` / `0x1.3aa033b3fd3e3p-28`
+- parent witness digest:
+  `c330dac87d7ec0374321825adce887f93588577e26b821de3c70bd3cada475c2`
+- parent product／center-product／target／intersection digest:
+  `69eba8140a54facfa06c460bc002981aae73180fd236df1a48e1d6d20e0c9f53` /
+  `e25e046e65a4b93e9f458f004aa4d55191fbf3dce83f6abf9d9dd1872eeb9be1` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `0a79863f88ecff07140a581745369946d88b756baaba015dc245c71813fb49eb`
+
+以上はQ011cb／Q011inのsealed object、固定flatten規則、singleton class、degree、Fourier block和だけから、個別product
+intervalまたは分類を評価せずに再構成したinventoryである。
+
+### exact contract、validity、停止規則
+
+各compatible allocationについてQ011zと同じexact rational演算でhybrid product、center product、target、intersectionを
+再構成し、binary64 outward enclosureも独立に作る。exact／outwardとも
+`product_below_target / target_below_product / overlap`の排他的3分類とする。product、center-product、target、intersection、
+center-only diagnosticがparent recordと同一かも全件記録する。complex phaseは計算しない。
+
+validity gateは、227 artifact／1034 digest、Q011inまでのordinal 0--83 resolution、Q011cb shape／flatten rule／parent witness、
+6 occupied class／12 singleton identifierと共通interval、31,200／1,729 allocation inventory、degree／output block／parent
+multiplicity、exact／outward分類、section／runner digest、protocol global復元を検査する。一つでも失敗すれば`inconclusive`とし、
+科学的分類は行わない。
+
+停止規則は排他的に次とする。
+
+1. 全1,729件がparentとexact同一かつoverlapなら`partition_inert_persistent`。次はQ011ipでこの1,729 wave allocationだけを
+   component-safe complex phase discへ展開する。
+2. 全1,729件がstrict separationなら`resolved_by_individual_partition`。次はQ011ipで登録順のordinal 85を監査する。
+3. intervalは変わるがoverlapが残れば`partition_effective_but_persistent`。次はQ011ipで辞書順first remaining overlapだけを
+   component-safe complex phaseへ進める。
+4. validity failureなら原因を修復し、科学的分類は行わない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 84、固定target、
+登録1,729 allocationだけを扱う。ordinal 0--83を再計算せず、後続44,715 signature、他の31 parent overlap、他15 target、
+aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
+normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
