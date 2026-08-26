@@ -10,16 +10,40 @@ import research.q011jl_degree34_ninety_sixth_component_safe_phase_discs as q011j
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_STREAM_DIGEST: str | None = None
-EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = None
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX: str | None = None
-EXPECTED_CATEGORY_COUNTS: dict[str, int] | None = None
-EXPECTED_REFINEMENT_OUTCOME: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "f998999e83710ed57b86797290599759ecbf05c7839d69d370361b1270eb20c2"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "b9f19d9240d681c508e9df6ba776df08569f51a7ce794e04a3a995e5e8e9a702"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "d560c23dbac909ce43588ba76a8c860be4544fb6d49eff15874764cc7802e16b",
+    "phase_input_digest_sha256": (
+        "3b6740be80aa7ca2c164d76f2b31e69e9b4b02de9e41132a85f4a2acef58fab0"
+    ),
+    "allocation_digest_sha256": (
+        "7ae9a4c614ec22e9e30967c3eb2d3ba742332f4988e14fd55901f5ce977d9b41"
+    ),
+    "phase_comparison_digest_sha256": (
+        "392d48fab2c7e0767270b01f63c2dccb9880d4c7713c9caa1d52e3968ce20749"
+    ),
+    "result_digest_sha256": "7c7a02974a1dfa5515d1c5d91e680a92ce5931ebec24d4a110d0cab8eb9f9745",
+}
+EXPECTED_STREAM_DIGEST: str | None = (
+    "51ac2b852900779c199656f20e3dc1cabfdb8d2eaaa23e71b9231cc6e6e3c278"
+)
+EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = (
+    "cba06ceb15335a288a1ea6e0d24caf4f450a26e54b3b51f5e46e84b7526d6868"
+)
+EXPECTED_MINIMUM_INDEX: int | None = 4_390
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [0, 1, 10, 2, 0, 7, 0, 2, 0, 5, 5, 2, 0, 0]
+EXPECTED_MINIMUM_MARGIN_HEX: str | None = "0x1.a8f10a6dc8a74p-6"
+EXPECTED_CATEGORY_COUNTS: dict[str, int] | None = {
+    "individual_modulus_separation": 0,
+    "complex_phase_separation": 15_278,
+    "unresolved_product_disk_overlap": 0,
+}
+EXPECTED_REFINEMENT_OUTCOME: str | None = "component_safe_phase_resolved"
 RESULT_EXPECTATIONS_FIXED = all(
     value is not None
     for value in (
@@ -230,7 +254,7 @@ def test_q011jl_applies_stopping_rule_and_preserves_boundary(
     assert theorem["q011jd_ordinal_ninety_one_phase_resolution_is_preserved"]
     assert theorem["q011jc_ordinal_ninety_one_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011jb_ordinal_ninety_phase_resolution_is_preserved"]
-    assert theorem["q011ja_ordinal_ninety_phase_resolution_is_preserved"]
+    assert theorem["q011ja_ordinal_ninety_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011iz_ordinal_eighty_nine_phase_resolution_is_preserved"]
     assert theorem["q011iy_ordinal_eighty_nine_interval_inert_diagnostic_is_preserved"]
     assert theorem["q011ix_ordinal_eighty_eight_phase_resolution_is_preserved"]
