@@ -52047,6 +52047,45 @@ phase allocationだけを扱う。ordinal 0--93を再評価せず、後続44,705
 全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011jj 封印結果（component-safe phase resolved）
+
+Q011jiまでの248 artifact／1,128 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal
+94の2,185 individual wave allocationを、150／151の内部labelを仮定せず1,219 component waveへexactに商写像した。
+480,480 full phase allocation中、output block 7にcompatibleな26,644件を全数監査した。個別modulus relationは全件
+`overlap`だったが、exact center-distance lower boundからproduct radiusとtarget radiusを引いたmarginは全件positiveとなり、
+停止規則を適用してoutcomeを`component_safe_phase_resolved`とした。
+
+- individual／component wave allocation: `2185 / 1219`
+- bridge fiber histogram: `{1:253,2:966}`
+- full／compatible phase allocation count: `480480 / 26644`
+- full／compatible allocation digest:
+  `f43be2d813a857a55e4ddd05ef9986ec8076d8b1176a3d57160a47bb5e6f92a4` /
+  `ed50660390a6b9348db981fe05c48332acd26fd1e50e517bbef44e30148c0267`
+- bridge／projection／paired-record digest:
+  `0da5e54e1658b658ff910a520c5fbb5dda0cf85546bcf8191a929d180e570f69` /
+  `fe5045bb868bcd167ad6d7ee5d2212dde9d8e36806c650cafaf015c62c485400` /
+  `2e77308f76d0d2a3478a2f8693291b80ba06a8bce6388e14c60b365b65e3d1f6`
+- phase fiber histogram: `{10:253,18:245,24:241,28:240,30:240}`
+- category counts `individual-modulus / complex-phase / unresolved`: `0 / 26644 / 0`
+- global minimum exact phase-margin witness:
+  index `7329`、counts `[0,1,10,2,0,6,0,3,0,5,5,1,1,0]`、binary64 hex `0x1.a8f10a6dc88eep-6`
+- minimum-witness／comparison-stream digest:
+  `d16bd69692ef992ecc675d954307992f26d80c0cacc57e0fa3a33053e4a3fd2c` /
+  `cfae3b5e0cc0d41b8163f29855f534e29249c0a4545453edf4c2e15e4fc474d2`
+- input／phase-input／allocation／comparison／result digest:
+  `143d235de6b39d01f9f09e341a2700e3237fe7aa4a1ae5e8c785f69cd478f330` /
+  `e791ec3990c2c529ed99550710c0f08fd11a5f7467a1aafa9a0912e21796f8ee` /
+  `5a43d6ae7f78f4bcbc39b5d945e8594db982280d00dc9d475e669d353b246279` /
+  `d3170cc2cef64fec5ed76cc1eafc208c3b65fccbd52dbcc7ef4e9c8ea65d7cf5` /
+  `1317be3ce6ebaa92e3ba33d0e7759a46d844d4995270fe94085a4b1f5fbc12f4`
+- runner／artifact newline-normalized SHA-256:
+  `f78c40737172def66c1f871f2e2b033805136d98e81f5257cd42cc5718e8bf0a` /
+  `675e394efa4185dfbc4e136e133b214e44ea48bedad8269034bd7727e158ab29`
+
+これはflatten ordinal 94だけのphase resolutionである。ordinal 0--93と既存認証範囲は不変で、後続44,705 signature、
+他の31 parent overlap、他15 target、aggregate全体、degree-34全体、actual resonance、SSM existence／uniquenessは
+未判定である。停止規則どおり、次はQ011jkで登録順のordinal 95を個別分割監査する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
