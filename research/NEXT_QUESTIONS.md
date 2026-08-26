@@ -53481,6 +53481,39 @@ protocol global復元を検査する。一つでも失敗すれば`inconclusive`
 aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ju 封印結果（partition inert persistent）
+
+Q011jtまでの259 artifact／1,178 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal
+100の7 occupied modulus classを14 singleton identifierへ戻し、74,880 full allocation中、output block 7にcompatibleな
+4,136件をexact rationalとbinary64 outward enclosureで全数監査した。exact／outward relationはいずれも全件`overlap`で、
+product、center-product、target、intersection、center-only diagnosticも全件parent recordと同一だった。このため停止規則どおり
+outcomeを`partition_inert_persistent`とした。
+
+- parent class counts: `[[0,0,1,12],[2,7],[5],[4,3]]`
+- occupied modulus class／singleton identifier count: `7 / 14`
+- full／compatible allocation count: `74880 / 4136`
+- parent full／compatible index: `74760 / 4135`
+- parent wave／block-zero multiplicity: `4136 / 0`
+- exact relation counts `product_below_target / target_below_product / overlap`: `0 / 0 / 4136`
+- binary64 outward relation counts `product_below_target / target_below_product / overlap`: `0 / 0 / 4136`
+- parent intersection width／center-only relation／gap:
+  `0x1.db9072f32216ep-32` / `target_below_product` / `0x1.38adf9ef8610cp-28`
+- allocation-classification record digest:
+  `b50165aa94987243c6378d07065261e569f5d82a4ff93fe71bf2df5bf5fc7a4c`
+- input／partition-input／allocation-audit／result digest:
+  `9bae4bcacdbb898e343e7bc7f38935ece305407c969ce6c9fc40d0cc14044e8e` /
+  `a0c93ef178d96732f5924cb85b9b49d8deeebe338929de559ca50db3bc20e8a0` /
+  `29cfb3a63a7eb92a9cee74d54312510f1c406536965aa4917c643bed399c71be` /
+  `677ccc57976b35f4a43cfd11e3514cc1e7c2e264f8cd203e452741f5059d8d60`
+- runner／artifact newline-normalized SHA-256:
+  `d445bd8a4c907a55ab4136b9762e61f683f02954c9d3263a04cc2d064228cc2c` /
+  `b7bf4d5760f1149c77817ddbb46e9210734dff6efacc3d2d77e8e234266c2959`
+
+これはflatten ordinal 100だけのpartition診断である。ordinal 0--99と既存認証範囲は不変で、後続44,699 signature、
+他の31 parent overlap、他15 target、aggregate全体、degree-34全体、actual resonance、SSM existence／uniquenessは
+未判定である。complex phaseは評価していない。停止規則どおり、次はQ011jvで登録4,136 wave allocationだけを
+component-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
