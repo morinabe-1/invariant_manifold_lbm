@@ -12490,6 +12490,42 @@ Q011kcまでの268 artifact／1,218 direct digestを再照合し、全7 validity
 signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
 SSM existence／uniquenessは未判定である。次はQ011keで登録順のordinal 105を個別分割監査する。
 
+### Q011ke second-family one-hundred-sixth-witness individual-disc partition audit
+
+Q011kdまでの269 artifact／1,223 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal
+105の7 occupied modulus classを14 singleton identifierへ戻し、61,152 full allocation中、output block 7にcompatibleな
+3,386件をexact rationalとbinary64 outward enclosureで全数監査した。exact／outward relationはいずれも全件`overlap`で、
+product、center-product、target、intersection、center-only diagnosticも全件parent recordと同一だった。このため停止規則どおり
+outcomeを`partition_inert_persistent`とした。
+
+- parent class counts: `[[0,0,1,12],[3,6],[5],[1,6]]`
+- occupied modulus class／singleton identifier count: `7 / 14`
+- full／compatible allocation count: `61152 / 3386`
+- parent full／compatible index: `61068 / 3385`
+- parent wave／block-zero multiplicity: `3386 / 0`
+- exact relation counts `product_below_target / target_below_product / overlap`: `0 / 0 / 3386`
+- binary64 outward relation counts `product_below_target / target_below_product / overlap`: `0 / 0 / 3386`
+- parent intersection width／center-only relation／gap:
+  `0x1.fab461ee73462p-32` / `target_below_product` / `0x1.37b4e42076d9fp-28`
+- full／compatible allocation digest:
+  `aaf67f831f871cda27741a9bce0345a6bb1211d837f0b5c7f6e920a3768792e4` /
+  `f401c78f8bccb8fdb147018c27aee41b99c2c05de4d05bc02463e0d7f14f8b15`
+- allocation-classification record digest:
+  `fd5d4df88cab21a5a8927be071963ef80c1cd1796bf21cd7bf7f50ce57286dbc`
+- input／partition-input／allocation-audit／result digest:
+  `3e5aba3d20549694f1a65423ec68ed69ee7187f531e918a76ee7fbd9c1a32acd` /
+  `0d1af38aa4fdd1441a29d5e831ff5214c82b1d38695effbcdf8d9055f4abfe97` /
+  `ed3e62214acd45ce94c6445749fd2af02a587f9e0aa3b53a680a3efc62c7321d` /
+  `805e86b16051cc6605890b392648d7cefde547cadbcf266c9831c5e9675ce837`
+- runner／artifact newline-normalized SHA-256:
+  `c01656d3de26ac11ce4463c2f6009761a846d9d8e8943d1a5502991618855b89` /
+  `b3eb9dc7b874c6c8f08021fb757e1abdeb29011adf27a83a4c0dc52bb250ecb9`
+
+これはflatten ordinal 105だけのpartition診断である。ordinal 0--104の既存resolutionと認証範囲は不変で、後続44,694
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+SSM existence／uniquenessは未判定である。complex phaseは本gateでは評価していない。次はQ011kfで登録3,386 wave
+allocationだけをcomponent-safe complex phase discへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
