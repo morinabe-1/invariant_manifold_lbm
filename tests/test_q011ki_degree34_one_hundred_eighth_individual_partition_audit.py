@@ -10,11 +10,40 @@ import research.q011ki_degree34_one_hundred_eighth_individual_partition_audit as
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = None
-EXPECTED_REFINEMENT_OUTCOME: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "a8b68dac1ab18f97e7825836b9ef1624c9304db0ea1aea719fd8880c0dbed1d1"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "afe3c1b37db330e290cd2f03bf2aea0c93750233c0a229d86ce051ef83a7a022"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "2f4cf37555f35934355c26e587339904af6e57dfcdf9d5a5ea8fc302f3f40a7b",
+    "partition_input_digest_sha256": (
+        "9a3e375112eba749fc4b9dfd5ddae7f71e587dc9ba37f3fd4a85d835b746eb0f"
+    ),
+    "allocation_audit_digest_sha256": (
+        "296cbb3835ff57fe1b3f249745f22960f06b2deceb876a9ee6a56288c054c445"
+    ),
+    "result_digest_sha256": "7dfb48aa0a3c6cd54e33bef9bf793a8802b6e2e4f1ef606c78c74efb05f32da9",
+}
+EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = {
+    "parent_product_interval_digest_sha256": (
+        "5c6c6f53062b8b5250e5fab9bed2bf4c5a15e1b04ffd373a82a7e8a83487c5c0"
+    ),
+    "parent_center_product_interval_digest_sha256": (
+        "d8c442a9089d6905c747c0ca743b6b04168873cb26c20bf74c7401956ab352f9"
+    ),
+    "parent_target_interval_digest_sha256": (
+        "64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679"
+    ),
+    "parent_intersection_interval_digest_sha256": (
+        "188ded38fb93ec3f2a84fa2d84d489ee5f95a68f59226f193d714402f6c2537a"
+    ),
+    "allocation_classification_record_digest_sha256": (
+        "daa72146e13e760f087944086ec681a11239ba1608dcc058590b07b7a10d6f5e"
+    ),
+}
+EXPECTED_REFINEMENT_OUTCOME: str | None = "partition_inert_persistent"
 RESULT_EXPECTATIONS_FIXED = all(
     value is not None
     for value in (
