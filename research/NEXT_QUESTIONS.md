@@ -55337,6 +55337,42 @@ protocol global復元を検査する。一つでも失敗すれば`inconclusive`
 aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ki 封印結果（individual partition interval-inert）
+
+Q011khまでの273 artifact／1,241 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。ordinal
+107の7 occupied modulus classを14 singleton identifierへ戻し、87,360 full allocation中、output block 7にcompatibleな
+4,827件をexact rationalとbinary64 outward enclosureで全数監査した。exact／outward relationはいずれも全件`overlap`で、
+product、center-product、target、intersection、center-only diagnosticも全件parent recordと同一だった。停止規則どおり
+outcomeを`partition_inert_persistent`とした。
+
+- parent class counts: `[[0,0,1,12],[3,6],[5],[3,4]]`
+- occupied modulus class／singleton identifier count: `7 / 14`
+- full／compatible allocation count: `87360 / 4827`
+- parent full／compatible index: `87240 / 4826`
+- parent wave／block-zero multiplicity: `4827 / 0`
+- exact relation counts `product_below_target / target_below_product / overlap`: `0 / 0 / 4827`
+- binary64 outward relation counts `product_below_target / target_below_product / overlap`: `0 / 0 / 4827`
+- parent intersection width／center-only relation／gap:
+  `0x1.fab42acbdc11dp-32` / `target_below_product` / `0x1.37b4df6904072p-28`
+- full／compatible allocation digest:
+  `c7a2ae90aef0383d8a839a1c9be3ffe420dfdd0c46e8d7655fe074de3ee51c0b` /
+  `d2404724b5819ac72dc31485ebff49673563418b5cba0ab2c2df08b584ed451d`
+- allocation-classification record digest:
+  `daa72146e13e760f087944086ec681a11239ba1608dcc058590b07b7a10d6f5e`
+- input／partition-input／allocation-audit／result digest:
+  `2f4cf37555f35934355c26e587339904af6e57dfcdf9d5a5ea8fc302f3f40a7b` /
+  `9a3e375112eba749fc4b9dfd5ddae7f71e587dc9ba37f3fd4a85d835b746eb0f` /
+  `296cbb3835ff57fe1b3f249745f22960f06b2deceb876a9ee6a56288c054c445` /
+  `7dfb48aa0a3c6cd54e33bef9bf793a8802b6e2e4f1ef606c78c74efb05f32da9`
+- runner／artifact newline-normalized SHA-256:
+  `a8b68dac1ab18f97e7825836b9ef1624c9304db0ea1aea719fd8880c0dbed1d1` /
+  `afe3c1b37db330e290cd2f03bf2aea0c93750233c0a229d86ce051ef83a7a022`
+
+これはflatten ordinal 107だけのpartition診断である。ordinal 0--106と既存認証範囲は不変で、後続44,692 signature、
+他の31 parent overlap、他15 target、aggregate全体、degree-34全体、actual resonance、SSM existence／uniquenessは
+未判定である。complex phaseは本gateでは評価していない。停止規則どおり、次はQ011kjで登録4,827 wave allocationだけを
+component-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
