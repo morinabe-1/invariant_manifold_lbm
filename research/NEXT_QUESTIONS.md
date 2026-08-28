@@ -57584,6 +57584,97 @@ higher smoothness、SSM existence／uniqueness、normal attraction、basinは未
 Q011kyの4 section digestを加えた次入力は290 artifact／1,317 direct digestでなければならない。停止規則どおり、次は
 Q011kzで登録5,174 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+## Q011kz: second-family one-hundred-sixteenth-witness component-safe complex phase — 事前登録
+
+### 問いとsealed input
+
+Q011kyでordinal 115の個別分割がinterval-inertだったため、その5,174 compatible wave allocationだけをcomponent-safe
+complex phase discへ展開する。Q011anの2-row componentでは内部eigenvalue labelを仮定せず、component unionの各row discを
+各因子が独立に選ぶ外包として扱う。このlabel-free外包で全compatible productがtargetからstrict separationするかを問う。
+
+Q011kyまでの290 artifact／1,317 direct digest、ordinal 0--114の既存resolution、Q011ky outcome
+`partition_inert_persistent`、scientific outcome `not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011ky artifact／runner newline-normalized SHA-256:
+  `a7ded92e33b319f8cf5a9f5247f457d53537f270d6d4dc7b7695f7f00ba1f16c` /
+  `964e14719e79bc8077c0a1539a01d923ae24965693ce9cf11035f762ccd68533`
+- Q011ky input／partition-input／allocation-audit／result digest:
+  `e9954c507dbbb36cb4b61fed97ebd1e3491bb9c6d9c0eaa3630899f3a6dab6c5` /
+  `f1f068e07ce4b1fcce83460f496f4387887edd432165550808203f7bd6ff97b1` /
+  `9bb65a29c884d3b4a667da56690750ab3ff8fad34ad53539f5d2538221787b2f` /
+  `8afd6165ee979d241ff9d084eabd73fdaf341ac2c5700a7790e66e68adc09cdb`
+- Q011ky allocation-classification record digest:
+  `0f62ac01718110dc095ede15f65d4f585e4a50fad0998f0d59ab0a0a4c022368`
+
+Q011ky sealed inputは289 artifact／1,313 direct digestを持つため、Q011kyの4 section digestを加えたQ011kz inputは
+290 artifact／1,317 direct digestでなければならない。
+
+### component-safe discとallocation inventory
+
+canonical 14-slot source orderを維持する。ordinal 115では全source variantのpowerがpositiveであり、inactive identifierはない。
+150／151は同じQ011an component unionに属するため、親の個別total `4 / 5`を内部labelと解釈せず、合計9因子を4 row discへ
+独立に割り当てる。
+
+- canonical source variant order:
+  `[16:144,1:144,16:145,1:145,16:150,16:151,1:150,1:151,16:152,1:152,16:148,1:148,16:149,1:149]`
+- active／canonical source variant count: `14 / 14`
+- inactive zero-power identifiers: `[]`
+- component totals: `[1,12,9,5,3,4]`
+- source power maxima:
+  `[1,1,12,12,9,9,9,9,5,5,3,3,4,4]`
+- source／target phase-disc record digest:
+  `94898648cd830f4948118e0c4413e0ac39129714b50efdbfdf48904d52e1c2af` /
+  `1d57fd229e0e60be3c14669cdd3d32fd7410f1037b548b3c338e28c0efd4ed78`
+- unique active product-radius signature count: `10`
+
+Q011kyの14 singleton countでは150／151をblockごとに合算して12 active component-wave countへ写す。位相側もcanonical
+14-slot countの150／151をblockごとに合算した同じ12 countへ写し、両集合が一致することを必須gateとする。
+
+- individual／component wave allocation count: `5174 / 1729`
+- individual-to-component bridge fiber histogram: `{1:354,2:343,3:341,4:344,5:347}`
+- bridge-record digest:
+  `78f067e51baede7ddc7ef9cd13325a3b5eec34447830c83980882ec032abafeb`
+- full／compatible phase allocation count: `686400 / 37940`
+- first／last compatible canonical counts:
+  `[0,1,0,12,0,0,0,9,0,5,1,2,4,0] / [1,0,12,0,9,0,0,0,0,5,0,3,0,4]`
+- full／compatible allocation digest:
+  `708b680cf7ffe7a70d72439af63eacab142a9c7eef5a416c613f2eec4c43daaa` /
+  `5751efed88eab58f411db6c33005d52b53d49a90361952b9100b7bdf25e13046`
+- component-wave projection count／digest:
+  `1729` / `c59fd8482e72e38ed96be44ecf892f1dc4dfc10cd334f6ade212b1fe7cabf97a`
+- phase fiber histogram: `{10:354,18:343,24:341,28:344,30:347}`
+- bridge-phase paired-record digest:
+  `7a1cd267df90636a3ebcf87f5778f2ca6e1b15685dd93434e2b7ec1228ec503f`
+
+全phase allocation数は
+`2 * 13 * binom(12,3) * 6 * 4 * 5 = 686400`である。以上はQ011kyのsealed individual counts、canonical source order、
+登録最大次数、degree、Fourier block和だけから、複素中心積やtarget距離を評価せずに固定した。
+
+### exact contract、validity、停止規則
+
+各compatible allocationについて、複素中心積、closed-form product-disc radius、一因子ずつのradius recurrence、target center
+distanceのinteger-isqrt rational enclosureをexact arithmeticで計算する。個別modulus separation、complex phase separation、
+unresolved product-disc overlapを排他的に分類し、全37,940件をdomain-separated framed streamへ含める。floating pointは表示に
+のみ使い、gate判定には使わない。comparison stream domainは`q011kz-component-safe-phase-comparisons-v1`、margin digest
+domainは`q011kz-complex-margin-expression-v1`に固定する。
+
+validity gateは、290 artifact／1,317 digest、Q011kyのinterval-inert result、14 canonical／14 active source disc、target、
+conjugacy／containment／component membership、5,174-to-1,729 bridge、686,400／37,940 allocation、10 radius signature、sqrt
+enclosure、category exhaustion、section／runner digest、protocol global復元を検査する。一つでも失敗すれば`inconclusive`とする。
+
+停止規則は排他的に次とする。
+
+1. unresolved 0かつglobal minimum marginがpositiveなら`component_safe_phase_resolved`。次はQ011laで登録順のordinal 116を
+   個別分割監査する。
+2. unresolvedが残れば`component_safe_phase_persistent`。disc overlapはactual resonanceを示さず、次はQ011laで辞書順first
+   unresolved phase witnessだけを精密化する。
+3. validity failureなら原因を修復し、科学的分類は行わない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 115、登録37,940
+phase allocationだけを扱う。ordinal 0--114を再評価せず、後続44,684 signature、他の31 parent overlap、他15 target、aggregate
+全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
+attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
