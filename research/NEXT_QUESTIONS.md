@@ -58656,6 +58656,34 @@ protocol global復元を検査する。一つでも失敗すれば`inconclusive`
 aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011lg 封印結果（個別分割は区間不変）
+
+Q011lfまでの297 artifact／1,349 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+ordinal 119の12 singleton identifierから得る2,076 compatible allocationをexact rational arithmeticとbinary64 outward
+enclosureで全数監査した。全allocationのproduct／center-product／target／intersection／center diagnosticは親recordと同一で、
+両算術の分類は全件`overlap`だった。従って停止規則どおり`partition_inert_persistent`とした。
+
+- full／compatible allocation count: `37440 / 2076`
+- exact／binary64 outward relation counts `below / above / overlap`: `0 / 0 / 2076`
+- all parent-comparison flags: `true`
+- allocation-classification record digest:
+  `67e7d01f78410ebf91cbcf0e76d9d5e5d7c8620500334998e9b6ddfa3c9fc99f`
+- input／partition-input／allocation-audit／result digest:
+  `cbc5ec97f98e803814a6615d454889406baf8aab3699359f59acc1aec8e39284` /
+  `fa7fa779e1390101149d19c77e7c1a667dd4261c50384ceee95869046deb5b41` /
+  `8670399bea4e0d686750c9a1d4c3a3ab57595eed6b1e2f46867ab12afb8e9280` /
+  `f1463b2bf4ca9d66e514a880e096cdda95cdd9daa7a5be6def86f7b0ab5984b0`
+- runner／artifact newline-normalized SHA-256:
+  `019b39ec303444f668708b5c8d814ee335a232a13894d2f4fe3087a5230ffa6b` /
+  `ef4a7efa7a2c876aa590e73b31c588875a21847d8f6eab6a08f858c4b4fbc09e`
+- artifact size: `7,623,921 bytes / 86,707 lines`
+- verification: structural `3 passed, 4 skipped in 342.81s`、sealed full `7 passed in 2187.78s`
+
+これはordinal 119だけのpartition診断であり、complex phase、後続44,680 signature、degree-34 nonresonance、actual
+resonance、SSM existence／uniquenessは未判定である。Q011lgの4 section digestを加えたQ011lh inputは298 artifact／
+1,353 direct digestでなければならない。次はQ011lhで、この2,076 wave allocationだけをcomponent-safe complex phase
+discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
