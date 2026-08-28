@@ -59031,6 +59031,37 @@ phase allocationだけを扱う。ordinal 0--119を再評価せず、後続44,67
 aggregate全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011lj 封印結果（component-safe phaseで解消）
+
+Q011liまでの300 artifact／1,362 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+ordinal 120の2,076 individual wave allocationを701 label-free component waveへ写し、15,278 compatible phase
+allocationをexact arithmeticで全数監査した。全件がcomplex phaseでstrict separationし、未解決は0件、global minimum
+marginはpositiveだった。従って停止規則どおり`component_safe_phase_resolved`とした。
+
+- inactive zero-power identifiers／component totals: `[16:148,1:148] / [1,12,9,5,0,7]`
+- individual／component／compatible phase allocation count: `2076 / 701 / 15278`
+- category counts `individual-modulus / complex-phase / unresolved`: `0 / 15278 / 0`
+- global minimum witness:
+  index `4419`、counts `[0,1,10,2,0,9,0,0,1,4,0,0,2,5]`、margin `0x1.a8f10a6dc8516p-6`
+- minimum-witness／comparison-stream digest:
+  `e56c1012985dec3148f724f74f3a19f365a0766d6fbddcce1448ea1d4cbaf8cf` /
+  `f828a3166f9c3e254d4fc123abe905a4bc121e87816670538beabb0261897a45`
+- input／phase-input／allocation／comparison／result digest:
+  `9a4663dbd083c789a4817a4cc894b6bd5a03875e3428b9de77e3f6bbb05fb85e` /
+  `5a2e00ed8e5262da4e476087ad04d3dc6c01cefb2e5d2f83c22aab79e372888d` /
+  `52e4c54d3d1fcb57753dd2f7c5641444f903fbaa689e1b201c2278e77ffc557a` /
+  `ac8cb7764baa1961e71e1ebfe6bea2f5e74fa9f1f7643b20a1fb16ac11abc270` /
+  `8961987bb5cb8e7ba8161906fb34ce22f7c3fc3c9313364fe981513324f8d0ea`
+- runner／artifact newline-normalized SHA-256:
+  `1d63a30e57d271962e6980d95f44e485aaa1d540f1a8df5a8b562384c3e859ff` /
+  `414015bf94b8a701d858fae6f40295a68437685e03e9a8e80c194705a678091b`
+- artifact size: `5,786,138 bytes / 44,394 lines`
+- verification: structural `3 passed, 4 skipped in 616.86s`、sealed full `7 passed in 2009.31s`
+
+これはordinal 120だけのphase resolutionであり、後続44,679 signature、degree-34 nonresonance、actual resonance、SSM
+existence／uniquenessは未判定である。Q011ljの5 section digestを加えたQ011lk inputは301 artifact／1,367 direct digestで
+なければならない。次はQ011lkで、登録順のflatten ordinal 121をclassification-free individual-disc partition auditへ進める。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
