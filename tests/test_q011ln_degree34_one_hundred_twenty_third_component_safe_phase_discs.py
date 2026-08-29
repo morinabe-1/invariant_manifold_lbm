@@ -20,7 +20,7 @@ EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
     "input_digest_sha256": "42fcbc3995138be2675d59c64deb19528134118db3b1cca10b1666d0622f93a9",
     "phase_input_digest_sha256": "ceb0d56096a4842a5b103b58064d316939c9bd4bb33313014defd4096d74ae1a",
     "allocation_digest_sha256": "e028c6fd6fddbb06de570dfa656fe6dd486f0306a65aa303ff47c450f4916873",
-    "comparison_digest_sha256": "63434c46f43ebc9b4d47e0ba58dbd2eee0e9b85468afdddd8a6c95fb0dff8eb9",
+    "phase_comparison_digest_sha256": "63434c46f43ebc9b4d47e0ba58dbd2eee0e9b85468afdddd8a6c95fb0dff8eb9",
     "result_digest_sha256": "1850a46520f9671633aa9a185c1412baef16a3f1a04577b2e67c5ea5149639ea",
 }
 EXPECTED_STREAM_DIGEST: str | None = (
