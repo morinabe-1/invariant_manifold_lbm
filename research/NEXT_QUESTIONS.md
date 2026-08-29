@@ -61069,6 +61069,112 @@ all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 section digestを加えたQ011ly inputは315 artifact／1,430 direct digestでなければならない。停止規則どおり、次はQ011lyで
 登録順のflatten ordinal 128をclassification-free individual-disc partition auditへ進める。
 
+## Q011ly: second-family one-hundred-twenty-ninth-witness individual-disc partition — 事前登録
+
+### 問いとsealed input
+
+Q011lxでordinal 127がcomponent-safe complex phaseにより解消されたため、登録順の次、Q011cb flatten ordinal 128だけを
+個別source discへ戻す。親modulus classの共通区間がidentifier分割で変わるかをexact rational arithmeticとbinary64 outward
+enclosureの双方で監査する。complex phase productは本gateで評価しない。
+
+Q011lxまでの315 artifact／1,430 direct digest、ordinal 0--127の既存resolution、Q011lx outcome
+`component_safe_phase_resolved`、scientific outcome `not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011lx artifact／runner newline-normalized SHA-256:
+  `c4eaf037a42e9b8a71f50ce48764803002c1989c700e0acd7c9b544c7c348d74` /
+  `07cf79cc644ea1c18eebe4eb2eebdea9fdfd4a80c763f1272404db0719a8cee4`
+- Q011lx input／phase-input／allocation／phase-comparison／result digest:
+  `91956d95cb6b0c02027c2cd4be1a2d2eba1de7001ae7d85261dc8509b6dfa09a` /
+  `83e49b9b8eeacafbe62328bca0f94a5b611236a9996ce90bba4f6d75ddcf2a12` /
+  `67eb24b389caefed7e7091d0641183dfae8e6593c5d46eca07c406f65326c041` /
+  `e3303b5743e35197130fb62a2ce74dd757998594505c3850bb033cd1c88e658f` /
+  `d9667f4e677b4ffdb0cbe3e02632c2cdbf82d4b31b6bae9ccc36efe4a792a616`
+- Q011lx comparison stream／minimum-witness digest:
+  `d5cff3c254262146bba534a4e065e722bab3417995879d01937689416dff5114` /
+  `cba06ceb15335a288a1ea6e0d24caf4f450a26e54b3b51f5e46e84b7526d6868`
+
+Q011lx sealed inputは314 artifact／1,425 direct digestを持つため、Q011lxの5 section digestを加えたQ011ly inputは
+315 artifact／1,430 direct digestでなければならない。
+
+### 登録parent witness
+
+Q011cbの`5600 x 8` flatten orderは全entryがactiveであり、ordinal 128は`(left,right)=(16,0)`である。これはQ011cbの
+登録順、degree、class counts、Fourier wave multiplicityだけから選び、ordinal 128の個別allocation分類は参照していない。
+Q011lxはordinal 0--127が既に解消済みであるという選択境界にだけ使う。
+
+- selected flatten ordinal／left／right index: `128 / 16 / 0`
+- target: `block=7;center=44`
+- parent class counts: `[[0,0,1,12],[6,3],[5],[0,7]]`
+- positive-count modulus class／singleton identifier count: `6 / 12`
+- zero-power canonical class／excluded singleton identifiers:
+  `group=3;class=0 / [block=16;center=148,block=1;center=148]`
+- parent wave／block-zero multiplicity: `1940 / 0`
+- parent intersection width binary64 hex: `0x1.2c0fa92afc15fp-31`
+- parent center-only relation／gap hex: `target_below_product / 0x1.34c98fd57e790p-28`
+- parent witness digest:
+  `c068c25fe70c0e27f54e2ebd48a01fe07790b6f4ffc1a23f5747d947d4ec3c8c`
+- parent product／center-product／target／intersection digest:
+  `6f536b7d2509230440546bc397d0f3e593f1f4d5ce24117717cfd706eff40a75` /
+  `e518364e9d1daaea61329444c2ff3120ea2a7434c9e5416cd1b5f951d4c894ea` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `7800e52ad6d291b6286ade0c02ea378031ce04f787b39c2c8021b93b5c2df781`
+
+positive-count classだけを次の順でsingletonへ分割する。
+
+`[16:144,1:144,16:145,1:145,16:150,1:150,16:151,1:151,16:152,1:152,16:149,1:149]`
+
+- parent singleton source counts: `[1,0,12,0,6,0,3,0,0,5,0,7]`
+- occupied common-interval digests:
+  `8c192189449f149db3b3786d791a4fc262ff9ff3c89d831307cbab2faa614734` /
+  `53f9a306265ffcbfa83c64089e6418ab895037a3dad6a6fe85ba15dab18c8825` /
+  `e5b5ce415bac811880fc0ccaa97743c37d7e2510a679d48e627a6eaad2c05399` /
+  `2761f9c8d8e92b66d0c8a3e85affc78cda4e1ac98c2beeed7705224145571402` /
+  `39747a3474ada699010196f508500971e97451f666025e46bbbc68233ef1d86a` /
+  `66a6c269ac137479694f186884d49ca3a4d11070e69132bab822391a557075d8`
+- occupied-record／identifier-order digest:
+  `62e120f123bb17e2a74250fe139c9bb9c3e9522139fc237fb4225631d3499cf2` /
+  `5063f9638bf5dfbe8b90cf76615268ba4ba6f3b3825d56aac972329725852257`
+
+### allocation inventory
+
+6 positive-count classの各2 block identifierへcountを分配する。全allocation数は
+`2 * 13 * 7 * 4 * 6 * 8 = 34,944`であり、degree 34とoutput block 7を満たす1,940件だけを登録順に監査する。
+zero-power canonical classの2 identifierはallocation slot、digest、分類recordのいずれにも含めない。
+
+- first／last compatible counts:
+  `[0,1,0,12,0,6,0,3,0,5,5,2] / [1,0,12,0,6,0,3,0,0,5,0,7]`
+- parent full／compatible allocation index: `34896 / 1939`
+- full／compatible allocation digest:
+  `5ff8389e3d744ab1c12fb1008f3a2e51b3387fd7d2133621d8fe8d8d035b9fe7` /
+  `09fefb79cd3b9f9b70490bf78e09790664543a118243cec3c0839afe5b8fed35`
+
+以上の親recordとallocation inventoryはQ011cbのsealed class order、Q011lxまでの選択境界、exact source disc、degree、
+Fourier block和だけから固定した。1,940件のproduct／target intervalと分類は評価していない。
+
+### exact contract、validity、停止規則
+
+各compatible allocationについてsingleton discからcenter productとfull product intervalをexact rational arithmeticで
+再構成し、親product／center-product／target／intersection／center diagnosticと比較する。同じ判定をbinary64 outward
+enclosureでも行う。classification recordは全1,940件を登録順に保持し、domain-separated canonical digestへ含める。
+
+validity gateは、315 artifact／1,430 digest、Q011lx phase resolution、ordinal `128 / 16 / 0`、親witness、6 positive
+class／12 identifier、zero-power exclusion、34,944／1,940 allocation、degree／output constraint、exact／outward排他分類、
+section／runner digest、protocol global復元を検査する。一つでも失敗すれば`inconclusive`とする。
+
+停止規則は排他的に次とする。
+
+1. 全1,940件がparentとexact同一かつ`overlap`なら`partition_inert_persistent`。次はQ011lzでこの1,940 wave allocationだけを
+   component-safe complex phase discへ展開する。
+2. 全1,940件がstrict separationなら`resolved_by_individual_partition`。次はQ011lzで登録順のordinal 129を監査する。
+3. intervalは変わるが`overlap`が残れば`partition_effective_but_persistent`。次はQ011lzで辞書順first remaining overlapだけを
+   精密化する。
+4. validity failureなら原因を修復し、科学的分類は行わない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 128、target
+`block=7;center=44`だけを扱う。ordinal 0--127を再評価せず、後続44,671 signature、他の31 parent overlap、他15 target、
+aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
+normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
