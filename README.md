@@ -13897,6 +13897,51 @@ nonresonance、higher smoothness、SSM existence／uniqueness、normal attractio
 digestを加えた次入力は303 artifact／1,376 direct digestでなければならない。停止規則どおり、次はQ011lmで登録順の
 flatten ordinal 122をclassification-free individual-disc partition auditへ進める。
 
+### Q011lm second-family one-hundred-twenty-third-witness individual-disc partition audit
+
+Q011llまでの303 artifact／1,376 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+Q011cb flatten ordinal 122、すなわち`(left,right)=(15,2)`の7 positive-count modulus classを14 singleton
+identifierへ分割し、84,240 full allocationからoutput-block-7 compatibleな4,658件を登録順に抽出した。全件をexact
+rational arithmeticとbinary64 outward enclosureで監査したところ、product／center-product／target／intersection／
+center diagnosticはすべて親recordと同一で、両算術の分類も全件`overlap`だった。従って停止規則どおりoutcomeを
+`partition_inert_persistent`とした。
+
+- parent class counts: `[[0,0,1,12],[5,4],[5],[2,5]]`
+- occupied modulus class／singleton identifier count: `7 / 14`
+- singleton identifier order:
+  `[16:144,1:144,16:145,1:145,16:150,1:150,16:151,1:151,16:152,1:152,16:148,1:148,16:149,1:149]`
+- parent singleton source counts: `[1,0,12,0,5,0,4,0,0,5,0,2,0,5]`
+- full／compatible allocation count: `84240 / 4658`
+- parent full／compatible allocation index: `84132 / 4657`
+- full／compatible allocation digest:
+  `7423fbc3d34ed7ff2ec9b8f0e4625fc7d4c46765d6ded4f38efaa4055c77f5e6` /
+  `ce62afe9470aafafa10e6f3ea290f436e3dd6e9cc643110c7e8237444d911b91`
+- exact／binary64 outward relation counts `below / above / overlap`: `0 / 0 / 4658` for both
+- all parent-comparison flags: `true`
+- allocation-classification record digest:
+  `391eb5a9215d91a9fb279586c12f7d355ea66791ca9b07e8a86b75087fc11da0`
+- parent product／center-product／target／intersection digest:
+  `397947f9d56abd96d056a337ae0c51c952e207e45fd594541a8e5585b207bae2` /
+  `3e02aad1fc92a14a83a08ae49f2ca76700be337535cbd1b388a6fab6f95f97ce` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `2f5afdf92d3a3f27f4d2813e0e601e8d7eb79267d80a1b3ae7745b80953aa00d`
+- input／partition-input／allocation-audit／result digest:
+  `b2e81a9bb149c6ba03118d1f911281b25959880adc025bfc08f782ac55529065` /
+  `c07889df08ef485e5284083a3ae9c65d1e2b69e6257a1deffdec6b0f5b7f0ac1` /
+  `f009a43b1a910ca815a76592634077816ad72f5365b143844b3dbf21ba03da2d` /
+  `4cb924b5a30a802825b7cf8893c974da818ace9af5a471790d6e6c00327471f9`
+- runner／artifact newline-normalized SHA-256:
+  `45f7b86ad405a0d226d60270165e377b0fa85193e370f9250304c73c9e423298` /
+  `7b003626aced600fefe433896b1ab7ccbf3cdd3ac718be8ba0589247522895ba`
+- artifact size: `11,510,610 bytes / 189,226 lines`
+- verification: structural `3 passed, 4 deselected in 375.65s`、sealed full `7 passed in 2743.78s`
+
+これはflatten ordinal 122だけのpartition診断である。ordinal 0--121の既存resolutionと認証範囲は不変で、後続44,677
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。complex
+phaseは本gateでは評価していない。Q011lmの4 section digestを加えた次入力は304 artifact／1,380 direct digestでなければ
+ならない。停止規則どおり、次はQ011lnで登録4,658 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
