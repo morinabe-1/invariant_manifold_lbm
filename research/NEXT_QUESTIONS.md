@@ -59745,6 +59745,98 @@ all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 phaseは本gateでは評価していない。Q011loの4 section digestを加えたQ011lp inputは306 artifact／1,389 direct digestで
 なければならない。停止規則どおり、次はQ011lpで登録5,174 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+## Q011lp: second-family one-hundred-twenty-fourth-witness component-safe complex phase — 事前登録
+
+### 問いとsealed input
+
+Q011loでordinal 123の個別分割がinterval-inertだったため、その5,174 compatible wave allocationだけをcomponent-safe
+complex phase discへ展開する。Q011anの2-row componentでは内部eigenvalue labelを仮定せず、component unionの各row discを
+各因子が独立に選ぶ外包として扱う。このlabel-free外包で全compatible productがtargetからstrict separationするかを問う。
+
+Q011loまでの306 artifact／1,389 direct digest、ordinal 0--122の既存resolution、Q011lo outcome
+`partition_inert_persistent`、scientific outcome `not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011lo artifact／runner newline-normalized SHA-256:
+  `eeb0f09987228f541e8f86657bebc364933709aa7145acf77c215fd22b8002e1` /
+  `3f26b5626e2dc33ada0ffc277ebec8e6f57683d2238090cb770b6c0e3cb02ab6`
+- Q011lo input／partition-input／allocation-audit／result digest:
+  `cc1b0304c69c0ef2f8a42baeb045b5e2ae178453ec3dcc3d93582403dde59b16` /
+  `f36942d5718985527edc295995e1ac2eb2e48bb764d66d6f028ec2245ef7913e` /
+  `05a04cbf80d4f5e1dc87d78751b92bb011faed4491ee15928e75f7d41b445b82` /
+  `ff42dc698c2bf3ff8b2006115187b428d8e2c5270d457c41ca5df160d433292a`
+- Q011lo allocation-classification record digest:
+  `0dd099a44a3bdb67c3f1ce82eec3889e2a3d1245e48ca1b7cfe9fcc0e089c844`
+
+Q011lo sealed inputは305 artifact／1,385 direct digestを持つため、Q011loの4 section digestを加えたQ011lp inputは
+306 artifact／1,389 direct digestでなければならない。
+
+### component-safe discとallocation inventory
+
+canonical 14-slot source orderを維持する。ordinal 123では全source variantのpowerがpositiveであり、inactive identifierはない。
+150／151は同じQ011an component unionに属するため、親の個別total `5 / 4`を内部labelと解釈せず、合計9因子を4 row discへ
+独立に割り当てる。
+
+- canonical source variant order:
+  `[16:144,1:144,16:145,1:145,16:150,16:151,1:150,1:151,16:152,1:152,16:148,1:148,16:149,1:149]`
+- active／canonical source variant count: `14 / 14`
+- inactive zero-power identifiers: `[]`
+- component totals: `[1,12,9,5,3,4]`
+- source power maxima:
+  `[1,1,12,12,9,9,9,9,5,5,3,3,4,4]`
+- source／target phase-disc record digest:
+  `94898648cd830f4948118e0c4413e0ac39129714b50efdbfdf48904d52e1c2af` /
+  `1d57fd229e0e60be3c14669cdd3d32fd7410f1037b548b3c338e28c0efd4ed78`
+- unique active product-radius signature count: `10`
+
+Q011loの14 singleton countでは150／151をblockごとに合算して12 active component-wave countへ写す。位相側もcanonical
+14-slot countの150／151をblockごとに合算した同じ12 countへ写し、両集合が一致することを必須gateとする。Q011lo artifactの
+5,174 recordを再射影し、次の値を複素中心積とtarget距離の評価前に固定した。
+
+- individual／component wave allocation count: `5174 / 1729`
+- individual-to-component bridge fiber histogram: `{1:354,2:343,3:341,4:344,5:347}`
+- bridge-record digest:
+  `78f067e51baede7ddc7ef9cd13325a3b5eec34447830c83980882ec032abafeb`
+- full／compatible phase allocation count: `686400 / 37940`
+- first／last compatible canonical counts:
+  `[0,1,0,12,0,0,0,9,0,5,1,2,4,0] / [1,0,12,0,9,0,0,0,0,5,0,3,0,4]`
+- full／compatible allocation digest:
+  `708b680cf7ffe7a70d72439af63eacab142a9c7eef5a416c613f2eec4c43daaa` /
+  `5751efed88eab58f411db6c33005d52b53d49a90361952b9100b7bdf25e13046`
+- component-wave projection count／digest:
+  `1729` / `c59fd8482e72e38ed96be44ecf892f1dc4dfc10cd334f6ade212b1fe7cabf97a`
+- phase fiber histogram: `{10:354,18:343,24:341,28:344,30:347}`
+- bridge-phase paired-record digest:
+  `7a1cd267df90636a3ebcf87f5778f2ca6e1b15685dd93434e2b7ec1228ec503f`
+
+全phase allocation数は`2 * 13 * binom(12,3) * 6 * 4 * 5 = 686400`である。以上はQ011loのsealed individual
+counts、canonical source order、登録最大次数、degree、Fourier block和だけから固定し、複素中心積とtarget距離は評価して
+いない。
+
+### exact contract、validity、停止規則
+
+各compatible allocationについて、複素中心積、closed-form product-disc radius、一因子ずつのradius recurrence、target center
+distanceのinteger-isqrt rational enclosureをexact arithmeticで計算する。個別modulus separation、complex phase separation、
+unresolved product-disc overlapを排他的に分類し、全37,940件をdomain-separated framed streamへ含める。floating pointは表示に
+のみ使い、gate判定には使わない。comparison stream domainは`q011lp-component-safe-phase-comparisons-v1`、margin digest
+domainは`q011lp-complex-margin-expression-v1`に固定する。
+
+validity gateは、306 artifact／1,389 digest、Q011loのinterval-inert result、14 canonical／14 active source disc、target、
+conjugacy／containment／component membership、5,174-to-1,729 bridge、686,400／37,940 allocation、10 radius signature、sqrt
+enclosure、category exhaustion、section／runner digest、protocol global復元を検査する。一つでも失敗すれば`inconclusive`とする。
+
+停止規則は排他的に次とする。
+
+1. unresolved 0かつglobal minimum marginがpositiveなら`component_safe_phase_resolved`。次はQ011lqで登録順のordinal 124を
+   個別分割監査する。
+2. unresolvedが残れば`component_safe_phase_persistent`。disc overlapはactual resonanceを示さず、次はQ011lqで辞書順first
+   unresolved phase witnessだけを精密化する。
+3. validity failureなら原因を修復し、科学的分類は行わない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 123、登録37,940
+phase allocationだけを扱う。ordinal 0--122を再評価せず、後続44,676 signature、他の31 parent overlap、他15 target、aggregate
+全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
+attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
