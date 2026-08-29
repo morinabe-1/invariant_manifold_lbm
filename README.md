@@ -14345,6 +14345,59 @@ all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 phaseは本gateでは評価していない。Q011luの4 section digestを加えた次入力は312 artifact／1,416 direct digestでなければ
 ならない。停止規則どおり、次はQ011lvで登録3,626 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+### Q011lv second-family one-hundred-twenty-seventh-witness component-safe complex phase audit
+
+Q011luまでの312 artifact／1,416 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+Q011luの3,626 individual allocationを1,219 component-wave allocationへ射影し、480,480 full phase allocationから
+output-block-7 compatibleな26,644件を登録順に抽出した。Q011anの2-row componentでは内部eigenvalue labelを仮定せず、
+component unionの各row discを各因子が独立に選ぶ外包として監査した。全26,644件は個別modulus intervalでは`overlap`
+したままだったが、複素中心積とproduct-disc radiusを保つexact complex phaseでは全件strict separationした。未解決は0件、
+global minimum lower marginも正だったため、停止規則どおりoutcomeを`component_safe_phase_resolved`とした。
+
+- selected flatten ordinal／target: `126 / block=7;center=44`
+- component totals／source power maxima:
+  `[1,12,9,5,6,1] / [1,1,12,12,9,9,9,9,5,5,6,6,1,1]`
+- individual／component wave allocation count: `3626 / 1219`
+- individual-to-component bridge fiber histogram: `{1:253,2:245,3:241,4:240,5:240}`
+- bridge-record／bridge-phase paired-record digest:
+  `0f099b0277ec18fd83217360786c70823a2ba3032868d7842046f7fa8cc1062a` /
+  `81459a172edfce4a22a8ed705ee6566d11878f94f4d3cb5c3df2a63f115b9a0d`
+- full／compatible phase allocation count: `480480 / 26644`
+- first／last compatible canonical counts:
+  `[0,1,0,12,0,0,0,9,0,5,4,2,1,0] / [1,0,12,0,9,0,0,0,0,5,0,6,0,1]`
+- full／compatible allocation digest:
+  `f43be2d813a857a55e4ddd05ef9986ec8076d8b1176a3d57160a47bb5e6f92a4` /
+  `ed50660390a6b9348db981fe05c48332acd26fd1e50e517bbef44e30148c0267`
+- component-wave projection count／digest:
+  `1219` / `fe5045bb868bcd167ad6d7ee5d2212dde9d8e36806c650cafaf015c62c485400`
+- individual modulus relation counts `product below / target below / overlap`: `0 / 0 / 26644`
+- category counts `individual modulus / complex phase / unresolved`: `0 / 26644 / 0`
+- unique product-radius signature count: `10`
+- global minimum compatible index／counts／positive lower-margin hex:
+  `7329 / [0,1,10,2,0,6,0,3,0,5,5,1,1,0] / 0x1.a8f10a6dc88eep-6`
+- minimum-witness digest:
+  `d16bd69692ef992ecc675d954307992f26d80c0cacc57e0fa3a33053e4a3fd2c`
+- comparison stream count／digest:
+  `26644` / `8a93f78f2d426f0c5c4c419e9066db4a7de351bb93508e4157771953f46ba1a8`
+- input／phase-input／allocation／phase-comparison／result digest:
+  `809b3878838c02ed63dad08b2b19f01128572e2450f1da1d5b15a7062762dd9f` /
+  `5c0f30aebb3032088aea64a25aef98a09849e58e28cc079151590af3f147285a` /
+  `23ddc277aeee3abf5966a20dac753d9bf4212f342dd4ee5ac07bd8d7be017732` /
+  `ccbe22033a72a20b3ccf34ec841caf9efbe00005ecf4444564a6b596100a83bf` /
+  `320a764ba6f29fd3bd1ac8bea5a2fe13e52bac35ddb9ca10a72ec63852789afa`
+- runner／artifact newline-normalized SHA-256:
+  `8fd73203b742d0d657e1ada31fd412d9f92c431a19c129f327c9f2a93dcb0ac3` /
+  `c8f97fbb77b44ba59bd68289eebbc676c3d91b9dd4d4ff44282b70a11099d36e`
+- artifact size: `6,636,294 bytes / 75,941 lines`
+- verification: structural `3 passed, 4 deselected in 657.07s (0:10:57)`、sealed full
+  `7 passed in 2164.01s (0:36:04)`
+
+これはflatten ordinal 126だけのphase resolutionである。ordinal 0--125の既存resolutionと認証範囲は不変で、後続44,673
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。Q011lvの5
+section digestを加えた次入力は313 artifact／1,421 direct digestでなければならない。停止規則どおり、次はQ011lwで登録順の
+flatten ordinal 127をclassification-free individual-disc partition auditへ進める。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
