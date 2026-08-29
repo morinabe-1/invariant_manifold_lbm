@@ -59312,6 +59312,103 @@ discは全26,644件でtarget discからstrict separationし、未解決は0件�
 existence／uniquenessは未判定である。Q011llの5 section digestを加えたQ011lm inputは303 artifact／1,376 direct digestで
 なければならない。次はQ011lmで、登録順のflatten ordinal 122をclassification-free individual-disc partition auditへ進める。
 
+## Q011lm: second-family one-hundred-twenty-third-witness individual-disc partition — 事前登録
+
+### 問いとsealed input
+
+Q011llでflatten ordinal 121がcomponent-safe complex phaseにより解消されたため、登録順の次、flatten ordinal 122だけを
+singleton identifierへ分割したとき、compatible exact product intervalまたは分類が変わるかを問う。ordinal 0--121は
+sealed selection boundaryとしてのみ使い、再評価しない。
+
+Q011llまでの303 artifact／1,376 direct digest、ordinal 121のphase outcome
+`component_safe_phase_resolved`、scientific outcome `not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011ll artifact／runner newline-normalized SHA-256:
+  `6b541b93bdc4fb7433eb896f1225ee769839da63e7e255e53cc7f67f5f43fb01` /
+  `31bdeefe6afa3e3c29283e2522d3b511f008082c14dcc8518162ff4f4df4aa8b`
+- Q011ll input／phase-input／allocation／comparison／result digest:
+  `b2b72c677bfac80db85a83962da179d171f85b6ebe76e44f9ec2e0331bfcc64d` /
+  `c95322ede06a16c9ed80d4252370162e9d887527f15ad83cbec0b396853d5121` /
+  `78b081d4c55e16000202dbc32994267a4a5bde562e16b9eafbf391c435d1e434` /
+  `2abf3833f428450284e6f6f754058677d6bd811f06c5409aded1f96fa6de452c` /
+  `77a5dd12a61b73f54c3a0081793276f0d33f84b21dada267781b50abcb4481ba`
+- ordinal 121 phase minimum-witness／comparison-stream digest:
+  `9d542b49c39fd1540ca85a454354fb568fed3d9fabd5fb55e44188171d03875d` /
+  `85264842452459d3798d04036fefff4f432867aa80f109215ee2bebf5b8c51a2`
+
+Q011ll sealed inputは302 artifact／1,371 direct digestを持つため、Q011llの5 section digestを加えたQ011lm inputは
+303 artifact／1,376 direct digestでなければならない。
+
+### parent witnessとclassification-free partition inventory
+
+Q011cbのrow-major `5600 x 8` flatten orderでordinal 122、すなわちleft／right index `15 / 2`を選ぶ。上流証拠の
+再照合後、parent exact witnessを構成し、次を区間分類前に固定した。
+
+- parent class counts: `[[0,0,1,12],[5,4],[5],[2,5]]`
+- occupied class spec `(group,class,count)`:
+  `[(0,2,1),(0,3,12),(1,0,5),(1,1,4),(2,0,5),(3,0,2),(3,1,5)]`
+- occupied modulus class／singleton identifier count: `7 / 14`
+- singleton identifier order:
+  `[16:144,1:144,16:145,1:145,16:150,1:150,16:151,1:151,16:152,1:152,16:148,1:148,16:149,1:149]`
+- singleton identifier-order digest:
+  `c90ea70931e0bb67733cb9179566e166baf2a67756933394db785fb4f941276a`
+- parent singleton source counts: `[1,0,12,0,5,0,4,0,0,5,0,2,0,5]`
+- first／last compatible counts:
+  `[0,1,0,12,0,5,0,4,0,5,0,2,5,0] / [1,0,12,0,5,0,4,0,0,5,0,2,0,5]`
+- full／compatible allocation count: `84240 / 4658`
+- parent full／compatible allocation index: `84132 / 4657`
+- full／compatible allocation digest:
+  `7423fbc3d34ed7ff2ec9b8f0e4625fc7d4c46765d6ded4f38efaa4055c77f5e6` /
+  `ce62afe9470aafafa10e6f3ea290f436e3dd6e9cc643110c7e8237444d911b91`
+- occupied class interval digests:
+  `[8c192189449f149db3b3786d791a4fc262ff9ff3c89d831307cbab2faa614734,
+  53f9a306265ffcbfa83c64089e6418ab895037a3dad6a6fe85ba15dab18c8825,
+  e5b5ce415bac811880fc0ccaa97743c37d7e2510a679d48e627a6eaad2c05399,
+  2761f9c8d8e92b66d0c8a3e85affc78cda4e1ac98c2beeed7705224145571402,
+  39747a3474ada699010196f508500971e97451f666025e46bbbc68233ef1d86a,
+  aea681cab5d2a0c4176e23896038ecfc3433ebb73dfc9ecd3567248e73d989db,
+  66a6c269ac137479694f186884d49ca3a4d11070e69132bab822391a557075d8]`
+- occupied class-record digest:
+  `580edb97b9391f5ea5d76ab485c943d1f9d29d2cb7a62c3b758a812390786077`
+- parent wave／block-zero multiplicity: `4658 / 0`
+- parent intersection width／center-only relation／gap:
+  `0x1.1c7dbf75fdc11p-31` / `target_below_product` / `0x1.35c2a80046d1ep-28`
+- parent witness digest:
+  `28853d2bae3da7f92e2de62403df6f8173c6fe73488fb89c0a945199d6658977`
+- parent product／center-product／target／intersection digest:
+  `397947f9d56abd96d056a337ae0c51c952e207e45fd594541a8e5585b207bae2` /
+  `3e02aad1fc92a14a83a08ae49f2ca76700be337535cbd1b388a6fab6f95f97ce` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `2f5afdf92d3a3f27f4d2813e0e601e8d7eb79267d80a1b3ae7745b80953aa00d`
+
+全allocation数は`2 * 13 * 6 * 5 * 6 * 3 * 6 = 84240`である。以上はQ011cbのsealed flatten order、class
+membership、singleton interval、degree、Fourier block和だけから、各allocationのproduct intervalを評価せずに固定した。
+
+### exact contract、validity、停止規則
+
+各compatible allocationについて、singleton center-modulus lower／upperとfull-modulus upperをexact rationalで累乗し、
+product interval、center-product interval、targetとのintersection、center-only diagnosticを再構成する。exact relationと
+binary64 outward relationを排他的に分類し、全4,658 recordをdomain-separated framed digestへ含める。complex phaseと内部
+eigenvalue labelは使わない。
+
+validity gateは、303 artifact／1,376 digest、Q011llのphase resolution、flatten ordinal `122`、parent witness、7 occupied
+class／14 singleton、84,240／4,658 allocation、degree／output block closure、exact／outward enclosure、section／runner digest、
+protocol global復元を検査する。一つでも失敗すれば`inconclusive`とする。
+
+停止規則は排他的に次とする。
+
+1. 全4,658件がparentとexact同一かつ`overlap`なら`partition_inert_persistent`。次はQ011lnでこの4,658 wave allocationだけを
+   component-safe complex phaseで精密化する。
+2. 全4,658件がstrict separationなら`resolved_by_individual_partition`。次はQ011lnで登録順のordinal 123を監査する。
+3. intervalは変わるが`overlap`が残れば`partition_effective_but_persistent`。次はQ011lnで辞書順first remaining overlapだけを
+   component-safe complex phaseで精密化する。
+4. validity failureなら原因を修復し、科学的分類は行わない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 122、target
+`block=7;center=44`だけを扱う。ordinal 0--121を再評価せず、後続44,677 signature、他の31 parent overlap、他15 target、
+aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
+normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
