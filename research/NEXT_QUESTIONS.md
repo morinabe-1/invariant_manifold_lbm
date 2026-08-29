@@ -60286,6 +60286,55 @@ protocol global復元を検査する。一つでも失敗すれば`inconclusive`
 aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ls 封印結果（第126 witnessの個別分割はinterval-inert）
+
+Q011lrまでの309 artifact／1,403 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+flatten ordinal 125の7 positive-count modulus classを14 singleton identifierへ戻し、84,240 full allocationから
+output-block-7 compatibleな4,658件を登録順に再構成した。exact rational arithmeticとbinary64 outward enclosureの双方で
+全件を監査したところ、product／center-product／target／intersection／center diagnosticはすべて親recordと同一で、両算術の
+分類も全4,658件が`overlap`だった。従って停止規則どおりoutcomeを`partition_inert_persistent`とした。
+
+- selected flatten ordinal／left／right index: `125 / 15 / 5`
+- parent class counts: `[[0,0,1,12],[5,4],[5],[5,2]]`
+- occupied modulus class／singleton identifier count: `7 / 14`
+- parent singleton source counts: `[1,0,12,0,5,0,4,0,0,5,0,5,0,2]`
+- first／last compatible counts:
+  `[0,1,0,12,0,5,0,4,0,5,3,2,2,0] / [1,0,12,0,5,0,4,0,0,5,0,5,0,2]`
+- full／compatible allocation count: `84240 / 4658`
+- parent full／compatible allocation index: `84132 / 4657`
+- occupied-record／identifier-order digest:
+  `4f2cffe8f82c612d2b1ea279a506624d6d806962d535a28b040f5ba257bcadab` /
+  `c90ea70931e0bb67733cb9179566e166baf2a67756933394db785fb4f941276a`
+- full／compatible allocation digest:
+  `ceb217fd52560ac6954e5e33495964609dd320bf1f0279d08c0b5d3ff2b92ed5` /
+  `77562e25f39ced73e62709236a44d2ba6a5926cddc1a80cf013f9701e39be295`
+- exact／binary64 outward relation counts `product below / target below / overlap`: `0 / 0 / 4658` for both
+- all product／target／intersection／center parent-comparison flags: `true`
+- allocation-classification record digest:
+  `c56e656f6727483d4d7868472a516b586d5c2b8e96d38c5b171fd23e534165ae`
+- parent product／center-product／target／intersection digest:
+  `dc13f362c48ddcae9a938297f5903e6c994bcb4e092f649e8e9d2b8da5074087` /
+  `eeb9007faad9826186c7040b1a30a063720c8e6809e30c51f306a41cdbd36904` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `cfa952d441d5e492dc65acc1acefdd6b325c70b2d778a9e19ed53738070c0045`
+- input／partition-input／allocation-audit／result digest:
+  `202db185d654dd3d67498450ba6dc7531522804b4e76b6d83ce6d1e83ace28f2` /
+  `0fa3093f974915426ee316ade6b7627ea2e5b970ff197f6315b1a3873c9c3c57` /
+  `0db6c6716fe73e475cfbbbecbdbade072c43a3d8ce7b74233ea172df5f28da4c` /
+  `450d87d3d7247704d21b17e94042d805e204ef1d8fbeb5e29d5dba801035e603`
+- runner／artifact newline-normalized SHA-256:
+  `cc93efb571c54f943ebf5bfaa0169b46719054d6b795efead3f8b842dab8299f` /
+  `71fa8ec720dce79de86629a3aa38a061bdeddb1441bea5af2c46af50c262ad8c`
+- artifact size: `11,651,398 bytes / 189,436 lines`
+- verification: structural `3 passed, 4 deselected in 381.03s (0:06:21)`、sealed full
+  `7 passed in 2742.73s (0:45:42)`
+
+これはflatten ordinal 125だけのpartition診断である。ordinal 0--124の既存resolutionと認証範囲は不変で、後続44,674
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。complex phaseは
+本gateでは評価していない。Q011lsの4 section digestを加えたQ011lt inputは310 artifact／1,407 direct digestでなければ
+ならない。停止規則どおり、次はQ011ltで登録4,658 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
