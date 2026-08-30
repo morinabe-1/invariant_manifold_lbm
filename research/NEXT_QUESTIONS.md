@@ -63149,6 +63149,66 @@ phase allocationだけを扱う。ordinal 0--133を再評価せず、後続44,66
 全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011ml 封印結果（第135 witnessはcomponent-safe complex phaseで解消）
+
+Q011mkまでの328 artifact／1,488 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+3,386 individual allocationを1,219 label-free component-wave allocationへ射影し、480,480 full phase allocationから
+output-block-7 compatibleな26,644件を登録順に抽出した。全14 source variantはactiveであり、内部eigenvalue labelを
+仮定しないcomponent-union外包を用いた。全26,644件は個別modulus intervalでは`overlap`したままだったが、exact complex
+phaseでは全件strict separationした。未解決は0件、global minimum lower marginも正だったため、停止規則どおりoutcomeを
+`component_safe_phase_resolved`とした。
+
+- study validity／refinement outcome: `passed / component_safe_phase_resolved`
+- scientific／actual resonance outcome: `not_evaluated / not_established`
+- failed validity／diagnostic order: `[] / []`
+- selected flatten ordinal／target: `134 / block=7;center=44`
+- active／canonical source variant count: `14 / 14`
+- inactive zero-power identifiers: `none`
+- component totals／source power maxima:
+  `[1,12,9,5,6,1] / [1,1,12,12,9,9,9,9,5,5,6,6,1,1]`
+- individual／component wave allocation count: `3386 / 1219`
+- individual-to-component bridge fiber histogram: `{1:253,2:245,3:241,4:480}`
+- bridge-record／bridge-phase paired-record digest:
+  `36c8ea4ca01cd02a15b2c1b93763b9c1d562524636a1e61a3b2a53e890a97bbb` /
+  `ad363a2a0164ae0c37d7792c6de9b9c93b3948cb40f9d4d00eb963721304ab1d`
+- full／compatible phase allocation count: `480480 / 26644`
+- first／last compatible canonical counts:
+  `[0,1,0,12,0,0,0,9,0,5,4,2,1,0] / [1,0,12,0,9,0,0,0,0,5,0,6,0,1]`
+- full／compatible allocation digest:
+  `f43be2d813a857a55e4ddd05ef9986ec8076d8b1176a3d57160a47bb5e6f92a4` /
+  `ed50660390a6b9348db981fe05c48332acd26fd1e50e517bbef44e30148c0267`
+- component-wave projection count／digest:
+  `1219` / `fe5045bb868bcd167ad6d7ee5d2212dde9d8e36806c650cafaf015c62c485400`
+- phase-allocation fiber histogram: `{10:253,18:245,24:241,28:240,30:240}`
+- individual modulus relation counts `product below / target below / overlap`: `0 / 0 / 26644`
+- category counts `individual modulus / complex phase / unresolved`: `0 / 26644 / 0`
+- unique product-radius signature count: `10`
+- global minimum compatible index／counts／positive lower-margin hex:
+  `7329 / [0,1,10,2,0,6,0,3,0,5,5,1,1,0] / 0x1.a8f10a6dc88eep-6`
+- minimum-witness digest:
+  `d16bd69692ef992ecc675d954307992f26d80c0cacc57e0fa3a33053e4a3fd2c`
+- comparison stream count／digest:
+  `26644` / `2f12ff959e2fb2c8ef9ca30826fdd7b5d2426dfe6a453d996a14c1ddd99f2067`
+- input／phase-input／allocation／phase-comparison／result digest:
+  `f38f266d624c5bbc55dedb80e5fa529805bdae743042859e7349ac65c7cb4435` /
+  `c9595e31e81d0ac1a7a796210ac2e6b0b5cb3396d65705d3dbbc2480851be4c7` /
+  `f426a6ca8c7f1bff2c3a7887873dc9a9c3e14bacfb93653f3d6ccde2968470ae` /
+  `05923da75ea5f9927f0fdc4aee1f76fc9dfc009761f7b2cc9efa7c5e08cc2d57` /
+  `69c668ddaec7a808376ebd0a78068e7752dbe4ef0d7ca21aa8d692ec277860d4`
+- runner／artifact newline-normalized SHA-256:
+  `adebcfd821e43ee675705e09b3541b1b97e1706530b8fda63da8ea8025f84515` /
+  `999845337d3215a607e0cf97858f2e6bd2c04f123182e32883b8578565a40571`
+- artifact size: `7,026,685 bytes / 76,492 lines`
+- verification: structural `3 passed, 4 deselected in 701.40s (0:11:41)`、artifact generation exit `0`、sealed full
+  `7 passed in 2229.28s (0:37:09)`
+
+これはflatten ordinal 134だけのphase resolutionである。ordinal 0--133の既存resolutionと認証範囲は不変で、後続44,665
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。component-safe
+phase separationはactual resonanceの不在やdegree-34全分離を意味しない。Q011mlの5 section digestを加えたQ011mm inputは
+329 artifact／1,493 direct digestでなければならない。停止規則どおり、次はQ011mmで登録順のflatten ordinal 135を
+classification-free individual-disc partition auditへ進める。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
