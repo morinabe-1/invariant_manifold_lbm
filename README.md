@@ -15319,6 +15319,63 @@ all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 本gateでは評価していない。Q011mmの4 section digestを加えた次入力は330 artifact／1,497 direct digestでなければ
 ならない。停止規則どおり、次はQ011mnで登録1,940 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+### Q011mn second-family one-hundred-thirty-sixth-witness component-safe complex phase audit
+
+Q011mmまでの330 artifact／1,497 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+1,940 individual allocationを701 label-free component-wave allocationへ射影し、274,560 full phase allocationから
+output-block-7 compatibleな15,278件を登録順に抽出した。14 canonical source variantのうち先頭12をactiveとし、
+zero-power center-149 conjugate pairはcanonical recordに残してcountをゼロへ固定した。全15,278件は個別modulus intervalでは
+`overlap`したままだったが、exact complex phaseでは全件strict separationした。未解決は0件、global minimum lower marginも
+正だったため、停止規則どおりoutcomeを`component_safe_phase_resolved`とした。
+
+- selected flatten ordinal／target: `135 / block=7;center=44`
+- active／canonical source variant count: `12 / 14`
+- inactive zero-power identifiers: `[block=16;center=149,block=1;center=149]`
+- component totals／source power maxima:
+  `[1,12,9,5,7,0] / [1,1,12,12,9,9,9,9,5,5,7,7,0,0]`
+- individual／component wave allocation count: `1940 / 701`
+- individual-to-component bridge fiber histogram: `{1:147,2:142,3:139,4:273}`
+- bridge-record／bridge-phase paired-record digest:
+  `ac61c5dd49cd868704d15d88b591394517b9112c81282e25d2d97f56a523c4ee` /
+  `a878a8c9883614fea78eb330e7c169e2db9e7b823176e407e147ed589257b383`
+- full／compatible phase allocation count: `274560 / 15278`
+- first／last compatible canonical counts:
+  `[0,1,0,12,0,0,0,9,0,5,5,2,0,0] / [1,0,12,0,9,0,0,0,0,5,0,7,0,0]`
+- full／compatible allocation digest:
+  `8f25fde21d69f7a70c47fea48051de7cecd4c6c4df4feb02447f94e1a3a33fdf` /
+  `f15cf66157be6154f33b17239b49973d0216df023430c850ca9658443be0f4c1`
+- component-wave projection count／digest:
+  `701` / `57e5ba8af112a889fbc12a762be96ef54cfd3b9747a55ccf8f24e613bc1b3b13`
+- phase-allocation fiber histogram: `{10:147,18:142,24:139,28:137,30:136}`
+- individual modulus relation counts `product below / target below / overlap`: `0 / 0 / 15278`
+- category counts `individual modulus / complex phase / unresolved`: `0 / 15278 / 0`
+- unique product-radius signature count: `10`
+- global minimum compatible index／counts／positive lower-margin hex:
+  `4390 / [0,1,10,2,0,7,0,2,0,5,5,2,0,0] / 0x1.a8f10a6dc8a74p-6`
+- minimum-witness digest:
+  `cba06ceb15335a288a1ea6e0d24caf4f450a26e54b3b51f5e46e84b7526d6868`
+- comparison stream count／digest:
+  `15278` / `6a21a34db585086f4b689c0c1932d9d23b30535f11cb604e56d7e8f3e7952dd6`
+- input／phase-input／allocation／phase-comparison／result digest:
+  `a9c63865f7770397d2b61b6a57fea595a4254b39c19a93723051f7654b5a4e1b` /
+  `4b2c4c05ffe94f35810bb784c6a11eaa2f69b0ddd41350ff36b37f0a25ce9ea0` /
+  `8dd3d1110d024ce7a49ae811715f7e7fde9244db9f4aa897681274a5cd1c5ec1` /
+  `ab5d843c6628625abd07fcf367235ccadea590dba9578a861c34365f6ee60ba8` /
+  `dcb27eea4dca32b693cb985d054580d98328cc4f5a1bc916af5fad1a8a90579c`
+- runner／artifact newline-normalized SHA-256:
+  `43647809f759b5936eddc5ecbbff3eb7aecb742daf4a57374dad45d4105958f1` /
+  `5bc691436ff9d75f5e4b2af7af1850cefdb32b50147439ef6c4c022615171446`
+- artifact size: `6,508,024 bytes / 45,428 lines`
+- verification: structural `3 passed, 4 deselected in 696.44s (0:11:36)`、artifact generation exit `0`、sealed full
+  `7 passed in 2249.10s (0:37:29)`
+
+これはflatten ordinal 135だけのphase resolutionである。ordinal 0--134の既存resolutionと認証範囲は不変で、後続44,664
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。component-safe
+phase separationはactual resonanceの不在やdegree-34全分離を意味しない。Q011mnの5 section digestを加えた次入力は
+331 artifact／1,502 direct digestでなければならない。停止規則どおり、次はQ011moで登録順のflatten ordinal 136を
+classification-free individual-disc partition auditへ進める。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
