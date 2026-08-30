@@ -62840,6 +62840,67 @@ phase allocationだけを扱う。ordinal 0--132を再評価せず、後続44,66
 全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011mj 封印結果（第134 witnessはcomponent-safe complex phaseで解消）
+
+Q011miまでの326 artifact／1,479 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+4,347 individual allocationを1,560 label-free component-wave allocationへ射影し、617,760 full phase allocationから
+output-block-7 compatibleな34,182件を登録順に抽出した。全14 source variantはactiveであり、内部eigenvalue labelを仮定しない
+component-union外包を用いた。全34,182件は個別modulus intervalでは`overlap`したままだったが、exact complex phaseでは全件
+strict separationした。unresolvedは0、global minimum lower marginの符号はpositiveであり、停止規則どおりoutcomeを
+`component_safe_phase_resolved`とした。
+
+- study validity／refinement outcome: `passed / component_safe_phase_resolved`
+- scientific／actual resonance outcome: `not_evaluated / not_established`
+- failed validity／diagnostic order: `[] / []`
+- selected flatten ordinal／target: `133 / block=7;center=44`
+- active／canonical source variant count: `14 / 14`
+- inactive zero-power identifiers: `none`
+- component totals／source power maxima:
+  `[1,12,9,5,5,2] / [1,1,12,12,9,9,9,9,5,5,5,5,2,2]`
+- individual／component wave allocation count: `4347 / 1560`
+- individual-to-component bridge fiber histogram: `{1:321,2:311,3:308,4:620}`
+- bridge-record digest:
+  `7065b37c73a7e8d6accf1653741be5f000ef2ee43cc374839277d416deb6892e`
+- full／compatible phase allocation count: `617760 / 34182`
+- first／last compatible canonical counts:
+  `[0,1,0,12,0,0,0,9,0,5,3,2,2,0] / [1,0,12,0,9,0,0,0,0,5,0,5,0,2]`
+- full／compatible allocation digest:
+  `f10510f4adc0a9312fe811e40dc8e77dd9dc8c6772648811354126ee357d97b5` /
+  `8aba6550992412e6daf2ac6c87f629c78af35ea4da845fd901aef5b790f90468`
+- component-wave projection count／digest:
+  `1560` / `586a3a68a0356286ce954f126a41456b61ad29a0c1978639b8b8556a01bcee43`
+- phase-allocation fiber histogram: `{10:321,18:311,24:308,28:309,30:311}`
+- bridge-phase paired-record digest:
+  `b377a76133a4e0910d97589e3de3dfc0504b5249cc1812d19aa1855f0390463b`
+- individual modulus relation counts `product below / target below / overlap`: `0 / 0 / 34182`
+- category counts `individual modulus / complex phase / unresolved`: `0 / 34182 / 0`
+- unique product-radius signature count: `10`
+- global minimum compatible index／counts／positive lower-margin hex:
+  `9070 / [0,1,10,2,0,5,0,4,0,5,5,0,2,0] / 0x1.a8f10a6dc8768p-6`
+- minimum-witness digest:
+  `2b11f4fdc60ea6f0713250d7f9f39b488ad0feaa9fff007de6ac7a61313262cd`
+- comparison stream count／digest:
+  `34182` / `9ac2bc9f899dd851c48f05acfd20bd5b0607c50de227d0e8535158aeb27115d3`
+- input／phase-input／allocation／phase-comparison／result digest:
+  `a47f55457cef339f653bb2b7058ec23566203e7beccf1a7a620faecf91c70f95` /
+  `48b17fc571c0685fbef084b11bfb3bb5881ad3556ce6004c767466bc2e3eb59a` /
+  `c1647ab9f64434bcab941c7d972b4a3543b148e833067c5e87faab46d717e04a` /
+  `7826815d82884c63bdffaaea57dac605ec798b453d965371676dce2a1a750421` /
+  `0e97bb77f7cbf5e160de2ba5cd961ffa539abc7ee62be2fd703702ac5288a7ac`
+- runner／artifact newline-normalized SHA-256:
+  `4671e8ef56819817b18078ef40ec3f42d8efec944f23043dcfeb7ea439caf640` /
+  `8a958c3db2f434ba5b7054f46368af0a7bfddd71f972dea2583d21cb05ce6911`
+- artifact size: `7,307,204 bytes / 94,155 lines`
+- verification: structural `3 passed, 4 deselected in 678.20s (0:11:18)`、artifact generation exit `0`、sealed full
+  `7 passed in 2378.87s (0:39:38)`
+
+これはflatten ordinal 133だけのphase resolutionである。ordinal 0--132の既存resolutionと認証範囲は不変で、後続44,666
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。component-safe
+phase separationはactual resonanceの不在やdegree-34全分離を意味しない。Q011mjの5 section digestを加えたQ011mk inputは
+327 artifact／1,484 direct digestでなければならない。停止規則どおり、次はQ011mkで登録順のflatten ordinal 134を
+classification-free individual-disc partition auditへ進める。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
