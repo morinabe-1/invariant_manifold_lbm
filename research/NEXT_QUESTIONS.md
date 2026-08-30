@@ -63252,12 +63252,12 @@ Q011mlはordinal 0--134が既に解消済みであるという選択境界にだ
 - parent intersection width binary64 hex: `0x1.2c0f48ae737a2p-31`
 - parent center-only relation／gap hex: `target_below_product / 0x1.34c97f536c972p-28`
 - parent witness digest:
-  `cf61976289b52e2b9e3e3f20ff15a2afa62ddca05c7ce87132b56b2f77eedb13b`
+  `cf61976289b52e2b9e3e3f20ff15a2afa62ddca05c7ce87132b56b2f7eedb13b`
 - parent product／center-product／target／intersection digest:
   `5dac78e9a59f7f5b81205c79d8fea8c411bc9e1d577e34dae783438c27c8c558` /
-  `4c333c6875942b920b18d69738c768f3886edfc8d28df0bc67a0b45e31357f620` /
+  `4c33c6875942b920b18d69738c768f3886edfc8d28df0bc67a0b45e31357f620` /
   `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
-  `2cbe15a574309c3f530f405764a06a59dd0270a4819891e78e9099f3123ba4212`
+  `2cbe15a574309c3f530f405764a06a59d0270a4819891e78e9099f3123ba4212`
 
 positive-count classだけを次の順でsingletonへ分割する。
 
