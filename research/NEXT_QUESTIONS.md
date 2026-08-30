@@ -61973,6 +61973,112 @@ all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 section digestを加えたQ011me inputは321 artifact／1,457 direct digestでなければならない。停止規則どおり、次はQ011meで
 登録順のflatten ordinal 131をclassification-free individual-disc partition auditへ進める。
 
+## Q011me: second-family one-hundred-thirty-second-witness individual-disc partition — 事前登録
+
+### 問いとsealed input
+
+Q011mdでordinal 130がcomponent-safe complex phaseにより解消されたため、登録順の次、Q011cb flatten ordinal 131だけを
+個別source discへ戻す。親modulus classの共通区間がidentifier分割で変わるかをexact rational arithmeticとbinary64 outward
+enclosureの双方で監査する。complex phase productは本gateで評価しない。
+
+Q011mdまでの321 artifact／1,457 direct digest、ordinal 0--130の既存resolution、Q011md outcome
+`component_safe_phase_resolved`、scientific outcome `not_evaluated`、actual outcome `not_established`を固定する。
+
+- Q011md artifact／runner newline-normalized SHA-256:
+  `4a341618d2919ab06558c0f0f9d56a70e70f994b6209fae75dd25b5e90b24ee7` /
+  `424a0090da1a8f5a89c7c58b096da03ae3c8f1c302139f26a1b72d1fe4902463`
+- Q011md input／phase-input／allocation／phase-comparison／result digest:
+  `d7e8ab8e6d99a6278570fc5cf32874451f98547d1de68f3a3f728af1803a7f19` /
+  `5f5ffa4f2e0a1feca3e08641070efa175ec83546e8ab42c5cf5982d5a8078060` /
+  `73c26f6ab1b14238ed27e686dfb0e4312bb1d252841708d165989b6f94fa616c` /
+  `df7432a4c9f95c873d449dee5100dcffe5efbf8d4261f977fd7ae31d2399e0c9` /
+  `a49ab4d6252ca74d57bb37416798ddeadf3daafc7ae03bfd6dd63bbd4c5a0a1c`
+- Q011md comparison stream／minimum-witness digest:
+  `22f3c6621764f9709b32e66d9e9a6fdfd10fe54f5a841d3c81ddaeb4ca211735` /
+  `205aeac7dcb616fcd85ad87e4567d590f9b0b906422e3fd814ad9b05a08f1281`
+
+Q011md sealed inputは320 artifact／1,452 direct digestを持つため、Q011mdの5 section digestを加えたQ011me inputは
+321 artifact／1,457 direct digestでなければならない。
+
+### 登録parent witness
+
+Q011cbの`5600 x 8` flatten orderは全entryがactiveであり、ordinal 131は`(left,right)=(16,3)`である。これはQ011cbの
+登録順、degree、class counts、Fourier wave multiplicityだけから選び、ordinal 131の個別allocation分類は参照していない。
+Q011mdはordinal 0--130が既に解消済みであるという選択境界にだけ使う。
+
+- selected flatten ordinal／left／right index: `131 / 16 / 3`
+- target: `block=7;center=44`
+- parent class counts: `[[0,0,1,12],[6,3],[5],[3,4]]`
+- positive-count modulus class／singleton identifier count: `7 / 14`
+- zero-power canonical class／excluded singleton identifier count: `none / 0`
+- parent wave／block-zero multiplicity: `4827 / 0`
+- parent intersection width binary64 hex: `0x1.2c0f7fd10aae9p-31`
+- parent center-only relation／gap hex: `target_below_product / 0x1.34c988c2523ccp-28`
+- parent witness digest:
+  `9dd68c609de44b238c5e33439d98f3e26c08d8556be0cdae97e8099bd980dec7`
+- parent product／center-product／target／intersection digest:
+  `b38908e3d233f204f0757084b9a9ad382fe850f26d6b452c25ffa90793a01231` /
+  `c06dd4f8c5b1caeb1dd2cdaf5d594ec3519ba5be32270a11f2818daf2b2f835d` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `8691e47d0aa2cb7f8e517170f487a06886cbacfaa3d50e5e5d69a62e00be4102`
+
+positive-count classを次の順でsingletonへ分割する。
+
+`[16:144,1:144,16:145,1:145,16:150,1:150,16:151,1:151,16:152,1:152,16:148,1:148,16:149,1:149]`
+
+- parent singleton source counts: `[1,0,12,0,6,0,3,0,0,5,0,3,0,4]`
+- occupied common-interval digests:
+  `8c192189449f149db3b3786d791a4fc262ff9ff3c89d831307cbab2faa614734` /
+  `53f9a306265ffcbfa83c64089e6418ab895037a3dad6a6fe85ba15dab18c8825` /
+  `e5b5ce415bac811880fc0ccaa97743c37d7e2510a679d48e627a6eaad2c05399` /
+  `2761f9c8d8e92b66d0c8a3e85affc78cda4e1ac98c2beeed7705224145571402` /
+  `39747a3474ada699010196f508500971e97451f666025e46bbbc68233ef1d86a` /
+  `aea681cab5d2a0c4176e23896038ecfc3433ebb73dfc9ecd3567248e73d989db` /
+  `66a6c269ac137479694f186884d49ca3a4d11070e69132bab822391a557075d8`
+- occupied-record／identifier-order digest:
+  `b03c780bde6fc986d863a184299f940fa49744470898bedd97c8345417b182d1` /
+  `c90ea70931e0bb67733cb9179566e166baf2a67756933394db785fb4f941276a`
+
+### allocation inventory
+
+7 positive-count classの各2 block identifierへcountを分配する。全allocation数は
+`2 * 13 * 7 * 4 * 6 * 4 * 5 = 87,360`であり、degree 34とoutput block 7を満たす4,827件だけを登録順に監査する。
+zero-power classはないため、14 singleton identifierをallocation slot、digest、分類recordのすべてに含める。
+
+- first／last compatible counts:
+  `[0,1,0,12,0,6,0,3,0,5,1,2,4,0] / [1,0,12,0,6,0,3,0,0,5,0,3,0,4]`
+- parent full／compatible allocation index: `87240 / 4826`
+- full／compatible allocation digest:
+  `69a04b4c5cecb64cd8c51e2172682fe780b971bf00144f5146a89c60fdbdd567` /
+  `6e246ff763b8ab2b895333f527e136c092d2a06afb55277c8420e3ffef3abad0`
+
+以上の親recordとallocation inventoryはQ011cbのsealed class order、Q011mdまでの選択境界、exact source disc、degree、
+Fourier block和だけから固定した。4,827件のproduct／target intervalと分類は評価していない。
+
+### exact contract、validity、停止規則
+
+各compatible allocationについてsingleton discからcenter productとfull product intervalをexact rational arithmeticで
+再構成し、親product／center-product／target／intersection／center diagnosticと比較する。同じ判定をbinary64 outward
+enclosureでも行う。classification recordは全4,827件を登録順に保持し、domain-separated canonical digestへ含める。
+
+validity gateは、321 artifact／1,457 digest、Q011md phase resolution、ordinal `131 / 16 / 3`、親witness、7 positive
+class／14 identifier、zero-power exclusionなし、87,360／4,827 allocation、degree／output constraint、exact／outward排他分類、
+section／runner digest、protocol global復元を検査する。一つでも失敗すれば`inconclusive`とする。
+
+停止規則は排他的に次とする。
+
+1. 全4,827件がparentとexact同一かつ`overlap`なら`partition_inert_persistent`。次はQ011mfでこの4,827 wave allocationだけを
+   component-safe complex phase discへ展開する。
+2. 全4,827件がstrict separationなら`resolved_by_individual_partition`。次はQ011mfで登録順のordinal 132を監査する。
+3. intervalは変わるが`overlap`が残れば`partition_effective_but_persistent`。次はQ011mfで辞書順first remaining overlapだけを
+   精密化する。
+4. validity failureなら原因を修復し、科学的分類は行わない。
+
+本gateは固定17² repaired exact map、fixed conservation leaf、degree-34 aggregate `2340`、flatten ordinal 131、target
+`block=7;center=44`だけを扱う。ordinal 0--130を再評価せず、後続44,668 signature、他の31 parent overlap、他15 target、
+aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
+normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
