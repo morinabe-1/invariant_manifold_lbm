@@ -15880,6 +15880,65 @@ all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 本gateでは評価していない。Q011mwの4 section digestを加えた次入力は340 artifact／1,542 direct digestでなければ
 ならない。停止規則どおり、次はQ011mxで登録4,136 wave allocationだけをcomponent-safe complex phase discへ展開する。
 
+### Q011mx second-family one-hundred-forty-first-witness component-safe complex phase audit
+
+Q011mwまでの340 artifact／1,542 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+4,136 individual allocationを1,729 label-free component-wave allocationへ射影し、686,400 full phase allocationから
+output-block-7 compatibleな37,940件を登録順に抽出した。14 canonical source variantは全てactiveだった。全37,940件は
+個別modulus intervalでは`overlap`したままだったが、exact complex phaseでは全件strict separationした。未解決は0件、
+global minimum lower marginも正だったため、停止規則どおりoutcomeを`component_safe_phase_resolved`とした。
+
+- study validity／refinement outcome: `passed / component_safe_phase_resolved`
+- scientific／actual resonance outcome: `not_evaluated / not_established`
+- failed validity／diagnostic order: `[] / []`
+- selected flatten ordinal／target: `140 / block=7;center=44`
+- active／canonical source variant count: `14 / 14`
+- inactive zero-power identifiers: `[]`
+- component totals／source power maxima:
+  `[1,12,9,5,4,3] / [1,1,12,12,9,9,9,9,5,5,4,4,3,3]`
+- individual／component wave allocation count: `4136 / 1729`
+- individual-to-component bridge fiber histogram: `{1:354,2:343,3:1032}`
+- bridge-record／bridge-phase paired-record digest:
+  `a6a470fe22329577e1f5e024a1451463e86c7861723aa36f73a262893cdf1ae2` /
+  `8a0ef41744dc2edcaa0077489b9316a0c48f1fefa1fad3bea4219d5c4e203ae3`
+- full／compatible phase allocation count: `686400 / 37940`
+- first／last compatible canonical counts:
+  `[0,1,0,12,0,0,0,9,0,5,2,2,3,0] / [1,0,12,0,9,0,0,0,0,5,0,4,0,3]`
+- full／compatible allocation digest:
+  `99633d4c8608369e1bacd9c9a6f33b081e19a5940f75565de228ec79d2fd31a8` /
+  `eed7bab31c4a886071fced0492633f4b775de51afcc31c651d2614795f4d9a7b`
+- component-wave projection count／digest:
+  `1729` / `41078c7faa86d52a46b3aa2a648c91a6b466e354499833bb7ced8bf1d5a68e85`
+- phase-allocation fiber histogram: `{10:354,18:343,24:341,28:344,30:347}`
+- individual modulus relation counts `product below / target below / overlap`: `0 / 0 / 37940`
+- category counts `individual modulus / complex phase / unresolved`: `0 / 37940 / 0`
+- unique product-radius signature count: `10`
+- global minimum compatible index／counts／positive lower-margin hex:
+  `10003 / [0,1,10,2,0,6,0,3,0,5,4,0,2,1] / 0x1.a8f10a6dc86eap-6`
+- minimum-witness digest:
+  `dbcb91daec5078181ab5b178b925fd81e3308422eafd9a9f8e22e60a9ff0ab5c`
+- comparison stream count／digest:
+  `37940` / `b24f7909800326aeeaca65189acfb43eb9c4d4af6e3526a0442da1445080291d`
+- input／phase-input／allocation／phase-comparison／result digest:
+  `380205bc7b5abfed038ea6257da7647ae8621b3549aecb18e044f6c8850e6ba3` /
+  `de6b4489a600244745228c40ff2d4cd8777de51043acf8c540cba87bb7ef3e72` /
+  `9c8f6a0c1eee38dbdf98d776b7b11f63131d22a71515c7b13378442aed87a2a4` /
+  `85c1016314441012589312db8c1b9a03398a6d8cb5d0578293ebe236cb7fcf9e` /
+  `866015832427693accc170a6ba72068b8a133f2f5d36a2401785e5d5c70245a3`
+- runner／artifact newline-normalized SHA-256:
+  `71c2260e35fb438f3aaa4f101cb43095f9243a9404a7b4d6c8c1f1529d77ea34` /
+  `bbde5a1e1cfbb3a49bf7ab17f76fea01b7cab1ca9a69c628f1e54b30f805fffd`
+- artifact size: `7,824,563 bytes / 103,425 lines`
+- verification: structural `3 passed, 4 skipped in 1642.42s (0:27:22)`、artifact generation exit `0`、sealed full
+  `7 passed in 5042.62s (1:24:02)`
+
+これはflatten ordinal 140だけのphase resolutionである。ordinal 0--139の既存resolutionと認証範囲は不変で、後続44,659
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。component-safe
+phase separationはactual resonanceの不在やdegree-34全分離を意味しない。Q011mxの5 section digestを加えた次入力は
+341 artifact／1,547 direct digestでなければならない。停止規則どおり、次はQ011myで登録順のflatten ordinal 141を
+classification-free individual-disc partition auditへ進める。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
