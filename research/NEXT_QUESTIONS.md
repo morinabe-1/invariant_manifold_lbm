@@ -65104,12 +65104,15 @@ pair pool、Fourier wave matrixからこの1点だけを再構築し、他のsig
 - parent intersection width／center-only relation／gap:
   `0x1.3ba1326370525p-31 / target_below_product / 0x1.33d06728a4561p-28`
 - parent witness digest:
-  `f95df26507fe08c2b12eaeae031b90c8c6132cba3ae99b30a7ab68d46cd2b064`
+  `83af009104750219804fbf64787f4fefffd722b43d6d50310feda085a5f85124`
 - parent product／center-product／target／intersection digest:
-  `7ff6752fd0311ed2ef86474a0464d82ff4682e0fff3f4c9a6acfc64d92de14bf` /
+  `0d6d6b787b1b8ab8fb2c7ffefbec0a65cbc7511fc9e9f19a437493f534911db1` /
   `f3b5d66ea0cab421e8294a0e15528c7e140b85e1306b5c22fb3f0b39cdde7ca3` /
   `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
-  `a9789b750c454a7acf9b4e102589f6a4a737788c419cc45cc8ae7a8701fad111`
+  `4b2f1e93743ec82451accdbec4f6e89f66a347d925c6ad8ce850d932f22b3d0d`
+
+hybrid productの下端は個別modulus下端の積ではなく、登録済みblockwise式
+`max(0, center_lower - (full_upper - center_upper))`で再構成する。上記digestはこの式を用い、個別allocation分類前に固定した。
 
 ### classification-free singleton inventory
 
