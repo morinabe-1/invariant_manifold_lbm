@@ -65174,6 +65174,63 @@ witness、7 occupied class／14 singleton、67,392／3,727 inventory、親wave m
 aggregate全体、degree-34 nonresonance、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、
 normal attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011my 封印結果（第142 witnessの個別分割はinterval-inert）
+
+Q011mxまでの341 artifact／1,547 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+7 occupied modulus classを14 singleton identifierへ戻し、67,392 full allocationからdegree 34かつoutput-block-7
+compatibleな3,727件を登録順に抽出した。exact rational arithmeticとbinary64 outward enclosureの双方で、全3,727件の
+product／center-product／target／intersection intervalとcenter-only diagnosticは親recordとexactに同一で、全件
+`overlap`のままだった。したがって停止規則どおりoutcomeを`partition_inert_persistent`とした。
+
+- study validity／refinement outcome: `passed / partition_inert_persistent`
+- scientific／actual resonance outcome: `not_evaluated / not_established`
+- failed validity／diagnostic order: `[] / []`
+- selected flatten ordinal／left／right／target: `141 / 17 / 5 / block=7;center=44`
+- parent class counts: `[[0,0,1,12],[7,2],[5],[5,2]]`
+- occupied modulus class／singleton identifier count: `7 / 14`
+- parent singleton source counts: `[1,0,12,0,7,0,2,0,0,5,0,5,0,2]`
+- parent wave／block-zero multiplicity: `3727 / 0`
+- parent intersection width／center-only relation／gap:
+  `0x1.3ba1326370525p-31 / target_below_product / 0x1.33d06728a4561p-28`
+- full／compatible allocation count: `67392 / 3727`
+- first／last compatible counts:
+  `[0,1,0,12,0,7,0,2,0,5,3,2,2,0] / [1,0,12,0,7,0,2,0,0,5,0,5,0,2]`
+- parent full／compatible allocation index: `67284 / 3726`
+- full／compatible allocation digest:
+  `0a586c92c0bb513839669a21b03bcc4b455eb38a0b46773edd21b76541b532a0` /
+  `1cd6e040cc8ab5d391c41af38c017917a1a1d24122e2f90a6f3a34bb508e0a8d`
+- exact relation counts `product below / target below / overlap`: `0 / 0 / 3727`
+- binary64 outward relation counts `product below / target below / overlap`: `0 / 0 / 3727`
+- all product／target／intersection／center parent-comparison flags: `true`
+- allocation-classification record digest:
+  `3cbb6c04b9d2f92e4c9d2304f6b04b827f2c3f7b8e0e7b847d61df1808a4197b`
+- parent product／center-product／target／intersection digest:
+  `0d6d6b787b1b8ab8fb2c7ffefbec0a65cbc7511fc9e9f19a437493f534911db1` /
+  `f3b5d66ea0cab421e8294a0e15528c7e140b85e1306b5c22fb3f0b39cdde7ca3` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `4b2f1e93743ec82451accdbec4f6e89f66a347d925c6ad8ce850d932f22b3d0d`
+- input／partition-input／allocation-audit／result digest:
+  `1f6388f2cf9464415c66a4e790bb3a3203f8969ebc7a4c59d052f2aaea7391f6` /
+  `c4339c946932b961ab577e925e147c7b8e938efe274949a93a38f74d3f9e0a46` /
+  `6f77918b468c81cd43ff5522b1812f7923ed03942883ecc094915050100bddfb` /
+  `6015bee7c6f0b09e4d3cfee26b05f2332374c4016b7765e3fb175fb7efef5d74`
+- runner／artifact newline-normalized SHA-256:
+  `1f647a3540422cc79b661b5a0742b886495569150f590c12349417cf1cccd309` /
+  `6547b9c5f768bf417475e536be710ef4944d2bf4dc59d29b6cbd50433943cd47`
+- artifact size: `11,119,358 bytes / 155,254 lines`
+- verification: structural `3 passed, 4 deselected in 2170.41s (0:36:10)`、artifact generation exit `0`
+  （約`2:48:59`）、finite／strict-JSON／result-digest readback passed、artifact-backed result test bodies `4 passed`、
+  compileall／ruff／pytest collection passed
+
+これはflatten ordinal 141だけのpartition診断である。ordinal 0--140の既存resolutionと認証範囲は不変で、後続44,658
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。complex phaseは
+本gateでは評価していない。Q011myの4 section digestを加えたQ011mz inputは342 artifact／1,551 direct digestで
+なければならない。停止規則どおり、次はQ011mzで登録3,727 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
+計算時間の大半は、過去adapterの`_protocol_globals_are_restored()`が同じ祖先監査を重複再帰することに費やされた。
+Q011my runner／artifactは変更せず封印し、Q011mzではsealed prior resultを維持したまま祖先DAGを重複巡回しない。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
