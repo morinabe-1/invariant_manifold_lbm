@@ -16412,6 +16412,64 @@ phase separationはactual resonanceの不在やdegree-34全分離を意味しな
 349 artifact／1,583 direct digestでなければならない。停止規則どおり、次はQ011ngで登録順のflatten ordinal 145を
 classification-free individual-disc partition auditへ進める。
 
+### Q011ng second-family one-hundred-forty-sixth-witness individual-disc partition audit
+
+Q011nfまでの349 artifact／1,583 direct digestを再照合し、全8 validity gateと全4 diagnostic gateを通過した。
+7 occupied modulus classを14 singleton identifierへ戻し、39,312 full allocationからdegree 34かつoutput-block-7
+compatibleな2,185件を登録順に抽出した。全件が登録class total `[1,12,8,1,5,1,6]`を保ち、各classのsingleton pairが
+exactに同じcenter-modulus／modulus intervalを持つことを確認した後、共通exact product intervalを1回だけ評価した。
+
+全2,185 indexについて個別comparison recordを作り、exact rational arithmeticとbinary64 outward enclosureの双方で全件
+`overlap`だった。product／center-product／target／intersection intervalとcenter-only diagnosticも全件でparent recordと
+exactに同一だった。したがって停止規則どおりoutcomeを`partition_inert_persistent`とした。
+
+- study validity／refinement outcome: `passed / partition_inert_persistent`
+- scientific／actual resonance outcome: `not_evaluated / not_established`
+- failed validity／diagnostic order: `[] / []`
+- selected flatten ordinal／left／right／target: `145 / 18 / 1 / block=7;center=44`
+- parent class counts: `[[0,0,1,12],[8,1],[5],[1,6]]`
+- occupied modulus class／singleton identifier count: `7 / 14`
+- parent singleton source counts: `[1,0,12,0,8,0,1,0,0,5,0,1,0,6]`
+- registered class totals／exact product evaluation count: `[1,12,8,1,5,1,6] / 1`
+- parent wave／block-zero multiplicity: `2185 / 0`
+- parent intersection width／center-only relation／gap:
+  `0x1.4b3337a9b7485p-31 / target_below_product / 0x1.32d753b54effap-28`
+- full／compatible allocation count: `39312 / 2185`
+- first／last compatible counts:
+  `[0,1,0,12,0,8,0,1,0,5,0,1,5,1] / [1,0,12,0,8,0,1,0,0,5,0,1,0,6]`
+- parent full／compatible allocation index: `39228 / 2184`
+- full／compatible allocation digest:
+  `1753ef1215b076fbb1244089cc474c534c8ffad41cb73970dc9a2976681bcc97` /
+  `7d5ef7115319e11ebac05f47018cbb01bec876ae973f25f7cce2a9fa68886c13`
+- exact relation counts `product below / target below / overlap`: `0 / 0 / 2185`
+- binary64 outward relation counts `product below / target below / overlap`: `0 / 0 / 2185`
+- all product／target／intersection／center parent-comparison flags: `true`
+- allocation-classification record／framed-stream digest:
+  `bdbaec212fb694594e9f80ff9ec547e6e08cc3e2c46eda769e04079ebdeba1e2` /
+  `715b72b9c9531a922a20895f2cfad876fcaeb4b66320cd457118a4fa72610854`
+- parent product／center-product／target／intersection digest:
+  `561b4de56343bd91f4350bee180b9c01bced2aba94d6c9fdb1c38c68244941e5` /
+  `c0fc04dd362b67ed6d769fc506affa91c6a9db23314439b8eb6233fd96ad02e9` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `37e09da4203c22c03d6721d1b950a35649cb06fe8ed14d7d7a2d5e33936539af`
+- input／partition-input／allocation-audit／result digest:
+  `7c2191ea147124979d4829b52aafbcd258ff287daa07ec131d1e281d39093ff3` /
+  `b8fc3b817968cceda6b6b01c7790d9e0ee9b3b9ce30a7148759b38cc9431dd5d` /
+  `14c237c9423a69a7ce9183c4a6fc22f5c4c19e6bacc3e8d927a2a041238acd76` /
+  `9115ed320caee707e7a031c9af1d9dfdfdafdce45e0af4eb5255a39d2995c0aa`
+- runner／artifact newline-normalized SHA-256:
+  `f85868f2b298e460dba323d2ab09f19f06a91a47b3c4aac7be48e8f36616adde` /
+  `65ee148a713a9294ed0069c67f2894f15a10b32cd556d3ab2eba1376d52fe934`
+- artifact size: `9,567,822 bytes / 118,599 lines`
+- verification: structural `3 passed, 4 skipped in 142.01s (0:02:22)`、artifact generation exit `0`、sealed full
+  `7 passed in 263.60s (0:04:23)`、compileall／ruff／strict-JSON／result-digest readback passed
+
+これはflatten ordinal 145だけのpartition診断である。ordinal 0--144の既存resolutionと認証範囲は不変で、後続44,654
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。complex phaseは
+本gateでは評価していない。Q011ngの4 section digestを加えた次入力は350 artifact／1,587 direct digestでなければ
+ならない。停止規則どおり、次はQ011nhで登録2,185 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ### Q007p exact-manifold finite-tube normal attraction
 
 Q007oのanalytic radius \(\rho=10^{-18}\)とcorrection radius \(\tau\)を固定し、exact graph-gauge manifoldの周囲に
