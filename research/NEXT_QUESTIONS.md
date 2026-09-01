@@ -66571,6 +66571,67 @@ phase allocationだけを扱う。ordinal 0--144を再評価せず、後続44,65
 全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011nh 封印結果（第146 witnessをcomponent-safe complex phaseで解消）
+
+Q011ngまでの350 artifact／1,587 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+2,185 individual allocationを1,219 label-free component-wave allocationへ射影し、480,480 full phase allocationから
+output-block-7 compatibleな26,644件を登録順に抽出した。14 canonical source variantは全件activeであり、center-148
+共役pairも実際のfactor候補として評価した。全26,644件は個別modulus intervalでは`overlap`したままだったが、exact complex
+phaseでは全件strict separationした。未解決は0件、global minimum lower marginも正だったため、停止規則どおりoutcomeを
+`component_safe_phase_resolved`とした。
+
+- study validity／refinement outcome: `passed / component_safe_phase_resolved`
+- scientific／actual resonance outcome: `not_evaluated / not_established`
+- failed validity／diagnostic order: `[] / []`
+- selected flatten ordinal／target: `145 / block=7;center=44`
+- active／canonical source variant count: `14 / 14`
+- inactive zero-power identifiers: `[]`
+- component totals／source power maxima:
+  `[1,12,9,5,1,6] / [1,1,12,12,9,9,9,9,5,5,1,1,6,6]`
+- individual／component wave allocation count: `2185 / 1219`
+- individual-to-component bridge fiber histogram: `{1:253,2:966}`
+- bridge-record／bridge-phase paired-record digest:
+  `1510a71792258382a6be7c8a23ed983a27879d606d883baf888659e3adf953a7` /
+  `3fa87390738e30c3ebaf7cbff13f1332d54c494e508448ec588ae023eab6d04f`
+- full／compatible phase allocation count: `480480 / 26644`
+- first／last compatible canonical counts:
+  `[0,1,0,12,0,0,0,9,0,5,0,1,5,1] / [1,0,12,0,9,0,0,0,0,5,0,1,0,6]`
+- full／compatible allocation digest:
+  `dd1e3ddd0747d5ea814aae5901c3c3c31efc192ecbf080c3630cfa051357a80e` /
+  `36645d02cb16c1a1b0be833f6d0cb2e5ad6c70e3d13e7b47bcf7189c67e310c8`
+- component-wave projection count／digest:
+  `1219` / `a5a54526f4ca21d688c4f6797e8949caabc1614314dd7cb8aa499a1dea60b42a`
+- phase-allocation fiber histogram: `{10:253,18:245,24:241,28:240,30:240}`
+- individual modulus relation counts `product below / target below / overlap`: `0 / 0 / 26644`
+- category counts `individual modulus / complex phase / unresolved`: `0 / 26644 / 0`
+- unique product-radius signature count: `10`
+- global minimum compatible index／counts／positive lower-margin hex:
+  `7429 / [0,1,10,2,0,9,0,0,0,5,1,0,2,4] / 0x1.a8f10a6dc856fp-6`
+- minimum-witness digest:
+  `9d542b49c39fd1540ca85a454354fb568fed3d9fabd5fb55e44188171d03875d`
+- comparison stream count／digest:
+  `26644` / `65399715ceb4f18d03aed0036adee018ac9680f761f5f42996e0782480a18ca8`
+- input／phase-input／allocation／phase-comparison／result digest:
+  `35dfd4bb81d6de12d13e82c922a924ab46100255564c7feee3eef2e6d4e851e9` /
+  `9573ff2142198ac2ce572d9ed6be4efc26eacf871cfdde04c56c8b380ab586f6` /
+  `e8269a3660fb124ee53aaad623a4ad9a89256f02cdef2b7a45fa09a2e2d98a72` /
+  `995044ed2ca9851d75017a6c51dbe515fd1dfaa8b615457e5b6be77e35e55f3a` /
+  `feaeeaeec21a3277fbdf7347d64ca14b8c4839fba3a4cc8738b01502661499cf`
+- runner／artifact newline-normalized SHA-256:
+  `609dec025547a39e15c045045df214eb5d43105b395134c3ef864c311d87d1b6` /
+  `bae0da5210fbe056852b5045ed237d3a6975f93f85bfc8fb1f5256bf07bb10c4`
+- artifact size: `7,591,346 bytes / 77,250 lines`
+- verification: structural `3 passed, 4 skipped in 72.54s (0:01:12)`、artifact generation exit `0`
+  （exact runtime `128.83412009989843s`）、sealed full `7 passed in 163.62s (0:02:43)`、
+  compileall／ruff／strict-JSON／result-digest readback passed
+
+これはflatten ordinal 145だけのphase resolutionである。ordinal 0--144の既存resolutionと認証範囲は不変で、後続44,654
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。component-safe
+phase separationはactual resonanceの不在やdegree-34全分離を意味しない。Q011nhの5 section digestを加えたQ011ni inputは
+351 artifact／1,592 direct digestでなければならない。停止規則どおり、次はQ011niで登録順のflatten ordinal 146を
+classification-free individual-disc partition auditへ進める。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
