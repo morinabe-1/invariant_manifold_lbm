@@ -65637,6 +65637,70 @@ phase allocationだけを扱う。ordinal 0--141を再評価せず、後続44,65
 全体、degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal
 attraction、basin、他grid／force／wall、D3Q27を認証しない。
 
+### Q011nb 封印結果（第143 witnessをcomponent-safe complex phaseで解消）
+
+Q011naまでの344 artifact／1,560 direct digestを再照合し、全7 validity gateと全4 diagnostic gateを通過した。
+2,906 individual allocationを1,219 label-free component-wave allocationへ射影し、480,480 full phase allocationから
+output-block-7 compatibleな26,644件を登録順に抽出した。14 canonical source variantは全てactiveだった。全26,644件は
+個別modulus intervalでは`overlap`したままだったが、exact complex phaseでは全件strict separationした。未解決は0件、
+global minimum lower marginも正だったため、停止規則どおりoutcomeを`component_safe_phase_resolved`とした。
+
+- study validity／refinement outcome: `passed / component_safe_phase_resolved`
+- scientific／actual resonance outcome: `not_evaluated / not_established`
+- failed validity／diagnostic order: `[] / []`
+- selected flatten ordinal／target: `142 / block=7;center=44`
+- active／canonical source variant count: `14 / 14`
+- inactive zero-power identifiers: `[]`
+- component totals／source power maxima:
+  `[1,12,9,5,6,1] / [1,1,12,12,9,9,9,9,5,5,6,6,1,1]`
+- individual／component wave allocation count: `2906 / 1219`
+- individual-to-component bridge fiber histogram: `{1:253,2:245,3:721}`
+- bridge-record／bridge-phase paired-record digest:
+  `4aeda905a46b874f81f74e8a28de80aa8e60b3c98131b5d31ce8f8a040863285` /
+  `7da12eb0e3ef0337d28c89ec081351b3dcd70f28a20e1c5493c712f14377b9ce`
+- full／compatible phase allocation count: `480480 / 26644`
+- first／last compatible canonical counts:
+  `[0,1,0,12,0,0,0,9,0,5,4,2,1,0] / [1,0,12,0,9,0,0,0,0,5,0,6,0,1]`
+- full／compatible allocation digest:
+  `f43be2d813a857a55e4ddd05ef9986ec8076d8b1176a3d57160a47bb5e6f92a4` /
+  `ed50660390a6b9348db981fe05c48332acd26fd1e50e517bbef44e30148c0267`
+- component-wave projection count／digest:
+  `1219` / `fe5045bb868bcd167ad6d7ee5d2212dde9d8e36806c650cafaf015c62c485400`
+- phase-allocation fiber histogram: `{10:253,18:245,24:241,28:240,30:240}`
+- individual modulus relation counts `product below / target below / overlap`: `0 / 0 / 26644`
+- category counts `individual modulus / complex phase / unresolved`: `0 / 26644 / 0`
+- unique product-radius signature count: `10`
+- global minimum compatible index／counts／positive lower-margin hex:
+  `7329 / [0,1,10,2,0,6,0,3,0,5,5,1,1,0] / 0x1.a8f10a6dc88eep-6`
+- minimum-witness digest:
+  `d16bd69692ef992ecc675d954307992f26d80c0cacc57e0fa3a33053e4a3fd2c`
+- comparison stream count／digest:
+  `26644` / `9629a42bdb674440b63b30eebf63cad8292d29a719e4d708fcf65e4d9dfe5d92`
+- input／phase-input／allocation／phase-comparison／result digest:
+  `737fe6360a7162d2835ee775124d3e93a382995f852ad8fb8a6e32563430081c` /
+  `6ddad4b467381c1e18aa87799658ecc02b781bfdc334c0e43764363f6af1422c` /
+  `19e027f1f063e2d870ee30a69393541b5be42ffd8dada65611f1b04e20f28fac` /
+  `7982229b7d5f723abd54726f44dc11c2b40906024f2c707f1c986f9945ac7bd0` /
+  `e2f13738250d09743e494b78df7adecfbf1e5fb7d5addae1f5ac3d4179e223bb`
+- runner／artifact newline-normalized SHA-256:
+  `617e311a391283303dcf9edc41249a0f2db9e6064a4f07bf07b45205179835b8` /
+  `bb6e8adcc92740beb99a9ce42adcc7b0b5fed009aa0841ec5860987fe84ecb06`
+- artifact size: `7,434,146 bytes / 77,044 lines`
+- verification: structural `3 passed, 4 skipped in 66.04s (0:01:06)`、idempotence regression
+  `3 passed, 4 deselected in 65.14s (0:01:05)`、artifact generation exit `0`（exact runtime `117.08883430017158s`）、
+  sealed full `7 passed in 134.67s (0:02:14)`、compileall／ruff／strict-JSON／result-digest readback passed
+
+最初の封印後test runでは、Q011nbがQ011naのcache済みartifact辞書へ追記したため、同一processの2回目だけartifact countを
+誤認する非科学的な再入可能性バグを検出した。親辞書をcopyしてから追記するよう修正し、親343件／Q011nb入力344件が連続呼出しで
+不変である回帰テストを追加してからartifactを再生成した。複素積、category、minimum witness、comparison streamは修正前後で同一だった。
+
+これはflatten ordinal 142だけのphase resolutionである。ordinal 0--141の既存resolutionと認証範囲は不変で、後続44,657
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。component-safe
+phase separationはactual resonanceの不在やdegree-34全分離を意味しない。Q011nbの5 section digestを加えたQ011nc inputは
+345 artifact／1,565 direct digestでなければならない。停止規則どおり、次はQ011ncで登録順のflatten ordinal 143を
+classification-free individual-disc partition auditへ進める。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
