@@ -72,6 +72,12 @@ def test_q011nb_seals_q011na_and_all_prior_inputs(
     assert tuple(sealed["q011na"]["digests"]) == q011nb.Q011NA_DIGESTS
     assert sealed["q011na"]["artifact_sha256"] == q011nb.Q011NA_ARTIFACT_SHA256
     assert sealed["q011na"]["runner_sha256"] == q011nb.Q011NA_RUNNER_SHA256
+    repeated, repeated_artifacts = q011nb._sealed_input_audit()
+    parent, parent_artifacts = q011nb.q011na._sealed_input_audit()
+    assert repeated["passed"] and repeated["artifact_count"] == 344
+    assert len(repeated_artifacts) == 344
+    assert parent["passed"] and parent["artifact_count"] == 343
+    assert len(parent_artifacts) == 343
 
 
 def test_q011nb_reconstructs_component_safe_phase_discs(

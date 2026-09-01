@@ -139,6 +139,7 @@ def _protocol_globals_are_restored() -> bool:
 
 def _sealed_input_audit() -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:
     prior, artifacts = q011na._sealed_input_audit()
+    artifacts = dict(artifacts)
     artifact_path = _artifact_directory() / (
         "q011na_degree34_one_hundred_forty_third_individual_partition_audit.json"
     )
