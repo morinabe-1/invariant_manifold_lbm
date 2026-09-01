@@ -10,11 +10,43 @@ import research.q011na_degree34_one_hundred_forty_third_individual_partition_aud
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = None
-EXPECTED_REFINEMENT_OUTCOME: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "4d42c4ca5b633a215d9607a4db466e6b9892353078dc4635c56cad722182ca6f"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "838895008ae7a637c2e5a6b5c05267e06ce9808632d9420f68cd09a92d97c2d8"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "78cae3a8d1422662baf797932fe7277d5bd0705e734829bbaa1ebb3218065eb2",
+    "partition_input_digest_sha256": (
+        "062bc93da816ed43a08c57bb20780d1ecb8a614ea2877eb31014cfba3829253d"
+    ),
+    "allocation_audit_digest_sha256": (
+        "2c119fb511138f4ed05fc29d1b4a9e8a4c6b8bdd52311662f0ab258f85408053"
+    ),
+    "result_digest_sha256": "c34474308e0cbc175c0e783d207ee2a2f327a076508471831fb02c715ef03f7c",
+}
+EXPECTED_PARTITION_DIGESTS: dict[str, str] | None = {
+    "parent_product_interval_digest_sha256": (
+        "ad400250d7aa18a8099806bd79389c6a7fffe9b90b96b1e9efa4c8c15b721126"
+    ),
+    "parent_center_product_interval_digest_sha256": (
+        "3d91fd5d3f73cda6823a608ef055e4f01605d6f7774b082df42d65ea107380f1"
+    ),
+    "parent_target_interval_digest_sha256": (
+        "64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679"
+    ),
+    "parent_intersection_interval_digest_sha256": (
+        "1ee52152a95c51d3d2467d8f56b468b9607fa376057939561dc25fe74978325b"
+    ),
+    "allocation_classification_record_digest_sha256": (
+        "51c1191e84773e90f81f1bfb6b3d1ba4282f9876138830d4a01cf8743689dd0f"
+    ),
+    "allocation_classification_stream_digest_sha256": (
+        "9fc3783f159d4143789edf9bf553e0e1cc679d30ce3094d2a87ce0b0ab6fe368"
+    ),
+}
+EXPECTED_REFINEMENT_OUTCOME: str | None = "partition_inert_persistent"
 RESULT_EXPECTATIONS_FIXED = all(
     value is not None
     for value in (
