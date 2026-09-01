@@ -65802,6 +65802,64 @@ allocationだけを扱う。ordinal 0--142を再評価せず、後続44,656 sign
 degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basin、
 他grid／force／wall、D3Q27を認証しない。
 
+### Q011nc 封印結果（第144 witnessの個別分割はinterval-inert）
+
+Q011nbまでの345 artifact／1,565 direct digestを再照合し、全8 validity gateと全4 diagnostic gateを通過した。
+6 occupied modulus classを12 singleton identifierへ戻し、29,952 full allocationからdegree 34かつoutput-block-7
+compatibleな1,667件を登録順に抽出した。全件が登録class total `[1,12,7,2,5,7]`を保ち、各classのsingleton pairが
+exactに同じcenter-modulus／modulus intervalを持つことを確認した後、共通exact product intervalを1回だけ評価した。
+
+全1,667 indexについて個別comparison recordを作り、exact rational arithmeticとbinary64 outward enclosureの双方で全件
+`overlap`だった。product／center-product／target／intersection intervalとcenter-only diagnosticも全件でparent recordと
+exactに同一だった。したがって停止規則どおりoutcomeを`partition_inert_persistent`とした。
+
+- study validity／refinement outcome: `passed / partition_inert_persistent`
+- scientific／actual resonance outcome: `not_evaluated / not_established`
+- failed validity／diagnostic order: `[] / []`
+- selected flatten ordinal／left／right／target: `143 / 17 / 7 / block=7;center=44`
+- parent class counts: `[[0,0,1,12],[7,2],[5],[7,0]]`
+- occupied modulus class／singleton identifier count: `6 / 12`
+- parent singleton source counts: `[1,0,12,0,7,0,2,0,0,5,0,7]`
+- registered class totals／exact product evaluation count: `[1,12,7,2,5,7] / 1`
+- parent wave／block-zero multiplicity: `1667 / 0`
+- parent intersection width／center-only relation／gap:
+  `0x1.3ba116d224b81p-31 / target_below_product / 0x1.33d0627131834p-28`
+- full／compatible allocation count: `29952 / 1667`
+- first／last compatible counts:
+  `[0,1,0,12,0,7,0,2,0,5,5,2] / [1,0,12,0,7,0,2,0,0,5,0,7]`
+- parent full／compatible allocation index: `29904 / 1666`
+- full／compatible allocation digest:
+  `ebcc79dbd8ebb5cabf420bc5103c6e312082fa35434545f64e44b3051d32f8fe` /
+  `ff5ba3af2f7d4fed204710a09078e1c07a56155bab984392263eafe8c0cae173`
+- exact relation counts `product below / target below / overlap`: `0 / 0 / 1667`
+- binary64 outward relation counts `product below / target below / overlap`: `0 / 0 / 1667`
+- all product／target／intersection／center parent-comparison flags: `true`
+- allocation-classification record／framed-stream digest:
+  `2dd8dc7b6b0f3a302532c2119b5455df0def114f7bedf29581d6f184d5dfbae4` /
+  `8205bed0d4fe324087e12288801f675e41d770ab8f061cb86304f3e709a47b21`
+- parent product／center-product／target／intersection digest:
+  `8cac361587f274489eda6f25cbe50e48c2a6d1a6f7b8376e89951754d258f59d` /
+  `899745fbf92a682e7ecea24114cd8bc9bc71bd202f2d0cd4266cc34f4913bd11` /
+  `64553c5af9c572adf0305dda9679e26c0ec8e165e8ab707f8902b4e227b35679` /
+  `0944367ccfef97e7548c7dd30e9abf86f510af3fb1d5df7d6c5212ddd934cc6b`
+- input／partition-input／allocation-audit／result digest:
+  `f7205a5ce7ec5abb5f23f52813eda4ad75c5bf715e0865e2692f90490025cd04` /
+  `2fc7595c74b4b8d05f033e507d0145161abb37be6df976b1782d2cec670c9f8e` /
+  `3de4c3c1652c6e8bea9137ce23c019d61bd6dc7df4d458af1d4d42526ff4fb80` /
+  `22cfee445dd217c7e0e6cba13475def33200982c4d0a27ac56e147cbe3d26811`
+- runner／artifact newline-normalized SHA-256:
+  `80db0141e28cbd3c9505492b6308799e01df5e35fbfe721abedbe9ad99ac977e` /
+  `2916eef4fbb78f6dffe5c5189023b54e27c8e93c90036142e71f1a2227469aeb`
+- artifact size: `8,537,191 bytes / 88,549 lines`
+- verification: structural `3 passed, 4 skipped in 134.45s (0:02:14)`、artifact generation exit `0`、sealed full
+  `7 passed in 227.81s (0:03:47)`、compileall／ruff／strict-JSON／result-digest readback passed
+
+これはflatten ordinal 143だけのpartition診断である。ordinal 0--142の既存resolutionと認証範囲は不変で、後続44,656
+signature、他の31 parent overlap、他15 target、aggregate `2340`全体、degree-34 nonresonance、actual resonance、
+all-order nonresonance、higher smoothness、SSM existence／uniqueness、normal attraction、basinは未判定である。complex phaseは
+本gateでは評価していない。Q011ncの4 section digestを加えたQ011nd inputは346 artifact／1,569 direct digestで
+なければならない。停止規則どおり、次はQ011ndで登録1,667 wave allocationだけをcomponent-safe complex phase discへ展開する。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
