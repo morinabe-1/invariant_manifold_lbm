@@ -10,16 +10,40 @@ import research.q011nh_degree34_one_hundred_forty_sixth_component_safe_phase_dis
 from ttim_lbm.provenance import source_metadata
 from ttim_lbm.rational_spectrum import _file_sha256
 
-EXPECTED_RUNNER_SHA256: str | None = None
-EXPECTED_ARTIFACT_SHA256: str | None = None
-EXPECTED_SECTION_DIGESTS: dict[str, str] | None = None
-EXPECTED_STREAM_DIGEST: str | None = None
-EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = None
-EXPECTED_MINIMUM_INDEX: int | None = None
-EXPECTED_MINIMUM_COUNTS: list[int] | None = None
-EXPECTED_MINIMUM_MARGIN_HEX: str | None = None
-EXPECTED_CATEGORY_COUNTS: dict[str, int] | None = None
-EXPECTED_REFINEMENT_OUTCOME: str | None = None
+EXPECTED_RUNNER_SHA256: str | None = (
+    "609dec025547a39e15c045045df214eb5d43105b395134c3ef864c311d87d1b6"
+)
+EXPECTED_ARTIFACT_SHA256: str | None = (
+    "bae0da5210fbe056852b5045ed237d3a6975f93f85bfc8fb1f5256bf07bb10c4"
+)
+EXPECTED_SECTION_DIGESTS: dict[str, str] | None = {
+    "input_digest_sha256": "35dfd4bb81d6de12d13e82c922a924ab46100255564c7feee3eef2e6d4e851e9",
+    "phase_input_digest_sha256": (
+        "9573ff2142198ac2ce572d9ed6be4efc26eacf871cfdde04c56c8b380ab586f6"
+    ),
+    "allocation_digest_sha256": (
+        "e8269a3660fb124ee53aaad623a4ad9a89256f02cdef2b7a45fa09a2e2d98a72"
+    ),
+    "phase_comparison_digest_sha256": (
+        "995044ed2ca9851d75017a6c51dbe515fd1dfaa8b615457e5b6be77e35e55f3a"
+    ),
+    "result_digest_sha256": "feaeeaeec21a3277fbdf7347d64ca14b8c4839fba3a4cc8738b01502661499cf",
+}
+EXPECTED_STREAM_DIGEST: str | None = (
+    "65399715ceb4f18d03aed0036adee018ac9680f761f5f42996e0782480a18ca8"
+)
+EXPECTED_MINIMUM_WITNESS_DIGEST: str | None = (
+    "9d542b49c39fd1540ca85a454354fb568fed3d9fabd5fb55e44188171d03875d"
+)
+EXPECTED_MINIMUM_INDEX: int | None = 7_429
+EXPECTED_MINIMUM_COUNTS: list[int] | None = [0, 1, 10, 2, 0, 9, 0, 0, 0, 5, 1, 0, 2, 4]
+EXPECTED_MINIMUM_MARGIN_HEX: str | None = "0x1.a8f10a6dc856fp-6"
+EXPECTED_CATEGORY_COUNTS: dict[str, int] | None = {
+    "individual_modulus_separation": 0,
+    "complex_phase_separation": 26_644,
+    "unresolved_product_disk_overlap": 0,
+}
+EXPECTED_REFINEMENT_OUTCOME: str | None = "component_safe_phase_resolved"
 RESULT_EXPECTATIONS_FIXED = all(
     value is not None
     for value in (
