@@ -18,7 +18,11 @@ H1（実評価・固定葉構造）、H2（全48立方対称性）、H3（独立
 特殊24方向/格子のfitは未解像でnullを保持した。全準備配列は三格子×worker/mainの全6組で元fiberと一致した。
 主計算PID 29360／handle 89608とworker PID 33368／handle 81813はいずれもexit 0で終了済み。再pollしない。
 Q012g1は親入力封印後、診断器と71人工テストを完了した。旧record/fieldの一致を先行条件に、exact保存量と総和・減算・平均の丸めを分離する。
-実装を封印して別processの48 case・GMP逐項和を先行し、終了後に主192 caseの整数総和を実行する。実LBM診断とH1判定はまだ未実施。
+実装をcommit `ba59086`で封印し、別processの48 case・GMP逐項和を開始した。17³/33³は各16 caseを終了し保存後監査も通過した。
+65³は継続中。worker PID 12416／handle 41088、開始2026-09-07 23:46:07 JST。元Q012gの終了済みprocessとは別である。
+次の継続ではこの同じprocess/handleを確認し、timeoutで重複起動しない。出力は`artifacts/q012g1_d3q27_conservation_replay.json`。
+全三格子のworker終了・全数監査・封印の後に主192 caseの整数総和を実行する。H1判定とprimaryはまだ未実施。
+全worker用の独立artifact監査テストは作成途中で、最終worker SHAは未確定。未完了workerを合格扱いしない。
 H4の3方向とH5の欠陥比不達は別の次数別診断に残す。
 Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/Q012d1の棄却を保持する。
 3DのSSM存在・連続球の実用半径やTTの優位性は未認証である。
