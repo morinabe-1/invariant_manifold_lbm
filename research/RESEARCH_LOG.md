@@ -8,6 +8,23 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012g3 保存記録と元判定を再監査する処理を実装
+
+helperの小格子検証をcommit `8d9d65c`に保存した後、方向別の保存記録監査を追加した。
+全960 case・worker192 caseの元座標、両degree/arm・全係数列・Gram/交差項・全vector比較を照合し、
+元record・field・defect、holdout exact fieldの対応を検査する。内部座標とP9絶対vector誤差の証跡も追加した。
+H2/H3の判定式は元recordのnormを注入する回帰で全件検査し、元H4の3不合格と、欠陥比の81不合格・37悪化を保持した。
+注入値は判定式を検査するためのものであり、新しいP9の実LBM予測結果ではない。
+負のGram推定値や整合したH1/独立照合の不達を合格や0へ変えず、保存値の整合とvalidity/科学的gateを分離した。
+
+初回は人工fixtureのNumPy scalar/真偽値をPython boolと`is`比較したため7件失敗した。
+fixtureのfloorを親と同じPython floatにし、境界テストの期待真偽値をboolへ揃えると51件が通過した。
+科学的計算や閾値を緩めた修正ではない。さらに負のGram・整合した照合不達・vector精度・境界の4件を追加した。
+新規100件、Q012g2の77件、Q012g1 main監査10件、計187テストが警告error化で全件通過した（90.54秒）。
+Ruff・整形・compileallも通過した。先行の封印source/artifactは変更していない。
+現在は物理計算なし。runner・source封印接続・全数readback・逐次worker/mainは次の実装に残る。
+実格子17³/33³/65³は未実行であり、Q012g3のH1/H2/H3は未判定、元Q012gの棄却も保持する。
+
 ## 2026-09-08: Q012g3 次数別helperを小格子で検証
 
 登録commit `8260488`の後に新規helperと専用45テストを実装した。

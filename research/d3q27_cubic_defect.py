@@ -385,6 +385,7 @@ def build_profile(model, direction, degree, *, arm="primary"):
         "direction": np.asarray(direction).tolist(),
         "state_path": [metadata(v) for v in fields],
         "reduced_path": metadata(reduced),
+        "reduced_path_values": reduced.tolist(),
         "compact_composition_waves": quadratic.array_metadata(composition.waves),
         "compact_composition": metadata(composition.coefficients),
         "local": local.audit,
@@ -522,6 +523,7 @@ def sample_diagnostics(profile, parameter, original_fields):
         "reconstruction_errors": errors,
         "H1_reconstruction_passed": all(v <= floor for v in errors.values()),
         "P9_norm": norm(values["P9"]),
+        "P9_vector_difference_norm": p9_error,
         "P9_vector_relative_error": p9_error / raw_norm if raw_norm > 0 else None,
         "P9_vector_passed": bool(raw_norm > floor and p9_error <= 1e-3 * raw_norm),
         "tail_norm": norm(values["tail"]),
@@ -531,5 +533,6 @@ def sample_diagnostics(profile, parameter, original_fields):
         "weighted_gram": weighted.tolist(),
         "signed_cross_terms": cross.tolist(),
         "composition_realification": realification,
+        "reconstructed_reduced_coordinates": values["R_path"].tolist(),
         "reconstruction_fields": {k: metadata(v) for k, v in values.items()},
     }

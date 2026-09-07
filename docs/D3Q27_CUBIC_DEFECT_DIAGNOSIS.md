@@ -194,3 +194,30 @@ full-vector照合はdegree 2/3で36/37比較を行い、末尾C9成分の改変�
 誤factor・G3欠落・C0削除、不正入力・overflowを含む45テストが通過した。
 Q012g2の77回帰テストと合わせた122件は警告error化で全件通過した（17.90秒）。Ruffと整形も通過した。
 この時点ではrunner未実装、実格子17³/33³/65³は未実行であり、H1/H2/H3の実LBMでの成立はまだ判定しない。
+
+### 保存記録の監査 2026-09-08 — 実行管理は未実装
+
+`research/d3q27_defect_evidence.py`と専用55テストを追加した。
+元と同じ乱数方向から全960 case・worker192 caseのscheduleを作り、元aとの全件一致を検査する。
+方向ごとの両degree・全振幅、C0–C9・局所商/残りの全係数metadata、全Gramと交差項、
+両armの全vector比較36/37件、元record/field/defectとholdout exact fieldの対応を監査する。
+内部経路の小さな係数配列と再構成座標も保存して再計算し、P9 vector誤差の絶対値を追加保存する。
+追加は証跡であり、既存helperの係数計算・判定上限・物理mapを変更していない。
+
+元記録のnormを予測欄へ注入する**判定式だけの回帰**では、全192 generic fitの再現条件が通り、
+元H4の65³ index 34/51/52の3不合格は不合格のままとなる。
+全192 holdoutも元の欠陥比の81不合格・37悪化を保持し、legacy保存量を含む元H5 compositeと分離した。
+これはP9による実LBM予測ではない。判定式の検査値を正式artifactや科学的結果へ転用しない。
+
+末尾case・degree・C9比較・tail・cross term・exact field・閾値改変、欠測・重複・順序変更・非有限値を検知する。
+一方で、整合したH1不成立や独立vector不一致は記録破損と混同せず、対応gateをfalseに保つ。
+負のGram推定norm²も負のまま保存し、Gram validityを不成立にする。
+`validate_direction`の成功は保存値の内部整合だけを意味する。
+source封印・fresh物理field照合・worker/main対応・全格子coverageと、`direction_gates`のvalidityを別途満たす必要がある。
+workerとmainの同一性比較には`primary_record`を用い、独立armの丸め差をprimary hashへ偽装しない。
+実行費用はこの科学的比較recordの外側へ保存する。
+
+新規45＋55、先行Q012g2の77、Q012g1 main保存後監査10、全187件が警告error化で通過した（90.54秒）。
+Ruff・整形・compileallも通過した。実格子はまだ開始していない。
+次は既存の入力/source封印を接続したrunner、fresh物理fieldの診断、例外/途中結果の保存、全数readback、
+worker完了後のmain開始を実装・検証し、正式なsource封印を行ってから実行する。
