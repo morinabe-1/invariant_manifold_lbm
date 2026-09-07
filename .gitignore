@@ -6,3 +6,4 @@ __pycache__/
 .venv/
 build/
 dist/
+research/artifacts/.q012g3.execution.lock

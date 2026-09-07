@@ -8,6 +8,21 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012g3 実行器を接続し、実行前検証を開始
+
+前goal turnは`8260488`、`8d9d65c`、`e12a334`で登録・実装・監査をcommitしたためprogressである。
+開始時のworktreeはclean、Python計算processは0件で、既存計算を再起動していない。
+元recordのfresh一致、全field/defectのshape/dtype/bytes/hash一致、holdout exact集計を接続した。
+方向別排他的保存、全childと集計の再読、旧判定を保持したH1/H2/H3、独立worker/mainの全primary record一致を実装した。
+入力/sourceの終了時再照合、OS lock、上書き拒否、途中の例外と明示的な非有限tagも実装した。
+メモリ確認は全15.72 GiB中free約5.57 GiB。主方式のsample終了後、照合に使わないtail用一時配列だけを解放する。
+独立vector比較に必要なv/r・写像・合成・C0–C9は保持し、独立sampleの元fieldも再生成する。
+人工7³/9³/11³・2座標で全経路と失敗・改変・同時実行拒否を通し、初回34テストは245.51秒で通過した。
+既存の実入力chain監査も通過したが、登録実格子の新規診断ではない。
+replayと出力のdirectory不一致を開始前に拒否する検査を加え、35件＋先行177件、計212件が279.46秒で通過した。
+Ruff・整形・compileall・CLI helpも通過した。source sealを設計書へ固定し、commitしてから独立192 caseを開始する。
+実格子17³/33³/65³は未開始で、元Q012gの棄却とQ012g3未判定を保持する。
+
 ## 2026-09-08: Q012g3 保存記録と元判定を再監査する処理を実装
 
 helperの小格子検証をcommit `8d9d65c`に保存した後、方向別の保存記録監査を追加した。

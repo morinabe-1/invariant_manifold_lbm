@@ -221,3 +221,37 @@ workerとmainの同一性比較には`primary_record`を用い、独立armの丸
 Ruff・整形・compileallも通過した。実格子はまだ開始していない。
 次は既存の入力/source封印を接続したrunner、fresh物理fieldの診断、例外/途中結果の保存、全数readback、
 worker完了後のmain開始を実装・検証し、正式なsource封印を行ってから実行する。
+
+### 実行器と実行前source封印 2026-09-08
+
+`research/q012g3_d3q27_cubic_defect.py`を実装した。初回の実行器34テストは245.51秒で通過した。
+7³/9³/11³・2実座標の人工fixtureでworker/mainを全経路実行し、保存物の全方向・末尾case・
+tail/係数比較・source・集計・判定・replayの改変を検査した。正式17³/33³/65³の結果ではない。
+実データへの開始条件は、元Q012g・Q012g1・Q012g2の封印、Q012f2を含む全入力chain、
+Q012g1全192 caseの保存後監査・全GMP replay、Q012g2の全人工値の再計算である。
+実行時に既存の小格子/保存監査100件とQ012g2の77件、全177テストも再実行し、終了code・件数・test sourceを保存する。
+
+主方式の全振幅を評価した後に、以後の照合に使わないtail係数の一時配列だけを解放する。
+続いて独立方式を作り、v/r・写像・合成・C0–C9の全vector比較を行ってから主方式の大配列を解放する。
+独立方式の全振幅では元fieldを再生成・再照合する。演算や係数を変更してメモリを減らす方法ではない。
+開始前のavailable physical memoryは約5.57 GiBだった。全caseの物理場を蓄積しない。
+
+正式実行はCLIを使用し、OSが保持する非blocking lockでworker/mainの並行実行を拒否する。
+lock fileの存在は生存証拠とせず、process/実行handleを確認する。終了時・例外時のlock解放は別processで検査した。
+全出力は新規pathへの排他的書込みとし、既存の全結果・途中結果を上書きしない。
+各方向を完了/失敗時に保存し、失敗位置とそれまでの元record・field・係数を保持する。
+非有限値は0やnullで埋めず、明示的なexceptional-value tagにする。失敗した方向はvalidityを通さない。
+workerとmainの保存物は同じdirectoryに置き、入力とsourceは実行前後・全保存後に再照合する。
+mainは独立192 caseの完了、全保存後監査、両方式のH1・全vector比較、別processを満たしてから開始する。
+旧方向のscientific primary recordは全て厳密一致させる。費用はその比較recordから分離する。
+
+実行前のnormalized SHA256:
+
+- profile helper: `884339bef18159b1edd2940193e134733f75c28881840c4edebef58ccf0fa005`
+- evidence helper: `b283282df457c96116c3aef324c61a29251e7ae4fec1aec04751e945c4517c76`
+- runner: `3906850e43cbb67ac9dec44ec3eb4c3ed09d921d0345bacaa0410385d8da7b62`
+- 全scientific sourceと対照test sourceのdigest: `c7001e41d3ef7541d5f2c863a7fba714f95b0dc7a78f434555fdcf3f09f5e38a`
+
+最終35＋177、全212件は警告error化で通過した（279.46秒）。Ruff・整形・compileall・CLI helpも通過した。
+本節のcommit時点では実格子診断は未開始である。
+commit後、独立192 caseを開始し、完了・再読確認後にのみmain960 caseへ進む。
