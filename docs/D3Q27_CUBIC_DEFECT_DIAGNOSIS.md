@@ -182,3 +182,15 @@ H1成立でH2/H3不達なら、次数別項・有理式の残り・丸めの寄�
 
 実装予定は`research/d3q27_cubic_defect.py`、`research/q012g3_d3q27_cubic_defect.py`と専用テスト。
 本書作成時点で新規実装・実LBM診断は未実施。正式実行前に新規sourceを封印し、worker→mainを逐次実行する。
+
+### 実装進捗 2026-09-08 — 実格子の判定ではない
+
+登録commit `8260488`の後に`d3q27_cubic_defect.py`を実装した。
+定数項から九次までの写像・合成・欠陥、全Gram、有理式の残りと再構成差を保持する。
+independent armは次数全組合せ、逆数の多項係数和、Hessian bilinear式を使い、primaryの合成・商・畳み込みを呼ばない。
+population単位の商の計算は、全tensorによる既存商と小配列でbitwise一致を確認した。
+full-vector照合はdegree 2/3で36/37比較を行い、末尾C9成分の改変も検出する。
+非立方2×3×4局所場、複素共役の2実座標・7³人工chart、非単位density・非零momentum定数、
+誤factor・G3欠落・C0削除、不正入力・overflowを含む45テストが通過した。
+Q012g2の77回帰テストと合わせた122件は警告error化で全件通過した（17.90秒）。Ruffと整形も通過した。
+この時点ではrunner未実装、実格子17³/33³/65³は未実行であり、H1/H2/H3の実LBMでの成立はまだ判定しない。
