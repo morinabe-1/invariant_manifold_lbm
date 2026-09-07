@@ -82,3 +82,91 @@ validity不通過ならinconclusiveとする。個別armやgridの成功を総�
 acceptedなら次はQ012f2で候補の全三格子・全三次係数を検証する。rejectedなら残った機構を
 全失敗familyで調べ、単一ordinalごとの無期限監査へ細分化しない。Q012gは全数通過まで保留する。
 三次評価器・有限振幅改善・SSM存在・grid-uniform半径・TT優位性はこの診断では認証しない。
+
+## 2026-09-07 封印結果: passed / rejected
+
+事前登録`cbbceca`の規則から共役閉包324 triple/格子を得た。三格子972 triple、
+二入力×三solverの5,832 armをすべて計算した。validity10項目は通過したが、H1/H2/H3は
+全て不合格だった。元Q012fと今回Q012f1の棄却を保持し、Q012f2の全三次再検証はまだ開始しない。
+
+### 65³の全324組における比較
+
+| 入力 | solver | solve不合格 | 最大float64外部残差 | 最大128-bit外部残差 | H3最大scaled共役誤差 |
+|---|---|---:|---:|---:|---:|
+| raw | SVD | 272 | 1.08311e-9 | 1.07727e-9 | 5.39076e-6 |
+| paired | SVD | 270 | 1.07282e-9 | 1.07634e-9 | 5.39073e-6 |
+| raw | Sylvester | 278 | 1.54150e-9 | 1.54942e-9 | 3.86831e-6 |
+| paired | Sylvester | 278 | 1.55806e-9 | 1.55388e-9 | 3.86832e-6 |
+| raw | refined | 20 | 1.33578e-10 | 3.24517e-11 | 3.32858e-8 |
+| paired | refined | 17 | 1.16995e-10 | 3.07901e-11 | 8.80803e-11 |
+
+外部残差上限は`1e-10`、共役誤差上限は`1e-8`のまま。solverをSylvesterへ置き換えるだけでは
+十分でなく、128-bit残差を使う固定3回の補正でsolve誤差が大きく減った。
+それでもrawの20件、pairedの17件は元float64残差gateを落とした。この37 armは32個の
+異なるtripleに属し、全てshear/shear/shearである。refinedの全件がfull残差`1e-9`と
+構造基準を通り、残ったsolve不合格は外部float64残差だけだった。
+raw/refinedの20件は元272失敗に含まれるため、H1の「全件修復」は棄却する。
+
+共役対称化だけではH3の大きい誤差はほぼ変わらない。精度補正後にはrawの`3.32858e-8`から
+pairedの`8.80803e-11`へ減る。65³のこの診断では入力の実構造とsolve精度の双方が効いている。
+ただし、その影響を全波数・全次数・別のmapへ一般化しない。
+
+### 格子依存と仮説の棄却理由
+
+17³/33³では両入力・全solverが選択全324組のsolve基準を通った。
+17³のH3最大共役誤差はraw/refined `1.38091e-11`、paired/refined `5.06254e-13`。
+33³ではraw/SVDの`7.88162e-8`がraw/refinedだけで`5.10031e-10`へ減り、基準を通った。
+paired/refinedでは`3.48116e-12`だった。従って「raw/refinedでは33³/65³の両方で
+共役不合格が残る」としたH2は棄却される。65³での入力誤差の影響まで否定した結果ではない。
+
+paired入力の全9,243二次pairは元方程式・固定葉・graph gaugeを通った。
+二次外部残差の最大値は17³/33³/65³で`4.32497e-13 / 2.94257e-12 / 2.27536e-11`。
+H2の相対変更量は`4.68333e-13 / 6.18419e-12 / 1.02115e-10`で、元の入力配列は変更していない。
+paired/refinedの共役gateも三格子で通ったが、65³の17 solve残差失敗があるためH3も棄却する。
+
+### 独立性と残る数値上の問題
+
+raw/paired×三格子の全1,157,520三次forcing monomialを構築した。rawの全配列hashはQ012fと一致。
+各条件8方向、計48方向の独立物理forcing比較は全通過し、pairedの最大相対誤差は
+17³/33³/65³で`3.99021e-15 / 1.01795e-14 / 2.80199e-14`だった。
+raw/pairedでA/Dは同一、同一入力の三solverでFも同一であることを保存した。
+
+別プロセスでは共役閉包32 triple/格子、計96 triple・576 armの全二次再構築・数値・配列hashが一致。
+refinedの192件の128/192-bit残差照合も通過した。全972 tripleの別プロセス再実行ではない。
+新規33・既存関連268テスト、ruff、compileallは通過した。
+
+同じ丸め済みA/D/Fと同じrefined解を128-bitで再評価すると、65³の両入力・全324組の
+外部残差が`1e-10`以内になる。これはfloat64残差の積和での打消しも影響する証拠だが、
+128-bit数値照合だけで厳密な包含や真のLBM係数の誤差を認証したとはいわない。
+元のfloat64 gateを事後的に128-bit判定へ置き換えて合格扱いしない。
+
+### 次問 Q012f1a（未事前登録）
+
+残差評価そのものの丸めと、保存した係数の真の方程式誤差を切り分ける。
+65³の選択全324組・両入力のrefined解を固定し、そのfloat64行列・解を二進有理数へ
+厳密に写して残差を計算する。37 arm／32 tripleの不合格を成功対とまとめて調べる。
+必要なら残差normの二乗で比較し、平方根丸めや閾値緩和を避ける。
+これは元mapの厳密symbolや非共鳴・SSM存在の認証とは区別する。
+評価方法を修正する候補は別gateとして事前登録し、Q012f/Q012f1の元判定を保持する。
+Q012f2の全三次preflightとQ012g評価器は、この診断を経るまで保留する。
+
+### Seals
+
+textはnewline-normalized SHA-256、gzipはraw byte SHA-256。
+
+- helper: `1ab54c33c02be15cbe666d866fad2004d4aa2189bac97f381ea9f7bc9b82e1e0`
+- runner: `89542c265eb476955a34708ecc0d6841bd0be8fbcb57b205fab5a626ce40819d`
+- main artifact: `5bc0db745c8846196feec53bcbacddc069b8b257e5bcb89503b7b41e44c403a7`
+- cycle digest: `2137462ad6c2a67c6310dfc428b9c92ae06db85129b23c2c21adae715206c5f1`
+- selection digest: `bac3236df15f0e1f6128e3f75c742982777680696cffc0695ab1243dccf24c8b`
+- replay artifact: `a8ebe503de90093706c41368e30afbc9d899f0f94b4c2b0b67891e19d24df960`
+- replay evidence digest: `37c33c7559b81adadcee112512ab564376a89225a8737c009a1a714698dd7592`
+- 17³ gzip (342,976 bytes): `26f31f9d756376a79e2c1c6da7da23f898089a139256aac24962ed3326093a08`
+- 33³ gzip (348,764 bytes): `61deea7a7259134a4020cff70ef38cc995dc06e0d23548a023bc20f79135c255`
+- 65³ gzip (362,274 bytes): `2ffe761a16ac5a23c2aaa6c6ad55eca65dbd2161a7016feef3aa13921bf8a806`
+
+各324行の展開record digest:
+
+- 17³: `70f0cb700febf23fa0385a847f644851b88e1087f41d16e93051b2e2924a4102`
+- 33³: `f1f9aac49270a97fcdda75791fee3bc6966fd3409b8a4eccfd3d4c640e323033`
+- 65³: `503d7fc69215cb5a11e8b8cb0d2361452d95678aeea3ba2bed0bd43017e94c03`

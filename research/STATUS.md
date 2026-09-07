@@ -1,11 +1,12 @@
 # 研究の到達点 — 2026-09-07
 
-現在はD3Q27の全104実座標・三格子の三次homological preflightまで実行した。
-写像は四階filter付き`eta=.02, omega=1.5`。Q012fは**passed / rejected**。
-全246,480 tripleを計算し、17³は通過、33³/65³は三次応答の共役対称性が不合格。
-65³は272件のsolve残差も不合格だが、全件のrank・condition上限は通過した。
-独立forcing・全数保存監査・別プロセスの固定48 triple再現が通った有効な棄却である。
-次はQ012f1で、二次入力の微小な共役誤差の伝播と三次solve精度を切り分ける。
+現在はD3Q27の全104実座標を保ち、三次係数の入力と精度をQ012f1で切り分けた。
+写像は四階filter付き`eta=.02, omega=1.5`。Q012f1は**passed / rejected**。
+三格子・選択972組の二入力×三solverを比較し、65³の残差不合格は精度補正で272→20件、
+入力の共役対称化も加えると17件になった。H3共役gateは両修正で三格子とも通過するが、
+33³は精度補正だけでも通るため「両格子とも入力修正が必要」の仮説は棄却した。
+残った残差不合格も128-bit評価では基準内。次のQ012f1aで同じ行列・解を二進有理数として
+厳密評価し、元のfloat64 gateと区別する。全数再検証Q012f2とQ012g評価器は保留する。
 Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/Q012d1の棄却を保持する。
 3DのSSM存在・連続球の実用半径やTTの優位性は未認証である。
 
@@ -25,7 +26,8 @@ Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/
 | D3Q27対照の次数別診断 | Q012d1 passed/rejected。560 sampleを別プロセスで全再現。元振幅域のP3 vector誤差最大3.38%で2%基準を棄却、P4誤差最大7.09e-6。元傾きはC3で再現、小振幅80本の次数は約2 |
 | D3Q27有限振幅 | Q012e accepted。224 case・8,416 iterate。選択値.032を独立holdoutで確認。.128は絶対誤差基準内だが半減基準30/32件不達。振幅1以上は初期正値性不合格 |
 | D3Q27三次preflight | Q012f passed/rejected。全246,480 triple・578,760 column、17³は通過。33³/65³のH3共役誤差は7.88e-8／5.39e-6で上限1e-8を超過。65³は272件の残差も不合格 |
-| 次の主課題 | Q012f1: 二次入力の実構造と三次solve精度の原因切り分け。全104座標・三格子・元閾値を保ち、元の棄却を上書きしない。Q012g評価器は保留 |
+| D3Q27入力／精度診断 | Q012f1 passed/rejected。5,832 arm、全二次pair・全三次forcingは検証済み。65³のpaired/refined共役誤差8.80803e-11、外部残差は17件不合格。固定96 tripleを別プロセス照合 |
+| 次の主課題 | Q012f1a: 丸め済み行列・refined解の厳密二進有理数残差。65³の全324組・両入力を固定し、37 arm／32 tripleの不合格をまとめて監査。元判定・閾値を保持 |
 | さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
@@ -46,6 +48,8 @@ Q012eの同一初期状態比較、有限sampleの使用範囲と絶対精度の
 [有限振幅結果](../docs/D3Q27_PRACTICAL_AMPLITUDE.md)に保存した。
 Q012fの全数coverage、二種類の不合格、例外時SVD代替と再現範囲は
 [三次preflight結果](../docs/D3Q27_CUBIC_PREFLIGHT.md)に保存した。
+Q012f1の二入力×三solver、残った不合格と残差評価の精度差は
+[入力／精度診断](../docs/D3Q27_CUBIC_PRECISION_DIAGNOSIS.md)に保存した。
 
 再現コマンド（repository root）:
 
@@ -68,12 +72,16 @@ python -m research.q012e_d3q27_amplitude --output research/replays/q012e_amplitu
 python -m pytest tests/test_d3q27_cubic.py tests/test_d3q27_cubic_artifact.py -q
 python -m research.q012f_d3q27_cubic_preflight --worker-output research/replays/q012f_worker.json
 python -m research.q012f_d3q27_cubic_preflight --output research/replays/q012f_cubic.json --replay research/replays/q012f_worker.json
+python -m pytest tests/test_d3q27_cubic_precision.py tests/test_d3q27_cubic_precision_artifact.py -q
+python -m research.q012f1_d3q27_cubic_precision --worker-output research/replays/q012f1_worker.json
+python -m research.q012f1_d3q27_cubic_precision --output research/replays/q012f1_diagnosis.json --replay research/replays/q012f1_worker.json
 ```
 
 成果物再生成では時刻が変わるためファイル全体hashは変わる。科学的な再現照合では、
-helper／runnerのsource hashと数値結果を比較する。Q012e/Q012fのcycleにはworkerのprocess ID・
+helper／runnerのsource hashと数値結果を比較する。Q012e/Q012f/Q012f1のcycleにはworkerのprocess ID・
 metadata込みhashが含まれるため、caseごとの数値・係数配列hashを照合する。
 Q012fの全tripleはgzip JSONLに保存し、圧縮fileのbyte hashと展開record列のdigestを区別する。
+Q012f1も同形式で選択全324組/格子の6 armを保存する。全三次tripleの保存とは区別する。
 metadataを含まない旧experimentについては、そのresult digestも使用できる。
 封印した既存artifactを上書きしないよう、再実行は別の`research/replays/`へ出力する。
 元Q012c1を再実行すると数値障害を記録して終了code 1となる。これは事前登録された

@@ -1,15 +1,16 @@
 # TT parameterized invariant-manifold LBM
 
-2026-09-07: **Q012fの全三次preflightは三格子共通の通過を棄却**。
-104実座標・四階filter付き修正map `eta=.02, omega=1.5`を保ち、17³/33³/65³の
-全246,480 block triple・578,760対称columnを計算した。17³は全基準を通過したが、
-33³/65³は三次応答の共役対称性を落とし、65³は272件でsolve残差も上限を超えた。
-全件のrank・condition基準、独立forcing、別プロセスの固定48 triple再現は通過。
-条件数が上限内でも残差と実構造の保証にはならない。結果は`passed / rejected`として保存する。
-次のQ012f1は、二次入力の微小な共役誤差の伝播と三次solve精度を分離する原因診断。
-元の棄却や閾値は変更せず、17³だけを採って三格子成功とはしない。
+2026-09-07: **Q012f1で三次係数の入力誤差・solve精度・残差評価を切り分けた**。
+104実座標・四階filter付き修正map `eta=.02, omega=1.5`を保ち、三格子の選択972組を
+二入力×三solver、計5,832 armで比較した。65³の元272残差不合格は精度補正だけで20件、
+共役対称化も加えると17件へ減ったが、ゼロにはならずQ012f1は`passed / rejected`。
+65³のH3共役誤差は両修正で`8.80803e-11`と基準内になった。一方、33³は精度補正だけでも通り、
+両格子で入力修正が必要とした仮説は棄却した。全972組の別プロセス再実行ではなく、固定96組を照合した。
+残った17件も128-bit残差評価では上限内だが、元float64判定を変更して成功扱いしない。
+次のQ012f1aは同じ行列・解の二進有理数残差監査。全三次preflight Q012f2は保留する。
 3DのSSM存在・連続球の実用半径・TT優位性は未認証。自然Fourier sparse baselineを維持する。
-[現在の到達点](research/STATUS.md)と[三次preflight結果](docs/D3Q27_CUBIC_PREFLIGHT.md)を参照。
+[現在の到達点](research/STATUS.md)と[入力／精度の診断結果](docs/D3Q27_CUBIC_PRECISION_DIAGNOSIS.md)を参照。
+元の全246,480組の棄却は[三次preflight結果](docs/D3Q27_CUBIC_PREFLIGHT.md)に保持する。
 Q012eの17³・二次モデルの登録振幅`.008, .032`の有限sample受理は
 [有限振幅結果](docs/D3Q27_PRACTICAL_AMPLITUDE.md)に保持する。
 [Q012d1の次数別診断と棄却](docs/D3Q27_NEGATIVE_CONTROL_DIAGNOSIS.md)も保存する。
