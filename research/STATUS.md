@@ -1,4 +1,4 @@
-# 研究の到達点 — 2026-09-07
+# 研究の到達点 — 2026-09-08
 
 Q012f2は全三格子・全246,480 block triple・578,760 columnで`passed / accepted`。
 全104実座標、四階filter付き`eta=.02, omega=1.5`、固定保存量葉、paired入力・固定3回refinementを保持した。
@@ -18,11 +18,11 @@ H1（実評価・固定葉構造）、H2（全48立方対称性）、H3（独立
 特殊24方向/格子のfitは未解像でnullを保持した。全準備配列は三格子×worker/mainの全6組で元fiberと一致した。
 主計算PID 29360／handle 89608とworker PID 33368／handle 81813はいずれもexit 0で終了済み。再pollしない。
 Q012g1は親入力封印後、診断器と71人工テストを完了した。旧record/fieldの一致を先行条件に、exact保存量と総和・減算・平均の丸めを分離する。
-実装をcommit `ba59086`で封印し、別processの48 case・GMP逐項和を開始した。17³/33³は各16 caseを終了し保存後監査も通過した。
-65³は継続中。worker PID 12416／handle 41088、開始2026-09-07 23:46:07 JST。元Q012gの終了済みprocessとは別である。
-次の継続ではこの同じprocess/handleを確認し、timeoutで重複起動しない。出力は`artifacts/q012g1_d3q27_conservation_replay.json`。
-全三格子のworker終了・全数監査・封印の後に主192 caseの整数総和を実行する。H1判定とprimaryはまだ未実施。
-全worker用の独立artifact監査テストは作成途中で、最終worker SHAは未確定。未完了workerを合格扱いしない。
+実装をcommit `ba59086`で封印した独立GMP workerは、2026-09-08 00:08:34 JSTに全三格子・48 caseを完了した。
+PID 12416／handle 41088はexit 0で終了済み。再pollしない。全288 field・1,152成分・12対照の保存後監査と計81テストが通過した。
+この部分集合の元超過64成分は、exactな場の誤差と総和だけを交換した誤差では全て元上限以内だった。
+65³では基準平衡の集計項が主要因。全192 caseの判定に一般化せず、次はprimaryの整数方式を実行して全48 caseのexact一致も要求する。
+worker出力`artifacts/q012g1_d3q27_conservation_replay.json`を設計書・監査テストのSHAで封印した。Q012g1のH1と総合判定は保留。
 H4の3方向とH5の欠陥比不達は別の次数別診断に残す。
 Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/Q012d1の棄却を保持する。
 3DのSSM存在・連続球の実用半径やTTの優位性は未認証である。
@@ -47,7 +47,7 @@ Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/
 | D3Q27厳密残差診断 | Q012f1a accepted。65³の全648 caseのexact残差を独立整数演算で全数照合。元37件の不合格は残差積和の丸めで説明され、全3種のexact gateは違反0。元判定は保持 |
 | D3Q27修正三次preflight | Q012f2 accepted。全246,480組・578,760列のexact残差・full式・共役が通過。独立972組、全行/全fiberの保存後監査も通過。元float64の17件は保持 |
 | D3Q27三次W/R | Q012g passed/rejected。全1,248 case、12 validity、独立144 case、53監査テスト通過。H1–H3成立、H4の65³3方向とH5の有限振幅/質量葉が不達 |
-| 次の主課題 | Q012g1: 追加入力封印済み、実装・人工対照検証へ。同じ全192 holdout caseの保存量をexactに分解する。元判定・閾値・mapは保持。次数/欠陥比は別問 |
+| 次の主課題 | Q012g1: 独立48 caseを終了・全数監査。元超過64成分は集計だけの交換で全て基準内。次は主192 caseの整数方式と全48 caseの一致を検証。元判定・閾値・mapは保持 |
 | さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
