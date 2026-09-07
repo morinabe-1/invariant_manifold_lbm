@@ -1,14 +1,16 @@
 # TT parameterized invariant-manifold LBM
 
-2026-09-07: **Q012dでD3Q27の104実座標quadratic W/Rを構築、総合判定は棄却**。
-対象はleading viscosityを保つ四階filter付き修正map、17³・`eta=.02, omega=1.5`。
-全3,081 pairの二次係数、実座標化、独立Hessian、48立方操作、本体64方向の残差次数2→3、
-48 trajectoryの改善・正値・保存を通した。一方、R2を落とした負の対照は4/8方向で
-傾き上限2.1を超え、最大2.13720だった。従ってQ012dは`passed / rejected`として保持する。
-次のQ012d1で対照の三次以上の寄与を診断する。振幅や閾値を変えて元判定を受理にしない。
+2026-09-07: **Q012d1でD3Q27の負の対照を次数別に診断**。
+17³・104実座標、四階filter付き修正map `eta=.02, omega=1.5`の二次W/Rは変更せず、
+元のR2なし対照の傾き超過を、式から求めた三次項で再現した。
+一方、三次だけでvector誤差2%以内という条件は40 sampleで失敗し、Q012d1は`passed / rejected`。
+元振幅域で四次まで含めた方向別予測の最大誤差は7.09e-6、小振幅診断80本の傾きは約2だった。
+2プロセスで全560 sampleが一致した。元Q012dの棄却は変更しない。
+次のQ012eでは四次寄与と有理式tailから実用振幅・高次化の必要性を評価する。
 3DのSSM存在・実用半径・TT優位性は未認証。自然Fourier sparse baselineを維持する。
-[現在の到達点](research/STATUS.md)と[二次chart検証結果](docs/D3Q27_QUADRATIC_CHART.md)を参照。
-Q012c1aでの3格子prequalification受理、無変更BGKのQ012c棄却、元Q012c1判定保留は変更しない。
+[現在の到達点](research/STATUS.md)と[次数別診断結果](docs/D3Q27_NEGATIVE_CONTROL_DIAGNOSIS.md)を参照。
+本体の残差次数2→3・48 trajectoryの検証は[Q012d](docs/D3Q27_QUADRATIC_CHART.md)に保存。
+Q012c1aの3格子prequalification受理、無変更BGKの棄却、元SVD不収束も別結果として保持する。
 
 このリポジトリは、既存の `tci` 系統とは独立した研究プロジェクトである。完全な
 LBM 1-step 写像

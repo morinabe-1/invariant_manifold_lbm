@@ -1,10 +1,10 @@
 # 研究の到達点 — 2026-09-07
 
-現在はD3Q27への段階的拡張に入った。Q012dで四階filter付き修正map
-`eta=.02, omega=1.5`の17³・104実座標の二次W/Rを構築した。
-本体の残差次数2→3、48 trajectory、保存量・立方対称性は通過したが、
-R2を落とした対照の傾きが4/8方向で登録上限を超えたため、総合判定は**rejected**。
-次はこの対照の原因診断。3DのSSM存在・実用半径やTTの優位性は未認証である。
+現在はD3Q27の17³・104実座標の二次W/Rを検証している。写像は四階filter付き
+`eta=.02, omega=1.5`。Q012dのR2なし対照の傾き超過は、Q012d1で独立に導いた三次項から再現した。
+ただし、三次だけでvector誤差2%以内という条件は40 sampleで失敗し、Q012d1も**rejected**。
+元振幅域で四次まで入れた方向別予測は全点で通過した。元Q012dの棄却も保持する。
+次は四次寄与・有理式tailと実用振幅。3DのSSM存在・実用半径やTTの優位性は未認証である。
 
 | 課題 | 到達点と次の行動 |
 |---|---|
@@ -19,7 +19,8 @@ R2を落とした対照の傾きが4/8方向で登録上限を超えたため、
 | 元D3Q27 damping試行 | Q012c1 failed/inconclusiveを保持。4/108条件後に108×108 SVDが不収束 |
 | D3Q27 damping修正検証 | Q012c1a accepted。108条件・332,748 pair。例外時SVD代替1件、四階型9/16 familyが3格子で通過。選択eta=.02, omega=1.5 |
 | D3Q27二次W/R | Q012d passed/rejected。全3,081 pair・実座標化・独立Hessian・64方向の次数・48 trajectoryは通過。R2なし対照の4方向が傾き上限2.1を超過 |
-| 次の主課題 | Q012d1: 負の対照のベクトル分解と振幅依存。Q012dの棄却・閾値を保持し、三次以上の寄与かを別gateで診断 |
+| D3Q27対照の次数別診断 | Q012d1 passed/rejected。560 sampleを別プロセスで全再現。元振幅域のP3 vector誤差最大3.38%で2%基準を棄却、P4誤差最大7.09e-6。元傾きはC3で再現、小振幅80本の次数は約2 |
+| 次の主課題 | Q012e: 必要と判明した四次寄与と有理式tailから、同じ二次chartの実用振幅・高次化の必要性を評価。元の2棄却を変更しない |
 | さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
@@ -34,6 +35,8 @@ Q012c1aの独立再計算・選択候補・不採用の残差失敗は
 [SVD代替と全条件結果](../docs/D3Q27_SVD_FALLBACK.md)を参照。
 Q012dの構築・7仮説通過・負の対照失敗と次の診断は
 [実座標quadratic chart結果](../docs/D3Q27_QUADRATIC_CHART.md)に保存した。
+Q012d1でのnorm傾きとvector精度の切り分け、独立全数replayは
+[負の対照の次数別診断](../docs/D3Q27_NEGATIVE_CONTROL_DIAGNOSIS.md)にある。
 
 再現コマンド（repository root）:
 
@@ -47,6 +50,9 @@ python -m pytest tests/test_d3q27_damping.py tests/test_d3q27_damping_artifact.p
 python -m research.q012c1a_d3q27_damping --output research/replays/q012c1a_d3q27_damping.json
 python -m pytest tests/test_d3q27_chart.py tests/test_d3q27_chart_artifact.py -q
 python -m research.q012d_d3q27_quadratic_chart --output research/replays/q012d_d3q27_quadratic_chart.json
+python -m pytest tests/test_d3q27_negative_control.py tests/test_d3q27_negative_control_artifact.py -q
+python -m research.q012d1_d3q27_negative_control --worker-output research/replays/q012d1_worker.json
+python -m research.q012d1_d3q27_negative_control --output research/replays/q012d1_diagnosis.json --replay research/replays/q012d1_worker.json
 ```
 
 成果物再生成では時刻が変わるためファイル全体hashは変わる。科学的な再現照合は、
