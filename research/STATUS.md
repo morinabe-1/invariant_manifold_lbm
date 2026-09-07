@@ -1,7 +1,8 @@
 # 研究の到達点 — 2026-09-07
 
-現在はD3Q27への段階的拡張に入った。Q012aの基礎写像と一様4保存座標のquadratic oracleは
-通過した。研究全体は継続中で、3D非零波数の縮約モデルやTTの優位性はまだ示していない。
+現在はD3Q27への段階的拡張に入った。Q012aの基礎写像・一様center oracleと、Q012bの
+低波数cluster／二重shear／Nyquist parityは通過した。研究全体は継続中で、
+3D非零波数の縮約モデルやTTの優位性はまだ示していない。
 
 | 課題 | 到達点と次の行動 |
 |---|---|
@@ -11,19 +12,22 @@
 | TT表現 | Q008/Q010、forced系Q011gの登録TT候補は自然Fourier sparse baselineに敗れた。疎表現を採用 |
 | repaired mapの高次滑らかさ | Q011no ordinal 149は個別区間分割で改善なし。Q011np位相監査、degrees 34--90は未解決 |
 | D3Q27基礎 | Q012a accepted。216有理moment、48立方対称操作、z独立D2Q9 lift、center二次残差次数3 |
-| 次の主課題 | Q012b: 4次元低波数cluster、二重shear、Nyquist parity。次いでsector非共鳴と非零波数W/R |
+| D3Q27スペクトル | Q012b accepted。16 pathのprefix、二重shear平面、odd unit count 4／even 7。全方位・normal attractionの証明ではない |
+| 次の主課題 | Q012c: 奇数格子・固定4保存量葉のfirst-shell候補でsector二次非共鳴とnormal ordering。次いで非零波数W/R |
 | さらに必要 | 3D rollout／positivity／conservation、3D sparse／TT費用評価、Taylor–Green、force／wall |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
 Q012の着手条件は後続の修正候補と個別gateを照合して判定した。詳細な対応は
 [Q012a設計](../docs/D3Q27_FOUNDATION.md)にある。高次非共鳴の個別signature監査が
 3D基礎代数の唯一の前提である、という直列順序にはしない。
+Q012bのcutoffとその限界は[スペクトル検証結果](../docs/D3Q27_SPECTRAL_GATE.md)を参照。
 
 再現コマンド（repository root）:
 
 ```powershell
-python -m pytest tests/test_d3q27_foundation.py tests/test_d2q9.py tests/test_manufactured.py -q
+python -m pytest tests/test_d3q27_foundation.py tests/test_d3q27_spectral.py tests/test_d2q9.py tests/test_manufactured.py -q
 python -m research.q012a_d3q27_foundation --output research/artifacts/q012a_d3q27_foundation.json
+python -m research.q012b_d3q27_spectral --output research/artifacts/q012b_d3q27_spectral.json
 ```
 
 成果物再生成では時刻が変わるためファイル全体hashは変わる。科学的な再現照合は、

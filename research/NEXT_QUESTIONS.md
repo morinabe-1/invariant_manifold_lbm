@@ -67727,3 +67727,15 @@ Q012aは`passed / accepted`。216有理moment、48立方対称操作、D2Q9 lift
 [事前登録](../docs/D3Q27_SPECTRAL_GATE.md)に4 ray・4 omega、Schur／projector判定、
 二重shear部分空間、path reversal、奇偶grid regressionを固定した。
 内部label permutationを失敗とせず、低波数prefixとその境界をQ012cへ渡す。
+
+Q012bは`passed / accepted`。全16 pathの計1,577点でprefixと往復・回転共変性を確認した。
+各pathの最初の失敗は平衡接空間alignment基準であり、spectral collisionを認証した境界ではない。
+odd17³／33³のstrict unit countは4、even16³／32³は7で、直接3軸Nyquistも一致した。
+[封印結果とcutoff](../docs/D3Q27_SPECTRAL_GATE.md)を保存した。
+
+### Q012c: 3D固定保存量葉のfirst-shell operator
+
+次はQ012bの局所cluster分離をSSM存在へ読み替えず、odd gridのfirst-shell候補を固定して、
+異なる波数間のnormal orderingとFourier-compatible二次homological operatorを調べる。
+保存量は`delta M=delta Px=delta Py=delta Pz=0`。zero-wave correctionはkinetic成分だけを許す。
+係数構築前に非共鳴・非正規性・grid依存性を判定し、棄却された候補は変更せず保存する。

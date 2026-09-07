@@ -8,6 +8,25 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-07: Q012b D3Q27 cluster・二重shear・Nyquist parity
+
+問いは、3D hydrodynamic clusterをどの低波数prefixまで安定に追跡でき、奇偶gridが
+どう構築候補を制約するかである。事前登録`fbc39fb`後、ordered Schurとspectral projector、
+shearの2次元平面を使う追跡を実装した。4 ray × 4 omega、145 radial点の登録domainで
+最初の失敗まで進め、計1,577 accepted点を得た。往復のprojector差は0、回転共変性の
+最大差は4次元clusterで`7.02353e-15`、shear平面で`5.27221e-13`だった。
+
+全16 pathの打切り原因は`equilibrium_alignment < 0.75`であり、固有値衝突ではない。
+このsample cutoffは登録した近接基準の限界であって、全方位の最大分離半径ではない。
+small-kで両shearの粘性減衰とacoustic速度が一致し、最小radiusでの最大relative誤差は
+`2.05835e-6 / 6.81589e-7`だった。17³／33³のstrict unit countは4、16³／32³は7で、
+3軸のNyquistに各`lambda=-1`を直接確認した。4³／5³のbrute-force対照も通過した。
+
+結論は`passed / accepted`。詳細・cutoff・sealsは
+[Q012b結果](../docs/D3Q27_SPECTRAL_GATE.md)に保存した。
+次はQ012cのfirst-shell候補と二次operatorであり、奇数格子の固定4保存量葉を用いる。
+同じ波数block内での分離を、異なる波数を含むnormal orderingや3D SSM存在へ転用しない。
+
 ## 2026-09-07: Q012a D3Q27基礎オラクル
 
 問いは、D1Q3三重積から得るD3Q27がquadrature、保存moment、D2Q9 lift、立方対称性、

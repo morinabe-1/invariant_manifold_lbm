@@ -1,9 +1,11 @@
 # TT parameterized invariant-manifold LBM
 
-2026-09-07: **Q012a D3Q27基礎オラクルが通過**。D1Q3三重積、D2Q9へのz独立lift、
-48立方対称操作、4保存座標の二次chartを実装・検証した。
-[現在の到達点](research/STATUS.md)と[設計・検証結果](docs/D3Q27_FOUNDATION.md)を参照。
-3D非零波数chartとTT費用評価は次段階である。
+2026-09-07: **Q012a/b D3Q27基礎・低波数スペクトル検証が通過**。
+D1Q3三重積、D2Q9 lift、一様center二次chartに続き、4次元clusterと二重shearを追跡した。
+奇数17³／33³のunit countは4、偶数16³／32³はNyquistの3個を加えた7だった。
+[現在の到達点](research/STATUS.md)、[基礎検証](docs/D3Q27_FOUNDATION.md)、
+[スペクトル検証](docs/D3Q27_SPECTRAL_GATE.md)を参照。
+次は固定4保存量葉のsector二次非共鳴とnormal ordering。3D非零波数chartとTT費用評価は未完である。
 
 このリポジトリは、既存の `tci` 系統とは独立した研究プロジェクトである。完全な
 LBM 1-step 写像

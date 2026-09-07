@@ -66,3 +66,62 @@ helperは`research/d3q27_spectra.py`、成果物は`research/artifacts/q012b_d3q
 次はQ012cで104実座標までのfirst-shell候補を含め、固定4保存量葉上のFourier-compatible
 quadratic operator、normal ordering、second-harmonic resonanceを調べる。
 Q012bだけでは3DのSSM存在・一意性、通常吸引、非零波数W/R、TT優位性を認証しない。
+
+## Q012b結果（2026-09-07）
+
+事前登録`fbc39fb`の全validity／hypothesis gateを通過し、`passed / accepted`となった。
+保存artifactとsourceの照合・数値cycle再計算を含むD3Q27、D2Q9、manufactured oracleの
+100テストが通過した（66.77 s）。変更した3 Pythonファイルのruff検査も通過した。
+4 ray × 4 omegaのaccepted sampleは合計1,577点で、全経路に`|k|>=0.5`のprefixが得られた。
+以下は各方向の「最後のpass / 最初のfail」である。
+
+| omega | axis | face diagonal | body diagonal | generic |
+|---|---|---|---|---|
+| 1.0 | 0.7625 / 0.7750 | 0.9875 / 1.0000 | 1.1125 / 1.1250 | 0.9250 / 0.9375 |
+| 1.2 | 0.9250 / 0.9375 | 1.1875 / 1.2000 | 1.3375 / 1.3500 | 1.1125 / 1.1250 |
+| 1.5 | 1.1625 / 1.1750 | 1.3875 / 1.4000 | 1.5375 / 1.5500 | 1.3750 / 1.3875 |
+| 1.8 | 1.3750 / 1.3875 | 1.4500 / 1.4625 | 1.4000 / 1.4125 | 1.4750 / 1.4875 |
+
+全16本で最初の失敗は`equilibrium_alignment < 0.75`であり、固有値衝突でも
+Schur分離限界でもなかった。従ってこれは登録した物理的近接条件付きのsample cutoffであり、
+kinetic clusterからの数学的分離が失われる最大波数を求めた結果ではない。
+未計算の方向・sample間・cutoff以遠については判定しない。
+
+accepted sampleの最小external eigenvalue gapは`0.163049`、最小Schur Sylvester sepは
+`0.0969025`、最大spectral projector normは`3.54964`だった。
+path reversalの4次元／shear projector差は本実装でともに`0`、独立に回転したpathとの差は
+最大`7.02353e-15 / 5.27221e-13`だった。shear内部の固有vectorやlabel一致は要求していない。
+small-k最小radius`0.005`の最大relative誤差は、二つのshear減衰率で`2.05835e-6`、
+acoustic速度で`6.81589e-7`となった。
+
+| grid（omega=1.2） | orbit代表数 | 復元した全波数数 | strict unit count | 最大nonunit modulus |
+|---|---:|---:|---:|---:|
+| 16³ | 165 | 4,096 | 7 | 0.9829145254 |
+| 17³ | 165 | 4,913 | 4 | 0.9848604492 |
+| 32³ | 969 | 32,768 | 7 | 0.9957193806 |
+| 33³ | 969 | 35,937 | 4 | 0.9959747092 |
+
+分類境界にある固有値は0個。4³／5³のbrute-force対照とも一致し、3軸×4 omegaの直接評価で
+各axis Nyquistに`lambda=-1`が1個ずつ得られた。偶数格子の3個の追加center方向を除外側へ
+隠さず、主たる非零波数構築は奇数格子上の固定4保存量葉へ限定する。
+
+4 rayの最小cutoffを半径としたodd-grid inventoryは、omega順に17³で
+`32 / 80 / 122 / 202`波数、33³で`256 / 460 / 948 / 1574`波数だった。
+これは4倍すれば実座標次元になる候補数であり、全候補の採用を意味しない。
+Q012cではより小さなfirst-shellから、異なる波数間のnormal orderingと
+Fourier-compatible quadratic operatorを独立に検査する。
+
+[成果物](../research/artifacts/q012b_d3q27_spectral.json)の改行正規化SHA-256:
+`53753f2d2344d5ec308a7498875703f0c89ae8d184ade1d8f19377ffbc10b870`。
+result digest:
+`b26abf59676f6689216f9143068d7a06dfad432faf7c723e9ab4b3fec3fa632d`。
+runner／spectral helper SHA-256:
+`e8562b2cf1955aeaf7faed84665d91ea02fcb8997143e454c59c7d7cc7dd624a` /
+`355498c6ca5d2d3ba655fc64dddd6d853d3ad4cd7e87979bfba752a688df27a7`。
+
+再現コマンド:
+
+```powershell
+python -m pytest tests/test_d3q27_foundation.py tests/test_d3q27_spectral.py tests/test_d2q9.py tests/test_manufactured.py -q
+python -m research.q012b_d3q27_spectral --output research/artifacts/q012b_d3q27_spectral.json
+```
