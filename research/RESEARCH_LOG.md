@@ -8,6 +8,18 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012g3 main960 caseを開始
+
+独立workerの全192 case・保存後検査・正常終了を確認し、結果と追加検査を`6faf34e`にcommitした。
+commit後のworktreeはcleanで、main用の全292出力pathが新規であること、scientific source digestが封印時と同じことを確認した。
+05:51:00 JSTにPID 35240／handle 31939でmainを開始した。
+出力先は`artifacts/q012g3_d3q27_cubic_defect.json`、replayは封印済み`artifacts/q012g3_d3q27_cubic_defect_replay.json`である。
+実processの生成時刻・起動引数・生存、起動時の`input_audit`を確認した。workerと並行して物理計算を走らせていない。
+起動時には元入力chain・177対照・worker全保存後監査を再確認する。source・入力・方向・振幅・閾値は変更していない。
+その後`fresh_grid`の17³への進行を観測し、固定runnerの全開始条件を通過したことを確認した。
+mainの一般index0–7・32 caseを保存後監査し、対応するworkerの全primary科学的recordと一致した。source digestと実processの生存も再確認した。
+全960 caseの判定と全worker primary recordの一致はまだ未完了。同じhandleを継続確認し、観測timeoutによる再起動はしない。
+
 ## 2026-09-08: Q012g3 独立workerの全192 caseを完了
 
 前goal turnは同じPID 27060／handle 51090の生存と進行を確認したverified waitである。

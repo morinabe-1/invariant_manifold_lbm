@@ -432,3 +432,19 @@ fresh入力chain、最終親と全childの再読、全4,992切断Gram集計の�
 既存58回帰も再実行して通過した（29.35秒）。追加12件と合わせて70件を確認し、Ruff・整形・compileallも通過した。
 この結果は独立workerの完了に限定する。本節のcommit後、同じsourceでmain960 caseを開始し、
 入力・177対照・worker全readbackの再確認後に実格子へ進み、全primary科学的recordの一致を最後に検査する。
+
+### main960 caseの開始 — 2026-09-08
+
+独立結果をcommit `6faf34e`で保存し、cleanなworktree、全292出力pathの未使用、source digestの一致を確認した。
+workerの終了確認後、05:51:00 JSTにPID 35240／handle 31939で次を開始した。
+
+```powershell
+python -u -m research.q012g3_d3q27_cubic_defect --output research/artifacts/q012g3_d3q27_cubic_defect.json --replay research/artifacts/q012g3_d3q27_cubic_defect_replay.json
+```
+
+起動時の`input_audit`と、実processの生成時刻・引数・生存を確認した。
+その後17³への`fresh_grid`を観測した。固定runnerの開始条件である元入力chain・177対照・worker全readbackを通過して実格子へ進んだ。
+mainの一般index0–7・32 caseを保存後監査し、対応するworkerの全primary科学的recordと一致することを確認した。
+source digest `c7001e41d3ef7541d5f2c863a7fba714f95b0dc7a78f434555fdcf3f09f5e38a`、map・係数・方向・振幅・閾値は不変である。
+ここまでの成立はworker部分集合に限り、main960 caseの完了・受理、全primary対応の成立はまだ主張しない。
+同じ実行handleを継続確認し、観測timeoutを終了と取り違えず、計算を再起動しない。

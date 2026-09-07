@@ -1,10 +1,14 @@
 # 研究の到達点 — 2026-09-08
 
+Q012g3のmain960 caseはPID 35240／handle 31939で稼働中。05:51:00 JSTに開始した。
+出力先は`artifacts/q012g3_d3q27_cubic_defect.json`。同じhandleを確認し、観測timeoutだけで再起動しない。
+起動時の入力・177対照・worker全readbackを通過して17³へ進んだ。最初の8一般方向・32 caseではworkerの全primary科学的recordと一致した。
 Q012g3の独立workerは全192 caseを完了し、`passed / worker_only`となった。
 10 validity、H1/H2/H3、全63方向child・三grid・最終親の保存後監査が全て通過した。
 PID 27060／handle 51090は05:39:40 JST時点でexit 0と終了を確認した。再poll・再起動しない。
 元の一般方向3不合格、holdoutの29半減不達・14悪化を全件再現した。元Q012gの棄却は変更しない。
-次は同じ封印source・入力・条件でmain960 case。本計算はまだ開始しておらず、Q012g3全体の判定は未確定である。
+独立結果のcommit `6faf34e`と終了確認の後、同じ封印source・入力・条件でmainを開始した。
+mainの全960 case、全worker primary record対応、全保存後監査による最終判定は未完了である。
 
 Q012f2は全三格子・全246,480 block triple・578,760 columnで`passed / accepted`。
 全104実座標、四階filter付き`eta=.02, omega=1.5`、固定保存量葉、paired入力・固定3回refinementを保持した。
@@ -93,7 +97,7 @@ Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/
 | D3Q27三次W/R | Q012g passed/rejected。全1,248 case、12 validity、独立144 case、53監査テスト通過。H1–H3成立、H4の65³3方向とH5の有限振幅/質量葉が不達 |
 | D3Q27保存量診断 | Q012g1 accepted。全192 case・1,152 field・4,608成分、独立48 caseと12対照を監査。元超過256成分を集計誤差へ切り分け。144テスト通過 |
 | D3Q27次数別欠陥の代数オラクル | Q012g2 accepted。全96人工case・1,824係数・2,976値、独立Fraction式・全数保存後監査・77テスト通過。実LBMの悪化原因を説明した結果ではない |
-| 次の主課題 | Q012g3独立worker192 caseは全検査通過・正常終了（worker_only）。次は同じ封印sourceでmain960 caseと全primary record対応を確認する |
+| 次の主課題 | Q012g3 main960 caseが稼働中（PID 35240／handle 31939）。独立worker192 caseは全検査通過・終了済み。全mainとworker primary record対応・最終readbackを確認する |
 | さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
