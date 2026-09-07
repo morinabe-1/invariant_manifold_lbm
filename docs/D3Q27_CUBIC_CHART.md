@@ -153,3 +153,32 @@ validityまたはgeneric/holdoutの解像性が不十分ならinconclusive、val
 
 実装予定: `research/d3q27_cubic_chart.py`、`research/q012g_d3q27_cubic_chart.py`。
 本書のcommit前には新規評価器や未登録の振幅探索を実行しない。
+
+## 実装・事前検証 2026-09-07
+
+事前登録commit `b5f5543`の後、上記二つのmoduleを実装した。登録条件に変更はない。
+実験開始前に固定するnormalized SHA256は次の通り。
+
+- `d3q27_cubic_chart.py`: `e830cb88bf48b05adac868e7ca71ad5576d3f7f9cf1eb451a9475e452b7ddc37`
+- `q012g_d3q27_cubic_chart.py`: `01c114dce30d7793729c8ae2563bc57d6ae41b3101a0c9295d689fec7be68ff3`
+
+新規90テストと既存Q012f2実装31テスト、計121件が通過した（172.49秒）。
+人工写像の8方向は最大不変性欠陥`2.866236503153378e-17`。
+R3省略対照の欠陥`1.5667750445071706e-5`、H3倍掛け対照の欠陥`4.873334711633402e-6`で、両方成立した。
+全104軸の合成fiberの次数・実座標化、入力異常、archiveの破損／欠落、再現行の改変、未解像の判定をテストした。
+特殊方向ラベルの保存前後の型不一致を修正してから全テストを再実行した。Ruff、format、compileallも通過した。
+全三格子の実archiveはshape・全支持・全array hashとbyte sealを確認したが、この読込み試験は実LBMの評価結果ではない。
+旧11 validity／2仮説、source chain、全972組の保存replayも変更なしと照合した。
+
+実行順（別process、同時実行しない）:
+
+```powershell
+python -m research.q012g_d3q27_cubic_chart --worker-output research/artifacts/q012g_d3q27_cubic_chart_replay.json
+python -m research.q012g_d3q27_cubic_chart --output research/artifacts/q012g_d3q27_cubic_chart.json --replay research/artifacts/q012g_d3q27_cubic_chart_replay.json
+```
+
+各実行は格子ごとのJSONも保存し、全内容を読戻して照合する。既存の全結果・部分結果は上書きしない。
+全fieldを保存するのではなく、登録した全metricsと比較fieldのshape/dtype/byte/hashを保存する。
+caseまたは診断phaseで例外が出た場合は失敗位置・得られた有限の部分recordを保持し、欠落を合格扱いしない。
+格子JSONの読戻し成否は親resultの`roundtrip_passed`にも付記するため、その付記だけは子JSONの中には含まれない。
+実LBMの三次次数、有限振幅での改善、対称性・物理三次式の本検証はまだ未実行であり、Q012gは未判定である。
