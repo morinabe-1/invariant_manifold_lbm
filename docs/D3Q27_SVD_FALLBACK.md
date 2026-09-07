@@ -55,3 +55,74 @@ manifest: `research/artifacts/q012c1a_d3q27_damping.json`。
 全pair table: `research/artifacts/q012c1a_d3q27_damping/`。
 Q012dは合格した**修正map**のdense chartとして次に置く。
 このゲートも存在・一意性・非線形normal attraction・全状態の正値性・TT優位性を証明しない。
+
+## Q012c1aの結果: passed / accepted
+
+事前登録commit `a20456c`に従い、全108条件・332,748 block pair・589,680 product列を
+再計算した。validity全11項目が通過し、3格子共通でjointly viableなfamilyは、
+Laplacian対照が4/16、leading viscosityを保つ四階型が9/16だった。
+最小eta、次いで最小omegaの規則で、**p=2、eta=0.02、omega=1.5、104実座標**を選んだ。
+元のleading viscosityは`nu=1/18`で維持されるが、有限波数の写像は無変更BGKとは異なる。
+
+### 選択候補の3格子検証
+
+| N | normal modulus gap | 最大condition | 最大solve relative残差 | 最大global-l2 coefficient response |
+|---:|---:|---:|---:|---:|
+| 17 | 0.00384398666 | 11,710.4 | 5.27652e-13 | 63.4169 |
+| 33 | 0.00193104909 | 172,745 | 3.63422e-12 | 184.960 |
+| 65 | 0.000513792229 | 2,614,033 | 2.62989e-11 | 519.500 |
+
+全3格子の3,081 pairを、frame・全格子spectrumも含めて独立に再計算し、
+各conditionの全数値・driver metadataのresult digestが一致した。追加の9,243 pairの
+replayであり、全108条件を二重実行したという主張ではない。
+
+SVD代替は全332,748 pair中**1件だけ**で、元Q012c1を止めたLaplacian対照のpairだった。
+選択候補の全3格子では代替を使っていない。無変更BGKの12 baseline・全pairと、
+Q012c1の完了4条件は旧保存値に完全一致し、元の棄却／判定保留を維持した。
+
+### 不採用とした結果も維持する
+
+全108条件で二次計算gateの不合格は14条件、normal-ordering不合格は24条件だった
+（両方を落とした4条件を含む）。jointly prequalifiedは74条件である。
+特に、より弱い四階型`eta=0.01, omega=1.8`は17³・33³で通過するが、65³の4 shear pairが
+solve残差を落とした。最大残差`2.42506e-10`、そのpairのcondition`7.43326e6`は
+condition上限内だったが、残差上限`1e-10`は超えている。正常に収束したため代替を呼ばず、
+このfamilyを不採用とした。
+
+また、65³・四階型`omega=1, eta=.05`は11 pairが残差を落とす一方、eta=.01/.02/.1では
+二次計算を通す。高波数減衰の増加を、homological operatorの改善の単調性へ読み替えない。
+新しいoperatorではinput積とoutputが異なるmuで変わるため、normal gapと二次solve精度は
+別々に検証する必要がある。全条件の構造誤差最大は`1.66717e-14`だった。
+
+### 主張の限界とQ012d
+
+選択候補でもglobal-l2 coefficient responseは格子細分化で増大している。またexternalの
+one-step operator normは約`2.56 > 1`であり、正の固有値modulus gapから一段のnorm収縮を
+結論しない。受理したのは有限3格子の二次prequalificationであり、3D SSMの存在・一意性、
+grid-uniformな半径、nonlinear normal attraction、全状態の正値性を示したわけではない。
+
+次はQ012dとして、選択した**修正map**の17³・104実座標dense quadratic W/Rを構築する。
+共役Fourier blockの実座標化、非自明なR2、固定4保存量葉、保存momentのないzero-wave kinetic補正、
+独立Hessian、残差次数`2 -> 3`、小振幅でのrollout／positivity／保存量を順に検証する。
+全物理空間のW2配列を不要に確保せず、Fourier selection ruleに従うdense fiber oracleを用い、
+full-gridの非線形写像で欠陥を評価する。TTより前に、この自然な疎表現を必須baselineとして残す。
+
+### 保存と検証
+
+manifestの改行正規化SHA-256:
+`b254057450e1deaaa2cd2791fa4547455e27a76352c99b5923e5de2a9434ddbe`。
+result digest:
+`f652b5b9d6c0f3fc151d4de6927f36445d518f4cff993cdbbfc5b1a848f6587e`。
+runner seal:
+`7f1e7697a2f13e463c136c7933be9c18d26684bd72a9638fb7e2481b9aeb52c0`。
+fallback helper seal:
+`17d24e04cd6183e8439456bfb6b659d3c8a83a7b20ace081461f43252d946d76`。
+
+108個のJSON tableは全pairのmetricsとdriverを保持し、manifestから個別SHAとresult digestで
+参照する。元Q012c1の4 tableと停止行列は別ディレクトリのまま保存する。
+再生成は`research/replays/`へ出力し、封印artifactを上書きしない。
+
+検証は、dampingと元障害の29テスト、backendの12テスト、全保存tableの3テスト、
+既存foundation／D2Q9／manufacturedの86テスト、既存spectral／quadraticの33テスト、
+計163件が通過した。保存table監査を全108条件の再計算と称していない。
+ruffとcompileallも通過した。封印した`src/ttim_lbm`とQ012a/b/c/Q012c1のsourceは変更していない。

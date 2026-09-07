@@ -8,6 +8,30 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-07: Q012c1a 不収束時だけのSVD代替とdamping全条件検証
+
+事前登録`a20456c`で、不収束の例外時だけ同じ行列を別SVDへ渡し、正常収束した
+condition／残差失敗は変更しないプロトコルを固定した。保存行列のbitwise再構築、
+3回の代替再現、既知complex quadratic solution、singular／ill-conditioned対照を通過した。
+
+108条件・332,748 pair・589,680 product列を全て計算し、validity全11項目を通した。
+SVD代替はLaplacian対照の1 pairだけ。元Q012cの12 baselineと元Q012c1の4条件は
+全数値が一致し、元の`rejected`／`inconclusive`は維持した。四階型9/16 family、
+Laplacian対照4/16 familyが3格子共通で通過した。登録規則で四階型`eta=.02, omega=1.5`を
+選び、全3格子のframe／spectrum／3,081 pairを独立再実行してdigest一致を確認した。
+Q012c1aは`passed / accepted`。選択family自身にはSVD代替は不要だった。
+
+より弱い四階型`eta=.01, omega=1.8`は65³で4 pairがsolve残差上限を超えた。
+最悪残差`2.42506e-10`、condition`7.43326e6`を保存し、condition上限内でも不採用とした。
+選択familyでは3格子の最大残差`5.27652e-13 / 3.63422e-12 / 2.62989e-11`、
+normal gapは`0.00384399 / 0.00193105 / 0.000513792`だった。
+global-l2 coefficient responseの増大とone-step norm約2.56も記録し、
+非線形normal attractionやgrid-uniformな半径へ一般化しない。
+
+次はQ012dで選択した修正mapの17³・104実座標dense quadratic W/Rを構築し、
+実座標化・非自明R2・保存momentゼロのmean correction・残差次数・rolloutを検証する。
+詳細な判定表・sealsは[Q012c1a](../docs/D3Q27_SVD_FALLBACK.md)に保存した。
+
 ## 2026-09-07: Q012c1 dampingの独立対照とSVD不収束
 
 事前登録`7904d49`で、leading viscosityを保つ四階型とLaplacian対照を固定した。

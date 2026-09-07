@@ -1,13 +1,13 @@
 # TT parameterized invariant-manifold LBM
 
-2026-09-07: **Q012cの無変更D3Q27 first-shell候補はjoint prequalificationを棄却**。
-基礎・低波数clusterのQ012a/bに続き、24／72／104実座標を17³・33³・65³で調べた。
-軸候補には数値的共鳴、拡大候補にはnear-Nyquistによる負のnormal gapが残り、
-細かい格子では二次計算の悪条件化とsolve残差上限超過も生じた。研究全体の棄却ではない。
-[現在の到達点](research/STATUS.md)と[二次preflight結果](docs/D3Q27_QUADRATIC_PREFLIGHT.md)を参照。
-Q012c1のdamping写像対照は通過したが、全条件計算は元SVDの再現可能な不収束で
-`inconclusive`となった。[数値障害の診断](docs/D3Q27_DAMPING_REPAIR.md)を保存し、
-代替SVDを別gateで検証する。3D非零波数chartとTT費用評価は未完である。
+2026-09-07: **Q012c1aでD3Q27の修正mapの二次prequalificationを受理**。
+全108条件・332,748 block pairから、leading viscosityを保つ四階filter
+`eta=0.02, omega=1.5`の104実座標候補を選んだ。17³・33³・65³で二次計算とnormal orderingを
+通過し、選択候補の3格子独立再計算も一致した。SVD代替は不収束となる対照pairの1件だけで、
+選択候補では使っていない。これは非零波数chartやSSM存在の完成を意味しない。
+無変更BGKのQ012c棄却と、元SVD不収束によるQ012c1判定保留は別結果として保持する。
+[現在の到達点](research/STATUS.md)と[全条件検証結果](docs/D3Q27_SVD_FALLBACK.md)を参照。
+次はQ012dのdense quadratic W/R。自然Fourier sparse baselineを残し、3DのTT費用評価へは急がない。
 
 このリポジトリは、既存の `tci` 系統とは独立した研究プロジェクトである。完全な
 LBM 1-step 写像

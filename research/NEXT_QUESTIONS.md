@@ -67770,3 +67770,10 @@ Q012c1は4/108条件後のSVD不収束で`failed / inconclusive`。同じ108×10
 
 Q012c1aの[不収束時SVD代替プロトコル](../docs/D3Q27_SVD_FALLBACK.md)を固定した。
 代替は例外時だけとし、正常に収束したが残差・conditionを落としたpairには適用しない。
+
+Q012c1aは`passed / accepted`。全108条件・332,748 pairを計算し、四階型9/16 familyが
+3格子共通で通過した。最小eta／最小omegaの規則で`p=2, eta=.02, omega=1.5`を選び、
+3格子の全pairを独立再計算してdigest一致を確認した。元Q012c/Q012c1の結果は保持する。
+次のQ012dは、この修正mapの17³・104実座標dense quadratic W/Rである。
+物理空間の巨大なW2配列の確保を前提にせず、Fourier selection ruleを使ったdense fiber oracleを
+full-grid非線形写像の残差で検証する。TT比較ではこの自然な疎表現を必須baselineにする。
