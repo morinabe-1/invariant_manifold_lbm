@@ -1,9 +1,10 @@
 # 研究の到達点 — 2026-09-07
 
-現在はD3Q27への段階的拡張に入った。Q012c1aでleading viscosityを保つ四階filter
-`eta=.02, omega=1.5`の104実座標候補が、17³・33³・65³の二次計算とnormal orderingを
-同時に通過した。これは**修正map**の有限次prequalificationであり、
-3D非零波数の縮約chart、SSM存在やTTの優位性はまだ示していない。
+現在はD3Q27への段階的拡張に入った。Q012dで四階filter付き修正map
+`eta=.02, omega=1.5`の17³・104実座標の二次W/Rを構築した。
+本体の残差次数2→3、48 trajectory、保存量・立方対称性は通過したが、
+R2を落とした対照の傾きが4/8方向で登録上限を超えたため、総合判定は**rejected**。
+次はこの対照の原因診断。3DのSSM存在・実用半径やTTの優位性は未認証である。
 
 | 課題 | 到達点と次の行動 |
 |---|---|
@@ -17,8 +18,9 @@
 | D3Q27非零波数preflight | Q012c passed/rejected。36条件・56,844 block pair、jointly viable 0/12 family。104座標・omega=1.2は二次計算のみ3格子通過 |
 | 元D3Q27 damping試行 | Q012c1 failed/inconclusiveを保持。4/108条件後に108×108 SVDが不収束 |
 | D3Q27 damping修正検証 | Q012c1a accepted。108条件・332,748 pair。例外時SVD代替1件、四階型9/16 familyが3格子で通過。選択eta=.02, omega=1.5 |
-| 次の主課題 | Q012d: 選択した修正mapの17³・104実座標dense quadratic W/Rと残差・rollout。実座標化とzero-wave kinetic correctionを検証 |
-| さらに必要 | 3D rollout／positivity／conservation、3D sparse／TT費用評価、Taylor–Green、force／wall |
+| D3Q27二次W/R | Q012d passed/rejected。全3,081 pair・実座標化・独立Hessian・64方向の次数・48 trajectoryは通過。R2なし対照の4方向が傾き上限2.1を超過 |
+| 次の主課題 | Q012d1: 負の対照のベクトル分解と振幅依存。Q012dの棄却・閾値を保持し、三次以上の寄与かを別gateで診断 |
+| さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
 Q012の着手条件は後続の修正候補と個別gateを照合して判定した。詳細な対応は
@@ -30,6 +32,8 @@ Q012cの共鳴・near-Nyquist・悪条件化の切り分けは
 Q012c1の数値backend障害と保存した行列は[damping結果](../docs/D3Q27_DAMPING_REPAIR.md)を参照。
 Q012c1aの独立再計算・選択候補・不採用の残差失敗は
 [SVD代替と全条件結果](../docs/D3Q27_SVD_FALLBACK.md)を参照。
+Q012dの構築・7仮説通過・負の対照失敗と次の診断は
+[実座標quadratic chart結果](../docs/D3Q27_QUADRATIC_CHART.md)に保存した。
 
 再現コマンド（repository root）:
 
@@ -41,6 +45,8 @@ python -m pytest tests/test_d3q27_quadratic.py -q
 python -m research.q012c_d3q27_preflight --output research/replays/q012c_d3q27_preflight.json
 python -m pytest tests/test_d3q27_damping.py tests/test_d3q27_damping_artifact.py tests/test_d3q27_svd_fallback.py tests/test_d3q27_damping_complete.py -q
 python -m research.q012c1a_d3q27_damping --output research/replays/q012c1a_d3q27_damping.json
+python -m pytest tests/test_d3q27_chart.py tests/test_d3q27_chart_artifact.py -q
+python -m research.q012d_d3q27_quadratic_chart --output research/replays/q012d_d3q27_quadratic_chart.json
 ```
 
 成果物再生成では時刻が変わるためファイル全体hashは変わる。科学的な再現照合は、

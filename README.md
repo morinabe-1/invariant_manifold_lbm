@@ -1,13 +1,14 @@
 # TT parameterized invariant-manifold LBM
 
-2026-09-07: **Q012c1aでD3Q27の修正mapの二次prequalificationを受理**。
-全108条件・332,748 block pairから、leading viscosityを保つ四階filter
-`eta=0.02, omega=1.5`の104実座標候補を選んだ。17³・33³・65³で二次計算とnormal orderingを
-通過し、選択候補の3格子独立再計算も一致した。SVD代替は不収束となる対照pairの1件だけで、
-選択候補では使っていない。これは非零波数chartやSSM存在の完成を意味しない。
-無変更BGKのQ012c棄却と、元SVD不収束によるQ012c1判定保留は別結果として保持する。
-[現在の到達点](research/STATUS.md)と[全条件検証結果](docs/D3Q27_SVD_FALLBACK.md)を参照。
-次はQ012dのdense quadratic W/R。自然Fourier sparse baselineを残し、3DのTT費用評価へは急がない。
+2026-09-07: **Q012dでD3Q27の104実座標quadratic W/Rを構築、総合判定は棄却**。
+対象はleading viscosityを保つ四階filter付き修正map、17³・`eta=.02, omega=1.5`。
+全3,081 pairの二次係数、実座標化、独立Hessian、48立方操作、本体64方向の残差次数2→3、
+48 trajectoryの改善・正値・保存を通した。一方、R2を落とした負の対照は4/8方向で
+傾き上限2.1を超え、最大2.13720だった。従ってQ012dは`passed / rejected`として保持する。
+次のQ012d1で対照の三次以上の寄与を診断する。振幅や閾値を変えて元判定を受理にしない。
+3DのSSM存在・実用半径・TT優位性は未認証。自然Fourier sparse baselineを維持する。
+[現在の到達点](research/STATUS.md)と[二次chart検証結果](docs/D3Q27_QUADRATIC_CHART.md)を参照。
+Q012c1aでの3格子prequalification受理、無変更BGKのQ012c棄却、元Q012c1判定保留は変更しない。
 
 このリポジトリは、既存の `tci` 系統とは独立した研究プロジェクトである。完全な
 LBM 1-step 写像
