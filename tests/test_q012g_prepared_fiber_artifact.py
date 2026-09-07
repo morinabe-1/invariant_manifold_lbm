@@ -21,6 +21,7 @@ WORKER_SHA = "84e4d6f9ce241b0eab4a6eda380dbf242a83c084e4fc4bc872291bb48ef56891"
 MAIN_PINS = {
     17: "369b471c53f01b8e3a88ae7451e5d93bdaef3c10345186b90e092cf27bb1e2e4",
     33: "d859b3ea1d39e9c3f3a9d07f03642b2fa95ea1b6e4b62eb87b266f04d31f63bc",
+    65: "1b5b6248ad2b60b4bf67baa70bfd59615e63a6c59a3328b64f8f3dde31d5a01f",
 }
 SHELL = np.array([w for w in product((-1, 0, 1), repeat=3) if any(w)], dtype=np.int64)
 
@@ -117,7 +118,7 @@ def test_every_saved_prepared_scalar_and_index_matches_unchanged_input(fibers):
     paths = [(DIRECTORY / child["filename"], child["sha256"], worker["process_id"])]
     if size in MAIN_PINS:
         paths.append((DIRECTORY / f"q012g_d3q27_cubic_chart_n{size}.json", MAIN_PINS[size], 29360))
-    assert len(paths) == (2 if size in (17, 33) else 1)
+    assert len(paths) == 2  # Both closed processes, on each of the three grids.
     for path, seal, process in paths:
         assert _file_sha256(path) == seal
         document = runner.prior.read_json(path)
