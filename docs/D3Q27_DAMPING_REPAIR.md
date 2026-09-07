@@ -121,3 +121,35 @@ helper: `research/d3q27_damping.py`、runner: `research/q012c1_d3q27_damping.py`
 
 これは3格子上の有限次・有限sample prequalificationであり、3D SSMの存在・一意性、
 ball全体のpositivity、normal attraction、TT優位性、無変更BGKの縮約を認証しない。
+
+## Q012c1の結果: 数値backend障害による判定保留
+
+事前登録commitは`7904d49`。元solverのままでは、5番目の条件
+`N=17, omega=1.0, p=1, eta=0.1`の1,432番目のblock pairで
+`SVD did not converge`となった。完了した4条件の12,324 pairは保存したが、
+108条件のcoverageも3格子family replayも未達である。判定は**`failed / inconclusive`**。
+これはdamping仮説の棄却でも、部分データからの候補選択でもない。
+
+停止pairは`(-1,1,0) shear × (-1,1,1) shear -> (-2,2,1)`。
+有限な108×108の同一行列で元の`gesdd`が3回とも不収束となった。
+診断用の`gesvd`は3回とも収束し、condition `36.7416806427`、
+SVD reconstruction relative error `4.24744e-15`、solve residual `5.33594e-15`だった。
+この代替計算は元ゲートの合格判定に使用していない。行列のreal／imag成分も保存し、
+同じ浮動小数点行列を再構築できるようにした。数値backendの不収束を、
+数学的共鳴や強い悪条件化と同一視しない。
+
+独立対照は全て通過した。2 filter×4 eta×4 omegaの計1,024 stepで
+最小population `0.00433485`、最大site平均保存drift `3.77476e-15`。
+FFT比較の最大relative誤差は`2.73453e-16`、small-kの最大viscosity relative誤差は
+`1.04958e-5`、acousticは`6.81589e-7`。最小FD stepのHessian誤差は最大`1.51822e-8`。
+これらは有限sampleの写像検証であり、104座標chartの構築完了ではない。
+
+Q012c1 manifestの改行正規化SHA-256は
+`cc3410aafc0415f84ae1a263a3f3e18b043398bd38bf34332867ec2e0a4b5276`、result digestは
+`89964f26704c5c312ebb286088bf758d0cf463b9bc46e6a176f79ae0a74a699e`。
+runner sealは`36691b02c27ca53ff97569d4cb8de1c777d83516283e8f981f9eea9ffbe6813f`、
+damping helper sealは`b744c1d97bbcc15a8f1ac2f02f38b37ebade86788a220c9be5121fb1ae541567`。
+
+次はQ012c1aで、**不収束時だけの代替SVD**を事前登録して独立検証する。
+元Q012c1を受理へ上書きせず、Q012c1aを別artifact・別sourceで計算する。
+rank／condition／solve残差閾値は維持し、残差のpost-hoc改善や悪いpairの除外はしない。

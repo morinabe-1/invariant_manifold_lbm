@@ -5,7 +5,9 @@
 軸候補には数値的共鳴、拡大候補にはnear-Nyquistによる負のnormal gapが残り、
 細かい格子では二次計算の悪条件化とsolve残差上限超過も生じた。研究全体の棄却ではない。
 [現在の到達点](research/STATUS.md)と[二次preflight結果](docs/D3Q27_QUADRATIC_PREFLIGHT.md)を参照。
-次は対象と粘性への影響を明示したdamping修正を検証する。3D非零波数chartとTT費用評価は未完である。
+Q012c1のdamping写像対照は通過したが、全条件計算は元SVDの再現可能な不収束で
+`inconclusive`となった。[数値障害の診断](docs/D3Q27_DAMPING_REPAIR.md)を保存し、
+代替SVDを別gateで検証する。3D非零波数chartとTT費用評価は未完である。
 
 このリポジトリは、既存の `tci` 系統とは独立した研究プロジェクトである。完全な
 LBM 1-step 写像

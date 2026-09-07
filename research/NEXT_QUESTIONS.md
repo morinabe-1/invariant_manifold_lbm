@@ -67762,3 +67762,8 @@ Q012dはjoint prequalification後のdense chartとして未着手のまま残す
 Q012c1の[事前登録](../docs/D3Q27_DAMPING_REPAIR.md)を固定した。104実座標・3格子を保ち、
 Laplacian型とleading viscosityを変えない四階型を計108条件で比較する。
 主候補は四階型に限定し、同じrank／condition／残差基準と独立再現検証を要求する。
+
+Q012c1は4/108条件後のSVD不収束で`failed / inconclusive`。同じ108×108行列に対する
+元backendの3回不収束と、診断用代替backendの3回収束を保存した。条件数約36.74なので、
+共鳴・悪条件化とbackend障害を分離する。Q012c1aで不収束時だけの代替を事前登録し、
+元の判定を上書きせず全108条件を再検証する。

@@ -8,6 +8,20 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-07: Q012c1 dampingの独立対照とSVD不収束
+
+事前登録`7904d49`で、leading viscosityを保つ四階型とLaplacian対照を固定した。
+写像・FFT・48立方操作・D2 lift・1,024 stepの保存／正値sample・small-k・独立Hessianは
+全て通過した。一方、108条件中4条件を完了した後、5条件目の1,432番目のpairで
+元solverが不収束となったため、Q012c1は`failed / inconclusive`である。
+
+17³・omega=1・p=1・eta=0.1のshear pairの108×108行列を保存し、同じ行列で`gesdd`が
+3回とも不収束であることを確認した。診断だけに用いた`gesvd`は3回とも収束し、
+condition `36.7417`、再構築誤差`4.24744e-15`、solve残差`5.33594e-15`だった。
+元ゲートでsolverを変更することはせず、未計算の条件を成功・失敗へ補完しない。
+次のQ012c1aで代替backendを別途登録し、全108条件と3格子replayをやり直す。
+詳細・保存sealsは[Q012c1](../docs/D3Q27_DAMPING_REPAIR.md)にある。
+
 ## 2026-09-07: Q012c D3Q27 first-shell二次operatorとnormal ordering
 
 前回はQ012a/bの実装・保存artifact・回帰テストまで進んだため、progressと分類する。
