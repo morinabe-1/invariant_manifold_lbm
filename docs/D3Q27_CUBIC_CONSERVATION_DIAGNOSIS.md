@@ -154,3 +154,31 @@ H1を通すために場へ保存量投影を加えたり、閾値、方向、振
 本追記は入力封印だけであり、192 case・1,152 field・4,608成分、48 caseのGMP worker、対照、閾値を変更しない。
 H4の不合格3方向とH5の欠陥比不達は別の次数別診断へ残す。
 この追記のcommit後に新規helper/runnerの実装・人工対照検証へ進める。実LBM診断はまだ実行していない。
+
+## 実装・人工対照と実行前封印
+
+親入力封印commit `f984246`の後に、新規helper/runnerと専用テストを実装した。
+元のQ012g evaluator、map、係数、全source chainは変更していない。
+二つのexact総和、全27 population・4 momentの有理数記録、符号付き丸め分解、二つの反実仮想を分離した。
+旧caseを先に全record一致させてから6 fieldを逐次再生成し、各fieldの元hashを照合して集計する。
+不一致・例外では元記録、診断済みfield、失敗箇所を保持し、欠測を保存量0や合格へ置き換えない。
+全件読戻しは有理数の正規形、元record/field、各成分identity、反実仮想と判定、対照、coverageを再確認する。
+別processのGMP workerが全三格子で終了・監査されていなければprimaryの物理計算を開始しない。
+
+新規71テストを通過した。全有限指数bin、最大mantissaと1,024境界、相殺、subnormal、signed zero、
+1 ulp差、不正dtype/NaN/Inf、保存後の改変、失敗時の途中証拠、worker先行条件を含む。
+人工場では4種の保存量違反をexactに検出し、元の丸め済み平衡は変更しないことも確認した。
+判定値にNumPy boolが残る保存形式の問題を人工テストで修正し、再検証した。物理実験後の修正ではない。
+親入力auditは11項目全て通過し、元の256成分の保存量反例をそのまま保持した。
+親Q012gの保存後監査53テストも再実行して通過した（96.99秒）。
+Ruff検査・整形確認・compileallも通過した。
+
+実行前のnormalized SHA256を固定する。
+
+- `research/d3q27_conservation_audit.py`:
+  `665247de3962bdd6475caf0d96e726fa663e8fa8c9faa6e27362601961b91375`
+- `research/q012g1_d3q27_conservation.py`:
+  `a697d255cb2c2c697d1b98c06cc5d54c8a346e50929d05a3c793f2f09bdeb7dd`
+
+この実装のcommit後、まず独立48 case・288 fieldのGMP workerを実行し、終了後に主192 caseへ進む。
+この節の追加時点では実LBM診断は未実行であり、H1の成否はまだ不明である。
