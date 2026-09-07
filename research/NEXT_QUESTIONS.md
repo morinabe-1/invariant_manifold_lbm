@@ -67758,3 +67758,7 @@ condition上限超過と、上限内でもsolve残差を落とすケースも別
 全二次sectorと残差を再検証し、near-Nyquistを減衰させればshear interactionの悪条件化も
 自動的に直るとは仮定しない。必要な精度改善は同じ未変更operatorで独立に比較する。
 Q012dはjoint prequalification後のdense chartとして未着手のまま残す。
+
+Q012c1の[事前登録](../docs/D3Q27_DAMPING_REPAIR.md)を固定した。104実座標・3格子を保ち、
+Laplacian型とleading viscosityを変えない四階型を計108条件で比較する。
+主候補は四階型に限定し、同じrank／condition／残差基準と独立再現検証を要求する。
