@@ -448,3 +448,32 @@ mainの一般index0–7・32 caseを保存後監査し、対応するworkerの�
 source digest `c7001e41d3ef7541d5f2c863a7fba714f95b0dc7a78f434555fdcf3f09f5e38a`、map・係数・方向・振幅・閾値は不変である。
 ここまでの成立はworker部分集合に限り、main960 caseの完了・受理、全primary対応の成立はまだ主張しない。
 同じ実行handleを継続確認し、観測timeoutを終了と取り違えず、計算を再起動しない。
+
+### mainの17³全320 caseの保存後監査 — 2026-09-08
+
+同じPID 35240／handle 31939で17³の全96方向を完了した。
+一般64方向×4振幅、holdout32方向×2振幅の320 case、192 profile、元1,920 field・640欠陥を全件照合した。
+全96方向childのSHA/header/body、登録schedule、旧record、holdout64 caseのexact記録も監査し、H1/H2/H3・Gramが全て通過した。
+mainはprimaryのみを計算するため、このgrid内での二方式vector比較数は0である。
+その一方、独立workerで計算済みの登録21方向・64 caseに対応する全primary科学的recordの厳密一致を別途確認した。
+これは同じ格子のsubset照合であり、全main960 caseを独立方式でも再計算したものではない。
+
+main gridのnormalized SHA256:
+`e2edeec5e05da2e1d93694ac0c9c9b58f3b33da64edd022cfb9515b8cb92c43f`。
+grid digest:
+`c34c5f89177569a8fa9b53088b4b3da639386169aa0e1417fd8cbfa033402ece`。
+方向childのsealはこの外部封印済みgridに保存した。scientific source digestは実行前の`c7001e41…`から不変である。
+
+全64一般方向の元／予測傾きを閉じたOLS式で、全4,160切断Gram norm²を補償和で確認した。
+元N17のH4は64/64、holdout H5は64/64の成功を維持し、欠陥比の半減判定・悪化判定も全64 holdoutで一致した。
+全holdoutのP9 vector相対誤差は元上限`1e-3`以内だった。
+傾き差の最大`0.00024180368661497198`は登録上限`.01`以内、最小振幅比の相対差最大`0.0005470464888657247`は1%以内だった。
+全640 sampleの再構成差最大は、一般方向10・degree3・`.008`のPhi再構成で`5.7870239958157445e-15`だった。
+対応する元floorは`5.502608491768111e-13`で、他の全再構成比較も各caseの元floor以内だった。
+
+[main N17の保存後検査](../tests/test_q012g3_cubic_defect_main_n17_artifact.py)の13件が警告error化で通過した（38.65秒）。
+全coverage・全child・worker対応・OLS・Gram・summaryの検査に加え、末尾case/C9欠落、tail・比・exact field・末尾座標改変を拒否した。
+既存worker N17の11件と合成恒等式17件も通過した（13.33秒）。計41件を検証し、Ruff・整形・compileallも通過した。
+この追加artifact検査は正式177対照に組み込まず、稼働中のsource封印を保持する。
+同じmainは33³へ進んでいる。残り33³/65³・全worker対応・終了時入力/source照合・最終親の全監査を終えるまで、Q012g3全体は未判定とする。
+元Q012gの棄却は変更せず、この結果を新しい高次chart、SSM存在、連続球・grid-uniform半径やTT優位性へ一般化しない。
