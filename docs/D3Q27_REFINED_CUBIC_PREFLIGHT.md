@@ -86,3 +86,22 @@ validity不通過ならinconclusiveとする。各格子単独の結果と三格
 acceptedならQ012gの三次W/R評価器・残差次数・有限振幅比較へ進む。
 rejectedなら失敗family全体を分類し、未解決機構を次問にする。
 SSM存在、連続球・grid-uniform半径、有限振幅改善、TT費用優位性はこのgateで認証しない。
+
+## 実装と再現
+
+事前登録commitは`44b12a0`。新規31テストで、三格子のordinal 0に対する前段との全数値一致、
+整数/GMP kernelの一致、全candidate gate、数学的棄却とcoverage不足の区別、逐次保存の
+読み戻し、実行例外・壊れた部分archive・上書き拒否を確認した。
+これは全数preflightの結果ではなく、実装開始時の検証である。
+
+次の二つは別processで実行する。主計算は三格子を順に処理し、各格子にresult JSON、
+全recordのgzip JSONL、全疎fiberのNPZを保存する。途中で部分fileがある場合も上書きを拒否する。
+
+```powershell
+python -m pytest tests/test_d3q27_refined_cubic.py -q
+python -m research.q012f2_d3q27_refined_cubic --worker-output research/replays/q012f2_worker.json
+python -m research.q012f2_d3q27_refined_cubic --output research/replays/q012f2_refined.json --replay research/replays/q012f2_worker.json
+```
+
+source sealと全科学的record/配列hashで再現を照合する。時刻、PID、出力名、wall/CPU時間は
+再実行で変わるため、それらを含むfile/cycle digestの一致を数値再現の条件にはしない。
