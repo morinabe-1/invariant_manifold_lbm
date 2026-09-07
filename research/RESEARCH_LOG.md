@@ -8,6 +8,18 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-07: Q011noの封印と研究ゲートの依存関係の再確認
+
+Q011no（2026-09-01計算済み）の成果物とrunnerを改行正規化SHA-256で再照合した。
+ordinal 149の2,799 compatible allocationは全てparentと同じmodulus intervalとなり、
+`partition_inert_persistent`が成立した。構造3テスト、封印結果6テスト、hash修正後の
+対象1テストは通過済みで、成果物を`371dbed`として記録した。詳細は
+[NEXT_QUESTIONS](NEXT_QUESTIONS.md)のQ011noにある。
+
+この結果はQ011npで位相を調べる理由になる。一方、Q012のD3Q27基礎構築に必要な条件と、
+Q011のrepaired map高次滑らかさの未解決条件は別に照合する。Q005のisotropic候補棄却を
+成功へ読み替えず、後続の修正候補・quadratic chart・shadowing・疎表現の実証を根拠に判定する。
+
 ## Cycle 001: unit-circle selector は物理中心だけを選ぶか
 
 ### 問い

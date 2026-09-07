@@ -67667,6 +67667,32 @@ allocationだけを扱う。ordinal 0--148を再評価せず、後続44,650 sign
 degree-34全分離、actual resonance、all-order nonresonance、higher smoothness、SSM existence／unique性、normal attraction、basin、
 他grid／force／wall、D3Q27を認証しない。
 
+### Q011no 封印結果（第150 witnessの個別分割はinterval-inert）
+
+ordinal 149の50,544候補から2,799 compatible allocationを再現し、exact／outwardとも
+全2,799件がoverlap、product／center／target／intersectionは全件parentと同一だった。
+validity／diagnostic failureはともに0、結果は`passed / partition_inert_persistent`である。
+exact productは、equal-interval pairとclass-total保存を確認後に1回評価した。
+
+- runner／artifact newline-normalized SHA-256:
+  `743cc843ffba5b704f76f4707dfd343e37806f4543fb4dc4cdc327b8dcc3ca38` /
+  `88f3a0605f9db3c4966c984bdf27ca36ffa4312d6370e42f3c41d95fa1428b4d`
+- input／partition-input／allocation／result digest:
+  `7e6df12d5a0c812898730ab88d9afe70a2dc7c85feb6703dd91959291f46e73a` /
+  `6a250622f78117f1eafdba5a608c969d4c1a5d5fa70f5f9fd81b856e2b865004` /
+  `3b4c4f6fd9096cf9259103d8376ad38fe4c7f47a21b757f3768450c454817f17` /
+  `a259a18b95e171b82d9b39af4d94189873b8d1cd3507a699b9e363fee8367b6d`
+- record／stream digest:
+  `3e39ce63914fd3389c491864ab8e178925a01b8c3583c1e0f1b6be16c3d0cb9e` /
+  `42769f90ca75915e4ba49386e3ab21ab155e2c1d96c40b79ba4979f49fa81b70`
+- validation: 構造3 pass／4未封印skip。封印後6 pass／1 hash failure、改行正規化値を
+  修正後に対象1 pass（221.38 s）。compile、ruff、strict JSON、再開時のhash再照合はpass。
+
+[成果物](artifacts/q011no_degree34_one_hundred_fiftieth_individual_partition_audit.json)は
+10,781,820 bytes（working-tree CRLF）／148,351 lines。複素位相は未評価であり、
+Q011npはこの2,799 wave allocationのphase refinementとして未着手のまま残る。
+後続44,650 signatureとdegrees 34--90の非共鳴・repaired mapの高次滑らかさは未解決である。
+
 ## Q012: D3Q27 へ移してよいか
 
 D2Q9 で次を全て満たして初めて進む。
