@@ -132,3 +132,25 @@ H1を通すために場へ保存量投影を加えたり、閾値、方向、振
 
 実装予定: `research/d3q27_conservation_audit.py`、`research/q012g1_d3q27_conservation.py`。
 本書作成時点では未実装・未実験であり、上記の親結果の追加封印とcommitを実行開始の必須条件とする。
+
+## 親結果の確定と追加入力封印 2026-09-07
+
+親Q012gはcommit `e665c5c`で全三格子・1,248 caseの計算と保存後監査を完了した。
+主計算はexit 0、12 validity gate・generic/holdout解像性・144 caseの一致が通り、53監査テストも通過した。
+総合判定は`passed / rejected`。H1–H3は成立、H4/H5は不成立である。
+65³の全64 holdout caseに、両モデルのW葉とW(R)葉の質量成分の数値不達が残った。
+したがって本書の親終了・validity・解像性・保存量反例に関する開始条件は満たされた。
+
+この追記で次の入力を固定する。
+
+- main: `research/artifacts/q012g_d3q27_cubic_chart.json`
+  normalized SHA256 `6a201f212b321d8d7b3d4d143306633608c9df4c50c763e05dcd044695002944`
+- scientific result digest: `aea8c955e3b258766bc516f6ebcc3130ff6a477ac0901bad9dcc656236676b8e`
+- 65³ child: `research/artifacts/q012g_d3q27_cubic_chart_n65.json`
+  normalized SHA256 `1b5b6248ad2b60b4bf67baa70bfd59615e63a6c59a3328b64f8f3dde31d5a01f`
+- 65³ scientific grid digest: `a41c676a9b7bc03fe1a2f04af041f52664f36a529a0480df75f944c816b27c0f`
+
+17³/33³ child、worker、helper/runner、Q012f2の係数とsource chainは既登録の封印をそのまま保持する。
+本追記は入力封印だけであり、192 case・1,152 field・4,608成分、48 caseのGMP worker、対照、閾値を変更しない。
+H4の不合格3方向とH5の欠陥比不達は別の次数別診断へ残す。
+この追記のcommit後に新規helper/runnerの実装・人工対照検証へ進める。実LBM診断はまだ実行していない。

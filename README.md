@@ -7,7 +7,7 @@
 有限振幅gateは64/64、32/64、0/64。65³の`.032`全32方向で三次欠陥が二次より大きく、最大比5.834018だった。
 全holdoutはpositiveだが、65³の全64 caseは質量の固定葉数値gateにも不達だった。原因未診断の丸めとして免除しない。
 [Q012gの全結果・封印・主張範囲](docs/D3Q27_CUBIC_CHART.md)に失敗も保存した。
-次は[Q012g1の保存量診断](docs/D3Q27_CUBIC_CONSERVATION_DIAGNOSIS.md)を追加封印後に実装する。
+次は[Q012g1の保存量診断](docs/D3Q27_CUBIC_CONSERVATION_DIAGNOSIS.md)。親結果の追加封印を完了し、実装・人工対照検証へ進む。
 欠陥比と次数条件の不達は別問に残し、SSM存在・長時間trajectory・連続球・TT優位性へ一般化しない。
 
 2026-09-07: **Q012f2の修正三次preflightを全三格子・全246,480組で受理した**。
