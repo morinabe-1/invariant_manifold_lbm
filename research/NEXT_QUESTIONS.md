@@ -67815,4 +67815,8 @@ Q012eは`passed / accepted`。選択prefix `[.008, .032]` が独立holdoutでも
 82,160 unordered block triple・192,920対称monomial columnが候補となる。縮退shear平面の
 Sym³／mixed symmetric product、外部非共鳴、condition、zero-wave固定葉、共役実構造を
 事前登録して調べる。三次W/Rが必ず改善するとは仮定せず、絶対誤差と線形化に対する
-改善倍率を別に判定する。三次preflightの基準登録・実験はまだ行っていない。
+改善倍率を別に判定する。
+
+Q012fの[全三次preflight](../docs/D3Q27_CUBIC_PREFLIGHT.md)を事前登録した。
+17³/33³/65³で全246,480 tripleを調べ、物理空間の独立forcing、全共役fiber、
+別プロセスで固定48 tripleを検証する。三格子共通の通過と17³だけの通過を区別する。
