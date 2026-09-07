@@ -67739,3 +67739,7 @@ odd17³／33³のstrict unit countは4、even16³／32³は7で、直接3軸Nyqu
 異なる波数間のnormal orderingとFourier-compatible二次homological operatorを調べる。
 保存量は`delta M=delta Px=delta Py=delta Pz=0`。zero-wave correctionはkinetic成分だけを許す。
 係数構築前に非共鳴・非正規性・grid依存性を判定し、棄却された候補は変更せず保存する。
+
+2026-09-07の[事前登録](../docs/D3Q27_QUADRATIC_PREFLIGHT.md)で、3 shell・4 omega・
+3 odd gridの36条件、shear平面を保つSym²／Kronecker operator、固定葉とnormal orderingの
+二軸判定を固定した。無変更BGKを先に検査し、filterの有効性は仮定しない。
