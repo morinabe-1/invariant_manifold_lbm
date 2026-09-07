@@ -255,3 +255,27 @@ mainは独立192 caseの完了、全保存後監査、両方式のH1・全vector
 最終35＋177、全212件は警告error化で通過した（279.46秒）。Ruff・整形・compileall・CLI helpも通過した。
 本節のcommit時点では実格子診断は未開始である。
 commit後、独立192 caseを開始し、完了・再読確認後にのみmain960 caseへ進む。
+
+### 独立worker開始と17³の完了 — 2026-09-08
+
+source封印commit `7412b46`の後、02:45:36 JSTにPID 27060／handle 51090で独立workerを開始した。
+出力予定は`research/artifacts/q012g3_d3q27_cubic_defect_replay.json`。
+実行前の入力・対照を通過して実格子へ進み、17³の全21方向・64 caseを保存した。main960 caseは未開始。
+同じprocessの生存とhandleの進行を確認しており、観測timeoutによる再起動や並行した主計算はない。
+
+17³の閉じたgridのnormalized SHA256:
+`273ce8b5ee72e9220d935e147d96ba0f412abf7364d8ded5b51fdd2dc4349329`。
+grid evidence digest:
+`09c0743605aa4ffb85264fafd3eeda8343afc332aa97d41748a8ddba0e0cbb4c`。
+全21方向childのSHAは同gridの`direction_artifacts`へ固定し、全件を読み戻して内容とheaderを照合した。
+
+- 42 profile、元384 field・128欠陥metadata、1,533全vector比較を監査した。
+- 全11一般方向のH3、全20holdout caseのH2、両degree/armのH1とGram整合が通った。
+- 全再構成比較の最大差は`5.722781890795384e-15`、元floorは`5.502608491768111e-13`。
+- 一般方向のfitを別記述の閉じた最小二乗式で確認し、全1,664切断norm²を`fsum`でも照合した。
+- 元record/field/holdout exact集計の全照合、末尾case・C9比較・tail・exact field・H2/H3改変を含む追加11テストが通った（13.35秒）。
+
+この報告は17³のworker部分集合に限定する。全192 caseの完了/受理やmain960 caseの再現成功ではない。
+最終親workerの保存後監査、33³/65³、本計算との全primary record一致は未完了である。
+検証手順に沿って途中の成立と未実施部分を分離し、元Q012gの棄却を保持する。
+workerを中断・再起動せず、同じhandleを確認しながら残りを継続する。

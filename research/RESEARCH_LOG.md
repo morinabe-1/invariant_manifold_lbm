@@ -8,6 +8,19 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012g3 独立workerを開始し、17³の64 caseを全監査
+
+実行器・source sealをcommit `7412b46`で保存した後、02:45:36 JSTに独立worker PID 27060／handle 51090を開始した。
+入力監査と177対照テストを通過して実格子へ進んだ。mainは開始せず、OS lockも保持する同じworkerを継続している。
+まず17³・一般index 0の4 caseを別途再読し、元24 field・8欠陥・73全vector比較、H1/H3・Gramが通ることを確認した。
+続いて17³の全21方向・64 caseが完了し、元384 field・128欠陥metadata、42 profile、1,533全vector比較を全数監査した。
+H1/H2/H3・Gram・独立照合の不達はこの部分集合で0。最大再構成差は`5.722781890795384e-15`で、元floor以内だった。
+全21方向childの内容とheader/SHA、11一般fitの独立OLS式、全1,664 Gram集計の`fsum`照合を確認した。
+末尾case・C9・tail・exact field・H2/H3改変検知も含めた追加11テストは13.35秒で通過した。Ruff・整形も通過した。
+検証手順に沿い、17³の成立を全worker/全mainの受理へ一般化しない。元Q012gの棄却も保持する。
+workerは残る格子を計算中で、最終192 caseの保存後監査とmain960 caseは未完了である。
+同じprocess/handleの生存・進行を確認済み。観測timeoutのみを理由に再起動せず、科学的sourceを変更しない。
+
 ## 2026-09-08: Q012g3 実行器を接続し、実行前検証を開始
 
 前goal turnは`8260488`、`8d9d65c`、`e12a334`で登録・実装・監査をcommitしたためprogressである。

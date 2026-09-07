@@ -1,5 +1,9 @@
 # 研究の到達点 — 2026-09-08
 
+現在はQ012g3の独立worker PID 27060／handle 51090が稼働中。02:45:36 JSTに開始した。
+17³の64 caseは完了・全保存後監査済み。全192 caseとmain960 caseの判定はまだ完了していない。
+同じhandleを継続確認し、最終workerの監査・終了前にmainを開始しない。観測timeoutだけで再起動しない。
+
 Q012f2は全三格子・全246,480 block triple・578,760 columnで`passed / accepted`。
 全104実座標、四階filter付き`eta=.02, omega=1.5`、固定保存量葉、paired入力・固定3回refinementを保持した。
 11 validity gate、2仮説、全数保存後監査、972組の独立fresh/GMP照合を全て通過した。
@@ -26,7 +30,7 @@ Q012g1は全三格子・192 caseを完了して`passed / accepted`。8 validity 
 場を投影せず、基準・閾値・振幅・方向・map・係数を変更していない。exact場誤差が厳密に0という結果ではない。
 実装71、worker監査10、main監査10、親Q012g監査53、計144テストが通過した（204.00秒）。Ruff・整形・compileallも通過した。
 worker PID 12416／handle 41088は00:08:34 JST、primary PID 5024／handle 14558は00:39:06 JSTにexit 0で終了済み。再pollしない。
-物理計算は現在稼働していない。最終親`artifacts/q012g1_d3q27_conservation.json`と三childのSHAを設計書・監査テストへ封印した。
+Q012g1の計算は終了済み。最終親`artifacts/q012g1_d3q27_conservation.json`と三childのSHAを設計書・監査テストへ封印した。
 検証範囲は192 holdout caseであり、元Q012g全1,248 caseの保存量再診断・再判定へ一般化しない。
 Q012g2の[代数オラクル](../docs/D3Q27_CUBIC_DEFECT_ORACLE.md)は全96人工caseで`passed / accepted`。
 6方向・二次／三次の12組・1,824係数、全2,976 case値を別記述のFraction式と照合し、6 validityとH1・全数保存後監査が通過した。
@@ -44,7 +48,11 @@ primary/独立方式の全係数比較、非単位density・非零momentum定数
 runnerを実装し、元record/fieldのfresh再生成、holdout exact照合、方向別の排他的保存と全child再読を接続した。
 主方式の全振幅診断後にtail用の一時配列を解放してから独立方式を作り、必要な全vectorは比較完了まで保持する。
 初回34実行器テストは245.51秒で通過した。別directoryのreplayを開始前に拒否する検査を追加し、35件と先行177件、計212件が279.46秒で通過した。
-実格子はまだ開始していない。検証後にsourceを封印・commitし、独立worker192 caseから逐次実行する。
+commit `7412b46`でsourceを封印後、workerを開始した。17³の全21方向・64 case・42 profile・1,533全vector比較が通過した。
+元384 field・128欠陥metadataとholdoutのexact集計を照合し、21方向の保存物も全てgridと一致した。
+この部分集合でH1/H2/H3・Gram・独立照合の不達は0。再構成差の最大は`5.722781890795384e-15`で、元floor `5.502608491768111e-13`以内。
+追加11テストは独立OLS式・1,664 Gram集計・末尾case/係数改変を含み、13.35秒で通過した。
+残る格子を同じworkerで計算中。これは17³のworker部分集合であり、全192 caseの受理・main960 caseの判定ではない。
 検証済み保存量集計を後続の実LBM監査へ採用する条件も明記した。旧record・旧判定を保持し、新しい高次chartはまだ構築しない。
 H4の3方向とH5の欠陥比不達は別の次数別診断に残す。
 Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/Q012d1の棄却を保持する。
@@ -72,7 +80,7 @@ Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/
 | D3Q27三次W/R | Q012g passed/rejected。全1,248 case、12 validity、独立144 case、53監査テスト通過。H1–H3成立、H4の65³3方向とH5の有限振幅/質量葉が不達 |
 | D3Q27保存量診断 | Q012g1 accepted。全192 case・1,152 field・4,608成分、独立48 caseと12対照を監査。元超過256成分を集計誤差へ切り分け。144テスト通過 |
 | D3Q27次数別欠陥の代数オラクル | Q012g2 accepted。全96人工case・1,824係数・2,976値、独立Fraction式・全数保存後監査・77テスト通過。実LBMの悪化原因を説明した結果ではない |
-| 次の主課題 | Q012g3 runnerを実装、212テスト通過。全960 case・独立192 caseの実格子診断は未開始。source封印後にworker→mainを逐次実行する |
+| 次の主課題 | Q012g3 worker稼働中（PID 27060／handle 51090）。17³64 caseの全監査・追加11テスト通過。残る格子と最終worker監査後にmain960 caseへ進む |
 | さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
