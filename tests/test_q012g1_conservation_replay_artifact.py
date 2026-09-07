@@ -131,8 +131,7 @@ def test_rounded_analytic_baselines_and_all_twelve_uniform_negative_controls(sav
         assert row["additions_exact"] is row["detected_violation"] is row["passed"] is True
 
 
-@pytest.mark.parametrize("size", [17, 33, 65])
-def test_all_48_old_cases_288_field_hashes_and_1152_signed_identities(saved, size):
+def check_grid_case_values(saved, size, *, direction_count):
     grid = next(g for g in saved["evidence"]["grids"] if g["size"] == size)
     previous = next(
         g for g in runner.read_json(runner.PARENT_PATH)["cycle"]["grids"] if g["size"] == size
@@ -154,7 +153,7 @@ def test_all_48_old_cases_288_field_hashes_and_1152_signed_identities(saved, siz
             "amplitude": a,
             "a": (a * directions[i]).tolist(),
         }
-        for i in range(8)
+        for i in range(direction_count)
         for a in (0.008, 0.032)
     ]
     assert [r["specification"] for r in grid["records"]] == expected_specs
@@ -233,7 +232,12 @@ def test_all_48_old_cases_288_field_hashes_and_1152_signed_identities(saved, siz
                             "passed": abs(Fraction.from_float(mean)) <= TOLERANCE,
                         }
                     comparison_count += 1
-    assert (fields_count, comparison_count) == (96, 384)
+    assert (fields_count, comparison_count) == (direction_count * 12, direction_count * 48)
+
+
+@pytest.mark.parametrize("size", [17, 33, 65])
+def test_all_48_old_cases_288_field_hashes_and_1152_signed_identities(saved, size):
+    check_grid_case_values(saved, size, direction_count=8)
 
 
 def test_every_child_and_all_saved_exact_values_are_in_final_worker(saved):
@@ -267,12 +271,12 @@ def test_every_child_and_all_saved_exact_values_are_in_final_worker(saved):
     )["passed"]
 
 
-def test_failure_summary_is_rebuilt_independently_from_every_component(saved):
+def independent_failure_summary(grids):
     categories = ("legacy", "exact_field", "sum_only", "base_only")
     failures = {k: [] for k in categories}
     maxima = {k: Fraction(0) for k in categories}
     counts = dict.fromkeys(categories, 0)
-    for grid in saved["evidence"]["grids"]:
+    for grid in grids:
         for row in grid["records"]:
             spec = row["specification"]
             for degree, data in row["models"].items():
@@ -308,14 +312,26 @@ def test_failure_summary_is_rebuilt_independently_from_every_component(saved):
                                         },
                                     }
                                 )
-    assert counts == {"legacy": 1152, "exact_field": 1152, "sum_only": 1152, "base_only": 768}
-    for key in categories:
-        assert saved["summary"][key] == {
+    return {
+        key: {
             "components": counts[key],
             "maximum_absolute_site_average_error": float(maxima[key]),
             "failures": failures[key],
             "failed_components": len(failures[key]),
         }
+        for key in categories
+    }
+
+
+def test_failure_summary_is_rebuilt_independently_from_every_component(saved):
+    rebuilt = independent_failure_summary(saved["evidence"]["grids"])
+    assert {k: v["components"] for k, v in rebuilt.items()} == {
+        "legacy": 1152,
+        "exact_field": 1152,
+        "sum_only": 1152,
+        "base_only": 768,
+    }
+    assert saved["summary"] == rebuilt
     # A first-eight-direction worker does not adjudicate the full 192-case H1.
     assert "scientific_outcome" not in saved and "hypothesis_gates" not in saved
     assert "Q012g rejection" in saved["claim_boundary"]
