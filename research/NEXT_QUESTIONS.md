@@ -67777,3 +67777,7 @@ Q012c1aは`passed / accepted`。全108条件・332,748 pairを計算し、四階
 次のQ012dは、この修正mapの17³・104実座標dense quadratic W/Rである。
 物理空間の巨大なW2配列の確保を前提にせず、Fourier selection ruleを使ったdense fiber oracleを
 full-grid非線形写像の残差で検証する。TT比較ではこの自然な疎表現を必須baselineにする。
+
+Q012dの[実座標quadratic chart検証](../docs/D3Q27_QUADRATIC_CHART.md)を事前登録した。
+17³・104実座標の全二次jetを構築し、複素/実変換、非自明R2、zero-wave kinetic補正、
+独立Hessian、64方向の次数、48立方操作、48有限trajectoryを別gateで判定する。
