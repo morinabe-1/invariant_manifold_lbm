@@ -1,14 +1,17 @@
 # TT parameterized invariant-manifold LBM
 
-2026-09-07: **Q012eでD3Q27二次モデルの有限振幅使用基準を検証**。
-17³・104実座標、四階filter付き修正map `eta=.02, omega=1.5`の二次W/Rは変更せず、
-全224 caseで四次項・有理式tailと同一初期状態からの有限時間誤差を調べた。
-登録振幅`.008, .032`がcalibrationと独立holdoutの全方向で通り、Q012eは`passed / accepted`。
-`.128`の30/32件不合格は「線形化より誤差を半分以下」の条件だけで、絶対誤差と正値性は通過。
-振幅1以上の96件は初期正値性が不合格だった。登録4 caseは別プロセスで全traceを再現した。
-元Q012d/Q012d1の棄却は変更しない。次は全104座標の三次homological preflight。
+2026-09-07: **Q012fの全三次preflightは三格子共通の通過を棄却**。
+104実座標・四階filter付き修正map `eta=.02, omega=1.5`を保ち、17³/33³/65³の
+全246,480 block triple・578,760対称columnを計算した。17³は全基準を通過したが、
+33³/65³は三次応答の共役対称性を落とし、65³は272件でsolve残差も上限を超えた。
+全件のrank・condition基準、独立forcing、別プロセスの固定48 triple再現は通過。
+条件数が上限内でも残差と実構造の保証にはならない。結果は`passed / rejected`として保存する。
+次のQ012f1は、二次入力の微小な共役誤差の伝播と三次solve精度を分離する原因診断。
+元の棄却や閾値は変更せず、17³だけを採って三格子成功とはしない。
 3DのSSM存在・連続球の実用半径・TT優位性は未認証。自然Fourier sparse baselineを維持する。
-[現在の到達点](research/STATUS.md)と[有限振幅結果](docs/D3Q27_PRACTICAL_AMPLITUDE.md)を参照。
+[現在の到達点](research/STATUS.md)と[三次preflight結果](docs/D3Q27_CUBIC_PREFLIGHT.md)を参照。
+Q012eの17³・二次モデルの登録振幅`.008, .032`の有限sample受理は
+[有限振幅結果](docs/D3Q27_PRACTICAL_AMPLITUDE.md)に保持する。
 [Q012d1の次数別診断と棄却](docs/D3Q27_NEGATIVE_CONTROL_DIAGNOSIS.md)も保存する。
 本体の残差次数2→3・48 trajectoryの検証は[Q012d](docs/D3Q27_QUADRATIC_CHART.md)に保存。
 Q012c1aの3格子prequalification受理、無変更BGKの棄却、元SVD不収束も別結果として保持する。

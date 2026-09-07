@@ -98,3 +98,107 @@ validity通過かつ全三格子の三次solve・実構造が通ればaccepted�
 落とせばrejected、validity不通過ならinconclusiveとする。grid依存性を別に示し、
 棄却なら最初の未解決機構を分析する。受理でも、三次W/Rの評価器・有限振幅改善・
 SSM存在・grid-uniform半径は未検証のまま次の研究課題へ渡す。
+
+## 2026-09-07 封印結果: passed / rejected
+
+事前登録commitは`9480e24`。全三格子・全246,480 triple・578,760対称columnの計算が
+完了した。全8 validity gateを通過した一方、三格子共通のsolveと実構造の両仮説を落とした。
+17³だけの通過で全体を受理せず、Q012gの三次chart評価器へ直進しない。
+
+### 全数結果
+
+| 診断 | 17³ | 33³ | 65³ |
+|---|---:|---:|---:|
+| 完了triple | 82,160 | 82,160 | 82,160 |
+| rank・condition基準の不合格 | 0 | 0 | 0 |
+| solve総合不合格 | 0 | 0 | 272 |
+| 最大condition number | 39,414.9040 | 500,430.0734 | 7,246,918.3126 |
+| 最小特異値 | 6.98843e-5 | 5.50737e-6 | 3.80275e-7 |
+| 最大外部solve相対残差 | 6.36578e-12 | 7.03068e-11 | 1.08311e-9 |
+| 最大raw三次応答norm | 2,700.4657 | 22,509.4451 | 176,601.8718 |
+| H3最大scaled共役誤差 | 1.86685e-9 | 7.88162e-8 | 5.39076e-6 |
+| 全実構造gate | pass | fail | fail |
+| 独立forcingの最大相対誤差 | 6.58278e-13 | 8.18163e-12 | 1.20345e-10 |
+| 例外時だけのSVD代替件数 | 0 | 0 | 2 |
+
+応答normはorthonormal Fourier・global-l2座標でのraw三次微分行列のnormである。
+局所振幅基準やTaylor fiberそのもののnormではない。既存solverから継承したrecord名
+`response_local_norm`には各行の`response_normalization`でこの規約を明記した。
+gridごとに異なる波数・operatorを比較しているため、この3値だけから漸近指数を認証しない。
+
+全246,480件のstatusは`nonsingular_practical`だが、これは数値rankとconditionのみの判定。
+最終`passed`にはsolve残差・full-population残差・構造・backendの別gateを要求する。
+従ってこのstatusで65³の272件を通過扱いしてはならない。
+
+65³の272件は全て外部solve相対残差`1e-10`を超えた。内訳はshear/shear/shearが264件、
+shear/acoustic+/acoustic-が8件で、rank・condition・構造の不合格はない。
+ordinal `55031, 62968, 63622`の3件はfull-population残差`1e-9`も超えた。
+最初の不合格はordinal `897`、入力波数`(-1,-1,-1), (-1,0,0), (0,0,1)`のshear三つ、
+出力波数`(-2,-1,0)`、operator 216×216である。condition `1.64143e6`、
+forcing norm `.322362`、応答norm `126505.171`、残差 `6.66064e-10`だった。
+弱い左部分空間へのforcing射影は`.214249`であり、悪条件方向のforcingがゼロとはいえない。
+
+65³のordinal `45729, 55289`だけが元gesddの`SVD did not converge`例外を生じた。
+既存の例外時gesvd代替で両方通過した。factor再構成誤差`3.88520e-15`、左右直交誤差
+`3.23142e-14 / 3.31750e-14`も登録上限内だった。上記272件は全て元gesddが正常終了した
+ケースであり、これらに事後的なbackend切替を適用していない。
+
+### 実構造の失敗と独立性
+
+forcingとR3の全fiber共役gateは三格子で通った。H3だけが33³/65³で上限`1e-8`を超えた。
+最大誤差の入力monomialと共役partner（0-based complex coordinate）はそれぞれ
+33³で`[53,60,92] / [8,40,49]`、65³で`[36,44,53] / [49,56,64]`である。
+全partnerのcoverage・反対出力波数を確認し、小さい虚部を捨てる前のfiberで判定した。
+
+unchanged二次H2のaggregate共役誤差は17³/33³/65³で
+`9.36665e-13 / 1.23684e-11 / 2.04230e-10`だった。これはH3のfiber-wise尺度とは異なる。
+元二次評価器は物理場を実部に戻す一方、今回の係数forcingは保存された複素H2を用いる。
+独立物理forcingとのずれは全24方向で上限`1e-8`以内だが、この比較はH3実構造の代わりにはならない。
+入力共役誤差の増幅と、大きい解を持つ方程式での浮動小数点打消しは原因候補であり、
+現時点でどちらか一つが原因と確定したわけではない。
+
+既知の非対角複素安定block・全4対称積patternで、製造した三次解と独立Sylvester solveが一致。
+特異compatible／incompatible・ill-conditionedの負の対照も正しく不合格となった。
+各格子8方向の104座標をすべて用いる独立物理forcing比較は通過した。
+別プロセスでは全二次係数をfreshに構築し、固定16 triple/格子の行列・forcing・解のhashと
+全recordが一致した。これは48 tripleの独立再現であり、全246,480 tripleの再実行ではない。
+テストでは全保存行のrank・condition・残差・判定・最大値を再計算し、別途freshな二次係数と
+各格子のordinal 0・最悪condition・最初の不合格を再計算した。
+
+全三次fiberは構築時に照合したが、保存するのは配列metadata hashと全診断recordである。
+三次評価器・三次残差の次数4・有限振幅改善・存在定理はまだ検証していない。
+物理空間の巨大W3や104⁴の実R3は確保しておらず、TTの優位性も主張しない。
+
+### 保存と再現
+
+全診断は各格子82,160行のlossless gzip JSONLとして保存し、展開後の順序・全数値一致を確認した。
+workerを含む入力chain、固定保存量葉、全104座標を保った。関連既存230テストと新規38テスト、
+ruff・compileallは通過した。再現コマンドは[STATUS](../research/STATUS.md)に記載する。
+封印artifactを上書きせず、別の`research/replays/`へ出力する。cycleにはworker metadataが入るため、
+再実行時はsource hash・配列hash・全科学的recordを照合し、cycle全体の一致を要求しない。
+
+newline-normalized SHA-256（gzipはraw byte SHA-256）:
+
+- cubic helper: `bf9ce50926b1a75a5f33d01302b2af48b4e173b1d39b08f97a0bdaa336ffca70`
+- runner: `06ac8d9ccd0382714b4f4c70c763ddeb1d3e65b3fea4da1f7f595113b3bab94c`
+- main artifact: `d3b778ed339c9629dbac57264291aceb32c795a1e6d12e3becb20cf333c57089`
+- cycle digest: `42208f4a8a6c7d585273ae8d925a6d966cc68e568f08a835ab7f941a41668b34`
+- replay artifact: `5e54cfb8ef545748417f26dda3b954b5b43ce63faa5504127fc1619a30d09aa8`
+- replay evidence digest: `086e3ad397b2ef90d3f37aed38909cfcbadf0b4b87367ede6db87f0a47e7bdcc`
+- 17³ gzip (9,309,054 bytes): `f2b42c98554ca482c7e6c07c8d168fbcbc033b6421bf4398be43ac597d5565f6`
+- 33³ gzip (9,306,440 bytes): `9fc10e6e384f9adf906f3f989e47e5f22d04a3e989a3f628c6d0273a0147afd7`
+- 65³ gzip (9,324,427 bytes): `7444d66a8acf411635fef32bd11e1f91ec423fb1a8f970ffe0c2ceebb5138298`
+
+展開record列digest（canonical JSON行と改行を順にhash）:
+
+- 17³: `276f146328627d286f23523974676c5d2fb4b1eae15c2f2bd1bbdcf368bbedf2`
+- 33³: `e2dc02bde2272b17d8f1ba11ab99b19a470d5064b1c21c3aecf2cb095387734e`
+- 65³: `9b9f21d9f72602df0a341d5afd3890918536ad8da4d8011915b54fe9b96d0d70`
+
+### 次問 Q012f1
+
+入力の共役誤差とsolver精度を分ける診断を事前登録する。元入力／明示的実構造の入力と、
+元SVD／独立高精度または構造化Sylvester solveを区別し、元272件の失敗分類と固定共役最悪対・
+成功対を覆う。入力を変更する候補では二次方程式・固定葉・独立forcingを改めて検証する。
+単一ordinalずつの監査へ細分化し続けず、機構を切り分けた後の候補は全三格子で再検証する。
+これはまだ診断案であり、修正実装の受理ではない。元Q012fの棄却と閾値は保持する。
