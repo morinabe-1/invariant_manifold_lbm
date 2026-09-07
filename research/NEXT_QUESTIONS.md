@@ -1,7 +1,9 @@
 # 次に検証する問い
 
-上から順に gate を通す。前段が失敗した場合は、失敗分析と設計修正を記録してから
-同じ gate を再実行する。Q004b、Q005m、Q005 は実装済みだが、定義と再現条件を残す。
+各gateの依存条件を順に通す。前段が失敗した場合は、失敗分析と設計修正を記録してから
+再実行する。2026-09-07の[Q012a事前登録](../docs/D3Q27_FOUNDATION.md)により、
+D3Q27基礎構築とQ011np以降のrepaired-map高次滑らかさ監査を別の依存経路に整理した。
+Q004b、Q005m、Q005の定義と再現条件、および各棄却結果は引き続き残す。
 
 ## Q004b: validated hydrodynamic-cluster cutoff
 
@@ -67708,3 +67710,10 @@ D2Q9 で次を全て満たして初めて進む。
 
 D3Q27 の最初の問いは、D1Q3 tensor-product construction が quadrature、moment、
 \(z\)-independent limit、回転等方性を同時に満たすかである。
+
+### Q012a: tensor-product D3Q27 foundation
+
+2026-09-07事前登録は[詳細設計](../docs/D3Q27_FOUNDATION.md)に固定する。
+Q005の元候補の棄却を保持し、修正familyのQ006h、Q006p/q、Q007ap、Q011g/h、Q010の
+必要な個別gateを照合してから着手する。Q011npは未解決研究として残り、D3Q27への
+高次滑らかさ・SSM theoremの転用は行わない。
