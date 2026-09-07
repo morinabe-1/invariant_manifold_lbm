@@ -1,0 +1,31 @@
+# 研究の到達点 — 2026-09-07
+
+現在はD3Q27への段階的拡張に入った。Q012aの基礎写像と一様4保存座標のquadratic oracleは
+通過した。研究全体は継続中で、3D非零波数の縮約モデルやTTの優位性はまだ示していない。
+
+| 課題 | 到達点と次の行動 |
+|---|---|
+| 別系統での研究基盤 | `tt_invariant_manifold_lbm`。既存tciから独立。理論整理と詳細設計を保存 |
+| D2Q9の縮約 | 固定保存量葉のdense quadraticからquarticまで構築。残差・限定領域でのshadowingを検証 |
+| 存在・半径 | Q007系の固定17²・指定map／norm／tubeについて認証。実用半径・grid-uniform性へ一般化しない |
+| TT表現 | Q008/Q010、forced系Q011gの登録TT候補は自然Fourier sparse baselineに敗れた。疎表現を採用 |
+| repaired mapの高次滑らかさ | Q011no ordinal 149は個別区間分割で改善なし。Q011np位相監査、degrees 34--90は未解決 |
+| D3Q27基礎 | Q012a accepted。216有理moment、48立方対称操作、z独立D2Q9 lift、center二次残差次数3 |
+| 次の主課題 | Q012b: 4次元低波数cluster、二重shear、Nyquist parity。次いでsector非共鳴と非零波数W/R |
+| さらに必要 | 3D rollout／positivity／conservation、3D sparse／TT費用評価、Taylor–Green、force／wall |
+
+Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
+Q012の着手条件は後続の修正候補と個別gateを照合して判定した。詳細な対応は
+[Q012a設計](../docs/D3Q27_FOUNDATION.md)にある。高次非共鳴の個別signature監査が
+3D基礎代数の唯一の前提である、という直列順序にはしない。
+
+再現コマンド（repository root）:
+
+```powershell
+python -m pytest tests/test_d3q27_foundation.py tests/test_d2q9.py tests/test_manufactured.py -q
+python -m research.q012a_d3q27_foundation --output research/artifacts/q012a_d3q27_foundation.json
+```
+
+成果物再生成では時刻が変わるためファイル全体hashは変わる。科学的な再現照合は、
+`cycle.result_digest_sha256`とhelper／runnerのsource hashを比較する。
+既存artifactを変更する場合は新たな実験記録として扱う。

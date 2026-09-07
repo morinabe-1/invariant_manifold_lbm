@@ -95,3 +95,31 @@ tensor-productの根拠はCoreixas–Chopard–Latt (2019), Sec. VI A,
 result digestは数値証拠とgateを覆い、時刻・runtime計測は別に置く。
 成果物は`research/artifacts/q012a_d3q27_foundation.json`。
 3D非零波数chart、SSM存在・一意性、normal attraction、TT圧縮率はQ012aの結論に含めない。
+
+## Q012a結果（2026-09-07）
+
+前提10 artifactのsealと必要な個別判定を照合し、7監査すべてを通過した。
+判定は`passed / accepted`。D2Q9回帰・manufactured oracleと合わせた86テストを通過した。
+
+| 検証 | 結果 |
+|---|---|
+| 有理quadrature | 216/216一致、rank 2／4等方性exact |
+| 平衡moment | 最大absolute誤差 `2.22045e-16` |
+| streaming | 27/27 impulse一致、population multiset不変 |
+| 保存量／positivity | 16本・512 step、最大site平均drift `3.28955e-15`、最小population `0.00418275` |
+| D2Q9 lift | 12本・16 step、最大誤差 `8.88178e-16`、symbol可換誤差 `1.14439e-16` |
+| 立方対称性 | 48/48通過（proper rotation 24）、最大map誤差 `2.77556e-16` |
+| 線形化 | FD誤差減少比 `4.00000`、FFT照合誤差 `<=4.78831e-16` |
+| 4保存座標center oracle | Hessian誤差 `1.04467e-15`、`||R2||=2.15360e-15` |
+| 残差次数 | 32方向でlinear `1.99693--2.00396`、quadratic `2.99693--3.00396` |
+
+rank 6の負の対照では、`<cx^6>=1/3`、unit face diagonal方向では`1/2`であり、
+Gaussian値`5/9`とも一致しない。従って連続回転の全次数等方性を主張しない。
+
+[成果物](../research/artifacts/q012a_d3q27_foundation.json)の改行正規化SHA-256は
+`b26c6dfde65b24f424fcadffe9c9c75f4236171242e819921e6e0d06cf5ba327`、result digestは
+`385e0e55211c24f99b8dd4b5591862b5c83295f5199beb286f0db56bbce4801b`。
+helper／runner SHA-256は
+`4a220aa1f88aaf2b2bdd5ce3fa82dfed3d56b466c545d1385926f7a9e2dcb89a` /
+`4b8a87a2e8d7d41f8e56d35cf2e060efb2e3ee7fe3d36723c1b2e68456ffe9fa`。
+次はQ012bで4次元hydrodynamic clusterと二重shearを追跡し、Nyquist parityを監査する。

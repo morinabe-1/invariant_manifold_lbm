@@ -8,6 +8,23 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-07: Q012a D3Q27基礎オラクル
+
+問いは、D1Q3三重積から得るD3Q27がquadrature、保存moment、D2Q9 lift、立方対称性、
+既存homological solverとの整合を満たすかである。事前登録`d733f38`後に独立helperを実装した。
+Q012前提の10 artifactと必要な科学的判定を照合し、3Dの7監査を全て通過した。
+
+216有理moment、27 streaming impulse、48立方対称操作が通過し、16本512 stepの最大
+site平均保存driftは`3.28955e-15`、最小populationは`0.00418275`だった。
+z独立D2Q9 liftの16-step最大誤差は`8.88178e-16`、一様4保存座標の二次chartは
+32方向で残差次数`2 -> 3`を示した。rank 6は軸方向`1/3`、face diagonal方向`1/2`となり、
+全次数回転等方性を否定する対照も得た。詳細と再現情報は
+[Q012a結果](../docs/D3Q27_FOUNDATION.md)にまとめた。
+
+結論は`accepted`。次はQ012bの3D cluster・二重shear・Nyquist parityであり、
+この一様center oracleを非零波数の3D多様体として扱わない。
+Q011npとrepaired-map高次滑らかさは独立した未解決課題として残る。
+
 ## 2026-09-07: Q011noの封印と研究ゲートの依存関係の再確認
 
 Q011no（2026-09-01計算済み）の成果物とrunnerを改行正規化SHA-256で再照合した。

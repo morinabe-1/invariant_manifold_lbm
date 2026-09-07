@@ -1,5 +1,10 @@
 # TT parameterized invariant-manifold LBM
 
+2026-09-07: **Q012a D3Q27基礎オラクルが通過**。D1Q3三重積、D2Q9へのz独立lift、
+48立方対称操作、4保存座標の二次chartを実装・検証した。
+[現在の到達点](research/STATUS.md)と[設計・検証結果](docs/D3Q27_FOUNDATION.md)を参照。
+3D非零波数chartとTT費用評価は次段階である。
+
 このリポジトリは、既存の `tci` 系統とは独立した研究プロジェクトである。完全な
 LBM 1-step 写像
 
@@ -18228,7 +18233,7 @@ python -m research.q010_representation_cost --output research/artifacts/q010_rep
 - repaired exact mapの\(C^2\)以上のgraph smoothness、degrees 34--90 external
   nonresonance、spectral-quotient SSM uniqueness（Q011uはmodulus-only routeを棄却）
 - TT-cross（固定Q007c1／Q011g係数では保留）、forced SSM存在・一意性／normal-attraction認証、境界条件、
-  Poiseuille／Couette、D3Q27
+  Poiseuille／Couette、D3Q27の非零波数chart／TT費用評価
 
 Q007iにより固定17² map・固定保存量葉に対する定性的な局所解析的不変多様体の存在と\(C^{90}\)一意性を、
 Q007jにより登録数値eigencoordinatesと厳密selected subspaceの対応を、Q007kにより登録Q006i二次係数と

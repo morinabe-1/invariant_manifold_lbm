@@ -67717,3 +67717,7 @@ D3Q27 の最初の問いは、D1Q3 tensor-product construction が quadrature、
 Q005の元候補の棄却を保持し、修正familyのQ006h、Q006p/q、Q007ap、Q011g/h、Q010の
 必要な個別gateを照合してから着手する。Q011npは未解決研究として残り、D3Q27への
 高次滑らかさ・SSM theoremの転用は行わない。
+
+Q012aは`passed / accepted`。216有理moment、48立方対称操作、D2Q9 lift、
+32方向の一様center残差次数`2 -> 3`を通過した。
+[封印結果](../docs/D3Q27_FOUNDATION.md)を記録し、次はQ012bの3D branch／cluster監査へ進む。
