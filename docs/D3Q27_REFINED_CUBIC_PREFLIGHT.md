@@ -105,3 +105,26 @@ python -m research.q012f2_d3q27_refined_cubic --output research/replays/q012f2_r
 
 source sealと全科学的record/配列hashで再現を照合する。時刻、PID、出力名、wall/CPU時間は
 再実行で変わるため、それらを含むfile/cycle digestの一致を数値再現の条件にはしない。
+
+## 実行途中の記録（総合判定は未確定）
+
+実装commitは`0673d4c`。新規31・既存関連328テスト、ruff、compileallは通過した。
+[独立worker](../research/artifacts/q012f2_d3q27_refined_cubic_replay.json)は固定324組/格子・
+計972組を完了した。全二次入力とQ012f1のpaired armのproblem配列・SVD参考record・
+refined解/応答・補正historyは全件一致し、3種のexact残差gateは全件通った。
+元のfloat64不合格は17³/33³/65³で0/0/17件として保持する。
+65³の324 exact proofは元Q012f1aのpaired行と一致する。
+このworkerだけで全246,480組のpreflightを受理したことにはならない。
+
+主計算は同じ固定sourceで17³→33³→65³の順に進行中。19:27 JSTに起動し、観測時点で
+17³の25,600/82,160組まで、不合格0を確認した。全数の共役構造・独立物理forcing・保存後監査・
+972組との最終照合が残っており、accepted/rejected/inconclusiveの総合判定はまだ行っていない。
+
+```text
+helper normalized SHA256:
+4dca3477a1aecafe2e54cfac594f02725b14c2922674ad634e8e5ab54b0db262
+runner normalized SHA256:
+9c59d94d70cc5827558a1d6c8a7fbb8481fe07580fe737317ebdcbcb93ff40d5
+independent 972-case worker normalized SHA256:
+7bdfe549c765d054514af445c10965d91f4565572fea3c4858cbce577d115147
+```
