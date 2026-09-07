@@ -1,14 +1,15 @@
 # TT parameterized invariant-manifold LBM
 
-2026-09-07: **Q012d1でD3Q27の負の対照を次数別に診断**。
+2026-09-07: **Q012eでD3Q27二次モデルの有限振幅使用基準を検証**。
 17³・104実座標、四階filter付き修正map `eta=.02, omega=1.5`の二次W/Rは変更せず、
-元のR2なし対照の傾き超過を、式から求めた三次項で再現した。
-一方、三次だけでvector誤差2%以内という条件は40 sampleで失敗し、Q012d1は`passed / rejected`。
-元振幅域で四次まで含めた方向別予測の最大誤差は7.09e-6、小振幅診断80本の傾きは約2だった。
-2プロセスで全560 sampleが一致した。元Q012dの棄却は変更しない。
-次のQ012eでは四次寄与と有理式tailから実用振幅・高次化の必要性を評価する。
-3DのSSM存在・実用半径・TT優位性は未認証。自然Fourier sparse baselineを維持する。
-[現在の到達点](research/STATUS.md)と[次数別診断結果](docs/D3Q27_NEGATIVE_CONTROL_DIAGNOSIS.md)を参照。
+全224 caseで四次項・有理式tailと同一初期状態からの有限時間誤差を調べた。
+登録振幅`.008, .032`がcalibrationと独立holdoutの全方向で通り、Q012eは`passed / accepted`。
+`.128`の30/32件不合格は「線形化より誤差を半分以下」の条件だけで、絶対誤差と正値性は通過。
+振幅1以上の96件は初期正値性が不合格だった。登録4 caseは別プロセスで全traceを再現した。
+元Q012d/Q012d1の棄却は変更しない。次は全104座標の三次homological preflight。
+3DのSSM存在・連続球の実用半径・TT優位性は未認証。自然Fourier sparse baselineを維持する。
+[現在の到達点](research/STATUS.md)と[有限振幅結果](docs/D3Q27_PRACTICAL_AMPLITUDE.md)を参照。
+[Q012d1の次数別診断と棄却](docs/D3Q27_NEGATIVE_CONTROL_DIAGNOSIS.md)も保存する。
 本体の残差次数2→3・48 trajectoryの検証は[Q012d](docs/D3Q27_QUADRATIC_CHART.md)に保存。
 Q012c1aの3格子prequalification受理、無変更BGKの棄却、元SVD不収束も別結果として保持する。
 

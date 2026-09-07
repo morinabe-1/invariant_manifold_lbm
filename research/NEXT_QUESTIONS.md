@@ -67804,3 +67804,15 @@ Q012eの[有理式tailと有限時間使用範囲](../docs/D3Q27_PRACTICAL_AMPLI
 全104座標の二次chartを保ち、独立8+8方向・正負・7振幅の224 caseで、四次以降のtailと
 64-stepの同一初期状態比較を調べる。calibrationの連続prefixを固定してholdoutで検証し、
 大振幅の不合格を隠さず使用範囲の境界として保存する。連続球の半径とは呼ばない。
+
+Q012eは`passed / accepted`。選択prefix `[.008, .032]` が独立holdoutでも通過した。
+`.128`では全32件が絶対精度・正値性を通過し、30件が半減比較基準だけを落とした。
+`.512`ではpopulation絶対精度を24件が落とし、振幅1以上の96件は初期正値性不合格。
+全224 caseの有理式分解は丸め予算内で一致し、別プロセスで登録4 caseの全traceが一致した。
+詳細と全不合格は[Q012e結果](../docs/D3Q27_PRACTICAL_AMPLITUDE.md)に保存する。
+
+次のQ012fは、全104座標を保持した三次homological operator／右辺のpreflightである。
+82,160 unordered block triple・192,920対称monomial columnが候補となる。縮退shear平面の
+Sym³／mixed symmetric product、外部非共鳴、condition、zero-wave固定葉、共役実構造を
+事前登録して調べる。三次W/Rが必ず改善するとは仮定せず、絶対誤差と線形化に対する
+改善倍率を別に判定する。三次preflightの基準登録・実験はまだ行っていない。
