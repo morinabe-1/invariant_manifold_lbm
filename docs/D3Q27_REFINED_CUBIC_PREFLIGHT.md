@@ -128,3 +128,60 @@ runner normalized SHA256:
 independent 972-case worker normalized SHA256:
 7bdfe549c765d054514af445c10965d91f4565572fea3c4858cbce577d115147
 ```
+
+## 17³/33³の全数完了（総合判定は保留）
+
+同じsource・processによる17³/33³の各82,160組・192,920列、計164,320組・385,840列を完了した。
+candidate、元float64判定、MP128/exact照合の不合格は全て0。
+全rank/condition、full方程式、固定葉・構造、共役、独立物理forcingが通過した。
+
+| 指標 | 17³全数の最大値 | 33³全数の最大値 | 登録上限 |
+|---|---:|---:|---:|
+| condition | 39414.9040331 | 500430.0734275 | 1e8 |
+| exact相対外部残差（exact分母、表示値） | 1.39634703561228e-13 | 2.0521811084050202e-12 | 1e-10 |
+| full-population相対残差 | 6.990591908581969e-13 | 9.368784158656308e-12 | 1e-9 |
+| 固定葉・構造のscaled誤差 | 4.4591966249596965e-15 | 4.667724332247319e-15 | 5e-12 |
+| forcing共役誤差 | 3.500196505837025e-16 | 3.61003281690433e-16 | 1e-8 |
+| H3共役誤差 | 1.1147904145972829e-12 | 1.3635071648500198e-11 | 1e-8 |
+| R3共役誤差 | 9.899056296961976e-16 | 9.94418790020395e-16 | 1e-8 |
+| 独立物理forcingとの相対誤差（各8方向） | 3.990206655849577e-15 | 1.0179528866498556e-14 | 1e-8 |
+
+exact判定は二乗normの有理数比較であり、表の浮動小数点表示値では判定していない。
+保存後監査では両格子の全行の判定と集計、全列のhash・座標・波数・共役対応を確認した。
+座標三次項と保存列の対応はsolverの対称積基底を使わない列挙でも全件照合した。
+固定324組/格子は別processのGMP workerと全数値・proofが一致し、exact残差・condition・full残差の
+最悪例をfresh/GMPで再構築した。全forcing配列と独立物理式も封印したpaired入力に一致した。
+17³/33³の各4 artifactテスト、計8テストは通過したが、65³や三格子最終判定の検証を代替しない。
+元Q012fの33³でのH3共役不合格は今回の候補では再現しなかったが、過去の棄却を上書きしない。
+
+```powershell
+python -m pytest tests/test_d3q27_refined_cubic_artifact.py -k n17 -q
+python -m pytest tests/test_d3q27_refined_cubic_artifact.py -k n33 -q
+```
+
+17³のwall `1158.7171156000113`秒、CPU `1299.828125`秒。全record gzipは`79,165,353` bytes、
+全疎fiber NPZは`152,490,290` bytesである。
+33³のwall `1157.5888819000102`秒、CPU `1300.21875`秒。gzipは`79,613,292` bytes、
+NPZは`153,374,815` bytesである。これをTT対sparse・online評価のbenchmarkとは呼ばない。
+
+```text
+17³ grid JSON normalized SHA256:
+82fa74b2bedf7d5591d73a1dc32d390ab208d2aae93a6c18e7ca15f6e75a5a9f
+17³ grid scientific result digest:
+ed14b22242dff9d85942bc4dcdf7b251878b2eea8f35485e72b5435cc88f612e
+17³ record gzip byte SHA256:
+202a2d825eee8a19470878925455587bbcb1186ed594a7774a8b07f9b4d78986
+17³ NPZ byte SHA256:
+5541b4229f0b8220b8fc6b08ea44287718508e5a682759939846f5754dd21e61
+33³ grid JSON normalized SHA256:
+bad7e72a4f1f115ae788a538439d3c1e2ac52a08d8d5d9a19406850142ed134c
+33³ grid scientific result digest:
+ce1166858cf9a85596ef2173aab7866fb6ded6c102c2675ad9b2969bf8d3bb11
+33³ record gzip byte SHA256:
+2e7a3c93bcd89f9cd32fe4d6216c0c057a68a9ee9368d23938a12bdab30bf825
+33³ NPZ byte SHA256:
+e51f7dd54359e32d2743633b14028fdc57883e2c4b2beb8532d8a696a86e3cbc
+```
+
+65³と最終972組照合は未完了。二格子の通過を三格子の総合受理、三次評価器の正しさ、
+有限振幅改善、SSM存在、TT優位性へ一般化しない。
