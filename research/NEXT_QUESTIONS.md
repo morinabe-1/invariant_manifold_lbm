@@ -67743,3 +67743,18 @@ odd17³／33³のstrict unit countは4、even16³／32³は7で、直接3軸Nyqu
 2026-09-07の[事前登録](../docs/D3Q27_QUADRATIC_PREFLIGHT.md)で、3 shell・4 omega・
 3 odd gridの36条件、shear平面を保つSym²／Kronecker operator、固定葉とnormal orderingの
 二軸判定を固定した。無変更BGKを先に検査し、filterの有効性は仮定しない。
+
+Q012cは`passed / rejected`。36条件・延べ56,844 pairを評価し、jointly viable familyは0/12。
+24実座標はnormal orderingを12/12通すが数値的共鳴を残し、72／104実座標は
+near-Nyquistのexternal modeによりnormal orderingを24/24落とした。
+104実座標・omega=1.2だけが二次計算を全3格子で通したが、normal gapは負のままである。
+condition上限超過と、上限内でもsolve残差を落とすケースも別に保存した。
+[封印結果](../docs/D3Q27_QUADRATIC_PREFLIGHT.md)に全数・例・sealsを記録する。
+
+### Q012c1: high-wave dampingと二次solveの修正候補
+
+次は104実座標の3D候補を保ち、high-wave dampingによるnormal-ordering修正を比較する。
+元BGKを上書きせず、保存量・立方対称性・leading viscosityへの影響を事前登録する。
+全二次sectorと残差を再検証し、near-Nyquistを減衰させればshear interactionの悪条件化も
+自動的に直るとは仮定しない。必要な精度改善は同じ未変更operatorで独立に比較する。
+Q012dはjoint prequalification後のdense chartとして未着手のまま残す。

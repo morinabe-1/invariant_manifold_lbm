@@ -8,6 +8,33 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-07: Q012c D3Q27 first-shell二次operatorとnormal ordering
+
+前回はQ012a/bの実装・保存artifact・回帰テストまで進んだため、progressと分類する。
+今回の問いは、無変更BGKの24／72／104実座標候補が、固定4保存量葉上の二次計算と
+全格子normal orderingを同時に通すかである。事前登録`36e978d`後に、shear平面を保つ
+Sym²／Kronecker operator、23次元zero-wave kinetic制約、orbit全格子監査を実装した。
+
+全36条件・56,844 block pairでvalidity gateを通したが、jointly viable familyは0/12で、
+`passed / rejected`となった。軸候補は各条件に24件以上の数値的特異pairを残した。
+72／104実座標は全24条件でnormal gapが負となり、最悪external waveは全て軸near-Nyquistだった。
+104実座標・omega=1.2だけが二次計算を3格子全て通したが、normal gapは
+17³／33³／65³で`-0.0291923 / -0.00760235 / -0.00194994`だった。
+
+二次演算子の悪条件化も独立に見つかった。65³・omega=1.8・104座標の最悪shear pairは
+condition `2.58670e8`、global-l2 response norm `35,814.5`だった。
+また65³・omega=1.5・104座標はcondition上限内でも30 pairがsolve残差`1e-10`を超えた。
+rank／condition分類だけの`nonsingular_practical`を、全gateのpassへ読み替えない。
+
+known complex block、exact singularのcompatible／incompatible、shear unitary基底変更、
+独立physical FDを通過した。保存artifactの全数再計算を含む18テスト、追加17³ brute-force
+テスト1件、既存の関連86テストとruffも通過した。詳細・sealsは
+[Q012c結果](../docs/D3Q27_QUADRATIC_PREFLIGHT.md)を参照。
+
+次はQ012c1で対象mapとleading viscosityへの影響を明示したhigh-wave damping修正を検証する。
+元BGKの棄却を保持し、悪条件化とsolve精度も再検証する。dense非零波数chart、3Dの存在・半径、
+sparse／TT比較、Taylor–Green、force／wallはまだ示していない。
+
 ## 2026-09-07: Q012b D3Q27 cluster・二重shear・Nyquist parity
 
 問いは、3D hydrodynamic clusterをどの低波数prefixまで安定に追跡でき、奇偶gridが

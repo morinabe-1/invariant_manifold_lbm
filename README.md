@@ -1,11 +1,11 @@
 # TT parameterized invariant-manifold LBM
 
-2026-09-07: **Q012a/b D3Q27基礎・低波数スペクトル検証が通過**。
-D1Q3三重積、D2Q9 lift、一様center二次chartに続き、4次元clusterと二重shearを追跡した。
-奇数17³／33³のunit countは4、偶数16³／32³はNyquistの3個を加えた7だった。
-[現在の到達点](research/STATUS.md)、[基礎検証](docs/D3Q27_FOUNDATION.md)、
-[スペクトル検証](docs/D3Q27_SPECTRAL_GATE.md)を参照。
-次は固定4保存量葉のsector二次非共鳴とnormal ordering。3D非零波数chartとTT費用評価は未完である。
+2026-09-07: **Q012cの無変更D3Q27 first-shell候補はjoint prequalificationを棄却**。
+基礎・低波数clusterのQ012a/bに続き、24／72／104実座標を17³・33³・65³で調べた。
+軸候補には数値的共鳴、拡大候補にはnear-Nyquistによる負のnormal gapが残り、
+細かい格子では二次計算の悪条件化とsolve残差上限超過も生じた。研究全体の棄却ではない。
+[現在の到達点](research/STATUS.md)と[二次preflight結果](docs/D3Q27_QUADRATIC_PREFLIGHT.md)を参照。
+次は対象と粘性への影響を明示したdamping修正を検証する。3D非零波数chartとTT費用評価は未完である。
 
 このリポジトリは、既存の `tci` 系統とは独立した研究プロジェクトである。完全な
 LBM 1-step 写像

@@ -99,3 +99,102 @@ external restrictionの最大Euclidean one-step normも測定するが、norm>1�
 
 実装は`research/d3q27_quadratic.py`、runnerは`research/q012c_d3q27_preflight.py`、
 成果物は`research/artifacts/q012c_d3q27_preflight.json`。
+
+## Q012c結果（2026-09-07）
+
+事前登録`36e978d`の全8 validity gateを通過したが、jointly viable familyは`0/12`だった。
+結果は **`passed / rejected`**。計算の失敗・研究全体の棄却・多様体不存在の証明ではなく、
+登録した無変更BGKの3種類のfirst-shell候補が二つの必要なscreenを同時に通らなかった結果である。
+候補や閾値は変更しない。
+
+### Coverageと独立検証
+
+- 36条件、延べ56,844 unordered block pair、100,656 product-coordinate列を評価した。
+  shearを2次元のまま保持し、最大operatorは108×108だった。
+- 12組の全26 wave frameで、最大condition `1.79852`、最大構造残差`6.13651e-14`。
+  最大projector norm `2.11200`、最小local Schur sep `0.747594`。
+- coefficient側の最大構造残差は`1.66718e-14`。zero-wave outputは全て23次元kinetic blockで、
+  保存momentとgraph gaugeを通過した。
+- known complex-block solution誤差`5.85096e-16`、shear unitary basis変更の誤差`9.97034e-16`。
+  physical mixed FD誤差はstep `1e-3,5e-4,2.5e-4`で
+  `2.76941e-7,6.92880e-8,1.86062e-8`となった。
+- full 5³ fixed-leaf brute-forceとの最大modulus差`9.99201e-16`。
+  追加の17³全波数回帰でも、各selected shellの除外処理・normal gapがorbit計算と一致した。
+- Q012cの18テスト（全36条件の数値再計算・保存artifact照合を含む）は123.22 sで通過。
+  追加17³全波数テスト1件も通過。D3Q27基礎・D2Q9・manufactured oracleの86回帰テスト、
+  3 Pythonファイルのruff検査も通過した。
+
+### 二つのscreenは異なる理由で失敗した
+
+各cellは3格子中の**二次計算通過数**である。これはnormal orderingの通過数ではない。
+
+| omega | 軸のみ・24実座標 | 面対角まで・72実座標 | first shell全体・104実座標 |
+|---|---:|---:|---:|
+| 1.0 | 0/3 | 0/3 | 2/3 |
+| 1.2 | 0/3 | 2/3 | 3/3 |
+| 1.5 | 0/3 | 2/3 | 2/3 |
+| 1.8 | 0/3 | 0/3 | 1/3 |
+
+軸のみの24実座標はnormal orderingを全12条件で通過したが、各条件に少なくとも24件の
+numerically singular-compatible pairが残った。例えば`N=17, omega=1.2`の
+`(-1,0,0) acoustic_plus + (0,-1,0) acoustic_minus -> (-1,-1,0)`では、
+`sigma_min=1.38985e-15`、rank threshold `1.32385e-12`、forcing norm `0.814042`、
+左null forcing norm `7.84092e-16`となった。数値的にcompatibleでも非共鳴・一意なsolveには
+数えない。`omega=1`ではさらにincompatible pairが軸候補に12件、72実座標候補に24件あった。
+これらはfloat64のrank判定であり、exact resonanceを厳密に認証した結果ではない。
+
+72／104実座標ではnormal orderingが**全24条件で失敗**し、全ての最大external modeは
+軸near-Nyquist orbit `sort(|n|)=(0,0,(N-1)/2)`だった。
+二次計算を全3格子で通した唯一のfamily `104実座標, omega=1.2`でも次の負のgapが残る。
+
+| N | selected最小modulus | external最大modulus | normal gap | N² × gap | 最大二次condition |
+|---|---:|---:|---:|---:|---:|
+| 17 | 0.953854241 | 0.983046508 | -0.0291922673 | -8.43657 | 14,356.9 |
+| 33 | 0.987874715 | 0.995477066 | -0.0076023506 | -8.27896 | 204,008 |
+| 65 | 0.996882625 | 0.998832568 | -0.0019499435 | -8.23851 | 3,068,758 |
+
+odd gridへの限定は厳密なNyquist centerを除いたが、その近傍の遅いexternal modeを除かない。
+最大external Euclidean one-step normは`3.04400`だった。これは非正規性の診断値であり、
+その値だけから存在・不存在や適応計量での吸引性を結論しない。
+
+### 悪条件化とsolve残差を混同しない
+
+`N=65, omega=1.8, 104実座標`では48 pairがcondition上限`1e8`を超えた。
+最悪例は`(-1,-1,-1) shear × (1,0,-1) shear -> (0,-1,-2)`で、
+108次operatorの`condition=2.58670e8`、`sigma_min=1.27832e-8`、
+forcing norm `20.9445`、局所response norm `1.87685e7`だった。
+global-l2正規化後も`35,814.5`であり、単なる座標正規化の違いとして無視しない。
+これは初期chartの有効振幅やgrid依存性を別に調べる必要がある証拠である。
+
+さらに、condition上限内でもforcing-relative solve残差`1e-10`を落としたpairがある。
+例えば`N=65, omega=1.5, 104実座標`は全3,081 pairがnumerically nonsingularで
+最大condition `1.43319e7`だが、30件が残差gateを落とし、最大残差は`1.38319e-10`だった。
+artifactの`nonsingular_practical`はrank／condition分類だけであり、`passed`はsolve残差も要求する。
+この棄却を「全て解けた」と集約しない。また、solve精度の棄却をexact resonanceや多様体不存在としない。
+
+### 改善の方向と未完事項
+
+Q012dのjointly-prequalified dense chartへは進まない。次はQ012c1で、同じ104実座標候補を
+保持してhigh-wave damping修正を比較し、normal gap、全二次sector、解の残差を再検証する。
+修正mapと無変更BGKは別対象として保存する。単純なLaplacian filterはsmall-k粘性も変えるため、
+保存量だけでなくleading-order hydrodynamicsへの影響も事前に定義する。
+high-wave減衰だけで上記shear interactionの悪条件化が直るとは仮定しない。
+必要なら未変更operatorでの精度改善を独立に比較し、旧残差判定を保持する。
+
+104実座標・omega=1.2はcoefficient-only候補として残すが、normal-attracting SSMの
+代替受理はしない。非零波数W/Rの非線形残差・rollout、存在・半径、3D sparse／TT費用、
+Taylor–Green、force／wallは未完である。
+
+成果物は全pairをcolumn名と数値rowのJSON tableとして保存した（20,304,961 bytes）。
+[artifact](../research/artifacts/q012c_d3q27_preflight.json)の改行正規化SHA-256:
+`3dc9da853cbea183546d5646916e50828faaa89156ca217d16e1b6dc68cf886d`。
+result digest:
+`79a17890a273ca26ab297a8c98a0fe550b8eae1fedc74f3a2452c836f39b3863`。
+runner／quadratic helper SHA-256:
+`5d135f03939c3d4d9b519750a3f18c0c5a3b8e8800284cbe1e566dc129ab2df2` /
+`e096e42739a59735752375b09ee362281d887b50733c721e41729802cafb54bc`。
+
+```powershell
+python -m pytest tests/test_d3q27_quadratic.py -q
+python -m research.q012c_d3q27_preflight --output research/artifacts/q012c_d3q27_preflight.json
+```
