@@ -28,8 +28,11 @@ Q012g1は全三格子・192 caseを完了して`passed / accepted`。8 validity 
 worker PID 12416／handle 41088は00:08:34 JST、primary PID 5024／handle 14558は00:39:06 JSTにexit 0で終了済み。再pollしない。
 物理計算は現在稼働していない。最終親`artifacts/q012g1_d3q27_conservation.json`と三childのSHAを設計書・監査テストへ封印した。
 検証範囲は192 holdout caseであり、元Q012g全1,248 caseの保存量再診断・再判定へ一般化しない。
-次は[Q012g2](../docs/D3Q27_CUBIC_DEFECT_ORACLE.md)の代数オラクル。九次合成・有理式の残りを別記述のFraction式で検証する。
-6方向・4振幅・両符号・二次／三次の96人工caseを事前登録した。新規helper/runner、実LBMの次数別診断は未実装・未実行。
+Q012g2の[代数オラクル](../docs/D3Q27_CUBIC_DEFECT_ORACLE.md)は全96人工caseで`passed / accepted`。
+6方向・二次／三次の12組・1,824係数、全2,976 case値を別記述のFraction式と照合し、6 validityとH1・全数保存後監査が通過した。
+係数比較の最大誤差0、case比較と残りidentityの最大誤差`1.6601845766184287e-19`。有理式の残りは0にしていない。
+新規71・保存後6の計77テストが通過した。検査側の分数decoderのkey衝突は回帰テスト付きで修正し、正式artifact/sourceは変更していない。
+PID 37164はexit 0で終了済み。実LBMの次数別診断はまだ未登録・未実装・未実行である。
 検証済み保存量集計を後続の実LBM監査へ採用する条件も明記した。旧record・旧判定を保持し、新しい高次chartはまだ構築しない。
 H4の3方向とH5の欠陥比不達は別の次数別診断に残す。
 Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/Q012d1の棄却を保持する。
@@ -56,7 +59,8 @@ Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/
 | D3Q27修正三次preflight | Q012f2 accepted。全246,480組・578,760列のexact残差・full式・共役が通過。独立972組、全行/全fiberの保存後監査も通過。元float64の17件は保持 |
 | D3Q27三次W/R | Q012g passed/rejected。全1,248 case、12 validity、独立144 case、53監査テスト通過。H1–H3成立、H4の65³3方向とH5の有限振幅/質量葉が不達 |
 | D3Q27保存量診断 | Q012g1 accepted。全192 case・1,152 field・4,608成分、独立48 caseと12対照を監査。元超過256成分を集計誤差へ切り分け。144テスト通過 |
-| 次の主課題 | Q012g2: 次数別欠陥の代数オラクルを事前登録。6方向・96人工caseで九次合成と有理式の残りを検証してから実LBM診断へ接続する |
+| D3Q27次数別欠陥の代数オラクル | Q012g2 accepted。全96人工case・1,824係数・2,976値、独立Fraction式・全数保存後監査・77テスト通過。実LBMの悪化原因を説明した結果ではない |
+| 次の主課題 | 元の一般方向・holdout・反例を保持した実LBMの次数別診断を事前登録する。stream/filter接続、丸め済み場との整合、次数間干渉を分離する |
 | さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。

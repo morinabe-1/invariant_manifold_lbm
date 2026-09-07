@@ -1,5 +1,8 @@
 # Q012g2: 次数別欠陥診断器の代数オラクル — 事前登録 2026-09-08
 
+2026-09-08確定: **全96人工caseで `passed / accepted`**。最終結果と封印は末尾に記載する。
+以下の未実装・未実験という記述は、commit `0bb6ce1`の事前登録時点の履歴である。
+
 ## 問いと開始条件
 
 Q012g1の全192 caseの保存量診断はcommit `97c109c`で `passed / accepted` と確定した。
@@ -120,3 +123,53 @@ validityが通りH1成立ならaccepted、validity通過かつH1不成立ならr
 実装予定は`research/polynomial_path.py`、`research/q012g2_cubic_defect_oracle.py`と専用テスト。
 本書作成時点では未実装・未実験。受理後に、LBMへの接続・全元方向でのvector誤差・
 Gramによる次数間干渉・元判定の再現を対象とする次問を登録する。
+
+## 実装・最終結果・保存後監査 — 2026-09-08
+
+登録commit `0bb6ce1`の後に新規helper/runnerを実装し、71人工テストを通過させた（13.23秒、警告をerrorとして検査）。
+Horner、畳み込み、grouped monomial代入、一般の定数densityを持つ係数除算、低次数も保持する残り分子を実装した。
+referenceは別記述のFraction scalar多項式と有限幾何級数であり、primaryのNumPy合成・除算を呼ばない。
+さらにテストでは、係数の多重和列挙と多項係数による逆数の閉じた式も独立に照合した。
+
+実行前に新規sourceと親入力を照合してから、01:12:43 JSTにPID 37164で全96 caseの正式記録を作成した。
+実行はexit 0。6 validity gateとH1が成立し、全saved値の読戻し・全数再生成監査も通過した。
+Q012g2の判定を`passed / accepted`と確定する。
+
+- 全6方向×2 chart次数の12組、1,824係数scalarを照合した。登録した係数比較の最大誤差は0。
+- 記述的な追加確認でも、この人工例の全1,824値はFractionとして厳密一致した。これを別の受理条件へ変更しない。
+- 96 caseの全2,976 scalar値と、各caseの3成分の残りidentityを照合した。
+- case比較と残りidentityの最大絶対誤差はいずれも`1.6601845766184287e-19`。
+  全caseの登録scaleは1であり、同じ`256*eps`以内だった。
+- 有理式の残りの最大絶対値は`1.7635351165435856e-12`。P9単独をexactな有限振幅欠陥とは扱わない。
+- 9種の人工対照は全て通過した。混合方向の九次合成は`29/524288`であり、誤った`1/6`係数を検出した。
+
+保存後の追加6テストを含む77テストが全件通過した（15.87秒）。Ruff・整形確認・compileallも通過した。
+さらに、Q012g1 mainの保存後監査10件を併せた87テストも再実行して全件通過した（85.21秒）。
+初回の保存後検査では、検査側の有理数decoderが`numerator`という係数表のkeyを単一分数と誤認し、3テストが失敗した。
+decoderだけを修正し、名前の衝突・非正規分数・表示値不一致への回帰テストを追加して全件を再実行した。
+正式artifact、helper、runnerはその修正前後で同一であり、再計算・係数修正・許容値変更は行っていない。
+全caseのdirect mapをFractionで独立再評価し、三次欠陥の係数は多項係数の閉じた和でも照合した。
+最終方向の最終成分を変更しdigestだけを付け直しても、保存後監査は拒否した。
+
+固定するnormalized SHA256は以下。
+
+- helper `research/polynomial_path.py`:
+  `a0e2185cfffd1adeb76ec7aae413dce4f5962b8923b1baf1e5588a17d14de9c3`
+- runner `research/q012g2_cubic_defect_oracle.py`:
+  `4e714087de7826d2c0660a0ba3dd486552add3e65593104af354104a7db40e6a`
+- artifact `research/artifacts/q012g2_cubic_defect_oracle.json`:
+  `493f78e85887821862dbfae135b30c019979369b285db5e114772eb71dd90b03`
+- scientific evidence digest:
+  `af4a3ded567f34897455cc947683cb25b92ff0206c3e0c39caa6c8d3c8053794`
+
+再検証は次で行う。正式出力は上書きしない。
+
+```powershell
+python -m pytest tests/test_polynomial_path.py tests/test_q012g2_cubic_defect_oracle.py tests/test_q012g2_cubic_defect_oracle_artifact.py -q -W error
+```
+
+これは小さな人工写像における代数・実装の検証である。実LBMのstream/filter接続、丸め済み物理場との整合、
+65³のH4不達・欠陥比5.834018の原因はまだ検証していない。
+次は元の一般方向・holdout・反例を保持した実LBMの次数別診断を事前登録し、
+既存W2/W3の方向別係数・次数間の干渉・有理式の残りを実測欠陥へ照合する。
+本問を、W4/W9の構築、SSM存在、連続球・長時間trajectory、TT優位性の主張へ拡張しない。
