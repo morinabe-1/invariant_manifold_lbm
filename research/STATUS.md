@@ -23,6 +23,12 @@ PID 12416／handle 41088はexit 0で終了済み。再pollしない。全288 fie
 この部分集合の元超過64成分は、exactな場の誤差と総和だけを交換した誤差では全て元上限以内だった。
 65³では基準平衡の集計項が主要因。全192 caseの判定に一般化せず、次はprimaryの整数方式を実行して全48 caseのexact一致も要求する。
 worker出力`artifacts/q012g1_d3q27_conservation_replay.json`を設計書・監査テストのSHAで封印した。Q012g1のH1と総合判定は保留。
+worker結果をcommit `4095b35`で保存してから、主192 caseを開始した。primary PID 5024／handle 14558、開始00:13:59 JST。
+17³・33³は全128 case・768 field・3,072成分の保存後監査を完了し、対応する32 GMP caseと8対照も厳密一致した。
+65³は同じprocessで実行中。次の継続ではこのPID/handleのlive/terminal状態を確認し、timeoutで重複起動しない。
+出力は`artifacts/q012g1_d3q27_conservation.json`。現在は17³/33³ childのみが保存済みで、最終親と65³ childは未保存である。
+全192 case用のartifact監査10テストは準備済みだが、最終SHA・全数実行は最終親の完了待ち。
+共通の独立監査式を再利用するためworker監査テストを整理し、既存10テストは再通過した。科学的helper/runnerは変更していない。
 H4の3方向とH5の欠陥比不達は別の次数別診断に残す。
 Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/Q012d1の棄却を保持する。
 3DのSSM存在・連続球の実用半径やTTの優位性は未認証である。
@@ -47,7 +53,7 @@ Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/
 | D3Q27厳密残差診断 | Q012f1a accepted。65³の全648 caseのexact残差を独立整数演算で全数照合。元37件の不合格は残差積和の丸めで説明され、全3種のexact gateは違反0。元判定は保持 |
 | D3Q27修正三次preflight | Q012f2 accepted。全246,480組・578,760列のexact残差・full式・共役が通過。独立972組、全行/全fiberの保存後監査も通過。元float64の17件は保持 |
 | D3Q27三次W/R | Q012g passed/rejected。全1,248 case、12 validity、独立144 case、53監査テスト通過。H1–H3成立、H4の65³3方向とH5の有限振幅/質量葉が不達 |
-| 次の主課題 | Q012g1: 独立48 caseを終了・全数監査。元超過64成分は集計だけの交換で全て基準内。次は主192 caseの整数方式と全48 caseの一致を検証。元判定・閾値・mapは保持 |
+| 次の主課題 | Q012g1: 独立48 caseを終了・全数監査。元超過64成分は集計だけの交換で全て基準内。primaryは17³/33³全128 caseを監査済み、65³を続行。全192 caseの判定は保留 |
 | さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
