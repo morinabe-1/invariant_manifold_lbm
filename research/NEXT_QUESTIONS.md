@@ -67721,3 +67721,9 @@ Q005の元候補の棄却を保持し、修正familyのQ006h、Q006p/q、Q007ap�
 Q012aは`passed / accepted`。216有理moment、48立方対称操作、D2Q9 lift、
 32方向の一様center残差次数`2 -> 3`を通過した。
 [封印結果](../docs/D3Q27_FOUNDATION.md)を記録し、次はQ012bの3D branch／cluster監査へ進む。
+
+### Q012b: 3D hydrodynamic clusterとNyquist parity
+
+[事前登録](../docs/D3Q27_SPECTRAL_GATE.md)に4 ray・4 omega、Schur／projector判定、
+二重shear部分空間、path reversal、奇偶grid regressionを固定した。
+内部label permutationを失敗とせず、低波数prefixとその境界をQ012cへ渡す。
