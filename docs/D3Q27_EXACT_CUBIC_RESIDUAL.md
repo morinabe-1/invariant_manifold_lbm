@@ -67,3 +67,112 @@ validity通過で仮説不合格ならrejected、validity不通過ならinconclu
 acceptedならQ012f2でpaired入力・refined solve・検証済み残差評価を用い、三格子の
 全三次preflightを再検証する。rejectedなら全失敗familyをまとめて分析する。
 三次chart評価器・有限振幅改善・SSM存在・厳密symbolの非共鳴・TT優位性は認証しない。
+
+## 2026-09-07 結果
+
+事前登録commitは`890c432`。全9 validity gateとH1/H2が通り、`passed / accepted`となった。
+元Q012f1の全648 caseについて、二次入力、problem配列、refined解、population応答、
+固定3回補正history、元残差値が一致した。全104実座標・map・固定保存量葉は変更していない。
+
+判定列ごとの不合格数は次の通りである。各入力324 caseを省略せず評価した。
+
+| 判定列 | raw | paired |
+|---|---:|---:|
+| 元float64残差・norm・分母 | 20 | 17 |
+| R64のnormだけexact、元分母 | 20 | 17 |
+| exact R、元分母 | 0 | 0 |
+| exact R、exact分母、二進定数 | 0 | 0 |
+| exact R、exact分母、十進定数 | 0 | 0 |
+
+元37 armは32個の異なるtripleに属する。同じ元分母のまま、残差ベクトルの積和をexactに
+することだけで判定が変わり、norm計算の丸めだけを除いても変わらなかった。
+したがって、この37件は残差評価の丸めに起因する判定差と切り分けられた。
+全648件に新たなexact不合格はなく、元Q012f/Q012f1の棄却はそのまま保持する。
+
+以下の数値はexact二乗normからの**表示用近似値**である。厳密gateは有理数同士で比較した。
+
+| 診断値 | raw | paired |
+|---|---:|---:|
+| 最大exact相対残差 | 3.245167548326693e-11 | 3.079011002599421e-11 |
+| そのtriple ordinal | 71731 | 55031 |
+| 最大元float64相対残差 | 1.3357811405332092e-10 | 1.1699491177173276e-10 |
+| 最大R64評価誤差／exact分母 | 1.2746108989539855e-10 | 1.1283509297402725e-10 |
+| 最大R128格納値の誤差／exact分母 | 2.1292335370403238e-27 | 1.6177888236133328e-27 |
+
+R128照合は全件で登録上限`1e-24`を通った。これはR128をcomplex128へ格納した値の
+exact Rへの近さであり、128-bit演算の全桁や厳密LBM symbolの正しさの認証ではない。
+単純な残差norm同士の一致だけでなく、複素成分ごとの差を評価した。
+
+元不合格ordinalを全て保存する。
+
+```text
+raw (20):
+18794, 19208, 26247, 32776, 33367, 45000, 45396, 50764, 54758, 55169,
+55382, 58920, 62968, 62992, 63628, 66233, 69264, 69711, 71743, 71914
+paired (17):
+903, 2205, 17786, 18794, 19190, 19208, 32608, 33385, 33511, 33718,
+45627, 50764, 54758, 55169, 63622, 69288, 71731
+```
+
+### 独立性・保存・再現範囲
+
+prepared NPZは8,487,838 bytes、648 case × 6配列 = 3,888 entry。
+全entryは有限complex128で、pickleを使わず読み戻し、shape/dtype/bytes/hashを照合した。
+GMP有理数積に対して、別processのIEEE754 decodeと整数行列積が全648件のproofと一致した。
+proofは残差成分のcanonical digest、R/F/R64/R128と両評価誤差の6種のexact norm二乗、
+全5判定列とMP128照合を含む。主計算の変換・残差積関数を独立側へ再利用していない。
+共通部分はshape/有限性の検査、norm二乗からの判定・serialization・digestである。
+既知解、消える積、subnormal、zero forcing、閾値の内外・二種類の境界、float64だけなら
+誤って通る／落ちる対照の全10例も通った。
+
+新規27・既存関連301テストは通過した。新規artifactテストは全648件を整数演算で再計算し、
+保存されたnorm二乗から全判定を独立に有理数比較した。両入力のexact最悪例をfreshなLBM
+係数から再構築し、source／entry metadataの改変、case欠落、同一process replayの拒否も検証した。
+
+独立全数replayは**保存した丸め済み行列問題**に対するものであり、別プロセスでの
+LBM chart・全三次solveの全数再構築ではない。元648件へのfresh再構築とhash照合は主processで行った。
+丸め済み外部方程式の残差を認証しても、射影前の厳密symbol、固有部分空間、全三次係数、
+SSM存在や有限振幅の改善を認証したことにはならない。
+
+### 成果物とseals
+
+- [最終判定](../research/artifacts/q012f1a_d3q27_exact_residual.json)
+- [全648 caseの再構築・有理数proof](../research/artifacts/q012f1a_d3q27_exact_residual_prepared.json)
+- [全3,888配列](../research/artifacts/q012f1a_d3q27_exact_residual_prepared.npz)
+- [別プロセス全数整数replay](../research/artifacts/q012f1a_d3q27_exact_residual_replay.json)
+
+```text
+final JSON normalized SHA256:
+869831275160a5457e554fff6ed8750410ee734cff99d6c9349f90f38ccd42a4
+cycle digest:
+5888cfa9b32aae39f05f9cb4db401cb02eff81b6c09f05753c1846014748fc31
+prepared JSON normalized SHA256:
+eda749214a3f2fc147e5688d235b251e3543fcd4dc232477f10185d394a8ac64
+prepared result digest:
+b1ffcd9c77db2d1a981624efa0c03605f51646e60d19c97137e19b9321056a66
+NPZ raw-byte SHA256:
+32ab8e4661fe7b3eb87efeb62758137e0dc6d78010469749289a8a56be428765
+integer replay normalized SHA256:
+67b4afba836c7204abc4b4c7c6bb24239a20827dfbe27a405791d95cf544fb87
+integer evidence digest:
+acd1e74accb69d5280d742a0fc7971bdc9d4f4b8950dd1d7f6e5ee8817976283
+helper normalized SHA256:
+8dfa7f053a1e8d7aa924ba761a69c7f97d7c98a65bc31aeef68a6c58e01f5925
+runner normalized SHA256:
+5263976de1b43ab85db3620faac6c60f950b873a724073e249c34225ba05e2c3
+```
+
+再生成は既存fileを上書きしない別pathで、3つの独立commandとして実行する。
+
+```powershell
+python -m research.q012f1a_d3q27_exact_residual --prepare-output research/replays/q012f1a_prepared.json
+python -m research.q012f1a_d3q27_exact_residual --worker-output research/replays/q012f1a_worker.json --prepared research/replays/q012f1a_prepared.json
+python -m research.q012f1a_d3q27_exact_residual --output research/replays/q012f1a_exact.json --prepared research/replays/q012f1a_prepared.json --replay research/replays/q012f1a_worker.json
+python -m pytest tests/test_d3q27_exact_residual.py tests/test_d3q27_exact_residual_artifact.py -q
+```
+
+時刻・PID・出力名を含むfile/cycle digestは再実行で変わる。科学的再現ではsource sealと
+全648配列・各caseのproofを照合する。NPZはテキスト改行正規化をせずraw byteで検証する。
+
+次はQ012f2でpaired二次入力・固定3回refined solve・検証済み残差評価を、17³/33³/65³の
+全三次preflightへ戻す。この選択組の通過だけでQ012g三次chart評価器へ進めない。

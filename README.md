@@ -1,15 +1,17 @@
 # TT parameterized invariant-manifold LBM
 
-2026-09-07: **Q012f1で三次係数の入力誤差・solve精度・残差評価を切り分けた**。
-104実座標・四階filter付き修正map `eta=.02, omega=1.5`を保ち、三格子の選択972組を
-二入力×三solver、計5,832 armで比較した。65³の元272残差不合格は精度補正だけで20件、
-共役対称化も加えると17件へ減ったが、ゼロにはならずQ012f1は`passed / rejected`。
-65³のH3共役誤差は両修正で`8.80803e-11`と基準内になった。一方、33³は精度補正だけでも通り、
-両格子で入力修正が必要とした仮説は棄却した。全972組の別プロセス再実行ではなく、固定96組を照合した。
-残った17件も128-bit残差評価では上限内だが、元float64判定を変更して成功扱いしない。
-次のQ012f1aは同じ行列・解の二進有理数残差監査。全三次preflight Q012f2は保留する。
+2026-09-07: **Q012f1aで、三次係数の残った37件の判定差を残差計算の丸めへ切り分けた**。
+104実座標・四階filter付き修正map `eta=.02, omega=1.5`を保ち、65³の選択324組・
+二入力のrefined解、全648 caseを元と同じ配列・補正履歴へ再構築した。
+二進有理数による厳密残差は全件で上限`1e-10`以内となり、独立プロセスの整数演算とも
+全648件で一致した。Q012f1aは`passed / accepted`である。
+元のraw20・paired17件は、float64で計算した残差ベクトルのnormを厳密にしても不合格だが、
+同じ分母で残差積和自体を厳密にすると通った。分母・十進定数の厳密化でも全件通過する。
+元Q012f/Q012f1の棄却は変更しない。これは丸め済み外部行列方程式の診断であり、
+全三次係数や厳密LBM symbolの認証ではない。次はQ012f2でpaired/refined候補を三格子・全組へ戻す。
 3DのSSM存在・連続球の実用半径・TT優位性は未認証。自然Fourier sparse baselineを維持する。
-[現在の到達点](research/STATUS.md)と[入力／精度の診断結果](docs/D3Q27_CUBIC_PRECISION_DIAGNOSIS.md)を参照。
+[現在の到達点](research/STATUS.md)と[厳密残差の監査結果](docs/D3Q27_EXACT_CUBIC_RESIDUAL.md)を参照。
+[入力／精度の診断と棄却](docs/D3Q27_CUBIC_PRECISION_DIAGNOSIS.md)も保持する。
 元の全246,480組の棄却は[三次preflight結果](docs/D3Q27_CUBIC_PREFLIGHT.md)に保持する。
 Q012eの17³・二次モデルの登録振幅`.008, .032`の有限sample受理は
 [有限振幅結果](docs/D3Q27_PRACTICAL_AMPLITUDE.md)に保持する。
