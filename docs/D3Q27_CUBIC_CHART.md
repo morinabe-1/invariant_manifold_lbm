@@ -269,3 +269,19 @@ full-mapの入力W3生成は当該timingに含めない。R3単体が安いこ�
 scientific grid digestは17³ `d7d83b6fa1f6e454d08437b7b0774268eaabf033cc9c41ea5a43b6f57a101318`、
 33³ `b9f187a617d466956f693ef0c8fafd0d9836dece2c24e36e55532ad9020915e4`。
 次は同じPID 29360／handle 89608の65³を完了し、全三格子のvalidity・解像性・144 case一致から総合判定する。
+
+## 元fiberから準備配列までの全数fingerprint監査 2026-09-07
+
+65³の主計算待機中に、少数方向の評価比較とは別に、元NPZから準備配列への全数照合を追加した。
+封印された三格子のNPZを直接読み、全578,760単項式の完全性・Fourier selection rule・全array hashを確認した。
+実行器のgroup番号/argsortやCubicChartを使わず、出力波数と元の行番号によるlexicographic sortから、
+H3/F3/G3の準備済み係数・monomial index・group開始位置・出力indexを再構成した。
+係数にTaylor係数の再乗算、共役/対称投影、閾値cutoffを施していないことを、全配列のbyte fingerprintで照合した。
+三格子のworkerと閉じた17³・33³ main、計5組の準備配列が全て一致した。
+65³ mainの準備配列はまだ保存されていないため、この5組へ含めない。
+第一shell外のG3省略は各格子131,912行で厳密なzeroであることも独立に確認した。
+
+新規7テストが10.34秒で通過し、Ruff/format/compileallも通過した。
+1 ulpの係数変更、行順変更、誤ったshape、支持外の最小正subnormal値を検出する対照を含む。
+これは保存値と使用係数の全数同一性の監査であり、全三次solveや全物理場の新規再計算ではない。
+評価器・実験条件・元artifactは不変で、65³は同じ主計算を継続した。

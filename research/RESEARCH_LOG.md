@@ -8,6 +8,20 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-07: Q012g 全三次fiberから評価用配列までの同一性を独立監査
+
+前turnは主計算PID 29360／handle 89608を実際にpollしたverified waitである。今turnも同じlive processを確認した。
+65³の主計算中に、保存済みの準備配列が本当に元fiberの並べ替えだけであるかを全数で検証した。
+三格子の全578,760単項式、全五配列の元hash、完全性・selection ruleを直接NPZから確認した。
+本体のgroup engineを利用せず、出力波数と元ordinalのlexicographic sortで全準備配列を再構成した。
+H3/F3/G3の全係数・monomial index・group開始位置・出力indexは、worker三格子とmain17³/33³、計5組の保存fingerprintと完全一致した。
+65³ mainは未保存であり、この照合済み集合へ加えない。各格子131,912行の支持外G3はexact zeroと確認した。
+
+新規7テストが10.34秒で通過した。1 ulpの係数変更、行順・shapeの改変、支持外の最小正subnormal値も検出した。
+Ruff/format/compileall通過。sealed source・係数・主計算の条件には変更していない。
+この追加監査は全係数の保持と並べ替えの同一性を示すが、非線形有限振幅での改善や、全三次solveのfresh再実行ではない。
+局所次数改善と有限振幅不達の区別を保ち、次は65³ mainの全件終了後に残る準備配列・全物理case・総合判定を監査する。
+
 ## 2026-09-07: Q012g main17³・33³の832 caseを監査、局所次数と有限振幅を分離
 
 前turnは実装固定・独立workerの完了・主計算開始をcommit `9ab8f2e`まで完了したためprogressである。
