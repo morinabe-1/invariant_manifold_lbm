@@ -1,5 +1,7 @@
 # TT parameterized invariant-manifold LBM
 
+公開版の取得、大容量データ、研究ログ中の旧コミットIDについては、[GitHub公開とLFS移行](docs/GITHUB_PUBLICATION.md)を参照してください。
+
 2026-09-08: **[Q012g3の次数別欠陥診断](docs/D3Q27_CUBIC_DEFECT_DIAGNOSIS.md)を全960 caseで `passed / accepted` と判定した**。
 全576 profile・元5,760 field・1,920欠陥、全288方向child、独立192 caseとの対応を保存後に全件監査した。
 元の3件の次数不合格、81件の欠陥半減不達、37件の悪化を再現した。これは診断の成功であり、元Q012gの三次chartの棄却は変えない。
