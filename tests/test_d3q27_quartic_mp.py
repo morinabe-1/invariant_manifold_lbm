@@ -247,6 +247,10 @@ def test_orbit_normalization_and_precision_stability(data, groups):
     for bits in numbers.PRECISIONS:
         main = primary.group(data, groups, blocks, bits)
         other = reference.group(data, groups, blocks, bits)
+        with numbers.context(bits):
+            np.testing.assert_array_equal(
+                other["forcing"], other["collision"] - other["composition"]
+            )
         assert all(numbers.errors(main["forcing"], other["forcing"])["passed_1e10"])
         if previous:
             assert all(numbers.errors(previous["forcing"], main["forcing"])["passed_1e10"])
@@ -286,6 +290,28 @@ def test_full_sixteen_columns_and_last_component():
         tampered = actual["forcing"].copy()
         tampered[-1, -1] += 1
     assert not numbers.errors(tampered, independent["forcing"])["passed_1e8"][-1]
+
+
+@pytest.mark.parametrize("bits", numbers.PRECISIONS)
+def test_normalization_order_regression_keeps_contributions_and_nonzero_roundoff(data, bits):
+    groups, blocks = (0, 0, 1, 1), ((0, 1), (2, 3), (4, 5))
+    with numbers.context(bits):
+        rows = [
+            (reference.raw_forcing(data, slots), mp.sqrt(count))
+            for slots, count in reference.columns(groups, blocks, data.dimension)
+        ]
+        historical = {
+            name: np.column_stack([row[name] * scale for row, scale in rows])
+            for name in ("forcing", "collision", "composition")
+        }
+        current = reference.group(data, groups, blocks, bits)
+        for name in ("collision", "composition"):
+            np.testing.assert_array_equal(current[name], historical[name])
+        assert np.any(historical["forcing"] != current["forcing"])
+        np.testing.assert_array_equal(
+            current["forcing"], current["collision"] - current["composition"]
+        )
+        assert all(numbers.errors(historical["forcing"], current["forcing"])["passed_1e10"])
 
 
 def test_input_external_internal_coordinates_and_no_hermitian_product(data):

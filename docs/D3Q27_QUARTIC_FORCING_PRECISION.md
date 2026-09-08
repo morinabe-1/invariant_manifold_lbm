@@ -112,3 +112,52 @@ console上の原因は`registered starting RAM/disk minimum unavailable`。
 追加5件を含む新規73件と先行H1の81件、計154回帰テストが43.58秒で通過した。Ruff・format・compileも通過した。
 開始RAMの回復を確認後、新しい出力名で全三格子・全対象を再実行する。初回recordはそのまま保持する。
 `validate-data`での実験の評価はNeeds revision（前段監査未完了・開始時測定欠落）。数値仮説の棄却や受理ではない。
+
+## RAM回復後の再実行と正規化順序の修正 2026-09-08
+
+ユーザーによるRAM解放後、source `95a002e3a932cff18935c54e54361a6f1dc3d2c0`のまま、
+`_attempt02`を別の出力先として起動した。mainの開始available RAMは5,979,512,832 bytesで4 GiB以上だった。
+前段の全S0・旧H1保存値のfresh再監査を通過し、旧514不合格も全列で再現した。
+新17³ primary（PID 36488）は全698組・1,826列の128/192 bit値を保存し、全entryの再計算を通過した。
+一方worker（PID 14312）は7組・25列の保存後、8組目の保存前検証で停止した。main PID 30092の実exit 1を確認した。
+全診断のmanifestは未生成で、Q012h2aは引き続き`inconclusive`。主方式だけの完了を独立一致へ昇格させない。
+
+停止原因は`saved F4 collision/composition identity differs`だった。
+worker開始RAMは5,994,995,712 bytes、diskは14,515,384,320 bytesで、全記録の資源条件を満たしていた。
+主方式の全保存後再計算までの実時間は79.68秒、主・workerの記録の最大working setは488,902,656 bytes、
+最大private commitは1,783,062,528 bytes。今回はRAM不足ではなく、正規化と丸め順序の実装不整合である。
+
+停止tupleはordinal 7の`(0,0,77,77)`、該当する対称column 1は座標`(0,1,103,103)`、軌道因子は`sqrt(2)`。
+元独立方式はrawの差を取ってから軌道因子を掛け、保存するcollision/compositionには各々因子を掛けていた。
+有限精度では`fl(s*fl(C-D))`と`fl(fl(s*C)-fl(s*D))`は一般に同一ではない。
+同じ全lower-order入力を再構築して、128 bitで22成分、192 bitで21成分の差を再現した。
+その最大列相対差はそれぞれ`3.166529495572177e-39`と`1.183372315342952e-58`だった。
+これは元の相対誤差gateの不合格ではなく、保存値間のビット単位の恒等式チェックとの不整合である。
+
+修正は独立方式のblock正規化だけに限定し、**正規化したcollisionとcompositionから保存F4を定義する**。
+raw nilpotent展開・moment・元Taylor入力・collision/compositionの値、主方式・moment-only armは変更しない。
+検証側の厳密一致条件、`1e-8/1e-10`、floor、対象、資源条件も変更しない。旧sourceはGit履歴に残す。
+歴史的な資源修正`95a002e`が`c007e72`の数値4 moduleを変更していなかったことを、両commit間の検査として保持する。
+今回の修正についても、独立方式のgroup関数以外が`95a002e`と同一であることを別に検査する。
+
+同じ不整合は非単位軌道因子を持つ人工入力の3パターンでも再現した（修正前3不合格・1通過）。
+修正後はこれらと128/192 bitの旧順序との差、反復blockの全保存payloadを含む関連14検査が通過した。
+全件再実行前に回帰検証とsourceのcommitを行う。次の出力名は`_attempt03`とし、途中のprimaryを流用しない。
+
+保存物は初回537 bytesに加えて今回の5ファイル36,992,495 bytesで、計36,993,032 bytesを保持した。
+以後も再試行を含む診断全体の2 GiB集計へ含める。以下のfile SHA256を回帰テストへ固定する。
+
+| attempt02保存物のsuffix | file SHA256 |
+|---|---|
+| `_failure.json` | `9e7debac708bd8a8c707fb42111a0b5da43fc40bb2f3c96d74165849ffa8ef54` |
+| `_n17_primary.json` | `340913c9769a57d123fe51226abacf7fca98454baca73b888ed312f059101758` |
+| `_n17_primary.zip` | `04ba4f0bdf68898aaa0bd9008e4f4dc614ed051103d3dca08a6601b420471da6` |
+| `_n17_worker_failure.json` | `4bd9ec19e938ad3f6a65a151d2753e6684e828fcc9efc1bdaf0f32f9cda9481d` |
+| `_n17_worker.zip` | `b82d3e63d9abb94293ef5eb8901d04c8974b677206c9db4b5841611f41d87b9f` |
+
+`validate-data`による評価はNeeds revision（全三格子の独立方式未完了）。修正の部品検証と正式実験の判定を分離する。
+高精度forcing候補、moment-only説明、H2/H3、四次chartと元振幅の改善はまだ受理しない。
+
+修正後の全精度対照82件、停止artifactと実停止tupleの再構築4件、先行H1の81件、
+計**167テスト**が警告error化で通過した（67.32秒）。部分archiveの全entryも再読・検証した。
+これは実装と停止原因の検証であり、未実行のattempt03の合格を意味しない。

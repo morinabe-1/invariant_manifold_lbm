@@ -315,10 +315,36 @@ def test_unavailable_failure_observation_does_not_erase_original_cause(tmp_path,
 
 def test_resource_remediation_does_not_change_scientific_kernels():
     commit = "c007e72bbc3c43f44c80e3addcb7e5d9f093a9f0"
+    resource_fix = "95a002e3a932cff18935c54e54361a6f1dc3d2c0"
     for name in run.FILES[:4]:
+        # Preserve the historical resource-only claim. The later normalization
+        # fix is separate and must not rewrite either previous implementation.
         assert run.oracle.normalized_sha(
-            (run.ROOT / name).read_bytes()
+            run.oracle.git_bytes("show", f"{resource_fix}:{name}")
         ) == run.oracle.normalized_sha(run.oracle.git_bytes("show", f"{commit}:{name}"))
+
+
+def test_normalization_fix_preserves_all_other_arithmetic_and_raw_polynomials():
+    commit = "95a002e3a932cff18935c54e54361a6f1dc3d2c0"
+    for name in run.FILES[:4]:
+        current = (run.ROOT / name).read_text(encoding="utf-8")
+        previous = run.oracle.git_bytes("show", f"{commit}:{name}").decode("utf-8")
+        if name.endswith("_reference.py"):
+            current, previous = (value.split("\ndef group(", 1)[0] for value in (current, previous))
+        assert run.oracle.normalized_sha(current.encode()) == run.oracle.normalized_sha(
+            previous.encode()
+        )
+
+
+@pytest.mark.parametrize("route", ["primary", "worker"])
+@pytest.mark.parametrize("group", [(0, 0, 0, 1), (0, 0, 1, 1), (0, 0, 1, 2)])
+def test_repeated_block_payload_has_exact_normalized_identity(data, group, route):
+    document, arrays = validation.payload(data, group, BLOCKS, route)
+    decoded, _ = validation.validate_payload(document, arrays, group, BLOCKS, 8, route)
+    for bits in (128, 192):
+        with numbers.context(bits):
+            value = decoded[bits]
+            assert np.array_equal(value["forcing"], value["collision"] - value["composition"])
 
 
 def test_first_stopped_attempt_is_preserved_without_inventing_missing_measurements():

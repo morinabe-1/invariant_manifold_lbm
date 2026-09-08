@@ -208,7 +208,13 @@ def group(data, groups, blocks, bits):
             (raw_forcing(data, slots), mp.sqrt(count))
             for slots, count in columns(groups, blocks, data.dimension)
         ]
-        return {
+        normalized = {
             name: np.column_stack([row[name] * factor for row, factor in evaluated])
-            for name in ("forcing", "collision", "composition")
+            for name in ("collision", "composition")
+        }
+        # Define the persisted F4 from the persisted normalized contributions.
+        # Scaling an already rounded difference is not bitwise distributive.
+        return {
+            "forcing": normalized["collision"] - normalized["composition"],
+            **normalized,
         }

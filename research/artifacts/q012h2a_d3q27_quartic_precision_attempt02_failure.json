@@ -1,0 +1,44 @@
+{
+  "stage": "Q012h2a incomplete",
+  "scope": "arithmetic of frozen rounded Taylor inputs only; no H2 solve, full H3, quartic chart, amplitude repair, SSM or TT advantage",
+  "process_id": 30092,
+  "size": null,
+  "route": null,
+  "completed_tuple_prefix": 0,
+  "error_type": "ValueError",
+  "error": "grid 17/worker process 14312 exited 1",
+  "resources": [
+    {
+      "stage": "process_start",
+      "wall_seconds": 0.00013639999087899923,
+      "working_set_bytes": 116752384,
+      "peak_working_set_bytes": 117764096,
+      "private_commit_bytes": 1367961600,
+      "peak_private_commit_bytes": 1369083904,
+      "available_physical_bytes": 5979512832,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14559571968,
+      "new_file_bytes": 537,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    }
+  ],
+  "partial_archive_preserved": false,
+  "outer_failure_observation": {
+    "scope": "outer process after exception; not child-start evidence",
+    "working_set_bytes": 222085120,
+    "peak_working_set_bytes": 586932224,
+    "private_commit_bytes": 1529507840,
+    "peak_private_commit_bytes": 1895124992,
+    "available_physical_bytes": 6078197760,
+    "total_physical_bytes": 16883511296,
+    "free_disk_bytes": 14519431168
+  },
+  "q012h2a_outcome": "inconclusive",
+  "q012h2_outcome": "not_evaluated",
+  "sha256": "132a8ab285bc8a84c5b8c43861d83a88e6b4c719a51b831b06ef960b06c93940"
+}

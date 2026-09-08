@@ -1,0 +1,224 @@
+{
+  "stage": "Q012h2a incomplete",
+  "scope": "arithmetic of frozen rounded Taylor inputs only; no H2 solve, full H3, quartic chart, amplitude repair, SSM or TT advantage",
+  "process_id": 14312,
+  "size": 17,
+  "route": "worker",
+  "completed_tuple_prefix": 7,
+  "error_type": "ValueError",
+  "error": "saved F4 collision/composition identity differs",
+  "resources": [
+    {
+      "stage": "process_start",
+      "wall_seconds": 0.0001270999782718718,
+      "working_set_bytes": 114933760,
+      "peak_working_set_bytes": 114933760,
+      "private_commit_bytes": 1367019520,
+      "peak_private_commit_bytes": 1367019520,
+      "available_physical_bytes": 5994995712,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14515384320,
+      "new_file_bytes": 36815778,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "full_quadratic_rebuild_and_old_audits",
+      "wall_seconds": 9.604622700018808,
+      "working_set_bytes": 208326656,
+      "peak_working_set_bytes": 279646208,
+      "private_commit_bytes": 1500442624,
+      "peak_private_commit_bytes": 1572401152,
+      "available_physical_bytes": 5903380480,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14519676928,
+      "new_file_bytes": 36815778,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "all_192920_cubic_fibers_loaded_and_audited",
+      "wall_seconds": 11.219309000007343,
+      "working_set_bytes": 394493952,
+      "peak_working_set_bytes": 482471936,
+      "private_commit_bytes": 1687392256,
+      "peak_private_commit_bytes": 1775611904,
+      "available_physical_bytes": 5719556096,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14519611392,
+      "new_file_bytes": 36815778,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "full_Taylor_input_and_S0_frame_match",
+      "wall_seconds": 12.737742499972228,
+      "working_set_bytes": 366759936,
+      "peak_working_set_bytes": 488894464,
+      "private_commit_bytes": 1660645376,
+      "peak_private_commit_bytes": 1783062528,
+      "available_physical_bytes": 5744504832,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14519611392,
+      "new_file_bytes": 36815778,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "written_tuple_0",
+      "wall_seconds": 13.417820399976335,
+      "working_set_bytes": 371249152,
+      "peak_working_set_bytes": 488894464,
+      "private_commit_bytes": 1664012288,
+      "peak_private_commit_bytes": 1783062528,
+      "available_physical_bytes": 5732872192,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14519496704,
+      "new_file_bytes": 36914111,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "written_tuple_1",
+      "wall_seconds": 13.530451499973424,
+      "working_set_bytes": 371249152,
+      "peak_working_set_bytes": 488894464,
+      "private_commit_bytes": 1664012288,
+      "peak_private_commit_bytes": 1783062528,
+      "available_physical_bytes": 5740355584,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14519496704,
+      "new_file_bytes": 36927641,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "written_tuple_2",
+      "wall_seconds": 13.644014799967408,
+      "working_set_bytes": 371249152,
+      "peak_working_set_bytes": 488894464,
+      "private_commit_bytes": 1664012288,
+      "peak_private_commit_bytes": 1783062528,
+      "available_physical_bytes": 5736042496,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14519447552,
+      "new_file_bytes": 36941159,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "written_tuple_3",
+      "wall_seconds": 13.731174400018062,
+      "working_set_bytes": 371249152,
+      "peak_working_set_bytes": 488894464,
+      "private_commit_bytes": 1664012288,
+      "peak_private_commit_bytes": 1783062528,
+      "available_physical_bytes": 5744508928,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14519447552,
+      "new_file_bytes": 36951539,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "written_tuple_4",
+      "wall_seconds": 13.8176678000018,
+      "working_set_bytes": 371249152,
+      "peak_working_set_bytes": 488894464,
+      "private_commit_bytes": 1664012288,
+      "peak_private_commit_bytes": 1783062528,
+      "available_physical_bytes": 5744431104,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14519447552,
+      "new_file_bytes": 36961888,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "written_tuple_5",
+      "wall_seconds": 13.903970899991691,
+      "working_set_bytes": 371249152,
+      "peak_working_set_bytes": 488894464,
+      "private_commit_bytes": 1664012288,
+      "peak_private_commit_bytes": 1783062528,
+      "available_physical_bytes": 5748469760,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14519447552,
+      "new_file_bytes": 36972237,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "written_tuple_6",
+      "wall_seconds": 13.98908540001139,
+      "working_set_bytes": 371249152,
+      "peak_working_set_bytes": 488894464,
+      "private_commit_bytes": 1664012288,
+      "peak_private_commit_bytes": 1783062528,
+      "available_physical_bytes": 5748637696,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14519414784,
+      "new_file_bytes": 36983307,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    }
+  ],
+  "partial_archive_preserved": true,
+  "outer_failure_observation": {
+    "scope": "outer process after exception; not child-start evidence",
+    "working_set_bytes": 371253248,
+    "peak_working_set_bytes": 488894464,
+    "private_commit_bytes": 1664012288,
+    "peak_private_commit_bytes": 1783062528,
+    "available_physical_bytes": 5741391872,
+    "total_physical_bytes": 16883511296,
+    "free_disk_bytes": 14519439360
+  },
+  "q012h2a_outcome": "inconclusive",
+  "q012h2_outcome": "not_evaluated",
+  "sha256": "026117766b59a8691895833710e5f1b44b986acd6e12a638764093af8767c34c"
+}
