@@ -115,3 +115,36 @@ validityが通りH1/H2/H3が全て成立した場合だけQ012h2をaccepted、�
 後続では全**1,663,740組・5,160,610列/格子**の四次chart構築、元Q012gの全振幅試験・反例の改善を検証する。
 pilot成功から未計算のrank・RSS・残差改善を推定して合格にしない。D3Q27 SSM存在、連続振幅域、
 自然Fourier sparseを必須baselineとするTT実費用比較、物理benchmark・force/wallは引き続き原研究の未完了課題である。
+
+## S0実装検証 2026-09-08 — 正式走査前
+
+上の117行は事前登録commit `1db06d0`で固定した。全距離走査・独立worker・保存後全entry再構築の実装を追加した。
+この時点では正式なS0選択もQ012h2のH1/H2/H3も未実行であり、実LBMのF4はまだ評価していない。
+
+- 652必須seed、全104入力座標、共役closure、最大432寸法を整数検査した。
+  全1,663,740 tupleのbin数を二つの列挙で照合した。15 binのうち5 binは空、非空は10 binである。
+  空なのは `(4)`と`(3,1)`のzero/selected、および`(2,2)`のselected。登録した空bin処理を適用し、条件は変更しない。
+- 人工全16 inventory×35 tupleの距離を、実際の対称operatorの固有値と照合した。
+  全slot permutation、異なる出力波数、非正規block、行列padding、末尾距離改変、部分coverageを検査した。
+- 17³の全729外部sectorと78入力blockを構築し、別記述のpopulation symbolで全行列の不変性を照合した。
+  これは入力部品の検証であり、三格子の全距離走査の代替ではない。
+- 主方式のchunk積に対し、独立方式はnested loopとpair積cacheを用いる。丸め済み行列・固有値の共有は明示し、
+  独立な枝分類や厳密非共鳴証明とは呼ばない。両方式の全距離を保存し、選択は主方式の値から再構築する。
+- メモリ計測はWindowsの[公式counter定義](https://learn.microsoft.com/en-us/windows/win32/api/psapi/ns-psapi-process_memory_counters_ex)に従い、
+  working setとprivate commitを別に保存する。実際に触れた配列でpeakの単調性を確認し、4種類の資源上限の負の対照も検査した。
+  中断した走査の完了prefix・測定値はinconclusive記録へ残し、既存ファイルを上書きしない。
+
+新規84テストが通過した（14.04秒）。先行の対称operator・censusを加えた計256件も警告error化で通過した（16.09秒）。
+Ruff・format・compileも検査した。初回テストの空bin数の期待値3は誤りで、上記の整数理由により5へ修正した。
+これはテスト側の訂正であり、登録対象・閾値・科学的判定の変更ではない。
+先行Q012h1の別CLI全再監査もexit 0、全8 validityとH1/H2/H3の通過を再確認した。
+
+検証評価は **Share with caveats（選択実装の部品検証に限定）**。sourceをcommit・封印してから以下を実行する。
+
+```sh
+python -u -W error -m research.q012h2_d3q27_quartic_selection
+python -u -W error -m research.q012h2_d3q27_quartic_selection --audit-only
+```
+
+出力は`research/artifacts/q012h2_d3q27_quartic_selection.json`と、三格子×primary/workerのJSON・NPZ。
+S0だけの完了receiptは`q012h2_outcome=not_evaluated`を必須とし、実四次chartの受理へ昇格させない。

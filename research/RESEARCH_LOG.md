@@ -8,6 +8,22 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012h2の全数スペクトル距離選択S0を実装・部品検証
+
+事前登録`1db06d0`の後に、全1,663,740 tuple/格子を走査するbounded-chunk kernelと、別のnested-loop/pair積方式を実装した。
+全距離・全行列/固有値・bin・選択理由を保存し、実PID/exit、source commit、親封印、全entry再構築と結び付ける。
+652必須seed、全104座標、共役closure、最大432寸法を保持する。全15 bin中5 binが構造上空で、非空は10 binだった。
+初回テスト側の空bin期待値3を整数構造に基づいて5へ訂正した。事前登録の空bin規則や選択条件は変更していない。
+
+人工全16 inventory×35 tupleの距離、17³の全入力/外部行列、padding・末尾改変・部分coverage・偽process receiptを検査した。
+Windowsの実working-set/private-commit counterと資源上限、中断prefixの保持、既存出力の保護も検査した。
+新規84テスト（14.04秒）、先行対称operator/censusを加えた256テスト（16.09秒）が警告error化で通過した。
+Ruff・format・compileも通過。先行Q012h1の別CLI全再監査はexit 0で全条件の通過を再確認した。
+
+`validate-data`に従い、これは部品検証であり、正式S0選択の成功ではない。実LBMのF4は未評価。
+sourceをcommit・封印後に正式三格子の全距離走査と別CLI監査へ進み、選択を固定してからforcingを構築する。
+再現コマンド・共有入力の範囲は[実装検証](../docs/D3Q27_QUARTIC_PILOT.md#s0実装検証-2026-09-08--正式走査前)へ。
+
 ## 2026-09-08: Q012h2の実LBM四次forcing・operatorと資源pilotを事前登録
 
 全104座標・17³/33³/65³、採用済みの二次/三次入力を保持した次の[問いと条件](../docs/D3Q27_QUARTIC_PILOT.md)を固定する。
