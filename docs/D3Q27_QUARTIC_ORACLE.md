@@ -130,3 +130,26 @@ validity通過かつ全仮説成立で人工オラクルをaccepted、不成立�
 zero-wave kinetic補正、実際のrank/condition、lower-order入力・作業配列・保存を含むRSS/時間/diskを測る。
 pilotのcase選択と資源上限は実行前に固定し、pilot成功を全数solve・四次残差改善へ一般化しない。
 最終的な全三格子の四次chart、元振幅域の改善、SSM存在、3D疎/TT実費用、物理benchmarkは依然として未完了である。
+
+## 実装進捗 2026-09-08 — 部品テストのみ、正式判定は未実行
+
+上記の事前登録はcommit `a345ec7`で固定した。以下はその後の実装検査で、登録条件や対象を変更しない。
+
+- H1部品：全16 inventory×35四つ組の対称積を、独立Fraction monomial代入と全entry照合した。
+  全5重複pattern・slot permutation・Taylor係数を検査した。外部次元23/27を合わせた登録件数は1,120組・4,482列。
+- H2部品：実/複素×外部次元23/27の全4場合、各330四次列を独立Fraction多項式合成と完全照合した。
+  全二〜四次H/G、全係数の実表示への往復、7項群の非零coverage、保存量、項の欠落・符号・共役の負の対照も検査した。
+- H3部品：全5重複pattern×外部次元23/27と1次元block例の11正例を検査した。最大operator寸法432を含む。
+  既存SVDと固定3回refinement、独立exact残差、3種類の特異/悪条件対照を検査した。
+  外部残差1e-10とfull式1e-9は別条件であり、未refineのSylvester結果は診断のみとする。
+
+再現コマンド（新規118テスト、警告error化、88.68秒で通過）：
+
+```sh
+python -m pytest -q -W error tests/test_d3q27_quartic_operator.py tests/test_d3q27_quartic_jets.py tests/test_d3q27_quartic_fraction.py tests/test_d3q27_quartic_solve.py
+```
+
+実装は `research/d3q27_quartic_{operator,reference,jets,fraction,solve}.py`。先行scientific sourceとQ012h0固定sourceは変更していない。
+検証評価は **Share with caveats（部品検証に限定）**。全1,120 caseの正式solve、独立workerの実PID/exit/source、
+全行列・係数の排他的保存と保存後全entry再監査は未実行であり、**Q012h1のaccepted判定はまだ出していない**。
+これらを正式runnerに接続し、sourceをcommit・封印してから登録済みの全数実行へ進む。

@@ -5,7 +5,9 @@ Q012h0の正式全数censusと別processの保存後監査が `passed / accepted
 全個別座標monomialの直接列挙・全sector/payload再計算・親改変拒否を含む181テストが通過した（242.31秒）。
 登録した自然Fourier sparse配列の四次保持量は5,078,040,240 bytes/格子（約4.73 GiB）、三格子で約14.19 GiB。
 これは係数・forcing等の非圧縮配列payloadであり、実RSS・独立自由度・四次solveの実行可能性ではない。
-次は[Q012h1の人工operator/forcingオラクル](../docs/D3Q27_QUARTIC_ORACLE.md)。事前登録済み・実装/実行は未着手。
+次は[Q012h1の人工operator/forcingオラクル](../docs/D3Q27_QUARTIC_ORACLE.md)。代数・既知解の部品実装と118テストが通過した（88.68秒）。
+全人工inventoryの対称積と、4場合×330列のforcingを独立方式で照合した。既知解solveの部品テストは11正例と3負の対照に限る。
+全1,120 caseの正式solve、独立workerの実process記録、全保存内容の再監査は未実行で、Q012h1自体は未判定。
 実LBMの全規模構築と資源pilotはその後の別ゲートとし、全104座標・三格子を保持する。
 計算・保存・検証の詳細は[Q012h0結果](../docs/D3Q27_QUARTIC_RESOURCE_CENSUS.md)へ。以下の先行判定は変更しない。
 
