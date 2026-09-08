@@ -1,0 +1,1122 @@
+{
+  "schema": "Q012h2 S0 grid v1",
+  "scope": "S0 binary64 spectral-distance selection only, sharing rounded spectral inputs; not a quartic forcing/solve, rank certificate, full-resource forecast, finite-amplitude improvement, SSM existence or TT advantage.",
+  "size": 33,
+  "route": "worker",
+  "source": {
+    "files": {
+      "research/d3q27_quartic_selection.py": "0fd3ff8731b64076a84574e7971b4472bb2a7206caae9ad0a732f6b68f5077f0",
+      "research/d3q27_quartic_selection_reference.py": "5026e700fff64c84a6a583ee7093acb7caaddf4dfcfef987cd4a11178fe21d1d",
+      "research/d3q27_quartic_resources.py": "8ce46f72bc4c11eb7fdf7d2cc0a4c98ede002fa5a1bc6d070366abe177a300f1",
+      "research/q012h2_d3q27_quartic_selection.py": "f957ce999e90e5821d01aac606181a20ab110110e8663817e666df66da84f94a",
+      "tests/test_d3q27_quartic_selection.py": "ef598583bd88d10a2e288568fbdc49efc1af08a0c384dba0f6880e4f08217b1b",
+      "tests/test_d3q27_quartic_resources.py": "42de187d28fac5fe05ebdc8da102944e752959fa29ff82d36efa0d047392a2bb",
+      "tests/test_q012h2_d3q27_quartic_selection.py": "0cdb6d8266a6f0a94cf3f7c6596238bc9d3676e0df0428291ceb9ff63f5adab2"
+    },
+    "prior_source": {
+      "files": {
+        "research/d3q27_quartic_operator.py": "0a634000c6980f71eccb1cdcff51f62d1f50c03f1566b5cce19a9dc7634f79bf",
+        "research/d3q27_quartic_reference.py": "1004c5dc1cbb4d86cd566d16ec6ac89a0b8ea9b252b08bd0a689b1ceb9dba06c",
+        "research/d3q27_quartic_jets.py": "9ea856359c2421e444c0c555760cd5d531f7f01a7336389ee3296675b6d218f4",
+        "research/d3q27_quartic_fraction.py": "dafef78afdb7caeed4c5249209b35f36b69ff4dcbb546c302458fa4cdad1f127",
+        "research/d3q27_quartic_solve.py": "3d39e3da133a61d32d845bc28cf93874737490a38754af078df12d61ea9f6315",
+        "research/d3q27_quartic_records.py": "f3f9c6a4bbf56dfdc082fe583048e0b255c9c73eb4a07c5a577ed3cbb21a5b31",
+        "research/d3q27_quartic_archive.py": "24fd3c29a34e13342a36137c6c3dd23b7737b453579ad6e948e9cd86ff83bc66",
+        "research/q012h1_d3q27_quartic_oracle.py": "5a3f48204caad7b16cdf17f31778b6bacb372ddde83347db993192207b867e3f",
+        "tests/test_d3q27_quartic_operator.py": "053ba76e99a74f31c571bc89a531491a311ceab49b846abeb1e37d819ebbe4e8",
+        "tests/test_d3q27_quartic_jets.py": "879e8939b54f1f0d9f9a7b8486c13ed50bd391b279675d7e161a88010ecd9a28",
+        "tests/test_d3q27_quartic_fraction.py": "7955233979c0a510616d11773be0dfc22d339de19b1a5efd16cc24afcc7d6308",
+        "tests/test_d3q27_quartic_solve.py": "33fb693ba8b29d6450903e7c81f2cfa5d4a797b8a4b50504c55911f102a0f6f6",
+        "tests/test_d3q27_quartic_records.py": "d1931b27e9c36c1020ccb76bef79446b13358758dd9f4e767de3383166e83ca0",
+        "tests/test_d3q27_quartic_archive.py": "635c3b32975d0514aeae96d4f585fdf1fe3904920d094b739cab9860df5afc88",
+        "tests/test_q012h1_d3q27_quartic_oracle.py": "3bf607f021dd182b9226a5106f105a552706f723e04162b3cccca759e7a5aa3f"
+      },
+      "prior_source": {
+        "prior_source_sha256": "c7001e41d3ef7541d5f2c863a7fba714f95b0dc7a78f434555fdcf3f09f5e38a",
+        "files": {
+          "research/d3q27_quartic_census.py": "cb7c0de909ab8fe599f5eb485c5ef73cc174251be234741f9ee18a52f13ad121",
+          "research/q012h0_d3q27_quartic_census.py": "210360b1064b462515a583e9f07fc17f852c7bb8548ff1f03f2ebfe24df3e0d6",
+          "tests/test_d3q27_quartic_census.py": "a510d38ce698a96c0dd674a07a0e4554483da066b6656792646a6ae9df9067da",
+          "tests/test_q012h0_d3q27_quartic_census.py": "8759a4ecfb102cc476c0e469a1dfca4a19321fec59791d0264944cb74b47d0bf"
+        }
+      },
+      "preregistration_sha256": "38951af4ba63024cd1a1b6fd2e0a3f40452218889365f0e7017d18ddc47707b0",
+      "runtime": {
+        "python": "3.13.5",
+        "numpy": "2.3.4",
+        "scipy": "1.16.3",
+        "gmpy2": "2.3.1"
+      }
+    },
+    "preregistration_sha256": "89c1b643df4466089ed4b213b7eb2ed1d4fbab70a5922ed103d6bb87cd308b54",
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": null,
+      "OMP_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null
+    }
+  },
+  "source_commit": "6a881220442dbdd9f360df6192999304845e38c8",
+  "parent": {
+    "filename": "q012h1_d3q27_quartic_oracle.json",
+    "sha256": "fb70d3b9f8e75505b337c7eaf75db084b3fcce733170069069af8284acd66682",
+    "decision": {
+      "validity_gates": {
+        "sealed_sources_and_parent": true,
+        "artificial_controls": true,
+        "full_registered_coverage": true,
+        "independent_completed_process": true,
+        "full_saved_entries_rebuilt": true,
+        "finite_evidence": true,
+        "independent_numerical_witnesses": true,
+        "nonzero_forcing_controls": true
+      },
+      "hypothesis_gates": {
+        "H1": true,
+        "H2": true,
+        "H3": true
+      },
+      "study_gate": "passed",
+      "scientific_outcome": "accepted"
+    }
+  },
+  "process_id": 29240,
+  "archive": {
+    "filename": "q012h2_d3q27_quartic_selection_n33_worker.npz",
+    "bytes": 5004112,
+    "sha256": "4b3a06501d2043afa6192eed38cb3d8370a38b88e29b83a90b7899a1ec0a81fa",
+    "arrays": {
+      "distances": {
+        "shape": [
+          1663740
+        ],
+        "dtype": "<f8",
+        "bytes": 13309920,
+        "sha256": "31cca5f0c77d8975c482abe32610d9455e6f0e0a72d725db97a64f66a1f7e892"
+      }
+    }
+  },
+  "bins": [
+    {
+      "pattern": [
+        4
+      ],
+      "sector": "zero",
+      "count": 0,
+      "minimum": null,
+      "ordinal": null,
+      "group": null
+    },
+    {
+      "pattern": [
+        4
+      ],
+      "sector": "selected",
+      "count": 0,
+      "minimum": null,
+      "ordinal": null,
+      "group": null
+    },
+    {
+      "pattern": [
+        4
+      ],
+      "sector": "other",
+      "count": 78,
+      "minimum": 0.024836190568209352,
+      "ordinal": 1433440,
+      "group": [
+        31,
+        31,
+        31,
+        31
+      ]
+    },
+    {
+      "pattern": [
+        3,
+        1
+      ],
+      "sector": "zero",
+      "count": 0,
+      "minimum": null,
+      "ordinal": null,
+      "group": null
+    },
+    {
+      "pattern": [
+        3,
+        1
+      ],
+      "sector": "selected",
+      "count": 0,
+      "minimum": null,
+      "ordinal": null,
+      "group": null
+    },
+    {
+      "pattern": [
+        3,
+        1
+      ],
+      "sector": "other",
+      "count": 6006,
+      "minimum": 9.433483773801932e-06,
+      "ordinal": 635007,
+      "group": [
+        9,
+        9,
+        9,
+        66
+      ]
+    },
+    {
+      "pattern": [
+        2,
+        2
+      ],
+      "sector": "zero",
+      "count": 117,
+      "minimum": 1.3818420220622303,
+      "ordinal": 85160,
+      "group": [
+        1,
+        1,
+        76,
+        76
+      ]
+    },
+    {
+      "pattern": [
+        2,
+        2
+      ],
+      "sector": "selected",
+      "count": 0,
+      "minimum": null,
+      "ordinal": null,
+      "group": null
+    },
+    {
+      "pattern": [
+        2,
+        2
+      ],
+      "sector": "other",
+      "count": 2886,
+      "minimum": 9.433483773801932e-06,
+      "ordinal": 239499,
+      "group": [
+        3,
+        3,
+        42,
+        42
+      ]
+    },
+    {
+      "pattern": [
+        2,
+        1,
+        1
+      ],
+      "sector": "zero",
+      "count": 1206,
+      "minimum": 1.4019554266801508,
+      "ordinal": 180150,
+      "group": [
+        2,
+        8,
+        74,
+        74
+      ]
+    },
+    {
+      "pattern": [
+        2,
+        1,
+        1
+      ],
+      "sector": "selected",
+      "count": 21060,
+      "minimum": 1.2534878979781654,
+      "ordinal": 577221,
+      "group": [
+        8,
+        8,
+        44,
+        65
+      ]
+    },
+    {
+      "pattern": [
+        2,
+        1,
+        1
+      ],
+      "sector": "other",
+      "count": 205962,
+      "minimum": 6.180312461467885e-06,
+      "ordinal": 391199,
+      "group": [
+        5,
+        9,
+        9,
+        73
+      ]
+    },
+    {
+      "pattern": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "sector": "zero",
+      "count": 18423,
+      "minimum": 1.3818420220622303,
+      "ordinal": 101569,
+      "group": [
+        1,
+        7,
+        70,
+        76
+      ]
+    },
+    {
+      "pattern": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "sector": "selected",
+      "count": 332100,
+      "minimum": 1.249608476981124,
+      "ordinal": 198588,
+      "group": [
+        2,
+        17,
+        35,
+        74
+      ]
+    },
+    {
+      "pattern": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "sector": "other",
+      "count": 1075902,
+      "minimum": 2.868783042231371e-07,
+      "ordinal": 260824,
+      "group": [
+        3,
+        12,
+        19,
+        53
+      ]
+    }
+  ],
+  "checks": {
+    "primary_archive_sha256": "1e88571e0b4572b02da335c4086712ec968eaf1b8556d708296dd0bd7325822a",
+    "independent_population_symbol": {
+      "block_invariance": 2.74364044385281e-15,
+      "external_invariance": 4.68800068678683e-15,
+      "external_projection": 1.9573922754072203e-15,
+      "orthogonality": 3.686874948636593e-15,
+      "zero_conservation": 2.4994584585396864e-15,
+      "passed": true
+    },
+    "comparison": {
+      "columns_compared": 1663740,
+      "maximum_absolute_difference": 6.661338147750939e-16,
+      "maximum_difference_ordinal": 140410,
+      "passed": true
+    },
+    "independent_own_score_bins": [
+      {
+        "pattern": [
+          4
+        ],
+        "sector": "zero",
+        "count": 0,
+        "minimum": null,
+        "ordinal": null,
+        "group": null
+      },
+      {
+        "pattern": [
+          4
+        ],
+        "sector": "selected",
+        "count": 0,
+        "minimum": null,
+        "ordinal": null,
+        "group": null
+      },
+      {
+        "pattern": [
+          4
+        ],
+        "sector": "other",
+        "count": 78,
+        "minimum": 0.024836190568209474,
+        "ordinal": 1433440,
+        "group": [
+          31,
+          31,
+          31,
+          31
+        ]
+      },
+      {
+        "pattern": [
+          3,
+          1
+        ],
+        "sector": "zero",
+        "count": 0,
+        "minimum": null,
+        "ordinal": null,
+        "group": null
+      },
+      {
+        "pattern": [
+          3,
+          1
+        ],
+        "sector": "selected",
+        "count": 0,
+        "minimum": null,
+        "ordinal": null,
+        "group": null
+      },
+      {
+        "pattern": [
+          3,
+          1
+        ],
+        "sector": "other",
+        "count": 6006,
+        "minimum": 9.433483773801932e-06,
+        "ordinal": 635007,
+        "group": [
+          9,
+          9,
+          9,
+          66
+        ]
+      },
+      {
+        "pattern": [
+          2,
+          2
+        ],
+        "sector": "zero",
+        "count": 117,
+        "minimum": 1.3818420220622303,
+        "ordinal": 85160,
+        "group": [
+          1,
+          1,
+          76,
+          76
+        ]
+      },
+      {
+        "pattern": [
+          2,
+          2
+        ],
+        "sector": "selected",
+        "count": 0,
+        "minimum": null,
+        "ordinal": null,
+        "group": null
+      },
+      {
+        "pattern": [
+          2,
+          2
+        ],
+        "sector": "other",
+        "count": 2886,
+        "minimum": 9.433483773801932e-06,
+        "ordinal": 239499,
+        "group": [
+          3,
+          3,
+          42,
+          42
+        ]
+      },
+      {
+        "pattern": [
+          2,
+          1,
+          1
+        ],
+        "sector": "zero",
+        "count": 1206,
+        "minimum": 1.4019554266801508,
+        "ordinal": 180150,
+        "group": [
+          2,
+          8,
+          74,
+          74
+        ]
+      },
+      {
+        "pattern": [
+          2,
+          1,
+          1
+        ],
+        "sector": "selected",
+        "count": 21060,
+        "minimum": 1.2534878979781654,
+        "ordinal": 577221,
+        "group": [
+          8,
+          8,
+          44,
+          65
+        ]
+      },
+      {
+        "pattern": [
+          2,
+          1,
+          1
+        ],
+        "sector": "other",
+        "count": 205962,
+        "minimum": 6.180312461467885e-06,
+        "ordinal": 391199,
+        "group": [
+          5,
+          9,
+          9,
+          73
+        ]
+      },
+      {
+        "pattern": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "sector": "zero",
+        "count": 18423,
+        "minimum": 1.3818420220622303,
+        "ordinal": 101569,
+        "group": [
+          1,
+          7,
+          70,
+          76
+        ]
+      },
+      {
+        "pattern": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "sector": "selected",
+        "count": 332100,
+        "minimum": 1.249608476981124,
+        "ordinal": 198588,
+        "group": [
+          2,
+          17,
+          35,
+          74
+        ]
+      },
+      {
+        "pattern": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "sector": "other",
+        "count": 1075902,
+        "minimum": 2.868783042231371e-07,
+        "ordinal": 260824,
+        "group": [
+          3,
+          12,
+          19,
+          53
+        ]
+      }
+    ]
+  },
+  "resources": [
+    {
+      "stage": "process_start",
+      "wall_seconds": 0.00011979998089373112,
+      "working_set_bytes": 114171904,
+      "peak_working_set_bytes": 114171904,
+      "private_commit_bytes": 1365528576,
+      "peak_private_commit_bytes": 1365544960,
+      "available_physical_bytes": 4952199168,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "after_source_and_parent",
+      "wall_seconds": 0.5584570000064559,
+      "working_set_bytes": 115486720,
+      "peak_working_set_bytes": 116539392,
+      "private_commit_bytes": 1366925312,
+      "peak_private_commit_bytes": 1368043520,
+      "available_physical_bytes": 4937277440,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "after_all_primary_input_readback",
+      "wall_seconds": 1.3068108999868855,
+      "working_set_bytes": 156770304,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1407836160,
+      "peak_private_commit_bytes": 1421213696,
+      "available_physical_bytes": 4892479488,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_65536",
+      "wall_seconds": 1.9815533999935724,
+      "working_set_bytes": 157995008,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4893011968,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_131072",
+      "wall_seconds": 2.5875639999867417,
+      "working_set_bytes": 158879744,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4896681984,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_196608",
+      "wall_seconds": 3.177013399952557,
+      "working_set_bytes": 159444992,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4900487168,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_262144",
+      "wall_seconds": 3.7804706000024453,
+      "working_set_bytes": 159997952,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4899074048,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_327680",
+      "wall_seconds": 4.387495999981184,
+      "working_set_bytes": 160522240,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4898062336,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_393216",
+      "wall_seconds": 4.972786400001496,
+      "working_set_bytes": 161046528,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4900573184,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_458752",
+      "wall_seconds": 5.574120899953414,
+      "working_set_bytes": 161570816,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4902584320,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_524288",
+      "wall_seconds": 6.1797264000051655,
+      "working_set_bytes": 162095104,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4903129088,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_589824",
+      "wall_seconds": 6.784002000000328,
+      "working_set_bytes": 162619392,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4903223296,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_655360",
+      "wall_seconds": 7.377440599957481,
+      "working_set_bytes": 163143680,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4903239680,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_720896",
+      "wall_seconds": 7.991172599955462,
+      "working_set_bytes": 163667968,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4891840512,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831431680,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_786432",
+      "wall_seconds": 8.576719000004232,
+      "working_set_bytes": 164192256,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4893143040,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831431680,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_851968",
+      "wall_seconds": 9.187048399995547,
+      "working_set_bytes": 164716544,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4891267072,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831431680,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_917504",
+      "wall_seconds": 9.780671899963636,
+      "working_set_bytes": 165244928,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4890193920,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831431680,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_983040",
+      "wall_seconds": 10.413548599986825,
+      "working_set_bytes": 165773312,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4871970816,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1048576",
+      "wall_seconds": 11.034778699977323,
+      "working_set_bytes": 166305792,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4869791744,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1114112",
+      "wall_seconds": 11.665591400000267,
+      "working_set_bytes": 166834176,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4870971392,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1179648",
+      "wall_seconds": 12.289045299985446,
+      "working_set_bytes": 167362560,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4855836672,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1245184",
+      "wall_seconds": 12.904676999954972,
+      "working_set_bytes": 167886848,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4855590912,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1310720",
+      "wall_seconds": 13.51890949998051,
+      "working_set_bytes": 168427520,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4822704128,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831427584,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1376256",
+      "wall_seconds": 14.134110099985264,
+      "working_set_bytes": 168964096,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4818710528,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831362048,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1441792",
+      "wall_seconds": 14.754444599966519,
+      "working_set_bytes": 169492480,
+      "peak_working_set_bytes": 169811968,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4819730432,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831362048,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1507328",
+      "wall_seconds": 15.37061529996572,
+      "working_set_bytes": 170016768,
+      "peak_working_set_bytes": 170016768,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4814356480,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831362048,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1572864",
+      "wall_seconds": 15.98568039998645,
+      "working_set_bytes": 170541056,
+      "peak_working_set_bytes": 170541056,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4813156352,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831362048,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1638400",
+      "wall_seconds": 16.596496199956164,
+      "working_set_bytes": 171065344,
+      "peak_working_set_bytes": 171065344,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4807139328,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831362048,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "worker_distance_1663740",
+      "wall_seconds": 16.829561099992134,
+      "working_set_bytes": 171208704,
+      "peak_working_set_bytes": 171208704,
+      "private_commit_bytes": 1455841280,
+      "peak_private_commit_bytes": 1455841280,
+      "available_physical_bytes": 4816146432,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14831099904,
+      "new_file_bytes": 17973475,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "after_full_scan_and_reduction",
+      "wall_seconds": 26.289279599965084,
+      "working_set_bytes": 145727488,
+      "peak_working_set_bytes": 197849088,
+      "private_commit_bytes": 1430282240,
+      "peak_private_commit_bytes": 1482555392,
+      "available_physical_bytes": 4852715520,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14826020864,
+      "new_file_bytes": 22977587,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    },
+    {
+      "stage": "after_saved_readback",
+      "wall_seconds": 26.3663711999543,
+      "working_set_bytes": 159039488,
+      "peak_working_set_bytes": 197849088,
+      "private_commit_bytes": 1443627008,
+      "peak_private_commit_bytes": 1482555392,
+      "available_physical_bytes": 4839186432,
+      "total_physical_bytes": 16883511296,
+      "free_disk_bytes": 14826020864,
+      "new_file_bytes": 22977587,
+      "checks": {
+        "peak_working_set": true,
+        "peak_private_commit": true,
+        "wall_time": true,
+        "new_disk": true
+      }
+    }
+  ],
+  "sha256": "a48950e1f753987b0b58998fea1abab4d409590e9e81e9ef083045b6b51f371c"
+}

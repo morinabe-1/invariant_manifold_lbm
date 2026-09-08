@@ -1,15 +1,21 @@
 # 研究の到達点 — 2026-09-08
 
+Q012h2のS0（検証対象の選択）が正式実行・保存後全件監査・別CLIの全件再監査を通過した。両CLIの実exit 0を確認した。
+全三格子の4,991,220 block組を二方式で走査し、全距離の差は最大6.66e-16だった。
+三格子共通の698組・1,826対称column/格子を、全104座標と最大432寸法を保って選んだ。
+保存されたS0 processの最大working set約219.6 MiB、private commit約1.44 GiB。実H2/H3入力やF4の資源測定ではない。
+詳細・near tieの2件・保存物は[Q012h2 S0結果](../docs/D3Q27_QUARTIC_PILOT.md#s0正式結果-2026-09-08--選択のみq012h2全体は未判定)へ。
+Q012h2のH1/H2/H3は未実行。次は固定した698組について実LBMの四次forcingを独立照合する。
+
 Q012h1の四次人工オラクルは、正式実行と別CLIの全件再監査で `passed / accepted`。
 全1,120 operator case・4,482列、実/複素×外部次元23/27の全4 forcing case・1,320列を保持し、全8 validityとH1/H2/H3が成立した。
 最大operator寸法432、最大条件数505.63。SVD/refinedの最大既知解scaled誤差は約7.34e-14/6.96e-15で、3種類の特異/悪条件対照も通過した。
 全entry・行列・係数・判定を再計算し、primary PID 34492、独立worker PID 36808の正常終了を確認した。
 事前の実装検証247テストと正式run内の部品118テストも通過した。詳細と保存物は[Q012h1正式結果](../docs/D3Q27_QUARTIC_ORACLE.md#正式結果-2026-09-08)へ。
 これは人工代数オラクルの受理であり、実LBMの四次係数・rank/condition・有限振幅改善ではない。
-次の[Q012h2: 実LBM四次・資源pilot](../docs/D3Q27_QUARTIC_PILOT.md)を事前登録した。判定は未実行。
-全104座標・17³/33³/65³と元の失敗caseを保持し、全四次組のスペクトル距離走査でpilot選択を先に固定する。
+次の[Q012h2: 実LBM四次・資源pilot](../docs/D3Q27_QUARTIC_PILOT.md)では、全104座標・17³/33³/65³と元の失敗caseを保持する。
 S0の選択・別process照合・全保存後監査を実装し、起動runtimeの修正後、新規86件＋先行172件、計258テストが通過した。
-正式S0走査はまだ未実行であり、実LBMのF4・solve・資源pilotの合格は主張しない。
+正式S0の現在の結果は冒頭のとおり。実LBMのF4・solve・資源pilotの合格は主張しない。
 
 Q012h0の正式全数censusと別processの保存後監査が `passed / accepted`。全7 validityとH1–H3が成立した。
 全78 block・104座標、次数2/3/4、17³/33³/65³を保持した。四次は1格子あたり1,663,740 block組・5,160,610列、729出力波数。
@@ -125,7 +131,7 @@ Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/
 | D3Q27次数別欠陥の代数オラクル | Q012g2 accepted。全96人工case・1,824係数・2,976値、独立Fraction式・全数保存後監査・77テスト通過。実LBMの悪化原因を説明した結果ではない |
 | D3Q27次数別欠陥診断 | Q012g3 accepted。全960 case、独立192 caseとの一致、全入力/source・全保存後監査が通過。旧3次数不合格・81半減不達・37悪化を再現し、元の棄却は保持 |
 | D3Q27四次構造census | Q012h0 accepted。全104座標・3格子・次数2/3/4の全joint/coordinate histogramが独立processで一致。四次1,663,740 block組・5,160,610列/格子。数値rank・solveの実行可能性は未評価 |
-| 次の主課題 | Q012h1人工オラクルを受理。Q012h2実LBM四次・資源pilotを事前登録、未実行。全104座標・三格子、現行W2/W3と自然Fourier sparseをbaselineに残す |
+| 次の主課題 | Q012h2のS0で全四次組を走査し698組/格子を選択。H1の実四次forcingを次に検証。全104座標・三格子、現行W2/W3と自然Fourier sparseをbaselineに残す |
 | さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
