@@ -58,3 +58,33 @@ moment-only armは元binary64の位相/filter/factorを保ち、全GMPとの差�
 moment-only仮説の成否は別に報告する。旧binary64 H1の不合格を受理へ書き換えない。
 H2の実operator解、solveを含む資源pilot、全四次chart、元振幅の改善、SSM存在、自然疎表現とTTの費用比較、
 物理benchmark・force/wallは引き続き未完了である。
+
+## 実装検証 2026-09-08 — 正式計算前
+
+七項方式・独立nilpotent多項式方式をGMP 128/192 bitで実装した。
+元のbinary64係数を正確に取り込み、整数raw factorを高精度化の後に掛ける。
+独立方式は元Taylor単項式と逆密度級数から合成し、主方式のmoment・raw factor・七項kernelを呼ばない。
+内部生成先は全104座標のまま。人工入力だけを小さくし、実入力loader・S0の698組/格子は変更しない。
+
+保存形式は有限二進数の符号付き整数仮数と2の指数であり、両精度の全成分を損失なく復元する。
+complex128への丸め後の配列、主方式の七項、moment-only armも別に保存する。
+各方式を別の実processで実行し、全entryを保存後に再計算する。別CLIでは入力からfreshに再構築する。
+元H1の全entry・全514不合格と固定20物理列/格子も再監査する。
+5変異の照合先は元H1に封印された非零witnessとし、新結果から都合のよい例を選び直さない。
+
+新規68テスト、先行H1の実装・全列診断・実artifactの81テスト、計149件が警告error化で通過した（43.56秒）。
+人工の全126混合組×両精度、全16対称列、厳密ゼロと`2^-80`の非零moment、raw factor前後の丸め差、
+入力外内部座標、複素双線形性、末尾成分改変、精度・coverage・偽PID/異常exit・資源不足の保持を検査した。
+Ruff・format・compileも通過した。これらは部品検証であり、実LBMのQ012h2a合格ではない。
+
+正式計算は新しい7 sourceをcommitしてから行う。元の事前登録60行と旧source/保存物は変更しない。
+再現コマンド（repository root、新規出力先を使用）:
+
+```powershell
+python -m pytest tests/test_d3q27_quartic_mp.py tests/test_q012h2a_d3q27_quartic_precision.py -q -W error
+python -m research.q012h2a_d3q27_quartic_precision --output research/replays/q012h2a_d3q27_quartic_precision.json
+python -m research.q012h2a_d3q27_quartic_precision --output research/replays/q012h2a_d3q27_quartic_precision.json --audit-only
+```
+
+`validate-data`の判定は部品検証に限るShare with caveats。実全列の一致、moment-only仮説、
+Q012h2 H2/H3と研究全体の未完了事項は、実行結果が得られるまで受理しない。
