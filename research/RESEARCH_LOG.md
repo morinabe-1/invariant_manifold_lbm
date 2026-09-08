@@ -8,6 +8,19 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012h2の実LBM四次forcing・operatorと資源pilotを事前登録
+
+全104座標・17³/33³/65³、採用済みの二次/三次入力を保持した次の[問いと条件](../docs/D3Q27_QUARTIC_PILOT.md)を固定する。
+652必須seedに、全1,663,740四次組/格子のスペクトル距離から選ぶ各pattern/sector代表と共役を加える。
+全三格子共通のpilotは上限742組/格子。forcing評価前に全距離と選択を保存・監査・commitする。
+四次forcingは7項の混合微分と独立nilpotent多項式合成で照合し、物理streaming/filter/FFTも別に検査する。
+保存Taylor係数の添字別factorial、次数別FFT係数、ゼロ波数kinetic補正を保持する。
+
+現機の空きRAM約4.8 GiB・disk約13.8 GiBを確認したため、格子/processを順次実行し、全四次配列を一括確保しない。
+各processのpeak working set/private commit上限3 GiB、各grid/route 4時間、新規disk計2 GiBを実行前に登録する。
+配列payload・OS実測値・独立自由度を区別し、S0だけの測定やpilot成功を全規模・有限振幅改善へ一般化しない。
+新規数値実験はまだ開始していない。先行source・結果・元Q012gの棄却は変更しない。
+
 ## 2026-09-08: Q012h1の正式全数人工オラクルと保存後再監査が通過
 
 実行器を`d91cc37`でcommit/pushし、15 sourceファイルと事前登録prefix・Q012h0親を封印して正式実行した。

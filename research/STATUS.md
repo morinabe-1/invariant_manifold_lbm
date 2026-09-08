@@ -6,7 +6,8 @@ Q012h1の四次人工オラクルは、正式実行と別CLIの全件再監査�
 全entry・行列・係数・判定を再計算し、primary PID 34492、独立worker PID 36808の正常終了を確認した。
 事前の実装検証247テストと正式run内の部品118テストも通過した。詳細と保存物は[Q012h1正式結果](../docs/D3Q27_QUARTIC_ORACLE.md#正式結果-2026-09-08)へ。
 これは人工代数オラクルの受理であり、実LBMの四次係数・rank/condition・有限振幅改善ではない。
-次は実LBMの四次forcing/operatorと資源pilotを別登録する。全104座標・17³/33³/65³と元の失敗caseを保持する。
+次の[Q012h2: 実LBM四次・資源pilot](../docs/D3Q27_QUARTIC_PILOT.md)を事前登録した。判定は未実行。
+全104座標・17³/33³/65³と元の失敗caseを保持し、全四次組のスペクトル距離走査でpilot選択を先に固定する。
 
 Q012h0の正式全数censusと別processの保存後監査が `passed / accepted`。全7 validityとH1–H3が成立した。
 全78 block・104座標、次数2/3/4、17³/33³/65³を保持した。四次は1格子あたり1,663,740 block組・5,160,610列、729出力波数。
@@ -122,7 +123,7 @@ Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/
 | D3Q27次数別欠陥の代数オラクル | Q012g2 accepted。全96人工case・1,824係数・2,976値、独立Fraction式・全数保存後監査・77テスト通過。実LBMの悪化原因を説明した結果ではない |
 | D3Q27次数別欠陥診断 | Q012g3 accepted。全960 case、独立192 caseとの一致、全入力/source・全保存後監査が通過。旧3次数不合格・81半減不達・37悪化を再現し、元の棄却は保持 |
 | D3Q27四次構造census | Q012h0 accepted。全104座標・3格子・次数2/3/4の全joint/coordinate histogramが独立processで一致。四次1,663,740 block組・5,160,610列/格子。数値rank・solveの実行可能性は未評価 |
-| 次の主課題 | Q012h1人工operator/forcingオラクルを事前登録、実装前。実LBMの全104座標・三格子の構築と資源pilotはその後に検証。現行W2/W3と自然Fourier sparseをbaselineに残す |
+| 次の主課題 | Q012h1人工オラクルを受理。Q012h2実LBM四次・資源pilotを事前登録、未実行。全104座標・三格子、現行W2/W3と自然Fourier sparseをbaselineに残す |
 | さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
