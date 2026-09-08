@@ -1,14 +1,18 @@
 # 研究の到達点 — 2026-09-08
 
+Q012h1の四次人工オラクルは、正式実行と別CLIの全件再監査で `passed / accepted`。
+全1,120 operator case・4,482列、実/複素×外部次元23/27の全4 forcing case・1,320列を保持し、全8 validityとH1/H2/H3が成立した。
+最大operator寸法432、最大条件数505.63。SVD/refinedの最大既知解scaled誤差は約7.34e-14/6.96e-15で、3種類の特異/悪条件対照も通過した。
+全entry・行列・係数・判定を再計算し、primary PID 34492、独立worker PID 36808の正常終了を確認した。
+事前の実装検証247テストと正式run内の部品118テストも通過した。詳細と保存物は[Q012h1正式結果](../docs/D3Q27_QUARTIC_ORACLE.md#正式結果-2026-09-08)へ。
+これは人工代数オラクルの受理であり、実LBMの四次係数・rank/condition・有限振幅改善ではない。
+次は実LBMの四次forcing/operatorと資源pilotを別登録する。全104座標・17³/33³/65³と元の失敗caseを保持する。
+
 Q012h0の正式全数censusと別processの保存後監査が `passed / accepted`。全7 validityとH1–H3が成立した。
 全78 block・104座標、次数2/3/4、17³/33³/65³を保持した。四次は1格子あたり1,663,740 block組・5,160,610列、729出力波数。
 全個別座標monomialの直接列挙・全sector/payload再計算・親改変拒否を含む181テストが通過した（242.31秒）。
 登録した自然Fourier sparse配列の四次保持量は5,078,040,240 bytes/格子（約4.73 GiB）、三格子で約14.19 GiB。
 これは係数・forcing等の非圧縮配列payloadであり、実RSS・独立自由度・四次solveの実行可能性ではない。
-次は[Q012h1の人工operator/forcingオラクル](../docs/D3Q27_QUARTIC_ORACLE.md)。代数・既知解の部品実装と118テストが通過した（88.68秒）。
-全人工inventoryの対称積と、4場合×330列のforcingを独立方式で照合した。既知解solveの部品テストは11正例と3負の対照に限る。
-続いて全数実行器・独立worker・排他的全entry保存/再計算を実装し、既存分を含む247テストが通過した（149.26秒）。
-全1,120 caseの正式solve、独立workerの実process記録、全保存内容の再監査は未実行で、Q012h1自体は未判定。
 実LBMの全規模構築と資源pilotはその後の別ゲートとし、全104座標・三格子を保持する。
 計算・保存・検証の詳細は[Q012h0結果](../docs/D3Q27_QUARTIC_RESOURCE_CENSUS.md)へ。以下の先行判定は変更しない。
 

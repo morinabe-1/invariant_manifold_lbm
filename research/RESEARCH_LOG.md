@@ -8,6 +8,28 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012h1の正式全数人工オラクルと保存後再監査が通過
+
+実行器を`d91cc37`でcommit/pushし、15 sourceファイルと事前登録prefix・Q012h0親を封印して正式実行した。
+primary PID 34492は実際のexit 0を取得し、独立worker PID 36808のexit 0/stdout receipt/sourceも照合した。
+全1,120 operator case・4,482列、全4 forcing case・1,320列について、全8 validityとH1/H2/H3が成立した。
+正式manifestは `passed / accepted`。別CLIの全entry再構築もexit 0で同じ判定を得た。
+
+最大operator寸法432、最大条件数505.62993230613523。全1,120 caseはnonsingular practicalで、SVD fallbackは0件。
+SVD/refinedの最大既知解scaled誤差は7.342935551580036e-14 / 6.956833564147589e-15。
+丸め済み行列に対するexact相対残差の表示用最大値は、外部/fullともSVDが5.8716611829721615e-15、refinedが9.091296385596169e-17。
+合否は表示用floatではなく、独立整数/GMP演算による有理数の二乗norm条件でも検証した。
+非自明な全7 forcing項群、既知二〜四次係数、実/複素往復・共役、保存量0、3種類の特異/悪条件対照を保持した。
+
+primary ZIPは全2,247 entry・22,983,998 bytes、workerは全1,127 entry・3,522,387 bytes。
+圧縮後の実ファイル量であり、独立自由度数・TT圧縮・実LBMの資源予測とは区別する。
+正式実行前の実装検証247件（149.26秒）と、正式run内の部品118件（86.19秒）が通過した。
+`validate-data`に従い、受理範囲は人工代数オラクルに限定する。詳細・ハッシュ・再現コマンドは[正式結果](../docs/D3Q27_QUARTIC_ORACLE.md#正式結果-2026-09-08)へ。
+
+次の問いは、実LBMの全lower-order入力から四次forcingを正しいFFT/Taylor規約で構築でき、どの資源を要するか。
+全26波数・78 block・104座標、17³/33³/65³を保持して資源pilotを別登録する。小さい人工写像を原問題の代替にはしない。
+Q012gの3次数不合格・81半減不達・37悪化は未修復。D3Q27 SSM存在・連続振幅域・TT優位性も未認証のままである。
+
 ## 2026-09-08: Q012h1の全entry実行器と独立workerを実装
 
 部品実装commit `c8718db`から、全1,120 operator caseと全4 forcing caseを保存・再計算する正式実行器を接続した。

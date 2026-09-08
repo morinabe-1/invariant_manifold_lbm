@@ -176,3 +176,36 @@ python -u -W error -m research.q012h1_d3q27_quartic_oracle --audit-only
 
 監査は保存record/配列の全再計算を含むため、集計だけの読出しより時間を要する。
 再計算には封印した数値libraryのversionも照合する。異なるversionでの再現性は別途評価し、この実行へ混ぜない。
+
+## 正式結果 2026-09-08
+
+source commit `d91cc3755cc4f7c42177943ef9b12e42cd45af17`の15ファイルを固定し、登録内容を変更せず全数実行した。
+primary PID 34492と独立worker PID 36808の実際の終了code 0を確認した。
+全保存entryの再計算後、全8 validityとH1/H2/H3が成立し、manifestは **passed / accepted**。
+さらに別CLIでも全record/配列・集計・判定を再構築し、exit 0で同じ結果を確認した。
+
+- H1：全1,120 operator case・4,482対称列。全inventory、重複pattern、slot permutation、Taylor正規化を保持した。
+- H2：実/複素×外部次元23/27の全4場合・1,320四次列。全二〜四次H/Gと7項群を独立Fraction合成で照合した。
+- H3：全1,120既知解問題と3種類の特異/悪条件対照を検証した。正常終了した不合格をbackend変更で救済していない。
+
+全正例はnonsingular practical、最大operator寸法432、最大条件数505.62993230613523。SVD fallbackは0件だった。
+最大既知解scaled誤差はSVDが7.342935551580036e-14、固定3回refinementが6.956833564147589e-15。
+exact相対残差の表示用最大値は、外部/fullともSVDが5.8716611829721615e-15、refinedが9.091296385596169e-17。
+ここで合否は有理数の二乗norm条件を用い、表示用の平方根へ丸めた値だけでは判定していない。
+
+保存物：
+
+- [正式manifest](../research/artifacts/q012h1_d3q27_quartic_oracle.json)：正規化ファイルSHA256
+  `fb70d3b9f8e75505b337c7eaf75db084b3fcce733170069069af8284acd66682`。
+- [primary archive](../research/artifacts/q012h1_d3q27_quartic_oracle_primary.zip)：2,247 entry、22,983,998 bytes、バイナリSHA256
+  `e56c550c87dc5566d9657d5dcbcbe69e69cd3f62fc1c2c44b20464a056ed3d26`。
+- [独立worker archive](../research/artifacts/q012h1_d3q27_quartic_oracle_worker.zip)：1,127 entry、3,522,387 bytes、バイナリSHA256
+  `6cc4d2c544d03c79fe0b51666b97923615e8c31b20178d1512796530ae9848ef`。
+
+これらのZIPサイズは圧縮後の実格納量であり、数学的な独立自由度・TT格納量・実LBM全数solveのRSSではない。
+事前の部品/保存/実行器247テスト（149.26秒）と、正式run内の部品118テスト（86.19秒）が通過した。
+実行/再監査コマンドは直前節のとおり。再実行には別の`--output`を指定し、既存の保存物を上書きしない。
+
+検証評価は **Ready to share（人工代数オラクルに限定）**。実LBMの全四次forcing・rank/condition・chart・資源pilotは未完了。
+次に全104座標のlower-order入力と三格子を保持して実LBMの構築/資源pilotを別登録する。
+元Q012gの3次数不合格・81半減不達・37悪化は未修復で、D3Q27 SSM存在・連続振幅域・TT優位性も未認証である。
