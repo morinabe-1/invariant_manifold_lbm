@@ -1,0 +1,174 @@
+{
+  "schema": "Q012h2a independent CLI audit receipt v1",
+  "scope": "Observed read-only full-input and full-entry audit; not a new forcing generation or H2/H3 result",
+  "manifest": {
+    "filename": "q012h2a_d3q27_quartic_precision_attempt03.json",
+    "sha256": "e6a853b2176857e217570b26947096ea3325a55095815cdc9527a1b6c50d0189"
+  },
+  "source_commit": "3ec22a16ac357e9f23017e25f8fc1d02b4b07fd5",
+  "observed_cli": {
+    "process_id": 29016,
+    "exit_code": 0,
+    "process_identity_evidence": "Windows Win32_Process observation matched the separate --audit-only command",
+    "exit_evidence": "Execution-tool terminal result for the same CLI session",
+    "command": "python -u -W error -m research.q012h2a_d3q27_quartic_precision --output research/artifacts/q012h2a_d3q27_quartic_precision_attempt03.json --audit-only"
+  },
+  "audit_result": {
+    "decision": {
+      "stage": "Q012h2a arithmetic diagnosis only",
+      "validity": "passed",
+      "high_precision_forcing_candidate": true,
+      "moment_only_explanation_passed": true,
+      "original_H1_passed": false,
+      "q012h2_outcome": "not_evaluated",
+      "H2": "not_evaluated",
+      "H3_with_solves": "not_evaluated"
+    },
+    "fresh_execution": [
+      {
+        "process_id": 27932,
+        "exit_code": 0,
+        "size": 17,
+        "route": "primary",
+        "completion_resources": {
+          "stage": "fresh_read_only_full_audit_complete",
+          "wall_seconds": 43.9433410000056,
+          "working_set_bytes": 369446912,
+          "peak_working_set_bytes": 493412352,
+          "private_commit_bytes": 1662345216,
+          "peak_private_commit_bytes": 1787293696,
+          "available_physical_bytes": 5594394624,
+          "total_physical_bytes": 16883511296,
+          "free_disk_bytes": 14290444288,
+          "new_file_bytes": 214820233,
+          "checks": {
+            "peak_working_set": true,
+            "peak_private_commit": true,
+            "wall_time": true,
+            "new_disk": true
+          }
+        }
+      },
+      {
+        "process_id": 10076,
+        "exit_code": 0,
+        "size": 17,
+        "route": "worker",
+        "completion_resources": {
+          "stage": "fresh_read_only_full_audit_complete",
+          "wall_seconds": 66.61659930000314,
+          "working_set_bytes": 367951872,
+          "peak_working_set_bytes": 491700224,
+          "private_commit_bytes": 1660891136,
+          "peak_private_commit_bytes": 1785491456,
+          "available_physical_bytes": 5603414016,
+          "total_physical_bytes": 16883511296,
+          "free_disk_bytes": 14290247680,
+          "new_file_bytes": 214820233,
+          "checks": {
+            "peak_working_set": true,
+            "peak_private_commit": true,
+            "wall_time": true,
+            "new_disk": true
+          }
+        }
+      },
+      {
+        "process_id": 28792,
+        "exit_code": 0,
+        "size": 33,
+        "route": "primary",
+        "completion_resources": {
+          "stage": "fresh_read_only_full_audit_complete",
+          "wall_seconds": 43.678651199967135,
+          "working_set_bytes": 367190016,
+          "peak_working_set_bytes": 497266688,
+          "private_commit_bytes": 1659154432,
+          "peak_private_commit_bytes": 1790820352,
+          "available_physical_bytes": 5620744192,
+          "total_physical_bytes": 16883511296,
+          "free_disk_bytes": 14290046976,
+          "new_file_bytes": 214820233,
+          "checks": {
+            "peak_working_set": true,
+            "peak_private_commit": true,
+            "wall_time": true,
+            "new_disk": true
+          }
+        }
+      },
+      {
+        "process_id": 5100,
+        "exit_code": 0,
+        "size": 33,
+        "route": "worker",
+        "completion_resources": {
+          "stage": "fresh_read_only_full_audit_complete",
+          "wall_seconds": 65.7901850999915,
+          "working_set_bytes": 366530560,
+          "peak_working_set_bytes": 496525312,
+          "private_commit_bytes": 1658896384,
+          "peak_private_commit_bytes": 1790869504,
+          "available_physical_bytes": 5628088320,
+          "total_physical_bytes": 16883511296,
+          "free_disk_bytes": 14289911808,
+          "new_file_bytes": 214820233,
+          "checks": {
+            "peak_working_set": true,
+            "peak_private_commit": true,
+            "wall_time": true,
+            "new_disk": true
+          }
+        }
+      },
+      {
+        "process_id": 37984,
+        "exit_code": 0,
+        "size": 65,
+        "route": "primary",
+        "completion_resources": {
+          "stage": "fresh_read_only_full_audit_complete",
+          "wall_seconds": 43.7236759000225,
+          "working_set_bytes": 371884032,
+          "peak_working_set_bytes": 551833600,
+          "private_commit_bytes": 1663627264,
+          "peak_private_commit_bytes": 1845665792,
+          "available_physical_bytes": 5669830656,
+          "total_physical_bytes": 16883511296,
+          "free_disk_bytes": 14289915904,
+          "new_file_bytes": 214820233,
+          "checks": {
+            "peak_working_set": true,
+            "peak_private_commit": true,
+            "wall_time": true,
+            "new_disk": true
+          }
+        }
+      },
+      {
+        "process_id": 28396,
+        "exit_code": 0,
+        "size": 65,
+        "route": "worker",
+        "completion_resources": {
+          "stage": "fresh_read_only_full_audit_complete",
+          "wall_seconds": 66.72475230001146,
+          "working_set_bytes": 370262016,
+          "peak_working_set_bytes": 552452096,
+          "private_commit_bytes": 1663033344,
+          "peak_private_commit_bytes": 1846317056,
+          "available_physical_bytes": 5651001344,
+          "total_physical_bytes": 16883511296,
+          "free_disk_bytes": 14289747968,
+          "new_file_bytes": 214820233,
+          "checks": {
+            "peak_working_set": true,
+            "peak_private_commit": true,
+            "wall_time": true,
+            "new_disk": true
+          }
+        }
+      }
+    ]
+  }
+}

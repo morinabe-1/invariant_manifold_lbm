@@ -161,3 +161,68 @@ raw nilpotent展開・moment・元Taylor入力・collision/compositionの値、�
 修正後の全精度対照82件、停止artifactと実停止tupleの再構築4件、先行H1の81件、
 計**167テスト**が警告error化で通過した（67.32秒）。部分archiveの全entryも再読・検証した。
 これは実装と停止原因の検証であり、未実行のattempt03の合格を意味しない。
+
+## attempt03の主計算結果 2026-09-08
+
+正規化順序を修正したsource `3ec22a16ac357e9f23017e25f8fc1d02b4b07fd5`をcommitしてから全対象を再実行した。
+main PID 33868の実exit 0を確認した。三格子×698組・**全5,478列**の二方式・二精度を保存し、
+各方式で全entryを再計算した。最終manifestを再読して全列の診断・集計・判定が再構築できることも確認した。
+別CLIによる全入力・全entryのfresh再監査、および保存値を分数として扱う独立な合否確認は続けて実行する。
+
+| 格子 | 192 bit二方式の最大相対差 | 128→192 bit最大差（両方式） | moment-only最大差 | 物理照合最大差（漏れ込み） |
+|---|---:|---:|---:|---:|
+| 17³ | 9.09417e-57 | 1.66661e-37 | 4.54395e-15 | 2.48075e-15 |
+| 33³ | 3.65991e-56 | 6.88525e-37 | 2.86024e-14 | 6.08569e-15 |
+| 65³ | 2.14332e-55 | 3.01519e-36 | 1.11033e-13 | 1.29112e-14 |
+
+全列で登録した各上限を満たした。192 bit F4をcomplex128へ丸めた後の二方式の差は、全三格子で厳密に0だった。
+旧182/174/158列の不合格は全件保持・再現した。固定20物理列/格子、全5変異/格子も通過している。
+moment-onlyの一致は、この**固定入力・全pilot・登録精度条件**では元primaryのmoment形成だけの変更で十分だったことを支持する。
+他の演算の丸め誤差がゼロ、一般の格子・係数でもこれだけが原因、という結論にはしない。
+
+正式6 process（17³ primary/worker: 36720/20748、33³: 28136/10844、65³: 16216/33856）の実exit 0を取得した。
+新precision計算の最大peak working setは549,367,808 bytes、最大peak private commitは1,842,696,192 bytes、
+最長grid/routeは65³ workerの127.511秒で、各登録上限以内だった。全入力監査・保存・再読を含む。
+これはforcing診断のみの測定であり、H2 solveや全四次chartの資源条件の通過とは呼ばない。
+
+[主計算manifest](../research/artifacts/q012h2a_d3q27_quartic_precision_attempt03.json)のfile SHA256は
+`e6a853b2176857e217570b26947096ea3325a55095815cdc9527a1b6c50d0189`。
+attempt03の13保存物は177,827,201 bytes、初回・attempt02を含む正式計算終了時の全19保存物は214,820,233 bytesだった。
+正式run内の算術・実行器82テストは13.50秒で通過した。事前167回帰テストと区別する。
+
+主計算の判定は`validity=passed, high_precision_forcing_candidate=true, moment_only_explanation_passed=true`。
+旧binary64 H1は`false`、Q012h2全体・H2・solveを含むH3は`not_evaluated`を維持する。
+ここで一致したのは丸め済みTaylor入力の式であり、厳密symbol、真の多様体、精度に関する厳密誤差boundではない。
+
+保存値の追加監査ではGMPのcodec・normを呼ばず、有限二進値をPythonのFractionへ直接復元し、
+全5,478列のcollision/composition/F4について合計219,120組のnorm二乗比を分数演算で確認した。
+二方式一致、両方式の精度安定性、moment-only、旧値との全8比較、丸め後比較、旧不合格集合を含む。
+合否には分数として正確な登録decimal閾値を使い、表示用相対差の照合だけにrelative `3e-15`を用いた。
+元514不合格のcolumn集合を維持し、末尾成分・複素成分・floor直上直下・偽合否を検出する対照も通過した。
+保存値監査17件を加えた計**184テスト**が警告error化で通過した（247.52秒）。別CLIのfresh再構築とは区別する。
+さらに全147,906複素population成分を直接比較し、丸め後一致がnorm二乗のアンダーフローによる見かけではないことを確認した。
+この追加1テストも通過した（9.53秒）。検証済みの異なるテストは計185件（保存値監査18件＋先行167件）となる。
+
+## attempt03の最終検証と後続 2026-09-08
+
+別CLI main PID 29016による全入力・全entryのfresh再構築が完了し、実exit 0を確認した。
+再監査の6 process（17³: 27932/10076、33³: 28792/5100、65³: 37984/28396）も全て実exit 0だった。
+全三格子の入力・二精度・全column・保存判定が再現され、主計算と同じ二つの候補/説明flagがtrueとなった。
+新precisionの生成・再監査12 processに限った最大working setは552,452,096 bytes、
+最大private commitは1,846,317,056 bytes。前段S0/旧H1の別processを含むrun全体のpeakとは区別する。
+
+[別CLI監査receipt](../research/artifacts/q012h2a_d3q27_quartic_precision_attempt03_fresh_audit.json)には、
+実行時に観測したmain PID/exitとCLIの最終出力を保存した。file SHA256は
+`e781d8760b0da4b61412f01767f72b52391f2acda6542fa034808ef042d93aa4`、6,036 bytes。
+receiptを含む全20保存物は214,826,269 bytes。childの元測定値214,820,233 bytesは保存前の値のまま保持する。
+receiptの実process・判定・OS peakを照合する追加1テストも通過した（2.41秒）。検証済みテストは計186件となった。
+
+`validate-data`の評価は**Share with caveats（固定された丸め済み入力の算術診断に限定）**。
+高精度形成F4を後続H2の候補入力として受理し、moment-only説明も本登録範囲では支持する。
+旧binary64 H1の不合格とQ012gの3次数不合格・81半減不達・37悪化は未修復のまま残す。
+
+次は[既存のH2/H3事前登録](D3Q27_QUARTIC_PILOT.md)に従い、
+このmanifestの**192 bit primary F4をcomplex128へ丸めた保存値**を入力に実operatorを求解する。
+moment-onlyの一致から、求解入力を別armへ自動で差し替えたり、精度・condition条件を緩めたりしない。
+全104座標・三格子・698組/格子・最大432寸法を保ち、SVD/Sylvester-refinement・外部/full残差・gauge・保存量・共役・
+求解を含む実資源を検証する。今回のforcing診断だけでH2/H3、全四次chart、SSM存在、TT実費用の優位を受理しない。

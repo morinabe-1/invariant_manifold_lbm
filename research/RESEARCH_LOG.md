@@ -8,6 +8,22 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012h2aの全精度診断と独立再監査が通過
+
+**問い**: 元の丸め済み全Taylor入力について、四次forcingの形成精度を上げると独立一致を得られるか。
+**実行**: 修正source `3ec22a1`でattempt03を全三格子・698組/格子・全5,478列へ適用した。
+main PID 33868、別CLI PID 29016と新precisionの各6 childは全て実exit 0。全入力と全entryのfresh再構築も完了した。
+**結果**: 192 bit二方式の最大相対差は2.14e-55、complex128化後は全147,906複素population成分が一致した。
+128→192 bitの最大差は3.02e-36、moment-onlyの最大差は1.11e-13。全登録gateと固定60物理列・15変異が通過した。
+**分析**: この固定入力・全pilot・元閾値では元primaryのmoment形成だけの変更で十分だった。一般の入力や他の丸め誤差0の主張ではない。
+元514不合格を保持し、分数演算で全列の219,120組のnorm二乗比を確認した。
+計184回帰検査＋直接成分一致1件＋別CLI receipt照合1件（計186件）が通過した。Ruff・format・compileも検査した。
+**資源**: 新precision生成/再監査12 processの最大working set 552,452,096 bytes、private commit 1,846,317,056 bytes。
+監査receiptを含む20保存物は214,826,269 bytes。H2 solve・全四次chartの費用ではない。
+**次**: `validate-data`による限定付き受理として、固定192 bit primaryの丸め後F4をH2へ渡す。
+元Q012gの悪化、H2/H3、全四次chart、SSM、TT費用と物理検証の未完了事項は保持する。
+詳細・hash・別CLI証跡は[最終検証](../docs/D3Q27_QUARTIC_FORCING_PRECISION.md#attempt03の最終検証と後続-2026-09-08)へ。
+
 ## 2026-09-08: RAM回復後の精度診断で正規化順序の不整合を修正
 
 **実行**: ユーザーによるRAM解放後、source `95a002e`のattempt02を別出力で開始した。

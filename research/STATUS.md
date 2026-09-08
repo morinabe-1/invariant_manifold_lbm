@@ -1,5 +1,12 @@
 # 研究の到達点 — 2026-09-08
 
+Q012h2a attempt03は、全三格子・全5,478列で高精度二方式の一致、128→192 bit安定性、moment-only比較が通過した。
+192 bit F4のcomplex128化後は全population成分が一致。元514不合格、物理60列、5変異/格子も全件照合した。
+mainと別CLI全入力・全entry再構築は実exit 0。分数演算で全列の合否を確認し、保存後監査を含む186検査も通過した。
+[最終結果](../docs/D3Q27_QUARTIC_FORCING_PRECISION.md#attempt03の最終検証と後続-2026-09-08)を参照。
+次は固定した192 bit primaryの丸め後F4を使うH2実operator求解とH3資源pilot。旧H1の不合格は書き換えない。
+四次chart、元振幅の改善、SSM存在、自然Fourier sparse対TTの実費用、物理benchmark・force/wallは引き続き未完了。
+
 RAM回復後のQ012h2a attempt02は前段全監査を通過し、17³ primaryの全698組・1,826列を保存後再計算まで完了した。
 workerは7組・25列後、正規化と減算の丸め順序による保存恒等式の不整合で停止。mainの実exit 1を確認した。
 資源条件は通過しており、今回はRAM不足ではない。部分出力を保持し、正規化後の寄与からF4を定義する実装修正を行った。
