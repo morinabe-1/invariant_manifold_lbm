@@ -153,3 +153,26 @@ python -m pytest -q -W error tests/test_d3q27_quartic_operator.py tests/test_d3q
 検証評価は **Share with caveats（部品検証に限定）**。全1,120 caseの正式solve、独立workerの実PID/exit/source、
 全行列・係数の排他的保存と保存後全entry再監査は未実行であり、**Q012h1のaccepted判定はまだ出していない**。
 これらを正式runnerに接続し、sourceをcommit・封印してから登録済みの全数実行へ進む。
+
+## 実行器の実装検証 2026-09-08 — 正式実行前
+
+`research/q012h1_d3q27_quartic_oracle.py`に、全1,120 case・4,482列と全4 forcing case・1,320列の実行/保存/監査を接続した。
+primary/workerのZIPはそれぞれ2,247/1,127 entryを必須にする。圧縮は格納形式であり、数学的な自由度の削減ではない。
+入力行列、実homological行列、全解・残差・exact proof、軌道basisとTaylor係数、全forcing項群・既知係数を保持する。
+独立workerはFraction forcing合成と明示的行列組立を使い、primaryの丸め済み数値解をGMP残差で検査する。
+source commit、事前登録prefix、Q012h0全再監査、実PID/exit/stdout、保存後全entry再構築を結び付ける。
+既存出力や部分実行を上書きせず、例外時はfailure markerを残す。科学的な不合格を削除して受理しない。
+
+追加129件と既存118件、計247テストが警告error化で通過した（149.26秒）。
+再封印改変・末尾entry・空/部分coverage・偽worker・source変更・pickle拒否を含む。Q012h0のfresh再監査も通過した。
+これは実装検証であり、正式な科学的判定はまだ未実行である。
+
+sourceのcommit・封印後に実行するコマンド：
+
+```sh
+python -u -W error -m research.q012h1_d3q27_quartic_oracle
+python -u -W error -m research.q012h1_d3q27_quartic_oracle --audit-only
+```
+
+監査は保存record/配列の全再計算を含むため、集計だけの読出しより時間を要する。
+再計算には封印した数値libraryのversionも照合する。異なるversionでの再現性は別途評価し、この実行へ混ぜない。

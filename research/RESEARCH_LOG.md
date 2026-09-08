@@ -8,6 +8,26 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012h1の全entry実行器と独立workerを実装
+
+部品実装commit `c8718db`から、全1,120 operator caseと全4 forcing caseを保存・再計算する正式実行器を接続した。
+primaryは2,247 ZIP entry、workerは1,127 entryを要求し、欠落・追加・重複entryを拒否する。
+A/D/F/既知解・SVD/Sylvester/refined解・外部/full残差、対称軌道・Taylor係数・実homological行列を保存する。
+forcingは全混合列、全二〜四次H/G、7項群のexact係数とnorm、basis、負の対照coverageを保持する。
+
+独立側は主方式のforcing・対称積・Kronecker kernelを呼ばず、Fraction合成、明示的な行列組立、GMP残差で照合する。
+数値解の検査ではprimaryの丸め済み行列と解を入力にする。この共有を、forcingを独立に生成することと混同しない。
+正式時の別processのPID/終了code/stdout receiptを保存し、同じPID・偽のreceipt・失敗終了はinconclusiveにする。
+保存後は全record/配列を再計算し、集計値と判定も再構築する。監査中のarchive/source/親の変更も拒否する。
+既存出力は上書きせず、例外は排他的なfailure記録を残す。数値的な不合格はcaseを捨てずrejectedとして残す。
+
+追加129テストと既存118テスト、計247件が警告error化で通過した（149.26秒）。
+最大432次元の全行列照合、末尾係数・行列の改変、再封印したartifact/manifest、空/部分coverage、
+偽worker/終了code、pickle拒否、source commitと実ファイルの照合を含む。Ruff・format・compileも通過した。
+Q012h0のfresh再監査も全7 validity・H1/H2/H3を通過し、先行source/親/結果の封印を維持した。
+`validate-data`に従い、これは実装・保存検証の進捗で、正式1,120 caseの受理ではない。
+このsourceをcommitしてから正式実行し、別CLIの保存後全件監査まで確認する。実LBMの全104座標・三格子は後続に保持する。
+
 ## 2026-09-08: Q012h1の代数・既知解オラクル部品を独立照合
 
 事前登録commit `a345ec7`の後に、四次対称積、混合微分、独立Fraction多項式合成、既知解solveの部品を実装した。
