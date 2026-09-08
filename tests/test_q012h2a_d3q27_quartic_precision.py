@@ -268,3 +268,68 @@ def test_resource_disk_prefix_includes_custom_outputs_only(tmp_path):
     assert run.total_bytes(tmp_path / "diagnosis.json") == sum(
         p.stat().st_size for p in tmp_path.glob("diagnosis*")
     )
+
+
+def test_retry_disk_accounting_keeps_previous_failed_attempts(tmp_path):
+    prefix = run.OUTPUT.stem
+    old = tmp_path / f"{prefix}_failure.json"
+    retry = tmp_path / f"{prefix}_attempt02.json"
+    run.common.save_exclusive(old, {"preserved": True})
+    run.common.save_exclusive(retry, {"attempt": 2})
+    assert run.resource_output(retry) == tmp_path / prefix
+    assert run.total_bytes(retry) == old.stat().st_size + retry.stat().st_size
+
+
+def test_outer_preflight_retains_measurement_without_starting_parent(tmp_path, monkeypatch):
+    measurements = [{"stage": "process_start", "available_physical_bytes": 3 * 1024**3}]
+
+    def fail(*args, **kwargs):
+        raise run.resources.ResourceLimitError("insufficient starting memory", measurements)
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("parent audit started despite failed measured preflight")
+
+    monkeypatch.setattr(run, "metadata", lambda: {"files": {}})
+    monkeypatch.setattr(run.oracle, "verify_source_commit", lambda *a: None)
+    monkeypatch.setattr(run.resources, "Guard", fail)
+    monkeypatch.setattr(run, "audit_parent", forbidden)
+    with pytest.raises(run.resources.ResourceLimitError):
+        run.execute(tmp_path / "precision.json")
+    row = run.common.read_json(tmp_path / "precision_failure.json")
+    assert row["resources"] == measurements and row["completed_tuple_prefix"] == 0
+    assert "not child-start evidence" in row["outer_failure_observation"]["scope"]
+
+
+def test_unavailable_failure_observation_does_not_erase_original_cause(tmp_path, monkeypatch):
+    def fail():
+        raise OSError("counter unavailable")
+
+    monkeypatch.setattr(run.resources, "counters", fail)
+    path = tmp_path / "failure.json"
+    run.save_failure(path, ValueError("original failure"))
+    row = run.common.read_json(path)
+    assert row["error"] == "original failure"
+    assert row["resources"] == []
+    assert row["outer_failure_observation"] == {"unavailable": "OSError"}
+
+
+def test_resource_remediation_does_not_change_scientific_kernels():
+    commit = "c007e72bbc3c43f44c80e3addcb7e5d9f093a9f0"
+    for name in run.FILES[:4]:
+        assert run.oracle.normalized_sha(
+            (run.ROOT / name).read_bytes()
+        ) == run.oracle.normalized_sha(run.oracle.git_bytes("show", f"{commit}:{name}"))
+
+
+def test_first_stopped_attempt_is_preserved_without_inventing_missing_measurements():
+    path = run.OUTPUT.with_name(run.OUTPUT.stem + "_failure.json")
+    assert (
+        run.archive.file_sha(path)
+        == "9c696615aef6936ca364a326fbfc88aad5320a09650615a5a40cfe25a0034998"
+    )
+    row = run.common.read_json(path)
+    run.common.unseal(row)
+    assert row["process_id"] == 28148 and row["error"] == "child 27704 exited 1"
+    assert row["resources"] == [] and row["completed_tuple_prefix"] == 0
+    assert not row["partial_archive_preserved"]
+    assert row["q012h2a_outcome"] == "inconclusive" and row["q012h2_outcome"] == "not_evaluated"

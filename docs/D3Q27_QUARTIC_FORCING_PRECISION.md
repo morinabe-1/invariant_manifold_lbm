@@ -88,3 +88,27 @@ python -m research.q012h2a_d3q27_quartic_precision --output research/replays/q01
 
 `validate-data`の判定は部品検証に限るShare with caveats。実全列の一致、moment-only仮説、
 Q012h2 H2/H3と研究全体の未完了事項は、実行結果が得られるまで受理しない。
+
+## 初回の開始資源条件による停止 2026-09-08
+
+source `c007e72bbc3c43f44c80e3addcb7e5d9f093a9f0`をcommit/push後、正式CLIを起動した。
+main PID 28148は、前段S0のread-only再監査child PID 27704の開始資源チェックで停止し、実exit 1を確認した。
+console上の原因は`registered starting RAM/disk minimum unavailable`。
+子processの開始時counterは旧監査器から取得できず、失敗recordの`resources=[]`を後の測定で埋めない。
+新しいGMP forcingは0組・0列で、ZIPも未生成。Q012h2aは`inconclusive`、H2/H3は未評価のまま。
+
+停止後の別probeではavailable RAMが4,174,069,760 bytes（約3.89 GiB）、次のprobeで4,157,419,520 bytesだった。
+必要な4,294,967,296 bytesを下回っている。後者のdisk空きは14,487,965,696 bytesで6 GiBを上回った。
+これは停止後の外側観測であり、失敗したchild開始瞬間の不足量を示す記録ではない。
+他のprocessの終了・資源閾値・BLAS環境・対象caseの変更は行わない。
+
+保存した[初回停止record](../research/artifacts/q012h2a_d3q27_quartic_precision_failure.json)は537 bytes、file SHA256は
+`9c696615aef6936ca364a326fbfc88aad5320a09650615a5a40cfe25a0034998`。
+元source/不合格の上書きや、資源が足りないままでの再起動は行わない。
+
+再試行に向け、外側CLIにも親監査前の測定付きpreflightを加え、例外後の外側観測をchild-start証拠と別に記録する。
+同じ診断名の`_attempt02`等の出力では、先の停止recordも含めた全保存量を2 GiB上限へ集計する。
+これは実行・記録の補強であり、数値4 moduleは`c007e72`から不変であることをテストで照合する。
+追加5件を含む新規73件と先行H1の81件、計154回帰テストが43.58秒で通過した。Ruff・format・compileも通過した。
+開始RAMの回復を確認後、新しい出力名で全三格子・全対象を再実行する。初回recordはそのまま保持する。
+`validate-data`での実験の評価はNeeds revision（前段監査未完了・開始時測定欠落）。数値仮説の棄却や受理ではない。

@@ -8,6 +8,18 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012h2aの初回実行が開始資源条件で停止
+
+source `c007e72`をcommit/push後、main PID 28148の実exit 1を確認した。
+前段S0のread-only監査child 27704が開始RAM/ディスク条件に不達。GMP forcingは0列で、初回failure recordだけを保存した。
+**証拠の限界**: childの開始時counterは未取得。停止後probeのRAM約3.89 GiB（必要4 GiB）、disk約13.49 GiBを、
+その瞬間の測定値と混同しない。`resources=[]`の元recordは変更しない。
+**改善**: 外側にも開始前の測定付きpreflightを加え、例外後の外側観測を区別して記録する。
+再試行の保存量には初回の停止recordも含める。科学的な4 module・元H1 source・全対象・閾値は変えない。
+追加5件を含む計154テストが43.58秒で通過した。Ruff・format・compileも通過し、初回停止recordのhashを固定した。
+**次**: RAMが条件を満たしてから別出力名で全件を再実行する。`validate-data`に従い実験はinconclusiveを保持し、
+資源不足を数値仮説の成功・失敗に置き換えない。詳細は[初回停止記録](../docs/D3Q27_QUARTIC_FORCING_PRECISION.md#初回の開始資源条件による停止-2026-09-08)へ。
+
 ## 2026-09-08: Q012h2aの全精度二方式とmoment-only診断を実装
 
 **問い**: 固定された全Taylor入力から形成するF4を、128/192 bitの二方式で独立に一致させられるか。

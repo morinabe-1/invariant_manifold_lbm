@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -130,8 +131,14 @@ def mutations_for(witnesses, group, route):
     )
 
 
-def total_bytes(output):
+def resource_output(output):
+    """Count preserved failed attempts as part of the same diagnostic family."""
     output = Path(output)
+    return output.with_name(OUTPUT.stem) if output.stem.startswith(OUTPUT.stem) else output
+
+
+def total_bytes(output):
+    output = resource_output(output)
     return sum(p.stat().st_size for p in output.parent.glob(output.stem + "*") if p.is_file())
 
 
@@ -177,6 +184,15 @@ def rebuild_entries(saved, data, groups, route, witnesses, guard, *, stage):
 
 def save_failure(path, error, *, size=None, route=None, completed=0, guard=None, partial=False):
     if not path.exists():
+        # Do not replace missing child-start evidence with a later observation.
+        try:
+            observed = {
+                "scope": "outer process after exception; not child-start evidence",
+                **resources.counters(),
+                "free_disk_bytes": shutil.disk_usage(path.parent).free,
+            }
+        except (OSError, RuntimeError) as observation_error:
+            observed = {"unavailable": type(observation_error).__name__}
         common.save_exclusive(
             path,
             common.sealed(
@@ -193,6 +209,7 @@ def save_failure(path, error, *, size=None, route=None, completed=0, guard=None,
                     if guard is not None
                     else getattr(error, "resource_records", []),
                     "partial_archive_preserved": partial,
+                    "outer_failure_observation": observed,
                     "q012h2a_outcome": "inconclusive",
                     "q012h2_outcome": "not_evaluated",
                 }
@@ -206,7 +223,7 @@ def run_grid(output, size, route):
     require(not any(p.exists() for p in (record_path, zip_path, failure)), "existing grid output")
     guard, completed = None, 0
     try:
-        guard = resources.Guard(output)
+        guard = resources.Guard(resource_output(output))
         source = metadata()
         commit = oracle.git_bytes("rev-parse", "HEAD").decode().strip()
         oracle.verify_source_commit(commit, source)
@@ -539,7 +556,7 @@ def verify_execution(output, execution):
 
 
 def audit_saved_grid(output, size, route):
-    guard = resources.Guard(output)
+    guard = resources.Guard(resource_output(output))
     row, path = read_grid(output, size, route)
     groups, original = selected_groups(), old_grid(size)
     data, originals, loaded = inputs.load(size, sample=guard.sample)
@@ -648,10 +665,14 @@ def execute(output):
         "existing output or partial run; use a new path",
     )
     output.parent.mkdir(parents=True, exist_ok=True)
+    preflight = None
     try:
         source = metadata()
         commit = oracle.git_bytes("rev-parse", "HEAD").decode().strip()
         oracle.verify_source_commit(commit, source)
+        # Snapshot before the expensive frozen parent audit. Every grid/route
+        # still measures its own start and peaks with the unchanged Guard.
+        preflight = resources.Guard(resource_output(output))
         parent_audit = audit_parent(full=True)
         print("Full original H1/514-failure audits passed", file=sys.stderr, flush=True)
         controls = subprocess.run(
@@ -699,7 +720,7 @@ def execute(output):
         )
         return decision
     except Exception as error:
-        save_failure(output.with_name(output.stem + "_failure.json"), error)
+        save_failure(output.with_name(output.stem + "_failure.json"), error, guard=preflight)
         raise
 
 

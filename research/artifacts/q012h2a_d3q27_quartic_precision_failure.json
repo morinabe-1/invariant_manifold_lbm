@@ -1,0 +1,15 @@
+{
+  "stage": "Q012h2a incomplete",
+  "scope": "arithmetic of frozen rounded Taylor inputs only; no H2 solve, full H3, quartic chart, amplitude repair, SSM or TT advantage",
+  "process_id": 28148,
+  "size": null,
+  "route": null,
+  "completed_tuple_prefix": 0,
+  "error_type": "ValueError",
+  "error": "child 27704 exited 1",
+  "resources": [],
+  "partial_archive_preserved": false,
+  "q012h2a_outcome": "inconclusive",
+  "q012h2_outcome": "not_evaluated",
+  "sha256": "f9c595e36459eaf7730ada7e997c8cea44bf6ba6899281cbdc3880c64a170de0"
+}
