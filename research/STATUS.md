@@ -5,7 +5,8 @@ Q012h0の正式全数censusと別processの保存後監査が `passed / accepted
 全個別座標monomialの直接列挙・全sector/payload再計算・親改変拒否を含む181テストが通過した（242.31秒）。
 登録した自然Fourier sparse配列の四次保持量は5,078,040,240 bytes/格子（約4.73 GiB）、三格子で約14.19 GiB。
 これは係数・forcing等の非圧縮配列payloadであり、実RSS・独立自由度・四次solveの実行可能性ではない。
-次は全規模を保持した四次homological operator/forcingの人工オラクルと実測pilotを登録する。
+次は[Q012h1の人工operator/forcingオラクル](../docs/D3Q27_QUARTIC_ORACLE.md)。事前登録済み・実装/実行は未着手。
+実LBMの全規模構築と資源pilotはその後の別ゲートとし、全104座標・三格子を保持する。
 計算・保存・検証の詳細は[Q012h0結果](../docs/D3Q27_QUARTIC_RESOURCE_CENSUS.md)へ。以下の先行判定は変更しない。
 
 Q012g3のmain全960 caseを完了し、保存後の全件監査で `passed / accepted` を確認した。
@@ -114,7 +115,7 @@ Q012eの登録振幅`.008, .032`の二次モデル有限sample受理と元Q012d/
 | D3Q27次数別欠陥の代数オラクル | Q012g2 accepted。全96人工case・1,824係数・2,976値、独立Fraction式・全数保存後監査・77テスト通過。実LBMの悪化原因を説明した結果ではない |
 | D3Q27次数別欠陥診断 | Q012g3 accepted。全960 case、独立192 caseとの一致、全入力/source・全保存後監査が通過。旧3次数不合格・81半減不達・37悪化を再現し、元の棄却は保持 |
 | D3Q27四次構造census | Q012h0 accepted。全104座標・3格子・次数2/3/4の全joint/coordinate histogramが独立processで一致。四次1,663,740 block組・5,160,610列/格子。数値rank・solveの実行可能性は未評価 |
-| 次の主課題 | 四次homological operatorとforcingの人工オラクル・実測pilotを登録する。全104座標を保持し、現行W2/W3と自然Fourier sparseをbaselineに残す |
+| 次の主課題 | Q012h1人工operator/forcingオラクルを事前登録、実装前。実LBMの全104座標・三格子の構築と資源pilotはその後に検証。現行W2/W3と自然Fourier sparseをbaselineに残す |
 | さらに必要 | 実用振幅・高次／存在認証、3D sparse／TT費用評価、Taylor–Green、force／wall。有限sampleのrollout／正値／保存はQ012dで検証済み |
 
 Q005の元isotropic候補の棄却、Q006iの元保存量閾値による棄却、TT圧縮の棄却を保持する。
