@@ -1,5 +1,9 @@
 # 研究の到達点 — 2026-09-08
 
+Q012h0は整数集計helperと小さな人工例の127テストを実装し、既存回帰を含む170テストが通過した。
+正式な全規模census・独立process照合・保存後監査は未実行で、Q012h0はまだ未判定である。
+次は[Q012h0の実行器と監査](../docs/D3Q27_QUARTIC_RESOURCE_CENSUS.md)を接続する。以下の先行判定は変更しない。
+
 Q012g3のmain全960 caseを完了し、保存後の全件監査で `passed / accepted` を確認した。
 全576 profile、元5,760 field・1,920欠陥、全288方向child・三grid・最終親を再読し、全10 validityとH1/H2/H3が通過した。
 全192 holdout case・1,152 fieldのexact保存量記録もQ012g1と一致した。一般方向に保存量の追加gateは課していない。

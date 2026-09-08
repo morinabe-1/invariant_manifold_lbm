@@ -71,3 +71,33 @@ validity通過でH1–H3全成立ならこの**構造census**をaccepted、valid
 受理後は全規模を保持した四次homological operatorとforcingの人工オラクル・実operator pilotを登録する。
 資源を満たすために小さいgrid/少ない座標だけへ問題を置換せず、必要ならchunk処理やstructured solveを別案として検証する。
 四次solve、共役・固定葉・独立forcing、W4/R4の残差次数と元振幅範囲の改善、SSM存在、3D sparse/TT費用、物理benchmarkは未完了である。
+
+## 実装前オラクルの進捗 — 2026-09-08
+
+`research/d3q27_quartic_census.py`と専用テストを追加した。これは正式censusの前提テストであり、
+**Q012h0の受理ではない**。全78 block・104座標の正式実行器、別processでの全数照合、
+三格子のfresh frame、保存後監査はまだ接続していない。新しい正式artifactも作成していない。
+
+- 小さな1/2/3次元block集合について、次数1〜4のblock列挙と二種類の生成関数を、
+  個別座標monomialの直接列挙と全件照合した。四次の全5重複patternを含む。
+- 生成関数から列挙関数・対称column kernelを呼ぶと失敗する対照を追加した。
+  個別座標方式は二項係数関数も呼ばない。これは呼出し経路の分離であり、別process実行の代用ではない。
+- 未コミット草稿にあったiteratorの消費によるsector分類の不一致とinventory復元の二重走査を修正した。
+  元草稿は保全元に残したままである。
+- 不正な波数・degree・重複key・bool/floatの整数欄・欠落/改変histogramを検査した。
+  全体の個数が一致しても、波数の改変は独立histogram照合で検出できることを確認した。
+- D3Q27用sector集計では、選択波数が非零・canonicalで、各波数の選択座標数が4であることを要求した。
+  小さな入力集合でzero/selected/outsideの23/23/27分類とalias検出を確認した。
+- 格納量はNumPy配列の実dtype/nbytesと照合した。Python整数への正規化で機械整数のoverflowを避け、
+  大整数の集計も検査した。返却値の`full_solver_resource_feasibility`は`None`のままである。
+
+新規127テストは0.37秒で通過した。既存D3Q27二次・基礎の43テストを含む計170テストも
+警告をerror化して通過した（104.01秒）。Ruff・整形・compileallが通過し、先行Q012g3の
+artifact/source sealは冒頭の固定値と一致した。
+
+```powershell
+python -m pytest -q -W error tests/test_d3q27_quartic_census.py tests/test_d3q27_quadratic.py tests/test_d3q27_foundation.py
+```
+
+次は、このhelperを独立worker・主列挙・排他的保存・全内容の再読監査へ接続してから、
+登録した全規模のcensusを実行する。原問題の四次係数や実行可能性を、この小オラクルの成功から推論しない。
