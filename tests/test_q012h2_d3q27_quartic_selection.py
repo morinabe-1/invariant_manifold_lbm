@@ -1,5 +1,8 @@
 """Persistence and validity controls; no acceptance of the full Q012h2 pilot."""
 
+import os
+import subprocess
+import sys
 from copy import deepcopy
 from pathlib import Path
 
@@ -202,3 +205,28 @@ def test_current_preregistration_and_parent_source_are_unchanged():
     source = r.metadata()
     assert set(source["files"]) == set(r.SOURCE_FILES)
     assert r.parent_state()["sha256"] == r.PARENT_SHA
+
+
+@pytest.mark.parametrize("configured", (False, True))
+def test_standalone_import_preserves_inherited_numerical_runtime(configured):
+    names = ("OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS", "MKL_NUM_THREADS")
+    environment = dict(os.environ)
+    for index, name in enumerate(names):
+        environment.pop(name, None)
+        if configured:
+            environment[name] = str(index + 2)
+    code = (
+        "import os; "
+        f"names={names!r}; before={{k:os.environ.get(k) for k in names}}; "
+        "from research import q012h2_d3q27_quartic_selection; "
+        "after={k:os.environ.get(k) for k in names}; assert before==after,(before,after)"
+    )
+    result = subprocess.run(
+        [sys.executable, "-W", "error", "-c", code],
+        cwd=r.ROOT,
+        env=environment,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr

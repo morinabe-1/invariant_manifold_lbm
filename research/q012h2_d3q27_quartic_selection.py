@@ -13,10 +13,6 @@ import sys
 from itertools import product
 from pathlib import Path
 
-# Per-process numerical runtime configuration, not persistent machine settings.
-for _variable in ("OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS", "MKL_NUM_THREADS"):
-    os.environ[_variable] = "1"
-
 import numpy as np
 
 from research import d3q27_chart as chart

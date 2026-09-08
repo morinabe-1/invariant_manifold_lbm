@@ -148,3 +148,19 @@ python -u -W error -m research.q012h2_d3q27_quartic_selection --audit-only
 
 出力は`research/artifacts/q012h2_d3q27_quartic_selection.json`と、三格子×primary/workerのJSON・NPZ。
 S0だけの完了receiptは`q012h2_outcome=not_evaluated`を必須とし、実四次chartの受理へ昇格させない。
+
+## S0起動前のruntime修正 2026-09-08 — 正式走査は未開始
+
+実装commit `0d42b7a`の後、正式出力を作る前に、新runner経由で親Q012h1の全再監査を実行した。
+新runnerがBLAS関連の3環境変数を1へ上書きしていたため、Q012h0のfresh frameの厳密比較で停止した（exit 1）。
+先に通常環境で通過していた監査と異なり、`fresh frame readback differs`を検出した。
+pytestではNumPyが新runnerより先にimportされており、単体テストだけでは起動順の差を検出できなかった。
+
+先行source・数値record・比較閾値を変更せず、新runnerの環境上書きを削除して継承環境をそのまま記録する。
+新しいprocessでのimport順を使った2回帰テスト（未設定/設定済み）を追加した。
+これは正式S0走査前の起動修正であり、悪条件caseの除外や数値不合格の救済ではない。
+修正sourceを新しいcommitで固定し、親の全再監査を通してから正式走査へ進む。
+
+修正後の別process監査はexit 0となり、親Q012h1の全8 validityとH1/H2/H3を再確認した。
+新規86件と先行172件、計258テストが通過（19.15秒）。Ruff・format・compileも通過した。
+継承環境では3変数がいずれも未設定だった。この状態を変えず、開始時・終了時のsource/runtimeに記録する。
