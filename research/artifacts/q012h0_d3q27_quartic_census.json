@@ -1,0 +1,320 @@
+{
+  "schema": "Q012h0 manifest v1",
+  "scope": "Structural census and uncompressed array payload only; no quartic coefficients, rank, conditioning, solve/RSS feasibility, residual improvement, SSM existence or TT advantage.",
+  "config": {
+    "sizes": [
+      17,
+      33,
+      65
+    ],
+    "degrees": [
+      2,
+      3,
+      4
+    ],
+    "omega": 1.5,
+    "eta": 0.02,
+    "power": 2,
+    "block_count": 78,
+    "coordinate_count": 104,
+    "fixed_conservation_leaf": "mass and all three momenta fixed",
+    "chunk_columns": 65536
+  },
+  "source": {
+    "prior_source_sha256": "c7001e41d3ef7541d5f2c863a7fba714f95b0dc7a78f434555fdcf3f09f5e38a",
+    "files": {
+      "research/d3q27_quartic_census.py": "cb7c0de909ab8fe599f5eb485c5ef73cc174251be234741f9ee18a52f13ad121",
+      "research/q012h0_d3q27_quartic_census.py": "210360b1064b462515a583e9f07fc17f852c7bb8548ff1f03f2ebfe24df3e0d6",
+      "tests/test_d3q27_quartic_census.py": "a510d38ce698a96c0dd674a07a0e4554483da066b6656792646a6ae9df9067da",
+      "tests/test_q012h0_d3q27_quartic_census.py": "8759a4ecfb102cc476c0e469a1dfca4a19321fec59791d0264944cb74b47d0bf"
+    }
+  },
+  "source_after": {
+    "prior_source_sha256": "c7001e41d3ef7541d5f2c863a7fba714f95b0dc7a78f434555fdcf3f09f5e38a",
+    "files": {
+      "research/d3q27_quartic_census.py": "cb7c0de909ab8fe599f5eb485c5ef73cc174251be234741f9ee18a52f13ad121",
+      "research/q012h0_d3q27_quartic_census.py": "210360b1064b462515a583e9f07fc17f852c7bb8548ff1f03f2ebfe24df3e0d6",
+      "tests/test_d3q27_quartic_census.py": "a510d38ce698a96c0dd674a07a0e4554483da066b6656792646a6ae9df9067da",
+      "tests/test_q012h0_d3q27_quartic_census.py": "8759a4ecfb102cc476c0e469a1dfca4a19321fec59791d0264944cb74b47d0bf"
+    }
+  },
+  "input": {
+    "filename": "q012g3_d3q27_cubic_defect.json",
+    "sha256": "40d5bbbee9a3a6c4c4330062a1eada7422567e478f2ae06b2c9851e409423a91",
+    "source_sha256": "c7001e41d3ef7541d5f2c863a7fba714f95b0dc7a78f434555fdcf3f09f5e38a",
+    "decision": {
+      "validity_gates": {
+        "sealed_inputs_and_coefficients": true,
+        "artificial_controls": true,
+        "unchanged_sources": true,
+        "unchanged_inputs_after": true,
+        "full_registered_coverage": true,
+        "all_original_records_fields_and_exact_holdouts_audited": true,
+        "finite_evidence": true,
+        "all_grid_roundtrips": true,
+        "all_gram_comparisons": true,
+        "independent_vectors_and_both_arm_H1": true
+      },
+      "hypothesis_gates": {
+        "H1": true,
+        "H2": true,
+        "H3": true
+      },
+      "study_gate": "passed",
+      "scientific_outcome": "accepted"
+    }
+  },
+  "input_after": {
+    "filename": "q012g3_d3q27_cubic_defect.json",
+    "sha256": "40d5bbbee9a3a6c4c4330062a1eada7422567e478f2ae06b2c9851e409423a91",
+    "source_sha256": "c7001e41d3ef7541d5f2c863a7fba714f95b0dc7a78f434555fdcf3f09f5e38a",
+    "decision": {
+      "validity_gates": {
+        "sealed_inputs_and_coefficients": true,
+        "artificial_controls": true,
+        "unchanged_sources": true,
+        "unchanged_inputs_after": true,
+        "full_registered_coverage": true,
+        "all_original_records_fields_and_exact_holdouts_audited": true,
+        "finite_evidence": true,
+        "all_grid_roundtrips": true,
+        "all_gram_comparisons": true,
+        "independent_vectors_and_both_arm_H1": true
+      },
+      "hypothesis_gates": {
+        "H1": true,
+        "H2": true,
+        "H3": true
+      },
+      "study_gate": "passed",
+      "scientific_outcome": "accepted"
+    }
+  },
+  "process_id": 16132,
+  "controls": {
+    "filename": "tests/test_d3q27_quartic_census.py",
+    "source_before": "a510d38ce698a96c0dd674a07a0e4554483da066b6656792646a6ae9df9067da",
+    "source_after": "a510d38ce698a96c0dd674a07a0e4554483da066b6656792646a6ae9df9067da",
+    "exit_code": 0,
+    "passed_tests": 127,
+    "stdout": "........................................................................ [ 56%]\n.......................................................                  [100%]\n127 passed in 0.36s\n",
+    "stderr": ""
+  },
+  "worker_execution": {
+    "process_id": 36920,
+    "exit_code": 0,
+    "stdout": "{\"filename\": \"q012h0_d3q27_quartic_census_worker.json\", \"sha256\": \"8b83a9c6be10352f86351ba47527916647242a50acb9d0262e7b5df8175fe406\", \"process_id\": 36920, \"method\": \"generating_functions\"}\n",
+    "stderr": "",
+    "module": "research.q012h0_d3q27_quartic_census"
+  },
+  "children": {
+    "enumeration": {
+      "filename": "q012h0_d3q27_quartic_census_primary.json",
+      "sha256": "15896d87310f64ecaf5cff30e5b6a5e38f44f9b1ea3a5d9fdfc9944fc9699be8",
+      "process_id": 16132,
+      "method": "enumeration"
+    },
+    "generating_functions": {
+      "filename": "q012h0_d3q27_quartic_census_worker.json",
+      "sha256": "8b83a9c6be10352f86351ba47527916647242a50acb9d0262e7b5df8175fe406",
+      "process_id": 36920,
+      "method": "generating_functions"
+    }
+  },
+  "readback_audits": {
+    "enumeration": {
+      "passed": true,
+      "degrees": [
+        2,
+        3,
+        4
+      ],
+      "sizes": [
+        17,
+        33,
+        65
+      ],
+      "all_histogram_bins_recomputed": true,
+      "fresh_frames_recomputed": true
+    },
+    "generating_functions": {
+      "passed": true,
+      "degrees": [
+        2,
+        3,
+        4
+      ],
+      "sizes": [
+        17,
+        33,
+        65
+      ],
+      "all_histogram_bins_recomputed": true,
+      "fresh_frames_recomputed": true
+    }
+  },
+  "comparisons": [
+    {
+      "degree": 2,
+      "joint_histogram_equal": true,
+      "coordinate_histogram_equal": true,
+      "grid_summaries_equal": true,
+      "all_three_grids_non_aliasing": true
+    },
+    {
+      "degree": 3,
+      "joint_histogram_equal": true,
+      "coordinate_histogram_equal": true,
+      "grid_summaries_equal": true,
+      "all_three_grids_non_aliasing": true
+    },
+    {
+      "degree": 4,
+      "joint_histogram_equal": true,
+      "coordinate_histogram_equal": true,
+      "grid_summaries_equal": true,
+      "all_three_grids_non_aliasing": true
+    }
+  ],
+  "summary": [
+    {
+      "degree": 2,
+      "coverage": {
+        "block_tuples": 3081,
+        "coordinate_columns": 5460,
+        "expected_block_tuples": 3081,
+        "expected_coordinate_columns": 5460,
+        "passed": true
+      },
+      "grids": [
+        {
+          "size": 17,
+          "raw_support_count": 125,
+          "maximum_operator_dimension": 108,
+          "sparse_payload_bytes": 5285280,
+          "physical_ordered_real_W_bytes": 11478025728,
+          "physical_symmetric_real_W_bytes": 5794195680,
+          "full_solver_resource_feasibility": null
+        },
+        {
+          "size": 33,
+          "raw_support_count": 125,
+          "maximum_operator_dimension": 108,
+          "sparse_payload_bytes": 5285280,
+          "physical_ordered_real_W_bytes": 83958031872,
+          "physical_symmetric_real_W_bytes": 42382660320,
+          "full_solver_resource_feasibility": null
+        },
+        {
+          "size": 65,
+          "raw_support_count": 125,
+          "maximum_operator_dimension": 108,
+          "sparse_payload_bytes": 5285280,
+          "physical_ordered_real_W_bytes": 641594304000,
+          "physical_symmetric_real_W_bytes": 323881740000,
+          "full_solver_resource_feasibility": null
+        }
+      ],
+      "all_three_grids_sparse_payload_bytes": 15855840
+    },
+    {
+      "degree": 3,
+      "coverage": {
+        "block_tuples": 82160,
+        "coordinate_columns": 192920,
+        "expected_block_tuples": 82160,
+        "expected_coordinate_columns": 192920,
+        "passed": true
+      },
+      "grids": [
+        {
+          "size": 17,
+          "raw_support_count": 343,
+          "maximum_operator_dimension": 216,
+          "sparse_payload_bytes": 188289920,
+          "physical_ordered_real_W_bytes": 1193714675712,
+          "physical_symmetric_real_W_bytes": 204728247360,
+          "full_solver_resource_feasibility": null
+        },
+        {
+          "size": 33,
+          "raw_support_count": 343,
+          "maximum_operator_dimension": 216,
+          "sparse_payload_bytes": 188289920,
+          "physical_ordered_real_W_bytes": 8731635314688,
+          "physical_symmetric_real_W_bytes": 1497520664640,
+          "full_solver_resource_feasibility": null
+        },
+        {
+          "size": 65,
+          "raw_support_count": 343,
+          "maximum_operator_dimension": 216,
+          "sparse_payload_bytes": 188289920,
+          "physical_ordered_real_W_bytes": 66725807616000,
+          "physical_symmetric_real_W_bytes": 11443821480000,
+          "full_solver_resource_feasibility": null
+        }
+      ],
+      "all_three_grids_sparse_payload_bytes": 564869760
+    },
+    {
+      "degree": 4,
+      "coverage": {
+        "block_tuples": 1663740,
+        "coordinate_columns": 5160610,
+        "expected_block_tuples": 1663740,
+        "expected_coordinate_columns": 5160610,
+        "passed": true
+      },
+      "grids": [
+        {
+          "size": 17,
+          "raw_support_count": 729,
+          "maximum_operator_dimension": 432,
+          "sparse_payload_bytes": 5078040240,
+          "physical_ordered_real_W_bytes": 124146326274048,
+          "physical_symmetric_real_W_bytes": 5476480616880,
+          "full_solver_resource_feasibility": null
+        },
+        {
+          "size": 33,
+          "raw_support_count": 729,
+          "maximum_operator_dimension": 432,
+          "sparse_payload_bytes": 5078040240,
+          "physical_ordered_real_W_bytes": 908090072727552,
+          "physical_symmetric_real_W_bytes": 40058677779120,
+          "full_solver_resource_feasibility": null
+        },
+        {
+          "size": 65,
+          "raw_support_count": 729,
+          "maximum_operator_dimension": 432,
+          "sparse_payload_bytes": 5078040240,
+          "physical_ordered_real_W_bytes": 6939483992064000,
+          "physical_symmetric_real_W_bytes": 306122224590000,
+          "full_solver_resource_feasibility": null
+        }
+      ],
+      "all_three_grids_sparse_payload_bytes": 15234120720
+    }
+  ],
+  "decision": {
+    "validity_gates": {
+      "sealed_sources_and_input": true,
+      "artificial_controls": true,
+      "fresh_frames": true,
+      "full_registered_coverage": true,
+      "finite_evidence": true,
+      "independent_completed_process": true,
+      "saved_children_recomputed": true
+    },
+    "hypothesis_gates": {
+      "H1": true,
+      "H2": true,
+      "H3": true
+    },
+    "study_gate": "passed",
+    "scientific_outcome": "accepted"
+  },
+  "sha256": "1d6d07978b3f360577358458a48b01255f8ba9e530731a5924adc5948d54e1d4"
+}

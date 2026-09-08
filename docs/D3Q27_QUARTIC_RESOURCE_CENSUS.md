@@ -101,3 +101,100 @@ python -m pytest -q -W error tests/test_d3q27_quartic_census.py tests/test_d3q27
 
 次は、このhelperを独立worker・主列挙・排他的保存・全内容の再読監査へ接続してから、
 登録した全規模のcensusを実行する。原問題の四次係数や実行可能性を、この小オラクルの成功から推論しない。
+
+## 正式結果 — 2026-09-08
+
+`6e87dec`でrunnerと37テストを追加し、既存127対照と合わせて164件が通過した後に正式実行した。
+本節より前の事前登録・中間記録は変更していない。全7 validityとH1–H3が成立し、
+**Q012h0の構造censusは `passed / accepted`**。元Q012gの棄却と未修復の悪化例は保持する。
+
+main（PID 16132）と独立worker（PID 36920）の終了code 0を取得し、保存後の別process再監査もexit 0で一致した。
+全3格子のpaired frameをfreshに再構築し、全78 block・104座標を確認した。
+波数和の数え上げは格子に依存しないため各方式で一度実行し、各格子へのcanonical写像・sector・格納量を別々に監査した。
+各格子の数値homological行列を構築したという意味ではない。
+
+### 件数・全coverage
+
+| 次数 | unordered block組/格子 | 対称入力列/格子 | 出力波数 | joint bin | 登録疎配列量/格子（bytes） |
+|---|---:|---:|---:|---:|---:|
+| 2 | 3,081 | 5,460 | 125 | 393 | 5,285,280 |
+| 3 | 82,160 | 192,920 | 343 | 1,922 | 188,289,920 |
+| 4 | 1,663,740 | 5,160,610 | 729 | 5,739 | 5,078,040,240 |
+
+全joint binがblock列挙と独立block生成関数で一致し、q重み付き波数別列数が個別座標生成関数と一致した。
+三格子とも二〜四次の全supportでaliasなし。四次sectorの内訳も三格子で同じだった。
+
+| 四次の出力sector | 外部次元 | block組 | 対称入力列 |
+|---|---:|---:|---:|
+| zero-wave kinetic | 23 | 19,746 | 61,844 |
+| 選択波数の外部補空間 | 23 | 353,160 | 1,107,840 |
+| 選択外の波数 | 27 | 1,290,834 | 3,990,926 |
+
+zero-wave行は固定保存量葉のkinetic補正用であり、保存モーメント方向を4個追加したものではない。
+ただし、係数の保存モーメントがゼロであることの数値検証は、実際の四次構築で別途必要である。
+
+### 格納量・規模指標と限界
+
+四次の登録疎配列量は1格子5,078,040,240 bytes（約4.7293 GiB）、三格子15,234,120,720 bytes（約14.1879 GiB）。
+1列984 bytesの内訳は入力index 32、波数index 24、H4 432、F4 432、G4 64 bytes。
+G4がゼロになる選択外の列や共役partnerも含む既存layoutであり、最小格納量・独立自由度ではない。
+
+- H4とF4はそれぞれ2,229,383,520 bytes/格子、G4は330,279,040 bytes/格子。
+- 65,536列chunkは79個/格子、最大chunk配列量64,487,424 bytes（61.5 MiB）。全保持量は減らない。
+- 最大homological行列の寸法は432、単一complex128行列payloadは2,985,984 bytes（約2.848 MiB）。
+- 全blockの`sum n²`は17,288,159,170、`sum n³`は3,348,122,120,590/格子。
+  全行列・factorizationの規模指標であり、実測RSS・処理時間の予測には使わない。
+
+参考として、物理空間real W4だけを保持する場合の配列量は次のとおり。上のFourier complex H/F/G等のlayoutとは
+表現・数値型・保存する対象が異なり、同じスカラー数や実装間の実メモリ比較として扱わない。
+
+| 格子 | ordered dense W4（bytes） | 対称dense W4（bytes） |
+|---|---:|---:|
+| 17³ | 124,146,326,274,048 | 5,476,480,616,880 |
+| 33³ | 908,090,072,727,552 | 40,058,677,779,120 |
+| 65³ | 6,939,483,992,064,000 | 306,122,224,590,000 |
+
+記録された`census_wall_seconds`は主列挙10.2757秒、生成関数方式5.8540秒で、fresh frame・集計・開始前後の封印照合を含む。
+保存・全再監査を含む全campaign時間でも、係数solveの時間でもない。ソルバー実行可能性欄は全件`null`で保持した。
+
+### 保存と再現
+
+正式sourceは`6e87dec`時点の4ファイルで固定した。先行Q012g3のinput/source sealも冒頭の固定値から不変。
+以下は正規化SHA256（textのCRLF/LF差を除く）であり、JSON内部sealとは別である。
+
+- [最終manifest](../research/artifacts/q012h0_d3q27_quartic_census.json):
+  `4c7c20a6dbde1aa8c9e7317a7b7750c000d81e429759af51ddfebc836064a0d8`
+- [全主列挙](../research/artifacts/q012h0_d3q27_quartic_census_primary.json):
+  `15896d87310f64ecaf5cff30e5b6a5e38f44f9b1ea3a5d9fdfc9944fc9699be8`
+- [独立生成関数worker](../research/artifacts/q012h0_d3q27_quartic_census_worker.json):
+  `8b83a9c6be10352f86351ba47527916647242a50acb9d0262e7b5df8175fe406`
+
+正式保存データの全内容監査:
+
+```powershell
+python -W error -m research.q012h0_d3q27_quartic_census --audit-only
+python -m pytest -q -W error tests/test_q012h0_d3q27_census_artifact.py tests/test_q012h0_d3q27_quartic_census.py tests/test_d3q27_quartic_census.py
+```
+
+新しい実行は、既存ファイルのない出力先を明示する。PID・時刻等でfile sealは変わるため、科学的再現は全histogramとscope/sourceで確認する。
+
+```powershell
+python -W error -m research.q012h0_d3q27_quartic_census --output research/replays/q012h0_quartic_census.json
+python -W error -m research.q012h0_d3q27_quartic_census --audit-only --output research/replays/q012h0_quartic_census.json
+```
+
+### 検証評価と次の問い
+
+`validate-data`のQAでは、全母集団・二種類の数え上げ粒度・全bin照合・非alias・sector和・dtypeとbyte・
+固定保存量葉・自然Fourier sparse baselineの一致を点検した。図は使わず、上の表で件数とbytesを明示する。
+総合評価は **Ready to share（この構造censusの範囲に限定）**。未実行・欠測による共有blockerはない。
+追加17テストでは、二〜四次の全個別座標monomialを生成関数・対称column kernelなしに直接列挙し、
+両保存方式の全波数別件数と一致した。各格子・次数の全sector/payloadを再計算し、再封印した親の件数・判定・PID・
+余分な成功主張の改変を全再監査で拒否した。正式出力を別processで再監査する検査も含む。
+既存164テストを含む計181件が警告error化で通過した（242.31秒）。Ruff・整形・差分チェックも通過した。
+独立自由度・実RSS・実時間・rank・condition・四次不変性残差・TTの圧縮優位性は未検証である。
+資源面の含意は「1.66百万block問題を全数保持する構築設計が必要」までであり、現在の機械で解けるという結論ではない。
+
+次は全規模を保持した四次homological operator/forcingの人工オラクルと実測pilotを登録する。
+演算子寸法が432以下であることから非共鳴・安定な解法を推論せず、lower-order入力、作業配列、保存を含む実費用を測る。
+小さい格子や少ない座標だけへ原問題を置換しない。四次chartの構築と元振幅範囲の改善、3D SSM存在、物理benchmark、疎/TT費用比較は未完了である。

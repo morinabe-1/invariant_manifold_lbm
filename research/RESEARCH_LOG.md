@@ -8,6 +8,33 @@
 
 の順で残す。成功だけでなく、棄却された仮説を保存する。
 
+## 2026-09-08: Q012h0の正式全数構造censusが独立方式で一致
+
+前turnはrunnerとテストを`6e87dec`へcommit/pushし、164テストを通過したprogressである。
+現在の作業ツリー・親封印・出力の不在と既存processの不在を確認し、同じ固定sourceで正式実行した。
+問いと対象はQ012h0事前登録から変更せず、全26波数・78 block・104座標・次数2/3/4、17³/33³/65³を保持した。
+
+main PID 16132、独立worker PID 36920はそれぞれ実際の終了code 0を取得した。
+block tuple列挙とblock生成関数の全joint bin、さらに個別座標生成関数の全出力波数binが整数一致した。
+全7 validityとH1–H3が成立し、正式manifestは `passed / accepted`。保存後の別process再監査もexit 0で一致した。
+これは構造censusの受理であり、四次係数・rank・condition・残差の受理ではない。
+
+四次は1格子あたり1,663,740 block組・5,160,610対称入力列・729出力波数、全5,739 joint binである。
+自然Fourier sparseの登録配列layoutは5,078,040,240 bytes/格子、全三格子15,234,120,720 bytes。
+65,536列のchunkを79個に分けると最大chunk配列量は64,487,424 bytes（61.5 MiB）だが、保持全量は減らない。
+最大homological行列は寸法432、単一complex128行列の配列量2,985,984 bytes。数値rankや実solveの可否は測定していない。
+全二次・三次の既知件数も一致し、三格子のsupport非aliasと23/23/27のsector分割を確認した。
+
+`validate-data`の手順に従い、件数・単位・全coverage・固定保存量葉・自然疎表現baselineと主張範囲を分離した。
+追加の保存artifact検査は正式runnerの固定sourceとは別ファイルに置き、全coordinate monomialの直接列挙、
+三格子の全sector/payload、再封印したmanifest改変の拒否を検証した。正式出力や旧結果は上書きしない。
+追加17件と既存164件の計181テストが警告error化で通過した（242.31秒）。四次の全5,160,610 monomialも直接列挙した。
+検証評価は構造censusに限定したReady to share。実測資源・四次係数・改善効果の未検証事項は結果に隣接して明記した。
+詳細な数値・封印・再現コマンドは[Q012h0結果](../docs/D3Q27_QUARTIC_RESOURCE_CENSUS.md)へ記録する。
+
+次は四次operator/forcingの人工オラクルと実測pilotの事前登録。小さい格子・少ない座標へ原問題を置換しない。
+元Q012gの3次数不合格・81半減不達・37悪化は未修復。3D SSM存在・連続振幅域・TT優位性も未認証のまま保持する。
+
 ## 2026-09-08: Q012h0の整数集計helperを人工例で検証
 
 README簡略化を`9093435`でGitHubへ反映し、以後の研究はLFS移行済み公開用コピーで続ける。
