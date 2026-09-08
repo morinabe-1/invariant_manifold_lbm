@@ -208,3 +208,34 @@ NPZは圧縮後の格納量であり、TT core格納量・独立自由度・全�
 S0の結果は`passed=true, q012h2_outcome=not_evaluated`。検証評価は **Share with caveats（S0選択に限定）**。
 この入力をcommitで固定した後、H1の実四次forcingと独立多項式合成へ進む。
 H1/H2/H3の本体、全三格子の四次chart、元Q012gの悪化の改善、SSM存在・TT優位性は依然として未完了である。
+
+## H1実装検証 2026-09-08 — 実入力の正式計算前
+
+固定された698組/格子へ接続する実LBM四次forcing kernelと、独立nilpotent合成、物理格子上の照合を実装した。
+全Taylor monomialへのcompactな索引を使い、三次の全raw tensorを複製しない。
+H2/H3の係数や入力座標を間引かず、内部力学が入力の4座標以外へ生成する成分も合成へ戻す。
+
+- 6座標の非自明な複素人工入力では、全126混合四つ組で7項と独立多項式が一致した。
+  7項すべてに非零例があり、G2/G3、FFT次数factor、streaming符号、filterの5変異を検出した。
+- 104座標までの全pair/tripleの辞書順索引と並べ替え、不正な末尾・欠落・重複・非有限値を検査した。
+  16種のblock寸法×35組の全560対称積は、Q012h1の封印した人工operatorと全entryが一致した。
+  最大16対称列を保持し、第1入力最速・Taylor係数変換を確認した。
+- 小さな物理格子で、重複pattern、全出力FFT係数の漏れ、3軸のstreamingと差分filterの交差項を照合した。
+  これは宣言した`rho=1,j=0`での形式的Taylor係数の検査であり、実写像の定数・低次丸め誤差の除去ではない。
+- 実入力loaderは既存のfresh/paired処理、全192,920三次fiberの全array/hash監査を使う。
+  S0の保存済み基底・filtered線形力学との厳密一致を要求し、読込み後も全係数を再hashする。
+- 実行器はprimary/workerを別processで順に走らせ、全列と全5変異を保存する。
+  全tupleと物理照合の保存後再計算、全列の比較、実PID/exit、OS資源counterを記録する。
+  資源不足では完了prefixと測定値を残し、既存出力への再実行・上書きを拒否する。
+
+新規66件と先行131件、計**197テスト**が警告error化で通過した（19.90秒）。Ruff・format・compileも通過した。
+検証評価は **Share with caveats（実装部品に限定）**。まだ実LBMの全pilot F4を評価した結果ではない。
+新しい7 sourceをcommitしてから、以下の正式計算と別CLIの保存後監査を行う。
+
+```sh
+python -u -W error -m research.q012h2_d3q27_quartic_forcing
+python -u -W error -m research.q012h2_d3q27_quartic_forcing --audit-only
+```
+
+H1-only receiptはH2 solveおよびsolveを含むH3を`not_evaluated`のまま保持する。
+実装部品の成功を、元Q012gの悪化の修復や全四次chart・存在・TT費用評価の代替にしない。
